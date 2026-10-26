@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Classic Financial Obsidian (Default) */
+  --bg-app: #07090e;
+  --bg-panel: #0d111a;
+  --bg-subtle: #141b29;
+  --border-light: rgba(255, 255, 255, 0.07);
+  --border-accent: rgba(16, 185, 129, 0.4);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent: #10b981;
+  --accent-light: rgba(16, 185, 129, 0.12);
+  --danger: #f43f5e;
+  --danger-light: rgba(244, 63, 94, 0.12);
+}
+
+[data-theme="deep-ocean"] {
+  --bg-app: #040814;
+  --bg-panel: #0a1024;
+  --bg-subtle: #101c3d;
+  --border-light: rgba(56, 189, 248, 0.1);
+  --border-accent: rgba(56, 189, 248, 0.45);
+  --text-main: #f0fdf4;
+  --text-muted: #93c5fd;
+  --text-dim: #60a5fa;
+  --accent: #38bdf8;
+  --accent-light: rgba(56, 189, 248, 0.12);
+  --danger: #fb7185;
+}
+
+[data-theme="cyber-amber"] {
+  --bg-app: #090807;
+  --bg-panel: #14120f;
+  --bg-subtle: #211c17;
+  --border-light: rgba(245, 158, 11, 0.1);
+  --border-accent: rgba(245, 158, 11, 0.45);
+  --text-main: #fffbeb;
+  --text-muted: #d1d5db;
+  --text-dim: #9ca3af;
+  --accent: #f59e0b;
+  --accent-light: rgba(245, 158, 11, 0.12);
+  --danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif-heading {
+  font-family: var(--font-serif);
+}
+
+.mono-metric {
+  font-family: var(--font-mono);
+}
+
+/* Dense Terminal Grid Borders */
+.terminal-card {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.terminal-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+/* Micro scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-subtle);
+  border-radius: 2px;
+}
+
+/* Continuous Smooth Marquee for Ticker Ribbon */
+@keyframes tickerTape {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: tickerTape 35s linear infinite;
+}
+
+.ticker-marquee-track:hover {
+  animation-play-state: paused;
+}
