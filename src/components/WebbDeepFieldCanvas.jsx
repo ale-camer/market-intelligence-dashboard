@@ -33,59 +33,59 @@ function createProgram(gl, vsSource, fsSource) {
   return program;
 }
 
-const PAIRS_META = [
-  {
-    id: 0,
-    short: 'PAR I',
-    jwst: 'Pilares de la Creación (Carina)',
-    quant: '3D Implied Volatility Surface σ(K,T)',
-    color: '#f59e0b',
-  },
-  {
-    id: 1,
-    short: 'PAR II',
-    jwst: 'Lente Gravitacional Einstein (SMACS 0723)',
-    quant: 'Markowitz Frontier & Sharpe Tangency',
-    color: '#38bdf8',
-  },
-  {
-    id: 2,
-    short: 'PAR III',
-    jwst: 'Nebulosa Reloj de Arena Bipolar (L1527)',
-    quant: 'Limit Order Book Depth V(p,t) (Bids/Asks)',
-    color: '#10b981',
-  },
-  {
-    id: 3,
-    short: 'PAR IV',
-    jwst: 'Nebulosa del Anillo del Sur (NGC 3132)',
-    quant: 'Difusión de Itô & Densidad Fokker-Planck',
-    color: '#a855f7',
-  },
-];
+const ARTWORKS = {
+  EN: [
+    {
+      title: 'Pillars of Creation (NGC 3324)  ⟷  Implied Volatility Surface σ(K,T)',
+      medium: 'JWST Near-Infrared Dust Pillars • Black-Scholes-Merton Manifold',
+    },
+    {
+      title: 'Einstein Gravitational Ring (SMACS 0723)  ⟷  Markowitz Efficient Frontier',
+      medium: 'Relativistic Spacetime Lensing • Optimal Risk-Return Tangency',
+    },
+    {
+      title: 'Bipolar Hourglass Nebula (L1527)  ⟷  Limit Order Book Depth V(p,t)',
+      medium: 'Protostellar Accretion Shockwave • High-Frequency Liquidity Microstructure',
+    },
+    {
+      title: 'Southern Ring Nebula (NGC 3132)  ⟷  Itô-Fokker-Planck Probability Density',
+      medium: 'Concentric Stellar Ejecta Shells • Stochastic Dispersion Trajectories',
+    },
+  ],
+  ES: [
+    {
+      title: 'Pilares de la Creación (NGC 3324)  ⟷  Superficie de Volatilidad Implícita σ(K,T)',
+      medium: 'Pilares infrarrojos del JWST • Variedad de Black-Scholes-Merton',
+    },
+    {
+      title: 'Anillo Gravitacional de Einstein (SMACS 0723)  ⟷  Frontera Eficiente de Markowitz',
+      medium: 'Lente gravitacional relativista • Tangencia óptima riesgo-retorno',
+    },
+    {
+      title: 'Nebulosa Reloj de Arena Bipolar (L1527)  ⟷  Profundidad de Order Book V(p,t)',
+      medium: 'Onda de choque protoestelar • Microestructura de liquidez de alta frecuencia',
+    },
+    {
+      title: 'Nebulosa del Anillo del Sur (NGC 3132)  ⟷  Densidad de Difusión de Itô-Fokker-Planck',
+      medium: 'Capas concéntricas de eyección estelar • Trayectorias de dispersión estocástica',
+    },
+  ],
+};
 
-export default function WebbDeepFieldCanvas({ isPaused = false }) {
+export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
   const canvasRef = useRef(null);
-  const [selectedPair, setSelectedPair] = React.useState(0);
-  const [morphPct, setMorphPct] = React.useState(100);
-  const [isAuto, setIsAuto] = React.useState(false);
-  const [showHorizon, setShowHorizon] = React.useState(true);
-
-  const controlsRef = useRef({
-    selectedPair: 0,
-    morph: 1.0,
-    isAuto: false,
-    showHorizon: 1.0,
-  });
+  const artworkTitleRef = useRef(null);
+  const artworkMediumRef = useRef(null);
+  const langRef = useRef(lang);
+  const isPausedRef = useRef(isPaused);
 
   useEffect(() => {
-    controlsRef.current = {
-      selectedPair,
-      morph: morphPct / 100,
-      isAuto,
-      showHorizon: showHorizon ? 1.0 : 0.0,
-    };
-  }, [selectedPair, morphPct, isAuto, showHorizon]);
+    langRef.current = lang;
+  }, [lang]);
+
+  useEffect(() => {
+    isPausedRef.current = isPaused;
+  }, [isPaused]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -138,58 +138,72 @@ export default function WebbDeepFieldCanvas({ isPaused = false }) {
       if (!canvas.parentElement) return;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.parentElement.getBoundingClientRect();
-      const width = Math.max(1, Math.floor(rect.width * dpr));
-      const height = Math.max(1, Math.floor(rect.height * dpr));
+      const rawW = rect.width > 10 ? rect.width : window.innerWidth;
+      const rawH = rect.height > 10 ? rect.height : window.innerHeight;
+      const width = Math.max(1, Math.floor(rawW * dpr));
+      const height = Math.max(1, Math.floor(rawH * dpr));
       if (canvas.width !== width || canvas.height !== height) {
         canvas.width = width;
         canvas.height = height;
-        gl.viewport(0, 0, width, height);
       }
+      gl.viewport(0, 0, canvas.width, canvas.height);
     };
     resize();
     window.addEventListener('resize', resize);
 
     let animId;
-    let startTime = performance.now();
-    let pausedElapsed = 0;
+    let lastTime = performance.now();
+    let elapsed = 0;
 
     const render = (now) => {
-      resize();
-      const elapsed = isPaused ? pausedElapsed : (now - startTime) * 0.001;
-      pausedElapsed = elapsed;
+      const dt = Math.min(0.1, Math.max(0, (now - lastTime) * 0.001));
+      lastTime = now;
 
-      const ctrl = controlsRef.current;
-      const activePair = ctrl.isAuto ? (elapsed * 0.12) % 4.0 : ctrl.selectedPair;
-      const activeMorph = ctrl.isAuto ? 0.5 - 0.5 * Math.cos(elapsed * 0.65) : ctrl.morph;
+      if (!isPausedRef.current) {
+        resize();
+        elapsed += dt;
 
-      gl.disable(gl.BLEND);
-      gl.useProgram(bgProgram);
-      gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
-      gl.enableVertexAttribArray(bgPosLoc);
-      gl.vertexAttribPointer(bgPosLoc, 2, gl.FLOAT, false, 0, 0);
-      gl.uniform2f(bgResLoc, canvas.width, canvas.height);
-      gl.uniform1f(bgTimeLoc, elapsed);
-      gl.uniform1f(bgPairLoc, activePair);
-      gl.uniform1f(bgMorphLoc, activeMorph);
-      gl.uniform1f(bgHorizLoc, ctrl.showHorizon);
-      gl.drawArrays(gl.TRIANGLES, 0, 6);
+        const activePair = (elapsed * 0.12) % 4.0;
+        const activeMorph = 0.5 - 0.5 * Math.cos(elapsed * 0.65);
 
-      gl.enable(gl.BLEND);
-      gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
-      gl.useProgram(ptProgram);
-      gl.bindBuffer(gl.ARRAY_BUFFER, particleBuf);
-      gl.enableVertexAttribArray(ptSeedLoc);
-      gl.vertexAttribPointer(ptSeedLoc, 3, gl.FLOAT, false, 0, 0);
-      gl.uniform1f(ptTimeLoc, elapsed);
-      gl.uniform2f(ptResLoc, canvas.width, canvas.height);
-      gl.uniform1f(ptDprLoc, dpr);
-      gl.uniform1f(ptPairLoc, activePair);
-      gl.uniform1f(ptMorphLoc, activeMorph);
-      gl.drawArrays(gl.POINTS, 0, PARTICLE_COUNT);
+        // Update artwork placard in bottom-center
+        const pairIdx = Math.floor(activePair) % 4;
+        const list = ARTWORKS[langRef.current] || ARTWORKS.EN;
+        const piece = list[pairIdx];
+        if (artworkTitleRef.current && artworkTitleRef.current.textContent !== piece.title) {
+          artworkTitleRef.current.textContent = piece.title;
+        }
+        if (artworkMediumRef.current && artworkMediumRef.current.textContent !== piece.medium) {
+          artworkMediumRef.current.textContent = piece.medium;
+        }
 
-      if (!isPaused) {
-        animId = requestAnimationFrame(render);
+        gl.disable(gl.BLEND);
+        gl.useProgram(bgProgram);
+        gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+        gl.enableVertexAttribArray(bgPosLoc);
+        gl.vertexAttribPointer(bgPosLoc, 2, gl.FLOAT, false, 0, 0);
+        gl.uniform2f(bgResLoc, canvas.width, canvas.height);
+        gl.uniform1f(bgTimeLoc, elapsed);
+        gl.uniform1f(bgPairLoc, activePair);
+        gl.uniform1f(bgMorphLoc, activeMorph);
+        gl.uniform1f(bgHorizLoc, 1.0);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+        gl.useProgram(ptProgram);
+        gl.bindBuffer(gl.ARRAY_BUFFER, particleBuf);
+        gl.enableVertexAttribArray(ptSeedLoc);
+        gl.vertexAttribPointer(ptSeedLoc, 3, gl.FLOAT, false, 0, 0);
+        gl.uniform1f(ptTimeLoc, elapsed);
+        gl.uniform2f(ptResLoc, canvas.width, canvas.height);
+        gl.uniform1f(ptDprLoc, dpr);
+        gl.uniform1f(ptPairLoc, activePair);
+        gl.uniform1f(ptMorphLoc, activeMorph);
+        gl.drawArrays(gl.POINTS, 0, PARTICLE_COUNT);
       }
+
+      animId = requestAnimationFrame(render);
     };
 
     animId = requestAnimationFrame(render);
@@ -202,150 +216,54 @@ export default function WebbDeepFieldCanvas({ isPaused = false }) {
       gl.deleteProgram(bgProgram);
       gl.deleteProgram(ptProgram);
     };
-  }, [isPaused]);
+  }, []);
 
-  const currentMeta = PAIRS_META[selectedPair];
+  const initialList = ARTWORKS[lang] || ARTWORKS.EN;
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '100%', backgroundColor: '#000000', overflow: 'hidden' }}>
+    <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundColor: '#000000', overflow: 'hidden' }}>
       <canvas ref={canvasRef} style={{ width: '100%', height: '100%', display: 'block' }} />
 
+      {/* GALLERY ARTWORK PLACARD (BOTTOM-CENTER) */}
       <div
         style={{
           position: 'absolute',
-          bottom: '3.2rem',
+          bottom: '0.65rem',
           left: '50%',
           transform: 'translateX(-50%)',
-          zIndex: 30,
-          backgroundColor: 'rgba(10, 14, 23, 0.84)',
-          backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(255, 255, 255, 0.14)',
-          borderRadius: '12px',
-          padding: '0.65rem 1rem',
+          zIndex: 20,
+          pointerEvents: 'none',
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.55rem',
-          minWidth: '680px',
-          maxWidth: '92vw',
-          boxShadow: '0 12px 35px rgba(0, 0, 0, 0.75)',
+          alignItems: 'center',
+          textAlign: 'center',
+          gap: '0.15rem',
+          width: '90%',
+          maxWidth: '580px',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.4rem', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
-            {PAIRS_META.map((pair) => {
-              const active = !isAuto && selectedPair === pair.id;
-              return (
-                <button
-                  key={pair.id}
-                  onClick={() => {
-                    setIsAuto(false);
-                    setSelectedPair(pair.id);
-                  }}
-                  style={{
-                    backgroundColor: active ? pair.color : 'rgba(255, 255, 255, 0.06)',
-                    color: active ? '#000000' : '#e2e8f0',
-                    border: active ? `1px solid ${pair.color}` : '1px solid rgba(255, 255, 255, 0.12)',
-                    borderRadius: '6px',
-                    padding: '0.3rem 0.65rem',
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    cursor: 'pointer',
-                  }}
-                >
-                  {pair.short}
-                </button>
-              );
-            })}
-            <button
-              onClick={() => setIsAuto(!isAuto)}
-              style={{
-                backgroundColor: isAuto ? '#10b981' : 'rgba(255, 255, 255, 0.06)',
-                color: isAuto ? '#000000' : '#94a3b8',
-                border: '1px solid rgba(255, 255, 255, 0.14)',
-                borderRadius: '6px',
-                padding: '0.3rem 0.65rem',
-                fontSize: '0.72rem',
-                fontWeight: 700,
-                cursor: 'pointer',
-              }}
-            >
-              {isAuto ? '● AUTO LOOP ON' : 'AUTO LOOP'}
-            </button>
-          </div>
-
-          <div style={{ display: 'flex', gap: '0.3rem' }}>
-            {[
-              { label: '0% JWST', val: 0 },
-              { label: '50%', val: 50 },
-              { label: '100% QUANT', val: 100 },
-            ].map((preset) => (
-              <button
-                key={preset.val}
-                onClick={() => {
-                  setIsAuto(false);
-                  setMorphPct(preset.val);
-                }}
-                style={{
-                  backgroundColor: !isAuto && morphPct === preset.val ? 'rgba(255, 255, 255, 0.18)' : 'rgba(255, 255, 255, 0.05)',
-                  color: !isAuto && morphPct === preset.val ? '#ffffff' : '#94a3b8',
-                  border: '1px solid rgba(255, 255, 255, 0.14)',
-                  borderRadius: '6px',
-                  padding: '0.28rem 0.55rem',
-                  fontSize: '0.68rem',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                }}
-              >
-                {preset.label}
-              </button>
-            ))}
-          </div>
+        <div
+          ref={artworkTitleRef}
+          className="serif-heading"
+          style={{
+            fontSize: '0.84rem',
+            fontStyle: 'italic',
+            color: 'rgba(255, 255, 255, 0.78)',
+            fontWeight: 400,
+            letterSpacing: '0.01em',
+          }}
+        >
+          {initialList[0].title}
         </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <span
-            onClick={() => { setIsAuto(false); setMorphPct(0); }}
-            style={{
-              fontSize: '0.72rem',
-              fontWeight: 700,
-              color: morphPct < 50 ? currentMeta.color : '#94a3b8',
-              cursor: 'pointer',
-              minWidth: '215px',
-              textAlign: 'left',
-            }}
-          >
-            0% JWST: {currentMeta.jwst}
-          </span>
-
-          <input
-            type="range"
-            min="0"
-            max="100"
-            value={morphPct}
-            onChange={(e) => {
-              setIsAuto(false);
-              setMorphPct(Number(e.target.value));
-            }}
-            style={{
-              flex: 1,
-              accentColor: currentMeta.color,
-              cursor: 'pointer',
-            }}
-          />
-
-          <span
-            onClick={() => { setIsAuto(false); setMorphPct(100); }}
-            style={{
-              fontSize: '0.72rem',
-              fontWeight: 700,
-              color: morphPct >= 50 ? currentMeta.color : '#94a3b8',
-              cursor: 'pointer',
-              minWidth: '245px',
-              textAlign: 'right',
-            }}
-          >
-            100% QUANT: {currentMeta.quant}
-          </span>
+        <div
+          ref={artworkMediumRef}
+          style={{
+            fontSize: '0.68rem',
+            color: 'rgba(255, 255, 255, 0.38)',
+            letterSpacing: '0.03em',
+          }}
+        >
+          {initialList[0].medium}
         </div>
       </div>
     </div>
