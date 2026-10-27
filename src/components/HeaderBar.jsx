@@ -18,7 +18,7 @@ export default function HeaderBar({
         right: 0,
         backgroundColor: 'transparent',
         borderBottom: 'none',
-        padding: '0.75rem 1.35rem',
+        padding: '0.85rem 1.5rem',
         display: 'grid',
         gridTemplateColumns: '1fr auto 1fr',
         alignItems: 'center',
@@ -64,24 +64,16 @@ export default function HeaderBar({
         </HoverTooltip>
       </div>
 
-      {/* CENTER TOP MENU: 3 CORE OBJECTS */}
-      <div
+      {/* CENTER TOP MENU: TRADINGVIEW-STYLE CLEAN TEXT PILLS (NO ICONS, NO BOX CONTAINER) */}
+      <nav
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '0.35rem',
-          backgroundColor: 'rgba(10, 14, 23, 0.72)',
-          backdropFilter: 'blur(12px)',
-          padding: '0.22rem',
-          borderRadius: '9px',
-          border: '1px solid rgba(255, 255, 255, 0.12)',
-          boxShadow: '0 6px 20px rgba(0, 0, 0, 0.45)',
-          transition: 'all 0.35s ease',
+          gap: '0.4rem',
           pointerEvents: 'auto',
         }}
       >
         {navItems.map((item) => {
-          const Icon = item.icon;
           const isActive = activeTab === item.id;
           return (
             <HoverTooltip
@@ -95,41 +87,32 @@ export default function HeaderBar({
                 <button
                   onClick={() => onNavigate(item.id)}
                   style={{
-                    display: 'flex',
+                    display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.4rem',
-                    padding: '0.4rem 0.9rem',
-                    borderRadius: '6px',
-                    border: isActive
-                      ? '1px solid var(--accent)'
-                      : isHovered
-                      ? '1px solid var(--accent)'
-                      : '1px solid transparent',
+                    justifyContent: 'center',
+                    padding: '0.44rem 1.05rem',
+                    borderRadius: '999px',
+                    border: 'none',
                     backgroundColor: isActive
-                      ? 'var(--accent)'
+                      ? 'rgba(255, 255, 255, 0.16)'
                       : isHovered
-                      ? 'rgba(255, 255, 255, 0.08)'
+                      ? 'rgba(255, 255, 255, 0.11)'
                       : 'transparent',
-                    color: isActive ? '#000' : isHovered ? '#ffffff' : 'var(--text-muted)',
-                    fontSize: '0.76rem',
+                    color: isActive || isHovered ? '#ffffff' : 'rgba(255, 255, 255, 0.82)',
+                    fontSize: '0.86rem',
                     fontWeight: 600,
+                    letterSpacing: '-0.01em',
                     cursor: 'pointer',
-                    boxShadow: isHovered && !isActive ? '0 0 12px rgba(16, 185, 129, 0.25)' : 'none',
-                    transition: 'all 0.2s ease',
+                    transition: 'background-color 0.18s ease, color 0.18s ease',
                   }}
                 >
-                  <Icon
-                    size={14}
-                    strokeWidth={2.2}
-                    style={{ color: isActive ? '#000' : isHovered ? 'var(--accent)' : 'inherit' }}
-                  />
                   <span>{item.label}</span>
                 </button>
               )}
             </HoverTooltip>
           );
         })}
-      </div>
+      </nav>
 
       {/* RIGHT: CLEAN SPACER (OR BACK BUTTON WHEN IN STANDALONE OBSERVABILITY) */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
@@ -139,12 +122,12 @@ export default function HeaderBar({
               <button
                 onClick={onGoBack}
                 style={{
-                  backgroundColor: isHovered ? 'rgba(16, 185, 129, 0.14)' : 'rgba(10, 14, 23, 0.78)',
+                  backgroundColor: isHovered ? 'rgba(255, 255, 255, 0.12)' : 'rgba(10, 14, 23, 0.78)',
                   backdropFilter: 'blur(10px)',
-                  border: isHovered ? '1px solid var(--accent)' : '1px solid var(--border-light)',
-                  color: isHovered ? '#ffffff' : 'var(--accent)',
+                  border: '1px solid rgba(255, 255, 255, 0.14)',
+                  color: '#ffffff',
                   padding: '0.4rem 0.85rem',
-                  borderRadius: '6px',
+                  borderRadius: '999px',
                   fontSize: '0.76rem',
                   fontWeight: 600,
                   display: 'flex',
@@ -164,4 +147,3 @@ export default function HeaderBar({
     </header>
   );
 }
-

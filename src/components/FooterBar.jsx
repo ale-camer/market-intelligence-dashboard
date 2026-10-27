@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink, Globe, Palette } from 'lucide-react';
+import { ExternalLink, Globe, Palette, Info } from 'lucide-react';
 import HoverTooltip from './HoverTooltip';
 
 export default function FooterBar({
@@ -30,48 +30,83 @@ export default function FooterBar({
         pointerEvents: 'none',
       }}
     >
-      {/* BOTTOM-LEFT: PIPELINE & SYSTEM OBSERVABILITY LINK (OPENS IN NEW WINDOW) */}
-      <HoverTooltip
-        title={isSystemHealthy ? t.statusOkTitle : t.statusErrTitle}
-        description={isSystemHealthy ? t.statusOkDesc : t.statusErrDesc}
-        hint={t.statusHint}
-        badge={isSystemHealthy ? '99.98% OK' : 'DEGRADED'}
-        statusColor={isSystemHealthy ? '#10b981' : '#ef4444'}
-        placement="top-left"
-      >
-        {(isHovered) => (
-          <button
-            onClick={onOpenObservability}
-            style={{
-              backgroundColor: isHovered ? 'rgba(16, 185, 129, 0.14)' : 'rgba(10, 14, 23, 0.72)',
-              backdropFilter: 'blur(10px)',
-              border: isHovered
-                ? `1px solid ${isSystemHealthy ? '#10b981' : '#ef4444'}`
-                : isSystemHealthy
-                ? '1px solid rgba(16, 185, 129, 0.35)'
-                : '1px solid rgba(239, 68, 68, 0.35)',
-              color: isHovered ? '#ffffff' : 'var(--text-main)',
-              height: '28px',
-              padding: '0 0.7rem',
-              borderRadius: '6px',
-              fontSize: '0.71rem',
-              fontWeight: 600,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.45rem',
-              cursor: 'pointer',
-              boxShadow: isHovered
-                ? '0 0 14px rgba(16, 185, 129, 0.28), 0 4px 14px rgba(0, 0, 0, 0.45)'
-                : '0 4px 14px rgba(0, 0, 0, 0.4)',
-              transition: 'all 0.2s ease',
-            }}
-          >
-            <span style={{ fontSize: '0.78rem', lineHeight: 1 }}>{isSystemHealthy ? '🟢' : '🔴'}</span>
-            <span>{t.navTelemetry}</span>
-            <ExternalLink size={12} strokeWidth={2.2} style={{ color: 'var(--accent)' }} />
-          </button>
-        )}
-      </HoverTooltip>
+      {/* BOTTOM-LEFT: PIPELINE & SYSTEM OBSERVABILITY LINK + APP OVERVIEW INFO ICON */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', pointerEvents: 'auto' }}>
+        <HoverTooltip
+          title={isSystemHealthy ? t.statusOkTitle : t.statusErrTitle}
+          description={isSystemHealthy ? t.statusOkDesc : t.statusErrDesc}
+          hint={t.statusHint}
+          badge={isSystemHealthy ? '99.98% OK' : 'DEGRADED'}
+          statusColor={isSystemHealthy ? '#10b981' : '#ef4444'}
+          placement="top-left"
+        >
+          {(isHovered) => (
+            <button
+              onClick={onOpenObservability}
+              style={{
+                backgroundColor: isHovered ? 'rgba(16, 185, 129, 0.14)' : 'rgba(10, 14, 23, 0.72)',
+                backdropFilter: 'blur(10px)',
+                border: isHovered
+                  ? `1px solid ${isSystemHealthy ? '#10b981' : '#ef4444'}`
+                  : isSystemHealthy
+                  ? '1px solid rgba(16, 185, 129, 0.35)'
+                  : '1px solid rgba(239, 68, 68, 0.35)',
+                color: isHovered ? '#ffffff' : 'var(--text-main)',
+                height: '28px',
+                padding: '0 0.7rem',
+                borderRadius: '6px',
+                fontSize: '0.71rem',
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.45rem',
+                cursor: 'pointer',
+                boxShadow: isHovered
+                  ? '0 0 14px rgba(16, 185, 129, 0.28), 0 4px 14px rgba(0, 0, 0, 0.45)'
+                  : '0 4px 14px rgba(0, 0, 0, 0.4)',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              <span style={{ fontSize: '0.78rem', lineHeight: 1 }}>{isSystemHealthy ? '🟢' : '🔴'}</span>
+              <span>{t.navTelemetry}</span>
+              <ExternalLink size={12} strokeWidth={2.2} style={{ color: 'var(--accent)' }} />
+            </button>
+          )}
+        </HoverTooltip>
+
+        {/* APP EXPLANATION ICON IN FOOTER */}
+        <HoverTooltip
+          title={t.aboutTitle}
+          description={t.aboutDesc}
+          hint={t.aboutHint}
+          badge="P-01 .. P-11"
+          placement="top-left"
+        >
+          {(isHovered) => (
+            <button
+              style={{
+                backgroundColor: isHovered ? 'rgba(255, 255, 255, 0.12)' : 'rgba(10, 14, 23, 0.72)',
+                backdropFilter: 'blur(10px)',
+                border: isHovered ? '1px solid var(--accent)' : '1px solid var(--border-light)',
+                color: isHovered ? '#ffffff' : 'var(--text-dim)',
+                width: '28px',
+                height: '28px',
+                borderRadius: '6px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                cursor: 'help',
+                boxShadow: isHovered
+                  ? '0 0 14px rgba(16, 185, 129, 0.25), 0 4px 14px rgba(0, 0, 0, 0.45)'
+                  : '0 4px 14px rgba(0, 0, 0, 0.4)',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              <Info size={14} strokeWidth={2.2} style={{ color: isHovered ? 'var(--accent)' : 'var(--text-muted)' }} />
+            </button>
+          )}
+        </HoverTooltip>
+      </div>
 
       {/* BOTTOM-RIGHT: LANGUAGE & COLOR PALETTE */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', pointerEvents: 'auto' }}>
@@ -162,4 +197,3 @@ export default function FooterBar({
     </footer>
   );
 }
-
