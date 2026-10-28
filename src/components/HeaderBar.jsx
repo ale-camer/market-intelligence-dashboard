@@ -1,6 +1,7 @@
 import React from 'react';
 import { Activity, ArrowLeft } from 'lucide-react';
 import HoverTooltip from './HoverTooltip';
+import { DEV_ICON_CATALOG, DEV_BOX_STYLES } from './DevLabView';
 
 export default function HeaderBar({
   activeTab,
@@ -8,7 +9,13 @@ export default function HeaderBar({
   t,
   onNavigate,
   onGoBack,
+  devIconId = 'lambda08-h-chiseled-nib',
+  devBoxStyleId = 'free-green',
 }) {
+  const activeIconObj = DEV_ICON_CATALOG.find((i) => i.id === devIconId) || DEV_ICON_CATALOG[0];
+  const activeBoxObj = DEV_BOX_STYLES.find((b) => b.id === devBoxStyleId) || DEV_BOX_STYLES[0];
+  const isBorderless = activeBoxObj.id === 'free-green';
+
   return (
     <header
       style={{
@@ -26,7 +33,7 @@ export default function HeaderBar({
         pointerEvents: 'none',
       }}
     >
-      {/* LEFT: LOGO ONLY (HOME) */}
+      {/* LEFT: LOGO ONLY (HOME) — STRICT RULE: ONLY THE λ SYMBOL, NEVER ANY TEXT NEXT TO IT */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
         <HoverTooltip
           title={t.navHome}
@@ -39,11 +46,15 @@ export default function HeaderBar({
             <div
               onClick={() => onNavigate('presentation')}
               style={{
-                width: '30px',
-                height: '30px',
+                width: isBorderless ? '34px' : '30px',
+                height: isBorderless ? '34px' : '30px',
                 borderRadius: '6px',
-                backgroundColor: 'var(--accent)',
-                border: isHovered ? '1px solid #ffffff' : '1px solid transparent',
+                backgroundColor: activeBoxObj.bg,
+                border: isBorderless
+                  ? 'none'
+                  : isHovered
+                  ? '1px solid #ffffff'
+                  : activeBoxObj.border,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -52,13 +63,27 @@ export default function HeaderBar({
                 cursor: 'pointer',
                 pointerEvents: 'auto',
                 transform: isHovered ? 'scale(1.06)' : 'scale(1)',
-                boxShadow: isHovered
+                boxShadow: isBorderless
+                  ? 'none'
+                  : isHovered
                   ? '0 0 16px var(--accent), 0 4px 14px rgba(0, 0, 0, 0.55)'
                   : '0 4px 14px rgba(0, 0, 0, 0.45)',
+                filter: isBorderless
+                  ? isHovered
+                    ? 'drop-shadow(0 0 10px var(--accent))'
+                    : 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.65))'
+                  : 'none',
                 transition: 'all 0.2s ease',
               }}
             >
-              <Activity size={17} strokeWidth={2.5} />
+              {activeIconObj ? (
+                activeIconObj.renderSvg(
+                  isBorderless ? (isHovered ? '#ffffff' : 'var(--accent)') : activeBoxObj.strokeColor,
+                  isBorderless ? 32 : 17
+                )
+              ) : (
+                <Activity size={17} strokeWidth={2.5} />
+              )}
             </div>
           )}
         </HoverTooltip>

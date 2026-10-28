@@ -1,51 +1,126 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-:root {
+/* ============================================================================
+   ESTÁNDAR INDUSTRIAL INAMOVIBLE DE COLOR FINANCIERO:
+   --accent (#10b981) y --danger (#f43f5e) son FIJOS en todas las paletas para
+   toda medición de magnitud o dirección de movimiento de activos financieros.
+   Las 5 paletas ambientales (obsidian-night, oled-black, abyssal-navy,
+   warm-titanium, cobalt-quant) SOLO modifican la superficie de paneles y bordes.
+   ============================================================================ */
+
+:root,
+[data-theme="obsidian-night"] {
   --font-serif: 'Playfair Display', Georgia, serif;
   --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Classic Financial Obsidian (Default) */
+  /* 1. Obsidian Night (Default) */
   --bg-app: #07090e;
-  --bg-panel: #0d111a;
+  --bg-panel: #0d1321;
+  --bg-panel-glass: rgba(13, 19, 33, 0.65);
+  --bg-card-glass: rgba(7, 11, 20, 0.68);
   --bg-subtle: #141b29;
-  --border-light: rgba(255, 255, 255, 0.07);
-  --border-accent: rgba(16, 185, 129, 0.4);
+  --border-light: rgba(255, 255, 255, 0.10);
+  --border-accent: rgba(16, 185, 129, 0.40);
+  --ui-accent: #10b981;
+  --ui-accent-soft: rgba(16, 185, 129, 0.15);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
+
+  /* Inamovibles para movimientos y magnitudes financieras */
   --accent: #10b981;
   --accent-light: rgba(16, 185, 129, 0.12);
   --danger: #f43f5e;
   --danger-light: rgba(244, 63, 94, 0.12);
 }
 
-[data-theme="deep-ocean"] {
-  --bg-app: #040814;
-  --bg-panel: #0a1024;
-  --bg-subtle: #101c3d;
-  --border-light: rgba(56, 189, 248, 0.1);
-  --border-accent: rgba(56, 189, 248, 0.45);
-  --text-main: #f0fdf4;
-  --text-muted: #93c5fd;
-  --text-dim: #60a5fa;
-  --accent: #38bdf8;
-  --accent-light: rgba(56, 189, 248, 0.12);
-  --danger: #fb7185;
+[data-theme="oled-black"] {
+  /* 2. OLED Pitch Black */
+  --bg-app: #030304;
+  --bg-panel: #08080a;
+  --bg-panel-glass: rgba(8, 8, 10, 0.86);
+  --bg-card-glass: rgba(15, 15, 19, 0.90);
+  --bg-subtle: #141418;
+  --border-light: rgba(255, 255, 255, 0.15);
+  --border-accent: rgba(255, 255, 255, 0.38);
+  --ui-accent: #ffffff;
+  --ui-accent-soft: rgba(255, 255, 255, 0.12);
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+  --text-dim: #71717a;
+
+  /* Inamovibles para movimientos y magnitudes financieras */
+  --accent: #10b981;
+  --accent-light: rgba(16, 185, 129, 0.12);
+  --danger: #f43f5e;
+  --danger-light: rgba(244, 63, 94, 0.12);
 }
 
-[data-theme="cyber-amber"] {
-  --bg-app: #090807;
-  --bg-panel: #14120f;
-  --bg-subtle: #211c17;
-  --border-light: rgba(245, 158, 11, 0.1);
+[data-theme="abyssal-navy"] {
+  /* 3. Abyssal Navy */
+  --bg-app: #040b18;
+  --bg-panel: #081528;
+  --bg-panel-glass: rgba(8, 21, 40, 0.78);
+  --bg-card-glass: rgba(5, 14, 28, 0.85);
+  --bg-subtle: #102342;
+  --border-light: rgba(56, 189, 248, 0.22);
+  --border-accent: rgba(56, 189, 248, 0.45);
+  --ui-accent: #38bdf8;
+  --ui-accent-soft: rgba(56, 189, 248, 0.15);
+  --text-main: #f0f9ff;
+  --text-muted: #93c5fd;
+  --text-dim: #60a5fa;
+
+  /* Inamovibles para movimientos y magnitudes financieras */
+  --accent: #10b981;
+  --accent-light: rgba(16, 185, 129, 0.12);
+  --danger: #f43f5e;
+  --danger-light: rgba(244, 63, 94, 0.12);
+}
+
+[data-theme="warm-titanium"] {
+  /* 4. Warm Titanium */
+  --bg-app: #0c0a08;
+  --bg-panel: #171310;
+  --bg-panel-glass: rgba(23, 19, 16, 0.80);
+  --bg-card-glass: rgba(15, 12, 10, 0.88);
+  --bg-subtle: #241e19;
+  --border-light: rgba(245, 158, 11, 0.22);
   --border-accent: rgba(245, 158, 11, 0.45);
-  --text-main: #fffbeb;
-  --text-muted: #d1d5db;
-  --text-dim: #9ca3af;
-  --accent: #f59e0b;
-  --accent-light: rgba(245, 158, 11, 0.12);
-  --danger: #ef4444;
+  --ui-accent: #f59e0b;
+  --ui-accent-soft: rgba(245, 158, 11, 0.15);
+  --text-main: #fafaf9;
+  --text-muted: #d6d3d1;
+  --text-dim: #a8a29e;
+
+  /* Inamovibles para movimientos y magnitudes financieras */
+  --accent: #10b981;
+  --accent-light: rgba(16, 185, 129, 0.12);
+  --danger: #f43f5e;
+  --danger-light: rgba(244, 63, 94, 0.12);
+}
+
+[data-theme="cobalt-quant"] {
+  /* 5. Cobalt Quant */
+  --bg-app: #070818;
+  --bg-panel: #0e1026;
+  --bg-panel-glass: rgba(14, 16, 38, 0.78);
+  --bg-card-glass: rgba(9, 10, 26, 0.86);
+  --bg-subtle: #181b3d;
+  --border-light: rgba(129, 140, 248, 0.24);
+  --border-accent: rgba(129, 140, 248, 0.45);
+  --ui-accent: #818cf8;
+  --ui-accent-soft: rgba(129, 140, 248, 0.16);
+  --text-main: #eef2ff;
+  --text-muted: #a5b4fc;
+  --text-dim: #818cf8;
+
+  /* Inamovibles para movimientos y magnitudes financieras */
+  --accent: #10b981;
+  --accent-light: rgba(16, 185, 129, 0.12);
+  --danger: #f43f5e;
+  --danger-light: rgba(244, 63, 94, 0.12);
 }
 
 * {

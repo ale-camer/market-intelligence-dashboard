@@ -1,7 +1,9 @@
 export const PALETTES = [
-  { id: 'midnight', name: 'Emerald Terminal', color: '#10b981' },
-  { id: 'deep-ocean', name: 'Deep Ocean', color: '#38bdf8' },
-  { id: 'cyber-amber', name: 'Amber Gold', color: '#f59e0b' },
+  { id: 'obsidian-night', name: 'Obsidian Night', color: '#10b981' },
+  { id: 'oled-black', name: 'OLED Pitch Black', color: '#ffffff' },
+  { id: 'abyssal-navy', name: 'Abyssal Navy', color: '#38bdf8' },
+  { id: 'warm-titanium', name: 'Warm Titanium', color: '#f59e0b' },
+  { id: 'cobalt-quant', name: 'Cobalt Quant', color: '#818cf8' },
 ];
 
 export const LANGUAGES = [
@@ -51,8 +53,8 @@ export const I18N = {
     langTitle: 'Interface Language',
     langDesc: 'Switch all interface labels and documentation between English and Spanish.',
     langHint: 'Click to switch language',
-    paletteTitle: 'Color Palette',
-    paletteDesc: 'Cycle the terminal accent color across Emerald, Deep Ocean, and Amber Gold.',
+    paletteTitle: 'Ambient Surface Palette',
+    paletteDesc: 'Cycle the panel atmosphere across Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium, and Cobalt Quant. Financial movements stay strictly Green (#10b981) and Red (#f43f5e).',
     paletteHint: 'Click to change palette',
     statusHint: 'Click to open telemetry in a new window ↗',
     objInfo: {
@@ -102,8 +104,8 @@ export const I18N = {
     langTitle: 'Idioma de Interfaz',
     langDesc: 'Alterna todos los textos y descripciones de la aplicación entre Español e Inglés.',
     langHint: 'Click para cambiar idioma',
-    paletteTitle: 'Paleta de Colores',
-    paletteDesc: 'Alterna el acento visual de la terminal entre Esmeralda, Océano Profundo y Ámbar.',
+    paletteTitle: 'Paleta Ambiental',
+    paletteDesc: 'Alterna la atmósfera de los paneles entre Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant. Todo movimiento financiero permanece fijo en Verde (#10b981) y Rojo (#f43f5e).',
     paletteHint: 'Click para cambiar paleta',
     statusHint: 'Click para abrir telemetría en nueva ventana ↗',
     objInfo: {

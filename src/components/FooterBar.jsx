@@ -7,7 +7,9 @@ export default function FooterBar({
   isSystemHealthy,
   currentLang,
   currentTheme,
+  activeTab,
   onOpenObservability,
+  onToggleDevLab,
   onCycleLang,
   onCycleTheme,
 }) {
@@ -106,6 +108,33 @@ export default function FooterBar({
             </button>
           )}
         </HoverTooltip>
+
+        {/* DEV LAB SANDBOX BUTTON */}
+        {onToggleDevLab && (
+          <button
+            onClick={onToggleDevLab}
+            className="mono-metric"
+            style={{
+              backgroundColor: activeTab === 'devlab' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(10, 14, 23, 0.72)',
+              backdropFilter: 'blur(10px)',
+              border: activeTab === 'devlab' ? '1px solid #10b981' : '1px solid var(--border-light)',
+              color: activeTab === 'devlab' ? '#10b981' : 'var(--text-muted)',
+              height: '28px',
+              padding: '0 0.65rem',
+              borderRadius: '6px',
+              fontSize: '0.64rem',
+              fontWeight: 800,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              cursor: 'pointer',
+              boxShadow: '0 4px 14px rgba(0, 0, 0, 0.4)',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            <span>DEV</span>
+          </button>
+        )}
       </div>
 
       {/* BOTTOM-RIGHT: LANGUAGE & COLOR PALETTE */}

@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { Terminal, FileText, Bot } from 'lucide-react';
+import { Terminal, Bot } from 'lucide-react';
 import { PALETTES, LANGUAGES, I18N } from './data/i18n';
 import HeaderBar from './components/HeaderBar';
 import FooterBar from './components/FooterBar';
 import HomeStage from './components/HomeStage';
+import StarfieldBackground from './components/StarfieldBackground';
 import MarketAnomaliesView from './components/MarketAnomaliesView';
-import FilingsSentimentView from './components/FilingsSentimentView';
 import AgentCommitteeView from './components/AgentCommitteeView';
 import ObservabilityView from './components/ObservabilityView';
+import DevLabView from './components/DevLabView';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState(() => {
     const params = new URLSearchParams(window.location.search);
-    return params.get('view') === 'observability' ? 'observability' : 'presentation';
+    if (params.get('view') === 'observability') return 'observability';
+    if (params.get('view') === 'dev') return 'devlab';
+    return 'presentation';
   });
   const [previousTab, setPreviousTab] = useState('presentation');
   const [themeIdx, setThemeIdx] = useState(0);
   const [langIdx, setLangIdx] = useState(0);
   const [selectedAsset, setSelectedAsset] = useState('BTC');
+  const [marketsViewMode, setMarketsViewMode] = useState('screener');
+  const [devIconId, setDevIconId] = useState('lambda08-h-chiseled-nib');
+  const [devBoxStyleId, setDevBoxStyleId] = useState('free-green');
   const [isSystemHealthy] = useState(true);
 
   const currentTheme = PALETTES[themeIdx];
@@ -32,6 +38,13 @@ export default function App() {
     setActiveTab(tabId);
   };
 
+  const handleOpenAssetInMarkets = (sym) => {
+    if (sym) setSelectedAsset(sym);
+    setMarketsViewMode('detail');
+    setPreviousTab(activeTab === 'observability' ? previousTab : activeTab);
+    setActiveTab('workstation');
+  };
+
   const openObservabilityNewWindow = () => {
     const url = `${window.location.origin}${window.location.pathname}?view=observability`;
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -43,25 +56,29 @@ export default function App() {
     document.documentElement.setAttribute('data-theme', currentTheme.id);
   }, [currentTheme]);
 
+  // Top Header Navigation: Markets (Level 1 Screener + Level 2 Analytics | Research) & Portfolio
   const navItems = [
     { id: 'workstation', label: t.navWorkstation, icon: Terminal },
-    { id: 'filings', label: t.navFilings, icon: FileText },
     { id: 'consensus', label: t.navConsensus, icon: Bot },
   ];
 
   const isHome = activeTab === 'presentation';
+  const showAmbientStarfield = !isHome && activeTab !== 'observability';
 
   return (
     <div style={{ height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+      <StarfieldBackground active={showAmbientStarfield} />
       <HeaderBar
         activeTab={activeTab}
         navItems={navItems}
         t={t}
         onNavigate={handleNavigate}
         onGoBack={goBack}
+        devIconId={devIconId}
+        devBoxStyleId={devBoxStyleId}
       />
 
-      <div style={{ flex: 1, display: 'flex', minHeight: 0 }}>
+      <div style={{ flex: 1, display: 'flex', minHeight: 0, position: 'relative', zIndex: 5 }}>
         <main
           style={{
             flex: 1,
@@ -71,7 +88,7 @@ export default function App() {
             minHeight: 0,
             padding: isHome ? '0' : '3.8rem 1.75rem 3.2rem 1.75rem',
             overflowY: isHome ? 'hidden' : 'auto',
-            backgroundColor: isHome ? '#000000' : 'transparent',
+            backgroundColor: isHome ? '#000000' : activeTab === 'observability' ? 'var(--bg-app)' : 'transparent',
           }}
         >
           <HomeStage
@@ -85,15 +102,8 @@ export default function App() {
             <MarketAnomaliesView
               selectedAsset={selectedAsset}
               onSelectAsset={setSelectedAsset}
-              langCode={currentLang.code}
-              t={t}
-            />
-          )}
-
-          {activeTab === 'filings' && (
-            <FilingsSentimentView
-              selectedAsset={selectedAsset}
-              onSelectAsset={setSelectedAsset}
+              initialViewMode={marketsViewMode}
+              onViewModeChange={setMarketsViewMode}
               langCode={currentLang.code}
               t={t}
             />
@@ -103,6 +113,8 @@ export default function App() {
             <AgentCommitteeView
               selectedAsset={selectedAsset}
               onSelectAsset={setSelectedAsset}
+              onNavigate={handleNavigate}
+              onOpenAssetInMarkets={handleOpenAssetInMarkets}
               langCode={currentLang.code}
               t={t}
             />
@@ -110,6 +122,15 @@ export default function App() {
 
           {activeTab === 'observability' && (
             <ObservabilityView t={t} onGoBack={goBack} />
+          )}
+
+          {activeTab === 'devlab' && (
+            <DevLabView
+              selectedIconId={devIconId}
+              onSelectIconId={setDevIconId}
+              selectedBoxStyleId={devBoxStyleId}
+              onSelectBoxStyleId={setDevBoxStyleId}
+            />
           )}
         </main>
       </div>
@@ -119,7 +140,9 @@ export default function App() {
         isSystemHealthy={isSystemHealthy}
         currentLang={currentLang}
         currentTheme={currentTheme}
+        activeTab={activeTab}
         onOpenObservability={openObservabilityNewWindow}
+        onToggleDevLab={() => handleNavigate(activeTab === 'devlab' ? previousTab || 'presentation' : 'devlab')}
         onCycleLang={cycleLang}
         onCycleTheme={cycleTheme}
       />
