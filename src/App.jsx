@@ -9,48 +9,212 @@ import MarketAnomaliesView from './components/MarketAnomaliesView';
 import AgentCommitteeView from './components/AgentCommitteeView';
 import ObservabilityView from './components/ObservabilityView';
 import DevLabView from './components/DevLabView';
+import UserGuideView from './components/UserGuideView';
+import { DEFAULT_WATCHLIST_SYMS } from './services/committeeService';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState(() => {
     const params = new URLSearchParams(window.location.search);
-    if (params.get('view') === 'observability') return 'observability';
-    if (params.get('view') === 'dev') return 'devlab';
+    const v = params.get('view');
+    if (v === 'markets' || v === 'workstation') return 'workstation';
+    if (v === 'portfolio' || v === 'consensus') return 'consensus';
+    if (v === 'observability') return 'observability';
+    if (v === 'guide') return 'guide';
+    if (v === 'dev' || v === 'devlab') return 'devlab';
+    if (params.get('asset') || params.get('cat') || params.get('lens')) return 'workstation';
     return 'presentation';
   });
   const [previousTab, setPreviousTab] = useState('presentation');
-  const [themeIdx, setThemeIdx] = useState(0);
-  const [langIdx, setLangIdx] = useState(0);
-  const [selectedAsset, setSelectedAsset] = useState('BTC');
-  const [marketsViewMode, setMarketsViewMode] = useState('screener');
+  const [deepLinkNonce, setDeepLinkNonce] = useState(0);
+
+  const [themeIdx, setThemeIdx] = useState(() => {
+    try {
+      const saved = window.localStorage.getItem('mid_theme_v1');
+      if (saved !== null) {
+        const idx = Number(saved);
+        if (!Number.isNaN(idx) && idx >= 0 && idx < PALETTES.length) return idx;
+      }
+    } catch {
+      // ignore storage errors
+    }
+    return 0;
+  });
+
+  const [langIdx, setLangIdx] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    const lCode = (params.get('lang') || '').toUpperCase();
+    const found = LANGUAGES.findIndex((l) => l.code === lCode);
+    if (found >= 0) return found;
+    try {
+      const saved = window.localStorage.getItem('mid_lang_v1');
+      if (saved) {
+        const savedIdx = LANGUAGES.findIndex((l) => l.code === saved.toUpperCase());
+        if (savedIdx >= 0) return savedIdx;
+      }
+    } catch {
+      // ignore storage errors
+    }
+    return 0;
+  });
+
+  const [homeLayoutId, setHomeLayoutId] = useState(() => {
+    try {
+      const saved = window.localStorage.getItem('mid_home_layout_v1');
+      if (saved && ['bento-grid', 'split-stage', 'minimal-hud'].includes(saved)) {
+        return saved;
+      }
+    } catch {
+      // ignore storage errors
+    }
+    return 'bento-grid';
+  });
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem('mid_theme_v1', String(themeIdx));
+    } catch {
+      // ignore storage errors
+    }
+  }, [themeIdx]);
+
+  useEffect(() => {
+    try {
+      const code = (LANGUAGES[langIdx] || LANGUAGES[0]).code;
+      window.localStorage.setItem('mid_lang_v1', code);
+    } catch {
+      // ignore storage errors
+    }
+  }, [langIdx]);
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem('mid_home_layout_v1', homeLayoutId);
+    } catch {
+      // ignore storage errors
+    }
+  }, [homeLayoutId]);
+  const [selectedAsset, setSelectedAsset] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('asset') || 'BTC';
+  });
+  const [marketsViewMode, setMarketsViewMode] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('mode') === 'detail' || params.get('lens') || params.get('section')) {
+      return 'detail';
+    }
+    return 'screener';
+  });
+  const [watchlistSyms, setWatchlistSyms] = useState(() => {
+    try {
+      const saved = window.localStorage.getItem('mid_watchlist_v1');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {
+      // ignore storage errors
+    }
+    return DEFAULT_WATCHLIST_SYMS;
+  });
+
+  useEffect(() => {
+    try {
+      window.localStorage.setItem('mid_watchlist_v1', JSON.stringify(watchlistSyms));
+    } catch {
+      // ignore storage errors
+    }
+  }, [watchlistSyms]);
+
+  const toggleWatchlist = (sym) => {
+    if (!sym) return;
+    setWatchlistSyms((prev) =>
+      prev.includes(sym) ? prev.filter((s) => s !== sym) : [sym, ...prev]
+    );
+  };
   const [devIconId, setDevIconId] = useState('lambda08-h-chiseled-nib');
   const [devBoxStyleId, setDevBoxStyleId] = useState('free-green');
   const [isSystemHealthy] = useState(true);
 
   const currentTheme = PALETTES[themeIdx];
-  const currentLang = LANGUAGES[langIdx];
-  const t = I18N[currentLang.code];
+  const currentLang = LANGUAGES[langIdx] || LANGUAGES[0];
+  const t = I18N[currentLang.code] || I18N.EN;
 
   const cycleTheme = () => setThemeIdx((prev) => (prev + 1) % PALETTES.length);
   const cycleLang = () => setLangIdx((prev) => (prev + 1) % LANGUAGES.length);
 
+  const isUtilityTab = (tab) => tab === 'observability' || tab === 'devlab' || tab === 'guide';
+
   const handleNavigate = (tabId) => {
-    setPreviousTab(activeTab === 'observability' ? previousTab : activeTab);
+    setPreviousTab(isUtilityTab(activeTab) ? previousTab : activeTab);
     setActiveTab(tabId);
+    const viewMap = {
+      presentation: '',
+      workstation: '?view=markets',
+      consensus: '?view=portfolio',
+      observability: '?view=observability',
+      guide: '?view=guide',
+      devlab: '?view=dev',
+    };
+    const nextSearch = viewMap[tabId] ?? '';
+    window.history.replaceState({}, '', `${window.location.pathname}${nextSearch}`);
   };
 
   const handleOpenAssetInMarkets = (sym) => {
     if (sym) setSelectedAsset(sym);
     setMarketsViewMode('detail');
-    setPreviousTab(activeTab === 'observability' ? previousTab : activeTab);
+    setPreviousTab(isUtilityTab(activeTab) ? previousTab : activeTab);
     setActiveTab('workstation');
   };
 
-  const openObservabilityNewWindow = () => {
-    const url = `${window.location.origin}${window.location.pathname}?view=observability`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+  // Universal deep-link launcher for HomeStage, UserGuideView, and DevLabView
+  const handleLaunchTarget = (target = {}) => {
+    const params = new URLSearchParams();
+    const targetView = target.view || 'markets';
+    params.set('view', targetView);
+
+    if (target.mode) params.set('mode', target.mode);
+    if (target.asset) {
+      params.set('asset', target.asset);
+      setSelectedAsset(target.asset);
+    }
+    if (target.cat) params.set('cat', target.cat);
+    if (target.section) params.set('section', target.section);
+    if (target.lens) params.set('lens', target.lens);
+    if (target.sub) params.set('sub', target.sub);
+    if (target.country) params.set('country', target.country);
+
+    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+
+    setPreviousTab(isUtilityTab(activeTab) ? previousTab : activeTab);
+    if (targetView === 'portfolio' || targetView === 'consensus') {
+      setActiveTab('consensus');
+    } else if (targetView === 'observability') {
+      setActiveTab('observability');
+    } else if (targetView === 'guide') {
+      setActiveTab('guide');
+    } else if (targetView === 'dev' || targetView === 'devlab') {
+      setActiveTab('devlab');
+    } else if (targetView === 'home' || targetView === 'presentation') {
+      setActiveTab('presentation');
+    } else {
+      const nextMode =
+        target.mode === 'detail' || target.lens || target.section ? 'detail' : 'screener';
+      setMarketsViewMode(nextMode);
+      setDeepLinkNonce((n) => n + 1);
+      setActiveTab('workstation');
+    }
   };
 
-  const goBack = () => setActiveTab(previousTab || 'presentation');
+  const toggleObservabilityInTab = () => {
+    handleNavigate(activeTab === 'observability' ? previousTab || 'presentation' : 'observability');
+  };
+
+  const goBack = () => {
+    if (window.location.search) {
+      window.history.replaceState({}, '', window.location.pathname);
+    }
+    setActiveTab(previousTab || 'presentation');
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', currentTheme.id);
@@ -63,7 +227,7 @@ export default function App() {
   ];
 
   const isHome = activeTab === 'presentation';
-  const showAmbientStarfield = !isHome && activeTab !== 'observability';
+  const showAmbientStarfield = !isHome;
 
   return (
     <div style={{ height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
@@ -88,7 +252,7 @@ export default function App() {
             minHeight: 0,
             padding: isHome ? '0' : '3.8rem 1.75rem 3.2rem 1.75rem',
             overflowY: isHome ? 'hidden' : 'auto',
-            backgroundColor: isHome ? '#000000' : activeTab === 'observability' ? 'var(--bg-app)' : 'transparent',
+            backgroundColor: isHome ? '#000000' : 'transparent',
           }}
         >
           <HomeStage
@@ -96,14 +260,21 @@ export default function App() {
             langCode={currentLang.code}
             navItems={navItems}
             t={t}
+            homeLayoutId={homeLayoutId}
+            onSelectHomeLayout={setHomeLayoutId}
+            onLaunchTarget={handleLaunchTarget}
+            onNavigate={handleNavigate}
           />
 
           {activeTab === 'workstation' && (
             <MarketAnomaliesView
+              key={deepLinkNonce}
               selectedAsset={selectedAsset}
               onSelectAsset={setSelectedAsset}
               initialViewMode={marketsViewMode}
               onViewModeChange={setMarketsViewMode}
+              watchlistSyms={watchlistSyms}
+              onToggleWatchlist={toggleWatchlist}
               langCode={currentLang.code}
               t={t}
             />
@@ -115,6 +286,8 @@ export default function App() {
               onSelectAsset={setSelectedAsset}
               onNavigate={handleNavigate}
               onOpenAssetInMarkets={handleOpenAssetInMarkets}
+              watchlistSyms={watchlistSyms}
+              onToggleWatchlist={toggleWatchlist}
               langCode={currentLang.code}
               t={t}
             />
@@ -124,12 +297,25 @@ export default function App() {
             <ObservabilityView t={t} onGoBack={goBack} />
           )}
 
+          {activeTab === 'guide' && (
+            <UserGuideView
+              langCode={currentLang.code}
+              onGoBack={goBack}
+              onLaunchTarget={handleLaunchTarget}
+            />
+          )}
+
           {activeTab === 'devlab' && (
             <DevLabView
+              langCode={currentLang.code}
               selectedIconId={devIconId}
               onSelectIconId={setDevIconId}
               selectedBoxStyleId={devBoxStyleId}
               onSelectBoxStyleId={setDevBoxStyleId}
+              homeLayoutId={homeLayoutId}
+              onSelectHomeLayout={setHomeLayoutId}
+              onLaunchTarget={handleLaunchTarget}
+              onNavigate={handleNavigate}
             />
           )}
         </main>
@@ -141,9 +327,11 @@ export default function App() {
         currentLang={currentLang}
         currentTheme={currentTheme}
         activeTab={activeTab}
-        onOpenObservability={openObservabilityNewWindow}
+        onOpenObservability={toggleObservabilityInTab}
+        onToggleGuide={() => handleNavigate(activeTab === 'guide' ? previousTab || 'presentation' : 'guide')}
         onToggleDevLab={() => handleNavigate(activeTab === 'devlab' ? previousTab || 'presentation' : 'devlab')}
         onCycleLang={cycleLang}
+        onSelectLang={(idx) => setLangIdx(idx)}
         onCycleTheme={cycleTheme}
       />
     </div>

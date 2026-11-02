@@ -15,6 +15,8 @@
  *    and off-topic non-financial queries.
  */
 
+import { getAssetBySymbol } from './marketService';
+
 export const IMPORTANCE_WEIGHTS = {
   HIGH: 1.5,
   MEDIUM: 1.0,
@@ -32,13 +34,43 @@ export function getAssetClassSensitivity(cat = 'CRYPTO') {
       },
     };
   }
-  if (cat === 'INDEX') {
+  if (cat === 'INDEX' || cat === 'ETF') {
     return {
       fundamentalWeight: 0.75,
       newsWeight: 0.25,
       shortLabel: {
-        EN: '75% Earnings • 25% News (Index Beta)',
-        ES: '75% Ganancias • 25% Noticias (Beta Índice)',
+        EN: '75% Constituents/Macro • 25% News (Index Beta)',
+        ES: '75% Componentes/Macro • 25% Noticias (Beta Índice)',
+      },
+    };
+  }
+  if (cat === 'RATES' || cat === 'FIXED_INCOME' || cat === 'CASH') {
+    return {
+      fundamentalWeight: 0.85,
+      newsWeight: 0.15,
+      shortLabel: {
+        EN: '85% Central Bank/Auctions • 15% News (Macro Rate)',
+        ES: '85% Bancos Centrales/Subastas • 15% Noticias (Tasa Macro)',
+      },
+    };
+  }
+  if (cat === 'FX' || cat === 'COMMODITY') {
+    return {
+      fundamentalWeight: 0.65,
+      newsWeight: 0.35,
+      shortLabel: {
+        EN: '65% Carry/Inventory • 35% Macro Wire',
+        ES: '65% Carry/Inventarios • 35% Flujo Macro',
+      },
+    };
+  }
+  if (cat === 'DERIVATIVES_VOL') {
+    return {
+      fundamentalWeight: 0.6,
+      newsWeight: 0.4,
+      shortLabel: {
+        EN: '60% Term Structure/OI • 40% Order Flow',
+        ES: '60% Estructura Temporal/OI • 40% Flujo de Órdenes',
       },
     };
   }
@@ -2031,8 +2063,336 @@ export const RAG_QUICK_TOPICS = [
   { id: 'competition', label: { EN: 'Moat & Competition', ES: 'Competencia y Cuota' }, query: 'competitive moat & market share' },
 ];
 
+export function getRagQuickTopicsForCategory(cat = 'EQUITY') {
+  const map = {
+    CASH: [
+      { id: 'margins', label: { EN: 'Fed Corridor & Rate', ES: 'Tasa y Corredor Fed' }, query: 'margins & yield corridor growth' },
+      { id: 'risks', label: { EN: 'Liquidity Risk', ES: 'Riesgo de Liquidez' }, query: 'key risk factors & bottlenecks' },
+      { id: 'valuation', label: { EN: 'Repo / RRP Volume', ES: 'Volumen Repo / RRP' }, query: 'balance sheet cash flow & liquidity' },
+      { id: 'competition', label: { EN: 'T-Bill Curve (1M-6M)', ES: 'Curva T-Bills (1M-6M)' }, query: 'competitive moat & market share' },
+    ],
+    COMMODITY: [
+      { id: 'margins', label: { EN: 'Supply & Inventories', ES: 'Oferta e Inventarios' }, query: 'margins & revenue growth' },
+      { id: 'risks', label: { EN: 'Geopolitical / Weather Risk', ES: 'Riesgos Geopolíticos / Clima' }, query: 'key risk factors & bottlenecks' },
+      { id: 'valuation', label: { EN: 'Forward Curve (Roll Yield)', ES: 'Curva Futuros (Roll Yield)' }, query: 'balance sheet cash flow & valuation' },
+      { id: 'competition', label: { EN: 'Industrial Demand & COT', ES: 'Demanda Industrial y COT' }, query: 'competitive moat & market share' },
+    ],
+    CRYPTO: [
+      { id: 'margins', label: { EN: 'Network Fees & Burn', ES: 'Economía de Red y Quema' }, query: 'margins & revenue growth' },
+      { id: 'risks', label: { EN: 'Leverage & Funding Risk', ES: 'Riesgos de Apalancamiento' }, query: 'key risk factors & bottlenecks' },
+      { id: 'valuation', label: { EN: 'ETF Reserves & TVL', ES: 'Reservas ETF y TVL' }, query: 'balance sheet cash flow & valuation' },
+      { id: 'competition', label: { EN: 'L1 / DeFi Dominance', ES: 'Dominancia Layer-1 / DeFi' }, query: 'competitive moat & market share' },
+    ],
+    DERIVATIVES_VOL: [
+      { id: 'margins', label: { EN: 'IV Surface & Skew', ES: 'Superficie IV y Skew' }, query: 'margins & revenue growth' },
+      { id: 'risks', label: { EN: 'Gamma / Pinning Risk', ES: 'Riesgo Gamma / Pinning' }, query: 'key risk factors & bottlenecks' },
+      { id: 'valuation', label: { EN: 'Liquidity & Open Interest', ES: 'Liquidez y Open Interest' }, query: 'balance sheet cash flow & valuation' },
+      { id: 'competition', label: { EN: 'Straddle Breakeven', ES: 'Cobertura / Breakeven' }, query: 'competitive moat & market share' },
+    ],
+    EQUITY: RAG_QUICK_TOPICS,
+    ETF: [
+      { id: 'margins', label: { EN: 'Inflows & AUM', ES: 'Flujos y AUM' }, query: 'margins & revenue growth' },
+      { id: 'risks', label: { EN: 'Concentration Risk', ES: 'Riesgo de Concentración' }, query: 'key risk factors & bottlenecks' },
+      { id: 'valuation', label: { EN: 'NAV Spread & Tracking', ES: 'Tracking Error y NAV' }, query: 'balance sheet cash flow & valuation' },
+      { id: 'competition', label: { EN: 'Holdings & Expense (TER)', ES: 'Composición y Costo (TER)' }, query: 'competitive moat & market share' },
+    ],
+    FIXED_INCOME: [
+      { id: 'margins', label: { EN: 'YTM & Coupon Profile', ES: 'Rendimiento (YTM) y Cupón' }, query: 'margins & revenue growth' },
+      { id: 'risks', label: { EN: 'Duration & DV01 Risk', ES: 'Riesgo de Duración (DV01)' }, query: 'key risk factors & bottlenecks' },
+      { id: 'valuation', label: { EN: 'Auction Demand (Bid/Cover)', ES: 'Demanda en Subastas' }, query: 'balance sheet cash flow & valuation' },
+      { id: 'competition', label: { EN: 'TIPS Breakeven & Curve', ES: 'Inflación y Breakeven' }, query: 'competitive moat & market share' },
+    ],
+    FX: [
+      { id: 'margins', label: { EN: 'Carry Differential (10Y)', ES: 'Diferencial de Tasas (Carry)' }, query: 'margins & revenue growth' },
+      { id: 'risks', label: { EN: 'Central Bank Intervention', ES: 'Riesgo de Intervención BC' }, query: 'key risk factors & bottlenecks' },
+      { id: 'valuation', label: { EN: 'Trade Balance & Flows', ES: 'Balanza Comercial y Flujos' }, query: 'balance sheet cash flow & valuation' },
+      { id: 'competition', label: { EN: 'Cross Parity & REER', ES: 'Paridad y Valuación Real' }, query: 'competitive moat & market share' },
+    ],
+    INDEX: [
+      { id: 'margins', label: { EN: 'Index EPS Growth YoY', ES: 'Crecimiento Ganancias (EPS)' }, query: 'margins & revenue growth' },
+      { id: 'risks', label: { EN: 'Macro & Rate Headwinds', ES: 'Riesgos Macro y Tasas' }, query: 'key risk factors & bottlenecks' },
+      { id: 'valuation', label: { EN: 'Index P/E & ERP', ES: 'Múltiplos del Índice (P/E)' }, query: 'balance sheet cash flow & valuation' },
+      { id: 'competition', label: { EN: 'Breadth & Sector Weights', ES: 'Amplitud y Liderazgo Sectorial' }, query: 'competitive moat & market share' },
+    ],
+    RATES: [
+      { id: 'margins', label: { EN: 'Curve Slope (2s10s / 3m10y)', ES: 'Pendiente de Curva (2s10s)' }, query: 'margins & revenue growth' },
+      { id: 'risks', label: { EN: 'Inflation & Fiscal Risk', ES: 'Riesgo Inflacionario / Fiscal' }, query: 'key risk factors & bottlenecks' },
+      { id: 'valuation', label: { EN: 'Real Yield & Term Premium', ES: 'Tasa Real y Prima por Plazo' }, query: 'balance sheet cash flow & valuation' },
+      { id: 'competition', label: { EN: 'Sovereign Spread vs UST', ES: 'Spread Soberano vs. UST' }, query: 'competitive moat & market share' },
+    ],
+  };
+  return map[cat] || RAG_QUICK_TOPICS;
+}
+
 export function getAssetResearchBrief(sym = 'BTC') {
-  return ASSET_RESEARCH_BRIEFS[sym] || ASSET_RESEARCH_BRIEFS.BTC;
+  if (ASSET_RESEARCH_BRIEFS[sym]) return ASSET_RESEARCH_BRIEFS[sym];
+
+  const asset = getAssetBySymbol(sym);
+  const isBull = (asset.chgNum || 0) >= -0.15;
+  const cat = asset.cat;
+
+  const sourceMap = {
+    EQUITY: { EN: `SEC Form 10-K & 10-Q (${asset.sym})`, ES: `Reporte SEC Form 10-K y 10-Q (${asset.sym})` },
+    INDEX: { EN: `Global Index Constituent Earnings & Macro Report`, ES: `Reporte de Ganancias y Macro del Índice` },
+    ETF: { EN: `Institutional ETF Prospectus, AUM & Flow Report`, ES: `Prospecto Institucional, AUM y Flujos del ETF` },
+    CRYPTO: { EN: `On-Chain Protocol, TVL & Derivatives Audit`, ES: `Auditoría On-Chain, TVL y Derivados del Protocolo` },
+    RATES: { EN: `Central Bank Policy & Sovereign Debt Issuance Report`, ES: `Política Monetaria y Emisión Soberana` },
+    FIXED_INCOME: { EN: `US Treasury Refunding & Auction Demand Report`, ES: `Subastas del Tesoro de EE.UU. y Demanda Primaria` },
+    FX: { EN: `BIS Interbank FX Flow & Rate Differential Brief`, ES: `Flujo Interbancario BIS y Diferencial de Tasas` },
+    COMMODITY: { EN: `CME/ICE Physical Inventory & Term Structure Report`, ES: `Inventarios Físicos CME/ICE y Estructura Temporal` },
+    DERIVATIVES_VOL: { EN: `CBOE/CME Open Interest & Implied Volatility Surface`, ES: `Interés Abierto CBOE/CME y Superficie de Volatilidad` },
+    CASH: { EN: `Federal Reserve Money Market & Overnight Liquidity Desk`, ES: `Mesa de Liquidez Overnight y Money Market` },
+  };
+
+  const filingSource = sourceMap[cat] || sourceMap.EQUITY;
+
+  return {
+    stance: isBull ? 'BULLISH' : 'BEARISH',
+    stanceLabel: isBull
+      ? { EN: `Constructive • Institutional Flow (${asset.sym})`, ES: `Constructivo • Flujo Institucional (${asset.sym})` }
+      : { EN: `Defensive • Macro Headwinds (${asset.sym})`, ES: `Defensivo • Presión Macro (${asset.sym})` },
+    filingSource,
+    executiveSummary: {
+      EN: `${asset.name} (${asset.sym}) is trading at ${asset.priceFormatted} (${asset.chg}) with ${asset.vol24h} in 24h institutional volume. Official ${cat} filings and market-structure metrics show ${isBull ? 'sustained institutional accumulation and constructive liquidity depth' : 'near-term consolidation and heightened sensitivity to macro rate repricing'}.`,
+      ES: `${asset.name} (${asset.sym}) cotiza en ${asset.priceFormatted} (${asset.chg}) con ${asset.vol24h} de volumen institucional 24h. Los reportes oficiales de ${cat} y métricas de microestructura reflejan ${isBull ? 'acumulación institucional sostenida y profundidad de liquidez constructiva' : 'consolidación de corto plazo y mayor sensibilidad al reajuste de tasas macro'}.`,
+    },
+    bullDrivers: [
+      {
+        score: isBull ? 86 : 68,
+        importance: 'HIGH',
+        title: {
+          EN: `Deep Institutional Liquidity (${asset.vol24h} 24h Vol)`,
+          ES: `Alta Liquidez Institucional (${asset.vol24h} Vol 24h)`,
+        },
+        detail: {
+          EN: `${asset.sym} maintains top-tier execution depth (${asset.volChg24h} vs 20d avg), minimizing institutional block slippage.`,
+          ES: `${asset.sym} mantiene profundidad de ejecución líder (${asset.volChg24h} vs media 20d), minimizando el deslizamiento en bloques.`,
+        },
+      },
+      {
+        score: isBull ? 81 : 64,
+        importance: 'HIGH',
+        title: {
+          EN: `Constructive Quantitative Momentum (RSI ${asset.indicators.rsi14})`,
+          ES: `Momentum Cuantitativo Constructivo (RSI ${asset.indicators.rsi14})`,
+        },
+        detail: {
+          EN: `Technical structure signals ${asset.indicators.macdSignal} with Bollinger bandwidth anchored at ${asset.indicators.bbWidth}.`,
+          ES: `La estructura técnica señala ${asset.indicators.macdSignal} con ancho de banda Bollinger en ${asset.indicators.bbWidth}.`,
+        },
+      },
+      {
+        score: isBull ? 76 : 59,
+        importance: 'MEDIUM',
+        title: {
+          EN: `Institutional Benchmark Allocation in ${cat}`,
+          ES: `Asignación Institucional de Referencia en ${cat}`,
+        },
+        detail: {
+          EN: `Core inclusion across systematic multi-asset portfolios supports steady passive and active rebalancing inflows.`,
+          ES: `Su inclusión central en carteras multi-activo sistemáticas sostiene flujos constantes de rebalanceo.`,
+        },
+      },
+      {
+        score: isBull ? 72 : 55,
+        importance: 'MEDIUM',
+        title: {
+          EN: `Resilient Fundamental & Yield Carry Profile`,
+          ES: `Perfil Resiliente de Fundamentos y Carry`,
+        },
+        detail: {
+          EN: `Underlying cash-flow / carry metrics compare favorably against ${cat} peer medians on a risk-adjusted basis.`,
+          ES: `Las métricas subyacentes de flujo y carry superan la mediana de su categoría (${cat}) ajustada por riesgo.`,
+        },
+      },
+      {
+        score: isBull ? 67 : 51,
+        importance: 'LOW',
+        title: {
+          EN: `Tight Cross-Venue Basis & Hedge Efficiency`,
+          ES: `Eficiencia de Cobertura y Spread Ajustado`,
+        },
+        detail: {
+          EN: `Liquid futures and options markets enable low-cost tail-risk hedging and delta-neutral overlays.`,
+          ES: `La liquidez en derivados permite coberturas de riesgo de cola de bajo costo operativo.`,
+        },
+      },
+    ],
+    bearRisks: [
+      {
+        score: isBull ? 54 : 82,
+        importance: 'HIGH',
+        title: {
+          EN: `Global Real-Rate & Sovereign Yield Sensitivity`,
+          ES: `Sensibilidad a Tasas Reales y Curva Soberana`,
+        },
+        detail: {
+          EN: `Abrupt shifts in US 10Y real yields or central bank terminal rate pricing can compress ${cat} valuation multiples.`,
+          ES: `Cambios abruptos en tasas reales a 10 años o expectativas de bancos centrales presionan las valuaciones en ${cat}.`,
+        },
+      },
+      {
+        score: isBull ? 49 : 76,
+        importance: 'HIGH',
+        title: {
+          EN: `Cross-Asset Volatility Contagion (VIX / MOVE)`,
+          ES: `Contagio de Volatilidad Cruzada (VIX / MOVE)`,
+        },
+        detail: {
+          EN: `Systematic de-risking across macro volatility indices can trigger correlated institutional outflows.`,
+          ES: `Episodios de reducción de riesgo sistemático pueden gatillar salidas correlacionadas de flujo.`,
+        },
+      },
+      {
+        score: isBull ? 45 : 70,
+        importance: 'MEDIUM',
+        title: {
+          EN: `Positioning Crowding & Gamma Unwind Risk`,
+          ES: `Concentración de Posicionamiento y Desarme Gamma`,
+        },
+        detail: {
+          EN: `Elevated institutional concentration in top-volume benchmarks amplifies short-term mean-reversion pullbacks.`,
+          ES: `La alta concentración institucional en activos líderes amplifica correcciones tácticas de corto plazo.`,
+        },
+      },
+      {
+        score: isBull ? 41 : 64,
+        importance: 'LOW',
+        title: {
+          EN: `Regulatory, Tariff & Geopolitical Headline Beta`,
+          ES: `Riesgo Regulatorio, Arancelario y Geopolítico`,
+        },
+        detail: {
+          EN: `Policy announcements and cross-border trade restrictions introduce episodic intraday spread widening.`,
+          ES: `Anuncios regulatorios o comerciales pueden ampliar temporalmente los spreads intradía.`,
+        },
+      },
+      {
+        score: isBull ? 37 : 58,
+        importance: 'LOW',
+        title: {
+          EN: `Intraday Liquidity Thinning Around Macro Releases`,
+          ES: `Reducción de Liquidez en Eventos Macro (CPI/NFP)`,
+        },
+        detail: {
+          EN: `Order-book depth temporarily compresses ahead of FOMC, CPI, and sovereign auction windows.`,
+          ES: `La profundidad del libro de órdenes se reduce previo a anuncios de bancos centrales e inflación.`,
+        },
+      },
+    ],
+    qaKnowledge: {
+      margins: {
+        EN: `${asset.name} (${asset.sym}) Performance & Yield Profile: Trading at ${asset.priceFormatted} (${asset.chg}) with ${asset.vol24h} daily volume (${asset.volChg24h} vs 20d avg) and RSI(14) at ${asset.indicators.rsi14}.`,
+        ES: `Perfil de Rendimiento y Flujo de ${asset.name} (${asset.sym}): Cotiza a ${asset.priceFormatted} (${asset.chg}) con ${asset.vol24h} de volumen diario (${asset.volChg24h} vs media 20d) y RSI(14) en ${asset.indicators.rsi14}.`,
+      },
+      risks: {
+        EN: `Key Risk Factors (${asset.sym}): Primary downside drivers are macro real-yield repricing (-${isBull ? 54 : 82}), cross-asset volatility spikes in VIX/MOVE (-${isBull ? 49 : 76}), and positioning crowding (-${isBull ? 45 : 70}).`,
+        ES: `Factores de Riesgo (${asset.sym}): Los principales riesgos son el reajuste de tasas reales (-${isBull ? 54 : 82}), picos de volatilidad en VIX/MOVE (-${isBull ? 49 : 76}) y concentración de posicionamiento (-${isBull ? 45 : 70}).`,
+      },
+      valuation: {
+        EN: `Valuation & Liquidity (${asset.sym}): Market cap / institutional float stands at ${asset.marketCap !== '—' ? asset.marketCap : asset.vol24h + '/day'} with Bollinger volatility bandwidth at ${asset.indicators.bbWidth}.`,
+        ES: `Valuación y Liquidez (${asset.sym}): Capitalización / liquidez institucional de ${asset.marketCap !== '—' ? asset.marketCap : asset.vol24h + '/día'} con ancho de banda de volatilidad Bollinger en ${asset.indicators.bbWidth}.`,
+      },
+      competition: {
+        EN: `Benchmark Standing (${asset.sym}): Ranks #${asset.rank} in the global multi-asset universe within category ${cat}, serving as a primary institutional liquidity vehicle.`,
+        ES: `Posición de Referencia (${asset.sym}): Ocupa el puesto #${asset.rank} en el universo global dentro de la categoría ${cat}, operando como vehículo líder de liquidez institucional.`,
+      },
+    },
+  };
+}
+
+export function getAssetFinbertHeadlines(sym = 'BTC') {
+  const direct = FINBERT_HEADLINES.filter((h) => h.sym === sym);
+  if (direct.length > 0) return direct;
+
+  const asset = getAssetBySymbol(sym);
+  const isPos = (asset.chgNum || 0) >= 0;
+  return [
+    {
+      id: `fb-synth-1-${sym}`,
+      sym,
+      score: isPos ? '+74' : '-62',
+      scoreNum: isPos ? 0.74 : -0.62,
+      importance: 'HIGH',
+      probs: isPos ? { pos: 0.81, neu: 0.12, neg: 0.07 } : { pos: 0.11, neu: 0.16, neg: 0.73 },
+      source: 'Bloomberg Terminal',
+      time: '15:48',
+      title: {
+        EN: `${asset.name} (${sym}) sees ${asset.vol24h} in 24h institutional flow (${asset.volChg24h} vs 20d avg) as ${asset.cat} desks rebalance`,
+        ES: `${asset.name} (${sym}) registra ${asset.vol24h} de volumen institucional (${asset.volChg24h} vs media 20d) por rebalanceo en ${asset.cat}`,
+      },
+    },
+    {
+      id: `fb-synth-2-${sym}`,
+      sym,
+      score: '+52',
+      scoreNum: 0.52,
+      importance: 'MEDIUM',
+      probs: { pos: 0.68, neu: 0.2, neg: 0.12 },
+      source: 'Reuters Institutional',
+      time: '14:22',
+      title: {
+        EN: `Order-book depth on ${sym} (${asset.priceFormatted}) remains resilient with RSI(14) at ${asset.indicators.rsi14} (${asset.indicators.macdSignal})`,
+        ES: `Profundidad de mercado en ${sym} (${asset.priceFormatted}) se mantiene firme con RSI(14) en ${asset.indicators.rsi14} (${asset.indicators.macdSignal})`,
+      },
+    },
+    {
+      id: `fb-synth-3-${sym}`,
+      sym,
+      score: '-38',
+      scoreNum: -0.38,
+      importance: 'LOW',
+      probs: { pos: 0.18, neu: 0.26, neg: 0.56 },
+      source: 'Macro Desk Wire',
+      time: '12:55',
+      title: {
+        EN: `Cross-asset risk desks monitor sovereign yield curve shifts and ${asset.indicators.bbWidth} Bollinger width on ${sym}`,
+        ES: `Mesas cuantitativas monitorean impacto de curvas soberanas y ancho Bollinger (${asset.indicators.bbWidth}) sobre ${sym}`,
+      },
+    },
+  ];
+}
+
+export function getAssetLiveWirePool(sym = 'BTC') {
+  if (LIVE_WIRE_POOL[sym]) return LIVE_WIRE_POOL[sym];
+  const asset = getAssetBySymbol(sym);
+  return [
+    {
+      scoreNum: 0.81,
+      importance: 'HIGH',
+      materiality: 'HIGH',
+      probs: { pos: 0.86, neu: 0.09, neg: 0.05 },
+      source: 'Bloomberg Live Wire',
+      title: {
+        EN: `FLASH: Institutional block accumulation in ${asset.name} (${sym}) accelerates +18% above 20-day average volume`,
+        ES: `FLASH: Acumulación institucional en bloques de ${asset.name} (${sym}) acelera +18% sobre el volumen medio de 20 días`,
+      },
+      driverUpdate: {
+        side: 'bull',
+        score: 88,
+        importance: 'HIGH',
+        title: {
+          EN: `Intraday Institutional Block Inflow (${sym})`,
+          ES: `Entrada Institucional en Bloques Intradía (${sym})`,
+        },
+        detail: {
+          EN: `Updated from Live Wire: Large institutional buy blocks absorbed top-of-book liquidity at ${asset.priceFormatted}.`,
+          ES: `Actualizado por noticia: Bloques de compra institucional absorbieron liquidez en ${asset.priceFormatted}.`,
+        },
+      },
+    },
+    {
+      scoreNum: -0.44,
+      importance: 'MEDIUM',
+      materiality: 'ROUTINE',
+      probs: { pos: 0.16, neu: 0.24, neg: 0.6 },
+      source: 'Reuters Macro Desk',
+      title: {
+        EN: `FLOW: Systematic options & futures dealers adjust short-term gamma hedges around ${sym} (${asset.priceFormatted})`,
+        ES: `FLUJO: Dealers sistemáticos ajustan coberturas gamma de corto plazo en torno a ${sym} (${asset.priceFormatted})`,
+      },
+    },
+  ];
 }
 
 /**
@@ -2077,7 +2437,7 @@ export async function executeSec10kRagQuery({ query = '', ticker = 'BTC', langCo
   // GUARDRAIL LAYER 2: Prompt Injection & Off-Topic Non-Financial Filter
   // =========================================================================
   const injectionOrOffTopicPattern =
-    /(ignore previous|olvida|instrucciones|system prompt|jailbreak|act as|actua como|receta|clima|weather|futbol|soccer|chiste|joke|poem|poema|hola|hello|buenos dias|como estas|quien sos|who are you|pelotud|mierda|fuck|shit)/i;
+    /(ignore previous|olvida|instrucciones|system prompt|jailbreak|act as|actua como|receta|futbol|soccer|chiste|joke|poem|poema|hola|hello|buenos dias|como estas|quien sos|who are you|pelotud|mierda|fuck|shit)/i;
 
   if (injectionOrOffTopicPattern.test(q)) {
     return {
@@ -2091,24 +2451,24 @@ export async function executeSec10kRagQuery({ query = '', ticker = 'BTC', langCo
   }
 
   // =========================================================================
-  // GUARDRAIL LAYER 3: Strict Financial Domain Intent Classification
+  // GUARDRAIL LAYER 3: Strict Financial Domain Intent Classification (All 10 Asset Classes)
   // =========================================================================
   const qa = brief.qaKnowledge;
 
   const isCompetitionIntent =
-    /\b(competition|competitive|comp|moat|foso|market share|share|cuota|dominance|dominancia|rival|peers|amd|competidores|ventaja|ecosystem|ecosistema|retencion|retention|cuda|nvlink|tpu|trainium|firedancer|rollup|l2|layer-2)\b/i.test(
+    /\b(competition|competitive|comp|moat|foso|market share|share|cuota|dominance|dominancia|rival|peers|amd|competidores|ventaja|ecosystem|ecosistema|retencion|retention|cuda|nvlink|tpu|trainium|firedancer|rollup|l2|layer-2|tbill|tbills|industrial|demand|demanda|straddle|breakeven|ter|yield|dividend|tips|reer|parity|breadth|amplitud|sovereign|soberano)\b/i.test(
       q
     );
   const isRisksIntent =
-    /\b(risk|risks|riesgo|riesgos|bear|peligro|amenaza|problem|caida|drop|downside|fondeo|funding|liquidat|liquidations|liquidacion|regul|regulatory|antitrust|doj|ftc|dma|tariff|arancel|bottleneck|bottlenecks|cuello|cowos|1a|depreciat|inflacion|dilution|dilucion|congestion|spread)\b/i.test(
+    /\b(risk|risks|riesgo|riesgos|bear|peligro|amenaza|problem|caida|drop|downside|fondeo|funding|liquidat|liquidations|liquidacion|regul|regulatory|antitrust|doj|ftc|dma|tariff|arancel|bottleneck|bottlenecks|cuello|cowos|1a|depreciat|inflacion|inflation|fiscal|dilution|dilucion|congestion|spread|weather|clima|geopolit|gamma|gex|pinning|concentration|concentracion|dv01|duration|duracion|intervention|intervencion|macro|rates)\b/i.test(
       q
     );
   const isValuationIntent =
-    /\b(valuation|valuacion|valoracion|cash|caja|deuda|debt|pe|p\/e|multiplo|múltiplo|multiple|liquidez|liquidity|balance|reserve|reserves|reserva|supply|oferta|circulante|float|backlog|rpo|buyback|recompra|dividend|fcf|free cash|tvl|staking|emision|issuance|13f|custody|custodia|item 8)\b/i.test(
+    /\b(valuation|valuacion|valoracion|cash|caja|deuda|debt|pe|p\/e|multiplo|múltiplo|multiple|liquidez|liquidity|balance|reserve|reserves|reserva|supply|oferta|circulante|float|backlog|rpo|buyback|recompra|fcf|free cash|tvl|staking|emision|issuance|13f|custody|custodia|item 8|repo|rrp|roll|contango|backwardation|open interest|tracking|nav|auction|subasta|bid to cover|trade|comercial|real yield|tasa real)\b/i.test(
       q
     );
   const isMarginsOrGrowthIntent =
-    /\b(bull|growth|crecimiento|margin|margins|margen|márgenes|revenue|ingresos|ingreso|venta|sales|ganancia|profit|ebitda|eps|utilidad|capex|ai|ia|cloud|data center|blackwell|hopper|azure|aws|services|servicios|etf|inflow|inflows|flujo|item 7|md&a|driver|drivers|motor|catalizador)\b/i.test(
+    /\b(bull|growth|crecimiento|margin|margins|margen|márgenes|revenue|ingresos|ingreso|venta|sales|ganancia|profit|ebitda|eps|utilidad|capex|ai|ia|cloud|data center|blackwell|hopper|azure|aws|services|servicios|etf|inflow|inflows|flujo|flows|aum|item 7|md&a|driver|drivers|motor|catalizador|fed|corridor|sofr|effr|inventory|inventarios|iv|surface|skew|ytm|coupon|cupon|carry|differential|slope|2s10s|3m10y|curve|curva)\b/i.test(
       q
     );
   const isExecutiveSummaryIntent =

@@ -241,7 +241,92 @@ export const ANOMALY_PROFILES = {
 };
 
 export function getAnomalyProfile(sym = 'BTC') {
-  return ANOMALY_PROFILES[sym] || ANOMALY_PROFILES.BTC;
+  if (ANOMALY_PROFILES[sym]) return ANOMALY_PROFILES[sym];
+
+  const asset = getAssetBySymbol(sym);
+  let h = 2166136261;
+  for (let i = 0; i < sym.length; i++) {
+    h ^= sym.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  h = Math.abs(h);
+
+  const absChg = Math.abs(asset.chgNum || 0.4);
+  const isHighBeta = asset.cat === 'CRYPTO' || asset.cat === 'DERIVATIVES_VOL' || absChg >= 2.5;
+  const rawScore = isHighBeta
+    ? 0.28 + ((h % 390) / 1000)
+    : 0.14 + ((h % 240) / 1000);
+  const score = Number(Math.min(0.69, Math.max(0.12, rawScore)).toFixed(3));
+  const regime = score >= 0.65 ? 'DISLOCATION' : score >= 0.35 ? 'ELEVATED' : 'NORMAL';
+
+  const zVal = Number((((asset.chgNum || 0.2) * 0.55) + (((h >> 4) % 140) - 60) / 100).toFixed(2));
+  const volumeZScore = `${zVal >= 0 ? '+' : ''}${zVal.toFixed(2)}σ`;
+
+  const baseRvolByCat = {
+    CASH: 1.8,
+    FIXED_INCOME: 6.4,
+    RATES: 8.2,
+    FX: 7.5,
+    INDEX: 13.8,
+    ETF: 15.2,
+    COMMODITY: 22.4,
+    EQUITY: 24.8,
+    DERIVATIVES_VOL: 38.5,
+    CRYPTO: 44.2,
+  };
+  const rVolVal = Number(((baseRvolByCat[asset.cat] || 18.0) + ((h >> 6) % 90) / 10).toFixed(1));
+  const realizedVol = `${rVolVal}%`;
+
+  const bpsVal = Number((0.3 + ((h >> 8) % 28) / 10).toFixed(1));
+  const spreadDislocation =
+    regime === 'DISLOCATION'
+      ? `Widened (${(bpsVal + 4.2).toFixed(1)} bps)`
+      : bpsVal <= 0.9
+      ? `Tight (${bpsVal} bps)`
+      : `Nominal (${bpsVal} bps)`;
+
+  return {
+    score,
+    regime,
+    volumeZScore,
+    realizedVol,
+    spreadDislocation,
+    contaminationParam: '0.05',
+    alertTitle: {
+      EN:
+        regime === 'DISLOCATION'
+          ? `VOLATILITY ALERT • ${asset.sym}`
+          : regime === 'ELEVATED'
+          ? `MOMENTUM FLOW • ${asset.sym}`
+          : `NOMINAL REGIME • ${asset.sym}`,
+      ES:
+        regime === 'DISLOCATION'
+          ? `ALERTA DE VOLATILIDAD • ${asset.sym}`
+          : regime === 'ELEVATED'
+          ? `FLUJO ACTIVO • ${asset.sym}`
+          : `RÉGIMEN NOMINAL • ${asset.sym}`,
+    },
+    alertTime: '16:00:00',
+    alertDesc: {
+      EN:
+        regime === 'DISLOCATION'
+          ? `Isolation Forest detected abnormal volume/spread variance (${score} ≥ 0.65 threshold) on ${asset.name}. Position sizing trimmed 50% by guardrail.`
+          : `Isolation Forest path length (${score}) and 20d volume variance (${volumeZScore}) for ${asset.name} (${asset.cat}) remain within institutional limits.`,
+      ES:
+        regime === 'DISLOCATION'
+          ? `Isolation Forest detectó varianza anormal de volumen/spread (${score} ≥ umbral 0.65) en ${asset.name}. Tamaño recortado 50% por guardrail.`
+          : `Profundidad Isolation Forest (${score}) y desvío de volumen 20d (${volumeZScore}) para ${asset.name} (${asset.cat}) operan dentro de parámetros institucionales.`,
+    },
+    modelPayload: {
+      close: asset.price,
+      close_rolling_mean_7: Number((asset.price * 0.988).toFixed(4)),
+      close_rolling_std_7: Number((asset.price * 0.012).toFixed(4)),
+      momentum_rsi_14: asset.indicators.rsi14,
+      price_velocity_roc_1: Number(((asset.chgNum || 0) / 100).toFixed(4)),
+      volatility_std_7: Number((rVolVal / 1000).toFixed(4)),
+      volume: Number((asset.vol24hNum * 100).toFixed(1)),
+    },
+  };
 }
 
 /**

@@ -13,12 +13,15 @@ import {
   X,
   Sliders,
   ListChecks,
+  Activity,
 } from 'lucide-react';
 import {
   INITIAL_PORTFOLIO_UNIVERSE,
   INITIAL_LEDGER_EVENTS,
+  buildWatchlistCandidateItem,
   getCommitteeDeliberation,
   runLiveCommitteeCycle,
+  computePortfolioQuantRisk,
 } from '../services/committeeService';
 
 export default function AgentCommitteeView({
@@ -26,18 +29,101 @@ export default function AgentCommitteeView({
   onSelectAsset,
   onNavigate,
   onOpenAssetInMarkets,
+  watchlistSyms = [],
+  onToggleWatchlist,
   langCode = 'EN',
 }) {
   const isES = langCode === 'ES';
 
-  // Full 10-asset interactive portfolio state
-  const [universe, setUniverse] = useState(INITIAL_PORTFOLIO_UNIVERSE);
+  // Full interactive portfolio + dynamic Watchlist state (persisted in localStorage)
+  const [universe, setUniverse] = useState(() => {
+    try {
+      const saved = window.localStorage.getItem('mid_portfolio_v1');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && Array.isArray(parsed.holdings) && parsed.holdings.length > 0) {
+          const mapBySym = new Map(parsed.holdings.map((h) => [h.sym, h]));
+          return INITIAL_PORTFOLIO_UNIVERSE.map((baseItem) => {
+            const override = mapBySym.get(baseItem.sym);
+            if (!override) return baseItem;
+            return {
+              ...baseItem,
+              marketValue: typeof override.marketValue === 'number' ? override.marketValue : baseItem.marketValue,
+              pnlUsd: typeof override.pnlUsd === 'number' ? override.pnlUsd : baseItem.pnlUsd,
+              pnlPct: typeof override.pnlPct === 'number' ? override.pnlPct : baseItem.pnlPct,
+              status: override.status || baseItem.status,
+            };
+          });
+        }
+      }
+    } catch {
+      // ignore storage errors
+    }
+    return INITIAL_PORTFOLIO_UNIVERSE;
+  });
   const [baseCapital] = useState(106420);
   const [committeeResult, setCommitteeResult] = useState(() =>
     getCommitteeDeliberation(selectedAsset)
   );
-  const [ledgerEvents, setLedgerEvents] = useState(INITIAL_LEDGER_EVENTS);
+  const [ledgerEvents, setLedgerEvents] = useState(() => {
+    try {
+      const saved = window.localStorage.getItem('mid_portfolio_v1');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (parsed && Array.isArray(parsed.ledgerEvents) && parsed.ledgerEvents.length > 0) {
+          return parsed.ledgerEvents;
+        }
+      }
+    } catch {
+      // ignore storage errors
+    }
+    return INITIAL_LEDGER_EVENTS;
+  });
   const [isRunningCycle, setIsRunningCycle] = useState(false);
+
+  // Persist Portfolio holdings & ledger events in localStorage
+  useEffect(() => {
+    try {
+      const compactHoldings = universe.map((item) => ({
+        sym: item.sym,
+        marketValue: item.marketValue,
+        pnlUsd: item.pnlUsd,
+        pnlPct: item.pnlPct,
+        status: item.status,
+      }));
+      window.localStorage.setItem(
+        'mid_portfolio_v1',
+        JSON.stringify({ holdings: compactHoldings, ledgerEvents: ledgerEvents.slice(0, 12) })
+      );
+    } catch {
+      // ignore storage errors
+    }
+  }, [universe, ledgerEvents]);
+
+  const resetToDefaultPortfolio = () => {
+    try {
+      window.localStorage.removeItem('mid_portfolio_v1');
+    } catch {
+      // ignore
+    }
+    setUniverse(INITIAL_PORTFOLIO_UNIVERSE);
+    setLedgerEvents(INITIAL_LEDGER_EVENTS);
+  };
+
+  // Sync user's bookmarked Watchlist symbols from Markets into the Portfolio universe
+  useEffect(() => {
+    setUniverse((prev) => {
+      const existingSyms = new Set(prev.map((x) => x.sym));
+      const newItems = watchlistSyms
+        .filter((sym) => !existingSyms.has(sym))
+        .map((sym) => buildWatchlistCandidateItem(sym));
+      // Remove 0-value items that were unchecked from watchlistSyms
+      const filteredPrev = prev.filter(
+        (item) => item.marketValue > 0 || watchlistSyms.includes(item.sym)
+      );
+      return [...filteredPrev, ...newItems];
+    });
+  }, [watchlistSyms]);
 
   // Two-tier asset filter & keyboard search state
   const [statusFilter, setStatusFilter] = useState('ALL'); // 'ALL' | 'HELD' | 'WATCHLIST'
@@ -95,6 +181,11 @@ export default function AgentCommitteeView({
       activeBreakers,
     };
   }, [universe, baseCapital]);
+
+  const quantRisk = useMemo(
+    () => computePortfolioQuantRisk(portfolioSummary.activeHoldings, portfolioSummary.totalNav),
+    [portfolioSummary.activeHoldings, portfolioSummary.totalNav]
+  );
 
   // Filtered asset list combining Row 1 (statusFilter) + Row 2 (classFilter) + Search
   const filteredAssets = useMemo(() => {
@@ -533,6 +624,167 @@ export default function AgentCommitteeView({
             </div>
           </div>
         </div>
+
+        {/* Bottom Strip inside Hero Card: Live Quant Risk Telemetry (VaR 95%, Beta, Vol, Sharpe) + Quick Actions */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '0.75rem',
+            paddingTop: '0.65rem',
+            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          }}
+        >
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
+            <div
+              onClick={() => setRightPanelTab('risk')}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                padding: '0.26rem 0.65rem',
+                borderRadius: '999px',
+                backgroundColor: 'rgba(244, 63, 94, 0.12)',
+                border: '1px solid rgba(244, 63, 94, 0.32)',
+                cursor: 'pointer',
+              }}
+              title={isES ? 'Clic para inspeccionar VaR, CVaR y Matriz de Correlación' : 'Click to inspect VaR, CVaR & Correlation Matrix'}
+            >
+              <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)', fontWeight: 700 }}>
+                VaR (95%, 1D):
+              </span>
+              <span className="mono-metric" style={{ fontSize: '0.68rem', color: '#f43f5e', fontWeight: 800 }}>
+                -${quantRisk.var95Usd.toLocaleString('en-US')} ({quantRisk.var95Pct.toFixed(2)}% NAV)
+              </span>
+            </div>
+
+            <div
+              onClick={() => setRightPanelTab('risk')}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                padding: '0.26rem 0.65rem',
+                borderRadius: '999px',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                cursor: 'pointer',
+              }}
+            >
+              <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)', fontWeight: 700 }}>
+                {isES ? 'Beta Ponderado (vs SPY):' : 'Weighted Beta (vs SPY):'}
+              </span>
+              <span
+                className="mono-metric"
+                style={{
+                  fontSize: '0.68rem',
+                  color: quantRisk.weightedBeta <= 1.25 ? '#10b981' : '#f43f5e',
+                  fontWeight: 800,
+                }}
+              >
+                {quantRisk.weightedBeta.toFixed(2)}β
+              </span>
+            </div>
+
+            <div
+              onClick={() => setRightPanelTab('risk')}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                padding: '0.26rem 0.65rem',
+                borderRadius: '999px',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                cursor: 'pointer',
+              }}
+            >
+              <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)', fontWeight: 700 }}>
+                {isES ? 'Volatilidad Anualizada:' : 'Annualized Volatility:'}
+              </span>
+              <span className="mono-metric" style={{ fontSize: '0.68rem', color: '#ffffff', fontWeight: 800 }}>
+                {quantRisk.portfolioAnnualVolPct.toFixed(1)}%
+              </span>
+            </div>
+
+            <div
+              onClick={() => setRightPanelTab('risk')}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                padding: '0.26rem 0.65rem',
+                borderRadius: '999px',
+                backgroundColor: 'rgba(16, 185, 129, 0.11)',
+                border: '1px solid rgba(16, 185, 129, 0.3)',
+                cursor: 'pointer',
+              }}
+            >
+              <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)', fontWeight: 700 }}>
+                Sharpe Ratio:
+              </span>
+              <span
+                className="mono-metric"
+                style={{
+                  fontSize: '0.68rem',
+                  color: quantRisk.sharpeRatio >= 1.0 ? '#10b981' : '#f43f5e',
+                  fontWeight: 800,
+                }}
+              >
+                {quantRisk.sharpeRatio.toFixed(2)}
+              </span>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+            <button
+              type="button"
+              onClick={() => setRightPanelTab('risk')}
+              className="mono-metric"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.32rem',
+                padding: '0.26rem 0.7rem',
+                borderRadius: '999px',
+                border: rightPanelTab === 'risk' ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.14)',
+                backgroundColor: rightPanelTab === 'risk' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+                color: rightPanelTab === 'risk' ? '#10b981' : '#ffffff',
+                fontSize: '0.58rem',
+                fontWeight: 800,
+                cursor: 'pointer',
+              }}
+            >
+              <Activity size={11} />
+              <span>{isES ? 'Matriz de Correlación & VaR' : 'Correlation Matrix & VaR'}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={resetToDefaultPortfolio}
+              className="mono-metric"
+              title={isES ? 'Restaurar asignaciones iniciales de la cartera ($106,420)' : 'Restore default portfolio allocations ($106,420)'}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.28rem',
+                padding: '0.26rem 0.65rem',
+                borderRadius: '999px',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                backgroundColor: 'rgba(255, 255, 255, 0.04)',
+                color: 'var(--text-muted)',
+                fontSize: '0.56rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+              }}
+            >
+              <RotateCcw size={10} />
+              <span>{isES ? 'Restaurar Base' : 'Reset Default'}</span>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* 2. MAIN WORKSPACE: LEFT = ASSET UNIVERSE & SANDBOX (COLLAPSED BY DEFAULT), RIGHT = FOCUSED COMMITTEE OR LOG */}
@@ -642,8 +894,8 @@ export default function AgentCommitteeView({
                 {
                   id: 'WATCHLIST',
                   label: isES
-                    ? `Watchlist (${portfolioSummary.watchlistCount})`
-                    : `Watchlist (${portfolioSummary.watchlistCount})`,
+                    ? `★ Watchlist (${portfolioSummary.watchlistCount})`
+                    : `★ Watchlist (${portfolioSummary.watchlistCount})`,
                 },
               ].map((tab) => {
                 const active = statusFilter === tab.id;
@@ -689,9 +941,10 @@ export default function AgentCommitteeView({
             <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap' }}>
               {[
                 { id: 'ALL', label: isES ? 'Todas las Clases' : 'All Classes' },
-                { id: 'EQUITY', label: isES ? 'Acciones (5)' : 'Equities (5)' },
-                { id: 'CRYPTO', label: 'Crypto (3)' },
-                { id: 'INDEX', label: isES ? 'Índices (2)' : 'Indices (2)' },
+                ...Array.from(new Set(universe.map((u) => u.cat))).map((cat) => {
+                  const count = universe.filter((u) => u.cat === cat).length;
+                  return { id: cat, label: `${cat} (${count})` };
+                }),
               ].map((cls) => {
                 const active = classFilter === cls.id;
                 return (
@@ -786,7 +1039,34 @@ export default function AgentCommitteeView({
                       gap: '0.5rem',
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.52rem' }}>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (onToggleWatchlist) onToggleWatchlist(pos.sym);
+                        }}
+                        title={
+                          watchlistSyms.includes(pos.sym)
+                            ? isES
+                              ? 'Quitar de Watchlist'
+                              : 'Remove from Watchlist'
+                            : isES
+                            ? 'Guardar en Watchlist'
+                            : 'Save to Watchlist'
+                        }
+                        style={{
+                          background: 'transparent',
+                          border: 'none',
+                          padding: 0,
+                          cursor: 'pointer',
+                          fontSize: '0.84rem',
+                          lineHeight: 1,
+                          color: watchlistSyms.includes(pos.sym) ? '#fbbf24' : 'rgba(255,255,255,0.22)',
+                        }}
+                      >
+                        {watchlistSyms.includes(pos.sym) ? '★' : '☆'}
+                      </button>
                       <span className="mono-metric" style={{ fontSize: '0.88rem', fontWeight: 800, color: '#ffffff', minWidth: '44px' }}>
                         {pos.sym}
                       </span>
@@ -801,18 +1081,18 @@ export default function AgentCommitteeView({
                           padding: '0.08rem 0.45rem',
                           borderRadius: '999px',
                           backgroundColor: !isHeld
-                            ? 'rgba(255,255,255,0.08)'
+                            ? 'rgba(251, 191, 36, 0.14)'
                             : pos.isPositive
                             ? 'rgba(16, 185, 129, 0.16)'
                             : 'rgba(244, 63, 94, 0.18)',
-                          color: !isHeld ? 'var(--text-muted)' : toneColor,
+                          color: !isHeld ? '#fbbf24' : toneColor,
                         }}
                       >
                         {pos.status}
                       </span>
                     </div>
 
-                    <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
                       {isHeld ? (
                         <>
                           <span style={{ fontSize: '0.82rem', fontWeight: 800, color: '#ffffff' }}>
@@ -827,9 +1107,32 @@ export default function AgentCommitteeView({
                           </span>
                         </>
                       ) : (
-                        <span style={{ fontSize: '0.66rem', color: 'var(--text-dim)', fontWeight: 700 }}>
-                          {isES ? `0.0% • Objetivo Comité: ${pos.targetWeightPct}%` : `0.0% • Committee Target: ${pos.targetWeightPct}%`}
-                        </span>
+                        <>
+                          <span style={{ fontSize: '0.63rem', color: 'var(--text-dim)', fontWeight: 700 }}>
+                            {isES ? `Objetivo Comité: ${pos.targetWeightPct}%` : `Committee Target: ${pos.targetWeightPct}%`}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              onSelectAsset && onSelectAsset(pos.sym);
+                              adjustAssetAllocation(pos.sym, 0, pos.targetWeightPct || 5.0);
+                            }}
+                            className="mono-metric"
+                            style={{
+                              fontSize: '0.58rem',
+                              fontWeight: 800,
+                              padding: '0.18rem 0.55rem',
+                              borderRadius: '999px',
+                              border: '1px solid rgba(16, 185, 129, 0.45)',
+                              backgroundColor: 'rgba(16, 185, 129, 0.16)',
+                              color: '#10b981',
+                              cursor: 'pointer',
+                            }}
+                          >
+                            {isES ? `+ INCORPORAR (${pos.targetWeightPct}%)` : `+ INCORPORATE (${pos.targetWeightPct}%)`}
+                          </button>
+                        </>
                       )}
                       {isExpanded ? (
                         <ChevronUp size={15} style={{ color: 'var(--text-muted)' }} />
@@ -1056,13 +1359,13 @@ export default function AgentCommitteeView({
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.38rem',
-                  padding: '0.35rem 0.95rem',
+                  gap: '0.35rem',
+                  padding: '0.35rem 0.78rem',
                   borderRadius: '999px',
                   border: 'none',
                   backgroundColor: rightPanelTab === 'committee' ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
                   color: rightPanelTab === 'committee' ? '#10b981' : 'var(--text-dim)',
-                  fontSize: '0.64rem',
+                  fontSize: '0.62rem',
                   fontWeight: 800,
                   cursor: 'pointer',
                 }}
@@ -1073,25 +1376,47 @@ export default function AgentCommitteeView({
 
               <button
                 type="button"
+                onClick={() => setRightPanelTab('risk')}
+                className="mono-metric"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  padding: '0.35rem 0.78rem',
+                  borderRadius: '999px',
+                  border: 'none',
+                  backgroundColor: rightPanelTab === 'risk' ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
+                  color: rightPanelTab === 'risk' ? '#10b981' : 'var(--text-dim)',
+                  fontSize: '0.62rem',
+                  fontWeight: 800,
+                  cursor: 'pointer',
+                }}
+              >
+                <Activity size={12} />
+                <span>{isES ? 'Riesgo Quant & Correlación' : 'Quant Risk & Correlation'}</span>
+              </button>
+
+              <button
+                type="button"
                 onClick={() => setRightPanelTab('log')}
                 className="mono-metric"
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.38rem',
-                  padding: '0.35rem 0.95rem',
+                  gap: '0.35rem',
+                  padding: '0.35rem 0.78rem',
                   borderRadius: '999px',
                   border: 'none',
                   backgroundColor: rightPanelTab === 'log' ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
                   color: rightPanelTab === 'log' ? '#10b981' : 'var(--text-dim)',
-                  fontSize: '0.64rem',
+                  fontSize: '0.62rem',
                   fontWeight: 800,
                   cursor: 'pointer',
                 }}
               >
                 <ListChecks size={12} />
                 <span>
-                  {isES ? `Historial de Órdenes (${ledgerEvents.length})` : `Order Log (${ledgerEvents.length})`}
+                  {isES ? `Órdenes (${ledgerEvents.length})` : `Order Log (${ledgerEvents.length})`}
                 </span>
               </button>
             </div>
@@ -1299,6 +1624,280 @@ export default function AgentCommitteeView({
                   </div>
                 );
               })}
+            </div>
+          ) : rightPanelTab === 'risk' ? (
+            /* VIEW C: PORTFOLIO QUANT RISK TELEMETRY (VaR 95%, CVaR 99%, BETA, VOL, SHARPE & CORRELATION MATRIX) */
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.65rem', minHeight: 0, overflowY: 'auto' }}>
+              {/* Top 3 Risk Cards: VaR 95%, CVaR 99%, Diversification Benefit */}
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  gap: '0.5rem',
+                }}
+              >
+                <div
+                  style={{
+                    padding: '0.65rem 0.75rem',
+                    borderRadius: '14px',
+                    backgroundColor: 'rgba(244, 63, 94, 0.1)',
+                    border: '1px solid rgba(244, 63, 94, 0.32)',
+                  }}
+                >
+                  <div className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--text-muted)', fontWeight: 700 }}>
+                    VaR (95%, 1D)
+                  </div>
+                  <div className="mono-metric" style={{ fontSize: '0.96rem', fontWeight: 800, color: '#f43f5e', marginTop: '0.15rem' }}>
+                    -${quantRisk.var95Usd.toLocaleString('en-US')}
+                  </div>
+                  <div className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)', marginTop: '0.1rem' }}>
+                    -{quantRisk.var95Pct.toFixed(2)}% NAV (1.645σ)
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    padding: '0.65rem 0.75rem',
+                    borderRadius: '14px',
+                    backgroundColor: 'rgba(244, 63, 94, 0.06)',
+                    border: '1px solid rgba(244, 63, 94, 0.22)',
+                  }}
+                >
+                  <div className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--text-muted)', fontWeight: 700 }}>
+                    CVaR / ES (99%, 1D)
+                  </div>
+                  <div className="mono-metric" style={{ fontSize: '0.96rem', fontWeight: 800, color: '#f43f5e', marginTop: '0.15rem' }}>
+                    -${quantRisk.cvar99Usd.toLocaleString('en-US')}
+                  </div>
+                  <div className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)', marginTop: '0.1rem' }}>
+                    -{quantRisk.cvar99Pct.toFixed(2)}% NAV (2.326σ)
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    padding: '0.65rem 0.75rem',
+                    borderRadius: '14px',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    border: '1px solid rgba(16, 185, 129, 0.32)',
+                  }}
+                >
+                  <div className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--text-muted)', fontWeight: 700 }}>
+                    {isES ? 'BENEFICIO DIVERSIF.' : 'DIVERSIF. BENEFIT'}
+                  </div>
+                  <div className="mono-metric" style={{ fontSize: '0.96rem', fontWeight: 800, color: '#10b981', marginTop: '0.15rem' }}>
+                    +${quantRisk.diversificationBenefitUsd.toLocaleString('en-US')}
+                  </div>
+                  <div className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)', marginTop: '0.1rem' }}>
+                    {isES ? 'Reducción VaR por r < 1' : 'VaR reduction via r < 1'}
+                  </div>
+                </div>
+              </div>
+
+              {/* Second Row: Weighted Beta, Annualized Vol, Sharpe Ratio */}
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(3, 1fr)',
+                  gap: '0.5rem',
+                }}
+              >
+                <div
+                  style={{
+                    padding: '0.55rem 0.75rem',
+                    borderRadius: '12px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
+                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)' }}>
+                    Beta (vs SPY)
+                  </span>
+                  <span
+                    className="mono-metric"
+                    style={{
+                      fontSize: '0.78rem',
+                      fontWeight: 800,
+                      color: quantRisk.weightedBeta <= 1.25 ? '#10b981' : '#f43f5e',
+                    }}
+                  >
+                    {quantRisk.weightedBeta.toFixed(2)}β
+                  </span>
+                </div>
+
+                <div
+                  style={{
+                    padding: '0.55rem 0.75rem',
+                    borderRadius: '12px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
+                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)' }}>
+                    {isES ? 'Vol Anual' : 'Annual Vol'}
+                  </span>
+                  <span className="mono-metric" style={{ fontSize: '0.78rem', fontWeight: 800, color: '#ffffff' }}>
+                    {quantRisk.portfolioAnnualVolPct.toFixed(1)}%
+                  </span>
+                </div>
+
+                <div
+                  style={{
+                    padding: '0.55rem 0.75rem',
+                    borderRadius: '12px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
+                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)' }}>
+                    Sharpe (Rf 4.3%)
+                  </span>
+                  <span
+                    className="mono-metric"
+                    style={{
+                      fontSize: '0.78rem',
+                      fontWeight: 800,
+                      color: quantRisk.sharpeRatio >= 1.0 ? '#10b981' : '#f43f5e',
+                    }}
+                  >
+                    {quantRisk.sharpeRatio.toFixed(2)}
+                  </span>
+                </div>
+              </div>
+
+              {/* Interactive Cross-Correlation Matrix (r from -1.00 to +1.00) */}
+              <div
+                style={{
+                  borderRadius: '14px',
+                  backgroundColor: 'rgba(8, 12, 22, 0.72)',
+                  border: '1px solid rgba(255, 255, 255, 0.09)',
+                  padding: '0.7rem 0.85rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.45rem',
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.4rem' }}>
+                  <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800, color: '#ffffff' }}>
+                    {isES
+                      ? 'MATRIZ DE CORRELACIÓN CRUZADA (r ∈ [-1.00, +1.00])'
+                      : 'CROSS-CORRELATION MATRIX (r ∈ [-1.00, +1.00])'}
+                  </span>
+                  <span className="mono-metric" style={{ fontSize: '0.55rem', color: 'var(--text-dim)' }}>
+                    {isES ? 'Verde (<0.45 Diversif.) • Rojo (≥0.70 Concentración)' : 'Green (<0.45 Diversified) • Red (≥0.70 Concentrated)'}
+                  </span>
+                </div>
+
+                {quantRisk.matrixSymbols.length === 0 ? (
+                  <div className="mono-metric" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', padding: '0.8rem 0' }}>
+                    {isES ? 'Sin posiciones activas en cartera.' : 'No active holdings in portfolio.'}
+                  </div>
+                ) : (
+                  <div style={{ overflowX: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: '3px' }}>
+                      <thead>
+                        <tr>
+                          <th
+                            className="mono-metric"
+                            style={{
+                              fontSize: '0.56rem',
+                              color: 'var(--text-dim)',
+                              textAlign: 'left',
+                              padding: '0.2rem 0.3rem',
+                            }}
+                          >
+                            SYM
+                          </th>
+                          {quantRisk.matrixSymbols.map((colSym) => (
+                            <th
+                              key={colSym}
+                              onClick={() => onSelectAsset && onSelectAsset(colSym)}
+                              className="mono-metric"
+                              style={{
+                                fontSize: '0.56rem',
+                                color: selectedAsset === colSym ? '#10b981' : '#ffffff',
+                                textAlign: 'center',
+                                padding: '0.2rem 0.25rem',
+                                cursor: 'pointer',
+                              }}
+                            >
+                              {colSym}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {quantRisk.correlationMatrix.map((row) => (
+                          <tr key={row.sym}>
+                            <td
+                              onClick={() => onSelectAsset && onSelectAsset(row.sym)}
+                              className="mono-metric"
+                              style={{
+                                fontSize: '0.58rem',
+                                fontWeight: 800,
+                                color: selectedAsset === row.sym ? '#10b981' : '#ffffff',
+                                padding: '0.22rem 0.3rem',
+                                cursor: 'pointer',
+                              }}
+                            >
+                              {row.sym}
+                            </td>
+                            {row.cells.map((cell) => {
+                              const isDiag = cell.rowSym === cell.colSym;
+                              const highCorr = !isDiag && cell.r >= 0.7;
+                              const lowOrNegCorr = !isDiag && cell.r <= 0.45;
+                              const bg = isDiag
+                                ? 'rgba(255, 255, 255, 0.08)'
+                                : highCorr
+                                ? 'rgba(244, 63, 94, 0.22)'
+                                : lowOrNegCorr
+                                ? 'rgba(16, 185, 129, 0.18)'
+                                : 'rgba(255, 255, 255, 0.04)';
+                              const textColor = isDiag
+                                ? 'var(--text-muted)'
+                                : highCorr
+                                ? '#f43f5e'
+                                : lowOrNegCorr
+                                ? '#10b981'
+                                : '#ffffff';
+
+                              return (
+                                <td
+                                  key={`${cell.rowSym}-${cell.colSym}`}
+                                  onClick={() => onSelectAsset && onSelectAsset(cell.colSym)}
+                                  className="mono-metric"
+                                  title={`${cell.rowSym} vs ${cell.colSym}: r = ${cell.r >= 0 ? '+' : ''}${cell.r.toFixed(2)}`}
+                                  style={{
+                                    fontSize: '0.58rem',
+                                    fontWeight: 700,
+                                    textAlign: 'center',
+                                    padding: '0.28rem 0.2rem',
+                                    borderRadius: '6px',
+                                    backgroundColor: bg,
+                                    color: textColor,
+                                    cursor: 'pointer',
+                                  }}
+                                >
+                                  {cell.r >= 0 && !isDiag ? `+${cell.r.toFixed(2)}` : cell.r.toFixed(2)}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </div>
             </div>
           ) : (
             /* VIEW B: ORDER & GUARDRAIL EXECUTION LOG (COLLAPSED ACCORDIONS BY DEFAULT) */

@@ -158,9 +158,9 @@ export const INITIAL_PORTFOLIO_UNIVERSE = [
   {
     sym: 'SPY',
     name: 'SPDR S&P 500 ETF',
-    cat: 'INDEX',
+    cat: 'ETF',
     avgEntry: 572.0,
-    currentPrice: 586.4,
+    currentPrice: 580.4,
     marketValue: 0,
     pnlUsd: 0,
     pnlPct: 0,
@@ -168,17 +168,17 @@ export const INITIAL_PORTFOLIO_UNIVERSE = [
     status: 'BENCHMARK / HEDGE',
     isPositive: true,
     researchScore: 29,
-    anomalyScore: 0.162,
+    anomalyScore: 0.164,
     stopLoss: '$568.00',
     priceTarget: '$610.00',
     proxyCorr: 'ES Futures / SPX Put Spread',
   },
   {
     sym: 'QQQ',
-    name: 'Invesco Nasdaq-100',
-    cat: 'INDEX',
+    name: 'Invesco Nasdaq-100 ETF',
+    cat: 'ETF',
     avgEntry: 488.0,
-    currentPrice: 504.2,
+    currentPrice: 492.15,
     marketValue: 0,
     pnlUsd: 0,
     pnlPct: 0,
@@ -186,14 +186,115 @@ export const INITIAL_PORTFOLIO_UNIVERSE = [
     status: 'TECH BETA PROXY',
     isPositive: true,
     researchScore: 39,
-    anomalyScore: 0.205,
-    stopLoss: '$485.00',
+    anomalyScore: 0.188,
+    stopLoss: '$480.00',
     priceTarget: '$535.00',
     proxyCorr: 'NQ Futures • NVDA/MSFT Basket (r = +0.91)',
+  },
+  {
+    sym: 'UST-10Y',
+    name: 'US Treasury 10-Year Benchmark Note',
+    cat: 'FIXED_INCOME',
+    avgEntry: 97.1,
+    currentPrice: 97.38,
+    marketValue: 0,
+    pnlUsd: 0,
+    pnlPct: 0,
+    targetWeightPct: 6.5,
+    status: 'DURATION HEDGE (READY)',
+    isPositive: true,
+    researchScore: 24,
+    anomalyScore: 0.182,
+    stopLoss: '$95.80',
+    priceTarget: '$101.50',
+    proxyCorr: 'ZN Futures • US10Y Yield (4.24%)',
+  },
+  {
+    sym: 'GC',
+    name: 'Gold Spot / COMEX Futures',
+    cat: 'COMMODITY',
+    avgEntry: 2680.0,
+    currentPrice: 2748.5,
+    marketValue: 0,
+    pnlUsd: 0,
+    pnlPct: 0,
+    targetWeightPct: 5.0,
+    status: 'REAL-ASSET BALLAST',
+    isPositive: true,
+    researchScore: 34,
+    anomalyScore: 0.214,
+    stopLoss: '$2,660.00',
+    priceTarget: '$2,880.00',
+    proxyCorr: 'GLD ETF • DXY Inverse (r = -0.68)',
+  },
+  {
+    sym: 'SOFR',
+    name: 'NY Fed Secured Overnight Rate',
+    cat: 'CASH',
+    avgEntry: 4.82,
+    currentPrice: 4.82,
+    marketValue: 0,
+    pnlUsd: 0,
+    pnlPct: 0,
+    targetWeightPct: 10.0,
+    status: 'TREASURY RESERVE YIELD',
+    isPositive: true,
+    researchScore: 31,
+    anomalyScore: 0.135,
+    stopLoss: '4.50%',
+    priceTarget: '4.85% Carry',
+    proxyCorr: 'SGOV / BIL T-Bill Reserve ($31,080 Cash)',
   },
 ];
 
 export const INITIAL_PORTFOLIO_HOLDINGS = INITIAL_PORTFOLIO_UNIVERSE;
+
+export const DEFAULT_WATCHLIST_SYMS = ['AMZN', 'GOOGL', 'SPY', 'QQQ', 'UST-10Y', 'GC', 'SOFR'];
+
+/**
+ * Builds a complete Portfolio / Watchlist candidate entry for any symbol in the 213-asset catalog
+ * so users can bookmark any asset in Markets and evaluate/incorporate it in Portfolio.
+ */
+export function buildWatchlistCandidateItem(sym) {
+  const existing = INITIAL_PORTFOLIO_UNIVERSE.find((x) => x.sym === sym);
+  if (existing) {
+    return { ...existing };
+  }
+  const asset = getAssetBySymbol(sym);
+  const anom = getAnomalyProfile(sym);
+  const brief = getAssetResearchBrief(sym);
+  const delib = getCommitteeDeliberation(sym);
+  const price = asset.price || 100;
+  const isPos = brief.compositeScore >= 0 && anom.score < 0.65;
+
+  return {
+    sym: asset.sym,
+    name: asset.name,
+    cat: asset.cat,
+    avgEntry: Number((price * 0.965).toFixed(2)),
+    currentPrice: price,
+    marketValue: 0,
+    pnlUsd: 0,
+    pnlPct: 0,
+    targetWeightPct: delib.targetWeightPct || 5.0,
+    status: 'WATCHLIST (READY)',
+    isPositive: isPos,
+    researchScore: brief.compositeScore,
+    anomalyScore: anom.score,
+    stopLoss: `$${(price * 0.93).toFixed(2)}`,
+    priceTarget: `$${(price * 1.12).toFixed(2)}`,
+    proxyCorr:
+      asset.cat === 'CRYPTO'
+        ? 'BTC / ETH Perp Proxy (r = +0.82)'
+        : asset.cat === 'RATES' || asset.cat === 'FIXED_INCOME'
+        ? 'US10Y / ZN Futures Duration Proxy'
+        : asset.cat === 'FX'
+        ? 'DXY Dollar Index Triangulation'
+        : asset.cat === 'COMMODITY'
+        ? 'DBC / GLD Commodity Curve Proxy'
+        : 'SPY / QQQ Benchmark Beta Proxy',
+  };
+}
 
 export const INITIAL_LEDGER_EVENTS = [
   {
@@ -704,3 +805,233 @@ export async function runLiveCommitteeCycle(sym = 'NVDA') {
     };
   }
 }
+
+/**
+ * Deterministic institutional correlation estimator between any two assets (r in [-1.00, +1.00]).
+ */
+export function computePairCorrelation(itemA, itemB) {
+  if (!itemA || !itemB) return 0;
+  if (itemA.sym === itemB.sym) return 1.0;
+
+  const pairKey = [itemA.sym, itemB.sym].sort().join(':');
+  const explicitPairs = {
+    'BTC:ETH': 0.86,
+    'BTC:SOL': 0.81,
+    'ETH:SOL': 0.84,
+    'AAPL:MSFT': 0.74,
+    'MSFT:NVDA': 0.72,
+    'AAPL:NVDA': 0.68,
+    'AMZN:GOOGL': 0.71,
+    'NVDA:QQQ': 0.85,
+    'MSFT:QQQ': 0.82,
+    'SPY:QQQ': 0.91,
+    'BTC:NVDA': 0.46,
+    'ETH:NVDA': 0.42,
+    'NVDA:UST-10Y': -0.28,
+    'BTC:UST-10Y': -0.22,
+    'SPY:UST-10Y': -0.31,
+    'GC:UST-10Y': 0.34,
+    'GC:SPY': 0.12,
+    'GC:BTC': 0.24,
+    'SOFR:UST-10Y': 0.08,
+  };
+  if (explicitPairs[pairKey] !== undefined) {
+    return explicitPairs[pairKey];
+  }
+
+  const catA = itemA.cat || 'EQUITY';
+  const catB = itemB.cat || 'EQUITY';
+
+  if (catA === 'CASH' || catB === 'CASH') return 0.04;
+  if (catA === catB) {
+    if (catA === 'CRYPTO') return 0.79;
+    if (catA === 'EQUITY' || catA === 'INDEX' || catA === 'ETF') return 0.73;
+    if (catA === 'RATES' || catA === 'FIXED_INCOME') return 0.81;
+    if (catA === 'COMMODITY') return 0.48;
+    if (catA === 'FX') return 0.52;
+    return 0.65;
+  }
+
+  const isEqA = ['EQUITY', 'ETF', 'INDEX', 'DERIVATIVES_VOL'].includes(catA);
+  const isEqB = ['EQUITY', 'ETF', 'INDEX', 'DERIVATIVES_VOL'].includes(catB);
+  if (isEqA && isEqB) return 0.76;
+
+  const isRatesA = ['RATES', 'FIXED_INCOME'].includes(catA);
+  const isRatesB = ['RATES', 'FIXED_INCOME'].includes(catB);
+  if (isRatesA && isRatesB) return 0.82;
+
+  if ((isEqA && isRatesB) || (isRatesA && isEqB)) return -0.26;
+  if ((catA === 'CRYPTO' && isEqB) || (isEqA && catB === 'CRYPTO')) return 0.44;
+  if ((catA === 'COMMODITY' && isEqB) || (isEqA && catB === 'COMMODITY')) return 0.18;
+  if ((catA === 'COMMODITY' && isRatesB) || (isRatesA && catB === 'COMMODITY')) return -0.14;
+
+  return 0.21;
+}
+
+/**
+ * Computes institutional Portfolio Quant Risk & Correlation Telemetry:
+ * - Parametric 1-Day VaR (95%) & CVaR / Expected Shortfall (99%) with full covariance matrix
+ * - Diversification Benefit ($ USD and %) vs Undiversified Sum of VaRs
+ * - Portfolio Weighted Beta (vs S&P 500 SPY), Annualized Volatility (%), and Sharpe Ratio
+ * - NxN Cross-Correlation Matrix (`r` in [-1.00, +1.00]) across active holdings
+ */
+export function computePortfolioQuantRisk(activeHoldings = [], totalNav = 106420) {
+  const safeNav = Math.max(1, totalNav);
+  if (!activeHoldings.length) {
+    return {
+      var95Usd: 0,
+      var95Pct: 0,
+      cvar99Usd: 0,
+      cvar99Pct: 0,
+      undiversifiedVar95Usd: 0,
+      diversificationBenefitUsd: 0,
+      diversificationBenefitPct: 0,
+      portfolioBeta: 0,
+      annualizedVolPct: 0,
+      sharpeRatio: 0,
+      expectedReturnPct: 4.82,
+      symbols: [],
+      matrix: [],
+      highestCorrPair: null,
+      bestHedgePair: null,
+    };
+  }
+
+  const annualVolByCat = {
+    CASH: 0.012,
+    FIXED_INCOME: 0.078,
+    RATES: 0.085,
+    FX: 0.082,
+    INDEX: 0.155,
+    ETF: 0.172,
+    COMMODITY: 0.215,
+    EQUITY: 0.285,
+    DERIVATIVES_VOL: 0.42,
+    CRYPTO: 0.54,
+  };
+
+  const betaByCat = {
+    CASH: 0.0,
+    FIXED_INCOME: -0.18,
+    RATES: -0.15,
+    FX: 0.12,
+    COMMODITY: 0.25,
+    INDEX: 1.0,
+    ETF: 1.06,
+    EQUITY: 1.28,
+    DERIVATIVES_VOL: 1.45,
+    CRYPTO: 1.62,
+  };
+
+  const expRetByCat = {
+    CASH: 0.0482,
+    FIXED_INCOME: 0.054,
+    RATES: 0.052,
+    FX: 0.065,
+    COMMODITY: 0.088,
+    INDEX: 0.105,
+    ETF: 0.118,
+    EQUITY: 0.154,
+    DERIVATIVES_VOL: 0.175,
+    CRYPTO: 0.225,
+  };
+
+  const n = activeHoldings.length;
+  const weights = activeHoldings.map((h) => h.marketValue / safeNav);
+  const vols = activeHoldings.map((h) => {
+    if (h.sym === 'NVDA') return 0.38;
+    if (h.sym === 'SOL') return 0.64;
+    if (h.sym === 'BTC') return 0.48;
+    if (h.sym === 'ETH') return 0.51;
+    if (h.sym === 'MSFT' || h.sym === 'AAPL') return 0.22;
+    return annualVolByCat[h.cat] || 0.24;
+  });
+
+  const betas = activeHoldings.map((h) => {
+    if (h.sym === 'NVDA') return 1.58;
+    if (h.sym === 'MSFT') return 1.12;
+    if (h.sym === 'AAPL') return 1.08;
+    if (h.sym === 'SOL') return 1.75;
+    if (h.sym === 'BTC') return 1.48;
+    return betaByCat[h.cat] ?? 1.0;
+  });
+
+  const matrix = [];
+  let portfolioVarianceAnnual = 0;
+  let highestCorrPair = null;
+  let bestHedgePair = null;
+
+  for (let i = 0; i < n; i++) {
+    const row = [];
+    for (let j = 0; j < n; j++) {
+      const r = Number(computePairCorrelation(activeHoldings[i], activeHoldings[j]).toFixed(2));
+      row.push(r);
+      portfolioVarianceAnnual += weights[i] * weights[j] * vols[i] * vols[j] * r;
+
+      if (i < j) {
+        const pairInfo = {
+          symA: activeHoldings[i].sym,
+          symB: activeHoldings[j].sym,
+          r,
+        };
+        if (!highestCorrPair || r > highestCorrPair.r) highestCorrPair = pairInfo;
+        if (!bestHedgePair || r < bestHedgePair.r) bestHedgePair = pairInfo;
+      }
+    }
+    matrix.push(row);
+  }
+
+  const portfolioVolAnnual = Math.sqrt(Math.max(0, portfolioVarianceAnnual));
+  const dailyPortfolioVol = portfolioVolAnnual / Math.sqrt(252);
+
+  // 95% 1-Day Parametric VaR (z = 1.645) and 99% CVaR / Expected Shortfall (multiplier = 2.665)
+  const var95Pct = Number((dailyPortfolioVol * 1.64485 * 100).toFixed(2));
+  const var95Usd = Math.round((var95Pct / 100) * safeNav);
+  const cvar99Pct = Number((dailyPortfolioVol * 2.665 * 100).toFixed(2));
+  const cvar99Usd = Math.round((cvar99Pct / 100) * safeNav);
+
+  // Undiversified VaR (sum of individual 95% VaRs)
+  const undivDailyVol = weights.reduce((acc, w, idx) => acc + w * (vols[idx] / Math.sqrt(252)), 0);
+  const undiversifiedVar95Usd = Math.round(undivDailyVol * 1.64485 * safeNav);
+  const diversificationBenefitUsd = Math.max(0, undiversifiedVar95Usd - var95Usd);
+  const diversificationBenefitPct =
+    undiversifiedVar95Usd > 0
+      ? Number(((diversificationBenefitUsd / undiversifiedVar95Usd) * 100).toFixed(1))
+      : 0;
+
+  const portfolioBeta = Number(
+    weights.reduce((acc, w, idx) => acc + w * betas[idx], 0).toFixed(2)
+  );
+  const annualizedVolPct = Number((portfolioVolAnnual * 100).toFixed(2));
+
+  // Cash weight earns risk-free SOFR (4.82%)
+  const investedWeightSum = weights.reduce((a, b) => a + b, 0);
+  const cashWeight = Math.max(0, 1 - investedWeightSum);
+  const rf = 0.0482;
+  const expectedPortfolioReturn =
+    cashWeight * rf +
+    weights.reduce((acc, w, idx) => acc + w * (expRetByCat[activeHoldings[idx].cat] || 0.12), 0);
+  const sharpeRatio =
+    portfolioVolAnnual > 0.005
+      ? Number(((expectedPortfolioReturn - rf) / portfolioVolAnnual).toFixed(2))
+      : 0;
+
+  return {
+    var95Usd,
+    var95Pct,
+    cvar99Usd,
+    cvar99Pct,
+    undiversifiedVar95Usd,
+    diversificationBenefitUsd,
+    diversificationBenefitPct,
+    portfolioBeta,
+    annualizedVolPct,
+    sharpeRatio,
+    expectedReturnPct: Number((expectedPortfolioReturn * 100).toFixed(2)),
+    symbols: activeHoldings.map((h) => h.sym),
+    matrix,
+    highestCorrPair,
+    bestHedgePair,
+  };
+}
+

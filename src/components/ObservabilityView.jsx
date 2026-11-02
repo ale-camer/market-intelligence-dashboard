@@ -1,153 +1,469 @@
-import React, { useState, useMemo } from 'react';
-import { ArrowLeft, Search, X, CheckCircle2 } from 'lucide-react';
-import { INFRA_ENGINES } from '../services/observabilityService';
+import React, { useState, useMemo, useEffect } from 'react';
+import { evaluateEcosystemContracts, probeLiveCloudEndpoints } from '../services/observabilityService';
 
-export default function ObservabilityView({ t, onGoBack }) {
-  const [pipelineFilter, setPipelineFilter] = useState('');
+export default function ObservabilityView({ t }) {
+  const [selectedId, setSelectedId] = useState('P-01');
+  const [liveProbes, setLiveProbes] = useState({});
+  const isES = t?.navWorkstation === 'Mercados';
 
-  const filteredPipelines = useMemo(() => {
-    if (!pipelineFilter.trim()) return INFRA_ENGINES;
-    const q = pipelineFilter.toLowerCase();
-    return INFRA_ENGINES.filter(
-      (e) =>
-        e.name.toLowerCase().includes(q) ||
-        e.role.toLowerCase().includes(q) ||
-        e.arch.toLowerCase().includes(q) ||
-        e.id.toLowerCase().includes(q)
-    );
-  }, [pipelineFilter]);
+  useEffect(() => {
+    let mounted = true;
+    probeLiveCloudEndpoints().then((res) => {
+      if (mounted && res) setLiveProbes(res);
+    });
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
-  return (
-    <div>
+  const { stores, projects: baseProjects } = useMemo(() => evaluateEcosystemContracts(), []);
+
+  const projects = useMemo(() => {
+    return baseProjects.map((proj) => {
+      const probeKey = proj.id === 'P-04' ? 'P-08' : proj.id;
+      const probe = liveProbes[probeKey];
+      if (!probe) return proj;
+
+      return {
+        ...proj,
+        state: probe.ok ? proj.state : 'ERR',
+        healthyText: probe.ok
+          ? {
+              EN: `Active & Healthy • Live Cloud Run HTTP ${probe.status} OK (${probe.latencyMs}ms)`,
+              ES: `Activo y Healthy • Cloud Run en vivo HTTP ${probe.status} OK (${probe.latencyMs}ms)`,
+            }
+          : {
+              EN: `Cloud Run probe failed (HTTP ${probe.status || 'unreachable'})`,
+              ES: `Fallo en sondeo Cloud Run (HTTP ${probe.status || 'inaccesible'})`,
+            },
+      };
+    });
+  }, [baseProjects, liveProbes]);
+
+  const allItems = useMemo(() => [...stores, ...projects], [stores, projects]);
+  const selectedItem = useMemo(
+    () => allItems.find((item) => item.id === selectedId) || null,
+    [allItems, selectedId]
+  );
+
+  const okCount = projects.filter((e) => e.state === 'OK').length;
+  const warnCount = allItems.filter((e) => e.state === 'WARN').length;
+  const errCount = allItems.filter((e) => e.state === 'ERR').length;
+
+  const summaryColor = errCount > 0 ? '#f43f5e' : warnCount > 0 ? '#f59e0b' : '#10b981';
+  const summaryBgGradient =
+    errCount > 0
+      ? 'linear-gradient(135deg, rgba(244, 63, 94, 0.14) 0%, var(--bg-panel-glass) 75%)'
+      : warnCount > 0
+      ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, var(--bg-panel-glass) 75%)'
+      : 'linear-gradient(135deg, rgba(16, 185, 129, 0.10) 0%, var(--bg-panel-glass) 75%)';
+
+  const summaryText = isES
+    ? errCount > 0
+      ? `${okCount}/${projects.length} proyectos operativos • ${errCount} con error`
+      : warnCount > 0
+      ? `${okCount}/${projects.length} proyectos operativos • ${warnCount} para revisar`
+      : `${okCount}/${projects.length} proyectos validados • 3/3 almacenes Free-Tier en cuota`
+    : errCount > 0
+    ? `${okCount}/${projects.length} projects operational • ${errCount} with error`
+    : warnCount > 0
+    ? `${okCount}/${projects.length} projects operational • ${warnCount} to review`
+    : `${okCount}/${projects.length} projects validated • 3/3 Free-Tier stores within quota`;
+
+  const getBadgeText = (item) =>
+    item.badgeRight
+      ? isES
+        ? item.badgeRight.ES
+        : item.badgeRight.EN
+      : item.state === 'ERR'
+      ? 'Error'
+      : item.state === 'WARN'
+      ? isES
+        ? 'Revisar'
+        : 'Review'
+      : 'OK';
+
+  const renderCompactCard = (item) => {
+    const isSelected = selectedId === item.id;
+    const dotColor =
+      item.state === 'ERR' ? '#f43f5e' : item.state === 'WARN' ? '#f59e0b' : '#10b981';
+
+    const cardGradient =
+      item.state === 'ERR'
+        ? 'linear-gradient(135deg, rgba(244, 63, 94, 0.15) 0%, var(--bg-panel-glass) 82%)'
+        : item.state === 'WARN'
+        ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, var(--bg-panel-glass) 82%)'
+        : isSelected
+        ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.13) 0%, var(--bg-panel-glass) 82%)'
+        : 'var(--bg-panel-glass)';
+
+    return (
       <div
+        key={item.id}
+        onClick={() => setSelectedId(isSelected ? null : item.id)}
         style={{
-          marginBottom: '1.5rem',
+          borderRadius: '11px',
+          background: cardGradient,
+          backdropFilter: 'blur(12px)',
+          border:
+            isSelected || item.state !== 'OK'
+              ? `1px solid ${dotColor}`
+              : '1px solid var(--border-light)',
+          padding: '0.52rem 0.85rem',
+          cursor: 'pointer',
+          transition: 'all 0.14s ease',
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'flex-end',
-          flexWrap: 'wrap',
-          gap: '1rem',
+          alignItems: 'center',
+          gap: '0.6rem',
+          boxShadow: isSelected ? `0 0 14px rgba(16, 185, 129, 0.12)` : 'none',
         }}
       >
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
-            <button
-              onClick={onGoBack}
-              style={{
-                background: 'transparent',
-                border: 'none',
-                color: 'var(--accent)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.25rem',
-                fontSize: '0.78rem',
-                cursor: 'pointer',
-                fontWeight: 600,
-              }}
-            >
-              <ArrowLeft size={14} strokeWidth={2.2} /> {t.backBtn}
-            </button>
-            <span style={{ color: 'var(--text-dim)', fontSize: '0.75rem' }}>•</span>
-            <span style={{ color: 'var(--text-dim)', fontSize: '0.75rem' }}>Architecture Overview</span>
-          </div>
-          <h2 className="serif-heading" style={{ fontSize: '1.4rem', fontWeight: 700, color: 'var(--text-main)' }}>
-            {t.observabilityTitle}
-          </h2>
-          <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)' }}>{t.observabilityDesc}</p>
-        </div>
+        <span
+          style={{
+            fontSize: '0.77rem',
+            fontWeight: isSelected ? 700 : 600,
+            color: 'var(--text-main)',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
+          {item.name}
+        </span>
 
-        {/* OBSERVABILITY FILTER BAR */}
+        <span
+          className="mono-metric"
+          style={{
+            fontSize: '0.63rem',
+            fontWeight: 700,
+            color: dotColor,
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.3rem',
+            flexShrink: 0,
+          }}
+        >
+          <span
+            style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '999px',
+              backgroundColor: dotColor,
+              boxShadow: `0 0 7px ${dotColor}`,
+            }}
+          />
+          {getBadgeText(item)}
+        </span>
+      </div>
+    );
+  };
+
+  const renderDetailCard = (item) => {
+    if (!item) {
+      return (
+        <div
+          style={{
+            borderRadius: '16px',
+            background: 'var(--bg-panel-glass)',
+            backdropFilter: 'blur(14px)',
+            border: '1px dashed var(--border-light)',
+            padding: '1.5rem 1.25rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            color: 'var(--text-dim)',
+            fontSize: '0.76rem',
+            minHeight: '220px',
+          }}
+        >
+          {isES
+            ? 'Seleccioná cualquier card de la izquierda para abrir su diagnóstico completo acá.'
+            : 'Click any card on the left to inspect its full diagnostic details here.'}
+        </div>
+      );
+    }
+
+    const dotColor =
+      item.state === 'ERR' ? '#f43f5e' : item.state === 'WARN' ? '#f59e0b' : '#10b981';
+
+    const detailGradient =
+      item.state === 'ERR'
+        ? 'linear-gradient(145deg, rgba(244, 63, 94, 0.14) 0%, var(--bg-panel-glass) 70%)'
+        : item.state === 'WARN'
+        ? 'linear-gradient(145deg, rgba(245, 158, 11, 0.14) 0%, var(--bg-panel-glass) 70%)'
+        : 'linear-gradient(145deg, rgba(16, 185, 129, 0.10) 0%, var(--bg-panel-glass) 70%)';
+
+    const rows = [
+      {
+        label: isES ? 'Estado y Salud' : 'Status & Health',
+        value: isES ? item.healthyText.ES : item.healthyText.EN,
+        color: dotColor,
+        bold: true,
+      },
+      {
+        label: isES ? 'Última ejecución' : 'Last Run',
+        value: isES ? item.lastRun.ES : item.lastRun.EN,
+        color: 'var(--text-main)',
+      },
+      item.finopsCost && {
+        label: isES ? 'Costo FinOps' : 'FinOps Spend',
+        value: item.finopsCost,
+        color: '#10b981',
+        bold: true,
+      },
+      item.cloudTarget && {
+        label: isES ? 'Runtime Cloud' : 'Cloud Runtime',
+        value: item.cloudTarget,
+        color: 'var(--text-muted)',
+      },
+      item.repo && {
+        label: isES ? 'Repositorio' : 'Repository',
+        value: `ale-camer/${item.repo}`,
+        color: 'var(--text-main)',
+      },
+    ].filter(Boolean);
+
+    return (
+      <div
+        style={{
+          borderRadius: '16px',
+          background: detailGradient,
+          backdropFilter: 'blur(16px)',
+          border: `1px solid ${dotColor}`,
+          padding: '1.15rem 1.25rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.85rem',
+        }}
+      >
+        {/* Encabezado de la Card Abierta */}
         <div
           style={{
             display: 'flex',
-            alignItems: 'center',
-            gap: '0.45rem',
-            backgroundColor: 'var(--bg-panel)',
-            padding: '0.4rem 0.75rem',
-            borderRadius: '6px',
-            border: '1px solid var(--border-light)',
-            minWidth: '260px',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            gap: '0.75rem',
+            paddingBottom: '0.75rem',
+            borderBottom: '1px solid var(--border-light)',
           }}
         >
-          <Search size={14} strokeWidth={2.2} style={{ color: 'var(--text-dim)' }} />
-          <input
-            type="text"
-            placeholder={t.searchPipelines}
-            value={pipelineFilter}
-            onChange={(e) => setPipelineFilter(e.target.value)}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: 'var(--text-main)',
-              fontSize: '0.76rem',
-              outline: 'none',
-              width: '100%',
-              fontFamily: 'var(--font-sans)',
-            }}
-          />
-          {pipelineFilter && (
-            <button
-              onClick={() => setPipelineFilter('')}
-              style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', padding: 0 }}
-            >
-              <X size={12} />
-            </button>
-          )}
-        </div>
-      </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+            <span className="mono-metric" style={{ fontSize: '0.6rem', color: 'var(--text-dim)', fontWeight: 700 }}>
+              {item.repo
+                ? isES
+                  ? `PROYECTO DEL ECOSISTEMA • ${item.id}`
+                  : `ECOSYSTEM PROJECT • ${item.id}`
+                : isES
+                ? 'FINOPS & ALMACÉN COMPARTIDO'
+                : 'FINOPS & SHARED DATA STORE'}
+            </span>
+            <span style={{ fontSize: '0.96rem', fontWeight: 700, color: 'var(--text-main)', lineHeight: 1.25 }}>
+              {item.name}
+            </span>
+          </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem' }}>
-        {filteredPipelines.map((eng, idx) => (
-          <div key={idx} className="terminal-card" style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <span
+            className="mono-metric"
+            style={{
+              fontSize: '0.66rem',
+              fontWeight: 700,
+              color: dotColor,
+              padding: '0.22rem 0.6rem',
+              borderRadius: '999px',
+              border: `1px solid ${dotColor}`,
+              backgroundColor: 'rgba(0,0,0,0.22)',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.32rem',
+              flexShrink: 0,
+            }}
+          >
+            <span
+              style={{
+                width: '7px',
+                height: '7px',
+                borderRadius: '999px',
+                backgroundColor: dotColor,
+                boxShadow: `0 0 8px ${dotColor}`,
+              }}
+            />
+            {getBadgeText(item)}
+          </span>
+        </div>
+
+        {/* Filas de Diagnóstico */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.58rem' }}>
+          {rows.map((r) => (
+            <div
+              key={r.label}
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.14rem',
+              }}
+            >
+              <span style={{ fontSize: '0.64rem', color: 'var(--text-dim)', fontWeight: 600 }}>
+                {r.label}
+              </span>
               <span
                 className="mono-metric"
                 style={{
-                  backgroundColor: 'var(--accent-light)',
-                  color: 'var(--accent)',
                   fontSize: '0.72rem',
-                  fontWeight: 800,
-                  padding: '0.15rem 0.45rem',
-                  borderRadius: '3px',
+                  color: r.color,
+                  fontWeight: r.bold ? 600 : 500,
+                  lineHeight: 1.35,
                 }}
               >
-                {eng.id} • {eng.status.toUpperCase()}
-              </span>
-              <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--accent)', display: 'flex', alignItems: 'center', gap: '0.3rem' }}>
-                <CheckCircle2 size={13} strokeWidth={2.2} /> OK
+                {r.value}
               </span>
             </div>
-            <div>
-              <h3 style={{ fontSize: '0.92rem', fontWeight: 700, color: 'var(--text-main)' }}>{eng.name}</h3>
-              <span style={{ fontSize: '0.72rem', color: 'var(--text-dim)' }}>{eng.arch}</span>
-            </div>
+          ))}
+        </div>
+
+        {/* Bloque Destacado: Datos Esperados / Contrato Validado */}
+        <div
+          style={{
+            marginTop: '0.15rem',
+            padding: '0.75rem 0.85rem',
+            borderRadius: '11px',
+            backgroundColor: 'rgba(0, 0, 0, 0.22)',
+            border: '1px solid var(--border-light)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.28rem',
+          }}
+        >
+          <span
+            className="mono-metric"
+            style={{ fontSize: '0.6rem', fontWeight: 700, color: 'var(--text-dim)', textTransform: 'uppercase' }}
+          >
+            {isES ? 'Datos esperados / Vista de control' : 'Expected data / Validation view'}
+          </span>
+          <span
+            className="mono-metric"
+            style={{ fontSize: '0.7rem', color: 'var(--text-main)', lineHeight: 1.45 }}
+          >
+            {isES ? item.expectedData.ES : item.expectedData.EN}
+          </span>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.75rem',
+        maxWidth: '1180px',
+        margin: '0 auto',
+        width: '100%',
+        height: 'calc(100vh - 118px)',
+        overflow: 'hidden',
+      }}
+    >
+      {/* 1. RESUMEN SUPERIOR COMPACTO */}
+      <div
+        style={{
+          borderRadius: '13px',
+          background: summaryBgGradient,
+          backdropFilter: 'blur(14px)',
+          border: `1px solid ${summaryColor}`,
+          padding: '0.6rem 1.05rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '0.5rem',
+          flexShrink: 0,
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span
+            style={{
+              width: '8px',
+              height: '8px',
+              borderRadius: '999px',
+              backgroundColor: summaryColor,
+              boxShadow: `0 0 8px ${summaryColor}`,
+            }}
+          />
+          <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-main)' }}>
+            {summaryText}
+          </span>
+        </div>
+
+        <span className="mono-metric" style={{ fontSize: '0.66rem', color: summaryColor, fontWeight: 700 }}>
+          {isES ? 'FinOps GCP Real: ~$0.95 / $10.00 máx' : 'Real GCP FinOps: ~$0.95 / $10.00 cap'}
+        </span>
+      </div>
+
+      {/* 2. LAYOUT SIN SCROLL: 2 COLUMNAS COMPACTAS (IZQUIERDA) + 3ª COLUMNA DE DETALLE (DERECHA) */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'minmax(0, 1.75fr) minmax(320px, 1fr)',
+          gap: '0.9rem',
+          alignItems: 'start',
+          flex: 1,
+          minHeight: 0,
+        }}
+      >
+        {/* IZQUIERDA: TODAS LAS CARDS VISIBLES EN 2 COLUMNAS SIN SCROLL */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+          {/* FinOps & Almacenes Compartidos (4 en 2x2) */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem' }}>
+            <span
+              className="mono-metric"
+              style={{ fontSize: '0.58rem', color: 'var(--text-dim)', fontWeight: 700, paddingLeft: '0.15rem' }}
+            >
+              {isES ? 'FINOPS & CAPA DE DATOS COMPARTIDA (4)' : 'FINOPS & SHARED DATA STORES (4)'}
+            </span>
             <div
               style={{
-                backgroundColor: 'var(--bg-subtle)',
-                padding: '0.65rem',
-                borderRadius: '4px',
-                fontSize: '0.72rem',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.25rem',
-                marginTop: 'auto',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                gap: '0.42rem',
               }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: 'var(--text-dim)' }}>Role:</span>
-                <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{eng.role}</span>
-              </div>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <span style={{ color: 'var(--text-dim)' }}>Metric:</span>
-                <span className="mono-metric" style={{ color: 'var(--accent)', fontWeight: 600 }}>
-                  {eng.sync}
-                </span>
-              </div>
+              {stores.map(renderCompactCard)}
             </div>
           </div>
-        ))}
+
+          {/* Los 13 Proyectos del Ecosistema (13 en 2 columnas) */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem' }}>
+            <span
+              className="mono-metric"
+              style={{ fontSize: '0.58rem', color: 'var(--text-dim)', fontWeight: 700, paddingLeft: '0.15rem' }}
+            >
+              {isES ? 'PROYECTOS Y SERVICIOS DEL ECOSISTEMA (13)' : 'ECOSYSTEM PROJECTS & SERVICES (13)'}
+            </span>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                gap: '0.42rem',
+              }}
+            >
+              {projects.map(renderCompactCard)}
+            </div>
+          </div>
+        </div>
+
+        {/* DERECHA (3ª COLUMNA): CARD COMPLETA ABIERTA AL HACER CLIC */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem' }}>
+          <span
+            className="mono-metric"
+            style={{ fontSize: '0.58rem', color: 'var(--text-dim)', fontWeight: 700, paddingLeft: '0.15rem' }}
+          >
+            {isES ? 'DETALLE DEL PROYECTO / RECURSO SELECCIONADO' : 'SELECTED PROJECT / RESOURCE DETAIL'}
+          </span>
+          {renderDetailCard(selectedItem)}
+        </div>
       </div>
     </div>
   );
 }
-

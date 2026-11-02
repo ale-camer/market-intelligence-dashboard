@@ -31,16 +31,30 @@ import {
   GLOBAL_VOLUME_SPARKLINE,
   getAssetBySymbol,
   getAssetSeries,
+  SOVEREIGN_YIELD_CURVES,
+  computeSovereignCurveMetrics,
+  WORLD_USD_RATES,
+  computeCrossCurrencyRate,
+  getHighVolumeOptionsChain,
+  getCommodityForwardCurve,
+  getAssetClassSpecificMetrics,
+  OPTIONS_STRATEGIES,
+  computeOptionsStrategyPayoff,
+  computeVolatilitySurface3D,
+  computeSovereignYieldSurface3D,
+  computeCommodityForwardSurface3D,
 } from '../services/marketService';
+import Surface3DViewer from './Surface3DViewer';
 import { getAnomalyProfile, runLiveAnomalyInference } from '../services/anomalyService';
 import {
-  SEC_10K_CHUNKS,
   FINBERT_HEADLINES,
-  LIVE_WIRE_POOL,
   RAG_QUICK_TOPICS,
+  getRagQuickTopicsForCategory,
   IMPORTANCE_WEIGHTS,
   getAssetClassSensitivity,
   getAssetResearchBrief,
+  getAssetFinbertHeadlines,
+  getAssetLiveWirePool,
   executeSec10kRagQuery,
 } from '../services/filingsAndNewsService';
 import { getCommitteeDeliberation } from '../services/committeeService';
@@ -219,14 +233,14 @@ function evaluateHistoricalMetric(row, metricKey, isES = false) {
 }
 
 // Radial SVG Gauge for Top Aggregated Pulse Cards
-function RadialRingGauge({ pct = 50, color = '#10b981', label = '', sub = '', size = 54 }) {
+function RadialRingGauge({ pct = 50, color = '#10b981', label = '', sub = '', detail = null, size = 54 }) {
   const r = (size - 10) / 2;
   const c = 2 * Math.PI * r;
   const clamped = Math.max(0, Math.min(100, pct));
   const offset = c - (clamped / 100) * c;
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
       <div style={{ position: 'relative', width: `${size}px`, height: `${size}px`, flexShrink: 0 }}>
         <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ transform: 'rotate(-90deg)' }}>
           <circle
@@ -258,7 +272,7 @@ function RadialRingGauge({ pct = 50, color = '#10b981', label = '', sub = '', si
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontSize: '0.72rem',
+            fontSize: '0.74rem',
             fontWeight: 800,
             color: 'var(--text-main)',
           }}
@@ -266,9 +280,10 @@ function RadialRingGauge({ pct = 50, color = '#10b981', label = '', sub = '', si
           {label}
         </div>
       </div>
-      {sub && (
-        <div>
-          <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-main)' }}>{sub}</div>
+      {(sub || detail) && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.16rem' }}>
+          {sub && <div style={{ fontSize: '0.73rem', fontWeight: 700, color: 'var(--text-main)' }}>{sub}</div>}
+          {detail && <div style={{ fontSize: '0.62rem', color: 'var(--text-dim)', lineHeight: 1.3 }}>{detail}</div>}
         </div>
       )}
     </div>
@@ -314,6 +329,8 @@ export default function MarketAnomaliesView({
   onSelectAsset,
   initialViewMode = 'screener',
   onViewModeChange,
+  watchlistSyms = [],
+  onToggleWatchlist,
   langCode = 'EN',
   t,
 }) {
@@ -327,28 +344,75 @@ export default function MarketAnomaliesView({
       setViewModeState(initialViewMode);
     }
   }, [initialViewMode]);
-  const [visualMode, setVisualMode] = useState('table');
+  const [visualMode, setVisualMode] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    return p.get('screener') || 'table';
+  });
   const [activeMetric, setActiveMetric] = useState('anomaly');
   const [hoveredAsset, setHoveredAsset] = useState('SOL');
   const [assetSearch, setAssetSearch] = useState('');
   const [l1SelectedIndex, setL1SelectedIndex] = useState(0);
-  const [categoryFilter, setCategoryFilter] = useState('ALL');
+  const [categoryFilter, setCategoryFilter] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    return p.get('cat') || 'ALL';
+  });
   const [sortBy, setSortBy] = useState('rank');
   const [sortAsc, setSortAsc] = useState(true);
 
   // Level 2 (Horizon Editorial) states
-  const [l2Section, setL2Section] = useState('analytics'); // 'analytics' | 'research'
+  const [l2Section, setL2Section] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    return p.get('section') === 'research' ? 'research' : 'analytics';
+  }); // 'analytics' | 'research'
   const [timeframe, setTimeframe] = useState('1D');
   const [l2TickerQuery, setL2TickerQuery] = useState('');
   const [l2SearchOpen, setL2SearchOpen] = useState(false);
   const [l2SelectedIndex, setL2SelectedIndex] = useState(0);
   // Active analysis lens: 'technical' | 'compare' | 'microstructure' | 'derivatives'
-  const [analysisLens, setAnalysisLens] = useState('technical');
+  const [analysisLens, setAnalysisLens] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    return p.get('lens') || 'technical';
+  });
   const [showSma20, setShowSma20] = useState(true);
   const [showBollinger, setShowBollinger] = useState(false);
   const [showVwap, setShowVwap] = useState(false);
   const [showSubChart, setShowSubChart] = useState('vol'); // 'none' | 'vol' | 'zscore'
   const [compareSymbol, setCompareSymbol] = useState(null); // e.g. 'ETH', 'SPY', null
+  const [compareQuery, setCompareQuery] = useState('');
+  const [compareDropdownOpen, setCompareDropdownOpen] = useState(false);
+  const [compareSelectedIndex, setCompareSelectedIndex] = useState(0);
+  const [selectedCurveCountry, setSelectedCurveCountry] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    return p.get('country') || 'US';
+  });
+  const [fxBaseCcy, setFxBaseCcy] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    return p.get('fxBase') || 'EUR';
+  });
+  const [fxQuoteCcy, setFxQuoteCcy] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    return p.get('fxQuote') || 'BRL';
+  });
+  const [fxAmount, setFxAmount] = useState(1000);
+  const [optionsSubView, setOptionsSubView] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    const sub = p.get('sub');
+    return sub && ['surface3d', 'surface', 'payoff'].includes(sub) ? sub : 'surface3d';
+  }); // 'surface3d' | 'surface' | 'payoff'
+  const [ratesSubView, setRatesSubView] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    const sub = p.get('sub');
+    return sub && ['3d-history', '3d-peers', '2d'].includes(sub) ? sub : '3d-history';
+  }); // '3d-history' | '3d-peers' | '2d'
+  const [commoditySubView, setCommoditySubView] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    const sub = p.get('sub');
+    return sub && ['3d', '2d'].includes(sub) ? sub : '3d';
+  }); // '3d' | '2d'
+  const [selectedOptStrategy, setSelectedOptStrategy] = useState(() => {
+    const p = new URLSearchParams(window.location.search);
+    return p.get('strategy') || 'LONG_STRADDLE';
+  });
   const [liveInference, setLiveInference] = useState(null);
   const [isScoring, setIsScoring] = useState(false);
 
@@ -387,11 +451,14 @@ export default function MarketAnomaliesView({
     });
   }, [langCode]);
 
-  // 1. Filter by Asset Category
+  // 1. Filter by Asset Category or User Watchlist
   const categoryFilteredCatalog = useMemo(() => {
     if (categoryFilter === 'ALL') return enrichedCatalog;
+    if (categoryFilter === 'WATCHLIST') {
+      return enrichedCatalog.filter((a) => watchlistSyms.includes(a.sym));
+    }
     return enrichedCatalog.filter((a) => a.cat === categoryFilter);
-  }, [enrichedCatalog, categoryFilter]);
+  }, [enrichedCatalog, categoryFilter, watchlistSyms]);
 
   // 2. Aggregated Level 1 Pulse Metrics
   const pulseMetrics = useMemo(() => {
@@ -401,6 +468,8 @@ export default function MarketAnomaliesView({
     const normalCount = source.filter((a) => a.regime === 'NORMAL').length;
     const elevatedCount = source.filter((a) => a.regime === 'ELEVATED').length;
     const dislocatedAssets = source.filter((a) => a.regime === 'DISLOCATION');
+    const normalPct = Math.round((normalCount / source.length) * 100);
+    const topAnomaly = [...source].sort((a, b) => b.anomalyScore - a.anomalyScore)[0] || source[0];
     const topDislocations = [...source]
       .sort((a, b) => b.volumeZNum - a.volumeZNum)
       .slice(0, 3);
@@ -411,8 +480,10 @@ export default function MarketAnomaliesView({
       avgRsi: avgRsi.toFixed(1),
       avgRsiNum: avgRsi,
       normalCount,
+      normalPct,
       elevatedCount,
       dislocatedAssets,
+      topAnomaly,
       topDislocations,
     };
   }, [categoryFilteredCatalog, enrichedCatalog]);
@@ -452,10 +523,68 @@ export default function MarketAnomaliesView({
     }
   };
 
-  const handleOpenAssetDetail = (sym) => {
+  const handleOpenAssetDetail = (sym, forceLens = null) => {
+    const assetObj = getAssetBySymbol(sym);
     onSelectAsset(sym);
+    if (forceLens) {
+      setAnalysisLens(forceLens);
+    } else if (
+      assetObj &&
+      ['RATES', 'FIXED_INCOME', 'DERIVATIVES_VOL', 'FX', 'COMMODITY'].includes(assetObj.cat)
+    ) {
+      // Automatically open the specialized quantitative lens (Sovereign Curve, 3D Vol Surface, FX Cross, Commodity Forward)
+      setAnalysisLens('derivatives');
+    }
     setViewMode('detail');
   };
+
+  // Bidirectional URL Synchronization for Health Checks & Visual Audits
+  useEffect(() => {
+    const params = new URLSearchParams();
+    params.set('view', 'markets');
+    if (viewMode === 'screener') {
+      params.set('mode', 'screener');
+      if (categoryFilter !== 'ALL') params.set('cat', categoryFilter);
+      if (visualMode !== 'table') params.set('screener', visualMode);
+    } else {
+      params.set('mode', 'detail');
+      params.set('asset', selectedAsset);
+      params.set('section', l2Section);
+      if (l2Section === 'analytics') {
+        params.set('lens', analysisLens);
+        if (analysisLens === 'derivatives') {
+          const aObj = getAssetBySymbol(selectedAsset);
+          if (aObj.cat === 'RATES' || aObj.cat === 'FIXED_INCOME' || aObj.cat === 'CASH') {
+            params.set('sub', ratesSubView);
+            params.set('country', selectedCurveCountry);
+          } else if (aObj.cat === 'FX') {
+            params.set('fxBase', fxBaseCcy);
+            params.set('fxQuote', fxQuoteCcy);
+          } else if (aObj.cat === 'COMMODITY') {
+            params.set('sub', commoditySubView);
+          } else {
+            params.set('sub', optionsSubView);
+            if (optionsSubView === 'payoff') params.set('strategy', selectedOptStrategy);
+          }
+        }
+      }
+    }
+    window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
+  }, [
+    viewMode,
+    categoryFilter,
+    visualMode,
+    selectedAsset,
+    l2Section,
+    analysisLens,
+    ratesSubView,
+    selectedCurveCountry,
+    fxBaseCcy,
+    fxQuoteCcy,
+    commoditySubView,
+    optionsSubView,
+    selectedOptStrategy,
+  ]);
 
   // Level 2 data
   const currentAsset = useMemo(() => getAssetBySymbol(selectedAsset), [selectedAsset]);
@@ -488,6 +617,45 @@ export default function MarketAnomaliesView({
     }
   };
 
+  const COMPATIBLE_COMPARE_CATEGORIES = useMemo(
+    () => ({
+      EQUITY: ['EQUITY', 'ETF', 'INDEX'],
+      ETF: ['ETF', 'INDEX', 'EQUITY', 'COMMODITY', 'FIXED_INCOME'],
+      INDEX: ['INDEX', 'ETF', 'EQUITY'],
+      CRYPTO: ['CRYPTO', 'ETF'],
+      RATES: ['RATES', 'FIXED_INCOME', 'CASH'],
+      FIXED_INCOME: ['FIXED_INCOME', 'RATES', 'CASH', 'ETF'],
+      CASH: ['CASH', 'RATES', 'FIXED_INCOME'],
+      FX: ['FX'],
+      COMMODITY: ['COMMODITY', 'ETF'],
+      DERIVATIVES_VOL: ['DERIVATIVES_VOL', 'INDEX', 'EQUITY'],
+    }),
+    []
+  );
+
+  // Compatible assets for Relative Comparison (same class prioritized first, then compatible peer class)
+  const compatibleCompareMatches = useMemo(() => {
+    const allowedCats = COMPATIBLE_COMPARE_CATEGORIES[currentAsset.cat] || [currentAsset.cat];
+    const q = compareQuery.trim().toLowerCase();
+    return enrichedCatalog
+      .filter((a) => a.sym !== selectedAsset && allowedCats.includes(a.cat))
+      .filter((a) => {
+        if (!q) return true;
+        return (
+          a.sym.toLowerCase().includes(q) ||
+          a.name.toLowerCase().includes(q) ||
+          a.cat.toLowerCase().includes(q)
+        );
+      })
+      .sort((a, b) => {
+        const aSame = a.cat === currentAsset.cat ? 0 : 1;
+        const bSame = b.cat === currentAsset.cat ? 0 : 1;
+        if (aSame !== bSame) return aSame - bSame;
+        return a.rank - b.rank;
+      })
+      .slice(0, 12);
+  }, [enrichedCatalog, currentAsset.cat, selectedAsset, compareQuery, COMPATIBLE_COMPARE_CATEGORIES]);
+
   useEffect(() => {
     if (viewMode === 'detail') {
       setLiveInference(null);
@@ -499,6 +667,24 @@ export default function MarketAnomaliesView({
       setLiveBullUpdates([]);
       setLiveBearUpdates([]);
       setLastUpdatedPart(null);
+      const assetObj = getAssetBySymbol(selectedAsset);
+      // Clear compareSymbol if it is identical or belongs to an incompatible asset class
+      if (compareSymbol) {
+        const cmpObj = getAssetBySymbol(compareSymbol);
+        const allowed = COMPATIBLE_COMPARE_CATEGORIES[assetObj.cat] || [assetObj.cat];
+        if (compareSymbol === selectedAsset || !allowed.includes(cmpObj.cat)) {
+          setCompareSymbol(null);
+          setCompareQuery('');
+        }
+      }
+      if (assetObj.countryCode && SOVEREIGN_YIELD_CURVES[assetObj.countryCode]) {
+        setSelectedCurveCountry(assetObj.countryCode);
+      }
+      if (assetObj.cat === 'FX' && assetObj.sym.includes('/')) {
+        const [b, q] = assetObj.sym.split('/');
+        if (WORLD_USD_RATES[b]) setFxBaseCcy(b);
+        if (WORLD_USD_RATES[q]) setFxQuoteCcy(q);
+      }
     }
   }, [selectedAsset, viewMode]);
 
@@ -509,7 +695,7 @@ export default function MarketAnomaliesView({
 
   // Function to push a new incoming wire headline to the top of the stream and update Top-5 Bull/Bear when warranted
   const pushIncomingWireHeadline = () => {
-    const pool = LIVE_WIRE_POOL[selectedAsset] || LIVE_WIRE_POOL.BTC;
+    const pool = getAssetLiveWirePool(selectedAsset);
     if (!pool.length) return;
     const item = pool[wireCursor % pool.length];
     const now = new Date();
@@ -568,7 +754,7 @@ export default function MarketAnomaliesView({
 
   // Automatic live wire simulation every 18 seconds while in Level 2 Research mode (stops once pool is shown)
   useEffect(() => {
-    const pool = LIVE_WIRE_POOL[selectedAsset] || LIVE_WIRE_POOL.BTC;
+    const pool = getAssetLiveWirePool(selectedAsset);
     if (viewMode !== 'detail' || l2Section !== 'research' || wireCursor >= pool.length) return undefined;
     const timer = setInterval(() => {
       pushIncomingWireHeadline();
@@ -578,8 +764,7 @@ export default function MarketAnomaliesView({
 
   // P-04 & P-08 FinBERT headlines for Level 2 Research (Latest 5 headlines, Live wire prepended at the top)
   const assetFinbertNews = useMemo(() => {
-    const direct = FINBERT_HEADLINES.filter((h) => h.sym === selectedAsset);
-    const baseList = direct.length > 0 ? direct : FINBERT_HEADLINES;
+    const baseList = getAssetFinbertHeadlines(selectedAsset);
     return [...liveWireItems, ...baseList].slice(0, 5);
   }, [selectedAsset, liveWireItems]);
 
@@ -640,7 +825,7 @@ export default function MarketAnomaliesView({
     // Asset-class composite score combining Document Fundamentals + News Sentiment according to asset sensitivity
     const compositeScore = Math.round(
       filingNet * assetSensitivity.fundamentalWeight +
-        assetFinbertPolarity.score100 * assetSensitivity.newsWeight
+      assetFinbertPolarity.score100 * assetSensitivity.newsWeight
     );
     const fundamentalLinePct = Math.min(97, Math.max(3, ((filingNet + 100) / 200) * 100));
 
@@ -726,15 +911,17 @@ export default function MarketAnomaliesView({
     const spotlightSeries = getAssetSeries(spotlightItem.sym, '5M');
     const spotlightMetricInfo = evaluateHistoricalMetric(spotlightItem, activeMetric, isES);
 
-    // For Orbital: keep fixed angular vector order by catalog `rank`
-    const orbitalItems = [...screenerRows].sort((a, b) => a.rank - b.rank);
+    // For Orbital: keep fixed angular vector order by catalog `rank` (top 12 of active filter so radar stays clean)
+    const orbitalItems = [...screenerRows].sort((a, b) => a.rank - b.rank).slice(0, 12);
 
-    // For Heatmap: strictly sort descending by the active indicator's `sortMagnitude`
-    const heatmapItems = [...screenerRows].sort(
-      (a, b) =>
-        evaluateHistoricalMetric(b, activeMetric, isES).sortMagnitude -
-        evaluateHistoricalMetric(a, activeMetric, isES).sortMagnitude
-    );
+    // For Heatmap: strictly sort descending by the active indicator's `sortMagnitude` (top 10 of active filter)
+    const heatmapItems = [...screenerRows]
+      .sort(
+        (a, b) =>
+          evaluateHistoricalMetric(b, activeMetric, isES).sortMagnitude -
+          evaluateHistoricalMetric(a, activeMetric, isES).sortMagnitude
+      )
+      .slice(0, 10);
 
     // Group heatmapItems into vertical columns (First Vertical top-to-bottom, Then Horizontal left-to-right):
     // Col 1 (Leftmost, widest): #1 and #2 stacked vertically
@@ -781,32 +968,42 @@ export default function MarketAnomaliesView({
         {/* 1.0 TOP BAR (ABOVE AGGREGATED INDICATORS): CENTERED ASSET TYPE PILLS */}
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr auto 1fr',
+            display: 'flex',
+            justifyContent: 'center',
             alignItems: 'center',
             flexShrink: 0,
           }}
         >
-          <div />
-
-          {/* CENTER: ASSET CATEGORY FILTER PILLS */}
+          {/* CENTER: 10-CATEGORY GLOBAL ASSET UNIVERSE FILTER PILLS */}
           <div
             style={{
               display: 'inline-flex',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
               backgroundColor: 'rgba(13, 19, 33, 0.62)',
               backdropFilter: 'blur(12px)',
               padding: '0.24rem',
               borderRadius: '999px',
               border: '1px solid rgba(255, 255, 255, 0.09)',
-              gap: '0.25rem',
+              gap: '0.2rem',
               boxShadow: '0 6px 20px rgba(0, 0, 0, 0.25)',
             }}
           >
             {[
               { id: 'ALL', label: isES ? 'Todos' : 'All' },
-              { id: 'CRYPTO', label: 'Crypto' },
-              { id: 'EQUITY', label: isES ? 'Acciones' : 'Equities' },
-              { id: 'INDEX', label: isES ? 'Índices' : 'Indices' },
+              { id: 'WATCHLIST', label: `★ Watchlist (${watchlistSyms.length})` },
+              ...[
+                { id: 'INDEX', label: isES ? 'Índices' : 'Indices' },
+                { id: 'EQUITY', label: isES ? 'Acciones (S&P/NDX)' : 'Equities (S&P/NDX)' },
+                { id: 'ETF', label: 'ETFs' },
+                { id: 'CRYPTO', label: 'Crypto' },
+                { id: 'RATES', label: isES ? 'Tasas & Curvas' : 'Rates & Curves' },
+                { id: 'FIXED_INCOME', label: isES ? 'Bonos US Treasury' : 'US Treasuries' },
+                { id: 'FX', label: isES ? 'Divisas (FX)' : 'FX Currencies' },
+                { id: 'COMMODITY', label: isES ? 'Materias Primas' : 'Commodities' },
+                { id: 'DERIVATIVES_VOL', label: isES ? 'Derivados & Vol' : 'Derivatives & Vol' },
+                { id: 'CASH', label: 'Cash & SOFR' },
+              ].sort((a, b) => a.label.localeCompare(b.label, isES ? 'es' : 'en')),
             ].map((tab) => {
               const active = categoryFilter === tab.id;
               return (
@@ -814,15 +1011,16 @@ export default function MarketAnomaliesView({
                   key={tab.id}
                   onClick={() => setCategoryFilter(tab.id)}
                   style={{
-                    fontSize: '0.74rem',
+                    fontSize: '0.7rem',
                     fontWeight: active ? 700 : 600,
-                    padding: '0.3rem 1.05rem',
+                    padding: '0.26rem 0.78rem',
                     borderRadius: '999px',
                     border: active ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid transparent',
                     backgroundColor: active ? 'rgba(16, 185, 129, 0.16)' : 'transparent',
                     color: active ? '#ffffff' : 'var(--text-dim)',
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   {tab.label}
@@ -830,8 +1028,6 @@ export default function MarketAnomaliesView({
               );
             })}
           </div>
-
-          <div />
         </div>
 
         {/* 1.1 AGGREGATED MARKET INDICATORS */}
@@ -929,29 +1125,57 @@ export default function MarketAnomaliesView({
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
+              gap: '0.6rem',
             }}
           >
             <RadialRingGauge
-              pct={(pulseMetrics.normalCount / pulseMetrics.totalCount) * 100}
+              pct={pulseMetrics.normalPct}
               color="#10b981"
-              label={`${pulseMetrics.normalCount}/${pulseMetrics.totalCount}`}
-              sub={isES ? 'Régimen Normal' : 'Normal Regime'}
+              label={`${pulseMetrics.normalPct}%`}
+              sub={isES ? 'Régimen Normal (P-06)' : 'Normal Regime (P-06)'}
+              detail={
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
+                  <div>
+                    <span className="mono-metric" style={{ color: '#10b981', fontWeight: 800, fontSize: '0.68rem' }}>
+                      {pulseMetrics.normalCount} / {pulseMetrics.totalCount}
+                    </span>{' '}
+                    <span>{isES ? 'activos normales' : 'normal assets'}</span>
+                  </div>
+                  <div style={{ fontSize: '0.58rem' }}>
+                    <span className="mono-metric" style={{ color: '#fb7185', fontWeight: 700 }}>
+                      {pulseMetrics.elevatedCount} {isES ? 'Elevados' : 'Elevated'}
+                    </span>
+                    {' • '}
+                    <span className="mono-metric" style={{ color: '#f43f5e', fontWeight: 700 }}>
+                      {pulseMetrics.dislocatedAssets.length} {isES ? 'Disloc.' : 'Disloc.'}
+                    </span>
+                  </div>
+                </div>
+              }
             />
-            <span
-              onClick={() => handleOpenAssetDetail('SOL')}
-              className="mono-metric"
-              style={{
-                fontSize: '0.66rem',
-                fontWeight: 700,
-                padding: '0.22rem 0.55rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(244, 63, 94, 0.16)',
-                color: '#f43f5e',
-                cursor: 'pointer',
-              }}
-            >
-              SOL 0.659 ↗
-            </span>
+            {pulseMetrics.topAnomaly && (
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.2rem', flexShrink: 0 }}>
+                <span className="mono-metric" style={{ fontSize: '0.54rem', color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
+                  {isES ? 'MAYOR ANOMALÍA' : 'TOP ANOMALY'}
+                </span>
+                <span
+                  onClick={() => handleOpenAssetDetail(pulseMetrics.topAnomaly.sym)}
+                  className="mono-metric"
+                  style={{
+                    fontSize: '0.65rem',
+                    fontWeight: 700,
+                    padding: '0.22rem 0.55rem',
+                    borderRadius: '999px',
+                    backgroundColor: 'rgba(244, 63, 94, 0.16)',
+                    color: '#f43f5e',
+                    cursor: 'pointer',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {pulseMetrics.topAnomaly.sym} {pulseMetrics.topAnomaly.anomalyScore.toFixed(3)} ↗
+                </span>
+              </div>
+            )}
           </div>
 
           {/* PULSE 4: TOP VOLUME Z-SCORE DISLOCATIONS */}
@@ -1022,108 +1246,187 @@ export default function MarketAnomaliesView({
             flexShrink: 0,
           }}
         >
-          {/* Left: View Mode Switcher (Table / Orbital / Heatmap) */}
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              backgroundColor: 'var(--bg-panel-glass)',
-              backdropFilter: 'blur(12px)',
-              padding: '0.22rem',
-              borderRadius: '999px',
-              border: '1px solid rgba(255, 255, 255, 0.08)',
-              gap: '0.25rem',
-            }}
-          >
-            {[
-              { id: 'table', icon: Table2, label: isES ? 'Tabla' : 'Table' },
-              { id: 'orbital', icon: Orbit, label: isES ? 'Orbital' : 'Orbital' },
-              { id: 'heatmap', icon: LayoutGrid, label: isES ? 'Mapa de Calor' : 'Heatmap' },
-            ].map((mode) => {
-              const Icon = mode.icon;
-              const active = visualMode === mode.id;
-              return (
-                <button
-                  key={mode.id}
-                  onClick={() => setVisualMode(mode.id)}
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    fontSize: '0.72rem',
-                    fontWeight: active ? 700 : 600,
-                    padding: '0.3rem 0.9rem',
-                    borderRadius: '999px',
-                    border: active ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid transparent',
-                    backgroundColor: active ? 'rgba(16, 185, 129, 0.16)' : 'transparent',
-                    color: active ? '#ffffff' : 'var(--text-dim)',
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                  }}
-                >
-                  <Icon size={13} />
-                  <span>{mode.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right: Indicator Driver Selector (Appears when user selects Orbital or Heatmap) */}
-          {(visualMode === 'orbital' || visualMode === 'heatmap') && (
+          {/* Left: View Mode Switcher (Table / Orbital / Heatmap) + Contextual Indicator Selector */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
             <div
               style={{
-                display: 'flex',
+                display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.4rem',
-                padding: '0.24rem 0.55rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(13, 19, 33, 0.62)',
+                backgroundColor: 'var(--bg-panel-glass)',
                 backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255, 255, 255, 0.09)',
-                flexWrap: 'wrap',
+                padding: '0.22rem',
+                borderRadius: '999px',
+                border: '1px solid rgba(255, 255, 255, 0.08)',
+                gap: '0.25rem',
               }}
             >
-              <div
-                className="mono-metric"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  fontSize: '0.64rem',
-                  fontWeight: 700,
-                  color: 'var(--text-muted)',
-                  paddingLeft: '0.35rem',
-                  paddingRight: '0.25rem',
-                }}
-              >
-                <SlidersHorizontal size={12} style={{ color: '#10b981' }} />
-                <span>{isES ? 'INDICADOR:' : 'INDICATOR:'}</span>
-              </div>
-
-              {METRIC_OPTIONS.map((m) => {
-                const active = activeMetric === m.id;
+              {[
+                { id: 'table', icon: Table2, label: isES ? 'Tabla' : 'Table' },
+                { id: 'orbital', icon: Orbit, label: isES ? 'Orbital' : 'Orbital' },
+                { id: 'heatmap', icon: LayoutGrid, label: isES ? 'Mapa de Calor' : 'Heatmap' },
+              ].map((mode) => {
+                const Icon = mode.icon;
+                const active = visualMode === mode.id;
                 return (
                   <button
-                    key={m.id}
-                    onClick={() => setActiveMetric(m.id)}
+                    key={mode.id}
+                    onClick={() => setVisualMode(mode.id)}
                     style={{
-                      fontSize: '0.68rem',
-                      fontWeight: active ? 700 : 500,
-                      padding: '0.24rem 0.7rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.4rem',
+                      fontSize: '0.72rem',
+                      fontWeight: active ? 700 : 600,
+                      padding: '0.3rem 0.9rem',
                       borderRadius: '999px',
-                      border: active ? '1px solid #10b981' : '1px solid transparent',
+                      border: active ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid transparent',
                       backgroundColor: active ? 'rgba(16, 185, 129, 0.16)' : 'transparent',
                       color: active ? '#ffffff' : 'var(--text-dim)',
                       cursor: 'pointer',
                       transition: 'all 0.15s ease',
                     }}
                   >
-                    {m.label}
+                    <Icon size={13} />
+                    <span>{mode.label}</span>
                   </button>
                 );
               })}
             </div>
-          )}
+
+            {/* Indicator Driver Selector (Appears when user selects Orbital or Heatmap) */}
+            {(visualMode === 'orbital' || visualMode === 'heatmap') && (
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  padding: '0.24rem 0.55rem',
+                  borderRadius: '999px',
+                  backgroundColor: 'rgba(13, 19, 33, 0.62)',
+                  backdropFilter: 'blur(12px)',
+                  border: '1px solid rgba(255, 255, 255, 0.09)',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <div
+                  className="mono-metric"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.35rem',
+                    fontSize: '0.64rem',
+                    fontWeight: 700,
+                    color: 'var(--text-muted)',
+                    paddingLeft: '0.35rem',
+                    paddingRight: '0.25rem',
+                  }}
+                >
+                  <SlidersHorizontal size={12} style={{ color: '#10b981' }} />
+                  <span>{isES ? 'INDICADOR:' : 'INDICATOR:'}</span>
+                </div>
+
+                {METRIC_OPTIONS.map((m) => {
+                  const active = activeMetric === m.id;
+                  return (
+                    <button
+                      key={m.id}
+                      onClick={() => setActiveMetric(m.id)}
+                      style={{
+                        fontSize: '0.68rem',
+                        fontWeight: active ? 700 : 500,
+                        padding: '0.24rem 0.7rem',
+                        borderRadius: '999px',
+                        border: active ? '1px solid #10b981' : '1px solid transparent',
+                        backgroundColor: active ? 'rgba(16, 185, 129, 0.16)' : 'transparent',
+                        color: active ? '#ffffff' : 'var(--text-dim)',
+                        cursor: 'pointer',
+                        transition: 'all 0.15s ease',
+                      }}
+                    >
+                      {m.label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Right: Direct 1-Click Access to the 4 Quantitative Engines aligned to the right edge */}
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'flex-end',
+              marginLeft: 'auto',
+              backgroundColor: 'rgba(13, 19, 33, 0.65)',
+              padding: '0.2rem 0.35rem',
+              borderRadius: '999px',
+              border: '1px solid rgba(56, 189, 248, 0.22)',
+              gap: '0.25rem',
+              flexWrap: 'wrap',
+            }}
+          >
+            {[
+              {
+                id: 'sovereign-curve',
+                label: isES ? '🌐 Curva Soberana 3D/2D (42 Países)' : '🌐 Sovereign Curve 3D/2D (42 Countries)',
+                action: () => {
+                  setL2Section('analytics');
+                  setAnalysisLens('derivatives');
+                  setRatesSubView('3d-history');
+                  handleOpenAssetDetail('US10Y', 'derivatives');
+                },
+              },
+              {
+                id: 'vol-surface-3d',
+                label: isES ? '📐 Superficie Volatilidad 3D' : '📐 3D Volatility Surface',
+                action: () => {
+                  setL2Section('analytics');
+                  setAnalysisLens('derivatives');
+                  setOptionsSubView('surface3d');
+                  handleOpenAssetDetail('NVDA-OPT', 'derivatives');
+                },
+              },
+              {
+                id: 'options-payoff',
+                label: isES ? '⚡ Payoff P&L & Sintéticos' : '⚡ Options Payoff & Synthetics',
+                action: () => {
+                  setL2Section('analytics');
+                  setAnalysisLens('derivatives');
+                  setOptionsSubView('payoff');
+                  handleOpenAssetDetail('NVDA-OPT', 'derivatives');
+                },
+              },
+              {
+                id: 'fx-cross',
+                label: isES ? '💱 Conversor FX (61 Monedas)' : '💱 FX Cross Converter (61 CCY)',
+                action: () => {
+                  setL2Section('analytics');
+                  setAnalysisLens('derivatives');
+                  handleOpenAssetDetail('EUR/USD', 'derivatives');
+                },
+              },
+            ].map((qBtn) => (
+              <button
+                key={qBtn.id}
+                type="button"
+                onClick={qBtn.action}
+                style={{
+                  fontSize: '0.66rem',
+                  fontWeight: 700,
+                  padding: '0.22rem 0.68rem',
+                  borderRadius: '999px',
+                  border: '1px solid rgba(56, 189, 248, 0.28)',
+                  backgroundColor: 'rgba(56, 189, 248, 0.1)',
+                  color: '#38bdf8',
+                  cursor: 'pointer',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                {qBtn.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* ==================================================================== */}
@@ -1251,12 +1554,26 @@ export default function MarketAnomaliesView({
                   <th onClick={() => handleSort('vol')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
                     {isES ? 'Volumen (24h)' : 'Volume (24h)'} ↕
                   </th>
-                  <th onClick={() => handleSort('zscore')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
-                    Vol Z-Score (20d) ↕
-                  </th>
-                  <th onClick={() => handleSort('rvol')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
-                    {isES ? 'Vol. Realizada' : 'Realized Vol'} ↕
-                  </th>
+                  {categoryFilter === 'ALL' ? (
+                    <>
+                      <th onClick={() => handleSort('zscore')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
+                        Vol Z-Score (20d) ↕
+                      </th>
+                      <th onClick={() => handleSort('rvol')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
+                        {isES ? 'Vol. Realizada' : 'Realized Vol'} ↕
+                      </th>
+                    </>
+                  ) : (
+                    (() => {
+                      const sampleSpec = getAssetClassSpecificMetrics(screenerRows[0] || { cat: categoryFilter }, isES);
+                      return (
+                        <>
+                          <th style={{ padding: '0.45rem 0.85rem', color: '#10b981' }}>{sampleSpec.col1Label}</th>
+                          <th style={{ padding: '0.45rem 0.85rem', color: '#38bdf8' }}>{sampleSpec.col2Label}</th>
+                        </>
+                      );
+                    })()
+                  )}
                   <th onClick={() => handleSort('rsi')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
                     RSI (14) ↕
                   </th>
@@ -1297,12 +1614,42 @@ export default function MarketAnomaliesView({
                           borderLeft: '1px solid rgba(255, 255, 255, 0.07)',
                           borderTopLeftRadius: '16px',
                           borderBottomLeftRadius: '16px',
-                          padding: '0.75rem 0.75rem',
+                          padding: '0.75rem 0.65rem',
                           textAlign: 'center',
                           color: 'var(--text-dim)',
                         }}
                       >
-                        {row.rank}
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.38rem' }}>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (onToggleWatchlist) onToggleWatchlist(row.sym);
+                            }}
+                            title={
+                              watchlistSyms.includes(row.sym)
+                                ? isES
+                                  ? 'Quitar de Watchlist'
+                                  : 'Remove from Watchlist'
+                                : isES
+                                  ? 'Agregar a Watchlist para evaluar en Portfolio'
+                                  : 'Add to Watchlist for Portfolio evaluation'
+                            }
+                            style={{
+                              background: 'transparent',
+                              border: 'none',
+                              padding: 0,
+                              cursor: 'pointer',
+                              fontSize: '0.86rem',
+                              lineHeight: 1,
+                              color: watchlistSyms.includes(row.sym) ? '#fbbf24' : 'rgba(255,255,255,0.22)',
+                              transition: 'color 0.15s ease, transform 0.15s ease',
+                            }}
+                          >
+                            {watchlistSyms.includes(row.sym) ? '★' : '☆'}
+                          </button>
+                          <span>{row.rank}</span>
+                        </div>
                       </td>
 
                       {/* TICKER & NAME */}
@@ -1393,28 +1740,46 @@ export default function MarketAnomaliesView({
                         </div>
                       </td>
 
-                      {/* VOL Z-SCORE */}
-                      <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem' }}>
-                        <span
-                          style={{
-                            display: 'inline-block',
-                            padding: '0.18rem 0.6rem',
-                            borderRadius: '999px',
-                            fontWeight: 700,
-                            fontSize: '0.72rem',
-                            color: zEval.textColor,
-                            background: zEval.bgGradient,
-                            border: `1px solid ${zEval.color}55`,
-                          }}
-                        >
-                          {row.volumeZScore}
-                        </span>
-                      </td>
-
-                      {/* REALIZED VOL */}
-                      <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem', color: 'var(--text-muted)' }}>
-                        {row.realizedVol}
-                      </td>
+                      {/* VOL Z-SCORE & REALIZED VOL (WHEN ALL) OR CATEGORY-SPECIFIC METRICS */}
+                      {categoryFilter === 'ALL' ? (
+                        <>
+                          <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem' }}>
+                            <span
+                              style={{
+                                display: 'inline-block',
+                                padding: '0.18rem 0.6rem',
+                                borderRadius: '999px',
+                                fontWeight: 700,
+                                fontSize: '0.72rem',
+                                color: zEval.textColor,
+                                background: zEval.bgGradient,
+                                border: `1px solid ${zEval.color}55`,
+                              }}
+                            >
+                              {row.volumeZScore}
+                            </span>
+                          </td>
+                          <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem', color: 'var(--text-muted)' }}>
+                            {row.realizedVol}
+                          </td>
+                        </>
+                      ) : (
+                        (() => {
+                          const spec = getAssetClassSpecificMetrics(row, isES);
+                          return (
+                            <>
+                              <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem', color: '#fff', fontWeight: 700 }}>
+                                <div>{spec.col1Val}</div>
+                                <div style={{ fontSize: '0.6rem', color: 'var(--text-dim)', fontWeight: 500 }}>{spec.col1Sub}</div>
+                              </td>
+                              <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem', color: 'var(--text-muted)', fontWeight: 700 }}>
+                                <div style={{ color: '#fff' }}>{spec.col2Val}</div>
+                                <div style={{ fontSize: '0.6rem', color: 'var(--text-dim)', fontWeight: 500 }}>{spec.col2Sub}</div>
+                              </td>
+                            </>
+                          );
+                        })()
+                      )}
 
                       {/* RSI (14) */}
                       <td
@@ -1698,10 +2063,10 @@ export default function MarketAnomaliesView({
                 colIdx === 0
                   ? colWeight * 1.45
                   : colIdx === 1
-                  ? colWeight * 1.15
-                  : colIdx === 2
-                  ? colWeight * 0.95
-                  : colWeight * 0.8;
+                    ? colWeight * 1.15
+                    : colIdx === 2
+                      ? colWeight * 0.95
+                      : colWeight * 0.8;
 
               return (
                 <div
@@ -1997,8 +2362,8 @@ export default function MarketAnomaliesView({
                         backgroundColor: isHighlighted
                           ? 'rgba(16, 185, 129, 0.22)'
                           : item.sym === selectedAsset
-                          ? 'rgba(255, 255, 255, 0.06)'
-                          : 'transparent',
+                            ? 'rgba(255, 255, 255, 0.06)'
+                            : 'transparent',
                         border: isHighlighted ? '1px solid rgba(16, 185, 129, 0.45)' : '1px solid transparent',
                         cursor: 'pointer',
                         fontSize: '0.72rem',
@@ -2165,8 +2530,37 @@ export default function MarketAnomaliesView({
         }}
       >
         <div>
-          <div style={{ fontSize: '0.73rem', color: 'var(--text-dim)', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>
-            {currentAsset.name} • {currentAsset.pair} • {currentAsset.cat}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+            <div style={{ fontSize: '0.73rem', color: 'var(--text-dim)', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>
+              {currentAsset.name} • {currentAsset.pair} • {currentAsset.cat}
+            </div>
+            <button
+              type="button"
+              onClick={() => onToggleWatchlist && onToggleWatchlist(currentAsset.sym)}
+              className="mono-metric"
+              style={{
+                fontSize: '0.62rem',
+                fontWeight: 800,
+                padding: '0.16rem 0.6rem',
+                borderRadius: '999px',
+                border: watchlistSyms.includes(currentAsset.sym)
+                  ? '1px solid rgba(251, 191, 36, 0.55)'
+                  : '1px solid rgba(255, 255, 255, 0.16)',
+                backgroundColor: watchlistSyms.includes(currentAsset.sym)
+                  ? 'rgba(251, 191, 36, 0.16)'
+                  : 'rgba(255, 255, 255, 0.05)',
+                color: watchlistSyms.includes(currentAsset.sym) ? '#fbbf24' : 'var(--text-muted)',
+                cursor: 'pointer',
+              }}
+            >
+              {watchlistSyms.includes(currentAsset.sym)
+                ? isES
+                  ? '★ EN WATCHLIST'
+                  : '★ IN WATCHLIST'
+                : isES
+                  ? '☆ + WATCHLIST'
+                  : '☆ + WATCHLIST'}
+            </button>
           </div>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.8rem', marginTop: '0.1rem' }}>
             <span className="mono-metric" style={{ fontSize: '2.35rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.03em' }}>
@@ -2185,39 +2579,46 @@ export default function MarketAnomaliesView({
 
         {/* Right Hero Strip: Quantitative Metrics in Analytics Mode vs Qualitative Summary in Research Mode */}
         {l2Section === 'analytics' ? (
-          <div className="mono-metric" style={{ display: 'flex', gap: '1.65rem', fontSize: '0.74rem', flexWrap: 'wrap' }}>
-            <div>
-              <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>24H VOLUME</div>
-              <div style={{ fontWeight: 800, color: '#fff', marginTop: '0.14rem' }}>
-                {currentAsset.vol24h}{' '}
-                <span style={{ color: currentAsset.volChg24h.startsWith('+') ? '#10b981' : '#f43f5e' }}>
-                  ({currentAsset.volChg24h})
-                </span>
+          (() => {
+            const catSpec = getAssetClassSpecificMetrics(currentAsset, isES);
+            return (
+              <div className="mono-metric" style={{ display: 'flex', gap: '1.45rem', fontSize: '0.74rem', flexWrap: 'wrap' }}>
+                <div>
+                  <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>24H VOLUME</div>
+                  <div style={{ fontWeight: 800, color: '#fff', marginTop: '0.14rem' }}>
+                    {currentAsset.vol24h}{' '}
+                    <span style={{ color: currentAsset.volChg24h.startsWith('+') ? '#10b981' : '#f43f5e' }}>
+                      ({currentAsset.volChg24h})
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.58rem', color: '#10b981' }}>{catSpec.col1Label}</div>
+                  <div style={{ fontWeight: 800, color: catSpec.col1Color || '#fff', marginTop: '0.14rem' }}>
+                    {catSpec.col1Val} <span style={{ fontSize: '0.62rem', color: 'var(--text-dim)', fontWeight: 600 }}>({catSpec.col1Sub})</span>
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.58rem', color: '#38bdf8' }}>{catSpec.col2Label}</div>
+                  <div style={{ fontWeight: 800, color: catSpec.col2Color || '#fff', marginTop: '0.14rem' }}>
+                    {catSpec.col2Val} <span style={{ fontSize: '0.62rem', color: 'var(--text-dim)', fontWeight: 600 }}>({catSpec.col2Sub})</span>
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>RSI (14) / MACD</div>
+                  <div style={{ fontWeight: 800, color: currentAsset.indicators.rsi14 >= 50 ? '#10b981' : '#f43f5e', marginTop: '0.14rem' }}>
+                    {currentAsset.indicators.rsi14} • {currentAsset.indicators.macdSignal}
+                  </div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>P-06 ANOMALY</div>
+                  <div style={{ fontWeight: 800, color: scoreColor, marginTop: '0.14rem' }}>
+                    {displayedScore} ({anomalyProfile.regime})
+                  </div>
+                </div>
               </div>
-            </div>
-            <div>
-              <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>VOL Z-SCORE (20D)</div>
-              <div style={{ fontWeight: 800, color: currentEnriched.volumeZNum >= 0 ? '#10b981' : '#f43f5e', marginTop: '0.14rem' }}>
-                {currentEnriched.volumeZScore}
-              </div>
-            </div>
-            <div>
-              <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>REALIZED VOL (30D)</div>
-              <div style={{ fontWeight: 800, color: '#fff', marginTop: '0.14rem' }}>{anomalyProfile.realizedVol}</div>
-            </div>
-            <div>
-              <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>RSI (14) / MACD</div>
-              <div style={{ fontWeight: 800, color: currentAsset.indicators.rsi14 >= 50 ? '#10b981' : '#f43f5e', marginTop: '0.14rem' }}>
-                {currentAsset.indicators.rsi14} • {currentAsset.indicators.macdSignal}
-              </div>
-            </div>
-            <div>
-              <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>P-06 ANOMALY</div>
-              <div style={{ fontWeight: 800, color: scoreColor, marginTop: '0.14rem' }}>
-                {displayedScore} ({anomalyProfile.regime})
-              </div>
-            </div>
-          </div>
+            );
+          })()
         ) : (
           <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', flexWrap: 'wrap' }}>
             {/* 1. Research Stance + Asset-Class News Sensitivity */}
@@ -2347,13 +2748,21 @@ export default function MarketAnomaliesView({
                 {
                   id: 'derivatives',
                   label:
-                    currentAsset.cat === 'CRYPTO'
+                    currentAsset.cat === 'RATES' || currentAsset.cat === 'FIXED_INCOME' || currentAsset.cat === 'CASH'
                       ? isES
-                        ? 'Perpetuos & Volatilidad (Roadmap)'
-                        : 'Perp Funding & Vol Smile (Roadmap)'
-                      : isES
-                      ? 'Superficie Opciones IV (Roadmap)'
-                      : 'Options IV Surface (Roadmap)',
+                        ? 'Curva Soberana 3D/2D (42 Países)'
+                        : 'Sovereign Curve 3D/2D (42 Countries)'
+                      : currentAsset.cat === 'FX'
+                        ? isES
+                          ? 'Conversión Cruzada (61 Monedas)'
+                          : 'FX Cross Converter (61 CCY)'
+                        : currentAsset.cat === 'COMMODITY'
+                          ? isES
+                            ? 'Superficie Forward 3D & Inventarios'
+                            : '3D Forward Surface & Inventories'
+                          : isES
+                            ? 'Superficie Volatilidad 3D & Payoff'
+                            : '3D Volatility Surface & Payoff',
                 },
               ].map((lens) => {
                 const active = analysisLens === lens.id;
@@ -2415,35 +2824,209 @@ export default function MarketAnomaliesView({
               )}
 
               {analysisLens === 'compare' && (
-                <>
-                  <span className="mono-metric" style={{ fontSize: '0.63rem', color: 'var(--text-dim)', marginRight: '0.2rem' }}>
-                    {isES ? 'COMPARAR CONTRA:' : 'BENCHMARK VS:'}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', position: 'relative' }}>
+                  <span className="mono-metric" style={{ fontSize: '0.62rem', color: 'var(--text-dim)' }}>
+                    {isES
+                      ? `COMPARAR CONTRA (${(COMPATIBLE_COMPARE_CATEGORIES[currentAsset.cat] || [currentAsset.cat]).join(' / ')}):`
+                      : `COMPARE VS (${(COMPATIBLE_COMPARE_CATEGORIES[currentAsset.cat] || [currentAsset.cat]).join(' / ')}):`}
                   </span>
-                  {enrichedCatalog
-                    .filter((a) => a.sym !== selectedAsset)
-                    .map((peer) => {
-                      const active = compareSymbol === peer.sym;
-                      return (
-                        <button
-                          key={peer.sym}
-                          onClick={() => setCompareSymbol(active ? null : peer.sym)}
-                          className="mono-metric"
-                          style={{
-                            fontSize: '0.65rem',
-                            fontWeight: 700,
-                            padding: '0.2rem 0.6rem',
-                            borderRadius: '999px',
-                            border: active ? '1px solid #38bdf8' : '1px solid rgba(255,255,255,0.08)',
-                            backgroundColor: active ? 'rgba(56, 189, 248, 0.16)' : 'transparent',
-                            color: active ? '#38bdf8' : 'var(--text-dim)',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          {peer.sym}
-                        </button>
-                      );
-                    })}
-                </>
+
+                  {/* Active Comparison Pill (if selected) */}
+                  {compareSymbol && (
+                    <div
+                      className="mono-metric"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        fontSize: '0.65rem',
+                        fontWeight: 800,
+                        padding: '0.2rem 0.65rem',
+                        borderRadius: '999px',
+                        border: '1px solid #38bdf8',
+                        backgroundColor: 'rgba(56, 189, 248, 0.16)',
+                        color: '#38bdf8',
+                      }}
+                    >
+                      <span>
+                        vs {compareSymbol} ({getAssetBySymbol(compareSymbol).cat} • {getAssetBySymbol(compareSymbol).chg})
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setCompareSymbol(null);
+                          setCompareQuery('');
+                        }}
+                        style={{
+                          background: 'transparent',
+                          border: 'none',
+                          color: '#38bdf8',
+                          cursor: 'pointer',
+                          padding: 0,
+                          display: 'flex',
+                        }}
+                      >
+                        <X size={12} />
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Searchable Input for Compatible Asset Comparison */}
+                  <div style={{ position: 'relative', minWidth: '250px' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        backgroundColor: 'rgba(8, 12, 22, 0.85)',
+                        border: '1px solid rgba(56, 189, 248, 0.4)',
+                        borderRadius: '999px',
+                        padding: '0.2rem 0.7rem',
+                      }}
+                    >
+                      <Search size={12} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                      <input
+                        type="text"
+                        value={compareQuery}
+                        onFocus={() => setCompareDropdownOpen(true)}
+                        onBlur={() => setTimeout(() => setCompareDropdownOpen(false), 160)}
+                        onChange={(e) => {
+                          setCompareQuery(e.target.value);
+                          setCompareDropdownOpen(true);
+                          setCompareSelectedIndex(0);
+                        }}
+                        onKeyDown={(e) => {
+                          if (!compatibleCompareMatches.length) return;
+                          if (e.key === 'ArrowDown') {
+                            e.preventDefault();
+                            setCompareSelectedIndex((prev) => (prev + 1) % compatibleCompareMatches.length);
+                          } else if (e.key === 'ArrowUp') {
+                            e.preventDefault();
+                            setCompareSelectedIndex((prev) => (prev - 1 + compatibleCompareMatches.length) % compatibleCompareMatches.length);
+                          } else if (e.key === 'Enter') {
+                            e.preventDefault();
+                            const target = compatibleCompareMatches[compareSelectedIndex] || compatibleCompareMatches[0];
+                            if (target) {
+                              setCompareSymbol(target.sym);
+                              setCompareQuery('');
+                              setCompareDropdownOpen(false);
+                            }
+                          } else if (e.key === 'Escape') {
+                            setCompareDropdownOpen(false);
+                          }
+                        }}
+                        placeholder={
+                          isES
+                            ? `Escribir ticker o nombre (${currentAsset.cat})...`
+                            : `Type ticker or name (${currentAsset.cat})...`
+                        }
+                        style={{
+                          background: 'transparent',
+                          border: 'none',
+                          outline: 'none',
+                          color: '#ffffff',
+                          fontSize: '0.67rem',
+                          width: '100%',
+                        }}
+                      />
+                    </div>
+
+                    {/* Autocomplete Dropdown of Compatible Assets */}
+                    {compareDropdownOpen && (
+                      <div
+                        style={{
+                          position: 'absolute',
+                          top: 'calc(100% + 6px)',
+                          right: 0,
+                          width: '330px',
+                          maxHeight: '260px',
+                          overflowY: 'auto',
+                          borderRadius: '14px',
+                          backgroundColor: 'rgba(10, 15, 26, 0.98)',
+                          border: '1px solid rgba(56, 189, 248, 0.38)',
+                          boxShadow: '0 18px 40px rgba(0, 0, 0, 0.75)',
+                          padding: '0.35rem',
+                          zIndex: 80,
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '0.18rem',
+                        }}
+                      >
+                        {compatibleCompareMatches.length === 0 ? (
+                          <div className="mono-metric" style={{ padding: '0.55rem', fontSize: '0.64rem', color: 'var(--text-dim)', textAlign: 'center' }}>
+                            {isES
+                              ? `Sin coincidencias compatibles para ${currentAsset.cat}`
+                              : `No compatible matches for ${currentAsset.cat}`}
+                          </div>
+                        ) : (
+                          compatibleCompareMatches.map((peer, idx) => {
+                            const isHighlighted = idx === compareSelectedIndex;
+                            const isActive = compareSymbol === peer.sym;
+                            return (
+                              <button
+                                key={peer.sym}
+                                type="button"
+                                onMouseDown={(e) => {
+                                  e.preventDefault();
+                                  setCompareSymbol(peer.sym);
+                                  setCompareQuery('');
+                                  setCompareDropdownOpen(false);
+                                }}
+                                style={{
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'space-between',
+                                  gap: '0.5rem',
+                                  padding: '0.42rem 0.6rem',
+                                  borderRadius: '9px',
+                                  backgroundColor:
+                                    isActive || isHighlighted ? 'rgba(56, 189, 248, 0.16)' : 'transparent',
+                                  border: isActive ? '1px solid rgba(56, 189, 248, 0.45)' : '1px solid transparent',
+                                  cursor: 'pointer',
+                                  textAlign: 'left',
+                                }}
+                              >
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', minWidth: 0 }}>
+                                  <span className="mono-metric" style={{ fontSize: '0.7rem', fontWeight: 800, color: '#ffffff', minWidth: '52px' }}>
+                                    {peer.sym}
+                                  </span>
+                                  <span
+                                    style={{
+                                      fontSize: '0.65rem',
+                                      color: 'var(--text-muted)',
+                                      whiteSpace: 'nowrap',
+                                      overflow: 'hidden',
+                                      textOverflow: 'ellipsis',
+                                    }}
+                                  >
+                                    {peer.name}
+                                  </span>
+                                </div>
+                                <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0 }}>
+                                  <span
+                                    style={{
+                                      fontSize: '0.52rem',
+                                      fontWeight: 800,
+                                      padding: '0.08rem 0.38rem',
+                                      borderRadius: '999px',
+                                      backgroundColor: peer.cat === currentAsset.cat ? 'rgba(16, 185, 129, 0.16)' : 'rgba(255,255,255,0.08)',
+                                      color: peer.cat === currentAsset.cat ? '#10b981' : 'var(--text-dim)',
+                                    }}
+                                  >
+                                    {peer.cat}
+                                  </span>
+                                  <span style={{ fontSize: '0.63rem', fontWeight: 700, color: peer.chgNum >= 0 ? '#10b981' : '#f43f5e' }}>
+                                    {peer.chg}
+                                  </span>
+                                </div>
+                              </button>
+                            );
+                          })
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </div>
               )}
 
               {analysisLens === 'microstructure' && (
@@ -2480,123 +3063,710 @@ export default function MarketAnomaliesView({
                 </>
               )}
 
-              {analysisLens === 'derivatives' && (
-                <span className="mono-metric" style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>
-                  {currentAsset.cat === 'CRYPTO'
-                    ? isES
-                      ? 'Módulo planificado en UI_SPEC.md: Curva de Funding Rate, Open Interest Basis y Vol Smile'
-                      : 'Planned in UI_SPEC.md: Perp Funding Curve, Open Interest Basis & Implied Vol Smile'
-                    : isES
-                    ? 'Módulo planificado en UI_SPEC.md: Sonrisa / Superficie de Volatilidad Implícita (IV) y Skew 25Δ'
-                    : 'Planned in UI_SPEC.md: Options Implied Volatility Smile / 3D Surface & 25Δ Put-Call Skew'}
-                </span>
-              )}
+              {analysisLens === 'derivatives' &&
+                (() => {
+                  if (
+                    currentAsset.cat === 'RATES' ||
+                    currentAsset.cat === 'FIXED_INCOME' ||
+                    currentAsset.cat === 'CASH'
+                  ) {
+                    const curveMetrics = computeSovereignCurveMetrics(selectedCurveCountry);
+                    return (
+                      <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.48rem', flexWrap: 'wrap', fontSize: '0.62rem' }}>
+                        {/* 3D vs 2D Sovereign Yield Surface Switcher */}
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            backgroundColor: 'rgba(8, 12, 22, 0.85)',
+                            padding: '0.14rem',
+                            borderRadius: '999px',
+                            border: '1px solid rgba(255,255,255,0.12)',
+                            gap: '0.15rem',
+                          }}
+                        >
+                          {[
+                            { id: '3d-history', label: isES ? 'Superficie 3D (Hist)' : '3D Surface (Hist)' },
+                            { id: '3d-peers', label: isES ? 'Superficie 3D (Países)' : '3D Surface (Peers)' },
+                            { id: '2d', label: isES ? 'Curva 2D' : '2D Curve' },
+                          ].map((sub) => {
+                            const active = ratesSubView === sub.id;
+                            return (
+                              <button
+                                key={sub.id}
+                                type="button"
+                                onClick={() => setRatesSubView(sub.id)}
+                                style={{
+                                  fontSize: '0.6rem',
+                                  fontWeight: 800,
+                                  padding: '0.14rem 0.52rem',
+                                  borderRadius: '999px',
+                                  border: active ? '1px solid #10b981' : '1px solid transparent',
+                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
+                                  color: active ? '#10b981' : 'var(--text-dim)',
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                {sub.label}
+                              </button>
+                            );
+                          })}
+                        </div>
+                        <select
+                          value={selectedCurveCountry}
+                          onChange={(e) => setSelectedCurveCountry(e.target.value)}
+                          style={{
+                            backgroundColor: 'rgba(13, 19, 33, 0.9)',
+                            color: '#10b981',
+                            border: '1px solid rgba(16, 185, 129, 0.45)',
+                            borderRadius: '999px',
+                            padding: '0.2rem 0.65rem',
+                            fontSize: '0.64rem',
+                            fontWeight: 800,
+                            outline: 'none',
+                            cursor: 'pointer',
+                          }}
+                        >
+                          {Object.entries(SOVEREIGN_YIELD_CURVES).map(([code, c]) => (
+                            <option key={code} value={code}>
+                              {code} • {c.country[langCode] || c.country.EN} ({c.rating})
+                            </option>
+                          ))}
+                        </select>
+                        <span style={{ color: 'var(--text-muted)' }}>
+                          10Y: <strong style={{ color: '#fff' }}>{curveMetrics.y10}%</strong>
+                        </span>
+                        <span style={{ color: 'var(--text-muted)' }}>
+                          2s10s:{' '}
+                          <strong style={{ color: curveMetrics.spread2s10sBps >= 0 ? '#10b981' : '#f43f5e' }}>
+                            {curveMetrics.spread2s10sBps >= 0 ? '+' : ''}
+                            {curveMetrics.spread2s10sBps} bps
+                          </strong>
+                        </span>
+                        <span style={{ color: 'var(--text-muted)' }}>
+                          3m10y:{' '}
+                          <strong style={{ color: curveMetrics.spread3m10yBps >= 0 ? '#10b981' : '#f43f5e' }}>
+                            {curveMetrics.spread3m10yBps >= 0 ? '+' : ''}
+                            {curveMetrics.spread3m10yBps} bps
+                          </strong>
+                        </span>
+                        <span style={{ color: 'var(--text-muted)' }}>
+                          Butterfly 2s5s10s:{' '}
+                          <strong style={{ color: curveMetrics.butterfly2s5s10sBps >= 0 ? '#10b981' : '#f43f5e' }}>
+                            {curveMetrics.butterfly2s5s10sBps >= 0 ? '+' : ''}
+                            {curveMetrics.butterfly2s5s10sBps} bps
+                          </strong>
+                        </span>
+                        <span style={{ color: 'var(--text-muted)' }}>
+                          Real 10Y:{' '}
+                          <strong style={{ color: curveMetrics.realYield10Y >= 0 ? '#10b981' : '#f43f5e' }}>
+                            {curveMetrics.realYield10Y >= 0 ? '+' : ''}
+                            {curveMetrics.realYield10Y}%
+                          </strong>
+                        </span>
+                        <span style={{ color: 'var(--text-muted)' }}>
+                          DV01: <strong style={{ color: '#fff' }}>{curveMetrics.dv01PerMillion10Y}</strong>
+                        </span>
+                      </div>
+                    );
+                  }
+
+                  if (currentAsset.cat === 'FX') {
+                    const cross = computeCrossCurrencyRate(fxBaseCcy, fxQuoteCcy, fxAmount);
+                    return (
+                      <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.42rem', flexWrap: 'wrap', fontSize: '0.63rem' }}>
+                        <input
+                          type="number"
+                          min="1"
+                          value={fxAmount}
+                          onChange={(e) => setFxAmount(Math.max(1, Number(e.target.value) || 1))}
+                          style={{
+                            width: '74px',
+                            backgroundColor: 'rgba(13, 19, 33, 0.92)',
+                            color: '#ffffff',
+                            border: '1px solid rgba(255, 255, 255, 0.18)',
+                            borderRadius: '999px',
+                            padding: '0.18rem 0.5rem',
+                            fontSize: '0.63rem',
+                            fontWeight: 800,
+                            outline: 'none',
+                            textAlign: 'right',
+                          }}
+                        />
+                        <select
+                          value={fxBaseCcy}
+                          onChange={(e) => setFxBaseCcy(e.target.value)}
+                          style={{
+                            backgroundColor: 'rgba(13, 19, 33, 0.9)',
+                            color: '#10b981',
+                            border: '1px solid rgba(16, 185, 129, 0.45)',
+                            borderRadius: '999px',
+                            padding: '0.18rem 0.55rem',
+                            fontSize: '0.63rem',
+                            fontWeight: 800,
+                            cursor: 'pointer',
+                          }}
+                        >
+                          {Object.keys(WORLD_USD_RATES).map((ccy) => (
+                            <option key={ccy} value={ccy}>
+                              {ccy} ({WORLD_USD_RATES[ccy].name})
+                            </option>
+                          ))}
+                        </select>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const prevBase = fxBaseCcy;
+                            setFxBaseCcy(fxQuoteCcy);
+                            setFxQuoteCcy(prevBase);
+                          }}
+                          title={isES ? 'Invertir par de divisas' : 'Swap currency pair'}
+                          style={{
+                            backgroundColor: 'rgba(255,255,255,0.08)',
+                            color: '#ffffff',
+                            border: '1px solid rgba(255,255,255,0.16)',
+                            borderRadius: '999px',
+                            padding: '0.12rem 0.45rem',
+                            fontSize: '0.65rem',
+                            fontWeight: 800,
+                            cursor: 'pointer',
+                          }}
+                        >
+                          ⇄
+                        </button>
+                        <select
+                          value={fxQuoteCcy}
+                          onChange={(e) => setFxQuoteCcy(e.target.value)}
+                          style={{
+                            backgroundColor: 'rgba(13, 19, 33, 0.9)',
+                            color: '#38bdf8',
+                            border: '1px solid rgba(56, 189, 248, 0.45)',
+                            borderRadius: '999px',
+                            padding: '0.18rem 0.55rem',
+                            fontSize: '0.63rem',
+                            fontWeight: 800,
+                            cursor: 'pointer',
+                          }}
+                        >
+                          {Object.keys(WORLD_USD_RATES).map((ccy) => (
+                            <option key={ccy} value={ccy}>
+                              {ccy} ({WORLD_USD_RATES[ccy].name})
+                            </option>
+                          ))}
+                        </select>
+                        <span
+                          style={{
+                            color: '#ffffff',
+                            fontWeight: 800,
+                            padding: '0.16rem 0.58rem',
+                            borderRadius: '999px',
+                            backgroundColor: 'rgba(16, 185, 129, 0.14)',
+                            border: '1px solid rgba(16, 185, 129, 0.35)',
+                          }}
+                        >
+                          = <strong style={{ color: '#10b981' }}>{cross.convertedFormatted} {fxQuoteCcy}</strong>
+                        </span>
+                        <span style={{ color: '#fff', fontWeight: 800 }}>
+                          {cross.pair}: <strong style={{ color: '#10b981' }}>{cross.rateFormatted}</strong>
+                        </span>
+                        <span style={{ color: cross.chg24h >= 0 ? '#10b981' : '#f43f5e', fontWeight: 700 }}>
+                          ({cross.chgFormatted})
+                        </span>
+                        <span style={{ color: 'var(--text-muted)' }}>
+                          Inv: <strong style={{ color: '#fff' }}>{cross.inverseFormatted}</strong> • Carry 10Y:{' '}
+                          <strong style={{ color: cross.carryDiffBps >= 0 ? '#10b981' : '#f43f5e' }}>{cross.carryFormatted}</strong>
+                        </span>
+                      </div>
+                    );
+                  }
+
+                  if (currentAsset.cat === 'COMMODITY') {
+                    const fwd = getCommodityForwardCurve(currentAsset.sym, currentAsset.price);
+                    return (
+                      <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap', fontSize: '0.63rem' }}>
+                        {/* 3D vs 2D Commodity Forward Surface Switcher */}
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            backgroundColor: 'rgba(8, 12, 22, 0.85)',
+                            padding: '0.14rem',
+                            borderRadius: '999px',
+                            border: '1px solid rgba(255,255,255,0.12)',
+                            gap: '0.15rem',
+                          }}
+                        >
+                          {[
+                            { id: '3d', label: isES ? 'Superficie Forward 3D' : '3D Forward Surface' },
+                            { id: '2d', label: isES ? 'Curva Forward 2D' : '2D Forward Curve' },
+                          ].map((sub) => {
+                            const active = commoditySubView === sub.id;
+                            return (
+                              <button
+                                key={sub.id}
+                                type="button"
+                                onClick={() => setCommoditySubView(sub.id)}
+                                style={{
+                                  fontSize: '0.6rem',
+                                  fontWeight: 800,
+                                  padding: '0.14rem 0.52rem',
+                                  borderRadius: '999px',
+                                  border: active ? '1px solid #10b981' : '1px solid transparent',
+                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
+                                  color: active ? '#10b981' : 'var(--text-dim)',
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                {sub.label}
+                              </button>
+                            );
+                          })}
+                        </div>
+                        <span style={{ color: '#10b981', fontWeight: 800 }}>
+                          {isES ? 'ESTRUCTURA:' : 'STRUCTURE:'}{' '}
+                          <strong style={{ color: fwd.isBackwardation ? '#10b981' : '#f59e0b' }}>{fwd.regime}</strong>
+                        </span>
+                        <span style={{ color: 'var(--text-muted)' }}>
+                          Roll Yield (1Y):{' '}
+                          <strong style={{ color: fwd.isBackwardation ? '#10b981' : '#f43f5e' }}>{fwd.rollYieldAnnual}</strong>
+                        </span>
+                        <span style={{ color: 'var(--text-muted)' }}>
+                          {isES ? 'Inventario vs 5A:' : 'Inventory vs 5Y:'}{' '}
+                          <strong style={{ color: '#fff' }}>{fwd.inventoryVs5Y}</strong>
+                        </span>
+                        <span style={{ color: 'var(--text-muted)' }}>
+                          COT Net Spec: <strong style={{ color: '#38bdf8' }}>{fwd.cotNetSpec}</strong>
+                        </span>
+                      </div>
+                    );
+                  }
+
+                  const optChain = getHighVolumeOptionsChain(
+                    currentAsset.underlyingSym || currentAsset.sym,
+                    currentAsset.price
+                  );
+                  const payoffData = computeOptionsStrategyPayoff(
+                    currentAsset.underlyingSym || currentAsset.sym,
+                    currentAsset.price,
+                    selectedOptStrategy
+                  );
+                  return (
+                    <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.52rem', flexWrap: 'wrap', fontSize: '0.62rem' }}>
+                      {/* Sub-mode Switcher: 3D Volatility Surface vs 2D Smile vs Strategy Payoff P&L */}
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          backgroundColor: 'rgba(8, 12, 22, 0.85)',
+                          padding: '0.14rem',
+                          borderRadius: '999px',
+                          border: '1px solid rgba(255,255,255,0.12)',
+                          gap: '0.15rem',
+                        }}
+                      >
+                        {[
+                          { id: 'surface3d', label: isES ? 'Superficie IV 3D' : '3D IV Surface' },
+                          { id: 'surface', label: isES ? 'Sonrisa IV 2D' : '2D IV Smile' },
+                          { id: 'payoff', label: isES ? 'Payoff P&L & Sintéticos' : 'Payoff P&L & Synthetics' },
+                        ].map((sub) => {
+                          const active = optionsSubView === sub.id;
+                          return (
+                            <button
+                              key={sub.id}
+                              type="button"
+                              onClick={() => setOptionsSubView(sub.id)}
+                              style={{
+                                fontSize: '0.61rem',
+                                fontWeight: 800,
+                                padding: '0.15rem 0.58rem',
+                                borderRadius: '999px',
+                                border: active ? '1px solid #10b981' : '1px solid transparent',
+                                backgroundColor: active ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
+                                color: active ? '#10b981' : 'var(--text-dim)',
+                                cursor: 'pointer',
+                              }}
+                            >
+                              {sub.label}
+                            </button>
+                          );
+                        })}
+                      </div>
+
+                      {optionsSubView !== 'payoff' ? (
+                        <>
+                          <span style={{ color: '#10b981', fontWeight: 700 }}>{optChain.filterPolicy}</span>
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            ATM IV: <strong style={{ color: '#fff' }}>{optChain.atmIvPct}%</strong> (IVR {optChain.ivRank})
+                          </span>
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            Straddle: <strong style={{ color: '#fff' }}>{optChain.straddleBreakevenPct}</strong>
+                          </span>
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            25Δ Skew: <strong style={{ color: '#10b981' }}>{optChain.skew25d}</strong>
+                          </span>
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            GEX: <strong style={{ color: '#10b981' }}>{optChain.netGammaExposure}</strong>
+                          </span>
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            Max Pain: <strong style={{ color: '#38bdf8' }}>${optChain.maxPain}</strong>
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <select
+                            value={selectedOptStrategy}
+                            onChange={(e) => setSelectedOptStrategy(e.target.value)}
+                            style={{
+                              backgroundColor: 'rgba(13, 19, 33, 0.92)',
+                              color: '#10b981',
+                              border: '1px solid rgba(16, 185, 129, 0.45)',
+                              borderRadius: '999px',
+                              padding: '0.18rem 0.6rem',
+                              fontSize: '0.62rem',
+                              fontWeight: 800,
+                              outline: 'none',
+                              cursor: 'pointer',
+                            }}
+                          >
+                            {OPTIONS_STRATEGIES.map((st) => (
+                              <option key={st.id} value={st.id}>
+                                {st.label[langCode] || st.label.EN}
+                              </option>
+                            ))}
+                          </select>
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            {isES ? 'Prima:' : 'Net:'}{' '}
+                            <strong style={{ color: '#ffffff' }}>{payoffData.netCostFormatted}</strong>
+                          </span>
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            BE: <strong style={{ color: '#38bdf8' }}>{payoffData.breakevenText}</strong>
+                          </span>
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            Max +: <strong style={{ color: '#10b981' }}>{payoffData.maxProfitText}</strong>
+                          </span>
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            Max -: <strong style={{ color: '#f43f5e' }}>{payoffData.maxLossText}</strong>
+                          </span>
+                          <span style={{ color: 'var(--text-muted)' }}>
+                            Δ <strong style={{ color: '#fff' }}>{payoffData.greeks.delta}</strong> • Γ{' '}
+                            <strong style={{ color: '#fff' }}>{payoffData.greeks.gamma}</strong> • Θ{' '}
+                            <strong style={{ color: '#fff' }}>{payoffData.greeks.theta}</strong> • ν{' '}
+                            <strong style={{ color: '#fff' }}>{payoffData.greeks.vega}</strong>
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  );
+                })()}
             </div>
           </div>
 
           {/* 2.4 OPEN BORDERLESS STARFIELD CHART WORKSPACE */}
-          <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem', padding: '0.25rem 0' }}>
-            <div style={{ flex: showSubChart === 'none' ? 1 : 0.74, minHeight: 0 }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={chartData}>
-                  <defs>
-                    <linearGradient id="feyMainGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor={assetMainColor} stopOpacity={0.32} />
-                      <stop offset="95%" stopColor={assetMainColor} stopOpacity={0.0} />
-                    </linearGradient>
-                  </defs>
-                  <XAxis
-                    dataKey="time"
-                    stroke="var(--text-dim)"
-                    fontSize={11}
-                    tickLine={false}
-                    axisLine={false}
-                    hide={showSubChart !== 'none'}
-                  />
-                  <YAxis
-                    domain={['auto', 'auto']}
-                    stroke="var(--text-dim)"
-                    fontSize={11}
-                    orientation="right"
-                    tickLine={false}
-                    axisLine={false}
-                    tickFormatter={(v) => (isCompareMode ? `${v}%` : v)}
-                  />
-                  <Tooltip
-                    contentStyle={{
-                      backgroundColor: 'rgba(10, 15, 28, 0.92)',
-                      borderColor: 'rgba(255, 255, 255, 0.12)',
-                      borderRadius: '12px',
-                      fontSize: '0.73rem',
-                    }}
-                  />
+          {(() => {
+            const isRatesCurveMode =
+              analysisLens === 'derivatives' &&
+              (currentAsset.cat === 'RATES' || currentAsset.cat === 'FIXED_INCOME' || currentAsset.cat === 'CASH');
+            const isFxCrossMode =
+              analysisLens === 'derivatives' && currentAsset.cat === 'FX';
+            const isCommodityCurveMode =
+              analysisLens === 'derivatives' && currentAsset.cat === 'COMMODITY';
+            const isOptionsBaseMode =
+              analysisLens === 'derivatives' &&
+              !isRatesCurveMode &&
+              !isFxCrossMode &&
+              !isCommodityCurveMode;
+            const isOptionsSmileMode = isOptionsBaseMode && optionsSubView === 'surface';
+            const isOptionsPayoffMode = isOptionsBaseMode && optionsSubView === 'payoff';
 
-                  {/* Primary Series (Price or Normalized % Return when comparing) */}
-                  <Area
-                    type="monotone"
-                    dataKey={isCompareMode ? 'pctReturn' : 'price'}
-                    name={isCompareMode ? `${currentAsset.sym} (%)` : currentAsset.sym}
-                    stroke={assetMainColor}
-                    strokeWidth={2.5}
-                    fill={isCompareMode ? 'transparent' : 'url(#feyMainGrad)'}
-                  />
+            // Determine if a 3D Volumetric Surface is active
+            const isOptions3DMode = isOptionsBaseMode && optionsSubView === 'surface3d';
+            const isRates3DMode = isRatesCurveMode && ratesSubView !== '2d';
+            const isCommodity3DMode = isCommodityCurveMode && commoditySubView === '3d';
+            const is3DSurfaceActive = isOptions3DMode || isRates3DMode || isCommodity3DMode;
 
-                  {/* Relative Comparison Overlay Line */}
-                  {isCompareMode && (
-                    <Line
-                      type="monotone"
-                      dataKey="cmpReturn"
-                      name={`${compareSymbol} (%)`}
-                      stroke="#38bdf8"
-                      strokeWidth={2.2}
-                      dot={false}
-                    />
-                  )}
+            const active3DSurfaceData = isOptions3DMode
+              ? computeVolatilitySurface3D(currentAsset.underlyingSym || currentAsset.sym, currentAsset.price)
+              : isRates3DMode
+                ? computeSovereignYieldSurface3D(
+                  selectedCurveCountry,
+                  ratesSubView === '3d-peers' ? 'crossCountry' : 'history'
+                )
+                : isCommodity3DMode
+                  ? computeCommodityForwardSurface3D(currentAsset.sym, currentAsset.price)
+                  : null;
 
-                  {/* Technical Overlays (when in Technical mode and not normalized %) */}
-                  {!isCompareMode && showSma20 && (
-                    <Line type="monotone" dataKey="sma20" name="SMA (20)" stroke="#38bdf8" strokeWidth={1.6} strokeDasharray="4 4" dot={false} />
-                  )}
-                  {!isCompareMode && showVwap && (
-                    <Line type="monotone" dataKey="vwap" name="VWAP" stroke="#f59e0b" strokeWidth={1.6} dot={false} />
-                  )}
-                  {!isCompareMode && showBollinger && (
-                    <>
-                      <Line type="monotone" dataKey="bbUpper" name="BB Upper" stroke="#a78bfa" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
-                      <Line type="monotone" dataKey="bbLower" name="BB Lower" stroke="#a78bfa" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
-                    </>
-                  )}
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
+            const activeChartData = isRatesCurveMode
+              ? computeSovereignCurveMetrics(selectedCurveCountry).curveSeries.map((pt) => ({
+                time: pt.tenor,
+                price: pt.yield,
+                cmpReturn: pt.ustYield,
+                bundYield: pt.bundYield,
+                vol: pt.vol,
+                zBar: pt.zBar,
+              }))
+              : isFxCrossMode
+                ? computeCrossCurrencyRate(fxBaseCcy, fxQuoteCcy, fxAmount).crossSeries
+                : isCommodityCurveMode
+                  ? getCommodityForwardCurve(currentAsset.sym, currentAsset.price).curveSeries
+                  : isOptionsPayoffMode
+                    ? computeOptionsStrategyPayoff(
+                      currentAsset.underlyingSym || currentAsset.sym,
+                      currentAsset.price,
+                      selectedOptStrategy
+                    ).payoffSeries
+                    : isOptionsSmileMode
+                      ? getHighVolumeOptionsChain(
+                        currentAsset.underlyingSym || currentAsset.sym,
+                        currentAsset.price
+                      ).strikes.map((st) => ({
+                        time: `$${st.strike} (${st.moneyness})`,
+                        iv7d: st.iv7d,
+                        price: st.iv30d,
+                        iv90d: st.iv90d,
+                        iv180d: st.iv180d,
+                        sma20: st.callMid,
+                        vol: Math.round((st.callVol + st.putVol) / 100),
+                        zBar: Number(st.deltaCall.toFixed(2)),
+                      }))
+                      : chartData;
 
-            {/* Synchronized Sub-Pane (Volume Histogram or Intraday Z-Score) */}
-            {showSubChart !== 'none' && (
-              <div style={{ flex: 0.26, minHeight: 0, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '0.35rem' }}>
-                <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={chartData}>
-                    <XAxis dataKey="time" stroke="var(--text-dim)" fontSize={10} tickLine={false} axisLine={false} />
-                    <YAxis stroke="var(--text-dim)" fontSize={10} orientation="right" tickLine={false} axisLine={false} />
-                    <Tooltip
-                      contentStyle={{
-                        backgroundColor: 'rgba(10, 15, 28, 0.92)',
-                        borderColor: 'rgba(255, 255, 255, 0.12)',
-                        borderRadius: '10px',
-                        fontSize: '0.7rem',
-                      }}
-                    />
-                    <Bar
-                      dataKey={showSubChart === 'zscore' ? 'zBar' : 'vol'}
-                      name={showSubChart === 'zscore' ? 'Vol Z-Score (σ)' : 'Volume'}
-                      fill={assetMainColor}
-                      opacity={0.48}
-                      radius={[3, 3, 0, 0]}
-                    />
-                  </BarChart>
-                </ResponsiveContainer>
+            return (
+              <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem', padding: '0.25rem 0' }}>
+                {is3DSurfaceActive && active3DSurfaceData ? (
+                  <div style={{ flex: 1, minHeight: 0 }}>
+                    <Surface3DViewer surfaceData={active3DSurfaceData} isES={isES} />
+                  </div>
+                ) : (
+                  <>
+                    <div style={{ flex: showSubChart === 'none' ? 1 : 0.74, minHeight: 0 }}>
+                      <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart data={activeChartData}>
+                          <defs>
+                            <linearGradient id="feyMainGrad" x1="0" y1="0" x2="0" y2="1">
+                              <stop offset="5%" stopColor={assetMainColor} stopOpacity={0.32} />
+                              <stop offset="95%" stopColor={assetMainColor} stopOpacity={0.0} />
+                            </linearGradient>
+                          </defs>
+                          <XAxis
+                            dataKey="time"
+                            stroke="var(--text-dim)"
+                            fontSize={11}
+                            tickLine={false}
+                            axisLine={false}
+                            hide={showSubChart !== 'none' && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isCommodityCurveMode}
+                          />
+                          <YAxis
+                            domain={['auto', 'auto']}
+                            stroke="var(--text-dim)"
+                            fontSize={11}
+                            orientation="right"
+                            tickLine={false}
+                            axisLine={false}
+                            tickFormatter={(v) =>
+                              isOptionsPayoffMode
+                                ? `$${v}`
+                                : isCompareMode || isRatesCurveMode || isOptionsSmileMode
+                                  ? `${v}%`
+                                  : v
+                            }
+                          />
+                          <Tooltip
+                            contentStyle={{
+                              backgroundColor: 'rgba(10, 15, 28, 0.92)',
+                              borderColor: 'rgba(255, 255, 255, 0.12)',
+                              borderRadius: '12px',
+                              fontSize: '0.73rem',
+                            }}
+                          />
+
+                          {/* Primary Series */}
+                          <Area
+                            type="monotone"
+                            dataKey={isCompareMode ? 'pctReturn' : 'price'}
+                            name={
+                              isRatesCurveMode
+                                ? `${selectedCurveCountry} Yield (%)`
+                                : isFxCrossMode
+                                  ? `${fxBaseCcy}/${fxQuoteCcy} Cross Rate`
+                                  : isCommodityCurveMode
+                                    ? `${currentAsset.sym} Forward Curve`
+                                    : isOptionsPayoffMode
+                                      ? isES
+                                        ? 'P&L al Vencimiento ($)'
+                                        : 'Expiration Payoff P&L ($)'
+                                      : isOptionsSmileMode
+                                        ? `30D IV Surface (%)`
+                                        : isCompareMode
+                                          ? `${currentAsset.sym} (%)`
+                                          : currentAsset.sym
+                            }
+                            stroke={assetMainColor}
+                            strokeWidth={2.5}
+                            fill={isCompareMode ? 'transparent' : 'url(#feyMainGrad)'}
+                          />
+
+                          {/* Options Strategy Payoff Mode: Today T+0 Black-Scholes P&L + $0 Breakeven Line */}
+                          {isOptionsPayoffMode && (
+                            <>
+                              <Line
+                                type="monotone"
+                                dataKey="t0Pnl"
+                                name={isES ? 'P&L Hoy T+0 Black-Scholes ($)' : 'Today T+0 Black-Scholes P&L ($)'}
+                                stroke="#38bdf8"
+                                strokeWidth={2.0}
+                                strokeDasharray="4 3"
+                                dot={false}
+                              />
+                              <Line
+                                type="monotone"
+                                dataKey="zeroLine"
+                                name={isES ? 'Línea Breakeven ($0)' : 'Breakeven Line ($0)'}
+                                stroke="rgba(255,255,255,0.45)"
+                                strokeWidth={1.3}
+                                strokeDasharray="3 3"
+                                dot={false}
+                              />
+                            </>
+                          )}
+
+                          {/* 2D Volatility Surface Multi-Tenor Curves (7D, 90D, 180D) */}
+                          {isOptionsSmileMode && (
+                            <>
+                              <Line
+                                type="monotone"
+                                dataKey="iv7d"
+                                name="7D Weekly IV (%)"
+                                stroke="#f43f5e"
+                                strokeWidth={1.9}
+                                strokeDasharray="3 3"
+                                dot={false}
+                              />
+                              <Line
+                                type="monotone"
+                                dataKey="iv90d"
+                                name="90D Quarterly IV (%)"
+                                stroke="#38bdf8"
+                                strokeWidth={2.0}
+                                dot={false}
+                              />
+                              <Line
+                                type="monotone"
+                                dataKey="iv180d"
+                                name="180D LEAPS IV (%)"
+                                stroke="#a78bfa"
+                                strokeWidth={1.8}
+                                strokeDasharray="5 3"
+                                dot={false}
+                              />
+                            </>
+                          )}
+
+                          {/* US Treasury & German Bund Benchmark Overlays when viewing Sovereign Curve */}
+                          {isRatesCurveMode && selectedCurveCountry !== 'US' && (
+                            <Line
+                              type="monotone"
+                              dataKey="cmpReturn"
+                              name="US Treasury Benchmark (%)"
+                              stroke="#38bdf8"
+                              strokeWidth={1.9}
+                              strokeDasharray="4 4"
+                              dot={false}
+                            />
+                          )}
+                          {isRatesCurveMode && selectedCurveCountry !== 'DE' && (
+                            <Line
+                              type="monotone"
+                              dataKey="bundYield"
+                              name="German Bund Benchmark (%)"
+                              stroke="#a78bfa"
+                              strokeWidth={1.6}
+                              strokeDasharray="2 3"
+                              dot={false}
+                            />
+                          )}
+
+                          {/* FX Cross Triangulated SMA(20) or Commodity Spot Reference */}
+                          {(isFxCrossMode || isCommodityCurveMode) && (
+                            <Line
+                              type="monotone"
+                              dataKey="sma20"
+                              name={isCommodityCurveMode ? 'Spot Price Reference' : `${fxBaseCcy}/${fxQuoteCcy} SMA (20)`}
+                              stroke="#38bdf8"
+                              strokeWidth={1.7}
+                              strokeDasharray="4 4"
+                              dot={false}
+                            />
+                          )}
+
+                          {/* Relative Comparison Overlay Line */}
+                          {isCompareMode && (
+                            <Line
+                              type="monotone"
+                              dataKey="cmpReturn"
+                              name={`${compareSymbol} (%)`}
+                              stroke="#38bdf8"
+                              strokeWidth={2.2}
+                              dot={false}
+                            />
+                          )}
+
+                          {/* Technical Overlays (when in Technical mode and not normalized %) */}
+                          {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showSma20 && (
+                            <Line type="monotone" dataKey="sma20" name="SMA (20)" stroke="#38bdf8" strokeWidth={1.6} strokeDasharray="4 4" dot={false} />
+                          )}
+                          {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showVwap && (
+                            <Line type="monotone" dataKey="vwap" name="VWAP" stroke="#f59e0b" strokeWidth={1.6} dot={false} />
+                          )}
+                          {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showBollinger && (
+                            <>
+                              <Line type="monotone" dataKey="bbUpper" name="BB Upper" stroke="#a78bfa" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
+                              <Line type="monotone" dataKey="bbLower" name="BB Lower" stroke="#a78bfa" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
+                            </>
+                          )}
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </div>
+
+                    {/* Synchronized Sub-Pane (Volume Histogram or Intraday Z-Score) */}
+                    {showSubChart !== 'none' && (
+                      <div style={{ flex: 0.26, minHeight: 0, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '0.35rem' }}>
+                        <ResponsiveContainer width="100%" height="100%">
+                          <BarChart data={activeChartData}>
+                            <XAxis dataKey="time" stroke="var(--text-dim)" fontSize={10} tickLine={false} axisLine={false} />
+                            <YAxis stroke="var(--text-dim)" fontSize={10} orientation="right" tickLine={false} axisLine={false} />
+                            <Tooltip
+                              contentStyle={{
+                                backgroundColor: 'rgba(10, 15, 28, 0.92)',
+                                borderColor: 'rgba(255, 255, 255, 0.12)',
+                                borderRadius: '10px',
+                                fontSize: '0.7rem',
+                              }}
+                            />
+                            <Bar
+                              dataKey={showSubChart === 'zscore' ? 'zBar' : 'vol'}
+                              name={
+                                isOptionsSmileMode
+                                  ? 'Contracts Vol (x100)'
+                                  : isRatesCurveMode
+                                    ? showSubChart === 'zscore'
+                                      ? 'Spread vs UST (bps / 100)'
+                                      : 'Tenor Liquidity Weight'
+                                    : isCommodityCurveMode
+                                      ? 'Open Interest Weight'
+                                      : showSubChart === 'zscore'
+                                        ? 'Vol Z-Score (σ)'
+                                        : 'Volume'
+                              }
+                              fill={assetMainColor}
+                              opacity={0.48}
+                              radius={[3, 3, 0, 0]}
+                            />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    )}
+                  </>
+                )}
               </div>
-            )}
-          </div>
+            );
+          })()}
 
           {/* 2.5 BOTTOM EDITORIAL DIAGNOSIS HAIRLINE (NO TICKER LIST ON THE RIGHT) */}
           <div
@@ -2749,9 +3919,9 @@ export default function MarketAnomaliesView({
                 </button>
               </form>
 
-              {/* Guided Topic Chips so user can test distinct answers in 1 click */}
+              {/* Guided Topic Chips dynamically adapted by Asset Class (10 categories) */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.32rem', flexWrap: 'wrap' }}>
-                {RAG_QUICK_TOPICS.map((topic) => {
+                {getRagQuickTopicsForCategory(currentAsset.cat).map((topic) => {
                   const active = ragQuery === topic.query;
                   return (
                     <button
