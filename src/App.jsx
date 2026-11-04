@@ -310,7 +310,7 @@ export default function App() {
           )}
 
           {activeTab === 'observability' && (
-            <ObservabilityView t={t} onGoBack={goBack} />
+            <ObservabilityView langCode={currentLang.code} t={t} onGoBack={goBack} />
           )}
 
           {activeTab === 'guide' && (

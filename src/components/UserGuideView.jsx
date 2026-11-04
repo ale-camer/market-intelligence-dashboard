@@ -17,14 +17,14 @@ import { GUIDE_TREE_PAGES, ALL_GUIDE_PAGES } from './guide/guideTreeData';
 import { GUIDE_MODALS_BY_SECTION } from './guide/guideModalsData';
 import { getSavedGuideTypoPreset } from './guide/guideTypographyPresets';
 
-const LEVEL_LABELS = {
-    0: 'Vista Colapsada',
-    1: 'Vista Principal',
-    2: 'Vista Expandida'
-};
+const getLevelLabels = (isES) => ({
+    0: isES ? 'Vista Colapsada' : 'Collapsed View',
+    1: isES ? 'Vista Principal' : 'Main View',
+    2: isES ? 'Vista Expandida' : 'Expanded View'
+});
 
 /* ── COMPONENTE DE FÓRMULA MATEMÁTICA ESTRUCTURADA (FRACCIONES REALES + LEYENDA) ── */
-function MathFormulaBox({ math, formula, typo }) {
+function MathFormulaBox({ math, formula, typo, isES = false }) {
     if (!math && !formula) return null;
 
     return (
@@ -50,7 +50,7 @@ function MathFormulaBox({ math, formula, typo }) {
                     fontFamily: typo.headingFontFamily
                 }}
             >
-                Fórmula Matemática
+                {isES ? 'Fórmula Matemática' : 'Mathematical Formula'}
             </div>
 
             {math ? (
@@ -182,7 +182,7 @@ function MathFormulaBox({ math, formula, typo }) {
 }
 
 /* ── PLACEHOLDER DE VIDEO Y AUDIO POR SECCIÓN (ESTILO DOCKER DOCS) ── */
-function GuideMediaPlaceholder({ page, typo }) {
+function GuideMediaPlaceholder({ page, typo, isES = false }) {
     const [videoPlaying, setVideoPlaying] = useState(false);
     const [audioPlaying, setAudioPlaying] = useState(false);
 
@@ -240,7 +240,7 @@ function GuideMediaPlaceholder({ page, typo }) {
                     }}
                 >
                     <Video size={12} color="var(--ui-accent, #10b981)" />
-                    <span>Placeholder de Video • {page.label}</span>
+                    <span>{isES ? 'Placeholder de Video' : 'Video Placeholder'} • {page.label}</span>
                 </div>
 
                 <div
@@ -290,8 +290,8 @@ function GuideMediaPlaceholder({ page, typo }) {
                         }}
                     >
                         {videoPlaying
-                            ? `Reproduciendo vista previa de ${page.label}...`
-                            : `Recorrido visual en video por ${page.label}`}
+                            ? (isES ? `Reproduciendo vista previa de ${page.label}...` : `Playing preview of ${page.label}...`)
+                            : (isES ? `Recorrido visual en video por ${page.label}` : `Visual video walkthrough of ${page.label}`)}
                     </div>
                     <div
                         style={{
@@ -301,7 +301,9 @@ function GuideMediaPlaceholder({ page, typo }) {
                             maxWidth: '480px'
                         }}
                     >
-                        Espacio reservado para la cápsula de video demostrativo paso a paso de esta sección.
+                        {isES
+                            ? 'Espacio reservado para la cápsula de video demostrativo paso a paso de esta sección.'
+                            : 'Reserved space for the step-by-step walkthrough video of this section.'}
                     </div>
                 </div>
             </div>
@@ -352,12 +354,18 @@ function GuideMediaPlaceholder({ page, typo }) {
                             }}
                         >
                             <Volume2 size={13} color="var(--ui-accent, #10b981)" />
-                            <span>Placeholder de Audio • Resumen hablado de {page.label}</span>
+                            <span>
+                                {isES
+                                    ? `Placeholder de Audio • Resumen hablado de ${page.label}`
+                                    : `Audio Placeholder • Spoken summary of ${page.label}`}
+                            </span>
                         </div>
                         <div style={{ fontSize: '11.5px', color: '#94a3b8' }}>
                             {audioPlaying
-                                ? 'Narración en curso (00:18 / 01:30)...'
-                                : 'Escuchá la explicación rápida en audio mientras recorrés la pantalla.'}
+                                ? (isES ? 'Narración en curso (00:18 / 01:30)...' : 'Narration playing (00:18 / 01:30)...')
+                                : (isES
+                                    ? 'Escuchá la explicación rápida en audio mientras recorrés la pantalla.'
+                                    : 'Listen to the quick audio explanation while browsing the screen.')}
                         </div>
                     </div>
                 </div>
@@ -397,7 +405,9 @@ function GuideMediaPlaceholder({ page, typo }) {
     );
 }
 
-export default function UserGuideView({ typoPresetOverride = null, compactHeight = false }) {
+export default function UserGuideView({ langCode = 'EN', typoPresetOverride = null, compactHeight = false }) {
+    const isES = langCode === 'ES';
+    const LEVEL_LABELS = getLevelLabels(isES);
     const [activePageId, setActivePageId] = useState('home');
     const [activeSectionId, setActiveSectionId] = useState('home-canvas');
     const [menuLevel, setMenuLevel] = useState(1);
@@ -890,7 +900,7 @@ export default function UserGuideView({ typoPresetOverride = null, compactHeight
                                 fontWeight: 600
                             }}
                         >
-                            En esta sección vas a encontrar:
+                            {isES ? 'En esta sección vas a encontrar:' : 'In this section you will find:'}
                         </p>
 
                         <ul
@@ -928,7 +938,7 @@ export default function UserGuideView({ typoPresetOverride = null, compactHeight
                         </ul>
 
                         {/* PLACEHOLDER DE VIDEO Y AUDIO (ESTILO DOCKER DOCS) */}
-                        <GuideMediaPlaceholder page={activePage} typo={typo} />
+                        <GuideMediaPlaceholder page={activePage} typo={typo} isES={isES} />
 
                         {/* SECCIONES DE LECTURA CONTINUA */}
                         {activePage.sections.map(sec => (
@@ -986,7 +996,7 @@ export default function UserGuideView({ typoPresetOverride = null, compactHeight
                                             }}
                                         >
                                             <Maximize2 size={12} />
-                                            Profundizar
+                                            {isES ? 'Profundizar' : 'Deep Dive'}
                                         </button>
                                     )}
                                 </div>
@@ -1065,7 +1075,7 @@ export default function UserGuideView({ typoPresetOverride = null, compactHeight
                                 }}
                             >
                                 <ArrowLeft size={14} />
-                                <span>Anterior: {prevPage.label}</span>
+                                <span>{isES ? 'Anterior' : 'Previous'}: {prevPage.label}</span>
                             </button>
 
                             <button
@@ -1085,7 +1095,7 @@ export default function UserGuideView({ typoPresetOverride = null, compactHeight
                                     cursor: 'pointer'
                                 }}
                             >
-                                <span>Siguiente: {nextPage.label}</span>
+                                <span>{isES ? 'Siguiente' : 'Next'}: {nextPage.label}</span>
                                 <ArrowRight size={14} />
                             </button>
                         </div>
@@ -1113,7 +1123,7 @@ export default function UserGuideView({ typoPresetOverride = null, compactHeight
                             paddingLeft: '12px'
                         }}
                     >
-                        En esta página
+                        {isES ? 'En esta página' : 'On this page'}
                     </div>
 
                     <div
@@ -1220,7 +1230,7 @@ export default function UserGuideView({ typoPresetOverride = null, compactHeight
                                                     fontFamily: typo.headingFontFamily
                                                 }}
                                             >
-                                                Profundizar • {activePage.label}
+                                                {isES ? 'Profundizar' : 'Deep Dive'} • {activePage.label}
                                             </div>
                                             <div
                                                 style={{
@@ -1328,6 +1338,7 @@ export default function UserGuideView({ typoPresetOverride = null, compactHeight
                                                     math={activeTab.math}
                                                     formula={activeTab.formula}
                                                     typo={typo}
+                                                    isES={isES}
                                                 />
 
                                                 {activeTab.lead && (
@@ -1387,7 +1398,9 @@ export default function UserGuideView({ typoPresetOverride = null, compactHeight
                                                             lineHeight: typo.lineHeight
                                                         }}
                                                     >
-                                                        <strong style={{ color: '#ffffff' }}>Ejemplo práctico: </strong>
+                                                        <strong style={{ color: '#ffffff' }}>
+                                                            {isES ? 'Ejemplo práctico: ' : 'Practical example: '}
+                                                        </strong>
                                                         {activeTab.example}
                                                     </div>
                                                 )}

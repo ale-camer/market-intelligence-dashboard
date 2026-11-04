@@ -24,14 +24,44 @@ import {
 } from './portfolioConstants';
 
 /* FILA 1: 6 PÍLDORAS DE RIESGO Y RETORNO */
-function Row1SummaryPills() {
+function Row1SummaryPills({ isES = false }) {
     const pills = [
-        { lbl: 'PROYECCIÓN MEDIANA (12M)', val: '+22.4%', sub: 'P95: +52.4% | P05: -13.2%', col: '#10b981' },
-        { lbl: 'SHARPE / SORTINO', val: '2.18 / 2.84', sub: 'Volatilidad Anual σ: 11.4%', col: '#10b981' },
-        { lbl: 'VaR 95% / CVaR 99% (1D)', val: '-1.84% / -2.84%', sub: 'Pérdida esperada en cola diaria', col: '#f43f5e' },
-        { lbl: 'MAX DRAWDOWN (12M)', val: '-4.80%', sub: 'Recuperación media: 14 días', col: '#f43f5e' },
-        { lbl: 'STRESS CRASH 2008', val: '-11.4%', sub: 'vs -42.0% Benchmark S&P 500', col: '#f43f5e' },
-        { lbl: 'RÉGIMEN MARKOV ACTUAL', val: 'Bull Quiet (62%)', sub: 'Retorno esp. régimen: +2.4%/mes', col: '#10b981' }
+        {
+            lbl: isES ? 'PROYECCIÓN MEDIANA (12M)' : 'MEDIAN PROJECTION (12M)',
+            val: '+22.4%',
+            sub: 'P95: +52.4% | P05: -13.2%',
+            col: '#10b981'
+        },
+        {
+            lbl: 'SHARPE / SORTINO',
+            val: '2.18 / 2.84',
+            sub: isES ? 'Volatilidad Anual σ: 11.4%' : 'Annual Volatility σ: 11.4%',
+            col: '#10b981'
+        },
+        {
+            lbl: 'VaR 95% / CVaR 99% (1D)',
+            val: '-1.84% / -2.84%',
+            sub: isES ? 'Pérdida esperada en cola diaria' : 'Expected daily tail loss',
+            col: '#f43f5e'
+        },
+        {
+            lbl: 'MAX DRAWDOWN (12M)',
+            val: '-4.80%',
+            sub: isES ? 'Recuperación media: 14 días' : 'Avg recovery: 14 days',
+            col: '#f43f5e'
+        },
+        {
+            lbl: 'STRESS CRASH 2008',
+            val: '-11.4%',
+            sub: 'vs -42.0% Benchmark S&P 500',
+            col: '#f43f5e'
+        },
+        {
+            lbl: isES ? 'RÉGIMEN MARKOV ACTUAL' : 'CURRENT MARKOV REGIME',
+            val: 'Bull Quiet (62%)',
+            sub: isES ? 'Retorno esp. régimen: +2.4%/mes' : 'Expected regime return: +2.4%/mo',
+            col: '#10b981'
+        }
     ];
     return (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px' }}>
@@ -58,12 +88,12 @@ function Row1SummaryPills() {
 }
 
 /* CUADRANTE 1: MARKOWITZ 2D 100% DINÁMICO (320PX) */
-function Quad1DynamicMarkowitz() {
+function Quad1DynamicMarkowitz({ isES = false }) {
     const [showAssets, setShowAssets] = useState(true);
     const [showCloud, setShowCloud] = useState(true);
     const [showCML, setShowCML] = useState(true);
     const [selectedPoint, setSelectedPoint] = useState({
-        name: 'Tu Cartera Actual',
+        name: isES ? 'Tu Cartera Actual' : 'Current Portfolio',
         vol: 11.4,
         ret: 28.4,
         sharpe: 2.18
@@ -85,18 +115,30 @@ function Quad1DynamicMarkowitz() {
     return (
         <PortfolioCardShell
             badge="CUADRANTE 1 • IZQ ARRIBA"
-            title="Riesgo vs Retorno"
+            title={isES ? 'Riesgo vs Retorno' : 'Risk vs Return'}
             color="#10b981"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {PORTFOLIO_NODES.slice(0, 3).map(p => {
                         const active = activeTargetId === p.id;
+                        const label =
+                            p.id === 'PORT'
+                                ? isES
+                                    ? 'Mi Cartera'
+                                    : 'My Portfolio'
+                                : p.id === 'MINVAR'
+                                ? isES
+                                    ? 'Mínima Varianza'
+                                    : 'Min Variance'
+                                : isES
+                                ? 'Máximo Sharpe'
+                                : 'Max Sharpe';
                         return (
                             <button
                                 key={p.id}
                                 onClick={() => {
                                     setActiveTargetId(p.id);
-                                    setSelectedPoint({ name: p.label, vol: p.vol, ret: p.ret, sharpe: p.sharpe });
+                                    setSelectedPoint({ name: label, vol: p.vol, ret: p.ret, sharpe: p.sharpe });
                                 }}
                                 style={{
                                     padding: '2px 4px',
@@ -109,7 +151,7 @@ function Quad1DynamicMarkowitz() {
                                     cursor: 'pointer'
                                 }}
                             >
-                                {p.id === 'PORT' ? 'Mi Cartera' : p.id === 'MINVAR' ? 'Mínima Varianza' : 'Máximo Sharpe'}
+                                {label}
                             </button>
                         );
                     })}
@@ -118,11 +160,13 @@ function Quad1DynamicMarkowitz() {
             subBar={
                 <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>CAPAS:</span>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                            {isES ? 'CAPAS:' : 'LAYERS:'}
+                        </span>
                         {[
-                            { lbl: 'Activos', val: showAssets, set: setShowAssets },
-                            { lbl: 'Nube Monte Carlo', val: showCloud, set: setShowCloud },
-                            { lbl: 'Tangente CML', val: showCML, set: setShowCML }
+                            { lbl: isES ? 'Activos' : 'Assets', val: showAssets, set: setShowAssets },
+                            { lbl: isES ? 'Nube Monte Carlo' : 'Monte Carlo Cloud', val: showCloud, set: setShowCloud },
+                            { lbl: isES ? 'Tangente CML' : 'CML Tangent', val: showCML, set: setShowCML }
                         ].map(t => (
                             <button
                                 key={t.lbl}
@@ -185,8 +229,8 @@ function Quad1DynamicMarkowitz() {
                             <g
                                 key={a.sym}
                                 style={{ cursor: 'pointer' }}
-                                onMouseEnter={() => setSelectedPoint({ name: `Activo ${a.sym}`, vol: a.vol, ret: a.ret, sharpe: a.sharpe })}
-                                onClick={() => setSelectedPoint({ name: `Activo ${a.sym}`, vol: a.vol, ret: a.ret, sharpe: a.sharpe })}
+                                onMouseEnter={() => setSelectedPoint({ name: `${isES ? 'Activo' : 'Asset'} ${a.sym}`, vol: a.vol, ret: a.ret, sharpe: a.sharpe })}
+                                onClick={() => setSelectedPoint({ name: `${isES ? 'Activo' : 'Asset'} ${a.sym}`, vol: a.vol, ret: a.ret, sharpe: a.sharpe })}
                             >
                                 <circle cx={cx} cy={cy} r="4.2" fill={a.sharpe >= 1.5 ? '#10b981' : '#f43f5e'} stroke="#090d16" strokeWidth="1.2" />
                                 <text x={cx + 6} y={cy + 3} fill="#cbd5e1" fontSize="8.5" fontWeight="800">{a.sym}</text>
@@ -218,14 +262,14 @@ function Quad1DynamicMarkowitz() {
 }
 
 /* CUADRANTE 2: TORNADO DE STRESS, VaR 95% & CAPTURA POR ACTIVO (320PX) */
-function Quad2TornadoAndAssetTail() {
+function Quad2TornadoAndAssetTail({ isES = false }) {
     const [subView, setSubView] = useState('TORNADO');
     const [selectedScenarioIdx, setSelectedScenarioIdx] = useState(0);
     const [selectedAsset, setSelectedAsset] = useState('ALL');
 
     const scenarios = [
         {
-            name: 'Crash Lehman 2008 (-42% SPX)',
+            name: isES ? 'Crash Lehman 2008 (-42% SPX)' : 'Lehman Crash 2008 (-42% SPX)',
             port: -11.4,
             bench: -42.0,
             byAsset: [
@@ -237,7 +281,7 @@ function Quad2TornadoAndAssetTail() {
             ]
         },
         {
-            name: 'Shock COVID-19 Mar 2020',
+            name: isES ? 'Shock COVID-19 Mar 2020' : 'COVID-19 Shock Mar 2020',
             port: -7.8,
             bench: -34.0,
             byAsset: [
@@ -249,7 +293,7 @@ function Quad2TornadoAndAssetTail() {
             ]
         },
         {
-            name: 'Shock Tasas Fed 2022 (+425 bps)',
+            name: isES ? 'Shock Tasas Fed 2022 (+425 bps)' : 'Fed Rate Hike Shock 2022 (+425 bps)',
             port: -6.2,
             bench: -19.4,
             byAsset: [
@@ -261,7 +305,7 @@ function Quad2TornadoAndAssetTail() {
             ]
         },
         {
-            name: 'Desinflación + Rally IA',
+            name: isES ? 'Desinflación + Rally IA' : 'Disinflation + AI Rally',
             port: +24.6,
             bench: +18.2,
             byAsset: [
@@ -275,20 +319,24 @@ function Quad2TornadoAndAssetTail() {
     ];
 
     const activeScenario = scenarios[selectedScenarioIdx];
-    const varHeaders = ['ACTIVO', 'PESO', 'VOLAT. σ', 'VaR 95% (1D)', 'ROL EN COLA'];
-    const capHeaders = ['ACTIVO', 'UPSIDE CAPTURE', 'DOWNSIDE CAPTURE', 'ASIMETRÍA NETA'];
+    const varHeaders = isES
+        ? ['ACTIVO', 'PESO', 'VOLAT. σ', 'VaR 95% (1D)', 'ROL EN COLA']
+        : ['ASSET', 'WEIGHT', 'VOLAT. σ', 'VaR 95% (1D)', 'TAIL ROLE'];
+    const capHeaders = isES
+        ? ['ACTIVO', 'UPSIDE CAPTURE', 'DOWNSIDE CAPTURE', 'ASIMETRÍA NETA']
+        : ['ASSET', 'UPSIDE CAPTURE', 'DOWNSIDE CAPTURE', 'NET ASYMMETRY'];
 
     return (
         <PortfolioCardShell
             badge="CUADRANTE 2 • IZQ ABAJO"
-            title="Escenarios de Estrés"
+            title={isES ? 'Escenarios de Estrés' : 'Stress Scenarios'}
             color="#f43f5e"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
-                        { id: 'TORNADO', lbl: 'Estrés Histórico' },
-                        { id: 'VAR_ASSET', lbl: 'VaR por Activo' },
-                        { id: 'CAPTURE', lbl: 'Captura' }
+                        { id: 'TORNADO', lbl: isES ? 'Estrés Histórico' : 'Historical Stress' },
+                        { id: 'VAR_ASSET', lbl: isES ? 'VaR por Activo' : 'Asset VaR' },
+                        { id: 'CAPTURE', lbl: isES ? 'Captura' : 'Capture' }
                     ].map(t => {
                         const active = subView === t.id;
                         return (
@@ -316,7 +364,7 @@ function Quad2TornadoAndAssetTail() {
                 subView === 'TORNADO' ? (
                     <>
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
-                            IMPACTO POR ACTIVO ({activeScenario.name}):
+                            {isES ? 'IMPACTO POR ACTIVO' : 'IMPACT BY ASSET'} ({activeScenario.name}):
                         </span>
                         <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
                             {activeScenario.byAsset.map(a => (
@@ -338,7 +386,9 @@ function Quad2TornadoAndAssetTail() {
                     </>
                 ) : (
                     <>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>FILTRAR ACTIVO:</span>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
+                            {isES ? 'FILTRAR ACTIVO:' : 'FILTER ASSET:'}
+                        </span>
                         <div style={{ display: 'flex', gap: '8px' }}>
                             {['ALL', 'NVDA', 'SPY', 'BTC', 'GLD', 'TLT', 'MSFT'].map(sym => (
                                 <button
@@ -355,7 +405,7 @@ function Quad2TornadoAndAssetTail() {
                                         cursor: 'pointer'
                                     }}
                                 >
-                                    {sym === 'ALL' ? 'Todos' : sym}
+                                    {sym === 'ALL' ? (isES ? 'Todos' : 'All') : sym}
                                 </button>
                             ))}
                         </div>
@@ -366,9 +416,9 @@ function Quad2TornadoAndAssetTail() {
             {subView === 'TORNADO' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1.45fr 1fr 112px', fontSize: '11.5px', fontWeight: 800, color: '#64748b', padding: '0 6px' }}>
-                        <span style={{ textAlign: 'left' }}>ESCENARIO HISTÓRICO / MACRO</span>
-                        <span style={{ textAlign: 'center' }}>MAGNITUD DE IMPACTO</span>
-                        <span style={{ textAlign: 'right' }}>CARTERA (BENCH)</span>
+                        <span style={{ textAlign: 'left' }}>{isES ? 'ESCENARIO HISTÓRICO / MACRO' : 'HISTORICAL / MACRO SCENARIO'}</span>
+                        <span style={{ textAlign: 'center' }}>{isES ? 'MAGNITUD DE IMPACTO' : 'IMPACT MAGNITUDE'}</span>
+                        <span style={{ textAlign: 'right' }}>{isES ? 'CARTERA (BENCH)' : 'PORTFOLIO (BENCH)'}</span>
                     </div>
                     {scenarios.map((s, idx) => {
                         const pillStyle = getSemanticReturnStyle(s.port, 25);
@@ -448,7 +498,13 @@ function Quad2TornadoAndAssetTail() {
                                 {a.var95}%
                             </span>
                             <span style={{ textAlign: 'right', fontFamily: 'sans-serif', fontSize: '11.5px', color: a.beta <= 0.1 ? '#6ee7b7' : '#fda4af', fontWeight: 800 }}>
-                                {a.beta <= 0.1 ? 'Escudo Defensivo' : 'Generador Riesgo'}
+                                {a.beta <= 0.1
+                                    ? isES
+                                        ? 'Escudo Defensivo'
+                                        : 'Defensive Shield'
+                                    : isES
+                                    ? 'Generador Riesgo'
+                                    : 'Risk Driver'}
                             </span>
                         </div>
                     ))}
@@ -492,26 +548,28 @@ function Quad2TornadoAndAssetTail() {
 }
 
 /* CUADRANTE 3: MATRIZ DE CORRELACIÓN CRUZADA & SENSIBILIDAD POR ACTIVO (320PX) */
-function Quad3CorrelationAndAssetBeta() {
+function Quad3CorrelationAndAssetBeta({ isES = false }) {
     const [corrRegime, setCorrRegime] = useState('NORMAL');
     const [subMode, setSubMode] = useState('MATRIX');
     const [focusAssetIdx, setFocusAssetIdx] = useState(null);
 
     const activeMatrix = corrRegime === 'NORMAL' ? CORR_NORMAL : CORR_STRESS;
     const assets = ['NVDA', 'SPY', 'BTC', 'GLD', 'TLT', 'MSFT'];
-    const matHeaders = ['ACTIVO', ...assets];
-    const betaHeaders = ['ACTIVO', 'BETA SPX', 'CORR MEDIA', 'SHARPE INDIV.', 'MEJOR RÉGIMEN'];
+    const matHeaders = [isES ? 'ACTIVO' : 'ASSET', ...assets];
+    const betaHeaders = isES
+        ? ['ACTIVO', 'BETA SPX', 'CORR MEDIA', 'SHARPE INDIV.', 'MEJOR RÉGIMEN']
+        : ['ASSET', 'SPX BETA', 'AVG CORR', 'INDIV. SHARPE', 'BEST REGIME'];
 
     return (
         <PortfolioCardShell
             badge="CUADRANTE 3 • DER ARRIBA"
-            title="Correlación y Sensibilidad"
+            title={isES ? 'Correlación y Sensibilidad' : 'Correlation & Sensitivity'}
             color="#10b981"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
-                        { id: 'MATRIX', lbl: 'Matriz' },
-                        { id: 'BETAS', lbl: 'Beta por Activo' }
+                        { id: 'MATRIX', lbl: isES ? 'Matriz' : 'Matrix' },
+                        { id: 'BETAS', lbl: isES ? 'Beta por Activo' : 'Asset Beta' }
                     ].map(m => {
                         const active = subMode === m.id;
                         return (
@@ -538,7 +596,9 @@ function Quad3CorrelationAndAssetBeta() {
             subBar={
                 <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>RÉGIMEN:</span>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                            {isES ? 'RÉGIMEN:' : 'REGIME:'}
+                        </span>
                         <button
                             onClick={() => setCorrRegime('NORMAL')}
                             style={{
@@ -552,7 +612,7 @@ function Quad3CorrelationAndAssetBeta() {
                                 cursor: 'pointer'
                             }}
                         >
-                            Mercado Normal (1Y)
+                            {isES ? 'Mercado Normal (1Y)' : 'Normal Market (1Y)'}
                         </button>
                         <button
                             onClick={() => setCorrRegime('STRESS')}
@@ -567,11 +627,17 @@ function Quad3CorrelationAndAssetBeta() {
                                 cursor: 'pointer'
                             }}
                         >
-                            Cola de Crisis (Contagio)
+                            {isES ? 'Cola de Crisis (Contagio)' : 'Crisis Tail (Contagion)'}
                         </button>
                     </div>
                     <span style={{ fontSize: '11.5px', color: '#94a3b8' }}>
-                        {focusAssetIdx !== null ? `Foco en ${assets[focusAssetIdx]}` : 'Clic en activo para aislar fila'}
+                        {focusAssetIdx !== null
+                            ? isES
+                                ? `Foco en ${assets[focusAssetIdx]}`
+                                : `Focus on ${assets[focusAssetIdx]}`
+                            : isES
+                            ? 'Clic en activo para aislar fila'
+                            : 'Click asset to isolate row'}
                     </span>
                 </>
             }
@@ -674,7 +740,7 @@ function Quad3CorrelationAndAssetBeta() {
 }
 
 /* CUADRANTE 4: MATRIZ 2D CHOQUE TASAS×SPX & MATRIZ DE REGÍMENES DE MARKOV (#11) (320PX) */
-function Quad4ShockAndMarkovMatrices() {
+function Quad4ShockAndMarkovMatrices({ isES = false }) {
     const [tab, setTab] = useState('SHOCK2D');
     const [targetSym, setTargetSym] = useState('CARTERA');
 
@@ -688,15 +754,23 @@ function Quad4ShockAndMarkovMatrices() {
     };
 
     const mult = assetSens[targetSym] || assetSens.CARTERA;
-    const shockHeaders = [`TASAS \\ SPX (${targetSym})`, 'S&P 500 -15%', 'S&P 500 0%', 'S&P 500 +15%'];
+    const displayTarget = targetSym === 'CARTERA' ? (isES ? 'CARTERA' : 'PORTFOLIO') : targetSym;
+    const shockHeaders = [
+        `${isES ? 'TASAS' : 'RATES'} \\ SPX (${displayTarget})`,
+        'S&P 500 -15%',
+        'S&P 500 0%',
+        'S&P 500 +15%'
+    ];
     const shockRows = [
-        { rate: 'Tasas -100 bps', base: [-4.2, 3.8, 12.4] },
-        { rate: 'Tasas 0 bps (Base)', base: [-6.8, 0.0, 8.9] },
-        { rate: 'Tasas +100 bps', base: [-10.4, -3.1, 4.2] },
-        { rate: 'Tasas +200 bps', base: [-14.2, -6.4, 1.1] }
+        { rate: isES ? 'Tasas -100 bps' : 'Rates -100 bps', base: [-4.2, 3.8, 12.4] },
+        { rate: isES ? 'Tasas 0 bps (Base)' : 'Rates 0 bps (Base)', base: [-6.8, 0.0, 8.9] },
+        { rate: isES ? 'Tasas +100 bps' : 'Rates +100 bps', base: [-10.4, -3.1, 4.2] },
+        { rate: isES ? 'Tasas +200 bps' : 'Rates +200 bps', base: [-14.2, -6.4, 1.1] }
     ];
 
-    const markovHeaders = ['RÉGIMEN', 'BQ', 'BV', 'INF', 'CR', 'ACTIVO LÍDER', 'E[RET]'];
+    const markovHeaders = isES
+        ? ['RÉGIMEN', 'BQ', 'BV', 'INF', 'CR', 'ACTIVO LÍDER', 'E[RET]']
+        : ['REGIME', 'BQ', 'BV', 'INF', 'CR', 'TOP ASSET', 'E[RET]'];
     const regimes = [
         { name: 'Bull Quiet (62%)', bq: '74%', bv: '16%', inf: '7%', cr: '3%', exp: 2.4, top: 'NVDA (+4.8%/m)' },
         { name: 'Bull Volatile (21%)', bq: '28%', bv: '52%', inf: '12%', cr: '8%', exp: 1.1, top: 'BTC (+5.4%/m)' },
@@ -707,13 +781,21 @@ function Quad4ShockAndMarkovMatrices() {
     return (
         <PortfolioCardShell
             badge="CUADRANTE 4 • DER ABAJO"
-            title={tab === 'SHOCK2D' ? 'Choque de Mercado' : 'Regímenes de Mercado'}
+            title={
+                tab === 'SHOCK2D'
+                    ? isES
+                        ? 'Choque de Mercado'
+                        : 'Market Shock'
+                    : isES
+                    ? 'Regímenes de Mercado'
+                    : 'Market Regimes'
+            }
             color="#f43f5e"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
-                        { id: 'SHOCK2D', lbl: 'Tasas vs S&P 500' },
-                        { id: 'MARKOV', lbl: 'Regímenes' }
+                        { id: 'SHOCK2D', lbl: isES ? 'Tasas vs S&P 500' : 'Rates vs S&P 500' },
+                        { id: 'MARKOV', lbl: isES ? 'Regímenes' : 'Regimes' }
                     ].map(m => {
                         const active = tab === m.id;
                         return (
@@ -740,7 +822,9 @@ function Quad4ShockAndMarkovMatrices() {
             subBar={
                 tab === 'SHOCK2D' ? (
                     <>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>VER CHOQUE SOBRE:</span>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
+                            {isES ? 'VER CHOQUE SOBRE:' : 'SHOCK TARGET:'}
+                        </span>
                         <div style={{ display: 'flex', gap: '8px' }}>
                             {['CARTERA', 'NVDA', 'SPY', 'BTC', 'GLD', 'TLT'].map(s => (
                                 <button
@@ -757,14 +841,16 @@ function Quad4ShockAndMarkovMatrices() {
                                         cursor: 'pointer'
                                     }}
                                 >
-                                    {s}
+                                    {s === 'CARTERA' ? (isES ? 'CARTERA' : 'PORTFOLIO') : s}
                                 </button>
                             ))}
                         </div>
                     </>
                 ) : (
                     <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
-                        PROBABILIDAD DE TRANSICIÓN A 30 DÍAS + ACTIVO LÍDER POR RÉGIMEN
+                        {isES
+                            ? 'PROBABILIDAD DE TRANSICIÓN A 30 DÍAS + ACTIVO LÍDER POR RÉGIMEN'
+                            : '30-DAY TRANSITION PROBABILITY + TOP ASSET PER REGIME'}
                     </span>
                 )
             }
@@ -838,7 +924,7 @@ function Quad4ShockAndMarkovMatrices() {
 }
 
 /* FILA 3 (100% ANCHO): PROYECCIÓN MONTE CARLO / DRAWDOWN / ROLLING 60D */
-function Row3FullWidthProjectionInteractive() {
+function Row3FullWidthProjectionInteractive({ isES = false }) {
     const [seriesMode, setSeriesMode] = useState('MC');
     const [horizon, setHorizon] = useState('12M');
     const [showP95, setShowP95] = useState(true);
@@ -863,10 +949,16 @@ function Row3FullWidthProjectionInteractive() {
             badge="FILA 3 • ANCHO COMPLETO (100%)"
             title={
                 seriesMode === 'MC'
-                    ? 'Proyección Monte Carlo'
+                    ? isES
+                        ? 'Proyección Monte Carlo'
+                        : 'Monte Carlo Projection'
                     : seriesMode === 'DD'
-                    ? 'Caída Histórica (Drawdown)'
-                    : 'Sharpe y Beta Rodante'
+                    ? isES
+                        ? 'Caída Histórica (Drawdown)'
+                        : 'Historical Drawdown'
+                    : isES
+                    ? 'Sharpe y Beta Rodante'
+                    : 'Rolling Sharpe & Beta'
             }
             color={seriesMode === 'DD' ? '#f43f5e' : '#10b981'}
             rightSlot={
@@ -874,7 +966,7 @@ function Row3FullWidthProjectionInteractive() {
                     {[
                         { id: 'MC', lbl: 'Monte Carlo' },
                         { id: 'DD', lbl: 'Drawdown' },
-                        { id: 'ROLL', lbl: 'Sharpe y Beta' }
+                        { id: 'ROLL', lbl: isES ? 'Sharpe y Beta' : 'Sharpe & Beta' }
                     ].map(m => {
                         const active = seriesMode === m.id;
                         return (
@@ -902,11 +994,13 @@ function Row3FullWidthProjectionInteractive() {
                 seriesMode === 'MC' ? (
                     <>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                            <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>BANDAS VISIBLES:</span>
+                            <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                                {isES ? 'BANDAS VISIBLES:' : 'VISIBLE BANDS:'}
+                            </span>
                             {[
-                                { lbl: 'P95 Optimista', val: showP95, set: setShowP95, col: '#10b981' },
-                                { lbl: 'P50 Mediana', val: showP50, set: setShowP50, col: '#6ee7b7' },
-                                { lbl: 'P05 Cola Adversa', val: showP05, set: setShowP05, col: '#f43f5e' },
+                                { lbl: isES ? 'P95 Optimista' : 'P95 Bullish', val: showP95, set: setShowP95, col: '#10b981' },
+                                { lbl: isES ? 'P50 Mediana' : 'P50 Median', val: showP50, set: setShowP50, col: '#6ee7b7' },
+                                { lbl: isES ? 'P05 Cola Adversa' : 'P05 Tail Risk', val: showP05, set: setShowP05, col: '#f43f5e' },
                                 { lbl: 'Benchmark S&P 500', val: showBench, set: setShowBench, col: '#94a3b8' }
                             ].map(b => (
                                 <button
@@ -929,7 +1023,9 @@ function Row3FullWidthProjectionInteractive() {
                             ))}
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <span style={{ fontSize: '11.5px', color: '#64748b', fontWeight: 800 }}>HORIZONTE:</span>
+                            <span style={{ fontSize: '11.5px', color: '#64748b', fontWeight: 800 }}>
+                                {isES ? 'HORIZONTE:' : 'HORIZON:'}
+                            </span>
                             {['6M', '12M', '24M'].map(h => (
                                 <button
                                     key={h}
@@ -953,7 +1049,9 @@ function Row3FullWidthProjectionInteractive() {
                     </>
                 ) : (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>COMPARAR CONTRA ACTIVO INDIVIDUAL:</span>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                            {isES ? 'COMPARAR CONTRA ACTIVO INDIVIDUAL:' : 'COMPARE AGAINST SINGLE ASSET:'}
+                        </span>
                         {['NVDA', 'SPY', 'BTC', 'GLD', 'TLT', 'MSFT'].map(s => (
                             <button
                                 key={s}
@@ -994,10 +1092,10 @@ function Row3FullWidthProjectionInteractive() {
                             <XAxis dataKey="m" tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
                             <YAxis domain={['auto', 'auto']} tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
                             <RechartsTooltip contentStyle={{ background: '#090d16', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }} />
-                            {showP95 && <Area type="monotone" dataKey="p95" name="P95 Banda Optimista" stroke="#10b981" strokeWidth={2.2} fill="url(#prodV2McGreen)" />}
-                            {showP50 && <Area type="monotone" dataKey="p50" name="P50 Mediana" stroke="#6ee7b7" strokeWidth={2} strokeDasharray="5 3" fill="none" />}
-                            {showBench && <Area type="monotone" dataKey="bench" name="S&P 500 Esperado" stroke="#94a3b8" strokeWidth={1.4} strokeDasharray="3 3" fill="none" />}
-                            {showP05 && <Area type="monotone" dataKey="p05" name="P05 Cola Adversa" stroke="#f43f5e" strokeWidth={2} fill="url(#prodV2McRed)" />}
+                            {showP95 && <Area type="monotone" dataKey="p95" name={isES ? 'P95 Banda Optimista' : 'P95 Bullish Band'} stroke="#10b981" strokeWidth={2.2} fill="url(#prodV2McGreen)" />}
+                            {showP50 && <Area type="monotone" dataKey="p50" name={isES ? 'P50 Mediana' : 'P50 Median'} stroke="#6ee7b7" strokeWidth={2} strokeDasharray="5 3" fill="none" />}
+                            {showBench && <Area type="monotone" dataKey="bench" name={isES ? 'S&P 500 Esperado' : 'Expected S&P 500'} stroke="#94a3b8" strokeWidth={1.4} strokeDasharray="3 3" fill="none" />}
+                            {showP05 && <Area type="monotone" dataKey="p05" name={isES ? 'P05 Cola Adversa' : 'P05 Adverse Tail'} stroke="#f43f5e" strokeWidth={2} fill="url(#prodV2McRed)" />}
                         </AreaChart>
                     ) : seriesMode === 'DD' ? (
                         <AreaChart data={RISK_TIME_SERIES} margin={{ top: 6, right: 14, left: -16, bottom: 0 }}>
@@ -1013,7 +1111,7 @@ function Row3FullWidthProjectionInteractive() {
                             <ReferenceLine y={0} stroke="rgba(148,163,184,0.35)" />
                             <RechartsTooltip contentStyle={{ background: '#090d16', border: '1px solid rgba(244,63,94,0.4)', borderRadius: '6px', fontSize: '13px' }} />
                             <Area type="monotone" dataKey="ddAsset" name={`Drawdown ${compareAsset} (%)`} stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="4 3" fill="none" />
-                            <Area type="monotone" dataKey="ddPort" name="★ Drawdown Tu Cartera (%)" stroke="#f43f5e" strokeWidth={2.2} fill="url(#prodV2DdRed)" />
+                            <Area type="monotone" dataKey="ddPort" name={isES ? '★ Drawdown Tu Cartera (%)' : '★ Portfolio Drawdown (%)'} stroke="#f43f5e" strokeWidth={2.2} fill="url(#prodV2DdRed)" />
                         </AreaChart>
                     ) : (
                         <AreaChart data={RISK_TIME_SERIES} margin={{ top: 6, right: 14, left: -16, bottom: 0 }}>
@@ -1037,17 +1135,18 @@ function Row3FullWidthProjectionInteractive() {
     );
 }
 
-export default function PortfolioVista2Risk() {
+export default function PortfolioVista2Risk({ langCode = 'EN' }) {
+    const isES = langCode === 'ES';
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <Row1SummaryPills />
+            <Row1SummaryPills isES={isES} />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', alignItems: 'stretch' }}>
-                <Quad1DynamicMarkowitz />
-                <Quad3CorrelationAndAssetBeta />
-                <Quad2TornadoAndAssetTail />
-                <Quad4ShockAndMarkovMatrices />
+                <Quad1DynamicMarkowitz isES={isES} />
+                <Quad3CorrelationAndAssetBeta isES={isES} />
+                <Quad2TornadoAndAssetTail isES={isES} />
+                <Quad4ShockAndMarkovMatrices isES={isES} />
             </div>
-            <Row3FullWidthProjectionInteractive />
+            <Row3FullWidthProjectionInteractive isES={isES} />
         </div>
     );
 }

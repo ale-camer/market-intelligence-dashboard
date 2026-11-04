@@ -20,7 +20,7 @@ import {
 } from './portfolioConstants';
 
 /* FILA 1: ENCABEZADO PERMANENTE DE IMPACTO SOBRE EL TOTAL DE LA CARTERA */
-function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive }) {
+function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, isES = false }) {
     const c = TACTICAL_CANDIDATES[activeSym] || TACTICAL_CANDIDATES.NVDA;
     const isCapped = allocPct > 20;
     const effAlloc = isCapped ? 20 : allocPct;
@@ -32,39 +32,66 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive }) {
 
     const pills = [
         {
-            lbl: 'IMPACTO EN RETORNO TOTAL (CAGR)',
+            lbl: isES ? 'IMPACTO EN RETORNO TOTAL (CAGR)' : 'TOTAL RETURN IMPACT (CAGR)',
             val: `+28.4% → +${(28.4 + deltaRet).toFixed(1)}%`,
-            sub: `Delta Estrategia Ad-Hoc: +${deltaRet}% anual`,
+            sub: isES ? `Delta Estrategia Ad-Hoc: +${deltaRet}% anual` : `Ad-Hoc Strategy Delta: +${deltaRet}%/yr`,
             col: '#10b981'
         },
         {
-            lbl: 'IMPACTO EN SHARPE DE CARTERA',
+            lbl: isES ? 'IMPACTO EN SHARPE DE CARTERA' : 'PORTFOLIO SHARPE IMPACT',
             val: `2.18 → ${(2.18 + deltaSharpe).toFixed(2)}`,
-            sub: `Eficiencia marginal: +${deltaSharpe} pts`,
+            sub: isES ? `Eficiencia marginal: +${deltaSharpe} pts` : `Marginal efficiency: +${deltaSharpe} pts`,
             col: '#10b981'
         },
         {
-            lbl: 'IMPACTO EN VaR 95% DIARIO',
+            lbl: isES ? 'IMPACTO EN VaR 95% DIARIO' : 'DAILY 95% VaR IMPACT',
             val: `-1.84% → ${(-1.84 + deltaVaR).toFixed(2)}%`,
-            sub: deltaVaR >= 0 ? `Mejora cola diaria: +${deltaVaR}%` : `Mayor riesgo cola: ${deltaVaR}%`,
+            sub:
+                deltaVaR >= 0
+                    ? isES
+                        ? `Mejora cola diaria: +${deltaVaR}%`
+                        : `Daily tail improvement: +${deltaVaR}%`
+                    : isES
+                    ? `Mayor riesgo cola: ${deltaVaR}%`
+                    : `Increased tail risk: ${deltaVaR}%`,
             col: deltaVaR >= 0 ? '#10b981' : '#f43f5e'
         },
         {
-            lbl: 'IMPACTO EN MAX DRAWDOWN',
+            lbl: isES ? 'IMPACTO EN MAX DRAWDOWN' : 'MAX DRAWDOWN IMPACT',
             val: `-4.80% → ${(-4.8 + deltaDD).toFixed(2)}%`,
-            sub: deltaDD >= 0 ? `Escudo activo: +${deltaDD}% menos caída` : `Ampliación DD: ${deltaDD}%`,
+            sub:
+                deltaDD >= 0
+                    ? isES
+                        ? `Escudo activo: +${deltaDD}% menos caída`
+                        : `Active shield: +${deltaDD}% less drawdown`
+                    : isES
+                    ? `Ampliación DD: ${deltaDD}%`
+                    : `Drawdown expansion: ${deltaDD}%`,
             col: deltaDD >= 0 ? '#10b981' : '#f43f5e'
         },
         {
-            lbl: 'CAPITAL TÁCTICO / CARTERA TOTAL',
+            lbl: isES ? 'CAPITAL TÁCTICO / CARTERA TOTAL' : 'TACTICAL CAPITAL / TOTAL NAV',
             val: `${effAlloc.toFixed(1)}% NAV ($${(effAlloc * 1000).toLocaleString()})`,
-            sub: isCapped ? '⚠ Tope Guardrail 20% NAV Aplicado' : '88% Cartera Core Intacta',
+            sub: isCapped
+                ? isES
+                    ? '⚠ Tope Guardrail 20% NAV Aplicado'
+                    : '⚠ 20% NAV Guardrail Cap Applied'
+                : isES
+                ? '88% Cartera Core Intacta'
+                : '88% Core Portfolio Intact',
             col: isCapped ? '#f43f5e' : '#10b981'
         },
         {
-            lbl: 'VEREDICTO COMITÉ 3 PILARES',
-            val: c.p06 < 0.65 && !isCapped ? 'APROBADO (3/3)' : 'RECORTE GUARDRAIL',
-            sub: `P-06 = ${c.p06} (Umbral < 0.65) • Cap ≤ 20%`,
+            lbl: isES ? 'VEREDICTO COMITÉ 3 PILARES' : '3-PILLAR COMMITTEE VERDICT',
+            val:
+                c.p06 < 0.65 && !isCapped
+                    ? isES
+                        ? 'APROBADO (3/3)'
+                        : 'APPROVED (3/3)'
+                    : isES
+                    ? 'RECORTE GUARDRAIL'
+                    : 'GUARDRAIL TRIM',
+            sub: `P-06 = ${c.p06} (${isES ? 'Umbral' : 'Limit'} < 0.65) • Cap ≤ 20%`,
             col: c.p06 < 0.65 && !isCapped ? '#10b981' : '#f43f5e'
         }
     ];
@@ -94,35 +121,39 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive }) {
 }
 
 /* CUADRANTE 1: SIMULADOR "WHAT-IF" PRE-TRADE (#1) & CRITERIO DE KELLY (#14) (320PX) */
-function Quad1WhatIfAndKelly({ activeSym, setActiveSym, allocPct, setAllocPct, onExecuteOrder }) {
+function Quad1WhatIfAndKelly({ activeSym, setActiveSym, allocPct, setAllocPct, onExecuteOrder, isES = false }) {
     const [subTab, setSubTab] = useState('WHATIF');
     const c = TACTICAL_CANDIDATES[activeSym] || TACTICAL_CANDIDATES.NVDA;
 
-    const headers = ['MÉTRICA DE CARTERA', 'CARTERA BASE', 'CON JUGADA AD-HOC', 'IMPACTO NETO (Δ)'];
+    const headers = isES
+        ? ['MÉTRICA DE CARTERA', 'CARTERA BASE', 'CON JUGADA AD-HOC', 'IMPACTO NETO (Δ)']
+        : ['PORTFOLIO METRIC', 'BASE PORTFOLIO', 'WITH AD-HOC TRADE', 'NET IMPACT (Δ)'];
     const rows = [
-        ['Retorno Anual (CAGR)', '+28.4%', `+${(28.4 + allocPct * 0.28).toFixed(1)}%`, `+${(allocPct * 0.28).toFixed(1)}%`, +(allocPct * 0.28)],
+        [isES ? 'Retorno Anual (CAGR)' : 'Annual Return (CAGR)', '+28.4%', `+${(28.4 + allocPct * 0.28).toFixed(1)}%`, `+${(allocPct * 0.28).toFixed(1)}%`, +(allocPct * 0.28)],
         ['Sharpe Ratio', '2.18', (2.18 + allocPct * 0.015).toFixed(2), `+${(allocPct * 0.015).toFixed(2)}`, +1.5],
-        ['VaR 95% Diario', '-1.84%', '-1.52%', '+0.32%', +4],
-        ['Exposición Activo', '10.0%', `${(10 + Math.min(20, allocPct)).toFixed(1)}%`, `+${Math.min(20, allocPct).toFixed(1)}%`, +3]
+        [isES ? 'VaR 95% Diario' : 'Daily 95% VaR', '-1.84%', '-1.52%', '+0.32%', +4],
+        [isES ? 'Exposición Activo' : 'Asset Exposure', '10.0%', `${(10 + Math.min(20, allocPct)).toFixed(1)}%`, `+${Math.min(20, allocPct).toFixed(1)}%`, +3]
     ];
 
-    const kellyHeaders = ['MODO KELLY', 'FÓRMULA', 'TAMAÑO SUGERIDO', 'RIESGO DE RUINA'];
+    const kellyHeaders = isES
+        ? ['MODO KELLY', 'FÓRMULA', 'TAMAÑO SUGERIDO', 'RIESGO DE RUINA']
+        : ['KELLY MODE', 'FORMULA', 'SUGGESTED SIZE', 'RISK OF RUIN'];
     const kellyRows = [
-        ['Full Kelly (1.0x)', 'W - (1-W)/R', `${c.fullKelly}% NAV`, 'Alto (Volátil)', -4],
-        ['Half Kelly (0.5x)', '0.5 × Full Kelly', `${c.halfKelly}% NAV`, 'Óptimo Institucional', +8],
-        ['Quarter Kelly (0.25x)', '0.25 × Full Kelly', `${c.quarterKelly}% NAV`, 'Ultra Conservador', +5]
+        ['Full Kelly (1.0x)', 'W - (1-W)/R', `${c.fullKelly}% NAV`, isES ? 'Alto (Volátil)' : 'High (Volatile)', -4],
+        ['Half Kelly (0.5x)', '0.5 × Full Kelly', `${c.halfKelly}% NAV`, isES ? 'Óptimo Institucional' : 'Institutional Optimal', +8],
+        ['Quarter Kelly (0.25x)', '0.25 × Full Kelly', `${c.quarterKelly}% NAV`, isES ? 'Ultra Conservador' : 'Ultra Conservative', +5]
     ];
 
     return (
         <PortfolioCardShell
             badge="CUADRANTE 1 • SIMULADOR"
-            title="Simulador de Posición"
+            title={isES ? 'Simulador de Posición' : 'Position Simulator'}
             color="#10b981"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
-                        { id: 'WHATIF', lbl: 'Impacto' },
-                        { id: 'KELLY', lbl: 'Tamaño Kelly' }
+                        { id: 'WHATIF', lbl: isES ? 'Impacto' : 'Impact' },
+                        { id: 'KELLY', lbl: isES ? 'Tamaño Kelly' : 'Kelly Sizing' }
                     ].map(m => {
                         const active = subTab === m.id;
                         return (
@@ -149,7 +180,9 @@ function Quad1WhatIfAndKelly({ activeSym, setActiveSym, allocPct, setAllocPct, o
             subBar={
                 <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>ACTIVO:</span>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                            {isES ? 'ACTIVO:' : 'ASSET:'}
+                        </span>
                         {Object.keys(TACTICAL_CANDIDATES).map(sym => (
                             <button
                                 key={sym}
@@ -205,7 +238,7 @@ function Quad1WhatIfAndKelly({ activeSym, setActiveSym, allocPct, setAllocPct, o
                                 cursor: 'pointer'
                             }}
                         >
-                            Simular Orden ↗
+                            {isES ? 'Simular Orden ↗' : 'Simulate Order ↗'}
                         </button>
                     </div>
                 </>
@@ -242,7 +275,7 @@ function Quad1WhatIfAndKelly({ activeSym, setActiveSym, allocPct, setAllocPct, o
             ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
                     <div style={{ fontSize: '11.5px', color: '#94a3b8', padding: '0 4px', fontFamily: 'sans-serif' }}>
-                        Parámetros de {c.sym}: <strong>Win Rate {c.winRate}%</strong> • <strong>Payoff Ratio {c.payoff}x</strong> (Clic para aplicar peso):
+                        {isES ? `Parámetros de ${c.sym}:` : `${c.sym} parameters:`} <strong>Win Rate {c.winRate}%</strong> • <strong>Payoff Ratio {c.payoff}x</strong> ({isES ? 'Clic para aplicar peso' : 'Click to apply weight'}):
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {kellyHeaders.map((h, i) => (
@@ -278,34 +311,38 @@ function Quad1WhatIfAndKelly({ activeSym, setActiveSym, allocPct, setAllocPct, o
 }
 
 /* CUADRANTE 2: ESCUDO TAIL-HEDGE (#6) & APALANCAMIENTO / MARGIN CALL (#13) (320PX) */
-function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive }) {
+function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) {
     const [tab, setTab] = useState('HEDGE');
     const [leverage, setLeverage] = useState(1.25);
 
-    const hedgeHeaders = ['CAÍDA S&P 500', 'CARTERA SIN ESCUDO', 'CON PUT 5% OTM', 'PROTECCIÓN NETA'];
+    const hedgeHeaders = isES
+        ? ['CAÍDA S&P 500', 'CARTERA SIN ESCUDO', 'CON PUT 5% OTM', 'PROTECCIÓN NETA']
+        : ['S&P 500 DROP', 'UNHEDGED PORTFOLIO', 'WITH 5% OTM PUT', 'NET PROTECTION'];
     const hedgeRows = [
-        ['Crash -10% SPX', '-6.4%', '-2.1%', '+4.3% Salvado', +6],
-        ['Crash -20% SPX', '-13.8%', '-3.8%', '+10.0% Salvado', +12],
-        ['Crash -30% SPX', '-21.5%', '-4.9%', '+16.6% Salvado', +18]
+        ['Crash -10% SPX', '-6.4%', '-2.1%', isES ? '+4.3% Salvado' : '+4.3% Saved', +6],
+        ['Crash -20% SPX', '-13.8%', '-3.8%', isES ? '+10.0% Salvado' : '+10.0% Saved', +12],
+        ['Crash -30% SPX', '-21.5%', '-4.9%', isES ? '+16.6% Salvado' : '+16.6% Saved', +18]
     ];
 
-    const marginHeaders = ['PARÁMETRO DE MARGEN', 'ACTUAL', 'LÍMITE BROKER', 'COLCHÓN / DISTANCIA'];
+    const marginHeaders = isES
+        ? ['PARÁMETRO DE MARGEN', 'ACTUAL', 'LÍMITE BROKER', 'COLCHÓN / DISTANCIA']
+        : ['MARGIN PARAMETER', 'CURRENT', 'BROKER LIMIT', 'BUFFER / DISTANCE'];
     const marginRows = [
-        ['Apalancamiento Bruto', `${leverage.toFixed(2)}x`, '2.00x Reg-T', `${(2.0 - leverage).toFixed(2)}x Libre`, +8],
-        ['Margen de Mantenimiento', '18.5% NAV', '25.0% Mínimo', '+6.5% Buffer', +6],
-        ['Caída para Margin Call', `-${Math.round(44 / leverage)}% Mercado`, '-15% Alerta', 'Zona Segura', leverage <= 1.5 ? +10 : -8]
+        [isES ? 'Apalancamiento Bruto' : 'Gross Leverage', `${leverage.toFixed(2)}x`, '2.00x Reg-T', `${(2.0 - leverage).toFixed(2)}x ${isES ? 'Libre' : 'Free'}`, +8],
+        [isES ? 'Margen de Mantenimiento' : 'Maintenance Margin', '18.5% NAV', isES ? '25.0% Mínimo' : '25.0% Min', '+6.5% Buffer', +6],
+        [isES ? 'Caída para Margin Call' : 'Drop to Margin Call', `-${Math.round(44 / leverage)}% ${isES ? 'Mercado' : 'Market'}`, isES ? '-15% Alerta' : '-15% Alert', isES ? 'Zona Segura' : 'Safe Zone', leverage <= 1.5 ? +10 : -8]
     ];
 
     return (
         <PortfolioCardShell
             badge="CUADRANTE 2 • COBERTURA & MARGEN"
-            title="Cobertura y Margen"
+            title={isES ? 'Cobertura y Margen' : 'Hedging & Margin'}
             color="#f43f5e"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
-                        { id: 'HEDGE', lbl: 'Cobertura Put' },
-                        { id: 'MARGIN', lbl: 'Margen' }
+                        { id: 'HEDGE', lbl: isES ? 'Cobertura Put' : 'Put Hedge' },
+                        { id: 'MARGIN', lbl: isES ? 'Margen' : 'Margin' }
                     ].map(m => {
                         const active = tab === m.id;
                         return (
@@ -346,11 +383,19 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive }) {
                             padding: 0
                         }}
                     >
-                        {hedgeActive ? 'Cobertura Put Activa (Costo Prima: -0.65%/año)' : 'Activar Cobertura Put en Cartera Total (Costo Prima: -0.65%/año)'}
+                        {hedgeActive
+                            ? isES
+                                ? 'Cobertura Put Activa (Costo Prima: -0.65%/año)'
+                                : 'Put Hedge Active (Premium Cost: -0.65%/yr)'
+                            : isES
+                            ? 'Activar Cobertura Put en Cartera Total (Costo Prima: -0.65%/año)'
+                            : 'Activate Put Hedge on Total Portfolio (Premium Cost: -0.65%/yr)'}
                     </button>
                 ) : (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>SIMULAR APALANCAMIENTO:</span>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                            {isES ? 'SIMULAR APALANCAMIENTO:' : 'SIMULATE LEVERAGE:'}
+                        </span>
                         {[1.0, 1.25, 1.5, 1.85].map(lv => (
                             <button
                                 key={lv}
@@ -436,19 +481,39 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive }) {
 }
 
 /* CUADRANTE 3: COMITÉ AUTÓNOMO DE 3 PILARES & CIRCUIT-BREAKER (NEW-09) (320PX) */
-function Quad3AutonomousCommittee({ activeSym, allocPct }) {
+function Quad3AutonomousCommittee({ activeSym, allocPct, isES = false }) {
     const c = TACTICAL_CANDIDATES[activeSym] || TACTICAL_CANDIDATES.NVDA;
     const isCapped = allocPct > 20;
 
-    const headers = ['PILAR DEL COMITÉ', 'SEÑAL / MÉTRICA', 'UMBRAL REGLA', 'VEREDICTO'];
+    const headers = isES
+        ? ['PILAR DEL COMITÉ', 'SEÑAL / MÉTRICA', 'UMBRAL REGLA', 'VEREDICTO']
+        : ['COMMITTEE PILLAR', 'SIGNAL / METRIC', 'RULE THRESHOLD', 'VERDICT'];
     const pillars = [
-        ['Análisis Cuantitativo', c.quantScore, 'Z-Score > +1.5', 'APROBADO', +10],
-        ['Investigación y Noticias', c.researchScore, 'Sentimiento > +0.35', 'APROBADO', +8],
         [
-            'Límite de Riesgo',
-            `Peso Solicitado: ${allocPct}% | P-06: ${c.p06}`,
+            isES ? 'Análisis Cuantitativo' : 'Quantitative Analysis',
+            c.quantScore,
+            'Z-Score > +1.5',
+            isES ? 'APROBADO' : 'APPROVED',
+            +10
+        ],
+        [
+            isES ? 'Investigación y Noticias' : 'Research & Sentiment',
+            c.researchScore,
+            isES ? 'Sentimiento > +0.35' : 'Sentiment > +0.35',
+            isES ? 'APROBADO' : 'APPROVED',
+            +8
+        ],
+        [
+            isES ? 'Límite de Riesgo' : 'Risk Guardrail',
+            isES ? `Peso Solicitado: ${allocPct}% | P-06: ${c.p06}` : `Requested Weight: ${allocPct}% | P-06: ${c.p06}`,
             'Cap ≤ 20% | P-06 < 0.65',
-            isCapped ? 'RECORTADO A 20%' : 'DENTRO DE LÍMITE',
+            isCapped
+                ? isES
+                    ? 'RECORTADO A 20%'
+                    : 'CAPPED AT 20%'
+                : isES
+                ? 'DENTRO DE LÍMITE'
+                : 'WITHIN LIMIT',
             isCapped ? -10 : +12
         ]
     ];
@@ -456,12 +521,14 @@ function Quad3AutonomousCommittee({ activeSym, allocPct }) {
     return (
         <PortfolioCardShell
             badge="CUADRANTE 3 • COMITÉ"
-            title="Comité de Riesgo"
-            subtitle={`Evaluación sobre ${c.sym}`}
+            title={isES ? 'Comité de Riesgo' : 'Risk Committee'}
+            subtitle={isES ? `Evaluación sobre ${c.sym}` : `Evaluation on ${c.sym}`}
             color="#10b981"
             subBar={
                 <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#6ee7b7' }}>
-                    REGLA DURA INSTITUCIONAL: Tope máximo 20% NAV por activo • Circuit-Breaker al 5% NAV si P-06 ≥ 0.65
+                    {isES
+                        ? 'REGLA DURA INSTITUCIONAL: Tope máximo 20% NAV por activo • Circuit-Breaker al 5% NAV si P-06 ≥ 0.65'
+                        : 'INSTITUTIONAL HARD RULE: Max 20% NAV cap per asset • 5% NAV Circuit-Breaker if P-06 ≥ 0.65'}
                 </span>
             }
         >
@@ -503,7 +570,7 @@ function Quad3AutonomousCommittee({ activeSym, allocPct }) {
                         color: isCapped ? '#fda4af' : '#a7f3d0'
                     }}
                 >
-                    <strong>Síntesis de Consenso:</strong> {c.guardrailNote}
+                    <strong>{isES ? 'Síntesis de Consenso:' : 'Consensus Synthesis:'}</strong> {c.guardrailNote}
                 </div>
             </div>
         </PortfolioCardShell>
@@ -511,17 +578,21 @@ function Quad3AutonomousCommittee({ activeSym, allocPct }) {
 }
 
 /* CUADRANTE 4: LIBRO DE EJECUCIÓN & AUDITORÍA HISTÓRICA (EXECUTION LEDGER NEW-10) (320PX) */
-function Quad4ExecutionLedger({ ledger }) {
-    const headers = ['HORA / FECHA', 'ACTIVO', 'ESTRATEGIA', 'PESO NAV', 'Δ SHARPE', 'Δ VaR 95%', 'ESTADO'];
+function Quad4ExecutionLedger({ ledger, isES = false }) {
+    const headers = isES
+        ? ['HORA / FECHA', 'ACTIVO', 'ESTRATEGIA', 'PESO NAV', 'Δ SHARPE', 'Δ VaR 95%', 'ESTADO']
+        : ['TIME / DATE', 'ASSET', 'STRATEGY', 'NAV WEIGHT', 'Δ SHARPE', 'Δ 95% VaR', 'STATUS'];
 
     return (
         <PortfolioCardShell
             badge="CUADRANTE 4 • HISTORIAL"
-            title="Historial de Simulaciones"
+            title={isES ? 'Historial de Simulaciones' : 'Simulation History'}
             color="#10b981"
             subBar={
                 <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
-                    REGISTRO DE REBALANCEOS TÁCTICOS Y RECORTE DE GUARDRAILS ({ledger.length} ÓRDENES)
+                    {isES
+                        ? `REGISTRO DE REBALANCEOS TÁCTICOS Y RECORTE DE GUARDRAILS (${ledger.length} ÓRDENES)`
+                        : `TACTICAL REBALANCING & GUARDRAIL AUDIT LOG (${ledger.length} ORDERS)`}
                 </span>
             }
         >
@@ -571,7 +642,7 @@ function Quad4ExecutionLedger({ ledger }) {
 }
 
 /* FILA 3 (100% ANCHO): VALIDACIÓN WALK-FORWARD (#9) & CURVA COMPARADA CON SOMBRA DEGRADADA */
-function Row3WalkForwardFullWidth({ activeSym, allocPct }) {
+function Row3WalkForwardFullWidth({ activeSym, allocPct, isES = false }) {
     const [showBase, setShowBase] = useState(true);
     const [showAdHoc, setShowAdHoc] = useState(true);
     const [showFloor, setShowFloor] = useState(true);
@@ -587,17 +658,36 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct }) {
     return (
         <PortfolioCardShell
             badge="FILA 3 • ANCHO COMPLETO (100%)"
-            title="Validación Histórica"
-            subtitle={`Cartera Base vs Cartera + ${activeSym}`}
+            title={isES ? 'Validación Histórica' : 'Walk-Forward Validation'}
+            subtitle={isES ? `Cartera Base vs Cartera + ${activeSym}` : `Base Portfolio vs Portfolio + ${activeSym}`}
             color="#10b981"
             subBar={
                 <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>CURVAS VISIBLES:</span>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                            {isES ? 'CURVAS VISIBLES:' : 'VISIBLE CURVES:'}
+                        </span>
                         {[
-                            { lbl: `Cartera Total + ${activeSym} (+49.4%)`, val: showAdHoc, set: setShowAdHoc, col: '#10b981' },
-                            { lbl: 'Cartera Base (+34.6%)', val: showBase, set: setShowBase, col: '#6ee7b7' },
-                            { lbl: 'Piso Mínimo Out-of-Sample', val: showFloor, set: setShowFloor, col: '#f43f5e' }
+                            {
+                                lbl: isES
+                                    ? `Cartera Total + ${activeSym} (+49.4%)`
+                                    : `Total Portfolio + ${activeSym} (+49.4%)`,
+                                val: showAdHoc,
+                                set: setShowAdHoc,
+                                col: '#10b981'
+                            },
+                            {
+                                lbl: isES ? 'Cartera Base (+34.6%)' : 'Base Portfolio (+34.6%)',
+                                val: showBase,
+                                set: setShowBase,
+                                col: '#6ee7b7'
+                            },
+                            {
+                                lbl: isES ? 'Piso Mínimo Out-of-Sample' : 'Out-of-Sample Floor',
+                                val: showFloor,
+                                set: setShowFloor,
+                                col: '#f43f5e'
+                            }
                         ].map(b => (
                             <button
                                 key={b.lbl}
@@ -619,7 +709,8 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct }) {
                         ))}
                     </div>
                     <span style={{ fontSize: '11.5px', fontFamily: 'var(--font-mono)', color: '#6ee7b7' }}>
-                        Eficiencia Walk-Forward (OOS / IS): <strong>94.2% (Sin Overfitting)</strong>
+                        {isES ? 'Eficiencia Walk-Forward (OOS / IS):' : 'Walk-Forward Efficiency (OOS / IS):'}{' '}
+                        <strong>{isES ? '94.2% (Sin Overfitting)' : '94.2% (No Overfitting)'}</strong>
                     </span>
                 </>
             }
@@ -646,7 +737,7 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct }) {
                             <Area
                                 type="monotone"
                                 dataKey="adhoc"
-                                name="★ Cartera + Estrategia Ad-Hoc"
+                                name={isES ? '★ Cartera + Estrategia Ad-Hoc' : '★ Portfolio + Ad-Hoc Strategy'}
                                 stroke="#10b981"
                                 strokeWidth={2.3}
                                 fill="url(#prodV3AdHocGreen)"
@@ -656,7 +747,7 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct }) {
                             <Area
                                 type="monotone"
                                 dataKey="base"
-                                name="Cartera Base"
+                                name={isES ? 'Cartera Base' : 'Base Portfolio'}
                                 stroke="#6ee7b7"
                                 strokeWidth={1.8}
                                 strokeDasharray="5 3"
@@ -667,7 +758,7 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct }) {
                             <Area
                                 type="monotone"
                                 dataKey="oosFloor"
-                                name="Piso Mínimo OOS"
+                                name={isES ? 'Piso Mínimo OOS' : 'Min OOS Floor'}
                                 stroke="#f43f5e"
                                 strokeWidth={1.6}
                                 fill="url(#prodV3FloorRed)"
@@ -680,7 +771,8 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct }) {
     );
 }
 
-export default function PortfolioVista3AdHoc() {
+export default function PortfolioVista3AdHoc({ langCode = 'EN' }) {
+    const isES = langCode === 'ES';
     const [activeSym, setActiveSym] = useState('NVDA');
     const [allocPct, setAllocPct] = useState(14.2);
     const [hedgeActive, setHedgeActive] = useState(true);
@@ -690,14 +782,14 @@ export default function PortfolioVista3AdHoc() {
         const eff = Math.min(20, allocPct);
         setLedger(prev => [
             {
-                time: 'Ahora',
+                time: isES ? 'Ahora' : 'Now',
                 sym: activeSym,
-                side: allocPct > 20 ? 'CAP GUARDRAIL 20%' : 'SIMULACIÓN AD-HOC',
+                side: allocPct > 20 ? 'CAP GUARDRAIL 20%' : isES ? 'SIMULACIÓN AD-HOC' : 'AD-HOC SIMULATION',
                 navPct: `${eff.toFixed(1)}%`,
                 kelly: 'Half-Kelly',
                 impactSharpe: `+${(eff * 0.015).toFixed(2)}`,
                 impactVaR: hedgeActive ? '+0.42%' : '-0.14%',
-                status: 'SIMULADA'
+                status: isES ? 'SIMULADA' : 'SIMULATED'
             },
             ...prev
         ]);
@@ -709,6 +801,7 @@ export default function PortfolioVista3AdHoc() {
                 activeSym={activeSym}
                 allocPct={allocPct}
                 hedgeActive={hedgeActive}
+                isES={isES}
             />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', alignItems: 'stretch' }}>
                 <Quad1WhatIfAndKelly
@@ -717,12 +810,13 @@ export default function PortfolioVista3AdHoc() {
                     allocPct={allocPct}
                     setAllocPct={setAllocPct}
                     onExecuteOrder={handleExecuteOrder}
+                    isES={isES}
                 />
-                <Quad3AutonomousCommittee activeSym={activeSym} allocPct={allocPct} />
-                <Quad2TailHedgeAndMargin hedgeActive={hedgeActive} setHedgeActive={setHedgeActive} />
-                <Quad4ExecutionLedger ledger={ledger} />
+                <Quad3AutonomousCommittee activeSym={activeSym} allocPct={allocPct} isES={isES} />
+                <Quad2TailHedgeAndMargin hedgeActive={hedgeActive} setHedgeActive={setHedgeActive} isES={isES} />
+                <Quad4ExecutionLedger ledger={ledger} isES={isES} />
             </div>
-            <Row3WalkForwardFullWidth activeSym={activeSym} allocPct={allocPct} />
+            <Row3WalkForwardFullWidth activeSym={activeSym} allocPct={allocPct} isES={isES} />
         </div>
     );
 }

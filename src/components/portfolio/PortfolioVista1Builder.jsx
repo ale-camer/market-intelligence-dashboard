@@ -23,7 +23,7 @@ import {
 /* ───────────────────────────────────────────────────────────────────────────
    FILA 1: CABECERA DE 6 PÍLDORAS DE RESUMEN REACTIVAS
    ─────────────────────────────────────────────────────────────────────────── */
-function Row1SummaryPills({ holdings }) {
+function Row1SummaryPills({ holdings, isES = false }) {
     const activeList = holdings.filter(h => h.enabled !== false);
     const eqShare = activeList
         .filter(h => h.cat === 'Equities' || h.cat === 'Crypto')
@@ -33,15 +33,42 @@ function Row1SummaryPills({ holdings }) {
     const estVaR = (-1.12 - eqShare * 0.014).toFixed(2);
 
     const pills = [
-        { lbl: 'RETORNO ANUAL (CAGR)', val: `+${estRet}%`, sub: 'vs +16.5% Benchmark SPX', col: '#10b981' },
-        { lbl: 'SHARPE / SORTINO', val: `${estSharpe} / 2.84`, sub: 'Eficiencia Cuantitativa Top 5%', col: '#10b981' },
-        { lbl: 'VaR 95% / CVaR 99% (1D)', val: `${estVaR}% / -2.84%`, sub: 'Pérdida diaria esperada cola', col: '#f43f5e' },
-        { lbl: 'MAX DRAWDOWN (12M)', val: '-4.80%', sub: 'Recuperación media: 14 días', col: '#f43f5e' },
-        { lbl: 'ALPHA BRINSON (12M)', val: '+8.60%', sub: 'Beta Cartera: 0.76 vs SPX', col: '#10b981' },
         {
-            lbl: 'ACTIVOS SELECCIONADOS',
+            lbl: isES ? 'RETORNO ANUAL (CAGR)' : 'ANNUAL RETURN (CAGR)',
+            val: `+${estRet}%`,
+            sub: 'vs +16.5% Benchmark SPX',
+            col: '#10b981'
+        },
+        {
+            lbl: 'SHARPE / SORTINO',
+            val: `${estSharpe} / 2.84`,
+            sub: isES ? 'Eficiencia Cuantitativa Top 5%' : 'Top 5% Quantitative Efficiency',
+            col: '#10b981'
+        },
+        {
+            lbl: 'VaR 95% / CVaR 99% (1D)',
+            val: `${estVaR}% / -2.84%`,
+            sub: isES ? 'Pérdida diaria esperada cola' : 'Expected daily tail loss',
+            col: '#f43f5e'
+        },
+        {
+            lbl: 'MAX DRAWDOWN (12M)',
+            val: '-4.80%',
+            sub: isES ? 'Recuperación media: 14 días' : 'Avg recovery: 14 days',
+            col: '#f43f5e'
+        },
+        {
+            lbl: 'ALPHA BRINSON (12M)',
+            val: '+8.60%',
+            sub: isES ? 'Beta Cartera: 0.76 vs SPX' : 'Portfolio Beta: 0.76 vs SPX',
+            col: '#10b981'
+        },
+        {
+            lbl: isES ? 'ACTIVOS SELECCIONADOS' : 'SELECTED ASSETS',
             val: `${activeList.length} / ${holdings.length}`,
-            sub: `ENB: ${Math.max(1.8, activeList.length * 0.78).toFixed(1)} apuestas efectivas`,
+            sub: isES
+                ? `ENB: ${Math.max(1.8, activeList.length * 0.78).toFixed(1)} apuestas efectivas`
+                : `ENB: ${Math.max(1.8, activeList.length * 0.78).toFixed(1)} effective bets`,
             col: '#10b981'
         }
     ];
@@ -73,7 +100,7 @@ function Row1SummaryPills({ holdings }) {
 /* ───────────────────────────────────────────────────────────────────────────
    FILA 2 — IZQUIERDA: TABLA DE PONDERACIÓN SIN SLIDERS + WATCHLIST ★
    ─────────────────────────────────────────────────────────────────────────── */
-function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onToggleWatchlist }) {
+function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onToggleWatchlist, isES = false }) {
     const [query, setQuery] = useState('');
     const [openDrop, setOpenDrop] = useState(false);
     const [filterMode, setFilterMode] = useState('ALL'); // ALL | WATCHLIST
@@ -133,13 +160,19 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
         );
     };
 
-    const tableHeaders = ['ON', 'ACTIVO', 'CLASE', 'PESO (%)', 'CAPITAL ($)', 'ACCIÓN'];
+    const tableHeaders = isES
+        ? ['ON', 'ACTIVO', 'CLASE', 'PESO (%)', 'CAPITAL ($)', 'ACCIÓN']
+        : ['ON', 'ASSET', 'CLASS', 'WEIGHT (%)', 'CAPITAL ($)', 'ACTION'];
 
     return (
         <PortfolioCardShell
             badge="FILA 2 • IZQUIERDA"
-            title="Activos de la Cartera"
-            subtitle={`${activeHoldings.length} activos • Suma: ${totalWeight.toFixed(1)}%`}
+            title={isES ? 'Activos de la Cartera' : 'Portfolio Holdings'}
+            subtitle={
+                isES
+                    ? `${activeHoldings.length} activos • Suma: ${totalWeight.toFixed(1)}%`
+                    : `${activeHoldings.length} assets • Total: ${totalWeight.toFixed(1)}%`
+            }
             color="#10b981"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -155,7 +188,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             cursor: 'pointer'
                         }}
                     >
-                        Pesos Iguales
+                        {isES ? 'Pesos Iguales' : 'Equal Weight'}
                     </button>
                     <button
                         onClick={normalize100}
@@ -170,7 +203,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             cursor: 'pointer'
                         }}
                     >
-                        Ajustar 100%
+                        {isES ? 'Ajustar 100%' : 'Normalize 100%'}
                     </button>
                     <button
                         onClick={() => setHoldings(INITIAL_HOLDINGS)}
@@ -184,7 +217,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             cursor: 'pointer'
                         }}
                     >
-                        Restaurar Base
+                        {isES ? 'Restaurar Base' : 'Reset Base'}
                     </button>
                 </div>
             }
@@ -200,7 +233,11 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     setQuery(e.target.value);
                                     setOpenDrop(true);
                                 }}
-                                placeholder="Buscar y sumar entre los 213 activos globales (ej. AAPL, ETH, YPF, EURUSD)..."
+                                placeholder={
+                                    isES
+                                        ? 'Buscar y sumar entre los 213 activos globales (ej. AAPL, ETH, YPF, EURUSD)...'
+                                        : 'Search & add across 213 global assets (e.g. AAPL, ETH, YPF, EURUSD)...'
+                                }
                                 style={{
                                     flex: 1,
                                     background: 'transparent',
@@ -233,7 +270,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     onClick={() => setOpenDrop(false)}
                                     style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', fontSize: '11.5px' }}
                                 >
-                                    Cerrar
+                                    {isES ? 'Cerrar' : 'Close'}
                                 </button>
                             )}
                         </div>
@@ -407,7 +444,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     <button
                                         onClick={() => onToggleWatchlist(h.sym)}
                                         style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: 0 }}
-                                        title="Seguir en Watchlist ★"
+                                        title={isES ? 'Seguir en Watchlist ★' : 'Track in Watchlist ★'}
                                     >
                                         <Star size={11} color={inWatch ? '#10b981' : '#64748b'} fill={inWatch ? '#10b981' : 'none'} />
                                     </button>
@@ -415,7 +452,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                 <button
                                     onClick={() => removeAsset(h.sym)}
                                     style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', padding: 0 }}
-                                    title="Quitar activo"
+                                    title={isES ? 'Quitar activo' : 'Remove asset'}
                                 >
                                     <Trash2 size={11} />
                                 </button>
@@ -431,7 +468,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
 /* ───────────────────────────────────────────────────────────────────────────
    FILA 2 — DERECHA ARRIBA: RADIOGRAFÍA & ATRIBUCIÓN DE LA CARTERA (CON ALPHA BRINSON ADENTRO)
    ─────────────────────────────────────────────────────────────────────────── */
-function Row2RightAnatomyAndAlpha({ holdings }) {
+function Row2RightAnatomyAndAlpha({ holdings, isES = false }) {
     const [tab, setTab] = useState('XRAY');
 
     const activeHoldings = holdings.filter(h => h.enabled !== false);
@@ -443,43 +480,69 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
         return Object.entries(map);
     }, [activeHoldings]);
 
-    const brinsonHeaders = ['SECTOR', 'ASIGNACIÓN', 'SELECCIÓN', 'INTERACCIÓN', 'TOTAL ALPHA'];
-    const brinsonItems = [
-        ['Tecnología & IA (NVDA, MSFT)', '+1.85%', '+3.40%', '+0.45%', '+5.70%', +5.7],
-        ['Activos Digitales (BTC)', '+1.10%', '+1.25%', '+0.15%', '+2.50%', +2.5],
-        ['Metales Preciosos (GLD)', '+0.64%', '+0.18%', '+0.04%', '+0.86%', +0.86],
-        ['Renta Fija Larga (TLT)', '-0.52%', '+0.12%', '-0.06%', '-0.46%', -0.46]
-    ];
+    const brinsonHeaders = isES
+        ? ['SECTOR', 'ASIGNACIÓN', 'SELECCIÓN', 'INTERACCIÓN', 'TOTAL ALPHA']
+        : ['SECTOR', 'ALLOCATION', 'SELECTION', 'INTERACTION', 'TOTAL ALPHA'];
+    const brinsonItems = isES
+        ? [
+              ['Tecnología & IA (NVDA, MSFT)', '+1.85%', '+3.40%', '+0.45%', '+5.70%', +5.7],
+              ['Activos Digitales (BTC)', '+1.10%', '+1.25%', '+0.15%', '+2.50%', +2.5],
+              ['Metales Preciosos (GLD)', '+0.64%', '+0.18%', '+0.04%', '+0.86%', +0.86],
+              ['Renta Fija Larga (TLT)', '-0.52%', '+0.12%', '-0.06%', '-0.46%', -0.46]
+          ]
+        : [
+              ['Tech & AI (NVDA, MSFT)', '+1.85%', '+3.40%', '+0.45%', '+5.70%', +5.7],
+              ['Digital Assets (BTC)', '+1.10%', '+1.25%', '+0.15%', '+2.50%', +2.5],
+              ['Precious Metals (GLD)', '+0.64%', '+0.18%', '+0.04%', '+0.86%', +0.86],
+              ['Long Fixed Income (TLT)', '-0.52%', '+0.12%', '-0.06%', '-0.46%', -0.46]
+          ];
 
-    const xrayHeaders = ['ACTIVO SUBYACENTE', 'TENENCIA DIRECTA', 'PESO OCULTO EN ETF', 'EXPOSICIÓN REAL'];
-    const xrayItems = [
-        ['NVDA', '22.0%', '+2.4% (vía SPY)', '24.4% REAL', -6],
-        ['MSFT', '10.0%', '+2.1% (vía SPY)', '12.1% REAL', +5],
-        ['GLD', '18.0%', '+0.0% (Directo)', '18.0% REAL', +4],
-        ['AAPL', '0.0%', '+1.9% (vía SPY)', '1.9% REAL', +3]
-    ];
+    const xrayHeaders = isES
+        ? ['ACTIVO SUBYACENTE', 'TENENCIA DIRECTA', 'PESO OCULTO EN ETF', 'EXPOSICIÓN REAL']
+        : ['UNDERLYING ASSET', 'DIRECT HOLDING', 'HIDDEN ETF WEIGHT', 'TRUE EXPOSURE'];
+    const xrayItems = isES
+        ? [
+              ['NVDA', '22.0%', '+2.4% (vía SPY)', '24.4% REAL', -6],
+              ['MSFT', '10.0%', '+2.1% (vía SPY)', '12.1% REAL', +5],
+              ['GLD', '18.0%', '+0.0% (Directo)', '18.0% REAL', +4],
+              ['AAPL', '0.0%', '+1.9% (vía SPY)', '1.9% REAL', +3]
+          ]
+        : [
+              ['NVDA', '22.0%', '+2.4% (via SPY)', '24.4% TRUE', -6],
+              ['MSFT', '10.0%', '+2.1% (via SPY)', '12.1% TRUE', +5],
+              ['GLD', '18.0%', '+0.0% (Direct)', '18.0% TRUE', +4],
+              ['AAPL', '0.0%', '+1.9% (via SPY)', '1.9% TRUE', +3]
+          ];
 
-    const custHeaders = ['CUSTODIO', '% CARTERA', 'CDS SPREAD', 'COBERTURA LEGAL'];
-    const custItems = [
-        ['Interactive Brokers / DTC', '68.0%', '42 bps', 'Cubierto SIPC $500k', +8],
-        ['HSBC Bullion Vault (GLD)', '18.0%', '38 bps', 'Oro Físico Asignado', +9],
-        ['Coinbase Custody Cold', '14.0%', '115 bps', 'Multisig Frío', +4]
-    ];
+    const custHeaders = isES
+        ? ['CUSTODIO', '% CARTERA', 'CDS SPREAD', 'COBERTURA LEGAL']
+        : ['CUSTODIAN', '% PORTFOLIO', 'CDS SPREAD', 'LEGAL COVERAGE'];
+    const custItems = isES
+        ? [
+              ['Interactive Brokers / DTC', '68.0%', '42 bps', 'Cubierto SIPC $500k', +8],
+              ['HSBC Bullion Vault (GLD)', '18.0%', '38 bps', 'Oro Físico Asignado', +9],
+              ['Coinbase Custody Cold', '14.0%', '115 bps', 'Multisig Frío', +4]
+          ]
+        : [
+              ['Interactive Brokers / DTC', '68.0%', '42 bps', 'SIPC Insured $500k', +8],
+              ['HSBC Bullion Vault (GLD)', '18.0%', '38 bps', 'Allocated Physical Gold', +9],
+              ['Coinbase Custody Cold', '14.0%', '115 bps', 'Cold Multisig', +4]
+          ];
 
     return (
         <PortfolioCardShell
             badge="FILA 2 • DERECHA ARRIBA"
-            title="Exposición y Atribución"
+            title={isES ? 'Exposición y Atribución' : 'Exposure & Attribution'}
             color="#10b981"
             style={{ flex: 1 }}
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
                     {[
-                        { id: 'XRAY', lbl: 'Solapamiento' },
-                        { id: 'EXP', lbl: 'Exposición' },
-                        { id: 'ALPHA', lbl: 'Atribución' },
-                        { id: 'YIELD', lbl: 'Flujo de Caja' },
-                        { id: 'CUST', lbl: 'Custodia' }
+                        { id: 'XRAY', lbl: isES ? 'Solapamiento' : 'Overlap' },
+                        { id: 'EXP', lbl: isES ? 'Exposición' : 'Exposure' },
+                        { id: 'ALPHA', lbl: isES ? 'Atribución' : 'Attribution' },
+                        { id: 'YIELD', lbl: isES ? 'Flujo de Caja' : 'Cash Flow' },
+                        { id: 'CUST', lbl: isES ? 'Custodia' : 'Custody' }
                     ].map(t => {
                         const active = tab === t.id;
                         return (
@@ -539,7 +602,9 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
             {tab === 'EXP' && (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', fontSize: '11.5px' }}>
                     <div style={{ background: 'transparent', padding: '7px', borderRadius: '6px' }}>
-                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>CLASE DE ACTIVO</div>
+                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>
+                            {isES ? 'CLASE DE ACTIVO' : 'ASSET CLASS'}
+                        </div>
                         {byCat.map(([c, w]) => (
                             <div key={c} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
                                 <span style={{ color: '#e2e8f0' }}>{c}</span>
@@ -548,16 +613,20 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
                         ))}
                     </div>
                     <div style={{ background: 'transparent', padding: '7px', borderRadius: '6px' }}>
-                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>MONEDA SUBYACENTE</div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>USD Duro</span><span style={{ fontFamily: 'var(--font-mono)', color: '#10b981', fontWeight: 800 }}>68%</span></div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>Oro Físico</span><span style={{ fontFamily: 'var(--font-mono)', color: '#6ee7b7', fontWeight: 800 }}>18%</span></div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Crypto Descentr.</span><span style={{ fontFamily: 'var(--font-mono)', color: '#a7f3d0', fontWeight: 800 }}>14%</span></div>
+                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>
+                            {isES ? 'MONEDA SUBYACENTE' : 'UNDERLYING CURRENCY'}
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>{isES ? 'USD Duro' : 'Hard USD'}</span><span style={{ fontFamily: 'var(--font-mono)', color: '#10b981', fontWeight: 800 }}>68%</span></div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>{isES ? 'Oro Físico' : 'Physical Gold'}</span><span style={{ fontFamily: 'var(--font-mono)', color: '#6ee7b7', fontWeight: 800 }}>18%</span></div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>{isES ? 'Crypto Descentr.' : 'Decentr. Crypto'}</span><span style={{ fontFamily: 'var(--font-mono)', color: '#a7f3d0', fontWeight: 800 }}>14%</span></div>
                     </div>
                     <div style={{ background: 'transparent', padding: '7px', borderRadius: '6px' }}>
-                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>LIQUIDEZ DE SALIDA</div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>Inmediata T+0</span><span style={{ fontFamily: 'var(--font-mono)', color: '#10b981', fontWeight: 800 }}>86%</span></div>
+                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>
+                            {isES ? 'LIQUIDEZ DE SALIDA' : 'EXIT LIQUIDITY'}
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>{isES ? 'Inmediata T+0' : 'Immediate T+0'}</span><span style={{ fontFamily: 'var(--font-mono)', color: '#10b981', fontWeight: 800 }}>86%</span></div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>Spot 24/7</span><span style={{ fontFamily: 'var(--font-mono)', color: '#6ee7b7', fontWeight: 800 }}>14%</span></div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Ilíquido (&gt;3d)</span><span style={{ fontFamily: 'var(--font-mono)', color: '#64748b', fontWeight: 800 }}>0%</span></div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>{isES ? 'Ilíquido (>3d)' : 'Illiquid (>3d)'}</span><span style={{ fontFamily: 'var(--font-mono)', color: '#64748b', fontWeight: 800 }}>0%</span></div>
                     </div>
                 </div>
             )}
@@ -596,15 +665,15 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
             {tab === 'YIELD' && (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                     <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
-                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>CUPONES TLT (4.4%)</div>
-                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>+$1,320 / año</div>
+                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{isES ? 'CUPONES TLT (4.4%)' : 'TLT COUPONS (4.4%)'}</div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>{isES ? '+$1,320 / año' : '+$1,320 / yr'}</div>
                     </div>
                     <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
-                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>DIVIDENDOS SPY / MSFT</div>
-                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#6ee7b7', fontSize: '13px', marginTop: '2px' }}>+$980 / año</div>
+                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{isES ? 'DIVIDENDOS SPY / MSFT' : 'SPY / MSFT DIVIDENDS'}</div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#6ee7b7', fontSize: '13px', marginTop: '2px' }}>{isES ? '+$980 / año' : '+$980 / yr'}</div>
                     </div>
                     <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
-                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>TOTAL RENTA PASIVA</div>
+                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{isES ? 'TOTAL RENTA PASIVA' : 'TOTAL PASSIVE YIELD'}</div>
                         <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>+$2,840 (2.84%)</div>
                     </div>
                 </div>
@@ -646,13 +715,15 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
 /* ───────────────────────────────────────────────────────────────────────────
    FILA 2 — DERECHA ABAJO: CALENDARIO HEATMAP DE RETORNOS MENSUALES (GRADIENTE VERDE/ROJO)
    ─────────────────────────────────────────────────────────────────────────── */
-function Row2RightMonthlyCalendar() {
-    const headers = ['AÑO', 'ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC', 'YTD'];
+function Row2RightMonthlyCalendar({ isES = false }) {
+    const headers = isES
+        ? ['AÑO', 'ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIC', 'YTD']
+        : ['YEAR', 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC', 'YTD'];
     return (
         <PortfolioCardShell
             badge="FILA 2 • DERECHA ABAJO"
-            title="Retornos Mensuales"
-            subtitle="Ene – Dic"
+            title={isES ? 'Retornos Mensuales' : 'Monthly Returns'}
+            subtitle={isES ? 'Ene – Dic' : 'Jan – Dec'}
             color="#10b981"
             style={{ flex: 1 }}
         >
@@ -704,7 +775,7 @@ function Row2RightMonthlyCalendar() {
 /* ───────────────────────────────────────────────────────────────────────────
    FILA 3 (100% ANCHO): SERIE DE TIEMPO DEL BACKTESTING HISTÓRICO + MULTI-ESTRATEGIA (#10)
    ─────────────────────────────────────────────────────────────────────────── */
-function Row3FullWidthBacktest({ holdings }) {
+function Row3FullWidthBacktest({ holdings, isES = false }) {
     const [activeBench, setActiveBench] = useState('spx');
     const [timeframe, setTimeframe] = useState('1Y');
     const meta = BENCH_META[activeBench];
@@ -726,8 +797,8 @@ function Row3FullWidthBacktest({ holdings }) {
     return (
         <PortfolioCardShell
             badge="FILA 3 • ANCHO COMPLETO (100%)"
-            title="Rendimiento Histórico"
-            subtitle={`Ventana ${timeframe} • Cartera vs ${meta.label}`}
+            title={isES ? 'Rendimiento Histórico' : 'Historical Performance'}
+            subtitle={isES ? `Ventana ${timeframe} • Cartera vs ${meta.label}` : `${timeframe} Window • Portfolio vs ${meta.label}`}
             color="#10b981"
             rightSlot={
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
@@ -809,7 +880,7 @@ function Row3FullWidthBacktest({ holdings }) {
                         <Area
                             type="monotone"
                             dataKey="port"
-                            name="Tu Cartera Activa"
+                            name={isES ? 'Tu Cartera Activa' : 'Active Portfolio'}
                             stroke="#10b981"
                             strokeWidth={2.3}
                             fill="url(#prodV1PortGrad)"
@@ -821,23 +892,31 @@ function Row3FullWidthBacktest({ holdings }) {
     );
 }
 
-export default function PortfolioVista1Builder({ holdings, setHoldings, watchlistSyms, onToggleWatchlist }) {
+export default function PortfolioVista1Builder({
+    holdings,
+    setHoldings,
+    watchlistSyms,
+    onToggleWatchlist,
+    langCode = 'EN'
+}) {
+    const isES = langCode === 'ES';
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <Row1SummaryPills holdings={holdings} />
+            <Row1SummaryPills holdings={holdings} isES={isES} />
             <div style={{ display: 'grid', gridTemplateColumns: '0.95fr 1.15fr', gap: '12px', alignItems: 'stretch' }}>
                 <Row2LeftWeightTable
                     holdings={holdings}
                     setHoldings={setHoldings}
                     watchlistSyms={watchlistSyms}
                     onToggleWatchlist={onToggleWatchlist}
+                    isES={isES}
                 />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', height: '100%' }}>
-                    <Row2RightAnatomyAndAlpha holdings={holdings} />
-                    <Row2RightMonthlyCalendar />
+                    <Row2RightAnatomyAndAlpha holdings={holdings} isES={isES} />
+                    <Row2RightMonthlyCalendar isES={isES} />
                 </div>
             </div>
-            <Row3FullWidthBacktest holdings={holdings} />
+            <Row3FullWidthBacktest holdings={holdings} isES={isES} />
         </div>
     );
 }

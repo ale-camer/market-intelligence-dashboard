@@ -7,34 +7,31 @@ import PortfolioVista3AdHoc from './portfolio/PortfolioVista3AdHoc';
 
 const PORTFOLIO_STORAGE_KEY = 'mid_portfolio_v1';
 
-const PORTFOLIO_VIEWS = [
-    {
-        id: 'V1',
-        label: 'Constructor'
-    },
-    {
-        id: 'V2',
-        label: 'Riesgo'
-    },
-    {
-        id: 'V3',
-        label: 'Simulador'
-    }
-];
-
 export default function AgentCommitteeView({
     watchlistSyms = [],
-    onToggleWatchlist
+    onToggleWatchlist,
+    langCode = 'EN'
 }) {
+    const isES = langCode === 'ES';
     const [activeView, setActiveView] = useState('V1');
     const [copilotOpen, setCopilotOpen] = useState(false);
     const [copilotMsg, setCopilotMsg] = useState('');
-    const [copilotThread, setCopilotThread] = useState([
+    const [copilotThread, setCopilotThread] = useState([]);
+
+    const portfolioViews = [
         {
-            role: 'ai',
-            txt: 'Copiloto activo. Tu cartera mantiene un Sharpe de 2.18 con Beta 0.76 y una eficiencia histórica del 94.2%.'
+            id: 'V1',
+            label: isES ? 'Constructor' : 'Builder'
+        },
+        {
+            id: 'V2',
+            label: isES ? 'Riesgo' : 'Risk'
+        },
+        {
+            id: 'V3',
+            label: isES ? 'Simulador' : 'Simulator'
         }
-    ]);
+    ];
 
     const [holdings, setHoldings] = useState(() => {
         try {
@@ -65,10 +62,20 @@ export default function AgentCommitteeView({
             { role: 'user', txt: q },
             {
                 role: 'ai',
-                txt: `Análisis sobre ${holdings.length} activos: el solapamiento real de NVDA es 24.4% (directo + SPY). Un escudo SPY Put 5% OTM recorta el Max Drawdown de -4.80% a -2.90% con +0.23 pts de Sharpe.`
+                txt: isES
+                    ? `Análisis sobre ${holdings.length} activos: el solapamiento real de NVDA es 24.4% (directo + SPY). Un escudo SPY Put 5% OTM recorta el Max Drawdown de -4.80% a -2.90% con +0.23 pts de Sharpe.`
+                    : `Analysis across ${holdings.length} holdings: true NVDA overlap is 24.4% (direct + SPY). A 5% OTM SPY Put hedge trims Max Drawdown from -4.80% to -2.90% with +0.23 Sharpe pts.`
             }
         ]);
     };
+
+    const initialGreeting = isES
+        ? 'Copiloto activo. Tu cartera mantiene un Sharpe de 2.18 con Beta 0.76 y una eficiencia histórica del 94.2%.'
+        : 'Copilot active. Your portfolio maintains a 2.18 Sharpe with 0.76 Beta and 94.2% walk-forward efficiency.';
+    const displayedThread = [{ role: 'ai', txt: initialGreeting }, ...copilotThread];
+    const quickChips = isES
+        ? ['Revisar solapamiento', 'Simular cobertura', 'Optimizar Sharpe']
+        : ['Check ETF overlap', 'Simulate Put hedge', 'Optimize Sharpe'];
 
     return (
         <div
@@ -104,7 +111,7 @@ export default function AgentCommitteeView({
                         flexWrap: 'wrap'
                     }}
                 >
-                    {PORTFOLIO_VIEWS.map(v => {
+                    {portfolioViews.map(v => {
                         const active = activeView === v.id;
                         return (
                             <button
@@ -132,7 +139,7 @@ export default function AgentCommitteeView({
 
                 <button
                     onClick={() => setCopilotOpen(v => !v)}
-                    aria-label="Copiloto"
+                    aria-label={isES ? 'Copiloto' : 'Copilot'}
                     style={{
                         position: 'absolute',
                         right: '4px',
@@ -153,7 +160,7 @@ export default function AgentCommitteeView({
                         transition: 'all 0.16s ease'
                     }}
                 >
-                    <span>Copiloto</span>
+                    <span>{isES ? 'Copiloto' : 'Copilot'}</span>
                 </button>
             </div>
 
@@ -168,10 +175,11 @@ export default function AgentCommitteeView({
                             setHoldings={setHoldings}
                             watchlistSyms={watchlistSyms}
                             onToggleWatchlist={onToggleWatchlist}
+                            langCode={langCode}
                         />
                     )}
-                    {activeView === 'V2' && <PortfolioVista2Risk holdings={holdings} />}
-                    {activeView === 'V3' && <PortfolioVista3AdHoc holdings={holdings} />}
+                    {activeView === 'V2' && <PortfolioVista2Risk holdings={holdings} langCode={langCode} />}
+                    {activeView === 'V3' && <PortfolioVista3AdHoc holdings={holdings} langCode={langCode} />}
                 </div>
 
                 {copilotOpen && (
@@ -197,14 +205,16 @@ export default function AgentCommitteeView({
                                 borderBottom: '1px solid rgba(148, 163, 184, 0.14)'
                             }}
                         >
-                            <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>Copiloto de Cartera</span>
+                            <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
+                                {isES ? 'Copiloto de Cartera' : 'Portfolio Copilot'}
+                            </span>
                             <button onClick={() => setCopilotOpen(false)} style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>
                                 <X size={14} />
                             </button>
                         </div>
 
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                            {['Revisar solapamiento', 'Simular cobertura', 'Optimizar Sharpe'].map(chip => (
+                            {quickChips.map(chip => (
                                 <button
                                     key={chip}
                                     onClick={() => sendCopilotPrompt(chip)}
@@ -225,7 +235,7 @@ export default function AgentCommitteeView({
                         </div>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '280px', overflowY: 'auto' }}>
-                            {copilotThread.map((m, idx) => (
+                            {displayedThread.map((m, idx) => (
                                 <div
                                     key={idx}
                                     style={{
@@ -247,7 +257,7 @@ export default function AgentCommitteeView({
                             <input
                                 value={copilotMsg}
                                 onChange={e => setCopilotMsg(e.target.value)}
-                                placeholder="Consultar sobre la cartera..."
+                                placeholder={isES ? 'Consultar sobre la cartera...' : 'Ask about your portfolio...'}
                                 style={{
                                     flex: 1,
                                     background: 'transparent',
@@ -274,7 +284,7 @@ export default function AgentCommitteeView({
                                     cursor: 'pointer'
                                 }}
                             >
-                                Enviar
+                                {isES ? 'Enviar' : 'Send'}
                             </button>
                         </div>
                     </div>

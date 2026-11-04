@@ -5,12 +5,14 @@ import {
 } from '../services/observabilityService';
 
 /* Generador determinístico de los últimos 5 días de corrida por módulo */
-function buildLast5DaysRuns(seedStr, baseLatency) {
+function buildLast5DaysRuns(seedStr, baseLatency, isES = false) {
     let seed = 0;
     for (let i = 0; i < seedStr.length; i += 1) {
         seed = (seed * 31 + seedStr.charCodeAt(i)) % 997;
     }
-    const labels = ['Hace 4d', 'Hace 3d', 'Hace 2d', 'Ayer', 'Hoy'];
+    const labels = isES
+        ? ['Hace 4d', 'Hace 3d', 'Hace 2d', 'Ayer', 'Hoy']
+        : ['4d ago', '3d ago', '2d ago', 'Yesterday', 'Today'];
     return labels.map((dayLabel, idx) => {
         const isWarmSpike = (seed + idx * 19) % 29 === 0 && idx < 4;
         const ms = isWarmSpike ? baseLatency + 180 : baseLatency + ((seed + idx * 7) % 14);
@@ -24,52 +26,56 @@ function buildLast5DaysRuns(seedStr, baseLatency) {
 }
 
 /* Medidores compactos de cuotas sin datos sensibles de proveedor/proyecto */
-const COMPACT_QUOTA_METERS = [
-    {
-        service: 'Serverless Compute (8 Services + 5 Jobs)',
-        modules: 'P-01..P-11',
-        usedLabel: '48.2k / 2M req',
-        pct: 10.2,
-        cost: '$0.00'
-    },
-    {
-        service: 'Relational Vector DB (pgvector)',
-        modules: 'P-07..P-10',
-        usedLabel: '24.8 / 512 MB',
-        pct: 4.8,
-        cost: '$0.00'
-    },
-    {
-        service: 'Managed Document Store (NoSQL)',
-        modules: 'P-04, P-08',
-        usedLabel: '9.4 / 512 MB',
-        pct: 1.8,
-        cost: '$0.00'
-    },
-    {
-        service: 'Analytical Warehouse & Redis Cache',
-        modules: 'P-02, P-05, P-08',
-        usedLabel: '240 MB / 10 GB',
-        pct: 14.2,
-        cost: '$0.00'
-    },
-    {
-        service: 'Container Image Registry (Multi-Stage)',
-        modules: 'P-01..P-11',
-        usedLabel: '9.9 GB imágenes',
-        pct: 9.5,
-        cost: '~$0.95 / mes'
-    },
-    {
-        service: 'Client Edge Storage (localStorage)',
-        modules: 'P-13',
-        usedLabel: '42 KB / 5 MB',
-        pct: 0.8,
-        cost: '$0.00'
-    }
-];
+function getCompactQuotaMeters(isES = false) {
+    return [
+        {
+            service: 'Serverless Compute (8 Services + 5 Jobs)',
+            modules: 'P-01..P-11',
+            usedLabel: '48.2k / 2M req',
+            pct: 10.2,
+            cost: '$0.00'
+        },
+        {
+            service: 'Relational Vector DB (pgvector)',
+            modules: 'P-07..P-10',
+            usedLabel: '24.8 / 512 MB',
+            pct: 4.8,
+            cost: '$0.00'
+        },
+        {
+            service: 'Managed Document Store (NoSQL)',
+            modules: 'P-04, P-08',
+            usedLabel: '9.4 / 512 MB',
+            pct: 1.8,
+            cost: '$0.00'
+        },
+        {
+            service: 'Analytical Warehouse & Redis Cache',
+            modules: 'P-02, P-05, P-08',
+            usedLabel: '240 MB / 10 GB',
+            pct: 14.2,
+            cost: '$0.00'
+        },
+        {
+            service: 'Container Image Registry (Multi-Stage)',
+            modules: 'P-01..P-11',
+            usedLabel: isES ? '9.9 GB imágenes' : '9.9 GB images',
+            pct: 9.5,
+            cost: isES ? '~$0.95 / mes' : '~$0.95 / mo'
+        },
+        {
+            service: 'Client Edge Storage (localStorage)',
+            modules: 'P-13',
+            usedLabel: '42 KB / 5 MB',
+            pct: 0.8,
+            cost: '$0.00'
+        }
+    ];
+}
 
-export default function ObservabilityView() {
+export default function ObservabilityView({ langCode = 'EN' }) {
+    const isES = langCode === 'ES';
+    const langKey = isES ? 'ES' : 'EN';
     const [activeTab, setActiveTab] = useState('performance'); // 'performance' | 'finops'
     const [selectedNodeId, setSelectedNodeId] = useState('P-06');
     const [logScope, setLogScope] = useState('selected'); // 'selected' | 'all'
@@ -78,6 +84,7 @@ export default function ObservabilityView() {
     const [lastProbeTime, setLastProbeTime] = useState('16:30:00 UTC');
 
     const { stores, projects: baseProjects } = useMemo(() => evaluateEcosystemContracts(), []);
+    const quotaMeters = useMemo(() => getCompactQuotaMeters(isES), [isES]);
 
     const runLiveCheck = async () => {
         setIsProbing(true);
@@ -107,10 +114,10 @@ export default function ObservabilityView() {
                 httpStatus: probe?.ok ? probe.status : 200,
                 p50Ms: liveMs,
                 p95Ms: Math.round(liveMs * 1.6),
-                runs5d: buildLast5DaysRuns(proj.id, liveMs)
+                runs5d: buildLast5DaysRuns(proj.id, liveMs, isES)
             };
         });
-    }, [baseProjects, liveProbes]);
+    }, [baseProjects, liveProbes, isES]);
 
     const enrichedStores = useMemo(() => {
         return stores.map((st, idx) => {
@@ -121,10 +128,10 @@ export default function ObservabilityView() {
                 httpStatus: 200,
                 p50Ms: baseMs,
                 p95Ms: baseMs + 9,
-                runs5d: buildLast5DaysRuns(st.id, baseMs)
+                runs5d: buildLast5DaysRuns(st.id, baseMs, isES)
             };
         });
-    }, [stores]);
+    }, [stores, isES]);
 
     const allModules = useMemo(() => [...projects, ...enrichedStores], [projects, enrichedStores]);
     const selectedItem = useMemo(
@@ -144,17 +151,21 @@ export default function ObservabilityView() {
                     modId: item.id,
                     msg:
                         idx === 0
-                            ? `HTTP ${item.httpStatus} OK (${item.p50Ms}ms) — Contract assertion PASS: ${item.expectedData.EN}`
+                            ? `HTTP ${item.httpStatus} OK (${item.p50Ms}ms) — Contract assertion PASS: ${item.expectedData[langKey] || item.expectedData.EN}`
                             : `Run ${r.dayLabel}: ${r.code} (${r.latencyMs}ms) — ${
                                   r.status === 'OK'
-                                      ? 'All schema checks passed (0 nulls, 0 drift)'
-                                      : 'Cold-start spin-up completed, fallback snapshot served during warm-up'
+                                      ? isES
+                                          ? 'Todas las validaciones de esquema superadas (0 nulos, 0 drift)'
+                                          : 'All schema checks passed (0 nulls, 0 drift)'
+                                      : isES
+                                          ? 'Arranque en frío completado, snapshot de respaldo servido durante warm-up'
+                                          : 'Cold-start spin-up completed, fallback snapshot served during warm-up'
                               }`
                 });
             });
         });
         return rows.slice(0, 12);
-    }, [logScope, selectedItem, allModules, lastProbeTime]);
+    }, [logScope, selectedItem, allModules, lastProbeTime, langKey, isES]);
 
     return (
         <div
@@ -243,7 +254,13 @@ export default function ObservabilityView() {
                         transition: 'all 0.16s ease'
                     }}
                 >
-                    {isProbing ? 'Ejecutando Healthcheck...' : 'Probar Healthchecks HTTP'}
+                    {isProbing
+                        ? isES
+                            ? 'Ejecutando Healthcheck...'
+                            : 'Running Healthcheck...'
+                        : isES
+                            ? 'Probar Healthchecks HTTP'
+                            : 'Test HTTP Healthchecks'}
                 </button>
             </div>
 
@@ -283,10 +300,10 @@ export default function ObservabilityView() {
                             }}
                         >
                             <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
-                                Seleccionar Módulo
+                                {isES ? 'Seleccionar Módulo' : 'Select Module'}
                             </span>
                             <span style={{ fontSize: '12px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
-                                Últ. 5 días • Estado
+                                {isES ? 'Últ. 5 días • Estado' : 'Last 5d • Status'}
                             </span>
                         </div>
 
@@ -520,15 +537,15 @@ export default function ObservabilityView() {
                                 </div>
                                 <div>
                                     <span style={{ color: '#64748b' }}>// Schedule / Trigger:</span>{' '}
-                                    <span style={{ color: '#e2e8f0' }}>{selectedItem.lastRun?.ES}</span>
+                                    <span style={{ color: '#e2e8f0' }}>{selectedItem.lastRun?.[langKey] || selectedItem.lastRun?.EN}</span>
                                 </div>
                                 <div>
                                     <span style={{ color: '#64748b' }}>// Health Status:</span>{' '}
-                                    <span style={{ color: '#10b981' }}>{selectedItem.healthyText?.ES}</span>
+                                    <span style={{ color: '#10b981' }}>{selectedItem.healthyText?.[langKey] || selectedItem.healthyText?.EN}</span>
                                 </div>
                                 <div>
                                     <span style={{ color: '#64748b' }}>// Contract Assertion:</span>{' '}
-                                    <span style={{ color: '#ffffff' }}>{selectedItem.expectedData?.ES}</span>
+                                    <span style={{ color: '#ffffff' }}>{selectedItem.expectedData?.[langKey] || selectedItem.expectedData?.EN}</span>
                                 </div>
                                 <div>
                                     <span style={{ color: '#64748b' }}>// FinOps Allocation:</span>{' '}
@@ -568,7 +585,7 @@ export default function ObservabilityView() {
                                         fontFamily: "'Inter', system-ui, -apple-system, sans-serif"
                                     }}
                                 >
-                                    Telemetría y Logs en Vivo
+                                    {isES ? 'Telemetría y Logs en Vivo' : 'Live Telemetry & Logs'}
                                 </span>
 
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -586,7 +603,7 @@ export default function ObservabilityView() {
                                             cursor: 'pointer'
                                         }}
                                     >
-                                        Sólo {selectedItem.id}
+                                        {isES ? `Sólo ${selectedItem.id}` : `Only ${selectedItem.id}`}
                                     </button>
                                     <button
                                         type="button"
@@ -602,7 +619,7 @@ export default function ObservabilityView() {
                                             cursor: 'pointer'
                                         }}
                                     >
-                                        Ver Todos
+                                        {isES ? 'Ver Todos' : 'View All'}
                                     </button>
                                 </div>
                             </div>
@@ -656,12 +673,12 @@ export default function ObservabilityView() {
                             }}
                         >
                             <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
-                                Consumo de Cuotas vs Límites Free-Tier
+                                {isES ? 'Consumo de Cuotas vs Límites Free-Tier' : 'Quota Usage vs Free-Tier Limits'}
                             </span>
 
                             <span style={{ fontSize: '12px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
-                                Cómputo & BDs: <strong style={{ color: '#10b981' }}>$0.00</strong> • Total:{' '}
-                                <strong style={{ color: '#10b981' }}>~$0.95 / $10.00 tope</strong>
+                                {isES ? 'Cómputo & BDs:' : 'Compute & DBs:'} <strong style={{ color: '#10b981' }}>$0.00</strong> • Total:{' '}
+                                <strong style={{ color: '#10b981' }}>{isES ? '~$0.95 / $10.00 tope' : '~$0.95 / $10.00 cap'}</strong>
                             </span>
                         </div>
 
@@ -673,7 +690,7 @@ export default function ObservabilityView() {
                                 gap: '10px'
                             }}
                         >
-                            {COMPACT_QUOTA_METERS.map((q, idx) => (
+                            {quotaMeters.map((q, idx) => (
                                 <div
                                     key={idx}
                                     style={{
@@ -777,10 +794,10 @@ export default function ObservabilityView() {
                             }}
                         >
                             <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
-                                Asignación de Recursos y Costos por Módulo
+                                {isES ? 'Asignación de Recursos y Costos por Módulo' : 'Resource & Cost Allocation by Module'}
                             </span>
                             <span style={{ fontSize: '12px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
-                                P-01 a P-13 • 11 módulos serverless
+                                {isES ? 'P-01 a P-13 • 11 módulos serverless' : 'P-01 to P-13 • 11 serverless modules'}
                             </span>
                         </div>
 
@@ -796,11 +813,11 @@ export default function ObservabilityView() {
                                             textAlign: 'left'
                                         }}
                                     >
-                                        <th style={{ padding: '7px 8px', width: '74px' }}>MÓDULO</th>
-                                        <th style={{ padding: '7px 8px' }}>SERVICIO / PIPELINE</th>
-                                        <th style={{ padding: '7px 8px' }}>RECURSOS & RUNTIME</th>
-                                        <th style={{ padding: '7px 8px' }}>CADENCIA / EJECUCIÓN</th>
-                                        <th style={{ padding: '7px 8px', textAlign: 'right' }}>COSTO MENSUAL</th>
+                                        <th style={{ padding: '7px 8px', width: '74px' }}>{isES ? 'MÓDULO' : 'MODULE'}</th>
+                                        <th style={{ padding: '7px 8px' }}>{isES ? 'SERVICIO / PIPELINE' : 'SERVICE / PIPELINE'}</th>
+                                        <th style={{ padding: '7px 8px' }}>{isES ? 'RECURSOS & RUNTIME' : 'RESOURCES & RUNTIME'}</th>
+                                        <th style={{ padding: '7px 8px' }}>{isES ? 'CADENCIA / EJECUCIÓN' : 'SCHEDULE / TRIGGER'}</th>
+                                        <th style={{ padding: '7px 8px', textAlign: 'right' }}>{isES ? 'COSTO MENSUAL' : 'MONTHLY COST'}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -848,7 +865,7 @@ export default function ObservabilityView() {
                                                 {p.cloudTarget}
                                             </td>
                                             <td style={{ padding: '7px 8px', color: '#94a3b8' }}>
-                                                {p.lastRun.ES}
+                                                {p.lastRun[langKey] || p.lastRun.EN}
                                             </td>
                                             <td
                                                 style={{
