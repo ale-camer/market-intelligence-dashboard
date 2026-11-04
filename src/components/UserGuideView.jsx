@@ -16,6 +16,7 @@ import {
 import { GUIDE_TREE_PAGES, ALL_GUIDE_PAGES } from './guide/guideTreeData';
 import { GUIDE_MODALS_BY_SECTION } from './guide/guideModalsData';
 import { getSavedGuideTypoPreset } from './guide/guideTypographyPresets';
+import GuideInteractiveVideoStage from './guide/GuideInteractiveVideoStage';
 
 const getLevelLabels = (isES) => ({
     0: isES ? 'Vista Colapsada' : 'Collapsed View',
@@ -181,15 +182,384 @@ function MathFormulaBox({ math, formula, typo, isES = false }) {
     );
 }
 
-/* ── PLACEHOLDER DE VIDEO Y AUDIO POR SECCIÓN (ESTILO DOCKER DOCS) ── */
+/* ── PERSONAJE 4D ANIMADO CON LIP-SYNC EN TIEMPO REAL, PARPADEO, MIRADA DIRIGIDA Y ÓRBITA ── */
+function AnimatedOrb4DCharacter({
+    size = 215,
+    isSpeaking = false,
+    speechEnergy = 0,
+    currentTime = 0,
+    lookAtX = null,
+    lookAtY = null
+}) {
+    const [phase, setPhase] = useState(0);
+    const [isBlinking, setIsBlinking] = useState(false);
+
+    // Loop suave de animación (levitación + satélites orbitales)
+    useEffect(() => {
+        let rafId;
+        const start = performance.now();
+        const tick = (now) => {
+            setPhase((now - start) / 1000);
+            rafId = requestAnimationFrame(tick);
+        };
+        rafId = requestAnimationFrame(tick);
+        return () => cancelAnimationFrame(rafId);
+    }, []);
+
+    // Parpadeo orgánico cada ~2.8 - 4.2 segundos
+    useEffect(() => {
+        let timeoutId;
+        const scheduleBlink = () => {
+            const delay = 2600 + Math.random() * 1800;
+            timeoutId = setTimeout(() => {
+                setIsBlinking(true);
+                setTimeout(() => {
+                    setIsBlinking(false);
+                    scheduleBlink();
+                }, 130);
+            }, delay);
+        };
+        scheduleBlink();
+        return () => clearTimeout(timeoutId);
+    }, []);
+
+    // Levitación vertical suave
+    const floatY = Math.sin(phase * 2.2) * 3.2;
+
+    // Posición de los 2 satélites sobre la elipse orbital inclinada (-12 deg, rx=74, ry=21)
+    const angle1 = phase * (isSpeaking ? 1.85 : 0.85);
+    const angle2 = angle1 + Math.PI;
+    const tiltRad = (-12 * Math.PI) / 180;
+    const calcSat = (theta) => {
+        const ex = 74 * Math.cos(theta);
+        const ey = 21 * Math.sin(theta);
+        return {
+            x: 80 + ex * Math.cos(tiltRad) - ey * Math.sin(tiltRad),
+            y: 82 + ex * Math.sin(tiltRad) + ey * Math.cos(tiltRad),
+            inFront: Math.sin(theta) >= 0
+        };
+    };
+    const sat1 = calcSat(angle1);
+    const sat2 = calcSat(angle2);
+
+    // Dirección sutil de la mirada hacia la zona activa de la pantalla
+    const gazeX =
+        typeof lookAtX === 'number'
+            ? lookAtX + Math.sin(phase * 1.6) * 0.45
+            : isSpeaking
+            ? Math.sin(phase * 1.9) * 2.2
+            : Math.sin(phase * 0.7) * 1.1;
+    const gazeY =
+        typeof lookAtY === 'number'
+            ? lookAtY + Math.cos(phase * 1.4) * 0.35
+            : isSpeaking && currentTime > 10 && currentTime < 22
+            ? -2.0
+            : isSpeaking && currentTime >= 22
+            ? 2.0
+            : Math.cos(phase * 1.1) * 0.8;
+
+    // Geometría de la boca sincronizada con la voz (Lip-Sync)
+    const energy = isSpeaking ? Math.max(0.08, Math.min(1, speechEnergy)) : 0;
+    const mouthOpen = energy * 11.5;
+
+    return (
+        <svg
+            width={size}
+            height={size}
+            viewBox="0 0 160 160"
+            fill="none"
+            style={{
+                filter: isSpeaking
+                    ? `drop-shadow(0 0 ${10 + Math.round(energy * 14)}px rgba(16, 185, 129, 0.45))`
+                    : 'drop-shadow(0 6px 16px rgba(0, 0, 0, 0.55))',
+                transition: 'filter 0.12s ease'
+            }}
+        >
+            <defs>
+                <radialGradient id="orbCore4DAnim" cx="36%" cy="32%" r="68%">
+                    <stop offset="0%" stopColor={isSpeaking ? 'rgba(16, 185, 129, 0.58)' : 'rgba(16, 185, 129, 0.42)'} />
+                    <stop offset="60%" stopColor="rgba(5, 14, 26, 0.96)" />
+                    <stop offset="100%" stopColor="#020617" />
+                </radialGradient>
+                <linearGradient id="iconGoldGreenAnim" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#a7f3d0" />
+                    <stop offset="50%" stopColor="#10b981" />
+                    <stop offset="100%" stopColor="#059669" />
+                </linearGradient>
+            </defs>
+
+            <g transform={`translate(0, ${floatY.toFixed(2)})`}>
+                {/* Halo exterior reactivo a la voz */}
+                <circle
+                    cx="80"
+                    cy="80"
+                    r={64 + energy * 4.5}
+                    stroke="rgba(16, 185, 129, 0.28)"
+                    strokeWidth={1.2 + energy * 1.2}
+                    strokeDasharray="3 5"
+                />
+
+                {/* Satélites cuando pasan por detrás de la esfera */}
+                {!sat1.inFront && <circle cx={sat1.x} cy={sat1.y} r="4.2" fill="#a7f3d0" opacity="0.55" />}
+                {!sat2.inFront && <circle cx={sat2.x} cy={sat2.y} r="3.5" fill="#10b981" opacity="0.55" />}
+
+                {/* Anillo orbital inclinado */}
+                <ellipse
+                    cx="80"
+                    cy="82"
+                    rx="74"
+                    ry="21"
+                    transform="rotate(-12 80 82)"
+                    stroke="#10b981"
+                    strokeWidth="2.2"
+                    opacity="0.85"
+                />
+
+                {/* Esfera principal de cristal */}
+                <circle
+                    cx="80"
+                    cy="80"
+                    r="55"
+                    fill="url(#orbCore4DAnim)"
+                    stroke="#6ee7b7"
+                    strokeWidth={2.4 + energy * 0.8}
+                />
+
+                {/* El ícono cincelado grande y nítido en el centro exacto (late suavemente al hablar) */}
+                <g opacity={0.85 + energy * 0.15}>
+                    <polygon
+                        points="56,34 76,34 116,108 98,108"
+                        fill="url(#iconGoldGreenAnim)"
+                        opacity={0.55 + energy * 0.22}
+                        stroke="#a7f3d0"
+                        strokeWidth="1.6"
+                    />
+                    <polygon
+                        points="80,72 91,87 68,108 50,108"
+                        fill="url(#iconGoldGreenAnim)"
+                        opacity={0.48 + energy * 0.22}
+                        stroke="#6ee7b7"
+                        strokeWidth="1.4"
+                    />
+                    <polygon
+                        points={`48,${(34 - energy * 1.8).toFixed(1)} 76,${(34 - energy * 1.8).toFixed(1)} 66,${(46 - energy * 1.8).toFixed(1)} 48,${(46 - energy * 1.8).toFixed(1)}`}
+                        fill="#a7f3d0"
+                        opacity="0.92"
+                    />
+                </g>
+
+                {/* Ojos expresivos con parpadeo y seguimiento de mirada */}
+                <g
+                    style={{
+                        transformOrigin: '80px 67px',
+                        transform: `scaleY(${isBlinking ? 0.12 : 1})`,
+                        transition: 'transform 0.06s ease'
+                    }}
+                >
+                    <rect x="52" y="56" width="16" height="22" rx="8" fill="#020617" stroke="#6ee7b7" strokeWidth="1.8" />
+                    <rect x="92" y="56" width="16" height="22" rx="8" fill="#020617" stroke="#6ee7b7" strokeWidth="1.8" />
+                    <rect
+                        x={55 + gazeX * 0.7}
+                        y={59 + gazeY * 0.7}
+                        width="10"
+                        height="15"
+                        rx="5"
+                        fill="#10b981"
+                    />
+                    <rect
+                        x={95 + gazeX * 0.7}
+                        y={59 + gazeY * 0.7}
+                        width="10"
+                        height="15"
+                        rx="5"
+                        fill="#10b981"
+                    />
+                    <circle cx={62 + gazeX} cy={64 + gazeY} r="2.8" fill="#ffffff" />
+                    <circle cx={102 + gazeX} cy={64 + gazeY} r="2.8" fill="#ffffff" />
+                </g>
+
+                {/* BOCA SINCRONIZADA CON LA VOZ (LIP-SYNC) */}
+                {isSpeaking && energy > 0.12 ? (
+                    <g>
+                        {/* Labio superior e inferior abriéndose al ritmo de las sílabas */}
+                        <path
+                            d={`M 64 95 Q 80 ${(93 - mouthOpen * 0.35).toFixed(1)} 96 95 Q 80 ${(99 + mouthOpen * 1.25).toFixed(1)} 64 95 Z`}
+                            fill="rgba(2, 6, 23, 0.9)"
+                            stroke="#ffffff"
+                            strokeWidth="2.6"
+                            strokeLinejoin="round"
+                        />
+                        {/* Onda luminosa interna dentro de la boca mientras articula */}
+                        <path
+                            d={`M 69 96 L 74 ${(96 - mouthOpen * 0.35).toFixed(1)} L 80 ${(96 + mouthOpen * 0.45).toFixed(1)} L 86 ${(96 - mouthOpen * 0.35).toFixed(1)} L 91 96`}
+                            stroke="#6ee7b7"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                        />
+                    </g>
+                ) : (
+                    <path
+                        d="M64 95 Q80 107 96 95"
+                        stroke="#ffffff"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        fill="none"
+                    />
+                )}
+
+                {/* Satélites cuando pasan por delante de la esfera */}
+                {sat1.inFront && <circle cx={sat1.x} cy={sat1.y} r="5.2" fill="#a7f3d0" stroke="#020617" strokeWidth="1" />}
+                {sat2.inFront && <circle cx={sat2.x} cy={sat2.y} r="4.2" fill="#10b981" stroke="#ffffff" strokeWidth="1" />}
+            </g>
+        </svg>
+    );
+}
+
+function formatMediaTime(sec) {
+    if (!Number.isFinite(sec) || sec < 0) return '00:00';
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+
+/* ── RECORRIDO VISUAL EN VIVO + PRESENTADOR 4D + REPRODUCTOR DE AUDIO NEURONAL POR PÁGINA ── */
 function GuideMediaPlaceholder({ page, typo, isES = false }) {
-    const [videoPlaying, setVideoPlaying] = useState(false);
     const [audioPlaying, setAudioPlaying] = useState(false);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+    const [animClock, setAnimClock] = useState(0);
+    const [speechEnergy, setSpeechEnergy] = useState(0);
+
+    const audioRef = useRef(null);
+    const audioCtxRef = useRef(null);
+    const analyserRef = useRef(null);
+    const sourceNodeRef = useRef(null);
+
+    const pageId = page?.id || 'home';
+    const audioSrc = `/guide/audio/${pageId}_${isES ? 'es' : 'en'}.mp3?v=3`;
 
     useEffect(() => {
-        setVideoPlaying(false);
         setAudioPlaying(false);
-    }, [page?.id]);
+        setCurrentTime(0);
+        setSpeechEnergy(0);
+        if (audioRef.current) {
+            audioRef.current.pause();
+            audioRef.current.currentTime = 0;
+            audioRef.current.load();
+        }
+    }, [pageId, isES]);
+
+    // Reloj de animación continua (órbita 3D, levitación, parpadeo y lip-sync con Web Audio API)
+    useEffect(() => {
+        let rafId = null;
+        const startTs = performance.now();
+        const freqData = new Uint8Array(64);
+
+        const tick = (now) => {
+            const elapsedSec = (now - startTs) / 1000;
+            setAnimClock(elapsedSec);
+
+            if (audioPlaying && audioRef.current && !audioRef.current.paused) {
+                const t = audioRef.current.currentTime || elapsedSec;
+                let measured = 0;
+                if (analyserRef.current) {
+                    try {
+                        analyserRef.current.getByteFrequencyData(freqData);
+                        let sum = 0;
+                        const bins = 28;
+                        for (let i = 2; i < bins; i++) {
+                            sum += freqData[i];
+                        }
+                        measured = Math.min(1, (sum / ((bins - 2) * 255)) * 2.35);
+                    } catch {
+                        measured = 0;
+                    }
+                }
+                const syllabic =
+                    0.35 +
+                    0.32 * Math.sin(t * 19.5) +
+                    0.22 * Math.cos(t * 11.3) +
+                    0.15 * Math.sin(t * 31.0);
+                const pauseGate = Math.sin(t * 2.4) > -0.78 ? 1 : 0.12;
+                const fallbackEnergy = Math.max(0.08, Math.min(0.95, syllabic * pauseGate));
+                setSpeechEnergy(measured > 0.04 ? Math.max(measured, fallbackEnergy * 0.55) : fallbackEnergy);
+            } else {
+                setSpeechEnergy(0);
+            }
+
+            rafId = requestAnimationFrame(tick);
+        };
+
+        rafId = requestAnimationFrame(tick);
+        return () => {
+            if (rafId) cancelAnimationFrame(rafId);
+        };
+    }, [audioPlaying]);
+
+    const ensureAudioAnalyser = () => {
+        if (!audioRef.current || sourceNodeRef.current) return;
+        try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return;
+            const ctx = new AudioCtx();
+            const analyser = ctx.createAnalyser();
+            analyser.fftSize = 128;
+            analyser.smoothingTimeConstant = 0.65;
+            const src = ctx.createMediaElementSource(audioRef.current);
+            src.connect(analyser);
+            analyser.connect(ctx.destination);
+            audioCtxRef.current = ctx;
+            analyserRef.current = analyser;
+            sourceNodeRef.current = src;
+        } catch {
+            // El generador silábico mantiene el lip-sync activo si Web Audio API está restringido
+        }
+    };
+
+    const handleToggleAudio = () => {
+        if (!audioRef.current) return;
+        if (audioPlaying) {
+            audioRef.current.pause();
+            setAudioPlaying(false);
+        } else {
+            ensureAudioAnalyser();
+            if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+                audioCtxRef.current.resume().catch(() => {});
+            }
+            audioRef.current
+                .play()
+                .then(() => setAudioPlaying(true))
+                .catch(() => setAudioPlaying(false));
+        }
+    };
+
+    const handleJumpToScene = (scene) => {
+        if (!audioRef.current) return;
+        const targetDur = duration || 38;
+        const targetSec = ((scene.startPct + 0.5) / 100) * targetDur;
+        audioRef.current.currentTime = targetSec;
+        setCurrentTime(targetSec);
+        if (!audioPlaying) {
+            ensureAudioAnalyser();
+            if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+                audioCtxRef.current.resume().catch(() => {});
+            }
+            audioRef.current
+                .play()
+                .then(() => setAudioPlaying(true))
+                .catch(() => setAudioPlaying(false));
+        }
+    };
+
+    const handleSeek = (e) => {
+        if (!audioRef.current || !duration) return;
+        const rect = e.currentTarget.getBoundingClientRect();
+        const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+        audioRef.current.currentTime = ratio * duration;
+        setCurrentTime(ratio * duration);
+    };
+
+    const progressPct = duration > 0 ? Math.min(100, (currentTime / duration) * 100) : 0;
 
     return (
         <div
@@ -201,204 +571,139 @@ function GuideMediaPlaceholder({ page, typo, isES = false }) {
                 overflow: 'hidden'
             }}
         >
-            {/* 1. PLACEHOLDER DE VIDEO DEMOSTRATIVO (16:9) */}
-            <div
-                onClick={() => setVideoPlaying(prev => !prev)}
-                style={{
-                    position: 'relative',
-                    aspectRatio: '16 / 9',
-                    maxHeight: '320px',
-                    width: '100%',
-                    background: 'transparent',
-                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '12px',
-                    padding: '24px',
-                    cursor: 'pointer',
-                    textAlign: 'center'
+            {/* 1. ESCENARIO VISUAL INTERACTIVO 16:9 CON LA VISTA REAL DE LA APP + ORBE 4D */}
+            <GuideInteractiveVideoStage
+                page={page}
+                typo={typo}
+                isES={isES}
+                audioPlaying={audioPlaying}
+                currentTime={currentTime}
+                progressPct={progressPct}
+                animClock={animClock}
+                speechEnergy={speechEnergy}
+                onToggleAudio={handleToggleAudio}
+                onJumpToScene={handleJumpToScene}
+                OrbCharacterComponent={AnimatedOrb4DCharacter}
+            />
+
+            {/* 2. REPRODUCTOR DE AUDIO NEURONAL MULTILINGÜE (AVA MULTILINGUAL) */}
+            <audio
+                ref={audioRef}
+                src={audioSrc}
+                preload="metadata"
+                onLoadedMetadata={e => setDuration(e.currentTarget.duration || 0)}
+                onTimeUpdate={e => setCurrentTime(e.currentTarget.currentTime || 0)}
+                onEnded={() => {
+                    setAudioPlaying(false);
+                    setCurrentTime(0);
                 }}
-            >
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: '12px',
-                        left: '14px',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        padding: '4px 9px',
-                        borderRadius: '6px',
-                        background: 'rgba(2, 6, 23, 0.75)',
-                        border: '1px solid rgba(148, 163, 184, 0.2)',
-                        fontSize: '11px',
-                        fontWeight: 600,
-                        color: '#cbd5e1',
-                        fontFamily: typo.headingFontFamily
-                    }}
-                >
-                    <Video size={12} color="var(--ui-accent, #10b981)" />
-                    <span>{isES ? 'Placeholder de Video' : 'Video Placeholder'} • {page.label}</span>
-                </div>
-
-                <div
-                    style={{
-                        position: 'absolute',
-                        top: '12px',
-                        right: '14px',
-                        padding: '3px 8px',
-                        borderRadius: '6px',
-                        background: 'rgba(2, 6, 23, 0.75)',
-                        border: '1px solid rgba(148, 163, 184, 0.18)',
-                        fontSize: '11px',
-                        color: '#94a3b8',
-                        fontFamily: 'var(--font-mono)'
-                    }}
-                >
-                    01:45 • 1080p
-                </div>
-
-                <div
-                    style={{
-                        width: '56px',
-                        height: '56px',
-                        borderRadius: '999px',
-                        background: videoPlaying
-                            ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.28)'
-                            : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.18)',
-                        border: '1.5px solid var(--ui-accent, #10b981)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#ffffff',
-                        boxShadow: '0 0 24px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.25)',
-                        transition: 'transform 0.15s ease'
-                    }}
-                >
-                    {videoPlaying ? <Pause size={22} /> : <Play size={22} style={{ marginLeft: '2px' }} />}
-                </div>
-
-                <div>
-                    <div
-                        style={{
-                            fontSize: '15px',
-                            fontWeight: 700,
-                            color: '#ffffff',
-                            fontFamily: typo.headingFontFamily
-                        }}
-                    >
-                        {videoPlaying
-                            ? (isES ? `Reproduciendo vista previa de ${page.label}...` : `Playing preview of ${page.label}...`)
-                            : (isES ? `Recorrido visual en video por ${page.label}` : `Visual video walkthrough of ${page.label}`)}
-                    </div>
-                    <div
-                        style={{
-                            fontSize: '12.5px',
-                            color: '#94a3b8',
-                            marginTop: '4px',
-                            maxWidth: '480px'
-                        }}
-                    >
-                        {isES
-                            ? 'Espacio reservado para la cápsula de video demostrativo paso a paso de esta sección.'
-                            : 'Reserved space for the step-by-step walkthrough video of this section.'}
-                    </div>
-                </div>
-            </div>
-
-            {/* 2. PLACEHOLDER DE AUDIO (RESUMEN NARRADO) */}
+            />
             <div
                 style={{
                     padding: '11px 16px',
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    gap: '14px',
-                    flexWrap: 'wrap',
+                    flexDirection: 'column',
+                    gap: '10px',
                     background: 'rgba(2, 6, 23, 0.55)'
                 }}
             >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-                    <button
-                        type="button"
-                        onClick={() => setAudioPlaying(prev => !prev)}
-                        style={{
-                            width: '30px',
-                            height: '30px',
-                            borderRadius: '999px',
-                            border: '1px solid rgba(var(--ui-accent-rgb, 16, 185, 129), 0.45)',
-                            background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
-                            color: '#ffffff',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            cursor: 'pointer',
-                            flexShrink: 0
-                        }}
-                    >
-                        {audioPlaying ? <Pause size={13} /> : <Play size={13} style={{ marginLeft: '1px' }} />}
-                    </button>
-
-                    <div style={{ minWidth: 0 }}>
-                        <div
+                <div
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        gap: '14px',
+                        flexWrap: 'wrap'
+                    }}
+                >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                        <button
+                            type="button"
+                            onClick={handleToggleAudio}
                             style={{
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '999px',
+                                border: '1px solid rgba(var(--ui-accent-rgb, 16, 185, 129), 0.55)',
+                                background: audioPlaying
+                                    ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.28)'
+                                    : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
+                                color: '#ffffff',
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '6px',
-                                fontSize: '12.5px',
-                                fontWeight: 600,
-                                color: '#e2e8f0',
-                                fontFamily: typo.headingFontFamily
+                                justifyContent: 'center',
+                                cursor: 'pointer',
+                                flexShrink: 0,
+                                boxShadow: audioPlaying ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.4)' : 'none'
                             }}
                         >
-                            <Volume2 size={13} color="var(--ui-accent, #10b981)" />
-                            <span>
-                                {isES
-                                    ? `Placeholder de Audio • Resumen hablado de ${page.label}`
-                                    : `Audio Placeholder • Spoken summary of ${page.label}`}
-                            </span>
-                        </div>
-                        <div style={{ fontSize: '11.5px', color: '#94a3b8' }}>
-                            {audioPlaying
-                                ? (isES ? 'Narración en curso (00:18 / 01:30)...' : 'Narration playing (00:18 / 01:30)...')
-                                : (isES
-                                    ? 'Escuchá la explicación rápida en audio mientras recorrés la pantalla.'
-                                    : 'Listen to the quick audio explanation while browsing the screen.')}
-                        </div>
-                    </div>
-                </div>
+                            {audioPlaying ? <Pause size={13} /> : <Play size={13} style={{ marginLeft: '1px' }} />}
+                        </button>
 
-                {/* BARRA DE PROGRESO DE AUDIO Y DURACIÓN */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
-                    <div
-                        style={{
-                            width: '110px',
-                            height: '4px',
-                            borderRadius: '999px',
-                            background: 'rgba(148, 163, 184, 0.2)',
-                            overflow: 'hidden'
-                        }}
-                    >
-                        <div
-                            style={{
-                                width: audioPlaying ? '35%' : '0%',
-                                height: '100%',
-                                background: 'var(--ui-accent, #10b981)',
-                                transition: 'width 0.25s ease'
-                            }}
-                        />
+                        <div style={{ minWidth: 0 }}>
+                            <div
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '6px',
+                                    fontSize: '12.5px',
+                                    fontWeight: 600,
+                                    color: '#e2e8f0',
+                                    fontFamily: typo.headingFontFamily
+                                }}
+                            >
+                                <Volume2 size={13} color="var(--ui-accent, #10b981)" />
+                                <span>
+                                    {isES
+                                        ? `Recorrido narrado de ${page.label} • Presentador 4D + Voz Neuronal Bilingüe`
+                                        : `Spoken walkthrough of ${page.label} • 4D Presenter + Neural Voice`}
+                                </span>
+                            </div>
+                            <div style={{ fontSize: '11.5px', color: '#94a3b8' }}>
+                                {audioPlaying
+                                    ? isES
+                                        ? `Reproduciendo explicación sincronizada (${formatMediaTime(currentTime)} / ${formatMediaTime(duration || 38)})...`
+                                        : `Playing synchronized walkthrough (${formatMediaTime(currentTime)} / ${formatMediaTime(duration || 35)})...`
+                                    : isES
+                                    ? 'Hacé clic en Play o en cualquier capítulo superior para ver y escuchar el recorrido en vivo.'
+                                    : 'Click Play or any chapter pill above to watch and listen to the live walkthrough.'}
+                            </div>
+                        </div>
                     </div>
-                    <span
-                        style={{
-                            fontSize: '11px',
-                            color: '#94a3b8',
-                            fontFamily: 'var(--font-mono)'
-                        }}
-                    >
-                        {audioPlaying ? '00:18 / 01:30' : '00:00 / 01:30'}
-                    </span>
+
+                    {/* BARRA DE PROGRESO DE AUDIO Y DURACIÓN */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+                        <div
+                            onClick={handleSeek}
+                            title={isES ? 'Hacé clic para adelantar o retroceder' : 'Click to seek'}
+                            style={{
+                                width: '130px',
+                                height: '6px',
+                                borderRadius: '999px',
+                                background: 'rgba(148, 163, 184, 0.22)',
+                                overflow: 'hidden',
+                                cursor: 'pointer'
+                            }}
+                        >
+                            <div
+                                style={{
+                                    width: `${progressPct}%`,
+                                    height: '100%',
+                                    background: 'var(--ui-accent, #10b981)',
+                                    transition: 'width 0.1s linear'
+                                }}
+                            />
+                        </div>
+                        <span
+                            style={{
+                                fontSize: '11px',
+                                color: '#94a3b8',
+                                fontFamily: 'var(--font-mono)'
+                            }}
+                        >
+                            {`${formatMediaTime(currentTime)} / ${formatMediaTime(duration || 38)}`}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
