@@ -341,7 +341,6 @@ export default function App() {
         activeTab={activeTab}
         onOpenObservability={() => handleNavigate('observability')}
         onToggleGuide={() => handleNavigate('guide')}
-        onToggleDevLab={() => handleNavigate('devlab')}
         onCycleLang={cycleLang}
         onSelectLang={(idx) => setLangIdx(idx)}
         onCycleTheme={cycleTheme}

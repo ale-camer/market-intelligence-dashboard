@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, MessageSquare, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { INITIAL_HOLDINGS } from './portfolio/portfolioConstants';
 import PortfolioVista1Builder from './portfolio/PortfolioVista1Builder';
 import PortfolioVista2Risk from './portfolio/PortfolioVista2Risk';
@@ -10,15 +10,15 @@ const PORTFOLIO_STORAGE_KEY = 'mid_portfolio_v1';
 const PORTFOLIO_VIEWS = [
     {
         id: 'V1',
-        label: 'Constructor & Performance'
+        label: 'Constructor'
     },
     {
         id: 'V2',
-        label: 'Riesgo Cuantitativo & Stress'
+        label: 'Riesgo'
     },
     {
         id: 'V3',
-        label: 'Laboratorio de Estrategias Ad-Hoc'
+        label: 'Simulador'
     }
 ];
 
@@ -32,7 +32,7 @@ export default function AgentCommitteeView({
     const [copilotThread, setCopilotThread] = useState([
         {
             role: 'ai',
-            txt: 'Copiloto Cuantitativo RAG activo. Tu cartera mantiene un Sharpe de 2.18 con Beta 0.76 y una eficiencia Walk-Forward del 94.2%.'
+            txt: 'Copiloto activo. Tu cartera mantiene un Sharpe de 2.18 con Beta 0.76 y una eficiencia histórica del 94.2%.'
         }
     ]);
 
@@ -74,7 +74,7 @@ export default function AgentCommitteeView({
         <div
             style={{
                 minHeight: '100vh',
-                background: '#060911',
+                background: 'transparent',
                 color: '#f8fafc',
                 padding: '12px 18px 64px',
                 display: 'flex',
@@ -83,7 +83,7 @@ export default function AgentCommitteeView({
             }}
         >
             {/* ══════════════════════════════════════════════════════════════════
-                BARRA DE NAVEGACIÓN CENTRADA (SÓLO TÍTULOS) + ICONO COPILOTO A LA ALTURA DEL MENÚ
+                ENCABEZADO V010 GHOST (TEXTO FLOTANTE CON BRILLO SIN SUBRAYADO NI CAJA)
                ══════════════════════════════════════════════════════════════════ */}
             <div
                 style={{
@@ -97,10 +97,10 @@ export default function AgentCommitteeView({
             >
                 <div
                     style={{
-                        display: 'flex',
+                        display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: '24px',
+                        gap: '1.65rem',
                         flexWrap: 'wrap'
                     }}
                 >
@@ -111,19 +111,17 @@ export default function AgentCommitteeView({
                                 key={v.id}
                                 onClick={() => setActiveView(v.id)}
                                 style={{
-                                    padding: '6px 4px',
+                                    padding: '0.18rem 0.25rem',
                                     border: 'none',
-                                    borderBottom: active ? '2px solid var(--ui-accent, #10b981)' : '2px solid transparent',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent-bright, #6ee7b7)' : 'rgba(148, 163, 184, 0.72)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.62)',
                                     textShadow: active
-                                        ? '0 0 10px var(--ui-accent-glow, rgba(16,185,129,0.78)), 0 0 22px var(--ui-accent-soft, rgba(16,185,129,0.42))'
+                                        ? '0 0 15px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.88)'
                                         : 'none',
-                                    fontSize: '12px',
+                                    fontSize: '15px',
                                     fontWeight: active ? 800 : 600,
-                                    letterSpacing: '0.03em',
                                     cursor: 'pointer',
-                                    transition: 'all 0.18s ease'
+                                    transition: 'all 0.16s ease'
                                 }}
                             >
                                 {v.label}
@@ -134,29 +132,28 @@ export default function AgentCommitteeView({
 
                 <button
                     onClick={() => setCopilotOpen(v => !v)}
-                    title={copilotOpen ? 'Ocultar Copiloto RAG' : 'Abrir Copiloto RAG'}
-                    aria-label="Copiloto RAG"
+                    aria-label="Copiloto"
                     style={{
                         position: 'absolute',
                         right: '4px',
                         top: '50%',
                         transform: 'translateY(-50%)',
-                        width: '32px',
-                        height: '32px',
-                        display: 'flex',
+                        display: 'inline-flex',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        borderRadius: '8px',
-                        border: copilotOpen
-                            ? '1px solid var(--ui-accent, rgba(16,185,129,0.65))'
-                            : '1px solid rgba(148,163,184,0.22)',
-                        background: copilotOpen ? 'rgba(16,185,129,0.2)' : 'rgba(15,23,42,0.75)',
-                        color: copilotOpen ? 'var(--ui-accent-bright, #6ee7b7)' : '#cbd5e1',
-                        boxShadow: copilotOpen ? '0 0 14px rgba(16,185,129,0.35)' : 'none',
-                        cursor: 'pointer'
+                        padding: '0.18rem 0.35rem',
+                        border: 'none',
+                        background: 'transparent',
+                        color: copilotOpen ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.72)',
+                        textShadow: copilotOpen
+                            ? '0 0 15px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.88)'
+                            : 'none',
+                        fontSize: '13px',
+                        fontWeight: copilotOpen ? 800 : 600,
+                        cursor: 'pointer',
+                        transition: 'all 0.16s ease'
                     }}
                 >
-                    <MessageSquare size={15} />
+                    <span>Copiloto</span>
                 </button>
             </div>
 
@@ -182,37 +179,42 @@ export default function AgentCommitteeView({
                         style={{
                             width: '320px',
                             flexShrink: 0,
-                            background: 'linear-gradient(180deg, rgba(15,23,42,0.98) 0%, rgba(9,13,22,0.99) 100%)',
-                            border: '1px solid rgba(16,185,129,0.45)',
+                            background: 'transparent',
+                            border: '1px solid rgba(148, 163, 184, 0.22)',
                             borderRadius: '10px',
-                            padding: '12px',
+                            padding: '14px',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '10px'
                         }}
                     >
-                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                                <Sparkles size={14} color="#10b981" />
-                                <span style={{ fontSize: '11px', fontWeight: 900, color: '#f8fafc' }}>COPILOTO DE CARTERA (#8)</span>
-                            </div>
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                paddingBottom: '8px',
+                                borderBottom: '1px solid rgba(148, 163, 184, 0.14)'
+                            }}
+                        >
+                            <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>Copiloto de Cartera</span>
                             <button onClick={() => setCopilotOpen(false)} style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>
                                 <X size={14} />
                             </button>
                         </div>
 
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                            {['Revisar solapamiento ETF', 'Simular cobertura Put 5%', 'Optimizar Sharpe'].map(chip => (
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                            {['Revisar solapamiento', 'Simular cobertura', 'Optimizar Sharpe'].map(chip => (
                                 <button
                                     key={chip}
                                     onClick={() => sendCopilotPrompt(chip)}
                                     style={{
-                                        padding: '3px 7px',
-                                        borderRadius: '99px',
-                                        border: '1px solid rgba(16,185,129,0.35)',
-                                        background: 'rgba(16,185,129,0.1)',
-                                        color: '#6ee7b7',
-                                        fontSize: '8.5px',
+                                        padding: '4px 9px',
+                                        borderRadius: '6px',
+                                        border: '1px solid rgba(148, 163, 184, 0.22)',
+                                        background: 'transparent',
+                                        color: 'var(--ui-accent, #10b981)',
+                                        fontSize: '11.5px',
                                         fontWeight: 700,
                                         cursor: 'pointer'
                                     }}
@@ -229,9 +231,9 @@ export default function AgentCommitteeView({
                                     style={{
                                         padding: '8px 10px',
                                         borderRadius: '7px',
-                                        background: m.role === 'ai' ? 'rgba(2,6,23,0.75)' : 'rgba(16,185,129,0.16)',
-                                        border: `1px solid ${m.role === 'ai' ? 'rgba(148,163,184,0.18)' : 'rgba(16,185,129,0.4)'}`,
-                                        fontSize: '9.5px',
+                                        background: m.role === 'ai' ? 'transparent' : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
+                                        border: `1px solid ${m.role === 'ai' ? 'rgba(148,163,184,0.18)' : 'var(--ui-accent, #10b981)'}`,
+                                        fontSize: '12.5px',
                                         color: '#e2e8f0',
                                         lineHeight: 1.45
                                     }}
@@ -245,15 +247,15 @@ export default function AgentCommitteeView({
                             <input
                                 value={copilotMsg}
                                 onChange={e => setCopilotMsg(e.target.value)}
-                                placeholder="Consultar al Copiloto RAG..."
+                                placeholder="Consultar sobre la cartera..."
                                 style={{
                                     flex: 1,
-                                    background: 'rgba(2,6,23,0.85)',
+                                    background: 'transparent',
                                     border: '1px solid rgba(148,163,184,0.25)',
                                     borderRadius: '6px',
                                     padding: '6px 8px',
                                     color: '#f8fafc',
-                                    fontSize: '10px'
+                                    fontSize: '12px'
                                 }}
                             />
                             <button
@@ -264,10 +266,10 @@ export default function AgentCommitteeView({
                                 style={{
                                     padding: '6px 10px',
                                     borderRadius: '6px',
-                                    border: '1px solid rgba(16,185,129,0.45)',
-                                    background: 'rgba(16,185,129,0.2)',
-                                    color: '#6ee7b7',
-                                    fontSize: '9.5px',
+                                    border: '1px solid var(--ui-accent, #10b981)',
+                                    background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.16)',
+                                    color: 'var(--ui-accent, #10b981)',
+                                    fontSize: '12px',
                                     fontWeight: 800,
                                     cursor: 'pointer'
                                 }}

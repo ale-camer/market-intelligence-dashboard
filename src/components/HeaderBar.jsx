@@ -1432,10 +1432,7 @@ export default function HeaderBar({
 
     return (
       <HoverTooltip
-        title={t.navHome}
-        description={t.navHomeDesc}
-        hint={t.navHomeHint}
-        badge="HOME"
+        title="Home"
         placement="bottom-left"
       >
         {(isHovered) => {
@@ -1514,19 +1511,10 @@ export default function HeaderBar({
   const shellStyle = renderNavShellStyle(variant.navShell);
 
   const renderTabWithTooltip = (item, idx, placement = 'bottom') => {
-    const desc =
-      t?.objInfo?.[item.id] ||
-      (item.id === 'workstation'
-        ? 'Global 213-asset screener, 3D volatility/yield surfaces, and multi-agent RAG research.'
-        : 'Autonomous 3-agent portfolio committee, $100k ledger, VaR 95%, and correlation matrix.');
-    const badge = item.id === 'workstation' ? 'ALT+1 • L1 & L2' : 'ALT+2 • LEDGER';
     return (
       <HoverTooltip
         key={item.id}
-        title={item.label}
-        description={desc}
-        hint={t?.navOpenHint || 'Click to open section'}
-        badge={badge}
+        disabled={true}
         placement={placement}
       >
         {(isHovered) =>

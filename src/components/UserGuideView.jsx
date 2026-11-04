@@ -1,812 +1,1419 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import {
-  ArrowLeft,
-  ArrowUpRight,
-  BookOpen,
-  Layers,
-  Cpu,
-  Compass,
-  ShieldCheck,
-  Search,
-  Sparkles,
+    ChevronRight,
+    ChevronDown,
+    Layers,
+    Maximize2,
+    ArrowLeft,
+    ArrowRight,
+    Play,
+    Pause,
+    Volume2,
+    Video,
+    X
 } from 'lucide-react';
+import { GUIDE_TREE_PAGES, ALL_GUIDE_PAGES } from './guide/guideTreeData';
+import { GUIDE_MODALS_BY_SECTION } from './guide/guideModalsData';
+import { getSavedGuideTypoPreset } from './guide/guideTypographyPresets';
 
-export default function UserGuideView({ langCode = 'ES', onGoBack, onLaunchTarget }) {
-  const isES = langCode === 'ES';
-  const [activeChapter, setActiveChapter] = useState('ALL');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedId, setSelectedId] = useState('ui-home-stage');
+const LEVEL_LABELS = {
+    0: 'Vista Colapsada',
+    1: 'Vista Principal',
+    2: 'Vista Expandida'
+};
 
-  const chapters = [
-    { id: 'ALL', label: isES ? 'Todos (10)' : 'All (10)', icon: Sparkles },
-    { id: 'ui-objects', label: isES ? '1. Pantallas y UI' : '1. Screens & UI', icon: Compass },
-    { id: 'asset-classes', label: isES ? '2. Clases de Activos (10)' : '2. Asset Classes (10)', icon: Layers },
-    { id: 'quant-engines', label: isES ? '3. Motores 3D/2D y Fórmulas' : '3. 3D/2D Engines & Formulas', icon: Cpu },
-    { id: 'risk-and-ai', label: isES ? '4. Riesgo Quant, VaR e IA' : '4. Quant Risk, VaR & AI', icon: ShieldCheck },
-  ];
-
-  const guideEntries = useMemo(
-    () => [
-      // CHAPTER 1: UI OBJECTS & SCREENS
-      {
-        id: 'ui-home-stage',
-        chapter: 'ui-objects',
-        badge: isES ? 'PANTALLA • HOME' : 'SCREEN • HOME',
-        title: isES
-          ? 'Home Stage: Campo Profundo, Lanzadores 3D/2D y Pulso Macro'
-          : 'Home Stage: Deep Field, 3D/2D Launchers & Macro Pulse',
-        formula: '3 Layouts Seleccionables: Bento Grid • Split Workstation • Minimal HUD',
-        summary: isES
-          ? 'Puerta de entrada ejecutiva sobre el lienzo cósmico interactivo (Webb Deep Field). Incluye 6 tarjetas de acceso directo a los motores cuantitativos 3D/2D, guía operativa de 3 pasos y cinta inferior con el pulso macro en vivo.'
-          : 'Executive entry stage over the interactive Webb Deep Field canvas. Features 6 direct launcher cards to the 3D/2D quant engines, a 3-step operational guide, and a live macro pulse bottom strip.',
-        points: isES
-          ? [
-              'Selector superior de diseño (Bento / Split / Minimal HUD) persistido en localStorage.',
-              'Acceso directo en 1 clic a Superficie IV 3D, Curva Soberana 3D/2D, Payoffs, FX y Portfolio.',
-              'Cinta Macro inferior con S&P 500, UST 10Y, DXY, VIX, BTC y % de activos en Régimen Normal P-06.',
-            ]
-          : [
-              'Top layout model selector (Bento / Split / Minimal HUD) persisted in localStorage.',
-              '1-click direct access to 3D IV Surface, 3D/2D Sovereign Curve, Payoffs, FX, and Portfolio.',
-              'Bottom Macro strip with S&P 500, UST 10Y, DXY, VIX, BTC, and % of assets in P-06 Normal Regime.',
-            ],
-        targetLabel: isES ? 'Ir a Home Stage' : 'Go to Home Stage',
-        target: { view: 'home' },
-      },
-      {
-        id: 'ui-markets-l1',
-        chapter: 'ui-objects',
-        badge: isES ? 'MARKETS • NIVEL 1' : 'MARKETS • LEVEL 1',
-        title: isES
-          ? 'Screener Multi-Activo (Table, Orbital y Heatmap) + Accesos Rápidos'
-          : 'Multi-Asset Screener (Table, Orbital & Heatmap) + Quick Shortcuts',
-        formula: '213 Activos Únicos • 10 Categorías • Filtro ★ Watchlist Sincronizado',
-        summary: isES
-          ? 'Explorador global del universo filtrado por liquidez. Permite alternar entre Tabla Institucional con columnas específicas por categoría, Mapa Orbital de Anomalías y Heatmap proporcional por capitalización/volumen.'
-          : 'Global liquidity-filtered universe explorer. Switch between Institutional Table with category-specific columns, Anomaly Orbital Map, and proportional Market-Cap/Volume Heatmap.',
-        points: isES
-          ? [
-              '4 botones de acceso rápido alineados a la derecha hacia los motores cuantitativos más populares.',
-              'Estrella ★ en cada fila para marcar/desmarcar activos en la Watchlist persistente.',
-              'Tarjetas superiores de pulso agregado (Total Activos, Normal, Elevated y Dislocation).',
-            ]
-          : [
-              '4 right-aligned quick shortcut buttons to the most popular quantitative engines.',
-              'Star ★ on every row to bookmark/unbookmark assets into the persistent Watchlist.',
-              'Top aggregated regime pulse cards (Total Assets, Normal, Elevated, and Dislocation).',
-            ],
-        targetLabel: isES ? 'Abrir Screener (Nivel 1)' : 'Open Screener (Level 1)',
-        target: { view: 'markets', mode: 'screener' },
-      },
-      {
-        id: 'ui-markets-l2',
-        chapter: 'ui-objects',
-        badge: isES ? 'MARKETS • NIVEL 2' : 'MARKETS • LEVEL 2',
-        title: isES
-          ? 'Workstation de Activo: Analytics (4 Lentes) vs Research (FinBERT & RAG)'
-          : 'Asset Workstation: Analytics (4 Lenses) vs Research (FinBERT & RAG)',
-        formula: 'Horizontes 1D • 1W • 1M • 1Y • ALL + Comparador A vs B + Deep-Linking URL',
-        summary: isES
-          ? 'Al seleccionar cualquier activo en Nivel 1 se abre su estación dedicada dividida en dos grandes áreas: Analytics (Price Action, Factor Decomposition, Microstructure y el 4° lente de Motores 3D/2D) y Research (Sentimiento NLP, Tesis Bull/Bear y RAG).'
-          : 'Selecting any asset in Level 1 opens its dedicated workstation split into two main areas: Analytics (Price Action, Factor Decomposition, Microstructure, and the 4th 3D/2D Engine lens) and Research (NLP Sentiment, Bull/Bear Thesis, and RAG).',
-        points: isES
-          ? [
-              'Bandas estadísticas σ (±1σ, ±2σ), medias móviles (SMA 20/50/200) y sub-panel RSI(14) / MACD.',
-              'Comparador relativo normalizado (% base 0) restringido a activos compatibles.',
-              'URL canónica única por lente y sub-vista para auditoría directa.',
-            ]
-          : [
-              'Statistical σ bands (±1σ, ±2σ), moving averages (SMA 20/50/200), and RSI(14) / MACD sub-chart.',
-              'Normalized relative comparator (% base 0) restricted to compatible asset classes.',
-              'Unique canonical URL per lens and sub-view for direct auditing.',
-            ],
-        targetLabel: isES ? 'Abrir NVDA en Nivel 2' : 'Open NVDA in Level 2',
-        target: { view: 'markets', mode: 'detail', asset: 'NVDA', section: 'analytics', lens: 'price' },
-      },
-      {
-        id: 'ui-color-semantics',
-        chapter: 'ui-objects',
-        badge: isES ? 'REGLA VISUAL • COLOR' : 'VISUAL RULE • COLOR',
-        title: isES
-          ? 'Semántica Estricta de Color Financiero (Verde Alcista / Rojo Bajista)'
-          : 'Strict Financial Color Semantics (Bullish Green / Bearish Red)',
-        formula: 'Positivo / Saludable = #10b981 • Negativo / Alerta / Dislocación = #f43f5e',
-        summary: isES
-          ? 'Toda la aplicación respeta una regla cromática inquebrantable para evitar ambigüedad visual: el verde esmeralda (#10b981) indica retornos positivos, carry favorable o régimen normal; el rojo coral (#f43f5e) indica pérdidas, anomalías o alertas.'
-          : 'The entire application enforces an unbreakable chromatic rule to eliminate visual ambiguity: emerald green (#10b981) denotes positive returns, favorable carry, or normal regime; rose red (#f43f5e) denotes losses, anomalies, or alerts.',
-        points: isES
-          ? [
-              'Aplicado en velas, curvas de payoff P&L, pendientes soberanas 2s10s, matriz de correlación y Comité IA.',
-              'Los datos neutros o estructurales utilizan blanco puro (#ffffff) o gris pizarra.',
-            ]
-          : [
-              'Applied across candles, P&L payoff curves, 2s10s sovereign slopes, correlation matrix, and AI Committee.',
-              'Neutral or structural telemetry uses crisp white (#ffffff) or slate gray.',
-            ],
-        targetLabel: isES ? 'Ver en Portfolio' : 'View in Portfolio',
-        target: { view: 'portfolio' },
-      },
-
-      // CHAPTER 2: THE 10 ASSET CLASSES
-      {
-        id: 'class-equities-etfs-indices',
-        chapter: 'asset-classes',
-        badge: isES ? 'CLASES 01–03 • RENTA VARIABLE' : 'CLASSES 01–03 • EQUITIES & INDICES',
-        title: isES
-          ? 'Equities (70), ETFs (24) e Indices (19): Métricas de Valuación y Flujo'
-          : 'Equities (70), ETFs (24) & Indices (19): Valuation & Flow Metrics',
-        formula: 'Columnas: P/E Fwd • EV/EBITDA • Rev Growth • Beta • Short % • AUM • Net Flow',
-        summary: isES
-          ? 'Cobertura de las mayores acciones del S&P 500 y Nasdaq 100, ETFs sectoriales/factoriales e índices globales de referencia. Al filtrar cualquiera de estas categorías en la tabla de Nivel 1 se activan sus columnas institucionales específicas.'
-          : 'Coverage of top S&P 500 and Nasdaq 100 equities, sector/factor ETFs, and global benchmark indices. Filtering any of these categories in the Level 1 table activates its category-specific institutional columns.',
-        points: isES
-          ? [
-              'Equities: Market Cap, P/E Forward, EV/EBITDA, Crecimiento de Ingresos YoY, Beta (1Y) y % Short Float.',
-              'ETFs: AUM ($B), Expense Ratio (bps), Flujo Neto 30D ($M), Tracking Error y Dividend Yield.',
-              'Indices: Puntos, Retorno YTD, P/E Agregado, Breadth (% > 200d MA) y Realized Vol 30D.',
-            ]
-          : [
-              'Equities: Market Cap, Forward P/E, EV/EBITDA, YoY Revenue Growth, Beta (1Y), and Short Float %.',
-              'ETFs: AUM ($B), Expense Ratio (bps), 30D Net Flow ($M), Tracking Error, and Dividend Yield.',
-              'Indices: Index Points, YTD Return, Aggregate P/E, Breadth (% > 200d MA), and 30D Realized Vol.',
-            ],
-        targetLabel: isES ? 'Filtrar Equities en Screener' : 'Filter Equities in Screener',
-        target: { view: 'markets', mode: 'screener', cat: 'Equities' },
-      },
-      {
-        id: 'class-rates-ust-cash',
-        chapter: 'asset-classes',
-        badge: isES ? 'CLASES 04–06 • RENTA FIJA & LIQUIDEZ' : 'CLASSES 04–06 • FIXED INCOME & CASH',
-        title: isES
-          ? 'Rates & Curves (18), US Treasuries (6) y Cash & SOFR (6)'
-          : 'Rates & Curves (18), US Treasuries (6) & Cash & SOFR (6)',
-        formula: 'DV01 = −(∂P / ∂y) × 0.0001 • Real Yield = Nominal 10Y − CPI YoY',
-        summary: isES
-          ? 'Monitoreo de bonos soberanos globales (con motor interactivo para 42 países desde 3M hasta 30Y), curva completa del Tesoro de EE.UU. y tasas monetarias overnight (SOFR, EFFR, Reverse Repo).'
-          : 'Monitoring of global sovereign bonds (with interactive 3M–30Y engine across 42 countries), full US Treasury benchmark curve, and overnight money market rates (SOFR, EFFR, Reverse Repo).',
-        points: isES
-          ? [
-              'Rates & Curves: Yield Actual (%), Cambio diario (bps), Spread 2s10s (bps), Inflación CPI YoY y Tasa Real.',
-              'US Treasuries: Tenor, Yield, Modified Duration (años), Convexidad y sensibilidad DV01 ($ por $1M).',
-              'Cash & SOFR: Tasa Anualizada, Spread vs Fed Funds Target, Volumen Diario ($B) y Liquidez RRP.',
-            ]
-          : [
-              'Rates & Curves: Current Yield (%), Daily Change (bps), 2s10s Spread (bps), YoY CPI, and Real Yield.',
-              'US Treasuries: Tenor, Yield, Modified Duration (years), Convexity, and DV01 sensitivity ($ per $1M).',
-              'Cash & SOFR: Annualized Rate, Spread vs Fed Funds Target, Daily Volume ($B), and RRP Liquidity.',
-            ],
-        targetLabel: isES ? 'Abrir Curva Soberana (US10Y)' : 'Open Sovereign Curve (US10Y)',
-        target: {
-          view: 'markets',
-          mode: 'detail',
-          asset: 'US10Y',
-          section: 'analytics',
-          lens: 'derivatives',
-          sub: '2d-curve',
-          country: 'US',
-        },
-      },
-      {
-        id: 'class-fx-commodities-crypto-derivs',
-        chapter: 'asset-classes',
-        badge: isES ? 'CLASES 07–10 • MACRO, CRYPTO & VOL' : 'CLASSES 07–10 • MACRO, CRYPTO & VOL',
-        title: isES
-          ? 'FX (15 pares + 61 divisas), Commodities (19), Crypto (20) y Derivatives (16)'
-          : 'FX (15 pairs + 61 currencies), Commodities (19), Crypto (20) & Derivatives (16)',
-        formula: 'Carry 10Y = r_base − r_quote • Roll Yield = (F_spot − F_6M) / F_spot',
-        summary: isES
-          ? 'Activos globales de divisas G10/EM, materias primas (Energía, Metales, Agricultura), criptoactivos de alta capitalización y contratos de volatilidad/opciones.'
-          : 'Global G10/EM currency pairs, commodities (Energy, Metals, Agriculture), large-cap crypto assets, and volatility/options contracts.',
-        points: isES
-          ? [
-              'FX Currencies: Spot, Diferencial de Tasas 10Y (Carry bps), Implied Vol 1M y Banco Central.',
-              'Commodities: Precio Spot, Estructura Temporal (Contango / Backwardation), Roll Yield Anualizado e Inventarios.',
-              'Crypto & Derivatives: Funding Rate 8h, Open Interest ($B), IV Percentile (1Y), 25Δ Skew y Net GEX.',
-            ]
-          : [
-              'FX Currencies: Spot, 10Y Rate Differential (Carry bps), 1M Implied Vol, and Central Bank.',
-              'Commodities: Spot Price, Term Structure (Contango / Backwardation), Annualized Roll Yield, and Inventories.',
-              'Crypto & Derivatives: 8h Funding Rate, Open Interest ($B), IV Percentile (1Y), 25Δ Skew, and Net GEX.',
-            ],
-        targetLabel: isES ? 'Abrir Superficie IV 3D (NVDA-OPT)' : 'Open 3D IV Surface (NVDA-OPT)',
-        target: {
-          view: 'markets',
-          mode: 'detail',
-          asset: 'NVDA-OPT',
-          section: 'analytics',
-          lens: 'derivatives',
-          sub: 'surface3d',
-        },
-      },
-
-      // CHAPTER 3: 3D/2D QUANTITATIVE ENGINES & FORMULAS
-      {
-        id: 'engine-vol-surface-3d',
-        chapter: 'quant-engines',
-        badge: isES ? 'MOTOR 3D • VOLATILIDAD IMPLÍCITA' : '3D ENGINE • IMPLIED VOLATILITY',
-        title: isES
-          ? 'Superficie de Volatilidad Implícita 3D y Cortes Transversales (Smile & Term Structure)'
-          : '3D Implied Volatility Surface & Cross-Sectional Slices (Smile & Term Structure)',
-        formula: 'σ_imp(m, τ) = σ_ATM(τ) + α(τ)·(m − 1) + β(τ)·(m − 1)²',
-        summary: isES
-          ? 'Representación volumétrica 3D interactiva donde el Eje X es el Strike / Moneyness (80% a 120% Spot), el Eje Y es el Tiempo a Vencimiento (DTE: 7D a 180D) y el Eje Z (altura y color) es la Volatilidad Implícita anualizada.'
-          : 'Interactive 3D volumetric mesh where the X-axis is Strike / Moneyness (80% to 120% Spot), the Y-axis is Days to Expiration (DTE: 7D to 180D), and the Z-axis (height and color) is annualized Implied Volatility.',
-        points: isES
-          ? [
-              'Rotación orbital libre (Yaw / Pitch con mouse drag), zoom y 4 presets de cámara (Isometric, Skew, Term, Top).',
-              'Al hacer clic en cualquier nodo (X, Y) se actualizan debajo los dos cortes 2D exactos: Smile por Strike y Estructura Temporal por DTE.',
-              'Métricas clave: 25Δ Put-Call Skew, Net Gamma Exposure (GEX), Max Pain Strike y Straddle Breakeven (±%).',
-            ]
-          : [
-              'Free orbital rotation (Yaw / Pitch mouse drag), zoom, and 4 camera presets (Isometric, Skew, Term, Top).',
-              'Clicking any (X, Y) node updates the two exact 2D cross-sections below: Strike Smile and DTE Term Structure.',
-              'Key metrics: 25Δ Put-Call Skew, Net Gamma Exposure (GEX), Max Pain Strike, and Straddle Breakeven (±%).',
-            ],
-        targetLabel: isES ? 'Lanzar Superficie 3D (NVDA-OPT)' : 'Launch 3D Surface (NVDA-OPT)',
-        target: {
-          view: 'markets',
-          mode: 'detail',
-          asset: 'NVDA-OPT',
-          section: 'analytics',
-          lens: 'derivatives',
-          sub: 'surface3d',
-        },
-      },
-      {
-        id: 'engine-options-payoff',
-        chapter: 'quant-engines',
-        badge: isES ? 'MOTOR P&L • OPCIONES Y SINTÉTICOS' : 'P&L ENGINE • OPTIONS & SYNTHETICS',
-        title: isES
-          ? 'Diagramas de Payoff P&L (8 Estrategias) y Griegas de Primer Orden (Δ, Γ, Θ, ν)'
-          : 'P&L Payoff Diagrams (8 Strategies) & First-Order Greeks (Δ, Γ, Θ, ν)',
-        formula: 'Sintético Largo: Call(K) − Put(K) = S_T − K·e^(−rT) (Paridad Put-Call)',
-        summary: isES
-          ? 'Simulador interactivo de estructuras de derivados que superpone la curva sólida al vencimiento (At Expiration) con la curva punteada de valor teórico hoy (T+0 Black-Scholes).'
-          : 'Interactive derivatives structure simulator overlaying the solid At-Expiration payoff curve with the dashed theoretical T+0 Black-Scholes curve.',
-        points: isES
-          ? [
-              '8 Estrategias: Long Call, Long Put, Bull Call Spread, Long Straddle, Iron Condor, Covered Call, Protective Put y Long Synthetic Future.',
-              'Sliders de Choque de Volatilidad Implícita (IV Shock −20% a +20%) y Días a Vencimiento (DTE).',
-              'Griegas en vivo: Delta (Δ direccional), Gamma (Γ convexidad), Theta (Θ decaimiento diario $) y Vega (ν sensibilidad a 1% IV).',
-            ]
-          : [
-              '8 Strategies: Long Call, Long Put, Bull Call Spread, Long Straddle, Iron Condor, Covered Call, Protective Put, and Long Synthetic Future.',
-              'Interactive Implied Volatility Shock (−20% to +20%) and Days to Expiration (DTE) sliders.',
-              'Live Greeks: Delta (Δ directional), Gamma (Γ convexity), Theta (Θ daily $ decay), and Vega (ν sensitivity to 1% IV).',
-            ],
-        targetLabel: isES ? 'Abrir Motor Payoff P&L' : 'Open P&L Payoff Engine',
-        target: {
-          view: 'markets',
-          mode: 'detail',
-          asset: 'NVDA-OPT',
-          section: 'analytics',
-          lens: 'derivatives',
-          sub: 'payoff',
-        },
-      },
-      {
-        id: 'engine-sovereign-yield-3d',
-        chapter: 'quant-engines',
-        badge: isES ? 'MOTOR 3D/2D • CURVAS SOBERANAS' : '3D/2D ENGINE • SOVEREIGN CURVES',
-        title: isES
-          ? 'Superficie y Curva de Bonos Soberanos (42 Países • 3M a 30Y)'
-          : 'Sovereign Yield Surface & Curve (42 Countries • 3M to 30Y)',
-        formula: '2s10s = (Y_10Y − Y_2Y) × 100 bps • Butterfly 2s5s10s = 2·Y_5Y − (Y_2Y + Y_10Y)',
-        summary: isES
-          ? 'Permite inspeccionar tanto la curva 2D actual como la evolución histórica 3D (Tenor × Época Histórica × Yield %) para 42 emisores soberanos de América, Europa, Asia-Pacífico y Medio Oriente/África.'
-          : 'Inspect both the current 2D term structure and the 3D historical evolution (Tenor × Historical Epoch × Yield %) across 42 sovereign issuers in the Americas, Europe, Asia-Pacific, and MEA.',
-        points: isES
-          ? [
-              'Pendiente 2s10s y 3m10y: valores negativos (< 0 bps, en rojo) señalan inversión de curva y alerta recesiva.',
-              'Comparador directo contra benchmark (US Treasury o German Bund) y superposición de curva hace 1 Mes / 1 Año.',
-              'Cálculo automático de Tasa Real 10Y (descontando inflación CPI YoY) y sensibilidad DV01 por cada $1M nocional.',
-            ]
-          : [
-              '2s10s and 3m10y slopes: negative values (< 0 bps, in red) signal curve inversion and recession warning.',
-              'Direct benchmark overlay (vs US Treasury or German Bund) and 1-Month / 1-Year historical comparison.',
-              'Automatic 10Y Real Yield calculation (net of YoY CPI inflation) and DV01 sensitivity per $1M notional.',
-            ],
-        targetLabel: isES ? 'Abrir Superficie Soberana 3D' : 'Open 3D Sovereign Surface',
-        target: {
-          view: 'markets',
-          mode: 'detail',
-          asset: 'US10Y',
-          section: 'analytics',
-          lens: 'derivatives',
-          sub: '3d-history',
-          country: 'US',
-        },
-      },
-      {
-        id: 'engine-fx-and-commodities',
-        chapter: 'quant-engines',
-        badge: isES ? 'MOTORES MACRO • FX & COMMODITIES' : 'MACRO ENGINES • FX & COMMODITIES',
-        title: isES
-          ? 'Triangulador FX de 61 Monedas y Superficie Forward 3D de Commodities'
-          : '61-Currency FX Triangulator & 3D Commodity Forward Surface',
-        formula: 'FX Cross(A/B) = Rate(USD/B) / Rate(USD/A) • F(T) = S₀ · e^((r + u − y)·T)',
-        summary: isES
-          ? 'En activos FX permite convertir cualquier monto entre 61 monedas mundiales vía triangulación USD y medir el diferencial Carry 10Y. En Commodities modela la estructura Spot a 24M (Contango vs Backwardation) en 2D y 3D.'
-          : 'In FX assets, convert any amount across 61 world currencies via USD triangulation and measure 10Y Carry differentials. In Commodities, model the Spot-to-24M forward structure (Contango vs Backwardation) in 2D and 3D.',
-        points: isES
-          ? [
-              'Botón de inversión instantánea Base ⇄ Cotizada y tabla de equivalencias frente a las 8 grandes reservas (G8).',
-              'En Commodities: Backwardation (Spot > Forward, verde) genera Roll Yield positivo; Contango (Spot < Forward) implica costo de acarreo.',
-            ]
-          : [
-              'Instant Base ⇄ Quote swap button and live equivalence table against the 8 major reserve currencies (G8).',
-              'In Commodities: Backwardation (Spot > Forward, green) yields positive roll return; Contango (Spot < Forward) implies storage drag.',
-            ],
-        targetLabel: isES ? 'Abrir Triangulador FX (EUR/USD)' : 'Open FX Triangulator (EUR/USD)',
-        target: {
-          view: 'markets',
-          mode: 'detail',
-          asset: 'EUR/USD',
-          section: 'analytics',
-          lens: 'derivatives',
-        },
-      },
-
-      // CHAPTER 4: PORTFOLIO QUANT RISK, VaR, CORRELATION & AI
-      {
-        id: 'risk-var-cvar-correlation',
-        chapter: 'risk-and-ai',
-        badge: isES ? 'RIESGO DE CARTERA • VaR & MATRIZ r' : 'PORTFOLIO RISK • VaR & MATRIX r',
-        title: isES
-          ? 'VaR Paramétrico (95%, 1D), CVaR (99%) y Matriz de Correlación Cruzada'
-          : 'Parametric VaR (95%, 1D), CVaR (99%) & Cross-Correlation Matrix',
-        formula: 'σ_p = √(wᵀ · Σ · w) • VaR_{95%, 1D} = NAV × 1.645 × (σ_p / √252)',
-        summary: isES
-          ? 'Panel cuantitativo integrado en Portfolio que calcula en tiempo real la pérdida máxima esperada a 1 día con 95% de confianza (VaR), el Expected Shortfall al 99% (CVaR), el beneficio monetario de diversificación y la matriz NxN de correlaciones.'
-          : 'Quantitative panel integrated in Portfolio computing real-time 1-day 95% Value at Risk (VaR), 99% Expected Shortfall (CVaR), monetary diversification benefit, and the NxN cross-correlation matrix.',
-        points: isES
-          ? [
-              'Beneficio de Diversificación ($): ahorro de riesgo diario logrado gracias a correlaciones cruzadas r < 1.00.',
-              'Matriz de Correlación (r ∈ [-1.00, +1.00]): colorea en verde los pares descorrelacionados (< 0.45) y en rojo las concentraciones (≥ 0.70).',
-              'Beta Ponderado (vs SPY), Volatilidad Anualizada de la cartera (%) y Sharpe Ratio (sobre tasa libre de riesgo Rf = 4.30%).',
-            ]
-          : [
-              'Diversification Benefit ($): daily risk reduction achieved through cross-correlations r < 1.00.',
-              'Correlation Matrix (r ∈ [-1.00, +1.00]): highlights diversified pairs (< 0.45) in green and concentrated pairs (≥ 0.70) in red.',
-              'Weighted Beta (vs SPY), Annualized Portfolio Volatility (%), and Sharpe Ratio (over risk-free rate Rf = 4.30%).',
-            ],
-        targetLabel: isES ? 'Abrir Riesgo y Matriz en Portfolio' : 'Open Risk & Matrix in Portfolio',
-        target: { view: 'portfolio' },
-      },
-      {
-        id: 'ai-p06-finbert-rag-committee',
-        chapter: 'risk-and-ai',
-        badge: isES ? 'INTELIGENCIA ARTIFICIAL • P-06 & RAG' : 'ARTIFICIAL INTELLIGENCE • P-06 & RAG',
-        title: isES
-          ? 'Régimen P-06 (Isolation Forest), Sentimiento FinBERT, RAG y Comité de 3 Pilares'
-          : 'P-06 Regime (Isolation Forest), FinBERT Sentiment, RAG & 3-Pillar Committee',
-        formula: 'P-06 Score ∈ [0, 1]: Normal (< 0.35) • Elevated (0.35–0.50) • Dislocation (≥ 0.50)',
-        summary: isES
-          ? 'Ecosistema de modelos cuantitativos y de lenguaje natural: detección de anomalías estructurales P-06, clasificación FinBERT sobre cables de noticias, buscador RAG con Guardrail de 3 capas y deliberación auditable de cartera.'
-          : 'Quantitative and NLP model ecosystem: P-06 structural anomaly detection, FinBERT news wire classification, 3-layer guardrailed RAG search, and auditable portfolio deliberation.',
-        points: isES
-          ? [
-              'Guardrail Automático de Cartera: cualquier activo con anomalía P-06 ≥ 0.65 (ej. SOL) queda bloqueado a un tope máximo de 5.0% del NAV.',
-              'Tope Institucional por Posición: ningún activo individual puede superar el 20.0% del NAV ($21,284 en el simulador).',
-              'Buscador RAG en Research: valida alcance financiero (Capa 1), fundamentación en documentos recuperados (Capa 2) y bloqueo de alucinaciones (Capa 3).',
-            ]
-          : [
-              'Automated Portfolio Guardrail: any asset with P-06 anomaly ≥ 0.65 (e.g., SOL) is automatically capped at 5.0% of NAV.',
-              'Institutional Single-Asset Cap: no individual position can exceed 20.0% of NAV ($21,284 in the sandbox).',
-              'RAG Search in Research: enforces financial scope (Layer 1), retrieved document grounding (Layer 2), and hallucination blocking (Layer 3).',
-            ],
-        targetLabel: isES ? 'Probar FinBERT & RAG en Research' : 'Test FinBERT & RAG in Research',
-        target: { view: 'markets', mode: 'detail', asset: 'NVDA', section: 'research' },
-      },
-    ],
-    [isES]
-  );
-
-  const filteredEntries = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase();
-    return guideEntries.filter((entry) => {
-      if (activeChapter !== 'ALL' && entry.chapter !== activeChapter) return false;
-      if (!q) return true;
-      return (
-        entry.title.toLowerCase().includes(q) ||
-        entry.summary.toLowerCase().includes(q) ||
-        entry.formula.toLowerCase().includes(q) ||
-        entry.points.some((p) => p.toLowerCase().includes(q))
-      );
-    });
-  }, [guideEntries, activeChapter, searchQuery]);
-
-  const selectedEntry = useMemo(
-    () =>
-      filteredEntries.find((e) => e.id === selectedId) ||
-      guideEntries.find((e) => e.id === selectedId) ||
-      filteredEntries[0] ||
-      null,
-    [filteredEntries, guideEntries, selectedId]
-  );
-
-  const chapterGroups = useMemo(() => {
-    const baseChapters = chapters.filter((c) => c.id !== 'ALL');
-    return baseChapters
-      .map((ch) => ({
-        ...ch,
-        items: filteredEntries.filter((e) => e.chapter === ch.id),
-      }))
-      .filter((g) => g.items.length > 0);
-  }, [chapters, filteredEntries]);
-
-  const renderCompactCard = (entry) => {
-    const isSelected = selectedEntry && selectedEntry.id === entry.id;
-    const cardGradient = isSelected
-      ? 'linear-gradient(135deg, rgba(var(--ui-accent-rgb), 0.16) 0%, var(--bg-panel-glass) 82%)'
-      : 'var(--bg-panel-glass)';
+/* ── COMPONENTE DE FÓRMULA MATEMÁTICA ESTRUCTURADA (FRACCIONES REALES + LEYENDA) ── */
+function MathFormulaBox({ math, formula, typo }) {
+    if (!math && !formula) return null;
 
     return (
-      <div
-        key={entry.id}
-        onClick={() => setSelectedId(entry.id)}
-        style={{
-          borderRadius: '11px',
-          background: cardGradient,
-          backdropFilter: 'blur(12px)',
-          border: isSelected ? '1px solid var(--ui-accent)' : '1px solid var(--border-light)',
-          padding: '0.52rem 0.85rem',
-          cursor: 'pointer',
-          transition: 'all 0.14s ease',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: '0.6rem',
-          minWidth: 0,
-          boxShadow: isSelected ? '0 0 14px rgba(var(--ui-accent-rgb), 0.18)' : 'none',
-        }}
-      >
-        <span
-          style={{
-            fontSize: '0.76rem',
-            fontWeight: isSelected ? 700 : 600,
-            color: 'var(--text-main)',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }}
-        >
-          {entry.title}
-        </span>
-
-        <span
-          className="mono-metric"
-          style={{
-            fontSize: '0.58rem',
-            fontWeight: 700,
-            color: isSelected ? 'var(--ui-accent)' : 'var(--text-dim)',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.3rem',
-            flexShrink: 0,
-          }}
-        >
-          <span
+        <div
             style={{
-              width: '6px',
-              height: '6px',
-              borderRadius: '999px',
-              backgroundColor: isSelected ? 'var(--ui-accent)' : 'var(--text-dim)',
-              boxShadow: isSelected ? '0 0 7px var(--ui-accent)' : 'none',
-            }}
-          />
-          {entry.badge.split('•').pop().trim()}
-        </span>
-      </div>
-    );
-  };
-
-  const renderDetailCard = (entry) => {
-    if (!entry) {
-      return (
-        <div
-          style={{
-            borderRadius: '16px',
-            background: 'var(--bg-panel-glass)',
-            backdropFilter: 'blur(14px)',
-            border: '1px dashed var(--border-light)',
-            padding: '1.5rem 1.25rem',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            textAlign: 'center',
-            color: 'var(--text-dim)',
-            fontSize: '0.76rem',
-            minHeight: '220px',
-          }}
-        >
-          {isES
-            ? 'Seleccioná cualquier módulo de la izquierda para inspeccionar su fórmula, definición cuantitativa y acceso directo.'
-            : 'Click any module on the left to inspect its formula, quantitative definition, and live launcher.'}
-        </div>
-      );
-    }
-
-    return (
-      <div
-        style={{
-          borderRadius: '16px',
-          background: 'linear-gradient(145deg, rgba(var(--ui-accent-rgb), 0.12) 0%, var(--bg-panel-glass) 72%)',
-          backdropFilter: 'blur(16px)',
-          border: '1px solid var(--ui-accent)',
-          padding: '1.15rem 1.25rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.85rem',
-        }}
-      >
-        {/* Header of Selected Card */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            gap: '0.75rem',
-            paddingBottom: '0.75rem',
-            borderBottom: '1px solid var(--border-light)',
-            flexWrap: 'wrap',
-          }}
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', minWidth: 0, flex: 1 }}>
-            <span className="mono-metric" style={{ fontSize: '0.6rem', color: 'var(--ui-accent)', fontWeight: 700 }}>
-              {entry.badge}
-            </span>
-            <span style={{ fontSize: '0.96rem', fontWeight: 700, color: 'var(--text-main)', lineHeight: 1.25 }}>
-              {entry.title}
-            </span>
-          </div>
-
-          {onLaunchTarget && entry.target && (
-            <button
-              type="button"
-              onClick={() => onLaunchTarget(entry.target)}
-              className="mono-metric"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.32rem',
-                padding: '0.26rem 0.68rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(var(--ui-accent-rgb), 0.16)',
-                border: '1px solid var(--ui-accent)',
-                color: 'var(--ui-accent)',
-                fontSize: '0.62rem',
-                fontWeight: 800,
-                cursor: 'pointer',
                 flexShrink: 0,
-              }}
-            >
-              <span>{entry.targetLabel}</span>
-              <ArrowUpRight size={13} />
-            </button>
-          )}
-        </div>
-
-        {/* Formula / Quantitative Specification */}
-        <div
-          style={{
-            padding: '0.65rem 0.8rem',
-            borderRadius: '11px',
-            backgroundColor: 'rgba(0, 0, 0, 0.28)',
-            border: '1px solid var(--border-light)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.2rem',
-          }}
-        >
-          <span
-            className="mono-metric"
-            style={{ fontSize: '0.58rem', fontWeight: 700, color: 'var(--text-dim)', textTransform: 'uppercase' }}
-          >
-            {isES ? 'Fórmula / Especificación Cuantitativa' : 'Quantitative Formula / Specification'}
-          </span>
-          <span
-            className="mono-metric"
-            style={{ fontSize: '0.7rem', color: 'var(--ui-accent)', fontWeight: 700, lineHeight: 1.4 }}
-          >
-            {entry.formula}
-          </span>
-        </div>
-
-        {/* Summary */}
-        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.48 }}>
-          {entry.summary}
-        </div>
-
-        {/* Bullet Points */}
-        <div
-          style={{
-            paddingTop: '0.55rem',
-            borderTop: '1px solid var(--border-light)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.4rem',
-          }}
-        >
-          {entry.points.map((pt, i) => (
-            <div
-              key={i}
-              style={{
+                padding: '14px 18px',
+                borderRadius: '8px',
+                background: 'rgba(2, 6, 23, 0.90)',
+                border: '1px solid rgba(16, 185, 129, 0.28)',
                 display: 'flex',
-                alignItems: 'flex-start',
-                gap: '0.45rem',
-                fontSize: '0.71rem',
-                color: 'var(--text-main)',
-                lineHeight: 1.42,
-              }}
-            >
-              <span className="mono-metric" style={{ color: 'var(--ui-accent)', fontWeight: 800 }}>
-                •
-              </span>
-              <span>{pt}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  };
-
-  return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.75rem',
-        maxWidth: '1220px',
-        margin: '0 auto',
-        width: '100%',
-        paddingBottom: '1rem',
-      }}
-    >
-      {/* 1. RESUMEN SUPERIOR COMPACTO + BUSCADOR (HOMOGÉNEO CON SISTEMA) */}
-      <div
-        style={{
-          borderRadius: '13px',
-          background: 'linear-gradient(135deg, rgba(var(--ui-accent-rgb), 0.12) 0%, var(--bg-panel-glass) 75%)',
-          backdropFilter: 'blur(14px)',
-          border: '1px solid var(--ui-accent)',
-          padding: '0.6rem 1.05rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '0.65rem',
-          flexShrink: 0,
-        }}
-      >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap', minWidth: 0 }}>
-          <BookOpen size={15} style={{ color: 'var(--ui-accent)', flexShrink: 0 }} />
-          <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-main)' }}>
-            {isES
-              ? 'Guía Interactiva • 10 Clases de Activos, Motores 3D/2D, Fórmulas y Riesgo'
-              : 'Interactive Guide • 10 Asset Classes, 3D/2D Engines, Formulas & Risk'}
-          </span>
-        </div>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
-          {/* Chapter Filter Pills */}
-          {chapters.map((ch) => {
-            const active = activeChapter === ch.id;
-            return (
-              <button
-                key={ch.id}
-                type="button"
-                onClick={() => setActiveChapter(ch.id)}
-                className="mono-metric"
-                style={{
-                  padding: '0.22rem 0.58rem',
-                  borderRadius: '999px',
-                  border: active ? '1px solid var(--ui-accent)' : '1px solid var(--border-light)',
-                  backgroundColor: active ? 'rgba(var(--ui-accent-rgb), 0.18)' : 'transparent',
-                  color: active ? 'var(--ui-accent)' : 'var(--text-muted)',
-                  fontSize: '0.58rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                }}
-              >
-                {ch.label}
-              </button>
-            );
-          })}
-
-          {/* Compact Search */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              padding: '0.22rem 0.65rem',
-              borderRadius: '999px',
-              backgroundColor: 'rgba(6, 10, 19, 0.75)',
-              border: '1px solid var(--border-light)',
-              minWidth: '170px',
+                flexDirection: 'column',
+                gap: '12px'
             }}
-          >
-            <Search size={12} style={{ color: 'var(--text-dim)', flexShrink: 0 }} />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={isES ? 'Buscar fórmula, VaR, 3D...' : 'Search formula, VaR, 3D...'}
-              className="mono-metric"
-              style={{
-                background: 'none',
-                border: 'none',
-                outline: 'none',
-                color: 'var(--text-main)',
-                fontSize: '0.6rem',
-                width: '100%',
-              }}
-            />
-          </div>
-
-          {onGoBack && (
-            <button
-              type="button"
-              onClick={onGoBack}
-              className="mono-metric"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.3rem',
-                padding: '0.22rem 0.65rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid var(--border-light)',
-                color: 'var(--text-main)',
-                fontSize: '0.6rem',
-                fontWeight: 700,
-                cursor: 'pointer',
-              }}
-            >
-              <ArrowLeft size={12} />
-              {isES ? 'Volver' : 'Back'}
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* 2. LAYOUT RESPONSIVO MASTER-DETAIL (IDÉNTICO A SISTEMA) */}
-      <div className="utility-master-detail-grid">
-        {/* IZQUIERDA: MÓDULOS AGRUPADOS POR CAPÍTULO EN 2 COLUMNAS */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', minWidth: 0 }}>
-          {chapterGroups.map((group) => (
-            <div key={group.id} style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem' }}>
-              <span
-                className="mono-metric"
+        >
+            <div
                 style={{
-                  fontSize: '0.58rem',
-                  color: 'var(--text-dim)',
-                  fontWeight: 700,
-                  paddingLeft: '0.15rem',
-                  textTransform: 'uppercase',
+                    fontSize: '10.5px',
+                    fontWeight: 700,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: 'var(--ui-accent, #10b981)',
+                    fontFamily: typo.headingFontFamily
                 }}
-              >
-                {group.label} ({group.items.length})
-              </span>
-              <div className="utility-cards-2col">
-                {group.items.map(renderCompactCard)}
-              </div>
+            >
+                Fórmula Matemática
             </div>
-          ))}
-        </div>
 
-        {/* DERECHA: DETALLE DEL MÓDULO SELECCIONADO */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem', minWidth: 0 }}>
-          <span
-            className="mono-metric"
-            style={{ fontSize: '0.58rem', color: 'var(--text-dim)', fontWeight: 700, paddingLeft: '0.15rem' }}
-          >
-            {isES ? 'ESPECIFICACIÓN Y ACCESO DIRECTO DEL MÓDULO' : 'MODULE SPECIFICATION & LIVE LAUNCHER'}
-          </span>
-          {renderDetailCard(selectedEntry)}
+            {math ? (
+                <>
+                    {/* ECUACIÓN PRINCIPAL CON SOPORTE DE FRACCIÓN VERTICAL REAL */}
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            flexWrap: 'wrap',
+                            gap: '10px',
+                            padding: '6px 4px',
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '13.5px',
+                            color: '#f8fafc',
+                            overflowX: 'auto'
+                        }}
+                    >
+                        {math.lhs && (
+                            <span style={{ fontWeight: 700, color: '#10b981', whiteSpace: 'nowrap' }}>
+                                {math.lhs.includes('=') ? math.lhs : `${math.lhs} =`}
+                            </span>
+                        )}
+
+                        {math.numerator && math.denominator ? (
+                            <div
+                                style={{
+                                    display: 'inline-flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    padding: '2px 8px'
+                                }}
+                            >
+                                <span
+                                    style={{
+                                        padding: '0 8px 5px',
+                                        color: '#ffffff',
+                                        fontWeight: 600,
+                                        textAlign: 'center',
+                                        whiteSpace: 'nowrap'
+                                    }}
+                                >
+                                    {math.numerator}
+                                </span>
+                                <span
+                                    style={{
+                                        width: '100%',
+                                        height: '1.5px',
+                                        background: 'rgba(16, 185, 129, 0.75)'
+                                    }}
+                                />
+                                <span
+                                    style={{
+                                        padding: '5px 8px 0',
+                                        color: '#cbd5e1',
+                                        fontWeight: 500,
+                                        textAlign: 'center',
+                                        whiteSpace: 'nowrap'
+                                    }}
+                                >
+                                    {math.denominator}
+                                </span>
+                            </div>
+                        ) : (
+                            math.inline && (
+                                <span style={{ color: '#ffffff', fontWeight: 600 }}>
+                                    {math.inline}
+                                </span>
+                            )
+                        )}
+
+                        {math.rhs && (
+                            <span style={{ fontWeight: 700, color: '#f8fafc', whiteSpace: 'nowrap' }}>
+                                {math.rhs}
+                            </span>
+                        )}
+                    </div>
+
+                    {/* LEYENDA DE VARIABLES ("Dónde:") */}
+                    {math.vars?.length > 0 && (
+                        <div
+                            style={{
+                                borderTop: '1px solid rgba(148, 163, 184, 0.14)',
+                                paddingTop: '10px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '5px',
+                                fontSize: '12.5px',
+                                color: '#cbd5e1',
+                                fontFamily: typo.fontFamily,
+                                lineHeight: 1.5
+                            }}
+                        >
+                            {math.vars.map((vLine, idx) => {
+                                const colonIdx = vLine.indexOf(':');
+                                if (colonIdx > 0) {
+                                    const varName = vLine.slice(0, colonIdx);
+                                    const varDesc = vLine.slice(colonIdx + 1);
+                                    return (
+                                        <div key={idx}>
+                                            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}>
+                                                • {varName}:
+                                            </strong>
+                                            <span>{varDesc}</span>
+                                        </div>
+                                    );
+                                }
+                                return <div key={idx}>• {vLine}</div>;
+                            })}
+                        </div>
+                    )}
+                </>
+            ) : (
+                <div
+                    style={{
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '13.5px',
+                        color: '#f8fafc',
+                        lineHeight: 1.6,
+                        whiteSpace: 'pre-wrap'
+                    }}
+                >
+                    {formula}
+                </div>
+            )}
         </div>
-      </div>
-    </div>
-  );
+    );
+}
+
+/* ── PLACEHOLDER DE VIDEO Y AUDIO POR SECCIÓN (ESTILO DOCKER DOCS) ── */
+function GuideMediaPlaceholder({ page, typo }) {
+    const [videoPlaying, setVideoPlaying] = useState(false);
+    const [audioPlaying, setAudioPlaying] = useState(false);
+
+    useEffect(() => {
+        setVideoPlaying(false);
+        setAudioPlaying(false);
+    }, [page?.id]);
+
+    return (
+        <div
+            style={{
+                margin: '0 0 40px',
+                borderRadius: '10px',
+                border: '1px solid rgba(148, 163, 184, 0.22)',
+                background: 'transparent',
+                overflow: 'hidden'
+            }}
+        >
+            {/* 1. PLACEHOLDER DE VIDEO DEMOSTRATIVO (16:9) */}
+            <div
+                onClick={() => setVideoPlaying(prev => !prev)}
+                style={{
+                    position: 'relative',
+                    aspectRatio: '16 / 9',
+                    maxHeight: '320px',
+                    width: '100%',
+                    background: 'transparent',
+                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '12px',
+                    padding: '24px',
+                    cursor: 'pointer',
+                    textAlign: 'center'
+                }}
+            >
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '12px',
+                        left: '14px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        padding: '4px 9px',
+                        borderRadius: '6px',
+                        background: 'rgba(2, 6, 23, 0.75)',
+                        border: '1px solid rgba(148, 163, 184, 0.2)',
+                        fontSize: '11px',
+                        fontWeight: 600,
+                        color: '#cbd5e1',
+                        fontFamily: typo.headingFontFamily
+                    }}
+                >
+                    <Video size={12} color="var(--ui-accent, #10b981)" />
+                    <span>Placeholder de Video • {page.label}</span>
+                </div>
+
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '12px',
+                        right: '14px',
+                        padding: '3px 8px',
+                        borderRadius: '6px',
+                        background: 'rgba(2, 6, 23, 0.75)',
+                        border: '1px solid rgba(148, 163, 184, 0.18)',
+                        fontSize: '11px',
+                        color: '#94a3b8',
+                        fontFamily: 'var(--font-mono)'
+                    }}
+                >
+                    01:45 • 1080p
+                </div>
+
+                <div
+                    style={{
+                        width: '56px',
+                        height: '56px',
+                        borderRadius: '999px',
+                        background: videoPlaying
+                            ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.28)'
+                            : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.18)',
+                        border: '1.5px solid var(--ui-accent, #10b981)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#ffffff',
+                        boxShadow: '0 0 24px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.25)',
+                        transition: 'transform 0.15s ease'
+                    }}
+                >
+                    {videoPlaying ? <Pause size={22} /> : <Play size={22} style={{ marginLeft: '2px' }} />}
+                </div>
+
+                <div>
+                    <div
+                        style={{
+                            fontSize: '15px',
+                            fontWeight: 700,
+                            color: '#ffffff',
+                            fontFamily: typo.headingFontFamily
+                        }}
+                    >
+                        {videoPlaying
+                            ? `Reproduciendo vista previa de ${page.label}...`
+                            : `Recorrido visual en video por ${page.label}`}
+                    </div>
+                    <div
+                        style={{
+                            fontSize: '12.5px',
+                            color: '#94a3b8',
+                            marginTop: '4px',
+                            maxWidth: '480px'
+                        }}
+                    >
+                        Espacio reservado para la cápsula de video demostrativo paso a paso de esta sección.
+                    </div>
+                </div>
+            </div>
+
+            {/* 2. PLACEHOLDER DE AUDIO (RESUMEN NARRADO) */}
+            <div
+                style={{
+                    padding: '11px 16px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '14px',
+                    flexWrap: 'wrap',
+                    background: 'rgba(2, 6, 23, 0.55)'
+                }}
+            >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
+                    <button
+                        type="button"
+                        onClick={() => setAudioPlaying(prev => !prev)}
+                        style={{
+                            width: '30px',
+                            height: '30px',
+                            borderRadius: '999px',
+                            border: '1px solid rgba(var(--ui-accent-rgb, 16, 185, 129), 0.45)',
+                            background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
+                            color: '#ffffff',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            cursor: 'pointer',
+                            flexShrink: 0
+                        }}
+                    >
+                        {audioPlaying ? <Pause size={13} /> : <Play size={13} style={{ marginLeft: '1px' }} />}
+                    </button>
+
+                    <div style={{ minWidth: 0 }}>
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                                fontSize: '12.5px',
+                                fontWeight: 600,
+                                color: '#e2e8f0',
+                                fontFamily: typo.headingFontFamily
+                            }}
+                        >
+                            <Volume2 size={13} color="var(--ui-accent, #10b981)" />
+                            <span>Placeholder de Audio • Resumen hablado de {page.label}</span>
+                        </div>
+                        <div style={{ fontSize: '11.5px', color: '#94a3b8' }}>
+                            {audioPlaying
+                                ? 'Narración en curso (00:18 / 01:30)...'
+                                : 'Escuchá la explicación rápida en audio mientras recorrés la pantalla.'}
+                        </div>
+                    </div>
+                </div>
+
+                {/* BARRA DE PROGRESO DE AUDIO Y DURACIÓN */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+                    <div
+                        style={{
+                            width: '110px',
+                            height: '4px',
+                            borderRadius: '999px',
+                            background: 'rgba(148, 163, 184, 0.2)',
+                            overflow: 'hidden'
+                        }}
+                    >
+                        <div
+                            style={{
+                                width: audioPlaying ? '35%' : '0%',
+                                height: '100%',
+                                background: 'var(--ui-accent, #10b981)',
+                                transition: 'width 0.25s ease'
+                            }}
+                        />
+                    </div>
+                    <span
+                        style={{
+                            fontSize: '11px',
+                            color: '#94a3b8',
+                            fontFamily: 'var(--font-mono)'
+                        }}
+                    >
+                        {audioPlaying ? '00:18 / 01:30' : '00:00 / 01:30'}
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default function UserGuideView({ typoPresetOverride = null, compactHeight = false }) {
+    const [activePageId, setActivePageId] = useState('home');
+    const [activeSectionId, setActiveSectionId] = useState('home-canvas');
+    const [menuLevel, setMenuLevel] = useState(1);
+    const [openNodes, setOpenNodes] = useState({
+        home: false,
+        markets: true,
+        'mkt-screener': false,
+        'mkt-analytics': false,
+        'mkt-research': false,
+        portfolio: true,
+        'port-v1': false,
+        'port-v2': false,
+        'port-v3': false
+    });
+    const [modalSection, setModalSection] = useState(null);
+    const [modalTabIdx, setModalTabIdx] = useState(0);
+    const [savedTypo, setSavedTypo] = useState(() => getSavedGuideTypoPreset());
+
+    useEffect(() => {
+        const onStorage = () => setSavedTypo(getSavedGuideTypoPreset());
+        window.addEventListener('storage', onStorage);
+        return () => window.removeEventListener('storage', onStorage);
+    }, []);
+
+    useEffect(() => {
+        if (!modalSection) return undefined;
+        const onKeyDown = e => {
+            if (e.key === 'Escape') setModalSection(null);
+        };
+        document.addEventListener('keydown', onKeyDown);
+        return () => document.removeEventListener('keydown', onKeyDown);
+    }, [modalSection]);
+
+    const typo = typoPresetOverride || savedTypo;
+
+    const contentScrollRef = useRef(null);
+    const leftMenuScrollRef = useRef(null);
+    const sectionRefs = useRef({});
+    const programmaticScrollLockRef = useRef(false);
+
+    const activePageIdx = ALL_GUIDE_PAGES.findIndex(p => p.id === activePageId);
+    const activePage = ALL_GUIDE_PAGES[activePageIdx] || ALL_GUIDE_PAGES[0];
+    const prevPage =
+        activePageIdx > 0
+            ? ALL_GUIDE_PAGES[activePageIdx - 1]
+            : ALL_GUIDE_PAGES[ALL_GUIDE_PAGES.length - 1];
+    const nextPage =
+        activePageIdx < ALL_GUIDE_PAGES.length - 1
+            ? ALL_GUIDE_PAGES[activePageIdx + 1]
+            : ALL_GUIDE_PAGES[0];
+
+    const viewportHeightCalc = compactHeight ? 'calc(100vh - 185px)' : 'calc(100vh - 108px)';
+
+    /* ── CÁLCULO DE LA SECCIÓN ACTIVA AL ESCROLEAR:
+          - Se ilumina SÓLO UN ÍTEM A LA VEZ.
+          - Es el ítem que está más abajo entre los que aparecen en pantalla. ── */
+    const computeActiveSectionOnScroll = useCallback(() => {
+        if (programmaticScrollLockRef.current) return;
+
+        const container = contentScrollRef.current;
+        if (!container || !activePage?.sections?.length) return;
+
+        /* Si el usuario está arriba del todo sin haber escroleado, marcamos la primera sección */
+        if (container.scrollTop <= 14) {
+            setActiveSectionId(activePage.sections[0].id);
+            return;
+        }
+
+        const cRect = container.getBoundingClientRect();
+        const viewTop = cRect.top + 24;
+        const viewBottom = cRect.bottom - 44;
+
+        const visibleOnScreen = [];
+
+        activePage.sections.forEach(sec => {
+            const el = sectionRefs.current[sec.id];
+            if (!el) return;
+            const sRect = el.getBoundingClientRect();
+            if (sRect.top < viewBottom && sRect.bottom > viewTop) {
+                visibleOnScreen.push(sec.id);
+            }
+        });
+
+        /* Elegimos únicamente el último (el que está más abajo de los que aparecen en pantalla) */
+        if (visibleOnScreen.length > 0) {
+            const lowestVisibleId = visibleOnScreen[visibleOnScreen.length - 1];
+            setActiveSectionId(lowestVisibleId);
+        }
+    }, [activePage]);
+
+    useEffect(() => {
+        const container = contentScrollRef.current;
+        if (!container) return undefined;
+
+        container.addEventListener('scroll', computeActiveSectionOnScroll, { passive: true });
+        window.addEventListener('resize', computeActiveSectionOnScroll);
+        return () => {
+            container.removeEventListener('scroll', computeActiveSectionOnScroll);
+            window.removeEventListener('resize', computeActiveSectionOnScroll);
+        };
+    }, [computeActiveSectionOnScroll]);
+
+    /* ── BOTÓN ÚNICO QUE INDICA EL ESTADO ACTUAL DEL MENÚ Y CICLA (0 → 1 → 2 → 0) ── */
+    const handleCycleMenuLevel = () => {
+        const nextLevel = (menuLevel + 1) % 3;
+        setMenuLevel(nextLevel);
+
+        if (nextLevel === 0) {
+            setOpenNodes({
+                home: false,
+                markets: false,
+                'mkt-screener': false,
+                'mkt-analytics': false,
+                'mkt-research': false,
+                portfolio: false,
+                'port-v1': false,
+                'port-v2': false,
+                'port-v3': false
+            });
+        } else if (nextLevel === 1) {
+            setOpenNodes({
+                home: false,
+                markets: true,
+                'mkt-screener': false,
+                'mkt-analytics': false,
+                'mkt-research': false,
+                portfolio: true,
+                'port-v1': false,
+                'port-v2': false,
+                'port-v3': false
+            });
+        } else {
+            setOpenNodes({
+                home: true,
+                markets: true,
+                'mkt-screener': true,
+                'mkt-analytics': true,
+                'mkt-research': true,
+                portfolio: true,
+                'port-v1': true,
+                'port-v2': true,
+                'port-v3': true
+            });
+        }
+    };
+
+    const handleSelectPage = (page) => {
+        programmaticScrollLockRef.current = true;
+        setActivePageId(page.id);
+        setActiveSectionId(page.sections[0]?.id);
+        setOpenNodes(prev => ({
+            ...prev,
+            ...(page.id.startsWith('mkt-') ? { markets: true } : {}),
+            ...(page.id.startsWith('port-') ? { portfolio: true } : {})
+        }));
+        if (contentScrollRef.current) {
+            contentScrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        setTimeout(() => {
+            programmaticScrollLockRef.current = false;
+        }, 420);
+    };
+
+    const handleSelectSection = (pageId, sectionId) => {
+        programmaticScrollLockRef.current = true;
+        setActiveSectionId(sectionId);
+        setOpenNodes(prev => ({
+            ...prev,
+            [pageId]: true,
+            ...(pageId.startsWith('mkt-') ? { markets: true } : {}),
+            ...(pageId.startsWith('port-') ? { portfolio: true } : {})
+        }));
+
+        if (pageId !== activePageId) {
+            setActivePageId(pageId);
+            setTimeout(() => {
+                const el = sectionRefs.current[sectionId];
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 60);
+        } else {
+            const el = sectionRefs.current[sectionId];
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        setTimeout(() => {
+            programmaticScrollLockRef.current = false;
+        }, 480);
+    };
+
+    const renderPageAndSections = (page, depth = 0) => {
+        const isPageActive = page.id === activePageId;
+        const isOpen = !!openNodes[page.id];
+
+        return (
+            <div key={page.id}>
+                <button
+                    onClick={() => {
+                        setOpenNodes(prev => ({ ...prev, [page.id]: !prev[page.id] }));
+                        if (page.id !== activePageId) {
+                            handleSelectPage(page);
+                        }
+                    }}
+                    style={{
+                        width: '100%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: `7px 10px 7px ${10 + depth * 14}px`,
+                        border: isPageActive
+                            ? '1px solid var(--ui-accent, #10b981)'
+                            : '1px solid transparent',
+                        background: isPageActive
+                            ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)'
+                            : 'transparent',
+                        color: isPageActive ? '#ffffff' : '#cbd5e1',
+                        fontSize: '13px',
+                        fontWeight: isPageActive ? 600 : 400,
+                        fontFamily: typo.headingFontFamily,
+                        borderRadius: '7px',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                        transition: 'all 0.15s ease'
+                    }}
+                >
+                    <span>{page.label}</span>
+                </button>
+
+                {isOpen && (
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            marginLeft: `${16 + depth * 14}px`,
+                            borderLeft: '1px solid rgba(148, 163, 184, 0.16)',
+                            marginTop: '2px',
+                            marginBottom: '4px'
+                        }}
+                    >
+                        {page.sections.map(sec => {
+                            const isSecActive = isPageActive && activeSectionId === sec.id;
+                            return (
+                                <button
+                                    key={sec.id}
+                                    onClick={() => handleSelectSection(page.id, sec.id)}
+                                    style={{
+                                        padding: '5px 12px',
+                                        border: 'none',
+                                        borderLeft: isSecActive
+                                            ? '2px solid var(--ui-accent, #10b981)'
+                                            : '2px solid transparent',
+                                        marginLeft: '-1px',
+                                        background: isSecActive
+                                            ? 'rgba(var(--ui-accent-rgb, 16,185,129), 0.12)'
+                                            : 'transparent',
+                                        color: isSecActive ? '#ffffff' : '#94a3b8',
+                                        fontSize: '12px',
+                                        fontWeight: isSecActive ? 600 : 400,
+                                        fontFamily: typo.headingFontFamily,
+                                        textAlign: 'left',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.14s ease'
+                                    }}
+                                >
+                                    {sec.label}
+                                </button>
+                            );
+                        })}
+                    </div>
+                )}
+            </div>
+        );
+    };
+
+    return (
+        <div
+            style={{
+                height: viewportHeightCalc,
+                overflow: 'hidden',
+                background: 'transparent',
+                color: typo.bodyColor,
+                fontFamily: typo.fontFamily,
+                WebkitFontSmoothing: typo.fontSmoothing,
+                padding: '8px 24px 0'
+            }}
+        >
+            <div
+                style={{
+                    maxWidth: '1380px',
+                    height: '100%',
+                    margin: '0 auto',
+                    display: 'grid',
+                    gridTemplateColumns: '235px minmax(0, 1fr) 215px',
+                    gap: '32px',
+                    alignItems: 'stretch',
+                    background: 'transparent'
+                }}
+            >
+                {/* ══════════════════════════════════════════════════════════════
+                    1. MENÚ LATERAL IZQUIERDO CON SCROLL VERTICAL INDEPENDIENTE
+                   ══════════════════════════════════════════════════════════════ */}
+                <aside
+                    style={{
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        paddingRight: '10px',
+                        borderRight: '1px solid rgba(148, 163, 184, 0.12)',
+                        minHeight: 0
+                    }}
+                >
+                    <div
+                        style={{
+                            flexShrink: 0,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            padding: '0 4px 10px',
+                            borderBottom: '1px solid rgba(148, 163, 184, 0.12)',
+                            marginBottom: '8px'
+                        }}
+                    >
+                        <button
+                            onClick={handleCycleMenuLevel}
+                            title="Click para alternar el nivel del árbol"
+                            style={{
+                                width: '100%',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                padding: '6px 10px',
+                                borderRadius: '6px',
+                                border: '1px solid rgba(148, 163, 184, 0.2)',
+                                background: 'transparent',
+                                color: '#e2e8f0',
+                                fontSize: '11.5px',
+                                fontWeight: 600,
+                                fontFamily: typo.headingFontFamily,
+                                cursor: 'pointer'
+                            }}
+                        >
+                            {LEVEL_LABELS[menuLevel]}
+                        </button>
+                    </div>
+
+                    <div
+                        ref={leftMenuScrollRef}
+                        style={{
+                            flex: 1,
+                            minHeight: 0,
+                            overflowY: 'auto',
+                            paddingRight: '4px',
+                            paddingBottom: '20px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '2px'
+                        }}
+                    >
+                        {GUIDE_TREE_PAGES.map(topNode => {
+                            if (topNode.isPage) {
+                                return renderPageAndSections(topNode, 0);
+                            }
+
+                            const isGroupOpen = !!openNodes[topNode.id];
+                            return (
+                                <div key={topNode.id}>
+                                    <button
+                                        onClick={() =>
+                                            setOpenNodes(prev => ({
+                                                ...prev,
+                                                [topNode.id]: !prev[topNode.id]
+                                            }))
+                                        }
+                                        style={{
+                                            width: '100%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'space-between',
+                                            padding: '8px 10px',
+                                            border: 'none',
+                                            background: 'transparent',
+                                            color: '#f8fafc',
+                                            fontSize: '13.5px',
+                                            fontWeight: 600,
+                                            fontFamily: typo.headingFontFamily,
+                                            borderRadius: '6px',
+                                            cursor: 'pointer',
+                                            textAlign: 'left'
+                                        }}
+                                    >
+                                        <span>{topNode.label}</span>
+                                    </button>
+
+                                    {isGroupOpen && (
+                                        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                                            {topNode.children.map(childPage =>
+                                                renderPageAndSections(childPage, 1)
+                                            )}
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+                </aside>
+
+                {/* ══════════════════════════════════════════════════════════════
+                    2. COLUMNA CENTRAL DE LECTURA CLARA Y PRÁCTICA
+                   ══════════════════════════════════════════════════════════════ */}
+                <main
+                    ref={contentScrollRef}
+                    style={{
+                        height: '100%',
+                        overflowY: 'auto',
+                        paddingRight: '18px',
+                        paddingBottom: '64px',
+                        background: 'transparent'
+                    }}
+                >
+                    <div
+                        style={{
+                            maxWidth: '750px',
+                            letterSpacing: typo.letterSpacing
+                        }}
+                    >
+                        {/* BREADCRUMB SUPERIOR */}
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '6px',
+                                fontSize: '12.5px',
+                                color: '#94a3b8',
+                                fontFamily: typo.headingFontFamily,
+                                marginBottom: '10px'
+                            }}
+                        >
+                            <span style={{ color: 'var(--ui-accent, #10b981)', fontWeight: 500 }}>
+                                Guide
+                            </span>
+                            {activePage.groupLabel && (
+                                <>
+                                    <span style={{ color: '#475569' }}>/</span>
+                                    <span style={{ color: 'var(--ui-accent, #10b981)', fontWeight: 500 }}>
+                                        {activePage.groupLabel}
+                                    </span>
+                                </>
+                            )}
+                            <span style={{ color: '#475569' }}>/</span>
+                            <span style={{ color: '#cbd5e1' }}>{activePage.label}</span>
+                        </div>
+
+                        {/* TÍTULO H1 PRINCIPAL */}
+                        <h1
+                            style={{
+                                margin: '0 0 18px',
+                                paddingBottom: '16px',
+                                borderBottom: '1px solid rgba(148, 163, 184, 0.15)',
+                                fontSize: typo.h1Size,
+                                fontWeight: 700,
+                                fontFamily: typo.headingFontFamily,
+                                color: typo.headingColor,
+                                letterSpacing: '-0.02em',
+                                lineHeight: 1.22
+                            }}
+                        >
+                            {activePage.label}
+                        </h1>
+
+                        {/* INTRODUCCIÓN DE PARA QUÉ SIRVE LA VISTA */}
+                        {(activePage.introParagraphs || [activePage.intro]).map((pText, idx) => (
+                            <p
+                                key={idx}
+                                style={{
+                                    margin: '0 0 16px',
+                                    fontSize: typo.bodySize,
+                                    color: typo.bodyColor,
+                                    lineHeight: typo.lineHeight
+                                }}
+                            >
+                                {pText}
+                            </p>
+                        ))}
+
+                        {/* SÍNTESIS EN VIÑETAS */}
+                        <p
+                            style={{
+                                margin: '0 0 10px',
+                                fontSize: typo.bulletSize,
+                                color: typo.headingColor,
+                                fontWeight: 600
+                            }}
+                        >
+                            En esta sección vas a encontrar:
+                        </p>
+
+                        <ul
+                            style={{
+                                margin: '0 0 38px',
+                                paddingLeft: '22px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '9px',
+                                fontSize: typo.bulletSize,
+                                color: typo.bodyColor,
+                                lineHeight: typo.lineHeight
+                            }}
+                        >
+                            {activePage.sections.map(sec => (
+                                <li key={sec.id}>
+                                    <button
+                                        onClick={() => handleSelectSection(activePage.id, sec.id)}
+                                        style={{
+                                            background: 'transparent',
+                                            border: 'none',
+                                            padding: 0,
+                                            color: 'var(--ui-accent, #10b981)',
+                                            fontWeight: 600,
+                                            fontSize: typo.bulletSize,
+                                            fontFamily: typo.fontFamily,
+                                            cursor: 'pointer'
+                                        }}
+                                    >
+                                        {sec.label}
+                                    </button>
+                                    <span>. {sec.summary}</span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        {/* PLACEHOLDER DE VIDEO Y AUDIO (ESTILO DOCKER DOCS) */}
+                        <GuideMediaPlaceholder page={activePage} typo={typo} />
+
+                        {/* SECCIONES DE LECTURA CONTINUA */}
+                        {activePage.sections.map(sec => (
+                            <section
+                                key={sec.id}
+                                ref={el => {
+                                    sectionRefs.current[sec.id] = el;
+                                }}
+                                style={{
+                                    marginBottom: '44px',
+                                    scrollMarginTop: '16px'
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                        gap: '12px',
+                                        marginBottom: '12px'
+                                    }}
+                                >
+                                    <h2
+                                        style={{
+                                            margin: 0,
+                                            fontSize: typo.h2Size,
+                                            fontWeight: 700,
+                                            fontFamily: typo.headingFontFamily,
+                                            color: typo.headingColor,
+                                            letterSpacing: '-0.01em'
+                                        }}
+                                    >
+                                        {sec.label}
+                                    </h2>
+
+                                    {sec.hasTechnicalModal && (
+                                        <button
+                                            onClick={() => {
+                                                setModalTabIdx(0);
+                                                setModalSection(sec);
+                                            }}
+                                            style={{
+                                                display: 'inline-flex',
+                                                alignItems: 'center',
+                                                gap: '5px',
+                                                padding: '4px 10px',
+                                                borderRadius: '6px',
+                                                border: '1px solid rgba(148, 163, 184, 0.22)',
+                                                background: 'rgba(255, 255, 255, 0.04)',
+                                                color: 'var(--ui-accent, #10b981)',
+                                                fontSize: '12px',
+                                                fontWeight: 600,
+                                                fontFamily: typo.headingFontFamily,
+                                                cursor: 'pointer'
+                                            }}
+                                        >
+                                            <Maximize2 size={12} />
+                                            Profundizar
+                                        </button>
+                                    )}
+                                </div>
+
+                                {(sec.paragraphs || [sec.lead]).map((pText, pIdx) => (
+                                    <p
+                                        key={pIdx}
+                                        style={{
+                                            margin: '0 0 14px',
+                                            fontSize: typo.bodySize,
+                                            color: typo.bodyColor,
+                                            lineHeight: typo.lineHeight
+                                        }}
+                                    >
+                                        {pText}
+                                    </p>
+                                ))}
+
+                                <ul
+                                    style={{
+                                        margin: 0,
+                                        paddingLeft: '22px',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '13px'
+                                    }}
+                                >
+                                    {sec.bullets.map((b, i) => (
+                                        <li
+                                            key={i}
+                                            style={{
+                                                fontSize: typo.bulletSize,
+                                                color: typo.bodyColor,
+                                                lineHeight: typo.lineHeight
+                                            }}
+                                        >
+                                            <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
+                                                {b.bold.replace(/\.$/, '')}
+                                                {b.code ? ` (${b.code})` : ''}.
+                                            </strong>{' '}
+                                            <span>{b.text}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                        ))}
+
+                        {/* NAVEGACIÓN INFERIOR EN LA MISMA LÍNEA: ANTERIOR (IZQUIERDA) Y SIGUIENTE (DERECHA) */}
+                        <div
+                            style={{
+                                marginTop: '48px',
+                                paddingTop: '24px',
+                                borderTop: '1px solid rgba(148, 163, 184, 0.15)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                gap: '16px',
+                                flexWrap: 'wrap'
+                            }}
+                        >
+                            <button
+                                onClick={() => handleSelectPage(prevPage)}
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    padding: '9px 16px',
+                                    borderRadius: '6px',
+                                    border: '1px solid rgba(148, 163, 184, 0.25)',
+                                    background: 'rgba(255, 255, 255, 0.04)',
+                                    color: '#e2e8f0',
+                                    fontSize: '13.5px',
+                                    fontWeight: 600,
+                                    fontFamily: typo.headingFontFamily,
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                <ArrowLeft size={14} />
+                                <span>Anterior: {prevPage.label}</span>
+                            </button>
+
+                            <button
+                                onClick={() => handleSelectPage(nextPage)}
+                                style={{
+                                    display: 'inline-flex',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    padding: '9px 16px',
+                                    borderRadius: '6px',
+                                    border: '1px solid rgba(var(--ui-accent-rgb), 0.45)',
+                                    background: 'rgba(var(--ui-accent-rgb), 0.16)',
+                                    color: '#ffffff',
+                                    fontSize: '13.5px',
+                                    fontWeight: 600,
+                                    fontFamily: typo.headingFontFamily,
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                <span>Siguiente: {nextPage.label}</span>
+                                <ArrowRight size={14} />
+                            </button>
+                        </div>
+                    </div>
+                </main>
+
+                {/* ══════════════════════════════════════════════════════════════
+                    3. ÍNDICE DERECHO "EN ESTA PÁGINA"
+                       - Ilumina únicamente el ítem activo (el más bajo en pantalla)
+                   ══════════════════════════════════════════════════════════════ */}
+                <aside
+                    style={{
+                        height: '100%',
+                        overflowY: 'auto',
+                        paddingTop: '4px'
+                    }}
+                >
+                    <div
+                        style={{
+                            fontSize: '13.5px',
+                            fontWeight: 700,
+                            fontFamily: typo.headingFontFamily,
+                            color: '#ffffff',
+                            marginBottom: '10px',
+                            paddingLeft: '12px'
+                        }}
+                    >
+                        En esta página
+                    </div>
+
+                    <div
+                        style={{
+                            display: 'flex',
+                            flexDirection: 'column',
+                            borderLeft: '1px solid rgba(148, 163, 184, 0.14)'
+                        }}
+                    >
+                        {activePage.sections.map(sec => {
+                            const isCurrent = activeSectionId === sec.id;
+                            return (
+                                <button
+                                    key={sec.id}
+                                    onClick={() => handleSelectSection(activePage.id, sec.id)}
+                                    style={{
+                                        padding: '6px 12px',
+                                        border: 'none',
+                                        borderLeft: isCurrent
+                                            ? '2px solid var(--ui-accent, #10b981)'
+                                            : '2px solid transparent',
+                                        marginLeft: '-1px',
+                                        background: isCurrent
+                                            ? 'rgba(var(--ui-accent-rgb, 16,185,129), 0.12)'
+                                            : 'transparent',
+                                        color: isCurrent ? '#ffffff' : '#94a3b8',
+                                        fontSize: '12.5px',
+                                        fontWeight: isCurrent ? 600 : 400,
+                                        fontFamily: typo.headingFontFamily,
+                                        textAlign: 'left',
+                                        cursor: 'pointer',
+                                        transition: 'all 0.14s ease'
+                                    }}
+                                >
+                                    {sec.label}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </aside>
+            </div>
+
+            {/* VENTANA EMERGENTE TÉCNICA (PROFUNDIZAR) RENDERIZADA EN PORTAL PARA BLOQUEAR EL RESTO DE LA PANTALLA IGUAL QUE IDIOMA */}
+            {modalSection &&
+                typeof document !== 'undefined' &&
+                createPortal(
+                    (() => {
+                        const modalTabs =
+                            modalSection.modalTabs || GUIDE_MODALS_BY_SECTION[modalSection.id] || [];
+                        const activeTab = modalTabs[modalTabIdx] || modalTabs[0] || null;
+
+                        return (
+                            <div
+                                onMouseDown={e => {
+                                    if (e.target === e.currentTarget) setModalSection(null);
+                                }}
+                                style={{
+                                    position: 'fixed',
+                                    inset: 0,
+                                    backgroundColor: 'rgba(4, 7, 14, 0.80)',
+                                    backdropFilter: 'blur(9px)',
+                                    zIndex: 9999,
+                                    pointerEvents: 'auto',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    padding: '20px',
+                                    fontFamily: typo.fontFamily,
+                                    WebkitFontSmoothing: typo.fontSmoothing
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        width: 'min(760px, 95vw)',
+                                        maxHeight: '88vh',
+                                        overflow: 'hidden',
+                                        background: 'rgba(13, 19, 32, 0.98)',
+                                        border: '1px solid rgba(148, 163, 184, 0.24)',
+                                        boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85)',
+                                        borderRadius: '12px',
+                                        padding: '22px 26px',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '16px',
+                                        letterSpacing: typo.letterSpacing
+                                    }}
+                                >
+                                    {/* CABECERA FIJA DEL MODAL CON LA X ARRIBA A LA DERECHA */}
+                                    <div
+                                        style={{
+                                            flexShrink: 0,
+                                            display: 'flex',
+                                            alignItems: 'flex-start',
+                                            justifyContent: 'space-between',
+                                            gap: '12px'
+                                        }}
+                                    >
+                                        <div>
+                                            <div
+                                                style={{
+                                                    fontSize: '12px',
+                                                    fontWeight: 600,
+                                                    color: 'var(--ui-accent, #10b981)',
+                                                    fontFamily: typo.headingFontFamily
+                                                }}
+                                            >
+                                                Profundizar • {activePage.label}
+                                            </div>
+                                            <div
+                                                style={{
+                                                    fontSize: '21px',
+                                                    fontWeight: 700,
+                                                    color: '#ffffff',
+                                                    fontFamily: typo.headingFontFamily,
+                                                    marginTop: '2px'
+                                                }}
+                                            >
+                                                {modalSection.label}
+                                            </div>
+                                        </div>
+                                        <button
+                                            type="button"
+                                            onClick={() => setModalSection(null)}
+                                            style={{
+                                                background: 'rgba(255, 255, 255, 0.06)',
+                                                border: '1px solid rgba(255, 255, 255, 0.14)',
+                                                color: '#94a3b8',
+                                                borderRadius: '8px',
+                                                width: '28px',
+                                                height: '28px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                cursor: 'pointer',
+                                                flexShrink: 0
+                                            }}
+                                        >
+                                            <X size={15} />
+                                        </button>
+                                    </div>
+
+                                    {activeTab ? (
+                                        <>
+                                            {/* PESTAÑAS V010 GHOST (TEXTO FLOTANTE CON BRILLO SIN SUBRAYADO NI CAJA) */}
+                                            <div
+                                                style={{
+                                                    flexShrink: 0,
+                                                    display: 'flex',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    gap: '26px',
+                                                    flexWrap: 'wrap',
+                                                    padding: '4px 0 8px'
+                                                }}
+                                            >
+                                                {modalTabs.map((tab, idx) => {
+                                                    const isTabActive = modalTabIdx === idx;
+                                                    return (
+                                                        <button
+                                                            key={tab.id}
+                                                            onClick={() => setModalTabIdx(idx)}
+                                                            style={{
+                                                                padding: '4px 6px',
+                                                                background: 'transparent',
+                                                                border: 'none',
+                                                                color: isTabActive
+                                                                    ? 'var(--ui-accent, #10b981)'
+                                                                    : 'rgba(148, 163, 184, 0.62)',
+                                                                textShadow: isTabActive
+                                                                    ? '0 0 15px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.88)'
+                                                                    : 'none',
+                                                                fontSize: '13.5px',
+                                                                fontWeight: isTabActive ? 800 : 600,
+                                                                fontFamily: typo.headingFontFamily,
+                                                                cursor: 'pointer',
+                                                                transition: 'all 0.16s ease'
+                                                            }}
+                                                        >
+                                                            {tab.label}
+                                                        </button>
+                                                    );
+                                                })}
+                                            </div>
+
+                                            {/* CUERPO CON SCROLL VERTICAL PROPIO (SIN COLAPSAR ELEMENTOS FLEX) */}
+                                            <div
+                                                style={{
+                                                    flex: 1,
+                                                    minHeight: 0,
+                                                    overflowY: 'auto',
+                                                    paddingRight: '6px',
+                                                    paddingBottom: '4px',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    gap: '16px'
+                                                }}
+                                            >
+                                                <p
+                                                    style={{
+                                                        flexShrink: 0,
+                                                        margin: 0,
+                                                        fontSize: typo.bodySize,
+                                                        color: typo.bodyColor,
+                                                        lineHeight: typo.lineHeight
+                                                    }}
+                                                >
+                                                    {activeTab.intro}
+                                                </p>
+
+                                                {/* FÓRMULA MATEMÁTICA ESTRUCTURADA */}
+                                                <MathFormulaBox
+                                                    math={activeTab.math}
+                                                    formula={activeTab.formula}
+                                                    typo={typo}
+                                                />
+
+                                                {activeTab.lead && (
+                                                    <p
+                                                        style={{
+                                                            flexShrink: 0,
+                                                            margin: 0,
+                                                            fontSize: typo.bodySize,
+                                                            color: typo.bodyColor,
+                                                            lineHeight: typo.lineHeight
+                                                        }}
+                                                    >
+                                                        {activeTab.lead}
+                                                    </p>
+                                                )}
+
+                                                {activeTab.bullets?.length > 0 && (
+                                                    <ul
+                                                        style={{
+                                                            flexShrink: 0,
+                                                            margin: 0,
+                                                            paddingLeft: '22px',
+                                                            display: 'flex',
+                                                            flexDirection: 'column',
+                                                            gap: '10px'
+                                                        }}
+                                                    >
+                                                        {activeTab.bullets.map((b, i) => (
+                                                            <li
+                                                                key={i}
+                                                                style={{
+                                                                    fontSize: typo.bulletSize,
+                                                                    color: typo.bodyColor,
+                                                                    lineHeight: typo.lineHeight
+                                                                }}
+                                                            >
+                                                                <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
+                                                                    {b.bold.replace(/\.$/, '')}
+                                                                    {b.code ? ` (${b.code})` : ''}.
+                                                                </strong>{' '}
+                                                                <span>{b.text}</span>
+                                                            </li>
+                                                        ))}
+                                                    </ul>
+                                                )}
+
+                                                {activeTab.example && (
+                                                    <div
+                                                        style={{
+                                                            flexShrink: 0,
+                                                            padding: '12px 14px',
+                                                            borderRadius: '8px',
+                                                            background: 'rgba(255, 255, 255, 0.03)',
+                                                            borderLeft: '3px solid var(--ui-accent, #10b981)',
+                                                            fontSize: typo.bulletSize,
+                                                            color: typo.bodyColor,
+                                                            lineHeight: typo.lineHeight
+                                                        }}
+                                                    >
+                                                        <strong style={{ color: '#ffffff' }}>Ejemplo práctico: </strong>
+                                                        {activeTab.example}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <div
+                                            style={{
+                                                padding: '14px 16px',
+                                                borderRadius: '8px',
+                                                background: 'rgba(2, 6, 23, 0.75)',
+                                                border: '1px solid rgba(148, 163, 184, 0.16)',
+                                                fontSize: '14px',
+                                                color: typo.bodyColor,
+                                                lineHeight: 1.68
+                                            }}
+                                        >
+                                            {modalSection.modalPreview}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        );
+                    })(),
+                    document.body
+                )}
+        </div>
+    );
 }

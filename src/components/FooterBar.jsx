@@ -476,15 +476,8 @@ export default function FooterBar({
       >
         {/* BOTTOM-LEFT: HOMOGENEOUS V010 SINGLE-WORD ITEMS (SYSTEM • GUIDE • DEV) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', pointerEvents: 'auto' }}>
-          {/* 1. SYSTEM (ONE WORD) */}
-          <HoverTooltip
-            title={isSystemHealthy ? t.statusOkTitle : t.statusErrTitle}
-            description={isSystemHealthy ? t.statusOkDesc : t.statusErrDesc}
-            hint={t.statusHint}
-            badge={isSystemHealthy ? '13/13 OK' : 'DEGRADED'}
-            statusColor={isSystemHealthy ? '#10b981' : '#ef4444'}
-            placement="top-left"
-          >
+          {/* 1. SYSTEM (ONE WORD, HOMOGENEOUS WITH GUIDE & DEV) */}
+          <HoverTooltip disabled={true} placement="top-left">
             {(isHovered) => {
               const isHighlighted = activeTab === 'observability' || isHovered;
               return (
@@ -500,7 +493,6 @@ export default function FooterBar({
                     fontWeight: isHighlighted ? 700 : 600,
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '0.4rem',
                     cursor: 'pointer',
                     textShadow: isHighlighted
                       ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
@@ -508,30 +500,14 @@ export default function FooterBar({
                     transition: 'all 0.18s ease',
                   }}
                 >
-                  <span
-                    style={{
-                      width: '6px',
-                      height: '6px',
-                      borderRadius: '999px',
-                      backgroundColor: isSystemHealthy ? '#10b981' : '#ef4444',
-                      boxShadow: isSystemHealthy ? '0 0 7px #10b981' : '0 0 7px #ef4444',
-                      flexShrink: 0,
-                    }}
-                  />
                   <span>{t.navTelemetry || 'System'}</span>
                 </button>
               );
             }}
           </HoverTooltip>
 
-          {/* 2. GUIDE (ONE WORD, HOMOGENEOUS WITH SYSTEM & DEV) */}
-          <HoverTooltip
-            title={t.aboutTitle}
-            description={t.aboutDesc}
-            hint={t.aboutHint}
-            badge="GUIDE • 13 REPOS"
-            placement="top-left"
-          >
+          {/* 2. GUIDE (ONE WORD, HOMOGENEOUS WITH SYSTEM) */}
+          <HoverTooltip disabled={true} placement="top-left">
             {(isHovered) => {
               const isHighlighted = activeTab === 'guide' || isHovered;
               return (
@@ -559,56 +535,12 @@ export default function FooterBar({
               );
             }}
           </HoverTooltip>
-
-          {/* 3. DEV (ONE WORD, HOMOGENEOUS WITH SYSTEM & GUIDE) */}
-          {onToggleDevLab && (
-            <HoverTooltip
-              title="DEV • Visual Design Lab"
-              description="Compare graphical layout proposals for the active section under review."
-              hint="Click to open DEV Lab"
-              badge="PROPOSALS"
-              placement="top-left"
-            >
-              {(isHovered) => {
-                const isHighlighted = activeTab === 'devlab' || isHovered;
-                return (
-                  <button
-                    onClick={onToggleDevLab}
-                    style={{
-                      backgroundColor: 'transparent',
-                      border: 'none',
-                      color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
-                      height: '28px',
-                      padding: '0 0.25rem',
-                      fontSize: '0.76rem',
-                      fontWeight: isHighlighted ? 700 : 600,
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      cursor: 'pointer',
-                      textShadow: isHighlighted
-                        ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
-                        : '0 1px 4px rgba(0, 0, 0, 0.9)',
-                      transition: 'all 0.18s ease',
-                    }}
-                  >
-                    <span>DEV</span>
-                  </button>
-                );
-              }}
-            </HoverTooltip>
-          )}
         </div>
 
         {/* BOTTOM-RIGHT: HOMOGENEOUS V010 LANGUAGE & PALETTE CONTROLS */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', pointerEvents: 'auto' }}>
           {/* LANGUAGE SELECTOR BUTTON WITH FLAG ON THE LEFT */}
-          <HoverTooltip
-            title={t.langTitle}
-            description={t.langDesc}
-            hint={t.langHint}
-            badge={`${currentLang.nativeName || currentLang.name} (${currentLang.code})`}
-            placement="top-right"
-          >
+          <HoverTooltip disabled={true} placement="top-right">
             {(isHovered) => {
               const isHighlighted = langModalOpen || isHovered;
               return (
@@ -649,11 +581,7 @@ export default function FooterBar({
 
           {/* THEME COLOR PALETTE BUTTON */}
           <HoverTooltip
-            title={t.paletteTitle}
-            description={t.paletteDesc}
-            hint={t.paletteHint}
-            badge={currentTheme.name}
-            statusColor={currentTheme.color}
+            title="Choose Palette"
             placement="top-right"
           >
             {(isHovered) => (

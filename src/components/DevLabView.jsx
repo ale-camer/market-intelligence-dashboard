@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import GuideModelsLab from './dev/GuideModelsLab';
-import SystemModelsLab from './dev/SystemModelsLab';
+import React from 'react';
+import DesignAlignmentLab from './dev/DesignAlignmentLab';
 
 /* ═══════════════════════════════════════════════════════════════════════════
    REQUIRED EXPORTS FOR HEADERBAR.JSX (DO NOT REMOVE OR RENAME)
@@ -41,87 +40,17 @@ export const DEV_BOX_STYLES = [
     }
 ];
 
-const DEV_MODELS = [
-    {
-        id: 'GUIDE-M1',
-        screen: 'GUIDE',
-        title: 'Guide • Opción 1 (Estructura Vista 1: Píldoras + Tabla Izq / Ficha Der + Matriz 100% Abajo)'
-    },
-    {
-        id: 'GUIDE-M2',
-        screen: 'GUIDE',
-        title: 'Guide • Opción 2 (Estructura Vista 2/3: Grilla Simétrica 2×2 por Capítulos con Sub-Pestañas)'
-    },
-    {
-        id: 'SYS-M1',
-        screen: 'SYSTEM',
-        title: 'System • Opción 1 (Estructura Vista 1: 6 Píldoras + Tabla Izq / Inspector & Cuotas Der + Serie Latencia 100%)'
-    },
-    {
-        id: 'SYS-M2',
-        screen: 'SYSTEM',
-        title: 'System • Opción 2 (Estructura Vista 2/3: Grilla Simétrica 2×2 NOC + Serie Latencia AreaChart 100%)'
-    }
-];
-
 export default function DevLabView() {
-    const [selectedModel, setSelectedModel] = useState('GUIDE-M1');
-    const activeObj = DEV_MODELS.find(m => m.id === selectedModel) || DEV_MODELS[0];
-
     return (
         <div
             style={{
                 minHeight: '100vh',
-                background: '#060911',
+                background: 'transparent',
                 color: '#f8fafc',
-                padding: '12px 18px 64px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px'
+                padding: '10px 18px 64px'
             }}
         >
-            {/* SELECTOR CENTRADO DE MODELOS PARA GUIDE Y SYSTEM */}
-            <div
-                style={{
-                    background: 'linear-gradient(180deg, rgba(15,23,42,0.95) 0%, rgba(9,13,22,0.98) 100%)',
-                    border: '1px solid rgba(148,163,184,0.2)',
-                    borderRadius: '10px',
-                    padding: '10px 14px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '8px'
-                }}
-            >
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '18px', flexWrap: 'wrap' }}>
-                    {DEV_MODELS.map(m => {
-                        const active = m.id === selectedModel;
-                        return (
-                            <button
-                                key={m.id}
-                                onClick={() => setSelectedModel(m.id)}
-                                style={{
-                                    padding: '6px 10px',
-                                    borderRadius: '7px',
-                                    border: active ? '1.5px solid #10b981' : '1px solid rgba(148,163,184,0.18)',
-                                    background: active ? 'rgba(16,185,129,0.18)' : 'rgba(2,6,23,0.65)',
-                                    color: active ? '#6ee7b7' : '#cbd5e1',
-                                    fontSize: '10.5px',
-                                    fontWeight: active ? 900 : 600,
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                {m.title}
-                            </button>
-                        );
-                    })}
-                </div>
-            </div>
-
-            {activeObj.screen === 'GUIDE' ? (
-                <GuideModelsLab activeModel={selectedModel} />
-            ) : (
-                <SystemModelsLab activeModel={selectedModel} />
-            )}
+            <DesignAlignmentLab />
         </div>
     );
 }

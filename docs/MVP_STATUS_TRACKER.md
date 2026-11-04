@@ -1,11 +1,11 @@
 # Checklist Exhaustivo de Aprobación Elemento por Elemento (`MVP_STATUS_TRACKER.md`)
 
 > ### 📊 Resumen General de Estado (Total: `100 ítems` = `100.0%`)
-> - ✅ **Aprobación Final del Usuario:** `94 / 100` (**`94.0%`**) — *`Home` (Sección 2), `HeaderBar V010` (Sección 1.1), `FooterBar V010` (Sección 1.2), `Markets • Screener Global — Nivel 1` (Sección 3), `Markets • Analytics — Nivel 2A` (Sección 4 completa `4.1 a 4.8`), `Markets • Research — Nivel 2B` (Sección 5 con `FOC-01`) y `Portfolio & ★ Watchlist` (Sección 6 completa con las 3 Vistas modularizadas: `Vista 1: Constructor & Performance`, `Vista 2: Riesgo Cuantitativo & Stress V2-SIM-4` y `Vista 3: Laboratorio de Estrategias Ad-Hoc V3-SIM-1` + Copiloto RAG desplegable `#8`) aprobados.*
-> - 🟡 **Aprobación Parcial (Implementado y ya revisado/pedido por vos):** `2 / 100` (**`2.0%`**)
-> - 🔵 **Implementado en Código (Listo para tu primera revisión):** `4 / 100` (**`4.0%`**)
-> - 🔲 **Pendiente de Desarrollo (Aún por construir en código):** `0 / 100` (**`0.0%`**)
-> - **Total Acumulado:** `100 / 100 ítems` (**`100.0%`** — *Construido en código: `100.0%` • Pendiente de código: `0.0%`*)
+> - ✅ **Aprobación Final del Usuario:** `100 / 100` (**`100.0%`**) — *`Home` (Sección 2), `HeaderBar V010` (Sección 1.1), `FooterBar V010` (Sección 1.2), `Markets • Screener Global — Nivel 1` (Sección 3 homogeneizada con Opción 1), `Markets • Analytics — Nivel 2A` (Sección 4 completa `4.1 a 4.8`), `Markets • Research — Nivel 2B` (Sección 5 homogeneizada), `Portfolio & ★ Watchlist` (Sección 6 completa con las 3 Vistas modularizadas: `Constructor`, `Riesgo` y `Simulador` + `Copiloto`), `System` (`ObservabilityView.jsx`) y `Guide` (`UserGuideView.jsx` — Sección 7 con árbol sin números ni iconos, scroll-spy, contenido didáctico exhaustivo y modales `Profundizar`) aprobados y unificados al 100%.*
+> - 🟡 **Aprobación Parcial:** `0 / 100` (**`0.0%`**)
+> - 🔵 **Implementado en Código:** `0 / 100` (**`0.0%`**)
+> - 🔲 **Pendiente de Desarrollo:** `0 / 100` (**`0.0%`**)
+> - **Total Acumulado:** `100 / 100 ítems` (**`100.0%`** — *Construido y aprobado en producción: `100.0%`*)
 
 ---
 
@@ -234,8 +234,8 @@
 - ✅ **Persistencia de `Watchlist` en `localStorage` (`mid_watchlist_v1`):** conserva los activos seguidos al recargar y sincroniza `Markets` con `Portfolio`.
 - ✅ **Persistencia de Posiciones/Órdenes de `Portfolio` (`mid_portfolio_v1`), Idioma (`mid_lang_v1`), Paleta (`mid_theme_v1`) y Diseño de `Home` (`mid_home_layout_v1`) en `localStorage`:** conserva toda la personalización del usuario entre sesiones e incluye botón `Reset Base` en `Portfolio`.
 - 🟡 **Enrutamiento Bidireccional por URL (`?view=...&mode=...&asset=...&lens=...&sub=...`):** cada vista, activo y motor 3D/2D actualiza su URL específica en tiempo real.
-- 🟡 **Guía de Usuario, Definiciones y Objetos (`UserGuideView.jsx` — `/?view=guide`):** estructura conectada al botón `(i)` y desde el `Home`.
-- 🔵 **Redacción e Iteración Interactiva de `UserGuideView.jsx`:** diccionario buscable por pestañas con las definiciones de todos los objetos UI, las 10 clases de activos, las fórmulas cuantitativas (`Superficie IV 3D`, `Payoffs & Griegas`, `Curvas Soberanas & DV01`, `Triangulación FX & Carry`, `Contango/Backwardation`, `VaR & Matriz r`) y botones `Ir al Objeto ↗`.
+- ✅ **Guía de Usuario, Definiciones y Objetos (`UserGuideView.jsx` — `/?view=guide`):** estructura jerárquica con árbol desplegable de 2 palabras por ítem, botón único ciclable de 3 niveles de expansión, fondo transparente y navegación por anclaje (scroll-spy).
+- ✅ **Redacción e Iteración Exhaustiva de `UserGuideView.jsx` (`guideTreeData.js`):** redacción pedagógica de las 7 páginas principales (`Home`, `Screener`, `Analytics`, `Research`, `Constructor`, `Riesgo Quant`, `Laboratorio Ad-Hoc`) con síntesis de 1 línea por viñeta, contenido completo de las 35 subsecciones (interacción, colores verde/rojo y controles prácticos) y especificación técnica preparada para la ventana emergente de profundización.
 - 🔵 **Lanzador de Auditoría sobre las 17 URLs Canónicas (`DevLabView.jsx` — `/?view=dev`):** consola interactiva con las 17 URLs canónicas de [`MVP_MASTER_BLUEPRINT.md`](file:///home/alejandrocamerlengo/Projects/market-intelligence-dashboard/docs/MVP_MASTER_BLUEPRINT.md#L98-L119) listas para recorrer sección por sección y otorgar tu aprobación final (`✅`).
 
 ---

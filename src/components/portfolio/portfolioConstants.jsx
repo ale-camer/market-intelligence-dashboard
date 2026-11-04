@@ -34,48 +34,69 @@ export const colAlign = (idx, total) => (idx === 0 ? 'left' : idx === total - 1 
 /* ═══════════════════════════════════════════════════════════════════════════
    CONTENEDOR MODULAR ESTANDARIZADO PARA LAS 3 VISTAS DE PORTFOLIO
    ═══════════════════════════════════════════════════════════════════════════ */
-export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', rightSlot, subBar, children, fixedHeight = null }) {
+/* Formatea títulos en mayúsculas a formato limpio (Title Case respetando siglas) */
+const KEEP_UPPER = new Set([
+    'CVAR', 'VAR', 'ETF', 'ETFS', 'USD', 'SPY', 'QQQ', 'NVDA', 'BTC', 'TLT', 'GLD', 'MSFT',
+    'RAG', 'IA', 'AI', 'P&L', '2D', '3D', '1D', '5D', '10D', '95%', '99%', 'HRP', 'MVO',
+    'KELLY', 'MARKOV', 'STRESS', 'S&P', '500', '60/40', 'BETA', 'SHARPE', 'SORTINO', 'FX', 'bps'
+]);
+
+function formatCleanBlockTitle(rawTitle) {
+    if (!rawTitle || typeof rawTitle !== 'string') return rawTitle;
+    return rawTitle
+        .split(' ')
+        .map((word, idx) => {
+            const clean = word.replace(/[()[\],.:]/g, '').toUpperCase();
+            if (KEEP_UPPER.has(clean) || /^P-\d+$/.test(clean)) return word;
+            const lower = word.toLowerCase();
+            if (idx > 0 && ['de', 'del', 'y', 'e', 'o', 'u', 'en', 'por', 'con', 'vs', 'a', 'al', 'el', 'la', 'los', 'las'].includes(lower)) {
+                return lower;
+            }
+            return lower.charAt(0).toUpperCase() + lower.slice(1);
+        })
+        .join(' ');
+}
+
+export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', rightSlot, subBar, children, fixedHeight = null, style = {} }) {
     return (
         <div
             style={{
-                height: fixedHeight ? `${fixedHeight}px` : 'auto',
-                background: 'linear-gradient(180deg, rgba(15,23,42,0.93) 0%, rgba(9,13,22,0.98) 100%)',
-                border: '1px solid rgba(148,163,184,0.18)',
-                borderTop: `2px solid ${color}`,
+                background: 'transparent',
+                border: '1px solid rgba(148, 163, 184, 0.22)',
                 borderRadius: '10px',
-                padding: '11px 14px',
+                padding: '14px 16px',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between',
-                gap: '8px',
-                boxShadow: '0 8px 22px rgba(0,0,0,0.38)',
-                overflow: 'hidden'
+                justifyContent: 'flex-start',
+                gap: '10px',
+                ...style
             }}
         >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', flexWrap: 'wrap', flexShrink: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '7px', flexWrap: 'wrap' }}>
-                    {badge && (
-                        <span
-                            style={{
-                                fontSize: '8.5px',
-                                fontWeight: 900,
-                                fontFamily: 'var(--font-mono)',
-                                color,
-                                background: `${color}18`,
-                                border: `1px solid ${color}45`,
-                                borderRadius: '4px',
-                                padding: '2px 6px'
-                            }}
-                        >
-                            {badge}
+            {/* PASO 4 OPCIÓN 1 + PASO 7 OPCIÓN 3: Título 15.5px a la izquierda + dato 12px a la derecha */}
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'baseline',
+                    justifyContent: 'space-between',
+                    gap: '10px',
+                    flexWrap: 'wrap',
+                    flexShrink: 0,
+                    paddingBottom: '8px',
+                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)'
+                }}
+            >
+                <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
+                    {formatCleanBlockTitle(title)}
+                </span>
+
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                    {subtitle && (
+                        <span style={{ fontSize: '12px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
+                            {subtitle}
                         </span>
                     )}
-                    <span style={{ fontSize: '11.5px', fontWeight: 900, color: '#f8fafc', letterSpacing: '0.02em' }}>
-                        {title}
-                    </span>
-                    {subtitle && <span style={{ fontSize: '9.5px', color: '#64748b' }}>• {subtitle}</span>}
+                    {rightSlot}
                 </div>
-                {rightSlot}
             </div>
 
             {subBar && (
@@ -87,8 +108,8 @@ export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', 
                         gap: '6px',
                         padding: '4px 8px',
                         borderRadius: '6px',
-                        background: 'rgba(2,6,23,0.65)',
-                        border: '1px solid rgba(148,163,184,0.12)',
+                        background: 'transparent',
+                        border: '1px solid rgba(148, 163, 184, 0.14)',
                         flexShrink: 0,
                         flexWrap: 'wrap'
                     }}
@@ -97,7 +118,7 @@ export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', 
                 </div>
             )}
 
-            <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'auto' }}>
+            <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: 'auto' }}>
                 {children}
             </div>
         </div>
@@ -154,7 +175,7 @@ export const ASSET_RISK_PROFILES = [
 ];
 
 export const PORTFOLIO_NODES = [
-    { id: 'PORT', label: '★ Tu Cartera Actual', vol: 11.4, ret: 28.4, sharpe: 2.18, isOptimal: true },
+    { id: 'PORT', label: 'Tu Cartera Actual', vol: 11.4, ret: 28.4, sharpe: 2.18, isOptimal: true },
     { id: 'MINVAR', label: 'Mínima Varianza', vol: 7.8, ret: 14.8, sharpe: 1.68, isOptimal: true },
     { id: 'MAXSH', label: 'Máximo Sharpe (Tangente)', vol: 12.6, ret: 31.2, sharpe: 2.28, isOptimal: true },
     { id: 'EQW', label: 'Equiponderada (1/N)', vol: 15.8, ret: 22.1, sharpe: 1.54, isOptimal: false },

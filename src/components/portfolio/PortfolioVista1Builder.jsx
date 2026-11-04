@@ -52,18 +52,18 @@ function Row1SummaryPills({ holdings }) {
                 <div
                     key={p.lbl}
                     style={{
-                        background: 'linear-gradient(180deg, rgba(15,23,42,0.92) 0%, rgba(9,13,22,0.96) 100%)',
-                        border: '1px solid rgba(148,163,184,0.16)',
+                        background: 'transparent',
+                        border: '1px solid rgba(148, 163, 184, 0.22)',
                         borderLeft: `3px solid ${p.col}`,
-                        borderRadius: '8px',
-                        padding: '8px 11px'
+                        borderRadius: '10px',
+                        padding: '10px 13px'
                     }}
                 >
-                    <div style={{ fontSize: '8.5px', fontWeight: 800, color: '#94a3b8' }}>{p.lbl}</div>
-                    <div style={{ fontSize: '15px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '2px' }}>
+                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>{p.lbl}</div>
+                    <div style={{ fontSize: '19px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '3px' }}>
                         {p.val}
                     </div>
-                    <div style={{ fontSize: '8.5px', color: '#64748b', marginTop: '1px' }}>{p.sub}</div>
+                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>{p.sub}</div>
                 </div>
             ))}
         </div>
@@ -138,35 +138,34 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
     return (
         <PortfolioCardShell
             badge="FILA 2 • IZQUIERDA"
-            title="TABLA DE PONDERACIÓN & SELECCIÓN DE ACTIVOS"
-            subtitle={`${activeHoldings.length} activos activos • Suma: ${totalWeight.toFixed(1)}%`}
+            title="Activos de la Cartera"
+            subtitle={`${activeHoldings.length} activos • Suma: ${totalWeight.toFixed(1)}%`}
             color="#10b981"
             rightSlot={
-                <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
                     <button
                         onClick={equalize}
                         style={{
-                            padding: '3px 7px',
-                            borderRadius: '5px',
-                            border: '1px solid rgba(148,163,184,0.25)',
-                            background: 'rgba(15,23,42,0.85)',
-                            color: '#cbd5e1',
-                            fontSize: '8.5px',
-                            fontWeight: 800,
+                            padding: '2px 4px',
+                            border: 'none',
+                            background: 'transparent',
+                            color: 'rgba(148, 163, 184, 0.78)',
+                            fontSize: '12px',
+                            fontWeight: 700,
                             cursor: 'pointer'
                         }}
                     >
-                        1/N Equal
+                        Pesos Iguales
                     </button>
                     <button
                         onClick={normalize100}
                         style={{
-                            padding: '3px 7px',
-                            borderRadius: '5px',
-                            border: '1px solid rgba(16,185,129,0.4)',
-                            background: 'rgba(16,185,129,0.15)',
-                            color: '#6ee7b7',
-                            fontSize: '8.5px',
+                            padding: '2px 4px',
+                            border: 'none',
+                            background: 'transparent',
+                            color: 'var(--ui-accent, #10b981)',
+                            textShadow: '0 0 10px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.65)',
+                            fontSize: '12px',
                             fontWeight: 800,
                             cursor: 'pointer'
                         }}
@@ -176,13 +175,12 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                     <button
                         onClick={() => setHoldings(INITIAL_HOLDINGS)}
                         style={{
-                            padding: '3px 7px',
-                            borderRadius: '5px',
-                            border: '1px solid rgba(148,163,184,0.25)',
-                            background: 'rgba(15,23,42,0.85)',
-                            color: '#cbd5e1',
-                            fontSize: '8.5px',
-                            fontWeight: 800,
+                            padding: '2px 4px',
+                            border: 'none',
+                            background: 'transparent',
+                            color: 'rgba(148, 163, 184, 0.78)',
+                            fontSize: '12px',
+                            fontWeight: 700,
                             cursor: 'pointer'
                         }}
                     >
@@ -209,7 +207,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     border: 'none',
                                     outline: 'none',
                                     color: '#f8fafc',
-                                    fontSize: '10px'
+                                    fontSize: '13px'
                                 }}
                             />
                             <button
@@ -218,22 +216,22 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     setOpenDrop(true);
                                 }}
                                 style={{
-                                    padding: '2px 7px',
-                                    borderRadius: '4px',
-                                    border: filterMode === 'WATCHLIST' ? '1px solid #10b981' : '1px solid rgba(148,163,184,0.2)',
-                                    background: filterMode === 'WATCHLIST' ? 'rgba(16,185,129,0.18)' : 'transparent',
-                                    color: filterMode === 'WATCHLIST' ? '#6ee7b7' : '#94a3b8',
-                                    fontSize: '8px',
-                                    fontWeight: 800,
+                                    padding: '2px 4px',
+                                    border: 'none',
+                                    background: 'transparent',
+                                    color: filterMode === 'WATCHLIST' ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    textShadow: filterMode === 'WATCHLIST' ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
+                                    fontSize: '12px',
+                                    fontWeight: filterMode === 'WATCHLIST' ? 800 : 600,
                                     cursor: 'pointer'
                                 }}
                             >
-                                ★ Watchlist ({watchlistSyms.length})
+                                Watchlist ({watchlistSyms.length})
                             </button>
                             {openDrop && (
                                 <button
                                     onClick={() => setOpenDrop(false)}
-                                    style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', fontSize: '9px' }}
+                                    style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', fontSize: '11.5px' }}
                                 >
                                     Cerrar
                                 </button>
@@ -267,7 +265,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                             justifyContent: 'space-between',
                                             padding: '5px 8px',
                                             borderRadius: '5px',
-                                            background: 'rgba(15,23,42,0.85)',
+                                            background: 'transparent',
                                             border: '1px solid rgba(148,163,184,0.14)',
                                             color: '#f8fafc',
                                             cursor: 'pointer',
@@ -275,10 +273,10 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                         }}
                                     >
                                         <div>
-                                            <div style={{ fontSize: '10px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: '#6ee7b7' }}>
+                                            <div style={{ fontSize: '13px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: '#6ee7b7' }}>
                                                 + {item.sym}
                                             </div>
-                                            <div style={{ fontSize: '8.5px', color: '#94a3b8' }}>{item.cat}</div>
+                                            <div style={{ fontSize: '11.5px', color: '#94a3b8' }}>{item.cat}</div>
                                         </div>
                                         <Plus size={12} color="#10b981" />
                                     </button>
@@ -295,7 +293,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                         display: 'grid',
                         gridTemplateColumns: '32px 1.3fr 0.85fr 118px 86px 46px',
                         padding: '2px 6px',
-                        fontSize: '8px',
+                        fontSize: '11.5px',
                         fontWeight: 800,
                         color: '#64748b',
                         borderBottom: '1px solid rgba(148,163,184,0.12)'
@@ -318,10 +316,9 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                 display: 'grid',
                                 gridTemplateColumns: '32px 1.3fr 0.85fr 118px 86px 46px',
                                 alignItems: 'center',
-                                padding: '5.5px 6px',
-                                borderRadius: '6px',
-                                background: isOn ? 'rgba(2,6,23,0.55)' : 'rgba(2,6,23,0.22)',
-                                border: isOn ? '1px solid rgba(148,163,184,0.12)' : '1px dashed rgba(148,163,184,0.08)',
+                                padding: '6px 6px',
+                                background: 'transparent',
+                                borderBottom: '1px solid rgba(148, 163, 184, 0.10)',
                                 opacity: isOn ? 1 : 0.48
                             }}
                         >
@@ -337,14 +334,14 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
 
                             {/* Intermedia 1: Centrada */}
                             <div style={{ textAlign: 'center' }}>
-                                <div style={{ fontSize: '10.5px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: '#f8fafc' }}>
+                                <div style={{ fontSize: '13px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: '#f8fafc' }}>
                                     {h.sym}
                                 </div>
-                                <div style={{ fontSize: '8px', color: '#64748b' }}>{h.name}</div>
+                                <div style={{ fontSize: '11.5px', color: '#64748b' }}>{h.name}</div>
                             </div>
 
                             {/* Intermedia 2: Centrada */}
-                            <span style={{ fontSize: '9px', color: '#94a3b8', textAlign: 'center' }}>{h.cat}</span>
+                            <span style={{ fontSize: '11.5px', color: '#94a3b8', textAlign: 'center' }}>{h.cat}</span>
 
                             {/* Intermedia 3: Centrada */}
                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
@@ -355,7 +352,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                         height: '20px',
                                         borderRadius: '4px',
                                         border: '1px solid rgba(148,163,184,0.22)',
-                                        background: 'rgba(15,23,42,0.9)',
+                                        background: 'transparent',
                                         color: '#cbd5e1',
                                         fontSize: '11px',
                                         fontWeight: 900,
@@ -371,11 +368,11 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     style={{
                                         width: '44px',
                                         textAlign: 'center',
-                                        background: 'rgba(2,6,23,0.9)',
+                                        background: 'transparent',
                                         border: '1px solid rgba(16,185,129,0.38)',
                                         borderRadius: '4px',
                                         color: '#10b981',
-                                        fontSize: '10.5px',
+                                        fontSize: '13px',
                                         fontWeight: 900,
                                         fontFamily: 'var(--font-mono)',
                                         padding: '2px'
@@ -388,7 +385,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                         height: '20px',
                                         borderRadius: '4px',
                                         border: '1px solid rgba(148,163,184,0.22)',
-                                        background: 'rgba(15,23,42,0.9)',
+                                        background: 'transparent',
                                         color: '#cbd5e1',
                                         fontSize: '11px',
                                         fontWeight: 900,
@@ -400,7 +397,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             </div>
 
                             {/* Intermedia 4: Centrada */}
-                            <span style={{ fontSize: '10px', fontFamily: 'var(--font-mono)', color: '#cbd5e1', textAlign: 'center' }}>
+                            <span style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', color: '#cbd5e1', textAlign: 'center' }}>
                                 ${isOn ? ((h.weight || 0) * 1000).toLocaleString() : '0'}
                             </span>
 
@@ -446,7 +443,7 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
         return Object.entries(map);
     }, [activeHoldings]);
 
-    const brinsonHeaders = ['BLOQUE / SECTOR (#2)', 'ASIGNACIÓN', 'SELECCIÓN', 'INTERACCIÓN', 'TOTAL ALPHA'];
+    const brinsonHeaders = ['SECTOR', 'ASIGNACIÓN', 'SELECCIÓN', 'INTERACCIÓN', 'TOTAL ALPHA'];
     const brinsonItems = [
         ['Tecnología & IA (NVDA, MSFT)', '+1.85%', '+3.40%', '+0.45%', '+5.70%', +5.7],
         ['Activos Digitales (BTC)', '+1.10%', '+1.25%', '+0.15%', '+2.50%', +2.5],
@@ -458,10 +455,11 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
     const xrayItems = [
         ['NVDA', '22.0%', '+2.4% (vía SPY)', '24.4% REAL', -6],
         ['MSFT', '10.0%', '+2.1% (vía SPY)', '12.1% REAL', +5],
+        ['GLD', '18.0%', '+0.0% (Directo)', '18.0% REAL', +4],
         ['AAPL', '0.0%', '+1.9% (vía SPY)', '1.9% REAL', +3]
     ];
 
-    const custHeaders = ['CUSTODIO / VENUE (#16)', '% CARTERA', 'CDS SPREAD', 'COBERTURA LEGAL'];
+    const custHeaders = ['CUSTODIO', '% CARTERA', 'CDS SPREAD', 'COBERTURA LEGAL'];
     const custItems = [
         ['Interactive Brokers / DTC', '68.0%', '42 bps', 'Cubierto SIPC $500k', +8],
         ['HSBC Bullion Vault (GLD)', '18.0%', '38 bps', 'Oro Físico Asignado', +9],
@@ -471,40 +469,45 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
     return (
         <PortfolioCardShell
             badge="FILA 2 • DERECHA ARRIBA"
-            title="RADIOGRAFÍA & ATRIBUCIÓN DE LA CARTERA"
+            title="Exposición y Atribución"
             color="#10b981"
+            style={{ flex: 1 }}
             rightSlot={
-                <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
                     {[
-                        { id: 'XRAY', lbl: '1. Solapamiento X-Ray (#12)' },
-                        { id: 'EXP', lbl: '2. Exposición (NEW-07)' },
-                        { id: 'ALPHA', lbl: '3. Descomposición Alpha (#2)' },
-                        { id: 'YIELD', lbl: '4. Cashflow (NEW-08)' },
-                        { id: 'CUST', lbl: '5. Custodia (#16)' }
-                    ].map(t => (
-                        <button
-                            key={t.id}
-                            onClick={() => setTab(t.id)}
-                            style={{
-                                padding: '2.5px 7px',
-                                borderRadius: '5px',
-                                border: tab === t.id ? '1px solid #10b981' : '1px solid rgba(148,163,184,0.18)',
-                                background: tab === t.id ? 'rgba(16,185,129,0.18)' : 'rgba(2,6,23,0.6)',
-                                color: tab === t.id ? '#6ee7b7' : '#94a3b8',
-                                fontSize: '8.5px',
-                                fontWeight: 800,
-                                cursor: 'pointer'
-                            }}
-                        >
-                            {t.lbl}
-                        </button>
-                    ))}
+                        { id: 'XRAY', lbl: 'Solapamiento' },
+                        { id: 'EXP', lbl: 'Exposición' },
+                        { id: 'ALPHA', lbl: 'Atribución' },
+                        { id: 'YIELD', lbl: 'Flujo de Caja' },
+                        { id: 'CUST', lbl: 'Custodia' }
+                    ].map(t => {
+                        const active = tab === t.id;
+                        return (
+                            <button
+                                key={t.id}
+                                onClick={() => setTab(t.id)}
+                                style={{
+                                    padding: '2px 4px',
+                                    border: 'none',
+                                    background: 'transparent',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
+                                    fontSize: '12px',
+                                    fontWeight: active ? 800 : 600,
+                                    cursor: 'pointer',
+                                    transition: 'all 0.15s ease'
+                                }}
+                            >
+                                {t.lbl}
+                            </button>
+                        );
+                    })}
                 </div>
             }
         >
             {tab === 'XRAY' && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '9px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.1fr 1fr', color: '#64748b', fontWeight: 800, fontSize: '8px', padding: '0 6px' }}>
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '6px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.1fr 1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {xrayHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, xrayHeaders.length) }}>{h}</span>
                         ))}
@@ -515,9 +518,10 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
                             style={{
                                 display: 'grid',
                                 gridTemplateColumns: '1fr 1fr 1.1fr 1fr',
-                                padding: '5px 6px',
+                                padding: '6px 6px',
                                 borderRadius: '5px',
-                                background: 'rgba(2,6,23,0.52)',
+                                background: 'transparent',
+                                borderBottom: '1px solid rgba(148, 163, 184, 0.08)',
                                 alignItems: 'center'
                             }}
                         >
@@ -533,9 +537,9 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
             )}
 
             {tab === 'EXP' && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', fontSize: '9.5px' }}>
-                    <div style={{ background: 'rgba(2,6,23,0.52)', padding: '7px', borderRadius: '6px' }}>
-                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '8.5px' }}>CLASE DE ACTIVO</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', fontSize: '11.5px' }}>
+                    <div style={{ background: 'transparent', padding: '7px', borderRadius: '6px' }}>
+                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>CLASE DE ACTIVO</div>
                         {byCat.map(([c, w]) => (
                             <div key={c} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
                                 <span style={{ color: '#e2e8f0' }}>{c}</span>
@@ -543,14 +547,14 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
                             </div>
                         ))}
                     </div>
-                    <div style={{ background: 'rgba(2,6,23,0.52)', padding: '7px', borderRadius: '6px' }}>
-                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '8.5px' }}>MONEDA SUBYACENTE</div>
+                    <div style={{ background: 'transparent', padding: '7px', borderRadius: '6px' }}>
+                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>MONEDA SUBYACENTE</div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>USD Duro</span><span style={{ fontFamily: 'var(--font-mono)', color: '#10b981', fontWeight: 800 }}>68%</span></div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>Oro Físico</span><span style={{ fontFamily: 'var(--font-mono)', color: '#6ee7b7', fontWeight: 800 }}>18%</span></div>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Crypto Descentr.</span><span style={{ fontFamily: 'var(--font-mono)', color: '#a7f3d0', fontWeight: 800 }}>14%</span></div>
                     </div>
-                    <div style={{ background: 'rgba(2,6,23,0.52)', padding: '7px', borderRadius: '6px' }}>
-                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '8.5px' }}>LIQUIDEZ DE SALIDA</div>
+                    <div style={{ background: 'transparent', padding: '7px', borderRadius: '6px' }}>
+                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>LIQUIDEZ DE SALIDA</div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>Inmediata T+0</span><span style={{ fontFamily: 'var(--font-mono)', color: '#10b981', fontWeight: 800 }}>86%</span></div>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>Spot 24/7</span><span style={{ fontFamily: 'var(--font-mono)', color: '#6ee7b7', fontWeight: 800 }}>14%</span></div>
                         <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>Ilíquido (&gt;3d)</span><span style={{ fontFamily: 'var(--font-mono)', color: '#64748b', fontWeight: 800 }}>0%</span></div>
@@ -559,8 +563,8 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
             )}
 
             {tab === 'ALPHA' && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '9px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 0.8fr 0.8fr 0.8fr 0.9fr', color: '#64748b', fontWeight: 800, fontSize: '8px', padding: '0 6px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 0.8fr 0.8fr 0.8fr 0.9fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {brinsonHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, brinsonHeaders.length) }}>{h}</span>
                         ))}
@@ -573,7 +577,7 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
                                 gridTemplateColumns: '1.5fr 0.8fr 0.8fr 0.8fr 0.9fr',
                                 padding: '5px 6px',
                                 borderRadius: '5px',
-                                background: 'rgba(2,6,23,0.5)',
+                                background: 'transparent',
                                 alignItems: 'center'
                             }}
                         >
@@ -591,24 +595,24 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
 
             {tab === 'YIELD' && (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
-                    <div style={{ background: 'rgba(2,6,23,0.52)', padding: '8px', borderRadius: '6px' }}>
-                        <div style={{ color: '#64748b', fontSize: '8.5px', fontWeight: 800 }}>CUPONES TLT (4.4%)</div>
+                    <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
+                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>CUPONES TLT (4.4%)</div>
                         <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>+$1,320 / año</div>
                     </div>
-                    <div style={{ background: 'rgba(2,6,23,0.52)', padding: '8px', borderRadius: '6px' }}>
-                        <div style={{ color: '#64748b', fontSize: '8.5px', fontWeight: 800 }}>DIVIDENDOS SPY / MSFT</div>
+                    <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
+                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>DIVIDENDOS SPY / MSFT</div>
                         <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#6ee7b7', fontSize: '13px', marginTop: '2px' }}>+$980 / año</div>
                     </div>
-                    <div style={{ background: 'rgba(2,6,23,0.52)', padding: '8px', borderRadius: '6px' }}>
-                        <div style={{ color: '#64748b', fontSize: '8.5px', fontWeight: 800 }}>TOTAL RENTA PASIVA</div>
+                    <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
+                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>TOTAL RENTA PASIVA</div>
                         <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>+$2,840 (2.84%)</div>
                     </div>
                 </div>
             )}
 
             {tab === 'CUST' && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '9px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 0.8fr 0.8fr 1.1fr', color: '#64748b', fontWeight: 800, fontSize: '8px', padding: '0 6px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 0.8fr 0.8fr 1.1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {custHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, custHeaders.length) }}>{h}</span>
                         ))}
@@ -621,7 +625,7 @@ function Row2RightAnatomyAndAlpha({ holdings }) {
                                 gridTemplateColumns: '1.4fr 0.8fr 0.8fr 1.1fr',
                                 padding: '5px 6px',
                                 borderRadius: '5px',
-                                background: 'rgba(2,6,23,0.5)',
+                                background: 'transparent',
                                 alignItems: 'center'
                             }}
                         >
@@ -647,29 +651,30 @@ function Row2RightMonthlyCalendar() {
     return (
         <PortfolioCardShell
             badge="FILA 2 • DERECHA ABAJO"
-            title="CALENDARIO HEATMAP DE RETORNOS MENSUALES (ENE..DIC)"
-            subtitle="Gradiente Verde / Rojo por intensidad de retorno"
+            title="Retornos Mensuales"
+            subtitle="Ene – Dic"
             color="#10b981"
+            style={{ flex: 1 }}
         >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '42px repeat(12, 1fr) 54px', gap: '3px', fontSize: '8px', color: '#64748b', fontWeight: 800 }}>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '6px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '42px repeat(12, 1fr) 54px', gap: '3px', fontSize: '11.5px', color: '#64748b', fontWeight: 800 }}>
                     {headers.map((h, i) => (
                         <span key={h} style={{ textAlign: colAlign(i, headers.length) }}>{h}</span>
                     ))}
                 </div>
                 {MONTHLY_HEATMAP.map(row => (
                     <div key={row.yr} style={{ display: 'grid', gridTemplateColumns: '42px repeat(12, 1fr) 54px', gap: '3px', alignItems: 'center' }}>
-                        <span style={{ textAlign: 'left', fontSize: '9.5px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: '#cbd5e1' }}>
+                        <span style={{ textAlign: 'left', fontSize: '11.5px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: '#cbd5e1' }}>
                             {row.yr}
                         </span>
                         {row.m.map((v, idx) => (
                             <div
                                 key={idx}
                                 style={{
-                                    padding: '4.5px 1px',
+                                    padding: '6px 1px',
                                     borderRadius: '4px',
                                     textAlign: 'center',
-                                    fontSize: '8.5px',
+                                    fontSize: '11.5px',
                                     fontFamily: 'var(--font-mono)',
                                     fontWeight: 800,
                                     ...getSemanticReturnStyle(v, 4.5)
@@ -681,7 +686,7 @@ function Row2RightMonthlyCalendar() {
                         <span
                             style={{
                                 textAlign: 'right',
-                                fontSize: '9.5px',
+                                fontSize: '11.5px',
                                 fontWeight: 900,
                                 fontFamily: 'var(--font-mono)',
                                 color: '#6ee7b7'
@@ -721,52 +726,58 @@ function Row3FullWidthBacktest({ holdings }) {
     return (
         <PortfolioCardShell
             badge="FILA 3 • ANCHO COMPLETO (100%)"
-            title="SERIE DE TIEMPO DEL BACKTESTING HISTÓRICO & COMPARADOR MULTI-ESTRATEGIA (#10)"
-            subtitle={`Ventana ${timeframe} • Tu Combinación Activa vs ${meta.label}`}
+            title="Rendimiento Histórico"
+            subtitle={`Ventana ${timeframe} • Cartera vs ${meta.label}`}
             color="#10b981"
             rightSlot={
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                    <div style={{ display: 'flex', background: 'rgba(2,6,23,0.75)', padding: '2px', borderRadius: '6px', border: '1px solid rgba(148,163,184,0.2)' }}>
-                        {['3M', '6M', '1Y', '3Y', 'MAX'].map(tf => (
-                            <button
-                                key={tf}
-                                onClick={() => setTimeframe(tf)}
-                                style={{
-                                    padding: '3px 8px',
-                                    borderRadius: '4px',
-                                    border: 'none',
-                                    background: timeframe === tf ? 'rgba(16,185,129,0.25)' : 'transparent',
-                                    color: timeframe === tf ? '#6ee7b7' : '#94a3b8',
-                                    fontSize: '8.5px',
-                                    fontWeight: 900,
-                                    fontFamily: 'var(--font-mono)',
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                {tf}
-                            </button>
-                        ))}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        {['3M', '6M', '1Y', '3Y', 'MAX'].map(tf => {
+                            const active = timeframe === tf;
+                            return (
+                                <button
+                                    key={tf}
+                                    onClick={() => setTimeframe(tf)}
+                                    style={{
+                                        padding: '2px 5px',
+                                        border: 'none',
+                                        background: 'transparent',
+                                        color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                        textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
+                                        fontSize: '12px',
+                                        fontWeight: active ? 800 : 600,
+                                        fontFamily: 'var(--font-mono)',
+                                        cursor: 'pointer'
+                                    }}
+                                >
+                                    {tf}
+                                </button>
+                            );
+                        })}
                     </div>
 
-                    <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-                        {Object.entries(BENCH_META).map(([k, v]) => (
-                            <button
-                                key={k}
-                                onClick={() => setActiveBench(k)}
-                                style={{
-                                    padding: '3px 8px',
-                                    borderRadius: '5px',
-                                    border: activeBench === k ? '1px solid #10b981' : '1px solid rgba(148,163,184,0.2)',
-                                    background: activeBench === k ? 'rgba(16,185,129,0.2)' : 'rgba(2,6,23,0.65)',
-                                    color: activeBench === k ? '#6ee7b7' : '#94a3b8',
-                                    fontSize: '8.5px',
-                                    fontWeight: 800,
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                vs {v.label} ({v.ret})
-                            </button>
-                        ))}
+                    <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+                        {Object.entries(BENCH_META).map(([k, v]) => {
+                            const active = activeBench === k;
+                            return (
+                                <button
+                                    key={k}
+                                    onClick={() => setActiveBench(k)}
+                                    style={{
+                                        padding: '2px 5px',
+                                        border: 'none',
+                                        background: 'transparent',
+                                        color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                        textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
+                                        fontSize: '12px',
+                                        fontWeight: active ? 800 : 600,
+                                        cursor: 'pointer'
+                                    }}
+                                >
+                                    vs {v.label} ({v.ret})
+                                </button>
+                            );
+                        })}
                     </div>
                 </div>
             }
@@ -784,7 +795,7 @@ function Row3FullWidthBacktest({ holdings }) {
                         <XAxis dataKey="date" tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
                         <YAxis domain={['auto', 'auto']} tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
                         <RechartsTooltip
-                            contentStyle={{ background: '#090d16', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '10px' }}
+                            contentStyle={{ background: '#090d16', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }}
                         />
                         <Area
                             type="monotone"
@@ -798,7 +809,7 @@ function Row3FullWidthBacktest({ holdings }) {
                         <Area
                             type="monotone"
                             dataKey="port"
-                            name="★ Tu Cartera Activa"
+                            name="Tu Cartera Activa"
                             stroke="#10b981"
                             strokeWidth={2.3}
                             fill="url(#prodV1PortGrad)"
@@ -821,7 +832,7 @@ export default function PortfolioVista1Builder({ holdings, setHoldings, watchlis
                     watchlistSyms={watchlistSyms}
                     onToggleWatchlist={onToggleWatchlist}
                 />
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', height: '100%' }}>
                     <Row2RightAnatomyAndAlpha holdings={holdings} />
                     <Row2RightMonthlyCalendar />
                 </div>

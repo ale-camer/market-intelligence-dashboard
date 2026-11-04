@@ -1057,11 +1057,9 @@ export default function MarketAnomaliesView({
       boxSizing: 'border-box',
       overflow: 'hidden',
       padding: '0.75rem 1.1rem',
-      borderRadius: '18px',
-      backgroundColor: 'rgba(8, 12, 22, 0.22)',
-      backdropFilter: 'blur(2px)',
-      border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
-      boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 6px 20px rgba(0,0,0,0.22)',
+      borderRadius: '10px',
+      backgroundColor: 'transparent',
+      border: '1px solid rgba(148, 163, 184, 0.22)',
     };
 
     const MAIN_TOOLS_ITEMS = [
@@ -1069,13 +1067,13 @@ export default function MarketAnomaliesView({
         id: 'sovereign-curve',
         cats: ['RATES', 'FIXED_INCOME', 'CASH'],
         swimlaneId: 'LANE_RATES',
-        swimlaneTitle: isES ? '1. TASAS, BONOS & LIQUIDEZ' : '1. RATES, BONDS & CASH',
+        swimlaneTitle: isES ? 'Tasas, Bonos y Liquidez' : 'Rates, Bonds & Cash',
         sharedAssetClasses: isES
           ? ['Tasas & Curvas', 'Bonos US Treasury', 'Cash & SOFR']
           : ['Rates & Curves', 'US Treasuries', 'Cash & SOFR'],
         isShared: true,
-        assetClassLabel: isES ? 'Tasas, Bonos & Cash (Compartido)' : 'Rates, Treasuries & Cash (Shared)',
-        label: isES ? '🌐 Curva Soberana 3D/2D & Comparador Global (42 Países)' : '🌐 3D/2D Sovereign Curve & Global Comparator (42 Countries)',
+        assetClassLabel: isES ? 'Tasas, Bonos & Cash' : 'Rates, Treasuries & Cash',
+        label: isES ? 'Curva Soberana' : 'Sovereign Curve',
         desc: isES
           ? 'Superficie histórica 3D (Plazo × Fecha × Yield %), comparador multi-país G10/EM y spreads 2s10s / SOFR.'
           : '3D historical yield surface (Tenor × Date × Yield %), G10/EM peer comparator, and 2s10s / SOFR spreads.',
@@ -1260,13 +1258,13 @@ export default function MarketAnomaliesView({
         id: 'vol-surface-3d',
         cats: ['DERIVATIVES_VOL', 'EQUITY', 'INDEX', 'ETF', 'CRYPTO'],
         swimlaneId: 'LANE_EQUITY_DERIV',
-        swimlaneTitle: isES ? '2. DERIVADOS, ACCIONES, ÍNDICES & CRYPTO' : '2. DERIVATIVES, EQUITIES, INDICES & CRYPTO',
+        swimlaneTitle: isES ? 'Derivados, Acciones y Crypto' : 'Derivatives, Equities & Crypto',
         sharedAssetClasses: isES
           ? ['Derivados & Vol', 'Acciones', 'Índices', 'ETFs', 'Crypto']
           : ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs', 'Crypto'],
         isShared: true,
-        assetClassLabel: isES ? 'Derivados, Acciones, Índices, ETFs & Crypto (Compartido)' : 'Derivatives, Equities, Indices, ETFs & Crypto (Shared)',
-        label: isES ? '📐 Superficie de Volatilidad Implícita 3D' : '📐 3D Implied Volatility Surface',
+        assetClassLabel: isES ? 'Derivados, Acciones, Índices, ETFs & Crypto' : 'Derivatives, Equities, Indices, ETFs & Crypto',
+        label: isES ? 'Superficie de Volatilidad' : 'Volatility Surface',
         desc: isES
           ? 'Malla interactiva Strike × Vencimiento × IV (%) con skew de puts y sonrisa de volatilidad.'
           : 'Interactive Strike × Expiry × IV (%) mesh with put skew and volatility smile.',
@@ -1419,13 +1417,13 @@ export default function MarketAnomaliesView({
         id: 'options-payoff',
         cats: ['DERIVATIVES_VOL', 'EQUITY', 'INDEX', 'ETF'],
         swimlaneId: 'LANE_EQUITY_DERIV',
-        swimlaneTitle: isES ? '2. DERIVADOS, ACCIONES, ÍNDICES & CRYPTO' : '2. DERIVATIVES, EQUITIES, INDICES & CRYPTO',
+        swimlaneTitle: isES ? 'Derivados, Acciones y Crypto' : 'Derivatives, Equities & Crypto',
         sharedAssetClasses: isES
           ? ['Derivados & Vol', 'Acciones', 'Índices', 'ETFs']
           : ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs'],
         isShared: true,
-        assetClassLabel: isES ? 'Derivados, Acciones, Índices & ETFs (Compartido)' : 'Derivatives, Equities, Indices & ETFs (Shared)',
-        label: isES ? '⚡ Simulador Payoff P&L & Sintéticos Multi-Leg' : '⚡ Options Payoff P&L & Multi-Leg Synthetics',
+        assetClassLabel: isES ? 'Derivados, Acciones, Índices & ETFs' : 'Derivatives, Equities, Indices & ETFs',
+        label: isES ? 'Simulador Payoff' : 'Options Payoff',
         desc: isES
           ? 'Simulador de estrategias (Straddle, Iron Condor, Sintéticos) con Griegas Δ, Γ, Θ, ν en tiempo real.'
           : 'Multi-leg strategy simulator (Straddle, Iron Condor, Synthetics) with real-time Δ, Γ, Θ, ν Greeks.',
@@ -1574,11 +1572,11 @@ export default function MarketAnomaliesView({
         id: 'fx-cross',
         cats: ['FX'],
         swimlaneId: 'LANE_FX',
-        swimlaneTitle: isES ? '3. DIVISAS (FX CURRENCIES)' : '3. FX CURRENCIES',
+        swimlaneTitle: isES ? 'Divisas (FX)' : 'FX Currencies',
         sharedAssetClasses: isES ? ['Divisas (FX)'] : ['FX Currencies'],
         isShared: false,
-        assetClassLabel: isES ? 'Divisas (FX) • Instrumento Principal' : 'FX Currencies • Principal Instrument',
-        label: isES ? '💱 Conversor Institucional FX & Carry (61 Monedas)' : '💱 Institutional FX Cross Converter & Carry (61 CCY)',
+        assetClassLabel: isES ? 'Divisas (FX)' : 'FX Currencies',
+        label: isES ? 'Conversor FX y Carry' : 'FX Cross & Carry',
         desc: isES
           ? 'Triangulación instantánea entre 61 divisas G10 y Mercados Emergentes con diferencial de tasas (Carry).'
           : 'Instant cross-rate triangulation across 61 G10 & EM currencies with interest rate Carry differential.',
@@ -1678,11 +1676,11 @@ export default function MarketAnomaliesView({
         id: 'commodity-forward-3d',
         cats: ['COMMODITY'],
         swimlaneId: 'LANE_COMMODITIES',
-        swimlaneTitle: isES ? '4. MATERIAS PRIMAS (COMMODITIES)' : '4. COMMODITIES',
+        swimlaneTitle: isES ? 'Materias Primas' : 'Commodities',
         sharedAssetClasses: isES ? ['Materias Primas'] : ['Commodities'],
         isShared: false,
-        assetClassLabel: isES ? 'Materias Primas • Instrumento Principal' : 'Commodities • Principal Instrument',
-        label: isES ? '🛢️ Curva Forward 3D/2D (Contango / Backwardation)' : '🛢️ 3D/2D Commodity Forward Curve (Term Structure)',
+        assetClassLabel: isES ? 'Materias Primas' : 'Commodities',
+        label: isES ? 'Curva Forward' : 'Commodity Forward',
         desc: isES
           ? 'Estructura temporal de futuros de Energía, Metales y Agro (Spot a +24M) y cálculo de Roll Yield.'
           : 'Futures term structure across Energy, Metals & Ags (Spot to +24M) and Roll Yield calculation.',
@@ -1815,28 +1813,26 @@ export default function MarketAnomaliesView({
           paddingBottom: '2.5rem',
         }}
       >
-        {/* 1.0 TOP BAR (ABOVE AGGREGATED INDICATORS): CENTERED ASSET TYPE PILLS */}
+        {/* 1.0 TOP BAR (ABOVE AGGREGATED INDICATORS): V010 GHOST ASSET TYPE SWITCHER */}
         <div
           style={{
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
             flexShrink: 0,
+            padding: '0.18rem 0',
           }}
         >
-          {/* CENTER: 10-CATEGORY GLOBAL ASSET UNIVERSE FILTER PILLS */}
+          {/* CENTER: 10-CATEGORY GLOBAL ASSET UNIVERSE FILTER IN V010 GHOST STYLE */}
           <div
             style={{
               display: 'inline-flex',
               flexWrap: 'wrap',
               justifyContent: 'center',
-              backgroundColor: 'rgba(8, 12, 22, 0.24)',
-              backdropFilter: 'blur(2px)',
-              padding: '0.26rem',
-              borderRadius: '999px',
-              border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
-              gap: '0.2rem',
-              boxShadow: '0 6px 20px rgba(0, 0, 0, 0.22)',
+              alignItems: 'center',
+              background: 'transparent',
+              border: 'none',
+              gap: '1.15rem',
             }}
           >
             {[
@@ -1849,10 +1845,10 @@ export default function MarketAnomaliesView({
               },
               {
                 id: 'WATCHLIST',
-                label: `★ Watchlist (${watchlistSyms.length})`,
+                label: `Watchlist (${watchlistSyms.length})`,
                 desc: isES
-                  ? 'Filtra tus activos favoritos marcados con estrella (★) para seguimiento y Portfolio.'
-                  : 'Filters your starred (★) watchlist assets for tracking and Portfolio evaluation.',
+                  ? 'Filtra tus activos favoritos para seguimiento y Portfolio.'
+                  : 'Filters your watchlist assets for tracking and Portfolio evaluation.',
               },
               ...[
                 {
@@ -1920,15 +1916,15 @@ export default function MarketAnomaliesView({
                   <button
                     onClick={() => setCategoryFilter(tab.id)}
                     style={{
-                      fontSize: '0.7rem',
-                      fontWeight: active ? 700 : 600,
-                      padding: '0.26rem 0.78rem',
-                      borderRadius: '999px',
-                      border: active ? '1px solid var(--ui-accent)' : '1px solid transparent',
-                      backgroundColor: active ? 'rgba(var(--ui-accent-rgb), 0.18)' : 'transparent',
-                      color: active ? '#ffffff' : 'var(--text-dim)',
+                      fontSize: '0.78rem',
+                      fontWeight: active ? 800 : 600,
+                      padding: '0.18rem 0.25rem',
+                      border: 'none',
+                      background: 'transparent',
+                      color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.62)',
+                      textShadow: active ? '0 0 15px rgba(var(--ui-accent-rgb), 0.88)' : 'none',
                       cursor: 'pointer',
-                      transition: 'all 0.15s ease',
+                      transition: 'all 0.16s ease',
                       whiteSpace: 'nowrap',
                     }}
                   >
@@ -1940,24 +1936,30 @@ export default function MarketAnomaliesView({
           </div>
         </div>
 
-        {/* PROPUESTA P05: SUB-BAR CENTERED RIGHT UNDER ASSET CLASS PILLS */}
+        {/* SUB-BAR CENTERED RIGHT UNDER ASSET CLASS ITEMS IN V010 GHOST STYLE */}
         {marketsToolsMode === 'v5-under-cats' && (
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                backgroundColor: 'rgba(8, 12, 22, 0.24)',
-                backdropFilter: 'blur(2px)',
-                padding: '0.22rem 0.5rem',
-                borderRadius: '999px',
-                border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
-                gap: '0.35rem',
+                background: 'transparent',
+                border: 'none',
+                padding: '0.1rem 0.4rem',
+                gap: '1.1rem',
                 flexWrap: 'wrap',
               }}
             >
-              <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--ui-accent)', padding: '0 0.35rem' }}>
-                Main Tools
+              <span
+                style={{
+                  fontSize: '0.68rem',
+                  fontWeight: 800,
+                  color: 'var(--ui-accent)',
+                  textShadow: '0 0 12px rgba(var(--ui-accent-rgb), 0.72)',
+                  fontFamily: 'var(--font-mono)',
+                }}
+              >
+                Main Tools:
               </span>
               {MAIN_TOOLS_ITEMS.map((qBtn) => (
                 <HoverTooltip key={qBtn.id} title={qBtn.label} description={qBtn.desc} badge={qBtn.badge} placement="bottom">
@@ -1965,15 +1967,15 @@ export default function MarketAnomaliesView({
                     type="button"
                     onClick={qBtn.action}
                     style={{
-                      fontSize: '0.67rem',
+                      fontSize: '0.72rem',
                       fontWeight: 600,
-                      padding: '0.24rem 0.68rem',
-                      borderRadius: '999px',
-                      border: '1px solid rgba(255, 255, 255, 0.14)',
-                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                      color: 'var(--text-main)',
+                      padding: '0.14rem 0.24rem',
+                      border: 'none',
+                      background: 'transparent',
+                      color: 'rgba(203, 213, 225, 0.78)',
                       cursor: 'pointer',
                       whiteSpace: 'nowrap',
+                      transition: 'all 0.16s ease',
                     }}
                   >
                     {qBtn.label}
@@ -1984,229 +1986,143 @@ export default function MarketAnomaliesView({
           </div>
         )}
 
-        {/* 1.1 AGGREGATED MARKET INDICATORS (LOCKED UNIFORM HEIGHT) */}
+        {/* 1.1 AGGREGATED MARKET INDICATORS (KPI FORMAT: 1PX BORDER + 3PX SEMANTIC LEFT BAR) */}
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '0.8rem',
+            gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+            gap: '10px',
             flexShrink: 0,
           }}
         >
-          {/* PULSE 1: 24H AGGREGATE VOLUME & FLOW (DYNAMIC PER ASSET CLASS) */}
+          {/* KPI 1: 24H AGGREGATE VOLUME */}
           <div
             style={{
-              ...pulseCardStyle,
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              gap: '0.75rem',
+              background: 'transparent',
+              border: '1px solid rgba(148, 163, 184, 0.22)',
+              borderLeft: `3px solid ${pulseVolColor}`,
+              borderRadius: '10px',
+              padding: '10px 14px',
             }}
           >
-            <div style={{ minWidth: 0 }}>
-              <div style={{ fontSize: '0.68rem', color: 'var(--text-dim)', fontWeight: 600, whiteSpace: 'nowrap' }}>
-                {isES ? 'Volumen Agregado (24h)' : '24h Aggregate Volume'}
-              </div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.42rem', marginTop: '0.2rem', whiteSpace: 'nowrap' }}>
-                <span className="mono-metric" style={{ fontSize: '1.14rem', fontWeight: 800, color: 'var(--text-main)' }}>
-                  {pulseMetrics.totalVolFormatted}
-                </span>
-                <span className="mono-metric" style={{ fontSize: '0.69rem', fontWeight: 700, color: pulseVolColor }}>
-                  {pulseMetrics.volChgFormatted}
-                </span>
-              </div>
-              <div style={{ fontSize: '0.61rem', color: 'var(--text-dim)', marginTop: '0.15rem', whiteSpace: 'nowrap' }}>
-                {pulseMetrics.totalCount} {isES ? 'activos filtrados' : 'tracked assets'}
-              </div>
+            <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
+              {isES ? 'VOLUMEN AGREGADO (24H)' : '24H AGGREGATE VOLUME'}
             </div>
-
-            <div style={{ width: '94px', height: '46px', flexShrink: 0 }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={pulseMetrics.volSparkline} margin={{ top: 3, right: 2, left: 2, bottom: 3 }}>
-                  <defs>
-                    <linearGradient id="pulseVolGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor={pulseVolColor} stopOpacity={0.45} />
-                      <stop offset="95%" stopColor={pulseVolColor} stopOpacity={0.0} />
-                    </linearGradient>
-                  </defs>
-                  <YAxis domain={['dataMin - 4', 'dataMax + 4']} hide />
-                  <Area
-                    type="monotone"
-                    dataKey="v"
-                    stroke={pulseVolColor}
-                    strokeWidth={2}
-                    fillOpacity={1}
-                    fill="url(#pulseVolGrad)"
-                    isAnimationActive={false}
-                  />
-                </AreaChart>
-              </ResponsiveContainer>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '3px' }}>
+              <span className="mono-metric" style={{ fontSize: '19px', fontWeight: 900, color: '#f8fafc' }}>
+                {pulseMetrics.totalVolFormatted}
+              </span>
+              <span className="mono-metric" style={{ fontSize: '12.5px', fontWeight: 800, color: pulseVolColor }}>
+                {pulseMetrics.volChgFormatted}
+              </span>
+            </div>
+            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
+              {pulseMetrics.totalCount} {isES ? 'activos monitoreados' : 'tracked assets'}
             </div>
           </div>
 
-          {/* PULSE 2: AVERAGE RSI (14) */}
+          {/* KPI 2: AVERAGE RSI (14) */}
           <div
             style={{
-              ...pulseCardStyle,
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              gap: '0.5rem',
+              background: 'transparent',
+              border: '1px solid rgba(148, 163, 184, 0.22)',
+              borderLeft: `3px solid ${pulseMetrics.avgRsiNum >= 50 ? '#10b981' : '#f43f5e'}`,
+              borderRadius: '10px',
+              padding: '10px 14px',
             }}
           >
-            <RadialRingGauge
-              pct={pulseMetrics.avgRsiNum}
-              color={pulseMetrics.avgRsiNum >= 50 ? '#10b981' : '#f43f5e'}
-              label={pulseMetrics.avgRsi}
-              sub="AVG RSI (14)"
-            />
-            <span
+            <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
+              {isES ? 'RSI PROMEDIO (14D)' : 'AVERAGE RSI (14D)'}
+            </div>
+            <div
               className="mono-metric"
               style={{
-                fontSize: '0.58rem',
-                padding: '0.2rem 0.52rem',
-                borderRadius: '999px',
-                backgroundColor: pulseMetrics.avgRsiNum >= 50 ? 'rgba(16, 185, 129, 0.14)' : 'rgba(244, 63, 94, 0.14)',
-                color: pulseMetrics.avgRsiNum >= 50 ? '#34d399' : '#fb7185',
-                fontWeight: 700,
-                whiteSpace: 'nowrap',
-                flexShrink: 0,
+                fontSize: '19px',
+                fontWeight: 900,
+                color: pulseMetrics.avgRsiNum >= 50 ? '#10b981' : '#f43f5e',
+                marginTop: '3px',
               }}
             >
-              {pulseMetrics.avgRsiNum >= 50 ? 'POSITIVE (>50)' : 'NEGATIVE (<50)'}
-            </span>
+              {pulseMetrics.avgRsi}
+            </div>
+            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
+              {pulseMetrics.avgRsiNum >= 50
+                ? isES
+                  ? 'Impulso comprador (>50)'
+                  : 'Bullish momentum (>50)'
+                : isES
+                  ? 'Presión vendedora (<50)'
+                  : 'Bearish pressure (<50)'}
+            </div>
           </div>
 
-          {/* PULSE 3: P-06 ISOLATION FOREST REGIME */}
+          {/* KPI 3: P-06 ISOLATION FOREST REGIME */}
           <div
             style={{
-              ...pulseCardStyle,
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              gap: '0.5rem',
+              background: 'transparent',
+              border: '1px solid rgba(148, 163, 184, 0.22)',
+              borderLeft: '3px solid #10b981',
+              borderRadius: '10px',
+              padding: '10px 14px',
             }}
           >
-            <RadialRingGauge
-              pct={pulseMetrics.normalPct}
-              color="#10b981"
-              label={`${pulseMetrics.normalPct}%`}
-              sub={isES ? 'Régimen Normal (P-06)' : 'Normal Regime (P-06)'}
-              detail={
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.08rem' }}>
-                  <div style={{ whiteSpace: 'nowrap' }}>
-                    <span className="mono-metric" style={{ color: '#10b981', fontWeight: 800, fontSize: '0.66rem' }}>
-                      {pulseMetrics.normalCount} / {pulseMetrics.totalCount}
-                    </span>{' '}
-                    <span>{isES ? 'normales' : 'normal'}</span>
-                  </div>
-                  <div style={{ fontSize: '0.57rem', whiteSpace: 'nowrap' }}>
-                    <span className="mono-metric" style={{ color: '#fb7185', fontWeight: 700 }}>
-                      {pulseMetrics.elevatedCount} {isES ? 'Elev.' : 'Elev.'}
-                    </span>
-                    {' • '}
-                    <span className="mono-metric" style={{ color: '#f43f5e', fontWeight: 700 }}>
-                      {pulseMetrics.dislocatedAssets.length} {isES ? 'Disloc.' : 'Disloc.'}
-                    </span>
-                  </div>
-                </div>
-              }
-            />
-            {pulseMetrics.topAnomaly && (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.18rem', flexShrink: 0 }}>
-                <span className="mono-metric" style={{ fontSize: '0.52rem', color: 'var(--text-dim)', letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>
-                  {isES ? 'MAYOR ANOMALÍA' : 'TOP ANOMALY'}
-                </span>
-                <span
-                  className="mono-metric"
-                  style={{
-                    fontSize: '0.63rem',
-                    fontWeight: 700,
-                    padding: '0.2rem 0.5rem',
-                    borderRadius: '999px',
-                    backgroundColor: 'rgba(244, 63, 94, 0.16)',
-                    color: '#f43f5e',
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {pulseMetrics.topAnomaly.sym} {pulseMetrics.topAnomaly.anomalyScore.toFixed(3)}
-                </span>
-              </div>
-            )}
-          </div>
-
-          {/* PULSE 4: TOP VOLUME Z-SCORE DISLOCATIONS */}
-          <div
-            style={{
-              ...pulseCardStyle,
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.1rem' }}>
-              <span style={{ fontSize: '0.67rem', color: 'var(--text-dim)', fontWeight: 600, whiteSpace: 'nowrap' }}>
-                {isES ? 'Top Desvío Volumen (20d)' : 'Top Volume Z-Score (20d)'}
+            <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
+              {isES ? 'RÉGIMEN NORMAL (P-06)' : 'NORMAL REGIME (P-06)'}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '3px' }}>
+              <span className="mono-metric" style={{ fontSize: '19px', fontWeight: 900, color: '#10b981' }}>
+                {pulseMetrics.normalPct}%
               </span>
-              <span className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--text-dim)', whiteSpace: 'nowrap' }}>
-                24H SIGMA
+              <span className="mono-metric" style={{ fontSize: '12px', fontWeight: 700, color: '#94a3b8' }}>
+                ({pulseMetrics.normalCount}/{pulseMetrics.totalCount})
               </span>
             </div>
+            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
+              {pulseMetrics.topAnomaly
+                ? isES
+                  ? `Mayor anomalía: ${pulseMetrics.topAnomaly.sym} (${pulseMetrics.topAnomaly.anomalyScore.toFixed(2)})`
+                  : `Top anomaly: ${pulseMetrics.topAnomaly.sym} (${pulseMetrics.topAnomaly.anomalyScore.toFixed(2)})`
+                : isES
+                  ? 'Sin anomalías críticas'
+                  : 'No critical anomalies'}
+            </div>
+          </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.18rem' }}>
-              {pulseMetrics.topDislocations.map((item, idx) => (
-                <div
-                  key={item.sym}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'minmax(0, 1.25fr) minmax(0, 0.95fr) minmax(0, 0.8fr)',
-                    alignItems: 'center',
-                    gap: '0.4rem',
-                    fontSize: '0.69rem',
-                    lineHeight: 1.2,
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.36rem', minWidth: 0 }}>
-                    <span className="mono-metric" style={{ color: 'var(--text-dim)', fontSize: '0.6rem', flexShrink: 0 }}>
-                      0{idx + 1}
-                    </span>
-                    <span
-                      className="mono-metric"
-                      style={{
-                        fontWeight: 800,
-                        color: 'var(--text-main)',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                      }}
-                    >
-                      {item.sym}
-                    </span>
-                  </div>
-                  <span
-                    className="mono-metric"
-                    style={{
-                      color: 'var(--text-muted)',
-                      fontSize: '0.65rem',
-                      textAlign: 'right',
-                      fontVariantNumeric: 'tabular-nums',
-                    }}
-                  >
-                    {item.priceFormatted}
-                  </span>
-                  <span
-                    className="mono-metric"
-                    style={{
-                      fontWeight: 700,
-                      color: item.volumeZNum >= 0 ? '#10b981' : '#f43f5e',
-                      textAlign: 'right',
-                      fontVariantNumeric: 'tabular-nums',
-                    }}
-                  >
-                    {item.volumeZScore}
-                  </span>
-                </div>
-              ))}
+          {/* KPI 4: TOP VOLUME Z-SCORE DISLOCATIONS */}
+          <div
+            style={{
+              background: 'transparent',
+              border: '1px solid rgba(148, 163, 184, 0.22)',
+              borderLeft: `3px solid ${(pulseMetrics.topDislocations[0]?.volumeZNum ?? 1) >= 0 ? '#10b981' : '#f43f5e'}`,
+              borderRadius: '10px',
+              padding: '10px 14px',
+            }}
+          >
+            <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
+              {isES ? 'MAYOR DESVÍO VOLUMEN (20D)' : 'TOP VOLUME Z-SCORE (20D)'}
+            </div>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '3px' }}>
+              <span
+                className="mono-metric"
+                style={{
+                  fontSize: '19px',
+                  fontWeight: 900,
+                  color: (pulseMetrics.topDislocations[0]?.volumeZNum ?? 1) >= 0 ? '#10b981' : '#f43f5e',
+                }}
+              >
+                {pulseMetrics.topDislocations[0] ? pulseMetrics.topDislocations[0].volumeZScore : '—'}
+              </span>
+              {pulseMetrics.topDislocations[0] && (
+                <span className="mono-metric" style={{ fontSize: '12.5px', fontWeight: 800, color: '#f8fafc' }}>
+                  {pulseMetrics.topDislocations[0].sym}
+                </span>
+              )}
+            </div>
+            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {pulseMetrics.topDislocations
+                .slice(1, 3)
+                .map((d) => `${d.sym} (${d.volumeZScore})`)
+                .join(' • ')}
             </div>
           </div>
         </div>
@@ -2249,32 +2165,28 @@ export default function MarketAnomaliesView({
             flexShrink: 0,
           }}
         >
-          {/* Row 1: View Mode Switcher (Table / Orbital / Heatmap [+ Main Tools if v4-tab]) & Right-Aligned Main Tools */}
+          {/* Row 1: View Mode Switcher (Table / Orbital / Heatmap / Main Tools) in V010 Ghost Style */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.65rem', flexWrap: 'wrap', width: '100%' }}>
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                backgroundColor: 'rgba(8, 12, 22, 0.24)',
-                backdropFilter: 'blur(2px)',
-                padding: '0.22rem',
-                borderRadius: '999px',
-                border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
-                gap: '0.25rem',
+                backgroundColor: 'transparent',
+                padding: '0.18rem 0',
+                border: 'none',
+                gap: '1.35rem',
               }}
             >
               {[
                 {
                   id: 'table',
-                  icon: Table2,
                   label: isES ? 'Tabla' : 'Table',
                   desc: isES
-                    ? 'Tabla institucional con buscador integrado, sparklines 24h y métricas por clase de activo.'
-                    : 'Institutional table with integrated search, 24h sparklines, and asset-class specific metrics.',
+                    ? 'Tabla con buscador integrado, sparklines 24h y métricas por clase de activo.'
+                    : 'Table with integrated search, 24h sparklines, and asset-class specific metrics.',
                 },
                 {
                   id: 'orbital',
-                  icon: Orbit,
                   label: isES ? 'Orbital' : 'Orbital',
                   desc: isES
                     ? 'Topología orbital de 3 anillos concéntricos impulsada por el indicador seleccionado.'
@@ -2282,7 +2194,6 @@ export default function MarketAnomaliesView({
                 },
                 {
                   id: 'heatmap',
-                  icon: LayoutGrid,
                   label: isES ? 'Mapa de Calor' : 'Heatmap',
                   desc: isES
                     ? 'Mosaico proporcional de mercado coloreado según la métrica cuantitativa elegida.'
@@ -2292,24 +2203,19 @@ export default function MarketAnomaliesView({
                   ? [
                       {
                         id: 'tools',
-                        icon: Sparkles,
-                        label: 'Main Tools',
+                        label: isES ? 'Herramientas' : 'Main Tools',
                         desc: isES
-                          ? 'Lanzador de motores 3D de curvas soberanas, superficie de volatilidad, payoffs y FX.'
+                          ? 'Lanzador de curvas soberanas, superficie de volatilidad, payoffs y FX.'
                           : 'Launcher for 3D sovereign curves, volatility surfaces, options payoffs, and FX.',
                       },
                     ]
                   : []),
               ].map((mode) => {
-                const Icon = mode.icon;
                 const active = visualMode === mode.id;
                 return (
                   <HoverTooltip
                     key={mode.id}
                     title={mode.label}
-                    description={mode.desc}
-                    hint={isES ? 'Click para cambiar vista' : 'Click to switch view'}
-                    badge={mode.id.toUpperCase()}
                     placement="bottom-left"
                   >
                     <button
@@ -2317,19 +2223,17 @@ export default function MarketAnomaliesView({
                       style={{
                         display: 'inline-flex',
                         alignItems: 'center',
-                        gap: '0.4rem',
-                        fontSize: '0.72rem',
-                        fontWeight: active ? 700 : 600,
-                        padding: '0.3rem 0.9rem',
-                        borderRadius: '999px',
-                        border: active ? '1px solid var(--ui-accent)' : '1px solid transparent',
-                        backgroundColor: active ? 'rgba(var(--ui-accent-rgb), 0.18)' : 'transparent',
-                        color: active ? '#ffffff' : 'var(--text-dim)',
+                        fontSize: '14.5px',
+                        fontWeight: active ? 800 : 600,
+                        padding: '0.18rem 0.25rem',
+                        border: 'none',
+                        backgroundColor: 'transparent',
+                        color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.65)',
+                        textShadow: active ? '0 0 15px rgba(var(--ui-accent-rgb), 0.88)' : 'none',
                         cursor: 'pointer',
                         transition: 'all 0.15s ease',
                       }}
                     >
-                      <Icon size={13} />
                       <span>{mode.label}</span>
                     </button>
                   </HoverTooltip>
@@ -2337,45 +2241,32 @@ export default function MarketAnomaliesView({
               })}
             </div>
 
-            {/* PROPUESTA P02 (v2-right-bar) OR PROPUESTA P06 (v2-contextual): Horizontal Main Tools Capsule Centered on the Right */}
+            {/* PROPUESTA P02 (v2-right-bar) OR PROPUESTA P06 (v2-contextual): Horizontal Main Tools in V010 Ghost Style */}
             {(marketsToolsMode === 'v2-right-bar' || (marketsToolsMode === 'v2-contextual' && contextualTools.length > 0)) && (
               <div
                 style={{
                   marginLeft: 'auto',
                   display: 'inline-flex',
                   alignItems: 'center',
-                  backgroundColor: 'rgba(8, 12, 22, 0.24)',
-                  backdropFilter: 'blur(2px)',
-                  padding: '0.22rem 0.48rem',
-                  borderRadius: '999px',
-                  border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
-                  gap: '0.35rem',
+                  backgroundColor: 'transparent',
+                  padding: '0.18rem 0',
+                  border: 'none',
+                  gap: '1.15rem',
                   flexWrap: 'wrap',
                 }}
               >
-                <span
-                  style={{
-                    fontSize: '0.68rem',
-                    fontWeight: 700,
-                    color: 'var(--ui-accent)',
-                    padding: '0 0.35rem',
-                  }}
-                >
-                  Main Tools
-                </span>
                 {(marketsToolsMode === 'v2-right-bar' ? MAIN_TOOLS_ITEMS : contextualTools).map((qBtn) => (
-                  <HoverTooltip key={qBtn.id} title={qBtn.label} description={qBtn.desc} badge={qBtn.badge} placement="bottom-right">
+                  <HoverTooltip key={qBtn.id} title={qBtn.label} placement="bottom-right">
                     <button
                       type="button"
                       onClick={qBtn.action}
                       style={{
-                        fontSize: '0.67rem',
+                        fontSize: '13px',
                         fontWeight: 600,
-                        padding: '0.24rem 0.68rem',
-                        borderRadius: '999px',
-                        border: '1px solid rgba(255, 255, 255, 0.14)',
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                        color: 'var(--text-main)',
+                        padding: '0.18rem 0.25rem',
+                        border: 'none',
+                        backgroundColor: 'transparent',
+                        color: 'rgba(148, 163, 184, 0.78)',
                         cursor: 'pointer',
                         whiteSpace: 'nowrap',
                         transition: 'all 0.15s ease',
@@ -2492,31 +2383,23 @@ export default function MarketAnomaliesView({
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.35rem',
-                  padding: '0.24rem 0.55rem',
-                  borderRadius: '999px',
-                  backgroundColor: 'rgba(8, 12, 22, 0.24)',
-                  backdropFilter: 'blur(2px)',
-                  border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
+                  gap: '14px',
+                  padding: '2px 0',
+                  backgroundColor: 'transparent',
+                  border: 'none',
                   flexWrap: 'wrap',
                 }}
               >
-                <div
+                <span
                   className="mono-metric"
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '0.35rem',
-                    fontSize: '0.62rem',
+                    fontSize: '12px',
                     fontWeight: 800,
-                    color: 'var(--ui-accent)',
-                    paddingLeft: '0.35rem',
-                    paddingRight: '0.25rem',
+                    color: '#64748b',
                   }}
                 >
-                  <SlidersHorizontal size={12} style={{ color: 'var(--ui-accent)' }} />
-                  <span>{isES ? 'INDICADOR:' : 'INDICATOR:'}</span>
-                </div>
+                  {isES ? 'INDICADOR:' : 'INDICATOR:'}
+                </span>
 
                 {METRIC_OPTIONS.map((m) => {
                   const active = activeMetric === m.id;
@@ -2525,13 +2408,13 @@ export default function MarketAnomaliesView({
                       key={m.id}
                       onClick={() => setActiveMetric(m.id)}
                       style={{
-                        fontSize: '0.68rem',
-                        fontWeight: active ? 700 : 500,
-                        padding: '0.24rem 0.7rem',
-                        borderRadius: '999px',
-                        border: active ? '1px solid var(--ui-accent)' : '1px solid transparent',
-                        backgroundColor: active ? 'rgba(var(--ui-accent-rgb), 0.18)' : 'transparent',
-                        color: active ? '#ffffff' : 'var(--text-dim)',
+                        fontSize: '12.5px',
+                        fontWeight: active ? 800 : 600,
+                        padding: '2px 4px',
+                        border: 'none',
+                        backgroundColor: 'transparent',
+                        color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.68)',
+                        textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb), 0.85)' : 'none',
                         cursor: 'pointer',
                         transition: 'all 0.15s ease',
                       }}
@@ -3522,55 +3405,57 @@ export default function MarketAnomaliesView({
         })()}
 
         {/* ==================================================================== */}
-        {/* MODE 1 (DEFAULT): NON-BOXY CAPSULE TABLE WITH INTEGRATED SEARCH      */}
+        {/* MODE 1 (DEFAULT): FLAT TRANSPARENT TABLE WITH 1PX DIVIDERS (OPT 1)   */}
         {/* ==================================================================== */}
         {visualMode === 'table' && (
           <div
             style={{
               width: '100%',
-              padding: '0.1rem 0.1rem',
+              borderRadius: '10px',
+              border: '1px solid rgba(148, 163, 184, 0.22)',
+              backgroundColor: 'transparent',
+              padding: '8px 14px 12px',
             }}
           >
             <table
               style={{
                 width: '100%',
-                borderCollapse: 'separate',
-                borderSpacing: '0 0.48rem',
-                fontSize: '0.76rem',
+                borderCollapse: 'collapse',
+                borderSpacing: 0,
+                fontSize: '13.5px',
                 textAlign: 'right',
               }}
             >
               <thead>
                 <tr
                   style={{
-                    color: 'var(--text-dim)',
-                    fontSize: '0.67rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.03em',
-                    backgroundColor: 'rgba(8, 12, 22, 0.28)',
-                    backdropFilter: 'blur(2px)',
+                    color: '#64748b',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    backgroundColor: 'transparent',
+                    borderBottom: '1px solid rgba(148, 163, 184, 0.16)',
                   }}
                 >
-                  {/* INTEGRATED SEARCH INSIDE THE ASSET / TICKER COLUMN HEADER (NO '#' COLUMN) */}
-                  <th style={{ padding: '0.35rem 0.75rem', textAlign: 'left', minWidth: '230px' }}>
+                  {/* INTEGRATED SEARCH INSIDE THE ASSET / TICKER COLUMN HEADER */}
+                  <th style={{ padding: '6px 8px 10px', textAlign: 'left', minWidth: '230px' }}>
                     <div
                       style={{
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '0.4rem',
-                        backgroundColor: 'rgba(8, 12, 22, 0.35)',
+                        backgroundColor: 'transparent',
                         border: assetSearch
                           ? '1px solid var(--ui-accent)'
-                          : '1px solid rgba(255, 255, 255, 0.16)',
-                        borderRadius: '999px',
-                        padding: '0.26rem 0.7rem',
+                          : '1px solid rgba(148, 163, 184, 0.24)',
+                        borderRadius: '7px',
+                        padding: '4px 10px',
                         width: '215px',
                       }}
                     >
                       <Search size={12} strokeWidth={2.3} style={{ color: 'var(--text-dim)', flexShrink: 0 }} />
                       <input
                         type="text"
-                        placeholder={isES ? 'Buscar ticker o activo (↑↓ Enter)...' : 'Search ticker or asset (↑↓ Enter)...'}
+                        placeholder={isES ? 'Buscar ticker o activo...' : 'Search ticker or asset...'}
                         value={assetSearch}
                         onChange={(e) => {
                           setAssetSearch(e.target.value);
@@ -3597,7 +3482,7 @@ export default function MarketAnomaliesView({
                           background: 'transparent',
                           border: 'none',
                           color: 'var(--text-main)',
-                          fontSize: '0.7rem',
+                          fontSize: '12.5px',
                           fontWeight: 600,
                           outline: 'none',
                           width: '100%',
@@ -3622,24 +3507,24 @@ export default function MarketAnomaliesView({
                     </div>
                   </th>
 
-                  <th onClick={() => handleSort('price')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
+                  <th onClick={() => handleSort('price')} style={{ padding: '6px 10px 10px', cursor: 'pointer' }}>
                     {isES ? 'Precio' : 'Price'}
                   </th>
-                  <th onClick={() => handleSort('chg')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
+                  <th onClick={() => handleSort('chg')} style={{ padding: '6px 10px 10px', cursor: 'pointer' }}>
                     24h %
                   </th>
-                  <th style={{ padding: '0.45rem 0.85rem', textAlign: 'center' }}>
+                  <th style={{ padding: '6px 10px 10px', textAlign: 'center' }}>
                     {isES ? 'Tendencia' : 'Sparkline'}
                   </th>
-                  <th onClick={() => handleSort('vol')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
+                  <th onClick={() => handleSort('vol')} style={{ padding: '6px 10px 10px', cursor: 'pointer' }}>
                     {isES ? 'Volumen (24h)' : 'Volume (24h)'}
                   </th>
                   {categoryFilter === 'ALL' ? (
                     <>
-                      <th onClick={() => handleSort('zscore')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
+                      <th onClick={() => handleSort('zscore')} style={{ padding: '6px 10px 10px', cursor: 'pointer' }}>
                         Vol Z-Score (20d)
                       </th>
-                      <th onClick={() => handleSort('rvol')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
+                      <th onClick={() => handleSort('rvol')} style={{ padding: '6px 10px 10px', cursor: 'pointer' }}>
                         {isES ? 'Vol. Realizada' : 'Realized Vol'}
                       </th>
                     </>
@@ -3648,18 +3533,18 @@ export default function MarketAnomaliesView({
                       const sampleSpec = getAssetClassSpecificMetrics(screenerRows[0] || { cat: categoryFilter }, isES);
                       return (
                         <>
-                          <th style={{ padding: '0.45rem 0.85rem', color: '#10b981' }}>{sampleSpec.col1Label}</th>
-                          <th style={{ padding: '0.45rem 0.85rem', color: '#38bdf8' }}>{sampleSpec.col2Label}</th>
+                          <th style={{ padding: '6px 10px 10px', color: '#10b981' }}>{sampleSpec.col1Label}</th>
+                          <th style={{ padding: '6px 10px 10px', color: '#38bdf8' }}>{sampleSpec.col2Label}</th>
                         </>
                       );
                     })()
                   )}
-                  <th onClick={() => handleSort('rsi')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
+                  <th onClick={() => handleSort('rsi')} style={{ padding: '6px 10px 10px', cursor: 'pointer' }}>
                     RSI (14)
                   </th>
                   <th
                     onClick={() => handleSort('anomaly')}
-                    style={{ padding: '0.45rem 1rem', cursor: 'pointer' }}
+                    style={{ padding: '6px 10px 10px', cursor: 'pointer' }}
                   >
                     Anomaly Score (P-06)
                   </th>
@@ -3675,30 +3560,27 @@ export default function MarketAnomaliesView({
                   const isKeyHighlighted = Boolean(assetSearch.trim()) && rowIdx === l1SelectedIndex;
 
                   const cellBase = {
-                    backgroundColor: isKeyHighlighted ? 'rgba(var(--ui-accent-rgb), 0.16)' : 'rgba(8, 12, 22, 0.22)',
-                    backdropFilter: 'blur(2px)',
-                    borderTop: isKeyHighlighted ? '1px solid var(--ui-accent)' : '1px solid rgba(255, 255, 255, 0.13)',
-                    borderBottom: isKeyHighlighted ? '1px solid var(--ui-accent)' : '1px solid rgba(255, 255, 255, 0.13)',
+                    backgroundColor: isKeyHighlighted ? 'rgba(var(--ui-accent-rgb), 0.14)' : 'transparent',
+                    borderTop: isKeyHighlighted ? '1px solid var(--ui-accent)' : 'none',
+                    borderBottom: isKeyHighlighted ? '1px solid var(--ui-accent)' : '1px solid rgba(148, 163, 184, 0.12)',
                   };
 
                   return (
                     <tr
                       key={row.sym}
                       onClick={() => handleOpenAssetDetail(row.sym)}
-                      style={{ cursor: 'pointer', transition: 'transform 0.15s ease' }}
+                      style={{ cursor: 'pointer' }}
                     >
-                      {/* TICKER & NAME (WITH INTEGRATED WATCHLIST STAR ON LEFT, NO '#' COLUMN) */}
+                      {/* TICKER & NAME (FLAT TRANSPARENT ROW WITHOUT CIRCULAR AVATAR) */}
                       <td
                         style={{
                           ...cellBase,
-                          borderLeft: isKeyHighlighted ? '1px solid var(--ui-accent)' : '1px solid rgba(255, 255, 255, 0.13)',
-                          borderTopLeftRadius: '16px',
-                          borderBottomLeftRadius: '16px',
-                          padding: '0.75rem 0.85rem',
+                          borderLeft: isKeyHighlighted ? '1px solid var(--ui-accent)' : 'none',
+                          padding: '10px 8px',
                           textAlign: 'left',
                         }}
                       >
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                           <button
                             type="button"
                             onClick={(e) => {
@@ -3711,82 +3593,45 @@ export default function MarketAnomaliesView({
                                   ? 'Quitar de Watchlist'
                                   : 'Remove from Watchlist'
                                 : isES
-                                  ? 'Agregar a Watchlist para evaluar en Portfolio'
-                                  : 'Add to Watchlist for Portfolio evaluation'
+                                  ? 'Agregar a Watchlist'
+                                  : 'Add to Watchlist'
                             }
                             style={{
                               background: 'transparent',
                               border: 'none',
                               padding: 0,
                               cursor: 'pointer',
-                              fontSize: '0.9rem',
+                              fontSize: '13.5px',
                               lineHeight: 1,
-                              color: watchlistSyms.includes(row.sym) ? '#fbbf24' : 'rgba(255,255,255,0.24)',
-                              transition: 'color 0.15s ease, transform 0.15s ease',
+                              color: watchlistSyms.includes(row.sym) ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.35)',
                               flexShrink: 0,
                             }}
                           >
                             {watchlistSyms.includes(row.sym) ? '★' : '☆'}
                           </button>
-                          <div
-                            className="mono-metric"
-                            style={{
-                              width: '28px',
-                              height: '28px',
-                              borderRadius: '50%',
-                              background: 'radial-gradient(circle at 30% 30%, rgba(16, 185, 129, 0.22), rgba(15, 23, 42, 0.85))',
-                              border: '1px solid rgba(255, 255, 255, 0.12)',
-                              display: 'flex',
-                              alignItems: 'center',
-                              justifyContent: 'center',
-                              fontSize: '0.64rem',
-                              fontWeight: 800,
-                              color: '#10b981',
-                              flexShrink: 0,
-                            }}
-                          >
-                            {row.sym.slice(0, 2)}
-                          </div>
                           <div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                              <span className="mono-metric" style={{ fontWeight: 800, color: 'var(--text-main)', fontSize: '0.82rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+                              <span className="mono-metric" style={{ fontWeight: 800, color: '#ffffff', fontSize: '13.5px' }}>
                                 {row.sym}
                               </span>
-                              <span
-                                className="mono-metric"
-                                style={{
-                                  fontSize: '0.55rem',
-                                  padding: '0.07rem 0.42rem',
-                                  borderRadius: '999px',
-                                  backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                                  color: 'var(--text-dim)',
-                                }}
-                              >
-                                {row.cat}
-                              </span>
+                              <span style={{ fontSize: '12px', color: '#94a3b8' }}>{row.name}</span>
                             </div>
-                            <div style={{ fontSize: '0.66rem', color: 'var(--text-dim)' }}>{row.name}</div>
                           </div>
                         </div>
                       </td>
 
                       {/* PRICE */}
-                      <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem', fontWeight: 700, color: 'var(--text-main)' }}>
+                      <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', fontWeight: 700, color: '#f8fafc', fontSize: '13.5px' }}>
                         {row.priceFormatted}
                       </td>
 
-                      {/* 24H % PILL */}
-                      <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem' }}>
+                      {/* 24H % */}
+                      <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px' }}>
                         <span
                           style={{
-                            display: 'inline-block',
-                            padding: '0.18rem 0.6rem',
-                            borderRadius: '999px',
-                            fontWeight: 700,
-                            fontSize: '0.72rem',
-                            color: chgEval.textColor,
-                            background: chgEval.bgGradient,
-                            border: `1px solid ${chgEval.color}55`,
+                            fontWeight: 800,
+                            fontSize: '13.5px',
+                            color: chgEval.color,
                           }}
                         >
                           {row.chg}
@@ -3794,18 +3639,18 @@ export default function MarketAnomaliesView({
                       </td>
 
                       {/* SPARKLINE */}
-                      <td style={{ ...cellBase, padding: '0.75rem 0.85rem', textAlign: 'center' }}>
+                      <td style={{ ...cellBase, padding: '10px 10px', textAlign: 'center' }}>
                         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <MiniSparkline sym={row.sym} isPos={isPos} width={94} height={34} />
+                          <MiniSparkline sym={row.sym} isPos={isPos} width={88} height={28} />
                         </div>
                       </td>
 
                       {/* VOLUME (24H) */}
-                      <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem', color: 'var(--text-main)' }}>
+                      <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: '#e2e8f0', fontSize: '13px' }}>
                         <div>{row.vol24h}</div>
                         <div
                           style={{
-                            fontSize: '0.61rem',
+                            fontSize: '11px',
                             color: row.volChg24h.startsWith('+') ? '#10b981' : '#f43f5e',
                           }}
                         >
@@ -3816,23 +3661,10 @@ export default function MarketAnomaliesView({
                       {/* VOL Z-SCORE & REALIZED VOL (WHEN ALL) OR CATEGORY-SPECIFIC METRICS */}
                       {categoryFilter === 'ALL' ? (
                         <>
-                          <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem' }}>
-                            <span
-                              style={{
-                                display: 'inline-block',
-                                padding: '0.18rem 0.6rem',
-                                borderRadius: '999px',
-                                fontWeight: 700,
-                                fontSize: '0.72rem',
-                                color: zEval.textColor,
-                                background: zEval.bgGradient,
-                                border: `1px solid ${zEval.color}55`,
-                              }}
-                            >
-                              {row.volumeZScore}
-                            </span>
+                          <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', fontWeight: 800, fontSize: '13px', color: zEval.color }}>
+                            {row.volumeZScore}
                           </td>
-                          <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem', color: 'var(--text-muted)' }}>
+                          <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: '#cbd5e1', fontSize: '13px' }}>
                             {row.realizedVol}
                           </td>
                         </>
@@ -3841,13 +3673,13 @@ export default function MarketAnomaliesView({
                           const spec = getAssetClassSpecificMetrics(row, isES);
                           return (
                             <>
-                              <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem', color: '#fff', fontWeight: 700 }}>
+                              <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: '#fff', fontWeight: 700, fontSize: '13px' }}>
                                 <div>{spec.col1Val}</div>
-                                <div style={{ fontSize: '0.6rem', color: 'var(--text-dim)', fontWeight: 500 }}>{spec.col1Sub}</div>
+                                <div style={{ fontSize: '11px', color: '#64748b', fontWeight: 500 }}>{spec.col1Sub}</div>
                               </td>
-                              <td className="mono-metric" style={{ ...cellBase, padding: '0.75rem 0.85rem', color: 'var(--text-muted)', fontWeight: 700 }}>
+                              <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: '#cbd5e1', fontWeight: 700, fontSize: '13px' }}>
                                 <div style={{ color: '#fff' }}>{spec.col2Val}</div>
-                                <div style={{ fontSize: '0.6rem', color: 'var(--text-dim)', fontWeight: 500 }}>{spec.col2Sub}</div>
+                                <div style={{ fontSize: '11px', color: '#64748b', fontWeight: 500 }}>{spec.col2Sub}</div>
                               </td>
                             </>
                           );
@@ -3859,8 +3691,9 @@ export default function MarketAnomaliesView({
                         className="mono-metric"
                         style={{
                           ...cellBase,
-                          padding: '0.75rem 0.85rem',
-                          fontWeight: 700,
+                          padding: '10px 10px',
+                          fontWeight: 800,
+                          fontSize: '13.5px',
                           color: rsiEval.color,
                         }}
                       >
@@ -3872,37 +3705,22 @@ export default function MarketAnomaliesView({
                         className="mono-metric"
                         style={{
                           ...cellBase,
-                          borderRight: '1px solid rgba(255, 255, 255, 0.07)',
-                          borderTopRightRadius: '16px',
-                          borderBottomRightRadius: '16px',
-                          padding: '0.75rem 1rem',
+                          borderRight: isKeyHighlighted ? '1px solid var(--ui-accent)' : 'none',
+                          padding: '10px 10px',
                         }}
                       >
-                        <div
+                        <span style={{ fontWeight: 800, color: anomEval.color, fontSize: '13.5px', marginRight: '6px' }}>
+                          {row.anomalyScore.toFixed(3)}
+                        </span>
+                        <span
                           style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.45rem',
-                            padding: '0.2rem 0.65rem',
-                            borderRadius: '999px',
-                            background: anomEval.bgGradient,
-                            border: `1px solid ${anomEval.color}66`,
+                            fontSize: '11px',
+                            fontWeight: 700,
+                            color: '#94a3b8',
                           }}
                         >
-                          <span style={{ fontWeight: 800, color: anomEval.textColor, fontSize: '0.78rem' }}>
-                            {row.anomalyScore.toFixed(3)}
-                          </span>
-                          <span
-                            style={{
-                              fontSize: '0.56rem',
-                              fontWeight: 800,
-                              color: anomEval.textColor,
-                              letterSpacing: '0.03em',
-                            }}
-                          >
-                            {row.regime}
-                          </span>
-                        </div>
+                          {row.regime}
+                        </span>
                       </td>
                     </tr>
                   );
@@ -4943,12 +4761,10 @@ export default function MarketAnomaliesView({
                       className="mono-metric"
                       style={{
                         padding: '0.42rem 0.82rem',
-                        borderRadius: '16px',
-                        backgroundColor: k.isClassSpecific ? 'rgba(var(--ui-accent-rgb), 0.09)' : 'rgba(10, 15, 26, 0.52)',
-                        border: k.isClassSpecific
-                          ? '1px solid rgba(var(--ui-accent-rgb), 0.42)'
-                          : '1px solid rgba(255, 255, 255, 0.1)',
-                        boxShadow: k.isClassSpecific ? '0 0 16px rgba(var(--ui-accent-rgb), 0.12)' : 'none',
+                        borderRadius: '10px',
+                        backgroundColor: 'transparent',
+                        border: '1px solid rgba(148, 163, 184, 0.22)',
+                        borderLeft: `3px solid ${k.color || 'var(--ui-accent, #10b981)'}`,
                         display: 'flex',
                         flexDirection: 'column',
                         gap: '0.12rem',
@@ -4975,27 +4791,28 @@ export default function MarketAnomaliesView({
             );
           })()
         ) : (
-          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'stretch', flexWrap: 'wrap' }}>
             {/* 1. Research Stance + Asset-Class News Sensitivity Pill */}
             <div
               className="mono-metric"
               style={{
-                padding: '0.42rem 0.85rem',
-                borderRadius: '16px',
-                backgroundColor: 'rgba(var(--ui-accent-rgb), 0.09)',
-                border: '1px solid rgba(var(--ui-accent-rgb), 0.42)',
-                boxShadow: '0 0 16px rgba(var(--ui-accent-rgb), 0.12)',
+                padding: '8px 12px',
+                borderRadius: '10px',
+                backgroundColor: 'transparent',
+                border: '1px solid rgba(148, 163, 184, 0.22)',
+                borderLeft: `3px solid ${researchBrief.stance === 'BULLISH' ? '#10b981' : '#f43f5e'}`,
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '0.12rem',
+                justifyContent: 'center',
+                gap: '2px',
               }}
             >
-              <span style={{ fontSize: '0.48rem', fontWeight: 700, color: 'var(--ui-accent)', letterSpacing: '0.04em' }}>
+              <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8' }}>
                 {assetSensitivity.shortLabel[langCode] || assetSensitivity.shortLabel.EN}
               </span>
               <span
                 style={{
-                  fontSize: '0.76rem',
+                  fontSize: '15px',
                   fontWeight: 800,
                   color: researchBrief.stance === 'BULLISH' ? '#10b981' : '#f43f5e',
                 }}
@@ -5008,29 +4825,31 @@ export default function MarketAnomaliesView({
             <div
               className="mono-metric"
               style={{
-                padding: '0.42rem 0.85rem',
-                borderRadius: '16px',
-                backgroundColor: 'rgba(10, 15, 26, 0.52)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                padding: '8px 12px',
+                borderRadius: '10px',
+                backgroundColor: 'transparent',
+                border: '1px solid rgba(148, 163, 184, 0.22)',
+                borderLeft: `3px solid ${researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e'}`,
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '0.12rem',
+                justifyContent: 'center',
+                gap: '2px',
               }}
             >
-              <span style={{ fontSize: '0.48rem', fontWeight: 700, color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
+              <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8' }}>
                 {isES ? 'NOTA PONDERADA TOTAL' : 'WEIGHTED COMPOSITE'}
               </span>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem' }}>
                 <span
                   style={{
-                    fontSize: '0.78rem',
+                    fontSize: '16px',
                     fontWeight: 800,
                     color: researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e',
                   }}
                 >
                   {researchBrief.compositeFormatted}
                 </span>
-                <span style={{ fontSize: '0.52rem', color: 'var(--text-dim)' }}>
+                <span style={{ fontSize: '11.5px', color: '#64748b' }}>
                   ({isES ? 'Fund.' : 'Filings'} {researchBrief.filingNetFormatted} • {isES ? 'Not.' : 'News'} {assetFinbertPolarity.formattedInt})
                 </span>
               </div>
@@ -5040,21 +4859,23 @@ export default function MarketAnomaliesView({
             <div
               className="mono-metric"
               style={{
-                padding: '0.42rem 0.95rem',
-                borderRadius: '16px',
-                backgroundColor: 'rgba(10, 15, 26, 0.52)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                padding: '8px 12px',
+                borderRadius: '10px',
+                backgroundColor: 'transparent',
+                border: '1px solid rgba(148, 163, 184, 0.22)',
+                borderLeft: `3px solid ${assetFinbertPolarity.color}`,
                 minWidth: '205px',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '0.2rem',
+                justifyContent: 'center',
+                gap: '4px',
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                <span style={{ fontSize: '0.48rem', fontWeight: 700, color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
+                <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8' }}>
                   {isES ? 'SENTIMIENTO NOTICIAS' : 'NEWS SENTIMENT'}
                 </span>
-                <span style={{ fontSize: '0.76rem', fontWeight: 800, color: assetFinbertPolarity.color }}>
+                <span style={{ fontSize: '15px', fontWeight: 800, color: assetFinbertPolarity.color }}>
                   {assetFinbertPolarity.formattedInt}
                 </span>
               </div>
@@ -5185,7 +5006,7 @@ export default function MarketAnomaliesView({
                   { label: 'INSTITUTIONAL VWAP', val: vwapVal, sub: showVwap ? 'ACTIVE OVERLAY' : 'HIDDEN', color: '#f59e0b', accent: showVwap },
                   { label: 'BOLLINGER (20, 2σ)', val: currentAsset.indicators.bbWidth, sub: showBollinger ? 'BANDS ACTIVE' : 'BAND WIDTH', color: '#a78bfa', accent: showBollinger },
                   { label: 'RSI (14) MOMENTUM', val: `${currentAsset.indicators.rsi14}`, sub: currentAsset.indicators.macdStatus, color: '#10b981', accent: false },
-                  { label: '24H VOLUME FLOW', val: currentAsset.vol24h, sub: `${currentAsset.volChg >= 0 ? '+' : ''}${currentAsset.volChg}% vs 20d`, color: '#ffffff', accent: false },
+                  { label: '24H VOLUME FLOW', val: currentAsset.vol24h, sub: `${anomalyProfile.volumeZScore} vs 20d`, color: '#ffffff', accent: false },
                   { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: anomalyProfile.realizedVol + ' RVol', color: '#10b981', accent: false },
                 ];
               }
@@ -5214,7 +5035,7 @@ export default function MarketAnomaliesView({
               if (analysisLens === 'microstructure') {
                 return [
                   { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: showSubChart === 'zscore' ? 'SUB-PANE ACTIVE' : '20D SIGMA', color: '#10b981', accent: showSubChart === 'zscore' },
-                  { label: '24H VOLUME FLOW', val: currentAsset.vol24h, sub: showSubChart === 'vol' ? 'SUB-PANE ACTIVE' : `${currentAsset.volChg >= 0 ? '+' : ''}${currentAsset.volChg}%`, color: '#38bdf8', accent: showSubChart === 'vol' },
+                  { label: '24H VOLUME FLOW', val: currentAsset.vol24h, sub: showSubChart === 'vol' ? 'SUB-PANE ACTIVE' : anomalyProfile.volumeZScore, color: '#38bdf8', accent: showSubChart === 'vol' },
                   { label: 'SPREAD DISLOCATION', val: anomalyProfile.spreadDislocation, sub: 'ORDERBOOK DEPTH', color: '#10b981', accent: false },
                   { label: 'BOLLINGER WIDTH', val: currentAsset.indicators.bbWidth, sub: 'VOLATILITY REGIME', color: '#a78bfa', accent: false },
                   { label: 'REALIZED VOL', val: anomalyProfile.realizedVol, sub: '30D ANNUALIZED', color: '#ffffff', accent: false },
@@ -5385,15 +5206,14 @@ export default function MarketAnomaliesView({
                 {/* ============================================================ */}
                 <div
                   style={{
-                    padding: '0.75rem 0.82rem',
-                    borderRadius: '18px',
-                    backgroundColor: 'rgba(8, 12, 22, 0.56)',
-                    backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(var(--ui-accent-rgb), 0.32)',
+                    padding: '14px 16px',
+                    borderRadius: '10px',
+                    backgroundColor: 'transparent',
+                    border: '1px solid rgba(148, 163, 184, 0.22)',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    gap: '0.52rem',
+                    justifyContent: 'flex-start',
+                    gap: '14px',
                     minHeight: 0,
                   }}
                 >
@@ -5402,14 +5222,13 @@ export default function MarketAnomaliesView({
                     <div
                       className="mono-metric"
                       style={{
-                        fontSize: '0.48rem',
-                        color: 'var(--ui-accent)',
-                        fontWeight: 800,
-                        marginBottom: '0.28rem',
-                        letterSpacing: '0.05em',
+                        fontSize: '12px',
+                        color: '#ffffff',
+                        fontWeight: 700,
+                        marginBottom: '0.35rem',
                       }}
                     >
-                      {isES ? '1. LENTE DE ANÁLISIS (4.2 A 4.8)' : '1. ANALYSIS LENS (4.2 TO 4.8)'}
+                      {isES ? 'Lente de Análisis' : 'Analysis Lens'}
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.25rem' }}>
                       {[
@@ -5446,19 +5265,19 @@ export default function MarketAnomaliesView({
                               setRailSearchQuery('');
                               setRailSearchOpen(false);
                             }}
-                            className="mono-metric"
                             style={{
-                              fontSize: '0.58rem',
+                              fontSize: '12px',
                               fontWeight: active ? 800 : 600,
-                              padding: '0.26rem 0.42rem',
-                              borderRadius: '9px',
-                              border: active ? '1px solid rgba(16, 185, 129, 0.52)' : '1px solid rgba(255, 255, 255, 0.08)',
-                              backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'rgba(255, 255, 255, 0.03)',
-                              color: active ? '#ffffff' : 'var(--text-dim)',
+                              padding: '4px 6px',
+                              border: 'none',
+                              background: 'transparent',
+                              color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                              textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                               cursor: 'pointer',
                               whiteSpace: 'nowrap',
                               overflow: 'hidden',
                               textOverflow: 'ellipsis',
+                              textAlign: 'left',
                             }}
                           >
                             {lens.label}
@@ -5484,14 +5303,13 @@ export default function MarketAnomaliesView({
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        fontSize: '0.48rem',
-                        color: 'var(--ui-accent)',
-                        fontWeight: 800,
-                        letterSpacing: '0.05em',
+                        fontSize: '12px',
+                        color: '#ffffff',
+                        fontWeight: 700,
                       }}
                     >
-                      <span>{isES ? '2. SUB-MODO & BUSCADOR' : '2. SUB-MODE & SEARCH'}</span>
-                      <span style={{ color: 'var(--text-dim)' }}>
+                      <span>{isES ? 'Configuración' : 'Sub-Mode & Search'}</span>
+                      <span style={{ color: '#94a3b8', fontSize: '11.5px' }}>
                         {isRatesCurveMode
                           ? `${selectedCurveCountry} • 42 PAÍSES`
                           : isFxCrossMode
@@ -5519,17 +5337,16 @@ export default function MarketAnomaliesView({
                               key={tool.label}
                               type="button"
                               onClick={tool.toggle}
-                              className="mono-metric"
                               style={{
-                                fontSize: '0.56rem',
+                                fontSize: '11.5px',
                                 fontWeight: tool.active ? 800 : 600,
-                                padding: '0.2rem 0.42rem',
-                                borderRadius: '8px',
-                                border: tool.active ? `1px solid ${tool.color}` : '1px solid rgba(255,255,255,0.09)',
-                                backgroundColor: tool.active ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.02)',
-                                color: tool.active ? tool.color : 'var(--text-dim)',
+                                padding: '3px 6px',
+                                border: 'none',
+                                background: 'transparent',
+                                color: tool.active ? tool.color : 'rgba(148, 163, 184, 0.68)',
+                                textShadow: tool.active ? `0 0 10px ${tool.color}` : 'none',
                                 cursor: 'pointer',
-                                textAlign: 'center',
+                                textAlign: 'left',
                               }}
                             >
                               {tool.label}
@@ -5834,16 +5651,16 @@ export default function MarketAnomaliesView({
                                 key={pane.id}
                                 type="button"
                                 onClick={() => setShowSubChart(pane.id)}
-                                className="mono-metric"
                                 style={{
-                                  fontSize: '0.57rem',
+                                  fontSize: '11.5px',
                                   fontWeight: active ? 800 : 600,
-                                  padding: '0.22rem 0.42rem',
-                                  borderRadius: '8px',
-                                  border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.09)',
-                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.16)' : 'rgba(255,255,255,0.02)',
-                                  color: active ? '#10b981' : 'var(--text-dim)',
+                                  padding: '3px 6px',
+                                  border: 'none',
+                                  background: 'transparent',
+                                  color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                  textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                   cursor: 'pointer',
+                                  textAlign: 'left',
                                 }}
                               >
                                 {pane.label}
@@ -5992,15 +5809,14 @@ export default function MarketAnomaliesView({
                                 key={sub.id}
                                 type="button"
                                 onClick={() => setRatesSubView(sub.id)}
-                                className="mono-metric"
                                 style={{
-                                  fontSize: '0.56rem',
+                                  fontSize: '11.5px',
                                   fontWeight: active ? 800 : 600,
-                                  padding: '0.22rem 0.35rem',
-                                  borderRadius: '8px',
-                                  border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.09)',
-                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'rgba(255,255,255,0.02)',
-                                  color: active ? '#10b981' : 'var(--text-dim)',
+                                  padding: '3px 4px',
+                                  border: 'none',
+                                  background: 'transparent',
+                                  color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                  textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                   cursor: 'pointer',
                                 }}
                               >
@@ -6175,13 +5991,13 @@ export default function MarketAnomaliesView({
                               className="mono-metric"
                               style={{
                                 flex: 1,
-                                fontSize: '0.54rem',
+                                fontSize: '11.5px',
                                 fontWeight: fxAmount === amt ? 800 : 600,
-                                padding: '0.2rem 0.28rem',
-                                borderRadius: '8px',
-                                border: fxAmount === amt ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.1)',
-                                backgroundColor: fxAmount === amt ? 'rgba(16,185,129,0.18)' : 'transparent',
-                                color: fxAmount === amt ? '#10b981' : 'var(--text-dim)',
+                                padding: '2px 4px',
+                                border: 'none',
+                                background: 'transparent',
+                                color: fxAmount === amt ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                textShadow: fxAmount === amt ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                 cursor: 'pointer',
                               }}
                             >
@@ -6200,12 +6016,11 @@ export default function MarketAnomaliesView({
                             title={isES ? 'Invertir par de divisas' : 'Swap currency pair'}
                             className="mono-metric"
                             style={{
-                              backgroundColor: 'rgba(255,255,255,0.08)',
-                              color: '#ffffff',
-                              border: '1px solid rgba(255,255,255,0.18)',
-                              borderRadius: '8px',
-                              padding: '0.18rem 0.45rem',
-                              fontSize: '0.62rem',
+                              background: 'transparent',
+                              color: 'var(--ui-accent, #10b981)',
+                              border: 'none',
+                              padding: '2px 6px',
+                              fontSize: '13px',
                               fontWeight: 800,
                               cursor: 'pointer',
                             }}
@@ -6473,16 +6288,16 @@ export default function MarketAnomaliesView({
                                 key={sub.id}
                                 type="button"
                                 onClick={() => setCommoditySubView(sub.id)}
-                                className="mono-metric"
                                 style={{
-                                  fontSize: '0.57rem',
+                                  fontSize: '11.5px',
                                   fontWeight: active ? 800 : 600,
-                                  padding: '0.22rem 0.4rem',
-                                  borderRadius: '8px',
-                                  border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.09)',
-                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'rgba(255,255,255,0.02)',
-                                  color: active ? '#10b981' : 'var(--text-dim)',
+                                  padding: '3px 6px',
+                                  border: 'none',
+                                  background: 'transparent',
+                                  color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                  textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                   cursor: 'pointer',
+                                  textAlign: 'left',
                                 }}
                               >
                                 {sub.label}
@@ -6632,15 +6447,14 @@ export default function MarketAnomaliesView({
                                 key={sub.id}
                                 type="button"
                                 onClick={() => setOptionsSubView(sub.id)}
-                                className="mono-metric"
                                 style={{
-                                  fontSize: '0.56rem',
+                                  fontSize: '11.5px',
                                   fontWeight: active ? 800 : 600,
-                                  padding: '0.22rem 0.35rem',
-                                  borderRadius: '8px',
-                                  border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.09)',
-                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'rgba(255,255,255,0.02)',
-                                  color: active ? '#10b981' : 'var(--text-dim)',
+                                  padding: '3px 4px',
+                                  border: 'none',
+                                  background: 'transparent',
+                                  color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                  textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                   cursor: 'pointer',
                                 }}
                               >
@@ -6784,19 +6598,19 @@ export default function MarketAnomaliesView({
                                   key={st.id}
                                   type="button"
                                   onClick={() => setSelectedOptStrategy(st.id)}
-                                  className="mono-metric"
                                   style={{
-                                    fontSize: '0.52rem',
+                                    fontSize: '11px',
                                     fontWeight: active ? 800 : 600,
-                                    padding: '0.2rem 0.35rem',
-                                    borderRadius: '7px',
-                                    border: active ? '1px solid #38bdf8' : '1px solid rgba(255,255,255,0.08)',
-                                    backgroundColor: active ? 'rgba(56, 189, 248, 0.18)' : 'rgba(255,255,255,0.02)',
-                                    color: active ? '#38bdf8' : 'var(--text-muted)',
+                                    padding: '2px 4px',
+                                    border: 'none',
+                                    background: 'transparent',
+                                    color: active ? '#38bdf8' : 'rgba(148, 163, 184, 0.68)',
+                                    textShadow: active ? '0 0 10px rgba(56, 189, 248, 0.85)' : 'none',
                                     cursor: 'pointer',
                                     whiteSpace: 'nowrap',
                                     overflow: 'hidden',
                                     textOverflow: 'ellipsis',
+                                    textAlign: 'left',
                                   }}
                                 >
                                   {(st.label[langCode] || st.label.EN).split(' (')[0]}
@@ -6822,19 +6636,18 @@ export default function MarketAnomaliesView({
                     <div
                       className="mono-metric"
                       style={{
-                        fontSize: '0.48rem',
-                        color: 'var(--text-dim)',
-                        fontWeight: 800,
-                        letterSpacing: '0.05em',
+                        fontSize: '12px',
+                        color: '#ffffff',
+                        fontWeight: 700,
                       }}
                     >
-                      {isES ? '3. TELEMETRÍA CUANTITATIVA (6 MÉTRICAS)' : '3. QUANT TELEMETRY (6 METRICS)'}
+                      {isES ? 'Indicadores Clave' : 'Quant Telemetry'}
                     </div>
                     <div
                       style={{
                         display: 'grid',
                         gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                        gap: '0.34rem',
+                        gap: '8px',
                       }}
                     >
                       {railTelemetryPills.map((k) => (
@@ -6842,23 +6655,23 @@ export default function MarketAnomaliesView({
                           key={k.label}
                           className="mono-metric"
                           style={{
-                            padding: '0.34rem 0.52rem',
-                            borderRadius: '11px',
-                            backgroundColor: k.accent ? 'rgba(var(--ui-accent-rgb), 0.1)' : 'rgba(10, 15, 26, 0.54)',
-                            border: k.accent ? '1px solid rgba(var(--ui-accent-rgb), 0.42)' : '1px solid rgba(255, 255, 255, 0.09)',
+                            padding: '8px 10px',
+                            borderRadius: '8px',
+                            backgroundColor: 'transparent',
+                            border: '1px solid rgba(148, 163, 184, 0.22)',
+                            borderLeft: `3px solid ${k.color === '#ffffff' ? '#10b981' : k.color}`,
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'space-between',
-                            gap: '0.06rem',
+                            gap: '3px',
                             minWidth: 0,
                           }}
                         >
                           <span
                             style={{
-                              fontSize: '0.43rem',
+                              fontSize: '10.5px',
                               fontWeight: 700,
-                              color: k.accent ? 'var(--ui-accent)' : 'var(--text-dim)',
-                              letterSpacing: '0.03em',
+                              color: '#94a3b8',
                               whiteSpace: 'nowrap',
                               overflow: 'hidden',
                               textOverflow: 'ellipsis',
@@ -6866,14 +6679,14 @@ export default function MarketAnomaliesView({
                           >
                             {k.label}
                           </span>
-                          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.24rem' }}>
-                            <span style={{ fontSize: '0.66rem', fontWeight: 800, color: k.color, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '4px' }}>
+                            <span style={{ fontSize: '14px', fontWeight: 800, color: k.color, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                               {k.val}
                             </span>
-                            <span style={{ fontSize: '0.44rem', color: 'var(--text-dim)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                              {k.sub}
-                            </span>
                           </div>
+                          <span style={{ fontSize: '10px', color: '#64748b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            {k.sub}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -7217,9 +7030,10 @@ export default function MarketAnomaliesView({
                 key={item.key}
                 onClick={() => setResearchExpandedKey(isOpen ? '' : item.key)}
                 style={{
-                  borderRadius: '10px',
-                  border: isOpen ? `1px solid ${accentHex}` : '1px solid rgba(148, 163, 184, 0.15)',
-                  backgroundColor: isOpen ? 'rgba(15, 23, 42, 0.90)' : 'rgba(15, 23, 42, 0.58)',
+                  borderRadius: isOpen ? '7px' : '0px',
+                  border: isOpen ? `1px solid ${accentHex}` : '1px solid transparent',
+                  borderBottom: isOpen ? `1px solid ${accentHex}` : '1px solid rgba(148, 163, 184, 0.12)',
+                  backgroundColor: isOpen ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.10)' : 'transparent',
                   overflow: 'hidden',
                   cursor: 'pointer',
                   transition: 'all 0.16s ease',
@@ -7301,7 +7115,8 @@ export default function MarketAnomaliesView({
                         fontSize: '0.56rem',
                         padding: '0.06rem 0.32rem',
                         borderRadius: '4px',
-                        backgroundColor: 'rgba(30, 41, 59, 0.82)',
+                        backgroundColor: 'transparent',
+                        border: '1px solid rgba(148, 163, 184, 0.22)',
                         color: item.importance === 'HIGH' ? '#f8fafc' : '#94a3b8',
                       }}
                     >
@@ -7318,7 +7133,7 @@ export default function MarketAnomaliesView({
                     style={{
                       padding: '0.52rem 0.72rem 0.6rem',
                       borderTop: '1px solid rgba(148, 163, 184, 0.14)',
-                      backgroundColor: 'rgba(7, 11, 22, 0.90)',
+                      backgroundColor: 'transparent',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '0.38rem',
@@ -7353,19 +7168,17 @@ export default function MarketAnomaliesView({
                           setRagQuery(qText);
                           runAssetRagQuery(qText, 'asset', selectedAsset);
                         }}
-                        className="mono-metric"
                         style={{
-                          padding: '0.22rem 0.56rem',
-                          borderRadius: '6px',
-                          backgroundColor: 'rgba(56, 189, 248, 0.14)',
-                          border: '1px solid rgba(56, 189, 248, 0.35)',
-                          color: '#38bdf8',
-                          fontSize: '0.61rem',
+                          padding: '2px 6px',
+                          border: 'none',
+                          background: 'transparent',
+                          color: 'var(--ui-accent, #10b981)',
+                          fontSize: '12px',
                           fontWeight: 700,
                           cursor: 'pointer',
                         }}
                       >
-                        💬 {isES ? 'Analizar en el Chat Vertical' : 'Analyze in Vertical Chat'}
+                        {isES ? 'Analizar en Chat ↗' : 'Analyze in Chat ↗'}
                       </button>
                     </div>
                   </div>
@@ -7390,10 +7203,9 @@ export default function MarketAnomaliesView({
                  ================================================================ */}
               <div
                 style={{
-                  borderRadius: '16px',
-                  border: '1px solid rgba(129, 140, 248, 0.30)',
-                  background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.90) 0%, rgba(7, 11, 22, 0.96) 100%)',
-                  boxShadow: '0 12px 32px -12px rgba(2, 6, 23, 0.9), inset 0 1px 0 0 rgba(255, 255, 255, 0.07)',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(148, 163, 184, 0.22)',
+                  background: 'transparent',
                   display: 'flex',
                   flexDirection: 'column',
                   minHeight: 0,
@@ -7403,68 +7215,22 @@ export default function MarketAnomaliesView({
                 {/* Top Chat Header */}
                 <div
                   style={{
-                    padding: '0.68rem 0.85rem',
-                    borderBottom: '1px solid rgba(129, 140, 248, 0.18)',
-                    backgroundColor: 'rgba(15, 23, 42, 0.78)',
+                    padding: '12px 14px 8px',
+                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
+                    backgroundColor: 'transparent',
                     display: 'flex',
-                    alignItems: 'center',
+                    alignItems: 'baseline',
                     justifyContent: 'space-between',
                     gap: '0.5rem',
                     flexShrink: 0,
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
-                    <span
-                      style={{
-                        width: '8px',
-                        height: '8px',
-                        borderRadius: '999px',
-                        backgroundColor: '#10b981',
-                        boxShadow: '0 0 10px #10b981',
-                        flexShrink: 0,
-                      }}
-                    />
-                    <div style={{ minWidth: 0 }}>
-                      <div
-                        style={{
-                          color: '#f8fafc',
-                          fontSize: '0.74rem',
-                          fontWeight: 800,
-                          letterSpacing: '0.03em',
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: '0.38rem',
-                        }}
-                      >
-                        <span>{isES ? 'CHAT DOCUMENTAL RAG' : 'RAG DOCUMENT CHAT'}</span>
-                        <span
-                          className="mono-metric"
-                          style={{
-                            fontSize: '0.58rem',
-                            padding: '0.05rem 0.36rem',
-                            borderRadius: '999px',
-                            backgroundColor: 'rgba(56, 189, 248, 0.14)',
-                            border: '1px solid rgba(56, 189, 248, 0.35)',
-                            color: '#38bdf8',
-                          }}
-                        >
-                          {currentAsset.sym}
-                        </span>
-                      </div>
-                      <div
-                        className="mono-metric"
-                        style={{
-                          color: '#64748b',
-                          fontSize: '0.6rem',
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                        }}
-                      >
-                        {researchBrief.filingSource[langCode] || researchBrief.filingSource.EN}
-                      </div>
-                    </div>
-                  </div>
+                  <span style={{ color: '#ffffff', fontSize: '15.5px', fontWeight: 700 }}>
+                    {isES ? 'Chat Documental' : 'Document Chat'}
+                  </span>
+                  <span className="mono-metric" style={{ color: '#94a3b8', fontSize: '12px' }}>
+                    {currentAsset.sym}
+                  </span>
 
                   {researchChatHistory.length > 0 && (
                     <button
@@ -7474,14 +7240,13 @@ export default function MarketAnomaliesView({
                         setRagQuery('');
                         setRagResult(null);
                       }}
-                      className="mono-metric"
                       style={{
-                        backgroundColor: 'rgba(30, 41, 59, 0.6)',
-                        border: '1px solid rgba(148, 163, 184, 0.24)',
-                        color: '#94a3b8',
-                        borderRadius: '6px',
-                        padding: '0.16rem 0.42rem',
-                        fontSize: '0.58rem',
+                        background: 'transparent',
+                        border: 'none',
+                        color: 'rgba(148, 163, 184, 0.68)',
+                        padding: '2px 4px',
+                        fontSize: '12px',
+                        fontWeight: 600,
                         cursor: 'pointer',
                       }}
                     >
@@ -7507,20 +7272,21 @@ export default function MarketAnomaliesView({
                       alignSelf: 'flex-start',
                       maxWidth: '96%',
                       padding: '0.65rem 0.76rem',
-                      borderRadius: '4px 12px 12px 12px',
-                      backgroundColor: 'rgba(30, 41, 59, 0.68)',
-                      border: '1px solid rgba(129, 140, 248, 0.26)',
+                      borderRadius: '8px',
+                      backgroundColor: 'transparent',
+                      border: '1px solid rgba(148, 163, 184, 0.22)',
+                      borderLeft: '3px solid var(--ui-accent, #10b981)',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '0.38rem',
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.4rem' }}>
-                      <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800, color: '#a5b4fc' }}>
-                        λ {isES ? 'TESIS EJECUTIVA' : 'EXECUTIVE THESIS'} • {currentAsset.sym}
+                      <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800, color: 'var(--ui-accent, #10b981)' }}>
+                        {isES ? 'TESIS EJECUTIVA' : 'EXECUTIVE THESIS'} • {currentAsset.sym}
                       </span>
                       <span className="mono-metric" style={{ fontSize: '0.56rem', color: '#34d399', fontWeight: 700 }}>
-                        ✓ GUARDRAIL OK
+                        GUARDRAIL OK
                       </span>
                     </div>
                     <div style={{ color: '#e2e8f0', fontSize: '0.73rem', lineHeight: 1.46 }}>
@@ -7547,19 +7313,19 @@ export default function MarketAnomaliesView({
                         alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
                         maxWidth: '94%',
                         padding: '0.55rem 0.7rem',
-                        borderRadius: msg.role === 'user' ? '12px 4px 12px 12px' : '4px 12px 12px 12px',
+                        borderRadius: '8px',
                         background:
                           msg.role === 'user'
-                            ? 'linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(99, 102, 241, 0.24))'
+                            ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.12)'
                             : msg.blocked
                             ? 'rgba(244, 63, 94, 0.12)'
-                            : 'rgba(30, 41, 59, 0.78)',
+                            : 'transparent',
                         border:
                           msg.role === 'user'
-                            ? '1px solid rgba(56, 189, 248, 0.45)'
+                            ? '1px solid var(--ui-accent, #10b981)'
                             : msg.blocked
                             ? '1px solid rgba(244, 63, 94, 0.45)'
-                            : '1px solid rgba(129, 140, 248, 0.28)',
+                            : '1px solid rgba(148, 163, 184, 0.22)',
                       }}
                     >
                       {msg.role === 'assistant' && (
@@ -7571,11 +7337,11 @@ export default function MarketAnomaliesView({
                             justifyContent: 'space-between',
                             marginBottom: '0.24rem',
                             fontSize: '0.58rem',
-                            color: msg.blocked ? '#fb7185' : '#38bdf8',
+                            color: msg.blocked ? '#fb7185' : 'var(--ui-accent, #10b981)',
                             fontWeight: 700,
                           }}
                         >
-                          <span>{msg.blocked ? '🛡️ GUARDRAIL L1 BLOCK' : `λ ${msg.topicLabel}`}</span>
+                          <span>{msg.blocked ? 'GUARDRAIL L1 BLOCK' : msg.topicLabel}</span>
                           <span>{msg.latency}</span>
                         </div>
                       )}
@@ -7590,15 +7356,15 @@ export default function MarketAnomaliesView({
                 <div
                   style={{
                     padding: '0.52rem 0.65rem 0.62rem',
-                    borderTop: '1px solid rgba(129, 140, 248, 0.2)',
-                    backgroundColor: 'rgba(10, 15, 29, 0.92)',
+                    borderTop: '1px solid rgba(148, 163, 184, 0.14)',
+                    backgroundColor: 'transparent',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '0.42rem',
                     flexShrink: 0,
                   }}
                 >
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.28rem' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                     {getRagQuickTopicsForCategory(currentAsset.cat).map((topic) => (
                       <button
                         key={topic.id}
@@ -7607,14 +7373,13 @@ export default function MarketAnomaliesView({
                           setRagQuery(topic.query);
                           runAssetRagQuery(topic.query, 'asset', selectedAsset);
                         }}
-                        className="mono-metric"
                         style={{
-                          fontSize: '0.58rem',
-                          padding: '0.16rem 0.44rem',
-                          borderRadius: '999px',
-                          backgroundColor: 'rgba(30, 41, 59, 0.72)',
-                          border: '1px solid rgba(129, 140, 248, 0.26)',
-                          color: '#cbd5e1',
+                          fontSize: '11.5px',
+                          fontWeight: 600,
+                          padding: '2px 4px',
+                          border: 'none',
+                          background: 'transparent',
+                          color: 'rgba(148, 163, 184, 0.68)',
                           cursor: 'pointer',
                         }}
                       >
@@ -7645,9 +7410,9 @@ export default function MarketAnomaliesView({
                       }
                       style={{
                         flex: 1,
-                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                        border: '1px solid rgba(129, 140, 248, 0.34)',
-                        borderRadius: '9px',
+                        backgroundColor: 'transparent',
+                        border: '1px solid rgba(148, 163, 184, 0.24)',
+                        borderRadius: '8px',
                         padding: '0.42rem 0.6rem',
                         color: '#f8fafc',
                         fontSize: '0.72rem',
@@ -7660,10 +7425,10 @@ export default function MarketAnomaliesView({
                       className="mono-metric"
                       style={{
                         padding: '0.42rem 0.68rem',
-                        borderRadius: '9px',
-                        border: '1px solid rgba(56, 189, 248, 0.5)',
-                        background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(99, 102, 241, 0.28))',
-                        color: '#38bdf8',
+                        borderRadius: '8px',
+                        border: '1px solid var(--ui-accent, #10b981)',
+                        background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
+                        color: 'var(--ui-accent, #10b981)',
                         fontWeight: 800,
                         fontSize: '0.74rem',
                         cursor: 'pointer',
@@ -7688,9 +7453,9 @@ export default function MarketAnomaliesView({
                       width: '100%',
                       padding: '0.36rem 0.6rem',
                       borderRadius: '8px',
-                      background: 'linear-gradient(90deg, rgba(16, 185, 129, 0.16), rgba(56, 189, 248, 0.16))',
-                      border: '1px solid rgba(16, 185, 129, 0.42)',
-                      color: '#34d399',
+                      background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.12)',
+                      border: '1px solid var(--ui-accent, #10b981)',
+                      color: 'var(--ui-accent, #10b981)',
                       fontSize: '0.62rem',
                       fontWeight: 700,
                       cursor: 'pointer',
@@ -7700,7 +7465,7 @@ export default function MarketAnomaliesView({
                     }}
                   >
                     <span>
-                      ★ {isES ? `Simular ${currentAsset.sym} en Portfolio & Riesgo` : `Simulate ${currentAsset.sym} in Portfolio & Risk`}
+                      {isES ? `Simular ${currentAsset.sym} en Portfolio & Riesgo` : `Simulate ${currentAsset.sym} in Portfolio & Risk`}
                     </span>
                     <span>{isES ? 'Abrir ↗' : 'Open ↗'}</span>
                   </button>
@@ -7712,14 +7477,13 @@ export default function MarketAnomaliesView({
                  ================================================================ */}
               <div
                 style={{
-                  padding: '0.82rem 0.98rem',
-                  borderRadius: '16px',
-                  border: '1.5px solid rgba(56, 189, 248, 0.48)',
-                  background: 'linear-gradient(165deg, rgba(15, 23, 42, 0.90) 0%, rgba(7, 11, 22, 0.96) 100%)',
-                  boxShadow: '0 0 28px rgba(56, 189, 248, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)',
+                  padding: '12px 16px',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(148, 163, 184, 0.22)',
+                  background: 'transparent',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.62rem',
+                  gap: '10px',
                   minHeight: 0,
                 }}
               >
@@ -7728,59 +7492,33 @@ export default function MarketAnomaliesView({
                   style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.45rem',
-                    paddingBottom: '0.52rem',
-                    borderBottom: '1px solid rgba(129, 140, 248, 0.2)',
+                    gap: '8px',
+                    paddingBottom: '8px',
+                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
                     flexShrink: 0,
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.48rem' }}>
-                      <span
-                        className="mono-metric"
-                        style={{
-                          fontSize: '0.6rem',
-                          fontWeight: 800,
-                          padding: '0.12rem 0.46rem',
-                          borderRadius: '6px',
-                          backgroundColor: 'rgba(16, 185, 129, 0.18)',
-                          border: '1px solid rgba(16, 185, 129, 0.45)',
-                          color: '#34d399',
-                        }}
-                      >
-                        {isES ? '1. FOCO CENTRAL' : '1. PRIMARY FOCUS'}
-                      </span>
-                      <span style={{ color: '#f8fafc', fontSize: '0.8rem', fontWeight: 800, letterSpacing: '0.02em' }}>
-                        {isES ? 'VEREDICTO & ACORDEÓN DE FACTORES PONDERADOS' : 'VERDICT & WEIGHTED FACTOR ACCORDION'}
-                      </span>
-                    </div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <span style={{ color: '#ffffff', fontSize: '15.5px', fontWeight: 700 }}>
+                      {isES ? 'Factores Ponderados' : 'Weighted Factors'}
+                    </span>
 
-                    <div
+                    <span
                       className="mono-metric"
                       style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.4rem',
-                        padding: '0.18rem 0.58rem',
-                        borderRadius: '999px',
-                        backgroundColor:
-                          researchBrief.compositeScore >= 0 ? 'rgba(16, 185, 129, 0.16)' : 'rgba(244, 63, 94, 0.16)',
-                        border: `1px solid ${researchBrief.compositeScore >= 0 ? '#34d399' : '#fb7185'}`,
-                        color: researchBrief.compositeScore >= 0 ? '#34d399' : '#fb7185',
-                        fontSize: '0.74rem',
-                        fontWeight: 800,
+                        color: researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e',
+                        fontSize: '12px',
+                        fontWeight: 700,
                       }}
                     >
-                      <span>{researchBrief.compositeFormatted}</span>
-                      <span>•</span>
-                      <span>{researchBrief.stanceLabel[langCode] || researchBrief.stanceLabel.EN}</span>
-                    </div>
+                      {researchBrief.compositeFormatted} • {researchBrief.stanceLabel[langCode] || researchBrief.stanceLabel.EN}
+                    </span>
                   </div>
 
                   {/* Tug-of-War Proportional Bar + View Filter Pills */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.65rem', flexWrap: 'wrap' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flex: 1, minWidth: '175px' }}>
-                      <span className="mono-metric" style={{ color: '#34d399', fontSize: '0.62rem', fontWeight: 800 }}>
+                      <span className="mono-metric" style={{ color: '#34d399', fontSize: '11.5px', fontWeight: 800 }}>
                         BULL {bullPct}% (+{researchBrief.avgBull})
                       </span>
                       <div
@@ -7797,17 +7535,17 @@ export default function MarketAnomaliesView({
                         <div style={{ width: `${bullPct}%`, background: 'linear-gradient(90deg, #10b981, #34d399)' }} />
                         <div style={{ width: `${bearPct}%`, background: 'linear-gradient(90deg, #fb7185, #e11d48)' }} />
                       </div>
-                      <span className="mono-metric" style={{ color: '#fb7185', fontSize: '0.62rem', fontWeight: 800 }}>
+                      <span className="mono-metric" style={{ color: '#fb7185', fontSize: '11.5px', fontWeight: 800 }}>
                         (-{researchBrief.avgBear}) {bearPct}% BEAR
                       </span>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '0.26rem' }}>
+                    <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                       {[
-                        { id: 'all', label: isES ? 'Todos (10)' : 'All (10)' },
-                        { id: 'bull', label: '▲ 5 Bull' },
-                        { id: 'bear', label: '▼ 5 Bear' },
-                        { id: 'twin', label: '5 vs 5' },
+                        { id: 'all', label: isES ? 'Todos' : 'All' },
+                        { id: 'bull', label: 'Bull' },
+                        { id: 'bear', label: 'Bear' },
+                        { id: 'twin', label: isES ? 'Comparar' : 'Compare' },
                       ].map((tab) => {
                         const active = researchFactorFilter === tab.id;
                         return (
@@ -7815,16 +7553,15 @@ export default function MarketAnomaliesView({
                             key={tab.id}
                             type="button"
                             onClick={() => setResearchFactorFilter(tab.id)}
-                            className="mono-metric"
                             style={{
-                              padding: '0.16rem 0.46rem',
-                              borderRadius: '999px',
-                              fontSize: '0.58rem',
-                              fontWeight: 700,
+                              padding: '2px 4px',
+                              border: 'none',
+                              background: 'transparent',
+                              fontSize: '12px',
+                              fontWeight: active ? 800 : 600,
                               cursor: 'pointer',
-                              backgroundColor: active ? 'rgba(56, 189, 248, 0.18)' : 'rgba(15, 23, 42, 0.7)',
-                              border: active ? '1px solid #38bdf8' : '1px solid rgba(148, 163, 184, 0.2)',
-                              color: active ? '#f8fafc' : '#94a3b8',
+                              color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                              textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                             }}
                           >
                             {tab.label}
@@ -7839,17 +7576,17 @@ export default function MarketAnomaliesView({
                 <div style={{ flex: 1, overflowY: 'auto', paddingRight: '0.15rem' }}>
                   {researchFactorFilter === 'twin' ? (
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem' }}>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                        <div className="mono-metric" style={{ color: '#34d399', fontSize: '0.64rem', fontWeight: 800 }}>
-                          ▲ {isES ? 'TOP 5 CATALIZADORES' : 'TOP 5 BULL DRIVERS'}
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                        <div className="mono-metric" style={{ color: '#34d399', fontSize: '0.64rem', fontWeight: 800, marginBottom: '2px' }}>
+                          {isES ? 'CATALIZADORES' : 'BULL DRIVERS'}
                         </div>
                         {allFactors
                           .filter((f) => f.side === 'BULL')
                           .map((item) => renderAccordionRow(item))}
                       </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                        <div className="mono-metric" style={{ color: '#fb7185', fontSize: '0.64rem', fontWeight: 800 }}>
-                          ▼ {isES ? 'TOP 5 RIESGOS' : 'TOP 5 BEAR RISKS'}
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                        <div className="mono-metric" style={{ color: '#fb7185', fontSize: '0.64rem', fontWeight: 800, marginBottom: '2px' }}>
+                          {isES ? 'RIESGOS' : 'BEAR RISKS'}
                         </div>
                         {allFactors
                           .filter((f) => f.side === 'BEAR')
@@ -7857,7 +7594,7 @@ export default function MarketAnomaliesView({
                       </div>
                     </div>
                   ) : (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.36rem' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.18rem' }}>
                       {filteredFactors.map((item) => renderAccordionRow(item))}
                     </div>
                   )}
@@ -7869,55 +7606,47 @@ export default function MarketAnomaliesView({
                  ================================================================ */}
               <div
                 style={{
-                  padding: '0.8rem 0.95rem',
-                  borderRadius: '16px',
-                  border: '1px solid rgba(129, 140, 248, 0.28)',
-                  background: 'linear-gradient(165deg, rgba(15, 23, 42, 0.84) 0%, rgba(7, 11, 22, 0.94) 100%)',
+                  padding: '12px 16px',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(148, 163, 184, 0.22)',
+                  background: 'transparent',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  gap: '0.6rem',
+                  gap: '10px',
                   minHeight: 0,
                 }}
               >
                 {/* Header */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.4rem', flexShrink: 0 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                    <span
-                      className="mono-metric"
-                      style={{
-                        fontSize: '0.58rem',
-                        fontWeight: 800,
-                        padding: '0.1rem 0.42rem',
-                        borderRadius: '6px',
-                        backgroundColor: 'rgba(129, 140, 248, 0.18)',
-                        border: '1px solid rgba(129, 140, 248, 0.4)',
-                        color: '#c7d2fe',
-                      }}
-                    >
-                      {isES ? '2. PULSO 24H' : '2. 24H PULSE'}
-                    </span>
-                    <span style={{ color: '#f8fafc', fontSize: '0.75rem', fontWeight: 800 }}>
-                      TIMELINE FINBERT • {currentAsset.sym}
-                    </span>
-                  </div>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'baseline',
+                    justifyContent: 'space-between',
+                    gap: '0.4rem',
+                    flexShrink: 0,
+                    paddingBottom: '8px',
+                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
+                  }}
+                >
+                  <span style={{ color: '#ffffff', fontSize: '15.5px', fontWeight: 700 }}>
+                    {isES ? 'Noticias y Sentimiento' : 'News & Sentiment'}
+                  </span>
 
                   <button
                     type="button"
                     onClick={pushIncomingWireHeadline}
-                    className="mono-metric"
                     style={{
-                      padding: '0.18rem 0.52rem',
-                      borderRadius: '999px',
-                      backgroundColor: 'rgba(56, 189, 248, 0.14)',
-                      border: '1px solid rgba(56, 189, 248, 0.38)',
-                      color: '#38bdf8',
-                      fontSize: '0.58rem',
+                      padding: '2px 4px',
+                      border: 'none',
+                      backgroundColor: 'transparent',
+                      color: 'var(--ui-accent, #10b981)',
+                      fontSize: '12px',
                       fontWeight: 700,
                       cursor: 'pointer',
                     }}
                   >
-                    + {isES ? 'Simular Noticia' : 'Simulate News'}
+                    {isES ? 'Simular Noticia' : 'Simulate News'}
                   </button>
                 </div>
 
@@ -7929,7 +7658,7 @@ export default function MarketAnomaliesView({
                       paddingLeft: '1.1rem',
                       display: 'flex',
                       flexDirection: 'column',
-                      gap: '0.44rem',
+                      gap: '0.24rem',
                     }}
                   >
                     <div
@@ -7966,11 +7695,14 @@ export default function MarketAnomaliesView({
                           <div
                             style={{
                               padding: '0.42rem 0.58rem',
-                              borderRadius: '9px',
-                              backgroundColor: news.isNew ? 'rgba(16, 185, 129, 0.12)' : 'rgba(15, 23, 42, 0.62)',
+                              borderRadius: news.isNew ? '7px' : '0px',
+                              backgroundColor: news.isNew ? 'rgba(16, 185, 129, 0.12)' : 'transparent',
                               border: news.isNew
                                 ? `1px solid ${dotColor}`
-                                : '1px solid rgba(148, 163, 184, 0.14)',
+                                : '1px solid transparent',
+                              borderBottom: news.isNew
+                                ? `1px solid ${dotColor}`
+                                : '1px solid rgba(148, 163, 184, 0.12)',
                               display: 'flex',
                               flexDirection: 'column',
                               gap: '0.22rem',
@@ -8018,16 +7750,16 @@ export default function MarketAnomaliesView({
                                   }}
                                   className="mono-metric"
                                   style={{
-                                    padding: '0.08rem 0.32rem',
-                                    borderRadius: '4px',
-                                    backgroundColor: 'rgba(56, 189, 248, 0.12)',
-                                    border: '1px solid rgba(56, 189, 248, 0.3)',
-                                    color: '#38bdf8',
-                                    fontSize: '0.55rem',
+                                    padding: '2px 4px',
+                                    border: 'none',
+                                    background: 'transparent',
+                                    color: 'var(--ui-accent, #10b981)',
+                                    fontSize: '11px',
+                                    fontWeight: 700,
                                     cursor: 'pointer',
                                   }}
                                 >
-                                  💬
+                                  {isES ? 'Chat ↗' : 'Chat ↗'}
                                 </button>
                               </div>
                             </div>
@@ -8044,9 +7776,9 @@ export default function MarketAnomaliesView({
                 <div
                   style={{
                     padding: '0.5rem 0.65rem',
-                    borderRadius: '10px',
-                    backgroundColor: 'rgba(7, 11, 22, 0.84)',
-                    border: '1px solid rgba(129, 140, 248, 0.22)',
+                    borderRadius: '8px',
+                    backgroundColor: 'transparent',
+                    border: '1px solid rgba(148, 163, 184, 0.22)',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '0.22rem',
