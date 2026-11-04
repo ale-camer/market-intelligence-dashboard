@@ -1,1977 +1,283 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import {
-  Play,
-  ShieldCheck,
-  ShieldAlert,
-  ArrowUpRight,
-  Search,
-  ChevronDown,
-  ChevronUp,
-  Plus,
-  Minus,
-  RotateCcw,
-  X,
-  Sliders,
-  ListChecks,
-  Activity,
-} from 'lucide-react';
-import {
-  INITIAL_PORTFOLIO_UNIVERSE,
-  INITIAL_LEDGER_EVENTS,
-  buildWatchlistCandidateItem,
-  getCommitteeDeliberation,
-  runLiveCommitteeCycle,
-  computePortfolioQuantRisk,
-} from '../services/committeeService';
+import React, { useState, useEffect } from 'react';
+import { Sparkles, MessageSquare, X } from 'lucide-react';
+import { INITIAL_HOLDINGS } from './portfolio/portfolioConstants';
+import PortfolioVista1Builder from './portfolio/PortfolioVista1Builder';
+import PortfolioVista2Risk from './portfolio/PortfolioVista2Risk';
+import PortfolioVista3AdHoc from './portfolio/PortfolioVista3AdHoc';
+
+const PORTFOLIO_STORAGE_KEY = 'mid_portfolio_v1';
+
+const PORTFOLIO_VIEWS = [
+    {
+        id: 'V1',
+        label: 'Constructor & Performance'
+    },
+    {
+        id: 'V2',
+        label: 'Riesgo Cuantitativo & Stress'
+    },
+    {
+        id: 'V3',
+        label: 'Laboratorio de Estrategias Ad-Hoc'
+    }
+];
 
 export default function AgentCommitteeView({
-  selectedAsset = 'NVDA',
-  onSelectAsset,
-  onNavigate,
-  onOpenAssetInMarkets,
-  watchlistSyms = [],
-  onToggleWatchlist,
-  langCode = 'EN',
+    watchlistSyms = [],
+    onToggleWatchlist
 }) {
-  const isES = langCode === 'ES';
-
-  // Full interactive portfolio + dynamic Watchlist state (persisted in localStorage)
-  const [universe, setUniverse] = useState(() => {
-    try {
-      const saved = window.localStorage.getItem('mid_portfolio_v1');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && Array.isArray(parsed.holdings) && parsed.holdings.length > 0) {
-          const mapBySym = new Map(parsed.holdings.map((h) => [h.sym, h]));
-          return INITIAL_PORTFOLIO_UNIVERSE.map((baseItem) => {
-            const override = mapBySym.get(baseItem.sym);
-            if (!override) return baseItem;
-            return {
-              ...baseItem,
-              marketValue: typeof override.marketValue === 'number' ? override.marketValue : baseItem.marketValue,
-              pnlUsd: typeof override.pnlUsd === 'number' ? override.pnlUsd : baseItem.pnlUsd,
-              pnlPct: typeof override.pnlPct === 'number' ? override.pnlPct : baseItem.pnlPct,
-              status: override.status || baseItem.status,
-            };
-          });
+    const [activeView, setActiveView] = useState('V1');
+    const [copilotOpen, setCopilotOpen] = useState(false);
+    const [copilotMsg, setCopilotMsg] = useState('');
+    const [copilotThread, setCopilotThread] = useState([
+        {
+            role: 'ai',
+            txt: 'Copiloto Cuantitativo RAG activo. Tu cartera mantiene un Sharpe de 2.18 con Beta 0.76 y una eficiencia Walk-Forward del 94.2%.'
         }
-      }
-    } catch {
-      // ignore storage errors
-    }
-    return INITIAL_PORTFOLIO_UNIVERSE;
-  });
-  const [baseCapital] = useState(106420);
-  const [committeeResult, setCommitteeResult] = useState(() =>
-    getCommitteeDeliberation(selectedAsset)
-  );
-  const [ledgerEvents, setLedgerEvents] = useState(() => {
-    try {
-      const saved = window.localStorage.getItem('mid_portfolio_v1');
-      if (saved) {
-        const parsed = JSON.parse(saved);
-        if (parsed && Array.isArray(parsed.ledgerEvents) && parsed.ledgerEvents.length > 0) {
-          return parsed.ledgerEvents;
+    ]);
+
+    const [holdings, setHoldings] = useState(() => {
+        try {
+            const raw = localStorage.getItem(PORTFOLIO_STORAGE_KEY);
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+            }
+        } catch {
+            // fallback
         }
-      }
-    } catch {
-      // ignore storage errors
-    }
-    return INITIAL_LEDGER_EVENTS;
-  });
-  const [isRunningCycle, setIsRunningCycle] = useState(false);
-
-  // Persist Portfolio holdings & ledger events in localStorage
-  useEffect(() => {
-    try {
-      const compactHoldings = universe.map((item) => ({
-        sym: item.sym,
-        marketValue: item.marketValue,
-        pnlUsd: item.pnlUsd,
-        pnlPct: item.pnlPct,
-        status: item.status,
-      }));
-      window.localStorage.setItem(
-        'mid_portfolio_v1',
-        JSON.stringify({ holdings: compactHoldings, ledgerEvents: ledgerEvents.slice(0, 12) })
-      );
-    } catch {
-      // ignore storage errors
-    }
-  }, [universe, ledgerEvents]);
-
-  const resetToDefaultPortfolio = () => {
-    try {
-      window.localStorage.removeItem('mid_portfolio_v1');
-    } catch {
-      // ignore
-    }
-    setUniverse(INITIAL_PORTFOLIO_UNIVERSE);
-    setLedgerEvents(INITIAL_LEDGER_EVENTS);
-  };
-
-  // Sync user's bookmarked Watchlist symbols from Markets into the Portfolio universe
-  useEffect(() => {
-    setUniverse((prev) => {
-      const existingSyms = new Set(prev.map((x) => x.sym));
-      const newItems = watchlistSyms
-        .filter((sym) => !existingSyms.has(sym))
-        .map((sym) => buildWatchlistCandidateItem(sym));
-      // Remove 0-value items that were unchecked from watchlistSyms
-      const filteredPrev = prev.filter(
-        (item) => item.marketValue > 0 || watchlistSyms.includes(item.sym)
-      );
-      return [...filteredPrev, ...newItems];
+        return INITIAL_HOLDINGS;
     });
-  }, [watchlistSyms]);
 
-  // Two-tier asset filter & keyboard search state
-  const [statusFilter, setStatusFilter] = useState('ALL'); // 'ALL' | 'HELD' | 'WATCHLIST'
-  const [classFilter, setClassFilter] = useState('ALL'); // 'ALL' | 'EQUITY' | 'CRYPTO' | 'INDEX'
-  const [searchQuery, setSearchQuery] = useState('');
-  const [kbIndex, setKbIndex] = useState(0);
-  const [hoveredSlice, setHoveredSlice] = useState(null);
+    useEffect(() => {
+        try {
+            localStorage.setItem(PORTFOLIO_STORAGE_KEY, JSON.stringify(holdings));
+        } catch {
+            // ignore storage errors
+        }
+    }, [holdings]);
 
-  // Progressive disclosure states (Collapsed by default so nothing clutters vision!)
-  const [expandedAsset, setExpandedAsset] = useState(null);
-  const [rightPanelTab, setRightPanelTab] = useState('committee'); // 'committee' | 'log'
-  const [expandedPillar, setExpandedPillar] = useState(null); // 0 | 1 | 2 | null
-  const [expandedLogId, setExpandedLogId] = useState(null); // log id | null
-
-  useEffect(() => {
-    setCommitteeResult(getCommitteeDeliberation(selectedAsset));
-  }, [selectedAsset]);
-
-  // Compute Portfolio Aggregates dynamically from universe holdings
-  const portfolioSummary = useMemo(() => {
-    const activeHoldings = universe.filter((h) => h.marketValue > 0);
-    const watchlistCount = universe.length - activeHoldings.length;
-    const investedValue = activeHoldings.reduce((acc, h) => acc + h.marketValue, 0);
-    const cashBalance = Math.max(0, baseCapital - investedValue);
-    const totalNav = investedValue + cashBalance;
-    const totalPnlUsd = activeHoldings.reduce((acc, h) => acc + h.pnlUsd, 0);
-    const totalCostBasis = Math.max(1, investedValue - totalPnlUsd);
-    const totalPnlPct = (totalPnlUsd / totalCostBasis) * 100;
-    const investedPct = (investedValue / totalNav) * 100;
-    const cashPct = (cashBalance / totalNav) * 100;
-
-    const weightedResearch =
-      investedValue > 0
-        ? Math.round(
-            activeHoldings.reduce(
-              (acc, h) => acc + h.researchScore * (h.marketValue / investedValue),
-              0
-            )
-          )
-        : 0;
-
-    const activeBreakers = activeHoldings.filter((h) => h.anomalyScore >= 0.65).length;
-
-    return {
-      activeHoldings,
-      watchlistCount,
-      totalNav,
-      investedValue,
-      investedPct,
-      cashBalance,
-      cashPct,
-      totalPnlUsd,
-      totalPnlPct,
-      weightedResearch,
-      activeBreakers,
+    const sendCopilotPrompt = (txt) => {
+        const q = txt.trim();
+        if (!q) return;
+        setCopilotThread(prev => [
+            ...prev,
+            { role: 'user', txt: q },
+            {
+                role: 'ai',
+                txt: `Análisis sobre ${holdings.length} activos: el solapamiento real de NVDA es 24.4% (directo + SPY). Un escudo SPY Put 5% OTM recorta el Max Drawdown de -4.80% a -2.90% con +0.23 pts de Sharpe.`
+            }
+        ]);
     };
-  }, [universe, baseCapital]);
 
-  const quantRisk = useMemo(
-    () => computePortfolioQuantRisk(portfolioSummary.activeHoldings, portfolioSummary.totalNav),
-    [portfolioSummary.activeHoldings, portfolioSummary.totalNav]
-  );
-
-  // Filtered asset list combining Row 1 (statusFilter) + Row 2 (classFilter) + Search
-  const filteredAssets = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase();
-    return universe.filter((item) => {
-      if (statusFilter === 'HELD' && item.marketValue <= 0) return false;
-      if (statusFilter === 'WATCHLIST' && item.marketValue > 0) return false;
-      if (classFilter !== 'ALL' && item.cat !== classFilter) return false;
-      if (!q) return true;
-      return (
-        item.sym.toLowerCase().includes(q) ||
-        item.name.toLowerCase().includes(q) ||
-        item.cat.toLowerCase().includes(q)
-      );
-    });
-  }, [universe, statusFilter, classFilter, searchQuery]);
-
-  // Adjust position weight interactively in the sandbox (respecting 20% NAV cap & available cash)
-  const adjustAssetAllocation = (sym, deltaUsd, explicitTargetPct = null) => {
-    const nowStamp = new Date().toTimeString().slice(0, 8);
-    setUniverse((prev) => {
-      const currentTotalInvested = prev.reduce((acc, x) => acc + x.marketValue, 0);
-      const maxSingleAssetUsd = Math.round(baseCapital * 0.2); // 20% Max Cap Guardrail
-
-      return prev.map((item) => {
-        if (item.sym !== sym) return item;
-        const otherInvested = currentTotalInvested - item.marketValue;
-        const maxAvailableUsd = Math.max(0, baseCapital - otherInvested);
-
-        let nextValue =
-          explicitTargetPct !== null
-            ? Math.round((explicitTargetPct / 100) * baseCapital)
-            : item.marketValue + deltaUsd;
-
-        // Enforce 0 floor, 20% single-asset cap, and available cash ceiling
-        nextValue = Math.max(0, Math.min(nextValue, maxSingleAssetUsd, maxAvailableUsd));
-
-        // If SOL or high anomaly (>0.65), cap at 5% NAV ($5,320) via Risk Guardrail
-        if (item.anomalyScore >= 0.65) {
-          nextValue = Math.min(nextValue, Math.round(baseCapital * 0.05));
-        }
-
-        const weightPct = ((nextValue / baseCapital) * 100).toFixed(1);
-        const estPnlRatio = item.avgEntry > 0 ? (item.currentPrice - item.avgEntry) / item.avgEntry : 0;
-        const nextPnlUsd = nextValue > 0 ? Math.round(nextValue * estPnlRatio) : 0;
-        const nextPnlPct = nextValue > 0 ? Number((estPnlRatio * 100).toFixed(2)) : 0;
-
-        // Log the sandbox simulation event
-        const simEvent = {
-          id: `sim-${sym}-${Date.now()}`,
-          sym,
-          action: nextValue > item.marketValue ? 'SIMULATE BUY' : nextValue === 0 ? 'CLOSE POSITION' : 'SIMULATE TRIM',
-          status: 'SANDBOX REBALANCE',
-          time: nowStamp,
-          allocText: `${weightPct}% NAV ($${nextValue.toLocaleString()})`,
-          isPositive: nextPnlUsd >= 0 && item.anomalyScore < 0.65,
-          title: {
-            EN:
-              nextValue === 0
-                ? `POSITION CLOSED • ${sym} → 0.0% NAV`
-                : `PORTFOLIO REBALANCED • ${sym} → ${weightPct}% NAV ($${nextValue.toLocaleString()})`,
-            ES:
-              nextValue === 0
-                ? `POSICIÓN CERRADA • ${sym} → 0.0% NAV`
-                : `REBALANCEO SIMULADO • ${sym} → ${weightPct}% NAV ($${nextValue.toLocaleString()})`,
-          },
-          desc: {
-            EN:
-              item.anomalyScore >= 0.65
-                ? `Risk Guardrail active on ${sym} (Anomaly ${item.anomalyScore} > 0.65): maximum exposure restricted to 5.0% NAV. Correlated hedge suggestion: ${item.proxyCorr}.`
-                : `Updated ${sym} allocation to $${nextValue.toLocaleString()} (${weightPct}% of portfolio). Correlated derivative/proxy reference: ${item.proxyCorr}.`,
-            ES:
-              item.anomalyScore >= 0.65
-                ? `Guardrail de riesgo activo en ${sym} (Anomalía ${item.anomalyScore} > 0.65): exposición máxima restringida a 5.0% NAV. Cobertura correlacionada: ${item.proxyCorr}.`
-                : `Asignación de ${sym} ajustada a $${nextValue.toLocaleString()} (${weightPct}% de la cartera). Referencia de derivado/correlación: ${item.proxyCorr}.`,
-          },
-        };
-        setLedgerEvents((logs) => [simEvent, ...logs.slice(0, 9)]);
-
-        return {
-          ...item,
-          marketValue: nextValue,
-          pnlUsd: nextPnlUsd,
-          pnlPct: nextPnlPct,
-          status:
-            nextValue === 0
-              ? 'WATCHLIST (0%)'
-              : item.anomalyScore >= 0.65
-              ? 'GUARDRAIL CAPPED'
-              : Number(weightPct) >= 15
-              ? 'CORE OVERWEIGHT'
-              : 'ACTIVE LONG',
-        };
-      });
-    });
-  };
-
-  const handleRunLiveCycle = async (targetSym = selectedAsset) => {
-    setIsRunningCycle(true);
-    try {
-      const live = await runLiveCommitteeCycle(targetSym);
-      setCommitteeResult(live);
-      if (live.newLedgerEvent) {
-        setLedgerEvents((prev) => [live.newLedgerEvent, ...prev.slice(0, 9)]);
-      }
-      if (typeof live.targetWeightPct === 'number') {
-        adjustAssetAllocation(targetSym, 0, live.targetWeightPct);
-      }
-    } catch {
-      setCommitteeResult(getCommitteeDeliberation(targetSym));
-    } finally {
-      setIsRunningCycle(false);
-    }
-  };
-
-  // Navigate directly to Level 2 of the selected ticker in Markets
-  const jumpToAssetLevel2 = (sym) => {
-    if (onOpenAssetInMarkets) {
-      onOpenAssetInMarkets(sym);
-    } else if (onNavigate) {
-      if (onSelectAsset) onSelectAsset(sym);
-      onNavigate('workstation');
-    }
-  };
-
-  const verdictPositive = committeeResult.isPositive !== false;
-  const verdictColor = verdictPositive ? '#10b981' : '#f43f5e';
-
-  // Build SVG Donut segments for the Portfolio Proportions ring
-  const donutSegments = useMemo(() => {
-    const r = 38;
-    const c = 2 * Math.PI * r;
-    let cumulativePct = 0;
-
-    const slices = portfolioSummary.activeHoldings.map((h, idx) => {
-      const pct = (h.marketValue / portfolioSummary.totalNav) * 100;
-      const dash = (pct / 100) * c;
-      const offset = -((cumulativePct / 100) * c);
-      cumulativePct += pct;
-      // Distinct green shades for healthy holdings, rose red for guardrail/negative holdings
-      const greenShades = ['#10b981', '#059669', '#34d399', '#047857', '#6ee7b7', '#10b981'];
-      const color = h.isPositive ? greenShades[idx % greenShades.length] : '#f43f5e';
-      return {
-        sym: h.sym,
-        name: h.name,
-        marketValue: h.marketValue,
-        pct,
-        dash: Math.max(0, dash - 1.5),
-        c,
-        offset,
-        color,
-        isPositive: h.isPositive,
-      };
-    });
-
-    // Cash slice
-    if (portfolioSummary.cashPct > 0.5) {
-      const dash = (portfolioSummary.cashPct / 100) * c;
-      const offset = -((cumulativePct / 100) * c);
-      slices.push({
-        sym: 'CASH',
-        name: isES ? 'Liquidez Disponible' : 'Liquid Cash',
-        marketValue: portfolioSummary.cashBalance,
-        pct: portfolioSummary.cashPct,
-        dash: Math.max(0, dash - 1.5),
-        c,
-        offset,
-        color: 'rgba(255, 255, 255, 0.22)',
-        isPositive: true,
-      });
-    }
-
-    return slices;
-  }, [portfolioSummary, isES]);
-
-  const activeDonutFocus = useMemo(() => {
-    const targetSym = hoveredSlice || selectedAsset;
-    const found = donutSegments.find((s) => s.sym === targetSym);
-    if (found) return found;
-    return {
-      sym: isES ? 'INVERTIDO' : 'INVESTED',
-      pct: portfolioSummary.investedPct,
-      marketValue: portfolioSummary.investedValue,
-      color: '#10b981',
-    };
-  }, [hoveredSlice, selectedAsset, donutSegments, portfolioSummary, isES]);
-
-  return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.95rem',
-        height: 'calc(100vh - 118px)',
-        minHeight: 0,
-      }}
-    >
-      {/* 1. TOP HERO CARD: INTERACTIVE DONUT RING + PORTFOLIO TELEMETRY + TALL PROPORTIONAL ALLOCATION TILES */}
-      <div
-        style={{
-          borderRadius: '22px',
-          backgroundColor: 'var(--bg-panel-glass)',
-          backdropFilter: 'blur(14px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          padding: '1.15rem 1.45rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '0.9rem',
-          flexShrink: 0,
-        }}
-      >
+    return (
         <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '1.45rem',
-          }}
-        >
-          {/* Left: Interactive SVG Donut Chart (Larger 110x110) + Total NAV */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1.3rem' }}>
-            {/* Interactive Donut Ring */}
-            <div style={{ position: 'relative', width: '110px', height: '110px', flexShrink: 0 }}>
-              <svg width="110" height="110" viewBox="0 0 96 96" style={{ transform: 'rotate(-90deg)' }}>
-                <circle
-                  cx="48"
-                  cy="48"
-                  r="38"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.06)"
-                  strokeWidth="10.5"
-                />
-                {donutSegments.map((seg) => {
-                  const isFocused = (hoveredSlice || selectedAsset) === seg.sym;
-                  return (
-                    <circle
-                      key={seg.sym}
-                      cx="48"
-                      cy="48"
-                      r="38"
-                      fill="none"
-                      stroke={seg.color}
-                      strokeWidth={isFocused ? '13' : '10'}
-                      strokeDasharray={`${seg.dash} ${seg.c}`}
-                      strokeDashoffset={seg.offset}
-                      style={{
-                        cursor: seg.sym !== 'CASH' ? 'pointer' : 'default',
-                        opacity: hoveredSlice && hoveredSlice !== seg.sym ? 0.45 : 1,
-                        transition: 'all 0.25s ease',
-                      }}
-                      onMouseEnter={() => setHoveredSlice(seg.sym)}
-                      onMouseLeave={() => setHoveredSlice(null)}
-                      onClick={() => {
-                        if (seg.sym !== 'CASH' && onSelectAsset) {
-                          onSelectAsset(seg.sym);
-                          setExpandedAsset(seg.sym);
-                        }
-                      }}
-                    />
-                  );
-                })}
-              </svg>
-              {/* Donut Center Readout */}
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  pointerEvents: 'none',
-                }}
-              >
-                <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800, color: 'var(--text-muted)' }}>
-                  {activeDonutFocus.sym}
-                </span>
-                <span className="mono-metric" style={{ fontSize: '0.92rem', fontWeight: 800, color: '#ffffff' }}>
-                  {activeDonutFocus.pct.toFixed(1)}%
-                </span>
-              </div>
-            </div>
-
-            {/* Portfolio Total NAV & Return */}
-            <div>
-              <div className="mono-metric" style={{ fontSize: '0.62rem', color: 'var(--text-dim)', fontWeight: 700, letterSpacing: '0.04em' }}>
-                {isES ? 'VALOR TOTAL DE LA CARTERA (SIMULADOR $100K)' : 'TOTAL PORTFOLIO VALUE ($100K SANDBOX)'}
-              </div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.8rem', marginTop: '0.15rem' }}>
-                <span className="mono-metric" style={{ fontSize: '2.05rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.03em' }}>
-                  ${portfolioSummary.totalNav.toLocaleString('en-US')}
-                </span>
-                <span
-                  className="mono-metric"
-                  style={{
-                    fontSize: '0.9rem',
-                    fontWeight: 800,
-                    color: portfolioSummary.totalPnlUsd >= 0 ? '#10b981' : '#f43f5e',
-                  }}
-                >
-                  {portfolioSummary.totalPnlUsd >= 0 ? '+' : ''}${portfolioSummary.totalPnlUsd.toLocaleString('en-US')} (
-                  {portfolioSummary.totalPnlPct >= 0 ? '+' : ''}
-                  {portfolioSummary.totalPnlPct.toFixed(2)}%)
-                </span>
-              </div>
-              <div className="mono-metric" style={{ fontSize: '0.65rem', color: 'var(--text-muted)', marginTop: '0.28rem' }}>
-                {isES ? 'Invertido:' : 'Invested:'}{' '}
-                <strong style={{ color: '#10b981' }}>
-                  ${portfolioSummary.investedValue.toLocaleString('en-US')} ({portfolioSummary.investedPct.toFixed(1)}%)
-                </strong>{' '}
-                • {isES ? 'Liquidez (Cash):' : 'Liquid Cash:'}{' '}
-                <strong style={{ color: '#ffffff' }}>
-                  ${portfolioSummary.cashBalance.toLocaleString('en-US')} ({portfolioSummary.cashPct.toFixed(1)}%)
-                </strong>
-              </div>
-            </div>
-          </div>
-
-          {/* Right: Tall Visual Proportional Allocation Cards (Treemap Strip) */}
-          <div style={{ flex: 1, minWidth: '360px', display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span className="mono-metric" style={{ fontSize: '0.6rem', color: 'var(--text-dim)', fontWeight: 800 }}>
-                {isES
-                  ? 'PROPORCIONES DE LA CARTERA (CLIC EN UN BLOQUE PARA INSPECCIONAR)'
-                  : 'PORTFOLIO PROPORTIONS (CLICK ANY BLOCK TO INSPECT)'}
-              </span>
-              <span className="mono-metric" style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>
-                {isES ? 'Tope Máx: 20% / Activo' : 'Max Cap: 20% / Asset'} •{' '}
-                <strong style={{ color: portfolioSummary.weightedResearch >= 0 ? '#10b981' : '#f43f5e' }}>
-                  Research {portfolioSummary.weightedResearch >= 0 ? `+${portfolioSummary.weightedResearch}` : portfolioSummary.weightedResearch}
-                </strong>
-              </span>
-            </div>
-
-            {/* Proportional Interactive Tiles (Taller 68px height showing Ticker + % + $ Value) */}
-            <div
-              style={{
+            style={{
+                minHeight: '100vh',
+                background: '#060911',
+                color: '#f8fafc',
+                padding: '12px 18px 64px',
                 display: 'flex',
-                height: '68px',
-                borderRadius: '14px',
-                overflow: 'hidden',
-                gap: '4px',
-                backgroundColor: 'rgba(8, 12, 22, 0.65)',
-                padding: '4px',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-              }}
-            >
-              {portfolioSummary.activeHoldings.map((h) => {
-                const weight = (h.marketValue / portfolioSummary.totalNav) * 100;
-                const isSelected = selectedAsset === h.sym;
-                return (
-                  <button
-                    key={h.sym}
-                    type="button"
-                    onMouseEnter={() => setHoveredSlice(h.sym)}
-                    onMouseLeave={() => setHoveredSlice(null)}
-                    onClick={() => {
-                      onSelectAsset && onSelectAsset(h.sym);
-                      setExpandedAsset((prev) => (prev === h.sym ? null : h.sym));
-                    }}
-                    style={{
-                      flex: `${Math.max(weight, 5)} 1 0%`,
-                      borderRadius: '10px',
-                      border: isSelected
-                        ? `1.5px solid ${h.isPositive ? '#10b981' : '#f43f5e'}`
-                        : '1px solid rgba(255,255,255,0.08)',
-                      backgroundColor: h.isPositive
-                        ? isSelected
-                          ? 'rgba(16, 185, 129, 0.28)'
-                          : 'rgba(16, 185, 129, 0.14)'
-                        : isSelected
-                        ? 'rgba(244, 63, 94, 0.3)'
-                        : 'rgba(244, 63, 94, 0.16)',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '0.12rem',
-                      cursor: 'pointer',
-                      padding: '0 0.3rem',
-                      overflow: 'hidden',
-                      transition: 'all 0.2s ease',
-                    }}
-                  >
-                    <span className="mono-metric" style={{ fontSize: '0.72rem', fontWeight: 800, color: '#ffffff' }}>
-                      {h.sym}
-                    </span>
-                    <span
-                      className="mono-metric"
-                      style={{
-                        fontSize: '0.64rem',
-                        fontWeight: 800,
-                        color: h.isPositive ? '#10b981' : '#f43f5e',
-                      }}
-                    >
-                      {weight.toFixed(1)}%
-                    </span>
-                    <span className="mono-metric" style={{ fontSize: '0.52rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-                      ${(h.marketValue / 1000).toFixed(1)}k
-                    </span>
-                  </button>
-                );
-              })}
-
-              {/* Cash Block */}
-              {portfolioSummary.cashPct > 1 && (
-                <div
-                  onMouseEnter={() => setHoveredSlice('CASH')}
-                  onMouseLeave={() => setHoveredSlice(null)}
-                  style={{
-                    flex: `${Math.max(portfolioSummary.cashPct, 6.5)} 1 0%`,
-                    borderRadius: '10px',
-                    border: '1px dashed rgba(255,255,255,0.18)',
-                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                flexDirection: 'column',
+                gap: '12px'
+            }}
+        >
+            {/* ══════════════════════════════════════════════════════════════════
+                BARRA DE NAVEGACIÓN CENTRADA (SÓLO TÍTULOS) + ICONO COPILOTO A LA ALTURA DEL MENÚ
+               ══════════════════════════════════════════════════════════════════ */}
+            <div
+                style={{
+                    position: 'relative',
                     display: 'flex',
-                    flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: '0.12rem',
-                    padding: '0 0.35rem',
-                    overflow: 'hidden',
-                  }}
-                >
-                  <span className="mono-metric" style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-muted)' }}>
-                    CASH
-                  </span>
-                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: '#ffffff' }}>
-                    {portfolioSummary.cashPct.toFixed(1)}%
-                  </span>
-                  <span className="mono-metric" style={{ fontSize: '0.52rem', color: 'var(--text-dim)', fontWeight: 600 }}>
-                    ${(portfolioSummary.cashBalance / 1000).toFixed(1)}k
-                  </span>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Strip inside Hero Card: Live Quant Risk Telemetry (VaR 95%, Beta, Vol, Sharpe) + Quick Actions */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '0.75rem',
-            paddingTop: '0.65rem',
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-          }}
-        >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
-            <div
-              onClick={() => setRightPanelTab('risk')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.4rem',
-                padding: '0.26rem 0.65rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(244, 63, 94, 0.12)',
-                border: '1px solid rgba(244, 63, 94, 0.32)',
-                cursor: 'pointer',
-              }}
-              title={isES ? 'Clic para inspeccionar VaR, CVaR y Matriz de Correlación' : 'Click to inspect VaR, CVaR & Correlation Matrix'}
-            >
-              <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)', fontWeight: 700 }}>
-                VaR (95%, 1D):
-              </span>
-              <span className="mono-metric" style={{ fontSize: '0.68rem', color: '#f43f5e', fontWeight: 800 }}>
-                -${quantRisk.var95Usd.toLocaleString('en-US')} ({quantRisk.var95Pct.toFixed(2)}% NAV)
-              </span>
-            </div>
-
-            <div
-              onClick={() => setRightPanelTab('risk')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                padding: '0.26rem 0.65rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                cursor: 'pointer',
-              }}
-            >
-              <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)', fontWeight: 700 }}>
-                {isES ? 'Beta Ponderado (vs SPY):' : 'Weighted Beta (vs SPY):'}
-              </span>
-              <span
-                className="mono-metric"
-                style={{
-                  fontSize: '0.68rem',
-                  color: quantRisk.weightedBeta <= 1.25 ? '#10b981' : '#f43f5e',
-                  fontWeight: 800,
+                    minHeight: '38px',
+                    padding: '4px 12px'
                 }}
-              >
-                {quantRisk.weightedBeta.toFixed(2)}β
-              </span>
-            </div>
-
-            <div
-              onClick={() => setRightPanelTab('risk')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                padding: '0.26rem 0.65rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                cursor: 'pointer',
-              }}
             >
-              <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)', fontWeight: 700 }}>
-                {isES ? 'Volatilidad Anualizada:' : 'Annualized Volatility:'}
-              </span>
-              <span className="mono-metric" style={{ fontSize: '0.68rem', color: '#ffffff', fontWeight: 800 }}>
-                {quantRisk.portfolioAnnualVolPct.toFixed(1)}%
-              </span>
-            </div>
-
-            <div
-              onClick={() => setRightPanelTab('risk')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                padding: '0.26rem 0.65rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(16, 185, 129, 0.11)',
-                border: '1px solid rgba(16, 185, 129, 0.3)',
-                cursor: 'pointer',
-              }}
-            >
-              <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)', fontWeight: 700 }}>
-                Sharpe Ratio:
-              </span>
-              <span
-                className="mono-metric"
-                style={{
-                  fontSize: '0.68rem',
-                  color: quantRisk.sharpeRatio >= 1.0 ? '#10b981' : '#f43f5e',
-                  fontWeight: 800,
-                }}
-              >
-                {quantRisk.sharpeRatio.toFixed(2)}
-              </span>
-            </div>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-            <button
-              type="button"
-              onClick={() => setRightPanelTab('risk')}
-              className="mono-metric"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.32rem',
-                padding: '0.26rem 0.7rem',
-                borderRadius: '999px',
-                border: rightPanelTab === 'risk' ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.14)',
-                backgroundColor: rightPanelTab === 'risk' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255, 255, 255, 0.05)',
-                color: rightPanelTab === 'risk' ? '#10b981' : '#ffffff',
-                fontSize: '0.58rem',
-                fontWeight: 800,
-                cursor: 'pointer',
-              }}
-            >
-              <Activity size={11} />
-              <span>{isES ? 'Matriz de Correlación & VaR' : 'Correlation Matrix & VaR'}</span>
-            </button>
-
-            <button
-              type="button"
-              onClick={resetToDefaultPortfolio}
-              className="mono-metric"
-              title={isES ? 'Restaurar asignaciones iniciales de la cartera ($106,420)' : 'Restore default portfolio allocations ($106,420)'}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.28rem',
-                padding: '0.26rem 0.65rem',
-                borderRadius: '999px',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-                backgroundColor: 'rgba(255, 255, 255, 0.04)',
-                color: 'var(--text-muted)',
-                fontSize: '0.56rem',
-                fontWeight: 700,
-                cursor: 'pointer',
-              }}
-            >
-              <RotateCcw size={10} />
-              <span>{isES ? 'Restaurar Base' : 'Reset Default'}</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* 2. MAIN WORKSPACE: LEFT = ASSET UNIVERSE & SANDBOX (COLLAPSED BY DEFAULT), RIGHT = FOCUSED COMMITTEE OR LOG */}
-      <div
-        style={{
-          flex: 1,
-          minHeight: 0,
-          display: 'grid',
-          gridTemplateColumns: '1.22fr 1fr',
-          gap: '1.1rem',
-        }}
-      >
-        {/* LEFT COLUMN: UNIFIED ASSET SELECTOR & POSITION SIMULATOR (CLICK TO EXPAND ONLY 1 AT A TIME) */}
-        <div
-          style={{
-            borderRadius: '22px',
-            backgroundColor: 'var(--bg-panel-glass)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            padding: '0.9rem 1.15rem',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.58rem',
-            minHeight: 0,
-          }}
-        >
-          {/* Row 1: Search Input + Primary Portfolio Status Filter (All | In Portfolio | Watchlist with counts) */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.65rem', flexWrap: 'wrap' }}>
-            {/* Search Input with Keyboard Navigation */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.45rem',
-                backgroundColor: 'rgba(8, 12, 22, 0.78)',
-                border: '1px solid rgba(255, 255, 255, 0.14)',
-                borderRadius: '999px',
-                padding: '0.28rem 0.75rem',
-                minWidth: '215px',
-                flex: '1 1 215px',
-                maxWidth: '280px',
-              }}
-            >
-              <Search size={13} style={{ color: '#10b981' }} />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  setKbIndex(0);
-                }}
-                onKeyDown={(e) => {
-                  if (!filteredAssets.length) return;
-                  if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    const next = (kbIndex + 1) % filteredAssets.length;
-                    setKbIndex(next);
-                    onSelectAsset && onSelectAsset(filteredAssets[next].sym);
-                  } else if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    const prev = (kbIndex - 1 + filteredAssets.length) % filteredAssets.length;
-                    setKbIndex(prev);
-                    onSelectAsset && onSelectAsset(filteredAssets[prev].sym);
-                  } else if (e.key === 'Enter') {
-                    e.preventDefault();
-                    const chosen = filteredAssets[kbIndex] || filteredAssets[0];
-                    if (chosen) {
-                      onSelectAsset && onSelectAsset(chosen.sym);
-                      setExpandedAsset((cur) => (cur === chosen.sym ? null : chosen.sym));
-                    }
-                  } else if (e.key === 'Escape') {
-                    setSearchQuery('');
-                    setExpandedAsset(null);
-                  }
-                }}
-                placeholder={isES ? 'Buscar activo (↑/↓/Enter)...' : 'Search asset (↑/↓/Enter)...'}
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  outline: 'none',
-                  color: '#ffffff',
-                  fontSize: '0.72rem',
-                  width: '100%',
-                }}
-              />
-              {searchQuery && (
-                <button
-                  type="button"
-                  onClick={() => setSearchQuery('')}
-                  style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', padding: 0 }}
-                >
-                  <X size={12} />
-                </button>
-              )}
-            </div>
-
-            {/* Filter Row 1: Portfolio Status (All | In Portfolio | Watchlist with counts) */}
-            <div style={{ display: 'flex', gap: '0.32rem', flexWrap: 'wrap' }}>
-              {[
-                { id: 'ALL', label: isES ? `Todos (${universe.length})` : `All (${universe.length})` },
-                {
-                  id: 'HELD',
-                  label: isES
-                    ? `En Cartera (${portfolioSummary.activeHoldings.length})`
-                    : `In Portfolio (${portfolioSummary.activeHoldings.length})`,
-                },
-                {
-                  id: 'WATCHLIST',
-                  label: isES
-                    ? `★ Watchlist (${portfolioSummary.watchlistCount})`
-                    : `★ Watchlist (${portfolioSummary.watchlistCount})`,
-                },
-              ].map((tab) => {
-                const active = statusFilter === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    onClick={() => setStatusFilter(tab.id)}
-                    className="mono-metric"
-                    style={{
-                      fontSize: '0.6rem',
-                      fontWeight: 800,
-                      padding: '0.24rem 0.68rem',
-                      borderRadius: '999px',
-                      border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.1)',
-                      backgroundColor: active ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255,255,255,0.04)',
-                      color: active ? '#10b981' : 'var(--text-dim)',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {tab.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Filter Row 2: Asset Class Filter (Right below the first 3 filters) */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              gap: '0.5rem',
-              flexWrap: 'wrap',
-              paddingBottom: '0.35rem',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
-            }}
-          >
-            <span className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--text-dim)', fontWeight: 700 }}>
-              {isES ? 'FILTRAR POR TIPO DE ACTIVO:' : 'FILTER BY ASSET CLASS:'}
-            </span>
-            <div style={{ display: 'flex', gap: '0.3rem', flexWrap: 'wrap' }}>
-              {[
-                { id: 'ALL', label: isES ? 'Todas las Clases' : 'All Classes' },
-                ...Array.from(new Set(universe.map((u) => u.cat))).map((cat) => {
-                  const count = universe.filter((u) => u.cat === cat).length;
-                  return { id: cat, label: `${cat} (${count})` };
-                }),
-              ].map((cls) => {
-                const active = classFilter === cls.id;
-                return (
-                  <button
-                    key={cls.id}
-                    type="button"
-                    onClick={() => setClassFilter(cls.id)}
-                    className="mono-metric"
-                    style={{
-                      fontSize: '0.56rem',
-                      fontWeight: 700,
-                      padding: '0.16rem 0.56rem',
-                      borderRadius: '999px',
-                      border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.08)',
-                      backgroundColor: active ? 'rgba(16, 185, 129, 0.15)' : 'rgba(255,255,255,0.02)',
-                      color: active ? '#10b981' : 'var(--text-muted)',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {cls.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Helper Hint */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.64rem', color: 'var(--text-dim)' }}>
-            <span>
-              {isES
-                ? 'Hacé clic en un activo para desplegar sus detalles y simular cambios de peso en la cartera'
-                : 'Click any asset row to expand details and simulate portfolio weight adjustments'}
-            </span>
-            {expandedAsset && (
-              <button
-                type="button"
-                onClick={() => setExpandedAsset(null)}
-                className="mono-metric"
-                style={{
-                  background: 'transparent',
-                  border: 'none',
-                  color: 'var(--text-muted)',
-                  fontSize: '0.58rem',
-                  cursor: 'pointer',
-                  textDecoration: 'underline',
-                }}
-              >
-                {isES ? 'Contraer' : 'Collapse'}
-              </button>
-            )}
-          </div>
-
-          {/* Asset Rows (Compact 1-Line by default; expands ONLY when clicked) */}
-          <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.45rem', paddingRight: '0.2rem' }}>
-            {filteredAssets.map((pos) => {
-              const isSelected = selectedAsset === pos.sym;
-              const isExpanded = expandedAsset === pos.sym;
-              const isHeld = pos.marketValue > 0;
-              const weightPct = ((pos.marketValue / portfolioSummary.totalNav) * 100).toFixed(1);
-              const toneColor = pos.isPositive ? '#10b981' : '#f43f5e';
-              const isAnomalyAlert = pos.anomalyScore >= 0.65;
-
-              return (
                 <div
-                  key={pos.sym}
-                  style={{
-                    borderRadius: '14px',
-                    backgroundColor: isSelected
-                      ? pos.isPositive
-                        ? 'rgba(16, 185, 129, 0.1)'
-                        : 'rgba(244, 63, 94, 0.1)'
-                      : 'rgba(255, 255, 255, 0.03)',
-                    border: isSelected
-                      ? `1.5px solid ${toneColor}`
-                      : '1px solid rgba(255, 255, 255, 0.07)',
-                    borderLeft: `4px solid ${isHeld ? toneColor : 'rgba(255,255,255,0.22)'}`,
-                    transition: 'all 0.2s ease',
-                  }}
-                >
-                  {/* 1-Line Summary Header (Always Visible) */}
-                  <div
-                    onClick={() => {
-                      onSelectAsset && onSelectAsset(pos.sym);
-                      setExpandedAsset((cur) => (cur === pos.sym ? null : pos.sym));
-                    }}
                     style={{
-                      padding: '0.62rem 0.85rem',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      cursor: 'pointer',
-                      gap: '0.5rem',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.52rem' }}>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          if (onToggleWatchlist) onToggleWatchlist(pos.sym);
-                        }}
-                        title={
-                          watchlistSyms.includes(pos.sym)
-                            ? isES
-                              ? 'Quitar de Watchlist'
-                              : 'Remove from Watchlist'
-                            : isES
-                            ? 'Guardar en Watchlist'
-                            : 'Save to Watchlist'
-                        }
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          padding: 0,
-                          cursor: 'pointer',
-                          fontSize: '0.84rem',
-                          lineHeight: 1,
-                          color: watchlistSyms.includes(pos.sym) ? '#fbbf24' : 'rgba(255,255,255,0.22)',
-                        }}
-                      >
-                        {watchlistSyms.includes(pos.sym) ? '★' : '☆'}
-                      </button>
-                      <span className="mono-metric" style={{ fontSize: '0.88rem', fontWeight: 800, color: '#ffffff', minWidth: '44px' }}>
-                        {pos.sym}
-                      </span>
-                      <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: 500 }}>
-                        {pos.name}
-                      </span>
-                      <span
-                        className="mono-metric"
-                        style={{
-                          fontSize: '0.54rem',
-                          fontWeight: 800,
-                          padding: '0.08rem 0.45rem',
-                          borderRadius: '999px',
-                          backgroundColor: !isHeld
-                            ? 'rgba(251, 191, 36, 0.14)'
-                            : pos.isPositive
-                            ? 'rgba(16, 185, 129, 0.16)'
-                            : 'rgba(244, 63, 94, 0.18)',
-                          color: !isHeld ? '#fbbf24' : toneColor,
-                        }}
-                      >
-                        {pos.status}
-                      </span>
-                    </div>
-
-                    <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
-                      {isHeld ? (
-                        <>
-                          <span style={{ fontSize: '0.82rem', fontWeight: 800, color: '#ffffff' }}>
-                            ${pos.marketValue.toLocaleString('en-US')}
-                          </span>
-                          <span style={{ fontSize: '0.68rem', color: 'var(--text-dim)', fontWeight: 700, minWidth: '52px', textAlign: 'right' }}>
-                            {weightPct}%
-                          </span>
-                          <span style={{ fontSize: '0.74rem', fontWeight: 800, color: toneColor, minWidth: '58px', textAlign: 'right' }}>
-                            {pos.pnlPct >= 0 ? '+' : ''}
-                            {pos.pnlPct.toFixed(1)}%
-                          </span>
-                        </>
-                      ) : (
-                        <>
-                          <span style={{ fontSize: '0.63rem', color: 'var(--text-dim)', fontWeight: 700 }}>
-                            {isES ? `Objetivo Comité: ${pos.targetWeightPct}%` : `Committee Target: ${pos.targetWeightPct}%`}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onSelectAsset && onSelectAsset(pos.sym);
-                              adjustAssetAllocation(pos.sym, 0, pos.targetWeightPct || 5.0);
-                            }}
-                            className="mono-metric"
-                            style={{
-                              fontSize: '0.58rem',
-                              fontWeight: 800,
-                              padding: '0.18rem 0.55rem',
-                              borderRadius: '999px',
-                              border: '1px solid rgba(16, 185, 129, 0.45)',
-                              backgroundColor: 'rgba(16, 185, 129, 0.16)',
-                              color: '#10b981',
-                              cursor: 'pointer',
-                            }}
-                          >
-                            {isES ? `+ INCORPORAR (${pos.targetWeightPct}%)` : `+ INCORPORATE (${pos.targetWeightPct}%)`}
-                          </button>
-                        </>
-                      )}
-                      {isExpanded ? (
-                        <ChevronUp size={15} style={{ color: 'var(--text-muted)' }} />
-                      ) : (
-                        <ChevronDown size={15} style={{ color: 'var(--text-dim)' }} />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Expanded Detail & Sandbox Controls (Visible ONLY when this asset is clicked) */}
-                  {isExpanded && (
-                    <div
-                      style={{
-                        padding: '0.65rem 0.85rem 0.75rem 0.85rem',
-                        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-                        backgroundColor: 'rgba(8, 12, 22, 0.55)',
-                        borderBottomLeftRadius: '14px',
-                        borderBottomRightRadius: '14px',
                         display: 'flex',
-                        flexDirection: 'column',
-                        gap: '0.6rem',
-                      }}
-                    >
-                      {/* Signal & Correlation Metrics */}
-                      <div
-                        className="mono-metric"
-                        style={{
-                          display: 'grid',
-                          gridTemplateColumns: 'repeat(4, 1fr)',
-                          gap: '0.5rem',
-                          fontSize: '0.62rem',
-                        }}
-                      >
-                        <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', padding: '0.38rem 0.55rem', borderRadius: '8px' }}>
-                          <div style={{ color: 'var(--text-dim)', fontSize: '0.54rem' }}>
-                            {isES ? 'PRECIO ACTUAL' : 'CURRENT PRICE'}
-                          </div>
-                          <div style={{ color: '#ffffff', fontWeight: 800, marginTop: '0.1rem' }}>
-                            ${pos.currentPrice.toLocaleString()}
-                          </div>
-                        </div>
-
-                        <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', padding: '0.38rem 0.55rem', borderRadius: '8px' }}>
-                          <div style={{ color: 'var(--text-dim)', fontSize: '0.54rem' }}>ANALYTICS ANOMALY</div>
-                          <div style={{ color: isAnomalyAlert ? '#f43f5e' : '#10b981', fontWeight: 800, marginTop: '0.1rem' }}>
-                            {pos.anomalyScore} {isAnomalyAlert ? '(ALERT >0.65)' : '(Normal)'}
-                          </div>
-                        </div>
-
-                        <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', padding: '0.38rem 0.55rem', borderRadius: '8px' }}>
-                          <div style={{ color: 'var(--text-dim)', fontSize: '0.54rem' }}>RESEARCH SCORE</div>
-                          <div style={{ color: pos.researchScore >= 0 ? '#10b981' : '#f43f5e', fontWeight: 800, marginTop: '0.1rem' }}>
-                            {pos.researchScore >= 0 ? `+${pos.researchScore}` : pos.researchScore}
-                          </div>
-                        </div>
-
-                        <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', padding: '0.38rem 0.55rem', borderRadius: '8px' }}>
-                          <div style={{ color: 'var(--text-dim)', fontSize: '0.54rem' }}>
-                            {isES ? 'CORRELACIÓN / PROXY' : 'CORRELATED PROXY'}
-                          </div>
-                          <div style={{ color: '#ffffff', fontWeight: 700, marginTop: '0.1rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                            {pos.proxyCorr}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Interactive Position Weight Simulator + Jump to Markets Level 2 */}
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
-                          <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)', fontWeight: 700 }}>
-                            {isES ? 'SIMULAR PESO:' : 'SIMULATE WEIGHT:'}
-                          </span>
-
-                          <button
-                            type="button"
-                            onClick={() => adjustAssetAllocation(pos.sym, -2660)}
-                            disabled={!isHeld}
-                            className="mono-metric"
-                            style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '0.2rem',
-                              padding: '0.22rem 0.52rem',
-                              borderRadius: '999px',
-                              border: '1px solid rgba(244, 63, 94, 0.35)',
-                              backgroundColor: 'rgba(244, 63, 94, 0.12)',
-                              color: '#f43f5e',
-                              fontSize: '0.58rem',
-                              fontWeight: 800,
-                              cursor: isHeld ? 'pointer' : 'not-allowed',
-                              opacity: isHeld ? 1 : 0.4,
-                            }}
-                          >
-                            <Minus size={10} />
-                            <span>2.5%</span>
-                          </button>
-
-                          <button
-                            type="button"
-                            onClick={() => adjustAssetAllocation(pos.sym, 2660)}
-                            className="mono-metric"
-                            style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '0.2rem',
-                              padding: '0.22rem 0.52rem',
-                              borderRadius: '999px',
-                              border: '1px solid rgba(16, 185, 129, 0.35)',
-                              backgroundColor: 'rgba(16, 185, 129, 0.14)',
-                              color: '#10b981',
-                              fontSize: '0.58rem',
-                              fontWeight: 800,
-                              cursor: 'pointer',
-                            }}
-                          >
-                            <Plus size={10} />
-                            <span>2.5%</span>
-                          </button>
-
-                          <button
-                            type="button"
-                            onClick={() => adjustAssetAllocation(pos.sym, 0, pos.targetWeightPct)}
-                            className="mono-metric"
-                            style={{
-                              display: 'inline-flex',
-                              alignItems: 'center',
-                              gap: '0.25rem',
-                              padding: '0.22rem 0.58rem',
-                              borderRadius: '999px',
-                              border: '1px solid rgba(255,255,255,0.16)',
-                              backgroundColor: 'rgba(255,255,255,0.06)',
-                              color: '#ffffff',
-                              fontSize: '0.58rem',
-                              fontWeight: 700,
-                              cursor: 'pointer',
-                            }}
-                          >
-                            <RotateCcw size={10} />
-                            <span>
-                              {isES ? `Objetivo Comité (${pos.targetWeightPct}%)` : `Committee Target (${pos.targetWeightPct}%)`}
-                            </span>
-                          </button>
-
-                          {isHeld && (
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '24px',
+                        flexWrap: 'wrap'
+                    }}
+                >
+                    {PORTFOLIO_VIEWS.map(v => {
+                        const active = activeView === v.id;
+                        return (
                             <button
-                              type="button"
-                              onClick={() => adjustAssetAllocation(pos.sym, 0, 0)}
-                              className="mono-metric"
-                              style={{
-                                padding: '0.22rem 0.52rem',
-                                borderRadius: '999px',
-                                border: '1px solid rgba(255,255,255,0.1)',
-                                backgroundColor: 'transparent',
-                                color: 'var(--text-dim)',
-                                fontSize: '0.56rem',
-                                fontWeight: 700,
-                                cursor: 'pointer',
-                              }}
+                                key={v.id}
+                                onClick={() => setActiveView(v.id)}
+                                style={{
+                                    padding: '6px 4px',
+                                    border: 'none',
+                                    borderBottom: active ? '2px solid var(--ui-accent, #10b981)' : '2px solid transparent',
+                                    background: 'transparent',
+                                    color: active ? 'var(--ui-accent-bright, #6ee7b7)' : 'rgba(148, 163, 184, 0.72)',
+                                    textShadow: active
+                                        ? '0 0 10px var(--ui-accent-glow, rgba(16,185,129,0.78)), 0 0 22px var(--ui-accent-soft, rgba(16,185,129,0.42))'
+                                        : 'none',
+                                    fontSize: '12px',
+                                    fontWeight: active ? 800 : 600,
+                                    letterSpacing: '0.03em',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.18s ease'
+                                }}
                             >
-                              {isES ? 'Cerrar (0%)' : 'Close (0%)'}
+                                {v.label}
                             </button>
-                          )}
+                        );
+                    })}
+                </div>
+
+                <button
+                    onClick={() => setCopilotOpen(v => !v)}
+                    title={copilotOpen ? 'Ocultar Copiloto RAG' : 'Abrir Copiloto RAG'}
+                    aria-label="Copiloto RAG"
+                    style={{
+                        position: 'absolute',
+                        right: '4px',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        width: '32px',
+                        height: '32px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: '8px',
+                        border: copilotOpen
+                            ? '1px solid var(--ui-accent, rgba(16,185,129,0.65))'
+                            : '1px solid rgba(148,163,184,0.22)',
+                        background: copilotOpen ? 'rgba(16,185,129,0.2)' : 'rgba(15,23,42,0.75)',
+                        color: copilotOpen ? 'var(--ui-accent-bright, #6ee7b7)' : '#cbd5e1',
+                        boxShadow: copilotOpen ? '0 0 14px rgba(16,185,129,0.35)' : 'none',
+                        cursor: 'pointer'
+                    }}
+                >
+                    <MessageSquare size={15} />
+                </button>
+            </div>
+
+            {/* ══════════════════════════════════════════════════════════════════
+                LIENZO DE LA VISTA ACTIVA + COPILOTO COLAPSABLE BAJO DEMANDA
+               ══════════════════════════════════════════════════════════════════ */}
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                    {activeView === 'V1' && (
+                        <PortfolioVista1Builder
+                            holdings={holdings}
+                            setHoldings={setHoldings}
+                            watchlistSyms={watchlistSyms}
+                            onToggleWatchlist={onToggleWatchlist}
+                        />
+                    )}
+                    {activeView === 'V2' && <PortfolioVista2Risk holdings={holdings} />}
+                    {activeView === 'V3' && <PortfolioVista3AdHoc holdings={holdings} />}
+                </div>
+
+                {copilotOpen && (
+                    <div
+                        style={{
+                            width: '320px',
+                            flexShrink: 0,
+                            background: 'linear-gradient(180deg, rgba(15,23,42,0.98) 0%, rgba(9,13,22,0.99) 100%)',
+                            border: '1px solid rgba(16,185,129,0.45)',
+                            borderRadius: '10px',
+                            padding: '12px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            gap: '10px'
+                        }}
+                    >
+                        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                <Sparkles size={14} color="#10b981" />
+                                <span style={{ fontSize: '11px', fontWeight: 900, color: '#f8fafc' }}>COPILOTO DE CARTERA (#8)</span>
+                            </div>
+                            <button onClick={() => setCopilotOpen(false)} style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>
+                                <X size={14} />
+                            </button>
                         </div>
 
-                        <button
-                          type="button"
-                          onClick={() => jumpToAssetLevel2(pos.sym)}
-                          className="mono-metric"
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            gap: '0.25rem',
-                            backgroundColor: 'rgba(16, 185, 129, 0.16)',
-                            color: '#10b981',
-                            border: '1px solid rgba(16, 185, 129, 0.4)',
-                            padding: '0.25rem 0.65rem',
-                            borderRadius: '999px',
-                            fontSize: '0.6rem',
-                            fontWeight: 800,
-                            cursor: 'pointer',
-                          }}
-                        >
-                          <span>{isES ? `Abrir ${pos.sym} en Markets (Nivel 2)` : `Open ${pos.sym} in Markets (Level 2)`}</span>
-                          <ArrowUpRight size={12} />
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* RIGHT COLUMN: SINGLE FOCUSED VIEW (SWITCH BETWEEN COMMITTEE PILLARS OR ORDER LOG, CLICK TO EXPAND) */}
-        <div
-          style={{
-            borderRadius: '22px',
-            backgroundColor: 'var(--bg-panel-glass)',
-            backdropFilter: 'blur(12px)',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            padding: '0.9rem 1.15rem',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.7rem',
-            minHeight: 0,
-          }}
-        >
-          {/* Centered Top Switcher: Either Committee Verdict OR Order Log */}
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <div
-              style={{
-                display: 'inline-flex',
-                padding: '0.22rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(8, 12, 22, 0.85)',
-                border: '1px solid rgba(255, 255, 255, 0.12)',
-              }}
-            >
-              <button
-                type="button"
-                onClick={() => setRightPanelTab('committee')}
-                className="mono-metric"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  padding: '0.35rem 0.78rem',
-                  borderRadius: '999px',
-                  border: 'none',
-                  backgroundColor: rightPanelTab === 'committee' ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-                  color: rightPanelTab === 'committee' ? '#10b981' : 'var(--text-dim)',
-                  fontSize: '0.62rem',
-                  fontWeight: 800,
-                  cursor: 'pointer',
-                }}
-              >
-                <Sliders size={12} />
-                <span>{isES ? `Comité (${selectedAsset})` : `Committee (${selectedAsset})`}</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setRightPanelTab('risk')}
-                className="mono-metric"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  padding: '0.35rem 0.78rem',
-                  borderRadius: '999px',
-                  border: 'none',
-                  backgroundColor: rightPanelTab === 'risk' ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-                  color: rightPanelTab === 'risk' ? '#10b981' : 'var(--text-dim)',
-                  fontSize: '0.62rem',
-                  fontWeight: 800,
-                  cursor: 'pointer',
-                }}
-              >
-                <Activity size={12} />
-                <span>{isES ? 'Riesgo Quant & Correlación' : 'Quant Risk & Correlation'}</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setRightPanelTab('log')}
-                className="mono-metric"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  padding: '0.35rem 0.78rem',
-                  borderRadius: '999px',
-                  border: 'none',
-                  backgroundColor: rightPanelTab === 'log' ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-                  color: rightPanelTab === 'log' ? '#10b981' : 'var(--text-dim)',
-                  fontSize: '0.62rem',
-                  fontWeight: 800,
-                  cursor: 'pointer',
-                }}
-              >
-                <ListChecks size={12} />
-                <span>
-                  {isES ? `Órdenes (${ledgerEvents.length})` : `Order Log (${ledgerEvents.length})`}
-                </span>
-              </button>
-            </div>
-          </div>
-
-          {/* Action Sub-Bar for Selected Asset */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              gap: '0.5rem',
-              flexWrap: 'wrap',
-              paddingBottom: '0.35rem',
-              borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
-            }}
-          >
-            <span className="mono-metric" style={{ fontSize: '0.6rem', color: 'var(--text-muted)', fontWeight: 700 }}>
-              {isES ? `ACTIVO EN FOCO: ${selectedAsset}` : `ACTIVE FOCUS: ${selectedAsset}`}
-            </span>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              <button
-                type="button"
-                onClick={() => jumpToAssetLevel2(selectedAsset)}
-                className="mono-metric"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.25rem',
-                  backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                  color: '#ffffff',
-                  border: '1px solid rgba(255, 255, 255, 0.14)',
-                  padding: '0.3rem 0.65rem',
-                  borderRadius: '999px',
-                  fontSize: '0.6rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                }}
-              >
-                <span>{isES ? `Abrir ${selectedAsset} en Markets` : `Open ${selectedAsset} in Markets`}</span>
-                <ArrowUpRight size={12} />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => handleRunLiveCycle(selectedAsset)}
-                disabled={isRunningCycle}
-                className="mono-metric"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  backgroundColor: '#10b981',
-                  color: '#000',
-                  border: 'none',
-                  padding: '0.32rem 0.78rem',
-                  borderRadius: '999px',
-                  fontSize: '0.62rem',
-                  fontWeight: 800,
-                  cursor: 'pointer',
-                }}
-              >
-                <Play size={11} fill="#000" />
-                <span>
-                  {isRunningCycle
-                    ? isES
-                      ? 'EVALUANDO...'
-                      : 'EVALUATING...'
-                    : isES
-                    ? `EJECUTAR COMITÉ`
-                    : `RUN COMMITTEE`}
-                </span>
-              </button>
-            </div>
-          </div>
-
-          {/* VIEW A: 3-PILLAR COMMITTEE DELIBERATION (COLLAPSED ACCORDIONS BY DEFAULT) */}
-          {rightPanelTab === 'committee' ? (
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.6rem', minHeight: 0, overflowY: 'auto' }}>
-              {/* Verdict Banner */}
-              <div
-                style={{
-                  padding: '0.7rem 0.95rem',
-                  borderRadius: '16px',
-                  backgroundColor: verdictPositive ? 'rgba(16, 185, 129, 0.11)' : 'rgba(244, 63, 94, 0.12)',
-                  border: `1px solid ${verdictPositive ? 'rgba(16, 185, 129, 0.35)' : 'rgba(244, 63, 94, 0.4)'}`,
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                  gap: '0.5rem',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  {verdictPositive ? (
-                    <ShieldCheck size={16} style={{ color: '#10b981' }} />
-                  ) : (
-                    <ShieldAlert size={16} style={{ color: '#f43f5e' }} />
-                  )}
-                  <span className="mono-metric" style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>
-                    {isES ? `VEREDICTO (${selectedAsset}):` : `VERDICT (${selectedAsset}):`}
-                  </span>
-                  <span className="mono-metric" style={{ fontSize: '0.78rem', fontWeight: 800, color: verdictColor }}>
-                    {committeeResult.consensusAction[langCode] ||
-                      committeeResult.consensusAction.EN ||
-                      committeeResult.consensusAction}
-                  </span>
-                </div>
-
-                <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', fontSize: '0.64rem' }}>
-                  <span style={{ color: 'var(--text-dim)' }}>
-                    R/R: <strong style={{ color: '#ffffff' }}>{committeeResult.riskReward || '2.1x'}</strong>
-                  </span>
-                  <span
-                    style={{
-                      fontWeight: 800,
-                      color: verdictColor,
-                      backgroundColor: verdictPositive ? 'rgba(16, 185, 129, 0.18)' : 'rgba(244, 63, 94, 0.2)',
-                      padding: '0.12rem 0.55rem',
-                      borderRadius: '999px',
-                    }}
-                  >
-                    {committeeResult.allocatedNav}
-                  </span>
-                </div>
-              </div>
-
-              <div style={{ fontSize: '0.64rem', color: 'var(--text-dim)' }}>
-                {isES
-                  ? 'Hacé clic en cualquiera de los 3 pilares para desplegar su argumento detallado:'
-                  : 'Click any of the 3 pillars below to expand its detailed reasoning:'}
-              </div>
-
-              {/* 3 Pillars (Click to Expand Only) */}
-              {committeeResult.agents.map((ag, i) => {
-                const agPos = ag.isPositive !== false;
-                const agColor = agPos ? '#10b981' : '#f43f5e';
-                const isOpen = expandedPillar === i;
-
-                return (
-                  <div
-                    key={i}
-                    style={{
-                      borderRadius: '14px',
-                      backgroundColor: isOpen
-                        ? agPos
-                          ? 'rgba(16, 185, 129, 0.09)'
-                          : 'rgba(244, 63, 94, 0.1)'
-                        : 'rgba(255, 255, 255, 0.03)',
-                      border: isOpen ? `1px solid ${agColor}` : '1px solid rgba(255, 255, 255, 0.08)',
-                      borderLeft: `4px solid ${agColor}`,
-                      transition: 'all 0.2s ease',
-                    }}
-                  >
-                    <div
-                      onClick={() => setExpandedPillar((cur) => (cur === i ? null : i))}
-                      style={{
-                        padding: '0.72rem 0.9rem',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        cursor: 'pointer',
-                        gap: '0.5rem',
-                      }}
-                    >
-                      <span className="mono-metric" style={{ fontSize: '0.64rem', fontWeight: 800, color: '#ffffff' }}>
-                        {ag.role[langCode] || ag.role.EN || ag.role}
-                      </span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <span
-                          className="mono-metric"
-                          style={{
-                            fontSize: '0.62rem',
-                            fontWeight: 800,
-                            color: agColor,
-                            padding: '0.1rem 0.5rem',
-                            borderRadius: '999px',
-                            backgroundColor: agPos ? 'rgba(16, 185, 129, 0.16)' : 'rgba(244, 63, 94, 0.18)',
-                          }}
-                        >
-                          {ag.verdict[langCode] || ag.verdict.EN || ag.verdict}
-                        </span>
-                        {isOpen ? (
-                          <ChevronUp size={15} style={{ color: 'var(--text-muted)' }} />
-                        ) : (
-                          <ChevronDown size={15} style={{ color: 'var(--text-dim)' }} />
-                        )}
-                      </div>
-                    </div>
-
-                    {isOpen && (
-                      <div
-                        style={{
-                          padding: '0 0.9rem 0.78rem 0.9rem',
-                          borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-                          paddingTop: '0.55rem',
-                        }}
-                      >
-                        <p style={{ fontSize: '0.74rem', color: '#ffffff', margin: 0, lineHeight: 1.5 }}>
-                          {ag.note[langCode] || ag.note.EN}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          ) : rightPanelTab === 'risk' ? (
-            /* VIEW C: PORTFOLIO QUANT RISK TELEMETRY (VaR 95%, CVaR 99%, BETA, VOL, SHARPE & CORRELATION MATRIX) */
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.65rem', minHeight: 0, overflowY: 'auto' }}>
-              {/* Top 3 Risk Cards: VaR 95%, CVaR 99%, Diversification Benefit */}
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 1fr)',
-                  gap: '0.5rem',
-                }}
-              >
-                <div
-                  style={{
-                    padding: '0.65rem 0.75rem',
-                    borderRadius: '14px',
-                    backgroundColor: 'rgba(244, 63, 94, 0.1)',
-                    border: '1px solid rgba(244, 63, 94, 0.32)',
-                  }}
-                >
-                  <div className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--text-muted)', fontWeight: 700 }}>
-                    VaR (95%, 1D)
-                  </div>
-                  <div className="mono-metric" style={{ fontSize: '0.96rem', fontWeight: 800, color: '#f43f5e', marginTop: '0.15rem' }}>
-                    -${quantRisk.var95Usd.toLocaleString('en-US')}
-                  </div>
-                  <div className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)', marginTop: '0.1rem' }}>
-                    -{quantRisk.var95Pct.toFixed(2)}% NAV (1.645σ)
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    padding: '0.65rem 0.75rem',
-                    borderRadius: '14px',
-                    backgroundColor: 'rgba(244, 63, 94, 0.06)',
-                    border: '1px solid rgba(244, 63, 94, 0.22)',
-                  }}
-                >
-                  <div className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--text-muted)', fontWeight: 700 }}>
-                    CVaR / ES (99%, 1D)
-                  </div>
-                  <div className="mono-metric" style={{ fontSize: '0.96rem', fontWeight: 800, color: '#f43f5e', marginTop: '0.15rem' }}>
-                    -${quantRisk.cvar99Usd.toLocaleString('en-US')}
-                  </div>
-                  <div className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)', marginTop: '0.1rem' }}>
-                    -{quantRisk.cvar99Pct.toFixed(2)}% NAV (2.326σ)
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    padding: '0.65rem 0.75rem',
-                    borderRadius: '14px',
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                    border: '1px solid rgba(16, 185, 129, 0.32)',
-                  }}
-                >
-                  <div className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--text-muted)', fontWeight: 700 }}>
-                    {isES ? 'BENEFICIO DIVERSIF.' : 'DIVERSIF. BENEFIT'}
-                  </div>
-                  <div className="mono-metric" style={{ fontSize: '0.96rem', fontWeight: 800, color: '#10b981', marginTop: '0.15rem' }}>
-                    +${quantRisk.diversificationBenefitUsd.toLocaleString('en-US')}
-                  </div>
-                  <div className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)', marginTop: '0.1rem' }}>
-                    {isES ? 'Reducción VaR por r < 1' : 'VaR reduction via r < 1'}
-                  </div>
-                </div>
-              </div>
-
-              {/* Second Row: Weighted Beta, Annualized Vol, Sharpe Ratio */}
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(3, 1fr)',
-                  gap: '0.5rem',
-                }}
-              >
-                <div
-                  style={{
-                    padding: '0.55rem 0.75rem',
-                    borderRadius: '12px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
-                >
-                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)' }}>
-                    Beta (vs SPY)
-                  </span>
-                  <span
-                    className="mono-metric"
-                    style={{
-                      fontSize: '0.78rem',
-                      fontWeight: 800,
-                      color: quantRisk.weightedBeta <= 1.25 ? '#10b981' : '#f43f5e',
-                    }}
-                  >
-                    {quantRisk.weightedBeta.toFixed(2)}β
-                  </span>
-                </div>
-
-                <div
-                  style={{
-                    padding: '0.55rem 0.75rem',
-                    borderRadius: '12px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
-                >
-                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)' }}>
-                    {isES ? 'Vol Anual' : 'Annual Vol'}
-                  </span>
-                  <span className="mono-metric" style={{ fontSize: '0.78rem', fontWeight: 800, color: '#ffffff' }}>
-                    {quantRisk.portfolioAnnualVolPct.toFixed(1)}%
-                  </span>
-                </div>
-
-                <div
-                  style={{
-                    padding: '0.55rem 0.75rem',
-                    borderRadius: '12px',
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                  }}
-                >
-                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)' }}>
-                    Sharpe (Rf 4.3%)
-                  </span>
-                  <span
-                    className="mono-metric"
-                    style={{
-                      fontSize: '0.78rem',
-                      fontWeight: 800,
-                      color: quantRisk.sharpeRatio >= 1.0 ? '#10b981' : '#f43f5e',
-                    }}
-                  >
-                    {quantRisk.sharpeRatio.toFixed(2)}
-                  </span>
-                </div>
-              </div>
-
-              {/* Interactive Cross-Correlation Matrix (r from -1.00 to +1.00) */}
-              <div
-                style={{
-                  borderRadius: '14px',
-                  backgroundColor: 'rgba(8, 12, 22, 0.72)',
-                  border: '1px solid rgba(255, 255, 255, 0.09)',
-                  padding: '0.7rem 0.85rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.45rem',
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.4rem' }}>
-                  <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800, color: '#ffffff' }}>
-                    {isES
-                      ? 'MATRIZ DE CORRELACIÓN CRUZADA (r ∈ [-1.00, +1.00])'
-                      : 'CROSS-CORRELATION MATRIX (r ∈ [-1.00, +1.00])'}
-                  </span>
-                  <span className="mono-metric" style={{ fontSize: '0.55rem', color: 'var(--text-dim)' }}>
-                    {isES ? 'Verde (<0.45 Diversif.) • Rojo (≥0.70 Concentración)' : 'Green (<0.45 Diversified) • Red (≥0.70 Concentrated)'}
-                  </span>
-                </div>
-
-                {quantRisk.matrixSymbols.length === 0 ? (
-                  <div className="mono-metric" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', padding: '0.8rem 0' }}>
-                    {isES ? 'Sin posiciones activas en cartera.' : 'No active holdings in portfolio.'}
-                  </div>
-                ) : (
-                  <div style={{ overflowX: 'auto' }}>
-                    <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: '3px' }}>
-                      <thead>
-                        <tr>
-                          <th
-                            className="mono-metric"
-                            style={{
-                              fontSize: '0.56rem',
-                              color: 'var(--text-dim)',
-                              textAlign: 'left',
-                              padding: '0.2rem 0.3rem',
-                            }}
-                          >
-                            SYM
-                          </th>
-                          {quantRisk.matrixSymbols.map((colSym) => (
-                            <th
-                              key={colSym}
-                              onClick={() => onSelectAsset && onSelectAsset(colSym)}
-                              className="mono-metric"
-                              style={{
-                                fontSize: '0.56rem',
-                                color: selectedAsset === colSym ? '#10b981' : '#ffffff',
-                                textAlign: 'center',
-                                padding: '0.2rem 0.25rem',
-                                cursor: 'pointer',
-                              }}
-                            >
-                              {colSym}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {quantRisk.correlationMatrix.map((row) => (
-                          <tr key={row.sym}>
-                            <td
-                              onClick={() => onSelectAsset && onSelectAsset(row.sym)}
-                              className="mono-metric"
-                              style={{
-                                fontSize: '0.58rem',
-                                fontWeight: 800,
-                                color: selectedAsset === row.sym ? '#10b981' : '#ffffff',
-                                padding: '0.22rem 0.3rem',
-                                cursor: 'pointer',
-                              }}
-                            >
-                              {row.sym}
-                            </td>
-                            {row.cells.map((cell) => {
-                              const isDiag = cell.rowSym === cell.colSym;
-                              const highCorr = !isDiag && cell.r >= 0.7;
-                              const lowOrNegCorr = !isDiag && cell.r <= 0.45;
-                              const bg = isDiag
-                                ? 'rgba(255, 255, 255, 0.08)'
-                                : highCorr
-                                ? 'rgba(244, 63, 94, 0.22)'
-                                : lowOrNegCorr
-                                ? 'rgba(16, 185, 129, 0.18)'
-                                : 'rgba(255, 255, 255, 0.04)';
-                              const textColor = isDiag
-                                ? 'var(--text-muted)'
-                                : highCorr
-                                ? '#f43f5e'
-                                : lowOrNegCorr
-                                ? '#10b981'
-                                : '#ffffff';
-
-                              return (
-                                <td
-                                  key={`${cell.rowSym}-${cell.colSym}`}
-                                  onClick={() => onSelectAsset && onSelectAsset(cell.colSym)}
-                                  className="mono-metric"
-                                  title={`${cell.rowSym} vs ${cell.colSym}: r = ${cell.r >= 0 ? '+' : ''}${cell.r.toFixed(2)}`}
-                                  style={{
-                                    fontSize: '0.58rem',
-                                    fontWeight: 700,
-                                    textAlign: 'center',
-                                    padding: '0.28rem 0.2rem',
-                                    borderRadius: '6px',
-                                    backgroundColor: bg,
-                                    color: textColor,
-                                    cursor: 'pointer',
-                                  }}
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                            {['Revisar solapamiento ETF', 'Simular cobertura Put 5%', 'Optimizar Sharpe'].map(chip => (
+                                <button
+                                    key={chip}
+                                    onClick={() => sendCopilotPrompt(chip)}
+                                    style={{
+                                        padding: '3px 7px',
+                                        borderRadius: '99px',
+                                        border: '1px solid rgba(16,185,129,0.35)',
+                                        background: 'rgba(16,185,129,0.1)',
+                                        color: '#6ee7b7',
+                                        fontSize: '8.5px',
+                                        fontWeight: 700,
+                                        cursor: 'pointer'
+                                    }}
                                 >
-                                  {cell.r >= 0 && !isDiag ? `+${cell.r.toFixed(2)}` : cell.r.toFixed(2)}
-                                </td>
-                              );
-                            })}
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                )}
-              </div>
-            </div>
-          ) : (
-            /* VIEW B: ORDER & GUARDRAIL EXECUTION LOG (COLLAPSED ACCORDIONS BY DEFAULT) */
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem', minHeight: 0, overflowY: 'auto' }}>
-              <div style={{ fontSize: '0.64rem', color: 'var(--text-dim)' }}>
-                {isES
-                  ? 'Hacé clic en una orden o intervención para desplegar su detalle de ejecución:'
-                  : 'Click any order or guardrail intervention to expand its execution details:'}
-              </div>
+                                    {chip}
+                                </button>
+                            ))}
+                        </div>
 
-              {ledgerEvents.map((ev) => {
-                const evPos = ev.isPositive !== false;
-                const evColor = evPos ? '#10b981' : '#f43f5e';
-                const isOpen = expandedLogId === ev.id;
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxHeight: '280px', overflowY: 'auto' }}>
+                            {copilotThread.map((m, idx) => (
+                                <div
+                                    key={idx}
+                                    style={{
+                                        padding: '8px 10px',
+                                        borderRadius: '7px',
+                                        background: m.role === 'ai' ? 'rgba(2,6,23,0.75)' : 'rgba(16,185,129,0.16)',
+                                        border: `1px solid ${m.role === 'ai' ? 'rgba(148,163,184,0.18)' : 'rgba(16,185,129,0.4)'}`,
+                                        fontSize: '9.5px',
+                                        color: '#e2e8f0',
+                                        lineHeight: 1.45
+                                    }}
+                                >
+                                    {m.txt}
+                                </div>
+                            ))}
+                        </div>
 
-                return (
-                  <div
-                    key={ev.id}
-                    style={{
-                      borderRadius: '14px',
-                      backgroundColor: isOpen ? 'rgba(255, 255, 255, 0.06)' : 'rgba(255, 255, 255, 0.03)',
-                      border: isOpen ? `1px solid ${evColor}` : '1px solid rgba(255, 255, 255, 0.07)',
-                      borderLeft: `4px solid ${evColor}`,
-                      transition: 'all 0.2s ease',
-                    }}
-                  >
-                    <div
-                      onClick={() => {
-                        onSelectAsset && onSelectAsset(ev.sym);
-                        setExpandedLogId((cur) => (cur === ev.id ? null : ev.id));
-                      }}
-                      style={{
-                        padding: '0.65rem 0.85rem',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        cursor: 'pointer',
-                        gap: '0.5rem',
-                      }}
-                    >
-                      <span className="mono-metric" style={{ fontSize: '0.64rem', fontWeight: 800, color: evColor }}>
-                        {ev.title[langCode] || ev.title.EN}
-                      </span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexShrink: 0 }}>
-                        <span className="mono-metric" style={{ color: 'var(--text-dim)', fontSize: '0.58rem' }}>
-                          {ev.time} • {ev.allocText}
-                        </span>
-                        {isOpen ? (
-                          <ChevronUp size={14} style={{ color: 'var(--text-muted)' }} />
-                        ) : (
-                          <ChevronDown size={14} style={{ color: 'var(--text-dim)' }} />
-                        )}
-                      </div>
+                        <div style={{ display: 'flex', gap: '6px' }}>
+                            <input
+                                value={copilotMsg}
+                                onChange={e => setCopilotMsg(e.target.value)}
+                                placeholder="Consultar al Copiloto RAG..."
+                                style={{
+                                    flex: 1,
+                                    background: 'rgba(2,6,23,0.85)',
+                                    border: '1px solid rgba(148,163,184,0.25)',
+                                    borderRadius: '6px',
+                                    padding: '6px 8px',
+                                    color: '#f8fafc',
+                                    fontSize: '10px'
+                                }}
+                            />
+                            <button
+                                onClick={() => {
+                                    sendCopilotPrompt(copilotMsg);
+                                    setCopilotMsg('');
+                                }}
+                                style={{
+                                    padding: '6px 10px',
+                                    borderRadius: '6px',
+                                    border: '1px solid rgba(16,185,129,0.45)',
+                                    background: 'rgba(16,185,129,0.2)',
+                                    color: '#6ee7b7',
+                                    fontSize: '9.5px',
+                                    fontWeight: 800,
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                Enviar
+                            </button>
+                        </div>
                     </div>
-
-                    {isOpen && (
-                      <div
-                        style={{
-                          padding: '0.5rem 0.85rem 0.7rem 0.85rem',
-                          borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-                        }}
-                      >
-                        <p style={{ fontSize: '0.72rem', color: '#ffffff', margin: 0, lineHeight: 1.48 }}>
-                          {ev.desc[langCode] || ev.desc.EN}
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
+                )}
             </div>
-          )}
         </div>
-      </div>
-    </div>
-  );
+    );
 }

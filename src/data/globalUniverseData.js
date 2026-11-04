@@ -538,34 +538,124 @@ export function computeCrossCurrencyRate(baseCcy = 'EUR', quoteCcy = 'USD', amou
   };
 }
 
+function hashTicker(sym = 'NVDA') {
+  let h = 2166136261;
+  const s = String(sym);
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return Math.abs(h);
+}
+
+const KNOWN_UNDERLYING_SPOT = {
+  NVDA: 138.6,
+  SPY: 584.2,
+  SPX: 5852.4,
+  QQQ: 496.8,
+  NDX: 20480.0,
+  TSLA: 258.4,
+  AAPL: 233.8,
+  AMD: 156.4,
+  MSFT: 428.5,
+  META: 592.4,
+  AMZN: 210.8,
+  GOOGL: 181.2,
+  BTC: 71420.0,
+  ETH: 2645.0,
+  SOL: 178.4,
+  TLT: 92.45,
+  GLD: 253.8,
+  USO: 71.2,
+  SX5E: 4985.0,
+};
+
+function getTickerVolProfile(cleanSym) {
+  const h = hashTicker(cleanSym);
+  const presetIv = {
+    TSLA: 54.2,
+    NVDA: 46.8,
+    AMD: 44.6,
+    BTC: 58.4,
+    ETH: 61.2,
+    SOL: 72.8,
+    SPY: 15.4,
+    SPX: 15.2,
+    QQQ: 20.6,
+    NDX: 20.8,
+    AAPL: 23.4,
+    MSFT: 22.1,
+    META: 34.6,
+    AMZN: 29.8,
+    GOOGL: 27.4,
+    MSTR: 88.5,
+    COIN: 68.4,
+    NFLX: 31.5,
+    IWM: 21.8,
+    TLT: 17.6,
+    GLD: 16.4,
+    USO: 34.2,
+  };
+  const baseAtmIv = presetIv[cleanSym] || Number((19.5 + (h % 360) / 10).toFixed(1));
+  const ivRankNum = 24 + (h % 68);
+  const skewNum = Number((-1.2 - ((h >> 3) % 34) / 10).toFixed(1));
+  const pcRatioNum = Number((0.58 + ((h >> 5) % 52) / 100).toFixed(2));
+  const gexSign = (h >> 2) % 4 === 0 ? '-' : '+';
+  const gexVal = Number((0.65 + ((h >> 4) % 48) / 10).toFixed(2));
+  const smileAsym = 1.15 + ((h % 9) * 0.08);
+  const wingCurvature = 1.45 + (((h >> 2) % 8) * 0.09);
+
+  return {
+    baseAtmIv,
+    ivRank: `${ivRankNum}%`,
+    skewNum,
+    skew25d: `${skewNum}% (${skewNum < -2.5 ? 'Put Skew' : 'Balanced Skew'})`,
+    putCallVolRatio: `${pcRatioNum} (${pcRatioNum < 0.85 ? 'Flujo Constructivo' : 'Cobertura Puts'})`,
+    netGexUsd: `${gexSign}$${gexVal}B (Gamma ${gexSign})`,
+    smileAsym,
+    wingCurvature,
+    h,
+  };
+}
+
 // ============================================================================
 // 3. SUPERFICIE DE VOLATILIDAD 2D Y CADENA DE OPCIONES DE ALTO VOLUMEN
 // ============================================================================
 export function getHighVolumeOptionsChain(sym = 'NVDA', spotPrice = 141.5) {
   const cleanSym = sym.replace(/-OPT$/, '');
-  const baseSpot = spotPrice > 0 ? spotPrice : 141.5;
+  const resolvedSpot =
+    sym.endsWith('-OPT') && KNOWN_UNDERLYING_SPOT[cleanSym]
+      ? KNOWN_UNDERLYING_SPOT[cleanSym]
+      : spotPrice > 0
+      ? spotPrice
+      : KNOWN_UNDERLYING_SPOT[cleanSym] || 141.5;
+  const baseSpot = resolvedSpot;
   const step = baseSpot > 1000 ? 50 : baseSpot > 300 ? 10 : baseSpot > 100 ? 5 : baseSpot > 20 ? 2.5 : 0.5;
   const atmStrike = Number((Math.round(baseSpot / step) * step).toFixed(2));
 
   // Strict Liquidity Guardrail: Vol >= 10k, OI >= 25k (7 liquid moneyness nodes from -15% to +15%)
   const offsets = [-3, -2, -1, 0, 1, 2, 3];
-  const baseAtmIv = cleanSym === 'TSLA' ? 54.2 : cleanSym === 'NVDA' || cleanSym === 'AMD' ? 46.8 : cleanSym === 'BTC' || cleanSym === 'SOL' ? 58.4 : cleanSym === 'SPY' || cleanSym === 'SPX' ? 15.4 : 26.5;
+  const prof = getTickerVolProfile(cleanSym);
+  const { baseAtmIv, smileAsym, wingCurvature, h } = prof;
 
   const strikes = offsets.map((k) => {
     const strike = Number((atmStrike + k * step).toFixed(2));
     const moneynessNum = Number((((strike - baseSpot) / baseSpot) * 100).toFixed(1));
     const moneyness = k === 0 ? 'ATM (100%)' : `${moneynessNum >= 0 ? '+' : ''}${moneynessNum}%`;
     // 2D Volatility Surface across 4 institutional expirations (7D, 30D, 90D, 180D)
-    const smilewing = Math.pow(Math.abs(k), 1.35) * 1.85 + (k < 0 ? Math.abs(k) * 1.45 : k * 0.35);
+    const smilewing =
+      Math.pow(Math.abs(k), 1.32) * wingCurvature +
+      (k < 0 ? Math.abs(k) * smileAsym : k * (0.28 + (h % 5) * 0.06));
     const iv30d = Number((baseAtmIv + smilewing).toFixed(1));
-    const iv7d = Number((iv30d * 1.08 + Math.abs(k) * 0.6).toFixed(1));
+    const iv7d = Number((iv30d * (1.06 + (h % 4) * 0.015) + Math.abs(k) * 0.65).toFixed(1));
     const iv90d = Number((iv30d * 0.93 - Math.abs(k) * 0.25).toFixed(1));
     const iv180d = Number((iv30d * 0.88 - Math.abs(k) * 0.35).toFixed(1));
 
     const deltaCall = Number(Math.max(0.12, Math.min(0.88, 0.52 - k * 0.13)).toFixed(2));
     const putDelta = Number((deltaCall - 1).toFixed(2));
-    const callVol = Math.round(52400 / (1 + Math.abs(k) * 0.38));
-    const putVol = Math.round(41800 / (1 + Math.abs(k) * 0.42));
+    const baseVol = 34000 + (h % 32000);
+    const callVol = Math.round(baseVol / (1 + Math.abs(k) * 0.38));
+    const putVol = Math.round((baseVol * 0.84) / (1 + Math.abs(k) * 0.42));
     const callOI = Math.round(callVol * 3.2);
     const putOI = Math.round(putVol * 2.9);
     const intrinsicCall = Math.max(0, baseSpot - strike);
@@ -611,13 +701,13 @@ export function getHighVolumeOptionsChain(sym = 'NVDA', spotPrice = 141.5) {
     liquidityFilterNote: 'Vol > 10k • OI > 25k • Spread <= 2.5% (Sin primas ilíquidas)',
     atmIv30d: `${baseAtmIv}%`,
     atmIvPct: baseAtmIv,
-    ivRank: '68%',
+    ivRank: prof.ivRank,
     straddleBreakevenPct: `±${straddlePct}% ($${straddleUsd})`,
-    skew25d: '-2.8% (Put Skew)',
-    putCallVolRatio: '0.78 (Flujo Constructivo)',
-    netGexUsd: '+$3.85B (Gamma +)',
-    netGammaExposure: '+$3.85B (Gamma +)',
-    maxPain: `$${atmStrike}`,
+    skew25d: prof.skew25d,
+    putCallVolRatio: prof.putCallVolRatio,
+    netGexUsd: prof.netGexUsd,
+    netGammaExposure: prof.netGexUsd,
+    maxPain: `${atmStrike}`,
     strikes,
   };
 }
@@ -626,26 +716,55 @@ export function getHighVolumeOptionsChain(sym = 'NVDA', spotPrice = 141.5) {
 // 4. CURVA FORWARD DE MATERIAS PRIMAS (`COMMODITY` — CONTANGO / BACKWARDATION)
 // ============================================================================
 export function getCommodityForwardCurve(sym = 'CL', spotPrice = 68.4) {
-  const isBackwardated = ['CL', 'BZ', 'GC', 'HG', 'CC', 'KC', 'UX'].includes(sym);
-  const slopePct = isBackwardated ? -0.042 : 0.054;
+  const cleanSym = String(sym).replace(/1!$/, '');
+  const h = hashTicker(cleanSym);
+  const COMMODITY_SPECS = {
+    CL: { backw: true, slope: -0.048, inv: '-6.8% vs 5Y Avg (Tight)', cot: '+184k Contracts (Net Long)' },
+    BZ: { backw: true, slope: -0.041, inv: '-5.2% vs 5Y Avg (Tight)', cot: '+162k Contracts (Net Long)' },
+    NG: { backw: false, slope: 0.086, inv: '+7.4% vs 5Y Avg (Surplus)', cot: '-48k Contracts (Net Short)' },
+    TTF: { backw: false, slope: 0.052, inv: '+4.9% vs 5Y Avg (Full Storage)', cot: '+38k Contracts (Long)' },
+    GC: { backw: false, slope: 0.036, inv: '+1.8% vs 5Y Avg (CB Buying)', cot: '+246k Contracts (Bullish)' },
+    SI: { backw: false, slope: 0.044, inv: '-3.4% vs 5Y Avg (Deficit)', cot: '+58k Contracts (Net Long)' },
+    HG: { backw: true, slope: -0.029, inv: '-8.1% vs 5Y Avg (Low LME)', cot: '+74k Contracts (Net Long)' },
+    UX: { backw: true, slope: -0.062, inv: '-14.2% vs 5Y Avg (Structural Deficit)', cot: '+42k Contracts (Long)' },
+    KC: { backw: true, slope: -0.055, inv: '-11.5% vs 5Y Avg (Brazil Drought)', cot: '+64k Contracts (Net Long)' },
+    CC: { backw: true, slope: -0.078, inv: '-18.4% vs 5Y Avg (Acute Deficit)', cot: '+39k Contracts (Long)' },
+  };
+  const spec = COMMODITY_SPECS[cleanSym] || {
+    backw: ['RB', 'HO', 'LITH', 'TIO'].includes(cleanSym),
+    slope: ['RB', 'HO', 'LITH', 'TIO'].includes(cleanSym)
+      ? -0.025 - ((h % 35) / 1000)
+      : 0.032 + ((h % 45) / 1000),
+    inv: `${['RB', 'HO', 'LITH', 'TIO'].includes(cleanSym) ? '-' : '+'}${(2.1 + (h % 75) / 10).toFixed(1)}% vs 5Y Avg`,
+    cot: `+${28 + (h % 140)}k Contracts`,
+  };
+
+  const isBackwardated = spec.backw;
+  const slopePct = spec.slope;
+  const rollPct = Number(( -slopePct * 100 ).toFixed(1));
+  const rollFormatted = `${rollPct >= 0 ? '+' : ''}${rollPct}% / yr`;
   const tenors = ['Spot (M1)', 'M2', 'M3', 'M4', 'M6', 'M9', 'M12', 'M18'];
   const curveSeries = tenors.map((t, idx) => {
     const progress = idx / 7;
-    const price = Number((spotPrice * (1 + slopePct * progress)).toFixed(2));
+    const wave = Math.sin(progress * Math.PI + (h % 5)) * 0.006;
+    const price = Number((spotPrice * (1 + slopePct * progress + wave)).toFixed(2));
     return {
       time: t,
       price,
       sma20: Number((spotPrice * (1 + slopePct * progress * 0.6)).toFixed(2)),
-      vol: Math.round(320 - idx * 28),
-      zBar: Number(((price - spotPrice) / spotPrice * 100).toFixed(2)),
+      vol: Math.round(320 - idx * 26 + (h % 30)),
+      zBar: Number((((price - spotPrice) / spotPrice) * 100).toFixed(2)),
     };
   });
 
   return {
-    regime: isBackwardated ? 'BACKWARDATION (Roll Yield +4.2%)' : 'CONTANGO (Carry Cost -5.4%)',
-    rollYieldAnnual: isBackwardated ? '+4.2% / yr' : '-5.4% / yr',
-    inventoryVs5Y: isBackwardated ? '-6.8% vs 5Y Avg (Tight)' : '+4.1% vs 5Y Avg (Ample)',
-    cotNetSpec: isBackwardated ? '+184k Contracts (Net Long)' : '+62k Contracts (Neutral)',
+    isBackwardation: isBackwardated,
+    regime: isBackwardated
+      ? `BACKWARDATION (Roll Yield ${rollFormatted})`
+      : `CONTANGO (Carry Cost ${rollFormatted})`,
+    rollYieldAnnual: rollFormatted,
+    inventoryVs5Y: spec.inv,
+    cotNetSpec: spec.cot,
     curveSeries,
   };
 }
@@ -867,20 +986,34 @@ export function computeOptionsStrategyPayoff(sym = 'NVDA', spotPrice = 141.5, st
     }
   };
 
+  const scaleF = Math.max(0.18, s0 / 140) * (chain.atmIvPct / 45);
+  const gScale = Math.max(0.01, 140 / Math.max(15, s0));
+  const fmtSignedUsd = (v, suffix = '') => `${v >= 0 ? '+' : '-'}$${Math.abs(v).toFixed(2)}${suffix}`;
+
   switch (strategyId) {
     case 'LONG_CALL':
       netCost = cAtm;
       breakevenText = `$${(kAtm + cAtm).toFixed(2)}`;
       maxProfitText = 'Ilimitada (Unlimited)';
       maxLossText = `-$${cAtm.toFixed(2)}`;
-      greeks = { delta: '+0.52', gamma: '+0.06', theta: '-$0.22/d', vega: '+$0.36' };
+      greeks = {
+        delta: '+0.52',
+        gamma: `+${(0.06 * gScale).toFixed(3)}`,
+        theta: fmtSignedUsd(-0.22 * scaleF, '/d'),
+        vega: fmtSignedUsd(0.36 * scaleF),
+      };
       break;
     case 'LONG_PUT':
       netCost = pAtm;
       breakevenText = `$${(kAtm - pAtm).toFixed(2)}`;
       maxProfitText = `$${(kAtm - pAtm).toFixed(2)}`;
       maxLossText = `-$${pAtm.toFixed(2)}`;
-      greeks = { delta: '-0.48', gamma: '+0.06', theta: '-$0.20/d', vega: '+$0.35' };
+      greeks = {
+        delta: '-0.48',
+        gamma: `+${(0.06 * gScale).toFixed(3)}`,
+        theta: fmtSignedUsd(-0.20 * scaleF, '/d'),
+        vega: fmtSignedUsd(0.35 * scaleF),
+      };
       break;
     case 'LONG_STRADDLE': {
       const debit = cAtm + pAtm;
@@ -888,7 +1021,12 @@ export function computeOptionsStrategyPayoff(sym = 'NVDA', spotPrice = 141.5, st
       breakevenText = `$${(kAtm - debit).toFixed(2)} / $${(kAtm + debit).toFixed(2)}`;
       maxProfitText = 'Ilimitada (Convexa)';
       maxLossText = `-$${debit.toFixed(2)}`;
-      greeks = { delta: '+0.04', gamma: '+0.12', theta: '-$0.42/d', vega: '+$0.71' };
+      greeks = {
+        delta: '+0.04',
+        gamma: `+${(0.12 * gScale).toFixed(3)}`,
+        theta: fmtSignedUsd(-0.42 * scaleF, '/d'),
+        vega: fmtSignedUsd(0.71 * scaleF),
+      };
       break;
     }
     case 'LONG_STRANGLE': {
@@ -897,7 +1035,12 @@ export function computeOptionsStrategyPayoff(sym = 'NVDA', spotPrice = 141.5, st
       breakevenText = `$${(kPut5 - debit).toFixed(2)} / $${(kCall5 + debit).toFixed(2)}`;
       maxProfitText = 'Ilimitada (Wings)';
       maxLossText = `-$${debit.toFixed(2)}`;
-      greeks = { delta: '+0.02', gamma: '+0.09', theta: '-$0.31/d', vega: '+$0.58' };
+      greeks = {
+        delta: '+0.02',
+        gamma: `+${(0.09 * gScale).toFixed(3)}`,
+        theta: fmtSignedUsd(-0.31 * scaleF, '/d'),
+        vega: fmtSignedUsd(0.58 * scaleF),
+      };
       break;
     }
     case 'BULL_CALL_SPREAD': {
@@ -907,7 +1050,12 @@ export function computeOptionsStrategyPayoff(sym = 'NVDA', spotPrice = 141.5, st
       breakevenText = `$${(kAtm + debit).toFixed(2)}`;
       maxProfitText = `+$${maxGain.toFixed(2)}`;
       maxLossText = `-$${debit.toFixed(2)}`;
-      greeks = { delta: '+0.28', gamma: '+0.02', theta: '-$0.07/d', vega: '+$0.11' };
+      greeks = {
+        delta: '+0.28',
+        gamma: `+${(0.02 * gScale).toFixed(3)}`,
+        theta: fmtSignedUsd(-0.07 * scaleF, '/d'),
+        vega: fmtSignedUsd(0.11 * scaleF),
+      };
       break;
     }
     case 'BEAR_PUT_SPREAD': {
@@ -917,7 +1065,12 @@ export function computeOptionsStrategyPayoff(sym = 'NVDA', spotPrice = 141.5, st
       breakevenText = `$${(kAtm - debit).toFixed(2)}`;
       maxProfitText = `+$${maxGain.toFixed(2)}`;
       maxLossText = `-$${debit.toFixed(2)}`;
-      greeks = { delta: '-0.27', gamma: '+0.02', theta: '-$0.06/d', vega: '+$0.10' };
+      greeks = {
+        delta: '-0.27',
+        gamma: `+${(0.02 * gScale).toFixed(3)}`,
+        theta: fmtSignedUsd(-0.06 * scaleF, '/d'),
+        vega: fmtSignedUsd(0.10 * scaleF),
+      };
       break;
     }
     case 'IRON_CONDOR': {
@@ -927,7 +1080,12 @@ export function computeOptionsStrategyPayoff(sym = 'NVDA', spotPrice = 141.5, st
       breakevenText = `$${(kPut5 - credit).toFixed(2)} / $${(kCall5 + credit).toFixed(2)}`;
       maxProfitText = `+$${credit.toFixed(2)} (Crédito)`;
       maxLossText = `-$${Math.max(0.5, wingWidth - credit).toFixed(2)}`;
-      greeks = { delta: '-0.01', gamma: '-0.05', theta: '+$0.19/d', vega: '-$0.32' };
+      greeks = {
+        delta: '-0.01',
+        gamma: `-${(0.05 * gScale).toFixed(3)}`,
+        theta: fmtSignedUsd(0.19 * scaleF, '/d'),
+        vega: fmtSignedUsd(-0.32 * scaleF),
+      };
       break;
     }
     case 'SYNTHETIC_LONG': {
@@ -936,7 +1094,7 @@ export function computeOptionsStrategyPayoff(sym = 'NVDA', spotPrice = 141.5, st
       breakevenText = `$${(kAtm + net).toFixed(2)}`;
       maxProfitText = 'Ilimitada (Δ = +1.00)';
       maxLossText = 'Riesgo Subyacente';
-      greeks = { delta: '+1.00', gamma: '0.00', theta: '-$0.01/d', vega: '0.00' };
+      greeks = { delta: '+1.00', gamma: '0.000', theta: '-$0.01/d', vega: '$0.00' };
       break;
     }
     case 'SYNTHETIC_SHORT': {
@@ -945,7 +1103,7 @@ export function computeOptionsStrategyPayoff(sym = 'NVDA', spotPrice = 141.5, st
       breakevenText = `$${(kAtm - net).toFixed(2)}`;
       maxProfitText = `$${(kAtm - net).toFixed(2)} (Δ = -1.00)`;
       maxLossText = 'Ilimitada al Alza';
-      greeks = { delta: '-1.00', gamma: '0.00', theta: '+$0.01/d', vega: '0.00' };
+      greeks = { delta: '-1.00', gamma: '0.000', theta: '+$0.01/d', vega: '$0.00' };
       break;
     }
     case 'COVERED_CALL': {
@@ -953,7 +1111,12 @@ export function computeOptionsStrategyPayoff(sym = 'NVDA', spotPrice = 141.5, st
       breakevenText = `$${(s0 - c5).toFixed(2)}`;
       maxProfitText = `+$${(kCall5 - s0 + c5).toFixed(2)}`;
       maxLossText = `-$${(s0 - c5).toFixed(2)}`;
-      greeks = { delta: '+0.64', gamma: '-0.04', theta: '+$0.15/d', vega: '-$0.24' };
+      greeks = {
+        delta: '+0.64',
+        gamma: `-${(0.04 * gScale).toFixed(3)}`,
+        theta: fmtSignedUsd(0.15 * scaleF, '/d'),
+        vega: fmtSignedUsd(-0.24 * scaleF),
+      };
       break;
     }
     default:
@@ -998,20 +1161,18 @@ export function computeOptionsStrategyPayoff(sym = 'NVDA', spotPrice = 141.5, st
 
 export function computeVolatilitySurface3D(sym = 'NVDA', spotPrice = 141.5) {
   const cleanSym = sym.replace(/-OPT$/, '');
-  const baseSpot = spotPrice > 0 ? spotPrice : 141.5;
+  const resolvedSpot =
+    sym.endsWith('-OPT') && KNOWN_UNDERLYING_SPOT[cleanSym]
+      ? KNOWN_UNDERLYING_SPOT[cleanSym]
+      : spotPrice > 0
+      ? spotPrice
+      : KNOWN_UNDERLYING_SPOT[cleanSym] || 141.5;
+  const baseSpot = resolvedSpot;
   const step = baseSpot > 1000 ? 40 : baseSpot > 300 ? 10 : baseSpot > 100 ? 3.5 : baseSpot > 20 ? 1.5 : 0.25;
   const atmStrike = Number((Math.round(baseSpot / step) * step).toFixed(2));
 
-  const baseAtmIv =
-    cleanSym === 'TSLA'
-      ? 54.2
-      : cleanSym === 'NVDA' || cleanSym === 'AMD'
-      ? 46.8
-      : cleanSym === 'BTC' || cleanSym === 'SOL'
-      ? 58.4
-      : cleanSym === 'SPY' || cleanSym === 'SPX'
-      ? 15.4
-      : 26.5;
+  const prof = getTickerVolProfile(cleanSym);
+  const { baseAtmIv, smileAsym, wingCurvature, h } = prof;
 
   // 9 liquid strikes from -15% OTM Put to +15% OTM Call
   const moneynessOffsets = [-15, -10, -7.5, -5, 0, 5, 7.5, 10, 15];
@@ -1022,8 +1183,8 @@ export function computeVolatilitySurface3D(sym = 'NVDA', spotPrice = 141.5) {
 
   // 7 institutional option expirations (Tenors)
   const tenors = [
-    { label: '7D (Weekly)', mult: 1.11, skewBoost: 1.38, wingCurv: 1.45, days: 7 },
-    { label: '14D (2W)', mult: 1.06, skewBoost: 1.22, wingCurv: 1.30, days: 14 },
+    { label: '7D (Weekly)', mult: 1.09 + (h % 5) * 0.01, skewBoost: 1.38, wingCurv: 1.45, days: 7 },
+    { label: '14D (2W)', mult: 1.05 + (h % 4) * 0.008, skewBoost: 1.22, wingCurv: 1.30, days: 14 },
     { label: '30D (1M Bench)', mult: 1.0, skewBoost: 1.0, wingCurv: 1.0, days: 30 },
     { label: '60D (2M)', mult: 0.96, skewBoost: 0.88, wingCurv: 0.86, days: 60 },
     { label: '90D (Quarterly)', mult: 0.93, skewBoost: 0.78, wingCurv: 0.75, days: 90 },
@@ -1040,14 +1201,18 @@ export function computeVolatilitySurface3D(sym = 'NVDA', spotPrice = 141.5) {
     const metaRow = [];
     moneynessOffsets.forEach((pct) => {
       const normK = pct / 5; // -3 to +3
-      // Realistic Put Skew + Smile Convexity + Term Structure decay
-      const putWing = normK < 0 ? Math.abs(normK) * 1.55 * tenor.skewBoost : normK * 0.32;
-      const convexity = Math.pow(Math.abs(normK), 1.38) * 1.65 * tenor.wingCurv;
+      // Realistic Put Skew + Smile Convexity + Term Structure decay tailored to each ticker
+      const putWing =
+        normK < 0
+          ? Math.abs(normK) * smileAsym * tenor.skewBoost
+          : normK * (0.28 + (h % 5) * 0.06);
+      const convexity = Math.pow(Math.abs(normK), 1.36) * wingCurvature * tenor.wingCurv;
       const ivVal = Number((baseAtmIv * tenor.mult + putWing + convexity).toFixed(2));
       row.push(ivVal);
 
       const deltaCall = Number(Math.max(0.05, Math.min(0.95, 0.52 - normK * 0.135)).toFixed(2));
-      const oiContracts = Math.round((48000 / (1 + Math.abs(normK) * 0.35)) * (1 + Math.log10(tenor.days / 7) * 0.4));
+      const baseOi = 36000 + (h % 34000);
+      const oiContracts = Math.round((baseOi / (1 + Math.abs(normK) * 0.35)) * (1 + Math.log10(tenor.days / 7) * 0.4));
       metaRow.push({
         xLabel: pct === 0 ? '100% ATM' : `${100 + pct}% (${pct > 0 ? '+' : ''}${pct}%)`,
         strike: `$${Number((atmStrike * (1 + pct / 100)).toFixed(2))}`,
@@ -1187,8 +1352,11 @@ export function computeSovereignYieldSurface3D(countryCode = 'US', mode = 'histo
 }
 
 export function computeCommodityForwardSurface3D(sym = 'CL', spotPrice = 68.4) {
-  const isBackwardated = ['CL', 'BZ', 'GC', 'HG', 'CC', 'KC', 'UX'].includes(sym);
-  const baseSlope = isBackwardated ? -0.045 : 0.056;
+  const cleanSym = String(sym).replace(/1!$/, '');
+  const fwdRef = getCommodityForwardCurve(cleanSym, spotPrice);
+  const isBackwardated = fwdRef.isBackwardation;
+  const h = hashTicker(cleanSym);
+  const baseSlope = isBackwardated ? -0.038 - (h % 35) / 1000 : 0.042 + (h % 45) / 1000;
   const xLabels = ['Spot (M1)', 'M2', 'M3', 'M4', 'M6', 'M9', 'M12', 'M18'];
   const snapshots = [
     { label: '-1Y Curve', spotMult: 0.94, slopeMult: 0.7 },
@@ -1209,13 +1377,13 @@ export function computeCommodityForwardSurface3D(sym = 'CL', spotPrice = 68.4) {
     const snapSpot = spotPrice * snap.spotMult;
     xLabels.forEach((t, idx) => {
       const progress = idx / (xLabels.length - 1);
-      const curveWave = Math.sin(progress * Math.PI) * (isBackwardated ? -0.008 : 0.008);
+      const curveWave = Math.sin(progress * Math.PI + (h % 5) * 0.4) * (isBackwardated ? -0.008 : 0.008);
       const fwdPrice = Number((snapSpot * (1 + baseSlope * snap.slopeMult * progress + curveWave)).toFixed(2));
       row.push(fwdPrice);
       const rollPct = Number((((fwdPrice - snapSpot) / snapSpot) * 100).toFixed(2));
       metaRow.push({
         xLabel: t,
-        strike: sym,
+        strike: cleanSym,
         yLabel: snap.label,
         zFormatted: `$${fwdPrice.toFixed(2)}`,
         extra1Label: 'Spread vs Spot (M1)',
@@ -1229,7 +1397,7 @@ export function computeCommodityForwardSurface3D(sym = 'CL', spotPrice = 68.4) {
   });
 
   return {
-    title: `${sym} — 3D Forward Term Structure Surface (M1..M18 × Historical Evolution)`,
+    title: `${cleanSym} — 3D Forward Term Structure Surface (M1..M18 × Historical Evolution)`,
     xAxisTitle: 'Contract Delivery Tenor (M1 → M18)',
     yAxisTitle: 'Curve Observation Horizon',
     zAxisTitle: 'Forward Price ($)',

@@ -15,11 +15,12 @@ export default function UserGuideView({ langCode = 'ES', onGoBack, onLaunchTarge
   const isES = langCode === 'ES';
   const [activeChapter, setActiveChapter] = useState('ALL');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedId, setSelectedId] = useState('ui-home-stage');
 
   const chapters = [
-    { id: 'ALL', label: isES ? 'Todos (22 Objetos)' : 'All (22 Objects)', icon: Sparkles },
-    { id: 'ui-objects', label: isES ? '1. Pantallas y Objetos UI' : '1. Screens & UI Objects', icon: Compass },
-    { id: 'asset-classes', label: isES ? '2. Las 10 Clases de Activos' : '2. The 10 Asset Classes', icon: Layers },
+    { id: 'ALL', label: isES ? 'Todos (10)' : 'All (10)', icon: Sparkles },
+    { id: 'ui-objects', label: isES ? '1. Pantallas y UI' : '1. Screens & UI', icon: Compass },
+    { id: 'asset-classes', label: isES ? '2. Clases de Activos (10)' : '2. Asset Classes (10)', icon: Layers },
     { id: 'quant-engines', label: isES ? '3. Motores 3D/2D y Fórmulas' : '3. 3D/2D Engines & Formulas', icon: Cpu },
     { id: 'risk-and-ai', label: isES ? '4. Riesgo Quant, VaR e IA' : '4. Quant Risk, VaR & AI', icon: ShieldCheck },
   ];
@@ -415,124 +416,281 @@ export default function UserGuideView({ langCode = 'ES', onGoBack, onLaunchTarge
     });
   }, [guideEntries, activeChapter, searchQuery]);
 
+  const selectedEntry = useMemo(
+    () =>
+      filteredEntries.find((e) => e.id === selectedId) ||
+      guideEntries.find((e) => e.id === selectedId) ||
+      filteredEntries[0] ||
+      null,
+    [filteredEntries, guideEntries, selectedId]
+  );
+
+  const chapterGroups = useMemo(() => {
+    const baseChapters = chapters.filter((c) => c.id !== 'ALL');
+    return baseChapters
+      .map((ch) => ({
+        ...ch,
+        items: filteredEntries.filter((e) => e.chapter === ch.id),
+      }))
+      .filter((g) => g.items.length > 0);
+  }, [chapters, filteredEntries]);
+
+  const renderCompactCard = (entry) => {
+    const isSelected = selectedEntry && selectedEntry.id === entry.id;
+    const cardGradient = isSelected
+      ? 'linear-gradient(135deg, rgba(var(--ui-accent-rgb), 0.16) 0%, var(--bg-panel-glass) 82%)'
+      : 'var(--bg-panel-glass)';
+
+    return (
+      <div
+        key={entry.id}
+        onClick={() => setSelectedId(entry.id)}
+        style={{
+          borderRadius: '11px',
+          background: cardGradient,
+          backdropFilter: 'blur(12px)',
+          border: isSelected ? '1px solid var(--ui-accent)' : '1px solid var(--border-light)',
+          padding: '0.52rem 0.85rem',
+          cursor: 'pointer',
+          transition: 'all 0.14s ease',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '0.6rem',
+          minWidth: 0,
+          boxShadow: isSelected ? '0 0 14px rgba(var(--ui-accent-rgb), 0.18)' : 'none',
+        }}
+      >
+        <span
+          style={{
+            fontSize: '0.76rem',
+            fontWeight: isSelected ? 700 : 600,
+            color: 'var(--text-main)',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
+          {entry.title}
+        </span>
+
+        <span
+          className="mono-metric"
+          style={{
+            fontSize: '0.58rem',
+            fontWeight: 700,
+            color: isSelected ? 'var(--ui-accent)' : 'var(--text-dim)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.3rem',
+            flexShrink: 0,
+          }}
+        >
+          <span
+            style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '999px',
+              backgroundColor: isSelected ? 'var(--ui-accent)' : 'var(--text-dim)',
+              boxShadow: isSelected ? '0 0 7px var(--ui-accent)' : 'none',
+            }}
+          />
+          {entry.badge.split('•').pop().trim()}
+        </span>
+      </div>
+    );
+  };
+
+  const renderDetailCard = (entry) => {
+    if (!entry) {
+      return (
+        <div
+          style={{
+            borderRadius: '16px',
+            background: 'var(--bg-panel-glass)',
+            backdropFilter: 'blur(14px)',
+            border: '1px dashed var(--border-light)',
+            padding: '1.5rem 1.25rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            color: 'var(--text-dim)',
+            fontSize: '0.76rem',
+            minHeight: '220px',
+          }}
+        >
+          {isES
+            ? 'Seleccioná cualquier módulo de la izquierda para inspeccionar su fórmula, definición cuantitativa y acceso directo.'
+            : 'Click any module on the left to inspect its formula, quantitative definition, and live launcher.'}
+        </div>
+      );
+    }
+
+    return (
+      <div
+        style={{
+          borderRadius: '16px',
+          background: 'linear-gradient(145deg, rgba(var(--ui-accent-rgb), 0.12) 0%, var(--bg-panel-glass) 72%)',
+          backdropFilter: 'blur(16px)',
+          border: '1px solid var(--ui-accent)',
+          padding: '1.15rem 1.25rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.85rem',
+        }}
+      >
+        {/* Header of Selected Card */}
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            gap: '0.75rem',
+            paddingBottom: '0.75rem',
+            borderBottom: '1px solid var(--border-light)',
+            flexWrap: 'wrap',
+          }}
+        >
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', minWidth: 0, flex: 1 }}>
+            <span className="mono-metric" style={{ fontSize: '0.6rem', color: 'var(--ui-accent)', fontWeight: 700 }}>
+              {entry.badge}
+            </span>
+            <span style={{ fontSize: '0.96rem', fontWeight: 700, color: 'var(--text-main)', lineHeight: 1.25 }}>
+              {entry.title}
+            </span>
+          </div>
+
+          {onLaunchTarget && entry.target && (
+            <button
+              type="button"
+              onClick={() => onLaunchTarget(entry.target)}
+              className="mono-metric"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.32rem',
+                padding: '0.26rem 0.68rem',
+                borderRadius: '999px',
+                backgroundColor: 'rgba(var(--ui-accent-rgb), 0.16)',
+                border: '1px solid var(--ui-accent)',
+                color: 'var(--ui-accent)',
+                fontSize: '0.62rem',
+                fontWeight: 800,
+                cursor: 'pointer',
+                flexShrink: 0,
+              }}
+            >
+              <span>{entry.targetLabel}</span>
+              <ArrowUpRight size={13} />
+            </button>
+          )}
+        </div>
+
+        {/* Formula / Quantitative Specification */}
+        <div
+          style={{
+            padding: '0.65rem 0.8rem',
+            borderRadius: '11px',
+            backgroundColor: 'rgba(0, 0, 0, 0.28)',
+            border: '1px solid var(--border-light)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.2rem',
+          }}
+        >
+          <span
+            className="mono-metric"
+            style={{ fontSize: '0.58rem', fontWeight: 700, color: 'var(--text-dim)', textTransform: 'uppercase' }}
+          >
+            {isES ? 'Fórmula / Especificación Cuantitativa' : 'Quantitative Formula / Specification'}
+          </span>
+          <span
+            className="mono-metric"
+            style={{ fontSize: '0.7rem', color: 'var(--ui-accent)', fontWeight: 700, lineHeight: 1.4 }}
+          >
+            {entry.formula}
+          </span>
+        </div>
+
+        {/* Summary */}
+        <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', lineHeight: 1.48 }}>
+          {entry.summary}
+        </div>
+
+        {/* Bullet Points */}
+        <div
+          style={{
+            paddingTop: '0.55rem',
+            borderTop: '1px solid var(--border-light)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '0.4rem',
+          }}
+        >
+          {entry.points.map((pt, i) => (
+            <div
+              key={i}
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '0.45rem',
+                fontSize: '0.71rem',
+                color: 'var(--text-main)',
+                lineHeight: 1.42,
+              }}
+            >
+              <span className="mono-metric" style={{ color: 'var(--ui-accent)', fontWeight: 800 }}>
+                •
+              </span>
+              <span>{pt}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div
       style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: '1.05rem',
-        maxWidth: '1240px',
-        width: '100%',
+        gap: '0.75rem',
+        maxWidth: '1220px',
         margin: '0 auto',
-        paddingBottom: '2rem',
+        width: '100%',
+        paddingBottom: '1rem',
       }}
     >
-      {/* Top Header Banner */}
+      {/* 1. RESUMEN SUPERIOR COMPACTO + BUSCADOR (HOMOGÉNEO CON SISTEMA) */}
       <div
         style={{
+          borderRadius: '13px',
+          background: 'linear-gradient(135deg, rgba(var(--ui-accent-rgb), 0.12) 0%, var(--bg-panel-glass) 75%)',
+          backdropFilter: 'blur(14px)',
+          border: '1px solid var(--ui-accent)',
+          padding: '0.6rem 1.05rem',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '1rem',
-          padding: '1.1rem 1.35rem',
-          borderRadius: '20px',
-          background: 'linear-gradient(90deg, rgba(16, 185, 129, 0.14) 0%, rgba(13, 19, 33, 0.82) 65%)',
-          border: '1px solid rgba(16, 185, 129, 0.35)',
-          backdropFilter: 'blur(14px)',
+          gap: '0.65rem',
+          flexShrink: 0,
         }}
       >
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap' }}>
-            <span
-              className="mono-metric"
-              style={{
-                fontSize: '0.6rem',
-                fontWeight: 800,
-                padding: '0.16rem 0.65rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(16, 185, 129, 0.18)',
-                border: '1px solid rgba(16, 185, 129, 0.45)',
-                color: '#10b981',
-              }}
-            >
-              {isES ? 'MANUAL OFICIAL & DICCIONARIO CUANTITATIVO' : 'OFFICIAL MANUAL & QUANTITATIVE DICTIONARY'}
-            </span>
-            <span className="mono-metric" style={{ fontSize: '0.62rem', color: 'var(--text-dim)', fontWeight: 700 }}>
-              {isES
-                ? '10 CLASES • MOTORES 3D/2D • FÓRMULAS • VaR & IA'
-                : '10 CLASSES • 3D/2D ENGINES • FORMULAS • VaR & AI'}
-            </span>
-          </div>
-
-          <h1
-            style={{
-              fontSize: '1.3rem',
-              fontWeight: 800,
-              color: '#ffffff',
-              margin: 0,
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.55rem',
-            }}
-          >
-            <BookOpen size={20} style={{ color: '#10b981' }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap', minWidth: 0 }}>
+          <BookOpen size={15} style={{ color: 'var(--ui-accent)', flexShrink: 0 }} />
+          <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-main)' }}>
             {isES
-              ? 'Guía Interactiva de Usuario, Fórmulas Cuantitativas y Objetos de la App'
-              : 'Interactive User Guide, Quantitative Formulas & App Objects'}
-          </h1>
-
-          <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: 0, maxWidth: '860px', lineHeight: 1.48 }}>
-            {isES
-              ? 'Explorá cada pantalla, clase de activo, superficie volumétrica 3D, fórmula de derivados y métrica de riesgo de cartera. Usá los botones "Abrir ↗" en cada tarjeta para saltar directamente al objeto en vivo.'
-              : 'Explore every screen, asset class, 3D volumetric surface, derivatives formula, and portfolio risk metric. Use the "Launch ↗" button on any card to jump directly to the live object.'}
-          </p>
+              ? 'Guía Interactiva • 10 Clases de Activos, Motores 3D/2D, Fórmulas y Riesgo'
+              : 'Interactive Guide • 10 Asset Classes, 3D/2D Engines, Formulas & Risk'}
+          </span>
         </div>
 
-        {onGoBack && (
-          <button
-            type="button"
-            onClick={onGoBack}
-            className="mono-metric"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.45rem',
-              padding: '0.45rem 0.95rem',
-              borderRadius: '999px',
-              backgroundColor: 'rgba(255, 255, 255, 0.07)',
-              border: '1px solid rgba(255, 255, 255, 0.16)',
-              color: '#ffffff',
-              fontSize: '0.7rem',
-              fontWeight: 700,
-              cursor: 'pointer',
-            }}
-          >
-            <ArrowLeft size={14} />
-            {isES ? 'Volver' : 'Back'}
-          </button>
-        )}
-      </div>
-
-      {/* Filter & Instant Search Bar */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          gap: '0.75rem',
-          padding: '0.75rem 1rem',
-          borderRadius: '16px',
-          backgroundColor: 'rgba(13, 19, 33, 0.78)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(12px)',
-        }}
-      >
-        {/* 5 Chapter Pills */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flexWrap: 'wrap' }}>
+          {/* Chapter Filter Pills */}
           {chapters.map((ch) => {
-            const IconComp = ch.icon;
             const active = activeChapter === ch.id;
             return (
               <button
@@ -541,169 +699,113 @@ export default function UserGuideView({ langCode = 'ES', onGoBack, onLaunchTarge
                 onClick={() => setActiveChapter(ch.id)}
                 className="mono-metric"
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  padding: '0.34rem 0.78rem',
+                  padding: '0.22rem 0.58rem',
                   borderRadius: '999px',
-                  border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.1)',
-                  backgroundColor: active ? 'rgba(16, 185, 129, 0.2)' : 'rgba(255,255,255,0.03)',
-                  color: active ? '#10b981' : 'var(--text-muted)',
-                  fontSize: '0.62rem',
-                  fontWeight: 800,
+                  border: active ? '1px solid var(--ui-accent)' : '1px solid var(--border-light)',
+                  backgroundColor: active ? 'rgba(var(--ui-accent-rgb), 0.18)' : 'transparent',
+                  color: active ? 'var(--ui-accent)' : 'var(--text-muted)',
+                  fontSize: '0.58rem',
+                  fontWeight: 700,
                   cursor: 'pointer',
                 }}
               >
-                <IconComp size={12} />
-                <span>{ch.label}</span>
+                {ch.label}
               </button>
             );
           })}
-        </div>
 
-        {/* Search Input */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.45rem',
-            padding: '0.34rem 0.75rem',
-            borderRadius: '999px',
-            backgroundColor: 'rgba(6, 10, 19, 0.85)',
-            border: '1px solid rgba(255, 255, 255, 0.14)',
-            minWidth: '270px',
-          }}
-        >
-          <Search size={13} style={{ color: 'var(--text-dim)' }} />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder={
-              isES
-                ? 'Buscar fórmula, VaR, 3D, DV01, P-06, FX...'
-                : 'Search formula, VaR, 3D, DV01, P-06, FX...'
-            }
-            className="mono-metric"
+          {/* Compact Search */}
+          <div
             style={{
-              background: 'none',
-              border: 'none',
-              outline: 'none',
-              color: '#ffffff',
-              fontSize: '0.64rem',
-              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+              padding: '0.22rem 0.65rem',
+              borderRadius: '999px',
+              backgroundColor: 'rgba(6, 10, 19, 0.75)',
+              border: '1px solid var(--border-light)',
+              minWidth: '170px',
             }}
-          />
+          >
+            <Search size={12} style={{ color: 'var(--text-dim)', flexShrink: 0 }} />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={isES ? 'Buscar fórmula, VaR, 3D...' : 'Search formula, VaR, 3D...'}
+              className="mono-metric"
+              style={{
+                background: 'none',
+                border: 'none',
+                outline: 'none',
+                color: 'var(--text-main)',
+                fontSize: '0.6rem',
+                width: '100%',
+              }}
+            />
+          </div>
+
+          {onGoBack && (
+            <button
+              type="button"
+              onClick={onGoBack}
+              className="mono-metric"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.3rem',
+                padding: '0.22rem 0.65rem',
+                borderRadius: '999px',
+                backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                border: '1px solid var(--border-light)',
+                color: 'var(--text-main)',
+                fontSize: '0.6rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+              }}
+            >
+              <ArrowLeft size={12} />
+              {isES ? 'Volver' : 'Back'}
+            </button>
+          )}
         </div>
       </div>
 
-      {/* Cards Grid */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(520px, 1fr))',
-          gap: '0.9rem',
-        }}
-      >
-        {filteredEntries.map((entry) => (
-          <div
-            key={entry.id}
-            style={{
-              padding: '1.1rem 1.25rem',
-              borderRadius: '18px',
-              backgroundColor: 'rgba(13, 19, 33, 0.76)',
-              border: '1px solid rgba(255, 255, 255, 0.09)',
-              backdropFilter: 'blur(12px)',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-between',
-              gap: '0.65rem',
-            }}
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-                <span className="mono-metric" style={{ fontSize: '0.58rem', fontWeight: 800, color: '#10b981', letterSpacing: '0.04em' }}>
-                  {entry.badge}
-                </span>
-
-                {onLaunchTarget && entry.target && (
-                  <button
-                    type="button"
-                    onClick={() => onLaunchTarget(entry.target)}
-                    className="mono-metric"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.3rem',
-                      padding: '0.22rem 0.65rem',
-                      borderRadius: '999px',
-                      backgroundColor: 'rgba(16, 185, 129, 0.16)',
-                      border: '1px solid rgba(16, 185, 129, 0.4)',
-                      color: '#10b981',
-                      fontSize: '0.58rem',
-                      fontWeight: 800,
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <span>{entry.targetLabel}</span>
-                    <ArrowUpRight size={12} />
-                  </button>
-                )}
-              </div>
-
-              <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#ffffff' }}>{entry.title}</div>
-
-              {/* Formula / Quantitative Specification Pill */}
-              <div
+      {/* 2. LAYOUT RESPONSIVO MASTER-DETAIL (IDÉNTICO A SISTEMA) */}
+      <div className="utility-master-detail-grid">
+        {/* IZQUIERDA: MÓDULOS AGRUPADOS POR CAPÍTULO EN 2 COLUMNAS */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', minWidth: 0 }}>
+          {chapterGroups.map((group) => (
+            <div key={group.id} style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem' }}>
+              <span
                 className="mono-metric"
                 style={{
-                  padding: '0.38rem 0.65rem',
-                  borderRadius: '10px',
-                  backgroundColor: 'rgba(6, 10, 19, 0.78)',
-                  border: '1px solid rgba(16, 185, 129, 0.25)',
-                  color: '#10b981',
-                  fontSize: '0.62rem',
+                  fontSize: '0.58rem',
+                  color: 'var(--text-dim)',
                   fontWeight: 700,
+                  paddingLeft: '0.15rem',
+                  textTransform: 'uppercase',
                 }}
               >
-                {entry.formula}
+                {group.label} ({group.items.length})
+              </span>
+              <div className="utility-cards-2col">
+                {group.items.map(renderCompactCard)}
               </div>
-
-              <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.48 }}>
-                {entry.summary}
-              </p>
             </div>
+          ))}
+        </div>
 
-            <div
-              style={{
-                paddingTop: '0.55rem',
-                borderTop: '1px solid rgba(255, 255, 255, 0.06)',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0.32rem',
-              }}
-            >
-              {entry.points.map((pt, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: '0.45rem',
-                    fontSize: '0.71rem',
-                    color: 'var(--text-main)',
-                    lineHeight: 1.4,
-                  }}
-                >
-                  <span className="mono-metric" style={{ color: '#10b981', fontWeight: 800 }}>
-                    •
-                  </span>
-                  <span>{pt}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+        {/* DERECHA: DETALLE DEL MÓDULO SELECCIONADO */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem', minWidth: 0 }}>
+          <span
+            className="mono-metric"
+            style={{ fontSize: '0.58rem', color: 'var(--text-dim)', fontWeight: 700, paddingLeft: '0.15rem' }}
+          >
+            {isES ? 'ESPECIFICACIÓN Y ACCESO DIRECTO DEL MÓDULO' : 'MODULE SPECIFICATION & LIVE LAUNCHER'}
+          </span>
+          {renderDetailCard(selectedEntry)}
+        </div>
       </div>
     </div>
   );

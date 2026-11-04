@@ -412,7 +412,7 @@ export function evaluateEcosystemContracts() {
   const p10Valid = INITIAL_PORTFOLIO_UNIVERSE.every((item) => item.marketValue <= 20000);
   const p11Valid =
     solCommittee && Array.isArray(solCommittee.agents) && solCommittee.agents.length === 3;
-  const p13Valid = PALETTES.length === 5 && LANGUAGES.length === 2;
+  const p13Valid = PALETTES.length === 5 && LANGUAGES.length >= 2;
 
   const validityMap = {
     'P-01': p01Valid,

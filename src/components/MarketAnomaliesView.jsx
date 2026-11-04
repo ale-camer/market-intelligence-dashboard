@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import HoverTooltip from './HoverTooltip';
 import {
   Search,
   X,
@@ -232,37 +233,46 @@ function evaluateHistoricalMetric(row, metricKey, isES = false) {
   };
 }
 
-// Radial SVG Gauge for Top Aggregated Pulse Cards
+// Radial SVG Gauge for Top Aggregated Pulse Cards (Unclipped Directional Shadow)
 function RadialRingGauge({ pct = 50, color = '#10b981', label = '', sub = '', detail = null, size = 54 }) {
-  const r = (size - 10) / 2;
+  const r = (size - 12) / 2;
   const c = 2 * Math.PI * r;
   const clamped = Math.max(0, Math.min(100, pct));
   const offset = c - (clamped / 100) * c;
+  const center = size / 2;
+  const filterId = `ringShadow-${String(label).replace(/[^a-zA-Z0-9]/g, '')}-${color.replace('#', '')}`;
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
       <div style={{ position: 'relative', width: `${size}px`, height: `${size}px`, flexShrink: 0 }}>
-        <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ transform: 'rotate(-90deg)' }}>
+        <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} style={{ overflow: 'visible', display: 'block' }}>
+          <defs>
+            <filter id={filterId} x="-60%" y="-60%" width="220%" height="220%">
+              <feDropShadow dx="0" dy="2.5" stdDeviation="2.5" floodColor={color} floodOpacity="0.58" />
+            </filter>
+          </defs>
           <circle
-            cx={size / 2}
-            cy={size / 2}
+            cx={center}
+            cy={center}
             r={r}
             fill="none"
             stroke="rgba(255, 255, 255, 0.08)"
             strokeWidth="4.5"
           />
-          <circle
-            cx={size / 2}
-            cy={size / 2}
-            r={r}
-            fill="none"
-            stroke={color}
-            strokeWidth="4.5"
-            strokeLinecap="round"
-            strokeDasharray={c}
-            strokeDashoffset={offset}
-            style={{ filter: `drop-shadow(0 0 6px ${color})` }}
-          />
+          <g filter={`url(#${filterId})`}>
+            <circle
+              cx={center}
+              cy={center}
+              r={r}
+              fill="none"
+              stroke={color}
+              strokeWidth="4.5"
+              strokeLinecap="round"
+              strokeDasharray={c}
+              strokeDashoffset={offset}
+              transform={`rotate(-90 ${center} ${center})`}
+            />
+          </g>
         </svg>
         <div
           className="mono-metric"
@@ -281,46 +291,61 @@ function RadialRingGauge({ pct = 50, color = '#10b981', label = '', sub = '', de
         </div>
       </div>
       {(sub || detail) && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.16rem' }}>
-          {sub && <div style={{ fontSize: '0.73rem', fontWeight: 700, color: 'var(--text-main)' }}>{sub}</div>}
-          {detail && <div style={{ fontSize: '0.62rem', color: 'var(--text-dim)', lineHeight: 1.3 }}>{detail}</div>}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.14rem', minWidth: 0 }}>
+          {sub && (
+            <div
+              style={{
+                fontSize: '0.72rem',
+                fontWeight: 700,
+                color: 'var(--text-main)',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              {sub}
+            </div>
+          )}
+          {detail && (
+            <div style={{ fontSize: '0.61rem', color: 'var(--text-dim)', lineHeight: 1.25, whiteSpace: 'nowrap' }}>
+              {detail}
+            </div>
+          )}
         </div>
       )}
     </div>
   );
 }
 
-// Inline SVG Sparkline
-function MiniSparkline({ sym, isPos, width = 82, height = 24 }) {
-  const pts = useMemo(() => {
-    const series = getAssetSeries(sym, '5M');
-    const prices = series.map((d) => d.price);
-    const min = Math.min(...prices);
-    const max = Math.max(...prices);
-    const span = max - min || 1;
-    return prices
-      .map((p, i) => {
-        const x = (i / (prices.length - 1)) * (width - 4) + 2;
-        const y = height - 4 - ((p - min) / span) * (height - 8);
-        return `${x.toFixed(1)},${y.toFixed(1)}`;
-      })
-      .join(' ');
-  }, [sym, width, height]);
-
-  const strokeColor = isPos ? '#10b981' : '#f43f5e';
+// Standardized Standalone Trajectory AreaChart (identical format to Level 1 '24h Aggregate Volume')
+function MiniSparkline({ sym, isPos, color, width = 94, height = 36 }) {
+  const series = useMemo(() => getAssetSeries(sym, '5M'), [sym]);
+  const strokeColor = color || (isPos ? '#10b981' : '#f43f5e');
+  const gradId = `sparkGrad-${sym.replace(/[^a-zA-Z0-9_-]/g, '')}-${width}x${height}`;
 
   return (
-    <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} style={{ overflow: 'visible' }}>
-      <polyline
-        fill="none"
-        stroke={strokeColor}
-        strokeWidth="1.9"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        points={pts}
-        style={{ filter: `drop-shadow(0 0 4px ${strokeColor})` }}
-      />
-    </svg>
+    <div style={{ width: `${width}px`, height: `${height}px`, flexShrink: 0 }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart data={series} margin={{ top: 3, right: 2, left: 2, bottom: 3 }}>
+          <defs>
+            <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor={strokeColor} stopOpacity={0.45} />
+              <stop offset="95%" stopColor={strokeColor} stopOpacity={0.0} />
+            </linearGradient>
+          </defs>
+          <YAxis domain={['dataMin', 'dataMax']} hide />
+          <Area
+            type="monotone"
+            dataKey="price"
+            stroke={strokeColor}
+            strokeWidth={2}
+            fillOpacity={1}
+            fill={`url(#${gradId})`}
+            isAnimationActive={false}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
 
@@ -331,10 +356,22 @@ export default function MarketAnomaliesView({
   onViewModeChange,
   watchlistSyms = [],
   onToggleWatchlist,
+  marketsToolsMode = 'v4-tab',
+  mainToolsStyleId = 'mt-01',
+  onLaunchTarget,
   langCode = 'EN',
   t,
 }) {
   const [viewMode, setViewModeState] = useState(initialViewMode || 'screener');
+  const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
+  const [orbitalLimit, setOrbitalLimit] = useState(20);
+  const [previewToolId, setPreviewToolId] = useState('sovereign-curve');
+  const [selectedToolPresetIdx, setSelectedToolPresetIdx] = useState(0);
+  const [toolPreviewSym, setToolPreviewSym] = useState('US10Y');
+  const [toolSearchQuery, setToolSearchQuery] = useState('');
+  const [toolSearchOpen, setToolSearchOpen] = useState(false);
+  const [toolSearchIdx, setToolSearchIdx] = useState(0);
+  const [l1VisualSearchOpen, setL1VisualSearchOpen] = useState(false);
   const setViewMode = (nextMode) => {
     setViewModeState(nextMode);
     if (onViewModeChange) onViewModeChange(nextMode);
@@ -413,10 +450,17 @@ export default function MarketAnomaliesView({
     const p = new URLSearchParams(window.location.search);
     return p.get('strategy') || 'LONG_STRADDLE';
   });
+  // Left Quant Rail Searchable Combobox states (Asset / Country / FX CCY / Commodity)
+  const [railSearchQuery, setRailSearchQuery] = useState('');
+  const [railSearchOpen, setRailSearchOpen] = useState(false);
+  const [railSearchIdx, setRailSearchIdx] = useState(0);
+  const [fxQuoteQuery, setFxQuoteQuery] = useState('');
+  const [fxQuoteOpen, setFxQuoteOpen] = useState(false);
+  const [fxQuoteIdx, setFxQuoteIdx] = useState(0);
   const [liveInference, setLiveInference] = useState(null);
   const [isScoring, setIsScoring] = useState(false);
 
-  // Level 2 Research (P-04, P-07, P-08, P-09) states + Live Incoming Wire
+  // Level 2 Research (P-04, P-07, P-08, P-09) states + Live Incoming Wire + Vertical Chat & Accordion
   const [ragQuery, setRagQuery] = useState('');
   const [ragResult, setRagResult] = useState(null);
   const [isRagLoading, setIsRagLoading] = useState(false);
@@ -426,6 +470,9 @@ export default function MarketAnomaliesView({
   const [liveBullUpdates, setLiveBullUpdates] = useState([]);
   const [liveBearUpdates, setLiveBearUpdates] = useState([]);
   const [lastUpdatedPart, setLastUpdatedPart] = useState(null); // 'bull' | 'bear' | null
+  const [researchChatHistory, setResearchChatHistory] = useState([]);
+  const [researchFactorFilter, setResearchFactorFilter] = useState('all'); // 'all' | 'bull' | 'bear' | 'twin'
+  const [researchExpandedKey, setResearchExpandedKey] = useState('BULL-0');
 
   const isES = langCode === 'ES';
 
@@ -460,7 +507,7 @@ export default function MarketAnomaliesView({
     return enrichedCatalog.filter((a) => a.cat === categoryFilter);
   }, [enrichedCatalog, categoryFilter, watchlistSyms]);
 
-  // 2. Aggregated Level 1 Pulse Metrics
+  // 2. Aggregated Level 1 Pulse Metrics (dynamic per active asset class)
   const pulseMetrics = useMemo(() => {
     const source = categoryFilteredCatalog.length > 0 ? categoryFilteredCatalog : enrichedCatalog;
     const totalVol = source.reduce((acc, a) => acc + a.vol24hNum, 0);
@@ -474,9 +521,36 @@ export default function MarketAnomaliesView({
       .sort((a, b) => b.volumeZNum - a.volumeZNum)
       .slice(0, 3);
 
+    // Dynamic 24h Volume Change % and 14-point Volume Time Series per category
+    const weightedChgSum = source.reduce(
+      (acc, a) => acc + (a.chgNum * 1.15 + a.volumeZNum * 3.1) * Math.max(a.vol24hNum, 0.5),
+      0
+    );
+    const weightDenom = source.reduce((acc, a) => acc + Math.max(a.vol24hNum, 0.5), 0) || 1;
+    const volChgNum = categoryFilter === 'ALL' ? 8.42 : weightedChgSum / weightDenom;
+    const isVolPos = volChgNum >= 0;
+    const volChgFormatted = `${isVolPos ? '+' : ''}${volChgNum.toFixed(2)}%`;
+
+    const seed = source.reduce((acc, a, idx) => acc + a.rank * (idx + 1) + a.vol24hNum * 0.7, 0);
+    const volSparkline =
+      categoryFilter === 'ALL'
+        ? GLOBAL_VOLUME_SPARKLINE
+        : Array.from({ length: 14 }, (_, idx) => {
+            const progress = idx / 13;
+            const wave1 = Math.sin(idx * 0.75 + seed * 0.13) * 14;
+            const wave2 = Math.cos(idx * 1.35 + seed * 0.29) * 9;
+            const trend = (progress - 0.5) * volChgNum * 2.2;
+            const val = Math.max(12, Math.round(65 + wave1 + wave2 + trend));
+            return { t: `${idx * 2}h`, v: val };
+          });
+
     return {
       totalCount: source.length,
       totalVolFormatted: `$${totalVol.toFixed(2)}B`,
+      volChgNum,
+      volChgFormatted,
+      isVolPos,
+      volSparkline,
       avgRsi: avgRsi.toFixed(1),
       avgRsiNum: avgRsi,
       normalCount,
@@ -486,7 +560,7 @@ export default function MarketAnomaliesView({
       topAnomaly,
       topDislocations,
     };
-  }, [categoryFilteredCatalog, enrichedCatalog]);
+  }, [categoryFilteredCatalog, enrichedCatalog, categoryFilter]);
 
   // 3. Filtered by search query & sorted rows for the Table
   const screenerRows = useMemo(() => {
@@ -523,9 +597,27 @@ export default function MarketAnomaliesView({
     }
   };
 
-  const handleOpenAssetDetail = (sym, forceLens = null) => {
+  const syncTickerDependentToolState = (sym, opts = {}) => {
     const assetObj = getAssetBySymbol(sym);
-    onSelectAsset(sym);
+    onSelectAsset(assetObj.sym);
+    if (opts.country && SOVEREIGN_YIELD_CURVES[opts.country]) {
+      setSelectedCurveCountry(opts.country);
+    } else if (assetObj.countryCode && SOVEREIGN_YIELD_CURVES[assetObj.countryCode]) {
+      setSelectedCurveCountry(assetObj.countryCode);
+    }
+    if (opts.fxBase && opts.fxQuote) {
+      setFxBaseCcy(opts.fxBase);
+      setFxQuoteCcy(opts.fxQuote);
+    } else if (assetObj.cat === 'FX' && assetObj.sym.includes('/')) {
+      const [b, q] = assetObj.sym.split('/');
+      if (WORLD_USD_RATES[b]) setFxBaseCcy(b);
+      if (WORLD_USD_RATES[q]) setFxQuoteCcy(q);
+    }
+  };
+
+  const handleOpenAssetDetail = (sym, forceLens = null, opts = {}) => {
+    const assetObj = getAssetBySymbol(sym);
+    syncTickerDependentToolState(assetObj.sym, opts);
     if (forceLens) {
       setAnalysisLens(forceLens);
     } else if (
@@ -604,14 +696,27 @@ export default function MarketAnomaliesView({
   };
 
   const runAssetRagQuery = async (customQuery = ragQuery, scope = researchScope, sym = selectedAsset) => {
+    const cleanQ = (customQuery || '').trim();
+    if (!cleanQ) return;
     setIsRagLoading(true);
+    setResearchChatHistory((prev) => [...prev, { role: 'user', text: cleanQ }]);
     try {
       const res = await executeSec10kRagQuery({
-        query: customQuery,
+        query: cleanQ,
         ticker: scope === 'all' ? 'ALL' : sym,
         langCode,
       });
       setRagResult(res);
+      setResearchChatHistory((prev) => [
+        ...prev,
+        {
+          role: 'assistant',
+          blocked: Boolean(res?.blocked),
+          topicLabel: res?.topicLabel || (isES ? 'REPORTE OFICIAL' : 'OFFICIAL FILING'),
+          text: res?.answer || '',
+          latency: `${18 + (cleanQ.length % 14)}ms`,
+        },
+      ]);
     } finally {
       setIsRagLoading(false);
     }
@@ -662,6 +767,8 @@ export default function MarketAnomaliesView({
       triggerLiveP06Scoring(selectedAsset);
       setRagQuery('');
       setRagResult(null);
+      setResearchChatHistory([]);
+      setResearchExpandedKey('BULL-0');
       setLiveWireItems([]);
       setWireCursor(0);
       setLiveBullUpdates([]);
@@ -676,14 +783,6 @@ export default function MarketAnomaliesView({
           setCompareSymbol(null);
           setCompareQuery('');
         }
-      }
-      if (assetObj.countryCode && SOVEREIGN_YIELD_CURVES[assetObj.countryCode]) {
-        setSelectedCurveCountry(assetObj.countryCode);
-      }
-      if (assetObj.cat === 'FX' && assetObj.sym.includes('/')) {
-        const [b, q] = assetObj.sym.split('/');
-        if (WORLD_USD_RATES[b]) setFxBaseCcy(b);
-        if (WORLD_USD_RATES[q]) setFxQuoteCcy(q);
       }
     }
   }, [selectedAsset, viewMode]);
@@ -911,8 +1010,14 @@ export default function MarketAnomaliesView({
     const spotlightSeries = getAssetSeries(spotlightItem.sym, '5M');
     const spotlightMetricInfo = evaluateHistoricalMetric(spotlightItem, activeMetric, isES);
 
-    // For Orbital: keep fixed angular vector order by catalog `rank` (top 12 of active filter so radar stays clean)
-    const orbitalItems = [...screenerRows].sort((a, b) => a.rank - b.rank).slice(0, 12);
+    // For Orbital: sort descending by the active indicator's `sortMagnitude` and slice to `orbitalLimit`
+    const orbitalItems = [...screenerRows]
+      .sort(
+        (a, b) =>
+          evaluateHistoricalMetric(b, activeMetric, isES).sortMagnitude -
+          evaluateHistoricalMetric(a, activeMetric, isES).sortMagnitude
+      )
+      .slice(0, orbitalLimit >= screenerRows.length ? screenerRows.length : orbitalLimit);
 
     // For Heatmap: strictly sort descending by the active indicator's `sortMagnitude` (top 10 of active filter)
     const heatmapItems = [...screenerRows]
@@ -946,13 +1051,759 @@ export default function MarketAnomaliesView({
     }
 
     const pulseCardStyle = {
-      padding: '0.85rem 1.15rem',
-      borderRadius: '22px',
-      backgroundColor: 'rgba(13, 19, 33, 0.52)',
-      backdropFilter: 'blur(14px)',
-      border: '1px solid rgba(255, 255, 255, 0.08)',
-      boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 8px 24px rgba(0,0,0,0.26)',
+      height: '98px',
+      minHeight: '98px',
+      maxHeight: '98px',
+      boxSizing: 'border-box',
+      overflow: 'hidden',
+      padding: '0.75rem 1.1rem',
+      borderRadius: '18px',
+      backgroundColor: 'rgba(8, 12, 22, 0.22)',
+      backdropFilter: 'blur(2px)',
+      border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
+      boxShadow: 'inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 6px 20px rgba(0,0,0,0.22)',
     };
+
+    const MAIN_TOOLS_ITEMS = [
+      {
+        id: 'sovereign-curve',
+        cats: ['RATES', 'FIXED_INCOME', 'CASH'],
+        swimlaneId: 'LANE_RATES',
+        swimlaneTitle: isES ? '1. TASAS, BONOS & LIQUIDEZ' : '1. RATES, BONDS & CASH',
+        sharedAssetClasses: isES
+          ? ['Tasas & Curvas', 'Bonos US Treasury', 'Cash & SOFR']
+          : ['Rates & Curves', 'US Treasuries', 'Cash & SOFR'],
+        isShared: true,
+        assetClassLabel: isES ? 'Tasas, Bonos & Cash (Compartido)' : 'Rates, Treasuries & Cash (Shared)',
+        label: isES ? '🌐 Curva Soberana 3D/2D & Comparador Global (42 Países)' : '🌐 3D/2D Sovereign Curve & Global Comparator (42 Countries)',
+        desc: isES
+          ? 'Superficie histórica 3D (Plazo × Fecha × Yield %), comparador multi-país G10/EM y spreads 2s10s / SOFR.'
+          : '3D historical yield surface (Tenor × Date × Yield %), G10/EM peer comparator, and 2s10s / SOFR spreads.',
+        howItWorks: isES
+          ? 'Permite inspeccionar cómo se desplaza toda la estructura temporal de tasas (1M a 30Y) a través del tiempo o comparar curvas soberanas entre 42 economías para detectar inversiones de curva (2s10s < 0) y diferenciales reales.'
+          : 'Inspect how the full yield term structure (1M to 30Y) shifts over time or compare sovereign curves across 42 economies to spot curve inversions (2s10s < 0) and real rate differentials.',
+        keyAxes: isES
+          ? ['Eje X: Plazos (1M → 30Y)', 'Eje Y: Historia / 42 Países', 'Eje Z: Rendimiento (Yield %)']
+          : ['X-Axis: Tenors (1M → 30Y)', 'Y-Axis: History / 42 Countries', 'Z-Axis: Sovereign Yield (%)'],
+        badge: 'RATES & TREASURIES',
+        dimension: '3D Mesh / 2D',
+        liveStat: 'US 10Y • 2s10s Spread',
+        liveValue: '4.24% (+16 bps)',
+        liveColor: '#10b981',
+        svgType: 'mesh-rates',
+        quickPresets: [
+          {
+            label: isES ? '🇺🇸 US10Y • Tesoro EE.UU.' : '🇺🇸 US10Y • US Treasury',
+            statLabel: isES ? 'US10Y • Spread 2s10s' : 'US10Y • 2s10s Spread',
+            statValue: '4.24% (+16 bps)',
+            statColor: '#10b981',
+            variant: 0,
+            seriesLegend: [
+              {
+                label: isES ? 'US10Y Curva Hoy' : 'US10Y Spot Curve',
+                color: '#10b981',
+                dashed: false,
+                desc: isES
+                  ? 'Estructura temporal soberana actual de EE.UU. desde 1M hasta 30Y.'
+                  : 'Current US Treasury yield curve across tenors from 1M to 30Y.',
+              },
+              {
+                label: isES ? 'Hace 1 Mes (-1M)' : '1M Historical (-1M)',
+                color: '#38bdf8',
+                dashed: true,
+                desc: isES
+                  ? 'Curva soberana hace 30 días para visualizar el desplazamiento paralelo o empinamiento.'
+                  : 'Sovereign yield curve 30 days ago to track parallel shifts or steepening.',
+              },
+              {
+                label: isES ? 'Media 1 Año (1Y Avg)' : '1Y Average Curve',
+                color: 'rgba(255,255,255,0.55)',
+                dashed: false,
+                desc: isES
+                  ? 'Nivel promedio histórico de los últimos 12 meses por plazo.'
+                  : 'Trailing 12-month historical average yield across tenors.',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setRatesSubView('3d-history');
+              handleOpenAssetDetail('US10Y', 'derivatives', { country: 'US' });
+            },
+          },
+          {
+            label: isES ? '🌍 Comparador G10 / EM' : '🌍 G10 / EM Peer Matrix',
+            statLabel: isES ? 'Dispersión 10Y G10/EM' : 'G10/EM 10Y Dispersion',
+            statValue: 'US 4.24% • DE 2.32% • BR 12.78%',
+            statColor: '#38bdf8',
+            variant: 1,
+            seriesLegend: [
+              {
+                label: 'US10Y (4.24%)',
+                color: '#38bdf8',
+                dashed: false,
+                desc: isES
+                  ? 'Curva de referencia del Tesoro de EE.UU. (Benchmark global).'
+                  : 'US Treasury benchmark curve across all maturities.',
+              },
+              {
+                label: 'DE10Y Bund (2.32%)',
+                color: '#38bdf8',
+                dashed: true,
+                desc: isES
+                  ? 'Curva soberana alemana (referencia libre de riesgo en la Eurozona).'
+                  : 'German Bund sovereign curve (Eurozone risk-free benchmark).',
+              },
+              {
+                label: 'JP10Y JGB (1.06%)',
+                color: 'rgba(255,255,255,0.55)',
+                dashed: false,
+                desc: isES
+                  ? 'Curva soberana de Japón (ancla de tasas bajas del G10).'
+                  : 'Japanese Government Bond curve (G10 low-yield anchor).',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setRatesSubView('3d-peers');
+              handleOpenAssetDetail('US10Y', 'derivatives', { country: 'US' });
+            },
+          },
+          {
+            label: isES ? '🇩🇪 DE10Y • Bund Alemán' : '🇩🇪 DE10Y • German Bund',
+            statLabel: 'DE10Y Bund • 2s10s',
+            statValue: '2.32% (+14 bps)',
+            statColor: '#a855f7',
+            variant: 2,
+            seriesLegend: [
+              {
+                label: isES ? 'DE10Y Curva Hoy' : 'DE10Y Spot Curve',
+                color: '#a855f7',
+                dashed: false,
+                desc: isES
+                  ? 'Curva actual del Bund alemán desde 3M hasta 30Y.'
+                  : 'Current German Bund yield curve from 3M to 30Y.',
+              },
+              {
+                label: isES ? 'US10Y Benchmark' : 'US10Y Benchmark',
+                color: '#38bdf8',
+                dashed: true,
+                desc: isES
+                  ? 'Curva del Tesoro de EE.UU. superpuesta para medir el spread transatlántico.'
+                  : 'Overlaid US Treasury curve to measure the transatlantic yield spread.',
+              },
+              {
+                label: isES ? 'DE10Y Hace 6M' : 'DE10Y 6M Ago',
+                color: 'rgba(255,255,255,0.55)',
+                dashed: false,
+                desc: isES
+                  ? 'Estructura temporal alemana hace 6 meses.'
+                  : 'German sovereign term structure 6 months ago.',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setRatesSubView('3d-history');
+              handleOpenAssetDetail('DE10Y', 'derivatives', { country: 'DE' });
+            },
+          },
+          {
+            label: isES ? '🇧🇷 BR10Y • Soberano Brasil' : '🇧🇷 BR10Y • Brazil Sovereign',
+            statLabel: 'BR10Y DI • 2s10s',
+            statValue: '12.78% (-14 bps)',
+            statColor: '#f59e0b',
+            variant: 3,
+            seriesLegend: [
+              {
+                label: isES ? 'BR10Y Curva Hoy' : 'BR10Y Spot Curve',
+                color: '#f59e0b',
+                dashed: false,
+                desc: isES
+                  ? 'Curva soberana actual de Brasil (DI Futuro / NTN-F) en moneda local.'
+                  : 'Current Brazil sovereign yield curve (DI Futures / Local Treasury).',
+              },
+              {
+                label: isES ? 'US10Y Benchmark' : 'US10Y Benchmark',
+                color: '#38bdf8',
+                dashed: true,
+                desc: isES
+                  ? 'Curva del Tesoro de EE.UU. para visualizar el premio por riesgo emergente.'
+                  : 'US Treasury benchmark curve showing the EM sovereign risk premium.',
+              },
+              {
+                label: isES ? 'DE10Y Benchmark' : 'DE10Y Benchmark',
+                color: 'rgba(255,255,255,0.55)',
+                dashed: false,
+                desc: isES
+                  ? 'Curva base europea como segundo nivel de referencia internacional.'
+                  : 'European Bund base curve as secondary international benchmark.',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setRatesSubView('3d-history');
+              handleOpenAssetDetail('BR10Y', 'derivatives', { country: 'BR' });
+            },
+          },
+        ],
+        action: () => {
+          setL2Section('analytics');
+          setAnalysisLens('derivatives');
+          setRatesSubView('3d-history');
+          handleOpenAssetDetail('US10Y', 'derivatives', { country: 'US' });
+        },
+      },
+      {
+        id: 'vol-surface-3d',
+        cats: ['DERIVATIVES_VOL', 'EQUITY', 'INDEX', 'ETF', 'CRYPTO'],
+        swimlaneId: 'LANE_EQUITY_DERIV',
+        swimlaneTitle: isES ? '2. DERIVADOS, ACCIONES, ÍNDICES & CRYPTO' : '2. DERIVATIVES, EQUITIES, INDICES & CRYPTO',
+        sharedAssetClasses: isES
+          ? ['Derivados & Vol', 'Acciones', 'Índices', 'ETFs', 'Crypto']
+          : ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs', 'Crypto'],
+        isShared: true,
+        assetClassLabel: isES ? 'Derivados, Acciones, Índices, ETFs & Crypto (Compartido)' : 'Derivatives, Equities, Indices, ETFs & Crypto (Shared)',
+        label: isES ? '📐 Superficie de Volatilidad Implícita 3D' : '📐 3D Implied Volatility Surface',
+        desc: isES
+          ? 'Malla interactiva Strike × Vencimiento × IV (%) con skew de puts y sonrisa de volatilidad.'
+          : 'Interactive Strike × Expiry × IV (%) mesh with put skew and volatility smile.',
+        howItWorks: isES
+          ? 'Visualiza en 3D dónde el mercado de opciones está pagando prima extra por cobertura bajista (Put Skew) o explosión alcista (Call Wing) a lo largo de distintos strikes (80% a 120% Moneyness) y vencimientos (7D a 180D).'
+          : 'Visualize in 3D where the options market is pricing extra premium for downside protection (Put Skew) or upside tail risk across strikes (80%–120% moneyness) and expiries (7D–180D).',
+        keyAxes: isES
+          ? ['Eje X: Moneyness / Strike', 'Eje Y: Vencimiento (7D → 180D)', 'Eje Z: Volatilidad Implícita (IV %)']
+          : ['X-Axis: Moneyness / Strike', 'Y-Axis: Expiry (7D → 180D)', 'Z-Axis: Implied Volatility (IV %)'],
+        badge: 'OPTIONS & VOL 3D',
+        dimension: 'Strike × Exp × IV',
+        liveStat: 'NVDA ATM IV (30d)',
+        liveValue: '46.8% (Skew -2.8%)',
+        liveColor: '#a855f7',
+        svgType: 'vol-smile',
+        quickPresets: [
+          {
+            label: 'NVDA',
+            statLabel: 'NVDA • ATM IV (30D)',
+            statValue: '46.8% (Skew -2.8%)',
+            statColor: '#a855f7',
+            variant: 0,
+            seriesLegend: [
+              {
+                label: isES ? 'NVDA Sonrisa 30D IV' : 'NVDA 30D IV Smile',
+                color: '#a855f7',
+                dashed: false,
+                desc: isES
+                  ? 'Volatilidad implícita a 30 días entre strikes 85% y 115% Moneyness.'
+                  : '30-day implied volatility smile across 85% to 115% moneyness strikes.',
+              },
+              {
+                label: isES ? 'NVDA Plazo 90D IV' : 'NVDA 90D Term IV',
+                color: '#38bdf8',
+                dashed: true,
+                desc: isES
+                  ? 'Sonrisa de volatilidad trimestral (90 días) para comparar estructura de plazos.'
+                  : 'Quarterly (90-day) volatility smile comparing term structure flattening.',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setOptionsSubView('surface3d');
+              handleOpenAssetDetail('NVDA-OPT', 'derivatives');
+            },
+          },
+          {
+            label: 'SPY',
+            statLabel: 'SPY • ATM IV (30D)',
+            statValue: '15.4% (Skew -3.4%)',
+            statColor: '#10b981',
+            variant: 1,
+            seriesLegend: [
+              {
+                label: isES ? 'SPY Sonrisa 30D IV' : 'SPY 30D IV Smile',
+                color: '#10b981',
+                dashed: false,
+                desc: isES
+                  ? 'Curva de volatilidad implícita a 30 días del S&P 500 con fuerte Put Skew.'
+                  : 'S&P 500 30-day implied volatility curve displaying institutional Put Skew.',
+              },
+              {
+                label: isES ? 'SPY Plazo 90D IV' : 'SPY 90D Term IV',
+                color: '#38bdf8',
+                dashed: true,
+                desc: isES
+                  ? 'Curva de volatilidad implícita a 90 días del S&P 500.'
+                  : 'S&P 500 90-day implied volatility curve.',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setOptionsSubView('surface3d');
+              handleOpenAssetDetail('SPY', 'derivatives');
+            },
+          },
+          {
+            label: 'TSLA',
+            statLabel: 'TSLA • ATM IV (30D)',
+            statValue: '54.2% (Skew -2.1%)',
+            statColor: '#38bdf8',
+            variant: 2,
+            seriesLegend: [
+              {
+                label: isES ? 'TSLA Sonrisa 30D IV' : 'TSLA 30D IV Smile',
+                color: '#38bdf8',
+                dashed: false,
+                desc: isES
+                  ? 'Sonrisa de volatilidad a 30 días en TSLA con convexidad en ambos extremos.'
+                  : 'TSLA 30-day volatility smile with elevated wings on both OTM puts and calls.',
+              },
+              {
+                label: isES ? 'TSLA Plazo 90D IV' : 'TSLA 90D Term IV',
+                color: '#a855f7',
+                dashed: true,
+                desc: isES
+                  ? 'Estructura de volatilidad a 90 días en TSLA.'
+                  : 'TSLA 90-day implied volatility term structure.',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setOptionsSubView('surface3d');
+              handleOpenAssetDetail('TSLA', 'derivatives');
+            },
+          },
+          {
+            label: 'BTC',
+            statLabel: 'BTC • ATM IV (30D)',
+            statValue: '58.4% (Call Wing)',
+            statColor: '#f59e0b',
+            variant: 3,
+            seriesLegend: [
+              {
+                label: isES ? 'BTC Sonrisa 30D IV' : 'BTC 30D IV Smile',
+                color: '#f59e0b',
+                dashed: false,
+                desc: isES
+                  ? 'Volatilidad implícita de opciones de Bitcoin a 30 días con sesgo alcista (Call Wing).'
+                  : 'Bitcoin 30-day options implied volatility showing upside Call Wing skew.',
+              },
+              {
+                label: isES ? 'BTC Plazo 90D IV' : 'BTC 90D Term IV',
+                color: '#38bdf8',
+                dashed: true,
+                desc: isES
+                  ? 'Volatilidad implícita de Bitcoin a 90 días.'
+                  : 'Bitcoin 90-day quarterly implied volatility curve.',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setOptionsSubView('surface3d');
+              handleOpenAssetDetail('BTC', 'derivatives');
+            },
+          },
+        ],
+        action: () => {
+          setL2Section('analytics');
+          setAnalysisLens('derivatives');
+          setOptionsSubView('surface3d');
+          handleOpenAssetDetail('NVDA-OPT', 'derivatives');
+        },
+      },
+      {
+        id: 'options-payoff',
+        cats: ['DERIVATIVES_VOL', 'EQUITY', 'INDEX', 'ETF'],
+        swimlaneId: 'LANE_EQUITY_DERIV',
+        swimlaneTitle: isES ? '2. DERIVADOS, ACCIONES, ÍNDICES & CRYPTO' : '2. DERIVATIVES, EQUITIES, INDICES & CRYPTO',
+        sharedAssetClasses: isES
+          ? ['Derivados & Vol', 'Acciones', 'Índices', 'ETFs']
+          : ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs'],
+        isShared: true,
+        assetClassLabel: isES ? 'Derivados, Acciones, Índices & ETFs (Compartido)' : 'Derivatives, Equities, Indices & ETFs (Shared)',
+        label: isES ? '⚡ Simulador Payoff P&L & Sintéticos Multi-Leg' : '⚡ Options Payoff P&L & Multi-Leg Synthetics',
+        desc: isES
+          ? 'Simulador de estrategias (Straddle, Iron Condor, Sintéticos) con Griegas Δ, Γ, Θ, ν en tiempo real.'
+          : 'Multi-leg strategy simulator (Straddle, Iron Condor, Synthetics) with real-time Δ, Γ, Θ, ν Greeks.',
+        howItWorks: isES
+          ? 'Construye estructuras de hasta 4 patas de opciones (Calls/Puts compradas o vendidas) y proyecta el perfil de ganancia/pérdida al vencimiento y hoy (T+0), junto con los puntos de equilibrio (Breakevens) y sensibilidad a Griegas.'
+          : 'Build up to 4-leg option structures (long/short Calls & Puts) and project expiration vs. T+0 P&L curves, breakeven thresholds, and net Greek exposures.',
+        keyAxes: isES
+          ? ['Eje X: Precio Subyacente al Vencimiento', 'Eje Y: P&L Neto ($ / %)', 'Sensibilidad: Δ Delta • Γ Gamma • Θ Theta • ν Vega']
+          : ['X-Axis: Underlying Price at Expiry', 'Y-Axis: Net P&L ($ / %)', 'Greeks: Δ Delta • Γ Gamma • Θ Theta • ν Vega'],
+        badge: 'DERIVATIVES LAB',
+        dimension: '4-Leg + Greeks',
+        liveStat: 'NVDA Long Straddle',
+        liveValue: 'Γ +0.121 • ν +$0.73',
+        liveColor: '#10b981',
+        svgType: 'payoff',
+        quickPresets: [
+          {
+            label: 'NVDA • Long Straddle',
+            statLabel: 'NVDA • Long Straddle (ATM)',
+            statValue: 'BE $121.3 / $158.7 • Γ +0.121',
+            statColor: '#10b981',
+            variant: 0,
+            seriesLegend: [
+              {
+                label: isES ? 'P&L al Vencimiento ($)' : 'Expiration P&L ($)',
+                color: '#10b981',
+                dashed: false,
+                desc: isES
+                  ? 'Resultado neto exacto al día de expiración según el precio final del subyacente.'
+                  : 'Exact net profit/loss at expiration across underlying spot prices.',
+              },
+              {
+                label: isES ? 'P&L Hoy (T+0 BS)' : 'Today P&L (T+0 BS)',
+                color: '#38bdf8',
+                dashed: true,
+                desc: isES
+                  ? 'Valuación teórica Black-Scholes hoy (T+0) antes del desgaste por Theta.'
+                  : 'Theoretical Black-Scholes mark-to-market curve today (T+0).',
+              },
+              {
+                label: isES ? 'Equilibrio ($0 BE)' : 'Breakeven ($0 BE)',
+                color: 'rgba(255,255,255,0.5)',
+                dashed: true,
+                desc: isES
+                  ? 'Línea horizontal de beneficio cero ($0).'
+                  : 'Zero profit/loss breakeven threshold ($0).',
+              },
+            ],
+            run: () => {
+              setSelectedOptStrategy('LONG_STRADDLE');
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setOptionsSubView('payoff');
+              handleOpenAssetDetail('NVDA-OPT', 'derivatives');
+            },
+          },
+          {
+            label: 'SPY • Iron Condor',
+            statLabel: 'SPY • Iron Condor (±5%)',
+            statValue: isES ? 'Crédito +$4.15 • Θ +$0.28/d' : 'Credit +$4.15 • Θ +$0.28/d',
+            statColor: '#38bdf8',
+            variant: 1,
+            seriesLegend: [
+              {
+                label: isES ? 'P&L al Vencimiento ($)' : 'Expiration P&L ($)',
+                color: '#38bdf8',
+                dashed: false,
+                desc: isES
+                  ? 'Meseta de ganancia máxima entre los strikes vendidos con riesgo acotado en los extremos.'
+                  : 'Defined-risk profit plateau between short strikes with capped wing losses.',
+              },
+              {
+                label: isES ? 'P&L Hoy (T+0 BS)' : 'Today P&L (T+0 BS)',
+                color: '#a855f7',
+                dashed: true,
+                desc: isES
+                  ? 'Curva suave de valuación actual (T+0) que converge hacia la meseta por Theta positivo.'
+                  : 'Smooth T+0 mark-to-market curve converging toward max profit via positive Theta.',
+              },
+              {
+                label: isES ? 'Equilibrio ($0 BE)' : 'Breakeven ($0 BE)',
+                color: 'rgba(255,255,255,0.5)',
+                dashed: true,
+                desc: isES
+                  ? 'Línea horizontal de beneficio cero ($0).'
+                  : 'Zero profit/loss breakeven threshold ($0).',
+              },
+            ],
+            run: () => {
+              setSelectedOptStrategy('IRON_CONDOR');
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setOptionsSubView('payoff');
+              handleOpenAssetDetail('SPY', 'derivatives');
+            },
+          },
+          {
+            label: 'TSLA • Bull Call Spread',
+            statLabel: 'TSLA • Bull Call Spread',
+            statValue: 'Δ +0.28 • Max +$14.80',
+            statColor: '#a855f7',
+            variant: 2,
+            seriesLegend: [
+              {
+                label: isES ? 'P&L al Vencimiento ($)' : 'Expiration P&L ($)',
+                color: '#a855f7',
+                dashed: false,
+                desc: isES
+                  ? 'Perfil alcista con pérdida máxima limitada al débito pagado y ganancia acotada en el Call vendido.'
+                  : 'Bullish vertical spread with loss capped at net debit and upside capped at short Call strike.',
+              },
+              {
+                label: isES ? 'P&L Hoy (T+0 BS)' : 'Today P&L (T+0 BS)',
+                color: '#38bdf8',
+                dashed: true,
+                desc: isES
+                  ? 'Curva actual (T+0) con sensibilidad direccional positiva (Delta +0.28).'
+                  : 'Current T+0 valuation curve with positive directional Delta (+0.28).',
+              },
+              {
+                label: isES ? 'Equilibrio ($0 BE)' : 'Breakeven ($0 BE)',
+                color: 'rgba(255,255,255,0.5)',
+                dashed: true,
+                desc: isES
+                  ? 'Línea horizontal de beneficio cero ($0).'
+                  : 'Zero profit/loss breakeven threshold ($0).',
+              },
+            ],
+            run: () => {
+              setSelectedOptStrategy('BULL_CALL_SPREAD');
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setOptionsSubView('payoff');
+              handleOpenAssetDetail('TSLA', 'derivatives');
+            },
+          },
+        ],
+        action: () => {
+          setL2Section('analytics');
+          setAnalysisLens('derivatives');
+          setOptionsSubView('payoff');
+          handleOpenAssetDetail('NVDA-OPT', 'derivatives');
+        },
+      },
+      {
+        id: 'fx-cross',
+        cats: ['FX'],
+        swimlaneId: 'LANE_FX',
+        swimlaneTitle: isES ? '3. DIVISAS (FX CURRENCIES)' : '3. FX CURRENCIES',
+        sharedAssetClasses: isES ? ['Divisas (FX)'] : ['FX Currencies'],
+        isShared: false,
+        assetClassLabel: isES ? 'Divisas (FX) • Instrumento Principal' : 'FX Currencies • Principal Instrument',
+        label: isES ? '💱 Conversor Institucional FX & Carry (61 Monedas)' : '💱 Institutional FX Cross Converter & Carry (61 CCY)',
+        desc: isES
+          ? 'Triangulación instantánea entre 61 divisas G10 y Mercados Emergentes con diferencial de tasas (Carry).'
+          : 'Instant cross-rate triangulation across 61 G10 & EM currencies with interest rate Carry differential.',
+        howItWorks: isES
+          ? 'Calcula tipos de cambio cruzados sintéticos entre cualquiera de las 61 monedas globales (G10, LatAm, Asia, EMEA) y compara el diferencial de tasas de bancos centrales para estrategias de Carry Trade.'
+          : 'Computes synthetic cross rates across 61 global currencies (G10, LatAm, Asia, EMEA) and compares central bank rate differentials for Carry Trade positioning.',
+        keyAxes: isES
+          ? ['Moneda Base (61 CCY)', 'Moneda Cotizada (61 CCY)', 'Diferencial Carry Implícito (% anual)']
+          : ['Base Currency (61 CCY)', 'Quote Currency (61 CCY)', 'Implied Carry Differential (% p.a.)'],
+        badge: 'FX & CARRY',
+        dimension: '61×61 Matrix',
+        liveStat: 'EUR / USD Spot & Carry',
+        liveValue: '1.0842 (+150 bps)',
+        liveColor: '#10b981',
+        svgType: 'fx-matrix',
+        quickPresets: [
+          {
+            label: 'EUR / USD',
+            statLabel: 'EUR / USD • Carry 10Y',
+            statValue: '1.0842 (+150 bps)',
+            statColor: '#10b981',
+            variant: 0,
+            seriesLegend: [
+              {
+                label: 'EUR/USD Spot',
+                color: '#10b981',
+                dashed: false,
+              },
+              {
+                label: 'SMA (20)',
+                color: '#38bdf8',
+                dashed: true,
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              handleOpenAssetDetail('EUR/USD', 'derivatives', { fxBase: 'EUR', fxQuote: 'USD' });
+            },
+          },
+          {
+            label: 'USD / JPY',
+            statLabel: 'USD / JPY • Carry 10Y',
+            statValue: '152.30 (-450 bps)',
+            statColor: '#38bdf8',
+            variant: 1,
+            seriesLegend: [
+              {
+                label: 'USD/JPY Spot',
+                color: '#38bdf8',
+                dashed: false,
+              },
+              {
+                label: 'SMA (20)',
+                color: '#10b981',
+                dashed: true,
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              handleOpenAssetDetail('USD/JPY', 'derivatives', { fxBase: 'USD', fxQuote: 'JPY' });
+            },
+          },
+          {
+            label: 'EUR / BRL',
+            statLabel: 'EUR / BRL • Carry 10Y',
+            statValue: '6.1932 (+750 bps)',
+            statColor: '#f59e0b',
+            variant: 2,
+            seriesLegend: [
+              {
+                label: 'EUR/BRL Spot',
+                color: '#f59e0b',
+                dashed: false,
+              },
+              {
+                label: 'SMA (20)',
+                color: '#38bdf8',
+                dashed: true,
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              handleOpenAssetDetail('EUR/USD', 'derivatives', { fxBase: 'EUR', fxQuote: 'BRL' });
+            },
+          },
+        ],
+        action: () => {
+          setL2Section('analytics');
+          setAnalysisLens('derivatives');
+          handleOpenAssetDetail('EUR/USD', 'derivatives', { fxBase: 'EUR', fxQuote: 'USD' });
+        },
+      },
+      {
+        id: 'commodity-forward-3d',
+        cats: ['COMMODITY'],
+        swimlaneId: 'LANE_COMMODITIES',
+        swimlaneTitle: isES ? '4. MATERIAS PRIMAS (COMMODITIES)' : '4. COMMODITIES',
+        sharedAssetClasses: isES ? ['Materias Primas'] : ['Commodities'],
+        isShared: false,
+        assetClassLabel: isES ? 'Materias Primas • Instrumento Principal' : 'Commodities • Principal Instrument',
+        label: isES ? '🛢️ Curva Forward 3D/2D (Contango / Backwardation)' : '🛢️ 3D/2D Commodity Forward Curve (Term Structure)',
+        desc: isES
+          ? 'Estructura temporal de futuros de Energía, Metales y Agro (Spot a +24M) y cálculo de Roll Yield.'
+          : 'Futures term structure across Energy, Metals & Ags (Spot to +24M) and Roll Yield calculation.',
+        howItWorks: isES
+          ? 'Representa la curva de contratos de futuros desde el mes frontal (Spot/M1) hasta +24 meses para identificar escasez física inmediata (Backwardation, pendiente negativa) o sobrecosto de almacenamiento (Contango, pendiente positiva).'
+          : 'Maps futures contracts from front-month (Spot/M1) out to +24 months to identify physical tightness (Backwardation, downward slope) or storage carry cost (Contango, upward slope).',
+        keyAxes: isES
+          ? ['Eje X: Vencimiento Futuro (Spot → M24)', 'Eje Y: Evolución Histórica', 'Eje Z: Precio Forward & Roll Yield (%)']
+          : ['X-Axis: Futures Maturity (Spot → M24)', 'Y-Axis: Historical Evolution', 'Z-Axis: Forward Price & Roll Yield (%)'],
+        badge: 'COMMODITIES 3D',
+        dimension: 'Spot → +24M 3D',
+        liveStat: 'WTI (CL) • Roll Yield',
+        liveValue: '$68.40 (+4.8% Backw.)',
+        liveColor: '#38bdf8',
+        svgType: 'commodity-curve',
+        quickPresets: [
+          {
+            label: '🛢️ CL • WTI Crude',
+            statLabel: 'CL (WTI) • Roll Yield',
+            statValue: '$68.40 (+4.8% Backw.)',
+            statColor: '#38bdf8',
+            variant: 0,
+            seriesLegend: [
+              {
+                label: isES ? 'CL Curva Forward (M1→M24)' : 'CL Forward Curve (M1→M24)',
+                color: '#38bdf8',
+                dashed: false,
+                desc: isES
+                  ? 'Estructura temporal actual de futuros de petróleo WTI en Backwardation (pendiente descendente).'
+                  : 'Current WTI crude futures curve in Backwardation (downward-sloping term structure).',
+              },
+              {
+                label: isES ? 'Curva hace 3M (-3M)' : '3M Historical Curve',
+                color: '#10b981',
+                dashed: true,
+                desc: isES
+                  ? 'Estructura temporal de futuros hace 3 meses para comparar el Roll Yield.'
+                  : 'Futures term structure 3 months ago to compare Roll Yield evolution.',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setCommoditySubView('3d');
+              handleOpenAssetDetail('CL', 'derivatives');
+            },
+          },
+          {
+            label: '🥇 GC • Gold',
+            statLabel: 'GC (Gold) • Term Carry',
+            statValue: '$2,748.50 (-3.6% Contango)',
+            statColor: '#f59e0b',
+            variant: 1,
+            seriesLegend: [
+              {
+                label: isES ? 'GC Curva Forward (M1→M24)' : 'GC Forward Curve (M1→M24)',
+                color: '#f59e0b',
+                dashed: false,
+                desc: isES
+                  ? 'Curva de futuros de Oro en Contango reflejando tasas de financiamiento y costo de custodia.'
+                  : 'Gold futures curve in Contango reflecting interest-rate carry and storage costs.',
+              },
+              {
+                label: isES ? 'Curva hace 3M (-3M)' : '3M Historical Curve',
+                color: '#10b981',
+                dashed: true,
+                desc: isES
+                  ? 'Curva histórica de futuros de Oro hace 3 meses.'
+                  : 'Historical Gold futures curve 3 months ago.',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setCommoditySubView('3d');
+              handleOpenAssetDetail('GC', 'derivatives');
+            },
+          },
+          {
+            label: '🔥 NG • NatGas',
+            statLabel: 'NG (NatGas) • Term Carry',
+            statValue: '$2.58 (-8.6% Contango)',
+            statColor: '#10b981',
+            variant: 2,
+            seriesLegend: [
+              {
+                label: isES ? 'NG Curva Forward (M1→M24)' : 'NG Forward Curve (M1→M24)',
+                color: '#10b981',
+                dashed: false,
+                desc: isES
+                  ? 'Estructura estacional de futuros de Gas Natural desde Spot hasta +24 meses.'
+                  : 'Seasonal Natural Gas futures term structure from Spot out to +24 months.',
+              },
+              {
+                label: isES ? 'Curva hace 3M (-3M)' : '3M Historical Curve',
+                color: '#38bdf8',
+                dashed: true,
+                desc: isES
+                  ? 'Curva de futuros de Gas Natural hace 3 meses.'
+                  : 'Natural Gas futures term structure 3 months ago.',
+              },
+            ],
+            run: () => {
+              setL2Section('analytics');
+              setAnalysisLens('derivatives');
+              setCommoditySubView('3d');
+              handleOpenAssetDetail('NG', 'derivatives');
+            },
+          },
+        ],
+        action: () => {
+          setL2Section('analytics');
+          setAnalysisLens('derivatives');
+          setCommoditySubView('3d');
+          handleOpenAssetDetail('CL', 'derivatives');
+        },
+      },
+    ];
+
+    const contextualTools = MAIN_TOOLS_ITEMS.filter((item) => item.cats.includes(categoryFilter));
+    const pulseVolColor = pulseMetrics.isVolPos ? '#10b981' : '#f43f5e';
 
     return (
       <div
@@ -960,9 +1811,8 @@ export default function MarketAnomaliesView({
           display: 'flex',
           flexDirection: 'column',
           gap: '0.85rem',
-          height: 'calc(100vh - 115px)',
-          overflowY: 'auto',
-          paddingRight: '0.35rem',
+          width: '100%',
+          paddingBottom: '2.5rem',
         }}
       >
         {/* 1.0 TOP BAR (ABOVE AGGREGATED INDICATORS): CENTERED ASSET TYPE PILLS */}
@@ -980,57 +1830,161 @@ export default function MarketAnomaliesView({
               display: 'inline-flex',
               flexWrap: 'wrap',
               justifyContent: 'center',
-              backgroundColor: 'rgba(13, 19, 33, 0.62)',
-              backdropFilter: 'blur(12px)',
-              padding: '0.24rem',
+              backgroundColor: 'rgba(8, 12, 22, 0.24)',
+              backdropFilter: 'blur(2px)',
+              padding: '0.26rem',
               borderRadius: '999px',
-              border: '1px solid rgba(255, 255, 255, 0.09)',
+              border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
               gap: '0.2rem',
-              boxShadow: '0 6px 20px rgba(0, 0, 0, 0.25)',
+              boxShadow: '0 6px 20px rgba(0, 0, 0, 0.22)',
             }}
           >
             {[
-              { id: 'ALL', label: isES ? 'Todos' : 'All' },
-              { id: 'WATCHLIST', label: `★ Watchlist (${watchlistSyms.length})` },
+              {
+                id: 'ALL',
+                label: isES ? 'Todos' : 'All',
+                desc: isES
+                  ? 'Muestra el universo completo de 213 activos globales en tiempo real.'
+                  : 'Displays the full 213-asset global universe in real time.',
+              },
+              {
+                id: 'WATCHLIST',
+                label: `★ Watchlist (${watchlistSyms.length})`,
+                desc: isES
+                  ? 'Filtra tus activos favoritos marcados con estrella (★) para seguimiento y Portfolio.'
+                  : 'Filters your starred (★) watchlist assets for tracking and Portfolio evaluation.',
+              },
               ...[
-                { id: 'INDEX', label: isES ? 'Índices' : 'Indices' },
-                { id: 'EQUITY', label: isES ? 'Acciones (S&P/NDX)' : 'Equities (S&P/NDX)' },
-                { id: 'ETF', label: 'ETFs' },
-                { id: 'CRYPTO', label: 'Crypto' },
-                { id: 'RATES', label: isES ? 'Tasas & Curvas' : 'Rates & Curves' },
-                { id: 'FIXED_INCOME', label: isES ? 'Bonos US Treasury' : 'US Treasuries' },
-                { id: 'FX', label: isES ? 'Divisas (FX)' : 'FX Currencies' },
-                { id: 'COMMODITY', label: isES ? 'Materias Primas' : 'Commodities' },
-                { id: 'DERIVATIVES_VOL', label: isES ? 'Derivados & Vol' : 'Derivatives & Vol' },
-                { id: 'CASH', label: 'Cash & SOFR' },
+                {
+                  id: 'INDEX',
+                  label: isES ? 'Índices' : 'Indices',
+                  desc: isES ? 'Índices bursátiles globales (S&P 500, Nasdaq 100, DAX, Nikkei).' : 'Global equity indices (S&P 500, Nasdaq 100, DAX, Nikkei).',
+                },
+                {
+                  id: 'EQUITY',
+                  label: isES ? 'Acciones (S&P/NDX)' : 'Equities (S&P/NDX)',
+                  desc: isES ? 'Acciones líderes con P/E Forward, Beta e indicadores institucionales.' : 'Leading equities with Forward P/E, Beta, and institutional indicators.',
+                },
+                {
+                  id: 'ETF',
+                  label: 'ETFs',
+                  desc: isES ? 'Fondos cotizados sectoriales, renta fija y materias primas.' : 'Sector, fixed-income, and commodity exchange-traded funds.',
+                },
+                {
+                  id: 'CRYPTO',
+                  label: 'Crypto',
+                  desc: isES ? 'Activos digitales spot con Funding Rate perpetuo y Open Interest.' : 'Spot digital assets with perpetual Funding Rate and Open Interest.',
+                },
+                {
+                  id: 'RATES',
+                  label: isES ? 'Tasas & Curvas' : 'Rates & Curves',
+                  desc: isES ? 'Rendimientos soberanos y curvas 3D/2D en 42 países.' : 'Sovereign yields and 3D/2D curves across 42 countries.',
+                },
+                {
+                  id: 'FIXED_INCOME',
+                  label: isES ? 'Bonos US Treasury' : 'US Treasuries',
+                  desc: isES ? 'Bonos del Tesoro de EE.UU. con Duración Modificada y Convexidad.' : 'US Treasury bonds with Modified Duration and Convexity.',
+                },
+                {
+                  id: 'FX',
+                  label: isES ? 'Divisas (FX)' : 'FX Currencies',
+                  desc: isES ? 'Pares de divisas G10 y EM con diferencial de tasas (Carry) y conversor 61 monedas.' : 'G10 & EM currency pairs with interest rate carry and 61-CCY converter.',
+                },
+                {
+                  id: 'COMMODITY',
+                  label: isES ? 'Materias Primas' : 'Commodities',
+                  desc: isES ? 'Energía, metales y agro con estructura temporal Contango / Backwardation.' : 'Energy, metals, and agriculture with Contango / Backwardation term structure.',
+                },
+                {
+                  id: 'DERIVATIVES_VOL',
+                  label: isES ? 'Derivados & Vol' : 'Derivatives & Vol',
+                  desc: isES ? 'Opciones y futuros de volatilidad con Superficie IV 3D y simulador Payoff P&L.' : 'Options and volatility futures with 3D IV Surface and P&L Payoff simulator.',
+                },
+                {
+                  id: 'CASH',
+                  label: 'Cash & SOFR',
+                  desc: isES ? 'Liquidez monetaria, tasas repo SOFR y letras del Tesoro a corto plazo.' : 'Money market liquidity, SOFR repo rates, and short-term T-Bills.',
+                },
               ].sort((a, b) => a.label.localeCompare(b.label, isES ? 'es' : 'en')),
             ].map((tab) => {
               const active = categoryFilter === tab.id;
               return (
-                <button
+                <HoverTooltip
                   key={tab.id}
-                  onClick={() => setCategoryFilter(tab.id)}
-                  style={{
-                    fontSize: '0.7rem',
-                    fontWeight: active ? 700 : 600,
-                    padding: '0.26rem 0.78rem',
-                    borderRadius: '999px',
-                    border: active ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid transparent',
-                    backgroundColor: active ? 'rgba(16, 185, 129, 0.16)' : 'transparent',
-                    color: active ? '#ffffff' : 'var(--text-dim)',
-                    cursor: 'pointer',
-                    transition: 'all 0.15s ease',
-                    whiteSpace: 'nowrap',
-                  }}
+                  title={tab.label}
+                  description={tab.desc}
+                  hint={isES ? 'Click para filtrar clase de activo' : 'Click to filter asset class'}
+                  badge={tab.id}
+                  placement="bottom"
                 >
-                  {tab.label}
-                </button>
+                  <button
+                    onClick={() => setCategoryFilter(tab.id)}
+                    style={{
+                      fontSize: '0.7rem',
+                      fontWeight: active ? 700 : 600,
+                      padding: '0.26rem 0.78rem',
+                      borderRadius: '999px',
+                      border: active ? '1px solid var(--ui-accent)' : '1px solid transparent',
+                      backgroundColor: active ? 'rgba(var(--ui-accent-rgb), 0.18)' : 'transparent',
+                      color: active ? '#ffffff' : 'var(--text-dim)',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s ease',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {tab.label}
+                  </button>
+                </HoverTooltip>
               );
             })}
           </div>
         </div>
 
-        {/* 1.1 AGGREGATED MARKET INDICATORS */}
+        {/* PROPUESTA P05: SUB-BAR CENTERED RIGHT UNDER ASSET CLASS PILLS */}
+        {marketsToolsMode === 'v5-under-cats' && (
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                backdropFilter: 'blur(2px)',
+                padding: '0.22rem 0.5rem',
+                borderRadius: '999px',
+                border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
+                gap: '0.35rem',
+                flexWrap: 'wrap',
+              }}
+            >
+              <span style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--ui-accent)', padding: '0 0.35rem' }}>
+                Main Tools
+              </span>
+              {MAIN_TOOLS_ITEMS.map((qBtn) => (
+                <HoverTooltip key={qBtn.id} title={qBtn.label} description={qBtn.desc} badge={qBtn.badge} placement="bottom">
+                  <button
+                    type="button"
+                    onClick={qBtn.action}
+                    style={{
+                      fontSize: '0.67rem',
+                      fontWeight: 600,
+                      padding: '0.24rem 0.68rem',
+                      borderRadius: '999px',
+                      border: '1px solid rgba(255, 255, 255, 0.14)',
+                      backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                      color: 'var(--text-main)',
+                      cursor: 'pointer',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {qBtn.label}
+                  </button>
+                </HoverTooltip>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* 1.1 AGGREGATED MARKET INDICATORS (LOCKED UNIFORM HEIGHT) */}
         <div
           style={{
             display: 'grid',
@@ -1039,7 +1993,7 @@ export default function MarketAnomaliesView({
             flexShrink: 0,
           }}
         >
-          {/* PULSE 1: 24H AGGREGATE VOLUME & FLOW */}
+          {/* PULSE 1: 24H AGGREGATE VOLUME & FLOW (DYNAMIC PER ASSET CLASS) */}
           <div
             style={{
               ...pulseCardStyle,
@@ -1049,39 +2003,41 @@ export default function MarketAnomaliesView({
               gap: '0.75rem',
             }}
           >
-            <div>
-              <div style={{ fontSize: '0.69rem', color: 'var(--text-dim)', fontWeight: 600 }}>
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: '0.68rem', color: 'var(--text-dim)', fontWeight: 600, whiteSpace: 'nowrap' }}>
                 {isES ? 'Volumen Agregado (24h)' : '24h Aggregate Volume'}
               </div>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.45rem', marginTop: '0.24rem' }}>
-                <span className="mono-metric" style={{ fontSize: '1.18rem', fontWeight: 800, color: 'var(--text-main)' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.42rem', marginTop: '0.2rem', whiteSpace: 'nowrap' }}>
+                <span className="mono-metric" style={{ fontSize: '1.14rem', fontWeight: 800, color: 'var(--text-main)' }}>
                   {pulseMetrics.totalVolFormatted}
                 </span>
-                <span className="mono-metric" style={{ fontSize: '0.7rem', fontWeight: 700, color: '#10b981' }}>
-                  +8.42%
+                <span className="mono-metric" style={{ fontSize: '0.69rem', fontWeight: 700, color: pulseVolColor }}>
+                  {pulseMetrics.volChgFormatted}
                 </span>
               </div>
-              <div style={{ fontSize: '0.62rem', color: 'var(--text-dim)', marginTop: '0.18rem' }}>
+              <div style={{ fontSize: '0.61rem', color: 'var(--text-dim)', marginTop: '0.15rem', whiteSpace: 'nowrap' }}>
                 {pulseMetrics.totalCount} {isES ? 'activos filtrados' : 'tracked assets'}
               </div>
             </div>
 
-            <div style={{ width: '92px', height: '42px' }}>
+            <div style={{ width: '94px', height: '46px', flexShrink: 0 }}>
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={GLOBAL_VOLUME_SPARKLINE}>
+                <AreaChart data={pulseMetrics.volSparkline} margin={{ top: 3, right: 2, left: 2, bottom: 3 }}>
                   <defs>
                     <linearGradient id="pulseVolGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.45} />
-                      <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
+                      <stop offset="5%" stopColor={pulseVolColor} stopOpacity={0.45} />
+                      <stop offset="95%" stopColor={pulseVolColor} stopOpacity={0.0} />
                     </linearGradient>
                   </defs>
+                  <YAxis domain={['dataMin - 4', 'dataMax + 4']} hide />
                   <Area
                     type="monotone"
                     dataKey="v"
-                    stroke="#10b981"
+                    stroke={pulseVolColor}
                     strokeWidth={2}
                     fillOpacity={1}
                     fill="url(#pulseVolGrad)"
+                    isAnimationActive={false}
                   />
                 </AreaChart>
               </ResponsiveContainer>
@@ -1095,6 +2051,7 @@ export default function MarketAnomaliesView({
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
+              gap: '0.5rem',
             }}
           >
             <RadialRingGauge
@@ -1106,12 +2063,14 @@ export default function MarketAnomaliesView({
             <span
               className="mono-metric"
               style={{
-                fontSize: '0.6rem',
-                padding: '0.2rem 0.55rem',
+                fontSize: '0.58rem',
+                padding: '0.2rem 0.52rem',
                 borderRadius: '999px',
                 backgroundColor: pulseMetrics.avgRsiNum >= 50 ? 'rgba(16, 185, 129, 0.14)' : 'rgba(244, 63, 94, 0.14)',
                 color: pulseMetrics.avgRsiNum >= 50 ? '#34d399' : '#fb7185',
                 fontWeight: 700,
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
               }}
             >
               {pulseMetrics.avgRsiNum >= 50 ? 'POSITIVE (>50)' : 'NEGATIVE (<50)'}
@@ -1125,7 +2084,7 @@ export default function MarketAnomaliesView({
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              gap: '0.6rem',
+              gap: '0.5rem',
             }}
           >
             <RadialRingGauge
@@ -1134,16 +2093,16 @@ export default function MarketAnomaliesView({
               label={`${pulseMetrics.normalPct}%`}
               sub={isES ? 'Régimen Normal (P-06)' : 'Normal Regime (P-06)'}
               detail={
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
-                  <div>
-                    <span className="mono-metric" style={{ color: '#10b981', fontWeight: 800, fontSize: '0.68rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.08rem' }}>
+                  <div style={{ whiteSpace: 'nowrap' }}>
+                    <span className="mono-metric" style={{ color: '#10b981', fontWeight: 800, fontSize: '0.66rem' }}>
                       {pulseMetrics.normalCount} / {pulseMetrics.totalCount}
                     </span>{' '}
-                    <span>{isES ? 'activos normales' : 'normal assets'}</span>
+                    <span>{isES ? 'normales' : 'normal'}</span>
                   </div>
-                  <div style={{ fontSize: '0.58rem' }}>
+                  <div style={{ fontSize: '0.57rem', whiteSpace: 'nowrap' }}>
                     <span className="mono-metric" style={{ color: '#fb7185', fontWeight: 700 }}>
-                      {pulseMetrics.elevatedCount} {isES ? 'Elevados' : 'Elevated'}
+                      {pulseMetrics.elevatedCount} {isES ? 'Elev.' : 'Elev.'}
                     </span>
                     {' • '}
                     <span className="mono-metric" style={{ color: '#f43f5e', fontWeight: 700 }}>
@@ -1154,25 +2113,23 @@ export default function MarketAnomaliesView({
               }
             />
             {pulseMetrics.topAnomaly && (
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.2rem', flexShrink: 0 }}>
-                <span className="mono-metric" style={{ fontSize: '0.54rem', color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '0.18rem', flexShrink: 0 }}>
+                <span className="mono-metric" style={{ fontSize: '0.52rem', color: 'var(--text-dim)', letterSpacing: '0.04em', whiteSpace: 'nowrap' }}>
                   {isES ? 'MAYOR ANOMALÍA' : 'TOP ANOMALY'}
                 </span>
                 <span
-                  onClick={() => handleOpenAssetDetail(pulseMetrics.topAnomaly.sym)}
                   className="mono-metric"
                   style={{
-                    fontSize: '0.65rem',
+                    fontSize: '0.63rem',
                     fontWeight: 700,
-                    padding: '0.22rem 0.55rem',
+                    padding: '0.2rem 0.5rem',
                     borderRadius: '999px',
                     backgroundColor: 'rgba(244, 63, 94, 0.16)',
                     color: '#f43f5e',
-                    cursor: 'pointer',
                     whiteSpace: 'nowrap',
                   }}
                 >
-                  {pulseMetrics.topAnomaly.sym} {pulseMetrics.topAnomaly.anomalyScore.toFixed(3)} ↗
+                  {pulseMetrics.topAnomaly.sym} {pulseMetrics.topAnomaly.anomalyScore.toFixed(3)}
                 </span>
               </div>
             )}
@@ -1187,37 +2144,54 @@ export default function MarketAnomaliesView({
               justifyContent: 'space-between',
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.2rem' }}>
-              <span style={{ fontSize: '0.69rem', color: 'var(--text-dim)', fontWeight: 600 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.1rem' }}>
+              <span style={{ fontSize: '0.67rem', color: 'var(--text-dim)', fontWeight: 600, whiteSpace: 'nowrap' }}>
                 {isES ? 'Top Desvío Volumen (20d)' : 'Top Volume Z-Score (20d)'}
               </span>
-              <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>
+              <span className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--text-dim)', whiteSpace: 'nowrap' }}>
                 24H SIGMA
               </span>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.22rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.18rem' }}>
               {pulseMetrics.topDislocations.map((item, idx) => (
                 <div
                   key={item.sym}
-                  onClick={() => handleOpenAssetDetail(item.sym)}
                   style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
+                    display: 'grid',
+                    gridTemplateColumns: 'minmax(0, 1.25fr) minmax(0, 0.95fr) minmax(0, 0.8fr)',
                     alignItems: 'center',
-                    fontSize: '0.71rem',
-                    cursor: 'pointer',
+                    gap: '0.4rem',
+                    fontSize: '0.69rem',
+                    lineHeight: 1.2,
+                    whiteSpace: 'nowrap',
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <span className="mono-metric" style={{ color: 'var(--text-dim)', fontSize: '0.62rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.36rem', minWidth: 0 }}>
+                    <span className="mono-metric" style={{ color: 'var(--text-dim)', fontSize: '0.6rem', flexShrink: 0 }}>
                       0{idx + 1}
                     </span>
-                    <span className="mono-metric" style={{ fontWeight: 800, color: 'var(--text-main)' }}>
+                    <span
+                      className="mono-metric"
+                      style={{
+                        fontWeight: 800,
+                        color: 'var(--text-main)',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
                       {item.sym}
                     </span>
                   </div>
-                  <span className="mono-metric" style={{ color: 'var(--text-muted)', fontSize: '0.67rem' }}>
+                  <span
+                    className="mono-metric"
+                    style={{
+                      color: 'var(--text-muted)',
+                      fontSize: '0.65rem',
+                      textAlign: 'right',
+                      fontVariantNumeric: 'tabular-nums',
+                    }}
+                  >
                     {item.priceFormatted}
                   </span>
                   <span
@@ -1225,6 +2199,8 @@ export default function MarketAnomaliesView({
                     style={{
                       fontWeight: 700,
                       color: item.volumeZNum >= 0 ? '#10b981' : '#f43f5e',
+                      textAlign: 'right',
+                      fontVariantNumeric: 'tabular-nums',
                     }}
                   >
                     {item.volumeZScore}
@@ -1235,76 +2211,293 @@ export default function MarketAnomaliesView({
           </div>
         </div>
 
-        {/* 1.2 VIEW SWITCHER TOOLBAR: TABLE (DEFAULT) | ORBITAL | HEATMAP + INDICATOR SELECTOR */}
+        {/* PROPUESTA P07: DEDICATED 4 MINI-CARDS STRIP BELOW THE 4 PULSE CARDS */}
+        {marketsToolsMode === 'v7-cards-strip' && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.8rem', flexShrink: 0 }}>
+            {MAIN_TOOLS_ITEMS.map((tool) => (
+              <HoverTooltip key={tool.id} title={tool.label} description={tool.desc} badge={tool.badge} placement="bottom">
+                <div
+                  onClick={tool.action}
+                  style={{
+                    width: '100%',
+                    padding: '0.55rem 0.9rem',
+                    borderRadius: '14px',
+                    backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                    backdropFilter: 'blur(2px)',
+                    border: '1px solid rgba(var(--ui-accent-rgb), 0.32)',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.15rem',
+                  }}
+                >
+                  <span style={{ fontSize: '0.73rem', fontWeight: 800, color: '#ffffff' }}>{tool.label}</span>
+                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--ui-accent)' }}>{tool.badge} ↗</span>
+                </div>
+              </HoverTooltip>
+            ))}
+          </div>
+        )}
+
+        {/* 1.2 VIEW SWITCHER + MAIN TOOLS (CONFIGURABLE VIA DEV PROPOSALS P01-P08) */}
         <div
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '0.75rem',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            gap: '0.55rem',
             flexShrink: 0,
           }}
         >
-          {/* Left: View Mode Switcher (Table / Orbital / Heatmap) + Contextual Indicator Selector */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
+          {/* Row 1: View Mode Switcher (Table / Orbital / Heatmap [+ Main Tools if v4-tab]) & Right-Aligned Main Tools */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.65rem', flexWrap: 'wrap', width: '100%' }}>
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                backgroundColor: 'var(--bg-panel-glass)',
-                backdropFilter: 'blur(12px)',
+                backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                backdropFilter: 'blur(2px)',
                 padding: '0.22rem',
                 borderRadius: '999px',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
+                border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
                 gap: '0.25rem',
               }}
             >
               {[
-                { id: 'table', icon: Table2, label: isES ? 'Tabla' : 'Table' },
-                { id: 'orbital', icon: Orbit, label: isES ? 'Orbital' : 'Orbital' },
-                { id: 'heatmap', icon: LayoutGrid, label: isES ? 'Mapa de Calor' : 'Heatmap' },
+                {
+                  id: 'table',
+                  icon: Table2,
+                  label: isES ? 'Tabla' : 'Table',
+                  desc: isES
+                    ? 'Tabla institucional con buscador integrado, sparklines 24h y métricas por clase de activo.'
+                    : 'Institutional table with integrated search, 24h sparklines, and asset-class specific metrics.',
+                },
+                {
+                  id: 'orbital',
+                  icon: Orbit,
+                  label: isES ? 'Orbital' : 'Orbital',
+                  desc: isES
+                    ? 'Topología orbital de 3 anillos concéntricos impulsada por el indicador seleccionado.'
+                    : '3-ring concentric orbital topology driven by the selected indicator.',
+                },
+                {
+                  id: 'heatmap',
+                  icon: LayoutGrid,
+                  label: isES ? 'Mapa de Calor' : 'Heatmap',
+                  desc: isES
+                    ? 'Mosaico proporcional de mercado coloreado según la métrica cuantitativa elegida.'
+                    : 'Proportional market treemap colored by the selected quantitative metric.',
+                },
+                ...(marketsToolsMode === 'v4-tab'
+                  ? [
+                      {
+                        id: 'tools',
+                        icon: Sparkles,
+                        label: 'Main Tools',
+                        desc: isES
+                          ? 'Lanzador de motores 3D de curvas soberanas, superficie de volatilidad, payoffs y FX.'
+                          : 'Launcher for 3D sovereign curves, volatility surfaces, options payoffs, and FX.',
+                      },
+                    ]
+                  : []),
               ].map((mode) => {
                 const Icon = mode.icon;
                 const active = visualMode === mode.id;
                 return (
-                  <button
+                  <HoverTooltip
                     key={mode.id}
-                    onClick={() => setVisualMode(mode.id)}
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.4rem',
-                      fontSize: '0.72rem',
-                      fontWeight: active ? 700 : 600,
-                      padding: '0.3rem 0.9rem',
-                      borderRadius: '999px',
-                      border: active ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid transparent',
-                      backgroundColor: active ? 'rgba(16, 185, 129, 0.16)' : 'transparent',
-                      color: active ? '#ffffff' : 'var(--text-dim)',
-                      cursor: 'pointer',
-                      transition: 'all 0.15s ease',
-                    }}
+                    title={mode.label}
+                    description={mode.desc}
+                    hint={isES ? 'Click para cambiar vista' : 'Click to switch view'}
+                    badge={mode.id.toUpperCase()}
+                    placement="bottom-left"
                   >
-                    <Icon size={13} />
-                    <span>{mode.label}</span>
-                  </button>
+                    <button
+                      onClick={() => setVisualMode(mode.id)}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        fontSize: '0.72rem',
+                        fontWeight: active ? 700 : 600,
+                        padding: '0.3rem 0.9rem',
+                        borderRadius: '999px',
+                        border: active ? '1px solid var(--ui-accent)' : '1px solid transparent',
+                        backgroundColor: active ? 'rgba(var(--ui-accent-rgb), 0.18)' : 'transparent',
+                        color: active ? '#ffffff' : 'var(--text-dim)',
+                        cursor: 'pointer',
+                        transition: 'all 0.15s ease',
+                      }}
+                    >
+                      <Icon size={13} />
+                      <span>{mode.label}</span>
+                    </button>
+                  </HoverTooltip>
                 );
               })}
             </div>
 
-            {/* Indicator Driver Selector (Appears when user selects Orbital or Heatmap) */}
-            {(visualMode === 'orbital' || visualMode === 'heatmap') && (
+            {/* PROPUESTA P02 (v2-right-bar) OR PROPUESTA P06 (v2-contextual): Horizontal Main Tools Capsule Centered on the Right */}
+            {(marketsToolsMode === 'v2-right-bar' || (marketsToolsMode === 'v2-contextual' && contextualTools.length > 0)) && (
               <div
                 style={{
-                  display: 'flex',
+                  marginLeft: 'auto',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '0.4rem',
+                  backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                  backdropFilter: 'blur(2px)',
+                  padding: '0.22rem 0.48rem',
+                  borderRadius: '999px',
+                  border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
+                  gap: '0.35rem',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: '0.68rem',
+                    fontWeight: 700,
+                    color: 'var(--ui-accent)',
+                    padding: '0 0.35rem',
+                  }}
+                >
+                  Main Tools
+                </span>
+                {(marketsToolsMode === 'v2-right-bar' ? MAIN_TOOLS_ITEMS : contextualTools).map((qBtn) => (
+                  <HoverTooltip key={qBtn.id} title={qBtn.label} description={qBtn.desc} badge={qBtn.badge} placement="bottom-right">
+                    <button
+                      type="button"
+                      onClick={qBtn.action}
+                      style={{
+                        fontSize: '0.67rem',
+                        fontWeight: 600,
+                        padding: '0.24rem 0.68rem',
+                        borderRadius: '999px',
+                        border: '1px solid rgba(255, 255, 255, 0.14)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                        color: 'var(--text-main)',
+                        cursor: 'pointer',
+                        whiteSpace: 'nowrap',
+                        transition: 'all 0.15s ease',
+                      }}
+                    >
+                      {qBtn.label}
+                    </button>
+                  </HoverTooltip>
+                ))}
+              </div>
+            )}
+
+            {/* PROPUESTA P03: Compact 'Main Tools ▾' Dropdown Button Centered Vertically on the Right */}
+            {marketsToolsMode === 'v3-dropdown' && (
+              <div style={{ marginLeft: 'auto', position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+                <HoverTooltip
+                  title="Main Tools"
+                  description={
+                    isES
+                      ? 'Despliega los 4 motores especiales: Curva Soberana 3D, Superficie Vol 3D, Payoff P&L y Conversor FX.'
+                      : 'Opens the 4 specialized quant engines: 3D Sovereign Curve, 3D Vol Surface, Options Payoff & FX Converter.'
+                  }
+                  badge="4 ENGINES"
+                  placement="bottom-right"
+                  disabled={toolsDropdownOpen}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setToolsDropdownOpen((prev) => !prev)}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.42rem',
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      padding: '0.34rem 0.95rem',
+                      borderRadius: '999px',
+                      backgroundColor: toolsDropdownOpen ? 'rgba(var(--ui-accent-rgb), 0.22)' : 'rgba(8, 12, 22, 0.24)',
+                      backdropFilter: 'blur(2px)',
+                      border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
+                      color: '#ffffff',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s ease',
+                    }}
+                  >
+                    <Sparkles size={13} style={{ color: 'var(--ui-accent)' }} />
+                    <span>Main Tools</span>
+                    <span style={{ fontSize: '0.62rem', color: 'var(--ui-accent)' }}>{toolsDropdownOpen ? '▴' : '▾'}</span>
+                  </button>
+                </HoverTooltip>
+
+                {toolsDropdownOpen && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 'calc(100% + 0.45rem)',
+                      right: 0,
+                      zIndex: 80,
+                      minWidth: '290px',
+                      padding: '0.55rem',
+                      borderRadius: '16px',
+                      backgroundColor: 'rgba(8, 12, 22, 0.92)',
+                      backdropFilter: 'blur(14px)',
+                      border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
+                      boxShadow: '0 16px 40px rgba(0, 0, 0, 0.65)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.3rem',
+                    }}
+                  >
+                    {MAIN_TOOLS_ITEMS.map((qBtn) => (
+                      <button
+                        key={qBtn.id}
+                        type="button"
+                        onClick={() => {
+                          setToolsDropdownOpen(false);
+                          qBtn.action();
+                        }}
+                        style={{
+                          textAlign: 'left',
+                          padding: '0.5rem 0.7rem',
+                          borderRadius: '11px',
+                          border: '1px solid rgba(255, 255, 255, 0.08)',
+                          backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                          color: 'var(--text-main)',
+                          fontSize: '0.71rem',
+                          fontWeight: 600,
+                          cursor: 'pointer',
+                          transition: 'all 0.15s ease',
+                        }}
+                      >
+                        {qBtn.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Row 2: Indicator Driver Selector + Integrated Asset Search Combobox (Appears BELOW when Orbital or Heatmap is selected) */}
+          {(visualMode === 'orbital' || visualMode === 'heatmap') && (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '100%',
+                gap: '0.65rem',
+                flexWrap: 'wrap',
+              }}
+            >
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
                   padding: '0.24rem 0.55rem',
                   borderRadius: '999px',
-                  backgroundColor: 'rgba(13, 19, 33, 0.62)',
-                  backdropFilter: 'blur(12px)',
-                  border: '1px solid rgba(255, 255, 255, 0.09)',
+                  backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                  backdropFilter: 'blur(2px)',
+                  border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
                   flexWrap: 'wrap',
                 }}
               >
@@ -1314,14 +2507,14 @@ export default function MarketAnomaliesView({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.35rem',
-                    fontSize: '0.64rem',
-                    fontWeight: 700,
-                    color: 'var(--text-muted)',
+                    fontSize: '0.62rem',
+                    fontWeight: 800,
+                    color: 'var(--ui-accent)',
                     paddingLeft: '0.35rem',
                     paddingRight: '0.25rem',
                   }}
                 >
-                  <SlidersHorizontal size={12} style={{ color: '#10b981' }} />
+                  <SlidersHorizontal size={12} style={{ color: 'var(--ui-accent)' }} />
                   <span>{isES ? 'INDICADOR:' : 'INDICATOR:'}</span>
                 </div>
 
@@ -1336,8 +2529,8 @@ export default function MarketAnomaliesView({
                         fontWeight: active ? 700 : 500,
                         padding: '0.24rem 0.7rem',
                         borderRadius: '999px',
-                        border: active ? '1px solid #10b981' : '1px solid transparent',
-                        backgroundColor: active ? 'rgba(16, 185, 129, 0.16)' : 'transparent',
+                        border: active ? '1px solid var(--ui-accent)' : '1px solid transparent',
+                        backgroundColor: active ? 'rgba(var(--ui-accent-rgb), 0.18)' : 'transparent',
                         color: active ? '#ffffff' : 'var(--text-dim)',
                         cursor: 'pointer',
                         transition: 'all 0.15s ease',
@@ -1348,86 +2541,985 @@ export default function MarketAnomaliesView({
                   );
                 })}
               </div>
-            )}
-          </div>
 
-          {/* Right: Direct 1-Click Access to the 4 Quantitative Engines aligned to the right edge */}
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              marginLeft: 'auto',
-              backgroundColor: 'rgba(13, 19, 33, 0.65)',
-              padding: '0.2rem 0.35rem',
-              borderRadius: '999px',
-              border: '1px solid rgba(56, 189, 248, 0.22)',
-              gap: '0.25rem',
-              flexWrap: 'wrap',
-            }}
-          >
-            {[
-              {
-                id: 'sovereign-curve',
-                label: isES ? '🌐 Curva Soberana 3D/2D (42 Países)' : '🌐 Sovereign Curve 3D/2D (42 Countries)',
-                action: () => {
-                  setL2Section('analytics');
-                  setAnalysisLens('derivatives');
-                  setRatesSubView('3d-history');
-                  handleOpenAssetDetail('US10Y', 'derivatives');
-                },
-              },
-              {
-                id: 'vol-surface-3d',
-                label: isES ? '📐 Superficie Volatilidad 3D' : '📐 3D Volatility Surface',
-                action: () => {
-                  setL2Section('analytics');
-                  setAnalysisLens('derivatives');
-                  setOptionsSubView('surface3d');
-                  handleOpenAssetDetail('NVDA-OPT', 'derivatives');
-                },
-              },
-              {
-                id: 'options-payoff',
-                label: isES ? '⚡ Payoff P&L & Sintéticos' : '⚡ Options Payoff & Synthetics',
-                action: () => {
-                  setL2Section('analytics');
-                  setAnalysisLens('derivatives');
-                  setOptionsSubView('payoff');
-                  handleOpenAssetDetail('NVDA-OPT', 'derivatives');
-                },
-              },
-              {
-                id: 'fx-cross',
-                label: isES ? '💱 Conversor FX (61 Monedas)' : '💱 FX Cross Converter (61 CCY)',
-                action: () => {
-                  setL2Section('analytics');
-                  setAnalysisLens('derivatives');
-                  handleOpenAssetDetail('EUR/USD', 'derivatives');
-                },
-              },
-            ].map((qBtn) => (
-              <button
-                key={qBtn.id}
-                type="button"
-                onClick={qBtn.action}
+              {/* Searchable Asset Combobox for Orbital & Heatmap Modes */}
+              <div style={{ position: 'relative', minWidth: '250px' }}>
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.42rem',
+                    backgroundColor: 'rgba(8, 12, 22, 0.48)',
+                    backdropFilter: 'blur(4px)',
+                    padding: '0.28rem 0.75rem',
+                    borderRadius: '999px',
+                    border: '1px solid rgba(var(--ui-accent-rgb), 0.35)',
+                    width: '100%',
+                  }}
+                >
+                  <Search size={12} style={{ color: 'var(--ui-accent)', flexShrink: 0 }} />
+                  <input
+                    type="text"
+                    placeholder={isES ? 'Buscar activo (↑↓ Enter)...' : 'Search ticker or asset (↑↓ Enter)...'}
+                    value={assetSearch}
+                    onFocus={() => setL1VisualSearchOpen(true)}
+                    onBlur={() => setTimeout(() => setL1VisualSearchOpen(false), 160)}
+                    onChange={(e) => {
+                      setAssetSearch(e.target.value);
+                      setL1SelectedIndex(0);
+                      setL1VisualSearchOpen(true);
+                    }}
+                    onKeyDown={(e) => {
+                      if (!screenerRows.length) return;
+                      if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const nextIdx = (l1SelectedIndex + 1) % screenerRows.length;
+                        setL1SelectedIndex(nextIdx);
+                        setHoveredAsset(screenerRows[nextIdx].sym);
+                      } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const prevIdx = (l1SelectedIndex - 1 + screenerRows.length) % screenerRows.length;
+                        setL1SelectedIndex(prevIdx);
+                        setHoveredAsset(screenerRows[prevIdx].sym);
+                      } else if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const target = screenerRows[l1SelectedIndex] || screenerRows[0];
+                        if (target) {
+                          setL1VisualSearchOpen(false);
+                          handleOpenAssetDetail(target.sym);
+                        }
+                      } else if (e.key === 'Escape') {
+                        setAssetSearch('');
+                        setL1VisualSearchOpen(false);
+                      }
+                    }}
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: 'var(--text-main)',
+                      fontSize: '0.68rem',
+                      outline: 'none',
+                      width: '100%',
+                    }}
+                  />
+                  {assetSearch && (
+                    <button
+                      type="button"
+                      onClick={() => setAssetSearch('')}
+                      style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', padding: 0, display: 'flex' }}
+                    >
+                      <X size={11} />
+                    </button>
+                  )}
+                </div>
+
+                {l1VisualSearchOpen && screenerRows.length > 0 && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 'calc(100% + 6px)',
+                      right: 0,
+                      width: '310px',
+                      maxHeight: '240px',
+                      overflowY: 'auto',
+                      borderRadius: '14px',
+                      backgroundColor: 'rgba(8, 12, 22, 0.96)',
+                      backdropFilter: 'blur(14px)',
+                      border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
+                      boxShadow: '0 16px 38px rgba(0,0,0,0.75)',
+                      padding: '0.32rem',
+                      zIndex: 85,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.16rem',
+                    }}
+                  >
+                    {screenerRows.slice(0, 10).map((item, idx) => {
+                      const activeRow = idx === l1SelectedIndex;
+                      return (
+                        <button
+                          key={item.sym}
+                          type="button"
+                          onMouseEnter={() => {
+                            setL1SelectedIndex(idx);
+                            setHoveredAsset(item.sym);
+                          }}
+                          onMouseDown={(e) => {
+                            e.preventDefault();
+                            setL1VisualSearchOpen(false);
+                            handleOpenAssetDetail(item.sym);
+                          }}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            gap: '0.45rem',
+                            padding: '0.38rem 0.55rem',
+                            borderRadius: '9px',
+                            border: activeRow ? '1px solid rgba(var(--ui-accent-rgb), 0.45)' : '1px solid transparent',
+                            backgroundColor: activeRow ? 'rgba(var(--ui-accent-rgb), 0.16)' : 'transparent',
+                            cursor: 'pointer',
+                            textAlign: 'left',
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', minWidth: 0 }}>
+                            <span className="mono-metric" style={{ fontSize: '0.68rem', fontWeight: 800, color: '#ffffff', minWidth: '48px' }}>
+                              {item.sym}
+                            </span>
+                            <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                              {item.name}
+                            </span>
+                          </div>
+                          <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 700, color: item.chgNum >= 0 ? '#10b981' : '#f43f5e', flexShrink: 0 }}>
+                            {item.chg}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* ==================================================================== */}
+        {/* MODE 4 (HÍBRIDO HB-05): 3-COLUMN PROGRESSIVE MAIN TOOLS WORKBENCH   */}
+        {/* [1. Clase de Activo] → [2. Instrumento Principal & Explicación] →    */}
+        {/* [3. Vista Previa Vectorial & Lanzador por Buscador]                  */}
+        {/* ==================================================================== */}
+        {visualMode === 'tools' && (() => {
+          const ASSET_CLASS_LANES = [
+            {
+              laneId: 'LANE_RATES',
+              title: isES ? 'Tasas, Bonos & Liquidez' : 'Rates, Bonds & Cash',
+              subtitle: isES ? 'Curvas Soberanas 3D & Spreads' : '3D Sovereign Curves & Spreads',
+              cats: ['RATES', 'FIXED_INCOME', 'CASH'],
+              sharedLabels: isES
+                ? ['Tasas & Curvas', 'Bonos US Treasury', 'Cash & SOFR']
+                : ['Rates & Curves', 'US Treasuries', 'Cash & SOFR'],
+              isShared: true,
+            },
+            {
+              laneId: 'LANE_EQUITY_DERIV',
+              title: isES ? 'Derivados, Acciones, Índices & Crypto' : 'Derivatives, Equities, Indices & Crypto',
+              subtitle: isES ? 'Superficie IV 3D & Payoff Multi-Leg' : '3D IV Surface & Multi-Leg Payoff',
+              cats: ['DERIVATIVES_VOL', 'EQUITY', 'INDEX', 'ETF', 'CRYPTO'],
+              sharedLabels: isES
+                ? ['Derivados & Vol', 'Acciones', 'Índices', 'ETFs', 'Crypto']
+                : ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs', 'Crypto'],
+              isShared: true,
+            },
+            {
+              laneId: 'LANE_FX',
+              title: isES ? 'Divisas (FX Currencies)' : 'FX Currencies',
+              subtitle: isES ? 'Matriz 61 Monedas & Carry Trade' : '61-Currency Matrix & Carry Trade',
+              cats: ['FX'],
+              sharedLabels: isES ? ['Divisas (FX)'] : ['FX Currencies'],
+              isShared: false,
+            },
+            {
+              laneId: 'LANE_COMMODITIES',
+              title: isES ? 'Materias Primas (Commodities)' : 'Commodities',
+              subtitle: isES ? 'Curva Forward 3D/2D & Roll Yield' : '3D/2D Forward Curve & Roll Yield',
+              cats: ['COMMODITY'],
+              sharedLabels: isES ? ['Materias Primas'] : ['Commodities'],
+              isShared: false,
+            },
+          ];
+
+          // If user filtered a specific asset class in bar 1.0, prioritize its matching lane
+          const categoryMatchedTool =
+            categoryFilter !== 'ALL' && categoryFilter !== 'WATCHLIST'
+              ? MAIN_TOOLS_ITEMS.find((t) => t.cats.includes(categoryFilter))
+              : null;
+
+          const focusedTool =
+            MAIN_TOOLS_ITEMS.find((x) => x.id === previewToolId) ||
+            categoryMatchedTool ||
+            MAIN_TOOLS_ITEMS[0];
+
+          const activeLaneId = focusedTool.swimlaneId;
+          const siblingToolsInLane = MAIN_TOOLS_ITEMS.filter((t) => t.swimlaneId === activeLaneId);
+
+          // Compatible assets for the focused tool (used by the Searchable Combobox in Column 3)
+          const compatibleToolAssets = enrichedCatalog.filter((a) => focusedTool.cats.includes(a.cat));
+          const defaultToolSym =
+            focusedTool.id === 'sovereign-curve'
+              ? 'US10Y'
+              : focusedTool.id === 'fx-cross'
+                ? 'EUR/USD'
+                : focusedTool.id === 'commodity-forward-3d'
+                  ? 'CL'
+                  : 'NVDA-OPT';
+
+          const effectivePreviewAsset =
+            compatibleToolAssets.find((a) => a.sym === toolPreviewSym) ||
+            compatibleToolAssets.find((a) => a.sym === defaultToolSym) ||
+            compatibleToolAssets[0] ||
+            enrichedCatalog[0];
+
+          const filteredToolMatches = compatibleToolAssets
+            .filter((a) => {
+              if (!toolSearchQuery.trim()) return true;
+              const q = toolSearchQuery.toLowerCase();
+              return (
+                a.sym.toLowerCase().includes(q) ||
+                a.name.toLowerCase().includes(q) ||
+                a.cat.toLowerCase().includes(q) ||
+                (a.countryCode && a.countryCode.toLowerCase().includes(q))
+              );
+            })
+            .slice(0, 14);
+
+          // Dynamically compute live preview telemetry & chart series for `effectivePreviewAsset`
+          let dynStatLabel = focusedTool.liveStat;
+          let dynStatValue = focusedTool.liveValue;
+          let dynStatColor = focusedTool.liveColor;
+          let dynSeriesLegend = [];
+          let dynPreviewData = [];
+          let dynYFormatter = (v) => v;
+
+          if (focusedTool.svgType === 'mesh-rates') {
+            const ctry =
+              effectivePreviewAsset.countryCode && SOVEREIGN_YIELD_CURVES[effectivePreviewAsset.countryCode]
+                ? effectivePreviewAsset.countryCode
+                : 'US';
+            const curveObj = computeSovereignCurveMetrics(ctry);
+            dynStatLabel = `${ctry} 10Y (${effectivePreviewAsset.sym}) • 2s10s`;
+            dynStatValue = `${curveObj.y10}% (${curveObj.spread2s10sBps >= 0 ? '+' : ''}${curveObj.spread2s10sBps} bps)`;
+            dynStatColor = curveObj.spread2s10sBps >= 0 ? '#10b981' : '#f43f5e';
+            dynSeriesLegend = [
+              { label: `${ctry} Spot Curve`, color: dynStatColor, dashed: false },
+              { label: ctry === 'US' ? '1M Historical (-1M)' : 'US10Y Benchmark', color: '#38bdf8', dashed: true },
+              { label: 'DE10Y Bund', color: '#a78bfa', dashed: false },
+            ];
+            dynPreviewData = curveObj.curveSeries.map((pt) => ({
+              time: pt.tenor,
+              s0: pt.yield,
+              s1: ctry === 'US' ? Number((pt.yield - 0.18).toFixed(2)) : pt.ustYield,
+              s2: pt.bundYield,
+            }));
+            dynYFormatter = (v) => `${v}%`;
+          } else if (focusedTool.svgType === 'vol-smile') {
+            const undSym = (effectivePreviewAsset.underlyingSym || effectivePreviewAsset.sym).replace(/-OPT$/, '');
+            const catAsset = ASSET_CATALOG.find((a) => a.sym === undSym) || effectivePreviewAsset;
+            const spot = catAsset ? catAsset.price : 140;
+            const chain = getHighVolumeOptionsChain(undSym, spot);
+            dynStatLabel = `${effectivePreviewAsset.sym} • ATM IV (30D)`;
+            dynStatValue = `${chain.atmIvPct}% (Skew ${chain.skew25d})`;
+            dynStatColor = '#a855f7';
+            dynSeriesLegend = [
+              { label: `${undSym} 30D IV Smile`, color: '#a855f7', dashed: false },
+              { label: `${undSym} 90D Term IV`, color: '#38bdf8', dashed: true },
+            ];
+            dynPreviewData = chain.strikes.map((st) => ({
+              time: st.moneyness,
+              s0: st.iv30d,
+              s1: st.iv90d,
+            }));
+            dynYFormatter = (v) => `${v}%`;
+          } else if (focusedTool.svgType === 'payoff') {
+            const undSym = (effectivePreviewAsset.underlyingSym || effectivePreviewAsset.sym).replace(/-OPT$/, '');
+            const catAsset = ASSET_CATALOG.find((a) => a.sym === undSym) || effectivePreviewAsset;
+            const spot = catAsset ? catAsset.price : 140;
+            const pData = computeOptionsStrategyPayoff(undSym, spot, 'LONG_STRADDLE');
+            dynStatLabel = `${effectivePreviewAsset.sym} • Long Straddle`;
+            dynStatValue = `BE ${pData.breakevenText} • Γ ${pData.greeks.gamma}`;
+            dynStatColor = '#10b981';
+            dynSeriesLegend = [
+              { label: isES ? 'P&L al Vencimiento ($)' : 'Expiration P&L ($)', color: '#10b981', dashed: false },
+              { label: isES ? 'P&L Hoy (T+0 BS)' : 'Today P&L (T+0 BS)', color: '#38bdf8', dashed: true },
+              { label: isES ? 'Equilibrio ($0)' : 'Breakeven ($0)', color: 'rgba(255,255,255,0.5)', dashed: true },
+            ];
+            dynPreviewData = pData.payoffSeries.map((pt) => ({
+              time: pt.time,
+              s0: pt.price,
+              s1: pt.t0Pnl,
+              s2: pt.zeroLine,
+            }));
+            dynYFormatter = (v) => `$${v}`;
+          } else if (focusedTool.svgType === 'fx-matrix') {
+            const parts = effectivePreviewAsset.sym.includes('/') ? effectivePreviewAsset.sym.split('/') : ['EUR', 'USD'];
+            const b = WORLD_USD_RATES[parts[0]] ? parts[0] : 'EUR';
+            const q = WORLD_USD_RATES[parts[1]] ? parts[1] : 'USD';
+            const crossObj = computeCrossCurrencyRate(b, q, 1000);
+            dynStatLabel = `${b} / ${q} • Carry 10Y`;
+            dynStatValue = `${crossObj.rateFormatted} (${crossObj.carryFormatted})`;
+            dynStatColor = crossObj.carryDiffBps >= 0 ? '#10b981' : '#38bdf8';
+            dynSeriesLegend = [
+              { label: `${b}/${q} Spot`, color: dynStatColor, dashed: false },
+              { label: 'SMA (20)', color: '#38bdf8', dashed: true },
+            ];
+            dynPreviewData = crossObj.crossSeries.slice(-20).map((pt) => ({
+              time: pt.time,
+              s0: pt.price,
+              s1: pt.sma20,
+            }));
+            dynYFormatter = (v) => Number(v).toFixed(q === 'JPY' ? 1 : 3);
+          } else {
+            const sym = effectivePreviewAsset.sym;
+            const spot = effectivePreviewAsset.price || 68.4;
+            const fwdObj = getCommodityForwardCurve(sym, spot);
+            dynStatLabel = `${sym} • Roll Yield (1Y)`;
+            dynStatValue = `${effectivePreviewAsset.priceFormatted} (${fwdObj.rollYieldAnnual} ${fwdObj.regime})`;
+            dynStatColor = fwdObj.isBackwardation ? '#10b981' : '#f59e0b';
+            dynSeriesLegend = [
+              { label: `${sym} Forward Curve (M1→M24)`, color: dynStatColor, dashed: false },
+              { label: isES ? 'Referencia Spot' : 'Spot Reference', color: '#38bdf8', dashed: true },
+            ];
+            dynPreviewData = fwdObj.curveSeries.map((pt) => ({
+              time: pt.time,
+              s0: pt.price,
+              s1: pt.sma20,
+            }));
+            dynYFormatter = (v) => `$${v}`;
+          }
+
+          const hasS2 = dynPreviewData.some((d) => d.s2 !== undefined);
+          const c0 = dynSeriesLegend[0]?.color || dynStatColor;
+          const c1 = dynSeriesLegend[1]?.color || '#38bdf8';
+          const c2 = dynSeriesLegend[2]?.color || '#a78bfa';
+
+          const handleLaunchPreviewedTool = () => {
+            setL2Section('analytics');
+            setAnalysisLens('derivatives');
+            if (focusedTool.id === 'sovereign-curve') {
+              setRatesSubView('3d-history');
+              const ctry =
+                effectivePreviewAsset.countryCode && SOVEREIGN_YIELD_CURVES[effectivePreviewAsset.countryCode]
+                  ? effectivePreviewAsset.countryCode
+                  : 'US';
+              handleOpenAssetDetail(effectivePreviewAsset.sym, 'derivatives', { country: ctry });
+            } else if (focusedTool.id === 'vol-surface-3d') {
+              setOptionsSubView('surface3d');
+              handleOpenAssetDetail(effectivePreviewAsset.sym, 'derivatives');
+            } else if (focusedTool.id === 'options-payoff') {
+              setOptionsSubView('payoff');
+              handleOpenAssetDetail(effectivePreviewAsset.sym, 'derivatives');
+            } else if (focusedTool.id === 'fx-cross') {
+              const parts = effectivePreviewAsset.sym.includes('/') ? effectivePreviewAsset.sym.split('/') : ['EUR', 'USD'];
+              handleOpenAssetDetail(effectivePreviewAsset.sym, 'derivatives', {
+                fxBase: WORLD_USD_RATES[parts[0]] ? parts[0] : 'EUR',
+                fxQuote: WORLD_USD_RATES[parts[1]] ? parts[1] : 'USD',
+              });
+            } else {
+              setCommoditySubView('3d');
+              handleOpenAssetDetail(effectivePreviewAsset.sym, 'derivatives');
+            }
+          };
+
+          return (
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(275px, 0.9fr) minmax(360px, 1.35fr) minmax(310px, 1.05fr)',
+                gap: '0.95rem',
+                width: '100%',
+                alignItems: 'stretch',
+              }}
+            >
+              {/* COLUMN 1: CLASES DE ACTIVO (SWIMLANE FAMILIES & SHARED ASSET TAGS — CLICK ONLY) */}
+              <div
                 style={{
-                  fontSize: '0.66rem',
-                  fontWeight: 700,
-                  padding: '0.22rem 0.68rem',
-                  borderRadius: '999px',
-                  border: '1px solid rgba(56, 189, 248, 0.28)',
-                  backgroundColor: 'rgba(56, 189, 248, 0.1)',
-                  color: '#38bdf8',
-                  cursor: 'pointer',
-                  whiteSpace: 'nowrap',
+                  padding: '1.15rem 1.2rem',
+                  borderRadius: '22px',
+                  backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                  backdropFilter: 'blur(2px)',
+                  border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.65rem',
                 }}
               >
-                {qBtn.label}
-              </button>
-            ))}
-          </div>
-        </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>
+                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--ui-accent)', letterSpacing: '0.06em' }}>
+                    {isES ? '1. CLASES DE ACTIVO' : '1. ASSET CLASSES'}
+                  </span>
+                  <span className="mono-metric" style={{ fontSize: '0.54rem', color: 'var(--text-dim)' }}>
+                    {isES ? '4 FAMILIAS' : '4 FAMILIES'}
+                  </span>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', flex: 1, justifyContent: 'space-between' }}>
+                  {ASSET_CLASS_LANES.map((lane) => {
+                    const isSelectedLane = activeLaneId === lane.laneId;
+                    const primaryToolForLane = MAIN_TOOLS_ITEMS.find((t) => t.swimlaneId === lane.laneId);
+                    return (
+                      <div
+                        key={lane.laneId}
+                        onClick={() => {
+                          if (primaryToolForLane) {
+                            setPreviewToolId(primaryToolForLane.id);
+                            setSelectedToolPresetIdx(0);
+                            const nextDef =
+                              primaryToolForLane.id === 'sovereign-curve'
+                                ? 'US10Y'
+                                : primaryToolForLane.id === 'fx-cross'
+                                  ? 'EUR/USD'
+                                  : primaryToolForLane.id === 'commodity-forward-3d'
+                                    ? 'CL'
+                                    : 'NVDA-OPT';
+                            setToolPreviewSym(nextDef);
+                            setToolSearchQuery('');
+                          }
+                        }}
+                        style={{
+                          padding: '0.78rem 0.9rem',
+                          borderRadius: '15px',
+                          backgroundColor: isSelectedLane ? 'rgba(var(--ui-accent-rgb), 0.16)' : 'rgba(10, 15, 26, 0.42)',
+                          border: isSelectedLane
+                            ? '1.5px solid var(--ui-accent)'
+                            : '1px solid rgba(255, 255, 255, 0.08)',
+                          cursor: 'pointer',
+                          transition: 'all 0.16s ease',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '0.35rem',
+                        }}
+                      >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.4rem' }}>
+                          <span style={{ fontSize: '0.84rem', fontWeight: 800, color: isSelectedLane ? '#ffffff' : 'var(--text-main)' }}>
+                            {lane.title}
+                          </span>
+                          <span
+                            className="mono-metric"
+                            style={{
+                              fontSize: '0.48rem',
+                              padding: '0.1rem 0.42rem',
+                              borderRadius: '999px',
+                              backgroundColor: lane.isShared ? 'rgba(var(--ui-accent-rgb), 0.15)' : 'rgba(255,255,255,0.07)',
+                              color: lane.isShared ? 'var(--ui-accent)' : 'var(--text-muted)',
+                              fontWeight: 800,
+                            }}
+                          >
+                            {lane.isShared ? (isES ? 'COMPARTIDO' : 'SHARED') : isES ? 'EXCLUSIVO' : 'DEDICATED'}
+                          </span>
+                        </div>
+                        <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'wrap' }}>
+                          {lane.sharedLabels.map((lbl) => (
+                            <span
+                              key={lbl}
+                              className="mono-metric"
+                              style={{
+                                fontSize: '0.52rem',
+                                padding: '0.08rem 0.4rem',
+                                borderRadius: '999px',
+                                backgroundColor: 'rgba(255,255,255,0.05)',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                                color: 'var(--text-dim)',
+                              }}
+                            >
+                              {lbl}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* COLUMN 2: INSTRUMENTO PRINCIPAL & EXPLICACIÓN PEDAGÓGICA */}
+              <div
+                style={{
+                  padding: '1.25rem 1.45rem',
+                  borderRadius: '22px',
+                  backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                  backdropFilter: 'blur(2px)',
+                  border: '1px solid rgba(var(--ui-accent-rgb), 0.32)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: '0.85rem',
+                }}
+              >
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>
+                    <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--ui-accent)', letterSpacing: '0.06em' }}>
+                      {isES ? '2. INSTRUMENTO PRINCIPAL & EXPLICACIÓN' : '2. PRINCIPAL INSTRUMENT & GUIDE'}
+                    </span>
+
+                    {/* If the lane has 2 shared instruments (Derivatives/Equities: 3D Vol Surface vs Payoff), let user switch */}
+                    {siblingToolsInLane.length > 1 && (
+                      <div style={{ display: 'inline-flex', gap: '0.25rem', padding: '0.16rem', borderRadius: '999px', backgroundColor: 'rgba(10,15,26,0.65)', border: '1px solid rgba(var(--ui-accent-rgb), 0.3)' }}>
+                        {siblingToolsInLane.map((sib) => {
+                          const activeSib = sib.id === focusedTool.id;
+                          return (
+                            <button
+                              key={sib.id}
+                              type="button"
+                              onClick={() => {
+                                setPreviewToolId(sib.id);
+                                setSelectedToolPresetIdx(0);
+                              }}
+                              className="mono-metric"
+                              style={{
+                                padding: '0.18rem 0.55rem',
+                                borderRadius: '999px',
+                                border: 'none',
+                                fontSize: '0.54rem',
+                                fontWeight: activeSib ? 800 : 600,
+                                backgroundColor: activeSib ? 'rgba(var(--ui-accent-rgb), 0.22)' : 'transparent',
+                                color: activeSib ? 'var(--ui-accent)' : 'var(--text-dim)',
+                                cursor: 'pointer',
+                              }}
+                            >
+                              {sib.id === 'vol-surface-3d' ? (isES ? '📐 Superficie IV 3D' : '📐 3D IV Surface') : isES ? '⚡ Simulador Payoff' : '⚡ Payoff Lab'}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+
+                  <div>
+                    <span
+                      className="mono-metric"
+                      style={{
+                        fontSize: '0.56rem',
+                        fontWeight: 800,
+                        color: 'var(--ui-accent)',
+                        padding: '0.14rem 0.52rem',
+                        borderRadius: '999px',
+                        backgroundColor: 'rgba(var(--ui-accent-rgb), 0.14)',
+                        border: '1px solid rgba(var(--ui-accent-rgb), 0.32)',
+                      }}
+                    >
+                      {focusedTool.badge}
+                    </span>
+                    <h3 style={{ margin: '0.55rem 0 0.3rem 0', fontSize: '1.22rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.25 }}>
+                      {focusedTool.label}
+                    </h3>
+                    <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-main)', lineHeight: 1.48 }}>
+                      {focusedTool.desc}
+                    </p>
+                  </div>
+
+                  <div
+                    style={{
+                      padding: '0.8rem 0.95rem',
+                      borderRadius: '14px',
+                      backgroundColor: 'rgba(10, 15, 26, 0.52)',
+                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      fontSize: '0.75rem',
+                      color: 'var(--text-muted)',
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    <strong style={{ color: 'var(--ui-accent)' }}>
+                      {isES ? '¿Qué muestra y cómo orientarse? ' : 'What it shows & how to read it: '}
+                    </strong>
+                    {focusedTool.howItWorks}
+                  </div>
+                </div>
+
+                {/* Bottom of Col 2: Axes & Shared Asset Classes */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                    {focusedTool.keyAxes.map((ax) => (
+                      <span
+                        key={ax}
+                        className="mono-metric"
+                        style={{
+                          fontSize: '0.56rem',
+                          padding: '0.18rem 0.52rem',
+                          borderRadius: '8px',
+                          backgroundColor: 'rgba(255,255,255,0.04)',
+                          border: '1px solid rgba(255,255,255,0.1)',
+                          color: 'var(--text-dim)',
+                        }}
+                      >
+                        {ax}
+                      </span>
+                    ))}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', flexWrap: 'wrap' }}>
+                    <span className="mono-metric" style={{ fontSize: '0.54rem', color: 'var(--text-dim)', fontWeight: 700 }}>
+                      {focusedTool.isShared ? (isES ? 'ACTIVOS QUE LO COMPARTEN:' : 'SHARED ACROSS:') : isES ? 'CLASE DE ACTIVO:' : 'ASSET CLASS:'}
+                    </span>
+                    {focusedTool.sharedAssetClasses.map((ac) => (
+                      <span
+                        key={ac}
+                        className="mono-metric"
+                        style={{
+                          fontSize: '0.55rem',
+                          fontWeight: 700,
+                          padding: '0.12rem 0.48rem',
+                          borderRadius: '999px',
+                          backgroundColor: 'rgba(var(--ui-accent-rgb), 0.14)',
+                          border: '1px solid rgba(var(--ui-accent-rgb), 0.35)',
+                          color: 'var(--ui-accent)',
+                        }}
+                      >
+                        {ac}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* COLUMN 3: VISTA PREVIA VECTORIAL & LANZADOR POR BUSCADOR */}
+              <div
+                style={{
+                  padding: '1.25rem 1.35rem',
+                  borderRadius: '22px',
+                  backgroundColor: 'rgba(8, 12, 22, 0.26)',
+                  backdropFilter: 'blur(2px)',
+                  border: '1px solid rgba(var(--ui-accent-rgb), 0.35)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: '0.85rem',
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>
+                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--ui-accent)', letterSpacing: '0.06em' }}>
+                    {isES ? '3. VISTA PREVIA & LANZADOR' : '3. PREVIEW & LAUNCHER'}
+                  </span>
+                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>
+                    {focusedTool.dimension}
+                  </span>
+                </div>
+
+                {/* Vector Chart Box */}
+                <div
+                  style={{
+                    padding: '0.85rem 1rem',
+                    borderRadius: '16px',
+                    backgroundColor: 'rgba(10, 15, 26, 0.58)',
+                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.45rem',
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
+                    <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>
+                      {dynStatLabel}
+                    </span>
+                    <span className="mono-metric" style={{ fontSize: '0.78rem', fontWeight: 800, color: dynStatColor }}>
+                      {dynStatValue}
+                    </span>
+                  </div>
+
+                  <div style={{ width: '100%', height: '124px' }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart data={dynPreviewData} margin={{ top: 6, right: 4, left: 4, bottom: 0 }}>
+                        <defs>
+                          <linearGradient id="toolPreviewGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor={c0} stopOpacity={0.45} />
+                            <stop offset="95%" stopColor={c0} stopOpacity={0.0} />
+                          </linearGradient>
+                        </defs>
+                        <XAxis
+                          dataKey="time"
+                          stroke="var(--text-dim)"
+                          fontSize={9.5}
+                          tickLine={false}
+                          axisLine={false}
+                          minTickGap={14}
+                        />
+                        <YAxis
+                          domain={['auto', 'auto']}
+                          stroke="var(--text-dim)"
+                          fontSize={9.5}
+                          orientation="right"
+                          tickLine={false}
+                          axisLine={false}
+                          width={38}
+                          tickFormatter={dynYFormatter}
+                        />
+                        <Tooltip
+                          contentStyle={{
+                            backgroundColor: 'rgba(10, 15, 28, 0.94)',
+                            borderColor: 'rgba(255, 255, 255, 0.14)',
+                            borderRadius: '10px',
+                            fontSize: '0.68rem',
+                            padding: '0.4rem 0.6rem',
+                          }}
+                          itemStyle={{ padding: '1px 0', fontWeight: 700 }}
+                          labelStyle={{ color: '#ffffff', fontWeight: 800, marginBottom: '2px' }}
+                        />
+                        <Area
+                          type="monotone"
+                          dataKey="s0"
+                          name={dynSeriesLegend[0]?.label || 'Primary'}
+                          stroke={c0}
+                          strokeWidth={2}
+                          fillOpacity={1}
+                          fill="url(#toolPreviewGrad)"
+                          dot={false}
+                        />
+                        <Line
+                          type="monotone"
+                          dataKey="s1"
+                          name={dynSeriesLegend[1]?.label || 'Secondary'}
+                          stroke={c1}
+                          strokeWidth={1.8}
+                          strokeDasharray="4 3"
+                          dot={false}
+                        />
+                        {hasS2 && (
+                          <Line
+                            type="monotone"
+                            dataKey="s2"
+                            name={dynSeriesLegend[2]?.label || 'Benchmark'}
+                            stroke={c2}
+                            strokeWidth={1.4}
+                            strokeDasharray={focusedTool.svgType === 'payoff' ? '3 3' : undefined}
+                            dot={false}
+                          />
+                        )}
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+
+                  {/* Standard Inline Series Legend (No Popover) */}
+                  {dynSeriesLegend.length > 0 && (
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        gap: '0.45rem 0.75rem',
+                        paddingTop: '0.35rem',
+                        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                      }}
+                    >
+                      {dynSeriesLegend.map((s) => (
+                        <div
+                          key={s.label}
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '0.32rem',
+                          }}
+                        >
+                          <svg width="16" height="8" viewBox="0 0 16 8" style={{ flexShrink: 0 }}>
+                            <line
+                              x1="1"
+                              y1="4"
+                              x2="15"
+                              y2="4"
+                              stroke={s.color}
+                              strokeWidth="2.2"
+                              strokeDasharray={s.dashed ? '3 2' : undefined}
+                            />
+                          </svg>
+                          <span
+                            className="mono-metric"
+                            style={{
+                              fontSize: '0.53rem',
+                              color: 'var(--text-muted)',
+                              fontWeight: 700,
+                            }}
+                          >
+                            {s.label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Searchable Asset Combobox (Replaces Hardcoded Preset Pills) */}
+                <div style={{ position: 'relative' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
+                    <span className="mono-metric" style={{ fontSize: '0.55rem', color: 'var(--text-dim)', fontWeight: 700 }}>
+                      {isES ? 'BUSCAR ACTIVO COMPATIBLE:' : 'SEARCH COMPATIBLE ASSET:'}
+                    </span>
+                    <span
+                      className="mono-metric"
+                      style={{
+                        fontSize: '0.56rem',
+                        fontWeight: 800,
+                        color: 'var(--ui-accent)',
+                        padding: '0.08rem 0.48rem',
+                        borderRadius: '999px',
+                        backgroundColor: 'rgba(var(--ui-accent-rgb), 0.16)',
+                        border: '1px solid rgba(var(--ui-accent-rgb), 0.35)',
+                      }}
+                    >
+                      ● {effectivePreviewAsset.sym} ({effectivePreviewAsset.cat})
+                    </span>
+                  </div>
+
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.45rem',
+                      backgroundColor: 'rgba(10, 15, 26, 0.85)',
+                      border: '1px solid rgba(var(--ui-accent-rgb), 0.42)',
+                      borderRadius: '999px',
+                      padding: '0.36rem 0.8rem',
+                    }}
+                  >
+                    <Search size={13} style={{ color: 'var(--ui-accent)', flexShrink: 0 }} />
+                    <input
+                      type="text"
+                      value={toolSearchQuery}
+                      onFocus={() => {
+                        setToolSearchOpen(true);
+                        setToolSearchIdx(0);
+                      }}
+                      onBlur={() => setTimeout(() => setToolSearchOpen(false), 160)}
+                      onChange={(e) => {
+                        setToolSearchQuery(e.target.value);
+                        setToolSearchOpen(true);
+                        setToolSearchIdx(0);
+                      }}
+                      onKeyDown={(e) => {
+                        if (!filteredToolMatches.length) return;
+                        if (e.key === 'ArrowDown') {
+                          e.preventDefault();
+                          setToolSearchIdx((prev) => (prev + 1) % filteredToolMatches.length);
+                        } else if (e.key === 'ArrowUp') {
+                          e.preventDefault();
+                          setToolSearchIdx((prev) => (prev - 1 + filteredToolMatches.length) % filteredToolMatches.length);
+                        } else if (e.key === 'Enter') {
+                          e.preventDefault();
+                          const chosen = filteredToolMatches[toolSearchIdx] || filteredToolMatches[0];
+                          if (chosen) {
+                            setToolPreviewSym(chosen.sym);
+                            setToolSearchQuery('');
+                            setToolSearchOpen(false);
+                          }
+                        } else if (e.key === 'Escape') {
+                          setToolSearchOpen(false);
+                        }
+                      }}
+                      placeholder={
+                        isES
+                          ? `Buscar entre ${compatibleToolAssets.length} activos compatibles (↑↓ Enter)...`
+                          : `Search across ${compatibleToolAssets.length} compatible assets (↑↓ Enter)...`
+                      }
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        outline: 'none',
+                        color: '#ffffff',
+                        fontSize: '0.68rem',
+                        width: '100%',
+                      }}
+                    />
+                    {toolSearchQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setToolSearchQuery('')}
+                        style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', padding: 0, display: 'flex' }}
+                      >
+                        <X size={12} />
+                      </button>
+                    )}
+                  </div>
+
+                  {toolSearchOpen && (
+                    <div
+                      style={{
+                        position: 'absolute',
+                        bottom: 'calc(100% + 6px)',
+                        left: 0,
+                        right: 0,
+                        maxHeight: '220px',
+                        overflowY: 'auto',
+                        borderRadius: '14px',
+                        backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                        backdropFilter: 'blur(16px)',
+                        border: '1px solid rgba(var(--ui-accent-rgb), 0.45)',
+                        boxShadow: '0 16px 40px rgba(0, 0, 0, 0.8)',
+                        padding: '0.35rem',
+                        zIndex: 90,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.18rem',
+                      }}
+                    >
+                      {filteredToolMatches.length === 0 ? (
+                        <div className="mono-metric" style={{ padding: '0.5rem', fontSize: '0.62rem', color: 'var(--text-dim)', textAlign: 'center' }}>
+                          {isES ? 'Sin activos compatibles para esta búsqueda' : 'No compatible assets match this search'}
+                        </div>
+                      ) : (
+                        filteredToolMatches.map((item, idx) => {
+                          const isHighlighted = idx === toolSearchIdx;
+                          const isCurrent = item.sym === effectivePreviewAsset.sym;
+                          return (
+                            <button
+                              key={item.sym}
+                              type="button"
+                              onMouseEnter={() => setToolSearchIdx(idx)}
+                              onMouseDown={(e) => {
+                                e.preventDefault();
+                                setToolPreviewSym(item.sym);
+                                setToolSearchQuery('');
+                                setToolSearchOpen(false);
+                              }}
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                gap: '0.45rem',
+                                padding: '0.4rem 0.58rem',
+                                borderRadius: '9px',
+                                border: isCurrent ? '1px solid rgba(var(--ui-accent-rgb), 0.5)' : '1px solid transparent',
+                                backgroundColor: isCurrent || isHighlighted ? 'rgba(var(--ui-accent-rgb), 0.18)' : 'transparent',
+                                cursor: 'pointer',
+                                textAlign: 'left',
+                              }}
+                            >
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.42rem', minWidth: 0 }}>
+                                <span className="mono-metric" style={{ fontSize: '0.68rem', fontWeight: 800, color: '#ffffff', minWidth: '54px' }}>
+                                  {item.sym}
+                                </span>
+                                <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                  {item.name}
+                                </span>
+                              </div>
+                              <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
+                                <span style={{ fontSize: '0.5rem', padding: '0.06rem 0.35rem', borderRadius: '999px', backgroundColor: 'rgba(255,255,255,0.07)', color: 'var(--text-dim)' }}>
+                                  {item.cat}
+                                </span>
+                                <span style={{ fontSize: '0.62rem', fontWeight: 700, color: item.chgNum >= 0 ? '#10b981' : '#f43f5e' }}>
+                                  {item.priceFormatted}
+                                </span>
+                              </div>
+                            </button>
+                          );
+                        })
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* Explicit Launch Button (ONLY this button opens the tool) */}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleLaunchPreviewedTool();
+                  }}
+                  className="mono-metric"
+                  style={{
+                    width: '100%',
+                    padding: '0.64rem 1rem',
+                    borderRadius: '999px',
+                    border: '1px solid var(--ui-accent)',
+                    backgroundColor: 'rgba(var(--ui-accent-rgb), 0.2)',
+                    color: 'var(--ui-accent)',
+                    fontSize: '0.74rem',
+                    fontWeight: 800,
+                    cursor: 'pointer',
+                    textAlign: 'center',
+                  }}
+                >
+                  {isES
+                    ? `Abrir herramienta con ${effectivePreviewAsset.sym} ↗`
+                    : `Open tool with ${effectivePreviewAsset.sym} ↗`}
+                </button>
+              </div>
+            </div>
+          );
+        })()}
 
         {/* ==================================================================== */}
         {/* MODE 1 (DEFAULT): NON-BOXY CAPSULE TABLE WITH INTEGRATED SEARCH      */}
@@ -1435,9 +3527,7 @@ export default function MarketAnomaliesView({
         {visualMode === 'table' && (
           <div
             style={{
-              flex: 1,
-              overflow: 'auto',
-              minHeight: 0,
+              width: '100%',
               padding: '0.1rem 0.1rem',
             }}
           >
@@ -1457,34 +3547,24 @@ export default function MarketAnomaliesView({
                     fontSize: '0.67rem',
                     fontWeight: 600,
                     letterSpacing: '0.03em',
-                    position: 'sticky',
-                    top: 0,
-                    zIndex: 10,
-                    backgroundColor: 'rgba(8, 12, 22, 0.78)',
-                    backdropFilter: 'blur(12px)',
+                    backgroundColor: 'rgba(8, 12, 22, 0.28)',
+                    backdropFilter: 'blur(2px)',
                   }}
                 >
-                  <th
-                    onClick={() => handleSort('rank')}
-                    style={{ padding: '0.45rem 0.75rem', textAlign: 'center', width: '44px', cursor: 'pointer' }}
-                  >
-                    #
-                  </th>
-
-                  {/* INTEGRATED SEARCH INSIDE THE ASSET / TICKER COLUMN HEADER */}
-                  <th style={{ padding: '0.35rem 0.75rem', textAlign: 'left', minWidth: '215px' }}>
+                  {/* INTEGRATED SEARCH INSIDE THE ASSET / TICKER COLUMN HEADER (NO '#' COLUMN) */}
+                  <th style={{ padding: '0.35rem 0.75rem', textAlign: 'left', minWidth: '230px' }}>
                     <div
                       style={{
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '0.4rem',
-                        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                        backgroundColor: 'rgba(8, 12, 22, 0.35)',
                         border: assetSearch
-                          ? '1px solid #10b981'
-                          : '1px solid rgba(255, 255, 255, 0.1)',
+                          ? '1px solid var(--ui-accent)'
+                          : '1px solid rgba(255, 255, 255, 0.16)',
                         borderRadius: '999px',
                         padding: '0.26rem 0.7rem',
-                        width: '200px',
+                        width: '215px',
                       }}
                     >
                       <Search size={12} strokeWidth={2.3} style={{ color: 'var(--text-dim)', flexShrink: 0 }} />
@@ -1543,24 +3623,24 @@ export default function MarketAnomaliesView({
                   </th>
 
                   <th onClick={() => handleSort('price')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
-                    {isES ? 'Precio' : 'Price'} ↕
+                    {isES ? 'Precio' : 'Price'}
                   </th>
                   <th onClick={() => handleSort('chg')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
-                    24h % ↕
+                    24h %
                   </th>
                   <th style={{ padding: '0.45rem 0.85rem', textAlign: 'center' }}>
                     {isES ? 'Tendencia' : 'Sparkline'}
                   </th>
                   <th onClick={() => handleSort('vol')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
-                    {isES ? 'Volumen (24h)' : 'Volume (24h)'} ↕
+                    {isES ? 'Volumen (24h)' : 'Volume (24h)'}
                   </th>
                   {categoryFilter === 'ALL' ? (
                     <>
                       <th onClick={() => handleSort('zscore')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
-                        Vol Z-Score (20d) ↕
+                        Vol Z-Score (20d)
                       </th>
                       <th onClick={() => handleSort('rvol')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
-                        {isES ? 'Vol. Realizada' : 'Realized Vol'} ↕
+                        {isES ? 'Vol. Realizada' : 'Realized Vol'}
                       </th>
                     </>
                   ) : (
@@ -1575,13 +3655,13 @@ export default function MarketAnomaliesView({
                     })()
                   )}
                   <th onClick={() => handleSort('rsi')} style={{ padding: '0.45rem 0.85rem', cursor: 'pointer' }}>
-                    RSI (14) ↕
+                    RSI (14)
                   </th>
                   <th
                     onClick={() => handleSort('anomaly')}
                     style={{ padding: '0.45rem 1rem', cursor: 'pointer' }}
                   >
-                    Anomaly Score (P-06) ↕
+                    Anomaly Score (P-06)
                   </th>
                 </tr>
               </thead>
@@ -1595,10 +3675,10 @@ export default function MarketAnomaliesView({
                   const isKeyHighlighted = Boolean(assetSearch.trim()) && rowIdx === l1SelectedIndex;
 
                   const cellBase = {
-                    backgroundColor: isKeyHighlighted ? 'rgba(16, 185, 129, 0.16)' : 'rgba(13, 19, 33, 0.56)',
-                    backdropFilter: 'blur(10px)',
-                    borderTop: isKeyHighlighted ? '1px solid rgba(16, 185, 129, 0.55)' : '1px solid rgba(255, 255, 255, 0.07)',
-                    borderBottom: isKeyHighlighted ? '1px solid rgba(16, 185, 129, 0.55)' : '1px solid rgba(255, 255, 255, 0.07)',
+                    backgroundColor: isKeyHighlighted ? 'rgba(var(--ui-accent-rgb), 0.16)' : 'rgba(8, 12, 22, 0.22)',
+                    backdropFilter: 'blur(2px)',
+                    borderTop: isKeyHighlighted ? '1px solid var(--ui-accent)' : '1px solid rgba(255, 255, 255, 0.13)',
+                    borderBottom: isKeyHighlighted ? '1px solid var(--ui-accent)' : '1px solid rgba(255, 255, 255, 0.13)',
                   };
 
                   return (
@@ -1607,19 +3687,18 @@ export default function MarketAnomaliesView({
                       onClick={() => handleOpenAssetDetail(row.sym)}
                       style={{ cursor: 'pointer', transition: 'transform 0.15s ease' }}
                     >
+                      {/* TICKER & NAME (WITH INTEGRATED WATCHLIST STAR ON LEFT, NO '#' COLUMN) */}
                       <td
-                        className="mono-metric"
                         style={{
                           ...cellBase,
-                          borderLeft: '1px solid rgba(255, 255, 255, 0.07)',
+                          borderLeft: isKeyHighlighted ? '1px solid var(--ui-accent)' : '1px solid rgba(255, 255, 255, 0.13)',
                           borderTopLeftRadius: '16px',
                           borderBottomLeftRadius: '16px',
-                          padding: '0.75rem 0.65rem',
-                          textAlign: 'center',
-                          color: 'var(--text-dim)',
+                          padding: '0.75rem 0.85rem',
+                          textAlign: 'left',
                         }}
                       >
-                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.38rem' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                           <button
                             type="button"
                             onClick={(e) => {
@@ -1640,21 +3719,15 @@ export default function MarketAnomaliesView({
                               border: 'none',
                               padding: 0,
                               cursor: 'pointer',
-                              fontSize: '0.86rem',
+                              fontSize: '0.9rem',
                               lineHeight: 1,
-                              color: watchlistSyms.includes(row.sym) ? '#fbbf24' : 'rgba(255,255,255,0.22)',
+                              color: watchlistSyms.includes(row.sym) ? '#fbbf24' : 'rgba(255,255,255,0.24)',
                               transition: 'color 0.15s ease, transform 0.15s ease',
+                              flexShrink: 0,
                             }}
                           >
                             {watchlistSyms.includes(row.sym) ? '★' : '☆'}
                           </button>
-                          <span>{row.rank}</span>
-                        </div>
-                      </td>
-
-                      {/* TICKER & NAME */}
-                      <td style={{ ...cellBase, padding: '0.75rem 0.85rem', textAlign: 'left' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
                           <div
                             className="mono-metric"
                             style={{
@@ -1723,7 +3796,7 @@ export default function MarketAnomaliesView({
                       {/* SPARKLINE */}
                       <td style={{ ...cellBase, padding: '0.75rem 0.85rem', textAlign: 'center' }}>
                         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <MiniSparkline sym={row.sym} isPos={isPos} width={76} height={22} />
+                          <MiniSparkline sym={row.sym} isPos={isPos} width={94} height={34} />
                         </div>
                       </td>
 
@@ -1845,10 +3918,9 @@ export default function MarketAnomaliesView({
         {visualMode === 'orbital' && (
           <div
             style={{
-              flex: 1,
-              minHeight: '390px',
+              minHeight: '540px',
               display: 'grid',
-              gridTemplateColumns: '1fr 320px',
+              gridTemplateColumns: 'minmax(0, 1fr) 330px',
               gap: '0.85rem',
             }}
           >
@@ -1856,22 +3928,110 @@ export default function MarketAnomaliesView({
             <div
               style={{
                 position: 'relative',
-                borderRadius: '26px',
-                backgroundColor: 'rgba(10, 15, 28, 0.48)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255, 255, 255, 0.09)',
+                borderRadius: '22px',
+                backgroundColor: 'rgba(8, 12, 22, 0.22)',
+                backdropFilter: 'blur(2px)',
+                border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
                 overflow: 'hidden',
                 padding: '1.25rem',
+                minHeight: '540px',
               }}
             >
+              {/* Top Header Bar Specifying Displayed Assets & Quick Count Selector */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '0.85rem',
+                  left: '1rem',
+                  right: '1rem',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '0.5rem',
+                  zIndex: 15,
+                  pointerEvents: 'auto',
+                }}
+              >
+                <div
+                  className="mono-metric"
+                  style={{
+                    fontSize: '0.62rem',
+                    fontWeight: 800,
+                    color: 'var(--text-main)',
+                    padding: '0.28rem 0.68rem',
+                    borderRadius: '999px',
+                    backgroundColor: 'rgba(10, 15, 26, 0.78)',
+                    border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
+                    letterSpacing: '0.04em',
+                  }}
+                >
+                  {orbitalItems.length >= screenerRows.length
+                    ? isES
+                      ? `MOSTRANDO TODOS LOS ${screenerRows.length} ACTIVOS • ORDENADOS POR ${spotlightMetricInfo.label.toUpperCase()}`
+                      : `SHOWING ALL ${screenerRows.length} ASSETS • RANKED BY ${spotlightMetricInfo.label.toUpperCase()}`
+                    : isES
+                    ? `TOP ${orbitalItems.length} POR ${spotlightMetricInfo.label.toUpperCase()} (DE ${screenerRows.length} ACTIVOS)`
+                    : `TOP ${orbitalItems.length} BY ${spotlightMetricInfo.label.toUpperCase()} (OF ${screenerRows.length} ASSETS)`}
+                </div>
+
+                {screenerRows.length > 12 && (
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.25rem',
+                      padding: '0.2rem',
+                      borderRadius: '999px',
+                      backgroundColor: 'rgba(10, 15, 26, 0.78)',
+                      border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
+                    }}
+                  >
+                    {[
+                      { val: 12, label: 'Top 12' },
+                      { val: 20, label: 'Top 20' },
+                      { val: 32, label: 'Top 32' },
+                      { val: 999, label: isES ? `Todos (${screenerRows.length})` : `All (${screenerRows.length})` },
+                    ]
+                      .filter((opt, idx, arr) => opt.val < screenerRows.length || idx === arr.length - 1)
+                      .map((opt) => {
+                        const isSel =
+                          opt.val === 999
+                            ? orbitalLimit >= screenerRows.length
+                            : orbitalLimit === opt.val && orbitalLimit < screenerRows.length;
+                        return (
+                          <button
+                            key={opt.val}
+                            type="button"
+                            onClick={() => setOrbitalLimit(opt.val)}
+                            className="mono-metric"
+                            style={{
+                              padding: '0.2rem 0.55rem',
+                              borderRadius: '999px',
+                              border: 'none',
+                              fontSize: '0.58rem',
+                              fontWeight: isSel ? 800 : 600,
+                              cursor: 'pointer',
+                              backgroundColor: isSel ? 'rgba(var(--ui-accent-rgb), 0.22)' : 'transparent',
+                              color: isSel ? 'var(--ui-accent)' : 'var(--text-dim)',
+                            }}
+                          >
+                            {opt.label}
+                          </button>
+                        );
+                      })}
+                  </div>
+                )}
+              </div>
+
               {/* Concentric Orbital Rings */}
-              {[32, 56, 78].map((pctSize, i) => (
+              {[32, 56, 80].map((pctSize, i) => (
                 <div
                   key={pctSize}
                   style={{
                     position: 'absolute',
                     left: '50%',
-                    top: '50%',
+                    top: '53%',
                     width: `${pctSize}%`,
                     height: `${pctSize}%`,
                     transform: 'translate(-50%, -50%)',
@@ -1891,7 +4051,7 @@ export default function MarketAnomaliesView({
                 style={{
                   position: 'absolute',
                   left: '50%',
-                  top: '50%',
+                  top: '53%',
                   transform: 'translate(-50%, -50%)',
                   padding: '0.42rem 0.8rem',
                   borderRadius: '999px',
@@ -1914,18 +4074,27 @@ export default function MarketAnomaliesView({
               {/* Orbiting Asset Nodes */}
               {orbitalItems.map((row, idx) => {
                 const m = evaluateHistoricalMetric(row, activeMetric, isES);
-                const angle = (idx / Math.max(1, orbitalItems.length)) * 2 * Math.PI - Math.PI / 2;
+                const total = Math.max(1, orbitalItems.length);
+                const isDense = total > 24;
+                const angle = (idx / total) * 2 * Math.PI - Math.PI / 2;
 
-                // Safe radius in % of container [17% .. 38%]
-                const radiusPct = 17 + (1 - m.norm) * 21;
+                // Distribute across concentric rings cleanly so even 60 nodes never collide
+                const ringOffset = isDense ? (idx % 3) * 8.5 : (idx % 2) * 4.5;
+                const radiusPct = isDense
+                  ? 16 + ringOffset + (1 - m.norm) * 9
+                  : 17 + ringOffset + (1 - m.norm) * 18;
                 const rawX = 50 + Math.cos(angle) * radiusPct;
-                const rawY = 50 + Math.sin(angle) * radiusPct;
+                const rawY = 53 + Math.sin(angle) * radiusPct;
 
                 // Hard clamp to container bounds so no node ever overflows
-                const xPct = Math.min(90, Math.max(10, rawX));
-                const yPct = Math.min(88, Math.max(12, rawY));
+                const xPct = Math.min(93, Math.max(7, rawX));
+                const yPct = Math.min(91, Math.max(15, rawY));
 
-                const orbSize = Math.round(44 + m.norm * 28);
+                const orbSize = isDense
+                  ? Math.round(34 + m.norm * 14)
+                  : total > 14
+                  ? Math.round(40 + m.norm * 20)
+                  : Math.round(44 + m.norm * 26);
                 const isFocused = hoveredAsset === row.sym;
 
                 return (
@@ -1943,20 +4112,36 @@ export default function MarketAnomaliesView({
                       borderRadius: '50%',
                       background: m.bgGradient,
                       border: `${isFocused ? '2.5px' : '1.5px'} solid ${m.color}`,
-                      boxShadow: `0 0 ${Math.round(12 + m.norm * 18)}px ${m.glow}`,
+                      boxShadow: `0 0 ${Math.round(10 + m.norm * 16)}px ${m.glow}`,
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
                       justifyContent: 'center',
                       cursor: 'pointer',
                       transition: 'all 0.22s ease',
-                      zIndex: isFocused ? 10 : Math.round(m.norm * 5) + 2,
+                      zIndex: isFocused ? 20 : Math.round(m.norm * 5) + 2,
                     }}
                   >
-                    <span className="mono-metric" style={{ fontSize: '0.72rem', fontWeight: 800, color: '#fff' }}>
+                    <span
+                      className="mono-metric"
+                      style={{
+                        fontSize: isDense ? '0.58rem' : '0.68rem',
+                        fontWeight: 800,
+                        color: '#fff',
+                        lineHeight: 1.05,
+                      }}
+                    >
                       {row.sym}
                     </span>
-                    <span className="mono-metric" style={{ fontSize: '0.56rem', color: m.textColor, fontWeight: 800 }}>
+                    <span
+                      className="mono-metric"
+                      style={{
+                        fontSize: isDense ? '0.46rem' : '0.54rem',
+                        color: m.textColor,
+                        fontWeight: 800,
+                        lineHeight: 1.05,
+                      }}
+                    >
                       {m.formatted}
                     </span>
                   </div>
@@ -1968,10 +4153,10 @@ export default function MarketAnomaliesView({
             <div
               onClick={() => handleOpenAssetDetail(spotlightItem.sym)}
               style={{
-                borderRadius: '26px',
-                backgroundColor: 'rgba(13, 19, 33, 0.6)',
-                backdropFilter: 'blur(14px)',
-                border: '1px solid rgba(255, 255, 255, 0.09)',
+                borderRadius: '22px',
+                backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                backdropFilter: 'blur(2px)',
+                border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
                 padding: '1.2rem',
                 display: 'flex',
                 flexDirection: 'column',
@@ -2003,13 +4188,28 @@ export default function MarketAnomaliesView({
 
                 <div style={{ height: '125px', marginBottom: '0.9rem' }}>
                   <ResponsiveContainer width="100%" height="100%">
-                    <AreaChart data={spotlightSeries}>
+                    <AreaChart data={spotlightSeries} margin={{ top: 6, right: 4, left: 4, bottom: 6 }}>
+                      <defs>
+                        <linearGradient
+                          id={`orbitalSpotGrad-${spotlightItem.sym.replace(/[^a-zA-Z0-9_-]/g, '')}`}
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                        >
+                          <stop offset="5%" stopColor={spotlightMetricInfo.color} stopOpacity={0.45} />
+                          <stop offset="95%" stopColor={spotlightMetricInfo.color} stopOpacity={0.0} />
+                        </linearGradient>
+                      </defs>
+                      <YAxis domain={['dataMin', 'dataMax']} hide />
                       <Area
                         type="monotone"
                         dataKey="price"
                         stroke={spotlightMetricInfo.color}
                         strokeWidth={2}
-                        fill={spotlightMetricInfo.glow}
+                        fillOpacity={1}
+                        fill={`url(#orbitalSpotGrad-${spotlightItem.sym.replace(/[^a-zA-Z0-9_-]/g, '')})`}
+                        isAnimationActive={false}
                       />
                     </AreaChart>
                   </ResponsiveContainer>
@@ -2044,12 +4244,11 @@ export default function MarketAnomaliesView({
         {visualMode === 'heatmap' && (
           <div
             style={{
-              flex: 1,
               display: 'flex',
               flexDirection: 'row',
               gap: '0.7rem',
               paddingBottom: '0.5rem',
-              minHeight: '395px',
+              height: '540px',
             }}
           >
             {heatmapColumns.map((colItems, colIdx) => {
@@ -2090,10 +4289,10 @@ export default function MarketAnomaliesView({
                         style={{
                           // Vertical height inside the column is proportional to `m.norm`
                           flex: `${Math.max(20, Math.round(m.norm * 100))} 1 0%`,
-                          borderRadius: '22px',
+                          borderRadius: '20px',
                           padding: '0.95rem 1.1rem',
                           background: m.bgGradient,
-                          backdropFilter: 'blur(12px)',
+                          backdropFilter: 'blur(2px)',
                           border: `1.5px solid ${m.color}`,
                           boxShadow: `inset 0 1px 0 rgba(255,255,255,0.12), 0 8px 24px ${m.glow}`,
                           display: 'flex',
@@ -2207,44 +4406,62 @@ export default function MarketAnomaliesView({
         flexDirection: 'column',
         justifyContent: 'space-between',
         gap: '0.65rem',
-        height: 'calc(100vh - 115px)',
+        maxWidth: '1460px',
+        width: '100%',
+        margin: '0 auto',
+        height: '100%',
         overflowY: 'auto',
         padding: '0.15rem 0.5rem 0.35rem 0.5rem',
       }}
     >
       {/* 2.1 TOP HORIZON BAR: BACK BUTTON + INTEGRATED TICKER SEARCH + ANALYTICS | RESEARCH PILLS + TIMEFRAMES */}
+      {/* 2.1 TOP HORIZON BAR — V010 NEON-HALO BOXLESS NAVIGATION */}
       <div
         style={{
           display: 'grid',
           gridTemplateColumns: '1fr auto 1fr',
           alignItems: 'center',
           gap: '0.75rem',
-          paddingBottom: '0.55rem',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          paddingBottom: '0.5rem',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
           flexShrink: 0,
         }}
       >
-        {/* Left: Back to Screener + Integrated Ticker Search Switcher */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
-          <button
-            onClick={() => setViewMode('screener')}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.35rem',
-              backgroundColor: 'rgba(16, 185, 129, 0.12)',
-              border: '1px solid rgba(16, 185, 129, 0.35)',
-              color: '#10b981',
-              padding: '0.28rem 0.75rem',
-              borderRadius: '999px',
-              fontSize: '0.72rem',
-              fontWeight: 700,
-              cursor: 'pointer',
-            }}
+        {/* Left: Boxless Neon Back Button + Sleek Ticker Search Switcher */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <HoverTooltip
+            title={isES ? 'Volver al Screener Global' : 'Back to Global Screener'}
+            badge="LEVEL 1"
+            description={
+              isES
+                ? 'Regresa al Screener Global (Tabla, Orbital, Mapa de Calor y Main Tools).'
+                : 'Returns to the Level 1 Global Screener (Table, Orbital, Heatmap, and Main Tools).'
+            }
+            placement="bottom"
           >
-            <ArrowLeft size={13} strokeWidth={2.3} />
-            <span>{isES ? 'Todos los Mercados' : 'All Markets'}</span>
-          </button>
+            <button
+              onClick={() => setViewMode('screener')}
+              className="mono-metric"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.34rem',
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--ui-accent)',
+                padding: '0.2rem 0.15rem',
+                fontSize: '0.74rem',
+                fontWeight: 800,
+                textShadow: '0 0 12px rgba(var(--ui-accent-rgb), 0.75)',
+                cursor: 'pointer',
+              }}
+            >
+              <ArrowLeft size={13} strokeWidth={2.4} />
+              <span>{isES ? 'Todos los Mercados' : 'All Markets'}</span>
+            </button>
+          </HoverTooltip>
+
+          <span style={{ color: 'rgba(255, 255, 255, 0.15)', userSelect: 'none' }}>•</span>
 
           {/* Integrated Ticker Search Combobox with Full Keyboard Navigation */}
           <div style={{ position: 'relative' }}>
@@ -2252,16 +4469,16 @@ export default function MarketAnomaliesView({
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.45rem',
-                backgroundColor: 'var(--bg-panel-glass)',
-                backdropFilter: 'blur(12px)',
-                border: l2SearchOpen ? '1px solid #10b981' : '1px solid rgba(255, 255, 255, 0.12)',
+                gap: '0.42rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                backdropFilter: 'blur(10px)',
+                border: l2SearchOpen ? '1px solid var(--ui-accent)' : '1px solid rgba(255, 255, 255, 0.09)',
                 borderRadius: '999px',
-                padding: '0.26rem 0.8rem',
-                width: '235px',
+                padding: '0.22rem 0.75rem',
+                width: '230px',
               }}
             >
-              <Search size={13} style={{ color: 'var(--text-dim)', flexShrink: 0 }} />
+              <Search size={12} style={{ color: 'var(--ui-accent)', flexShrink: 0 }} />
               <input
                 type="text"
                 placeholder={isES ? `Cambiar activo (${currentAsset.sym})...` : `Switch ticker (${currentAsset.sym})...`}
@@ -2290,7 +4507,7 @@ export default function MarketAnomaliesView({
                     e.preventDefault();
                     const picked = l2SearchResults[l2SelectedIndex] || l2SearchResults[0];
                     if (picked) {
-                      onSelectAsset(picked.sym);
+                      syncTickerDependentToolState(picked.sym);
                       setL2TickerQuery('');
                       setL2SearchOpen(false);
                     }
@@ -2303,7 +4520,7 @@ export default function MarketAnomaliesView({
                   background: 'transparent',
                   border: 'none',
                   color: '#ffffff',
-                  fontSize: '0.72rem',
+                  fontSize: '0.7rem',
                   fontWeight: 600,
                   outline: 'none',
                   width: '100%',
@@ -2338,7 +4555,7 @@ export default function MarketAnomaliesView({
                   border: '1px solid rgba(255, 255, 255, 0.14)',
                   boxShadow: '0 14px 36px rgba(0, 0, 0, 0.6)',
                   padding: '0.35rem',
-                  zIndex: 50,
+                  zIndex: 9999,
                 }}
               >
                 {l2SearchResults.map((item, idx) => {
@@ -2349,7 +4566,7 @@ export default function MarketAnomaliesView({
                       key={item.sym}
                       onMouseEnter={() => setL2SelectedIndex(idx)}
                       onMouseDown={() => {
-                        onSelectAsset(item.sym);
+                        syncTickerDependentToolState(item.sym);
                         setL2TickerQuery('');
                         setL2SearchOpen(false);
                       }}
@@ -2360,11 +4577,11 @@ export default function MarketAnomaliesView({
                         padding: '0.42rem 0.65rem',
                         borderRadius: '12px',
                         backgroundColor: isHighlighted
-                          ? 'rgba(16, 185, 129, 0.22)'
+                          ? 'rgba(var(--ui-accent-rgb), 0.22)'
                           : item.sym === selectedAsset
                             ? 'rgba(255, 255, 255, 0.06)'
                             : 'transparent',
-                        border: isHighlighted ? '1px solid rgba(16, 185, 129, 0.45)' : '1px solid transparent',
+                        border: isHighlighted ? '1px solid rgba(var(--ui-accent-rgb), 0.45)' : '1px solid transparent',
                         cursor: 'pointer',
                         fontSize: '0.72rem',
                       }}
@@ -2385,87 +4602,88 @@ export default function MarketAnomaliesView({
           </div>
         </div>
 
-        {/* Center: LEVEL 2 PRIMARY MODE SWITCHER: ANALYTICS | RESEARCH */}
-        <div
-          style={{
-            display: 'inline-flex',
-            backgroundColor: 'rgba(13, 19, 33, 0.72)',
-            backdropFilter: 'blur(14px)',
-            padding: '0.24rem',
-            borderRadius: '999px',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            gap: '0.25rem',
-            boxShadow: '0 6px 20px rgba(0, 0, 0, 0.3)',
-          }}
-        >
+        {/* Center: LEVEL 2 PRIMARY MODE SWITCHER IN V010 BOXLESS NEON-HALO STYLE */}
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '1.45rem' }}>
           {[
-            { id: 'analytics', icon: BarChart3, label: 'Analytics' },
-            { id: 'research', icon: FileText, label: 'Research' },
+            {
+              id: 'analytics',
+              label: 'Analytics',
+              desc: isES
+                ? 'Mesa cuantitativa: gráficos técnicos, comparador relativo, microestructura y superficies 3D/2D.'
+                : 'Quantitative desk: technical overlays, relative comparison, microstructure, and 3D/2D surfaces.',
+            },
+            {
+              id: 'research',
+              label: 'Research',
+              desc: isES
+                ? 'Mesa documental e IA: tesis ejecutiva, buscador RAG (SEC 10-K / Bancos Centrales), drivers y cable FinBERT.'
+                : 'Documentary & AI desk: executive thesis, RAG search (SEC 10-K / Central Banks), drivers, and FinBERT wire.',
+            },
           ].map((sec) => {
-            const Icon = sec.icon;
             const active = l2Section === sec.id;
             return (
-              <button
-                key={sec.id}
-                onClick={() => setL2Section(sec.id)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.42rem',
-                  fontSize: '0.75rem',
-                  fontWeight: active ? 800 : 600,
-                  padding: '0.3rem 1.15rem',
-                  borderRadius: '999px',
-                  border: active ? '1px solid rgba(16, 185, 129, 0.45)' : '1px solid transparent',
-                  backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'transparent',
-                  color: active ? '#ffffff' : 'var(--text-dim)',
-                  cursor: 'pointer',
-                  transition: 'all 0.16s ease',
-                }}
-              >
-                <Icon size={13} style={{ color: active ? '#10b981' : 'var(--text-dim)' }} />
-                <span>{sec.label}</span>
-              </button>
+              <HoverTooltip key={sec.id} title={sec.label} badge="LEVEL 2 DESK" description={sec.desc} placement="bottom">
+                <button
+                  onClick={() => setL2Section(sec.id)}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    fontSize: '0.85rem',
+                    fontWeight: active ? 800 : 600,
+                    color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.62)',
+                    textShadow: active ? '0 0 15px rgba(var(--ui-accent-rgb), 0.88)' : 'none',
+                    cursor: 'pointer',
+                    padding: '0.18rem 0.25rem',
+                    transition: 'all 0.16s ease',
+                  }}
+                >
+                  {sec.label}
+                </button>
+              </HoverTooltip>
             );
           })}
         </div>
 
-        {/* Right: Contextual Top Controls (Timeframes for Analytics OR Live Wire Trigger for Research) */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.55rem', flexWrap: 'wrap' }}>
+        {/* Right: V010 Ghost P-06 Trigger + Boxless Neon Timeframes (Analytics) OR Live Wire Trigger (Research) */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.68rem', flexWrap: 'wrap' }}>
           {l2Section === 'analytics' ? (
             <>
-              <button
-                onClick={() => triggerLiveP06Scoring(selectedAsset)}
-                disabled={isScoring}
-                className="mono-metric"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.3rem',
-                  fontSize: '0.62rem',
-                  fontWeight: 700,
-                  padding: '0.22rem 0.65rem',
-                  borderRadius: '999px',
-                  border: '1px solid rgba(255,255,255,0.12)',
-                  backgroundColor: 'rgba(255,255,255,0.04)',
-                  color: liveInference ? '#10b981' : 'var(--text-dim)',
-                  cursor: 'pointer',
-                }}
+              <HoverTooltip
+                title="P-06 Isolation Forest Re-Score"
+                badge={liveInference ? `${liveInference.latencyMs}ms` : 'CLOUD RUN'}
+                description={
+                  isES
+                    ? 'Ejecuta inferencia estadística en vivo para recalcular el puntaje de anomalía (0.00 a 1.00) del activo.'
+                    : 'Runs live statistical inference to recompute the asset anomaly score (0.00 to 1.00).'
+                }
+                placement="bottom"
               >
-                <RefreshCw size={11} />
-                <span>{isScoring ? 'P-06 SCORING...' : liveInference ? `P-06 LIVE (${liveInference.latencyMs}ms)` : 'P-06 RE-SCORE'}</span>
-              </button>
+                <button
+                  onClick={() => triggerLiveP06Scoring(selectedAsset)}
+                  disabled={isScoring}
+                  className="mono-metric"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.26rem',
+                    fontSize: '0.6rem',
+                    fontWeight: 700,
+                    padding: '0.15rem 0.25rem',
+                    border: 'none',
+                    background: 'transparent',
+                    color: liveInference ? '#10b981' : 'var(--text-dim)',
+                    textShadow: liveInference ? '0 0 10px rgba(16, 185, 129, 0.7)' : 'none',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <RefreshCw size={10} />
+                  <span>{isScoring ? 'SCORING...' : liveInference ? `P-06 (${liveInference.latencyMs}ms)` : 'P-06'}</span>
+                </button>
+              </HoverTooltip>
 
-              <div
-                style={{
-                  display: 'inline-flex',
-                  backgroundColor: 'rgba(13, 19, 33, 0.55)',
-                  padding: '0.18rem',
-                  borderRadius: '999px',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  gap: '0.15rem',
-                }}
-              >
+              <span style={{ color: 'rgba(255, 255, 255, 0.14)', userSelect: 'none' }}>|</span>
+
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
                 {TIMEFRAMES.map((tf) => {
                   const isActive = timeframe === tf.id;
                   return (
@@ -2474,13 +4692,13 @@ export default function MarketAnomaliesView({
                       onClick={() => setTimeframe(tf.id)}
                       className="mono-metric"
                       style={{
-                        fontSize: '0.66rem',
-                        padding: '0.2rem 0.55rem',
-                        borderRadius: '999px',
+                        background: 'transparent',
                         border: 'none',
-                        backgroundColor: isActive ? '#10b981' : 'transparent',
-                        color: isActive ? '#000' : 'var(--text-dim)',
+                        fontSize: '0.66rem',
+                        padding: '0.12rem 0.2rem',
+                        color: isActive ? 'var(--ui-accent)' : 'var(--text-dim)',
                         fontWeight: isActive ? 800 : 600,
+                        textShadow: isActive ? '0 0 12px rgba(var(--ui-accent-rgb), 0.85)' : 'none',
                         cursor: 'pointer',
                         transition: 'all 0.14s ease',
                       }}
@@ -2498,14 +4716,14 @@ export default function MarketAnomaliesView({
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.4rem',
-                fontSize: '0.64rem',
+                gap: '0.38rem',
+                fontSize: '0.66rem',
                 fontWeight: 800,
-                padding: '0.26rem 0.8rem',
-                borderRadius: '999px',
-                backgroundColor: 'rgba(16, 185, 129, 0.14)',
-                border: '1px solid rgba(16, 185, 129, 0.4)',
-                color: '#10b981',
+                padding: '0.2rem 0.4rem',
+                background: 'transparent',
+                border: 'none',
+                color: 'var(--ui-accent)',
+                textShadow: '0 0 12px rgba(var(--ui-accent-rgb), 0.8)',
                 cursor: 'pointer',
               }}
             >
@@ -2516,168 +4734,331 @@ export default function MarketAnomaliesView({
         </div>
       </div>
 
-      {/* 2.2 EDITORIAL HERO HEADER (FEY STYLE): CONTEXTUAL METRICS FOR ANALYTICS vs RESEARCH */}
+      {/* 2.2 V010 HERO HEADER: AREA-GLOW SPARKLINE WITH LIVE DOT + DUAL-TIER SEMANTIC PILLS */}
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'flex-end',
-          flexWrap: 'wrap',
-          gap: '1rem',
-          paddingBottom: '0.65rem',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+          display: 'grid',
+          gridTemplateColumns: 'auto 1fr auto',
+          alignItems: 'center',
+          gap: '1.25rem',
+          paddingBottom: '0.6rem',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
           flexShrink: 0,
         }}
       >
-        <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
-            <div style={{ fontSize: '0.73rem', color: 'var(--text-dim)', letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>
-              {currentAsset.name} • {currentAsset.pair} • {currentAsset.cat}
-            </div>
-            <button
-              type="button"
-              onClick={() => onToggleWatchlist && onToggleWatchlist(currentAsset.sym)}
-              className="mono-metric"
-              style={{
-                fontSize: '0.62rem',
-                fontWeight: 800,
-                padding: '0.16rem 0.6rem',
-                borderRadius: '999px',
-                border: watchlistSyms.includes(currentAsset.sym)
-                  ? '1px solid rgba(251, 191, 36, 0.55)'
-                  : '1px solid rgba(255, 255, 255, 0.16)',
-                backgroundColor: watchlistSyms.includes(currentAsset.sym)
-                  ? 'rgba(251, 191, 36, 0.16)'
-                  : 'rgba(255, 255, 255, 0.05)',
-                color: watchlistSyms.includes(currentAsset.sym) ? '#fbbf24' : 'var(--text-muted)',
-                cursor: 'pointer',
-              }}
-            >
-              {watchlistSyms.includes(currentAsset.sym)
-                ? isES
-                  ? '★ EN WATCHLIST'
-                  : '★ IN WATCHLIST'
-                : isES
-                  ? '☆ + WATCHLIST'
-                  : '☆ + WATCHLIST'}
-            </button>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.8rem', marginTop: '0.1rem' }}>
-            <span className="mono-metric" style={{ fontSize: '2.35rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.03em' }}>
-              {currentAsset.priceFormatted}
-            </span>
-            <span className="mono-metric" style={{ fontSize: '1.08rem', fontWeight: 700, color: assetMainColor }}>
-              {currentAsset.chg}
-            </span>
-            {l2Section === 'analytics' && compareSymbol && (
-              <span className="mono-metric" style={{ fontSize: '0.75rem', color: '#38bdf8', fontWeight: 700 }}>
-                vs {compareSymbol} ({getAssetBySymbol(compareSymbol).chg})
-              </span>
-            )}
-          </div>
-        </div>
+        {(() => {
+          const isHeroRatesTool =
+            l2Section === 'analytics' &&
+            analysisLens === 'derivatives' &&
+            (currentAsset.cat === 'RATES' || currentAsset.cat === 'FIXED_INCOME' || currentAsset.cat === 'CASH');
+          const isHeroFxTool =
+            l2Section === 'analytics' &&
+            analysisLens === 'derivatives' &&
+            currentAsset.cat === 'FX';
+          const heroCurve = isHeroRatesTool ? computeSovereignCurveMetrics(selectedCurveCountry) : null;
+          const heroFxCross = isHeroFxTool ? computeCrossCurrencyRate(fxBaseCcy, fxQuoteCcy, fxAmount) : null;
 
-        {/* Right Hero Strip: Quantitative Metrics in Analytics Mode vs Qualitative Summary in Research Mode */}
+          const heroBadgeCat = isHeroRatesTool
+            ? `SOVEREIGN (${heroCurve.rating})`
+            : isHeroFxTool
+              ? 'FX CROSS'
+              : currentAsset.cat;
+
+          const heroSubtitle = isHeroRatesTool
+            ? `${heroCurve.country[langCode] || heroCurve.country.EN} (${selectedCurveCountry} 10Y)`
+            : isHeroFxTool
+              ? `${heroFxCross.baseName} / ${heroFxCross.quoteName} (${heroFxCross.pair})`
+              : `${currentAsset.name} (${currentAsset.pair})`;
+
+          const heroPriceText = isHeroRatesTool
+            ? `${heroCurve.y10}%`
+            : isHeroFxTool
+              ? heroFxCross.rateFormatted
+              : currentAsset.priceFormatted;
+
+          const heroChgText = isHeroRatesTool
+            ? `2s10s: ${heroCurve.spread2s10sBps >= 0 ? '+' : ''}${heroCurve.spread2s10sBps} bps`
+            : isHeroFxTool
+              ? heroFxCross.chgFormatted
+              : currentAsset.chg;
+
+          const heroChgColor = isHeroRatesTool
+            ? heroCurve.spread2s10sBps >= 0 ? '#10b981' : '#f43f5e'
+            : isHeroFxTool
+              ? heroFxCross.chg24h >= 0 ? '#10b981' : '#f43f5e'
+              : assetMainColor;
+
+          const isWatchedHero = watchlistSyms.includes(currentAsset.sym);
+
+          return (
+            <>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap' }}>
+                  <span
+                    className="mono-metric"
+                    style={{
+                      fontSize: '0.58rem',
+                      fontWeight: 800,
+                      color: 'var(--ui-accent)',
+                      textShadow: '0 0 10px rgba(var(--ui-accent-rgb), 0.55)',
+                      letterSpacing: '0.04em',
+                    }}
+                  >
+                    {heroBadgeCat}
+                  </span>
+                  <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+                    {heroSubtitle}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => onToggleWatchlist && onToggleWatchlist(currentAsset.sym)}
+                    className="mono-metric"
+                    style={{
+                      background: 'transparent',
+                      border: 'none',
+                      color: isWatchedHero ? '#fbbf24' : 'var(--text-dim)',
+                      textShadow: isWatchedHero ? '0 0 12px rgba(251, 191, 36, 0.75)' : 'none',
+                      fontSize: '0.64rem',
+                      fontWeight: 800,
+                      cursor: 'pointer',
+                      padding: '0.08rem 0.25rem',
+                    }}
+                  >
+                    {isWatchedHero
+                      ? isES
+                        ? '★ EN WATCHLIST'
+                        : '★ IN WATCHLIST'
+                      : isES
+                        ? '☆ + WATCHLIST'
+                        : '☆ + WATCHLIST'}
+                  </button>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.68rem', marginTop: '0.08rem' }}>
+                  <span className="mono-metric" style={{ fontSize: '2.2rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.03em' }}>
+                    {heroPriceText}
+                  </span>
+                  <span
+                    className="mono-metric"
+                    style={{
+                      fontSize: '0.98rem',
+                      fontWeight: 800,
+                      color: heroChgColor,
+                      textShadow: `0 0 12px ${heroChgColor}55`,
+                    }}
+                  >
+                    {heroChgText}
+                  </span>
+                  {l2Section === 'analytics' && compareSymbol && (
+                    <span className="mono-metric" style={{ fontSize: '0.72rem', color: '#38bdf8', fontWeight: 700 }}>
+                      vs {compareSymbol} ({getAssetBySymbol(compareSymbol).chg})
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Centered Standalone Trajectory AreaChart matching Level 1 '24h Aggregate Volume' */}
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <MiniSparkline sym={currentAsset.sym} color={heroChgColor} width={118} height={46} />
+              </div>
+            </>
+          );
+        })()}
+
+        {/* Right Hero Strip: 5 Dual-Tier Semantic Pills (Analytics) vs 3 Dual-Tier Semantic Pills (Research) */}
         {l2Section === 'analytics' ? (
           (() => {
-            const catSpec = getAssetClassSpecificMetrics(currentAsset, isES);
+            const effectiveAssetForSpec =
+              analysisLens === 'derivatives' &&
+              (currentAsset.cat === 'RATES' || currentAsset.cat === 'FIXED_INCOME' || currentAsset.cat === 'CASH')
+                ? { ...currentAsset, cat: 'RATES', countryCode: selectedCurveCountry }
+                : analysisLens === 'derivatives' && currentAsset.cat === 'FX'
+                  ? { ...currentAsset, cat: 'FX', sym: `${fxBaseCcy}/${fxQuoteCcy}` }
+                  : currentAsset;
+            const catSpec = getAssetClassSpecificMetrics(effectiveAssetForSpec, isES);
+
+            const heroPills = [
+              {
+                label: '24H VOLUME',
+                val: currentAsset.vol24h,
+                sub: currentAsset.volChg24h,
+                color: '#ffffff',
+                subColor: currentAsset.volChg24h.startsWith('+') ? '#10b981' : '#f43f5e',
+                isClassSpecific: false,
+                desc: isES
+                  ? 'Volumen institucional operado en las últimas 24 horas y variación porcentual.'
+                  : '24-hour institutional trading volume and daily percentage change.',
+              },
+              {
+                label: catSpec.col1Label,
+                val: catSpec.col1Val,
+                sub: catSpec.col1Sub,
+                color: catSpec.col1Color || '#10b981',
+                subColor: 'var(--text-dim)',
+                isClassSpecific: true,
+                desc: isES
+                  ? `Métrica #1 exclusiva de la clase ${effectiveAssetForSpec.cat}.`
+                  : `Primary metric exclusive to the ${effectiveAssetForSpec.cat} asset class.`,
+              },
+              {
+                label: catSpec.col2Label,
+                val: catSpec.col2Val,
+                sub: catSpec.col2Sub,
+                color: catSpec.col2Color || '#38bdf8',
+                subColor: 'var(--text-dim)',
+                isClassSpecific: true,
+                desc: isES
+                  ? `Métrica #2 exclusiva de la clase ${effectiveAssetForSpec.cat}.`
+                  : `Secondary metric exclusive to the ${effectiveAssetForSpec.cat} asset class.`,
+              },
+              {
+                label: 'RSI (14) / MACD',
+                val: `${currentAsset.indicators.rsi14}`,
+                sub: currentAsset.indicators.macdSignal,
+                color: currentAsset.indicators.rsi14 >= 50 ? '#10b981' : '#f43f5e',
+                subColor: 'var(--text-dim)',
+                isClassSpecific: false,
+                desc: isES
+                  ? 'Índice de Fuerza Relativa (14 períodos) y régimen de momentum MACD.'
+                  : '14-period Relative Strength Index and MACD momentum signal.',
+              },
+              {
+                label: 'P-06 ANOMALY',
+                val: `${displayedScore}`,
+                sub: anomalyProfile.regime,
+                color: scoreColor,
+                subColor: scoreColor,
+                isClassSpecific: false,
+                desc: isES
+                  ? 'Puntaje de anomalía estadística (0.00 a 1.00) calculado por el motor Isolation Forest.'
+                  : 'Statistical anomaly score (0.00 to 1.00) computed by the Isolation Forest engine.',
+              },
+            ];
+
             return (
-              <div className="mono-metric" style={{ display: 'flex', gap: '1.45rem', fontSize: '0.74rem', flexWrap: 'wrap' }}>
-                <div>
-                  <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>24H VOLUME</div>
-                  <div style={{ fontWeight: 800, color: '#fff', marginTop: '0.14rem' }}>
-                    {currentAsset.vol24h}{' '}
-                    <span style={{ color: currentAsset.volChg24h.startsWith('+') ? '#10b981' : '#f43f5e' }}>
-                      ({currentAsset.volChg24h})
-                    </span>
-                  </div>
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.58rem', color: '#10b981' }}>{catSpec.col1Label}</div>
-                  <div style={{ fontWeight: 800, color: catSpec.col1Color || '#fff', marginTop: '0.14rem' }}>
-                    {catSpec.col1Val} <span style={{ fontSize: '0.62rem', color: 'var(--text-dim)', fontWeight: 600 }}>({catSpec.col1Sub})</span>
-                  </div>
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.58rem', color: '#38bdf8' }}>{catSpec.col2Label}</div>
-                  <div style={{ fontWeight: 800, color: catSpec.col2Color || '#fff', marginTop: '0.14rem' }}>
-                    {catSpec.col2Val} <span style={{ fontSize: '0.62rem', color: 'var(--text-dim)', fontWeight: 600 }}>({catSpec.col2Sub})</span>
-                  </div>
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>RSI (14) / MACD</div>
-                  <div style={{ fontWeight: 800, color: currentAsset.indicators.rsi14 >= 50 ? '#10b981' : '#f43f5e', marginTop: '0.14rem' }}>
-                    {currentAsset.indicators.rsi14} • {currentAsset.indicators.macdSignal}
-                  </div>
-                </div>
-                <div>
-                  <div style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>P-06 ANOMALY</div>
-                  <div style={{ fontWeight: 800, color: scoreColor, marginTop: '0.14rem' }}>
-                    {displayedScore} ({anomalyProfile.regime})
-                  </div>
-                </div>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                {heroPills.map((k) => (
+                  <HoverTooltip key={k.label} title={k.label} badge={k.val} description={k.desc} placement="bottom" width={235}>
+                    <div
+                      className="mono-metric"
+                      style={{
+                        padding: '0.42rem 0.82rem',
+                        borderRadius: '16px',
+                        backgroundColor: k.isClassSpecific ? 'rgba(var(--ui-accent-rgb), 0.09)' : 'rgba(10, 15, 26, 0.52)',
+                        border: k.isClassSpecific
+                          ? '1px solid rgba(var(--ui-accent-rgb), 0.42)'
+                          : '1px solid rgba(255, 255, 255, 0.1)',
+                        boxShadow: k.isClassSpecific ? '0 0 16px rgba(var(--ui-accent-rgb), 0.12)' : 'none',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.12rem',
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontSize: '0.48rem',
+                          fontWeight: 700,
+                          color: k.isClassSpecific ? 'var(--ui-accent)' : 'var(--text-dim)',
+                          letterSpacing: '0.04em',
+                        }}
+                      >
+                        {k.label}
+                      </span>
+                      <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.35rem' }}>
+                        <span style={{ fontSize: '0.76rem', fontWeight: 800, color: k.color }}>{k.val}</span>
+                        <span style={{ fontSize: '0.54rem', color: k.subColor, fontWeight: 600 }}>({k.sub})</span>
+                      </div>
+                    </div>
+                  </HoverTooltip>
+                ))}
               </div>
             );
           })()
         ) : (
-          <div style={{ display: 'flex', gap: '2rem', alignItems: 'center', flexWrap: 'wrap' }}>
-            {/* 1. Research Stance + Asset-Class News Sensitivity */}
-            <div>
-              <div className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>
-                {isES ? 'POSTURA & PONDERACIÓN POR CLASE' : 'RESEARCH STANCE & ASSET SENSITIVITY'}
-              </div>
-              <div
-                className="mono-metric"
+          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'center', flexWrap: 'wrap' }}>
+            {/* 1. Research Stance + Asset-Class News Sensitivity Pill */}
+            <div
+              className="mono-metric"
+              style={{
+                padding: '0.42rem 0.85rem',
+                borderRadius: '16px',
+                backgroundColor: 'rgba(var(--ui-accent-rgb), 0.09)',
+                border: '1px solid rgba(var(--ui-accent-rgb), 0.42)',
+                boxShadow: '0 0 16px rgba(var(--ui-accent-rgb), 0.12)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.12rem',
+              }}
+            >
+              <span style={{ fontSize: '0.48rem', fontWeight: 700, color: 'var(--ui-accent)', letterSpacing: '0.04em' }}>
+                {assetSensitivity.shortLabel[langCode] || assetSensitivity.shortLabel.EN}
+              </span>
+              <span
                 style={{
-                  fontSize: '0.82rem',
+                  fontSize: '0.76rem',
                   fontWeight: 800,
                   color: researchBrief.stance === 'BULLISH' ? '#10b981' : '#f43f5e',
-                  marginTop: '0.14rem',
                 }}
               >
                 {researchBrief.stanceLabel[langCode] || researchBrief.stanceLabel.EN}
-              </div>
-              <div className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-muted)', marginTop: '0.1rem' }}>
-                {assetSensitivity.shortLabel[langCode] || assetSensitivity.shortLabel.EN}
-              </div>
+              </span>
             </div>
 
-            {/* 2. Weighted Composite Score (Filings + News by Asset Class) */}
-            <div style={{ borderLeft: '1px solid rgba(255,255,255,0.08)', paddingLeft: '1.35rem' }}>
-              <div className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>
+            {/* 2. Weighted Composite Score Pill */}
+            <div
+              className="mono-metric"
+              style={{
+                padding: '0.42rem 0.85rem',
+                borderRadius: '16px',
+                backgroundColor: 'rgba(10, 15, 26, 0.52)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.12rem',
+              }}
+            >
+              <span style={{ fontSize: '0.48rem', fontWeight: 700, color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
                 {isES ? 'NOTA PONDERADA TOTAL' : 'WEIGHTED COMPOSITE'}
-              </div>
-              <div
-                className="mono-metric"
-                style={{
-                  fontSize: '1.05rem',
-                  fontWeight: 800,
-                  color: researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e',
-                  marginTop: '0.1rem',
-                }}
-              >
-                {researchBrief.compositeFormatted}
-              </div>
-              <div className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--text-dim)', marginTop: '0.06rem' }}>
-                {isES ? 'Fundamentos' : 'Filings'} {researchBrief.filingNetFormatted} • {isES ? 'Noticias' : 'News'}{' '}
-                {assetFinbertPolarity.formattedInt}
+              </span>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem' }}>
+                <span
+                  style={{
+                    fontSize: '0.78rem',
+                    fontWeight: 800,
+                    color: researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e',
+                  }}
+                >
+                  {researchBrief.compositeFormatted}
+                </span>
+                <span style={{ fontSize: '0.52rem', color: 'var(--text-dim)' }}>
+                  ({isES ? 'Fund.' : 'Filings'} {researchBrief.filingNetFormatted} • {isES ? 'Not.' : 'News'} {assetFinbertPolarity.formattedInt})
+                </span>
               </div>
             </div>
 
-            {/* 3. News Sentiment Linear Number Line (-100 to +100, Signed Integer Only) */}
-            <div style={{ minWidth: '245px', borderLeft: '1px solid rgba(255,255,255,0.08)', paddingLeft: '1.35rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '0.22rem' }}>
-                <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>
+            {/* 3. News Sentiment Linear Number Line Pill (-100 to +100) */}
+            <div
+              className="mono-metric"
+              style={{
+                padding: '0.42rem 0.95rem',
+                borderRadius: '16px',
+                backgroundColor: 'rgba(10, 15, 26, 0.52)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                minWidth: '205px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.2rem',
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                <span style={{ fontSize: '0.48rem', fontWeight: 700, color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
                   {isES ? 'SENTIMIENTO NOTICIAS' : 'NEWS SENTIMENT'}
                 </span>
-                <span className="mono-metric" style={{ fontSize: '0.96rem', fontWeight: 800, color: assetFinbertPolarity.color }}>
+                <span style={{ fontSize: '0.76rem', fontWeight: 800, color: assetFinbertPolarity.color }}>
                   {assetFinbertPolarity.formattedInt}
                 </span>
               </div>
-
-              {/* -100 .. 0 .. +100 Linear Axis with Positioned Marker */}
-              <div style={{ position: 'relative', height: '8px', borderRadius: '999px', background: 'linear-gradient(90deg, #f43f5e 0%, rgba(255,255,255,0.16) 50%, #10b981 100%)' }}>
-                {/* Zero Center Tick */}
+              <div style={{ position: 'relative', height: '6px', borderRadius: '999px', background: 'linear-gradient(90deg, #f43f5e 0%, rgba(255,255,255,0.16) 50%, #10b981 100%)' }}>
                 <div
                   style={{
                     position: 'absolute',
@@ -2685,32 +5066,25 @@ export default function MarketAnomaliesView({
                     top: '-2px',
                     bottom: '-2px',
                     width: '2px',
-                    backgroundColor: 'rgba(255,255,255,0.55)',
+                    backgroundColor: 'rgba(255,255,255,0.5)',
                     transform: 'translateX(-50%)',
                   }}
                 />
-                {/* Active Asset Position Marker */}
                 <div
                   style={{
                     position: 'absolute',
                     left: `${assetFinbertPolarity.linePct}%`,
                     top: '50%',
                     transform: 'translate(-50%, -50%)',
-                    width: '13px',
-                    height: '13px',
+                    width: '10px',
+                    height: '10px',
                     borderRadius: '50%',
                     backgroundColor: '#ffffff',
-                    border: `3px solid ${assetFinbertPolarity.color}`,
-                    boxShadow: `0 0 10px ${assetFinbertPolarity.color}`,
+                    border: `2px solid ${assetFinbertPolarity.color}`,
+                    boxShadow: `0 0 8px ${assetFinbertPolarity.color}`,
                     transition: 'left 0.35s ease',
                   }}
                 />
-              </div>
-
-              <div className="mono-metric" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.54rem', color: 'var(--text-dim)', marginTop: '0.18rem' }}>
-                <span style={{ color: '#f43f5e' }}>-100</span>
-                <span>0</span>
-                <span style={{ color: '#10b981' }}>+100</span>
               </div>
             </div>
           </div>
@@ -2719,746 +5093,7 @@ export default function MarketAnomaliesView({
 
       {l2Section === 'analytics' ? (
         <>
-          {/* 2.3 ORGANIZED ANALYSIS WORKBENCH BAR (GROUPED BY ANALYSIS TYPE) */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              gap: '0.65rem',
-              flexShrink: 0,
-            }}
-          >
-            {/* Left: Primary Analysis Lens Selector */}
-            <div
-              style={{
-                display: 'inline-flex',
-                backgroundColor: 'rgba(13, 19, 33, 0.55)',
-                padding: '0.2rem',
-                borderRadius: '999px',
-                border: '1px solid rgba(255, 255, 255, 0.08)',
-                gap: '0.2rem',
-              }}
-            >
-              {[
-                { id: 'technical', label: isES ? 'Análisis Técnico' : 'Technical Overlays' },
-                { id: 'compare', label: isES ? 'Comparar Activos (%)' : 'Relative Comparison (%)' },
-                { id: 'microstructure', label: isES ? 'Microestructura & Flujo' : 'Microstructure & Flow' },
-                {
-                  id: 'derivatives',
-                  label:
-                    currentAsset.cat === 'RATES' || currentAsset.cat === 'FIXED_INCOME' || currentAsset.cat === 'CASH'
-                      ? isES
-                        ? 'Curva Soberana 3D/2D (42 Países)'
-                        : 'Sovereign Curve 3D/2D (42 Countries)'
-                      : currentAsset.cat === 'FX'
-                        ? isES
-                          ? 'Conversión Cruzada (61 Monedas)'
-                          : 'FX Cross Converter (61 CCY)'
-                        : currentAsset.cat === 'COMMODITY'
-                          ? isES
-                            ? 'Superficie Forward 3D & Inventarios'
-                            : '3D Forward Surface & Inventories'
-                          : isES
-                            ? 'Superficie Volatilidad 3D & Payoff'
-                            : '3D Volatility Surface & Payoff',
-                },
-              ].map((lens) => {
-                const active = analysisLens === lens.id;
-                return (
-                  <button
-                    key={lens.id}
-                    onClick={() => setAnalysisLens(lens.id)}
-                    style={{
-                      fontSize: '0.69rem',
-                      fontWeight: active ? 700 : 500,
-                      padding: '0.24rem 0.8rem',
-                      borderRadius: '999px',
-                      border: active ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid transparent',
-                      backgroundColor: active ? 'rgba(16, 185, 129, 0.16)' : 'transparent',
-                      color: active ? '#ffffff' : 'var(--text-dim)',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    {lens.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Right: Contextual Tool Toggles for the Selected Analysis Lens */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexWrap: 'wrap' }}>
-              {analysisLens === 'technical' && (
-                <>
-                  {[
-                    { label: 'SMA (20)', active: showSma20, toggle: () => setShowSma20(!showSma20), color: '#38bdf8' },
-                    { label: 'Bollinger Bands (20, 2σ)', active: showBollinger, toggle: () => setShowBollinger(!showBollinger), color: '#a78bfa' },
-                    { label: 'VWAP', active: showVwap, toggle: () => setShowVwap(!showVwap), color: '#f59e0b' },
-                    {
-                      label: isES ? 'Sub-panel: Volumen' : 'Sub-pane: Volume',
-                      active: showSubChart === 'vol',
-                      toggle: () => setShowSubChart(showSubChart === 'vol' ? 'none' : 'vol'),
-                      color: '#10b981',
-                    },
-                  ].map((tool) => (
-                    <button
-                      key={tool.label}
-                      onClick={tool.toggle}
-                      className="mono-metric"
-                      style={{
-                        fontSize: '0.65rem',
-                        fontWeight: 700,
-                        padding: '0.22rem 0.68rem',
-                        borderRadius: '999px',
-                        border: tool.active ? `1px solid ${tool.color}` : '1px solid rgba(255,255,255,0.08)',
-                        backgroundColor: tool.active ? 'rgba(255,255,255,0.07)' : 'transparent',
-                        color: tool.active ? tool.color : 'var(--text-dim)',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {tool.label}
-                    </button>
-                  ))}
-                </>
-              )}
-
-              {analysisLens === 'compare' && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap', position: 'relative' }}>
-                  <span className="mono-metric" style={{ fontSize: '0.62rem', color: 'var(--text-dim)' }}>
-                    {isES
-                      ? `COMPARAR CONTRA (${(COMPATIBLE_COMPARE_CATEGORIES[currentAsset.cat] || [currentAsset.cat]).join(' / ')}):`
-                      : `COMPARE VS (${(COMPATIBLE_COMPARE_CATEGORIES[currentAsset.cat] || [currentAsset.cat]).join(' / ')}):`}
-                  </span>
-
-                  {/* Active Comparison Pill (if selected) */}
-                  {compareSymbol && (
-                    <div
-                      className="mono-metric"
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.4rem',
-                        fontSize: '0.65rem',
-                        fontWeight: 800,
-                        padding: '0.2rem 0.65rem',
-                        borderRadius: '999px',
-                        border: '1px solid #38bdf8',
-                        backgroundColor: 'rgba(56, 189, 248, 0.16)',
-                        color: '#38bdf8',
-                      }}
-                    >
-                      <span>
-                        vs {compareSymbol} ({getAssetBySymbol(compareSymbol).cat} • {getAssetBySymbol(compareSymbol).chg})
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setCompareSymbol(null);
-                          setCompareQuery('');
-                        }}
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          color: '#38bdf8',
-                          cursor: 'pointer',
-                          padding: 0,
-                          display: 'flex',
-                        }}
-                      >
-                        <X size={12} />
-                      </button>
-                    </div>
-                  )}
-
-                  {/* Searchable Input for Compatible Asset Comparison */}
-                  <div style={{ position: 'relative', minWidth: '250px' }}>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.4rem',
-                        backgroundColor: 'rgba(8, 12, 22, 0.85)',
-                        border: '1px solid rgba(56, 189, 248, 0.4)',
-                        borderRadius: '999px',
-                        padding: '0.2rem 0.7rem',
-                      }}
-                    >
-                      <Search size={12} style={{ color: '#38bdf8', flexShrink: 0 }} />
-                      <input
-                        type="text"
-                        value={compareQuery}
-                        onFocus={() => setCompareDropdownOpen(true)}
-                        onBlur={() => setTimeout(() => setCompareDropdownOpen(false), 160)}
-                        onChange={(e) => {
-                          setCompareQuery(e.target.value);
-                          setCompareDropdownOpen(true);
-                          setCompareSelectedIndex(0);
-                        }}
-                        onKeyDown={(e) => {
-                          if (!compatibleCompareMatches.length) return;
-                          if (e.key === 'ArrowDown') {
-                            e.preventDefault();
-                            setCompareSelectedIndex((prev) => (prev + 1) % compatibleCompareMatches.length);
-                          } else if (e.key === 'ArrowUp') {
-                            e.preventDefault();
-                            setCompareSelectedIndex((prev) => (prev - 1 + compatibleCompareMatches.length) % compatibleCompareMatches.length);
-                          } else if (e.key === 'Enter') {
-                            e.preventDefault();
-                            const target = compatibleCompareMatches[compareSelectedIndex] || compatibleCompareMatches[0];
-                            if (target) {
-                              setCompareSymbol(target.sym);
-                              setCompareQuery('');
-                              setCompareDropdownOpen(false);
-                            }
-                          } else if (e.key === 'Escape') {
-                            setCompareDropdownOpen(false);
-                          }
-                        }}
-                        placeholder={
-                          isES
-                            ? `Escribir ticker o nombre (${currentAsset.cat})...`
-                            : `Type ticker or name (${currentAsset.cat})...`
-                        }
-                        style={{
-                          background: 'transparent',
-                          border: 'none',
-                          outline: 'none',
-                          color: '#ffffff',
-                          fontSize: '0.67rem',
-                          width: '100%',
-                        }}
-                      />
-                    </div>
-
-                    {/* Autocomplete Dropdown of Compatible Assets */}
-                    {compareDropdownOpen && (
-                      <div
-                        style={{
-                          position: 'absolute',
-                          top: 'calc(100% + 6px)',
-                          right: 0,
-                          width: '330px',
-                          maxHeight: '260px',
-                          overflowY: 'auto',
-                          borderRadius: '14px',
-                          backgroundColor: 'rgba(10, 15, 26, 0.98)',
-                          border: '1px solid rgba(56, 189, 248, 0.38)',
-                          boxShadow: '0 18px 40px rgba(0, 0, 0, 0.75)',
-                          padding: '0.35rem',
-                          zIndex: 80,
-                          display: 'flex',
-                          flexDirection: 'column',
-                          gap: '0.18rem',
-                        }}
-                      >
-                        {compatibleCompareMatches.length === 0 ? (
-                          <div className="mono-metric" style={{ padding: '0.55rem', fontSize: '0.64rem', color: 'var(--text-dim)', textAlign: 'center' }}>
-                            {isES
-                              ? `Sin coincidencias compatibles para ${currentAsset.cat}`
-                              : `No compatible matches for ${currentAsset.cat}`}
-                          </div>
-                        ) : (
-                          compatibleCompareMatches.map((peer, idx) => {
-                            const isHighlighted = idx === compareSelectedIndex;
-                            const isActive = compareSymbol === peer.sym;
-                            return (
-                              <button
-                                key={peer.sym}
-                                type="button"
-                                onMouseDown={(e) => {
-                                  e.preventDefault();
-                                  setCompareSymbol(peer.sym);
-                                  setCompareQuery('');
-                                  setCompareDropdownOpen(false);
-                                }}
-                                style={{
-                                  display: 'flex',
-                                  alignItems: 'center',
-                                  justifyContent: 'space-between',
-                                  gap: '0.5rem',
-                                  padding: '0.42rem 0.6rem',
-                                  borderRadius: '9px',
-                                  backgroundColor:
-                                    isActive || isHighlighted ? 'rgba(56, 189, 248, 0.16)' : 'transparent',
-                                  border: isActive ? '1px solid rgba(56, 189, 248, 0.45)' : '1px solid transparent',
-                                  cursor: 'pointer',
-                                  textAlign: 'left',
-                                }}
-                              >
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', minWidth: 0 }}>
-                                  <span className="mono-metric" style={{ fontSize: '0.7rem', fontWeight: 800, color: '#ffffff', minWidth: '52px' }}>
-                                    {peer.sym}
-                                  </span>
-                                  <span
-                                    style={{
-                                      fontSize: '0.65rem',
-                                      color: 'var(--text-muted)',
-                                      whiteSpace: 'nowrap',
-                                      overflow: 'hidden',
-                                      textOverflow: 'ellipsis',
-                                    }}
-                                  >
-                                    {peer.name}
-                                  </span>
-                                </div>
-                                <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0 }}>
-                                  <span
-                                    style={{
-                                      fontSize: '0.52rem',
-                                      fontWeight: 800,
-                                      padding: '0.08rem 0.38rem',
-                                      borderRadius: '999px',
-                                      backgroundColor: peer.cat === currentAsset.cat ? 'rgba(16, 185, 129, 0.16)' : 'rgba(255,255,255,0.08)',
-                                      color: peer.cat === currentAsset.cat ? '#10b981' : 'var(--text-dim)',
-                                    }}
-                                  >
-                                    {peer.cat}
-                                  </span>
-                                  <span style={{ fontSize: '0.63rem', fontWeight: 700, color: peer.chgNum >= 0 ? '#10b981' : '#f43f5e' }}>
-                                    {peer.chg}
-                                  </span>
-                                </div>
-                              </button>
-                            );
-                          })
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {analysisLens === 'microstructure' && (
-                <>
-                  {[
-                    { label: 'Vol Z-Score Pulse (20d)', id: 'zscore' },
-                    { label: '24h Volume Histogram', id: 'vol' },
-                  ].map((pane) => {
-                    const active = showSubChart === pane.id;
-                    return (
-                      <button
-                        key={pane.id}
-                        onClick={() => setShowSubChart(pane.id)}
-                        className="mono-metric"
-                        style={{
-                          fontSize: '0.65rem',
-                          fontWeight: 700,
-                          padding: '0.22rem 0.68rem',
-                          borderRadius: '999px',
-                          border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.08)',
-                          backgroundColor: active ? 'rgba(16, 185, 129, 0.15)' : 'transparent',
-                          color: active ? '#10b981' : 'var(--text-dim)',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        {pane.label}
-                      </button>
-                    );
-                  })}
-                  <span className="mono-metric" style={{ fontSize: '0.64rem', color: 'var(--text-muted)', marginLeft: '0.35rem' }}>
-                    Spread: <strong style={{ color: '#10b981' }}>{anomalyProfile.spreadDislocation}</strong> • BB Width:{' '}
-                    <strong style={{ color: '#fff' }}>{currentAsset.indicators.bbWidth}</strong>
-                  </span>
-                </>
-              )}
-
-              {analysisLens === 'derivatives' &&
-                (() => {
-                  if (
-                    currentAsset.cat === 'RATES' ||
-                    currentAsset.cat === 'FIXED_INCOME' ||
-                    currentAsset.cat === 'CASH'
-                  ) {
-                    const curveMetrics = computeSovereignCurveMetrics(selectedCurveCountry);
-                    return (
-                      <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.48rem', flexWrap: 'wrap', fontSize: '0.62rem' }}>
-                        {/* 3D vs 2D Sovereign Yield Surface Switcher */}
-                        <div
-                          style={{
-                            display: 'inline-flex',
-                            backgroundColor: 'rgba(8, 12, 22, 0.85)',
-                            padding: '0.14rem',
-                            borderRadius: '999px',
-                            border: '1px solid rgba(255,255,255,0.12)',
-                            gap: '0.15rem',
-                          }}
-                        >
-                          {[
-                            { id: '3d-history', label: isES ? 'Superficie 3D (Hist)' : '3D Surface (Hist)' },
-                            { id: '3d-peers', label: isES ? 'Superficie 3D (Países)' : '3D Surface (Peers)' },
-                            { id: '2d', label: isES ? 'Curva 2D' : '2D Curve' },
-                          ].map((sub) => {
-                            const active = ratesSubView === sub.id;
-                            return (
-                              <button
-                                key={sub.id}
-                                type="button"
-                                onClick={() => setRatesSubView(sub.id)}
-                                style={{
-                                  fontSize: '0.6rem',
-                                  fontWeight: 800,
-                                  padding: '0.14rem 0.52rem',
-                                  borderRadius: '999px',
-                                  border: active ? '1px solid #10b981' : '1px solid transparent',
-                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-                                  color: active ? '#10b981' : 'var(--text-dim)',
-                                  cursor: 'pointer',
-                                }}
-                              >
-                                {sub.label}
-                              </button>
-                            );
-                          })}
-                        </div>
-                        <select
-                          value={selectedCurveCountry}
-                          onChange={(e) => setSelectedCurveCountry(e.target.value)}
-                          style={{
-                            backgroundColor: 'rgba(13, 19, 33, 0.9)',
-                            color: '#10b981',
-                            border: '1px solid rgba(16, 185, 129, 0.45)',
-                            borderRadius: '999px',
-                            padding: '0.2rem 0.65rem',
-                            fontSize: '0.64rem',
-                            fontWeight: 800,
-                            outline: 'none',
-                            cursor: 'pointer',
-                          }}
-                        >
-                          {Object.entries(SOVEREIGN_YIELD_CURVES).map(([code, c]) => (
-                            <option key={code} value={code}>
-                              {code} • {c.country[langCode] || c.country.EN} ({c.rating})
-                            </option>
-                          ))}
-                        </select>
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          10Y: <strong style={{ color: '#fff' }}>{curveMetrics.y10}%</strong>
-                        </span>
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          2s10s:{' '}
-                          <strong style={{ color: curveMetrics.spread2s10sBps >= 0 ? '#10b981' : '#f43f5e' }}>
-                            {curveMetrics.spread2s10sBps >= 0 ? '+' : ''}
-                            {curveMetrics.spread2s10sBps} bps
-                          </strong>
-                        </span>
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          3m10y:{' '}
-                          <strong style={{ color: curveMetrics.spread3m10yBps >= 0 ? '#10b981' : '#f43f5e' }}>
-                            {curveMetrics.spread3m10yBps >= 0 ? '+' : ''}
-                            {curveMetrics.spread3m10yBps} bps
-                          </strong>
-                        </span>
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          Butterfly 2s5s10s:{' '}
-                          <strong style={{ color: curveMetrics.butterfly2s5s10sBps >= 0 ? '#10b981' : '#f43f5e' }}>
-                            {curveMetrics.butterfly2s5s10sBps >= 0 ? '+' : ''}
-                            {curveMetrics.butterfly2s5s10sBps} bps
-                          </strong>
-                        </span>
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          Real 10Y:{' '}
-                          <strong style={{ color: curveMetrics.realYield10Y >= 0 ? '#10b981' : '#f43f5e' }}>
-                            {curveMetrics.realYield10Y >= 0 ? '+' : ''}
-                            {curveMetrics.realYield10Y}%
-                          </strong>
-                        </span>
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          DV01: <strong style={{ color: '#fff' }}>{curveMetrics.dv01PerMillion10Y}</strong>
-                        </span>
-                      </div>
-                    );
-                  }
-
-                  if (currentAsset.cat === 'FX') {
-                    const cross = computeCrossCurrencyRate(fxBaseCcy, fxQuoteCcy, fxAmount);
-                    return (
-                      <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.42rem', flexWrap: 'wrap', fontSize: '0.63rem' }}>
-                        <input
-                          type="number"
-                          min="1"
-                          value={fxAmount}
-                          onChange={(e) => setFxAmount(Math.max(1, Number(e.target.value) || 1))}
-                          style={{
-                            width: '74px',
-                            backgroundColor: 'rgba(13, 19, 33, 0.92)',
-                            color: '#ffffff',
-                            border: '1px solid rgba(255, 255, 255, 0.18)',
-                            borderRadius: '999px',
-                            padding: '0.18rem 0.5rem',
-                            fontSize: '0.63rem',
-                            fontWeight: 800,
-                            outline: 'none',
-                            textAlign: 'right',
-                          }}
-                        />
-                        <select
-                          value={fxBaseCcy}
-                          onChange={(e) => setFxBaseCcy(e.target.value)}
-                          style={{
-                            backgroundColor: 'rgba(13, 19, 33, 0.9)',
-                            color: '#10b981',
-                            border: '1px solid rgba(16, 185, 129, 0.45)',
-                            borderRadius: '999px',
-                            padding: '0.18rem 0.55rem',
-                            fontSize: '0.63rem',
-                            fontWeight: 800,
-                            cursor: 'pointer',
-                          }}
-                        >
-                          {Object.keys(WORLD_USD_RATES).map((ccy) => (
-                            <option key={ccy} value={ccy}>
-                              {ccy} ({WORLD_USD_RATES[ccy].name})
-                            </option>
-                          ))}
-                        </select>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            const prevBase = fxBaseCcy;
-                            setFxBaseCcy(fxQuoteCcy);
-                            setFxQuoteCcy(prevBase);
-                          }}
-                          title={isES ? 'Invertir par de divisas' : 'Swap currency pair'}
-                          style={{
-                            backgroundColor: 'rgba(255,255,255,0.08)',
-                            color: '#ffffff',
-                            border: '1px solid rgba(255,255,255,0.16)',
-                            borderRadius: '999px',
-                            padding: '0.12rem 0.45rem',
-                            fontSize: '0.65rem',
-                            fontWeight: 800,
-                            cursor: 'pointer',
-                          }}
-                        >
-                          ⇄
-                        </button>
-                        <select
-                          value={fxQuoteCcy}
-                          onChange={(e) => setFxQuoteCcy(e.target.value)}
-                          style={{
-                            backgroundColor: 'rgba(13, 19, 33, 0.9)',
-                            color: '#38bdf8',
-                            border: '1px solid rgba(56, 189, 248, 0.45)',
-                            borderRadius: '999px',
-                            padding: '0.18rem 0.55rem',
-                            fontSize: '0.63rem',
-                            fontWeight: 800,
-                            cursor: 'pointer',
-                          }}
-                        >
-                          {Object.keys(WORLD_USD_RATES).map((ccy) => (
-                            <option key={ccy} value={ccy}>
-                              {ccy} ({WORLD_USD_RATES[ccy].name})
-                            </option>
-                          ))}
-                        </select>
-                        <span
-                          style={{
-                            color: '#ffffff',
-                            fontWeight: 800,
-                            padding: '0.16rem 0.58rem',
-                            borderRadius: '999px',
-                            backgroundColor: 'rgba(16, 185, 129, 0.14)',
-                            border: '1px solid rgba(16, 185, 129, 0.35)',
-                          }}
-                        >
-                          = <strong style={{ color: '#10b981' }}>{cross.convertedFormatted} {fxQuoteCcy}</strong>
-                        </span>
-                        <span style={{ color: '#fff', fontWeight: 800 }}>
-                          {cross.pair}: <strong style={{ color: '#10b981' }}>{cross.rateFormatted}</strong>
-                        </span>
-                        <span style={{ color: cross.chg24h >= 0 ? '#10b981' : '#f43f5e', fontWeight: 700 }}>
-                          ({cross.chgFormatted})
-                        </span>
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          Inv: <strong style={{ color: '#fff' }}>{cross.inverseFormatted}</strong> • Carry 10Y:{' '}
-                          <strong style={{ color: cross.carryDiffBps >= 0 ? '#10b981' : '#f43f5e' }}>{cross.carryFormatted}</strong>
-                        </span>
-                      </div>
-                    );
-                  }
-
-                  if (currentAsset.cat === 'COMMODITY') {
-                    const fwd = getCommodityForwardCurve(currentAsset.sym, currentAsset.price);
-                    return (
-                      <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap', fontSize: '0.63rem' }}>
-                        {/* 3D vs 2D Commodity Forward Surface Switcher */}
-                        <div
-                          style={{
-                            display: 'inline-flex',
-                            backgroundColor: 'rgba(8, 12, 22, 0.85)',
-                            padding: '0.14rem',
-                            borderRadius: '999px',
-                            border: '1px solid rgba(255,255,255,0.12)',
-                            gap: '0.15rem',
-                          }}
-                        >
-                          {[
-                            { id: '3d', label: isES ? 'Superficie Forward 3D' : '3D Forward Surface' },
-                            { id: '2d', label: isES ? 'Curva Forward 2D' : '2D Forward Curve' },
-                          ].map((sub) => {
-                            const active = commoditySubView === sub.id;
-                            return (
-                              <button
-                                key={sub.id}
-                                type="button"
-                                onClick={() => setCommoditySubView(sub.id)}
-                                style={{
-                                  fontSize: '0.6rem',
-                                  fontWeight: 800,
-                                  padding: '0.14rem 0.52rem',
-                                  borderRadius: '999px',
-                                  border: active ? '1px solid #10b981' : '1px solid transparent',
-                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-                                  color: active ? '#10b981' : 'var(--text-dim)',
-                                  cursor: 'pointer',
-                                }}
-                              >
-                                {sub.label}
-                              </button>
-                            );
-                          })}
-                        </div>
-                        <span style={{ color: '#10b981', fontWeight: 800 }}>
-                          {isES ? 'ESTRUCTURA:' : 'STRUCTURE:'}{' '}
-                          <strong style={{ color: fwd.isBackwardation ? '#10b981' : '#f59e0b' }}>{fwd.regime}</strong>
-                        </span>
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          Roll Yield (1Y):{' '}
-                          <strong style={{ color: fwd.isBackwardation ? '#10b981' : '#f43f5e' }}>{fwd.rollYieldAnnual}</strong>
-                        </span>
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          {isES ? 'Inventario vs 5A:' : 'Inventory vs 5Y:'}{' '}
-                          <strong style={{ color: '#fff' }}>{fwd.inventoryVs5Y}</strong>
-                        </span>
-                        <span style={{ color: 'var(--text-muted)' }}>
-                          COT Net Spec: <strong style={{ color: '#38bdf8' }}>{fwd.cotNetSpec}</strong>
-                        </span>
-                      </div>
-                    );
-                  }
-
-                  const optChain = getHighVolumeOptionsChain(
-                    currentAsset.underlyingSym || currentAsset.sym,
-                    currentAsset.price
-                  );
-                  const payoffData = computeOptionsStrategyPayoff(
-                    currentAsset.underlyingSym || currentAsset.sym,
-                    currentAsset.price,
-                    selectedOptStrategy
-                  );
-                  return (
-                    <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.52rem', flexWrap: 'wrap', fontSize: '0.62rem' }}>
-                      {/* Sub-mode Switcher: 3D Volatility Surface vs 2D Smile vs Strategy Payoff P&L */}
-                      <div
-                        style={{
-                          display: 'inline-flex',
-                          backgroundColor: 'rgba(8, 12, 22, 0.85)',
-                          padding: '0.14rem',
-                          borderRadius: '999px',
-                          border: '1px solid rgba(255,255,255,0.12)',
-                          gap: '0.15rem',
-                        }}
-                      >
-                        {[
-                          { id: 'surface3d', label: isES ? 'Superficie IV 3D' : '3D IV Surface' },
-                          { id: 'surface', label: isES ? 'Sonrisa IV 2D' : '2D IV Smile' },
-                          { id: 'payoff', label: isES ? 'Payoff P&L & Sintéticos' : 'Payoff P&L & Synthetics' },
-                        ].map((sub) => {
-                          const active = optionsSubView === sub.id;
-                          return (
-                            <button
-                              key={sub.id}
-                              type="button"
-                              onClick={() => setOptionsSubView(sub.id)}
-                              style={{
-                                fontSize: '0.61rem',
-                                fontWeight: 800,
-                                padding: '0.15rem 0.58rem',
-                                borderRadius: '999px',
-                                border: active ? '1px solid #10b981' : '1px solid transparent',
-                                backgroundColor: active ? 'rgba(16, 185, 129, 0.2)' : 'transparent',
-                                color: active ? '#10b981' : 'var(--text-dim)',
-                                cursor: 'pointer',
-                              }}
-                            >
-                              {sub.label}
-                            </button>
-                          );
-                        })}
-                      </div>
-
-                      {optionsSubView !== 'payoff' ? (
-                        <>
-                          <span style={{ color: '#10b981', fontWeight: 700 }}>{optChain.filterPolicy}</span>
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            ATM IV: <strong style={{ color: '#fff' }}>{optChain.atmIvPct}%</strong> (IVR {optChain.ivRank})
-                          </span>
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            Straddle: <strong style={{ color: '#fff' }}>{optChain.straddleBreakevenPct}</strong>
-                          </span>
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            25Δ Skew: <strong style={{ color: '#10b981' }}>{optChain.skew25d}</strong>
-                          </span>
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            GEX: <strong style={{ color: '#10b981' }}>{optChain.netGammaExposure}</strong>
-                          </span>
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            Max Pain: <strong style={{ color: '#38bdf8' }}>${optChain.maxPain}</strong>
-                          </span>
-                        </>
-                      ) : (
-                        <>
-                          <select
-                            value={selectedOptStrategy}
-                            onChange={(e) => setSelectedOptStrategy(e.target.value)}
-                            style={{
-                              backgroundColor: 'rgba(13, 19, 33, 0.92)',
-                              color: '#10b981',
-                              border: '1px solid rgba(16, 185, 129, 0.45)',
-                              borderRadius: '999px',
-                              padding: '0.18rem 0.6rem',
-                              fontSize: '0.62rem',
-                              fontWeight: 800,
-                              outline: 'none',
-                              cursor: 'pointer',
-                            }}
-                          >
-                            {OPTIONS_STRATEGIES.map((st) => (
-                              <option key={st.id} value={st.id}>
-                                {st.label[langCode] || st.label.EN}
-                              </option>
-                            ))}
-                          </select>
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            {isES ? 'Prima:' : 'Net:'}{' '}
-                            <strong style={{ color: '#ffffff' }}>{payoffData.netCostFormatted}</strong>
-                          </span>
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            BE: <strong style={{ color: '#38bdf8' }}>{payoffData.breakevenText}</strong>
-                          </span>
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            Max +: <strong style={{ color: '#10b981' }}>{payoffData.maxProfitText}</strong>
-                          </span>
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            Max -: <strong style={{ color: '#f43f5e' }}>{payoffData.maxLossText}</strong>
-                          </span>
-                          <span style={{ color: 'var(--text-muted)' }}>
-                            Δ <strong style={{ color: '#fff' }}>{payoffData.greeks.delta}</strong> • Γ{' '}
-                            <strong style={{ color: '#fff' }}>{payoffData.greeks.gamma}</strong> • Θ{' '}
-                            <strong style={{ color: '#fff' }}>{payoffData.greeks.theta}</strong> • ν{' '}
-                            <strong style={{ color: '#fff' }}>{payoffData.greeks.vega}</strong>
-                          </span>
-                        </>
-                      )}
-                    </div>
-                  );
-                })()}
-            </div>
-          </div>
-
-          {/* 2.4 OPEN BORDERLESS STARFIELD CHART WORKSPACE */}
+          {/* 2.3 + 2.4 UNIFIED LQR-F WORKSPACE: LEFT QUANT CONTROL RAIL (4 LENSES + SUB-MODES + SEARCH + 6 TELEMETRY PILLS) + FULL-HEIGHT RIGHT 3D/2D STAGE */}
           {(() => {
             const isRatesCurveMode =
               analysisLens === 'derivatives' &&
@@ -3481,289 +5116,2012 @@ export default function MarketAnomaliesView({
             const isCommodity3DMode = isCommodityCurveMode && commoditySubView === '3d';
             const is3DSurfaceActive = isOptions3DMode || isRates3DMode || isCommodity3DMode;
 
+            const cleanUndSym = (currentAsset.underlyingSym || currentAsset.sym).replace(/-OPT$/, '');
+            const undCatalogObj = ASSET_CATALOG.find((a) => a.sym === cleanUndSym);
+            const effectiveOptSpot = undCatalogObj ? undCatalogObj.price : currentAsset.price;
+
+            const curveMetrics = isRatesCurveMode ? computeSovereignCurveMetrics(selectedCurveCountry) : null;
+            const fxCrossMetrics = isFxCrossMode ? computeCrossCurrencyRate(fxBaseCcy, fxQuoteCcy, fxAmount) : null;
+            const commForwardMetrics = isCommodityCurveMode
+              ? getCommodityForwardCurve(currentAsset.sym, currentAsset.price)
+              : null;
+            const optChainMetrics = isOptionsBaseMode
+              ? getHighVolumeOptionsChain(cleanUndSym, effectiveOptSpot)
+              : null;
+            const optPayoffMetrics = isOptionsBaseMode
+              ? computeOptionsStrategyPayoff(cleanUndSym, effectiveOptSpot, selectedOptStrategy)
+              : null;
+
             const active3DSurfaceData = isOptions3DMode
-              ? computeVolatilitySurface3D(currentAsset.underlyingSym || currentAsset.sym, currentAsset.price)
+              ? computeVolatilitySurface3D(cleanUndSym, effectiveOptSpot)
               : isRates3DMode
                 ? computeSovereignYieldSurface3D(
-                  selectedCurveCountry,
-                  ratesSubView === '3d-peers' ? 'crossCountry' : 'history'
-                )
+                    selectedCurveCountry,
+                    ratesSubView === '3d-peers' ? 'crossCountry' : 'history'
+                  )
                 : isCommodity3DMode
                   ? computeCommodityForwardSurface3D(currentAsset.sym, currentAsset.price)
                   : null;
 
             const activeChartData = isRatesCurveMode
-              ? computeSovereignCurveMetrics(selectedCurveCountry).curveSeries.map((pt) => ({
-                time: pt.tenor,
-                price: pt.yield,
-                cmpReturn: pt.ustYield,
-                bundYield: pt.bundYield,
-                vol: pt.vol,
-                zBar: pt.zBar,
-              }))
+              ? curveMetrics.curveSeries.map((pt) => ({
+                  time: pt.tenor,
+                  price: pt.yield,
+                  cmpReturn: pt.ustYield,
+                  bundYield: pt.bundYield,
+                  vol: pt.vol,
+                  zBar: pt.zBar,
+                }))
               : isFxCrossMode
-                ? computeCrossCurrencyRate(fxBaseCcy, fxQuoteCcy, fxAmount).crossSeries
+                ? fxCrossMetrics.crossSeries
                 : isCommodityCurveMode
-                  ? getCommodityForwardCurve(currentAsset.sym, currentAsset.price).curveSeries
+                  ? commForwardMetrics.curveSeries
                   : isOptionsPayoffMode
-                    ? computeOptionsStrategyPayoff(
-                      currentAsset.underlyingSym || currentAsset.sym,
-                      currentAsset.price,
-                      selectedOptStrategy
-                    ).payoffSeries
+                    ? optPayoffMetrics.payoffSeries
                     : isOptionsSmileMode
-                      ? getHighVolumeOptionsChain(
-                        currentAsset.underlyingSym || currentAsset.sym,
-                        currentAsset.price
-                      ).strikes.map((st) => ({
-                        time: `$${st.strike} (${st.moneyness})`,
-                        iv7d: st.iv7d,
-                        price: st.iv30d,
-                        iv90d: st.iv90d,
-                        iv180d: st.iv180d,
-                        sma20: st.callMid,
-                        vol: Math.round((st.callVol + st.putVol) / 100),
-                        zBar: Number(st.deltaCall.toFixed(2)),
-                      }))
+                      ? optChainMetrics.strikes.map((st) => ({
+                          time: `$${st.strike} (${st.moneyness})`,
+                          iv7d: st.iv7d,
+                          price: st.iv30d,
+                          iv90d: st.iv90d,
+                          iv180d: st.iv180d,
+                          sma20: st.callMid,
+                          vol: Math.round((st.callVol + st.putVol) / 100),
+                          zBar: Number(st.deltaCall.toFixed(2)),
+                        }))
                       : chartData;
 
+            // Build dynamic 6 Dual-Tier Semantic Telemetry Pills for Block 3 of the Left Quant Rail
+            const latestChartPt = chartData[chartData.length - 1] || {};
+            const peerAssetObj = compareSymbol ? getAssetBySymbol(compareSymbol) : null;
+            const alphaSpread = peerAssetObj ? (currentAsset.chgNum - peerAssetObj.chgNum).toFixed(2) : '0.00';
+
+            const railTelemetryPills = (() => {
+              if (analysisLens === 'technical') {
+                const smaVal = latestChartPt.sma20 ? `$${Number(latestChartPt.sma20).toFixed(2)}` : currentAsset.priceFormatted;
+                const vwapVal = latestChartPt.vwap ? `$${Number(latestChartPt.vwap).toFixed(2)}` : currentAsset.priceFormatted;
+                return [
+                  { label: 'SMA (20) LEVEL', val: smaVal, sub: showSma20 ? 'ACTIVE OVERLAY' : 'HIDDEN', color: '#38bdf8', accent: showSma20 },
+                  { label: 'INSTITUTIONAL VWAP', val: vwapVal, sub: showVwap ? 'ACTIVE OVERLAY' : 'HIDDEN', color: '#f59e0b', accent: showVwap },
+                  { label: 'BOLLINGER (20, 2σ)', val: currentAsset.indicators.bbWidth, sub: showBollinger ? 'BANDS ACTIVE' : 'BAND WIDTH', color: '#a78bfa', accent: showBollinger },
+                  { label: 'RSI (14) MOMENTUM', val: `${currentAsset.indicators.rsi14}`, sub: currentAsset.indicators.macdStatus, color: '#10b981', accent: false },
+                  { label: '24H VOLUME FLOW', val: currentAsset.vol24h, sub: `${currentAsset.volChg >= 0 ? '+' : ''}${currentAsset.volChg}% vs 20d`, color: '#ffffff', accent: false },
+                  { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: anomalyProfile.realizedVol + ' RVol', color: '#10b981', accent: false },
+                ];
+              }
+              if (analysisLens === 'compare') {
+                return [
+                  { label: `${currentAsset.sym} 24H (%)`, val: currentAsset.chg, sub: currentAsset.cat, color: currentAsset.isPositive ? '#10b981' : '#f43f5e', accent: true },
+                  {
+                    label: peerAssetObj ? `VS ${peerAssetObj.sym} (%)` : isES ? 'PAR COMPARADO' : 'PEER RETURN',
+                    val: peerAssetObj ? peerAssetObj.chg : isES ? 'Usar buscador ↑' : 'Use search ↑',
+                    sub: peerAssetObj ? peerAssetObj.cat : isES ? 'Sin seleccionar' : 'None selected',
+                    color: '#38bdf8',
+                    accent: Boolean(peerAssetObj),
+                  },
+                  {
+                    label: 'ALPHA SPREAD (24H)',
+                    val: peerAssetObj ? `${Number(alphaSpread) >= 0 ? '+' : ''}${alphaSpread}%` : '—',
+                    sub: peerAssetObj ? `${currentAsset.sym} - ${peerAssetObj.sym}` : 'Select peer',
+                    color: Number(alphaSpread) >= 0 ? '#10b981' : '#f43f5e',
+                    accent: false,
+                  },
+                  { label: 'PRIMARY RSI (14)', val: `${currentAsset.indicators.rsi14}`, sub: peerAssetObj ? `Peer RSI ${peerAssetObj.indicators.rsi14}` : currentAsset.indicators.macdStatus, color: '#ffffff', accent: false },
+                  { label: 'REALIZED VOL (30D)', val: anomalyProfile.realizedVol, sub: peerAssetObj ? `Peer ${getAnomalyProfile(peerAssetObj.sym).realizedVol}` : 'ANNUALIZED', color: '#a78bfa', accent: false },
+                  { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: peerAssetObj ? `Peer ${getAnomalyProfile(peerAssetObj.sym).volumeZScore}` : 'FLOW PULSE', color: '#10b981', accent: false },
+                ];
+              }
+              if (analysisLens === 'microstructure') {
+                return [
+                  { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: showSubChart === 'zscore' ? 'SUB-PANE ACTIVE' : '20D SIGMA', color: '#10b981', accent: showSubChart === 'zscore' },
+                  { label: '24H VOLUME FLOW', val: currentAsset.vol24h, sub: showSubChart === 'vol' ? 'SUB-PANE ACTIVE' : `${currentAsset.volChg >= 0 ? '+' : ''}${currentAsset.volChg}%`, color: '#38bdf8', accent: showSubChart === 'vol' },
+                  { label: 'SPREAD DISLOCATION', val: anomalyProfile.spreadDislocation, sub: 'ORDERBOOK DEPTH', color: '#10b981', accent: false },
+                  { label: 'BOLLINGER WIDTH', val: currentAsset.indicators.bbWidth, sub: 'VOLATILITY REGIME', color: '#a78bfa', accent: false },
+                  { label: 'REALIZED VOL', val: anomalyProfile.realizedVol, sub: '30D ANNUALIZED', color: '#ffffff', accent: false },
+                  { label: 'P-06 ANOMALY SCORE', val: displayedScore.toFixed(3), sub: anomalyProfile.regime, color: scoreColor, accent: false },
+                ];
+              }
+              if (isRatesCurveMode && curveMetrics) {
+                const cObj = SOVEREIGN_YIELD_CURVES[selectedCurveCountry] || SOVEREIGN_YIELD_CURVES.US;
+                return [
+                  { label: `${selectedCurveCountry} 10Y BENCHMARK`, val: `${curveMetrics.y10}%`, sub: `Rating ${cObj.rating}`, color: '#10b981', accent: true },
+                  {
+                    label: '2s10s SLOPE SPREAD',
+                    val: `${curveMetrics.spread2s10sBps >= 0 ? '+' : ''}${curveMetrics.spread2s10sBps} bps`,
+                    sub: curveMetrics.spread2s10sBps < 0 ? 'INVERTED' : 'NORMAL',
+                    color: curveMetrics.spread2s10sBps >= 0 ? '#10b981' : '#f43f5e',
+                    accent: true,
+                  },
+                  {
+                    label: '3m10y TERM SPREAD',
+                    val: `${curveMetrics.spread3m10yBps >= 0 ? '+' : ''}${curveMetrics.spread3m10yBps} bps`,
+                    sub: 'SHORT-LONG',
+                    color: curveMetrics.spread3m10yBps >= 0 ? '#10b981' : '#f43f5e',
+                    accent: false,
+                  },
+                  {
+                    label: 'BUTTERFLY 2s5s10s',
+                    val: `${curveMetrics.butterfly2s5s10sBps >= 0 ? '+' : ''}${curveMetrics.butterfly2s5s10sBps} bps`,
+                    sub: 'BELLY CURVATURE',
+                    color: '#38bdf8',
+                    accent: false,
+                  },
+                  {
+                    label: 'REAL 10Y YIELD',
+                    val: `${curveMetrics.realYield10Y >= 0 ? '+' : ''}${curveMetrics.realYield10Y}%`,
+                    sub: `Policy ${cObj.policyRate}%`,
+                    color: curveMetrics.realYield10Y >= 0 ? '#10b981' : '#f43f5e',
+                    accent: false,
+                  },
+                  { label: 'DV01 ($1M NOTIONAL)', val: curveMetrics.dv01PerMillion10Y, sub: 'RATE SENSITIVITY', color: '#ffffff', accent: false },
+                ];
+              }
+              if (isFxCrossMode && fxCrossMetrics) {
+                return [
+                  { label: `${fxCrossMetrics.pair} SPOT`, val: fxCrossMetrics.rateFormatted, sub: fxCrossMetrics.chgFormatted, color: '#10b981', accent: true },
+                  { label: 'CONVERTED TOTAL', val: `${fxCrossMetrics.convertedFormatted} ${fxQuoteCcy}`, sub: `From ${fxAmount.toLocaleString()} ${fxBaseCcy}`, color: '#38bdf8', accent: true },
+                  { label: '10Y CARRY SPREAD', val: fxCrossMetrics.carryFormatted, sub: fxCrossMetrics.carryDiffBps >= 0 ? 'POSITIVE CARRY' : 'NEGATIVE CARRY', color: fxCrossMetrics.carryDiffBps >= 0 ? '#10b981' : '#f43f5e', accent: false },
+                  { label: `INVERSE (${fxQuoteCcy}/${fxBaseCcy})`, val: fxCrossMetrics.inverseFormatted, sub: 'RECIPROCAL', color: '#ffffff', accent: false },
+                  { label: `${fxBaseCcy} POLICY RATE`, val: `${WORLD_USD_RATES[fxBaseCcy]?.rate10Y || 4.2}%`, sub: WORLD_USD_RATES[fxBaseCcy]?.name || fxBaseCcy, color: '#a78bfa', accent: false },
+                  { label: `${fxQuoteCcy} POLICY RATE`, val: `${WORLD_USD_RATES[fxQuoteCcy]?.rate10Y || 4.2}%`, sub: WORLD_USD_RATES[fxQuoteCcy]?.name || fxQuoteCcy, color: '#f59e0b', accent: false },
+                ];
+              }
+              if (isCommodityCurveMode && commForwardMetrics) {
+                return [
+                  { label: 'TERM STRUCTURE', val: commForwardMetrics.regime, sub: currentAsset.sym, color: commForwardMetrics.isBackwardation ? '#10b981' : '#f59e0b', accent: true },
+                  { label: 'ROLL YIELD (1Y ANN)', val: commForwardMetrics.rollYieldAnnual, sub: 'FRONT vs M12', color: commForwardMetrics.isBackwardation ? '#10b981' : '#f43f5e', accent: true },
+                  { label: 'INVENTORY vs 5Y AVG', val: commForwardMetrics.inventoryVs5Y, sub: 'PHYSICAL STOCK', color: '#ffffff', accent: false },
+                  { label: 'COT NET SPECULATIVE', val: commForwardMetrics.cotNetSpec, sub: 'CFTC POSITIONING', color: '#38bdf8', accent: false },
+                  { label: 'FRONT SPOT PRICE', val: currentAsset.priceFormatted, sub: currentAsset.chg, color: '#10b981', accent: false },
+                  { label: 'REALIZED VOL (30D)', val: anomalyProfile.realizedVol, sub: anomalyProfile.volumeZScore, color: '#a78bfa', accent: false },
+                ];
+              }
+              if (isOptionsPayoffMode && optPayoffMetrics) {
+                return [
+                  { label: isES ? 'PRIMA NETA' : 'NET PREMIUM', val: optPayoffMetrics.netCostFormatted, sub: cleanUndSym, color: '#ffffff', accent: true },
+                  { label: 'BREAKEVEN THRESHOLD', val: optPayoffMetrics.breakevenText, sub: 'AT EXPIRATION', color: '#38bdf8', accent: true },
+                  { label: 'MAX PROFIT TARGET', val: optPayoffMetrics.maxProfitText, sub: 'EXPIRY CAP', color: '#10b981', accent: false },
+                  { label: 'MAX LOSS FLOOR', val: optPayoffMetrics.maxLossText, sub: 'DEFINED RISK', color: '#f43f5e', accent: false },
+                  { label: 'DELTA (Δ) / GAMMA (Γ)', val: `Δ ${optPayoffMetrics.greeks.delta}`, sub: `Γ ${optPayoffMetrics.greeks.gamma}`, color: '#10b981', accent: false },
+                  { label: 'THETA (Θ) / VEGA (ν)', val: `Θ ${optPayoffMetrics.greeks.theta}`, sub: `ν ${optPayoffMetrics.greeks.vega}`, color: '#a78bfa', accent: false },
+                ];
+              }
+              if (optChainMetrics) {
+                return [
+                  { label: 'ATM IMPLIED VOL (30D)', val: `${optChainMetrics.atmIvPct}%`, sub: `IV Rank ${optChainMetrics.ivRank}`, color: '#10b981', accent: true },
+                  { label: '25Δ PUT-CALL SKEW', val: `${optChainMetrics.skew25d}`, sub: 'DOWNSIDE TAIL', color: '#38bdf8', accent: true },
+                  { label: 'STRADDLE BREAKEVEN', val: optChainMetrics.straddleBreakevenPct, sub: 'IMPLIED MOVE', color: '#ffffff', accent: false },
+                  { label: 'NET GAMMA (GEX)', val: optChainMetrics.netGammaExposure, sub: 'DEALER POSITION', color: '#10b981', accent: false },
+                  { label: 'MAX PAIN STRIKE', val: `$${optChainMetrics.maxPain}`, sub: `Spot $${effectiveOptSpot}`, color: '#a78bfa', accent: false },
+                  { label: 'PUT/CALL OI RATIO', val: `${optChainMetrics.putCallRatio || '0.78'}`, sub: 'OPEN INTEREST', color: '#f59e0b', accent: false },
+                ];
+              }
+              return [];
+            })();
+
+            // Filtered lists for the contextual Searchable Comboboxes inside Block 2 of the Left Rail
+            const rq = railSearchQuery.trim().toLowerCase();
+            const sovereignCountryMatches = Object.entries(SOVEREIGN_YIELD_CURVES)
+              .map(([code, c]) => ({
+                code,
+                name: c.country[langCode] || c.country.EN,
+                rating: c.rating,
+                y10: c.tenors['10Y'],
+              }))
+              .filter(
+                (item) =>
+                  !rq ||
+                  item.code.toLowerCase().includes(rq) ||
+                  item.name.toLowerCase().includes(rq) ||
+                  item.rating.toLowerCase().includes(rq)
+              );
+
+            const fxBaseMatches = Object.entries(WORLD_USD_RATES)
+              .map(([code, info]) => ({ code, name: info.name, rate10Y: info.rate10Y }))
+              .filter(
+                (item) =>
+                  !rq ||
+                  item.code.toLowerCase().includes(rq) ||
+                  item.name.toLowerCase().includes(rq)
+              );
+
+            const fq = fxQuoteQuery.trim().toLowerCase();
+            const fxQuoteMatches = Object.entries(WORLD_USD_RATES)
+              .map(([code, info]) => ({ code, name: info.name, rate10Y: info.rate10Y }))
+              .filter(
+                (item) =>
+                  !fq ||
+                  item.code.toLowerCase().includes(fq) ||
+                  item.name.toLowerCase().includes(fq)
+              );
+
+            const commodityMatches = enrichedCatalog
+              .filter((a) => a.cat === 'COMMODITY')
+              .filter(
+                (a) =>
+                  !rq ||
+                  a.sym.toLowerCase().includes(rq) ||
+                  a.name.toLowerCase().includes(rq)
+              );
+
+            const optionableMatches = enrichedCatalog
+              .filter((a) => ['DERIVATIVES_VOL', 'EQUITY', 'INDEX', 'ETF', 'CRYPTO'].includes(a.cat))
+              .filter(
+                (a) =>
+                  !rq ||
+                  a.sym.toLowerCase().includes(rq) ||
+                  a.name.toLowerCase().includes(rq) ||
+                  a.cat.toLowerCase().includes(rq)
+              );
+
+            const generalAssetMatches = enrichedCatalog
+              .filter(
+                (a) =>
+                  !rq ||
+                  a.sym.toLowerCase().includes(rq) ||
+                  a.name.toLowerCase().includes(rq) ||
+                  a.cat.toLowerCase().includes(rq)
+              )
+              .slice(0, 14);
+
+            const syncCatalogFxPair = (nextBase, nextQuote) => {
+              const directMatch = ASSET_CATALOG.find((a) => a.cat === 'FX' && a.sym === `${nextBase}/${nextQuote}`);
+              if (directMatch) onSelectAsset(directMatch.sym);
+            };
+
             return (
-              <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem', padding: '0.25rem 0' }}>
-                {is3DSurfaceActive && active3DSurfaceData ? (
-                  <div style={{ flex: 1, minHeight: 0 }}>
-                    <Surface3DViewer surfaceData={active3DSurfaceData} isES={isES} />
-                  </div>
-                ) : (
-                  <>
-                    <div style={{ flex: showSubChart === 'none' ? 1 : 0.74, minHeight: 0 }}>
-                      <ResponsiveContainer width="100%" height="100%">
-                        <AreaChart data={activeChartData}>
-                          <defs>
-                            <linearGradient id="feyMainGrad" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor={assetMainColor} stopOpacity={0.32} />
-                              <stop offset="95%" stopColor={assetMainColor} stopOpacity={0.0} />
-                            </linearGradient>
-                          </defs>
-                          <XAxis
-                            dataKey="time"
-                            stroke="var(--text-dim)"
-                            fontSize={11}
-                            tickLine={false}
-                            axisLine={false}
-                            hide={showSubChart !== 'none' && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isCommodityCurveMode}
-                          />
-                          <YAxis
-                            domain={['auto', 'auto']}
-                            stroke="var(--text-dim)"
-                            fontSize={11}
-                            orientation="right"
-                            tickLine={false}
-                            axisLine={false}
-                            tickFormatter={(v) =>
-                              isOptionsPayoffMode
-                                ? `$${v}`
-                                : isCompareMode || isRatesCurveMode || isOptionsSmileMode
-                                  ? `${v}%`
-                                  : v
-                            }
-                          />
-                          <Tooltip
-                            contentStyle={{
-                              backgroundColor: 'rgba(10, 15, 28, 0.92)',
-                              borderColor: 'rgba(255, 255, 255, 0.12)',
-                              borderRadius: '12px',
-                              fontSize: '0.73rem',
+              <div
+                style={{
+                  flex: 1,
+                  minHeight: 0,
+                  display: 'grid',
+                  gridTemplateColumns: '315px minmax(0, 1fr)',
+                  gap: '0.85rem',
+                  alignItems: 'stretch',
+                }}
+              >
+                {/* ============================================================ */}
+                {/* LEFT QUANT CONTROL RAIL (LQR-F: LENSES + CONTROLS + TELEMETRY)*/}
+                {/* ============================================================ */}
+                <div
+                  style={{
+                    padding: '0.75rem 0.82rem',
+                    borderRadius: '18px',
+                    backgroundColor: 'rgba(8, 12, 22, 0.56)',
+                    backdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(var(--ui-accent-rgb), 0.32)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    gap: '0.52rem',
+                    minHeight: 0,
+                  }}
+                >
+                  {/* BLOCK 1: 4 PRIMARY ANALYSIS LENSES (2x2 GRID) */}
+                  <div>
+                    <div
+                      className="mono-metric"
+                      style={{
+                        fontSize: '0.48rem',
+                        color: 'var(--ui-accent)',
+                        fontWeight: 800,
+                        marginBottom: '0.28rem',
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      {isES ? '1. LENTE DE ANÁLISIS (4.2 A 4.8)' : '1. ANALYSIS LENS (4.2 TO 4.8)'}
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.25rem' }}>
+                      {[
+                        { id: 'technical', label: isES ? 'Técnico' : 'Technical' },
+                        { id: 'compare', label: isES ? 'Comparar %' : 'Compare %' },
+                        { id: 'microstructure', label: isES ? 'Micro & Flujo' : 'Micro & Flow' },
+                        {
+                          id: 'derivatives',
+                          label:
+                            currentAsset.cat === 'RATES' || currentAsset.cat === 'FIXED_INCOME' || currentAsset.cat === 'CASH'
+                              ? isES
+                                ? 'Curva 3D/2D'
+                                : '3D/2D Curve'
+                              : currentAsset.cat === 'FX'
+                                ? isES
+                                  ? 'FX & Carry'
+                                  : 'FX Cross'
+                                : currentAsset.cat === 'COMMODITY'
+                                  ? isES
+                                    ? 'Forward 3D/2D'
+                                    : '3D/2D Forward'
+                                  : isES
+                                    ? 'Vol 3D & Payoff'
+                                    : '3D Vol & Payoff',
+                        },
+                      ].map((lens) => {
+                        const active = analysisLens === lens.id;
+                        return (
+                          <button
+                            key={lens.id}
+                            type="button"
+                            onClick={() => {
+                              setAnalysisLens(lens.id);
+                              setRailSearchQuery('');
+                              setRailSearchOpen(false);
                             }}
-                          />
+                            className="mono-metric"
+                            style={{
+                              fontSize: '0.58rem',
+                              fontWeight: active ? 800 : 600,
+                              padding: '0.26rem 0.42rem',
+                              borderRadius: '9px',
+                              border: active ? '1px solid rgba(16, 185, 129, 0.52)' : '1px solid rgba(255, 255, 255, 0.08)',
+                              backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'rgba(255, 255, 255, 0.03)',
+                              color: active ? '#ffffff' : 'var(--text-dim)',
+                              cursor: 'pointer',
+                              whiteSpace: 'nowrap',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                            }}
+                          >
+                            {lens.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
 
-                          {/* Primary Series */}
-                          <Area
-                            type="monotone"
-                            dataKey={isCompareMode ? 'pctReturn' : 'price'}
-                            name={
-                              isRatesCurveMode
-                                ? `${selectedCurveCountry} Yield (%)`
-                                : isFxCrossMode
-                                  ? `${fxBaseCcy}/${fxQuoteCcy} Cross Rate`
-                                  : isCommodityCurveMode
-                                    ? `${currentAsset.sym} Forward Curve`
-                                    : isOptionsPayoffMode
-                                      ? isES
-                                        ? 'P&L al Vencimiento ($)'
-                                        : 'Expiration Payoff P&L ($)'
-                                      : isOptionsSmileMode
-                                        ? `30D IV Surface (%)`
-                                        : isCompareMode
-                                          ? `${currentAsset.sym} (%)`
-                                          : currentAsset.sym
-                            }
-                            stroke={assetMainColor}
-                            strokeWidth={2.5}
-                            fill={isCompareMode ? 'transparent' : 'url(#feyMainGrad)'}
-                          />
-
-                          {/* Options Strategy Payoff Mode: Today T+0 Black-Scholes P&L + $0 Breakeven Line */}
-                          {isOptionsPayoffMode && (
-                            <>
-                              <Line
-                                type="monotone"
-                                dataKey="t0Pnl"
-                                name={isES ? 'P&L Hoy T+0 Black-Scholes ($)' : 'Today T+0 Black-Scholes P&L ($)'}
-                                stroke="#38bdf8"
-                                strokeWidth={2.0}
-                                strokeDasharray="4 3"
-                                dot={false}
-                              />
-                              <Line
-                                type="monotone"
-                                dataKey="zeroLine"
-                                name={isES ? 'Línea Breakeven ($0)' : 'Breakeven Line ($0)'}
-                                stroke="rgba(255,255,255,0.45)"
-                                strokeWidth={1.3}
-                                strokeDasharray="3 3"
-                                dot={false}
-                              />
-                            </>
-                          )}
-
-                          {/* 2D Volatility Surface Multi-Tenor Curves (7D, 90D, 180D) */}
-                          {isOptionsSmileMode && (
-                            <>
-                              <Line
-                                type="monotone"
-                                dataKey="iv7d"
-                                name="7D Weekly IV (%)"
-                                stroke="#f43f5e"
-                                strokeWidth={1.9}
-                                strokeDasharray="3 3"
-                                dot={false}
-                              />
-                              <Line
-                                type="monotone"
-                                dataKey="iv90d"
-                                name="90D Quarterly IV (%)"
-                                stroke="#38bdf8"
-                                strokeWidth={2.0}
-                                dot={false}
-                              />
-                              <Line
-                                type="monotone"
-                                dataKey="iv180d"
-                                name="180D LEAPS IV (%)"
-                                stroke="#a78bfa"
-                                strokeWidth={1.8}
-                                strokeDasharray="5 3"
-                                dot={false}
-                              />
-                            </>
-                          )}
-
-                          {/* US Treasury & German Bund Benchmark Overlays when viewing Sovereign Curve */}
-                          {isRatesCurveMode && selectedCurveCountry !== 'US' && (
-                            <Line
-                              type="monotone"
-                              dataKey="cmpReturn"
-                              name="US Treasury Benchmark (%)"
-                              stroke="#38bdf8"
-                              strokeWidth={1.9}
-                              strokeDasharray="4 4"
-                              dot={false}
-                            />
-                          )}
-                          {isRatesCurveMode && selectedCurveCountry !== 'DE' && (
-                            <Line
-                              type="monotone"
-                              dataKey="bundYield"
-                              name="German Bund Benchmark (%)"
-                              stroke="#a78bfa"
-                              strokeWidth={1.6}
-                              strokeDasharray="2 3"
-                              dot={false}
-                            />
-                          )}
-
-                          {/* FX Cross Triangulated SMA(20) or Commodity Spot Reference */}
-                          {(isFxCrossMode || isCommodityCurveMode) && (
-                            <Line
-                              type="monotone"
-                              dataKey="sma20"
-                              name={isCommodityCurveMode ? 'Spot Price Reference' : `${fxBaseCcy}/${fxQuoteCcy} SMA (20)`}
-                              stroke="#38bdf8"
-                              strokeWidth={1.7}
-                              strokeDasharray="4 4"
-                              dot={false}
-                            />
-                          )}
-
-                          {/* Relative Comparison Overlay Line */}
-                          {isCompareMode && (
-                            <Line
-                              type="monotone"
-                              dataKey="cmpReturn"
-                              name={`${compareSymbol} (%)`}
-                              stroke="#38bdf8"
-                              strokeWidth={2.2}
-                              dot={false}
-                            />
-                          )}
-
-                          {/* Technical Overlays (when in Technical mode and not normalized %) */}
-                          {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showSma20 && (
-                            <Line type="monotone" dataKey="sma20" name="SMA (20)" stroke="#38bdf8" strokeWidth={1.6} strokeDasharray="4 4" dot={false} />
-                          )}
-                          {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showVwap && (
-                            <Line type="monotone" dataKey="vwap" name="VWAP" stroke="#f59e0b" strokeWidth={1.6} dot={false} />
-                          )}
-                          {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showBollinger && (
-                            <>
-                              <Line type="monotone" dataKey="bbUpper" name="BB Upper" stroke="#a78bfa" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
-                              <Line type="monotone" dataKey="bbLower" name="BB Lower" stroke="#a78bfa" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
-                            </>
-                          )}
-                        </AreaChart>
-                      </ResponsiveContainer>
+                  {/* BLOCK 2: SUB-MODES, OVERLAYS & SEARCHABLE ASSET/COUNTRY/CCY COMBOBOX */}
+                  <div
+                    style={{
+                      borderTop: '1px solid rgba(255, 255, 255, 0.07)',
+                      paddingTop: '0.42rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.38rem',
+                    }}
+                  >
+                    <div
+                      className="mono-metric"
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        fontSize: '0.48rem',
+                        color: 'var(--ui-accent)',
+                        fontWeight: 800,
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      <span>{isES ? '2. SUB-MODO & BUSCADOR' : '2. SUB-MODE & SEARCH'}</span>
+                      <span style={{ color: 'var(--text-dim)' }}>
+                        {isRatesCurveMode
+                          ? `${selectedCurveCountry} • 42 PAÍSES`
+                          : isFxCrossMode
+                            ? `${fxBaseCcy}/${fxQuoteCcy} • 61 CCY`
+                            : `${currentAsset.sym} • ${currentAsset.cat}`}
+                      </span>
                     </div>
 
-                    {/* Synchronized Sub-Pane (Volume Histogram or Intraday Z-Score) */}
-                    {showSubChart !== 'none' && (
-                      <div style={{ flex: 0.26, minHeight: 0, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '0.35rem' }}>
+                    {/* 4.2 TECHNICAL OVERLAYS: 2x2 Toggle Grid + Searchable Asset Combobox */}
+                    {analysisLens === 'technical' && (
+                      <>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.24rem' }}>
+                          {[
+                            { label: 'SMA (20)', active: showSma20, toggle: () => setShowSma20(!showSma20), color: '#38bdf8' },
+                            { label: 'Bollinger (2σ)', active: showBollinger, toggle: () => setShowBollinger(!showBollinger), color: '#a78bfa' },
+                            { label: 'VWAP', active: showVwap, toggle: () => setShowVwap(!showVwap), color: '#f59e0b' },
+                            {
+                              label: isES ? 'Panel: Volumen' : 'Sub: Volume',
+                              active: showSubChart === 'vol',
+                              toggle: () => setShowSubChart(showSubChart === 'vol' ? 'none' : 'vol'),
+                              color: '#10b981',
+                            },
+                          ].map((tool) => (
+                            <button
+                              key={tool.label}
+                              type="button"
+                              onClick={tool.toggle}
+                              className="mono-metric"
+                              style={{
+                                fontSize: '0.56rem',
+                                fontWeight: tool.active ? 800 : 600,
+                                padding: '0.2rem 0.42rem',
+                                borderRadius: '8px',
+                                border: tool.active ? `1px solid ${tool.color}` : '1px solid rgba(255,255,255,0.09)',
+                                backgroundColor: tool.active ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.02)',
+                                color: tool.active ? tool.color : 'var(--text-dim)',
+                                cursor: 'pointer',
+                                textAlign: 'center',
+                              }}
+                            >
+                              {tool.label}
+                            </button>
+                          ))}
+                        </div>
+
+                        {/* Searchable Asset Combobox */}
+                        <div style={{ position: 'relative' }}>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.38rem',
+                              backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                              border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
+                              borderRadius: '999px',
+                              padding: '0.24rem 0.65rem',
+                            }}
+                          >
+                            <Search size={11} style={{ color: 'var(--ui-accent)', flexShrink: 0 }} />
+                            <input
+                              type="text"
+                              value={railSearchQuery}
+                              onFocus={() => {
+                                setRailSearchOpen(true);
+                                setRailSearchIdx(0);
+                              }}
+                              onBlur={() => setTimeout(() => setRailSearchOpen(false), 160)}
+                              onChange={(e) => {
+                                setRailSearchQuery(e.target.value);
+                                setRailSearchOpen(true);
+                                setRailSearchIdx(0);
+                              }}
+                              onKeyDown={(e) => {
+                                if (!generalAssetMatches.length) return;
+                                if (e.key === 'ArrowDown') {
+                                  e.preventDefault();
+                                  setRailSearchIdx((p) => (p + 1) % generalAssetMatches.length);
+                                } else if (e.key === 'ArrowUp') {
+                                  e.preventDefault();
+                                  setRailSearchIdx((p) => (p - 1 + generalAssetMatches.length) % generalAssetMatches.length);
+                                } else if (e.key === 'Enter') {
+                                  e.preventDefault();
+                                  const target = generalAssetMatches[railSearchIdx] || generalAssetMatches[0];
+                                  if (target) {
+                                    syncTickerDependentToolState(target.sym);
+                                    setRailSearchQuery('');
+                                    setRailSearchOpen(false);
+                                  }
+                                } else if (e.key === 'Escape') {
+                                  setRailSearchOpen(false);
+                                }
+                              }}
+                              placeholder={
+                                isES
+                                  ? `Buscar activo (${currentAsset.sym})...`
+                                  : `Search asset (${currentAsset.sym})...`
+                              }
+                              style={{
+                                background: 'transparent',
+                                border: 'none',
+                                outline: 'none',
+                                color: '#ffffff',
+                                fontSize: '0.62rem',
+                                width: '100%',
+                              }}
+                            />
+                          </div>
+
+                          {railSearchOpen && (
+                            <div
+                              style={{
+                                position: 'absolute',
+                                top: 'calc(100% + 5px)',
+                                left: 0,
+                                right: 0,
+                                maxHeight: '210px',
+                                overflowY: 'auto',
+                                borderRadius: '12px',
+                                backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                border: '1px solid rgba(var(--ui-accent-rgb), 0.42)',
+                                boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
+                                padding: '0.28rem',
+                                zIndex: 95,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.14rem',
+                              }}
+                            >
+                              {generalAssetMatches.map((item, idx) => (
+                                <button
+                                  key={item.sym}
+                                  type="button"
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    syncTickerDependentToolState(item.sym);
+                                    setRailSearchQuery('');
+                                    setRailSearchOpen(false);
+                                  }}
+                                  style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    padding: '0.34rem 0.5rem',
+                                    borderRadius: '8px',
+                                    border: 'none',
+                                    backgroundColor:
+                                      idx === railSearchIdx || item.sym === currentAsset.sym
+                                        ? 'rgba(var(--ui-accent-rgb), 0.18)'
+                                        : 'transparent',
+                                    color: '#ffffff',
+                                    cursor: 'pointer',
+                                    textAlign: 'left',
+                                  }}
+                                >
+                                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800 }}>
+                                    {item.sym}{' '}
+                                    <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>
+                                      • {item.name.slice(0, 18)}
+                                    </span>
+                                  </span>
+                                  <span className="mono-metric" style={{ fontSize: '0.56rem', color: item.chgNum >= 0 ? '#10b981' : '#f43f5e', fontWeight: 700 }}>
+                                    {item.chg}
+                                  </span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    )}
+
+                    {/* 4.3 RELATIVE COMPARISON (%): Searchable Compatible Peer Combobox */}
+                    {analysisLens === 'compare' && (
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem', position: 'relative' }}>
+                        {compareSymbol && (
+                          <div
+                            className="mono-metric"
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              gap: '0.35rem',
+                              fontSize: '0.58rem',
+                              fontWeight: 800,
+                              padding: '0.2rem 0.55rem',
+                              borderRadius: '9px',
+                              border: '1px solid #38bdf8',
+                              backgroundColor: 'rgba(56, 189, 248, 0.16)',
+                              color: '#38bdf8',
+                            }}
+                          >
+                            <span>
+                              vs {compareSymbol} ({getAssetBySymbol(compareSymbol).cat} • {getAssetBySymbol(compareSymbol).chg})
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setCompareSymbol(null);
+                                setCompareQuery('');
+                              }}
+                              style={{ background: 'transparent', border: 'none', color: '#38bdf8', cursor: 'pointer', padding: 0, display: 'flex' }}
+                            >
+                              <X size={11} />
+                            </button>
+                          </div>
+                        )}
+
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.38rem',
+                            backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                            border: '1px solid rgba(56, 189, 248, 0.42)',
+                            borderRadius: '999px',
+                            padding: '0.24rem 0.65rem',
+                          }}
+                        >
+                          <Search size={11} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                          <input
+                            type="text"
+                            value={compareQuery}
+                            onFocus={() => setCompareDropdownOpen(true)}
+                            onBlur={() => setTimeout(() => setCompareDropdownOpen(false), 160)}
+                            onChange={(e) => {
+                              setCompareQuery(e.target.value);
+                              setCompareDropdownOpen(true);
+                              setCompareSelectedIndex(0);
+                            }}
+                            onKeyDown={(e) => {
+                              if (!compatibleCompareMatches.length) return;
+                              if (e.key === 'ArrowDown') {
+                                e.preventDefault();
+                                setCompareSelectedIndex((prev) => (prev + 1) % compatibleCompareMatches.length);
+                              } else if (e.key === 'ArrowUp') {
+                                e.preventDefault();
+                                setCompareSelectedIndex((prev) => (prev - 1 + compatibleCompareMatches.length) % compatibleCompareMatches.length);
+                              } else if (e.key === 'Enter') {
+                                e.preventDefault();
+                                const target = compatibleCompareMatches[compareSelectedIndex] || compatibleCompareMatches[0];
+                                if (target) {
+                                  setCompareSymbol(target.sym);
+                                  setCompareQuery('');
+                                  setCompareDropdownOpen(false);
+                                }
+                              } else if (e.key === 'Escape') {
+                                setCompareDropdownOpen(false);
+                              }
+                            }}
+                            placeholder={
+                              isES
+                                ? `Buscar par compatible (${currentAsset.cat})...`
+                                : `Search compatible peer (${currentAsset.cat})...`
+                            }
+                            style={{
+                              background: 'transparent',
+                              border: 'none',
+                              outline: 'none',
+                              color: '#ffffff',
+                              fontSize: '0.62rem',
+                              width: '100%',
+                            }}
+                          />
+                        </div>
+
+                        {compareDropdownOpen && (
+                          <div
+                            style={{
+                              position: 'absolute',
+                              top: 'calc(100% + 5px)',
+                              left: 0,
+                              right: 0,
+                              maxHeight: '215px',
+                              overflowY: 'auto',
+                              borderRadius: '12px',
+                              backgroundColor: 'rgba(10, 15, 26, 0.98)',
+                              border: '1px solid rgba(56, 189, 248, 0.42)',
+                              boxShadow: '0 16px 36px rgba(0, 0, 0, 0.8)',
+                              padding: '0.28rem',
+                              zIndex: 95,
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: '0.15rem',
+                            }}
+                          >
+                            {compatibleCompareMatches.map((peer, idx) => {
+                              const isHighlighted = idx === compareSelectedIndex;
+                              const isActive = compareSymbol === peer.sym;
+                              return (
+                                <button
+                                  key={peer.sym}
+                                  type="button"
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    setCompareSymbol(peer.sym);
+                                    setCompareQuery('');
+                                    setCompareDropdownOpen(false);
+                                  }}
+                                  style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'space-between',
+                                    gap: '0.4rem',
+                                    padding: '0.35rem 0.5rem',
+                                    borderRadius: '8px',
+                                    backgroundColor: isActive || isHighlighted ? 'rgba(56, 189, 248, 0.16)' : 'transparent',
+                                    border: isActive ? '1px solid rgba(56, 189, 248, 0.45)' : '1px solid transparent',
+                                    cursor: 'pointer',
+                                    textAlign: 'left',
+                                  }}
+                                >
+                                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: '#ffffff' }}>
+                                    {peer.sym}{' '}
+                                    <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>
+                                      • {peer.name.slice(0, 16)}
+                                    </span>
+                                  </span>
+                                  <span className="mono-metric" style={{ fontSize: '0.58rem', fontWeight: 700, color: peer.chgNum >= 0 ? '#10b981' : '#f43f5e' }}>
+                                    {peer.chg}
+                                  </span>
+                                </button>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* 4.4 MICROSTRUCTURE & FLOW: Sub-Pane Switcher + Searchable Asset Combobox */}
+                    {analysisLens === 'microstructure' && (
+                      <>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.24rem' }}>
+                          {[
+                            { label: 'Z-Score (20d)', id: 'zscore' },
+                            { label: '24h Vol Bars', id: 'vol' },
+                          ].map((pane) => {
+                            const active = showSubChart === pane.id;
+                            return (
+                              <button
+                                key={pane.id}
+                                type="button"
+                                onClick={() => setShowSubChart(pane.id)}
+                                className="mono-metric"
+                                style={{
+                                  fontSize: '0.57rem',
+                                  fontWeight: active ? 800 : 600,
+                                  padding: '0.22rem 0.42rem',
+                                  borderRadius: '8px',
+                                  border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.09)',
+                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.16)' : 'rgba(255,255,255,0.02)',
+                                  color: active ? '#10b981' : 'var(--text-dim)',
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                {pane.label}
+                              </button>
+                            );
+                          })}
+                        </div>
+
+                        <div style={{ position: 'relative' }}>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.38rem',
+                              backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                              border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
+                              borderRadius: '999px',
+                              padding: '0.24rem 0.65rem',
+                            }}
+                          >
+                            <Search size={11} style={{ color: 'var(--ui-accent)', flexShrink: 0 }} />
+                            <input
+                              type="text"
+                              value={railSearchQuery}
+                              onFocus={() => {
+                                setRailSearchOpen(true);
+                                setRailSearchIdx(0);
+                              }}
+                              onBlur={() => setTimeout(() => setRailSearchOpen(false), 160)}
+                              onChange={(e) => {
+                                setRailSearchQuery(e.target.value);
+                                setRailSearchOpen(true);
+                                setRailSearchIdx(0);
+                              }}
+                              onKeyDown={(e) => {
+                                if (!generalAssetMatches.length) return;
+                                if (e.key === 'ArrowDown') {
+                                  e.preventDefault();
+                                  setRailSearchIdx((p) => (p + 1) % generalAssetMatches.length);
+                                } else if (e.key === 'ArrowUp') {
+                                  e.preventDefault();
+                                  setRailSearchIdx((p) => (p - 1 + generalAssetMatches.length) % generalAssetMatches.length);
+                                } else if (e.key === 'Enter') {
+                                  e.preventDefault();
+                                  const target = generalAssetMatches[railSearchIdx] || generalAssetMatches[0];
+                                  if (target) {
+                                    syncTickerDependentToolState(target.sym);
+                                    setRailSearchQuery('');
+                                    setRailSearchOpen(false);
+                                  }
+                                } else if (e.key === 'Escape') {
+                                  setRailSearchOpen(false);
+                                }
+                              }}
+                              placeholder={
+                                isES
+                                  ? `Buscar activo (${currentAsset.sym})...`
+                                  : `Search asset (${currentAsset.sym})...`
+                              }
+                              style={{
+                                background: 'transparent',
+                                border: 'none',
+                                outline: 'none',
+                                color: '#ffffff',
+                                fontSize: '0.62rem',
+                                width: '100%',
+                              }}
+                            />
+                          </div>
+
+                          {railSearchOpen && (
+                            <div
+                              style={{
+                                position: 'absolute',
+                                top: 'calc(100% + 5px)',
+                                left: 0,
+                                right: 0,
+                                maxHeight: '210px',
+                                overflowY: 'auto',
+                                borderRadius: '12px',
+                                backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                border: '1px solid rgba(var(--ui-accent-rgb), 0.42)',
+                                boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
+                                padding: '0.28rem',
+                                zIndex: 95,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.14rem',
+                              }}
+                            >
+                              {generalAssetMatches.map((item, idx) => (
+                                <button
+                                  key={item.sym}
+                                  type="button"
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    syncTickerDependentToolState(item.sym);
+                                    setRailSearchQuery('');
+                                    setRailSearchOpen(false);
+                                  }}
+                                  style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    padding: '0.34rem 0.5rem',
+                                    borderRadius: '8px',
+                                    border: 'none',
+                                    backgroundColor:
+                                      idx === railSearchIdx || item.sym === currentAsset.sym
+                                        ? 'rgba(var(--ui-accent-rgb), 0.18)'
+                                        : 'transparent',
+                                    color: '#ffffff',
+                                    cursor: 'pointer',
+                                    textAlign: 'left',
+                                  }}
+                                >
+                                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800 }}>
+                                    {item.sym}{' '}
+                                    <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>
+                                      • {item.name.slice(0, 18)}
+                                    </span>
+                                  </span>
+                                  <span className="mono-metric" style={{ fontSize: '0.56rem', color: '#10b981', fontWeight: 700 }}>
+                                    {item.volumeZScore}
+                                  </span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    )}
+
+                    {/* 4.6 SOVEREIGN YIELD CURVE (42 COUNTRIES): 3D/2D Sub-Modes + Searchable Country Combobox */}
+                    {isRatesCurveMode && (
+                      <>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.22rem' }}>
+                          {[
+                            { id: '3d-history', label: isES ? '3D (Hist)' : '3D (Hist)' },
+                            { id: '3d-peers', label: isES ? '3D (Países)' : '3D (Peers)' },
+                            { id: '2d', label: isES ? 'Curva 2D' : '2D Curve' },
+                          ].map((sub) => {
+                            const active = ratesSubView === sub.id;
+                            return (
+                              <button
+                                key={sub.id}
+                                type="button"
+                                onClick={() => setRatesSubView(sub.id)}
+                                className="mono-metric"
+                                style={{
+                                  fontSize: '0.56rem',
+                                  fontWeight: active ? 800 : 600,
+                                  padding: '0.22rem 0.35rem',
+                                  borderRadius: '8px',
+                                  border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.09)',
+                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'rgba(255,255,255,0.02)',
+                                  color: active ? '#10b981' : 'var(--text-dim)',
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                {sub.label}
+                              </button>
+                            );
+                          })}
+                        </div>
+
+                        {/* Searchable Country Combobox (42 Sovereign Countries) */}
+                        <div style={{ position: 'relative' }}>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.38rem',
+                              backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                              border: '1px solid rgba(16, 185, 129, 0.45)',
+                              borderRadius: '999px',
+                              padding: '0.24rem 0.65rem',
+                            }}
+                          >
+                            <Search size={11} style={{ color: '#10b981', flexShrink: 0 }} />
+                            <input
+                              type="text"
+                              value={railSearchQuery}
+                              onFocus={() => {
+                                setRailSearchOpen(true);
+                                setRailSearchIdx(0);
+                              }}
+                              onBlur={() => setTimeout(() => setRailSearchOpen(false), 160)}
+                              onChange={(e) => {
+                                setRailSearchQuery(e.target.value);
+                                setRailSearchOpen(true);
+                                setRailSearchIdx(0);
+                              }}
+                              onKeyDown={(e) => {
+                                if (!sovereignCountryMatches.length) return;
+                                if (e.key === 'ArrowDown') {
+                                  e.preventDefault();
+                                  setRailSearchIdx((p) => (p + 1) % sovereignCountryMatches.length);
+                                } else if (e.key === 'ArrowUp') {
+                                  e.preventDefault();
+                                  setRailSearchIdx((p) => (p - 1 + sovereignCountryMatches.length) % sovereignCountryMatches.length);
+                                } else if (e.key === 'Enter') {
+                                  e.preventDefault();
+                                  const target = sovereignCountryMatches[railSearchIdx] || sovereignCountryMatches[0];
+                                  if (target) {
+                                    setSelectedCurveCountry(target.code);
+                                    const matchingRateAsset =
+                                      ASSET_CATALOG.find((a) => a.cat === 'RATES' && a.countryCode === target.code && a.sym.endsWith('10Y')) ||
+                                      ASSET_CATALOG.find((a) => a.cat === 'RATES' && a.countryCode === target.code);
+                                    if (matchingRateAsset) onSelectAsset(matchingRateAsset.sym);
+                                    setRailSearchQuery('');
+                                    setRailSearchOpen(false);
+                                  }
+                                } else if (e.key === 'Escape') {
+                                  setRailSearchOpen(false);
+                                }
+                              }}
+                              placeholder={
+                                isES
+                                  ? `Buscar país (${selectedCurveCountry} • ${SOVEREIGN_YIELD_CURVES[selectedCurveCountry]?.country?.ES || selectedCurveCountry})...`
+                                  : `Search country (${selectedCurveCountry} • ${SOVEREIGN_YIELD_CURVES[selectedCurveCountry]?.country?.EN || selectedCurveCountry})...`
+                              }
+                              style={{
+                                background: 'transparent',
+                                border: 'none',
+                                outline: 'none',
+                                color: '#ffffff',
+                                fontSize: '0.62rem',
+                                width: '100%',
+                              }}
+                            />
+                          </div>
+
+                          {railSearchOpen && (
+                            <div
+                              style={{
+                                position: 'absolute',
+                                top: 'calc(100% + 5px)',
+                                left: 0,
+                                right: 0,
+                                maxHeight: '220px',
+                                overflowY: 'auto',
+                                borderRadius: '12px',
+                                backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                border: '1px solid rgba(16, 185, 129, 0.45)',
+                                boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
+                                padding: '0.28rem',
+                                zIndex: 95,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.14rem',
+                              }}
+                            >
+                              {sovereignCountryMatches.map((item, idx) => (
+                                <button
+                                  key={item.code}
+                                  type="button"
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    setSelectedCurveCountry(item.code);
+                                    const matchingRateAsset =
+                                      ASSET_CATALOG.find((a) => a.cat === 'RATES' && a.countryCode === item.code && a.sym.endsWith('10Y')) ||
+                                      ASSET_CATALOG.find((a) => a.cat === 'RATES' && a.countryCode === item.code);
+                                    if (matchingRateAsset) onSelectAsset(matchingRateAsset.sym);
+                                    setRailSearchQuery('');
+                                    setRailSearchOpen(false);
+                                  }}
+                                  style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    padding: '0.34rem 0.5rem',
+                                    borderRadius: '8px',
+                                    border: 'none',
+                                    backgroundColor:
+                                      idx === railSearchIdx || item.code === selectedCurveCountry
+                                        ? 'rgba(16, 185, 129, 0.18)'
+                                        : 'transparent',
+                                    color: '#ffffff',
+                                    cursor: 'pointer',
+                                    textAlign: 'left',
+                                  }}
+                                >
+                                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800 }}>
+                                    {item.code}{' '}
+                                    <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>
+                                      • {item.name} ({item.rating})
+                                    </span>
+                                  </span>
+                                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: '#10b981', fontWeight: 800 }}>
+                                    10Y {item.y10}%
+                                  </span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    )}
+
+                    {/* 4.7 FX CROSS CONVERTER (61 CURRENCIES): Notional + Swap + 2 Searchable CCY Comboboxes */}
+                    {isFxCrossMode && (
+                      <>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.28rem' }}>
+                          <input
+                            type="number"
+                            min="1"
+                            value={fxAmount}
+                            onChange={(e) => setFxAmount(Math.max(1, Number(e.target.value) || 1))}
+                            className="mono-metric"
+                            style={{
+                              width: '76px',
+                              backgroundColor: 'rgba(13, 19, 33, 0.92)',
+                              color: '#ffffff',
+                              border: '1px solid rgba(255, 255, 255, 0.18)',
+                              borderRadius: '8px',
+                              padding: '0.2rem 0.42rem',
+                              fontSize: '0.6rem',
+                              fontWeight: 800,
+                              outline: 'none',
+                              textAlign: 'right',
+                            }}
+                          />
+                          {[1000, 10000, 100000].map((amt) => (
+                            <button
+                              key={amt}
+                              type="button"
+                              onClick={() => setFxAmount(amt)}
+                              className="mono-metric"
+                              style={{
+                                flex: 1,
+                                fontSize: '0.54rem',
+                                fontWeight: fxAmount === amt ? 800 : 600,
+                                padding: '0.2rem 0.28rem',
+                                borderRadius: '8px',
+                                border: fxAmount === amt ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.1)',
+                                backgroundColor: fxAmount === amt ? 'rgba(16,185,129,0.18)' : 'transparent',
+                                color: fxAmount === amt ? '#10b981' : 'var(--text-dim)',
+                                cursor: 'pointer',
+                              }}
+                            >
+                              {amt >= 1000 ? `${amt / 1000}k` : amt}
+                            </button>
+                          ))}
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const prevBase = fxBaseCcy;
+                              const nextBase = fxQuoteCcy;
+                              setFxBaseCcy(nextBase);
+                              setFxQuoteCcy(prevBase);
+                              syncCatalogFxPair(nextBase, prevBase);
+                            }}
+                            title={isES ? 'Invertir par de divisas' : 'Swap currency pair'}
+                            className="mono-metric"
+                            style={{
+                              backgroundColor: 'rgba(255,255,255,0.08)',
+                              color: '#ffffff',
+                              border: '1px solid rgba(255,255,255,0.18)',
+                              borderRadius: '8px',
+                              padding: '0.18rem 0.45rem',
+                              fontSize: '0.62rem',
+                              fontWeight: 800,
+                              cursor: 'pointer',
+                            }}
+                          >
+                            ⇄
+                          </button>
+                        </div>
+
+                        {/* Two Searchable Currency Comboboxes (Base CCY & Quote CCY across 61 ISO Currencies) */}
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.28rem' }}>
+                          {/* Base CCY Search Combobox */}
+                          <div style={{ position: 'relative' }}>
+                            <div
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.28rem',
+                                backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                                border: '1px solid rgba(16, 185, 129, 0.45)',
+                                borderRadius: '999px',
+                                padding: '0.22rem 0.5rem',
+                              }}
+                            >
+                              <Search size={10} style={{ color: '#10b981', flexShrink: 0 }} />
+                              <input
+                                type="text"
+                                value={railSearchQuery}
+                                onFocus={() => {
+                                  setRailSearchOpen(true);
+                                  setRailSearchIdx(0);
+                                }}
+                                onBlur={() => setTimeout(() => setRailSearchOpen(false), 160)}
+                                onChange={(e) => {
+                                  setRailSearchQuery(e.target.value);
+                                  setRailSearchOpen(true);
+                                  setRailSearchIdx(0);
+                                }}
+                                onKeyDown={(e) => {
+                                  if (!fxBaseMatches.length) return;
+                                  if (e.key === 'ArrowDown') {
+                                    e.preventDefault();
+                                    setRailSearchIdx((p) => (p + 1) % fxBaseMatches.length);
+                                  } else if (e.key === 'ArrowUp') {
+                                    e.preventDefault();
+                                    setRailSearchIdx((p) => (p - 1 + fxBaseMatches.length) % fxBaseMatches.length);
+                                  } else if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    const target = fxBaseMatches[railSearchIdx] || fxBaseMatches[0];
+                                    if (target) {
+                                      setFxBaseCcy(target.code);
+                                      syncCatalogFxPair(target.code, fxQuoteCcy);
+                                      setRailSearchQuery('');
+                                      setRailSearchOpen(false);
+                                    }
+                                  } else if (e.key === 'Escape') {
+                                    setRailSearchOpen(false);
+                                  }
+                                }}
+                                placeholder={`Base: ${fxBaseCcy}`}
+                                style={{
+                                  background: 'transparent',
+                                  border: 'none',
+                                  outline: 'none',
+                                  color: '#10b981',
+                                  fontWeight: 700,
+                                  fontSize: '0.58rem',
+                                  width: '100%',
+                                }}
+                              />
+                            </div>
+
+                            {railSearchOpen && (
+                              <div
+                                style={{
+                                  position: 'absolute',
+                                  top: 'calc(100% + 5px)',
+                                  left: 0,
+                                  width: '230px',
+                                  maxHeight: '210px',
+                                  overflowY: 'auto',
+                                  borderRadius: '12px',
+                                  backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                  border: '1px solid rgba(16, 185, 129, 0.45)',
+                                  boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
+                                  padding: '0.28rem',
+                                  zIndex: 95,
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  gap: '0.12rem',
+                                }}
+                              >
+                                {fxBaseMatches.map((item, idx) => (
+                                  <button
+                                    key={item.code}
+                                    type="button"
+                                    onMouseDown={(e) => {
+                                      e.preventDefault();
+                                      setFxBaseCcy(item.code);
+                                      syncCatalogFxPair(item.code, fxQuoteCcy);
+                                      setRailSearchQuery('');
+                                      setRailSearchOpen(false);
+                                    }}
+                                    style={{
+                                      display: 'flex',
+                                      justifyContent: 'space-between',
+                                      alignItems: 'center',
+                                      padding: '0.32rem 0.48rem',
+                                      borderRadius: '8px',
+                                      border: 'none',
+                                      backgroundColor:
+                                        idx === railSearchIdx || item.code === fxBaseCcy
+                                          ? 'rgba(16, 185, 129, 0.18)'
+                                          : 'transparent',
+                                      color: '#ffffff',
+                                      cursor: 'pointer',
+                                      textAlign: 'left',
+                                    }}
+                                  >
+                                    <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800 }}>
+                                      {item.code} <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>• {item.name.slice(0, 15)}</span>
+                                    </span>
+                                    <span className="mono-metric" style={{ fontSize: '0.54rem', color: '#10b981' }}>
+                                      {item.rate10Y}%
+                                    </span>
+                                  </button>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Quote CCY Search Combobox */}
+                          <div style={{ position: 'relative' }}>
+                            <div
+                              style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.28rem',
+                                backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                                border: '1px solid rgba(56, 189, 248, 0.45)',
+                                borderRadius: '999px',
+                                padding: '0.22rem 0.5rem',
+                              }}
+                            >
+                              <Search size={10} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                              <input
+                                type="text"
+                                value={fxQuoteQuery}
+                                onFocus={() => {
+                                  setFxQuoteOpen(true);
+                                  setFxQuoteIdx(0);
+                                }}
+                                onBlur={() => setTimeout(() => setFxQuoteOpen(false), 160)}
+                                onChange={(e) => {
+                                  setFxQuoteQuery(e.target.value);
+                                  setFxQuoteOpen(true);
+                                  setFxQuoteIdx(0);
+                                }}
+                                onKeyDown={(e) => {
+                                  if (!fxQuoteMatches.length) return;
+                                  if (e.key === 'ArrowDown') {
+                                    e.preventDefault();
+                                    setFxQuoteIdx((p) => (p + 1) % fxQuoteMatches.length);
+                                  } else if (e.key === 'ArrowUp') {
+                                    e.preventDefault();
+                                    setFxQuoteIdx((p) => (p - 1 + fxQuoteMatches.length) % fxQuoteMatches.length);
+                                  } else if (e.key === 'Enter') {
+                                    e.preventDefault();
+                                    const target = fxQuoteMatches[fxQuoteIdx] || fxQuoteMatches[0];
+                                    if (target) {
+                                      setFxQuoteCcy(target.code);
+                                      syncCatalogFxPair(fxBaseCcy, target.code);
+                                      setFxQuoteQuery('');
+                                      setFxQuoteOpen(false);
+                                    }
+                                  } else if (e.key === 'Escape') {
+                                    setFxQuoteOpen(false);
+                                  }
+                                }}
+                                placeholder={`Quote: ${fxQuoteCcy}`}
+                                style={{
+                                  background: 'transparent',
+                                  border: 'none',
+                                  outline: 'none',
+                                  color: '#38bdf8',
+                                  fontWeight: 700,
+                                  fontSize: '0.58rem',
+                                  width: '100%',
+                                }}
+                              />
+                            </div>
+
+                            {fxQuoteOpen && (
+                              <div
+                                style={{
+                                  position: 'absolute',
+                                  top: 'calc(100% + 5px)',
+                                  right: 0,
+                                  width: '230px',
+                                  maxHeight: '210px',
+                                  overflowY: 'auto',
+                                  borderRadius: '12px',
+                                  backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                  border: '1px solid rgba(56, 189, 248, 0.45)',
+                                  boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
+                                  padding: '0.28rem',
+                                  zIndex: 95,
+                                  display: 'flex',
+                                  flexDirection: 'column',
+                                  gap: '0.12rem',
+                                }}
+                              >
+                                {fxQuoteMatches.map((item, idx) => (
+                                  <button
+                                    key={item.code}
+                                    type="button"
+                                    onMouseDown={(e) => {
+                                      e.preventDefault();
+                                      setFxQuoteCcy(item.code);
+                                      syncCatalogFxPair(fxBaseCcy, item.code);
+                                      setFxQuoteQuery('');
+                                      setFxQuoteOpen(false);
+                                    }}
+                                    style={{
+                                      display: 'flex',
+                                      justifyContent: 'space-between',
+                                      alignItems: 'center',
+                                      padding: '0.32rem 0.48rem',
+                                      borderRadius: '8px',
+                                      border: 'none',
+                                      backgroundColor:
+                                        idx === fxQuoteIdx || item.code === fxQuoteCcy
+                                          ? 'rgba(56, 189, 248, 0.18)'
+                                          : 'transparent',
+                                      color: '#ffffff',
+                                      cursor: 'pointer',
+                                      textAlign: 'left',
+                                    }}
+                                  >
+                                    <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800 }}>
+                                      {item.code} <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>• {item.name.slice(0, 15)}</span>
+                                    </span>
+                                    <span className="mono-metric" style={{ fontSize: '0.54rem', color: '#38bdf8' }}>
+                                      {item.rate10Y}%
+                                    </span>
+                                  </button>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </>
+                    )}
+
+                    {/* 4.8 COMMODITY FORWARD (26 FUTURES): 3D/2D Sub-Modes + Searchable Commodity Combobox */}
+                    {isCommodityCurveMode && (
+                      <>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.24rem' }}>
+                          {[
+                            { id: '3d', label: isES ? 'Superficie 3D' : '3D Surface' },
+                            { id: '2d', label: isES ? 'Curva 2D' : '2D Curve' },
+                          ].map((sub) => {
+                            const active = commoditySubView === sub.id;
+                            return (
+                              <button
+                                key={sub.id}
+                                type="button"
+                                onClick={() => setCommoditySubView(sub.id)}
+                                className="mono-metric"
+                                style={{
+                                  fontSize: '0.57rem',
+                                  fontWeight: active ? 800 : 600,
+                                  padding: '0.22rem 0.4rem',
+                                  borderRadius: '8px',
+                                  border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.09)',
+                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'rgba(255,255,255,0.02)',
+                                  color: active ? '#10b981' : 'var(--text-dim)',
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                {sub.label}
+                              </button>
+                            );
+                          })}
+                        </div>
+
+                        {/* Searchable Commodity Combobox */}
+                        <div style={{ position: 'relative' }}>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.38rem',
+                              backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                              border: '1px solid rgba(16, 185, 129, 0.45)',
+                              borderRadius: '999px',
+                              padding: '0.24rem 0.65rem',
+                            }}
+                          >
+                            <Search size={11} style={{ color: '#10b981', flexShrink: 0 }} />
+                            <input
+                              type="text"
+                              value={railSearchQuery}
+                              onFocus={() => {
+                                setRailSearchOpen(true);
+                                setRailSearchIdx(0);
+                              }}
+                              onBlur={() => setTimeout(() => setRailSearchOpen(false), 160)}
+                              onChange={(e) => {
+                                setRailSearchQuery(e.target.value);
+                                setRailSearchOpen(true);
+                                setRailSearchIdx(0);
+                              }}
+                              onKeyDown={(e) => {
+                                if (!commodityMatches.length) return;
+                                if (e.key === 'ArrowDown') {
+                                  e.preventDefault();
+                                  setRailSearchIdx((p) => (p + 1) % commodityMatches.length);
+                                } else if (e.key === 'ArrowUp') {
+                                  e.preventDefault();
+                                  setRailSearchIdx((p) => (p - 1 + commodityMatches.length) % commodityMatches.length);
+                                } else if (e.key === 'Enter') {
+                                  e.preventDefault();
+                                  const target = commodityMatches[railSearchIdx] || commodityMatches[0];
+                                  if (target) {
+                                    syncTickerDependentToolState(target.sym);
+                                    setRailSearchQuery('');
+                                    setRailSearchOpen(false);
+                                  }
+                                } else if (e.key === 'Escape') {
+                                  setRailSearchOpen(false);
+                                }
+                              }}
+                              placeholder={
+                                isES
+                                  ? `Buscar commodity (${currentAsset.sym} • ${currentAsset.name})...`
+                                  : `Search commodity (${currentAsset.sym} • ${currentAsset.name})...`
+                              }
+                              style={{
+                                background: 'transparent',
+                                border: 'none',
+                                outline: 'none',
+                                color: '#ffffff',
+                                fontSize: '0.62rem',
+                                width: '100%',
+                              }}
+                            />
+                          </div>
+
+                          {railSearchOpen && (
+                            <div
+                              style={{
+                                position: 'absolute',
+                                top: 'calc(100% + 5px)',
+                                left: 0,
+                                right: 0,
+                                maxHeight: '215px',
+                                overflowY: 'auto',
+                                borderRadius: '12px',
+                                backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                border: '1px solid rgba(16, 185, 129, 0.45)',
+                                boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
+                                padding: '0.28rem',
+                                zIndex: 95,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.14rem',
+                              }}
+                            >
+                              {commodityMatches.map((cm, idx) => (
+                                <button
+                                  key={cm.sym}
+                                  type="button"
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    syncTickerDependentToolState(cm.sym);
+                                    setRailSearchQuery('');
+                                    setRailSearchOpen(false);
+                                  }}
+                                  style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    padding: '0.34rem 0.5rem',
+                                    borderRadius: '8px',
+                                    border: 'none',
+                                    backgroundColor:
+                                      idx === railSearchIdx || cm.sym === currentAsset.sym
+                                        ? 'rgba(16, 185, 129, 0.18)'
+                                        : 'transparent',
+                                    color: '#ffffff',
+                                    cursor: 'pointer',
+                                    textAlign: 'left',
+                                  }}
+                                >
+                                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800 }}>
+                                    {cm.sym}{' '}
+                                    <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>
+                                      • {cm.name.slice(0, 18)}
+                                    </span>
+                                  </span>
+                                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: '#10b981', fontWeight: 700 }}>
+                                    {cm.priceFormatted}
+                                  </span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </>
+                    )}
+
+                    {/* 4.5 OPTIONS 3D VOL SURFACE, 2D SMILE & MULTI-LEG PAYOFF */}
+                    {isOptionsBaseMode && (
+                      <>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.22rem' }}>
+                          {[
+                            { id: 'surface3d', label: isES ? 'Superficie 3D' : '3D Surface' },
+                            { id: 'surface', label: isES ? 'Sonrisa 2D' : '2D Smile' },
+                            { id: 'payoff', label: isES ? 'Payoff P&L' : 'Payoff P&L' },
+                          ].map((sub) => {
+                            const active = optionsSubView === sub.id;
+                            return (
+                              <button
+                                key={sub.id}
+                                type="button"
+                                onClick={() => setOptionsSubView(sub.id)}
+                                className="mono-metric"
+                                style={{
+                                  fontSize: '0.56rem',
+                                  fontWeight: active ? 800 : 600,
+                                  padding: '0.22rem 0.35rem',
+                                  borderRadius: '8px',
+                                  border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.09)',
+                                  backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'rgba(255,255,255,0.02)',
+                                  color: active ? '#10b981' : 'var(--text-dim)',
+                                  cursor: 'pointer',
+                                }}
+                              >
+                                {sub.label}
+                              </button>
+                            );
+                          })}
+                        </div>
+
+                        {/* Searchable Underlying / Optionable Asset Combobox */}
+                        <div style={{ position: 'relative' }}>
+                          <div
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '0.38rem',
+                              backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                              border: '1px solid rgba(56, 189, 248, 0.45)',
+                              borderRadius: '999px',
+                              padding: '0.24rem 0.65rem',
+                            }}
+                          >
+                            <Search size={11} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                            <input
+                              type="text"
+                              value={railSearchQuery}
+                              onFocus={() => {
+                                setRailSearchOpen(true);
+                                setRailSearchIdx(0);
+                              }}
+                              onBlur={() => setTimeout(() => setRailSearchOpen(false), 160)}
+                              onChange={(e) => {
+                                setRailSearchQuery(e.target.value);
+                                setRailSearchOpen(true);
+                                setRailSearchIdx(0);
+                              }}
+                              onKeyDown={(e) => {
+                                if (!optionableMatches.length) return;
+                                if (e.key === 'ArrowDown') {
+                                  e.preventDefault();
+                                  setRailSearchIdx((p) => (p + 1) % optionableMatches.length);
+                                } else if (e.key === 'ArrowUp') {
+                                  e.preventDefault();
+                                  setRailSearchIdx((p) => (p - 1 + optionableMatches.length) % optionableMatches.length);
+                                } else if (e.key === 'Enter') {
+                                  e.preventDefault();
+                                  const target = optionableMatches[railSearchIdx] || optionableMatches[0];
+                                  if (target) {
+                                    syncTickerDependentToolState(target.sym);
+                                    setRailSearchQuery('');
+                                    setRailSearchOpen(false);
+                                  }
+                                } else if (e.key === 'Escape') {
+                                  setRailSearchOpen(false);
+                                }
+                              }}
+                              placeholder={
+                                isES
+                                  ? `Buscar subyacente (${currentAsset.sym})...`
+                                  : `Search underlying (${currentAsset.sym})...`
+                              }
+                              style={{
+                                background: 'transparent',
+                                border: 'none',
+                                outline: 'none',
+                                color: '#ffffff',
+                                fontSize: '0.62rem',
+                                width: '100%',
+                              }}
+                            />
+                          </div>
+
+                          {railSearchOpen && (
+                            <div
+                              style={{
+                                position: 'absolute',
+                                top: 'calc(100% + 5px)',
+                                left: 0,
+                                right: 0,
+                                maxHeight: '215px',
+                                overflowY: 'auto',
+                                borderRadius: '12px',
+                                backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                border: '1px solid rgba(56, 189, 248, 0.45)',
+                                boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
+                                padding: '0.28rem',
+                                zIndex: 95,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.14rem',
+                              }}
+                            >
+                              {optionableMatches.slice(0, 16).map((item, idx) => (
+                                <button
+                                  key={item.sym}
+                                  type="button"
+                                  onMouseDown={(e) => {
+                                    e.preventDefault();
+                                    syncTickerDependentToolState(item.sym);
+                                    setRailSearchQuery('');
+                                    setRailSearchOpen(false);
+                                  }}
+                                  style={{
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    padding: '0.34rem 0.5rem',
+                                    borderRadius: '8px',
+                                    border: 'none',
+                                    backgroundColor:
+                                      idx === railSearchIdx || item.sym === currentAsset.sym
+                                        ? 'rgba(56, 189, 248, 0.18)'
+                                        : 'transparent',
+                                    color: '#ffffff',
+                                    cursor: 'pointer',
+                                    textAlign: 'left',
+                                  }}
+                                >
+                                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800 }}>
+                                    {item.sym}{' '}
+                                    <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>
+                                      • {item.name.slice(0, 17)}
+                                    </span>
+                                  </span>
+                                  <span className="mono-metric" style={{ fontSize: '0.56rem', color: '#38bdf8', fontWeight: 700 }}>
+                                    {item.priceFormatted}
+                                  </span>
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Multi-Leg Strategy Pills when in Payoff Mode */}
+                        {isOptionsPayoffMode && (
+                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.22rem' }}>
+                            {OPTIONS_STRATEGIES.map((st) => {
+                              const active = selectedOptStrategy === st.id;
+                              return (
+                                <button
+                                  key={st.id}
+                                  type="button"
+                                  onClick={() => setSelectedOptStrategy(st.id)}
+                                  className="mono-metric"
+                                  style={{
+                                    fontSize: '0.52rem',
+                                    fontWeight: active ? 800 : 600,
+                                    padding: '0.2rem 0.35rem',
+                                    borderRadius: '7px',
+                                    border: active ? '1px solid #38bdf8' : '1px solid rgba(255,255,255,0.08)',
+                                    backgroundColor: active ? 'rgba(56, 189, 248, 0.18)' : 'rgba(255,255,255,0.02)',
+                                    color: active ? '#38bdf8' : 'var(--text-muted)',
+                                    cursor: 'pointer',
+                                    whiteSpace: 'nowrap',
+                                    overflow: 'hidden',
+                                    textOverflow: 'ellipsis',
+                                  }}
+                                >
+                                  {(st.label[langCode] || st.label.EN).split(' (')[0]}
+                                </button>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </div>
+
+                  {/* BLOCK 3: 2x3 DUAL-TIER QUANTITATIVE TELEMETRY PILLS */}
+                  <div
+                    style={{
+                      borderTop: '1px solid rgba(255, 255, 255, 0.07)',
+                      paddingTop: '0.42rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.32rem',
+                    }}
+                  >
+                    <div
+                      className="mono-metric"
+                      style={{
+                        fontSize: '0.48rem',
+                        color: 'var(--text-dim)',
+                        fontWeight: 800,
+                        letterSpacing: '0.05em',
+                      }}
+                    >
+                      {isES ? '3. TELEMETRÍA CUANTITATIVA (6 MÉTRICAS)' : '3. QUANT TELEMETRY (6 METRICS)'}
+                    </div>
+                    <div
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                        gap: '0.34rem',
+                      }}
+                    >
+                      {railTelemetryPills.map((k) => (
+                        <div
+                          key={k.label}
+                          className="mono-metric"
+                          style={{
+                            padding: '0.34rem 0.52rem',
+                            borderRadius: '11px',
+                            backgroundColor: k.accent ? 'rgba(var(--ui-accent-rgb), 0.1)' : 'rgba(10, 15, 26, 0.54)',
+                            border: k.accent ? '1px solid rgba(var(--ui-accent-rgb), 0.42)' : '1px solid rgba(255, 255, 255, 0.09)',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            gap: '0.06rem',
+                            minWidth: 0,
+                          }}
+                        >
+                          <span
+                            style={{
+                              fontSize: '0.43rem',
+                              fontWeight: 700,
+                              color: k.accent ? 'var(--ui-accent)' : 'var(--text-dim)',
+                              letterSpacing: '0.03em',
+                              whiteSpace: 'nowrap',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                            }}
+                          >
+                            {k.label}
+                          </span>
+                          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.24rem' }}>
+                            <span style={{ fontSize: '0.66rem', fontWeight: 800, color: k.color, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                              {k.val}
+                            </span>
+                            <span style={{ fontSize: '0.44rem', color: 'var(--text-dim)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                              {k.sub}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* ============================================================ */}
+                {/* RIGHT UNOBSTRUCTED 3D / 2D STAGE (+45PX FULL VERTICAL HEIGHT)*/}
+                {/* ============================================================ */}
+                <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                  {is3DSurfaceActive && active3DSurfaceData ? (
+                    <div style={{ flex: 1, minHeight: 0 }}>
+                      <Surface3DViewer surfaceData={active3DSurfaceData} isES={isES} />
+                    </div>
+                  ) : (
+                    <>
+                      <div style={{ flex: showSubChart === 'none' ? 1 : 0.74, minHeight: 0 }}>
                         <ResponsiveContainer width="100%" height="100%">
-                          <BarChart data={activeChartData}>
-                            <XAxis dataKey="time" stroke="var(--text-dim)" fontSize={10} tickLine={false} axisLine={false} />
-                            <YAxis stroke="var(--text-dim)" fontSize={10} orientation="right" tickLine={false} axisLine={false} />
+                          <AreaChart data={activeChartData}>
+                            <defs>
+                              <linearGradient id="feyMainGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="5%" stopColor={assetMainColor} stopOpacity={0.45} />
+                                <stop offset="95%" stopColor={assetMainColor} stopOpacity={0.0} />
+                              </linearGradient>
+                            </defs>
+                            <XAxis
+                              dataKey="time"
+                              stroke="var(--text-dim)"
+                              fontSize={11}
+                              tickLine={false}
+                              axisLine={false}
+                              hide={showSubChart !== 'none' && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isCommodityCurveMode}
+                            />
+                            <YAxis
+                              domain={['auto', 'auto']}
+                              stroke="var(--text-dim)"
+                              fontSize={11}
+                              orientation="right"
+                              tickLine={false}
+                              axisLine={false}
+                              tickFormatter={(v) =>
+                                isOptionsPayoffMode
+                                  ? `$${v}`
+                                  : isCompareMode || isRatesCurveMode || isOptionsSmileMode
+                                    ? `${v}%`
+                                    : v
+                              }
+                            />
                             <Tooltip
                               contentStyle={{
                                 backgroundColor: 'rgba(10, 15, 28, 0.92)',
                                 borderColor: 'rgba(255, 255, 255, 0.12)',
-                                borderRadius: '10px',
-                                fontSize: '0.7rem',
+                                borderRadius: '12px',
+                                fontSize: '0.73rem',
                               }}
                             />
-                            <Bar
-                              dataKey={showSubChart === 'zscore' ? 'zBar' : 'vol'}
+
+                            {/* Primary Series */}
+                            <Area
+                              type="monotone"
+                              dataKey={isCompareMode ? 'pctReturn' : 'price'}
                               name={
-                                isOptionsSmileMode
-                                  ? 'Contracts Vol (x100)'
-                                  : isRatesCurveMode
-                                    ? showSubChart === 'zscore'
-                                      ? 'Spread vs UST (bps / 100)'
-                                      : 'Tenor Liquidity Weight'
+                                isRatesCurveMode
+                                  ? `${selectedCurveCountry} Yield (%)`
+                                  : isFxCrossMode
+                                    ? `${fxBaseCcy}/${fxQuoteCcy} Cross Rate`
                                     : isCommodityCurveMode
-                                      ? 'Open Interest Weight'
-                                      : showSubChart === 'zscore'
-                                        ? 'Vol Z-Score (σ)'
-                                        : 'Volume'
+                                      ? `${currentAsset.sym} Forward Curve`
+                                      : isOptionsPayoffMode
+                                        ? isES
+                                          ? 'P&L al Vencimiento ($)'
+                                          : 'Expiration Payoff P&L ($)'
+                                        : isOptionsSmileMode
+                                          ? `30D IV Surface (%)`
+                                          : isCompareMode
+                                            ? `${currentAsset.sym} (%)`
+                                            : currentAsset.sym
                               }
-                              fill={assetMainColor}
-                              opacity={0.48}
-                              radius={[3, 3, 0, 0]}
+                              stroke={assetMainColor}
+                              strokeWidth={2}
+                              fillOpacity={1}
+                              fill={isCompareMode ? 'transparent' : 'url(#feyMainGrad)'}
+                              isAnimationActive={false}
                             />
-                          </BarChart>
+
+                            {/* Options Strategy Payoff Mode: Today T+0 Black-Scholes P&L + $0 Breakeven Line */}
+                            {isOptionsPayoffMode && (
+                              <>
+                                <Line
+                                  type="monotone"
+                                  dataKey="t0Pnl"
+                                  name={isES ? 'P&L Hoy T+0 Black-Scholes ($)' : 'Today T+0 Black-Scholes P&L ($)'}
+                                  stroke="#38bdf8"
+                                  strokeWidth={2.0}
+                                  strokeDasharray="4 3"
+                                  dot={false}
+                                />
+                                <Line
+                                  type="monotone"
+                                  dataKey="zeroLine"
+                                  name={isES ? 'Línea Breakeven ($0)' : 'Breakeven Line ($0)'}
+                                  stroke="rgba(255,255,255,0.45)"
+                                  strokeWidth={1.3}
+                                  strokeDasharray="3 3"
+                                  dot={false}
+                                />
+                              </>
+                            )}
+
+                            {/* 2D Volatility Surface Multi-Tenor Curves (7D, 90D, 180D) */}
+                            {isOptionsSmileMode && (
+                              <>
+                                <Line
+                                  type="monotone"
+                                  dataKey="iv7d"
+                                  name="7D Weekly IV (%)"
+                                  stroke="#f43f5e"
+                                  strokeWidth={1.9}
+                                  strokeDasharray="3 3"
+                                  dot={false}
+                                />
+                                <Line
+                                  type="monotone"
+                                  dataKey="iv90d"
+                                  name="90D Quarterly IV (%)"
+                                  stroke="#38bdf8"
+                                  strokeWidth={2.0}
+                                  dot={false}
+                                />
+                                <Line
+                                  type="monotone"
+                                  dataKey="iv180d"
+                                  name="180D LEAPS IV (%)"
+                                  stroke="#a78bfa"
+                                  strokeWidth={1.8}
+                                  strokeDasharray="5 3"
+                                  dot={false}
+                                />
+                              </>
+                            )}
+
+                            {/* US Treasury & German Bund Benchmark Overlays when viewing Sovereign Curve */}
+                            {isRatesCurveMode && selectedCurveCountry !== 'US' && (
+                              <Line
+                                type="monotone"
+                                dataKey="cmpReturn"
+                                name="US Treasury Benchmark (%)"
+                                stroke="#38bdf8"
+                                strokeWidth={1.9}
+                                strokeDasharray="4 4"
+                                dot={false}
+                              />
+                            )}
+                            {isRatesCurveMode && selectedCurveCountry !== 'DE' && (
+                              <Line
+                                type="monotone"
+                                dataKey="bundYield"
+                                name="German Bund Benchmark (%)"
+                                stroke="#a78bfa"
+                                strokeWidth={1.6}
+                                strokeDasharray="2 3"
+                                dot={false}
+                              />
+                            )}
+
+                            {/* FX Cross Triangulated SMA(20) or Commodity Spot Reference */}
+                            {(isFxCrossMode || isCommodityCurveMode) && (
+                              <Line
+                                type="monotone"
+                                dataKey="sma20"
+                                name={isCommodityCurveMode ? 'Spot Price Reference' : `${fxBaseCcy}/${fxQuoteCcy} SMA (20)`}
+                                stroke="#38bdf8"
+                                strokeWidth={1.7}
+                                strokeDasharray="4 4"
+                                dot={false}
+                              />
+                            )}
+
+                            {/* Relative Comparison Overlay Line */}
+                            {isCompareMode && (
+                              <Line
+                                type="monotone"
+                                dataKey="cmpReturn"
+                                name={`${compareSymbol} (%)`}
+                                stroke="#38bdf8"
+                                strokeWidth={2.2}
+                                dot={false}
+                              />
+                            )}
+
+                            {/* Technical Overlays (when in Technical mode and not normalized %) */}
+                            {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showSma20 && (
+                              <Line type="monotone" dataKey="sma20" name="SMA (20)" stroke="#38bdf8" strokeWidth={1.6} strokeDasharray="4 4" dot={false} />
+                            )}
+                            {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showVwap && (
+                              <Line type="monotone" dataKey="vwap" name="VWAP" stroke="#f59e0b" strokeWidth={1.6} dot={false} />
+                            )}
+                            {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showBollinger && (
+                              <>
+                                <Line type="monotone" dataKey="bbUpper" name="BB Upper" stroke="#a78bfa" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
+                                <Line type="monotone" dataKey="bbLower" name="BB Lower" stroke="#a78bfa" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
+                              </>
+                            )}
+                          </AreaChart>
                         </ResponsiveContainer>
                       </div>
-                    )}
-                  </>
-                )}
+
+                      {/* Synchronized Sub-Pane (Volume Histogram or Intraday Z-Score) */}
+                      {showSubChart !== 'none' && (
+                        <div style={{ flex: 0.26, minHeight: 0, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '0.35rem' }}>
+                          <ResponsiveContainer width="100%" height="100%">
+                            <BarChart data={activeChartData}>
+                              <XAxis dataKey="time" stroke="var(--text-dim)" fontSize={10} tickLine={false} axisLine={false} />
+                              <YAxis stroke="var(--text-dim)" fontSize={10} orientation="right" tickLine={false} axisLine={false} />
+                              <Tooltip
+                                contentStyle={{
+                                  backgroundColor: 'rgba(10, 15, 28, 0.92)',
+                                  borderColor: 'rgba(255, 255, 255, 0.12)',
+                                  borderRadius: '10px',
+                                  fontSize: '0.7rem',
+                                }}
+                              />
+                              <Bar
+                                dataKey={showSubChart === 'zscore' ? 'zBar' : 'vol'}
+                                name={
+                                  isOptionsSmileMode
+                                    ? 'Contracts Vol (x100)'
+                                    : isRatesCurveMode
+                                      ? showSubChart === 'zscore'
+                                        ? 'Spread vs UST (bps / 100)'
+                                        : 'Tenor Liquidity Weight'
+                                      : isCommodityCurveMode
+                                        ? 'Open Interest Weight'
+                                        : showSubChart === 'zscore'
+                                          ? 'Vol Z-Score (σ)'
+                                          : 'Volume'
+                                }
+                                fill={assetMainColor}
+                                opacity={0.48}
+                                radius={[3, 3, 0, 0]}
+                              />
+                            </BarChart>
+                          </ResponsiveContainer>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
               </div>
             );
           })()}
@@ -3796,590 +7154,955 @@ export default function MarketAnomaliesView({
         </>
       ) : (
         /* ==================================================================== */
-        /* LEVEL 2 — RESEARCH MODE (CLEAN QUALITATIVE INTELLIGENCE WORKSPACE)   */
+        /* LEVEL 2 — RESEARCH MODE (FOC-01: 3-COLUMN FOCAL ARCHITECTURE)        */
+        /* [1. Left Vertical RAG Chat | 2. Center Protagonist Accordion |       */
+        /*  3. Right Chronological Timeline with Nodes + 24h AreaChart Below]   */
         /* ==================================================================== */
-        <>
-          {/* 1. EXECUTIVE THESIS BANNER + MULTI-INTENT Q&A SEARCH WITH QUICK CHIPS */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              flexWrap: 'wrap',
-              gap: '1.15rem',
-              padding: '0.85rem 1.25rem',
-              borderRadius: '20px',
-              background:
-                researchBrief.stance === 'BULLISH'
-                  ? 'linear-gradient(90deg, rgba(16, 185, 129, 0.14) 0%, rgba(13, 19, 33, 0.65) 60%)'
-                  : 'linear-gradient(90deg, rgba(244, 63, 94, 0.14) 0%, rgba(13, 19, 33, 0.65) 60%)',
-              border:
-                researchBrief.stance === 'BULLISH'
-                  ? '1px solid rgba(16, 185, 129, 0.35)'
-                  : '1px solid rgba(244, 63, 94, 0.35)',
-              backdropFilter: 'blur(14px)',
-              flexShrink: 0,
-            }}
-          >
-            <div style={{ flex: '1 1 500px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.3rem' }}>
-                <span
-                  className="mono-metric"
-                  style={{
-                    fontSize: '0.62rem',
-                    fontWeight: 800,
-                    padding: '0.14rem 0.6rem',
-                    borderRadius: '999px',
-                    backgroundColor:
-                      researchBrief.stance === 'BULLISH'
-                        ? 'rgba(16, 185, 129, 0.2)'
-                        : 'rgba(244, 63, 94, 0.2)',
-                    color: researchBrief.stance === 'BULLISH' ? '#10b981' : '#f43f5e',
-                  }}
-                >
-                  {researchBrief.stanceLabel[langCode] || researchBrief.stanceLabel.EN}
-                </span>
-                <span className="mono-metric" style={{ fontSize: '0.63rem', color: 'var(--text-dim)', fontWeight: 700 }}>
-                  {isES ? 'TESIS EJECUTIVA' : 'EXECUTIVE THESIS'} •{' '}
-                  {researchBrief.filingSource[langCode] || researchBrief.filingSource.EN}
-                </span>
-              </div>
-              <p style={{ fontSize: '0.82rem', color: '#ffffff', lineHeight: 1.52, margin: 0, fontWeight: 500 }}>
-                {researchBrief.executiveSummary[langCode] || researchBrief.executiveSummary.EN}
-              </p>
-            </div>
+        (() => {
+          const totalForce = Math.max(1, researchBrief.avgBull + researchBrief.avgBear);
+          const bullPct = Math.round((researchBrief.avgBull / totalForce) * 100);
+          const bearPct = 100 - bullPct;
 
-            {/* Right: Interactive Q&A Input + Topic Chips */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', flex: '0 1 420px', minWidth: '320px' }}>
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  if (ragQuery.trim()) {
-                    runAssetRagQuery(ragQuery, 'asset', selectedAsset);
-                  }
-                }}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.45rem',
-                  backgroundColor: 'rgba(8, 12, 22, 0.82)',
-                  padding: '0.26rem 0.35rem 0.26rem 0.8rem',
-                  borderRadius: '999px',
-                  border: '1px solid rgba(255, 255, 255, 0.14)',
-                }}
-              >
-                <Search size={13} style={{ color: '#10b981', flexShrink: 0 }} />
-                <input
-                  type="text"
-                  placeholder={
-                    isES
-                      ? `Preguntar sobre ${currentAsset.sym} (ej. márgenes, riesgos, caja, competencia)...`
-                      : `Ask ${currentAsset.sym} filing (e.g. margins, risks, cash flow, moat)...`
-                  }
-                  value={ragQuery}
-                  onChange={(e) => setRagQuery(e.target.value)}
-                  style={{
-                    flex: 1,
-                    background: 'transparent',
-                    border: 'none',
-                    color: '#ffffff',
-                    fontSize: '0.72rem',
-                    outline: 'none',
-                    fontFamily: 'var(--font-sans)',
-                  }}
-                />
-                {(ragQuery || ragResult) && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setRagQuery('');
-                      setRagResult(null);
-                    }}
-                    style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', display: 'flex' }}
-                  >
-                    <X size={13} />
-                  </button>
-                )}
-                <button
-                  type="submit"
-                  disabled={isRagLoading}
-                  className="mono-metric"
-                  style={{
-                    backgroundColor: '#10b981',
-                    color: '#000',
-                    border: 'none',
-                    padding: '0.22rem 0.72rem',
-                    borderRadius: '999px',
-                    fontWeight: 800,
-                    fontSize: '0.64rem',
-                    cursor: 'pointer',
-                  }}
-                >
-                  {isRagLoading ? '...' : isES ? 'PREGUNTAR' : 'ASK'}
-                </button>
-              </form>
+          const allFactors = [
+            ...researchBrief.bullDrivers.map((d, idx) => ({
+              ...d,
+              side: 'BULL',
+              key: `BULL-${idx}`,
+              rank: idx + 1,
+              pctContribution: Math.max(12, Math.min(34, Math.round((d.score / Math.max(1, researchBrief.avgBull * 5)) * 100))),
+            })),
+            ...researchBrief.bearRisks.map((r, idx) => ({
+              ...r,
+              side: 'BEAR',
+              key: `BEAR-${idx}`,
+              rank: idx + 1,
+              pctContribution: Math.max(12, Math.min(34, Math.round((r.score / Math.max(1, researchBrief.avgBear * 5)) * 100))),
+            })),
+          ].sort((a, b) => b.score - a.score);
 
-              {/* Guided Topic Chips dynamically adapted by Asset Class (10 categories) */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.32rem', flexWrap: 'wrap' }}>
-                {getRagQuickTopicsForCategory(currentAsset.cat).map((topic) => {
-                  const active = ragQuery === topic.query;
-                  return (
-                    <button
-                      key={topic.id}
-                      type="button"
-                      onClick={() => {
-                        setRagQuery(topic.query);
-                        runAssetRagQuery(topic.query, 'asset', selectedAsset);
-                      }}
-                      className="mono-metric"
-                      style={{
-                        fontSize: '0.58rem',
-                        fontWeight: 700,
-                        padding: '0.14rem 0.55rem',
-                        borderRadius: '999px',
-                        border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.1)',
-                        backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'rgba(255,255,255,0.04)',
-                        color: active ? '#10b981' : 'var(--text-dim)',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {topic.label[langCode] || topic.label.EN}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+          const filteredFactors =
+            researchFactorFilter === 'bull'
+              ? allFactors.filter((f) => f.side === 'BULL')
+              : researchFactorFilter === 'bear'
+              ? allFactors.filter((f) => f.side === 'BEAR')
+              : allFactors;
 
-          {/* ON-DEMAND FILING ANSWER DRAWER (WITH STRICT GUARDRAIL STATE) */}
-          {ragResult && (
-            <div
-              style={{
-                padding: '0.75rem 1.1rem',
-                borderRadius: '16px',
-                backgroundColor: ragResult.blocked ? 'rgba(244, 63, 94, 0.1)' : 'rgba(16, 185, 129, 0.09)',
-                border: ragResult.blocked ? '1px solid rgba(244, 63, 94, 0.45)' : '1px solid rgba(16, 185, 129, 0.35)',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'flex-start',
-                gap: '1rem',
-                flexShrink: 0,
-              }}
-            >
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', marginBottom: '0.22rem' }}>
-                  {ragResult.blocked ? (
-                    <ShieldAlert size={13} style={{ color: '#f43f5e' }} />
-                  ) : (
-                    <Sparkles size={13} style={{ color: '#10b981' }} />
-                  )}
-                  <span
-                    className="mono-metric"
-                    style={{
-                      fontSize: '0.62rem',
-                      fontWeight: 800,
-                      color: ragResult.blocked ? '#f43f5e' : '#10b981',
-                    }}
-                  >
-                    {ragResult.topicLabel || (isES ? 'RESPUESTA DEL REPORTE' : 'OFFICIAL FILING ANSWER')}
-                  </span>
-                </div>
-                <p style={{ fontSize: '0.76rem', color: '#ffffff', margin: 0, lineHeight: 1.5 }}>{ragResult.answer}</p>
-              </div>
-              <button
-                onClick={() => {
-                  setRagQuery('');
-                  setRagResult(null);
-                }}
-                style={{ background: 'transparent', border: 'none', color: 'var(--text-dim)', cursor: 'pointer', padding: '0.15rem' }}
-              >
-                <X size={14} />
-              </button>
-            </div>
-          )}
+          const sentimentSeries24h = (() => {
+            const base = researchBrief.compositeScore || 0;
+            const newsDelta = assetFinbertPolarity.score100 || 0;
+            return [
+              { time: '08:00', score: Math.max(-95, Math.min(95, Math.round(base * 0.55 - 8))) },
+              { time: '10:00', score: Math.max(-95, Math.min(95, Math.round(base * 0.68 + 4))) },
+              { time: '12:00', score: Math.max(-95, Math.min(95, Math.round(base * 0.52 - 5))) },
+              { time: '14:00', score: Math.max(-95, Math.min(95, Math.round(base * 0.78 + 3))) },
+              { time: '16:00', score: Math.max(-95, Math.min(95, Math.round(base * 0.84 - 2))) },
+              { time: '18:00', score: Math.max(-95, Math.min(95, Math.round((base + newsDelta) * 0.52))) },
+              { time: 'Now', score: Math.max(-95, Math.min(95, base)) },
+            ];
+          })();
 
-          {/* 2. MAIN QUALITATIVE WORKSPACE: LEFT = UNIFIED FUNDAMENTAL BALANCE CARD (TOP 5 BULL & TOP 5 BEAR), RIGHT = REAL-TIME NEWS WIRE */}
-          <div
-            style={{
-              flex: 1,
-              minHeight: 0,
-              display: 'grid',
-              gridTemplateColumns: '1.25fr 1fr',
-              gap: '1.15rem',
-            }}
-          >
-            {/* LEFT COLUMN: UNIFIED FUNDAMENTAL BALANCE CONTAINER (ENCLOSING TOP 5 BULL & TOP 5 BEAR + TUG-OF-WAR BAR) */}
-            <div
-              style={{
-                borderRadius: '22px',
-                backgroundColor: 'rgba(13, 19, 33, 0.56)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                padding: '0.95rem 1.15rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                gap: '0.8rem',
-                minHeight: 0,
-              }}
-            >
-              {/* Top 2 Sub-Columns: Top 5 Bull Drivers (Green) vs Top 5 Bear Risks (Red) — Signed Integers Only */}
+          const strokeHex24h = researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e';
+          const gradId24h = `l2-research-sent-24h-${currentAsset.sym}`;
+
+          const renderAccordionRow = (item) => {
+            const isBull = item.side === 'BULL';
+            const accentHex = isBull ? '#34d399' : '#fb7185';
+            const fillRgba = isBull ? 'rgba(16, 185, 129, 0.18)' : 'rgba(244, 63, 94, 0.18)';
+            const isOpen = researchExpandedKey === item.key;
+            const titleText = item.title[langCode] || item.title.EN;
+            const detailText = item.detail[langCode] || item.detail.EN;
+
+            return (
               <div
+                key={item.key}
+                onClick={() => setResearchExpandedKey(isOpen ? '' : item.key)}
                 style={{
-                  flex: 1,
-                  minHeight: 0,
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: '0.95rem',
-                  overflowY: 'auto',
-                  paddingRight: '0.2rem',
+                  borderRadius: '10px',
+                  border: isOpen ? `1px solid ${accentHex}` : '1px solid rgba(148, 163, 184, 0.15)',
+                  backgroundColor: isOpen ? 'rgba(15, 23, 42, 0.90)' : 'rgba(15, 23, 42, 0.58)',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                  transition: 'all 0.16s ease',
                 }}
               >
-                {/* Bull Case Sub-Column (Latest 5 Weighted Items) */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      paddingBottom: '0.4rem',
-                      borderBottom: '1px solid rgba(16, 185, 129, 0.25)',
-                    }}
-                  >
-                    <span className="mono-metric" style={{ fontSize: '0.66rem', fontWeight: 800, color: '#10b981' }}>
-                      {isES ? 'CATALIZADORES ALCISTAS (TOP 5)' : 'GROWTH DRIVERS (TOP 5 BULL)'}
-                    </span>
-                    <span
-                      className="mono-metric"
-                      style={{
-                        fontSize: '0.66rem',
-                        fontWeight: 800,
-                        padding: '0.1rem 0.52rem',
-                        borderRadius: '999px',
-                        backgroundColor: 'rgba(16, 185, 129, 0.18)',
-                        color: '#10b981',
-                      }}
-                    >
-                      +{researchBrief.avgBull}
-                    </span>
-                  </div>
-
-                  {researchBrief.bullDrivers.map((item, idx) => (
-                    <div
-                      key={idx}
-                      style={{
-                        padding: '0.62rem 0.8rem',
-                        borderRadius: '14px',
-                        backgroundColor:
-                          lastUpdatedPart === 'bull' && idx === 0
-                            ? 'rgba(16, 185, 129, 0.16)'
-                            : 'rgba(16, 185, 129, 0.06)',
-                        borderLeft: '3px solid #10b981',
-                        transition: 'background-color 0.35s ease',
-                      }}
-                    >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.4rem', marginBottom: '0.2rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', minWidth: 0 }}>
-                          {item.isLiveUpdate && (
-                            <span
-                              className="mono-metric"
-                              style={{
-                                fontSize: '0.5rem',
-                                fontWeight: 800,
-                                padding: '0.06rem 0.35rem',
-                                borderRadius: '999px',
-                                backgroundColor: '#10b981',
-                                color: '#000',
-                                flexShrink: 0,
-                              }}
-                            >
-                              LIVE
-                            </span>
-                          )}
-                          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#ffffff' }}>
-                            {item.title[langCode] || item.title.EN}
-                          </span>
-                        </div>
-                        <span className="mono-metric" style={{ fontSize: '0.72rem', fontWeight: 800, color: '#10b981', flexShrink: 0 }}>
-                          {item.impactTag}
-                        </span>
-                      </div>
-
-                      <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', lineHeight: 1.44, margin: 0 }}>
-                        {item.detail[langCode] || item.detail.EN}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Bear Case Sub-Column (Latest 5 Weighted Items) */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      paddingBottom: '0.4rem',
-                      borderBottom: '1px solid rgba(244, 63, 94, 0.25)',
-                    }}
-                  >
-                    <span className="mono-metric" style={{ fontSize: '0.66rem', fontWeight: 800, color: '#f43f5e' }}>
-                      {isES ? 'FACTORES DE RIESGO (TOP 5)' : 'KEY RISK FACTORS (TOP 5 BEAR)'}
-                    </span>
-                    <span
-                      className="mono-metric"
-                      style={{
-                        fontSize: '0.66rem',
-                        fontWeight: 800,
-                        padding: '0.1rem 0.52rem',
-                        borderRadius: '999px',
-                        backgroundColor: 'rgba(244, 63, 94, 0.18)',
-                        color: '#f43f5e',
-                      }}
-                    >
-                      -{researchBrief.avgBear}
-                    </span>
-                  </div>
-
-                  {researchBrief.bearRisks.map((item, idx) => (
-                    <div
-                      key={idx}
-                      style={{
-                        padding: '0.62rem 0.8rem',
-                        borderRadius: '14px',
-                        backgroundColor:
-                          lastUpdatedPart === 'bear' && idx === 0
-                            ? 'rgba(244, 63, 94, 0.16)'
-                            : 'rgba(244, 63, 94, 0.06)',
-                        borderLeft: '3px solid #f43f5e',
-                        transition: 'background-color 0.35s ease',
-                      }}
-                    >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.4rem', marginBottom: '0.2rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', minWidth: 0 }}>
-                          {item.isLiveUpdate && (
-                            <span
-                              className="mono-metric"
-                              style={{
-                                fontSize: '0.5rem',
-                                fontWeight: 800,
-                                padding: '0.06rem 0.35rem',
-                                borderRadius: '999px',
-                                backgroundColor: '#f43f5e',
-                                color: '#000',
-                                flexShrink: 0,
-                              }}
-                            >
-                              LIVE
-                            </span>
-                          )}
-                          <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#ffffff' }}>
-                            {item.title[langCode] || item.title.EN}
-                          </span>
-                        </div>
-                        <span className="mono-metric" style={{ fontSize: '0.72rem', fontWeight: 800, color: '#f43f5e', flexShrink: 0 }}>
-                          {item.impactTag}
-                        </span>
-                      </div>
-
-                      <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)', lineHeight: 1.44, margin: 0 }}>
-                        {item.detail[langCode] || item.detail.EN}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* BOTTOM ENCLOSING FUNDAMENTAL BALANCE BAR (BULL FORCE vs BEAR FORCE FROM OFFICIAL FILINGS) */}
-              <div
-                style={{
-                  padding: '0.65rem 0.9rem',
-                  borderRadius: '14px',
-                  backgroundColor: 'rgba(8, 12, 22, 0.72)',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  flexShrink: 0,
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.32rem' }}>
-                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: '#10b981' }}>
-                    {isES ? `FUERZA ALCISTA (+${researchBrief.avgBull})` : `BULLISH FORCE (+${researchBrief.avgBull})`}
-                  </span>
-                  <span className="mono-metric" style={{ fontSize: '0.64rem', fontWeight: 800, color: '#ffffff' }}>
-                    {isES ? 'BALANCE NETO FUNDAMENTAL (REPORTES):' : 'NET FUNDAMENTAL BALANCE (FILINGS):'}{' '}
-                    <strong style={{ color: researchBrief.filingNet >= 0 ? '#10b981' : '#f43f5e', fontSize: '0.7rem' }}>
-                      {researchBrief.filingNetFormatted}
-                    </strong>{' '}
-                    <span style={{ color: 'var(--text-dim)', fontSize: '0.58rem' }}>
-                      ({Math.round(assetSensitivity.fundamentalWeight * 100)}% {isES ? 'peso en activo' : 'asset weight'})
-                    </span>
-                  </span>
-                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: '#f43f5e' }}>
-                    {isES ? `PRESIÓN DE RIESGO (-${researchBrief.avgBear})` : `RISK PRESSURE (-${researchBrief.avgBear})`}
-                  </span>
-                </div>
-
-                {/* Tug-of-War Proportional Bar */}
                 <div
                   style={{
+                    position: 'relative',
+                    padding: '0.48rem 0.7rem',
                     display: 'flex',
-                    height: '7px',
-                    borderRadius: '999px',
-                    overflow: 'hidden',
-                    backgroundColor: 'rgba(255,255,255,0.08)',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '0.5rem',
                   }}
                 >
                   <div
                     style={{
-                      width: `${(researchBrief.avgBull / Math.max(1, researchBrief.avgBull + researchBrief.avgBear)) * 100}%`,
-                      backgroundColor: '#10b981',
-                      transition: 'width 0.35s ease',
+                      position: 'absolute',
+                      left: 0,
+                      top: 0,
+                      bottom: 0,
+                      width: `${Math.min(94, Math.max(18, item.score * 0.92))}%`,
+                      background: fillRgba,
+                      pointerEvents: 'none',
                     }}
                   />
-                  <div
-                    style={{
-                      width: `${(researchBrief.avgBear / Math.max(1, researchBrief.avgBull + researchBrief.avgBear)) * 100}%`,
-                      backgroundColor: '#f43f5e',
-                      transition: 'width 0.35s ease',
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT COLUMN: REAL-TIME INCOMING NEWS WIRE & SENTIMENT ESTIMATION */}
-            <div
-              style={{
-                borderRadius: '22px',
-                backgroundColor: 'rgba(13, 19, 33, 0.56)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
-                padding: '0.95rem 1.15rem',
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: 0,
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  paddingBottom: '0.55rem',
-                  borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
-                  marginBottom: '0.65rem',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
-                  <span
-                    style={{
-                      width: '8px',
-                      height: '8px',
-                      borderRadius: '50%',
-                      backgroundColor: '#10b981',
-                      boxShadow: '0 0 8px #10b981',
-                      display: 'inline-block',
-                    }}
-                  />
-                  <span className="mono-metric" style={{ fontSize: '0.68rem', fontWeight: 800, color: '#ffffff' }}>
-                    {isES ? `TERMINAL DE NOTICIAS EN VIVO (${currentAsset.sym})` : `LIVE NEWS WIRE & IMPACT (${currentAsset.sym})`}
-                  </span>
-                </div>
-                <div className="mono-metric" style={{ display: 'flex', gap: '0.45rem', fontSize: '0.62rem' }}>
-                  <span style={{ color: '#10b981', fontWeight: 800 }}>
-                    {assetFinbertPolarity.posCount} {isES ? 'Alcistas' : 'Bullish'}
-                  </span>
-                  <span style={{ color: 'var(--text-dim)' }}>•</span>
-                  <span style={{ color: '#f43f5e', fontWeight: 800 }}>
-                    {assetFinbertPolarity.negCount} {isES ? 'Bajistas' : 'Bearish'}
-                  </span>
-                </div>
-              </div>
-
-              <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                {assetFinbertNews.map((news) => {
-                  const isPos = news.scoreNum >= 0;
-                  const toneColor = isPos ? '#10b981' : '#f43f5e';
-                  return (
-                    <div
-                      key={news.id}
+                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '0.48rem', minWidth: 0 }}>
+                    <span
+                      className="mono-metric"
                       style={{
-                        padding: '0.72rem 0.9rem',
-                        borderRadius: '16px',
-                        backgroundColor: news.isNew ? 'rgba(16, 185, 129, 0.1)' : 'rgba(255, 255, 255, 0.03)',
-                        border: news.isNew
-                          ? `1.5px solid ${toneColor}`
-                          : `1px solid ${isPos ? 'rgba(16, 185, 129, 0.22)' : 'rgba(244, 63, 94, 0.22)'}`,
-                        transition: 'all 0.35s ease',
+                        fontSize: '0.64rem',
+                        fontWeight: 800,
+                        padding: '0.08rem 0.38rem',
+                        borderRadius: '5px',
+                        backgroundColor: isBull ? 'rgba(16, 185, 129, 0.16)' : 'rgba(244, 63, 94, 0.16)',
+                        border: `1px solid ${isBull ? 'rgba(16, 185, 129, 0.35)' : 'rgba(244, 63, 94, 0.35)'}`,
+                        color: accentHex,
+                        minWidth: '42px',
+                        textAlign: 'center',
+                        flexShrink: 0,
                       }}
                     >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.3rem' }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                          {news.isNew && (
-                            <span
-                              className="mono-metric"
-                              style={{
-                                fontSize: '0.54rem',
-                                fontWeight: 800,
-                                padding: '0.08rem 0.42rem',
-                                borderRadius: '999px',
-                                backgroundColor: toneColor,
-                                color: '#000',
-                              }}
-                            >
-                              {isES ? 'NUEVO' : 'JUST IN'}
-                            </span>
-                          )}
-                          <span className="mono-metric" style={{ fontSize: '0.64rem', color: 'var(--text-dim)', fontWeight: 700 }}>
-                            {news.source} • {news.time}
-                          </span>
-                        </div>
+                      {item.impactTag}
+                    </span>
+                    {item.isLiveUpdate && (
+                      <span
+                        className="mono-metric"
+                        style={{
+                          fontSize: '0.52rem',
+                          fontWeight: 800,
+                          padding: '0.06rem 0.34rem',
+                          borderRadius: '999px',
+                          backgroundColor: accentHex,
+                          color: '#000',
+                          flexShrink: 0,
+                        }}
+                      >
+                        LIVE
+                      </span>
+                    )}
+                    <span
+                      style={{
+                        color: '#f8fafc',
+                        fontSize: '0.75rem',
+                        fontWeight: isOpen ? 700 : 500,
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
+                      {titleText}
+                    </span>
+                  </div>
+
+                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0 }}>
+                    <span
+                      className="mono-metric"
+                      style={{
+                        fontSize: '0.56rem',
+                        padding: '0.06rem 0.32rem',
+                        borderRadius: '4px',
+                        backgroundColor: 'rgba(30, 41, 59, 0.82)',
+                        color: item.importance === 'HIGH' ? '#f8fafc' : '#94a3b8',
+                      }}
+                    >
+                      {item.importance || 'HIGH'}
+                    </span>
+                    <span className="mono-metric" style={{ fontSize: '0.64rem', color: '#94a3b8' }}>
+                      {item.pctContribution}% {isOpen ? '▾' : '▸'}
+                    </span>
+                  </div>
+                </div>
+
+                {isOpen && (
+                  <div
+                    style={{
+                      padding: '0.52rem 0.72rem 0.6rem',
+                      borderTop: '1px solid rgba(148, 163, 184, 0.14)',
+                      backgroundColor: 'rgba(7, 11, 22, 0.90)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.38rem',
+                    }}
+                  >
+                    <div
+                      className="mono-metric"
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        fontSize: '0.6rem',
+                        color: '#94a3b8',
+                      }}
+                    >
+                      <span>
+                        {isES ? 'FUENTE OFICIAL:' : 'OFFICIAL SOURCE:'}{' '}
+                        {researchBrief.filingSource[langCode] || researchBrief.filingSource.EN}
+                      </span>
+                      <span style={{ color: accentHex, fontWeight: 700 }}>
+                        {isBull ? (isES ? 'CATALIZADOR ALCISTA' : 'BULL DRIVER') : isES ? 'FACTOR DE RIESGO' : 'BEAR RISK'} ({item.impactTag})
+                      </span>
+                    </div>
+                    <p style={{ fontSize: '0.72rem', color: '#cbd5e1', lineHeight: 1.46, margin: 0 }}>{detailText}</p>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const qText = isES
+                            ? `Explicá en detalle el impacto de "${titleText}" (${item.impactTag}) en ${currentAsset.sym}`
+                            : `Explain in detail the impact of "${titleText}" (${item.impactTag}) on ${currentAsset.sym}`;
+                          setRagQuery(qText);
+                          runAssetRagQuery(qText, 'asset', selectedAsset);
+                        }}
+                        className="mono-metric"
+                        style={{
+                          padding: '0.22rem 0.56rem',
+                          borderRadius: '6px',
+                          backgroundColor: 'rgba(56, 189, 248, 0.14)',
+                          border: '1px solid rgba(56, 189, 248, 0.35)',
+                          color: '#38bdf8',
+                          fontSize: '0.61rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                        }}
+                      >
+                        💬 {isES ? 'Analizar en el Chat Vertical' : 'Analyze in Vertical Chat'}
+                      </button>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          };
+
+          return (
+            <div
+              style={{
+                flex: 1,
+                minHeight: 0,
+                display: 'grid',
+                gridTemplateColumns: '340px 1.25fr 0.98fr',
+                gap: '0.95rem',
+                alignItems: 'stretch',
+              }}
+            >
+              {/* ================================================================
+                  COLUMN 1 (LEFT RAIL 340px): VERTICAL RAG CHAT + PORTFOLIO BRIDGE
+                 ================================================================ */}
+              <div
+                style={{
+                  borderRadius: '16px',
+                  border: '1px solid rgba(129, 140, 248, 0.30)',
+                  background: 'linear-gradient(180deg, rgba(15, 23, 42, 0.90) 0%, rgba(7, 11, 22, 0.96) 100%)',
+                  boxShadow: '0 12px 32px -12px rgba(2, 6, 23, 0.9), inset 0 1px 0 0 rgba(255, 255, 255, 0.07)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  minHeight: 0,
+                  overflow: 'hidden',
+                }}
+              >
+                {/* Top Chat Header */}
+                <div
+                  style={{
+                    padding: '0.68rem 0.85rem',
+                    borderBottom: '1px solid rgba(129, 140, 248, 0.18)',
+                    backgroundColor: 'rgba(15, 23, 42, 0.78)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '0.5rem',
+                    flexShrink: 0,
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
+                    <span
+                      style={{
+                        width: '8px',
+                        height: '8px',
+                        borderRadius: '999px',
+                        backgroundColor: '#10b981',
+                        boxShadow: '0 0 10px #10b981',
+                        flexShrink: 0,
+                      }}
+                    />
+                    <div style={{ minWidth: 0 }}>
+                      <div
+                        style={{
+                          color: '#f8fafc',
+                          fontSize: '0.74rem',
+                          fontWeight: 800,
+                          letterSpacing: '0.03em',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.38rem',
+                        }}
+                      >
+                        <span>{isES ? 'CHAT DOCUMENTAL RAG' : 'RAG DOCUMENT CHAT'}</span>
                         <span
                           className="mono-metric"
                           style={{
-                            fontSize: '0.64rem',
-                            fontWeight: 800,
-                            color: toneColor,
-                            padding: '0.1rem 0.52rem',
+                            fontSize: '0.58rem',
+                            padding: '0.05rem 0.36rem',
                             borderRadius: '999px',
-                            backgroundColor: isPos ? 'rgba(16, 185, 129, 0.15)' : 'rgba(244, 63, 94, 0.15)',
+                            backgroundColor: 'rgba(56, 189, 248, 0.14)',
+                            border: '1px solid rgba(56, 189, 248, 0.35)',
+                            color: '#38bdf8',
                           }}
                         >
-                          {news.score} {isPos ? (isES ? 'ALCISTA' : 'BULLISH') : isES ? 'BAJISTA' : 'BEARISH'}
+                          {currentAsset.sym}
                         </span>
                       </div>
-
-                      <p style={{ fontSize: '0.76rem', color: '#ffffff', margin: '0 0 0.45rem 0', lineHeight: 1.46, fontWeight: 500 }}>
-                        {news.title[langCode] || news.title.EN}
-                      </p>
-
-                      {/* Clean Bullish vs Bearish Probability Bar */}
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                        <div
-                          style={{
-                            flex: 1,
-                            display: 'flex',
-                            height: '5px',
-                            borderRadius: '999px',
-                            overflow: 'hidden',
-                            backgroundColor: 'rgba(255,255,255,0.06)',
-                          }}
-                        >
-                          <div style={{ width: `${news.probs.pos * 100}%`, backgroundColor: '#10b981' }} />
-                          <div style={{ width: `${news.probs.neu * 100}%`, backgroundColor: 'rgba(255,255,255,0.16)' }} />
-                          <div style={{ width: `${news.probs.neg * 100}%`, backgroundColor: '#f43f5e' }} />
-                        </div>
-                        <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>
-                          <strong style={{ color: '#10b981' }}>{Math.round(news.probs.pos * 100)}% Bull</strong> /{' '}
-                          <strong style={{ color: '#f43f5e' }}>{Math.round(news.probs.neg * 100)}% Bear</strong>
-                        </span>
+                      <div
+                        className="mono-metric"
+                        style={{
+                          color: '#64748b',
+                          fontSize: '0.6rem',
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                        }}
+                      >
+                        {researchBrief.filingSource[langCode] || researchBrief.filingSource.EN}
                       </div>
                     </div>
-                  );
-                })}
+                  </div>
+
+                  {researchChatHistory.length > 0 && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setResearchChatHistory([]);
+                        setRagQuery('');
+                        setRagResult(null);
+                      }}
+                      className="mono-metric"
+                      style={{
+                        backgroundColor: 'rgba(30, 41, 59, 0.6)',
+                        border: '1px solid rgba(148, 163, 184, 0.24)',
+                        color: '#94a3b8',
+                        borderRadius: '6px',
+                        padding: '0.16rem 0.42rem',
+                        fontSize: '0.58rem',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      Reset
+                    </button>
+                  )}
+                </div>
+
+                {/* Scrollable Conversation Thread */}
+                <div
+                  style={{
+                    flex: 1,
+                    overflowY: 'auto',
+                    padding: '0.72rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.6rem',
+                  }}
+                >
+                  {/* Pinned Initial Executive Thesis Bubble */}
+                  <div
+                    style={{
+                      alignSelf: 'flex-start',
+                      maxWidth: '96%',
+                      padding: '0.65rem 0.76rem',
+                      borderRadius: '4px 12px 12px 12px',
+                      backgroundColor: 'rgba(30, 41, 59, 0.68)',
+                      border: '1px solid rgba(129, 140, 248, 0.26)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.38rem',
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.4rem' }}>
+                      <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800, color: '#a5b4fc' }}>
+                        λ {isES ? 'TESIS EJECUTIVA' : 'EXECUTIVE THESIS'} • {currentAsset.sym}
+                      </span>
+                      <span className="mono-metric" style={{ fontSize: '0.56rem', color: '#34d399', fontWeight: 700 }}>
+                        ✓ GUARDRAIL OK
+                      </span>
+                    </div>
+                    <div style={{ color: '#e2e8f0', fontSize: '0.73rem', lineHeight: 1.46 }}>
+                      {researchBrief.executiveSummary[langCode] || researchBrief.executiveSummary.EN}
+                    </div>
+                    <div
+                      className="mono-metric"
+                      style={{
+                        fontSize: '0.57rem',
+                        color: '#94a3b8',
+                        paddingTop: '0.22rem',
+                        borderTop: '1px solid rgba(148, 163, 184, 0.14)',
+                      }}
+                    >
+                      {assetSensitivity.shortLabel[langCode] || assetSensitivity.shortLabel.EN}
+                    </div>
+                  </div>
+
+                  {/* Dynamic User & Assistant Message Thread */}
+                  {researchChatHistory.map((msg, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
+                        maxWidth: '94%',
+                        padding: '0.55rem 0.7rem',
+                        borderRadius: msg.role === 'user' ? '12px 4px 12px 12px' : '4px 12px 12px 12px',
+                        background:
+                          msg.role === 'user'
+                            ? 'linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(99, 102, 241, 0.24))'
+                            : msg.blocked
+                            ? 'rgba(244, 63, 94, 0.12)'
+                            : 'rgba(30, 41, 59, 0.78)',
+                        border:
+                          msg.role === 'user'
+                            ? '1px solid rgba(56, 189, 248, 0.45)'
+                            : msg.blocked
+                            ? '1px solid rgba(244, 63, 94, 0.45)'
+                            : '1px solid rgba(129, 140, 248, 0.28)',
+                      }}
+                    >
+                      {msg.role === 'assistant' && (
+                        <div
+                          className="mono-metric"
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            marginBottom: '0.24rem',
+                            fontSize: '0.58rem',
+                            color: msg.blocked ? '#fb7185' : '#38bdf8',
+                            fontWeight: 700,
+                          }}
+                        >
+                          <span>{msg.blocked ? '🛡️ GUARDRAIL L1 BLOCK' : `λ ${msg.topicLabel}`}</span>
+                          <span>{msg.latency}</span>
+                        </div>
+                      )}
+                      <div style={{ color: msg.role === 'user' ? '#f8fafc' : '#e2e8f0', fontSize: '0.72rem', lineHeight: 1.44 }}>
+                        {msg.text}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Bottom Input Dock: 4 Quick Chips + Input Form + Portfolio Bridge Button */}
+                <div
+                  style={{
+                    padding: '0.52rem 0.65rem 0.62rem',
+                    borderTop: '1px solid rgba(129, 140, 248, 0.2)',
+                    backgroundColor: 'rgba(10, 15, 29, 0.92)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.42rem',
+                    flexShrink: 0,
+                  }}
+                >
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.28rem' }}>
+                    {getRagQuickTopicsForCategory(currentAsset.cat).map((topic) => (
+                      <button
+                        key={topic.id}
+                        type="button"
+                        onClick={() => {
+                          setRagQuery(topic.query);
+                          runAssetRagQuery(topic.query, 'asset', selectedAsset);
+                        }}
+                        className="mono-metric"
+                        style={{
+                          fontSize: '0.58rem',
+                          padding: '0.16rem 0.44rem',
+                          borderRadius: '999px',
+                          backgroundColor: 'rgba(30, 41, 59, 0.72)',
+                          border: '1px solid rgba(129, 140, 248, 0.26)',
+                          color: '#cbd5e1',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {topic.label[langCode] || topic.label.EN}
+                      </button>
+                    ))}
+                  </div>
+
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      if (ragQuery.trim()) {
+                        const q = ragQuery.trim();
+                        setRagQuery('');
+                        runAssetRagQuery(q, 'asset', selectedAsset);
+                      }
+                    }}
+                    style={{ display: 'flex', gap: '0.38rem' }}
+                  >
+                    <input
+                      type="text"
+                      value={ragQuery}
+                      onChange={(e) => setRagQuery(e.target.value)}
+                      placeholder={
+                        isES
+                          ? `Preguntar al chat sobre ${currentAsset.sym}...`
+                          : `Ask chat about ${currentAsset.sym}...`
+                      }
+                      style={{
+                        flex: 1,
+                        backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                        border: '1px solid rgba(129, 140, 248, 0.34)',
+                        borderRadius: '9px',
+                        padding: '0.42rem 0.6rem',
+                        color: '#f8fafc',
+                        fontSize: '0.72rem',
+                        outline: 'none',
+                      }}
+                    />
+                    <button
+                      type="submit"
+                      disabled={isRagLoading}
+                      className="mono-metric"
+                      style={{
+                        padding: '0.42rem 0.68rem',
+                        borderRadius: '9px',
+                        border: '1px solid rgba(56, 189, 248, 0.5)',
+                        background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(99, 102, 241, 0.28))',
+                        color: '#38bdf8',
+                        fontWeight: 800,
+                        fontSize: '0.74rem',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      {isRagLoading ? '…' : '↵'}
+                    </button>
+                  </form>
+
+                  {/* Direct Bridge to Portfolio & Risk/Backtest Workbench */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (onLaunchTarget) {
+                        onLaunchTarget({ view: 'portfolio', asset: currentAsset.sym });
+                      } else {
+                        window.location.search = `?view=portfolio&asset=${currentAsset.sym}`;
+                      }
+                    }}
+                    className="mono-metric"
+                    style={{
+                      width: '100%',
+                      padding: '0.36rem 0.6rem',
+                      borderRadius: '8px',
+                      background: 'linear-gradient(90deg, rgba(16, 185, 129, 0.16), rgba(56, 189, 248, 0.16))',
+                      border: '1px solid rgba(16, 185, 129, 0.42)',
+                      color: '#34d399',
+                      fontSize: '0.62rem',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <span>
+                      ★ {isES ? `Simular ${currentAsset.sym} en Portfolio & Riesgo` : `Simulate ${currentAsset.sym} in Portfolio & Risk`}
+                    </span>
+                    <span>{isES ? 'Abrir ↗' : 'Open ↗'}</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* ================================================================
+                  COLUMN 2 (CENTER PROTAGONIST): VERDICT & WEIGHTED FACTOR ACCORDION
+                 ================================================================ */}
+              <div
+                style={{
+                  padding: '0.82rem 0.98rem',
+                  borderRadius: '16px',
+                  border: '1.5px solid rgba(56, 189, 248, 0.48)',
+                  background: 'linear-gradient(165deg, rgba(15, 23, 42, 0.90) 0%, rgba(7, 11, 22, 0.96) 100%)',
+                  boxShadow: '0 0 28px rgba(56, 189, 248, 0.12), inset 0 1px 0 0 rgba(255, 255, 255, 0.08)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.62rem',
+                  minHeight: 0,
+                }}
+              >
+                {/* Top Protagonist Header */}
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.45rem',
+                    paddingBottom: '0.52rem',
+                    borderBottom: '1px solid rgba(129, 140, 248, 0.2)',
+                    flexShrink: 0,
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.48rem' }}>
+                      <span
+                        className="mono-metric"
+                        style={{
+                          fontSize: '0.6rem',
+                          fontWeight: 800,
+                          padding: '0.12rem 0.46rem',
+                          borderRadius: '6px',
+                          backgroundColor: 'rgba(16, 185, 129, 0.18)',
+                          border: '1px solid rgba(16, 185, 129, 0.45)',
+                          color: '#34d399',
+                        }}
+                      >
+                        {isES ? '1. FOCO CENTRAL' : '1. PRIMARY FOCUS'}
+                      </span>
+                      <span style={{ color: '#f8fafc', fontSize: '0.8rem', fontWeight: 800, letterSpacing: '0.02em' }}>
+                        {isES ? 'VEREDICTO & ACORDEÓN DE FACTORES PONDERADOS' : 'VERDICT & WEIGHTED FACTOR ACCORDION'}
+                      </span>
+                    </div>
+
+                    <div
+                      className="mono-metric"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
+                        padding: '0.18rem 0.58rem',
+                        borderRadius: '999px',
+                        backgroundColor:
+                          researchBrief.compositeScore >= 0 ? 'rgba(16, 185, 129, 0.16)' : 'rgba(244, 63, 94, 0.16)',
+                        border: `1px solid ${researchBrief.compositeScore >= 0 ? '#34d399' : '#fb7185'}`,
+                        color: researchBrief.compositeScore >= 0 ? '#34d399' : '#fb7185',
+                        fontSize: '0.74rem',
+                        fontWeight: 800,
+                      }}
+                    >
+                      <span>{researchBrief.compositeFormatted}</span>
+                      <span>•</span>
+                      <span>{researchBrief.stanceLabel[langCode] || researchBrief.stanceLabel.EN}</span>
+                    </div>
+                  </div>
+
+                  {/* Tug-of-War Proportional Bar + View Filter Pills */}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.65rem', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flex: 1, minWidth: '175px' }}>
+                      <span className="mono-metric" style={{ color: '#34d399', fontSize: '0.62rem', fontWeight: 800 }}>
+                        BULL {bullPct}% (+{researchBrief.avgBull})
+                      </span>
+                      <div
+                        style={{
+                          flex: 1,
+                          height: '7px',
+                          borderRadius: '999px',
+                          overflow: 'hidden',
+                          display: 'flex',
+                          backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                          border: '1px solid rgba(148, 163, 184, 0.2)',
+                        }}
+                      >
+                        <div style={{ width: `${bullPct}%`, background: 'linear-gradient(90deg, #10b981, #34d399)' }} />
+                        <div style={{ width: `${bearPct}%`, background: 'linear-gradient(90deg, #fb7185, #e11d48)' }} />
+                      </div>
+                      <span className="mono-metric" style={{ color: '#fb7185', fontSize: '0.62rem', fontWeight: 800 }}>
+                        (-{researchBrief.avgBear}) {bearPct}% BEAR
+                      </span>
+                    </div>
+
+                    <div style={{ display: 'flex', gap: '0.26rem' }}>
+                      {[
+                        { id: 'all', label: isES ? 'Todos (10)' : 'All (10)' },
+                        { id: 'bull', label: '▲ 5 Bull' },
+                        { id: 'bear', label: '▼ 5 Bear' },
+                        { id: 'twin', label: '5 vs 5' },
+                      ].map((tab) => {
+                        const active = researchFactorFilter === tab.id;
+                        return (
+                          <button
+                            key={tab.id}
+                            type="button"
+                            onClick={() => setResearchFactorFilter(tab.id)}
+                            className="mono-metric"
+                            style={{
+                              padding: '0.16rem 0.46rem',
+                              borderRadius: '999px',
+                              fontSize: '0.58rem',
+                              fontWeight: 700,
+                              cursor: 'pointer',
+                              backgroundColor: active ? 'rgba(56, 189, 248, 0.18)' : 'rgba(15, 23, 42, 0.7)',
+                              border: active ? '1px solid #38bdf8' : '1px solid rgba(148, 163, 184, 0.2)',
+                              color: active ? '#f8fafc' : '#94a3b8',
+                            }}
+                          >
+                            {tab.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Accordion List Body */}
+                <div style={{ flex: 1, overflowY: 'auto', paddingRight: '0.15rem' }}>
+                  {researchFactorFilter === 'twin' ? (
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                        <div className="mono-metric" style={{ color: '#34d399', fontSize: '0.64rem', fontWeight: 800 }}>
+                          ▲ {isES ? 'TOP 5 CATALIZADORES' : 'TOP 5 BULL DRIVERS'}
+                        </div>
+                        {allFactors
+                          .filter((f) => f.side === 'BULL')
+                          .map((item) => renderAccordionRow(item))}
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                        <div className="mono-metric" style={{ color: '#fb7185', fontSize: '0.64rem', fontWeight: 800 }}>
+                          ▼ {isES ? 'TOP 5 RIESGOS' : 'TOP 5 BEAR RISKS'}
+                        </div>
+                        {allFactors
+                          .filter((f) => f.side === 'BEAR')
+                          .map((item) => renderAccordionRow(item))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.36rem' }}>
+                      {filteredFactors.map((item) => renderAccordionRow(item))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* ================================================================
+                  COLUMN 3 (RIGHT): VERTICAL TIMELINE WITH NODES + 24H AREACHART BELOW
+                 ================================================================ */}
+              <div
+                style={{
+                  padding: '0.8rem 0.95rem',
+                  borderRadius: '16px',
+                  border: '1px solid rgba(129, 140, 248, 0.28)',
+                  background: 'linear-gradient(165deg, rgba(15, 23, 42, 0.84) 0%, rgba(7, 11, 22, 0.94) 100%)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: '0.6rem',
+                  minHeight: 0,
+                }}
+              >
+                {/* Header */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.4rem', flexShrink: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                    <span
+                      className="mono-metric"
+                      style={{
+                        fontSize: '0.58rem',
+                        fontWeight: 800,
+                        padding: '0.1rem 0.42rem',
+                        borderRadius: '6px',
+                        backgroundColor: 'rgba(129, 140, 248, 0.18)',
+                        border: '1px solid rgba(129, 140, 248, 0.4)',
+                        color: '#c7d2fe',
+                      }}
+                    >
+                      {isES ? '2. PULSO 24H' : '2. 24H PULSE'}
+                    </span>
+                    <span style={{ color: '#f8fafc', fontSize: '0.75rem', fontWeight: 800 }}>
+                      TIMELINE FINBERT • {currentAsset.sym}
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={pushIncomingWireHeadline}
+                    className="mono-metric"
+                    style={{
+                      padding: '0.18rem 0.52rem',
+                      borderRadius: '999px',
+                      backgroundColor: 'rgba(56, 189, 248, 0.14)',
+                      border: '1px solid rgba(56, 189, 248, 0.38)',
+                      color: '#38bdf8',
+                      fontSize: '0.58rem',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                    }}
+                  >
+                    + {isES ? 'Simular Noticia' : 'Simulate News'}
+                  </button>
+                </div>
+
+                {/* Top Box: Chronological Vertical Timeline with Glowing Nodes */}
+                <div style={{ flex: 1, overflowY: 'auto', paddingRight: '0.18rem', minHeight: 0 }}>
+                  <div
+                    style={{
+                      position: 'relative',
+                      paddingLeft: '1.1rem',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0.44rem',
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: 'absolute',
+                        left: '4px',
+                        top: '6px',
+                        bottom: '6px',
+                        width: '2px',
+                        background: 'linear-gradient(180deg, rgba(56, 189, 248, 0.72), rgba(129, 140, 248, 0.15))',
+                      }}
+                    />
+
+                    {assetFinbertNews.map((news) => {
+                      const isPos = news.scoreNum >= 0;
+                      const dotColor = isPos ? '#10b981' : '#f43f5e';
+                      const headlineText = news.title[langCode] || news.title.EN;
+
+                      return (
+                        <div key={news.id} style={{ position: 'relative' }}>
+                          <span
+                            style={{
+                              position: 'absolute',
+                              left: '-1.1rem',
+                              top: '0.35rem',
+                              width: '10px',
+                              height: '10px',
+                              borderRadius: '999px',
+                              backgroundColor: dotColor,
+                              boxShadow: `0 0 8px ${dotColor}`,
+                              border: '2px solid #070b16',
+                            }}
+                          />
+                          <div
+                            style={{
+                              padding: '0.42rem 0.58rem',
+                              borderRadius: '9px',
+                              backgroundColor: news.isNew ? 'rgba(16, 185, 129, 0.12)' : 'rgba(15, 23, 42, 0.62)',
+                              border: news.isNew
+                                ? `1px solid ${dotColor}`
+                                : '1px solid rgba(148, 163, 184, 0.14)',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              gap: '0.22rem',
+                            }}
+                          >
+                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.35rem' }}>
+                              <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
+                                {news.isNew && (
+                                  <span
+                                    style={{
+                                      fontSize: '0.5rem',
+                                      fontWeight: 800,
+                                      padding: '0.04rem 0.32rem',
+                                      borderRadius: '999px',
+                                      backgroundColor: dotColor,
+                                      color: '#000',
+                                    }}
+                                  >
+                                    {isES ? 'NUEVO' : 'LIVE'}
+                                  </span>
+                                )}
+                                <span style={{ color: '#38bdf8', fontSize: '0.58rem', fontWeight: 700 }}>{news.time}</span>
+                                <span style={{ color: '#94a3b8', fontSize: '0.57rem' }}>• {news.source}</span>
+                              </div>
+
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '0.32rem' }}>
+                                <span
+                                  className="mono-metric"
+                                  style={{
+                                    fontSize: '0.6rem',
+                                    fontWeight: 800,
+                                    color: isPos ? '#34d399' : '#fb7185',
+                                  }}
+                                >
+                                  {news.score}
+                                </span>
+                                <button
+                                  type="button"
+                                  onClick={() => {
+                                    const qText = isES
+                                      ? `Analizá el impacto de este titular (${news.source}): "${headlineText}"`
+                                      : `Analyze the impact of this headline (${news.source}): "${headlineText}"`;
+                                    setRagQuery(qText);
+                                    runAssetRagQuery(qText, 'asset', selectedAsset);
+                                  }}
+                                  className="mono-metric"
+                                  style={{
+                                    padding: '0.08rem 0.32rem',
+                                    borderRadius: '4px',
+                                    backgroundColor: 'rgba(56, 189, 248, 0.12)',
+                                    border: '1px solid rgba(56, 189, 248, 0.3)',
+                                    color: '#38bdf8',
+                                    fontSize: '0.55rem',
+                                    cursor: 'pointer',
+                                  }}
+                                >
+                                  💬
+                                </button>
+                              </div>
+                            </div>
+
+                            <div style={{ color: '#e2e8f0', fontSize: '0.7rem', lineHeight: 1.36 }}>{headlineText}</div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Bottom Box: Standardized 24h Sentiment Trajectory AreaChart right below the news */}
+                <div
+                  style={{
+                    padding: '0.5rem 0.65rem',
+                    borderRadius: '10px',
+                    backgroundColor: 'rgba(7, 11, 22, 0.84)',
+                    border: '1px solid rgba(129, 140, 248, 0.22)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.22rem',
+                    flexShrink: 0,
+                  }}
+                >
+                  <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <span style={{ fontSize: '0.58rem', color: '#94a3b8', fontWeight: 700 }}>
+                      {isES ? 'RECORRIDO SENTIMIENTO FINBERT (24H)' : 'FINBERT SENTIMENT TRAJECTORY (24H)'}
+                    </span>
+                    <span
+                      style={{
+                        fontSize: '0.66rem',
+                        fontWeight: 800,
+                        color: researchBrief.compositeScore >= 0 ? '#34d399' : '#fb7185',
+                      }}
+                    >
+                      {researchBrief.compositeFormatted} pts
+                    </span>
+                  </div>
+
+                  <div style={{ width: '100%', height: '88px' }}>
+                    <ResponsiveContainer width="100%" height="100%">
+                      <AreaChart data={sentimentSeries24h} margin={{ top: 6, right: 6, left: -26, bottom: 0 }}>
+                        <defs>
+                          <linearGradient id={gradId24h} x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor={strokeHex24h} stopOpacity={0.45} />
+                            <stop offset="95%" stopColor={strokeHex24h} stopOpacity={0.0} />
+                          </linearGradient>
+                        </defs>
+                        <XAxis dataKey="time" tick={{ fill: '#64748b', fontSize: 9 }} axisLine={false} tickLine={false} />
+                        <YAxis tick={{ fill: '#64748b', fontSize: 9 }} axisLine={false} tickLine={false} />
+                        <Tooltip
+                          contentStyle={{
+                            backgroundColor: 'rgba(7, 11, 22, 0.95)',
+                            border: '1px solid rgba(129, 140, 248, 0.35)',
+                            borderRadius: '8px',
+                            fontSize: '0.68rem',
+                          }}
+                        />
+                        <Area
+                          type="monotone"
+                          dataKey="score"
+                          stroke={strokeHex24h}
+                          strokeWidth={2}
+                          fill={`url(#${gradId24h})`}
+                          isAnimationActive={false}
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </>
+          );
+        })()
       )}
     </div>
   );

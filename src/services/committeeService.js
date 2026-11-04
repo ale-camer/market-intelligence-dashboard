@@ -887,11 +887,15 @@ export function computePortfolioQuantRisk(activeHoldings = [], totalNav = 106420
       diversificationBenefitUsd: 0,
       diversificationBenefitPct: 0,
       portfolioBeta: 0,
+      weightedBeta: 0,
       annualizedVolPct: 0,
+      portfolioAnnualVolPct: 0,
       sharpeRatio: 0,
       expectedReturnPct: 4.82,
       symbols: [],
+      matrixSymbols: [],
       matrix: [],
+      correlationMatrix: [],
       highestCorrPair: null,
       bestHedgePair: null,
     };
@@ -1016,6 +1020,16 @@ export function computePortfolioQuantRisk(activeHoldings = [], totalNav = 106420
       ? Number(((expectedPortfolioReturn - rf) / portfolioVolAnnual).toFixed(2))
       : 0;
 
+  const symbols = activeHoldings.map((h) => h.sym);
+  const correlationMatrix = activeHoldings.map((rowItem, i) => ({
+    sym: rowItem.sym,
+    cells: activeHoldings.map((colItem, j) => ({
+      rowSym: rowItem.sym,
+      colSym: colItem.sym,
+      r: matrix[i][j],
+    })),
+  }));
+
   return {
     var95Usd,
     var95Pct,
@@ -1025,11 +1039,15 @@ export function computePortfolioQuantRisk(activeHoldings = [], totalNav = 106420
     diversificationBenefitUsd,
     diversificationBenefitPct,
     portfolioBeta,
+    weightedBeta: portfolioBeta,
     annualizedVolPct,
+    portfolioAnnualVolPct: annualizedVolPct,
     sharpeRatio,
     expectedReturnPct: Number((expectedPortfolioReturn * 100).toFixed(2)),
-    symbols: activeHoldings.map((h) => h.sym),
+    symbols,
+    matrixSymbols: symbols,
     matrix,
+    correlationMatrix,
     highestCorrPair,
     bestHedgePair,
   };

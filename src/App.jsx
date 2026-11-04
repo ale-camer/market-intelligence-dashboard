@@ -133,6 +133,13 @@ export default function App() {
   };
   const [devIconId, setDevIconId] = useState('lambda08-h-chiseled-nib');
   const [devBoxStyleId, setDevBoxStyleId] = useState('free-green');
+  // Permanent official header design chosen by user: V010 • F01 (MINIMAL & GHOST)
+  const [headerVariantId, setHeaderVariantId] = useState('v010');
+
+  const [marketsToolsMode, setMarketsToolsMode] = useState('v4-tab');
+
+  const [mainToolsStyleId, setMainToolsStyleId] = useState('hb-05');
+
   const [isSystemHealthy] = useState(true);
 
   const currentTheme = PALETTES[themeIdx];
@@ -145,7 +152,12 @@ export default function App() {
   const isUtilityTab = (tab) => tab === 'observability' || tab === 'devlab' || tab === 'guide';
 
   const handleNavigate = (tabId) => {
-    setPreviousTab(isUtilityTab(activeTab) ? previousTab : activeTab);
+    if (tabId !== activeTab) {
+      setPreviousTab(isUtilityTab(activeTab) ? previousTab : activeTab);
+    }
+    if (tabId === 'workstation') {
+      setMarketsViewMode('screener');
+    }
     setActiveTab(tabId);
     const viewMap = {
       presentation: '',
@@ -173,6 +185,7 @@ export default function App() {
     params.set('view', targetView);
 
     if (target.mode) params.set('mode', target.mode);
+    if (target.screener) params.set('screener', target.screener);
     if (target.asset) {
       params.set('asset', target.asset);
       setSelectedAsset(target.asset);
@@ -185,7 +198,9 @@ export default function App() {
 
     window.history.replaceState({}, '', `${window.location.pathname}?${params.toString()}`);
 
-    setPreviousTab(isUtilityTab(activeTab) ? previousTab : activeTab);
+    if (!isUtilityTab(activeTab)) {
+      setPreviousTab(activeTab);
+    }
     if (targetView === 'portfolio' || targetView === 'consensus') {
       setActiveTab('consensus');
     } else if (targetView === 'observability') {
@@ -203,10 +218,6 @@ export default function App() {
       setDeepLinkNonce((n) => n + 1);
       setActiveTab('workstation');
     }
-  };
-
-  const toggleObservabilityInTab = () => {
-    handleNavigate(activeTab === 'observability' ? previousTab || 'presentation' : 'observability');
   };
 
   const goBack = () => {
@@ -240,6 +251,7 @@ export default function App() {
         onGoBack={goBack}
         devIconId={devIconId}
         devBoxStyleId={devBoxStyleId}
+        headerVariantId={headerVariantId}
       />
 
       <div style={{ flex: 1, display: 'flex', minHeight: 0, position: 'relative', zIndex: 5 }}>
@@ -250,7 +262,8 @@ export default function App() {
             flexDirection: 'column',
             position: 'relative',
             minHeight: 0,
-            padding: isHome ? '0' : '3.8rem 1.75rem 3.2rem 1.75rem',
+            margin: isHome ? '0' : '3.8rem 0 3.2rem 0',
+            padding: isHome ? '0' : '0 1.75rem',
             overflowY: isHome ? 'hidden' : 'auto',
             backgroundColor: isHome ? '#000000' : 'transparent',
           }}
@@ -275,6 +288,9 @@ export default function App() {
               onViewModeChange={setMarketsViewMode}
               watchlistSyms={watchlistSyms}
               onToggleWatchlist={toggleWatchlist}
+              marketsToolsMode={marketsToolsMode}
+              mainToolsStyleId={mainToolsStyleId}
+              onLaunchTarget={handleLaunchTarget}
               langCode={currentLang.code}
               t={t}
             />
@@ -308,12 +324,8 @@ export default function App() {
           {activeTab === 'devlab' && (
             <DevLabView
               langCode={currentLang.code}
-              selectedIconId={devIconId}
-              onSelectIconId={setDevIconId}
-              selectedBoxStyleId={devBoxStyleId}
-              onSelectBoxStyleId={setDevBoxStyleId}
-              homeLayoutId={homeLayoutId}
-              onSelectHomeLayout={setHomeLayoutId}
+              mainToolsStyleId={mainToolsStyleId}
+              onSelectMainToolsStyle={setMainToolsStyleId}
               onLaunchTarget={handleLaunchTarget}
               onNavigate={handleNavigate}
             />
@@ -327,9 +339,9 @@ export default function App() {
         currentLang={currentLang}
         currentTheme={currentTheme}
         activeTab={activeTab}
-        onOpenObservability={toggleObservabilityInTab}
-        onToggleGuide={() => handleNavigate(activeTab === 'guide' ? previousTab || 'presentation' : 'guide')}
-        onToggleDevLab={() => handleNavigate(activeTab === 'devlab' ? previousTab || 'presentation' : 'devlab')}
+        onOpenObservability={() => handleNavigate('observability')}
+        onToggleGuide={() => handleNavigate('guide')}
+        onToggleDevLab={() => handleNavigate('devlab')}
         onCycleLang={cycleLang}
         onSelectLang={(idx) => setLangIdx(idx)}
         onCycleTheme={cycleTheme}

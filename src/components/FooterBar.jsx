@@ -156,7 +156,7 @@ export default function FooterBar({
 
   return (
     <>
-      {/* CENTERED SCREEN MODAL FOR 56-LANGUAGE SEARCHABLE DROPDOWN */}
+      {/* CENTERED RESPONSIVE SCREEN MODAL FOR 56-LANGUAGE SEARCHABLE DROPDOWN */}
       {langModalOpen && (
         <div
           onMouseDown={(e) => {
@@ -165,55 +165,56 @@ export default function FooterBar({
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(4, 7, 14, 0.76)',
+            backgroundColor: 'rgba(4, 7, 14, 0.78)',
             backdropFilter: 'blur(9px)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            padding: '1.25rem',
+            padding: 'clamp(0.6rem, 2.5vw, 1.25rem)',
             zIndex: 250,
             pointerEvents: 'auto',
           }}
         >
           <div
             style={{
-              width: '540px',
-              maxWidth: '100%',
-              borderRadius: '22px',
+              width: 'min(480px, 94vw)',
+              maxHeight: 'min(82vh, 520px)',
+              borderRadius: '18px',
               backgroundColor: 'rgba(10, 15, 26, 0.98)',
-              border: '1px solid rgba(16, 185, 129, 0.42)',
-              boxShadow: '0 28px 70px rgba(0, 0, 0, 0.85), 0 0 32px rgba(16, 185, 129, 0.18)',
-              padding: '1.35rem 1.45rem',
+              border: '1px solid rgba(var(--ui-accent-rgb), 0.45)',
+              boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85), 0 0 28px rgba(var(--ui-accent-rgb), 0.18)',
+              padding: 'clamp(0.85rem, 2vw, 1.2rem)',
               display: 'flex',
               flexDirection: 'column',
-              gap: '0.95rem',
+              gap: '0.7rem',
+              overflow: 'hidden',
             }}
           >
             {/* Modal Header */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.75rem' }}>
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '1.04rem', fontWeight: 800, color: '#ffffff' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.65rem', flexShrink: 0 }}>
+              <div style={{ minWidth: 0 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.95rem', fontWeight: 800, color: '#ffffff' }}>
                     {t.langModalTitle || 'Select Interface Language'}
                   </span>
                   <span
                     className="mono-metric"
                     style={{
-                      fontSize: '0.58rem',
+                      fontSize: '0.56rem',
                       fontWeight: 800,
-                      padding: '0.14rem 0.55rem',
+                      padding: '0.12rem 0.5rem',
                       borderRadius: '999px',
-                      backgroundColor: 'rgba(16, 185, 129, 0.16)',
-                      border: '1px solid rgba(16, 185, 129, 0.38)',
-                      color: '#10b981',
+                      backgroundColor: 'rgba(var(--ui-accent-rgb), 0.16)',
+                      border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
+                      color: 'var(--ui-accent)',
                     }}
                   >
                     {LANGUAGES.length} LANGUAGES
                   </span>
                 </div>
-                <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '0.24rem', lineHeight: 1.45 }}>
+                <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '0.18rem', lineHeight: 1.4 }}>
                   {t.langModalSub ||
-                    'Type the language in its original script (e.g. Español, English, Deutsch, 日本語) or choose from the dropdown menu.'}
+                    'Type the language in its original script (e.g. Español, English, Deutsch, 日本語) or choose below.'}
                 </div>
               </div>
 
@@ -224,9 +225,9 @@ export default function FooterBar({
                   background: 'rgba(255,255,255,0.06)',
                   border: '1px solid rgba(255,255,255,0.14)',
                   color: 'var(--text-muted)',
-                  borderRadius: '10px',
-                  width: '28px',
-                  height: '28px',
+                  borderRadius: '9px',
+                  width: '26px',
+                  height: '26px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -234,7 +235,7 @@ export default function FooterBar({
                   flexShrink: 0,
                 }}
               >
-                <X size={15} />
+                <X size={14} />
               </button>
             </div>
 
@@ -244,43 +245,45 @@ export default function FooterBar({
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '0.55rem 0.85rem',
-                borderRadius: '12px',
-                backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                border: '1px solid rgba(16, 185, 129, 0.28)',
+                gap: '0.5rem',
+                flexWrap: 'wrap',
+                padding: '0.45rem 0.75rem',
+                borderRadius: '11px',
+                backgroundColor: 'rgba(var(--ui-accent-rgb), 0.1)',
+                border: '1px solid rgba(var(--ui-accent-rgb), 0.3)',
+                flexShrink: 0,
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-                <FlagBadge lang={currentLang} width={24} height={16} />
-                <div>
-                  <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#ffffff' }}>
-                    {currentLang.nativeName}{' '}
-                    <span style={{ fontSize: '0.68rem', color: 'var(--text-muted)', fontWeight: 500 }}>
-                      ({currentLang.name} • {currentLang.region})
-                    </span>
-                  </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', minWidth: 0 }}>
+                <FlagBadge lang={currentLang} width={22} height={15} />
+                <div style={{ fontSize: '0.76rem', fontWeight: 800, color: '#ffffff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  {currentLang.nativeName}{' '}
+                  <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: 500 }}>
+                    ({currentLang.name} • {currentLang.region})
+                  </span>
                 </div>
               </div>
-              <span className="mono-metric" style={{ fontSize: '0.65rem', fontWeight: 800, color: '#10b981' }}>
+              <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--ui-accent)' }}>
                 ACTIVE • {currentLang.code}
               </span>
             </div>
 
             {/* SEARCHABLE COMBOBOX / DROPDOWN MENU */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', flex: 1, minHeight: 0, overflow: 'hidden' }}>
               <div
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '0.55rem',
+                  gap: '0.5rem',
                   backgroundColor: 'rgba(6, 10, 18, 0.92)',
-                  border: '1.5px solid #10b981',
-                  borderRadius: '14px',
-                  padding: '0.58rem 0.85rem',
-                  boxShadow: '0 0 16px rgba(16, 185, 129, 0.15)',
+                  border: '1.5px solid var(--ui-accent)',
+                  borderRadius: '12px',
+                  padding: '0.48rem 0.75rem',
+                  boxShadow: '0 0 14px rgba(var(--ui-accent-rgb), 0.15)',
+                  flexShrink: 0,
                 }}
               >
-                <Search size={15} style={{ color: '#10b981', flexShrink: 0 }} />
+                <Search size={14} style={{ color: 'var(--ui-accent)', flexShrink: 0 }} />
                 <input
                   ref={searchInputRef}
                   type="text"
@@ -309,15 +312,16 @@ export default function FooterBar({
                   }}
                   placeholder={
                     t.langSearchPlaceholder ||
-                    'Type language in original script (e.g. Español, Français, Deutsch, 日本語, العربية)...'
+                    'Type language in original script (e.g. Español, Français, Deutsch, 日本語)...'
                   }
                   style={{
                     flex: 1,
+                    minWidth: 0,
                     background: 'transparent',
                     border: 'none',
                     outline: 'none',
                     color: '#ffffff',
-                    fontSize: '0.82rem',
+                    fontSize: '0.78rem',
                     fontFamily: 'var(--font-sans)',
                   }}
                 />
@@ -347,35 +351,36 @@ export default function FooterBar({
                   style={{
                     background: 'transparent',
                     border: 'none',
-                    color: '#10b981',
+                    color: 'var(--ui-accent)',
                     cursor: 'pointer',
                     padding: 0,
                     display: 'flex',
                   }}
                 >
-                  {dropdownOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                  {dropdownOpen ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
                 </button>
               </div>
 
-              {/* DROPDOWN MENU LIST */}
+              {/* DROPDOWN MENU LIST (FLEXIBLE HEIGHT TO FIT ANY VIEWPORT) */}
               {dropdownOpen && (
                 <div
                   style={{
-                    maxHeight: '295px',
+                    flex: 1,
+                    minHeight: '120px',
                     overflowY: 'auto',
-                    borderRadius: '14px',
+                    borderRadius: '12px',
                     backgroundColor: 'rgba(6, 10, 18, 0.94)',
                     border: '1px solid rgba(255, 255, 255, 0.12)',
-                    padding: '0.38rem',
+                    padding: '0.32rem',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.2rem',
+                    gap: '0.18rem',
                   }}
                 >
                   {filteredLanguages.length === 0 ? (
                     <div
                       className="mono-metric"
-                      style={{ padding: '0.85rem', textAlign: 'center', fontSize: '0.73rem', color: 'var(--text-dim)' }}
+                      style={{ padding: '0.75rem', textAlign: 'center', fontSize: '0.7rem', color: 'var(--text-dim)' }}
                     >
                       No matching language found for "{langSearchQuery}"
                     </div>
@@ -393,51 +398,52 @@ export default function FooterBar({
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'space-between',
-                            gap: '0.75rem',
-                            padding: '0.52rem 0.75rem',
-                            borderRadius: '10px',
+                            gap: '0.6rem',
+                            padding: '0.44rem 0.65rem',
+                            borderRadius: '9px',
                             backgroundColor: isSelected
-                              ? 'rgba(16, 185, 129, 0.2)'
+                              ? 'rgba(var(--ui-accent-rgb), 0.2)'
                               : isKbHighlighted
                               ? 'rgba(255, 255, 255, 0.07)'
                               : 'transparent',
                             border: isSelected
-                              ? '1px solid #10b981'
+                              ? '1px solid var(--ui-accent)'
                               : isKbHighlighted
                               ? '1px solid rgba(255, 255, 255, 0.16)'
                               : '1px solid transparent',
                             cursor: 'pointer',
                             textAlign: 'left',
                             transition: 'background-color 0.12s ease',
+                            flexShrink: 0,
                           }}
                         >
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.68rem', minWidth: 0 }}>
-                            <FlagBadge lang={lang} width={24} height={16} />
-                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem', flexWrap: 'wrap' }}>
-                              <span style={{ fontSize: '0.83rem', fontWeight: 800, color: '#ffffff' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', minWidth: 0 }}>
+                            <FlagBadge lang={lang} width={22} height={15} />
+                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.45rem', flexWrap: 'wrap', minWidth: 0 }}>
+                              <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#ffffff' }}>
                                 {lang.nativeName}
                               </span>
-                              <span style={{ fontSize: '0.69rem', color: 'var(--text-muted)' }}>
+                              <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>
                                 {lang.name} • {lang.region}
                               </span>
                             </div>
                           </div>
 
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', flexShrink: 0 }}>
                             <span
                               className="mono-metric"
                               style={{
-                                fontSize: '0.62rem',
+                                fontSize: '0.6rem',
                                 fontWeight: 800,
-                                padding: '0.1rem 0.42rem',
+                                padding: '0.08rem 0.38rem',
                                 borderRadius: '999px',
-                                backgroundColor: isSelected ? 'rgba(16, 185, 129, 0.22)' : 'rgba(255, 255, 255, 0.06)',
-                                color: isSelected ? '#10b981' : 'var(--text-dim)',
+                                backgroundColor: isSelected ? 'rgba(var(--ui-accent-rgb), 0.22)' : 'rgba(255, 255, 255, 0.06)',
+                                color: isSelected ? 'var(--ui-accent)' : 'var(--text-dim)',
                               }}
                             >
                               {lang.code}
                             </span>
-                            {isSelected && <Check size={14} style={{ color: '#10b981' }} />}
+                            {isSelected && <Check size={13} style={{ color: 'var(--ui-accent)' }} />}
                           </div>
                         </button>
                       );
@@ -458,65 +464,67 @@ export default function FooterBar({
           right: 0,
           backgroundColor: 'transparent',
           borderTop: 'none',
-          padding: '0.65rem 1.35rem',
+          padding: '0.65rem 1.5rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          fontSize: '0.72rem',
-          color: 'var(--text-dim)',
+          fontSize: '0.76rem',
+          color: 'var(--ui-accent)',
           zIndex: 50,
           pointerEvents: 'none',
         }}
       >
-        {/* BOTTOM-LEFT: PIPELINE & SYSTEM OBSERVABILITY LINK + APP OVERVIEW INFO ICON */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', pointerEvents: 'auto' }}>
+        {/* BOTTOM-LEFT: HOMOGENEOUS V010 SINGLE-WORD ITEMS (SYSTEM • GUIDE • DEV) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', pointerEvents: 'auto' }}>
+          {/* 1. SYSTEM (ONE WORD) */}
           <HoverTooltip
             title={isSystemHealthy ? t.statusOkTitle : t.statusErrTitle}
             description={isSystemHealthy ? t.statusOkDesc : t.statusErrDesc}
             hint={t.statusHint}
-            badge={isSystemHealthy ? '99.98% OK' : 'DEGRADED'}
+            badge={isSystemHealthy ? '13/13 OK' : 'DEGRADED'}
             statusColor={isSystemHealthy ? '#10b981' : '#ef4444'}
             placement="top-left"
           >
-            {(isHovered) => (
-              <button
-                onClick={onOpenObservability}
-                style={{
-                  backgroundColor:
-                    activeTab === 'observability' || isHovered
-                      ? 'rgba(16, 185, 129, 0.16)'
-                      : 'rgba(10, 14, 23, 0.72)',
-                  backdropFilter: 'blur(10px)',
-                  border:
-                    activeTab === 'observability' || isHovered
-                      ? `1px solid ${isSystemHealthy ? '#10b981' : '#ef4444'}`
-                      : isSystemHealthy
-                      ? '1px solid rgba(16, 185, 129, 0.35)'
-                      : '1px solid rgba(239, 68, 68, 0.35)',
-                  color: activeTab === 'observability' || isHovered ? '#ffffff' : 'var(--text-main)',
-                  height: '28px',
-                  padding: '0 0.7rem',
-                  borderRadius: '6px',
-                  fontSize: '0.71rem',
-                  fontWeight: 600,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.45rem',
-                  cursor: 'pointer',
-                  boxShadow:
-                    activeTab === 'observability' || isHovered
-                      ? '0 0 14px rgba(16, 185, 129, 0.28), 0 4px 14px rgba(0, 0, 0, 0.45)'
-                      : '0 4px 14px rgba(0, 0, 0, 0.4)',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                <span style={{ fontSize: '0.78rem', lineHeight: 1 }}>{isSystemHealthy ? '🟢' : '🔴'}</span>
-                <span>{t.navTelemetry}</span>
-              </button>
-            )}
+            {(isHovered) => {
+              const isHighlighted = activeTab === 'observability' || isHovered;
+              return (
+                <button
+                  onClick={onOpenObservability}
+                  style={{
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+                    height: '28px',
+                    padding: '0 0.25rem',
+                    fontSize: '0.76rem',
+                    fontWeight: isHighlighted ? 700 : 600,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    cursor: 'pointer',
+                    textShadow: isHighlighted
+                      ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+                      : '0 1px 4px rgba(0, 0, 0, 0.9)',
+                    transition: 'all 0.18s ease',
+                  }}
+                >
+                  <span
+                    style={{
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '999px',
+                      backgroundColor: isSystemHealthy ? '#10b981' : '#ef4444',
+                      boxShadow: isSystemHealthy ? '0 0 7px #10b981' : '0 0 7px #ef4444',
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span>{t.navTelemetry || 'System'}</span>
+                </button>
+              );
+            }}
           </HoverTooltip>
 
-          {/* APP EXPLANATION & USER GUIDE PLACEHOLDER ICON IN FOOTER */}
+          {/* 2. GUIDE (ONE WORD, HOMOGENEOUS WITH SYSTEM & DEV) */}
           <HoverTooltip
             title={t.aboutTitle}
             description={t.aboutDesc}
@@ -524,69 +532,75 @@ export default function FooterBar({
             badge="GUIDE • 13 REPOS"
             placement="top-left"
           >
-            {(isHovered) => (
-              <button
-                onClick={onToggleGuide}
-                style={{
-                  backgroundColor:
-                    activeTab === 'guide' || isHovered
-                      ? 'rgba(16, 185, 129, 0.16)'
-                      : 'rgba(10, 14, 23, 0.72)',
-                  backdropFilter: 'blur(10px)',
-                  border:
-                    activeTab === 'guide' || isHovered
-                      ? '1px solid var(--accent)'
-                      : '1px solid var(--border-light)',
-                  color: activeTab === 'guide' || isHovered ? '#ffffff' : 'var(--text-dim)',
-                  width: '28px',
-                  height: '28px',
-                  borderRadius: '6px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  boxShadow:
-                    activeTab === 'guide' || isHovered
-                      ? '0 0 14px rgba(16, 185, 129, 0.25), 0 4px 14px rgba(0, 0, 0, 0.45)'
-                      : '0 4px 14px rgba(0, 0, 0, 0.4)',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                <Info size={14} strokeWidth={2.2} style={{ color: activeTab === 'guide' || isHovered ? 'var(--accent)' : 'var(--text-muted)' }} />
-              </button>
-            )}
+            {(isHovered) => {
+              const isHighlighted = activeTab === 'guide' || isHovered;
+              return (
+                <button
+                  onClick={onToggleGuide}
+                  style={{
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+                    height: '28px',
+                    padding: '0 0.25rem',
+                    fontSize: '0.76rem',
+                    fontWeight: isHighlighted ? 700 : 600,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    cursor: 'pointer',
+                    textShadow: isHighlighted
+                      ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+                      : '0 1px 4px rgba(0, 0, 0, 0.9)',
+                    transition: 'all 0.18s ease',
+                  }}
+                >
+                  <span>{t.navGuide || 'Guide'}</span>
+                </button>
+              );
+            }}
           </HoverTooltip>
 
-          {/* DEV LAB SANDBOX BUTTON */}
+          {/* 3. DEV (ONE WORD, HOMOGENEOUS WITH SYSTEM & GUIDE) */}
           {onToggleDevLab && (
-            <button
-              onClick={onToggleDevLab}
-              className="mono-metric"
-              style={{
-                backgroundColor: activeTab === 'devlab' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(10, 14, 23, 0.72)',
-                backdropFilter: 'blur(10px)',
-                border: activeTab === 'devlab' ? '1px solid #10b981' : '1px solid var(--border-light)',
-                color: activeTab === 'devlab' ? '#10b981' : 'var(--text-muted)',
-                height: '28px',
-                padding: '0 0.65rem',
-                borderRadius: '6px',
-                fontSize: '0.64rem',
-                fontWeight: 800,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                cursor: 'pointer',
-                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.4)',
-                transition: 'all 0.2s ease',
-              }}
+            <HoverTooltip
+              title="DEV • Visual Design Lab"
+              description="Compare graphical layout proposals for the active section under review."
+              hint="Click to open DEV Lab"
+              badge="PROPOSALS"
+              placement="top-left"
             >
-              <span>DEV</span>
-            </button>
+              {(isHovered) => {
+                const isHighlighted = activeTab === 'devlab' || isHovered;
+                return (
+                  <button
+                    onClick={onToggleDevLab}
+                    style={{
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                      color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+                      height: '28px',
+                      padding: '0 0.25rem',
+                      fontSize: '0.76rem',
+                      fontWeight: isHighlighted ? 700 : 600,
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      cursor: 'pointer',
+                      textShadow: isHighlighted
+                        ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+                        : '0 1px 4px rgba(0, 0, 0, 0.9)',
+                      transition: 'all 0.18s ease',
+                    }}
+                  >
+                    <span>DEV</span>
+                  </button>
+                );
+              }}
+            </HoverTooltip>
           )}
         </div>
 
-        {/* BOTTOM-RIGHT: LANGUAGE MODAL TRIGGER & COLOR PALETTE */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', pointerEvents: 'auto' }}>
+        {/* BOTTOM-RIGHT: HOMOGENEOUS V010 LANGUAGE & PALETTE CONTROLS */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', pointerEvents: 'auto' }}>
           {/* LANGUAGE SELECTOR BUTTON WITH FLAG ON THE LEFT */}
           <HoverTooltip
             title={t.langTitle}
@@ -595,38 +609,42 @@ export default function FooterBar({
             badge={`${currentLang.nativeName || currentLang.name} (${currentLang.code})`}
             placement="top-right"
           >
-            {(isHovered) => (
-              <button
-                onClick={() => setLangModalOpen((prev) => !prev)}
-                style={{
-                  backgroundColor:
-                    langModalOpen || isHovered ? 'rgba(16, 185, 129, 0.16)' : 'rgba(10, 14, 23, 0.72)',
-                  backdropFilter: 'blur(10px)',
-                  border:
-                    langModalOpen || isHovered ? '1px solid var(--accent)' : '1px solid var(--border-light)',
-                  color: langModalOpen || isHovered ? '#ffffff' : 'var(--text-main)',
-                  height: '28px',
-                  padding: '0 0.62rem',
-                  borderRadius: '6px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.42rem',
-                  cursor: 'pointer',
-                  fontSize: '0.72rem',
-                  fontWeight: 700,
-                  boxShadow:
-                    langModalOpen || isHovered
-                      ? '0 0 14px rgba(16, 185, 129, 0.25), 0 4px 14px rgba(0, 0, 0, 0.45)'
-                      : '0 4px 14px rgba(0, 0, 0, 0.4)',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                <FlagBadge lang={currentLang} width={17} height={12} />
-                <span className="mono-metric" style={{ color: 'var(--accent)', letterSpacing: '0.05em', fontWeight: 800 }}>
-                  {currentLang.code}
-                </span>
-              </button>
-            )}
+            {(isHovered) => {
+              const isHighlighted = langModalOpen || isHovered;
+              return (
+                <button
+                  onClick={() => setLangModalOpen((prev) => !prev)}
+                  style={{
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+                    height: '28px',
+                    padding: '0 0.25rem',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.42rem',
+                    cursor: 'pointer',
+                    fontSize: '0.76rem',
+                    fontWeight: isHighlighted ? 700 : 600,
+                    filter: isHighlighted ? 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb), 0.65))' : 'none',
+                    transition: 'all 0.18s ease',
+                  }}
+                >
+                  <FlagBadge lang={currentLang} width={17} height={12} />
+                  <span
+                    style={{
+                      color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+                      fontWeight: isHighlighted ? 700 : 600,
+                      textShadow: isHighlighted
+                        ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+                        : '0 1px 4px rgba(0, 0, 0, 0.9)',
+                    }}
+                  >
+                    {currentLang.code}
+                  </span>
+                </button>
+              );
+            }}
           </HoverTooltip>
 
           {/* THEME COLOR PALETTE BUTTON */}
@@ -642,36 +660,22 @@ export default function FooterBar({
               <button
                 onClick={onCycleTheme}
                 style={{
-                  backgroundColor: isHovered ? 'rgba(255, 255, 255, 0.08)' : 'rgba(10, 14, 23, 0.72)',
-                  backdropFilter: 'blur(10px)',
-                  border: isHovered ? `1px solid ${currentTheme.color}` : '1px solid var(--border-light)',
-                  color: 'var(--text-main)',
-                  width: '28px',
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  color: isHovered ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.85)',
                   height: '28px',
-                  borderRadius: '6px',
-                  display: 'flex',
+                  padding: '0 0.25rem',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  position: 'relative',
                   cursor: 'pointer',
-                  boxShadow: isHovered
-                    ? `0 0 14px ${currentTheme.color}44, 0 4px 14px rgba(0, 0, 0, 0.45)`
-                    : '0 4px 14px rgba(0, 0, 0, 0.4)',
-                  transition: 'all 0.2s ease',
+                  filter: isHovered
+                    ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
+                    : 'drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9))',
+                  transition: 'all 0.18s ease',
                 }}
               >
-                <Palette size={15} strokeWidth={2.2} color={currentTheme.color} />
-                <span
-                  style={{
-                    position: 'absolute',
-                    top: '3px',
-                    right: '3px',
-                    width: '5px',
-                    height: '5px',
-                    borderRadius: '50%',
-                    backgroundColor: currentTheme.color,
-                  }}
-                />
+                <Palette size={16} strokeWidth={isHovered ? 2.4 : 2.1} style={{ color: 'var(--ui-accent)' }} />
               </button>
             )}
           </HoverTooltip>

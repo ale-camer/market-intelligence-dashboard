@@ -571,16 +571,16 @@ const TIMEFRAME_STAMPS = {
 };
 
 const ASSET_CURVE_SHAPES = {
-  BTC: [0.985, 0.989, 0.987, 0.992, 0.995, 0.994, 0.998, 1.0],
-  ETH: [0.991, 0.989, 0.993, 0.994, 0.992, 0.996, 0.998, 1.0],
-  SOL: [0.962, 0.968, 0.965, 0.979, 0.991, 1.012, 0.995, 1.0],
-  NVDA: [0.974, 0.979, 0.983, 0.981, 0.988, 0.993, 0.997, 1.0],
-  AAPL: [0.994, 0.996, 0.995, 0.997, 0.998, 0.997, 0.999, 1.0],
-  MSFT: [1.003, 1.002, 1.004, 1.001, 0.999, 1.001, 0.999, 1.0],
-  AMZN: [0.988, 0.991, 0.99, 0.993, 0.996, 0.995, 0.998, 1.0],
-  GOOGL: [0.992, 0.991, 0.994, 0.995, 0.997, 0.996, 0.999, 1.0],
-  SPY: [0.995, 0.996, 0.995, 0.997, 0.998, 0.998, 0.999, 1.0],
-  QQQ: [0.993, 0.994, 0.993, 0.996, 0.997, 0.998, 0.999, 1.0],
+  BTC: [0.978, 0.994, 0.981, 0.989, 1.006, 0.991, 0.997, 1.0],
+  ETH: [0.992, 0.976, 0.984, 0.998, 0.987, 0.993, 1.004, 1.0],
+  SOL: [0.958, 0.979, 0.964, 0.995, 0.982, 1.018, 0.991, 1.0],
+  NVDA: [0.969, 0.985, 0.997, 0.978, 0.991, 1.009, 0.994, 1.0],
+  AAPL: [1.004, 0.991, 0.998, 0.989, 1.002, 0.994, 0.997, 1.0],
+  MSFT: [1.012, 1.004, 1.009, 0.996, 1.003, 0.992, 0.998, 1.0],
+  AMZN: [0.982, 0.996, 0.984, 1.003, 0.989, 0.997, 1.005, 1.0],
+  GOOGL: [0.995, 0.981, 0.992, 0.986, 1.004, 0.991, 0.998, 1.0],
+  SPY: [0.991, 0.998, 0.989, 0.996, 0.992, 1.003, 0.997, 1.0],
+  QQQ: [0.986, 0.994, 1.002, 0.988, 0.997, 0.991, 1.004, 1.0],
 };
 
 const ASSET_VOL_SHAPES = {
@@ -602,10 +602,10 @@ function getDeterministicCurveForAsset(asset) {
   const drift = (asset.chgNum || 0.2) / 100;
   const volAmp =
     asset.cat === 'CASH' || asset.cat === 'FIXED_INCOME'
-      ? 0.0025
+      ? 0.004
       : asset.cat === 'FX' || asset.cat === 'RATES'
-      ? 0.0045
-      : 0.0085;
+      ? 0.007
+      : 0.014;
   const startRatio = 1 - drift;
   const pts = [];
   for (let i = 0; i < 8; i++) {
@@ -613,8 +613,9 @@ function getDeterministicCurveForAsset(asset) {
       pts.push(1.0);
     } else {
       const progress = i / 7;
-      const wave = Math.sin((i + (h % 5)) * 1.3) * volAmp;
-      pts.push(Number((startRatio + (1 - startRatio) * progress + wave).toFixed(4)));
+      const wave1 = Math.sin(i * (1.1 + (h % 4) * 0.35) + (h % 7)) * volAmp;
+      const wave2 = Math.cos(i * (1.8 + (h % 3) * 0.4) + (h % 11)) * (volAmp * 0.65);
+      pts.push(Number((startRatio + (1 - startRatio) * progress + wave1 + wave2).toFixed(4)));
     }
   }
   return pts;
@@ -628,7 +629,13 @@ function getDeterministicVolsForAsset(asset) {
 }
 
 export function getAssetBySymbol(sym = 'BTC') {
-  return ASSET_CATALOG.find((a) => a.sym === sym) || ASSET_CATALOG[0];
+  const clean = String(sym || 'BTC').replace(/1!$/, '');
+  const alias = clean === 'GB10Y' ? 'UK10Y' : clean;
+  return (
+    ASSET_CATALOG.find((a) => a.sym === sym) ||
+    ASSET_CATALOG.find((a) => a.sym === alias) ||
+    ASSET_CATALOG[0]
+  );
 }
 
 export function getAssetSeries(sym = 'BTC', timeframe = '1D') {

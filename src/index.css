@@ -23,6 +23,7 @@
   --border-light: rgba(255, 255, 255, 0.10);
   --border-accent: rgba(16, 185, 129, 0.40);
   --ui-accent: #10b981;
+  --ui-accent-rgb: 16, 185, 129;
   --ui-accent-soft: rgba(16, 185, 129, 0.15);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
@@ -45,6 +46,7 @@
   --border-light: rgba(255, 255, 255, 0.15);
   --border-accent: rgba(255, 255, 255, 0.38);
   --ui-accent: #ffffff;
+  --ui-accent-rgb: 255, 255, 255;
   --ui-accent-soft: rgba(255, 255, 255, 0.12);
   --text-main: #ffffff;
   --text-muted: #a1a1aa;
@@ -67,6 +69,7 @@
   --border-light: rgba(56, 189, 248, 0.22);
   --border-accent: rgba(56, 189, 248, 0.45);
   --ui-accent: #38bdf8;
+  --ui-accent-rgb: 56, 189, 248;
   --ui-accent-soft: rgba(56, 189, 248, 0.15);
   --text-main: #f0f9ff;
   --text-muted: #93c5fd;
@@ -89,6 +92,7 @@
   --border-light: rgba(245, 158, 11, 0.22);
   --border-accent: rgba(245, 158, 11, 0.45);
   --ui-accent: #f59e0b;
+  --ui-accent-rgb: 245, 158, 11;
   --ui-accent-soft: rgba(245, 158, 11, 0.15);
   --text-main: #fafaf9;
   --text-muted: #d6d3d1;
@@ -111,6 +115,7 @@
   --border-light: rgba(129, 140, 248, 0.24);
   --border-accent: rgba(129, 140, 248, 0.45);
   --ui-accent: #818cf8;
+  --ui-accent-rgb: 129, 140, 248;
   --ui-accent-soft: rgba(129, 140, 248, 0.16);
   --text-main: #eef2ff;
   --text-muted: #a5b4fc;
@@ -190,4 +195,30 @@ body {
 
 .ticker-marquee-track:hover {
   animation-play-state: paused;
+}
+
+/* Responsive Master-Detail Grid for System & Guide Views */
+.utility-master-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(300px, 1fr);
+  gap: 0.9rem;
+  align-items: start;
+}
+
+.utility-cards-2col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+@media (max-width: 980px) {
+  .utility-master-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .utility-cards-2col {
+    grid-template-columns: 1fr;
+  }
 }

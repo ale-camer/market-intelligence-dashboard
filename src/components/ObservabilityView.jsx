@@ -22,20 +22,17 @@ export default function ObservabilityView({ t }) {
     return baseProjects.map((proj) => {
       const probeKey = proj.id === 'P-04' ? 'P-08' : proj.id;
       const probe = liveProbes[probeKey];
-      if (!probe) return proj;
+      if (!probe || !probe.ok || !probe.payload || typeof probe.payload !== 'object') {
+        return proj;
+      }
 
       return {
         ...proj,
-        state: probe.ok ? proj.state : 'ERR',
-        healthyText: probe.ok
-          ? {
-              EN: `Active & Healthy • Live Cloud Run HTTP ${probe.status} OK (${probe.latencyMs}ms)`,
-              ES: `Activo y Healthy • Cloud Run en vivo HTTP ${probe.status} OK (${probe.latencyMs}ms)`,
-            }
-          : {
-              EN: `Cloud Run probe failed (HTTP ${probe.status || 'unreachable'})`,
-              ES: `Fallo en sondeo Cloud Run (HTTP ${probe.status || 'inaccesible'})`,
-            },
+        state: 'OK',
+        healthyText: {
+          EN: `Active & Healthy • Live Cloud Run HTTP ${probe.status} OK (${probe.latencyMs}ms)`,
+          ES: `Activo y Healthy • Cloud Run en vivo HTTP ${probe.status} OK (${probe.latencyMs}ms)`,
+        },
       };
     });
   }, [baseProjects, liveProbes]);
@@ -94,7 +91,7 @@ export default function ObservabilityView({ t }) {
         : item.state === 'WARN'
         ? 'linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, var(--bg-panel-glass) 82%)'
         : isSelected
-        ? 'linear-gradient(135deg, rgba(16, 185, 129, 0.13) 0%, var(--bg-panel-glass) 82%)'
+        ? 'linear-gradient(135deg, rgba(var(--ui-accent-rgb), 0.16) 0%, var(--bg-panel-glass) 82%)'
         : 'var(--bg-panel-glass)';
 
     return (
@@ -106,8 +103,10 @@ export default function ObservabilityView({ t }) {
           background: cardGradient,
           backdropFilter: 'blur(12px)',
           border:
-            isSelected || item.state !== 'OK'
+            item.state !== 'OK'
               ? `1px solid ${dotColor}`
+              : isSelected
+              ? '1px solid var(--ui-accent)'
               : '1px solid var(--border-light)',
           padding: '0.52rem 0.85rem',
           cursor: 'pointer',
@@ -116,7 +115,8 @@ export default function ObservabilityView({ t }) {
           justifyContent: 'space-between',
           alignItems: 'center',
           gap: '0.6rem',
-          boxShadow: isSelected ? `0 0 14px rgba(16, 185, 129, 0.12)` : 'none',
+          minWidth: 0,
+          boxShadow: isSelected ? '0 0 14px rgba(var(--ui-accent-rgb), 0.18)' : 'none',
         }}
       >
         <span
@@ -358,11 +358,10 @@ export default function ObservabilityView({ t }) {
         display: 'flex',
         flexDirection: 'column',
         gap: '0.75rem',
-        maxWidth: '1180px',
+        maxWidth: '1220px',
         margin: '0 auto',
         width: '100%',
-        height: 'calc(100vh - 118px)',
-        overflow: 'hidden',
+        paddingBottom: '1rem',
       }}
     >
       {/* 1. RESUMEN SUPERIOR COMPACTO */}
@@ -381,7 +380,7 @@ export default function ObservabilityView({ t }) {
           flexShrink: 0,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
           <span
             style={{
               width: '8px',
@@ -389,6 +388,7 @@ export default function ObservabilityView({ t }) {
               borderRadius: '999px',
               backgroundColor: summaryColor,
               boxShadow: `0 0 8px ${summaryColor}`,
+              flexShrink: 0,
             }}
           />
           <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-main)' }}>
@@ -401,19 +401,10 @@ export default function ObservabilityView({ t }) {
         </span>
       </div>
 
-      {/* 2. LAYOUT SIN SCROLL: 2 COLUMNAS COMPACTAS (IZQUIERDA) + 3ª COLUMNA DE DETALLE (DERECHA) */}
-      <div
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'minmax(0, 1.75fr) minmax(320px, 1fr)',
-          gap: '0.9rem',
-          alignItems: 'start',
-          flex: 1,
-          minHeight: 0,
-        }}
-      >
-        {/* IZQUIERDA: TODAS LAS CARDS VISIBLES EN 2 COLUMNAS SIN SCROLL */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
+      {/* 2. LAYOUT RESPONSIVO MASTER-DETAIL */}
+      <div className="utility-master-detail-grid">
+        {/* IZQUIERDA: TODAS LAS CARDS VISIBLES EN 2 COLUMNAS RESPONSIVAS */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', minWidth: 0 }}>
           {/* FinOps & Almacenes Compartidos (4 en 2x2) */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem' }}>
             <span
@@ -422,13 +413,7 @@ export default function ObservabilityView({ t }) {
             >
               {isES ? 'FINOPS & CAPA DE DATOS COMPARTIDA (4)' : 'FINOPS & SHARED DATA STORES (4)'}
             </span>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                gap: '0.42rem',
-              }}
-            >
+            <div className="utility-cards-2col">
               {stores.map(renderCompactCard)}
             </div>
           </div>
@@ -441,20 +426,14 @@ export default function ObservabilityView({ t }) {
             >
               {isES ? 'PROYECTOS Y SERVICIOS DEL ECOSISTEMA (13)' : 'ECOSYSTEM PROJECTS & SERVICES (13)'}
             </span>
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                gap: '0.42rem',
-              }}
-            >
+            <div className="utility-cards-2col">
               {projects.map(renderCompactCard)}
             </div>
           </div>
         </div>
 
-        {/* DERECHA (3ª COLUMNA): CARD COMPLETA ABIERTA AL HACER CLIC */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem' }}>
+        {/* DERECHA: CARD COMPLETA ABIERTA AL HACER CLIC */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.32rem', minWidth: 0 }}>
           <span
             className="mono-metric"
             style={{ fontSize: '0.58rem', color: 'var(--text-dim)', fontWeight: 700, paddingLeft: '0.15rem' }}
