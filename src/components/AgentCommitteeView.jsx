@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { X } from 'lucide-react';
 import { INITIAL_HOLDINGS } from './portfolio/portfolioConstants';
+import { syncLiveMarketSnapshot } from '../services/marketService';
+import { computeLivePortfolioMetrics, generateCopilotPortfolioResponse } from '../services/committeeService';
 import PortfolioVista1Builder from './portfolio/PortfolioVista1Builder';
 import PortfolioVista2Risk from './portfolio/PortfolioVista2Risk';
 import PortfolioVista3AdHoc from './portfolio/PortfolioVista3AdHoc';
@@ -8,6 +10,7 @@ import PortfolioVista3AdHoc from './portfolio/PortfolioVista3AdHoc';
 const PORTFOLIO_STORAGE_KEY = 'mid_portfolio_v1';
 
 export default function AgentCommitteeView({
+    onOpenAssetInMarkets,
     watchlistSyms = [],
     onToggleWatchlist,
     langCode = 'EN'
@@ -47,6 +50,10 @@ export default function AgentCommitteeView({
     });
 
     useEffect(() => {
+        syncLiveMarketSnapshot();
+    }, []);
+
+    useEffect(() => {
         try {
             localStorage.setItem(PORTFOLIO_STORAGE_KEY, JSON.stringify(holdings));
         } catch {
@@ -54,24 +61,22 @@ export default function AgentCommitteeView({
         }
     }, [holdings]);
 
-    const sendCopilotPrompt = (txt) => {
+    const liveMetrics = useMemo(() => computeLivePortfolioMetrics(holdings, isES), [holdings, isES]);
+
+    const sendCopilotPrompt = async (txt) => {
         const q = txt.trim();
         if (!q) return;
+        const reply = await generateCopilotPortfolioResponse(q, holdings, isES);
         setCopilotThread(prev => [
             ...prev,
             { role: 'user', txt: q },
-            {
-                role: 'ai',
-                txt: isES
-                    ? `Análisis sobre ${holdings.length} activos: el solapamiento real de NVDA es 24.4% (directo + SPY). Un escudo SPY Put 5% OTM recorta el Max Drawdown de -4.80% a -2.90% con +0.23 pts de Sharpe.`
-                    : `Analysis across ${holdings.length} holdings: true NVDA overlap is 24.4% (direct + SPY). A 5% OTM SPY Put hedge trims Max Drawdown from -4.80% to -2.90% with +0.23 Sharpe pts.`
-            }
+            { role: 'ai', txt: reply }
         ]);
     };
 
     const initialGreeting = isES
-        ? 'Copiloto activo. Tu cartera mantiene un Sharpe de 2.18 con Beta 0.76 y una eficiencia histórica del 94.2%.'
-        : 'Copilot active. Your portfolio maintains a 2.18 Sharpe with 0.76 Beta and 94.2% walk-forward efficiency.';
+        ? `Copiloto activo (${liveMetrics.enrichedHoldings.length} activos). Tu cartera proyecta +${liveMetrics.cagrPct}% CAGR con Sharpe ${liveMetrics.sharpeRatio}, Beta ${liveMetrics.portfolioBeta} y VaR 95% de ${liveMetrics.var95Pct}%.`
+        : `Copilot active (${liveMetrics.enrichedHoldings.length} assets). Your portfolio projects +${liveMetrics.cagrPct}% CAGR with ${liveMetrics.sharpeRatio} Sharpe, ${liveMetrics.portfolioBeta} Beta, and ${liveMetrics.var95Pct}% 95% VaR.`;
     const displayedThread = [{ role: 'ai', txt: initialGreeting }, ...copilotThread];
     const quickChips = isES
         ? ['Revisar solapamiento', 'Simular cobertura', 'Optimizar Sharpe']
@@ -175,11 +180,19 @@ export default function AgentCommitteeView({
                             setHoldings={setHoldings}
                             watchlistSyms={watchlistSyms}
                             onToggleWatchlist={onToggleWatchlist}
+                            onOpenAssetInMarkets={onOpenAssetInMarkets}
                             langCode={langCode}
                         />
                     )}
                     {activeView === 'V2' && <PortfolioVista2Risk holdings={holdings} langCode={langCode} />}
-                    {activeView === 'V3' && <PortfolioVista3AdHoc holdings={holdings} langCode={langCode} />}
+                    {activeView === 'V3' && (
+                        <PortfolioVista3AdHoc
+                            holdings={holdings}
+                            setHoldings={setHoldings}
+                            watchlistSyms={watchlistSyms}
+                            langCode={langCode}
+                        />
+                    )}
                 </div>
 
                 {copilotOpen && (

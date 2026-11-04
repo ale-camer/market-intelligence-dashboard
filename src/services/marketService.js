@@ -629,13 +629,56 @@ function getDeterministicVolsForAsset(asset) {
 }
 
 export function getAssetBySymbol(sym = 'BTC') {
-  const clean = String(sym || 'BTC').replace(/1!$/, '');
+  const clean = String(sym || 'BTC').replace(/1!$/, '').replace(/-USD$/i, '');
   const alias = clean === 'GB10Y' ? 'UK10Y' : clean;
   return (
     ASSET_CATALOG.find((a) => a.sym === sym) ||
+    ASSET_CATALOG.find((a) => a.sym === clean) ||
     ASSET_CATALOG.find((a) => a.sym === alias) ||
     ASSET_CATALOG[0]
   );
+}
+
+/**
+ * Synchronizes `ASSET_CATALOG` in-place with the live P-05 Market Intelligence Warehouse
+ * (`/cloud/p05/api/v1/assets`) and P-03 Streaming Event Service (`/cloud/p03/health`) when reachable.
+ */
+export async function syncLiveMarketSnapshot() {
+  try {
+    const res = await fetch('/cloud/p05/api/v1/assets', {
+      method: 'GET',
+      signal: AbortSignal.timeout(2500),
+    });
+    if (!res.ok) return { synced: false, source: 'SNAPSHOT' };
+    const data = await res.json();
+    const rows = Array.isArray(data) ? data : data?.assets || data?.items || [];
+    let updatedCount = 0;
+
+    rows.forEach((liveItem) => {
+      const sym = String(liveItem.symbol || liveItem.sym || '').toUpperCase();
+      const target = ASSET_CATALOG.find((a) => a.sym === sym);
+      if (target && typeof liveItem.price === 'number' && liveItem.price > 0) {
+        target.price = liveItem.price;
+        target.priceFormatted = `$${liveItem.price.toLocaleString('en-US', {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
+        })}`;
+        if (typeof liveItem.change_pct === 'number') {
+          target.chgNum = Number(liveItem.change_pct.toFixed(2));
+          target.chg = `${target.chgNum >= 0 ? '+' : ''}${target.chgNum.toFixed(2)}%`;
+        }
+        updatedCount += 1;
+      }
+    });
+
+    return {
+      synced: updatedCount > 0,
+      updatedCount,
+      source: 'LIVE • P-05 Cloud Run',
+    };
+  } catch {
+    return { synced: false, source: 'SNAPSHOT' };
+  }
 }
 
 export function getAssetSeries(sym = 'BTC', timeframe = '1D') {

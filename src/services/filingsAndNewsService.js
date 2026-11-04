@@ -2451,6 +2451,32 @@ export async function executeSec10kRagQuery({ query = '', ticker = 'BTC', langCo
   }
 
   // =========================================================================
+  // LIVE P-07 CLOUD RUN RAG PROBE (WITH DETERMINISTIC LOCAL FALLBACK)
+  // =========================================================================
+  try {
+    const res = await fetch('/cloud/p07/api/v1/query', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: rawQuery, ticker: sym, top_k: 3 }),
+      signal: AbortSignal.timeout(2500),
+    });
+    if (res.ok) {
+      const liveRag = await res.json();
+      if (liveRag?.answer && typeof liveRag.answer === 'string' && liveRag.answer.length > 20) {
+        return {
+          blocked: false,
+          query: rawQuery,
+          topicLabel: isES ? 'P-07 RAG HÍBRIDO EN VIVO' : 'LIVE P-07 HYBRID RAG',
+          answer: liveRag.answer,
+          source: 'LIVE • P-07 Cloud Run',
+        };
+      }
+    }
+  } catch {
+    // Graceful zero-latency fallback to verified local filing index
+  }
+
+  // =========================================================================
   // GUARDRAIL LAYER 3: Strict Financial Domain Intent Classification (All 10 Asset Classes)
   // =========================================================================
   const qa = brief.qaKnowledge;

@@ -9,7 +9,8 @@ import {
     CartesianGrid
 } from 'recharts';
 import { Search, Plus, Trash2, Star, CheckSquare, Square } from 'lucide-react';
-import { ASSET_CATALOG } from '../../services/marketService';
+import { ASSET_CATALOG, getAssetBySymbol } from '../../services/marketService';
+import { computeLivePortfolioMetrics } from '../../services/committeeService';
 import {
     getSemanticReturnStyle,
     colAlign,
@@ -23,52 +24,46 @@ import {
 /* ───────────────────────────────────────────────────────────────────────────
    FILA 1: CABECERA DE 6 PÍLDORAS DE RESUMEN REACTIVAS
    ─────────────────────────────────────────────────────────────────────────── */
-function Row1SummaryPills({ holdings, isES = false }) {
+function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
     const activeList = holdings.filter(h => h.enabled !== false);
-    const eqShare = activeList
-        .filter(h => h.cat === 'Equities' || h.cat === 'Crypto')
-        .reduce((s, h) => s + Number(h.weight || 0), 0);
-    const estRet = (16.8 + eqShare * 0.26).toFixed(1);
-    const estSharpe = (2.18 - Math.abs(eqShare - 48) * 0.007).toFixed(2);
-    const estVaR = (-1.12 - eqShare * 0.014).toFixed(2);
 
     const pills = [
         {
             lbl: isES ? 'RETORNO ANUAL (CAGR)' : 'ANNUAL RETURN (CAGR)',
-            val: `+${estRet}%`,
+            val: `${liveMetrics.cagrPct >= 0 ? '+' : ''}${liveMetrics.cagrPct}%`,
             sub: 'vs +16.5% Benchmark SPX',
-            col: '#10b981'
+            col: liveMetrics.cagrPct >= 0 ? '#10b981' : '#f43f5e'
         },
         {
             lbl: 'SHARPE / SORTINO',
-            val: `${estSharpe} / 2.84`,
-            sub: isES ? 'Eficiencia Cuantitativa Top 5%' : 'Top 5% Quantitative Efficiency',
+            val: `${liveMetrics.sharpeRatio} / ${liveMetrics.sortinoRatio}`,
+            sub: isES ? `Volatilidad Anual σ: ${liveMetrics.portfolioVolPct}%` : `Annual Volatility σ: ${liveMetrics.portfolioVolPct}%`,
             col: '#10b981'
         },
         {
             lbl: 'VaR 95% / CVaR 99% (1D)',
-            val: `${estVaR}% / -2.84%`,
+            val: `${liveMetrics.var95Pct}% / ${liveMetrics.cvar99Pct}%`,
             sub: isES ? 'Pérdida diaria esperada cola' : 'Expected daily tail loss',
             col: '#f43f5e'
         },
         {
             lbl: 'MAX DRAWDOWN (12M)',
-            val: '-4.80%',
+            val: `${liveMetrics.maxDrawdownPct}%`,
             sub: isES ? 'Recuperación media: 14 días' : 'Avg recovery: 14 days',
             col: '#f43f5e'
         },
         {
             lbl: 'ALPHA BRINSON (12M)',
-            val: '+8.60%',
-            sub: isES ? 'Beta Cartera: 0.76 vs SPX' : 'Portfolio Beta: 0.76 vs SPX',
-            col: '#10b981'
+            val: `${liveMetrics.brinsonAlphaPct >= 0 ? '+' : ''}${liveMetrics.brinsonAlphaPct}%`,
+            sub: isES ? `Beta Cartera: ${liveMetrics.portfolioBeta} vs SPX` : `Portfolio Beta: ${liveMetrics.portfolioBeta} vs SPX`,
+            col: liveMetrics.brinsonAlphaPct >= 0 ? '#10b981' : '#f43f5e'
         },
         {
             lbl: isES ? 'ACTIVOS SELECCIONADOS' : 'SELECTED ASSETS',
             val: `${activeList.length} / ${holdings.length}`,
             sub: isES
-                ? `ENB: ${Math.max(1.8, activeList.length * 0.78).toFixed(1)} apuestas efectivas`
-                : `ENB: ${Math.max(1.8, activeList.length * 0.78).toFixed(1)} effective bets`,
+                ? `ENB: ${liveMetrics.enb} apuestas efectivas`
+                : `ENB: ${liveMetrics.enb} effective bets`,
             col: '#10b981'
         }
     ];
@@ -100,7 +95,7 @@ function Row1SummaryPills({ holdings, isES = false }) {
 /* ───────────────────────────────────────────────────────────────────────────
    FILA 2 — IZQUIERDA: TABLA DE PONDERACIÓN SIN SLIDERS + WATCHLIST ★
    ─────────────────────────────────────────────────────────────────────────── */
-function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onToggleWatchlist, isES = false }) {
+function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onToggleWatchlist, onOpenAssetInMarkets, isES = false }) {
     const [query, setQuery] = useState('');
     const [openDrop, setOpenDrop] = useState(false);
     const [filterMode, setFilterMode] = useState('ALL'); // ALL | WATCHLIST
@@ -371,10 +366,32 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
 
                             {/* Intermedia 1: Centrada */}
                             <div style={{ textAlign: 'center' }}>
-                                <div style={{ fontSize: '13px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: '#f8fafc' }}>
-                                    {h.sym}
-                                </div>
-                                <div style={{ fontSize: '11.5px', color: '#64748b' }}>{h.name}</div>
+                                {(() => {
+                                    const liveAsset = getAssetBySymbol(h.sym);
+                                    return (
+                                        <>
+                                            <div
+                                                onClick={() => onOpenAssetInMarkets && onOpenAssetInMarkets(h.sym)}
+                                                title={isES ? 'Abrir activo en Markets' : 'Open asset in Markets'}
+                                                style={{
+                                                    fontSize: '13px',
+                                                    fontWeight: 900,
+                                                    fontFamily: 'var(--font-mono)',
+                                                    color: '#f8fafc',
+                                                    cursor: onOpenAssetInMarkets ? 'pointer' : 'default'
+                                                }}
+                                            >
+                                                {h.sym}{' '}
+                                                {liveAsset?.priceFormatted ? (
+                                                    <span style={{ fontSize: '11px', fontWeight: 700, color: (liveAsset.chg ?? 0) >= 0 ? '#6ee7b7' : '#fda4af' }}>
+                                                        {liveAsset.priceFormatted}
+                                                    </span>
+                                                ) : null}
+                                            </div>
+                                            <div style={{ fontSize: '11.5px', color: '#64748b' }}>{liveAsset?.name || h.name}</div>
+                                        </>
+                                    );
+                                })()}
                             </div>
 
                             {/* Intermedia 2: Centrada */}
@@ -468,8 +485,9 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
 /* ───────────────────────────────────────────────────────────────────────────
    FILA 2 — DERECHA ARRIBA: RADIOGRAFÍA & ATRIBUCIÓN DE LA CARTERA (CON ALPHA BRINSON ADENTRO)
    ─────────────────────────────────────────────────────────────────────────── */
-function Row2RightAnatomyAndAlpha({ holdings, isES = false }) {
+function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
     const [tab, setTab] = useState('XRAY');
+    const m = useMemo(() => liveMetrics || computeLivePortfolioMetrics(holdings, isES), [liveMetrics, holdings, isES]);
 
     const activeHoldings = holdings.filter(h => h.enabled !== false);
     const byCat = useMemo(() => {
@@ -500,7 +518,9 @@ function Row2RightAnatomyAndAlpha({ holdings, isES = false }) {
     const xrayHeaders = isES
         ? ['ACTIVO SUBYACENTE', 'TENENCIA DIRECTA', 'PESO OCULTO EN ETF', 'EXPOSICIÓN REAL']
         : ['UNDERLYING ASSET', 'DIRECT HOLDING', 'HIDDEN ETF WEIGHT', 'TRUE EXPOSURE'];
-    const xrayItems = isES
+    const xrayItems = m.xrayItems?.length
+        ? m.xrayItems
+        : isES
         ? [
               ['NVDA', '22.0%', '+2.4% (vía SPY)', '24.4% REAL', -6],
               ['MSFT', '10.0%', '+2.1% (vía SPY)', '12.1% REAL', +5],
@@ -519,14 +539,14 @@ function Row2RightAnatomyAndAlpha({ holdings, isES = false }) {
         : ['CUSTODIAN', '% PORTFOLIO', 'CDS SPREAD', 'LEGAL COVERAGE'];
     const custItems = isES
         ? [
-              ['Interactive Brokers / DTC', '68.0%', '42 bps', 'Cubierto SIPC $500k', +8],
-              ['HSBC Bullion Vault (GLD)', '18.0%', '38 bps', 'Oro Físico Asignado', +9],
-              ['Coinbase Custody Cold', '14.0%', '115 bps', 'Multisig Frío', +4]
+              ['Interactive Brokers / DTC', `${m.custBrokersPct.toFixed(1)}%`, '42 bps', 'Cubierto SIPC $500k', +8],
+              ['HSBC Bullion Vault (GLD)', `${m.custCommodityPct.toFixed(1)}%`, '38 bps', 'Oro Físico Asignado', +9],
+              ['Coinbase Custody Cold', `${m.custCryptoPct.toFixed(1)}%`, '115 bps', 'Multisig Frío', +4]
           ]
         : [
-              ['Interactive Brokers / DTC', '68.0%', '42 bps', 'SIPC Insured $500k', +8],
-              ['HSBC Bullion Vault (GLD)', '18.0%', '38 bps', 'Allocated Physical Gold', +9],
-              ['Coinbase Custody Cold', '14.0%', '115 bps', 'Cold Multisig', +4]
+              ['Interactive Brokers / DTC', `${m.custBrokersPct.toFixed(1)}%`, '42 bps', 'SIPC Insured $500k', +8],
+              ['HSBC Bullion Vault (GLD)', `${m.custCommodityPct.toFixed(1)}%`, '38 bps', 'Allocated Physical Gold', +9],
+              ['Coinbase Custody Cold', `${m.custCryptoPct.toFixed(1)}%`, '115 bps', 'Cold Multisig', +4]
           ];
 
     return (
@@ -666,15 +686,21 @@ function Row2RightAnatomyAndAlpha({ holdings, isES = false }) {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                     <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
                         <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{isES ? 'CUPONES TLT (4.4%)' : 'TLT COUPONS (4.4%)'}</div>
-                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>{isES ? '+$1,320 / año' : '+$1,320 / yr'}</div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>
+                            +${m.couponsAnnualUsd.toLocaleString()} {isES ? '/ año' : '/ yr'}
+                        </div>
                     </div>
                     <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
-                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{isES ? 'DIVIDENDOS SPY / MSFT' : 'SPY / MSFT DIVIDENDS'}</div>
-                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#6ee7b7', fontSize: '13px', marginTop: '2px' }}>{isES ? '+$980 / año' : '+$980 / yr'}</div>
+                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{isES ? 'DIVIDENDOS ACCIONES / ETF' : 'EQUITY / ETF DIVIDENDS'}</div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#6ee7b7', fontSize: '13px', marginTop: '2px' }}>
+                            +${m.dividendsAnnualUsd.toLocaleString()} {isES ? '/ año' : '/ yr'}
+                        </div>
                     </div>
                     <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
                         <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{isES ? 'TOTAL RENTA PASIVA' : 'TOTAL PASSIVE YIELD'}</div>
-                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>+$2,840 (2.84%)</div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>
+                            +${m.totalYieldUsd.toLocaleString()} ({m.totalYieldPct}%)
+                        </div>
                     </div>
                 </div>
             )}
@@ -897,22 +923,26 @@ export default function PortfolioVista1Builder({
     setHoldings,
     watchlistSyms,
     onToggleWatchlist,
+    onOpenAssetInMarkets,
     langCode = 'EN'
 }) {
     const isES = langCode === 'ES';
+    const liveMetrics = useMemo(() => computeLivePortfolioMetrics(holdings, isES), [holdings, isES]);
+
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <Row1SummaryPills holdings={holdings} isES={isES} />
+            <Row1SummaryPills holdings={holdings} liveMetrics={liveMetrics} isES={isES} />
             <div style={{ display: 'grid', gridTemplateColumns: '0.95fr 1.15fr', gap: '12px', alignItems: 'stretch' }}>
                 <Row2LeftWeightTable
                     holdings={holdings}
                     setHoldings={setHoldings}
                     watchlistSyms={watchlistSyms}
                     onToggleWatchlist={onToggleWatchlist}
+                    onOpenAssetInMarkets={onOpenAssetInMarkets}
                     isES={isES}
                 />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', height: '100%' }}>
-                    <Row2RightAnatomyAndAlpha holdings={holdings} isES={isES} />
+                    <Row2RightAnatomyAndAlpha holdings={holdings} liveMetrics={liveMetrics} isES={isES} />
                     <Row2RightMonthlyCalendar isES={isES} />
                 </div>
             </div>

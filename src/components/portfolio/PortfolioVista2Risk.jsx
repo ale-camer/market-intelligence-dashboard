@@ -14,6 +14,7 @@ import {
     getSemanticReturnStyle,
     colAlign,
     PortfolioCardShell,
+    INITIAL_HOLDINGS,
     ASSET_RISK_PROFILES,
     PORTFOLIO_NODES,
     SIMULATED_CLOUD,
@@ -22,37 +23,43 @@ import {
     MONTE_CARLO_BASE,
     RISK_TIME_SERIES
 } from './portfolioConstants';
+import { computeLivePortfolioMetrics } from '../../services/committeeService';
 
 /* FILA 1: 6 PÍLDORAS DE RIESGO Y RETORNO */
-function Row1SummaryPills({ isES = false }) {
+function Row1SummaryPills({ liveMetrics, isES = false }) {
+    const m = liveMetrics || computeLivePortfolioMetrics(INITIAL_HOLDINGS, isES);
+    const medProj = Number((m.cagrPct * 0.82).toFixed(1));
+    const p95Proj = Number((medProj + m.portfolioVolPct * 1.95).toFixed(1));
+    const p05Proj = Number((medProj - m.portfolioVolPct * 1.65).toFixed(1));
+
     const pills = [
         {
             lbl: isES ? 'PROYECCIÓN MEDIANA (12M)' : 'MEDIAN PROJECTION (12M)',
-            val: '+22.4%',
-            sub: 'P95: +52.4% | P05: -13.2%',
+            val: `${medProj >= 0 ? '+' : ''}${medProj}%`,
+            sub: `P95: +${p95Proj}% | P05: ${p05Proj}%`,
             col: '#10b981'
         },
         {
             lbl: 'SHARPE / SORTINO',
-            val: '2.18 / 2.84',
-            sub: isES ? 'Volatilidad Anual σ: 11.4%' : 'Annual Volatility σ: 11.4%',
+            val: `${m.sharpeRatio.toFixed(2)} / ${m.sortinoRatio.toFixed(2)}`,
+            sub: isES ? `Volatilidad Anual σ: ${m.portfolioVolPct}%` : `Annual Volatility σ: ${m.portfolioVolPct}%`,
             col: '#10b981'
         },
         {
             lbl: 'VaR 95% / CVaR 99% (1D)',
-            val: '-1.84% / -2.84%',
+            val: `${m.var95Pct}% / ${m.cvar99Pct}%`,
             sub: isES ? 'Pérdida esperada en cola diaria' : 'Expected daily tail loss',
             col: '#f43f5e'
         },
         {
             lbl: 'MAX DRAWDOWN (12M)',
-            val: '-4.80%',
+            val: `${m.maxDrawdownPct.toFixed(2)}%`,
             sub: isES ? 'Recuperación media: 14 días' : 'Avg recovery: 14 days',
             col: '#f43f5e'
         },
         {
             lbl: 'STRESS CRASH 2008',
-            val: '-11.4%',
+            val: `${m.stress2008Pct > 0 ? '+' : ''}${m.stress2008Pct}%`,
             sub: 'vs -42.0% Benchmark S&P 500',
             col: '#f43f5e'
         },
@@ -88,20 +95,41 @@ function Row1SummaryPills({ isES = false }) {
 }
 
 /* CUADRANTE 1: MARKOWITZ 2D 100% DINÁMICO (320PX) */
-function Quad1DynamicMarkowitz({ isES = false }) {
+function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
+    const m = liveMetrics || computeLivePortfolioMetrics(INITIAL_HOLDINGS, isES);
+    const activeProfiles = m.enrichedHoldings?.length ? m.enrichedHoldings : ASSET_RISK_PROFILES;
+
+    const dynamicNodes = useMemo(
+        () =>
+            PORTFOLIO_NODES.map(p =>
+                p.id === 'PORT'
+                    ? {
+                          ...p,
+                          label: isES ? '★ Tu Cartera' : '★ Your Portfolio',
+                          vol: m.portfolioVolPct,
+                          ret: m.cagrPct,
+                          sharpe: m.sharpeRatio
+                      }
+                    : p
+            ),
+        [m.portfolioVolPct, m.cagrPct, m.sharpeRatio, isES]
+    );
+
     const [showAssets, setShowAssets] = useState(true);
     const [showCloud, setShowCloud] = useState(true);
     const [showCML, setShowCML] = useState(true);
-    const [selectedPoint, setSelectedPoint] = useState({
-        name: isES ? 'Tu Cartera Actual' : 'Current Portfolio',
-        vol: 11.4,
-        ret: 28.4,
-        sharpe: 2.18
-    });
+    const [selectedPoint, setSelectedPoint] = useState(null);
     const [activeTargetId, setActiveTargetId] = useState('PORT');
 
-    const toX = (vol) => 42 + ((vol - 5) / 43) * 365;
-    const toY = (ret) => 146 - ((ret - 2) / 50) * 130;
+    const displayPoint = selectedPoint || {
+        name: isES ? 'Tu Cartera Actual' : 'Current Portfolio',
+        vol: m.portfolioVolPct,
+        ret: m.cagrPct,
+        sharpe: m.sharpeRatio
+    };
+
+    const toX = (vol) => 42 + ((Math.max(5, Math.min(48, vol)) - 5) / 43) * 365;
+    const toY = (ret) => 146 - ((Math.max(2, Math.min(52, ret)) - 2) / 50) * 130;
 
     const frontierPath = useMemo(() => {
         const pts = [];
@@ -119,7 +147,7 @@ function Quad1DynamicMarkowitz({ isES = false }) {
             color="#10b981"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-                    {PORTFOLIO_NODES.slice(0, 3).map(p => {
+                    {dynamicNodes.slice(0, 3).map(p => {
                         const active = activeTargetId === p.id;
                         const label =
                             p.id === 'PORT'
@@ -189,7 +217,7 @@ function Quad1DynamicMarkowitz({ isES = false }) {
                         ))}
                     </div>
                     <div style={{ fontSize: '11.5px', fontFamily: 'var(--font-mono)', color: '#e2e8f0' }}>
-                        <strong style={{ color: '#6ee7b7' }}>{selectedPoint.name}:</strong> σ {selectedPoint.vol}% | E[R] +{selectedPoint.ret}% | Sharpe {selectedPoint.sharpe}
+                        <strong style={{ color: '#6ee7b7' }}>{displayPoint.name}:</strong> σ {displayPoint.vol}% | E[R] +{displayPoint.ret}% | Sharpe {displayPoint.sharpe}
                     </div>
                 </>
             }
@@ -222,7 +250,7 @@ function Quad1DynamicMarkowitz({ isES = false }) {
                 <path d={frontierPath} fill="none" stroke="#10b981" strokeWidth="2.3" />
 
                 {showAssets &&
-                    ASSET_RISK_PROFILES.map(a => {
+                    activeProfiles.map(a => {
                         const cx = toX(a.vol);
                         const cy = toY(a.ret);
                         return (
@@ -238,7 +266,7 @@ function Quad1DynamicMarkowitz({ isES = false }) {
                         );
                     })}
 
-                {PORTFOLIO_NODES.map(p => {
+                {dynamicNodes.map(p => {
                     const cx = toX(p.vol);
                     const cy = toY(p.ret);
                     const isMain = p.id === activeTargetId;
@@ -262,63 +290,32 @@ function Quad1DynamicMarkowitz({ isES = false }) {
 }
 
 /* CUADRANTE 2: TORNADO DE STRESS, VaR 95% & CAPTURA POR ACTIVO (320PX) */
-function Quad2TornadoAndAssetTail({ isES = false }) {
+function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
+    const m = liveMetrics || computeLivePortfolioMetrics(INITIAL_HOLDINGS, isES);
+    const activeProfiles = m.enrichedHoldings?.length ? m.enrichedHoldings : ASSET_RISK_PROFILES;
+
     const [subView, setSubView] = useState('TORNADO');
     const [selectedScenarioIdx, setSelectedScenarioIdx] = useState(0);
     const [selectedAsset, setSelectedAsset] = useState('ALL');
 
-    const scenarios = [
-        {
-            name: isES ? 'Crash Lehman 2008 (-42% SPX)' : 'Lehman Crash 2008 (-42% SPX)',
-            port: -11.4,
-            bench: -42.0,
-            byAsset: [
-                { sym: 'TLT', chg: +14.2 },
-                { sym: 'GLD', chg: +9.8 },
-                { sym: 'MSFT', chg: -22.0 },
-                { sym: 'SPY', chg: -42.0 },
-                { sym: 'NVDA', chg: -48.5 }
-            ]
-        },
-        {
-            name: isES ? 'Shock COVID-19 Mar 2020' : 'COVID-19 Shock Mar 2020',
-            port: -7.8,
-            bench: -34.0,
-            byAsset: [
-                { sym: 'TLT', chg: +11.4 },
-                { sym: 'GLD', chg: +6.5 },
-                { sym: 'MSFT', chg: -14.0 },
-                { sym: 'NVDA', chg: -18.2 },
-                { sym: 'BTC', chg: -38.0 }
-            ]
-        },
-        {
-            name: isES ? 'Shock Tasas Fed 2022 (+425 bps)' : 'Fed Rate Hike Shock 2022 (+425 bps)',
-            port: -6.2,
-            bench: -19.4,
-            byAsset: [
-                { sym: 'GLD', chg: +1.4 },
-                { sym: 'SPY', chg: -19.4 },
-                { sym: 'TLT', chg: -26.8 },
-                { sym: 'NVDA', chg: -34.0 },
-                { sym: 'BTC', chg: -45.0 }
-            ]
-        },
-        {
-            name: isES ? 'Desinflación + Rally IA' : 'Disinflation + AI Rally',
-            port: +24.6,
-            bench: +18.2,
-            byAsset: [
-                { sym: 'NVDA', chg: +52.0 },
-                { sym: 'BTC', chg: +44.0 },
-                { sym: 'MSFT', chg: +26.0 },
-                { sym: 'SPY', chg: +18.2 },
-                { sym: 'GLD', chg: +8.4 }
-            ]
-        }
-    ];
+    const scenarios = m.stressScenarios?.length
+        ? m.stressScenarios
+        : [
+              {
+                  name: isES ? 'Crash Lehman 2008 (-42% SPX)' : 'Lehman Crash 2008 (-42% SPX)',
+                  port: -11.4,
+                  bench: -42.0,
+                  byAsset: [
+                      { sym: 'TLT', chg: +14.2 },
+                      { sym: 'GLD', chg: +9.8 },
+                      { sym: 'MSFT', chg: -22.0 },
+                      { sym: 'SPY', chg: -42.0 },
+                      { sym: 'NVDA', chg: -48.5 }
+                  ]
+              }
+          ];
 
-    const activeScenario = scenarios[selectedScenarioIdx];
+    const activeScenario = scenarios[selectedScenarioIdx] || scenarios[0];
     const varHeaders = isES
         ? ['ACTIVO', 'PESO', 'VOLAT. σ', 'VaR 95% (1D)', 'ROL EN COLA']
         : ['ASSET', 'WEIGHT', 'VOLAT. σ', 'VaR 95% (1D)', 'TAIL ROLE'];
@@ -389,8 +386,8 @@ function Quad2TornadoAndAssetTail({ isES = false }) {
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
                             {isES ? 'FILTRAR ACTIVO:' : 'FILTER ASSET:'}
                         </span>
-                        <div style={{ display: 'flex', gap: '8px' }}>
-                            {['ALL', 'NVDA', 'SPY', 'BTC', 'GLD', 'TLT', 'MSFT'].map(sym => (
+                        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                            {['ALL', ...activeProfiles.map(a => a.sym).slice(0, 7)].map(sym => (
                                 <button
                                     key={sym}
                                     onClick={() => setSelectedAsset(sym)}
@@ -479,7 +476,7 @@ function Quad2TornadoAndAssetTail({ isES = false }) {
                             <span key={h} style={{ textAlign: colAlign(i, varHeaders.length) }}>{h}</span>
                         ))}
                     </div>
-                    {ASSET_RISK_PROFILES.filter(a => selectedAsset === 'ALL' || a.sym === selectedAsset).map(a => (
+                    {activeProfiles.filter(a => selectedAsset === 'ALL' || a.sym === selectedAsset).map(a => (
                         <div
                             key={a.sym}
                             style={{
@@ -518,7 +515,7 @@ function Quad2TornadoAndAssetTail({ isES = false }) {
                             <span key={h} style={{ textAlign: colAlign(i, capHeaders.length) }}>{h}</span>
                         ))}
                     </div>
-                    {ASSET_RISK_PROFILES.filter(a => selectedAsset === 'ALL' || a.sym === selectedAsset).map(a => {
+                    {activeProfiles.filter(a => selectedAsset === 'ALL' || a.sym === selectedAsset).map(a => {
                         const netGood = a.upCap - a.dnCap;
                         return (
                             <div
@@ -548,13 +545,16 @@ function Quad2TornadoAndAssetTail({ isES = false }) {
 }
 
 /* CUADRANTE 3: MATRIZ DE CORRELACIÓN CRUZADA & SENSIBILIDAD POR ACTIVO (320PX) */
-function Quad3CorrelationAndAssetBeta({ isES = false }) {
+function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
+    const m = liveMetrics || computeLivePortfolioMetrics(INITIAL_HOLDINGS, isES);
+    const activeProfiles = (m.enrichedHoldings?.length ? m.enrichedHoldings : ASSET_RISK_PROFILES).slice(0, 6);
     const [corrRegime, setCorrRegime] = useState('NORMAL');
     const [subMode, setSubMode] = useState('MATRIX');
     const [focusAssetIdx, setFocusAssetIdx] = useState(null);
 
-    const activeMatrix = corrRegime === 'NORMAL' ? CORR_NORMAL : CORR_STRESS;
-    const assets = ['NVDA', 'SPY', 'BTC', 'GLD', 'TLT', 'MSFT'];
+    const rawMatrix = corrRegime === 'NORMAL' ? (m.corrNormal || CORR_NORMAL) : (m.corrStress || CORR_STRESS);
+    const activeMatrix = rawMatrix.slice(0, activeProfiles.length).map(r => r.slice(0, activeProfiles.length));
+    const assets = activeProfiles.map(a => a.sym);
     const matHeaders = [isES ? 'ACTIVO' : 'ASSET', ...assets];
     const betaHeaders = isES
         ? ['ACTIVO', 'BETA SPX', 'CORR MEDIA', 'SHARPE INDIV.', 'MEJOR RÉGIMEN']
@@ -644,7 +644,7 @@ function Quad3CorrelationAndAssetBeta({ isES = false }) {
         >
             {subMode === 'MATRIX' ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '52px repeat(6, 1fr)', gap: '3.5px', fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: `52px repeat(${assets.length}, 1fr)`, gap: '3.5px', fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
                         {matHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, matHeaders.length) }}>{h}</span>
                         ))}
@@ -652,7 +652,7 @@ function Quad3CorrelationAndAssetBeta({ isES = false }) {
                     {activeMatrix.map((row, rIdx) => {
                         const dimmed = focusAssetIdx !== null && focusAssetIdx !== rIdx;
                         return (
-                            <div key={assets[rIdx]} style={{ display: 'grid', gridTemplateColumns: '52px repeat(6, 1fr)', gap: '3.5px', alignItems: 'center' }}>
+                            <div key={assets[rIdx]} style={{ display: 'grid', gridTemplateColumns: `52px repeat(${assets.length}, 1fr)`, gap: '3.5px', alignItems: 'center' }}>
                                 <button
                                     onClick={() => setFocusAssetIdx(focusAssetIdx === rIdx ? null : rIdx)}
                                     style={{
@@ -704,11 +704,12 @@ function Quad3CorrelationAndAssetBeta({ isES = false }) {
                             <span key={h} style={{ textAlign: colAlign(i, betaHeaders.length) }}>{h}</span>
                         ))}
                     </div>
-                    {ASSET_RISK_PROFILES.map((a, idx) => {
-                        const avgCorr = (
-                            (activeMatrix[idx].reduce((s, v) => s + v, 0) - 1) /
-                            (activeMatrix[idx].length - 1)
-                        ).toFixed(2);
+                    {activeProfiles.map((a, idx) => {
+                        const row = activeMatrix[idx] || [1];
+                        const avgCorr =
+                            row.length > 1
+                                ? ((row.reduce((s, v) => s + v, 0) - 1) / (row.length - 1)).toFixed(2)
+                                : '0.00';
                         return (
                             <div
                                 key={a.sym}
@@ -740,7 +741,10 @@ function Quad3CorrelationAndAssetBeta({ isES = false }) {
 }
 
 /* CUADRANTE 4: MATRIZ 2D CHOQUE TASAS×SPX & MATRIZ DE REGÍMENES DE MARKOV (#11) (320PX) */
-function Quad4ShockAndMarkovMatrices({ isES = false }) {
+function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
+    const m = liveMetrics || computeLivePortfolioMetrics(INITIAL_HOLDINGS, isES);
+    const activeProfiles = m.enrichedHoldings?.length ? m.enrichedHoldings : ASSET_RISK_PROFILES;
+
     const [tab, setTab] = useState('SHOCK2D');
     const [targetSym, setTargetSym] = useState('CARTERA');
 
@@ -753,7 +757,15 @@ function Quad4ShockAndMarkovMatrices({ isES = false }) {
         TLT: { rateMult: 2.10, eqMult: -0.55 }
     };
 
-    const mult = assetSens[targetSym] || assetSens.CARTERA;
+    const selectedProf = activeProfiles.find(a => a.sym === targetSym);
+    const mult =
+        assetSens[targetSym] ||
+        (selectedProf
+            ? {
+                  rateMult: selectedProf.beta < 0 ? 1.5 : Number(Math.max(0.4, selectedProf.beta * 0.85).toFixed(2)),
+                  eqMult: Number(selectedProf.beta.toFixed(2))
+              }
+            : assetSens.CARTERA);
     const displayTarget = targetSym === 'CARTERA' ? (isES ? 'CARTERA' : 'PORTFOLIO') : targetSym;
     const shockHeaders = [
         `${isES ? 'TASAS' : 'RATES'} \\ SPX (${displayTarget})`,
@@ -825,8 +837,8 @@ function Quad4ShockAndMarkovMatrices({ isES = false }) {
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
                             {isES ? 'VER CHOQUE SOBRE:' : 'SHOCK TARGET:'}
                         </span>
-                        <div style={{ display: 'flex', gap: '8px' }}>
-                            {['CARTERA', 'NVDA', 'SPY', 'BTC', 'GLD', 'TLT'].map(s => (
+                        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                            {['CARTERA', ...activeProfiles.map(a => a.sym).slice(0, 5)].map(s => (
                                 <button
                                     key={s}
                                     onClick={() => setTargetSym(s)}
@@ -924,7 +936,10 @@ function Quad4ShockAndMarkovMatrices({ isES = false }) {
 }
 
 /* FILA 3 (100% ANCHO): PROYECCIÓN MONTE CARLO / DRAWDOWN / ROLLING 60D */
-function Row3FullWidthProjectionInteractive({ isES = false }) {
+function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
+    const m = liveMetrics || computeLivePortfolioMetrics(INITIAL_HOLDINGS, isES);
+    const activeProfiles = m.enrichedHoldings?.length ? m.enrichedHoldings : ASSET_RISK_PROFILES;
+
     const [seriesMode, setSeriesMode] = useState('MC');
     const [horizon, setHorizon] = useState('12M');
     const [showP95, setShowP95] = useState(true);
@@ -1048,11 +1063,11 @@ function Row3FullWidthProjectionInteractive({ isES = false }) {
                         </div>
                     </>
                 ) : (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
                             {isES ? 'COMPARAR CONTRA ACTIVO INDIVIDUAL:' : 'COMPARE AGAINST SINGLE ASSET:'}
                         </span>
-                        {['NVDA', 'SPY', 'BTC', 'GLD', 'TLT', 'MSFT'].map(s => (
+                        {activeProfiles.map(a => a.sym).slice(0, 6).map(s => (
                             <button
                                 key={s}
                                 onClick={() => setCompareAsset(s)}
@@ -1135,18 +1150,19 @@ function Row3FullWidthProjectionInteractive({ isES = false }) {
     );
 }
 
-export default function PortfolioVista2Risk({ langCode = 'EN' }) {
+export default function PortfolioVista2Risk({ holdings = INITIAL_HOLDINGS, langCode = 'EN' }) {
     const isES = langCode === 'ES';
+    const liveMetrics = useMemo(() => computeLivePortfolioMetrics(holdings, isES), [holdings, isES]);
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <Row1SummaryPills isES={isES} />
+            <Row1SummaryPills liveMetrics={liveMetrics} isES={isES} />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', alignItems: 'stretch' }}>
-                <Quad1DynamicMarkowitz isES={isES} />
-                <Quad3CorrelationAndAssetBeta isES={isES} />
-                <Quad2TornadoAndAssetTail isES={isES} />
-                <Quad4ShockAndMarkovMatrices isES={isES} />
+                <Quad1DynamicMarkowitz liveMetrics={liveMetrics} isES={isES} />
+                <Quad3CorrelationAndAssetBeta liveMetrics={liveMetrics} isES={isES} />
+                <Quad2TornadoAndAssetTail liveMetrics={liveMetrics} isES={isES} />
+                <Quad4ShockAndMarkovMatrices liveMetrics={liveMetrics} isES={isES} />
             </div>
-            <Row3FullWidthProjectionInteractive isES={isES} />
+            <Row3FullWidthProjectionInteractive liveMetrics={liveMetrics} isES={isES} />
         </div>
     );
 }

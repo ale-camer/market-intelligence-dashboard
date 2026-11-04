@@ -14,14 +14,22 @@ import {
     getSemanticReturnStyle,
     colAlign,
     PortfolioCardShell,
+    INITIAL_HOLDINGS,
     TACTICAL_CANDIDATES,
     WALK_FORWARD_SERIES,
     INITIAL_LEDGER
 } from './portfolioConstants';
+import {
+    computeLivePortfolioMetrics,
+    evaluateTacticalCandidate,
+    runLiveCommitteeCycle
+} from '../../services/committeeService';
+import { runLiveAnomalyInference } from '../../services/anomalyService';
 
 /* FILA 1: ENCABEZADO PERMANENTE DE IMPACTO SOBRE EL TOTAL DE LA CARTERA */
-function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, isES = false }) {
-    const c = TACTICAL_CANDIDATES[activeSym] || TACTICAL_CANDIDATES.NVDA;
+function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, liveMetrics, candidateInfo, isES = false }) {
+    const m = liveMetrics || computeLivePortfolioMetrics(INITIAL_HOLDINGS, isES);
+    const c = candidateInfo || evaluateTacticalCandidate(activeSym, null, isES);
     const isCapped = allocPct > 20;
     const effAlloc = isCapped ? 20 : allocPct;
 
@@ -33,19 +41,19 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, isES
     const pills = [
         {
             lbl: isES ? 'IMPACTO EN RETORNO TOTAL (CAGR)' : 'TOTAL RETURN IMPACT (CAGR)',
-            val: `+28.4% → +${(28.4 + deltaRet).toFixed(1)}%`,
+            val: `+${m.cagrPct.toFixed(1)}% → +${(m.cagrPct + deltaRet).toFixed(1)}%`,
             sub: isES ? `Delta Estrategia Ad-Hoc: +${deltaRet}% anual` : `Ad-Hoc Strategy Delta: +${deltaRet}%/yr`,
             col: '#10b981'
         },
         {
             lbl: isES ? 'IMPACTO EN SHARPE DE CARTERA' : 'PORTFOLIO SHARPE IMPACT',
-            val: `2.18 → ${(2.18 + deltaSharpe).toFixed(2)}`,
+            val: `${m.sharpeRatio.toFixed(2)} → ${(m.sharpeRatio + deltaSharpe).toFixed(2)}`,
             sub: isES ? `Eficiencia marginal: +${deltaSharpe} pts` : `Marginal efficiency: +${deltaSharpe} pts`,
             col: '#10b981'
         },
         {
             lbl: isES ? 'IMPACTO EN VaR 95% DIARIO' : 'DAILY 95% VaR IMPACT',
-            val: `-1.84% → ${(-1.84 + deltaVaR).toFixed(2)}%`,
+            val: `${m.var95Pct}% → ${(m.var95Pct + deltaVaR).toFixed(2)}%`,
             sub:
                 deltaVaR >= 0
                     ? isES
@@ -58,7 +66,7 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, isES
         },
         {
             lbl: isES ? 'IMPACTO EN MAX DRAWDOWN' : 'MAX DRAWDOWN IMPACT',
-            val: `-4.80% → ${(-4.8 + deltaDD).toFixed(2)}%`,
+            val: `${m.maxDrawdownPct.toFixed(2)}% → ${(m.maxDrawdownPct + deltaDD).toFixed(2)}%`,
             sub:
                 deltaDD >= 0
                     ? isES
@@ -77,8 +85,8 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, isES
                     ? '⚠ Tope Guardrail 20% NAV Aplicado'
                     : '⚠ 20% NAV Guardrail Cap Applied'
                 : isES
-                ? '88% Cartera Core Intacta'
-                : '88% Core Portfolio Intact',
+                ? `${Math.max(0, 100 - effAlloc).toFixed(0)}% Cartera Core Intacta`
+                : `${Math.max(0, 100 - effAlloc).toFixed(0)}% Core Portfolio Intact`,
             col: isCapped ? '#f43f5e' : '#10b981'
         },
         {
@@ -121,18 +129,54 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, isES
 }
 
 /* CUADRANTE 1: SIMULADOR "WHAT-IF" PRE-TRADE (#1) & CRITERIO DE KELLY (#14) (320PX) */
-function Quad1WhatIfAndKelly({ activeSym, setActiveSym, allocPct, setAllocPct, onExecuteOrder, isES = false }) {
+function Quad1WhatIfAndKelly({
+    activeSym,
+    setActiveSym,
+    allocPct,
+    setAllocPct,
+    onExecuteOrder,
+    candidateSyms = [],
+    liveMetrics,
+    candidateInfo,
+    isES = false
+}) {
     const [subTab, setSubTab] = useState('WHATIF');
-    const c = TACTICAL_CANDIDATES[activeSym] || TACTICAL_CANDIDATES.NVDA;
+    const m = liveMetrics || computeLivePortfolioMetrics(INITIAL_HOLDINGS, isES);
+    const c = candidateInfo || evaluateTacticalCandidate(activeSym, null, isES);
+    const symList = candidateSyms.length ? candidateSyms : Object.keys(TACTICAL_CANDIDATES);
 
     const headers = isES
         ? ['MÉTRICA DE CARTERA', 'CARTERA BASE', 'CON JUGADA AD-HOC', 'IMPACTO NETO (Δ)']
         : ['PORTFOLIO METRIC', 'BASE PORTFOLIO', 'WITH AD-HOC TRADE', 'NET IMPACT (Δ)'];
     const rows = [
-        [isES ? 'Retorno Anual (CAGR)' : 'Annual Return (CAGR)', '+28.4%', `+${(28.4 + allocPct * 0.28).toFixed(1)}%`, `+${(allocPct * 0.28).toFixed(1)}%`, +(allocPct * 0.28)],
-        ['Sharpe Ratio', '2.18', (2.18 + allocPct * 0.015).toFixed(2), `+${(allocPct * 0.015).toFixed(2)}`, +1.5],
-        [isES ? 'VaR 95% Diario' : 'Daily 95% VaR', '-1.84%', '-1.52%', '+0.32%', +4],
-        [isES ? 'Exposición Activo' : 'Asset Exposure', '10.0%', `${(10 + Math.min(20, allocPct)).toFixed(1)}%`, `+${Math.min(20, allocPct).toFixed(1)}%`, +3]
+        [
+            isES ? 'Retorno Anual (CAGR)' : 'Annual Return (CAGR)',
+            `+${m.cagrPct.toFixed(1)}%`,
+            `+${(m.cagrPct + allocPct * 0.28).toFixed(1)}%`,
+            `+${(allocPct * 0.28).toFixed(1)}%`,
+            +(allocPct * 0.28)
+        ],
+        [
+            'Sharpe Ratio',
+            m.sharpeRatio.toFixed(2),
+            (m.sharpeRatio + allocPct * 0.015).toFixed(2),
+            `+${(allocPct * 0.015).toFixed(2)}`,
+            +1.5
+        ],
+        [
+            isES ? 'VaR 95% Diario' : 'Daily 95% VaR',
+            `${m.var95Pct}%`,
+            `${(m.var95Pct + 0.32).toFixed(2)}%`,
+            '+0.32%',
+            +4
+        ],
+        [
+            isES ? 'Exposición Activo' : 'Asset Exposure',
+            '10.0%',
+            `${(10 + Math.min(20, allocPct)).toFixed(1)}%`,
+            `+${Math.min(20, allocPct).toFixed(1)}%`,
+            +3
+        ]
     ];
 
     const kellyHeaders = isES
@@ -183,7 +227,7 @@ function Quad1WhatIfAndKelly({ activeSym, setActiveSym, allocPct, setAllocPct, o
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
                             {isES ? 'ACTIVO:' : 'ASSET:'}
                         </span>
-                        {Object.keys(TACTICAL_CANDIDATES).map(sym => (
+                        {symList.map(sym => (
                             <button
                                 key={sym}
                                 onClick={() => setActiveSym(sym)}
@@ -481,8 +525,8 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) 
 }
 
 /* CUADRANTE 3: COMITÉ AUTÓNOMO DE 3 PILARES & CIRCUIT-BREAKER (NEW-09) (320PX) */
-function Quad3AutonomousCommittee({ activeSym, allocPct, isES = false }) {
-    const c = TACTICAL_CANDIDATES[activeSym] || TACTICAL_CANDIDATES.NVDA;
+function Quad3AutonomousCommittee({ activeSym, allocPct, candidateInfo, isES = false }) {
+    const c = candidateInfo || evaluateTacticalCandidate(activeSym, null, isES);
     const isCapped = allocPct > 20;
 
     const headers = isES
@@ -771,28 +815,86 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct, isES = false }) {
     );
 }
 
-export default function PortfolioVista3AdHoc({ langCode = 'EN' }) {
+export default function PortfolioVista3AdHoc({
+    holdings = INITIAL_HOLDINGS,
+    watchlistSyms = [],
+    langCode = 'EN'
+}) {
     const isES = langCode === 'ES';
     const [activeSym, setActiveSym] = useState('NVDA');
     const [allocPct, setAllocPct] = useState(14.2);
     const [hedgeActive, setHedgeActive] = useState(true);
-    const [ledger, setLedger] = useState(INITIAL_LEDGER);
+    const [liveAnomalyMap, setLiveAnomalyMap] = useState({});
+    const [ledger, setLedger] = useState(() => {
+        try {
+            const raw = localStorage.getItem('mi_portfolio_adhoc_ledger_v1');
+            const parsed = raw ? JSON.parse(raw) : null;
+            return Array.isArray(parsed) && parsed.length ? parsed : INITIAL_LEDGER;
+        } catch {
+            return INITIAL_LEDGER;
+        }
+    });
 
-    const handleExecuteOrder = () => {
+    const liveMetrics = useMemo(() => computeLivePortfolioMetrics(holdings, isES), [holdings, isES]);
+
+    const candidateSyms = useMemo(() => {
+        const base = Object.keys(TACTICAL_CANDIDATES);
+        const extra = [
+            ...holdings.filter(h => h.enabled !== false).map(h => h.sym),
+            ...watchlistSyms
+        ].filter(s => !base.includes(s));
+        return [...base, ...Array.from(new Set(extra)).slice(0, 4)];
+    }, [holdings, watchlistSyms]);
+
+    const candidateInfo = useMemo(
+        () => evaluateTacticalCandidate(activeSym, liveAnomalyMap[activeSym], isES),
+        [activeSym, liveAnomalyMap, isES]
+    );
+
+    const handleExecuteOrder = async () => {
         const eff = Math.min(20, allocPct);
-        setLedger(prev => [
-            {
-                time: isES ? 'Ahora' : 'Now',
-                sym: activeSym,
-                side: allocPct > 20 ? 'CAP GUARDRAIL 20%' : isES ? 'SIMULACIÓN AD-HOC' : 'AD-HOC SIMULATION',
-                navPct: `${eff.toFixed(1)}%`,
-                kelly: 'Half-Kelly',
-                impactSharpe: `+${(eff * 0.015).toFixed(2)}`,
-                impactVaR: hedgeActive ? '+0.42%' : '-0.14%',
-                status: isES ? 'SIMULADA' : 'SIMULATED'
-            },
-            ...prev
-        ]);
+        let p06Score = candidateInfo.p06;
+        try {
+            const [anomRes] = await Promise.all([
+                runLiveAnomalyInference(activeSym),
+                runLiveCommitteeCycle(activeSym)
+            ]);
+            if (typeof anomRes?.anomalyScore === 'number') {
+                p06Score = Number(anomRes.anomalyScore.toFixed(2));
+                setLiveAnomalyMap(prev => ({ ...prev, [activeSym]: p06Score }));
+            }
+        } catch {
+            // deterministic fallback preserved
+        }
+
+        const circuitBroken = p06Score >= 0.65;
+        const finalEff = circuitBroken ? Math.min(5, eff) : eff;
+        const newEntry = {
+            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+            sym: activeSym,
+            side: circuitBroken
+                ? 'CIRCUIT-BREAKER 5%'
+                : allocPct > 20
+                ? 'CAP GUARDRAIL 20%'
+                : isES
+                ? 'SIMULACIÓN AD-HOC'
+                : 'AD-HOC SIMULATION',
+            navPct: `${finalEff.toFixed(1)}%`,
+            kelly: 'Half-Kelly',
+            impactSharpe: `+${(finalEff * 0.015).toFixed(2)}`,
+            impactVaR: hedgeActive ? '+0.42%' : '-0.14%',
+            status: isES ? 'SIMULADA' : 'SIMULATED'
+        };
+
+        setLedger(prev => {
+            const next = [newEntry, ...prev].slice(0, 12);
+            try {
+                localStorage.setItem('mi_portfolio_adhoc_ledger_v1', JSON.stringify(next));
+            } catch {
+                // ignore storage quota errors
+            }
+            return next;
+        });
     };
 
     return (
@@ -801,6 +903,8 @@ export default function PortfolioVista3AdHoc({ langCode = 'EN' }) {
                 activeSym={activeSym}
                 allocPct={allocPct}
                 hedgeActive={hedgeActive}
+                liveMetrics={liveMetrics}
+                candidateInfo={candidateInfo}
                 isES={isES}
             />
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', alignItems: 'stretch' }}>
@@ -810,9 +914,17 @@ export default function PortfolioVista3AdHoc({ langCode = 'EN' }) {
                     allocPct={allocPct}
                     setAllocPct={setAllocPct}
                     onExecuteOrder={handleExecuteOrder}
+                    candidateSyms={candidateSyms}
+                    liveMetrics={liveMetrics}
+                    candidateInfo={candidateInfo}
                     isES={isES}
                 />
-                <Quad3AutonomousCommittee activeSym={activeSym} allocPct={allocPct} isES={isES} />
+                <Quad3AutonomousCommittee
+                    activeSym={activeSym}
+                    allocPct={allocPct}
+                    candidateInfo={candidateInfo}
+                    isES={isES}
+                />
                 <Quad2TailHedgeAndMargin hedgeActive={hedgeActive} setHedgeActive={setHedgeActive} isES={isES} />
                 <Quad4ExecutionLedger ledger={ledger} isES={isES} />
             </div>
