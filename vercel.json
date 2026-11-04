@@ -1,0 +1,40 @@
+{
+  "rewrites": [
+    {
+      "source": "/cloud/p03/:path*",
+      "destination": "https://p03-market-events-obaffww4hq-uc.a.run.app/:path*"
+    },
+    {
+      "source": "/cloud/p05/:path*",
+      "destination": "https://p05-hub-api-obaffww4hq-uc.a.run.app/:path*"
+    },
+    {
+      "source": "/cloud/p06/:path*",
+      "destination": "https://p06-anomaly-api-obaffww4hq-uc.a.run.app/:path*"
+    },
+    {
+      "source": "/cloud/p07/:path*",
+      "destination": "https://p07-docs-rag-obaffww4hq-uc.a.run.app/:path*"
+    },
+    {
+      "source": "/cloud/p08/:path*",
+      "destination": "https://p08-market-intel-obaffww4hq-uc.a.run.app/:path*"
+    },
+    {
+      "source": "/cloud/p09/:path*",
+      "destination": "https://p09-research-agent-obaffww4hq-uc.a.run.app/:path*"
+    },
+    {
+      "source": "/cloud/p10/:path*",
+      "destination": "https://p10-trading-analyst-obaffww4hq-uc.a.run.app/:path*"
+    },
+    {
+      "source": "/cloud/p11/:path*",
+      "destination": "https://p11-multi-agent-obaffww4hq-uc.a.run.app/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
