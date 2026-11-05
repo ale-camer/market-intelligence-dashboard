@@ -76,20 +76,49 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
 
 ---
 
-## 4. Fase 3 — Nombre e Identidad Final de la Aplicación (Al Final)
+## 4. Fase 3 — Estudio y Diseño de Outputs / Exportables por Audiencia (De Menor a Mayor)
 
-> Tal como definimos, el nombre se decidirá al final del recorrido, cuando la personalidad de la plataforma (con sus mensajes por audiencia y su nuevo Agente Global) haya decantado por completo.
+El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podría querer llevarse cada uno de los 5 perfiles** luego de usar una vista o conversar con el agente, en qué formato les aporta más valor (**imágenes/snapshots `PNG`/`SVG`, tablas `CSV`/`Excel`, especificaciones `JSON` o resúmenes `Markdown`/imprimibles**) y cómo ofrecerlos de forma limpia y no intrusiva.
 
-- [ ] **Paso 3.1 — Exploración y Elección del Nombre Definitivo:**
-  - Revisar la plataforma ya pulida con las Fases 1 y 2 completas y elegir el nombre que mejor sintetice su esencia.
-- [ ] **Paso 3.2 — Integración del Nombre en la App:**
-  - Reemplazar `TBD` en [`index.html`](../index.html), cabeceras, guía de usuario y presentación del agente.
+### 4.1. Matriz Preliminar de Outputs Potenciales por Perfil y Vista
+
+| Perfil | ¿Qué se querría llevar de la app? | Formatos Ideales | Vistas de Origen |
+| :--- | :--- | :--- | :--- |
+| **1. Curioso / Aprendiz** | • Ficha visual de un activo con su gráfico y explicación simple.<br>• Síntesis o glosario de una conversación con el Agente. | • **Imagen (`PNG`)** lista para guardar/compartir.<br>• **Texto / Markdown** copiable del chat. | `Markets > Analytics`, `Guide`, `Agente Global` |
+| **2. Inversor Individual / Principiante** | • Tabla de su **Cartera Armada** (activos, pesos `%`, capital `$`, retorno y riesgo).<br>• Tabla de su **Watchlist** comparada.<br>• Captura visual de su distribución y rendimiento histórico. | • **Tabla (`CSV` / `Excel`)**.<br>• **Imagen (`PNG`)** del estado de su cartera. | `Portfolio > Builder`, `Markets > Screener (Watchlist)` |
+| **3. Profesional Quant** | • Series de tiempo históricas del gráfico activo (`1m` a `ALL`).<br>• Matrices de riesgo (Correlaciones Normal vs. Estrés, Atribución de Brinson, Escenarios de Estrés, Dimensionamiento de Kelly).<br>• Gráfico técnico/cuantitativo en alta resolución. | • **Datos tabulares (`CSV` / `JSON`)**.<br>• **Gráfico (`PNG` / `SVG`)**. | `Markets > Analytics & Research`, `Portfolio > Risk & Simulator` |
+| **4. Profesional IT** | • Especificación técnica de contratos de datos (`Schema Contracts`) y topología de los módulos `P-01` a `P-13`.<br>• Historial de corridas/latencias (`p50/p95`) y logs filtrados.<br>• Tabla de costos y cuotas cloud (`FinOps ~$0.95/m`). | • **Especificación (`JSON` / `CSV` / `Markdown`)**. | `System > Performance & FinOps` |
+| **5. Evaluador de RRHH** | • **Ficha Ejecutiva / Resumen del Proyecto (One-Pager)** con el alcance funcional, arquitectura de 13 repositorios, métricas FinOps y stack tecnológico para compartir con el equipo contratante. | • **Resumen Ejecutivo (`Markdown` / Vista imprimible `PDF` / `PNG`)**. | `Home`, `Guide`, `System`, `Agente Global` |
+
+### Micro-Pasos de la Fase 3
+
+- [ ] **Paso 3.1 — Estudio y Selección de Outputs Prioritarios:**
+  - **Objetivo:** Evaluar vista por vista (`Markets`, `Portfolio`, `System`, `Guide` y `Agente Global`) cuáles de estos outputs aportan valor real y cuáles descartar para mantener la simplicidad de la interfaz.
+- [ ] **Paso 3.2 — Diseño de UX/UI para Exportación Minimalista (`V010 Ghost`):**
+  - **Objetivo:** Definir dónde y cómo aparece la opción de exportar/descargar (ej. un ícono discreto de descarga/captura en la cabecera de las tablas o gráficos clave, o acción de copiar/exportar respuesta en el Agente) sin recargar la pantalla.
+- [ ] **Paso 3.3 — Implementación de Exportación de Tablas y Datos (`CSV` / `JSON` / `Markdown`):**
+  - **Objetivo:** Construir el generador modular para descargar tablas limpias (Screener/Watchlist, Holdings de Cartera, Matrices de Riesgo/Kelly, FinOps/Logs de Sistema y respuestas tabulares del Agente).
+- [ ] **Paso 3.4 — Implementación de Capturas Visuales (`PNG` / Snapshots de Gráficos y Tarjetas):**
+  - **Objetivo:** Permitir que el usuario descargue una imagen limpia y bien formateada del gráfico o resumen de cartera que está analizando.
 
 ---
 
-## 5. Registro de Iteraciones y Decisiones
+## 5. Fase 4 — Nombre e Identidad Final de la Aplicación (Al Final)
+
+> Tal como definimos, el nombre se decidirá al final del recorrido, cuando la personalidad de la plataforma (con sus mensajes por audiencia, su nuevo Agente Global y sus capacidades de output) haya decantado por completo.
+
+- [ ] **Paso 4.1 — Exploración y Elección del Nombre Definitivo:**
+  - Revisar la plataforma ya pulida con las Fases 1, 2 y 3 completas y elegir el nombre que mejor sintetice su esencia.
+- [ ] **Paso 4.2 — Integración del Nombre en la App y en los Outputs:**
+  - Reemplazar `TBD` en [`index.html`](../index.html), cabeceras, guía de usuario, presentación del agente y pie/marca de agua de las imágenes y tablas exportadas.
+
+---
+
+## 6. Registro de Iteraciones y Decisiones
 
 | Fecha | Paso | Estado | Resumen de Decisión / Avance |
 | :---: | :--- | :---: | :--- |
 | 2026-11-05 | **Definición Base** | `[x] Completado` | Se fijaron los 5 perfiles (*Curioso/Aprendiz, Inversor Individual/Principiante, Profesional Quant, Profesional IT, Evaluador de RRHH*), el rol del Agente como guía conversacional puro en toda la app (sin botones que operen la UI), el nombre para el final y la metodología iterativa de menor a mayor. |
+| 2026-11-06 | **Fase 3 (Outputs)** | `[x] Incorporado al Plan` | Se sumó la Fase 3 dedicada al estudio e implementación iterativa de los outputs que cada perfil puede querer llevarse de la app (imágenes/gráficos, tablas CSV/JSON, fichas ejecutivas). |
 | — | **Paso 1.1** | `[~] Próximo paso` | Diagnóstico inicial de qué ve cada uno de los 5 perfiles al entrar a la app y propuesta del primer ajuste en `Home` / orientación general. |
+
