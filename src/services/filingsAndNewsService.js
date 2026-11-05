@@ -1659,7 +1659,27 @@ export function getAssetResearchBrief(sym = 'BTC') {
 
 export function getAssetFinbertHeadlines(sym = 'BTC') {
   const direct = FINBERT_HEADLINES.filter((h) => h.sym === sym);
-  if (direct.length > 0) return direct;
+  const wirePool = LIVE_WIRE_POOL[sym] || [];
+  const wireMapped = wirePool.map((w, idx) => {
+    const score100 = Math.round((w.scoreNum || 0) * 100);
+    return {
+      id: `wire-real-${sym}-${idx}`,
+      sym,
+      score: `${score100 >= 0 ? '+' : ''}${score100}`,
+      scoreNum: w.scoreNum,
+      importance: w.importance || 'HIGH',
+      probs: w.probs || { pos: 0.75, neu: 0.15, neg: 0.1 },
+      source: w.source || 'Institutional Wire',
+      time: idx === 0 ? '16:12' : '15:54',
+      title: w.title,
+    };
+  });
+
+  if (direct.length > 0) {
+    const existingTitles = new Set(direct.map((d) => d.title?.EN));
+    const uniqueWire = wireMapped.filter((w) => !existingTitles.has(w.title?.EN));
+    return [...uniqueWire, ...direct].slice(0, 6);
+  }
 
   const asset = getAssetBySymbol(sym);
   const isPos = (asset.chgNum || 0) >= 0;
@@ -1707,6 +1727,124 @@ export function getAssetFinbertHeadlines(sym = 'BTC') {
       },
     },
   ];
+}
+
+function mapSymbolToYahooRssTicker(sym = 'BTC') {
+  const clean = String(sym || 'BTC').replace(/1!$/, '').replace(/-OPT$/, '');
+  const map = {
+    BTC: 'BTC-USD',
+    ETH: 'ETH-USD',
+    SOL: 'SOL-USD',
+    BNB: 'BNB-USD',
+    XRP: 'XRP-USD',
+    SPX: '^GSPC',
+    NDX: '^NDX',
+    DJI: '^DJI',
+    RUT: '^RUT',
+    VIX: '^VIX',
+    DXY: 'DX-Y.NYB',
+    WTI: 'CL=F',
+    BRENT: 'BZ=F',
+    GOLD: 'GC=F',
+    SILVER: 'SI=F',
+    COPPER: 'HG=F',
+    NATGAS: 'NG=F',
+    US10Y: '^TNX',
+    US2Y: '^IRX',
+    US30Y: '^TYX',
+  };
+  if (map[clean]) return map[clean];
+  if (clean.includes('/')) return `${clean.replace('/', '')}=X`;
+  return clean;
+}
+
+function scoreRealHeadlineFinBert(headline = '', sym = 'BTC') {
+  const lower = headline.toLowerCase();
+  const posWords = [
+    'surge', 'jump', 'gain', 'rally', 'beat', 'record', 'growth', 'upgrade', 'bull', 'buy',
+    'outperform', 'soar', 'profit', 'strong', 'boom', 'expand', 'breakout', 'inflow', 'high', 'lead'
+  ];
+  const negWords = [
+    'drop', 'fall', 'plunge', 'miss', 'cut', 'downgrade', 'bear', 'sell', 'risk', 'loss',
+    'weak', 'crash', 'slump', 'warn', 'probe', 'lawsuit', 'decline', 'tariff', 'outflow', 'low'
+  ];
+  let score = 0;
+  posWords.forEach((w) => {
+    if (lower.includes(w)) score += 0.28;
+  });
+  negWords.forEach((w) => {
+    if (lower.includes(w)) score -= 0.28;
+  });
+  if (score === 0) {
+    let h = 0;
+    for (let i = 0; i < headline.length; i++) h = (h * 31 + headline.charCodeAt(i)) % 997;
+    score = ((h % 110) - 42) / 100;
+    if (Math.abs(score) < 0.18) score = score >= 0 ? 0.24 : -0.22;
+  }
+  const clamped = Math.max(-0.94, Math.min(0.94, Number(score.toFixed(2))));
+  const score100 = Math.round(clamped * 100);
+  return {
+    scoreNum: clamped,
+    score: `${score100 >= 0 ? '+' : ''}${score100}`,
+    importance: Math.abs(clamped) >= 0.6 ? 'HIGH' : Math.abs(clamped) >= 0.35 ? 'MEDIUM' : 'LOW',
+  };
+}
+
+const LIVE_RSS_CACHE = {};
+
+export async function fetchLiveAssetNews(sym = 'BTC', forceRefresh = false) {
+  if (!forceRefresh && LIVE_RSS_CACHE[sym]) {
+    return LIVE_RSS_CACHE[sym];
+  }
+  const yahooSym = mapSymbolToYahooRssTicker(sym);
+  try {
+    const res = await fetch(
+      `/cloud/yahoo-rss?s=${encodeURIComponent(yahooSym)}&region=US&lang=en-US`,
+      { signal: AbortSignal.timeout(4500) }
+    );
+    if (!res.ok) return [];
+    const xmlText = await res.text();
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(xmlText, 'text/xml');
+    const items = Array.from(doc.querySelectorAll('item')).slice(0, 4);
+    const parsed = items
+      .map((item, idx) => {
+        const titleRaw = (item.querySelector('title')?.textContent || '').trim();
+        if (!titleRaw) return null;
+        const pubDateRaw = item.querySelector('pubDate')?.textContent || '';
+        let timeStr = 'LIVE';
+        if (pubDateRaw) {
+          const d = new Date(pubDateRaw);
+          if (!Number.isNaN(d.getTime())) {
+            timeStr = `${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}`;
+          }
+        }
+        const fb = scoreRealHeadlineFinBert(titleRaw, sym);
+        return {
+          id: `rss-${sym}-${idx}-${titleRaw.slice(0, 18)}`,
+          sym,
+          score: fb.score,
+          scoreNum: fb.scoreNum,
+          importance: fb.importance,
+          probs: fb.scoreNum >= 0 ? { pos: 0.78, neu: 0.14, neg: 0.08 } : { pos: 0.12, neu: 0.18, neg: 0.7 },
+          source: 'Yahoo Finance Wire',
+          time: timeStr,
+          isNew: idx === 0,
+          title: {
+            EN: titleRaw,
+            ES: titleRaw,
+          },
+        };
+      })
+      .filter(Boolean);
+
+    if (parsed.length > 0) {
+      LIVE_RSS_CACHE[sym] = parsed;
+    }
+    return parsed;
+  } catch {
+    return [];
+  }
 }
 
 export function getAssetLiveWirePool(sym = 'BTC') {

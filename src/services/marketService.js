@@ -558,75 +558,140 @@ export const GLOBAL_VOLUME_SPARKLINE = [
   { t: '08', v: 184.6 },
 ];
 
-const TIMEFRAME_STAMPS = {
-  '1M': ['15:53', '15:54', '15:55', '15:56', '15:57', '15:58', '15:59', '16:00'],
-  '5M': ['15:25', '15:30', '15:35', '15:40', '15:45', '15:50', '15:55', '16:00'],
-  '1H': ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
-  '1D': ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00'],
-  '1W': ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Today'],
-  '1M_HIST': ['Wk 1', 'Wk 2', 'Wk 3', 'Wk 4', 'Wk 5', 'Wk 6', 'Wk 7', 'Now'],
-  '3M': ['Aug 01', 'Aug 15', 'Sep 01', 'Sep 15', 'Oct 01', 'Oct 10', 'Oct 20', 'Oct 28'],
-  '1Y': ['Nov 25', 'Jan 26', 'Feb 26', 'Apr 26', 'Jun 26', 'Aug 26', 'Sep 26', 'Oct 26'],
-  'ALL': ['2020', '2021', '2022', '2023', '2024', '2025', 'H1 26', 'Now'],
+// Multi-granularity Time-Series Rollup Configuration:
+// Intraday (1m, 5m, 1H, 1D) -> Daily (1W, 1M, 3M) -> Weekly (1Y) -> Monthly (ALL: 2020..2026)
+const TIMEFRAME_GRANULARITY_CONFIG = {
+  '1M': {
+    count: 30,
+    tfSeed: 101,
+    totalDriftScale: 0.18,
+    volAmpScale: 0.22,
+    volMult: 0.35,
+    granularity: '1m Intraday',
+    buildLabel: (i, n) => {
+      const minsAgo = n - 1 - i;
+      const totalMins = 16 * 60 - minsAgo;
+      const hh = String(Math.floor(totalMins / 60)).padStart(2, '0');
+      const mm = String(totalMins % 60).padStart(2, '0');
+      return `${hh}:${mm}`;
+    },
+  },
+  '5M': {
+    count: 28,
+    tfSeed: 203,
+    totalDriftScale: 0.42,
+    volAmpScale: 0.45,
+    volMult: 0.6,
+    granularity: '5m Intraday',
+    buildLabel: (i, n) => {
+      const minsAgo = (n - 1 - i) * 5;
+      const totalMins = 16 * 60 - minsAgo;
+      const hh = String(Math.floor(totalMins / 60)).padStart(2, '0');
+      const mm = String(totalMins % 60).padStart(2, '0');
+      return `${hh}:${mm}`;
+    },
+  },
+  '1H': {
+    count: 24,
+    tfSeed: 307,
+    totalDriftScale: 0.78,
+    volAmpScale: 0.75,
+    volMult: 0.9,
+    granularity: '15m / 1H Session',
+    buildLabel: (i, n) => {
+      const minsAgo = (n - 1 - i) * 15;
+      const totalMins = 16 * 60 - minsAgo;
+      const hh = String(Math.floor(totalMins / 60)).padStart(2, '0');
+      const mm = String(totalMins % 60).padStart(2, '0');
+      return `${hh}:${mm}`;
+    },
+  },
+  '1D': {
+    count: 24,
+    tfSeed: 409,
+    totalDriftScale: 1.0,
+    volAmpScale: 1.0,
+    volMult: 1.15,
+    granularity: 'Hourly (24h)',
+    buildLabel: (i) => `${String(i).padStart(2, '0')}:00`,
+  },
+  '1W': {
+    count: 21,
+    tfSeed: 521,
+    totalDriftScale: 2.35,
+    volAmpScale: 1.75,
+    volMult: 1.65,
+    granularity: 'Daily / 8h (7D)',
+    buildLabel: (i, n) => {
+      const daysAgo = Math.floor(((n - 1 - i) * 7) / n);
+      const d = new Date(Date.UTC(2026, 10, 5 - daysAgo));
+      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getUTCMonth()];
+      const slot = i % 3 === 0 ? '08h' : i % 3 === 1 ? '14h' : '20h';
+      return i === n - 1 ? 'Now' : `${mon} ${String(d.getUTCDate()).padStart(2, '0')} ${slot}`;
+    },
+  },
+  '1M_CAL': {
+    count: 24,
+    tfSeed: 631,
+    totalDriftScale: 4.4,
+    volAmpScale: 2.6,
+    volMult: 2.4,
+    granularity: 'Daily Close (1M)',
+    buildLabel: (i, n) => {
+      const daysAgo = Math.round(((n - 1 - i) * 30) / Math.max(1, n - 1));
+      const d = new Date(Date.UTC(2026, 10, 5 - daysAgo));
+      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getUTCMonth()];
+      return i === n - 1 ? 'Nov 05' : `${mon} ${String(d.getUTCDate()).padStart(2, '0')}`;
+    },
+  },
+  '3M': {
+    count: 32,
+    tfSeed: 743,
+    totalDriftScale: 8.2,
+    volAmpScale: 3.8,
+    volMult: 3.5,
+    granularity: 'Daily Agg (3M)',
+    buildLabel: (i, n) => {
+      const daysAgo = Math.round(((n - 1 - i) * 90) / Math.max(1, n - 1));
+      const d = new Date(Date.UTC(2026, 10, 5 - daysAgo));
+      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getUTCMonth()];
+      return i === n - 1 ? 'Nov 05' : `${mon} ${String(d.getUTCDate()).padStart(2, '0')}`;
+    },
+  },
+  '1Y': {
+    count: 36,
+    tfSeed: 859,
+    totalDriftScale: 14.8,
+    volAmpScale: 5.5,
+    volMult: 5.2,
+    granularity: 'Weekly Agg (1Y)',
+    buildLabel: (i, n) => {
+      const daysAgo = Math.round(((n - 1 - i) * 365) / Math.max(1, n - 1));
+      const d = new Date(Date.UTC(2026, 10, 5 - daysAgo));
+      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getUTCMonth()];
+      const yr = String(d.getUTCFullYear()).slice(-2);
+      return `${mon} '${yr}`;
+    },
+  },
+  'ALL': {
+    count: 42,
+    tfSeed: 977,
+    totalDriftScale: 24.5,
+    volAmpScale: 7.8,
+    volMult: 8.5,
+    granularity: 'Monthly Rollup (2020–2026)',
+    buildLabel: (i, n) => {
+      const totalMonths = 82; // Jan 2020 -> Nov 2026
+      const mOffset = Math.round((i / Math.max(1, n - 1)) * totalMonths);
+      const yr = 2020 + Math.floor(mOffset / 12);
+      const mo = mOffset % 12;
+      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][mo];
+      return `${mon} ${yr}`;
+    },
+  },
 };
 
-const ASSET_CURVE_SHAPES = {
-  BTC: [0.978, 0.994, 0.981, 0.989, 1.006, 0.991, 0.997, 1.0],
-  ETH: [0.992, 0.976, 0.984, 0.998, 0.987, 0.993, 1.004, 1.0],
-  SOL: [0.958, 0.979, 0.964, 0.995, 0.982, 1.018, 0.991, 1.0],
-  NVDA: [0.969, 0.985, 0.997, 0.978, 0.991, 1.009, 0.994, 1.0],
-  AAPL: [1.004, 0.991, 0.998, 0.989, 1.002, 0.994, 0.997, 1.0],
-  MSFT: [1.012, 1.004, 1.009, 0.996, 1.003, 0.992, 0.998, 1.0],
-  AMZN: [0.982, 0.996, 0.984, 1.003, 0.989, 0.997, 1.005, 1.0],
-  GOOGL: [0.995, 0.981, 0.992, 0.986, 1.004, 0.991, 0.998, 1.0],
-  SPY: [0.991, 0.998, 0.989, 0.996, 0.992, 1.003, 0.997, 1.0],
-  QQQ: [0.986, 0.994, 1.002, 0.988, 0.997, 0.991, 1.004, 1.0],
-};
-
-const ASSET_VOL_SHAPES = {
-  BTC: [140, 185, 120, 230, 290, 260, 315, 280],
-  ETH: [95, 110, 88, 145, 160, 152, 175, 168],
-  SOL: [180, 220, 195, 410, 580, 690, 520, 490],
-  NVDA: [210, 245, 190, 275, 320, 295, 360, 340],
-  AAPL: [110, 125, 105, 130, 148, 140, 165, 155],
-  MSFT: [85, 92, 80, 105, 112, 98, 118, 110],
-  AMZN: [100, 118, 95, 140, 155, 148, 170, 162],
-  GOOGL: [90, 102, 88, 115, 128, 122, 140, 135],
-  SPY: [150, 165, 140, 180, 195, 188, 220, 210],
-  QQQ: [135, 148, 125, 168, 182, 175, 205, 194],
-};
-
-function getDeterministicCurveForAsset(asset) {
-  if (ASSET_CURVE_SHAPES[asset.sym]) return ASSET_CURVE_SHAPES[asset.sym];
-  const h = hashSym(asset.sym);
-  const drift = (asset.chgNum || 0.2) / 100;
-  const volAmp =
-    asset.cat === 'CASH' || asset.cat === 'FIXED_INCOME'
-      ? 0.004
-      : asset.cat === 'FX' || asset.cat === 'RATES'
-      ? 0.007
-      : 0.014;
-  const startRatio = 1 - drift;
-  const pts = [];
-  for (let i = 0; i < 8; i++) {
-    if (i === 7) {
-      pts.push(1.0);
-    } else {
-      const progress = i / 7;
-      const wave1 = Math.sin(i * (1.1 + (h % 4) * 0.35) + (h % 7)) * volAmp;
-      const wave2 = Math.cos(i * (1.8 + (h % 3) * 0.4) + (h % 11)) * (volAmp * 0.65);
-      pts.push(Number((startRatio + (1 - startRatio) * progress + wave1 + wave2).toFixed(4)));
-    }
-  }
-  return pts;
-}
-
-function getDeterministicVolsForAsset(asset) {
-  if (ASSET_VOL_SHAPES[asset.sym]) return ASSET_VOL_SHAPES[asset.sym];
-  const h = hashSym(asset.sym);
-  const base = 110 + (h % 140);
-  return [0, 1, 2, 3, 4, 5, 6, 7].map((i) => Math.round(base * (0.82 + ((h >> i) % 45) / 100)));
-}
+const SERIES_MEMORY_CACHE = {};
 
 export function getAssetBySymbol(sym = 'BTC') {
   const clean = String(sym || 'BTC').replace(/1!$/, '').replace(/-USD$/i, '');
@@ -683,44 +748,96 @@ export async function syncLiveMarketSnapshot() {
 
 export function getAssetSeries(sym = 'BTC', timeframe = '1D') {
   const asset = getAssetBySymbol(sym);
-  const stampKey = timeframe === '1M_CAL' ? '1M_HIST' : timeframe;
-  const stamps = TIMEFRAME_STAMPS[stampKey] || TIMEFRAME_STAMPS['1D'];
-  const curve = getDeterministicCurveForAsset(asset);
-  const vols = getDeterministicVolsForAsset(asset);
+  const tfKey = timeframe === '1M_HIST' ? '1M_CAL' : timeframe;
+  const cfg = TIMEFRAME_GRANULARITY_CONFIG[tfKey] || TIMEFRAME_GRANULARITY_CONFIG['1D'];
+  const cacheKey = `${asset.sym}_${tfKey}_${asset.price}`;
+  if (SERIES_MEMORY_CACHE[cacheKey]) {
+    return SERIES_MEMORY_CACHE[cacheKey];
+  }
 
-  const tfMultiplier =
-    timeframe === '1M'
-      ? 0.25
-      : timeframe === '5M'
-      ? 0.55
-      : timeframe === '1H'
-      ? 1.0
-      : timeframe === '1D'
-      ? 1.85
-      : timeframe === '1W'
-      ? 3.2
-      : timeframe === '1M_CAL'
-      ? 5.8
-      : timeframe === '3M'
-      ? 9.5
-      : timeframe === '1Y'
-      ? 15.0
-      : 22.0;
-
+  const h = hashSym(`${asset.sym}:${tfKey}`);
+  const symHash = hashSym(asset.sym);
+  const n = cfg.count;
   const decimals = asset.price < 5 ? 4 : asset.price > 500 ? 1 : 2;
 
-  return stamps.map((time, idx) => {
-    const ratio = Math.max(0.25, 1 - (1 - curve[idx]) * tfMultiplier);
+  const isLowVolClass = asset.cat === 'CASH' || asset.cat === 'FIXED_INCOME';
+  const isMacroRate = asset.cat === 'FX' || asset.cat === 'RATES';
+  const baseVolAmp = isLowVolClass ? 0.0022 : isMacroRate ? 0.0048 : 0.0115;
+  const volAmp = baseVolAmp * cfg.volAmpScale;
+
+  // Compute start-to-end structural drift distinct per timeframe and asset
+  const dailyChgFrac = (asset.chgNum || 0.35) / 100;
+  const tfSign =
+    tfKey === '1W' || tfKey === '3M'
+      ? ((symHash + cfg.tfSeed) % 5 === 0 ? -0.65 : 1.0)
+      : 1.0;
+  const rawDrift = dailyChgFrac * cfg.totalDriftScale * tfSign;
+  const clampedDrift = Math.max(-0.58, Math.min(0.72, rawDrift));
+  const startRatio = Math.max(0.28, 1 - clampedDrift);
+
+  // Build realistic multi-harmonic path with timeframe-specific macro regime inflections
+  const ratios = [];
+  let rw = 0;
+  for (let i = 0; i < n; i++) {
+    if (i === n - 1) {
+      ratios.push(1.0);
+      continue;
+    }
+    const progress = i / (n - 1);
+    // Macro regime cycle (e.g. for ALL / 1Y: 2022 dip + 2024-2026 expansion; for intraday: session U-shape)
+    const freq1 = 1.35 + ((h % 7) * 0.28);
+    const freq2 = 2.9 + (((h >> 3) % 5) * 0.42);
+    const freq3 = 5.4 + (((h >> 6) % 7) * 0.55);
+    const phase1 = (h % 19) * 0.33;
+    const phase2 = ((h >> 4) % 13) * 0.47;
+
+    const stepNoise =
+      Math.sin(i * 1.7 + phase1) * 0.45 +
+      Math.cos(i * 2.6 + phase2) * 0.35 +
+      Math.sin(i * 4.1 + (h % 11)) * 0.2;
+    rw = rw * 0.72 + stepNoise * volAmp * 0.55;
+
+    const cycle1 = Math.sin(progress * Math.PI * freq1 + phase1) * volAmp * 0.85;
+    const cycle2 = Math.cos(progress * Math.PI * freq2 + phase2) * volAmp * 0.48;
+    const cycle3 = Math.sin(progress * Math.PI * freq3) * volAmp * 0.24;
+
+    // Smoothly pin endpoints: taper oscillation at i=n-1 so last point lands cleanly on current price
+    const endTaper = 1 - Math.pow(progress, 3.2) * 0.75;
+    const trendRatio = startRatio + (1 - startRatio) * Math.pow(progress, tfKey === 'ALL' ? 1.35 : 1.0);
+    const r = Math.max(0.18, trendRatio + (cycle1 + cycle2 + cycle3 + rw) * endTaper);
+    ratios.push(r);
+  }
+
+  const baseVol = 110 + (symHash % 180);
+  const startVal = ratios[0] || 1;
+
+  const series = ratios.map((ratio, idx) => {
+    const time = cfg.buildLabel(idx, n);
     const rawPrice = asset.price * ratio;
     const roundedPrice = Number(rawPrice.toFixed(decimals));
-    const smaRatio = Math.max(0.25, 1 - (1 - curve[Math.max(0, idx - 1)]) * tfMultiplier * 0.85);
+
+    // 5-bar moving average for SMA20 proxy and session VWAP
+    let winSum = 0;
+    let winCount = 0;
+    const lookback = Math.min(6, idx + 1);
+    for (let k = idx - lookback + 1; k <= idx; k++) {
+      winSum += ratios[Math.max(0, k)];
+      winCount += 1;
+    }
+    const smaRatio = winSum / Math.max(1, winCount);
     const sma20 = Number((asset.price * smaRatio).toFixed(decimals));
-    const vwap = Number(((roundedPrice + sma20) / 2).toFixed(decimals));
-    const bbSpread = roundedPrice * 0.018 * Math.sqrt(Math.max(0.5, tfMultiplier * 0.45));
+    const vwap = Number(((roundedPrice * 0.58 + sma20 * 0.42)).toFixed(decimals));
+
+    const bbSpread = roundedPrice * Math.max(0.006, volAmp * 1.35);
     const bbUpper = Number((sma20 + bbSpread).toFixed(decimals));
     const bbLower = Number((sma20 - bbSpread).toFixed(decimals));
-    const startVal = 1 - (1 - curve[0]) * tfMultiplier;
     const pctFromStart = Number((((ratio - startVal) / Math.max(0.0001, startVal)) * 100).toFixed(2));
+
+    // U-shaped session volume profile + volatility spikes on large moves
+    const prevRatio = idx > 0 ? ratios[idx - 1] : ratio;
+    const barMove = Math.abs(ratio - prevRatio) / Math.max(0.001, volAmp);
+    const uShape = 1 + 0.35 * Math.cos((idx / Math.max(1, n - 1) - 0.5) * 2 * Math.PI);
+    const barVol = Math.round(baseVol * cfg.volMult * uShape * (0.75 + Math.min(1.6, barMove * 0.85)));
 
     return {
       time,
@@ -730,7 +847,11 @@ export function getAssetSeries(sym = 'BTC', timeframe = '1D') {
       bbUpper,
       bbLower,
       pctReturn: pctFromStart,
-      vol: Math.round(vols[idx] * (0.7 + 0.3 * tfMultiplier)),
+      vol: barVol,
+      granularity: cfg.granularity,
     };
   });
+
+  SERIES_MEMORY_CACHE[cacheKey] = series;
+  return series;
 }

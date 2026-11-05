@@ -1,5 +1,6 @@
 import { tx, txList, txTpl, useViewLocale } from '../data/i18n/viewLocaleService';
 import React, { useState, useEffect, useMemo } from 'react';
+import { RefreshCw } from 'lucide-react';
 import {
     evaluateEcosystemContracts,
     probeLiveCloudEndpoints
@@ -60,7 +61,7 @@ function getCompactQuotaMeters(isES = false) {
             modules: 'P-01..P-11',
             usedLabel: tx('9.9 GB imágenes', '9.9 GB images'),
             pct: 9.5,
-            cost: tx('~$0.95 / mes', '~$0.95 / mo')
+            cost: '~$0.95 / m'
         },
         {
             service: 'Client Edge Storage (localStorage)',
@@ -160,7 +161,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                 });
             });
         });
-        return rows.slice(0, 12);
+        return rows;
     }, [logScope, selectedItem, allModules, lastProbeTime, langKey, isES]);
 
     return (
@@ -235,24 +236,32 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                     type="button"
                     onClick={runLiveCheck}
                     disabled={isProbing}
+                    title={tx('Actualizar Healthchecks HTTP', 'Refresh HTTP Healthchecks')}
+                    aria-label={tx('Actualizar Healthchecks HTTP', 'Refresh HTTP Healthchecks')}
                     style={{
                         position: 'absolute',
                         right: '4px',
-                        padding: '0.18rem 0.35rem',
+                        width: '30px',
+                        height: '30px',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        borderRadius: '6px',
                         border: 'none',
                         background: 'transparent',
                         color: 'var(--ui-accent, #10b981)',
-                        textShadow: '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.78)',
-                        fontSize: '12.5px',
-                        fontWeight: 800,
-                        fontFamily: 'var(--font-mono)',
+                        filter: 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.72))',
                         cursor: 'pointer',
-                        transition: 'all 0.16s ease'
+                        transition: 'all 0.2s ease'
                     }}
                 >
-                    {isProbing
-                        ? tx('Ejecutando Healthcheck...', 'Running Healthcheck...')
-                        : tx('Probar Healthchecks HTTP', 'Test HTTP Healthchecks')}
+                    <RefreshCw
+                        size={15}
+                        style={{
+                            transform: isProbing ? 'rotate(180deg)' : 'none',
+                            transition: 'transform 0.35s ease'
+                        }}
+                    />
                 </button>
             </div>
 
@@ -616,21 +625,29 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                                 </div>
                             </div>
 
-                            {logEntries.map(log => (
-                                <div key={log.id} style={{ marginBottom: '3px' }}>
-                                    <span style={{ color: '#64748b' }}>[{log.ts}]</span>{' '}
-                                    <span
-                                        style={{
-                                            color: log.level === 'INFO' ? '#10b981' : '#f59e0b',
-                                            fontWeight: 700
-                                        }}
-                                    >
-                                        {log.level}
-                                    </span>{' '}
-                                    <span style={{ color: '#38bdf8' }}>[{log.modId}]</span>{' '}
-                                    <span>{log.msg}</span>
-                                </div>
-                            ))}
+                            <div
+                                style={{
+                                    maxHeight: '132px',
+                                    overflowY: 'auto',
+                                    paddingRight: '4px'
+                                }}
+                            >
+                                {logEntries.map(log => (
+                                    <div key={log.id} style={{ marginBottom: '3px' }}>
+                                        <span style={{ color: '#64748b' }}>[{log.ts}]</span>{' '}
+                                        <span
+                                            style={{
+                                                color: log.level === 'INFO' ? '#10b981' : '#f59e0b',
+                                                fontWeight: 700
+                                            }}
+                                        >
+                                            {log.level}
+                                        </span>{' '}
+                                        <span style={{ color: '#38bdf8' }}>[{log.modId}]</span>{' '}
+                                        <span>{log.msg}</span>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>

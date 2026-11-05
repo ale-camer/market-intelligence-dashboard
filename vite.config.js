@@ -49,6 +49,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/cloud\/p11/, ''),
       },
+      '/cloud/yahoo-rss': {
+        target: 'https://feeds.finance.yahoo.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/cloud\/yahoo-rss/, '/rss/2.0/headline'),
+      },
     },
   },
 })

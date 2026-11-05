@@ -57,6 +57,7 @@ import {
   getAssetResearchBrief,
   getAssetFinbertHeadlines,
   getAssetLiveWirePool,
+  fetchLiveAssetNews,
   executeSec10kRagQuery,
 } from '../services/filingsAndNewsService';
 import { getCommitteeDeliberation } from '../services/committeeService';
@@ -883,20 +884,40 @@ export default function MarketAnomaliesView({
     }
   };
 
-  // Automatic live wire simulation every 18 seconds while in Level 2 Research mode (stops once pool is shown)
-  useEffect(() => {
-    const pool = getAssetLiveWirePool(selectedAsset);
-    if (viewMode !== 'detail' || l2Section !== 'research' || wireCursor >= pool.length) return undefined;
-    const timer = setInterval(() => {
-      pushIncomingWireHeadline();
-    }, 18000);
-    return () => clearInterval(timer);
-  }, [viewMode, l2Section, selectedAsset, wireCursor]);
+  // Real live RSS news fetch for Level 2 Research (Yahoo Finance RSS + curated institutional wire)
+  const refreshLiveAssetNews = async (force = false) => {
+    const rssItems = await fetchLiveAssetNews(selectedAsset, force);
+    if (Array.isArray(rssItems) && rssItems.length > 0) {
+      setLiveWireItems(rssItems);
+    }
+  };
 
-  // P-04 & P-08 FinBERT headlines for Level 2 Research (Latest 5 headlines, Live wire prepended at the top)
+  useEffect(() => {
+    if (viewMode !== 'detail' || l2Section !== 'research') return undefined;
+    let active = true;
+    fetchLiveAssetNews(selectedAsset, false).then((rssItems) => {
+      if (active && Array.isArray(rssItems) && rssItems.length > 0) {
+        setLiveWireItems(rssItems);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, [viewMode, l2Section, selectedAsset]);
+
+  // P-04 & P-08 FinBERT headlines for Level 2 Research (Real live RSS + curated institutional headlines)
   const assetFinbertNews = useMemo(() => {
     const baseList = getAssetFinbertHeadlines(selectedAsset);
-    return [...liveWireItems, ...baseList].slice(0, 5);
+    const seen = new Set();
+    const merged = [];
+    [...liveWireItems, ...baseList].forEach((item) => {
+      const k = item?.title?.EN || item?.id;
+      if (k && !seen.has(k)) {
+        seen.add(k);
+        merged.push(item);
+      }
+    });
+    return merged.slice(0, 6);
   }, [selectedAsset, liveWireItems]);
 
   // Importance-weighted News Sentiment (-100 to +100 integer)
@@ -3831,10 +3852,21 @@ export default function MarketAnomaliesView({
                     <span
                       className="mono-metric"
                       style={{
-                        fontSize: isDense ? '0.58rem' : '0.68rem',
+                        fontSize:
+                          row.sym.length >= 7
+                            ? isDense
+                              ? '0.48rem'
+                              : '0.56rem'
+                            : isDense
+                            ? '0.58rem'
+                            : '0.68rem',
                         fontWeight: 800,
                         color: '#fff',
                         lineHeight: 1.05,
+                        textAlign: 'center',
+                        width: '100%',
+                        display: 'block',
+                        whiteSpace: 'nowrap',
                       }}
                     >
                       {row.sym}
@@ -3846,6 +3878,10 @@ export default function MarketAnomaliesView({
                         color: m.textColor,
                         fontWeight: 800,
                         lineHeight: 1.05,
+                        textAlign: 'center',
+                        width: '100%',
+                        display: 'block',
+                        whiteSpace: 'nowrap',
                       }}
                     >
                       {m.formatted}
@@ -4407,28 +4443,7 @@ export default function MarketAnomaliesView({
                 })}
               </div>
             </>
-          ) : (
-            <button
-              onClick={pushIncomingWireHeadline}
-              className="mono-metric"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.38rem',
-                fontSize: '0.66rem',
-                fontWeight: 800,
-                padding: '0.2rem 0.4rem',
-                background: 'transparent',
-                border: 'none',
-                color: 'var(--ui-accent)',
-                textShadow: '0 0 12px rgba(var(--ui-accent-rgb), 0.8)',
-                cursor: 'pointer',
-              }}
-            >
-              <Radio size={12} />
-              <span>{tx('+ SIMULAR NOTICIA EN VIVO', '+ SIMULATE INCOMING NEWS')}</span>
-            </button>
-          )}
+          ) : null}
         </div>
       </div>
 
@@ -6860,7 +6875,7 @@ export default function MarketAnomaliesView({
           const strokeHex24h = researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e';
           const gradId24h = `l2-research-sent-24h-${currentAsset.sym}`;
 
-          const renderAccordionRow = (item) => {
+          const renderAccordionRow = (item, isCompact = false) => {
             const isBull = item.side === 'BULL';
             const accentHex = isBull ? '#34d399' : '#fb7185';
             const fillRgba = isBull ? 'rgba(16, 185, 129, 0.18)' : 'rgba(244, 63, 94, 0.18)';
@@ -6878,6 +6893,7 @@ export default function MarketAnomaliesView({
                   borderBottom: isOpen ? `1px solid ${accentHex}` : '1px solid rgba(148, 163, 184, 0.12)',
                   backgroundColor: isOpen ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.10)' : 'transparent',
                   overflow: 'hidden',
+                  minWidth: 0,
                   cursor: 'pointer',
                   transition: 'all 0.16s ease',
                 }}
@@ -6885,11 +6901,12 @@ export default function MarketAnomaliesView({
                 <div
                   style={{
                     position: 'relative',
-                    padding: '0.48rem 0.7rem',
+                    padding: isCompact ? '0.38rem 0.44rem' : '0.48rem 0.7rem',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    gap: '0.5rem',
+                    gap: isCompact ? '0.32rem' : '0.5rem',
+                    minWidth: 0,
                   }}
                 >
                   <div
@@ -6903,18 +6920,18 @@ export default function MarketAnomaliesView({
                       pointerEvents: 'none',
                     }}
                   />
-                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '0.48rem', minWidth: 0 }}>
+                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: isCompact ? '0.32rem' : '0.48rem', minWidth: 0, flex: 1 }}>
                     <span
                       className="mono-metric"
                       style={{
-                        fontSize: '0.64rem',
+                        fontSize: isCompact ? '0.58rem' : '0.64rem',
                         fontWeight: 800,
-                        padding: '0.08rem 0.38rem',
+                        padding: isCompact ? '0.06rem 0.26rem' : '0.08rem 0.38rem',
                         borderRadius: '5px',
                         backgroundColor: isBull ? 'rgba(16, 185, 129, 0.16)' : 'rgba(244, 63, 94, 0.16)',
                         border: `1px solid ${isBull ? 'rgba(16, 185, 129, 0.35)' : 'rgba(244, 63, 94, 0.35)'}`,
                         color: accentHex,
-                        minWidth: '42px',
+                        minWidth: isCompact ? '34px' : '42px',
                         textAlign: 'center',
                         flexShrink: 0,
                       }}
@@ -6940,32 +6957,35 @@ export default function MarketAnomaliesView({
                     <span
                       style={{
                         color: '#f8fafc',
-                        fontSize: '0.75rem',
+                        fontSize: isCompact ? '0.68rem' : '0.75rem',
                         fontWeight: isOpen ? 700 : 500,
                         whiteSpace: 'nowrap',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
+                        minWidth: 0,
                       }}
                     >
                       {titleText}
                     </span>
                   </div>
 
-                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0 }}>
-                    <span
-                      className="mono-metric"
-                      style={{
-                        fontSize: '0.56rem',
-                        padding: '0.06rem 0.32rem',
-                        borderRadius: '4px',
-                        backgroundColor: 'transparent',
-                        border: '1px solid rgba(148, 163, 184, 0.22)',
-                        color: item.importance === 'HIGH' ? '#f8fafc' : '#94a3b8',
-                      }}
-                    >
-                      {item.importance || 'HIGH'}
-                    </span>
-                    <span className="mono-metric" style={{ fontSize: '0.64rem', color: '#94a3b8' }}>
+                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: isCompact ? '0.24rem' : '0.4rem', flexShrink: 0 }}>
+                    {!isCompact && (
+                      <span
+                        className="mono-metric"
+                        style={{
+                          fontSize: '0.56rem',
+                          padding: '0.06rem 0.32rem',
+                          borderRadius: '4px',
+                          backgroundColor: 'transparent',
+                          border: '1px solid rgba(148, 163, 184, 0.22)',
+                          color: item.importance === 'HIGH' ? '#f8fafc' : '#94a3b8',
+                        }}
+                      >
+                        {item.importance || 'HIGH'}
+                      </span>
+                    )}
+                    <span className="mono-metric" style={{ fontSize: isCompact ? '0.58rem' : '0.64rem', color: '#94a3b8' }}>
                       {item.pctContribution}% {isOpen ? '▾' : '▸'}
                     </span>
                   </div>
@@ -7034,7 +7054,7 @@ export default function MarketAnomaliesView({
                 flex: 1,
                 minHeight: 0,
                 display: 'grid',
-                gridTemplateColumns: '340px 1.25fr 0.98fr',
+                gridTemplateColumns: '340px minmax(0, 1.25fr) minmax(0, 0.98fr)',
                 gap: '0.95rem',
                 alignItems: 'stretch',
               }}
@@ -7324,6 +7344,8 @@ export default function MarketAnomaliesView({
                   flexDirection: 'column',
                   gap: '10px',
                   minHeight: 0,
+                  minWidth: 0,
+                  overflow: 'hidden',
                 }}
               >
                 {/* Top Protagonist Header */}
@@ -7412,29 +7434,29 @@ export default function MarketAnomaliesView({
                 </div>
 
                 {/* Accordion List Body */}
-                <div style={{ flex: 1, overflowY: 'auto', paddingRight: '0.15rem' }}>
+                <div style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', minWidth: 0, paddingRight: '0.15rem' }}>
                   {researchFactorFilter === 'twin' ? (
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem' }}>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '0.5rem', minWidth: 0 }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', minWidth: 0 }}>
                         <div className="mono-metric" style={{ color: '#34d399', fontSize: '0.64rem', fontWeight: 800, marginBottom: '2px' }}>
                           {tx('CATALIZADORES', 'BULL DRIVERS')}
                         </div>
                         {allFactors
                           .filter((f) => f.side === 'BULL')
-                          .map((item) => renderAccordionRow(item))}
+                          .map((item) => renderAccordionRow(item, true))}
                       </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', minWidth: 0 }}>
                         <div className="mono-metric" style={{ color: '#fb7185', fontSize: '0.64rem', fontWeight: 800, marginBottom: '2px' }}>
                           {tx('RIESGOS', 'BEAR RISKS')}
                         </div>
                         {allFactors
                           .filter((f) => f.side === 'BEAR')
-                          .map((item) => renderAccordionRow(item))}
+                          .map((item) => renderAccordionRow(item, true))}
                       </div>
                     </div>
                   ) : (
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.18rem' }}>
-                      {filteredFactors.map((item) => renderAccordionRow(item))}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.18rem', minWidth: 0 }}>
+                      {filteredFactors.map((item) => renderAccordionRow(item, false))}
                     </div>
                   )}
                 </div>
@@ -7454,13 +7476,15 @@ export default function MarketAnomaliesView({
                   justifyContent: 'space-between',
                   gap: '10px',
                   minHeight: 0,
+                  minWidth: 0,
+                  overflow: 'hidden',
                 }}
               >
                 {/* Header */}
                 <div
                   style={{
                     display: 'flex',
-                    alignItems: 'baseline',
+                    alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: '0.4rem',
                     flexShrink: 0,
@@ -7474,18 +7498,24 @@ export default function MarketAnomaliesView({
 
                   <button
                     type="button"
-                    onClick={pushIncomingWireHeadline}
+                    onClick={() => refreshLiveAssetNews(true)}
+                    title={tx('Actualizar Noticias en Vivo', 'Refresh Live News')}
+                    aria-label={tx('Actualizar Noticias en Vivo', 'Refresh Live News')}
                     style={{
-                      padding: '2px 4px',
+                      width: '26px',
+                      height: '26px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: '6px',
                       border: 'none',
                       backgroundColor: 'transparent',
                       color: 'var(--ui-accent, #10b981)',
-                      fontSize: '12px',
-                      fontWeight: 700,
+                      filter: 'drop-shadow(0 0 6px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.7))',
                       cursor: 'pointer',
                     }}
                   >
-                    {tx('Simular Noticia', 'Simulate News')}
+                    <RefreshCw size={13} />
                   </button>
                 </div>
 
