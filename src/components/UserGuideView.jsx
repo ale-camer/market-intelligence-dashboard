@@ -746,9 +746,9 @@ function GuideMediaPlaceholder({ page, typo, isES = false, langCode = 'EN' }) {
                     type="button"
                     onClick={() => setSubtitlesEnabled(prev => !prev)}
                     title={
-                        isES
-                            ? `Subtítulos (c) • ${subtitlesEnabled ? 'Activados' : 'Desactivados'}`
-                            : `Subtitles/closed captions (c) • ${subtitlesEnabled ? 'On' : 'Off'}`
+                        subtitlesEnabled
+                            ? (isES ? 'Subtítulos (c) • Activados' : 'Subtitles/closed captions (c) • On')
+                            : (isES ? 'Subtítulos (c) • Desactivados' : 'Subtitles/closed captions (c) • Off')
                     }
                     style={{
                         height: '28px',

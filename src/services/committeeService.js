@@ -1,3 +1,4 @@
+import { bilingual, tx, txTpl } from '../data/i18n/viewLocaleService';
 /**
  * Institutional Portfolio & Autonomous Investment Committee Service (`committeeService.js`)
  * Connects:
@@ -305,14 +306,8 @@ export const INITIAL_LEDGER_EVENTS = [
     time: '16:12:08',
     allocText: '2.5% NAV ($2,600)',
     isPositive: false,
-    title: {
-      EN: 'RISK GUARDRAIL TRIGGERED • TRIM SOL (-50%)',
-      ES: 'GUARDRAIL DE RIESGO ACTIVADO • RECORTE SOL (-50%)',
-    },
-    desc: {
-      EN: 'Anomaly Detector flagged extreme volume & funding dislocation (0.659 > 0.65 limit) alongside negative Research sentiment (-52). Exposure automatically cut in half.',
-      ES: 'El Detector de Anomalías marcó dislocación de volumen y fondeo (0.659 > límite 0.65) junto con sentimiento negativo (-52). Exposición recortada a la mitad.',
-    },
+    title: bilingual('RISK GUARDRAIL TRIGGERED • TRIM SOL (-50%)', 'GUARDRAIL DE RIESGO ACTIVADO • RECORTE SOL (-50%)'),
+    desc: bilingual('Anomaly Detector flagged extreme volume & funding dislocation (0.659 > 0.65 limit) alongside negative Research sentiment (-52). Exposure automatically cut in half.', 'El Detector de Anomalías marcó dislocación de volumen y fondeo (0.659 > límite 0.65) junto con sentimiento negativo (-52). Exposición recortada a la mitad.'),
   },
   {
     id: 'ord-nvda-02',
@@ -322,14 +317,8 @@ export const INITIAL_LEDGER_EVENTS = [
     time: '15:56:40',
     allocText: '18.5% NAV ($19,680)',
     isPositive: true,
-    title: {
-      EN: 'ORDER FILLED • OVERWEIGHT NVDA ($141.50)',
-      ES: 'ORDEN EJECUTADA • SOBREPONDERAR NVDA ($141.50)',
-    },
-    desc: {
-      EN: 'Strongest Research balance in portfolio (+32 Filings, +76 News) + bullish technical breakout (RSI 64.9). Risk Manager approved 18.5% core weight (below 20% cap).',
-      ES: 'Mejor balance de Research en cartera (+32 Fundamentos, +76 Noticias) + ruptura técnica alcista (RSI 64.9). Risk Manager aprobó 18.5% de peso (bajo el tope de 20%).',
-    },
+    title: bilingual('ORDER FILLED • OVERWEIGHT NVDA ($141.50)', 'ORDEN EJECUTADA • SOBREPONDERAR NVDA ($141.50)'),
+    desc: bilingual('Strongest Research balance in portfolio (+32 Filings, +76 News) + bullish technical breakout (RSI 64.9). Risk Manager approved 18.5% core weight (below 20% cap).', 'Mejor balance de Research en cartera (+32 Fundamentos, +76 Noticias) + ruptura técnica alcista (RSI 64.9). Risk Manager aprobó 18.5% de peso (bajo el tope de 20%).'),
   },
   {
     id: 'ord-btc-03',
@@ -339,14 +328,8 @@ export const INITIAL_LEDGER_EVENTS = [
     time: '15:18:12',
     allocText: '16.2% NAV ($17,240)',
     isPositive: true,
-    title: {
-      EN: 'ORDER FILLED • CORE LONG BTC ($68,620)',
-      ES: 'ORDEN EJECUTADA • POSICIÓN LONG BTC ($68,620)',
-    },
-    desc: {
-      EN: 'Spot ETF institutional inflows (+$640M/day) and low anomaly regime (0.241) support 16.2% allocation with stop-loss at $64,200.',
-      ES: 'Flujos institucionales en ETFs spot (+$640M/día) y bajo régimen de anomalía (0.241) respaldan asignación del 16.2% con stop-loss en $64,200.',
-    },
+    title: bilingual('ORDER FILLED • CORE LONG BTC ($68,620)', 'ORDEN EJECUTADA • POSICIÓN LONG BTC ($68,620)'),
+    desc: bilingual('Spot ETF institutional inflows (+$640M/day) and low anomaly regime (0.241) support 16.2% allocation with stop-loss at $64,200.', 'Flujos institucionales en ETFs spot (+$640M/día) y bajo régimen de anomalía (0.241) respaldan asignación del 16.2% con stop-loss en $64,200.'),
   },
   {
     id: 'ord-aapl-04',
@@ -356,20 +339,14 @@ export const INITIAL_LEDGER_EVENTS = [
     time: '14:35:00',
     allocText: '10.4% NAV ($11,080)',
     isPositive: true,
-    title: {
-      EN: 'ORDER FILLED • ACCUMULATE AAPL ($232.80)',
-      ES: 'ORDEN EJECUTADA • ACUMULAR AAPL ($232.80)',
-    },
-    desc: {
-      EN: '10-K Services gross margin expansion (74.1%) and lowest volatility anomaly in equities (0.195). Approved 10.4% defensive growth weight.',
-      ES: 'Expansión de margen bruto en Servicios 10-K (74.1%) y menor anomalía de volatilidad en acciones (0.195). Aprobado 10.4% del portafolio.',
-    },
+    title: bilingual('ORDER FILLED • ACCUMULATE AAPL ($232.80)', 'ORDEN EJECUTADA • ACUMULAR AAPL ($232.80)'),
+    desc: bilingual('10-K Services gross margin expansion (74.1%) and lowest volatility anomaly in equities (0.195). Approved 10.4% defensive growth weight.', 'Expansión de margen bruto en Servicios 10-K (74.1%) y menor anomalía de volatilidad en acciones (0.195). Aprobado 10.4% del portafolio.'),
   },
 ];
 
 export const COMMITTEE_DELIBERATIONS = {
   NVDA: {
-    consensusAction: { EN: 'BUY / CORE OVERWEIGHT', ES: 'COMPRA / SOBREPONDERACIÓN CENTRAL' },
+    consensusAction: bilingual('BUY / CORE OVERWEIGHT', 'COMPRA / SOBREPONDERACIÓN CENTRAL'),
     allocatedNav: '18.5% NAV ($19,680)',
     targetWeightPct: 18.5,
     isPositive: true,
@@ -378,48 +355,30 @@ export const COMMITTEE_DELIBERATIONS = {
     riskReward: '2.4x',
     agents: [
       {
-        role: {
-          EN: '01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)',
-          ES: '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)',
-        },
-        verdict: { EN: 'BULLISH BREAKOUT (+14.4%)', ES: 'RUPTURA ALCISTA (+14.4%)' },
+        role: bilingual('01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)', '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)'),
+        verdict: bilingual('BULLISH BREAKOUT (+14.4%)', 'RUPTURA ALCISTA (+14.4%)'),
         isPositive: true,
         execTimeMs: 11.4,
-        note: {
-          EN: 'Price ($141.50) is breaking above its consolidation channel with RSI(14) at 64.9, positive MACD (+3.42), and healthy institutional volume (+1.45σ). Target $160.00 / Stop $132.00.',
-          ES: 'El precio ($141.50) rompe al alza su canal de consolidación con RSI(14) en 64.9, MACD positivo (+3.42) y volumen institucional saludable (+1.45σ). Objetivo $160.00 / Stop $132.00.',
-        },
+        note: bilingual('Price ($141.50) is breaking above its consolidation channel with RSI(14) at 64.9, positive MACD (+3.42), and healthy institutional volume (+1.45σ). Target $160.00 / Stop $132.00.', 'El precio ($141.50) rompe al alza su canal de consolidación con RSI(14) en 64.9, MACD positivo (+3.42) y volumen institucional saludable (+1.45σ). Objetivo $160.00 / Stop $132.00.'),
       },
       {
-        role: {
-          EN: '02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)',
-          ES: '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)',
-        },
-        verdict: { EN: 'STRONG CONVICTION (+41 COMPOSITE)', ES: 'ALTA CONVICCIÓN (+41 COMPUESTO)' },
+        role: bilingual('02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)', '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)'),
+        verdict: bilingual('STRONG CONVICTION (+41 COMPOSITE)', 'ALTA CONVICCIÓN (+41 COMPUESTO)'),
         isPositive: true,
         execTimeMs: 4.1,
-        note: {
-          EN: '10-K filings show +122% Data Center growth and 75.2% gross margins (+32 Net Fundamental Balance, 80% weight), reinforced by +76 Bullish News Sentiment on Blackwell shipments (20% weight).',
-          ES: 'El 10-K muestra +122% de crecimiento en Data Center y 75.2% de margen bruto (+32 Balance Fundamental, 80% peso), reforzado por +76 en Sentimiento de Noticias por envíos de Blackwell (20% peso).',
-        },
+        note: bilingual('10-K filings show +122% Data Center growth and 75.2% gross margins (+32 Net Fundamental Balance, 80% weight), reinforced by +76 Bullish News Sentiment on Blackwell shipments (20% weight).', 'El 10-K muestra +122% de crecimiento en Data Center y 75.2% de margen bruto (+32 Balance Fundamental, 80% peso), reforzado por +76 en Sentimiento de Noticias por envíos de Blackwell (20% peso).'),
       },
       {
-        role: {
-          EN: '03 • RISK MANAGER & SIZING GUARDRAIL',
-          ES: '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO',
-        },
-        verdict: { EN: 'APPROVED • 18.5% NAV', ES: 'APROBADO • 18.5% NAV' },
+        role: bilingual('03 • RISK MANAGER & SIZING GUARDRAIL', '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO'),
+        verdict: bilingual('APPROVED • 18.5% NAV', 'APROBADO • 18.5% NAV'),
         isPositive: true,
         execTimeMs: 0.6,
-        note: {
-          EN: 'Anomaly score (0.382) is safely below the 0.65 circuit-breaker limit, and 18.5% allocation respects the 20.0% maximum single-asset concentration cap.',
-          ES: 'El score de anomalía (0.382) está muy por debajo del disyuntor de 0.65, y la posición de 18.5% respeta el límite máximo de concentración del 20.0% por activo.',
-        },
+        note: bilingual('Anomaly score (0.382) is safely below the 0.65 circuit-breaker limit, and 18.5% allocation respects the 20.0% maximum single-asset concentration cap.', 'El score de anomalía (0.382) está muy por debajo del disyuntor de 0.65, y la posición de 18.5% respeta el límite máximo de concentración del 20.0% por activo.'),
       },
     ],
   },
   BTC: {
-    consensusAction: { EN: 'BUY / CORE LONG ALLOCATION', ES: 'COMPRA / POSICIÓN LONG CENTRAL' },
+    consensusAction: bilingual('BUY / CORE LONG ALLOCATION', 'COMPRA / POSICIÓN LONG CENTRAL'),
     allocatedNav: '16.2% NAV ($17,240)',
     targetWeightPct: 16.2,
     isPositive: true,
@@ -428,48 +387,30 @@ export const COMMITTEE_DELIBERATIONS = {
     riskReward: '2.1x',
     agents: [
       {
-        role: {
-          EN: '01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)',
-          ES: '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)',
-        },
-        verdict: { EN: 'LONG TREND (RSI 61.4)', ES: 'TENDENCIA ALCISTA (RSI 61.4)' },
+        role: bilingual('01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)', '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)'),
+        verdict: bilingual('LONG TREND (RSI 61.4)', 'TENDENCIA ALCISTA (RSI 61.4)'),
         isPositive: true,
         execTimeMs: 12.8,
-        note: {
-          EN: 'Trading at $68,620 with constructive momentum (RSI 61.4, MACD +412.5) and tight order-book spread (1.2 bps). Target $76,500 / Stop-Loss $64,200.',
-          ES: 'Opera en $68,620 con momentum constructivo (RSI 61.4, MACD +412.5) y spread ajustado (1.2 bps). Objetivo $76,500 / Stop-Loss $64,200.',
-        },
+        note: bilingual('Trading at $68,620 with constructive momentum (RSI 61.4, MACD +412.5) and tight order-book spread (1.2 bps). Target $76,500 / Stop-Loss $64,200.', 'Opera en $68,620 con momentum constructivo (RSI 61.4, MACD +412.5) y spread ajustado (1.2 bps). Objetivo $76,500 / Stop-Loss $64,200.'),
       },
       {
-        role: {
-          EN: '02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)',
-          ES: '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)',
-        },
-        verdict: { EN: 'BULLISH ACCUMULATION (+53 COMPOSITE)', ES: 'ACUMULACIÓN ALCISTA (+53 COMPUESTO)' },
+        role: bilingual('02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)', '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)'),
+        verdict: bilingual('BULLISH ACCUMULATION (+53 COMPOSITE)', 'ACUMULACIÓN ALCISTA (+53 COMPUESTO)'),
         isPositive: true,
         execTimeMs: 3.8,
-        note: {
-          EN: 'Custody filings confirm 1.1M BTC in spot ETFs (+34 Net Fundamental Balance, 50% weight) paired with +72 Live News Sentiment from $640M/day institutional inflows (50% weight).',
-          ES: 'Los reportes de custodia confirman 1.1M BTC en ETFs spot (+34 Balance Fundamental, 50% peso) junto con +72 de Sentimiento de Noticias por flujos de $640M/día (50% peso).',
-        },
+        note: bilingual('Custody filings confirm 1.1M BTC in spot ETFs (+34 Net Fundamental Balance, 50% weight) paired with +72 Live News Sentiment from $640M/day institutional inflows (50% weight).', 'Los reportes de custodia confirman 1.1M BTC en ETFs spot (+34 Balance Fundamental, 50% peso) junto con +72 de Sentimiento de Noticias por flujos de $640M/día (50% peso).'),
       },
       {
-        role: {
-          EN: '03 • RISK MANAGER & SIZING GUARDRAIL',
-          ES: '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO',
-        },
-        verdict: { EN: 'APPROVED • 16.2% NAV', ES: 'APROBADO • 16.2% NAV' },
+        role: bilingual('03 • RISK MANAGER & SIZING GUARDRAIL', '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO'),
+        verdict: bilingual('APPROVED • 16.2% NAV', 'APROBADO • 16.2% NAV'),
         isPositive: true,
         execTimeMs: 0.7,
-        note: {
-          EN: 'Anomaly detector reads 0.241 (Normal Regime, well under 0.65 limit). 16.2% weight approved with automated trailing stop at $64,200.',
-          ES: 'El detector de anomalías marca 0.241 (Régimen Normal, bajo el límite de 0.65). Peso del 16.2% aprobado con stop automático en $64,200.',
-        },
+        note: bilingual('Anomaly detector reads 0.241 (Normal Regime, well under 0.65 limit). 16.2% weight approved with automated trailing stop at $64,200.', 'El detector de anomalías marca 0.241 (Régimen Normal, bajo el límite de 0.65). Peso del 16.2% aprobado con stop automático en $64,200.'),
       },
     ],
   },
   SOL: {
-    consensusAction: { EN: 'RISK VETO / CIRCUIT BREAKER (-50%)', ES: 'VETO DE RIESGO / DISYUNTOR (-50%)' },
+    consensusAction: bilingual('RISK VETO / CIRCUIT BREAKER (-50%)', 'VETO DE RIESGO / DISYUNTOR (-50%)'),
     allocatedNav: '2.5% NAV ($2,600 • Trimmed)',
     targetWeightPct: 2.5,
     isPositive: false,
@@ -478,48 +419,30 @@ export const COMMITTEE_DELIBERATIONS = {
     riskReward: '0.7x (Unfavorable)',
     agents: [
       {
-        role: {
-          EN: '01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)',
-          ES: '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)',
-        },
-        verdict: { EN: 'OVEREXTENDED (RSI 76.8 • +2.84σ VOL)', ES: 'SOBREEXTENDIDO (RSI 76.8 • +2.84σ VOL)' },
+        role: bilingual('01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)', '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)'),
+        verdict: bilingual('OVEREXTENDED (RSI 76.8 • +2.84σ VOL)', 'SOBREEXTENDIDO (RSI 76.8 • +2.84σ VOL)'),
         isPositive: false,
         execTimeMs: 10.9,
-        note: {
-          EN: 'RSI(14) reached 76.8 with Bollinger width expanding to 9.4%, +2.84σ abnormal volume spike, and +14.8 bps wider bid-ask spreads across perpetual venues.',
-          ES: 'El RSI(14) escaló a 76.8 con ancho de Bollinger en 9.4%, pico anormal de volumen (+2.84σ) y ampliación de spreads (+14.8 bps) en futuros perpetuos.',
-        },
+        note: bilingual('RSI(14) reached 76.8 with Bollinger width expanding to 9.4%, +2.84σ abnormal volume spike, and +14.8 bps wider bid-ask spreads across perpetual venues.', 'El RSI(14) escaló a 76.8 con ancho de Bollinger en 9.4%, pico anormal de volumen (+2.84σ) y ampliación de spreads (+14.8 bps) en futuros perpetuos.'),
       },
       {
-        role: {
-          EN: '02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)',
-          ES: '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)',
-        },
-        verdict: { EN: 'BEARISH PRESSURE (-39 COMPOSITE)', ES: 'PRESIÓN BAJISTA (-39 COMPUESTO)' },
+        role: bilingual('02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)', '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)'),
+        verdict: bilingual('BEARISH PRESSURE (-39 COMPOSITE)', 'PRESIÓN BAJISTA (-39 COMPUESTO)'),
         isPositive: false,
         execTimeMs: 3.4,
-        note: {
-          EN: 'Risk assessment highlights overheated funding rates and validator congestion (-26 Net Fundamental Balance, 50% weight) compounded by -52 Bearish News Sentiment from $68M long liquidations (50% weight).',
-          ES: 'El reporte destaca tasas de fondeo recalentadas y congestión (-26 Balance Fundamental, 50% peso) agravadas por -52 en Sentimiento de Noticias tras $68M en liquidaciones (50% peso).',
-        },
+        note: bilingual('Risk assessment highlights overheated funding rates and validator congestion (-26 Net Fundamental Balance, 50% weight) compounded by -52 Bearish News Sentiment from $68M long liquidations (50% weight).', 'El reporte destaca tasas de fondeo recalentadas y congestión (-26 Balance Fundamental, 50% peso) agravadas por -52 en Sentimiento de Noticias tras $68M en liquidaciones (50% peso).'),
       },
       {
-        role: {
-          EN: '03 • RISK MANAGER & SIZING GUARDRAIL',
-          ES: '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO',
-        },
-        verdict: { EN: 'CIRCUIT BREAKER • CUT 50% TO 2.5% NAV', ES: 'DISYUNTOR • RECORTE 50% A 2.5% NAV' },
+        role: bilingual('03 • RISK MANAGER & SIZING GUARDRAIL', '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO'),
+        verdict: bilingual('CIRCUIT BREAKER • CUT 50% TO 2.5% NAV', 'DISYUNTOR • RECORTE 50% A 2.5% NAV'),
         isPositive: false,
         execTimeMs: 0.5,
-        note: {
-          EN: 'GUARDRAIL INTERVENTION: Anomaly score (0.659) breached the 0.65 maximum risk threshold. Risk Manager vetoed new buying and automatically trimmed exposure by 50% down to 2.5% NAV ($2,600).',
-          ES: 'INTERVENCIÓN DEL GUARDRAIL: El score de anomalía (0.659) superó el umbral máximo de 0.65. El Risk Manager bloqueó compras y recortó automáticamente la exposición un 50% hasta 2.5% NAV ($2,600).',
-        },
+        note: bilingual('GUARDRAIL INTERVENTION: Anomaly score (0.659) breached the 0.65 maximum risk threshold. Risk Manager vetoed new buying and automatically trimmed exposure by 50% down to 2.5% NAV ($2,600).', 'INTERVENCIÓN DEL GUARDRAIL: El score de anomalía (0.659) superó el umbral máximo de 0.65. El Risk Manager bloqueó compras y recortó automáticamente la exposición un 50% hasta 2.5% NAV ($2,600).'),
       },
     ],
   },
   MSFT: {
-    consensusAction: { EN: 'BUY / CORE LONG', ES: 'COMPRA / POSICIÓN LONG CENTRAL' },
+    consensusAction: bilingual('BUY / CORE LONG', 'COMPRA / POSICIÓN LONG CENTRAL'),
     allocatedNav: '12.0% NAV ($12,780)',
     targetWeightPct: 12.0,
     isPositive: true,
@@ -528,48 +451,30 @@ export const COMMITTEE_DELIBERATIONS = {
     riskReward: '2.2x',
     agents: [
       {
-        role: {
-          EN: '01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)',
-          ES: '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)',
-        },
-        verdict: { EN: 'STEADY UPTREND (RSI 56.4)', ES: 'TENDENCIA ESTABLE (RSI 56.4)' },
+        role: bilingual('01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)', '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)'),
+        verdict: bilingual('STEADY UPTREND (RSI 56.4)', 'TENDENCIA ESTABLE (RSI 56.4)'),
         isPositive: true,
         execTimeMs: 11.8,
-        note: {
-          EN: 'Trading at $428.15 with low realized volatility (19.4%), balanced RSI(14) at 56.4, and institutional support at $408.00.',
-          ES: 'Opera en $428.15 con baja volatilidad realizada (19.4%), RSI(14) equilibrado en 56.4 y soporte institucional en $408.00.',
-        },
+        note: bilingual('Trading at $428.15 with low realized volatility (19.4%), balanced RSI(14) at 56.4, and institutional support at $408.00.', 'Opera en $428.15 con baja volatilidad realizada (19.4%), RSI(14) equilibrado en 56.4 y soporte institucional en $408.00.'),
       },
       {
-        role: {
-          EN: '02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)',
-          ES: '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)',
-        },
-        verdict: { EN: 'CONSTRUCTIVE (+33 COMPOSITE)', ES: 'CONSTRUCTIVO (+33 COMPUESTO)' },
+        role: bilingual('02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)', '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)'),
+        verdict: bilingual('CONSTRUCTIVE (+33 COMPOSITE)', 'CONSTRUCTIVO (+33 COMPUESTO)'),
         isPositive: true,
         execTimeMs: 3.5,
-        note: {
-          EN: '10-K confirms $259B commercial cloud backlog and +31% Azure growth (+29 Fundamental Balance, 80% weight) plus +51 News Sentiment on M365 Copilot deployments (20% weight).',
-          ES: 'El 10-K confirma $259B de backlog comercial cloud y +31% en Azure (+29 Balance Fundamental, 80% peso) más +51 en Sentimiento de Noticias por despliegues de Copilot (20% peso).',
-        },
+        note: bilingual('10-K confirms $259B commercial cloud backlog and +31% Azure growth (+29 Fundamental Balance, 80% weight) plus +51 News Sentiment on M365 Copilot deployments (20% weight).', 'El 10-K confirma $259B de backlog comercial cloud y +31% en Azure (+29 Balance Fundamental, 80% peso) más +51 en Sentimiento de Noticias por despliegues de Copilot (20% peso).'),
       },
       {
-        role: {
-          EN: '03 • RISK MANAGER & SIZING GUARDRAIL',
-          ES: '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO',
-        },
-        verdict: { EN: 'APPROVED • 12.0% NAV', ES: 'APROBADO • 12.0% NAV' },
+        role: bilingual('03 • RISK MANAGER & SIZING GUARDRAIL', '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO'),
+        verdict: bilingual('APPROVED • 12.0% NAV', 'APROBADO • 12.0% NAV'),
         isPositive: true,
         execTimeMs: 0.5,
-        note: {
-          EN: 'Anomaly score (0.218) indicates normal institutional flow. 12.0% core equity allocation approved.',
-          ES: 'El score de anomalía (0.218) indica flujo institucional normal. Asignación central del 12.0% aprobada.',
-        },
+        note: bilingual('Anomaly score (0.218) indicates normal institutional flow. 12.0% core equity allocation approved.', 'El score de anomalía (0.218) indica flujo institucional normal. Asignación central del 12.0% aprobada.'),
       },
     ],
   },
   AAPL: {
-    consensusAction: { EN: 'ACCUMULATE / DEFENSIVE CORE', ES: 'ACUMULAR / NÚCLEO DEFENSIVO' },
+    consensusAction: bilingual('ACCUMULATE / DEFENSIVE CORE', 'ACUMULAR / NÚCLEO DEFENSIVO'),
     allocatedNav: '10.4% NAV ($11,080)',
     targetWeightPct: 10.4,
     isPositive: true,
@@ -578,48 +483,30 @@ export const COMMITTEE_DELIBERATIONS = {
     riskReward: '2.0x',
     agents: [
       {
-        role: {
-          EN: '01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)',
-          ES: '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)',
-        },
-        verdict: { EN: 'LOW-VOL ACCUMULATION (RSI 52.1)', ES: 'ACUMULACIÓN DE BAJA VOLATILIDAD (RSI 52.1)' },
+        role: bilingual('01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)', '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)'),
+        verdict: bilingual('LOW-VOL ACCUMULATION (RSI 52.1)', 'ACUMULACIÓN DE BAJA VOLATILIDAD (RSI 52.1)'),
         isPositive: true,
         execTimeMs: 12.1,
-        note: {
-          EN: 'Price ($232.80) shows tight Bollinger compression (2.7% width) and neutral-bullish RSI (52.1). Ideal low-beta anchor.',
-          ES: 'El precio ($232.80) muestra compresión de Bollinger (2.7%) y RSI neutral-alcista (52.1). Ancla ideal de baja beta.',
-        },
+        note: bilingual('Price ($232.80) shows tight Bollinger compression (2.7% width) and neutral-bullish RSI (52.1). Ideal low-beta anchor.', 'El precio ($232.80) muestra compresión de Bollinger (2.7%) y RSI neutral-alcista (52.1). Ancla ideal de baja beta.'),
       },
       {
-        role: {
-          EN: '02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)',
-          ES: '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)',
-        },
-        verdict: { EN: 'SOLID FUNDAMENTALS (+27 COMPOSITE)', ES: 'FUNDAMENTOS SÓLIDOS (+27 COMPUESTO)' },
+        role: bilingual('02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)', '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)'),
+        verdict: bilingual('SOLID FUNDAMENTALS (+27 COMPOSITE)', 'FUNDAMENTOS SÓLIDOS (+27 COMPUESTO)'),
         isPositive: true,
         execTimeMs: 3.1,
-        note: {
-          EN: '10-K Item 7 highlights 74.1% Services gross margin and $108B annual free cash flow (+23 Fundamental Balance, 80% weight) with +42 News Sentiment (20% weight).',
-          ES: 'El Item 7 del 10-K destaca 74.1% de margen bruto en Servicios y $108B de flujo de caja libre (+23 Balance Fundamental, 80% peso) con +42 en Noticias (20% peso).',
-        },
+        note: bilingual('10-K Item 7 highlights 74.1% Services gross margin and $108B annual free cash flow (+23 Fundamental Balance, 80% weight) with +42 News Sentiment (20% weight).', 'El Item 7 del 10-K destaca 74.1% de margen bruto en Servicios y $108B de flujo de caja libre (+23 Balance Fundamental, 80% peso) con +42 en Noticias (20% peso).'),
       },
       {
-        role: {
-          EN: '03 • RISK MANAGER & SIZING GUARDRAIL',
-          ES: '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO',
-        },
-        verdict: { EN: 'APPROVED • 10.4% NAV', ES: 'APROBADO • 10.4% NAV' },
+        role: bilingual('03 • RISK MANAGER & SIZING GUARDRAIL', '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO'),
+        verdict: bilingual('APPROVED • 10.4% NAV', 'APROBADO • 10.4% NAV'),
         isPositive: true,
         execTimeMs: 0.4,
-        note: {
-          EN: 'Lowest anomaly score in the equity universe (0.195). Approved 10.4% allocation with stop-loss at $224.00.',
-          ES: 'El menor score de anomalía del universo de acciones (0.195). Aprobada posición del 10.4% con stop-loss en $224.00.',
-        },
+        note: bilingual('Lowest anomaly score in the equity universe (0.195). Approved 10.4% allocation with stop-loss at $224.00.', 'El menor score de anomalía del universo de acciones (0.195). Aprobada posición del 10.4% con stop-loss en $224.00.'),
       },
     ],
   },
   ETH: {
-    consensusAction: { EN: 'HOLD / MODERATE LONG', ES: 'MANTENER / LONG MODERADO' },
+    consensusAction: bilingual('HOLD / MODERATE LONG', 'MANTENER / LONG MODERADO'),
     allocatedNav: '5.2% NAV ($5,540)',
     targetWeightPct: 5.2,
     isPositive: true,
@@ -628,43 +515,25 @@ export const COMMITTEE_DELIBERATIONS = {
     riskReward: '1.9x',
     agents: [
       {
-        role: {
-          EN: '01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)',
-          ES: '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)',
-        },
-        verdict: { EN: 'CONSTRUCTIVE (RSI 54.2)', ES: 'CONSTRUCTIVO (RSI 54.2)' },
+        role: bilingual('01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)', '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)'),
+        verdict: bilingual('CONSTRUCTIVE (RSI 54.2)', 'CONSTRUCTIVO (RSI 54.2)'),
         isPositive: true,
         execTimeMs: 13.2,
-        note: {
-          EN: 'Holding $2,750.40 support with RSI(14) at 54.2 and +0.61σ volume z-score. Target $3,120 / Stop $2,560.',
-          ES: 'Mantiene soporte en $2,750.40 con RSI(14) en 54.2 y volumen z-score de +0.61σ. Objetivo $3,120 / Stop $2,560.',
-        },
+        note: bilingual('Holding $2,750.40 support with RSI(14) at 54.2 and +0.61σ volume z-score. Target $3,120 / Stop $2,560.', 'Mantiene soporte en $2,750.40 con RSI(14) en 54.2 y volumen z-score de +0.61σ. Objetivo $3,120 / Stop $2,560.'),
       },
       {
-        role: {
-          EN: '02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)',
-          ES: '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)',
-        },
-        verdict: { EN: 'POSITIVE ECOSYSTEM (+28 COMPOSITE)', ES: 'ECOSISTEMA POSITIVO (+28 COMPUESTO)' },
+        role: bilingual('02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)', '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)'),
+        verdict: bilingual('POSITIVE ECOSYSTEM (+28 COMPOSITE)', 'ECOSISTEMA POSITIVO (+28 COMPUESTO)'),
         isPositive: true,
         execTimeMs: 3.6,
-        note: {
-          EN: '+185% Layer-2 throughput and 28.4% staking lockup yield +24 Net Fundamental Balance (50% weight) alongside +31 News Sentiment (50% weight).',
-          ES: '+185% de actividad en Layer-2 y 28.4% en staking arrojan +24 de Balance Fundamental (50% peso) junto con +31 en Sentimiento de Noticias (50% peso).',
-        },
+        note: bilingual('+185% Layer-2 throughput and 28.4% staking lockup yield +24 Net Fundamental Balance (50% weight) alongside +31 News Sentiment (50% weight).', '+185% de actividad en Layer-2 y 28.4% en staking arrojan +24 de Balance Fundamental (50% peso) junto con +31 en Sentimiento de Noticias (50% peso).'),
       },
       {
-        role: {
-          EN: '03 • RISK MANAGER & SIZING GUARDRAIL',
-          ES: '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO',
-        },
-        verdict: { EN: 'APPROVED • CAPPED AT 5.2% NAV', ES: 'APROBADO • LIMITADO A 5.2% NAV' },
+        role: bilingual('03 • RISK MANAGER & SIZING GUARDRAIL', '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO'),
+        verdict: bilingual('APPROVED • CAPPED AT 5.2% NAV', 'APROBADO • LIMITADO A 5.2% NAV'),
         isPositive: true,
         execTimeMs: 0.6,
-        note: {
-          EN: 'Anomaly score (0.621) is below the 0.65 limit but elevated; Risk Manager caps allocation at 5.2% NAV ($5,540) to control crypto beta.',
-          ES: 'El score de anomalía (0.621) está bajo el límite de 0.65 pero elevado; el Risk Manager limita el peso a 5.2% NAV ($5,540) para controlar la beta cripto.',
-        },
+        note: bilingual('Anomaly score (0.621) is below the 0.65 limit but elevated; Risk Manager caps allocation at 5.2% NAV ($5,540) to control crypto beta.', 'El score de anomalía (0.621) está bajo el límite de 0.65 pero elevado; el Risk Manager limita el peso a 5.2% NAV ($5,540) para controlar la beta cripto.'),
       },
     ],
   },
@@ -680,8 +549,8 @@ export function getCommitteeDeliberation(sym = 'NVDA') {
 
   return {
     consensusAction: isHealthy
-      ? { EN: 'READY TO ALLOCATE (6.0% TARGET)', ES: 'LISTO PARA ASIGNAR (6.0% OBJETIVO)' }
-      : { EN: 'RISK VETO / DO NOT ENTER', ES: 'VETO DE RIESGO / NO INGRESAR' },
+      ? bilingual('READY TO ALLOCATE (6.0% TARGET)', 'LISTO PARA ASIGNAR (6.0% OBJETIVO)')
+      : bilingual('RISK VETO / DO NOT ENTER', 'VETO DE RIESGO / NO INGRESAR'),
     allocatedNav: isHealthy ? '6.0% Target ($6,380)' : '0.0% NAV (Blocked)',
     targetWeightPct: isHealthy ? 6.0 : 0,
     isPositive: isHealthy,
@@ -690,10 +559,7 @@ export function getCommitteeDeliberation(sym = 'NVDA') {
     riskReward: '2.0x',
     agents: [
       {
-        role: {
-          EN: '01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)',
-          ES: '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)',
-        },
+        role: bilingual('01 • QUANTITATIVE & TECHNICAL PILLAR (ANALYTICS)', '01 • PILAR CUANTITATIVO Y TÉCNICO (ANALYTICS)'),
         verdict: {
           EN: `${asset.indicators.macdSignal} (RSI ${asset.indicators.rsi14})`,
           ES: `${asset.indicators.macdSignal} (RSI ${asset.indicators.rsi14})`,
@@ -706,10 +572,7 @@ export function getCommitteeDeliberation(sym = 'NVDA') {
         },
       },
       {
-        role: {
-          EN: '02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)',
-          ES: '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)',
-        },
+        role: bilingual('02 • FUNDAMENTAL & SENTIMENT PILLAR (RESEARCH)', '02 • PILAR FUNDAMENTAL Y SENTIMIENTO (RESEARCH)'),
         verdict: {
           EN: `${brief.stance} (${Math.round(sens.fundamentalWeight * 100)}/${Math.round(sens.newsWeight * 100)} WEIGHTING)`,
           ES: `${brief.stance} (PONDERACIÓN ${Math.round(sens.fundamentalWeight * 100)}/${Math.round(sens.newsWeight * 100)})`,
@@ -722,10 +585,7 @@ export function getCommitteeDeliberation(sym = 'NVDA') {
         },
       },
       {
-        role: {
-          EN: '03 • RISK MANAGER & SIZING GUARDRAIL',
-          ES: '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO',
-        },
+        role: bilingual('03 • RISK MANAGER & SIZING GUARDRAIL', '03 • GESTIÓN DE RIESGO Y GUARDRAIL DE TAMAÑO'),
         verdict: isHealthy
           ? { EN: `APPROVED (ANOMALY ${anomaly.score})`, ES: `APROBADO (ANOMALÍA ${anomaly.score})` }
           : { EN: `VETOED (ANOMALY ${anomaly.score} > 0.65)`, ES: `VETADO (ANOMALÍA ${anomaly.score} > 0.65)` },
@@ -1253,11 +1113,9 @@ export function computeLivePortfolioMetrics(holdings = [], isES = false) {
     const viaEtf = etfSourceMap[sym];
     const hiddenText =
       hiddenW > 0.05
-        ? `+${hiddenW.toFixed(1)}% (${isES ? 'vía' : 'via'} ${viaEtf})`
-        : isES
-        ? '+0.0% (Directo)'
-        : '+0.0% (Direct)';
-    const trueText = `${totalTrue.toFixed(1)}% ${isES ? 'REAL' : 'TRUE'}`;
+        ? `+${hiddenW.toFixed(1)}% (${tx('vía', 'via')} ${viaEtf})`
+        : tx('+0.0% (Directo)', '+0.0% (Direct)');
+    const trueText = `${totalTrue.toFixed(1)}% ${tx('REAL', 'TRUE')}`;
     const score = totalTrue > 21 ? -6 : totalTrue > 15 ? +4 : +6;
     return [sym, `${directW.toFixed(1)}%`, hiddenText, trueText, score];
   });
@@ -1290,25 +1148,25 @@ export function computeLivePortfolioMetrics(holdings = [], isES = false) {
 
   const stressScenarios = [
     {
-      name: isES ? 'Crash Lehman 2008 (-42% SPX)' : 'Lehman Crash 2008 (-42% SPX)',
+      name: tx('Crash Lehman 2008 (-42% SPX)', 'Lehman Crash 2008 (-42% SPX)'),
       port: lehman.portImpact,
       bench: -42.0,
       byAsset: lehman.byAsset,
     },
     {
-      name: isES ? 'Shock COVID-19 Mar 2020' : 'COVID-19 Shock Mar 2020',
+      name: tx('Shock COVID-19 Mar 2020', 'COVID-19 Shock Mar 2020'),
       port: covid.portImpact,
       bench: -34.0,
       byAsset: covid.byAsset,
     },
     {
-      name: isES ? 'Shock Tasas Fed 2022 (+425 bps)' : 'Fed Rate Hike Shock 2022 (+425 bps)',
+      name: tx('Shock Tasas Fed 2022 (+425 bps)', 'Fed Rate Hike Shock 2022 (+425 bps)'),
       port: fed2022.portImpact,
       bench: -19.4,
       byAsset: fed2022.byAsset,
     },
     {
-      name: isES ? 'Desinflación + Rally IA' : 'Disinflation + AI Rally',
+      name: tx('Desinflación + Rally IA', 'Disinflation + AI Rally'),
       port: aiRally.portImpact,
       bench: +18.2,
       byAsset: aiRally.byAsset,
@@ -1376,18 +1234,16 @@ export function evaluateTacticalCandidate(sym = 'NVDA', liveAnomalyOverride = nu
   if (sym === 'SPY_PUT') {
     return {
       sym: 'SPY_PUT',
-      name: isES ? 'SPY Put 5% OTM (Escudo Tail)' : 'SPY Put 5% OTM (Tail Shield)',
+      name: tx('SPY Put 5% OTM (Escudo Tail)', 'SPY Put 5% OTM (Tail Shield)'),
       winRate: 38,
       payoff: 4.8,
       fullKelly: 12.0,
       halfKelly: 6.0,
       quarterKelly: 3.0,
       p06: liveAnomalyOverride?.liveScore ?? 0.08,
-      quantScore: isES ? '+91 (Convexidad extrema en crash)' : '+91 (Extreme crash convexity)',
-      researchScore: isES ? '+82 (VIX en percentil atractivo)' : '+82 (Attractive VIX percentile)',
-      guardrailNote: isES
-        ? 'ESCUDO DE COLA: Recorta el Max Drawdown de la cartera a la mitad durante dislocaciones.'
-        : 'TAIL SHIELD: Cuts portfolio Max Drawdown in half during market dislocations.',
+      quantScore: tx('+91 (Convexidad extrema en crash)', '+91 (Extreme crash convexity)'),
+      researchScore: tx('+82 (VIX en percentil atractivo)', '+82 (Attractive VIX percentile)'),
+      guardrailNote: tx('ESCUDO DE COLA: Recorta el Max Drawdown de la cartera a la mitad durante dislocaciones.', 'TAIL SHIELD: Cuts portfolio Max Drawdown in half during market dislocations.'),
     };
   }
 
@@ -1406,23 +1262,15 @@ export function evaluateTacticalCandidate(sym = 'NVDA', liveAnomalyOverride = nu
   const halfKelly = Number((fullKelly * 0.5).toFixed(1));
   const quarterKelly = Number((fullKelly * 0.25).toFixed(1));
 
-  const quantScore = isES
-    ? `${rsi >= 50 ? '+' : ''}${Math.round(rsi + 18)} (RSI ${rsi} • ${asset.indicators?.macdSignal || 'TREND'})`
-    : `${rsi >= 50 ? '+' : ''}${Math.round(rsi + 18)} (RSI ${rsi} • ${asset.indicators?.macdSignal || 'TREND'})`;
+  const quantScore = txTpl("{0}{1} (RSI {2} • {3})", [rsi >= 50 ? '+' : '', Math.round(rsi + 18), rsi, asset.indicators?.macdSignal || 'TREND'], "{0}{1} (RSI {2} • {3})", [rsi >= 50 ? '+' : '', Math.round(rsi + 18), rsi, asset.indicators?.macdSignal || 'TREND']);
 
   const rScore = brief?.compositeScore ?? 38;
-  const researchScore = isES
-    ? `${rScore >= 0 ? '+' : ''}${rScore} (${brief?.stanceLabel?.ES || 'Fundamentos & Flujo'})`
-    : `${rScore >= 0 ? '+' : ''}${rScore} (${brief?.stanceLabel?.EN || 'Fundamentals & Flow'})`;
+  const researchScore = txTpl("{0}{1} ({2})", [rScore >= 0 ? '+' : '', rScore, brief?.stanceLabel?.ES || 'Fundamentos & Flujo'], "{0}{1} ({2})", [rScore >= 0 ? '+' : '', rScore, brief?.stanceLabel?.EN || 'Fundamentals & Flow']);
 
   const guardrailNote =
     p06 >= 0.65
-      ? isES
-        ? `CIRCUIT BREAKER ACTIVO: P-06 (${p06} ≥ 0.65) exige recorte automático al 5% NAV.`
-        : `CIRCUIT BREAKER ACTIVE: P-06 (${p06} ≥ 0.65) enforces automatic trim to 5% NAV.`
-      : isES
-      ? `APROBADO: Debajo del límite duro de 20% NAV y P-06 saludable (${p06} < 0.65).`
-      : `APPROVED: Within 20% NAV hard cap and healthy P-06 regime (${p06} < 0.65).`;
+      ? txTpl("CIRCUIT BREAKER ACTIVO: P-06 ({0} ≥ 0.65) exige recorte automático al 5% NAV.", [p06], "CIRCUIT BREAKER ACTIVE: P-06 ({0} ≥ 0.65) enforces automatic trim to 5% NAV.", [p06])
+      : txTpl("APROBADO: Debajo del límite duro de 20% NAV y P-06 saludable ({0} < 0.65).", [p06], "APPROVED: Within 20% NAV hard cap and healthy P-06 regime ({0} < 0.65).", [p06]);
 
   return {
     sym,
@@ -1454,9 +1302,7 @@ export async function generateCopilotPortfolioResponse(promptText = '', holdings
   // Check if user asks about overlap / solapamiento
   if (q.includes('solap') || q.includes('overlap') || q.includes('etf') || q.includes('xray')) {
     const topXray = metrics.xrayItems[0] || ['NVDA', '22.0%', '+2.4% (vía SPY)', '24.4% REAL'];
-    return isES
-      ? `Radiografía Look-Through (${metrics.enrichedHoldings.length} activos activos): ${topXray[0]} tiene ${topXray[1]} directo y ${topXray[2]} oculto en índices, sumando ${topXray[3]} de exposición real. Diversificación efectiva: ${metrics.enb} apuestas independientes.`
-      : `Look-Through X-Ray (${metrics.enrichedHoldings.length} active assets): ${topXray[0]} has ${topXray[1]} direct weight plus ${topXray[2]} hidden inside index ETFs, totaling ${topXray[3]} true exposure. Effective bets (ENB): ${metrics.enb}.`;
+    return txTpl("Radiografía Look-Through ({0} activos activos): {1} tiene {2} directo y {3} oculto en índices, sumando {4} de exposición real. Diversificación efectiva: {5} apuestas independientes.", [metrics.enrichedHoldings.length, topXray[0], topXray[1], topXray[2], topXray[3], metrics.enb], "Look-Through X-Ray ({0} active assets): {1} has {2} direct weight plus {3} hidden inside index ETFs, totaling {4} true exposure. Effective bets (ENB): {5}.", [metrics.enrichedHoldings.length, topXray[0], topXray[1], topXray[2], topXray[3], metrics.enb]);
   }
 
   // Check if user asks about hedge / cobertura / drawdown / put / riesgo / var
@@ -1464,22 +1310,16 @@ export async function generateCopilotPortfolioResponse(promptText = '', holdings
     const hedgePair = metrics.bestHedgePair
       ? `${metrics.bestHedgePair.symA}/${metrics.bestHedgePair.symB} (r = ${metrics.bestHedgePair.r})`
       : 'TLT/SPY (r = -0.31)';
-    return isES
-      ? `Riesgo en vivo: VaR 95% diario de ${metrics.var95Pct}% (CVaR 99%: ${metrics.cvar99Pct}%) y Beta ${metrics.portfolioBeta}. Tu mejor cobertura interna es ${hedgePair}. Activar un SPY Put 5% OTM reduce el impacto de un crash tipo 2008 de ${metrics.stress2008Pct}% a ${(metrics.stress2008Pct * 0.48).toFixed(1)}%.`
-      : `Live Risk Telemetry: Daily 95% VaR is ${metrics.var95Pct}% (99% CVaR: ${metrics.cvar99Pct}%) with ${metrics.portfolioBeta} Beta. Best internal hedge pair is ${hedgePair}. Adding a 5% OTM SPY Put cuts a 2008-style crash impact from ${metrics.stress2008Pct}% to ${(metrics.stress2008Pct * 0.48).toFixed(1)}%.`;
+    return txTpl("Riesgo en vivo: VaR 95% diario de {0}% (CVaR 99%: {1}%) y Beta {2}. Tu mejor cobertura interna es {3}. Activar un SPY Put 5% OTM reduce el impacto de un crash tipo 2008 de {4}% a {5}%.", [metrics.var95Pct, metrics.cvar99Pct, metrics.portfolioBeta, hedgePair, metrics.stress2008Pct, (metrics.stress2008Pct * 0.48).toFixed(1)], "Live Risk Telemetry: Daily 95% VaR is {0}% (99% CVaR: {1}%) with {2} Beta. Best internal hedge pair is {3}. Adding a 5% OTM SPY Put cuts a 2008-style crash impact from {4}% to {5}%.", [metrics.var95Pct, metrics.cvar99Pct, metrics.portfolioBeta, hedgePair, metrics.stress2008Pct, (metrics.stress2008Pct * 0.48).toFixed(1)]);
   }
 
   // Check if user asks about Sharpe / optimize / optimizar / pesos / weights
   if (q.includes('sharpe') || q.includes('optim') || q.includes('peso') || q.includes('weight')) {
-    return isES
-      ? `Optimización Markowitz/Kelly: Tu cartera proyecta +${metrics.cagrPct}% CAGR con volatilidad anual σ de ${metrics.portfolioVolPct}% y Sharpe ${metrics.sharpeRatio} (Sortino ${metrics.sortinoRatio}). Mayor posición actual: ${topHolding.sym} (${topHolding.weight}%). Mantener cada activo ≤ 20% NAV maximiza el ratio retorno/riesgo sin activar guardrails.`
-      : `Markowitz/Kelly Optimization: Your portfolio projects +${metrics.cagrPct}% CAGR with ${metrics.portfolioVolPct}% annual volatility σ and ${metrics.sharpeRatio} Sharpe (${metrics.sortinoRatio} Sortino). Largest position: ${topHolding.sym} (${topHolding.weight}%). Keeping single-name weights ≤ 20% NAV maximizes risk-adjusted carry.`;
+    return txTpl("Optimización Markowitz/Kelly: Tu cartera proyecta +{0}% CAGR con volatilidad anual σ de {1}% y Sharpe {2} (Sortino {3}). Mayor posición actual: {4} ({5}%). Mantener cada activo ≤ 20% NAV maximiza el ratio retorno/riesgo sin activar guardrails.", [metrics.cagrPct, metrics.portfolioVolPct, metrics.sharpeRatio, metrics.sortinoRatio, topHolding.sym, topHolding.weight], "Markowitz/Kelly Optimization: Your portfolio projects +{0}% CAGR with {1}% annual volatility σ and {2} Sharpe ({3} Sortino). Largest position: {4} ({5}%). Keeping single-name weights ≤ 20% NAV maximizes risk-adjusted carry.", [metrics.cagrPct, metrics.portfolioVolPct, metrics.sharpeRatio, metrics.sortinoRatio, topHolding.sym, topHolding.weight]);
   }
 
   // Default comprehensive synthesis across the live portfolio
-  return isES
-    ? `Diagnóstico en vivo (${metrics.enrichedHoldings.length} posiciones • Suma ${metrics.rawTotalWeight.toFixed(1)}%): CAGR +${metrics.cagrPct}%, Sharpe ${metrics.sharpeRatio}, Beta ${metrics.portfolioBeta} y VaR 95% diario ${metrics.var95Pct}%. Renta pasiva estimada: +$${metrics.totalYieldUsd.toLocaleString()}/año (${metrics.totalYieldPct}%). Todos los motores P-06 y P-11 operan en régimen nominal.`
-    : `Live Portfolio Diagnostic (${metrics.enrichedHoldings.length} positions • Total ${metrics.rawTotalWeight.toFixed(1)}%): +${metrics.cagrPct}% CAGR, ${metrics.sharpeRatio} Sharpe, ${metrics.portfolioBeta} Beta, and ${metrics.var95Pct}% daily 95% VaR. Estimated passive income: +$${metrics.totalYieldUsd.toLocaleString()}/yr (${metrics.totalYieldPct}%). All P-06 & P-11 guardrails nominal.`;
+  return txTpl("Diagnóstico en vivo ({0} posiciones • Suma {1}%): CAGR +{2}%, Sharpe {3}, Beta {4} y VaR 95% diario {5}%. Renta pasiva estimada: +${6}/año ({7}%). Todos los motores P-06 y P-11 operan en régimen nominal.", [metrics.enrichedHoldings.length, metrics.rawTotalWeight.toFixed(1), metrics.cagrPct, metrics.sharpeRatio, metrics.portfolioBeta, metrics.var95Pct, metrics.totalYieldUsd.toLocaleString(), metrics.totalYieldPct], "Live Portfolio Diagnostic ({0} positions • Total {1}%): +{2}% CAGR, {3} Sharpe, {4} Beta, and {5}% daily 95% VaR. Estimated passive income: +${6}/yr ({7}%). All P-06 & P-11 guardrails nominal.", [metrics.enrichedHoldings.length, metrics.rawTotalWeight.toFixed(1), metrics.cagrPct, metrics.sharpeRatio, metrics.portfolioBeta, metrics.var95Pct, metrics.totalYieldUsd.toLocaleString(), metrics.totalYieldPct]);
 }
 
 

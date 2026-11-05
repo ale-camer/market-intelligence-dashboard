@@ -1,3 +1,4 @@
+import { tx, txList, txTpl, useViewLocale } from '../data/i18n/viewLocaleService';
 import React, { useState, useMemo, useEffect } from 'react';
 import HoverTooltip from './HoverTooltip';
 import {
@@ -117,7 +118,7 @@ function evaluateHistoricalMetric(row, metricKey, isES = false) {
     const palette = volChgPct >= 0 ? GREEN_SHADES[tier] : RED_SHADES[tier];
     const norm = Math.min(1, Math.max(0.18, volB / 45));
     return {
-      label: isES ? 'Volumen 24h ($)' : '24h Volume ($)',
+      label: tx('Volumen 24h ($)', '24h Volume ($)'),
       formatted: row.vol24h,
       sub: `${row.volChg24h} vs 20d avg`,
       raw: volB,
@@ -189,7 +190,7 @@ function evaluateHistoricalMetric(row, metricKey, isES = false) {
     const palette = isPos ? GREEN_SHADES[tier] : RED_SHADES[tier];
     const norm = Math.min(1, Math.max(0.18, rvol / 70));
     return {
-      label: isES ? 'Vol. Realizada (30d)' : 'Realized Vol (30d)',
+      label: tx('Vol. Realizada (30d)', 'Realized Vol (30d)'),
       formatted: row.realizedVol,
       sub: `${row.chg} • Spread ${row.spreadBps}`,
       raw: rvol,
@@ -475,7 +476,8 @@ export default function MarketAnomaliesView({
   const [researchFactorFilter, setResearchFactorFilter] = useState('all'); // 'all' | 'bull' | 'bear' | 'twin'
   const [researchExpandedKey, setResearchExpandedKey] = useState('BULL-0');
 
-  const isES = langCode === 'ES';
+  const { localeTick } = useViewLocale(langCode);
+  const isES = `${langCode}_${localeTick}`;
 
   // Enrich catalog with P-06 anomaly telemetry for Level 1
   const enrichedCatalog = useMemo(() => {
@@ -742,7 +744,7 @@ export default function MarketAnomaliesView({
         {
           role: 'assistant',
           blocked: Boolean(res?.blocked),
-          topicLabel: res?.topicLabel || (isES ? 'REPORTE OFICIAL' : 'OFFICIAL FILING'),
+          topicLabel: res?.topicLabel || (tx('REPORTE OFICIAL', 'OFFICIAL FILING')),
           text: res?.answer || '',
           latency: `${18 + (cleanQ.length % 14)}ms`,
         },
@@ -918,7 +920,7 @@ export default function MarketAnomaliesView({
       score100,
       formattedInt: `${isPos ? '+' : ''}${score100}`,
       linePct,
-      label: isPos ? (isES ? 'Alcista' : 'Bullish') : isES ? 'Bajista' : 'Bearish',
+      label: isPos ? (tx('Alcista', 'Bullish')) : tx('Bajista', 'Bearish'),
       color: isPos ? '#10b981' : '#f43f5e',
       posCount,
       negCount,
@@ -1025,8 +1027,8 @@ export default function MarketAnomaliesView({
     { id: 'zscore', label: 'Vol Z-Score (20d)' },
     { id: 'rsi', label: 'RSI (14)' },
     { id: 'chg', label: '24h % Change' },
-    { id: 'vol', label: isES ? 'Volumen 24h' : '24h Volume' },
-    { id: 'rvol', label: isES ? 'Vol. Realizada' : 'Realized Vol' },
+    { id: 'vol', label: tx('Volumen 24h', '24h Volume') },
+    { id: 'rvol', label: tx('Vol. Realizada', 'Realized Vol') },
   ];
 
   // ==========================================================================
@@ -1097,22 +1099,14 @@ export default function MarketAnomaliesView({
         id: 'sovereign-curve',
         cats: ['RATES', 'FIXED_INCOME', 'CASH'],
         swimlaneId: 'LANE_RATES',
-        swimlaneTitle: isES ? 'Tasas, Bonos y Liquidez' : 'Rates, Bonds & Cash',
-        sharedAssetClasses: isES
-          ? ['Tasas & Curvas', 'Bonos US Treasury', 'Cash & SOFR']
-          : ['Rates & Curves', 'US Treasuries', 'Cash & SOFR'],
+        swimlaneTitle: tx('Tasas, Bonos y Liquidez', 'Rates, Bonds & Cash'),
+        sharedAssetClasses: txList(['Tasas & Curvas', 'Bonos US Treasury', 'Cash & SOFR'], ['Rates & Curves', 'US Treasuries', 'Cash & SOFR']),
         isShared: true,
-        assetClassLabel: isES ? 'Tasas, Bonos & Cash' : 'Rates, Treasuries & Cash',
-        label: isES ? 'Curva Soberana' : 'Sovereign Curve',
-        desc: isES
-          ? 'Superficie histórica 3D (Plazo × Fecha × Yield %), comparador multi-país G10/EM y spreads 2s10s / SOFR.'
-          : '3D historical yield surface (Tenor × Date × Yield %), G10/EM peer comparator, and 2s10s / SOFR spreads.',
-        howItWorks: isES
-          ? 'Permite inspeccionar cómo se desplaza toda la estructura temporal de tasas (1M a 30Y) a través del tiempo o comparar curvas soberanas entre 42 economías para detectar inversiones de curva (2s10s < 0) y diferenciales reales.'
-          : 'Inspect how the full yield term structure (1M to 30Y) shifts over time or compare sovereign curves across 42 economies to spot curve inversions (2s10s < 0) and real rate differentials.',
-        keyAxes: isES
-          ? ['Eje X: Plazos (1M → 30Y)', 'Eje Y: Historia / 42 Países', 'Eje Z: Rendimiento (Yield %)']
-          : ['X-Axis: Tenors (1M → 30Y)', 'Y-Axis: History / 42 Countries', 'Z-Axis: Sovereign Yield (%)'],
+        assetClassLabel: tx('Tasas, Bonos & Cash', 'Rates, Treasuries & Cash'),
+        label: tx('Curva Soberana', 'Sovereign Curve'),
+        desc: tx('Superficie histórica 3D (Plazo × Fecha × Yield %), comparador multi-país G10/EM y spreads 2s10s / SOFR.', '3D historical yield surface (Tenor × Date × Yield %), G10/EM peer comparator, and 2s10s / SOFR spreads.'),
+        howItWorks: tx('Permite inspeccionar cómo se desplaza toda la estructura temporal de tasas (1M a 30Y) a través del tiempo o comparar curvas soberanas entre 42 economías para detectar inversiones de curva (2s10s < 0) y diferenciales reales.', 'Inspect how the full yield term structure (1M to 30Y) shifts over time or compare sovereign curves across 42 economies to spot curve inversions (2s10s < 0) and real rate differentials.'),
+        keyAxes: txList(['Eje X: Plazos (1M → 30Y)', 'Eje Y: Historia / 42 Países', 'Eje Z: Rendimiento (Yield %)'], ['X-Axis: Tenors (1M → 30Y)', 'Y-Axis: History / 42 Countries', 'Z-Axis: Sovereign Yield (%)']),
         badge: 'RATES & TREASURIES',
         dimension: '3D Mesh / 2D',
         liveStat: 'US 10Y • 2s10s Spread',
@@ -1121,35 +1115,29 @@ export default function MarketAnomaliesView({
         svgType: 'mesh-rates',
         quickPresets: [
           {
-            label: isES ? '🇺🇸 US10Y • Tesoro EE.UU.' : '🇺🇸 US10Y • US Treasury',
-            statLabel: isES ? 'US10Y • Spread 2s10s' : 'US10Y • 2s10s Spread',
+            label: tx('🇺🇸 US10Y • Tesoro EE.UU.', '🇺🇸 US10Y • US Treasury'),
+            statLabel: tx('US10Y • Spread 2s10s', 'US10Y • 2s10s Spread'),
             statValue: '4.24% (+16 bps)',
             statColor: '#10b981',
             variant: 0,
             seriesLegend: [
               {
-                label: isES ? 'US10Y Curva Hoy' : 'US10Y Spot Curve',
+                label: tx('US10Y Curva Hoy', 'US10Y Spot Curve'),
                 color: '#10b981',
                 dashed: false,
-                desc: isES
-                  ? 'Estructura temporal soberana actual de EE.UU. desde 1M hasta 30Y.'
-                  : 'Current US Treasury yield curve across tenors from 1M to 30Y.',
+                desc: tx('Estructura temporal soberana actual de EE.UU. desde 1M hasta 30Y.', 'Current US Treasury yield curve across tenors from 1M to 30Y.'),
               },
               {
-                label: isES ? 'Hace 1 Mes (-1M)' : '1M Historical (-1M)',
+                label: tx('Hace 1 Mes (-1M)', '1M Historical (-1M)'),
                 color: '#38bdf8',
                 dashed: true,
-                desc: isES
-                  ? 'Curva soberana hace 30 días para visualizar el desplazamiento paralelo o empinamiento.'
-                  : 'Sovereign yield curve 30 days ago to track parallel shifts or steepening.',
+                desc: tx('Curva soberana hace 30 días para visualizar el desplazamiento paralelo o empinamiento.', 'Sovereign yield curve 30 days ago to track parallel shifts or steepening.'),
               },
               {
-                label: isES ? 'Media 1 Año (1Y Avg)' : '1Y Average Curve',
+                label: tx('Media 1 Año (1Y Avg)', '1Y Average Curve'),
                 color: 'rgba(255,255,255,0.55)',
                 dashed: false,
-                desc: isES
-                  ? 'Nivel promedio histórico de los últimos 12 meses por plazo.'
-                  : 'Trailing 12-month historical average yield across tenors.',
+                desc: tx('Nivel promedio histórico de los últimos 12 meses por plazo.', 'Trailing 12-month historical average yield across tenors.'),
               },
             ],
             run: () => {
@@ -1160,8 +1148,8 @@ export default function MarketAnomaliesView({
             },
           },
           {
-            label: isES ? '🌍 Comparador G10 / EM' : '🌍 G10 / EM Peer Matrix',
-            statLabel: isES ? 'Dispersión 10Y G10/EM' : 'G10/EM 10Y Dispersion',
+            label: tx('🌍 Comparador G10 / EM', '🌍 G10 / EM Peer Matrix'),
+            statLabel: tx('Dispersión 10Y G10/EM', 'G10/EM 10Y Dispersion'),
             statValue: 'US 4.24% • DE 2.32% • BR 12.78%',
             statColor: '#38bdf8',
             variant: 1,
@@ -1170,25 +1158,19 @@ export default function MarketAnomaliesView({
                 label: 'US10Y (4.24%)',
                 color: '#38bdf8',
                 dashed: false,
-                desc: isES
-                  ? 'Curva de referencia del Tesoro de EE.UU. (Benchmark global).'
-                  : 'US Treasury benchmark curve across all maturities.',
+                desc: tx('Curva de referencia del Tesoro de EE.UU. (Benchmark global).', 'US Treasury benchmark curve across all maturities.'),
               },
               {
                 label: 'DE10Y Bund (2.32%)',
                 color: '#38bdf8',
                 dashed: true,
-                desc: isES
-                  ? 'Curva soberana alemana (referencia libre de riesgo en la Eurozona).'
-                  : 'German Bund sovereign curve (Eurozone risk-free benchmark).',
+                desc: tx('Curva soberana alemana (referencia libre de riesgo en la Eurozona).', 'German Bund sovereign curve (Eurozone risk-free benchmark).'),
               },
               {
                 label: 'JP10Y JGB (1.06%)',
                 color: 'rgba(255,255,255,0.55)',
                 dashed: false,
-                desc: isES
-                  ? 'Curva soberana de Japón (ancla de tasas bajas del G10).'
-                  : 'Japanese Government Bond curve (G10 low-yield anchor).',
+                desc: tx('Curva soberana de Japón (ancla de tasas bajas del G10).', 'Japanese Government Bond curve (G10 low-yield anchor).'),
               },
             ],
             run: () => {
@@ -1199,35 +1181,29 @@ export default function MarketAnomaliesView({
             },
           },
           {
-            label: isES ? '🇩🇪 DE10Y • Bund Alemán' : '🇩🇪 DE10Y • German Bund',
+            label: tx('🇩🇪 DE10Y • Bund Alemán', '🇩🇪 DE10Y • German Bund'),
             statLabel: 'DE10Y Bund • 2s10s',
             statValue: '2.32% (+14 bps)',
             statColor: '#a855f7',
             variant: 2,
             seriesLegend: [
               {
-                label: isES ? 'DE10Y Curva Hoy' : 'DE10Y Spot Curve',
+                label: tx('DE10Y Curva Hoy', 'DE10Y Spot Curve'),
                 color: '#a855f7',
                 dashed: false,
-                desc: isES
-                  ? 'Curva actual del Bund alemán desde 3M hasta 30Y.'
-                  : 'Current German Bund yield curve from 3M to 30Y.',
+                desc: tx('Curva actual del Bund alemán desde 3M hasta 30Y.', 'Current German Bund yield curve from 3M to 30Y.'),
               },
               {
-                label: isES ? 'US10Y Benchmark' : 'US10Y Benchmark',
+                label: tx('US10Y Benchmark', 'US10Y Benchmark'),
                 color: '#38bdf8',
                 dashed: true,
-                desc: isES
-                  ? 'Curva del Tesoro de EE.UU. superpuesta para medir el spread transatlántico.'
-                  : 'Overlaid US Treasury curve to measure the transatlantic yield spread.',
+                desc: tx('Curva del Tesoro de EE.UU. superpuesta para medir el spread transatlántico.', 'Overlaid US Treasury curve to measure the transatlantic yield spread.'),
               },
               {
-                label: isES ? 'DE10Y Hace 6M' : 'DE10Y 6M Ago',
+                label: tx('DE10Y Hace 6M', 'DE10Y 6M Ago'),
                 color: 'rgba(255,255,255,0.55)',
                 dashed: false,
-                desc: isES
-                  ? 'Estructura temporal alemana hace 6 meses.'
-                  : 'German sovereign term structure 6 months ago.',
+                desc: tx('Estructura temporal alemana hace 6 meses.', 'German sovereign term structure 6 months ago.'),
               },
             ],
             run: () => {
@@ -1238,35 +1214,29 @@ export default function MarketAnomaliesView({
             },
           },
           {
-            label: isES ? '🇧🇷 BR10Y • Soberano Brasil' : '🇧🇷 BR10Y • Brazil Sovereign',
+            label: tx('🇧🇷 BR10Y • Soberano Brasil', '🇧🇷 BR10Y • Brazil Sovereign'),
             statLabel: 'BR10Y DI • 2s10s',
             statValue: '12.78% (-14 bps)',
             statColor: '#f59e0b',
             variant: 3,
             seriesLegend: [
               {
-                label: isES ? 'BR10Y Curva Hoy' : 'BR10Y Spot Curve',
+                label: tx('BR10Y Curva Hoy', 'BR10Y Spot Curve'),
                 color: '#f59e0b',
                 dashed: false,
-                desc: isES
-                  ? 'Curva soberana actual de Brasil (DI Futuro / NTN-F) en moneda local.'
-                  : 'Current Brazil sovereign yield curve (DI Futures / Local Treasury).',
+                desc: tx('Curva soberana actual de Brasil (DI Futuro / NTN-F) en moneda local.', 'Current Brazil sovereign yield curve (DI Futures / Local Treasury).'),
               },
               {
-                label: isES ? 'US10Y Benchmark' : 'US10Y Benchmark',
+                label: tx('US10Y Benchmark', 'US10Y Benchmark'),
                 color: '#38bdf8',
                 dashed: true,
-                desc: isES
-                  ? 'Curva del Tesoro de EE.UU. para visualizar el premio por riesgo emergente.'
-                  : 'US Treasury benchmark curve showing the EM sovereign risk premium.',
+                desc: tx('Curva del Tesoro de EE.UU. para visualizar el premio por riesgo emergente.', 'US Treasury benchmark curve showing the EM sovereign risk premium.'),
               },
               {
-                label: isES ? 'DE10Y Benchmark' : 'DE10Y Benchmark',
+                label: tx('DE10Y Benchmark', 'DE10Y Benchmark'),
                 color: 'rgba(255,255,255,0.55)',
                 dashed: false,
-                desc: isES
-                  ? 'Curva base europea como segundo nivel de referencia internacional.'
-                  : 'European Bund base curve as secondary international benchmark.',
+                desc: tx('Curva base europea como segundo nivel de referencia internacional.', 'European Bund base curve as secondary international benchmark.'),
               },
             ],
             run: () => {
@@ -1288,22 +1258,14 @@ export default function MarketAnomaliesView({
         id: 'vol-surface-3d',
         cats: ['DERIVATIVES_VOL', 'EQUITY', 'INDEX', 'ETF', 'CRYPTO'],
         swimlaneId: 'LANE_EQUITY_DERIV',
-        swimlaneTitle: isES ? 'Derivados, Acciones y Crypto' : 'Derivatives, Equities & Crypto',
-        sharedAssetClasses: isES
-          ? ['Derivados & Vol', 'Acciones', 'Índices', 'ETFs', 'Crypto']
-          : ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs', 'Crypto'],
+        swimlaneTitle: tx('Derivados, Acciones y Crypto', 'Derivatives, Equities & Crypto'),
+        sharedAssetClasses: txList(['Derivados & Vol', 'Acciones', 'Índices', 'ETFs', 'Crypto'], ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs', 'Crypto']),
         isShared: true,
-        assetClassLabel: isES ? 'Derivados, Acciones, Índices, ETFs & Crypto' : 'Derivatives, Equities, Indices, ETFs & Crypto',
-        label: isES ? 'Superficie de Volatilidad' : 'Volatility Surface',
-        desc: isES
-          ? 'Malla interactiva Strike × Vencimiento × IV (%) con skew de puts y sonrisa de volatilidad.'
-          : 'Interactive Strike × Expiry × IV (%) mesh with put skew and volatility smile.',
-        howItWorks: isES
-          ? 'Visualiza en 3D dónde el mercado de opciones está pagando prima extra por cobertura bajista (Put Skew) o explosión alcista (Call Wing) a lo largo de distintos strikes (80% a 120% Moneyness) y vencimientos (7D a 180D).'
-          : 'Visualize in 3D where the options market is pricing extra premium for downside protection (Put Skew) or upside tail risk across strikes (80%–120% moneyness) and expiries (7D–180D).',
-        keyAxes: isES
-          ? ['Eje X: Moneyness / Strike', 'Eje Y: Vencimiento (7D → 180D)', 'Eje Z: Volatilidad Implícita (IV %)']
-          : ['X-Axis: Moneyness / Strike', 'Y-Axis: Expiry (7D → 180D)', 'Z-Axis: Implied Volatility (IV %)'],
+        assetClassLabel: tx('Derivados, Acciones, Índices, ETFs & Crypto', 'Derivatives, Equities, Indices, ETFs & Crypto'),
+        label: tx('Superficie de Volatilidad', 'Volatility Surface'),
+        desc: tx('Malla interactiva Strike × Vencimiento × IV (%) con skew de puts y sonrisa de volatilidad.', 'Interactive Strike × Expiry × IV (%) mesh with put skew and volatility smile.'),
+        howItWorks: tx('Visualiza en 3D dónde el mercado de opciones está pagando prima extra por cobertura bajista (Put Skew) o explosión alcista (Call Wing) a lo largo de distintos strikes (80% a 120% Moneyness) y vencimientos (7D a 180D).', 'Visualize in 3D where the options market is pricing extra premium for downside protection (Put Skew) or upside tail risk across strikes (80%–120% moneyness) and expiries (7D–180D).'),
+        keyAxes: txList(['Eje X: Moneyness / Strike', 'Eje Y: Vencimiento (7D → 180D)', 'Eje Z: Volatilidad Implícita (IV %)'], ['X-Axis: Moneyness / Strike', 'Y-Axis: Expiry (7D → 180D)', 'Z-Axis: Implied Volatility (IV %)']),
         badge: 'OPTIONS & VOL 3D',
         dimension: 'Strike × Exp × IV',
         liveStat: 'NVDA ATM IV (30d)',
@@ -1319,20 +1281,16 @@ export default function MarketAnomaliesView({
             variant: 0,
             seriesLegend: [
               {
-                label: isES ? 'NVDA Sonrisa 30D IV' : 'NVDA 30D IV Smile',
+                label: tx('NVDA Sonrisa 30D IV', 'NVDA 30D IV Smile'),
                 color: '#a855f7',
                 dashed: false,
-                desc: isES
-                  ? 'Volatilidad implícita a 30 días entre strikes 85% y 115% Moneyness.'
-                  : '30-day implied volatility smile across 85% to 115% moneyness strikes.',
+                desc: tx('Volatilidad implícita a 30 días entre strikes 85% y 115% Moneyness.', '30-day implied volatility smile across 85% to 115% moneyness strikes.'),
               },
               {
-                label: isES ? 'NVDA Plazo 90D IV' : 'NVDA 90D Term IV',
+                label: tx('NVDA Plazo 90D IV', 'NVDA 90D Term IV'),
                 color: '#38bdf8',
                 dashed: true,
-                desc: isES
-                  ? 'Sonrisa de volatilidad trimestral (90 días) para comparar estructura de plazos.'
-                  : 'Quarterly (90-day) volatility smile comparing term structure flattening.',
+                desc: tx('Sonrisa de volatilidad trimestral (90 días) para comparar estructura de plazos.', 'Quarterly (90-day) volatility smile comparing term structure flattening.'),
               },
             ],
             run: () => {
@@ -1350,20 +1308,16 @@ export default function MarketAnomaliesView({
             variant: 1,
             seriesLegend: [
               {
-                label: isES ? 'SPY Sonrisa 30D IV' : 'SPY 30D IV Smile',
+                label: tx('SPY Sonrisa 30D IV', 'SPY 30D IV Smile'),
                 color: '#10b981',
                 dashed: false,
-                desc: isES
-                  ? 'Curva de volatilidad implícita a 30 días del S&P 500 con fuerte Put Skew.'
-                  : 'S&P 500 30-day implied volatility curve displaying institutional Put Skew.',
+                desc: tx('Curva de volatilidad implícita a 30 días del S&P 500 con fuerte Put Skew.', 'S&P 500 30-day implied volatility curve displaying institutional Put Skew.'),
               },
               {
-                label: isES ? 'SPY Plazo 90D IV' : 'SPY 90D Term IV',
+                label: tx('SPY Plazo 90D IV', 'SPY 90D Term IV'),
                 color: '#38bdf8',
                 dashed: true,
-                desc: isES
-                  ? 'Curva de volatilidad implícita a 90 días del S&P 500.'
-                  : 'S&P 500 90-day implied volatility curve.',
+                desc: tx('Curva de volatilidad implícita a 90 días del S&P 500.', 'S&P 500 90-day implied volatility curve.'),
               },
             ],
             run: () => {
@@ -1381,20 +1335,16 @@ export default function MarketAnomaliesView({
             variant: 2,
             seriesLegend: [
               {
-                label: isES ? 'TSLA Sonrisa 30D IV' : 'TSLA 30D IV Smile',
+                label: tx('TSLA Sonrisa 30D IV', 'TSLA 30D IV Smile'),
                 color: '#38bdf8',
                 dashed: false,
-                desc: isES
-                  ? 'Sonrisa de volatilidad a 30 días en TSLA con convexidad en ambos extremos.'
-                  : 'TSLA 30-day volatility smile with elevated wings on both OTM puts and calls.',
+                desc: tx('Sonrisa de volatilidad a 30 días en TSLA con convexidad en ambos extremos.', 'TSLA 30-day volatility smile with elevated wings on both OTM puts and calls.'),
               },
               {
-                label: isES ? 'TSLA Plazo 90D IV' : 'TSLA 90D Term IV',
+                label: tx('TSLA Plazo 90D IV', 'TSLA 90D Term IV'),
                 color: '#a855f7',
                 dashed: true,
-                desc: isES
-                  ? 'Estructura de volatilidad a 90 días en TSLA.'
-                  : 'TSLA 90-day implied volatility term structure.',
+                desc: tx('Estructura de volatilidad a 90 días en TSLA.', 'TSLA 90-day implied volatility term structure.'),
               },
             ],
             run: () => {
@@ -1412,20 +1362,16 @@ export default function MarketAnomaliesView({
             variant: 3,
             seriesLegend: [
               {
-                label: isES ? 'BTC Sonrisa 30D IV' : 'BTC 30D IV Smile',
+                label: tx('BTC Sonrisa 30D IV', 'BTC 30D IV Smile'),
                 color: '#f59e0b',
                 dashed: false,
-                desc: isES
-                  ? 'Volatilidad implícita de opciones de Bitcoin a 30 días con sesgo alcista (Call Wing).'
-                  : 'Bitcoin 30-day options implied volatility showing upside Call Wing skew.',
+                desc: tx('Volatilidad implícita de opciones de Bitcoin a 30 días con sesgo alcista (Call Wing).', 'Bitcoin 30-day options implied volatility showing upside Call Wing skew.'),
               },
               {
-                label: isES ? 'BTC Plazo 90D IV' : 'BTC 90D Term IV',
+                label: tx('BTC Plazo 90D IV', 'BTC 90D Term IV'),
                 color: '#38bdf8',
                 dashed: true,
-                desc: isES
-                  ? 'Volatilidad implícita de Bitcoin a 90 días.'
-                  : 'Bitcoin 90-day quarterly implied volatility curve.',
+                desc: tx('Volatilidad implícita de Bitcoin a 90 días.', 'Bitcoin 90-day quarterly implied volatility curve.'),
               },
             ],
             run: () => {
@@ -1447,22 +1393,14 @@ export default function MarketAnomaliesView({
         id: 'options-payoff',
         cats: ['DERIVATIVES_VOL', 'EQUITY', 'INDEX', 'ETF'],
         swimlaneId: 'LANE_EQUITY_DERIV',
-        swimlaneTitle: isES ? 'Derivados, Acciones y Crypto' : 'Derivatives, Equities & Crypto',
-        sharedAssetClasses: isES
-          ? ['Derivados & Vol', 'Acciones', 'Índices', 'ETFs']
-          : ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs'],
+        swimlaneTitle: tx('Derivados, Acciones y Crypto', 'Derivatives, Equities & Crypto'),
+        sharedAssetClasses: txList(['Derivados & Vol', 'Acciones', 'Índices', 'ETFs'], ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs']),
         isShared: true,
-        assetClassLabel: isES ? 'Derivados, Acciones, Índices & ETFs' : 'Derivatives, Equities, Indices & ETFs',
-        label: isES ? 'Simulador Payoff' : 'Options Payoff',
-        desc: isES
-          ? 'Simulador de estrategias (Straddle, Iron Condor, Sintéticos) con Griegas Δ, Γ, Θ, ν en tiempo real.'
-          : 'Multi-leg strategy simulator (Straddle, Iron Condor, Synthetics) with real-time Δ, Γ, Θ, ν Greeks.',
-        howItWorks: isES
-          ? 'Construye estructuras de hasta 4 patas de opciones (Calls/Puts compradas o vendidas) y proyecta el perfil de ganancia/pérdida al vencimiento y hoy (T+0), junto con los puntos de equilibrio (Breakevens) y sensibilidad a Griegas.'
-          : 'Build up to 4-leg option structures (long/short Calls & Puts) and project expiration vs. T+0 P&L curves, breakeven thresholds, and net Greek exposures.',
-        keyAxes: isES
-          ? ['Eje X: Precio Subyacente al Vencimiento', 'Eje Y: P&L Neto ($ / %)', 'Sensibilidad: Δ Delta • Γ Gamma • Θ Theta • ν Vega']
-          : ['X-Axis: Underlying Price at Expiry', 'Y-Axis: Net P&L ($ / %)', 'Greeks: Δ Delta • Γ Gamma • Θ Theta • ν Vega'],
+        assetClassLabel: tx('Derivados, Acciones, Índices & ETFs', 'Derivatives, Equities, Indices & ETFs'),
+        label: tx('Simulador Payoff', 'Options Payoff'),
+        desc: tx('Simulador de estrategias (Straddle, Iron Condor, Sintéticos) con Griegas Δ, Γ, Θ, ν en tiempo real.', 'Multi-leg strategy simulator (Straddle, Iron Condor, Synthetics) with real-time Δ, Γ, Θ, ν Greeks.'),
+        howItWorks: tx('Construye estructuras de hasta 4 patas de opciones (Calls/Puts compradas o vendidas) y proyecta el perfil de ganancia/pérdida al vencimiento y hoy (T+0), junto con los puntos de equilibrio (Breakevens) y sensibilidad a Griegas.', 'Build up to 4-leg option structures (long/short Calls & Puts) and project expiration vs. T+0 P&L curves, breakeven thresholds, and net Greek exposures.'),
+        keyAxes: txList(['Eje X: Precio Subyacente al Vencimiento', 'Eje Y: P&L Neto ($ / %)', 'Sensibilidad: Δ Delta • Γ Gamma • Θ Theta • ν Vega'], ['X-Axis: Underlying Price at Expiry', 'Y-Axis: Net P&L ($ / %)', 'Greeks: Δ Delta • Γ Gamma • Θ Theta • ν Vega']),
         badge: 'DERIVATIVES LAB',
         dimension: '4-Leg + Greeks',
         liveStat: 'NVDA Long Straddle',
@@ -1478,28 +1416,22 @@ export default function MarketAnomaliesView({
             variant: 0,
             seriesLegend: [
               {
-                label: isES ? 'P&L al Vencimiento ($)' : 'Expiration P&L ($)',
+                label: tx('P&L al Vencimiento ($)', 'Expiration P&L ($)'),
                 color: '#10b981',
                 dashed: false,
-                desc: isES
-                  ? 'Resultado neto exacto al día de expiración según el precio final del subyacente.'
-                  : 'Exact net profit/loss at expiration across underlying spot prices.',
+                desc: tx('Resultado neto exacto al día de expiración según el precio final del subyacente.', 'Exact net profit/loss at expiration across underlying spot prices.'),
               },
               {
-                label: isES ? 'P&L Hoy (T+0 BS)' : 'Today P&L (T+0 BS)',
+                label: tx('P&L Hoy (T+0 BS)', 'Today P&L (T+0 BS)'),
                 color: '#38bdf8',
                 dashed: true,
-                desc: isES
-                  ? 'Valuación teórica Black-Scholes hoy (T+0) antes del desgaste por Theta.'
-                  : 'Theoretical Black-Scholes mark-to-market curve today (T+0).',
+                desc: tx('Valuación teórica Black-Scholes hoy (T+0) antes del desgaste por Theta.', 'Theoretical Black-Scholes mark-to-market curve today (T+0).'),
               },
               {
-                label: isES ? 'Equilibrio ($0 BE)' : 'Breakeven ($0 BE)',
+                label: tx('Equilibrio ($0 BE)', 'Breakeven ($0 BE)'),
                 color: 'rgba(255,255,255,0.5)',
                 dashed: true,
-                desc: isES
-                  ? 'Línea horizontal de beneficio cero ($0).'
-                  : 'Zero profit/loss breakeven threshold ($0).',
+                desc: tx('Línea horizontal de beneficio cero ($0).', 'Zero profit/loss breakeven threshold ($0).'),
               },
             ],
             run: () => {
@@ -1513,33 +1445,27 @@ export default function MarketAnomaliesView({
           {
             label: 'SPY • Iron Condor',
             statLabel: 'SPY • Iron Condor (±5%)',
-            statValue: isES ? 'Crédito +$4.15 • Θ +$0.28/d' : 'Credit +$4.15 • Θ +$0.28/d',
+            statValue: tx('Crédito +$4.15 • Θ +$0.28/d', 'Credit +$4.15 • Θ +$0.28/d'),
             statColor: '#38bdf8',
             variant: 1,
             seriesLegend: [
               {
-                label: isES ? 'P&L al Vencimiento ($)' : 'Expiration P&L ($)',
+                label: tx('P&L al Vencimiento ($)', 'Expiration P&L ($)'),
                 color: '#38bdf8',
                 dashed: false,
-                desc: isES
-                  ? 'Meseta de ganancia máxima entre los strikes vendidos con riesgo acotado en los extremos.'
-                  : 'Defined-risk profit plateau between short strikes with capped wing losses.',
+                desc: tx('Meseta de ganancia máxima entre los strikes vendidos con riesgo acotado en los extremos.', 'Defined-risk profit plateau between short strikes with capped wing losses.'),
               },
               {
-                label: isES ? 'P&L Hoy (T+0 BS)' : 'Today P&L (T+0 BS)',
+                label: tx('P&L Hoy (T+0 BS)', 'Today P&L (T+0 BS)'),
                 color: '#a855f7',
                 dashed: true,
-                desc: isES
-                  ? 'Curva suave de valuación actual (T+0) que converge hacia la meseta por Theta positivo.'
-                  : 'Smooth T+0 mark-to-market curve converging toward max profit via positive Theta.',
+                desc: tx('Curva suave de valuación actual (T+0) que converge hacia la meseta por Theta positivo.', 'Smooth T+0 mark-to-market curve converging toward max profit via positive Theta.'),
               },
               {
-                label: isES ? 'Equilibrio ($0 BE)' : 'Breakeven ($0 BE)',
+                label: tx('Equilibrio ($0 BE)', 'Breakeven ($0 BE)'),
                 color: 'rgba(255,255,255,0.5)',
                 dashed: true,
-                desc: isES
-                  ? 'Línea horizontal de beneficio cero ($0).'
-                  : 'Zero profit/loss breakeven threshold ($0).',
+                desc: tx('Línea horizontal de beneficio cero ($0).', 'Zero profit/loss breakeven threshold ($0).'),
               },
             ],
             run: () => {
@@ -1558,28 +1484,22 @@ export default function MarketAnomaliesView({
             variant: 2,
             seriesLegend: [
               {
-                label: isES ? 'P&L al Vencimiento ($)' : 'Expiration P&L ($)',
+                label: tx('P&L al Vencimiento ($)', 'Expiration P&L ($)'),
                 color: '#a855f7',
                 dashed: false,
-                desc: isES
-                  ? 'Perfil alcista con pérdida máxima limitada al débito pagado y ganancia acotada en el Call vendido.'
-                  : 'Bullish vertical spread with loss capped at net debit and upside capped at short Call strike.',
+                desc: tx('Perfil alcista con pérdida máxima limitada al débito pagado y ganancia acotada en el Call vendido.', 'Bullish vertical spread with loss capped at net debit and upside capped at short Call strike.'),
               },
               {
-                label: isES ? 'P&L Hoy (T+0 BS)' : 'Today P&L (T+0 BS)',
+                label: tx('P&L Hoy (T+0 BS)', 'Today P&L (T+0 BS)'),
                 color: '#38bdf8',
                 dashed: true,
-                desc: isES
-                  ? 'Curva actual (T+0) con sensibilidad direccional positiva (Delta +0.28).'
-                  : 'Current T+0 valuation curve with positive directional Delta (+0.28).',
+                desc: tx('Curva actual (T+0) con sensibilidad direccional positiva (Delta +0.28).', 'Current T+0 valuation curve with positive directional Delta (+0.28).'),
               },
               {
-                label: isES ? 'Equilibrio ($0 BE)' : 'Breakeven ($0 BE)',
+                label: tx('Equilibrio ($0 BE)', 'Breakeven ($0 BE)'),
                 color: 'rgba(255,255,255,0.5)',
                 dashed: true,
-                desc: isES
-                  ? 'Línea horizontal de beneficio cero ($0).'
-                  : 'Zero profit/loss breakeven threshold ($0).',
+                desc: tx('Línea horizontal de beneficio cero ($0).', 'Zero profit/loss breakeven threshold ($0).'),
               },
             ],
             run: () => {
@@ -1602,20 +1522,14 @@ export default function MarketAnomaliesView({
         id: 'fx-cross',
         cats: ['FX'],
         swimlaneId: 'LANE_FX',
-        swimlaneTitle: isES ? 'Divisas (FX)' : 'FX Currencies',
-        sharedAssetClasses: isES ? ['Divisas (FX)'] : ['FX Currencies'],
+        swimlaneTitle: tx('Divisas (FX)', 'FX Currencies'),
+        sharedAssetClasses: txList(['Divisas (FX)'], ['FX Currencies']),
         isShared: false,
-        assetClassLabel: isES ? 'Divisas (FX)' : 'FX Currencies',
-        label: isES ? 'Conversor FX y Carry' : 'FX Cross & Carry',
-        desc: isES
-          ? 'Triangulación instantánea entre 61 divisas G10 y Mercados Emergentes con diferencial de tasas (Carry).'
-          : 'Instant cross-rate triangulation across 61 G10 & EM currencies with interest rate Carry differential.',
-        howItWorks: isES
-          ? 'Calcula tipos de cambio cruzados sintéticos entre cualquiera de las 61 monedas globales (G10, LatAm, Asia, EMEA) y compara el diferencial de tasas de bancos centrales para estrategias de Carry Trade.'
-          : 'Computes synthetic cross rates across 61 global currencies (G10, LatAm, Asia, EMEA) and compares central bank rate differentials for Carry Trade positioning.',
-        keyAxes: isES
-          ? ['Moneda Base (61 CCY)', 'Moneda Cotizada (61 CCY)', 'Diferencial Carry Implícito (% anual)']
-          : ['Base Currency (61 CCY)', 'Quote Currency (61 CCY)', 'Implied Carry Differential (% p.a.)'],
+        assetClassLabel: tx('Divisas (FX)', 'FX Currencies'),
+        label: tx('Conversor FX y Carry', 'FX Cross & Carry'),
+        desc: tx('Triangulación instantánea entre 61 divisas G10 y Mercados Emergentes con diferencial de tasas (Carry).', 'Instant cross-rate triangulation across 61 G10 & EM currencies with interest rate Carry differential.'),
+        howItWorks: tx('Calcula tipos de cambio cruzados sintéticos entre cualquiera de las 61 monedas globales (G10, LatAm, Asia, EMEA) y compara el diferencial de tasas de bancos centrales para estrategias de Carry Trade.', 'Computes synthetic cross rates across 61 global currencies (G10, LatAm, Asia, EMEA) and compares central bank rate differentials for Carry Trade positioning.'),
+        keyAxes: txList(['Moneda Base (61 CCY)', 'Moneda Cotizada (61 CCY)', 'Diferencial Carry Implícito (% anual)'], ['Base Currency (61 CCY)', 'Quote Currency (61 CCY)', 'Implied Carry Differential (% p.a.)']),
         badge: 'FX & CARRY',
         dimension: '61×61 Matrix',
         liveStat: 'EUR / USD Spot & Carry',
@@ -1706,20 +1620,14 @@ export default function MarketAnomaliesView({
         id: 'commodity-forward-3d',
         cats: ['COMMODITY'],
         swimlaneId: 'LANE_COMMODITIES',
-        swimlaneTitle: isES ? 'Materias Primas' : 'Commodities',
-        sharedAssetClasses: isES ? ['Materias Primas'] : ['Commodities'],
+        swimlaneTitle: tx('Materias Primas', 'Commodities'),
+        sharedAssetClasses: txList(['Materias Primas'], ['Commodities']),
         isShared: false,
-        assetClassLabel: isES ? 'Materias Primas' : 'Commodities',
-        label: isES ? 'Curva Forward' : 'Commodity Forward',
-        desc: isES
-          ? 'Estructura temporal de futuros de Energía, Metales y Agro (Spot a +24M) y cálculo de Roll Yield.'
-          : 'Futures term structure across Energy, Metals & Ags (Spot to +24M) and Roll Yield calculation.',
-        howItWorks: isES
-          ? 'Representa la curva de contratos de futuros desde el mes frontal (Spot/M1) hasta +24 meses para identificar escasez física inmediata (Backwardation, pendiente negativa) o sobrecosto de almacenamiento (Contango, pendiente positiva).'
-          : 'Maps futures contracts from front-month (Spot/M1) out to +24 months to identify physical tightness (Backwardation, downward slope) or storage carry cost (Contango, upward slope).',
-        keyAxes: isES
-          ? ['Eje X: Vencimiento Futuro (Spot → M24)', 'Eje Y: Evolución Histórica', 'Eje Z: Precio Forward & Roll Yield (%)']
-          : ['X-Axis: Futures Maturity (Spot → M24)', 'Y-Axis: Historical Evolution', 'Z-Axis: Forward Price & Roll Yield (%)'],
+        assetClassLabel: tx('Materias Primas', 'Commodities'),
+        label: tx('Curva Forward', 'Commodity Forward'),
+        desc: tx('Estructura temporal de futuros de Energía, Metales y Agro (Spot a +24M) y cálculo de Roll Yield.', 'Futures term structure across Energy, Metals & Ags (Spot to +24M) and Roll Yield calculation.'),
+        howItWorks: tx('Representa la curva de contratos de futuros desde el mes frontal (Spot/M1) hasta +24 meses para identificar escasez física inmediata (Backwardation, pendiente negativa) o sobrecosto de almacenamiento (Contango, pendiente positiva).', 'Maps futures contracts from front-month (Spot/M1) out to +24 months to identify physical tightness (Backwardation, downward slope) or storage carry cost (Contango, upward slope).'),
+        keyAxes: txList(['Eje X: Vencimiento Futuro (Spot → M24)', 'Eje Y: Evolución Histórica', 'Eje Z: Precio Forward & Roll Yield (%)'], ['X-Axis: Futures Maturity (Spot → M24)', 'Y-Axis: Historical Evolution', 'Z-Axis: Forward Price & Roll Yield (%)']),
         badge: 'COMMODITIES 3D',
         dimension: 'Spot → +24M 3D',
         liveStat: 'WTI (CL) • Roll Yield',
@@ -1735,20 +1643,16 @@ export default function MarketAnomaliesView({
             variant: 0,
             seriesLegend: [
               {
-                label: isES ? 'CL Curva Forward (M1→M24)' : 'CL Forward Curve (M1→M24)',
+                label: tx('CL Curva Forward (M1→M24)', 'CL Forward Curve (M1→M24)'),
                 color: '#38bdf8',
                 dashed: false,
-                desc: isES
-                  ? 'Estructura temporal actual de futuros de petróleo WTI en Backwardation (pendiente descendente).'
-                  : 'Current WTI crude futures curve in Backwardation (downward-sloping term structure).',
+                desc: tx('Estructura temporal actual de futuros de petróleo WTI en Backwardation (pendiente descendente).', 'Current WTI crude futures curve in Backwardation (downward-sloping term structure).'),
               },
               {
-                label: isES ? 'Curva hace 3M (-3M)' : '3M Historical Curve',
+                label: tx('Curva hace 3M (-3M)', '3M Historical Curve'),
                 color: '#10b981',
                 dashed: true,
-                desc: isES
-                  ? 'Estructura temporal de futuros hace 3 meses para comparar el Roll Yield.'
-                  : 'Futures term structure 3 months ago to compare Roll Yield evolution.',
+                desc: tx('Estructura temporal de futuros hace 3 meses para comparar el Roll Yield.', 'Futures term structure 3 months ago to compare Roll Yield evolution.'),
               },
             ],
             run: () => {
@@ -1766,20 +1670,16 @@ export default function MarketAnomaliesView({
             variant: 1,
             seriesLegend: [
               {
-                label: isES ? 'GC Curva Forward (M1→M24)' : 'GC Forward Curve (M1→M24)',
+                label: tx('GC Curva Forward (M1→M24)', 'GC Forward Curve (M1→M24)'),
                 color: '#f59e0b',
                 dashed: false,
-                desc: isES
-                  ? 'Curva de futuros de Oro en Contango reflejando tasas de financiamiento y costo de custodia.'
-                  : 'Gold futures curve in Contango reflecting interest-rate carry and storage costs.',
+                desc: tx('Curva de futuros de Oro en Contango reflejando tasas de financiamiento y costo de custodia.', 'Gold futures curve in Contango reflecting interest-rate carry and storage costs.'),
               },
               {
-                label: isES ? 'Curva hace 3M (-3M)' : '3M Historical Curve',
+                label: tx('Curva hace 3M (-3M)', '3M Historical Curve'),
                 color: '#10b981',
                 dashed: true,
-                desc: isES
-                  ? 'Curva histórica de futuros de Oro hace 3 meses.'
-                  : 'Historical Gold futures curve 3 months ago.',
+                desc: tx('Curva histórica de futuros de Oro hace 3 meses.', 'Historical Gold futures curve 3 months ago.'),
               },
             ],
             run: () => {
@@ -1797,20 +1697,16 @@ export default function MarketAnomaliesView({
             variant: 2,
             seriesLegend: [
               {
-                label: isES ? 'NG Curva Forward (M1→M24)' : 'NG Forward Curve (M1→M24)',
+                label: tx('NG Curva Forward (M1→M24)', 'NG Forward Curve (M1→M24)'),
                 color: '#10b981',
                 dashed: false,
-                desc: isES
-                  ? 'Estructura estacional de futuros de Gas Natural desde Spot hasta +24 meses.'
-                  : 'Seasonal Natural Gas futures term structure from Spot out to +24 months.',
+                desc: tx('Estructura estacional de futuros de Gas Natural desde Spot hasta +24 meses.', 'Seasonal Natural Gas futures term structure from Spot out to +24 months.'),
               },
               {
-                label: isES ? 'Curva hace 3M (-3M)' : '3M Historical Curve',
+                label: tx('Curva hace 3M (-3M)', '3M Historical Curve'),
                 color: '#38bdf8',
                 dashed: true,
-                desc: isES
-                  ? 'Curva de futuros de Gas Natural hace 3 meses.'
-                  : 'Natural Gas futures term structure 3 months ago.',
+                desc: tx('Curva de futuros de Gas Natural hace 3 meses.', 'Natural Gas futures term structure 3 months ago.'),
               },
             ],
             run: () => {
@@ -1868,70 +1764,66 @@ export default function MarketAnomaliesView({
             {[
               {
                 id: 'ALL',
-                label: isES ? 'Todos' : 'All',
-                desc: isES
-                  ? 'Muestra el universo completo de 213 activos globales en tiempo real.'
-                  : 'Displays the full 213-asset global universe in real time.',
+                label: tx('Todos', 'All'),
+                desc: tx('Muestra el universo completo de 213 activos globales en tiempo real.', 'Displays the full 213-asset global universe in real time.'),
               },
               {
                 id: 'WATCHLIST',
                 label: `Watchlist (${watchlistSyms.length})`,
-                desc: isES
-                  ? 'Filtra tus activos favoritos para seguimiento y Portfolio.'
-                  : 'Filters your watchlist assets for tracking and Portfolio evaluation.',
+                desc: tx('Filtra tus activos favoritos para seguimiento y Portfolio.', 'Filters your watchlist assets for tracking and Portfolio evaluation.'),
               },
               ...[
                 {
                   id: 'INDEX',
-                  label: isES ? 'Índices' : 'Indices',
-                  desc: isES ? 'Índices bursátiles globales (S&P 500, Nasdaq 100, DAX, Nikkei).' : 'Global equity indices (S&P 500, Nasdaq 100, DAX, Nikkei).',
+                  label: tx('Índices', 'Indices'),
+                  desc: tx('Índices bursátiles globales (S&P 500, Nasdaq 100, DAX, Nikkei).', 'Global equity indices (S&P 500, Nasdaq 100, DAX, Nikkei).'),
                 },
                 {
                   id: 'EQUITY',
-                  label: isES ? 'Acciones (S&P/NDX)' : 'Equities (S&P/NDX)',
-                  desc: isES ? 'Acciones líderes con P/E Forward, Beta e indicadores institucionales.' : 'Leading equities with Forward P/E, Beta, and institutional indicators.',
+                  label: tx('Acciones (S&P/NDX)', 'Equities (S&P/NDX)'),
+                  desc: tx('Acciones líderes con P/E Forward, Beta e indicadores institucionales.', 'Leading equities with Forward P/E, Beta, and institutional indicators.'),
                 },
                 {
                   id: 'ETF',
                   label: 'ETFs',
-                  desc: isES ? 'Fondos cotizados sectoriales, renta fija y materias primas.' : 'Sector, fixed-income, and commodity exchange-traded funds.',
+                  desc: tx('Fondos cotizados sectoriales, renta fija y materias primas.', 'Sector, fixed-income, and commodity exchange-traded funds.'),
                 },
                 {
                   id: 'CRYPTO',
                   label: 'Crypto',
-                  desc: isES ? 'Activos digitales spot con Funding Rate perpetuo y Open Interest.' : 'Spot digital assets with perpetual Funding Rate and Open Interest.',
+                  desc: tx('Activos digitales spot con Funding Rate perpetuo y Open Interest.', 'Spot digital assets with perpetual Funding Rate and Open Interest.'),
                 },
                 {
                   id: 'RATES',
-                  label: isES ? 'Tasas & Curvas' : 'Rates & Curves',
-                  desc: isES ? 'Rendimientos soberanos y curvas 3D/2D en 42 países.' : 'Sovereign yields and 3D/2D curves across 42 countries.',
+                  label: tx('Tasas & Curvas', 'Rates & Curves'),
+                  desc: tx('Rendimientos soberanos y curvas 3D/2D en 42 países.', 'Sovereign yields and 3D/2D curves across 42 countries.'),
                 },
                 {
                   id: 'FIXED_INCOME',
-                  label: isES ? 'Bonos US Treasury' : 'US Treasuries',
-                  desc: isES ? 'Bonos del Tesoro de EE.UU. con Duración Modificada y Convexidad.' : 'US Treasury bonds with Modified Duration and Convexity.',
+                  label: tx('Bonos US Treasury', 'US Treasuries'),
+                  desc: tx('Bonos del Tesoro de EE.UU. con Duración Modificada y Convexidad.', 'US Treasury bonds with Modified Duration and Convexity.'),
                 },
                 {
                   id: 'FX',
-                  label: isES ? 'Divisas (FX)' : 'FX Currencies',
-                  desc: isES ? 'Pares de divisas G10 y EM con diferencial de tasas (Carry) y conversor 61 monedas.' : 'G10 & EM currency pairs with interest rate carry and 61-CCY converter.',
+                  label: tx('Divisas (FX)', 'FX Currencies'),
+                  desc: tx('Pares de divisas G10 y EM con diferencial de tasas (Carry) y conversor 61 monedas.', 'G10 & EM currency pairs with interest rate carry and 61-CCY converter.'),
                 },
                 {
                   id: 'COMMODITY',
-                  label: isES ? 'Materias Primas' : 'Commodities',
-                  desc: isES ? 'Energía, metales y agro con estructura temporal Contango / Backwardation.' : 'Energy, metals, and agriculture with Contango / Backwardation term structure.',
+                  label: tx('Materias Primas', 'Commodities'),
+                  desc: tx('Energía, metales y agro con estructura temporal Contango / Backwardation.', 'Energy, metals, and agriculture with Contango / Backwardation term structure.'),
                 },
                 {
                   id: 'DERIVATIVES_VOL',
-                  label: isES ? 'Derivados & Vol' : 'Derivatives & Vol',
-                  desc: isES ? 'Opciones y futuros de volatilidad con Superficie IV 3D y simulador Payoff P&L.' : 'Options and volatility futures with 3D IV Surface and P&L Payoff simulator.',
+                  label: tx('Derivados & Vol', 'Derivatives & Vol'),
+                  desc: tx('Opciones y futuros de volatilidad con Superficie IV 3D y simulador Payoff P&L.', 'Options and volatility futures with 3D IV Surface and P&L Payoff simulator.'),
                 },
                 {
                   id: 'CASH',
                   label: 'Cash & SOFR',
-                  desc: isES ? 'Liquidez monetaria, tasas repo SOFR y letras del Tesoro a corto plazo.' : 'Money market liquidity, SOFR repo rates, and short-term T-Bills.',
+                  desc: tx('Liquidez monetaria, tasas repo SOFR y letras del Tesoro a corto plazo.', 'Money market liquidity, SOFR repo rates, and short-term T-Bills.'),
                 },
-              ].sort((a, b) => a.label.localeCompare(b.label, isES ? 'es' : 'en')),
+              ].sort((a, b) => a.label.localeCompare(b.label, tx('es', 'en'))),
             ].map((tab) => {
               const active = categoryFilter === tab.id;
               return (
@@ -1939,7 +1831,7 @@ export default function MarketAnomaliesView({
                   key={tab.id}
                   title={tab.label}
                   description={tab.desc}
-                  hint={isES ? 'Click para filtrar clase de activo' : 'Click to filter asset class'}
+                  hint={tx('Click para filtrar clase de activo', 'Click to filter asset class')}
                   badge={tab.id}
                   placement="bottom"
                 >
@@ -2036,7 +1928,7 @@ export default function MarketAnomaliesView({
             }}
           >
             <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
-              {isES ? 'VOLUMEN AGREGADO (24H)' : '24H AGGREGATE VOLUME'}
+              {tx('VOLUMEN AGREGADO (24H)', '24H AGGREGATE VOLUME')}
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '3px' }}>
               <span className="mono-metric" style={{ fontSize: '19px', fontWeight: 900, color: '#f8fafc' }}>
@@ -2047,7 +1939,7 @@ export default function MarketAnomaliesView({
               </span>
             </div>
             <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
-              {pulseMetrics.totalCount} {isES ? 'activos monitoreados' : 'tracked assets'}
+              {pulseMetrics.totalCount} {tx('activos monitoreados', 'tracked assets')}
             </div>
           </div>
 
@@ -2062,7 +1954,7 @@ export default function MarketAnomaliesView({
             }}
           >
             <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
-              {isES ? 'RSI PROMEDIO (14D)' : 'AVERAGE RSI (14D)'}
+              {tx('RSI PROMEDIO (14D)', 'AVERAGE RSI (14D)')}
             </div>
             <div
               className="mono-metric"
@@ -2077,12 +1969,8 @@ export default function MarketAnomaliesView({
             </div>
             <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
               {pulseMetrics.avgRsiNum >= 50
-                ? isES
-                  ? 'Impulso comprador (>50)'
-                  : 'Bullish momentum (>50)'
-                : isES
-                  ? 'Presión vendedora (<50)'
-                  : 'Bearish pressure (<50)'}
+                ? tx('Impulso comprador (>50)', 'Bullish momentum (>50)')
+                : tx('Presión vendedora (<50)', 'Bearish pressure (<50)')}
             </div>
           </div>
 
@@ -2097,7 +1985,7 @@ export default function MarketAnomaliesView({
             }}
           >
             <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
-              {isES ? 'RÉGIMEN NORMAL (P-06)' : 'NORMAL REGIME (P-06)'}
+              {tx('RÉGIMEN NORMAL (P-06)', 'NORMAL REGIME (P-06)')}
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '3px' }}>
               <span className="mono-metric" style={{ fontSize: '19px', fontWeight: 900, color: '#10b981' }}>
@@ -2109,12 +1997,8 @@ export default function MarketAnomaliesView({
             </div>
             <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
               {pulseMetrics.topAnomaly
-                ? isES
-                  ? `Mayor anomalía: ${pulseMetrics.topAnomaly.sym} (${pulseMetrics.topAnomaly.anomalyScore.toFixed(2)})`
-                  : `Top anomaly: ${pulseMetrics.topAnomaly.sym} (${pulseMetrics.topAnomaly.anomalyScore.toFixed(2)})`
-                : isES
-                  ? 'Sin anomalías críticas'
-                  : 'No critical anomalies'}
+                ? txTpl("Mayor anomalía: {0} ({1})", [pulseMetrics.topAnomaly.sym, pulseMetrics.topAnomaly.anomalyScore.toFixed(2)], "Top anomaly: {0} ({1})", [pulseMetrics.topAnomaly.sym, pulseMetrics.topAnomaly.anomalyScore.toFixed(2)])
+                : tx('Sin anomalías críticas', 'No critical anomalies')}
             </div>
           </div>
 
@@ -2129,7 +2013,7 @@ export default function MarketAnomaliesView({
             }}
           >
             <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
-              {isES ? 'MAYOR DESVÍO VOLUMEN (20D)' : 'TOP VOLUME Z-SCORE (20D)'}
+              {tx('MAYOR DESVÍO VOLUMEN (20D)', 'TOP VOLUME Z-SCORE (20D)')}
             </div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '3px' }}>
               <span
@@ -2210,33 +2094,25 @@ export default function MarketAnomaliesView({
               {[
                 {
                   id: 'table',
-                  label: isES ? 'Tabla' : 'Table',
-                  desc: isES
-                    ? 'Tabla con buscador integrado, sparklines 24h y métricas por clase de activo.'
-                    : 'Table with integrated search, 24h sparklines, and asset-class specific metrics.',
+                  label: tx('Tabla', 'Table'),
+                  desc: tx('Tabla con buscador integrado, sparklines 24h y métricas por clase de activo.', 'Table with integrated search, 24h sparklines, and asset-class specific metrics.'),
                 },
                 {
                   id: 'orbital',
-                  label: isES ? 'Orbital' : 'Orbital',
-                  desc: isES
-                    ? 'Topología orbital de 3 anillos concéntricos impulsada por el indicador seleccionado.'
-                    : '3-ring concentric orbital topology driven by the selected indicator.',
+                  label: tx('Orbital', 'Orbital'),
+                  desc: tx('Topología orbital de 3 anillos concéntricos impulsada por el indicador seleccionado.', '3-ring concentric orbital topology driven by the selected indicator.'),
                 },
                 {
                   id: 'heatmap',
-                  label: isES ? 'Mapa de Calor' : 'Heatmap',
-                  desc: isES
-                    ? 'Mosaico proporcional de mercado coloreado según la métrica cuantitativa elegida.'
-                    : 'Proportional market treemap colored by the selected quantitative metric.',
+                  label: tx('Mapa de Calor', 'Heatmap'),
+                  desc: tx('Mosaico proporcional de mercado coloreado según la métrica cuantitativa elegida.', 'Proportional market treemap colored by the selected quantitative metric.'),
                 },
                 ...(marketsToolsMode === 'v4-tab'
                   ? [
                       {
                         id: 'tools',
-                        label: isES ? 'Herramientas' : 'Main Tools',
-                        desc: isES
-                          ? 'Lanzador de curvas soberanas, superficie de volatilidad, payoffs y FX.'
-                          : 'Launcher for 3D sovereign curves, volatility surfaces, options payoffs, and FX.',
+                        label: tx('Herramientas', 'Main Tools'),
+                        desc: tx('Lanzador de curvas soberanas, superficie de volatilidad, payoffs y FX.', 'Launcher for 3D sovereign curves, volatility surfaces, options payoffs, and FX.'),
                       },
                     ]
                   : []),
@@ -2315,9 +2191,7 @@ export default function MarketAnomaliesView({
                 <HoverTooltip
                   title="Main Tools"
                   description={
-                    isES
-                      ? 'Despliega los 4 motores especiales: Curva Soberana 3D, Superficie Vol 3D, Payoff P&L y Conversor FX.'
-                      : 'Opens the 4 specialized quant engines: 3D Sovereign Curve, 3D Vol Surface, Options Payoff & FX Converter.'
+                    tx('Despliega los 4 motores especiales: Curva Soberana 3D, Superficie Vol 3D, Payoff P&L y Conversor FX.', 'Opens the 4 specialized quant engines: 3D Sovereign Curve, 3D Vol Surface, Options Payoff & FX Converter.')
                   }
                   badge="4 ENGINES"
                   placement="bottom-right"
@@ -2428,7 +2302,7 @@ export default function MarketAnomaliesView({
                     color: '#64748b',
                   }}
                 >
-                  {isES ? 'INDICADOR:' : 'INDICATOR:'}
+                  {tx('INDICADOR:', 'INDICATOR:')}
                 </span>
 
                 {METRIC_OPTIONS.map((m) => {
@@ -2473,7 +2347,7 @@ export default function MarketAnomaliesView({
                   <Search size={12} style={{ color: 'var(--ui-accent)', flexShrink: 0 }} />
                   <input
                     type="text"
-                    placeholder={isES ? 'Buscar activo (↑↓ Enter)...' : 'Search ticker or asset (↑↓ Enter)...'}
+                    placeholder={tx('Buscar activo (↑↓ Enter)...', 'Search ticker or asset (↑↓ Enter)...')}
                     value={assetSearch}
                     onFocus={() => setL1VisualSearchOpen(true)}
                     onBlur={() => setTimeout(() => setL1VisualSearchOpen(false), 160)}
@@ -2605,38 +2479,34 @@ export default function MarketAnomaliesView({
           const ASSET_CLASS_LANES = [
             {
               laneId: 'LANE_RATES',
-              title: isES ? 'Tasas, Bonos & Liquidez' : 'Rates, Bonds & Cash',
-              subtitle: isES ? 'Curvas Soberanas 3D & Spreads' : '3D Sovereign Curves & Spreads',
+              title: tx('Tasas, Bonos & Liquidez', 'Rates, Bonds & Cash'),
+              subtitle: tx('Curvas Soberanas 3D & Spreads', '3D Sovereign Curves & Spreads'),
               cats: ['RATES', 'FIXED_INCOME', 'CASH'],
-              sharedLabels: isES
-                ? ['Tasas & Curvas', 'Bonos US Treasury', 'Cash & SOFR']
-                : ['Rates & Curves', 'US Treasuries', 'Cash & SOFR'],
+              sharedLabels: txList(['Tasas & Curvas', 'Bonos US Treasury', 'Cash & SOFR'], ['Rates & Curves', 'US Treasuries', 'Cash & SOFR']),
               isShared: true,
             },
             {
               laneId: 'LANE_EQUITY_DERIV',
-              title: isES ? 'Derivados, Acciones, Índices & Crypto' : 'Derivatives, Equities, Indices & Crypto',
-              subtitle: isES ? 'Superficie IV 3D & Payoff Multi-Leg' : '3D IV Surface & Multi-Leg Payoff',
+              title: tx('Derivados, Acciones, Índices & Crypto', 'Derivatives, Equities, Indices & Crypto'),
+              subtitle: tx('Superficie IV 3D & Payoff Multi-Leg', '3D IV Surface & Multi-Leg Payoff'),
               cats: ['DERIVATIVES_VOL', 'EQUITY', 'INDEX', 'ETF', 'CRYPTO'],
-              sharedLabels: isES
-                ? ['Derivados & Vol', 'Acciones', 'Índices', 'ETFs', 'Crypto']
-                : ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs', 'Crypto'],
+              sharedLabels: txList(['Derivados & Vol', 'Acciones', 'Índices', 'ETFs', 'Crypto'], ['Derivatives & Vol', 'Equities', 'Indices', 'ETFs', 'Crypto']),
               isShared: true,
             },
             {
               laneId: 'LANE_FX',
-              title: isES ? 'Divisas (FX Currencies)' : 'FX Currencies',
-              subtitle: isES ? 'Matriz 61 Monedas & Carry Trade' : '61-Currency Matrix & Carry Trade',
+              title: tx('Divisas (FX Currencies)', 'FX Currencies'),
+              subtitle: tx('Matriz 61 Monedas & Carry Trade', '61-Currency Matrix & Carry Trade'),
               cats: ['FX'],
-              sharedLabels: isES ? ['Divisas (FX)'] : ['FX Currencies'],
+              sharedLabels: txList(['Divisas (FX)'], ['FX Currencies']),
               isShared: false,
             },
             {
               laneId: 'LANE_COMMODITIES',
-              title: isES ? 'Materias Primas (Commodities)' : 'Commodities',
-              subtitle: isES ? 'Curva Forward 3D/2D & Roll Yield' : '3D/2D Forward Curve & Roll Yield',
+              title: tx('Materias Primas (Commodities)', 'Commodities'),
+              subtitle: tx('Curva Forward 3D/2D & Roll Yield', '3D/2D Forward Curve & Roll Yield'),
               cats: ['COMMODITY'],
-              sharedLabels: isES ? ['Materias Primas'] : ['Commodities'],
+              sharedLabels: txList(['Materias Primas'], ['Commodities']),
               isShared: false,
             },
           ];
@@ -2741,9 +2611,9 @@ export default function MarketAnomaliesView({
             dynStatValue = `BE ${pData.breakevenText} • Γ ${pData.greeks.gamma}`;
             dynStatColor = '#10b981';
             dynSeriesLegend = [
-              { label: isES ? 'P&L al Vencimiento ($)' : 'Expiration P&L ($)', color: '#10b981', dashed: false },
-              { label: isES ? 'P&L Hoy (T+0 BS)' : 'Today P&L (T+0 BS)', color: '#38bdf8', dashed: true },
-              { label: isES ? 'Equilibrio ($0)' : 'Breakeven ($0)', color: 'rgba(255,255,255,0.5)', dashed: true },
+              { label: tx('P&L al Vencimiento ($)', 'Expiration P&L ($)'), color: '#10b981', dashed: false },
+              { label: tx('P&L Hoy (T+0 BS)', 'Today P&L (T+0 BS)'), color: '#38bdf8', dashed: true },
+              { label: tx('Equilibrio ($0)', 'Breakeven ($0)'), color: 'rgba(255,255,255,0.5)', dashed: true },
             ];
             dynPreviewData = pData.payoffSeries.map((pt) => ({
               time: pt.time,
@@ -2779,7 +2649,7 @@ export default function MarketAnomaliesView({
             dynStatColor = fwdObj.isBackwardation ? '#10b981' : '#f59e0b';
             dynSeriesLegend = [
               { label: `${sym} Forward Curve (M1→M24)`, color: dynStatColor, dashed: false },
-              { label: isES ? 'Referencia Spot' : 'Spot Reference', color: '#38bdf8', dashed: true },
+              { label: tx('Referencia Spot', 'Spot Reference'), color: '#38bdf8', dashed: true },
             ];
             dynPreviewData = fwdObj.curveSeries.map((pt) => ({
               time: pt.time,
@@ -2847,10 +2717,10 @@ export default function MarketAnomaliesView({
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>
                   <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--ui-accent)', letterSpacing: '0.06em' }}>
-                    {isES ? '1. CLASES DE ACTIVO' : '1. ASSET CLASSES'}
+                    {tx('1. CLASES DE ACTIVO', '1. ASSET CLASSES')}
                   </span>
                   <span className="mono-metric" style={{ fontSize: '0.54rem', color: 'var(--text-dim)' }}>
-                    {isES ? '4 FAMILIAS' : '4 FAMILIES'}
+                    {tx('4 FAMILIAS', '4 FAMILIES')}
                   </span>
                 </div>
 
@@ -2906,7 +2776,7 @@ export default function MarketAnomaliesView({
                               fontWeight: 800,
                             }}
                           >
-                            {lane.isShared ? (isES ? 'COMPARTIDO' : 'SHARED') : isES ? 'EXCLUSIVO' : 'DEDICATED'}
+                            {lane.isShared ? (tx('COMPARTIDO', 'SHARED')) : tx('EXCLUSIVO', 'DEDICATED')}
                           </span>
                         </div>
                         <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'wrap' }}>
@@ -2950,7 +2820,7 @@ export default function MarketAnomaliesView({
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>
                     <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--ui-accent)', letterSpacing: '0.06em' }}>
-                      {isES ? '2. INSTRUMENTO PRINCIPAL & EXPLICACIÓN' : '2. PRINCIPAL INSTRUMENT & GUIDE'}
+                      {tx('2. INSTRUMENTO PRINCIPAL & EXPLICACIÓN', '2. PRINCIPAL INSTRUMENT & GUIDE')}
                     </span>
 
                     {/* If the lane has 2 shared instruments (Derivatives/Equities: 3D Vol Surface vs Payoff), let user switch */}
@@ -2978,7 +2848,7 @@ export default function MarketAnomaliesView({
                                 cursor: 'pointer',
                               }}
                             >
-                              {sib.id === 'vol-surface-3d' ? (isES ? '📐 Superficie IV 3D' : '📐 3D IV Surface') : isES ? '⚡ Simulador Payoff' : '⚡ Payoff Lab'}
+                              {sib.id === 'vol-surface-3d' ? (tx('📐 Superficie IV 3D', '📐 3D IV Surface')) : tx('⚡ Simulador Payoff', '⚡ Payoff Lab')}
                             </button>
                           );
                         })}
@@ -3021,7 +2891,7 @@ export default function MarketAnomaliesView({
                     }}
                   >
                     <strong style={{ color: 'var(--ui-accent)' }}>
-                      {isES ? '¿Qué muestra y cómo orientarse? ' : 'What it shows & how to read it: '}
+                      {tx('¿Qué muestra y cómo orientarse? ', 'What it shows & how to read it: ')}
                     </strong>
                     {focusedTool.howItWorks}
                   </div>
@@ -3049,7 +2919,7 @@ export default function MarketAnomaliesView({
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', flexWrap: 'wrap' }}>
                     <span className="mono-metric" style={{ fontSize: '0.54rem', color: 'var(--text-dim)', fontWeight: 700 }}>
-                      {focusedTool.isShared ? (isES ? 'ACTIVOS QUE LO COMPARTEN:' : 'SHARED ACROSS:') : isES ? 'CLASE DE ACTIVO:' : 'ASSET CLASS:'}
+                      {focusedTool.isShared ? (tx('ACTIVOS QUE LO COMPARTEN:', 'SHARED ACROSS:')) : tx('CLASE DE ACTIVO:', 'ASSET CLASS:')}
                     </span>
                     {focusedTool.sharedAssetClasses.map((ac) => (
                       <span
@@ -3088,7 +2958,7 @@ export default function MarketAnomaliesView({
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>
                   <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--ui-accent)', letterSpacing: '0.06em' }}>
-                    {isES ? '3. VISTA PREVIA & LANZADOR' : '3. PREVIEW & LAUNCHER'}
+                    {tx('3. VISTA PREVIA & LANZADOR', '3. PREVIEW & LAUNCHER')}
                   </span>
                   <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--text-dim)' }}>
                     {focusedTool.dimension}
@@ -3239,7 +3109,7 @@ export default function MarketAnomaliesView({
                 <div style={{ position: 'relative' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.35rem' }}>
                     <span className="mono-metric" style={{ fontSize: '0.55rem', color: 'var(--text-dim)', fontWeight: 700 }}>
-                      {isES ? 'BUSCAR ACTIVO COMPATIBLE:' : 'SEARCH COMPATIBLE ASSET:'}
+                      {tx('BUSCAR ACTIVO COMPATIBLE:', 'SEARCH COMPATIBLE ASSET:')}
                     </span>
                     <span
                       className="mono-metric"
@@ -3303,9 +3173,7 @@ export default function MarketAnomaliesView({
                         }
                       }}
                       placeholder={
-                        isES
-                          ? `Buscar entre ${compatibleToolAssets.length} activos compatibles (↑↓ Enter)...`
-                          : `Search across ${compatibleToolAssets.length} compatible assets (↑↓ Enter)...`
+                        txTpl("Buscar entre {0} activos compatibles (↑↓ Enter)...", [compatibleToolAssets.length], "Search across {0} compatible assets (↑↓ Enter)...", [compatibleToolAssets.length])
                       }
                       style={{
                         background: 'transparent',
@@ -3350,7 +3218,7 @@ export default function MarketAnomaliesView({
                     >
                       {filteredToolMatches.length === 0 ? (
                         <div className="mono-metric" style={{ padding: '0.5rem', fontSize: '0.62rem', color: 'var(--text-dim)', textAlign: 'center' }}>
-                          {isES ? 'Sin activos compatibles para esta búsqueda' : 'No compatible assets match this search'}
+                          {tx('Sin activos compatibles para esta búsqueda', 'No compatible assets match this search')}
                         </div>
                       ) : (
                         filteredToolMatches.map((item, idx) => {
@@ -3425,9 +3293,7 @@ export default function MarketAnomaliesView({
                     textAlign: 'center',
                   }}
                 >
-                  {isES
-                    ? `Abrir herramienta con ${effectivePreviewAsset.sym} ↗`
-                    : `Open tool with ${effectivePreviewAsset.sym} ↗`}
+                  {txTpl("Abrir herramienta con {0} ↗", [effectivePreviewAsset.sym], "Open tool with {0} ↗", [effectivePreviewAsset.sym])}
                 </button>
               </div>
             </div>
@@ -3485,7 +3351,7 @@ export default function MarketAnomaliesView({
                       <Search size={12} strokeWidth={2.3} style={{ color: 'var(--text-dim)', flexShrink: 0 }} />
                       <input
                         type="text"
-                        placeholder={isES ? 'Buscar ticker o activo...' : 'Search ticker or asset...'}
+                        placeholder={tx('Buscar ticker o activo...', 'Search ticker or asset...')}
                         value={assetSearch}
                         onChange={(e) => {
                           setAssetSearch(e.target.value);
@@ -3538,16 +3404,16 @@ export default function MarketAnomaliesView({
                   </th>
 
                   <th onClick={() => handleSort('price')} style={{ padding: '6px 10px 10px', cursor: 'pointer' }}>
-                    {isES ? 'Precio' : 'Price'}
+                    {tx('Precio', 'Price')}
                   </th>
                   <th onClick={() => handleSort('chg')} style={{ padding: '6px 10px 10px', cursor: 'pointer' }}>
                     24h %
                   </th>
                   <th style={{ padding: '6px 10px 10px', textAlign: 'center' }}>
-                    {isES ? 'Tendencia' : 'Sparkline'}
+                    {tx('Tendencia', 'Sparkline')}
                   </th>
                   <th onClick={() => handleSort('vol')} style={{ padding: '6px 10px 10px', cursor: 'pointer' }}>
-                    {isES ? 'Volumen (24h)' : 'Volume (24h)'}
+                    {tx('Volumen (24h)', 'Volume (24h)')}
                   </th>
                   {categoryFilter === 'ALL' ? (
                     <>
@@ -3555,7 +3421,7 @@ export default function MarketAnomaliesView({
                         Vol Z-Score (20d)
                       </th>
                       <th onClick={() => handleSort('rvol')} style={{ padding: '6px 10px 10px', cursor: 'pointer' }}>
-                        {isES ? 'Vol. Realizada' : 'Realized Vol'}
+                        {tx('Vol. Realizada', 'Realized Vol')}
                       </th>
                     </>
                   ) : (
@@ -3619,12 +3485,8 @@ export default function MarketAnomaliesView({
                             }}
                             title={
                               watchlistSyms.includes(row.sym)
-                                ? isES
-                                  ? 'Quitar de Watchlist'
-                                  : 'Remove from Watchlist'
-                                : isES
-                                  ? 'Agregar a Watchlist'
-                                  : 'Add to Watchlist'
+                                ? tx('Quitar de Watchlist', 'Remove from Watchlist')
+                                : tx('Agregar a Watchlist', 'Add to Watchlist')
                             }
                             style={{
                               background: 'transparent',
@@ -3815,12 +3677,8 @@ export default function MarketAnomaliesView({
                   }}
                 >
                   {orbitalItems.length >= screenerRows.length
-                    ? isES
-                      ? `MOSTRANDO TODOS LOS ${screenerRows.length} ACTIVOS • ORDENADOS POR ${spotlightMetricInfo.label.toUpperCase()}`
-                      : `SHOWING ALL ${screenerRows.length} ASSETS • RANKED BY ${spotlightMetricInfo.label.toUpperCase()}`
-                    : isES
-                    ? `TOP ${orbitalItems.length} POR ${spotlightMetricInfo.label.toUpperCase()} (DE ${screenerRows.length} ACTIVOS)`
-                    : `TOP ${orbitalItems.length} BY ${spotlightMetricInfo.label.toUpperCase()} (OF ${screenerRows.length} ASSETS)`}
+                    ? txTpl("MOSTRANDO TODOS LOS {0} ACTIVOS • ORDENADOS POR {1}", [screenerRows.length, spotlightMetricInfo.label.toUpperCase()], "SHOWING ALL {0} ASSETS • RANKED BY {1}", [screenerRows.length, spotlightMetricInfo.label.toUpperCase()])
+                    : txTpl("TOP {0} POR {1} (DE {2} ACTIVOS)", [orbitalItems.length, spotlightMetricInfo.label.toUpperCase(), screenerRows.length], "TOP {0} BY {1} (OF {2} ASSETS)", [orbitalItems.length, spotlightMetricInfo.label.toUpperCase(), screenerRows.length])}
                 </div>
 
                 {screenerRows.length > 12 && (
@@ -3839,7 +3697,7 @@ export default function MarketAnomaliesView({
                       { val: 12, label: 'Top 12' },
                       { val: 20, label: 'Top 20' },
                       { val: 32, label: 'Top 32' },
-                      { val: 999, label: isES ? `Todos (${screenerRows.length})` : `All (${screenerRows.length})` },
+                      { val: 999, label: txTpl("Todos ({0})", [screenerRows.length], "All ({0})", [screenerRows.length]) },
                     ]
                       .filter((opt, idx, arr) => opt.val < screenerRows.length || idx === arr.length - 1)
                       .map((opt) => {
@@ -4278,12 +4136,10 @@ export default function MarketAnomaliesView({
         {/* Left: Boxless Neon Back Button + Sleek Ticker Search Switcher */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
           <HoverTooltip
-            title={isES ? 'Volver al Screener Global' : 'Back to Global Screener'}
+            title={tx('Volver al Screener Global', 'Back to Global Screener')}
             badge="LEVEL 1"
             description={
-              isES
-                ? 'Regresa al Screener Global (Tabla, Orbital, Mapa de Calor y Main Tools).'
-                : 'Returns to the Level 1 Global Screener (Table, Orbital, Heatmap, and Main Tools).'
+              tx('Regresa al Screener Global (Tabla, Orbital, Mapa de Calor y Main Tools).', 'Returns to the Level 1 Global Screener (Table, Orbital, Heatmap, and Main Tools).')
             }
             placement="bottom"
           >
@@ -4305,7 +4161,7 @@ export default function MarketAnomaliesView({
               }}
             >
               <ArrowLeft size={13} strokeWidth={2.4} />
-              <span>{isES ? 'Todos los Mercados' : 'All Markets'}</span>
+              <span>{tx('Todos los Mercados', 'All Markets')}</span>
             </button>
           </HoverTooltip>
 
@@ -4329,7 +4185,7 @@ export default function MarketAnomaliesView({
               <Search size={12} style={{ color: 'var(--ui-accent)', flexShrink: 0 }} />
               <input
                 type="text"
-                placeholder={isES ? `Cambiar activo (${currentAsset.sym})...` : `Switch ticker (${currentAsset.sym})...`}
+                placeholder={txTpl("Cambiar activo ({0})...", [currentAsset.sym], "Switch ticker ({0})...", [currentAsset.sym])}
                 value={l2TickerQuery}
                 onFocus={() => {
                   setL2SearchOpen(true);
@@ -4456,16 +4312,12 @@ export default function MarketAnomaliesView({
             {
               id: 'analytics',
               label: 'Analytics',
-              desc: isES
-                ? 'Mesa cuantitativa: gráficos técnicos, comparador relativo, microestructura y superficies 3D/2D.'
-                : 'Quantitative desk: technical overlays, relative comparison, microstructure, and 3D/2D surfaces.',
+              desc: tx('Mesa cuantitativa: gráficos técnicos, comparador relativo, microestructura y superficies 3D/2D.', 'Quantitative desk: technical overlays, relative comparison, microstructure, and 3D/2D surfaces.'),
             },
             {
               id: 'research',
               label: 'Research',
-              desc: isES
-                ? 'Mesa documental e IA: tesis ejecutiva, buscador RAG (SEC 10-K / Bancos Centrales), drivers y cable FinBERT.'
-                : 'Documentary & AI desk: executive thesis, RAG search (SEC 10-K / Central Banks), drivers, and FinBERT wire.',
+              desc: tx('Mesa documental e IA: tesis ejecutiva, buscador RAG (SEC 10-K / Bancos Centrales), drivers y cable FinBERT.', 'Documentary & AI desk: executive thesis, RAG search (SEC 10-K / Central Banks), drivers, and FinBERT wire.'),
             },
           ].map((sec) => {
             const active = l2Section === sec.id;
@@ -4500,9 +4352,7 @@ export default function MarketAnomaliesView({
                 title="P-06 Isolation Forest Re-Score"
                 badge={liveInference ? `${liveInference.latencyMs}ms` : 'CLOUD RUN'}
                 description={
-                  isES
-                    ? 'Ejecuta inferencia estadística en vivo para recalcular el puntaje de anomalía (0.00 a 1.00) del activo.'
-                    : 'Runs live statistical inference to recompute the asset anomaly score (0.00 to 1.00).'
+                  tx('Ejecuta inferencia estadística en vivo para recalcular el puntaje de anomalía (0.00 a 1.00) del activo.', 'Runs live statistical inference to recompute the asset anomaly score (0.00 to 1.00).')
                 }
                 placement="bottom"
               >
@@ -4576,7 +4426,7 @@ export default function MarketAnomaliesView({
               }}
             >
               <Radio size={12} />
-              <span>{isES ? '+ SIMULAR NOTICIA EN VIVO' : '+ SIMULATE INCOMING NEWS'}</span>
+              <span>{tx('+ SIMULAR NOTICIA EN VIVO', '+ SIMULATE INCOMING NEWS')}</span>
             </button>
           )}
         </div>
@@ -4673,12 +4523,8 @@ export default function MarketAnomaliesView({
                     }}
                   >
                     {isWatchedHero
-                      ? isES
-                        ? '★ EN WATCHLIST'
-                        : '★ IN WATCHLIST'
-                      : isES
-                        ? '☆ + WATCHLIST'
-                        : '☆ + WATCHLIST'}
+                      ? tx('★ EN WATCHLIST', '★ IN WATCHLIST')
+                      : tx('☆ + WATCHLIST', '☆ + WATCHLIST')}
                   </button>
                 </div>
 
@@ -4733,9 +4579,7 @@ export default function MarketAnomaliesView({
                 color: '#ffffff',
                 subColor: currentAsset.volChg24h.startsWith('+') ? '#10b981' : '#f43f5e',
                 isClassSpecific: false,
-                desc: isES
-                  ? 'Volumen institucional operado en las últimas 24 horas y variación porcentual.'
-                  : '24-hour institutional trading volume and daily percentage change.',
+                desc: tx('Volumen institucional operado en las últimas 24 horas y variación porcentual.', '24-hour institutional trading volume and daily percentage change.'),
               },
               {
                 label: catSpec.col1Label,
@@ -4744,9 +4588,7 @@ export default function MarketAnomaliesView({
                 color: catSpec.col1Color || '#10b981',
                 subColor: 'var(--text-dim)',
                 isClassSpecific: true,
-                desc: isES
-                  ? `Métrica #1 exclusiva de la clase ${effectiveAssetForSpec.cat}.`
-                  : `Primary metric exclusive to the ${effectiveAssetForSpec.cat} asset class.`,
+                desc: txTpl("Métrica #1 exclusiva de la clase {0}.", [effectiveAssetForSpec.cat], "Primary metric exclusive to the {0} asset class.", [effectiveAssetForSpec.cat]),
               },
               {
                 label: catSpec.col2Label,
@@ -4755,9 +4597,7 @@ export default function MarketAnomaliesView({
                 color: catSpec.col2Color || '#38bdf8',
                 subColor: 'var(--text-dim)',
                 isClassSpecific: true,
-                desc: isES
-                  ? `Métrica #2 exclusiva de la clase ${effectiveAssetForSpec.cat}.`
-                  : `Secondary metric exclusive to the ${effectiveAssetForSpec.cat} asset class.`,
+                desc: txTpl("Métrica #2 exclusiva de la clase {0}.", [effectiveAssetForSpec.cat], "Secondary metric exclusive to the {0} asset class.", [effectiveAssetForSpec.cat]),
               },
               {
                 label: 'RSI (14) / MACD',
@@ -4766,9 +4606,7 @@ export default function MarketAnomaliesView({
                 color: currentAsset.indicators.rsi14 >= 50 ? '#10b981' : '#f43f5e',
                 subColor: 'var(--text-dim)',
                 isClassSpecific: false,
-                desc: isES
-                  ? 'Índice de Fuerza Relativa (14 períodos) y régimen de momentum MACD.'
-                  : '14-period Relative Strength Index and MACD momentum signal.',
+                desc: tx('Índice de Fuerza Relativa (14 períodos) y régimen de momentum MACD.', '14-period Relative Strength Index and MACD momentum signal.'),
               },
               {
                 label: 'P-06 ANOMALY',
@@ -4777,9 +4615,7 @@ export default function MarketAnomaliesView({
                 color: scoreColor,
                 subColor: scoreColor,
                 isClassSpecific: false,
-                desc: isES
-                  ? 'Puntaje de anomalía estadística (0.00 a 1.00) calculado por el motor Isolation Forest.'
-                  : 'Statistical anomaly score (0.00 to 1.00) computed by the Isolation Forest engine.',
+                desc: tx('Puntaje de anomalía estadística (0.00 a 1.00) calculado por el motor Isolation Forest.', 'Statistical anomaly score (0.00 to 1.00) computed by the Isolation Forest engine.'),
               },
             ];
 
@@ -4867,7 +4703,7 @@ export default function MarketAnomaliesView({
               }}
             >
               <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8' }}>
-                {isES ? 'NOTA PONDERADA TOTAL' : 'WEIGHTED COMPOSITE'}
+                {tx('NOTA PONDERADA TOTAL', 'WEIGHTED COMPOSITE')}
               </span>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem' }}>
                 <span
@@ -4880,7 +4716,7 @@ export default function MarketAnomaliesView({
                   {researchBrief.compositeFormatted}
                 </span>
                 <span style={{ fontSize: '11.5px', color: '#64748b' }}>
-                  ({isES ? 'Fund.' : 'Filings'} {researchBrief.filingNetFormatted} • {isES ? 'Not.' : 'News'} {assetFinbertPolarity.formattedInt})
+                  ({tx('Fund.', 'Filings')} {researchBrief.filingNetFormatted} • {tx('Not.', 'News')} {assetFinbertPolarity.formattedInt})
                 </span>
               </div>
             </div>
@@ -4903,7 +4739,7 @@ export default function MarketAnomaliesView({
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                 <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8' }}>
-                  {isES ? 'SENTIMIENTO NOTICIAS' : 'NEWS SENTIMENT'}
+                  {tx('SENTIMIENTO NOTICIAS', 'NEWS SENTIMENT')}
                 </span>
                 <span style={{ fontSize: '15px', fontWeight: 800, color: assetFinbertPolarity.color }}>
                   {assetFinbertPolarity.formattedInt}
@@ -5044,9 +4880,9 @@ export default function MarketAnomaliesView({
                 return [
                   { label: `${currentAsset.sym} 24H (%)`, val: currentAsset.chg, sub: currentAsset.cat, color: currentAsset.isPositive ? '#10b981' : '#f43f5e', accent: true },
                   {
-                    label: peerAssetObj ? `VS ${peerAssetObj.sym} (%)` : isES ? 'PAR COMPARADO' : 'PEER RETURN',
-                    val: peerAssetObj ? peerAssetObj.chg : isES ? 'Usar buscador ↑' : 'Use search ↑',
-                    sub: peerAssetObj ? peerAssetObj.cat : isES ? 'Sin seleccionar' : 'None selected',
+                    label: peerAssetObj ? `VS ${peerAssetObj.sym} (%)` : tx('PAR COMPARADO', 'PEER RETURN'),
+                    val: peerAssetObj ? peerAssetObj.chg : tx('Usar buscador ↑', 'Use search ↑'),
+                    sub: peerAssetObj ? peerAssetObj.cat : tx('Sin seleccionar', 'None selected'),
                     color: '#38bdf8',
                     accent: Boolean(peerAssetObj),
                   },
@@ -5129,7 +4965,7 @@ export default function MarketAnomaliesView({
               }
               if (isOptionsPayoffMode && optPayoffMetrics) {
                 return [
-                  { label: isES ? 'PRIMA NETA' : 'NET PREMIUM', val: optPayoffMetrics.netCostFormatted, sub: cleanUndSym, color: '#ffffff', accent: true },
+                  { label: tx('PRIMA NETA', 'NET PREMIUM'), val: optPayoffMetrics.netCostFormatted, sub: cleanUndSym, color: '#ffffff', accent: true },
                   { label: 'BREAKEVEN THRESHOLD', val: optPayoffMetrics.breakevenText, sub: 'AT EXPIRATION', color: '#38bdf8', accent: true },
                   { label: 'MAX PROFIT TARGET', val: optPayoffMetrics.maxProfitText, sub: 'EXPIRY CAP', color: '#10b981', accent: false },
                   { label: 'MAX LOSS FLOOR', val: optPayoffMetrics.maxLossText, sub: 'DEFINED RISK', color: '#f43f5e', accent: false },
@@ -5258,31 +5094,23 @@ export default function MarketAnomaliesView({
                         marginBottom: '0.35rem',
                       }}
                     >
-                      {isES ? 'Lente de Análisis' : 'Analysis Lens'}
+                      {tx('Lente de Análisis', 'Analysis Lens')}
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.25rem' }}>
                       {[
-                        { id: 'technical', label: isES ? 'Técnico' : 'Technical' },
-                        { id: 'compare', label: isES ? 'Comparar %' : 'Compare %' },
-                        { id: 'microstructure', label: isES ? 'Micro & Flujo' : 'Micro & Flow' },
+                        { id: 'technical', label: tx('Técnico', 'Technical') },
+                        { id: 'compare', label: tx('Comparar %', 'Compare %') },
+                        { id: 'microstructure', label: tx('Micro & Flujo', 'Micro & Flow') },
                         {
                           id: 'derivatives',
                           label:
                             currentAsset.cat === 'RATES' || currentAsset.cat === 'FIXED_INCOME' || currentAsset.cat === 'CASH'
-                              ? isES
-                                ? 'Curva 3D/2D'
-                                : '3D/2D Curve'
+                              ? tx('Curva 3D/2D', '3D/2D Curve')
                               : currentAsset.cat === 'FX'
-                                ? isES
-                                  ? 'FX & Carry'
-                                  : 'FX Cross'
+                                ? tx('FX & Carry', 'FX Cross')
                                 : currentAsset.cat === 'COMMODITY'
-                                  ? isES
-                                    ? 'Forward 3D/2D'
-                                    : '3D/2D Forward'
-                                  : isES
-                                    ? 'Vol 3D & Payoff'
-                                    : '3D Vol & Payoff',
+                                  ? tx('Forward 3D/2D', '3D/2D Forward')
+                                  : tx('Vol 3D & Payoff', '3D Vol & Payoff'),
                         },
                       ].map((lens) => {
                         const active = analysisLens === lens.id;
@@ -5338,7 +5166,7 @@ export default function MarketAnomaliesView({
                         fontWeight: 700,
                       }}
                     >
-                      <span>{isES ? 'Configuración' : 'Sub-Mode & Search'}</span>
+                      <span>{tx('Configuración', 'Sub-Mode & Search')}</span>
                       <span style={{ color: '#94a3b8', fontSize: '11.5px' }}>
                         {isRatesCurveMode
                           ? `${selectedCurveCountry} • 42 PAÍSES`
@@ -5357,7 +5185,7 @@ export default function MarketAnomaliesView({
                             { label: 'Bollinger (2σ)', active: showBollinger, toggle: () => setShowBollinger(!showBollinger) },
                             { label: 'VWAP', active: showVwap, toggle: () => setShowVwap(!showVwap) },
                             {
-                              label: isES ? 'Panel: Volumen' : 'Sub: Volume',
+                              label: tx('Panel: Volumen', 'Sub: Volume'),
                               active: showSubChart === 'vol',
                               toggle: () => setShowSubChart(showSubChart === 'vol' ? 'none' : 'vol'),
                             },
@@ -5431,9 +5259,7 @@ export default function MarketAnomaliesView({
                                 }
                               }}
                               placeholder={
-                                isES
-                                  ? `Buscar activo (${currentAsset.sym})...`
-                                  : `Search asset (${currentAsset.sym})...`
+                                txTpl("Buscar activo ({0})...", [currentAsset.sym], "Search asset ({0})...", [currentAsset.sym])
                               }
                               style={{
                                 background: 'transparent',
@@ -5588,9 +5414,7 @@ export default function MarketAnomaliesView({
                               }
                             }}
                             placeholder={
-                              isES
-                                ? `Buscar par compatible (${currentAsset.cat})...`
-                                : `Search compatible peer (${currentAsset.cat})...`
+                              txTpl("Buscar par compatible ({0})...", [currentAsset.cat], "Search compatible peer ({0})...", [currentAsset.cat])
                             }
                             style={{
                               background: 'transparent',
@@ -5745,9 +5569,7 @@ export default function MarketAnomaliesView({
                                 }
                               }}
                               placeholder={
-                                isES
-                                  ? `Buscar activo (${currentAsset.sym})...`
-                                  : `Search asset (${currentAsset.sym})...`
+                                txTpl("Buscar activo ({0})...", [currentAsset.sym], "Search asset ({0})...", [currentAsset.sym])
                               }
                               style={{
                                 background: 'transparent',
@@ -5828,9 +5650,9 @@ export default function MarketAnomaliesView({
                       <>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.22rem' }}>
                           {[
-                            { id: '3d-history', label: isES ? '3D (Hist)' : '3D (Hist)' },
-                            { id: '3d-peers', label: isES ? '3D (Países)' : '3D (Peers)' },
-                            { id: '2d', label: isES ? 'Curva 2D' : '2D Curve' },
+                            { id: '3d-history', label: tx('3D (Hist)', '3D (Hist)') },
+                            { id: '3d-peers', label: tx('3D (Países)', '3D (Peers)') },
+                            { id: '2d', label: tx('Curva 2D', '2D Curve') },
                           ].map((sub) => {
                             const active = ratesSubView === sub.id;
                             return (
@@ -5907,9 +5729,7 @@ export default function MarketAnomaliesView({
                                 }
                               }}
                               placeholder={
-                                isES
-                                  ? `Buscar país (${selectedCurveCountry} • ${SOVEREIGN_YIELD_CURVES[selectedCurveCountry]?.country?.ES || selectedCurveCountry})...`
-                                  : `Search country (${selectedCurveCountry} • ${SOVEREIGN_YIELD_CURVES[selectedCurveCountry]?.country?.EN || selectedCurveCountry})...`
+                                txTpl("Buscar país ({0} • {1})...", [selectedCurveCountry, SOVEREIGN_YIELD_CURVES[selectedCurveCountry]?.country?.[langCode] || SOVEREIGN_YIELD_CURVES[selectedCurveCountry]?.country?.EN || selectedCurveCountry], "Search country ({0} • {1})...", [selectedCurveCountry, SOVEREIGN_YIELD_CURVES[selectedCurveCountry]?.country?.[langCode] || SOVEREIGN_YIELD_CURVES[selectedCurveCountry]?.country?.EN || selectedCurveCountry])
                               }
                               style={{
                                 background: 'transparent',
@@ -6042,7 +5862,7 @@ export default function MarketAnomaliesView({
                               setFxQuoteCcy(prevBase);
                               syncCatalogFxPair(nextBase, prevBase);
                             }}
-                            title={isES ? 'Invertir par de divisas' : 'Swap currency pair'}
+                            title={tx('Invertir par de divisas', 'Swap currency pair')}
                             className="mono-metric"
                             style={{
                               background: 'transparent',
@@ -6308,8 +6128,8 @@ export default function MarketAnomaliesView({
                       <>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.24rem' }}>
                           {[
-                            { id: '3d', label: isES ? 'Superficie 3D' : '3D Surface' },
-                            { id: '2d', label: isES ? 'Curva 2D' : '2D Curve' },
+                            { id: '3d', label: tx('Superficie 3D', '3D Surface') },
+                            { id: '2d', label: tx('Curva 2D', '2D Curve') },
                           ].map((sub) => {
                             const active = commoditySubView === sub.id;
                             return (
@@ -6383,9 +6203,7 @@ export default function MarketAnomaliesView({
                                 }
                               }}
                               placeholder={
-                                isES
-                                  ? `Buscar commodity (${currentAsset.sym} • ${currentAsset.name})...`
-                                  : `Search commodity (${currentAsset.sym} • ${currentAsset.name})...`
+                                txTpl("Buscar commodity ({0} • {1})...", [currentAsset.sym, currentAsset.name], "Search commodity ({0} • {1})...", [currentAsset.sym, currentAsset.name])
                               }
                               style={{
                                 background: 'transparent',
@@ -6466,9 +6284,9 @@ export default function MarketAnomaliesView({
                       <>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.22rem' }}>
                           {[
-                            { id: 'surface3d', label: isES ? 'Superficie 3D' : '3D Surface' },
-                            { id: 'surface', label: isES ? 'Sonrisa 2D' : '2D Smile' },
-                            { id: 'payoff', label: isES ? 'Payoff P&L' : 'Payoff P&L' },
+                            { id: 'surface3d', label: tx('Superficie 3D', '3D Surface') },
+                            { id: 'surface', label: tx('Sonrisa 2D', '2D Smile') },
+                            { id: 'payoff', label: tx('Payoff P&L', 'Payoff P&L') },
                           ].map((sub) => {
                             const active = optionsSubView === sub.id;
                             return (
@@ -6541,9 +6359,7 @@ export default function MarketAnomaliesView({
                                 }
                               }}
                               placeholder={
-                                isES
-                                  ? `Buscar subyacente (${currentAsset.sym})...`
-                                  : `Search underlying (${currentAsset.sym})...`
+                                txTpl("Buscar subyacente ({0})...", [currentAsset.sym], "Search underlying ({0})...", [currentAsset.sym])
                               }
                               style={{
                                 background: 'transparent',
@@ -6670,7 +6486,7 @@ export default function MarketAnomaliesView({
                         fontWeight: 700,
                       }}
                     >
-                      {isES ? 'Indicadores Clave' : 'Quant Telemetry'}
+                      {tx('Indicadores Clave', 'Quant Telemetry')}
                     </div>
                     <div
                       style={{
@@ -6785,9 +6601,7 @@ export default function MarketAnomaliesView({
                                     : isCommodityCurveMode
                                       ? `${currentAsset.sym} Forward Curve`
                                       : isOptionsPayoffMode
-                                        ? isES
-                                          ? 'P&L al Vencimiento ($)'
-                                          : 'Expiration Payoff P&L ($)'
+                                        ? tx('P&L al Vencimiento ($)', 'Expiration Payoff P&L ($)')
                                         : isOptionsSmileMode
                                           ? `30D IV Surface (%)`
                                           : isCompareMode
@@ -6807,7 +6621,7 @@ export default function MarketAnomaliesView({
                                 <Line
                                   type="monotone"
                                   dataKey="t0Pnl"
-                                  name={isES ? 'P&L Hoy T+0 Black-Scholes ($)' : 'Today T+0 Black-Scholes P&L ($)'}
+                                  name={tx('P&L Hoy T+0 Black-Scholes ($)', 'Today T+0 Black-Scholes P&L ($)')}
                                   stroke="#38bdf8"
                                   strokeWidth={2.0}
                                   strokeDasharray="4 3"
@@ -6816,7 +6630,7 @@ export default function MarketAnomaliesView({
                                 <Line
                                   type="monotone"
                                   dataKey="zeroLine"
-                                  name={isES ? 'Línea Breakeven ($0)' : 'Breakeven Line ($0)'}
+                                  name={tx('Línea Breakeven ($0)', 'Breakeven Line ($0)')}
                                   stroke="rgba(255,255,255,0.45)"
                                   strokeWidth={1.3}
                                   strokeDasharray="3 3"
@@ -7178,11 +6992,11 @@ export default function MarketAnomaliesView({
                       }}
                     >
                       <span>
-                        {isES ? 'FUENTE OFICIAL:' : 'OFFICIAL SOURCE:'}{' '}
+                        {tx('FUENTE OFICIAL:', 'OFFICIAL SOURCE:')}{' '}
                         {researchBrief.filingSource[langCode] || researchBrief.filingSource.EN}
                       </span>
                       <span style={{ color: accentHex, fontWeight: 700 }}>
-                        {isBull ? (isES ? 'CATALIZADOR ALCISTA' : 'BULL DRIVER') : isES ? 'FACTOR DE RIESGO' : 'BEAR RISK'} ({item.impactTag})
+                        {isBull ? (tx('CATALIZADOR ALCISTA', 'BULL DRIVER')) : tx('FACTOR DE RIESGO', 'BEAR RISK')} ({item.impactTag})
                       </span>
                     </div>
                     <p style={{ fontSize: '0.72rem', color: '#cbd5e1', lineHeight: 1.46, margin: 0 }}>{detailText}</p>
@@ -7191,9 +7005,7 @@ export default function MarketAnomaliesView({
                         type="button"
                         onClick={(e) => {
                           e.stopPropagation();
-                          const qText = isES
-                            ? `Explicá en detalle el impacto de "${titleText}" (${item.impactTag}) en ${currentAsset.sym}`
-                            : `Explain in detail the impact of "${titleText}" (${item.impactTag}) on ${currentAsset.sym}`;
+                          const qText = txTpl("Explicá en detalle el impacto de \"{0}\" ({1}) en {2}", [titleText, item.impactTag, currentAsset.sym], "Explain in detail the impact of \"{0}\" ({1}) on {2}", [titleText, item.impactTag, currentAsset.sym]);
                           setRagQuery(qText);
                           runAssetRagQuery(qText, 'asset', selectedAsset);
                         }}
@@ -7207,7 +7019,7 @@ export default function MarketAnomaliesView({
                           cursor: 'pointer',
                         }}
                       >
-                        {isES ? 'Analizar en Chat ↗' : 'Analyze in Chat ↗'}
+                        {tx('Analizar en Chat ↗', 'Analyze in Chat ↗')}
                       </button>
                     </div>
                   </div>
@@ -7255,7 +7067,7 @@ export default function MarketAnomaliesView({
                   }}
                 >
                   <span style={{ color: '#ffffff', fontSize: '15.5px', fontWeight: 700 }}>
-                    {isES ? 'Chat Documental' : 'Document Chat'}
+                    {tx('Chat Documental', 'Document Chat')}
                   </span>
                   <span className="mono-metric" style={{ color: '#94a3b8', fontSize: '12px' }}>
                     {currentAsset.sym}
@@ -7312,7 +7124,7 @@ export default function MarketAnomaliesView({
                   >
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.4rem' }}>
                       <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800, color: 'var(--ui-accent, #10b981)' }}>
-                        {isES ? 'TESIS EJECUTIVA' : 'EXECUTIVE THESIS'} • {currentAsset.sym}
+                        {tx('TESIS EJECUTIVA', 'EXECUTIVE THESIS')} • {currentAsset.sym}
                       </span>
                       <span className="mono-metric" style={{ fontSize: '0.56rem', color: '#34d399', fontWeight: 700 }}>
                         GUARDRAIL OK
@@ -7433,9 +7245,7 @@ export default function MarketAnomaliesView({
                       value={ragQuery}
                       onChange={(e) => setRagQuery(e.target.value)}
                       placeholder={
-                        isES
-                          ? `Preguntar al chat sobre ${currentAsset.sym}...`
-                          : `Ask chat about ${currentAsset.sym}...`
+                        txTpl("Preguntar al chat sobre {0}...", [currentAsset.sym], "Ask chat about {0}...", [currentAsset.sym])
                       }
                       style={{
                         flex: 1,
@@ -7494,9 +7304,9 @@ export default function MarketAnomaliesView({
                     }}
                   >
                     <span>
-                      {isES ? `Simular ${currentAsset.sym} en Portfolio & Riesgo` : `Simulate ${currentAsset.sym} in Portfolio & Risk`}
+                      {txTpl("Simular {0} en Portfolio & Riesgo", [currentAsset.sym], "Simulate {0} in Portfolio & Risk", [currentAsset.sym])}
                     </span>
-                    <span>{isES ? 'Abrir ↗' : 'Open ↗'}</span>
+                    <span>{tx('Abrir ↗', 'Open ↗')}</span>
                   </button>
                 </div>
               </div>
@@ -7529,7 +7339,7 @@ export default function MarketAnomaliesView({
                 >
                   <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>
                     <span style={{ color: '#ffffff', fontSize: '15.5px', fontWeight: 700 }}>
-                      {isES ? 'Factores Ponderados' : 'Weighted Factors'}
+                      {tx('Factores Ponderados', 'Weighted Factors')}
                     </span>
 
                     <span
@@ -7571,10 +7381,10 @@ export default function MarketAnomaliesView({
 
                     <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
                       {[
-                        { id: 'all', label: isES ? 'Todos' : 'All' },
+                        { id: 'all', label: tx('Todos', 'All') },
                         { id: 'bull', label: 'Bull' },
                         { id: 'bear', label: 'Bear' },
-                        { id: 'twin', label: isES ? 'Comparar' : 'Compare' },
+                        { id: 'twin', label: tx('Comparar', 'Compare') },
                       ].map((tab) => {
                         const active = researchFactorFilter === tab.id;
                         return (
@@ -7607,7 +7417,7 @@ export default function MarketAnomaliesView({
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.6rem' }}>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
                         <div className="mono-metric" style={{ color: '#34d399', fontSize: '0.64rem', fontWeight: 800, marginBottom: '2px' }}>
-                          {isES ? 'CATALIZADORES' : 'BULL DRIVERS'}
+                          {tx('CATALIZADORES', 'BULL DRIVERS')}
                         </div>
                         {allFactors
                           .filter((f) => f.side === 'BULL')
@@ -7615,7 +7425,7 @@ export default function MarketAnomaliesView({
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
                         <div className="mono-metric" style={{ color: '#fb7185', fontSize: '0.64rem', fontWeight: 800, marginBottom: '2px' }}>
-                          {isES ? 'RIESGOS' : 'BEAR RISKS'}
+                          {tx('RIESGOS', 'BEAR RISKS')}
                         </div>
                         {allFactors
                           .filter((f) => f.side === 'BEAR')
@@ -7659,7 +7469,7 @@ export default function MarketAnomaliesView({
                   }}
                 >
                   <span style={{ color: '#ffffff', fontSize: '15.5px', fontWeight: 700 }}>
-                    {isES ? 'Noticias y Sentimiento' : 'News & Sentiment'}
+                    {tx('Noticias y Sentimiento', 'News & Sentiment')}
                   </span>
 
                   <button
@@ -7675,7 +7485,7 @@ export default function MarketAnomaliesView({
                       cursor: 'pointer',
                     }}
                   >
-                    {isES ? 'Simular Noticia' : 'Simulate News'}
+                    {tx('Simular Noticia', 'Simulate News')}
                   </button>
                 </div>
 
@@ -7750,7 +7560,7 @@ export default function MarketAnomaliesView({
                                       color: '#000',
                                     }}
                                   >
-                                    {isES ? 'NUEVO' : 'LIVE'}
+                                    {tx('NUEVO', 'LIVE')}
                                   </span>
                                 )}
                                 <span style={{ color: '#38bdf8', fontSize: '0.58rem', fontWeight: 700 }}>{news.time}</span>
@@ -7771,9 +7581,7 @@ export default function MarketAnomaliesView({
                                 <button
                                   type="button"
                                   onClick={() => {
-                                    const qText = isES
-                                      ? `Analizá el impacto de este titular (${news.source}): "${headlineText}"`
-                                      : `Analyze the impact of this headline (${news.source}): "${headlineText}"`;
+                                    const qText = txTpl("Analizá el impacto de este titular ({0}): \"{1}\"", [news.source, headlineText], "Analyze the impact of this headline ({0}): \"{1}\"", [news.source, headlineText]);
                                     setRagQuery(qText);
                                     runAssetRagQuery(qText, 'asset', selectedAsset);
                                   }}
@@ -7788,7 +7596,7 @@ export default function MarketAnomaliesView({
                                     cursor: 'pointer',
                                   }}
                                 >
-                                  {isES ? 'Chat ↗' : 'Chat ↗'}
+                                  {tx('Chat ↗', 'Chat ↗')}
                                 </button>
                               </div>
                             </div>
@@ -7816,7 +7624,7 @@ export default function MarketAnomaliesView({
                 >
                   <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <span style={{ fontSize: '0.58rem', color: '#94a3b8', fontWeight: 700 }}>
-                      {isES ? 'RECORRIDO SENTIMIENTO FINBERT (24H)' : 'FINBERT SENTIMENT TRAJECTORY (24H)'}
+                      {tx('RECORRIDO SENTIMIENTO FINBERT (24H)', 'FINBERT SENTIMENT TRAJECTORY (24H)')}
                     </span>
                     <span
                       style={{

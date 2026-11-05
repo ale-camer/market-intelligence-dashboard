@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Terminal, Bot } from 'lucide-react';
 import { PALETTES, LANGUAGES, I18N } from './data/i18n';
+import { useViewLocale } from './data/i18n/viewLocaleService';
 import HeaderBar from './components/HeaderBar';
 import FooterBar from './components/FooterBar';
 import HomeStage from './components/HomeStage';
@@ -144,6 +145,7 @@ export default function App() {
 
   const currentTheme = PALETTES[themeIdx];
   const currentLang = LANGUAGES[langIdx] || LANGUAGES[0];
+  useViewLocale(currentLang.code);
   const t = I18N[currentLang.code] || I18N.EN;
 
   const cycleTheme = () => setThemeIdx((prev) => (prev + 1) % PALETTES.length);

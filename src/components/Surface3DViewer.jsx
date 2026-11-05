@@ -1,3 +1,4 @@
+import { tx } from '../data/i18n/viewLocaleService';
 import React, { useState, useRef, useMemo } from 'react';
 
 /**
@@ -313,13 +314,13 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
           <span style={{ color: '#38bdf8', fontWeight: 700, letterSpacing: '0.03em' }}>
-            {isES ? 'CÁMARA 3D (ARRASTRAR PARA ROTAR):' : '3D CAMERA (DRAG TO ROTATE):'}
+            {tx('CÁMARA 3D (ARRASTRAR PARA ROTAR):', '3D CAMERA (DRAG TO ROTATE):')}
           </span>
           {[
-            { id: 'iso', label: isES ? '3D Isométrica' : '3D Isometric', y: -36, p: 27 },
-            { id: 'front', label: isES ? 'Frente (Smile / Curva)' : 'Front (Smile / Curve)', y: 0, p: 15 },
-            { id: 'side', label: isES ? 'Perfil (Plazos)' : 'Profile (Term Structure)', y: -84, p: 18 },
-            { id: 'top', label: isES ? 'Planta (Heatmap)' : 'Top (Heatmap)', y: 0, p: 76 },
+            { id: 'iso', label: tx('3D Isométrica', '3D Isometric'), y: -36, p: 27 },
+            { id: 'front', label: tx('Frente (Smile / Curva)', 'Front (Smile / Curve)'), y: 0, p: 15 },
+            { id: 'side', label: tx('Perfil (Plazos)', 'Profile (Term Structure)'), y: -84, p: 18 },
+            { id: 'top', label: tx('Planta (Heatmap)', 'Top (Heatmap)'), y: 0, p: 76 },
           ].map((preset) => {
             const isPresetActive = Math.abs(yaw - preset.y) < 5 && Math.abs(pitch - preset.p) < 5;
             return (
@@ -664,7 +665,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
               }}
             >
               <span style={{ color: 'var(--text-muted)', fontWeight: 600 }}>
-                {isES ? 'NODO 3D ACTIVO' : 'ACTIVE 3D NODE'}
+                {tx('NODO 3D ACTIVO', 'ACTIVE 3D NODE')}
               </span>
               <span style={{ color: '#10b981', fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.76rem' }}>
                 {activeVertex.meta?.zFormatted || `${activeVertex.zVal}${zUnit}`}
@@ -731,9 +732,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
             </span>
           </div>
           <span>
-            {isES
-              ? 'Pasa el mouse sobre los nodos para cortar secciones 3D (X/Y) • Arrastra para orbitar'
-              : 'Hover nodes to slice 3D cross-sections (X/Y) • Drag to orbit'}
+            {tx('Pasa el mouse sobre los nodos para cortar secciones 3D (X/Y) • Arrastra para orbitar', 'Hover nodes to slice 3D cross-sections (X/Y) • Drag to orbit')}
           </span>
         </div>
       </div>

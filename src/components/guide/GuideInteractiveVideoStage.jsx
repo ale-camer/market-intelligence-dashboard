@@ -10,6 +10,7 @@ import { INITIAL_HOLDINGS } from '../portfolio/portfolioConstants';
 import { DEFAULT_WATCHLIST_SYMS } from '../../services/committeeService';
 import { FlagBadge } from '../FooterBar';
 import { LANGUAGES, PALETTES, I18N } from '../../data/i18n';
+import { useViewLocale } from '../../data/i18n/viewLocaleService';
 import { getGuideVideoLangData, getGuideVideoPageTimings } from './guideVideoI18n';
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -886,6 +887,7 @@ export default function GuideInteractiveVideoStage({
     subtitlesEnabled = true
 }) {
     const resolvedLang = (langCode || (isES ? 'ES' : 'EN')).toUpperCase();
+    useViewLocale(resolvedLang);
     const pageId = page?.id || 'home';
     const langData = getGuideVideoLangData(resolvedLang);
     const pageTimings = getGuideVideoPageTimings(resolvedLang, pageId);

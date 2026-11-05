@@ -1,3 +1,4 @@
+import { bilingual } from '../data/i18n/viewLocaleService';
 /**
  * Platform Observability, Data Contracts & FinOps Service (`observabilityService.js`)
  * Covers:
@@ -31,76 +32,40 @@ export const FINOPS_AND_SHARED_STORES = [
     id: 'FINOPS-BUDGET',
     name: 'FinOps & Budget Guardrail',
     state: 'OK',
-    badgeRight: { EN: '~$0.95 / $10.00 mo', ES: '~$0.95 / $10.00 mes' },
-    healthyText: {
-      EN: '8/8 Serverless Services scale-to-zero ($0.00 compute) + 5 Batch Jobs',
-      ES: '8/8 Servicios Serverless scale-to-zero ($0.00 cómputo) + 5 Batch Jobs',
-    },
-    lastRun: {
-      EN: 'Continuous FinOps quota & billing monitor active',
-      ES: 'Monitoreo continuo de cuotas y presupuesto activo',
-    },
-    expectedData: {
-      EN: 'Compute & DBs: $0.00 (Free Tier) • Container Image Registry (~9.9 GB = ~$0.94/mo)',
-      ES: 'Cómputo y BDs: $0.00 (Free Tier) • Registro de imágenes de contenedores (~9.9 GB = ~$0.94/mes)',
-    },
+    badgeRight: bilingual('~$0.95 / $10.00 mo', '~$0.95 / $10.00 mes'),
+    healthyText: bilingual('8/8 Serverless Services scale-to-zero ($0.00 compute) + 5 Batch Jobs', '8/8 Servicios Serverless scale-to-zero ($0.00 cómputo) + 5 Batch Jobs'),
+    lastRun: bilingual('Continuous FinOps quota & billing monitor active', 'Monitoreo continuo de cuotas y presupuesto activo'),
+    expectedData: bilingual('Compute & DBs: $0.00 (Free Tier) • Container Image Registry (~9.9 GB = ~$0.94/mo)', 'Cómputo y BDs: $0.00 (Free Tier) • Registro de imágenes de contenedores (~9.9 GB = ~$0.94/mes)'),
     finopsCost: '~$0.95 / mes (Tope $10.00)',
   },
   {
     id: 'STORE-NEON',
     name: 'Serverless PostgreSQL 16 (pgvector)',
     state: 'OK',
-    badgeRight: { EN: '$0.00 • Free Tier', ES: '$0.00 • Free Tier' },
-    healthyText: {
-      EN: 'Connected via P-10 & P-08 health check (Pooled TLS)',
-      ES: 'Conectado vía health check de P-10 y P-08 (Pooled TLS)',
-    },
-    lastRun: {
-      EN: 'Live health probe (database: connected)',
-      ES: 'Sondeo en vivo (database: connected)',
-    },
-    expectedData: {
-      EN: '512 MB Free Tier available • Vector & relational schemas initialized (< 5% used)',
-      ES: '512 MB Free Tier disponibles • Esquemas vectoriales y relacionales listos (< 5% ocupado)',
-    },
+    badgeRight: bilingual('$0.00 • Free Tier', '$0.00 • Free Tier'),
+    healthyText: bilingual('Connected via P-10 & P-08 health check (Pooled TLS)', 'Conectado vía health check de P-10 y P-08 (Pooled TLS)'),
+    lastRun: bilingual('Live health probe (database: connected)', 'Sondeo en vivo (database: connected)'),
+    expectedData: bilingual('512 MB Free Tier available • Vector & relational schemas initialized (< 5% used)', '512 MB Free Tier disponibles • Esquemas vectoriales y relacionales listos (< 5% ocupado)'),
     finopsCost: '$0.00 / mes (Free Tier 512 MB)',
   },
   {
     id: 'STORE-ATLAS',
     name: 'Managed Document Store (NoSQL)',
     state: 'OK',
-    badgeRight: { EN: '$0.00 • Free Tier', ES: '$0.00 • Free Tier' },
-    healthyText: {
-      EN: 'Active & Healthy • Co-located in primary region (0ms cross-region)',
-      ES: 'Activo y Healthy • Co-localizado en región primaria (0ms entre regiones)',
-    },
-    lastRun: {
-      EN: 'TLS 1.2+ connection pool active (maxPoolSize=10, minPoolSize=0)',
-      ES: 'Pool de conexión TLS 1.2+ activo (maxPoolSize=10, minPoolSize=0)',
-    },
-    expectedData: {
-      EN: '512 MB Free Tier available • Document collections ready (< 2% used)',
-      ES: '512 MB Free Tier disponibles • Colecciones documentales listas (< 2% ocupado)',
-    },
+    badgeRight: bilingual('$0.00 • Free Tier', '$0.00 • Free Tier'),
+    healthyText: bilingual('Active & Healthy • Co-located in primary region (0ms cross-region)', 'Activo y Healthy • Co-localizado en región primaria (0ms entre regiones)'),
+    lastRun: bilingual('TLS 1.2+ connection pool active (maxPoolSize=10, minPoolSize=0)', 'Pool de conexión TLS 1.2+ activo (maxPoolSize=10, minPoolSize=0)'),
+    expectedData: bilingual('512 MB Free Tier available • Document collections ready (< 2% used)', '512 MB Free Tier disponibles • Colecciones documentales listas (< 2% ocupado)'),
     finopsCost: '$0.00 / mes (Free Tier 512 MB)',
   },
   {
     id: 'STORE-UPSTASH-BQ',
     name: 'Serverless Redis Cache & Analytical Warehouse',
     state: 'OK',
-    badgeRight: { EN: '$0.00 • Free Tier', ES: '$0.00 • Free Tier' },
-    healthyText: {
-      EN: 'Connected via P-08 health check (cache: connected) & Analytical Lake',
-      ES: 'Conectado vía health check de P-08 (cache: connected) y Analytical Lake',
-    },
-    lastRun: {
-      EN: 'Live probe via P-08 Redis cache & P-02/P-05 batch jobs',
-      ES: 'Sondeo en vivo vía caché de P-08 y jobs batch P-02/P-05',
-    },
-    expectedData: {
-      EN: '10k cmds/day cache free + 10 GB analytical storage / 1 TB queries free ($0.00)',
-      ES: '10k cmds/día en caché gratis + 10 GB almacenamiento analítico / 1 TB consultas gratis ($0.00)',
-    },
+    badgeRight: bilingual('$0.00 • Free Tier', '$0.00 • Free Tier'),
+    healthyText: bilingual('Connected via P-08 health check (cache: connected) & Analytical Lake', 'Conectado vía health check de P-08 (cache: connected) y Analytical Lake'),
+    lastRun: bilingual('Live probe via P-08 Redis cache & P-02/P-05 batch jobs', 'Sondeo en vivo vía caché de P-08 y jobs batch P-02/P-05'),
+    expectedData: bilingual('10k cmds/day cache free + 10 GB analytical storage / 1 TB queries free ($0.00)', '10k cmds/día en caché gratis + 10 GB almacenamiento analítico / 1 TB consultas gratis ($0.00)'),
     finopsCost: '$0.00 / mes (Free Tier)',
   },
 ];
@@ -116,18 +81,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Serverless Batch Job • 1 vCPU / 512Mi',
     finopsCost: '$0.02 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • Daily ETL Batch Job (140ms)',
-      ES: 'Activo y Healthy • Job Batch ETL Diario (140ms)',
-    },
-    lastRun: {
-      EN: '38 min ago (Daily Market Close Schedule)',
-      ES: 'Hace 38 min (Cierre diario de mercado)',
-    },
-    expectedData: {
-      EN: '30/30 equities • 170 OHLCV bars • 0 nulls in daily health assertion',
-      ES: '30/30 acciones • 170 barras OHLCV • 0 nulos en validación diaria',
-    },
+    healthyText: bilingual('Active & Healthy • Daily ETL Batch Job (140ms)', 'Activo y Healthy • Job Batch ETL Diario (140ms)'),
+    lastRun: bilingual('38 min ago (Daily Market Close Schedule)', 'Hace 38 min (Cierre diario de mercado)'),
+    expectedData: bilingual('30/30 equities • 170 OHLCV bars • 0 nulls in daily health assertion', '30/30 acciones • 170 barras OHLCV • 0 nulos en validación diaria'),
   },
   {
     id: 'P-02',
@@ -136,18 +92,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Serverless Batch Job • 1 vCPU / 1Gi',
     finopsCost: '$0.02 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • Crypto ETL Batch Job (190ms)',
-      ES: 'Activo y Healthy • Job Batch ETL Cripto (190ms)',
-    },
-    lastRun: {
-      EN: '6 min ago (Scheduled Daily Run)',
-      ES: 'Hace 6 min (Ejecución diaria programada)',
-    },
-    expectedData: {
-      EN: '5/5 crypto assets • Polars RSI-14, MACD & Bollinger validated',
-      ES: '5/5 criptoactivos • RSI-14, MACD y Bollinger validados',
-    },
+    healthyText: bilingual('Active & Healthy • Crypto ETL Batch Job (190ms)', 'Activo y Healthy • Job Batch ETL Cripto (190ms)'),
+    lastRun: bilingual('6 min ago (Scheduled Daily Run)', 'Hace 6 min (Ejecución diaria programada)'),
+    expectedData: bilingual('5/5 crypto assets • Polars RSI-14, MACD & Bollinger validated', '5/5 criptoactivos • RSI-14, MACD y Bollinger validados'),
   },
   {
     id: 'P-03',
@@ -156,18 +103,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Serverless Service + Event Bus (min=0, max=2)',
     finopsCost: '$0.10 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • Streaming Event Service (14ms)',
-      ES: 'Activo y Healthy • Servicio de Eventos en Streaming (14ms)',
-    },
-    lastRun: {
-      EN: 'Live stream (2 sec ago • scale-to-zero)',
-      ES: 'Streaming en vivo (hace 2 seg • scale-to-zero)',
-    },
-    expectedData: {
-      EN: '1m / 5m / 1h candles active • 0 messages in dead-letter queue',
-      ES: 'Velas 1m / 5m / 1h activas • 0 mensajes en cola de errores (DLQ)',
-    },
+    healthyText: bilingual('Active & Healthy • Streaming Event Service (14ms)', 'Activo y Healthy • Servicio de Eventos en Streaming (14ms)'),
+    lastRun: bilingual('Live stream (2 sec ago • scale-to-zero)', 'Streaming en vivo (hace 2 seg • scale-to-zero)'),
+    expectedData: bilingual('1m / 5m / 1h candles active • 0 messages in dead-letter queue', 'Velas 1m / 5m / 1h activas • 0 mensajes en cola de errores (DLQ)'),
   },
   {
     id: 'P-04',
@@ -176,18 +114,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Consolidated NLP Worker (via P-08)',
     finopsCost: '$0.25 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • FinBERT CPU Worker via P-08 (32ms)',
-      ES: 'Activo y Healthy • FinBERT CPU Worker vía P-08 (32ms)',
-    },
-    lastRun: {
-      EN: '3 min ago (Event-driven headline scoring)',
-      ES: 'Hace 3 min (Scoring continuo de titulares)',
-    },
-    expectedData: {
-      EN: 'Polarity in [-1.0, +1.0] • 0 unclassified items in news sentiment contract',
-      ES: 'Polaridad en [-1.0, +1.0] • 0 titulares sin clasificar en contrato de sentimiento',
-    },
+    healthyText: bilingual('Active & Healthy • FinBERT CPU Worker via P-08 (32ms)', 'Activo y Healthy • FinBERT CPU Worker vía P-08 (32ms)'),
+    lastRun: bilingual('3 min ago (Event-driven headline scoring)', 'Hace 3 min (Scoring continuo de titulares)'),
+    expectedData: bilingual('Polarity in [-1.0, +1.0] • 0 unclassified items in news sentiment contract', 'Polaridad en [-1.0, +1.0] • 0 titulares sin clasificar en contrato de sentimiento'),
   },
   {
     id: 'P-05',
@@ -196,18 +125,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'API Service + dbt Transformation Job',
     finopsCost: '$0.10 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • Hub API + dbt Transformation (110ms)',
-      ES: 'Activo y Healthy • API Hub + Transformación dbt (110ms)',
-    },
-    lastRun: {
-      EN: '22 min ago (Scheduled Transformation)',
-      ES: 'Hace 22 min (Transformación programada)',
-    },
-    expectedData: {
-      EN: '35/35 unified assets • 28/28 dbt & Great Expectations tests OK',
-      ES: '35/35 activos unificados • 28/28 tests dbt y Great Expectations OK',
-    },
+    healthyText: bilingual('Active & Healthy • Hub API + dbt Transformation (110ms)', 'Activo y Healthy • API Hub + Transformación dbt (110ms)'),
+    lastRun: bilingual('22 min ago (Scheduled Transformation)', 'Hace 22 min (Transformación programada)'),
+    expectedData: bilingual('35/35 unified assets • 28/28 dbt & Great Expectations tests OK', '35/35 activos unificados • 28/28 tests dbt y Great Expectations OK'),
   },
   {
     id: 'P-06',
@@ -216,18 +136,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Inference Service + Training Job • 1 vCPU / 512Mi',
     finopsCost: '$0.20 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • Isolation Forest Inference Service (28ms)',
-      ES: 'Activo y Healthy • Servicio de Inferencia Isolation Forest (28ms)',
-    },
-    lastRun: {
-      EN: '1 min ago (Real-time inference + MLflow artifacts)',
-      ES: 'Hace 1 min (Inferencia en vivo + artefactos MLflow)',
-    },
-    expectedData: {
-      EN: 'Scores in [0.0, 1.0] • Full asset universe scored & validated',
-      ES: 'Scores en [0.0, 1.0] • Universo completo evaluado y validado',
-    },
+    healthyText: bilingual('Active & Healthy • Isolation Forest Inference Service (28ms)', 'Activo y Healthy • Servicio de Inferencia Isolation Forest (28ms)'),
+    lastRun: bilingual('1 min ago (Real-time inference + MLflow artifacts)', 'Hace 1 min (Inferencia en vivo + artefactos MLflow)'),
+    expectedData: bilingual('Scores in [0.0, 1.0] • Full asset universe scored & validated', 'Scores en [0.0, 1.0] • Universo completo evaluado y validado'),
   },
   {
     id: 'P-07',
@@ -236,18 +147,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Serverless RAG Service • 1 vCPU / 1Gi',
     finopsCost: '$0.10 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • Hybrid RAG Service (41ms)',
-      ES: 'Activo y Healthy • Servicio RAG Híbrido (41ms)',
-    },
-    lastRun: {
-      EN: '4 min ago (scale-to-zero active)',
-      ES: 'Hace 4 min (scale-to-zero activo)',
-    },
-    expectedData: {
-      EN: 'Form 10-K Items 1A & 7 indexed • HNSW pgvector relevance > 0.70',
-      ES: 'Items 1A y 7 indexados • Relevancia HNSW pgvector > 0.70',
-    },
+    healthyText: bilingual('Active & Healthy • Hybrid RAG Service (41ms)', 'Activo y Healthy • Servicio RAG Híbrido (41ms)'),
+    lastRun: bilingual('4 min ago (scale-to-zero active)', 'Hace 4 min (scale-to-zero activo)'),
+    expectedData: bilingual('Form 10-K Items 1A & 7 indexed • HNSW pgvector relevance > 0.70', 'Items 1A y 7 indexados • Relevancia HNSW pgvector > 0.70'),
   },
   {
     id: 'P-08',
@@ -256,18 +158,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Dispatcher Service + NLP Worker',
     finopsCost: '$0.25 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • Dispatcher Service + Redis Cache (19ms)',
-      ES: 'Activo y Healthy • Servicio Dispatcher + Caché Redis (19ms)',
-    },
-    lastRun: {
-      EN: 'Live (4 sec ago)',
-      ES: 'En vivo (hace 4 seg)',
-    },
-    expectedData: {
-      EN: '100% signals dispatched • 0 failed background tasks',
-      ES: '100% de señales despachadas • 0 tareas fallidas en cola',
-    },
+    healthyText: bilingual('Active & Healthy • Dispatcher Service + Redis Cache (19ms)', 'Activo y Healthy • Servicio Dispatcher + Caché Redis (19ms)'),
+    lastRun: bilingual('Live (4 sec ago)', 'En vivo (hace 4 seg)'),
+    expectedData: bilingual('100% signals dispatched • 0 failed background tasks', '100% de señales despachadas • 0 tareas fallidas en cola'),
   },
   {
     id: 'P-09',
@@ -276,18 +169,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Serverless Agent Service • 1 vCPU / 512Mi',
     finopsCost: '$0.10 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • Research Agent Service (54ms)',
-      ES: 'Activo y Healthy • Servicio de Agente de Research (54ms)',
-    },
-    lastRun: {
-      EN: '9 min ago (scale-to-zero active)',
-      ES: 'Hace 9 min (scale-to-zero activo)',
-    },
-    expectedData: {
-      EN: 'Top 5 Bull Drivers & Top 5 Bear Risks weighted to 100%',
-      ES: 'Top 5 Drivers Alcistas y Bajistas ponderados al 100%',
-    },
+    healthyText: bilingual('Active & Healthy • Research Agent Service (54ms)', 'Activo y Healthy • Servicio de Agente de Research (54ms)'),
+    lastRun: bilingual('9 min ago (scale-to-zero active)', 'Hace 9 min (scale-to-zero activo)'),
+    expectedData: bilingual('Top 5 Bull Drivers & Top 5 Bear Risks weighted to 100%', 'Top 5 Drivers Alcistas y Bajistas ponderados al 100%'),
   },
   {
     id: 'P-10',
@@ -296,18 +180,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Serverless Allocator Service (Paper Mode)',
     finopsCost: '$0.10 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • ReAct Paper Allocator (23ms)',
-      ES: 'Activo y Healthy • Asignador Sistemático Paper (23ms)',
-    },
-    lastRun: {
-      EN: '5 min ago (Paper Execution Mode)',
-      ES: 'Hace 5 min (Modo de ejecución Paper)',
-    },
-    expectedData: {
-      EN: '$100k NAV reconciled • All positions <= 20% cap verified',
-      ES: 'NAV $100k conciliado • Posiciones <= 20% tope verificadas',
-    },
+    healthyText: bilingual('Active & Healthy • ReAct Paper Allocator (23ms)', 'Activo y Healthy • Asignador Sistemático Paper (23ms)'),
+    lastRun: bilingual('5 min ago (Paper Execution Mode)', 'Hace 5 min (Modo de ejecución Paper)'),
+    expectedData: bilingual('$100k NAV reconciled • All positions <= 20% cap verified', 'NAV $100k conciliado • Posiciones <= 20% tope verificadas'),
   },
   {
     id: 'P-11',
@@ -316,18 +191,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'LangGraph Orchestrator Service • 1 vCPU / 512Mi',
     finopsCost: '$0.05 / mes',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • LangGraph Orchestrator (36ms)',
-      ES: 'Activo y Healthy • Orquestador LangGraph (36ms)',
-    },
-    lastRun: {
-      EN: '2 min ago (Orchestrates P-07, P-08, P-09, P-10)',
-      ES: 'Hace 2 min (Orquesta P-07, P-08, P-09 y P-10)',
-    },
-    expectedData: {
-      EN: '3/3 pillars evaluated • Risk circuit breaker active at anomaly >= 0.65',
-      ES: '3/3 pilares evaluados • Circuit breaker activo si anomalía >= 0.65',
-    },
+    healthyText: bilingual('Active & Healthy • LangGraph Orchestrator (36ms)', 'Activo y Healthy • Orquestador LangGraph (36ms)'),
+    lastRun: bilingual('2 min ago (Orchestrates P-07, P-08, P-09, P-10)', 'Hace 2 min (Orquesta P-07, P-08, P-09 y P-10)'),
+    expectedData: bilingual('3/3 pillars evaluated • Risk circuit breaker active at anomaly >= 0.65', '3/3 pilares evaluados • Circuit breaker activo si anomalía >= 0.65'),
   },
   {
     id: 'P-12',
@@ -336,18 +202,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Terraform 1.6+ • CI/CD Pipelines',
     finopsCost: '$0.00 / mes (Control Plane)',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • 0 Terraform state drift • tflint & checkov passed',
-      ES: 'Activo y Healthy • 0 drift en Terraform state • tflint y checkov aprobados',
-    },
-    lastRun: {
-      EN: 'Last deploy verified via automated smoke checks',
-      ES: 'Último deploy verificado vía smoke checks automatizados',
-    },
-    expectedData: {
-      EN: 'IaC modules synced • 0 secrets or state files exposed in Git',
-      ES: 'Módulos IaC sincronizados • 0 secretos o estados expuestos en Git',
-    },
+    healthyText: bilingual('Active & Healthy • 0 Terraform state drift • tflint & checkov passed', 'Activo y Healthy • 0 drift en Terraform state • tflint y checkov aprobados'),
+    lastRun: bilingual('Last deploy verified via automated smoke checks', 'Último deploy verificado vía smoke checks automatizados'),
+    expectedData: bilingual('IaC modules synced • 0 secrets or state files exposed in Git', 'Módulos IaC sincronizados • 0 secretos o estados expuestos en Git'),
   },
   {
     id: 'P-13',
@@ -356,18 +213,9 @@ export const INFRA_ENGINES = [
     cloudTarget: 'Vite 8 + React SPA • WebGL 60fps Stage',
     finopsCost: '$0.00 / mes (Static Hosting)',
     state: 'OK',
-    healthyText: {
-      EN: 'Active & Healthy • Production bundle verified • 60fps WebGL',
-      ES: 'Activo y Healthy • Build de producción verificado • WebGL 60fps',
-    },
-    lastRun: {
-      EN: 'Live session (Connected to P-01..P-11 & FinOps telemetry)',
-      ES: 'Sesión en vivo (Conectado a P-01..P-11 y telemetría FinOps)',
-    },
-    expectedData: {
-      EN: 'Home, Markets (Screener + Analytics + Research) & Portfolio views synced',
-      ES: 'Vistas Home, Markets (Screener + Analytics + Research) y Portfolio sincronizadas',
-    },
+    healthyText: bilingual('Active & Healthy • Production bundle verified • 60fps WebGL', 'Activo y Healthy • Build de producción verificado • WebGL 60fps'),
+    lastRun: bilingual('Live session (Connected to P-01..P-11 & FinOps telemetry)', 'Sesión en vivo (Conectado a P-01..P-11 y telemetría FinOps)'),
+    expectedData: bilingual('Home, Markets (Screener + Analytics + Research) & Portfolio views synced', 'Vistas Home, Markets (Screener + Analytics + Research) y Portfolio sincronizadas'),
   },
 ];
 

@@ -1,3 +1,4 @@
+import { bilingual, tx } from './i18n/viewLocaleService';
 /**
  * Global Multi-Asset Universe & Quantitative Reference Data (`globalUniverseData.js`)
  * Implements the 10 approved asset classes from `docs/ASSET_UNIVERSE_PLAN.md`:
@@ -18,7 +19,7 @@
 // ============================================================================
 export const SOVEREIGN_YIELD_CURVES = {
   US: {
-    country: { EN: 'United States (UST)', ES: 'Estados Unidos (UST)' },
+    country: bilingual('United States (UST)', 'Estados Unidos (UST)'),
     currency: 'USD',
     rating: 'AA+',
     policyRate: 4.75,
@@ -26,7 +27,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 4.62, '6M': 4.48, '1Y': 4.28, '2Y': 4.08, '3Y': 4.04, '5Y': 4.11, '7Y': 4.18, '10Y': 4.24, '20Y': 4.52, '30Y': 4.48 },
   },
   CA: {
-    country: { EN: 'Canada (GoC)', ES: 'Canadá (GoC)' },
+    country: bilingual('Canada (GoC)', 'Canadá (GoC)'),
     currency: 'CAD',
     rating: 'AAA',
     policyRate: 3.75,
@@ -34,7 +35,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.68, '6M': 3.52, '1Y': 3.34, '2Y': 3.12, '3Y': 3.08, '5Y': 3.05, '7Y': 3.14, '10Y': 3.26, '20Y': 3.38, '30Y': 3.35 },
   },
   DE: {
-    country: { EN: 'Germany (Bund • Eurozone)', ES: 'Alemania (Bund • Eurozona)' },
+    country: bilingual('Germany (Bund • Eurozone)', 'Alemania (Bund • Eurozona)'),
     currency: 'EUR',
     rating: 'AAA',
     policyRate: 3.25,
@@ -42,7 +43,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.08, '6M': 2.86, '1Y': 2.48, '2Y': 2.18, '3Y': 2.12, '5Y': 2.16, '7Y': 2.22, '10Y': 2.32, '20Y': 2.54, '30Y': 2.58 },
   },
   GB: {
-    country: { EN: 'United Kingdom (Gilt)', ES: 'Reino Unido (Gilt)' },
+    country: bilingual('United Kingdom (Gilt)', 'Reino Unido (Gilt)'),
     currency: 'GBP',
     rating: 'AA',
     policyRate: 4.75,
@@ -50,7 +51,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 4.72, '6M': 4.58, '1Y': 4.36, '2Y': 4.18, '3Y': 4.12, '5Y': 4.15, '7Y': 4.24, '10Y': 4.38, '20Y': 4.78, '30Y': 4.86 },
   },
   FR: {
-    country: { EN: 'France (OAT)', ES: 'Francia (OAT)' },
+    country: bilingual('France (OAT)', 'Francia (OAT)'),
     currency: 'EUR',
     rating: 'AA-',
     policyRate: 3.25,
@@ -58,7 +59,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.12, '6M': 2.94, '1Y': 2.66, '2Y': 2.42, '3Y': 2.51, '5Y': 2.68, '7Y': 2.85, '10Y': 3.06, '20Y': 3.38, '30Y': 3.52 },
   },
   IT: {
-    country: { EN: 'Italy (BTP)', ES: 'Italia (BTP)' },
+    country: bilingual('Italy (BTP)', 'Italia (BTP)'),
     currency: 'EUR',
     rating: 'BBB',
     policyRate: 3.25,
@@ -66,7 +67,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.18, '6M': 3.04, '1Y': 2.85, '2Y': 2.74, '3Y': 2.86, '5Y': 3.08, '7Y': 3.32, '10Y': 3.58, '20Y': 3.96, '30Y': 4.12 },
   },
   ES: {
-    country: { EN: 'Spain (Bono)', ES: 'España (Bono)' },
+    country: bilingual('Spain (Bono)', 'España (Bono)'),
     currency: 'EUR',
     rating: 'A',
     policyRate: 3.25,
@@ -74,7 +75,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.10, '6M': 2.92, '1Y': 2.62, '2Y': 2.40, '3Y': 2.48, '5Y': 2.62, '7Y': 2.80, '10Y': 3.02, '20Y': 3.42, '30Y': 3.58 },
   },
   CH: {
-    country: { EN: 'Switzerland (Eidgenossen)', ES: 'Suiza (Confederación)' },
+    country: bilingual('Switzerland (Eidgenossen)', 'Suiza (Confederación)'),
     currency: 'CHF',
     rating: 'AAA',
     policyRate: 1.00,
@@ -82,7 +83,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 0.88, '6M': 0.76, '1Y': 0.62, '2Y': 0.48, '3Y': 0.44, '5Y': 0.46, '7Y': 0.51, '10Y': 0.58, '20Y': 0.68, '30Y': 0.65 },
   },
   NL: {
-    country: { EN: 'Netherlands (DSL)', ES: 'Países Bajos (DSL)' },
+    country: bilingual('Netherlands (DSL)', 'Países Bajos (DSL)'),
     currency: 'EUR',
     rating: 'AAA',
     policyRate: 3.25,
@@ -90,7 +91,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.09, '6M': 2.88, '1Y': 2.52, '2Y': 2.24, '3Y': 2.20, '5Y': 2.28, '7Y': 2.40, '10Y': 2.56, '20Y': 2.78, '30Y': 2.82 },
   },
   BE: {
-    country: { EN: 'Belgium (OLO)', ES: 'Bélgica (OLO)' },
+    country: bilingual('Belgium (OLO)', 'Bélgica (OLO)'),
     currency: 'EUR',
     rating: 'AA',
     policyRate: 3.25,
@@ -98,7 +99,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.11, '6M': 2.91, '1Y': 2.58, '2Y': 2.34, '3Y': 2.41, '5Y': 2.56, '7Y': 2.72, '10Y': 2.92, '20Y': 3.28, '30Y': 3.41 },
   },
   AT: {
-    country: { EN: 'Austria (RAGB)', ES: 'Austria (RAGB)' },
+    country: bilingual('Austria (RAGB)', 'Austria (RAGB)'),
     currency: 'EUR',
     rating: 'AA+',
     policyRate: 3.25,
@@ -106,7 +107,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.10, '6M': 2.90, '1Y': 2.55, '2Y': 2.30, '3Y': 2.35, '5Y': 2.48, '7Y': 2.64, '10Y': 2.82, '20Y': 3.08, '30Y': 3.18 },
   },
   IE: {
-    country: { EN: 'Ireland (IRISH)', ES: 'Irlanda (IRISH)' },
+    country: bilingual('Ireland (IRISH)', 'Irlanda (IRISH)'),
     currency: 'EUR',
     rating: 'AA',
     policyRate: 3.25,
@@ -114,7 +115,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.09, '6M': 2.89, '1Y': 2.54, '2Y': 2.28, '3Y': 2.32, '5Y': 2.44, '7Y': 2.58, '10Y': 2.72, '20Y': 2.98, '30Y': 3.06 },
   },
   PT: {
-    country: { EN: 'Portugal (OT)', ES: 'Portugal (OT)' },
+    country: bilingual('Portugal (OT)', 'Portugal (OT)'),
     currency: 'EUR',
     rating: 'A-',
     policyRate: 3.25,
@@ -122,7 +123,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.10, '6M': 2.92, '1Y': 2.58, '2Y': 2.32, '3Y': 2.39, '5Y': 2.52, '7Y': 2.68, '10Y': 2.88, '20Y': 3.24, '30Y': 3.38 },
   },
   GR: {
-    country: { EN: 'Greece (GGB)', ES: 'Grecia (GGB)' },
+    country: bilingual('Greece (GGB)', 'Grecia (GGB)'),
     currency: 'EUR',
     rating: 'BBB-',
     policyRate: 3.25,
@@ -130,7 +131,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.16, '6M': 2.98, '1Y': 2.68, '2Y': 2.46, '3Y': 2.58, '5Y': 2.76, '7Y': 2.98, '10Y': 3.22, '20Y': 3.58, '30Y': 3.72 },
   },
   SE: {
-    country: { EN: 'Sweden (SGB)', ES: 'Suecia (SGB)' },
+    country: bilingual('Sweden (SGB)', 'Suecia (SGB)'),
     currency: 'SEK',
     rating: 'AAA',
     policyRate: 2.75,
@@ -138,7 +139,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 2.72, '6M': 2.48, '1Y': 2.18, '2Y': 1.92, '3Y': 1.94, '5Y': 1.98, '7Y': 2.05, '10Y': 2.14, '20Y': 2.28, '30Y': 2.32 },
   },
   NO: {
-    country: { EN: 'Norway (NGB)', ES: 'Noruega (NGB)' },
+    country: bilingual('Norway (NGB)', 'Noruega (NGB)'),
     currency: 'NOK',
     rating: 'AAA',
     policyRate: 4.50,
@@ -146,7 +147,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 4.52, '6M': 4.40, '1Y': 4.18, '2Y': 3.88, '3Y': 3.76, '5Y': 3.68, '7Y': 3.66, '10Y': 3.72, '20Y': 3.80, '30Y': 3.78 },
   },
   DK: {
-    country: { EN: 'Denmark (DGB)', ES: 'Dinamarca (DGB)' },
+    country: bilingual('Denmark (DGB)', 'Dinamarca (DGB)'),
     currency: 'DKK',
     rating: 'AAA',
     policyRate: 2.85,
@@ -154,7 +155,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 2.88, '6M': 2.68, '1Y': 2.34, '2Y': 2.04, '3Y': 2.02, '5Y': 2.08, '7Y': 2.15, '10Y': 2.24, '20Y': 2.42, '30Y': 2.46 },
   },
   PL: {
-    country: { EN: 'Poland (POLGB)', ES: 'Polonia (POLGB)' },
+    country: bilingual('Poland (POLGB)', 'Polonia (POLGB)'),
     currency: 'PLN',
     rating: 'A-',
     policyRate: 5.75,
@@ -162,7 +163,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 5.65, '6M': 5.52, '1Y': 5.28, '2Y': 5.08, '3Y': 5.18, '5Y': 5.38, '7Y': 5.56, '10Y': 5.74, '20Y': 5.88, '30Y': 5.92 },
   },
   CZ: {
-    country: { EN: 'Czechia (CZGB)', ES: 'República Checa (CZGB)' },
+    country: bilingual('Czechia (CZGB)', 'República Checa (CZGB)'),
     currency: 'CZK',
     rating: 'AA-',
     policyRate: 4.00,
@@ -170,7 +171,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.92, '6M': 3.78, '1Y': 3.62, '2Y': 3.54, '3Y': 3.64, '5Y': 3.78, '7Y': 3.92, '10Y': 4.08, '20Y': 4.24, '30Y': 4.28 },
   },
   HU: {
-    country: { EN: 'Hungary (HGB)', ES: 'Hungría (HGB)' },
+    country: bilingual('Hungary (HGB)', 'Hungría (HGB)'),
     currency: 'HUF',
     rating: 'BBB-',
     policyRate: 6.50,
@@ -178,7 +179,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 6.38, '6M': 6.32, '1Y': 6.24, '2Y': 6.28, '3Y': 6.36, '5Y': 6.45, '7Y': 6.58, '10Y': 6.72, '20Y': 6.88, '30Y': 6.94 },
   },
   RO: {
-    country: { EN: 'Romania (ROMGB)', ES: 'Rumania (ROMGB)' },
+    country: bilingual('Romania (ROMGB)', 'Rumania (ROMGB)'),
     currency: 'RON',
     rating: 'BBB-',
     policyRate: 6.50,
@@ -186,7 +187,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 6.12, '6M': 6.18, '1Y': 6.25, '2Y': 6.38, '3Y': 6.52, '5Y': 6.68, '7Y': 6.84, '10Y': 6.98, '20Y': 7.12, '30Y': 7.18 },
   },
   JP: {
-    country: { EN: 'Japan (JGB)', ES: 'Japón (JGB)' },
+    country: bilingual('Japan (JGB)', 'Japón (JGB)'),
     currency: 'JPY',
     rating: 'A+',
     policyRate: 0.25,
@@ -194,7 +195,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 0.12, '6M': 0.22, '1Y': 0.34, '2Y': 0.45, '3Y': 0.52, '5Y': 0.62, '7Y': 0.76, '10Y': 0.96, '20Y': 1.78, '30Y': 2.18 },
   },
   CN: {
-    country: { EN: 'China (CGB)', ES: 'China (CGB)' },
+    country: bilingual('China (CGB)', 'China (CGB)'),
     currency: 'CNY',
     rating: 'A+',
     policyRate: 3.10,
@@ -202,7 +203,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 1.42, '6M': 1.48, '1Y': 1.54, '2Y': 1.66, '3Y': 1.78, '5Y': 1.88, '7Y': 2.02, '10Y': 2.14, '20Y': 2.28, '30Y': 2.34 },
   },
   AU: {
-    country: { EN: 'Australia (ACGB)', ES: 'Australia (ACGB)' },
+    country: bilingual('Australia (ACGB)', 'Australia (ACGB)'),
     currency: 'AUD',
     rating: 'AAA',
     policyRate: 4.35,
@@ -210,7 +211,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 4.38, '6M': 4.34, '1Y': 4.18, '2Y': 4.02, '3Y': 3.98, '5Y': 4.08, '7Y': 4.26, '10Y': 4.46, '20Y': 4.82, '30Y': 4.94 },
   },
   NZ: {
-    country: { EN: 'New Zealand (NZGB)', ES: 'Nueva Zelanda (NZGB)' },
+    country: bilingual('New Zealand (NZGB)', 'Nueva Zelanda (NZGB)'),
     currency: 'NZD',
     rating: 'AA+',
     policyRate: 4.75,
@@ -218,7 +219,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 4.62, '6M': 4.38, '1Y': 4.08, '2Y': 3.94, '3Y': 3.98, '5Y': 4.12, '7Y': 4.30, '10Y': 4.48, '20Y': 4.76, '30Y': 4.84 },
   },
   KR: {
-    country: { EN: 'South Korea (KTB)', ES: 'Corea del Sur (KTB)' },
+    country: bilingual('South Korea (KTB)', 'Corea del Sur (KTB)'),
     currency: 'KRW',
     rating: 'AA',
     policyRate: 3.25,
@@ -226,7 +227,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.22, '6M': 3.14, '1Y': 3.02, '2Y': 2.94, '3Y': 2.92, '5Y': 2.98, '7Y': 3.04, '10Y': 3.10, '20Y': 3.06, '30Y': 2.98 },
   },
   IN: {
-    country: { EN: 'India (IGB)', ES: 'India (IGB)' },
+    country: bilingual('India (IGB)', 'India (IGB)'),
     currency: 'INR',
     rating: 'BBB-',
     policyRate: 6.50,
@@ -234,7 +235,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 6.48, '6M': 6.58, '1Y': 6.64, '2Y': 6.70, '3Y': 6.72, '5Y': 6.76, '7Y': 6.80, '10Y': 6.84, '20Y': 6.96, '30Y': 7.02 },
   },
   SG: {
-    country: { EN: 'Singapore (SGS)', ES: 'Singapur (SGS)' },
+    country: bilingual('Singapore (SGS)', 'Singapur (SGS)'),
     currency: 'SGD',
     rating: 'AAA',
     policyRate: 3.30,
@@ -242,7 +243,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.32, '6M': 3.18, '1Y': 2.92, '2Y': 2.74, '3Y': 2.70, '5Y': 2.72, '7Y': 2.78, '10Y': 2.84, '20Y': 2.88, '30Y': 2.82 },
   },
   HK: {
-    country: { EN: 'Hong Kong (EFBN)', ES: 'Hong Kong (EFBN)' },
+    country: bilingual('Hong Kong (EFBN)', 'Hong Kong (EFBN)'),
     currency: 'HKD',
     rating: 'AA+',
     policyRate: 5.25,
@@ -250,7 +251,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 4.18, '6M': 3.98, '1Y': 3.68, '2Y': 3.38, '3Y': 3.32, '5Y': 3.36, '7Y': 3.44, '10Y': 3.52, '20Y': 3.68, '30Y': 3.72 },
   },
   TW: {
-    country: { EN: 'Taiwan (TWGB)', ES: 'Taiwán (TWGB)' },
+    country: bilingual('Taiwan (TWGB)', 'Taiwán (TWGB)'),
     currency: 'TWD',
     rating: 'AA+',
     policyRate: 2.00,
@@ -258,7 +259,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 1.18, '6M': 1.24, '1Y': 1.32, '2Y': 1.38, '3Y': 1.42, '5Y': 1.46, '7Y': 1.50, '10Y': 1.55, '20Y': 1.66, '30Y': 1.72 },
   },
   ID: {
-    country: { EN: 'Indonesia (INDOGB)', ES: 'Indonesia (INDOGB)' },
+    country: bilingual('Indonesia (INDOGB)', 'Indonesia (INDOGB)'),
     currency: 'IDR',
     rating: 'BBB',
     policyRate: 6.00,
@@ -266,7 +267,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 6.18, '6M': 6.26, '1Y': 6.38, '2Y': 6.46, '3Y': 6.52, '5Y': 6.62, '7Y': 6.72, '10Y': 6.82, '20Y': 7.02, '30Y': 7.08 },
   },
   MY: {
-    country: { EN: 'Malaysia (MGS)', ES: 'Malasia (MGS)' },
+    country: bilingual('Malaysia (MGS)', 'Malasia (MGS)'),
     currency: 'MYR',
     rating: 'A-',
     policyRate: 3.00,
@@ -274,7 +275,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 3.12, '6M': 3.18, '1Y': 3.26, '2Y': 3.38, '3Y': 3.48, '5Y': 3.62, '7Y': 3.76, '10Y': 3.88, '20Y': 4.12, '30Y': 4.22 },
   },
   TH: {
-    country: { EN: 'Thailand (THBOND)', ES: 'Tailandia (THBOND)' },
+    country: bilingual('Thailand (THBOND)', 'Tailandia (THBOND)'),
     currency: 'THB',
     rating: 'BBB+',
     policyRate: 2.25,
@@ -282,7 +283,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 2.12, '6M': 2.14, '1Y': 2.16, '2Y': 2.12, '3Y': 2.16, '5Y': 2.24, '7Y': 2.34, '10Y': 2.44, '20Y': 2.76, '30Y': 2.88 },
   },
   PH: {
-    country: { EN: 'Philippines (RPGB)', ES: 'Filipinas (RPGB)' },
+    country: bilingual('Philippines (RPGB)', 'Filipinas (RPGB)'),
     currency: 'PHP',
     rating: 'BBB+',
     policyRate: 6.00,
@@ -290,7 +291,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 5.62, '6M': 5.74, '1Y': 5.82, '2Y': 5.86, '3Y': 5.90, '5Y': 5.96, '7Y': 6.04, '10Y': 6.12, '20Y': 6.28, '30Y': 6.32 },
   },
   BR: {
-    country: { EN: 'Brazil (DI / NTN-F)', ES: 'Brasil (DI / NTN-F)' },
+    country: bilingual('Brazil (DI / NTN-F)', 'Brasil (DI / NTN-F)'),
     currency: 'BRL',
     rating: 'BB',
     policyRate: 11.25,
@@ -298,7 +299,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 11.35, '6M': 11.82, '1Y': 12.48, '2Y': 12.92, '3Y': 12.98, '5Y': 12.88, '7Y': 12.82, '10Y': 12.78, '20Y': 12.74, '30Y': 12.70 },
   },
   MX: {
-    country: { EN: 'Mexico (MBONO)', ES: 'México (MBONO)' },
+    country: bilingual('Mexico (MBONO)', 'México (MBONO)'),
     currency: 'MXN',
     rating: 'BBB',
     policyRate: 10.50,
@@ -306,7 +307,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 10.38, '6M': 10.22, '1Y': 9.98, '2Y': 9.86, '3Y': 9.82, '5Y': 9.88, '7Y': 9.96, '10Y': 10.08, '20Y': 10.26, '30Y': 10.34 },
   },
   CL: {
-    country: { EN: 'Chile (BTP)', ES: 'Chile (BTP)' },
+    country: bilingual('Chile (BTP)', 'Chile (BTP)'),
     currency: 'CLP',
     rating: 'A',
     policyRate: 5.25,
@@ -314,7 +315,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 5.18, '6M': 5.06, '1Y': 4.98, '2Y': 5.04, '3Y': 5.14, '5Y': 5.32, '7Y': 5.48, '10Y': 5.66, '20Y': 5.84, '30Y': 5.90 },
   },
   CO: {
-    country: { EN: 'Colombia (TES)', ES: 'Colombia (TES)' },
+    country: bilingual('Colombia (TES)', 'Colombia (TES)'),
     currency: 'COP',
     rating: 'BB+',
     policyRate: 9.75,
@@ -322,7 +323,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 9.42, '6M': 9.18, '1Y': 8.96, '2Y': 9.12, '3Y': 9.44, '5Y': 9.88, '7Y': 10.24, '10Y': 10.58, '20Y': 10.94, '30Y': 11.08 },
   },
   PE: {
-    country: { EN: 'Peru (Bono Soberano)', ES: 'Perú (Bono Soberano)' },
+    country: bilingual('Peru (Bono Soberano)', 'Perú (Bono Soberano)'),
     currency: 'PEN',
     rating: 'BBB',
     policyRate: 5.00,
@@ -330,7 +331,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 4.92, '6M': 4.88, '1Y': 4.96, '2Y': 5.18, '3Y': 5.42, '5Y': 5.86, '7Y': 6.24, '10Y': 6.62, '20Y': 6.94, '30Y': 7.06 },
   },
   ZA: {
-    country: { EN: 'South Africa (SAGB)', ES: 'Sudáfrica (SAGB)' },
+    country: bilingual('South Africa (SAGB)', 'Sudáfrica (SAGB)'),
     currency: 'ZAR',
     rating: 'BB-',
     policyRate: 8.00,
@@ -338,7 +339,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 7.92, '6M': 7.98, '1Y': 8.06, '2Y': 8.24, '3Y': 8.52, '5Y': 9.12, '7Y': 9.74, '10Y': 10.42, '20Y': 11.38, '30Y': 11.62 },
   },
   IL: {
-    country: { EN: 'Israel (ILGOV)', ES: 'Israel (ILGOV)' },
+    country: bilingual('Israel (ILGOV)', 'Israel (ILGOV)'),
     currency: 'ILS',
     rating: 'A',
     policyRate: 4.50,
@@ -346,7 +347,7 @@ export const SOVEREIGN_YIELD_CURVES = {
     tenors: { '3M': 4.42, '6M': 4.46, '1Y': 4.52, '2Y': 4.58, '3Y': 4.66, '5Y': 4.78, '7Y': 4.90, '10Y': 5.04, '20Y': 5.26, '30Y': 5.34 },
   },
   TR: {
-    country: { EN: 'Turkey (TURKGB)', ES: 'Turquía (TURKGB)' },
+    country: bilingual('Turkey (TURKGB)', 'Turquía (TURKGB)'),
     currency: 'TRY',
     rating: 'B+',
     policyRate: 50.00,
@@ -784,7 +785,7 @@ export function getAssetClassSpecificMetrics(asset, isES = false) {
       col1Label: '2s10s / 3m10y',
       col1Val: `${m.spread2s10sBps >= 0 ? '+' : ''}${m.spread2s10sBps} bps`,
       col1Sub: `3m10y: ${m.spread3m10yBps >= 0 ? '+' : ''}${m.spread3m10yBps} bps`,
-      col2Label: isES ? 'Tasa Real / DV01' : 'Real Yield / DV01',
+      col2Label: tx('Tasa Real / DV01', 'Real Yield / DV01'),
       col2Val: `${m.realYield10Y >= 0 ? '+' : ''}${m.realYield10Y}%`,
       col2Sub: `${m.dv01PerMillion10Y} • ${m.rating}`,
     };
@@ -796,7 +797,7 @@ export function getAssetClassSpecificMetrics(asset, isES = false) {
     const ytm = isTips ? '1.92% Real' : `${m.y10}% YTM`;
     const dur = sym.includes('2Y') ? '1.92y' : sym.includes('5Y') ? '4.48y' : sym.includes('30Y') ? '16.8y' : '8.12y';
     return {
-      col1Label: isES ? 'YTM / Cupón' : 'YTM / Coupon',
+      col1Label: tx('YTM / Cupón', 'YTM / Coupon'),
       col1Val: ytm,
       col1Sub: isTips ? 'Breakeven 2.32%' : 'Coupon 4.125%',
       col2Label: 'Duration / DV01',
@@ -809,7 +810,7 @@ export function getAssetClassSpecificMetrics(asset, isES = false) {
     const parts = sym.includes('/') ? sym.split('/') : ['USD', 'EUR'];
     const cross = computeCrossCurrencyRate(parts[0], parts[1]);
     return {
-      col1Label: isES ? 'Carry Spread (10Y)' : 'Carry Spread (10Y)',
+      col1Label: tx('Carry Spread (10Y)', 'Carry Spread (10Y)'),
       col1Val: cross.carryFormatted,
       col1Sub: `Inv: ${cross.inverseFormatted}`,
       col2Label: '1M ATM IV / RR25Δ',
@@ -824,7 +825,7 @@ export function getAssetClassSpecificMetrics(asset, isES = false) {
       col1Label: 'Term Structure',
       col1Val: fwd.rollYieldAnnual,
       col1Sub: fwd.regime.split(' ')[0],
-      col2Label: isES ? 'Inventario / COT' : 'Inventory / COT',
+      col2Label: tx('Inventario / COT', 'Inventory / COT'),
       col2Val: fwd.inventoryVs5Y.split(' vs')[0],
       col2Sub: fwd.cotNetSpec.split(' (')[0],
     };
@@ -849,7 +850,7 @@ export function getAssetClassSpecificMetrics(asset, isES = false) {
       col1Label: 'P/E Fwd • EV/EBITDA',
       col1Val: `${pe} P/E`,
       col1Sub: 'S&P 500 / NDX Core',
-      col2Label: isES ? 'Margen Bruto / EPS' : 'Gross Margin / EPS',
+      col2Label: tx('Margen Bruto / EPS', 'Gross Margin / EPS'),
       col2Val: `${gm} GM`,
       col2Sub: 'EPS YoY +18.4%',
     };
@@ -872,7 +873,7 @@ export function getAssetClassSpecificMetrics(asset, isES = false) {
       col1Label: 'Spread vs EFFR',
       col1Val: '-1.0 bps',
       col1Sub: 'Fed Corridor 4.75-5.00%',
-      col2Label: isES ? 'Liquidez / WAM' : 'Facility Vol / WAM',
+      col2Label: tx('Liquidez / WAM', 'Facility Vol / WAM'),
       col2Val: asset.vol24h,
       col2Sub: 'T+0 Settlement',
     };
@@ -880,7 +881,7 @@ export function getAssetClassSpecificMetrics(asset, isES = false) {
 
   if (cat === 'INDEX') {
     return {
-      col1Label: isES ? 'Amplitud (>SMA200)' : 'Breadth (>SMA200)',
+      col1Label: tx('Amplitud (>SMA200)', 'Breadth (>SMA200)'),
       col1Val: '68.4% Constituents',
       col1Sub: 'Adv/Dec 1.85x',
       col2Label: 'Index P/E • EPS YoY',
@@ -904,16 +905,16 @@ export function getAssetClassSpecificMetrics(asset, isES = false) {
 // 6. PERFIL DE BENEFICIOS (`PAYOFF P&L`) Y ESTRATEGIAS CON OPCIONES Y SINTÉTICOS
 // ============================================================================
 export const OPTIONS_STRATEGIES = [
-  { id: 'LONG_STRADDLE', label: { EN: 'Long Straddle (ATM Vol Long)', ES: 'Long Straddle (Comprado en Vol ATM)' } },
-  { id: 'BULL_CALL_SPREAD', label: { EN: 'Bull Call Spread (100% / 105%)', ES: 'Bull Call Spread (100% / 105%)' } },
-  { id: 'BEAR_PUT_SPREAD', label: { EN: 'Bear Put Spread (100% / 95%)', ES: 'Bear Put Spread (100% / 95%)' } },
-  { id: 'IRON_CONDOR', label: { EN: 'Iron Condor (±5% / ±10% Range)', ES: 'Iron Condor (Rango ±5% / ±10%)' } },
-  { id: 'LONG_STRANGLE', label: { EN: 'Long Strangle (OTM ±5%)', ES: 'Long Strangle (OTM ±5%)' } },
-  { id: 'SYNTHETIC_LONG', label: { EN: 'Synthetic Long (Call ATM - Put ATM)', ES: 'Sintético Largo (+Call ATM / -Put ATM)' } },
-  { id: 'SYNTHETIC_SHORT', label: { EN: 'Synthetic Short (Put ATM - Call ATM)', ES: 'Sintético Corto (+Put ATM / -Call ATM)' } },
-  { id: 'COVERED_CALL', label: { EN: 'Covered Call (Spot + Short 105% Call)', ES: 'Covered Call (Subyacente - Call 105%)' } },
-  { id: 'LONG_CALL', label: { EN: 'Long Call (ATM Directional)', ES: 'Long Call (ATM Direccional)' } },
-  { id: 'LONG_PUT', label: { EN: 'Long Put (ATM Hedge / Directional)', ES: 'Long Put (ATM Cobertura / Bajista)' } },
+  { id: 'LONG_STRADDLE', label: bilingual('Long Straddle (ATM Vol Long)', 'Long Straddle (Comprado en Vol ATM)') },
+  { id: 'BULL_CALL_SPREAD', label: bilingual('Bull Call Spread (100% / 105%)', 'Bull Call Spread (100% / 105%)') },
+  { id: 'BEAR_PUT_SPREAD', label: bilingual('Bear Put Spread (100% / 95%)', 'Bear Put Spread (100% / 95%)') },
+  { id: 'IRON_CONDOR', label: bilingual('Iron Condor (±5% / ±10% Range)', 'Iron Condor (Rango ±5% / ±10%)') },
+  { id: 'LONG_STRANGLE', label: bilingual('Long Strangle (OTM ±5%)', 'Long Strangle (OTM ±5%)') },
+  { id: 'SYNTHETIC_LONG', label: bilingual('Synthetic Long (Call ATM - Put ATM)', 'Sintético Largo (+Call ATM / -Put ATM)') },
+  { id: 'SYNTHETIC_SHORT', label: bilingual('Synthetic Short (Put ATM - Call ATM)', 'Sintético Corto (+Put ATM / -Call ATM)') },
+  { id: 'COVERED_CALL', label: bilingual('Covered Call (Spot + Short 105% Call)', 'Covered Call (Subyacente - Call 105%)') },
+  { id: 'LONG_CALL', label: bilingual('Long Call (ATM Directional)', 'Long Call (ATM Direccional)') },
+  { id: 'LONG_PUT', label: bilingual('Long Put (ATM Hedge / Directional)', 'Long Put (ATM Cobertura / Bajista)') },
 ];
 
 /**

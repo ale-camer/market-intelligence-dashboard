@@ -1,3 +1,4 @@
+import { tx, txList, txTpl, useViewLocale } from '../data/i18n/viewLocaleService';
 import React, { useState, useEffect, useMemo } from 'react';
 import {
     evaluateEcosystemContracts,
@@ -10,9 +11,7 @@ function buildLast5DaysRuns(seedStr, baseLatency, isES = false) {
     for (let i = 0; i < seedStr.length; i += 1) {
         seed = (seed * 31 + seedStr.charCodeAt(i)) % 997;
     }
-    const labels = isES
-        ? ['Hace 4d', 'Hace 3d', 'Hace 2d', 'Ayer', 'Hoy']
-        : ['4d ago', '3d ago', '2d ago', 'Yesterday', 'Today'];
+    const labels = txList(['Hace 4d', 'Hace 3d', 'Hace 2d', 'Ayer', 'Hoy'], ['4d ago', '3d ago', '2d ago', 'Yesterday', 'Today']);
     return labels.map((dayLabel, idx) => {
         const isWarmSpike = (seed + idx * 19) % 29 === 0 && idx < 4;
         const ms = isWarmSpike ? baseLatency + 180 : baseLatency + ((seed + idx * 7) % 14);
@@ -59,9 +58,9 @@ function getCompactQuotaMeters(isES = false) {
         {
             service: 'Container Image Registry (Multi-Stage)',
             modules: 'P-01..P-11',
-            usedLabel: isES ? '9.9 GB imágenes' : '9.9 GB images',
+            usedLabel: tx('9.9 GB imágenes', '9.9 GB images'),
             pct: 9.5,
-            cost: isES ? '~$0.95 / mes' : '~$0.95 / mo'
+            cost: tx('~$0.95 / mes', '~$0.95 / mo')
         },
         {
             service: 'Client Edge Storage (localStorage)',
@@ -74,8 +73,9 @@ function getCompactQuotaMeters(isES = false) {
 }
 
 export default function ObservabilityView({ langCode = 'EN' }) {
-    const isES = langCode === 'ES';
-    const langKey = isES ? 'ES' : 'EN';
+    const { localeTick } = useViewLocale(langCode);
+    const isES = `${langCode}_${localeTick}`;
+    const langKey = langCode || 'EN';
     const [activeTab, setActiveTab] = useState('performance'); // 'performance' | 'finops'
     const [selectedNodeId, setSelectedNodeId] = useState('P-06');
     const [logScope, setLogScope] = useState('selected'); // 'selected' | 'all'
@@ -154,12 +154,8 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                             ? `HTTP ${item.httpStatus} OK (${item.p50Ms}ms) — Contract assertion PASS: ${item.expectedData[langKey] || item.expectedData.EN}`
                             : `Run ${r.dayLabel}: ${r.code} (${r.latencyMs}ms) — ${
                                   r.status === 'OK'
-                                      ? isES
-                                          ? 'Todas las validaciones de esquema superadas (0 nulos, 0 drift)'
-                                          : 'All schema checks passed (0 nulls, 0 drift)'
-                                      : isES
-                                          ? 'Arranque en frío completado, snapshot de respaldo servido durante warm-up'
-                                          : 'Cold-start spin-up completed, fallback snapshot served during warm-up'
+                                      ? tx('Todas las validaciones de esquema superadas (0 nulos, 0 drift)', 'All schema checks passed (0 nulls, 0 drift)')
+                                      : tx('Arranque en frío completado, snapshot de respaldo servido durante warm-up', 'Cold-start spin-up completed, fallback snapshot served during warm-up')
                               }`
                 });
             });
@@ -255,12 +251,8 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                     }}
                 >
                     {isProbing
-                        ? isES
-                            ? 'Ejecutando Healthcheck...'
-                            : 'Running Healthcheck...'
-                        : isES
-                            ? 'Probar Healthchecks HTTP'
-                            : 'Test HTTP Healthchecks'}
+                        ? tx('Ejecutando Healthcheck...', 'Running Healthcheck...')
+                        : tx('Probar Healthchecks HTTP', 'Test HTTP Healthchecks')}
                 </button>
             </div>
 
@@ -300,10 +292,10 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                             }}
                         >
                             <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
-                                {isES ? 'Seleccionar Módulo' : 'Select Module'}
+                                {tx('Seleccionar Módulo', 'Select Module')}
                             </span>
                             <span style={{ fontSize: '12px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
-                                {isES ? 'Últ. 5 días • Estado' : 'Last 5d • Status'}
+                                {tx('Últ. 5 días • Estado', 'Last 5d • Status')}
                             </span>
                         </div>
 
@@ -585,7 +577,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                                         fontFamily: "'Inter', system-ui, -apple-system, sans-serif"
                                     }}
                                 >
-                                    {isES ? 'Telemetría y Logs en Vivo' : 'Live Telemetry & Logs'}
+                                    {tx('Telemetría y Logs en Vivo', 'Live Telemetry & Logs')}
                                 </span>
 
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -603,7 +595,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                                             cursor: 'pointer'
                                         }}
                                     >
-                                        {isES ? `Sólo ${selectedItem.id}` : `Only ${selectedItem.id}`}
+                                        {txTpl("Sólo {0}", [selectedItem.id], "Only {0}", [selectedItem.id])}
                                     </button>
                                     <button
                                         type="button"
@@ -619,7 +611,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                                             cursor: 'pointer'
                                         }}
                                     >
-                                        {isES ? 'Ver Todos' : 'View All'}
+                                        {tx('Ver Todos', 'View All')}
                                     </button>
                                 </div>
                             </div>
@@ -673,12 +665,12 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                             }}
                         >
                             <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
-                                {isES ? 'Consumo de Cuotas vs Límites Free-Tier' : 'Quota Usage vs Free-Tier Limits'}
+                                {tx('Consumo de Cuotas vs Límites Free-Tier', 'Quota Usage vs Free-Tier Limits')}
                             </span>
 
                             <span style={{ fontSize: '12px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
-                                {isES ? 'Cómputo & BDs:' : 'Compute & DBs:'} <strong style={{ color: '#10b981' }}>$0.00</strong> • Total:{' '}
-                                <strong style={{ color: '#10b981' }}>{isES ? '~$0.95 / $10.00 tope' : '~$0.95 / $10.00 cap'}</strong>
+                                {tx('Cómputo & BDs:', 'Compute & DBs:')} <strong style={{ color: '#10b981' }}>$0.00</strong> • Total:{' '}
+                                <strong style={{ color: '#10b981' }}>{tx('~$0.95 / $10.00 tope', '~$0.95 / $10.00 cap')}</strong>
                             </span>
                         </div>
 
@@ -794,10 +786,10 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                             }}
                         >
                             <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
-                                {isES ? 'Asignación de Recursos y Costos por Módulo' : 'Resource & Cost Allocation by Module'}
+                                {tx('Asignación de Recursos y Costos por Módulo', 'Resource & Cost Allocation by Module')}
                             </span>
                             <span style={{ fontSize: '12px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
-                                {isES ? 'P-01 a P-13 • 11 módulos serverless' : 'P-01 to P-13 • 11 serverless modules'}
+                                {tx('P-01 a P-13 • 11 módulos serverless', 'P-01 to P-13 • 11 serverless modules')}
                             </span>
                         </div>
 
@@ -813,11 +805,11 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                                             textAlign: 'left'
                                         }}
                                     >
-                                        <th style={{ padding: '7px 8px', width: '74px' }}>{isES ? 'MÓDULO' : 'MODULE'}</th>
-                                        <th style={{ padding: '7px 8px' }}>{isES ? 'SERVICIO / PIPELINE' : 'SERVICE / PIPELINE'}</th>
-                                        <th style={{ padding: '7px 8px' }}>{isES ? 'RECURSOS & RUNTIME' : 'RESOURCES & RUNTIME'}</th>
-                                        <th style={{ padding: '7px 8px' }}>{isES ? 'CADENCIA / EJECUCIÓN' : 'SCHEDULE / TRIGGER'}</th>
-                                        <th style={{ padding: '7px 8px', textAlign: 'right' }}>{isES ? 'COSTO MENSUAL' : 'MONTHLY COST'}</th>
+                                        <th style={{ padding: '7px 8px', width: '74px' }}>{tx('MÓDULO', 'MODULE')}</th>
+                                        <th style={{ padding: '7px 8px' }}>{tx('SERVICIO / PIPELINE', 'SERVICE / PIPELINE')}</th>
+                                        <th style={{ padding: '7px 8px' }}>{tx('RECURSOS & RUNTIME', 'RESOURCES & RUNTIME')}</th>
+                                        <th style={{ padding: '7px 8px' }}>{tx('CADENCIA / EJECUCIÓN', 'SCHEDULE / TRIGGER')}</th>
+                                        <th style={{ padding: '7px 8px', textAlign: 'right' }}>{tx('COSTO MENSUAL', 'MONTHLY COST')}</th>
                                     </tr>
                                 </thead>
                                 <tbody>

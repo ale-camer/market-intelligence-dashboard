@@ -1,3 +1,4 @@
+import { tx, txList, txTpl, useViewLocale } from '../../data/i18n/viewLocaleService';
 import React, { useState, useMemo } from 'react';
 import {
     ResponsiveContainer,
@@ -34,7 +35,7 @@ function Row1SummaryPills({ liveMetrics, isES = false }) {
 
     const pills = [
         {
-            lbl: isES ? 'PROYECCIÓN MEDIANA (12M)' : 'MEDIAN PROJECTION (12M)',
+            lbl: tx('PROYECCIÓN MEDIANA (12M)', 'MEDIAN PROJECTION (12M)'),
             val: `${medProj >= 0 ? '+' : ''}${medProj}%`,
             sub: `P95: +${p95Proj}% | P05: ${p05Proj}%`,
             col: '#10b981'
@@ -42,19 +43,19 @@ function Row1SummaryPills({ liveMetrics, isES = false }) {
         {
             lbl: 'SHARPE / SORTINO',
             val: `${m.sharpeRatio.toFixed(2)} / ${m.sortinoRatio.toFixed(2)}`,
-            sub: isES ? `Volatilidad Anual σ: ${m.portfolioVolPct}%` : `Annual Volatility σ: ${m.portfolioVolPct}%`,
+            sub: txTpl("Volatilidad Anual σ: {0}%", [m.portfolioVolPct], "Annual Volatility σ: {0}%", [m.portfolioVolPct]),
             col: '#10b981'
         },
         {
             lbl: 'VaR 95% / CVaR 99% (1D)',
             val: `${m.var95Pct}% / ${m.cvar99Pct}%`,
-            sub: isES ? 'Pérdida esperada en cola diaria' : 'Expected daily tail loss',
+            sub: tx('Pérdida esperada en cola diaria', 'Expected daily tail loss'),
             col: '#f43f5e'
         },
         {
             lbl: 'MAX DRAWDOWN (12M)',
             val: `${m.maxDrawdownPct.toFixed(2)}%`,
-            sub: isES ? 'Recuperación media: 14 días' : 'Avg recovery: 14 days',
+            sub: tx('Recuperación media: 14 días', 'Avg recovery: 14 days'),
             col: '#f43f5e'
         },
         {
@@ -64,9 +65,9 @@ function Row1SummaryPills({ liveMetrics, isES = false }) {
             col: '#f43f5e'
         },
         {
-            lbl: isES ? 'RÉGIMEN MARKOV ACTUAL' : 'CURRENT MARKOV REGIME',
+            lbl: tx('RÉGIMEN MARKOV ACTUAL', 'CURRENT MARKOV REGIME'),
             val: 'Bull Quiet (62%)',
-            sub: isES ? 'Retorno esp. régimen: +2.4%/mes' : 'Expected regime return: +2.4%/mo',
+            sub: tx('Retorno esp. régimen: +2.4%/mes', 'Expected regime return: +2.4%/mo'),
             col: '#10b981'
         }
     ];
@@ -105,7 +106,7 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                 p.id === 'PORT'
                     ? {
                           ...p,
-                          label: isES ? '★ Tu Cartera' : '★ Your Portfolio',
+                          label: tx('★ Tu Cartera', '★ Your Portfolio'),
                           vol: m.portfolioVolPct,
                           ret: m.cagrPct,
                           sharpe: m.sharpeRatio
@@ -122,7 +123,7 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
     const [activeTargetId, setActiveTargetId] = useState('PORT');
 
     const displayPoint = selectedPoint || {
-        name: isES ? 'Tu Cartera Actual' : 'Current Portfolio',
+        name: tx('Tu Cartera Actual', 'Current Portfolio'),
         vol: m.portfolioVolPct,
         ret: m.cagrPct,
         sharpe: m.sharpeRatio
@@ -143,7 +144,7 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
     return (
         <PortfolioCardShell
             badge="CUADRANTE 1 • IZQ ARRIBA"
-            title={isES ? 'Riesgo vs Retorno' : 'Risk vs Return'}
+            title={tx('Riesgo vs Retorno', 'Risk vs Return')}
             color="#10b981"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
@@ -151,16 +152,10 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                         const active = activeTargetId === p.id;
                         const label =
                             p.id === 'PORT'
-                                ? isES
-                                    ? 'Mi Cartera'
-                                    : 'My Portfolio'
+                                ? tx('Mi Cartera', 'My Portfolio')
                                 : p.id === 'MINVAR'
-                                ? isES
-                                    ? 'Mínima Varianza'
-                                    : 'Min Variance'
-                                : isES
-                                ? 'Máximo Sharpe'
-                                : 'Max Sharpe';
+                                ? tx('Mínima Varianza', 'Min Variance')
+                                : tx('Máximo Sharpe', 'Max Sharpe');
                         return (
                             <button
                                 key={p.id}
@@ -189,12 +184,12 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                 <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
-                            {isES ? 'CAPAS:' : 'LAYERS:'}
+                            {tx('CAPAS:', 'LAYERS:')}
                         </span>
                         {[
-                            { lbl: isES ? 'Activos' : 'Assets', val: showAssets, set: setShowAssets },
-                            { lbl: isES ? 'Nube Monte Carlo' : 'Monte Carlo Cloud', val: showCloud, set: setShowCloud },
-                            { lbl: isES ? 'Tangente CML' : 'CML Tangent', val: showCML, set: setShowCML }
+                            { lbl: tx('Activos', 'Assets'), val: showAssets, set: setShowAssets },
+                            { lbl: tx('Nube Monte Carlo', 'Monte Carlo Cloud'), val: showCloud, set: setShowCloud },
+                            { lbl: tx('Tangente CML', 'CML Tangent'), val: showCML, set: setShowCML }
                         ].map(t => (
                             <button
                                 key={t.lbl}
@@ -257,8 +252,8 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                             <g
                                 key={a.sym}
                                 style={{ cursor: 'pointer' }}
-                                onMouseEnter={() => setSelectedPoint({ name: `${isES ? 'Activo' : 'Asset'} ${a.sym}`, vol: a.vol, ret: a.ret, sharpe: a.sharpe })}
-                                onClick={() => setSelectedPoint({ name: `${isES ? 'Activo' : 'Asset'} ${a.sym}`, vol: a.vol, ret: a.ret, sharpe: a.sharpe })}
+                                onMouseEnter={() => setSelectedPoint({ name: `${tx('Activo', 'Asset')} ${a.sym}`, vol: a.vol, ret: a.ret, sharpe: a.sharpe })}
+                                onClick={() => setSelectedPoint({ name: `${tx('Activo', 'Asset')} ${a.sym}`, vol: a.vol, ret: a.ret, sharpe: a.sharpe })}
                             >
                                 <circle cx={cx} cy={cy} r="4.2" fill={a.sharpe >= 1.5 ? '#10b981' : '#f43f5e'} stroke="#090d16" strokeWidth="1.2" />
                                 <text x={cx + 6} y={cy + 3} fill="#cbd5e1" fontSize="8.5" fontWeight="800">{a.sym}</text>
@@ -302,7 +297,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
         ? m.stressScenarios
         : [
               {
-                  name: isES ? 'Crash Lehman 2008 (-42% SPX)' : 'Lehman Crash 2008 (-42% SPX)',
+                  name: tx('Crash Lehman 2008 (-42% SPX)', 'Lehman Crash 2008 (-42% SPX)'),
                   port: -11.4,
                   bench: -42.0,
                   byAsset: [
@@ -316,24 +311,20 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
           ];
 
     const activeScenario = scenarios[selectedScenarioIdx] || scenarios[0];
-    const varHeaders = isES
-        ? ['ACTIVO', 'PESO', 'VOLAT. σ', 'VaR 95% (1D)', 'ROL EN COLA']
-        : ['ASSET', 'WEIGHT', 'VOLAT. σ', 'VaR 95% (1D)', 'TAIL ROLE'];
-    const capHeaders = isES
-        ? ['ACTIVO', 'UPSIDE CAPTURE', 'DOWNSIDE CAPTURE', 'ASIMETRÍA NETA']
-        : ['ASSET', 'UPSIDE CAPTURE', 'DOWNSIDE CAPTURE', 'NET ASYMMETRY'];
+    const varHeaders = txList(['ACTIVO', 'PESO', 'VOLAT. σ', 'VaR 95% (1D)', 'ROL EN COLA'], ['ASSET', 'WEIGHT', 'VOLAT. σ', 'VaR 95% (1D)', 'TAIL ROLE']);
+    const capHeaders = txList(['ACTIVO', 'UPSIDE CAPTURE', 'DOWNSIDE CAPTURE', 'ASIMETRÍA NETA'], ['ASSET', 'UPSIDE CAPTURE', 'DOWNSIDE CAPTURE', 'NET ASYMMETRY']);
 
     return (
         <PortfolioCardShell
             badge="CUADRANTE 2 • IZQ ABAJO"
-            title={isES ? 'Escenarios de Estrés' : 'Stress Scenarios'}
+            title={tx('Escenarios de Estrés', 'Stress Scenarios')}
             color="#f43f5e"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
-                        { id: 'TORNADO', lbl: isES ? 'Estrés Histórico' : 'Historical Stress' },
-                        { id: 'VAR_ASSET', lbl: isES ? 'VaR por Activo' : 'Asset VaR' },
-                        { id: 'CAPTURE', lbl: isES ? 'Captura' : 'Capture' }
+                        { id: 'TORNADO', lbl: tx('Estrés Histórico', 'Historical Stress') },
+                        { id: 'VAR_ASSET', lbl: tx('VaR por Activo', 'Asset VaR') },
+                        { id: 'CAPTURE', lbl: tx('Captura', 'Capture') }
                     ].map(t => {
                         const active = subView === t.id;
                         return (
@@ -361,7 +352,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
                 subView === 'TORNADO' ? (
                     <>
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
-                            {isES ? 'IMPACTO POR ACTIVO' : 'IMPACT BY ASSET'} ({activeScenario.name}):
+                            {tx('IMPACTO POR ACTIVO', 'IMPACT BY ASSET')} ({activeScenario.name}):
                         </span>
                         <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
                             {activeScenario.byAsset.map(a => (
@@ -384,7 +375,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
                 ) : (
                     <>
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
-                            {isES ? 'FILTRAR ACTIVO:' : 'FILTER ASSET:'}
+                            {tx('FILTRAR ACTIVO:', 'FILTER ASSET:')}
                         </span>
                         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                             {['ALL', ...activeProfiles.map(a => a.sym).slice(0, 7)].map(sym => (
@@ -402,7 +393,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
                                         cursor: 'pointer'
                                     }}
                                 >
-                                    {sym === 'ALL' ? (isES ? 'Todos' : 'All') : sym}
+                                    {sym === 'ALL' ? (tx('Todos', 'All')) : sym}
                                 </button>
                             ))}
                         </div>
@@ -413,9 +404,9 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
             {subView === 'TORNADO' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1.45fr 1fr 112px', fontSize: '11.5px', fontWeight: 800, color: '#64748b', padding: '0 6px' }}>
-                        <span style={{ textAlign: 'left' }}>{isES ? 'ESCENARIO HISTÓRICO / MACRO' : 'HISTORICAL / MACRO SCENARIO'}</span>
-                        <span style={{ textAlign: 'center' }}>{isES ? 'MAGNITUD DE IMPACTO' : 'IMPACT MAGNITUDE'}</span>
-                        <span style={{ textAlign: 'right' }}>{isES ? 'CARTERA (BENCH)' : 'PORTFOLIO (BENCH)'}</span>
+                        <span style={{ textAlign: 'left' }}>{tx('ESCENARIO HISTÓRICO / MACRO', 'HISTORICAL / MACRO SCENARIO')}</span>
+                        <span style={{ textAlign: 'center' }}>{tx('MAGNITUD DE IMPACTO', 'IMPACT MAGNITUDE')}</span>
+                        <span style={{ textAlign: 'right' }}>{tx('CARTERA (BENCH)', 'PORTFOLIO (BENCH)')}</span>
                     </div>
                     {scenarios.map((s, idx) => {
                         const pillStyle = getSemanticReturnStyle(s.port, 25);
@@ -496,12 +487,8 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
                             </span>
                             <span style={{ textAlign: 'right', fontFamily: 'sans-serif', fontSize: '11.5px', color: a.beta <= 0.1 ? '#6ee7b7' : '#fda4af', fontWeight: 800 }}>
                                 {a.beta <= 0.1
-                                    ? isES
-                                        ? 'Escudo Defensivo'
-                                        : 'Defensive Shield'
-                                    : isES
-                                    ? 'Generador Riesgo'
-                                    : 'Risk Driver'}
+                                    ? tx('Escudo Defensivo', 'Defensive Shield')
+                                    : tx('Generador Riesgo', 'Risk Driver')}
                             </span>
                         </div>
                     ))}
@@ -555,21 +542,19 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
     const rawMatrix = corrRegime === 'NORMAL' ? (m.corrNormal || CORR_NORMAL) : (m.corrStress || CORR_STRESS);
     const activeMatrix = rawMatrix.slice(0, activeProfiles.length).map(r => r.slice(0, activeProfiles.length));
     const assets = activeProfiles.map(a => a.sym);
-    const matHeaders = [isES ? 'ACTIVO' : 'ASSET', ...assets];
-    const betaHeaders = isES
-        ? ['ACTIVO', 'BETA SPX', 'CORR MEDIA', 'SHARPE INDIV.', 'MEJOR RÉGIMEN']
-        : ['ASSET', 'SPX BETA', 'AVG CORR', 'INDIV. SHARPE', 'BEST REGIME'];
+    const matHeaders = [tx('ACTIVO', 'ASSET'), ...assets];
+    const betaHeaders = txList(['ACTIVO', 'BETA SPX', 'CORR MEDIA', 'SHARPE INDIV.', 'MEJOR RÉGIMEN'], ['ASSET', 'SPX BETA', 'AVG CORR', 'INDIV. SHARPE', 'BEST REGIME']);
 
     return (
         <PortfolioCardShell
             badge="CUADRANTE 3 • DER ARRIBA"
-            title={isES ? 'Correlación y Sensibilidad' : 'Correlation & Sensitivity'}
+            title={tx('Correlación y Sensibilidad', 'Correlation & Sensitivity')}
             color="#10b981"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
-                        { id: 'MATRIX', lbl: isES ? 'Matriz' : 'Matrix' },
-                        { id: 'BETAS', lbl: isES ? 'Beta por Activo' : 'Asset Beta' }
+                        { id: 'MATRIX', lbl: tx('Matriz', 'Matrix') },
+                        { id: 'BETAS', lbl: tx('Beta por Activo', 'Asset Beta') }
                     ].map(m => {
                         const active = subMode === m.id;
                         return (
@@ -597,7 +582,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                 <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
-                            {isES ? 'RÉGIMEN:' : 'REGIME:'}
+                            {tx('RÉGIMEN:', 'REGIME:')}
                         </span>
                         <button
                             onClick={() => setCorrRegime('NORMAL')}
@@ -612,7 +597,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                                 cursor: 'pointer'
                             }}
                         >
-                            {isES ? 'Mercado Normal (1Y)' : 'Normal Market (1Y)'}
+                            {tx('Mercado Normal (1Y)', 'Normal Market (1Y)')}
                         </button>
                         <button
                             onClick={() => setCorrRegime('STRESS')}
@@ -627,17 +612,13 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                                 cursor: 'pointer'
                             }}
                         >
-                            {isES ? 'Cola de Crisis (Contagio)' : 'Crisis Tail (Contagion)'}
+                            {tx('Cola de Crisis (Contagio)', 'Crisis Tail (Contagion)')}
                         </button>
                     </div>
                     <span style={{ fontSize: '11.5px', color: '#94a3b8' }}>
                         {focusAssetIdx !== null
-                            ? isES
-                                ? `Foco en ${assets[focusAssetIdx]}`
-                                : `Focus on ${assets[focusAssetIdx]}`
-                            : isES
-                            ? 'Clic en activo para aislar fila'
-                            : 'Click asset to isolate row'}
+                            ? txTpl("Foco en {0}", [assets[focusAssetIdx]], "Focus on {0}", [assets[focusAssetIdx]])
+                            : tx('Clic en activo para aislar fila', 'Click asset to isolate row')}
                     </span>
                 </>
             }
@@ -766,23 +747,21 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
                   eqMult: Number(selectedProf.beta.toFixed(2))
               }
             : assetSens.CARTERA);
-    const displayTarget = targetSym === 'CARTERA' ? (isES ? 'CARTERA' : 'PORTFOLIO') : targetSym;
+    const displayTarget = targetSym === 'CARTERA' ? (tx('CARTERA', 'PORTFOLIO')) : targetSym;
     const shockHeaders = [
-        `${isES ? 'TASAS' : 'RATES'} \\ SPX (${displayTarget})`,
+        `${tx('TASAS', 'RATES')} \\ SPX (${displayTarget})`,
         'S&P 500 -15%',
         'S&P 500 0%',
         'S&P 500 +15%'
     ];
     const shockRows = [
-        { rate: isES ? 'Tasas -100 bps' : 'Rates -100 bps', base: [-4.2, 3.8, 12.4] },
-        { rate: isES ? 'Tasas 0 bps (Base)' : 'Rates 0 bps (Base)', base: [-6.8, 0.0, 8.9] },
-        { rate: isES ? 'Tasas +100 bps' : 'Rates +100 bps', base: [-10.4, -3.1, 4.2] },
-        { rate: isES ? 'Tasas +200 bps' : 'Rates +200 bps', base: [-14.2, -6.4, 1.1] }
+        { rate: tx('Tasas -100 bps', 'Rates -100 bps'), base: [-4.2, 3.8, 12.4] },
+        { rate: tx('Tasas 0 bps (Base)', 'Rates 0 bps (Base)'), base: [-6.8, 0.0, 8.9] },
+        { rate: tx('Tasas +100 bps', 'Rates +100 bps'), base: [-10.4, -3.1, 4.2] },
+        { rate: tx('Tasas +200 bps', 'Rates +200 bps'), base: [-14.2, -6.4, 1.1] }
     ];
 
-    const markovHeaders = isES
-        ? ['RÉGIMEN', 'BQ', 'BV', 'INF', 'CR', 'ACTIVO LÍDER', 'E[RET]']
-        : ['REGIME', 'BQ', 'BV', 'INF', 'CR', 'TOP ASSET', 'E[RET]'];
+    const markovHeaders = txList(['RÉGIMEN', 'BQ', 'BV', 'INF', 'CR', 'ACTIVO LÍDER', 'E[RET]'], ['REGIME', 'BQ', 'BV', 'INF', 'CR', 'TOP ASSET', 'E[RET]']);
     const regimes = [
         { name: 'Bull Quiet (62%)', bq: '74%', bv: '16%', inf: '7%', cr: '3%', exp: 2.4, top: 'NVDA (+4.8%/m)' },
         { name: 'Bull Volatile (21%)', bq: '28%', bv: '52%', inf: '12%', cr: '8%', exp: 1.1, top: 'BTC (+5.4%/m)' },
@@ -795,19 +774,15 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
             badge="CUADRANTE 4 • DER ABAJO"
             title={
                 tab === 'SHOCK2D'
-                    ? isES
-                        ? 'Choque de Mercado'
-                        : 'Market Shock'
-                    : isES
-                    ? 'Regímenes de Mercado'
-                    : 'Market Regimes'
+                    ? tx('Choque de Mercado', 'Market Shock')
+                    : tx('Regímenes de Mercado', 'Market Regimes')
             }
             color="#f43f5e"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
-                        { id: 'SHOCK2D', lbl: isES ? 'Tasas vs S&P 500' : 'Rates vs S&P 500' },
-                        { id: 'MARKOV', lbl: isES ? 'Regímenes' : 'Regimes' }
+                        { id: 'SHOCK2D', lbl: tx('Tasas vs S&P 500', 'Rates vs S&P 500') },
+                        { id: 'MARKOV', lbl: tx('Regímenes', 'Regimes') }
                     ].map(m => {
                         const active = tab === m.id;
                         return (
@@ -835,7 +810,7 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
                 tab === 'SHOCK2D' ? (
                     <>
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
-                            {isES ? 'VER CHOQUE SOBRE:' : 'SHOCK TARGET:'}
+                            {tx('VER CHOQUE SOBRE:', 'SHOCK TARGET:')}
                         </span>
                         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                             {['CARTERA', ...activeProfiles.map(a => a.sym).slice(0, 5)].map(s => (
@@ -853,16 +828,14 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
                                         cursor: 'pointer'
                                     }}
                                 >
-                                    {s === 'CARTERA' ? (isES ? 'CARTERA' : 'PORTFOLIO') : s}
+                                    {s === 'CARTERA' ? (tx('CARTERA', 'PORTFOLIO')) : s}
                                 </button>
                             ))}
                         </div>
                     </>
                 ) : (
                     <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
-                        {isES
-                            ? 'PROBABILIDAD DE TRANSICIÓN A 30 DÍAS + ACTIVO LÍDER POR RÉGIMEN'
-                            : '30-DAY TRANSITION PROBABILITY + TOP ASSET PER REGIME'}
+                        {tx('PROBABILIDAD DE TRANSICIÓN A 30 DÍAS + ACTIVO LÍDER POR RÉGIMEN', '30-DAY TRANSITION PROBABILITY + TOP ASSET PER REGIME')}
                     </span>
                 )
             }
@@ -964,16 +937,10 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
             badge="FILA 3 • ANCHO COMPLETO (100%)"
             title={
                 seriesMode === 'MC'
-                    ? isES
-                        ? 'Proyección Monte Carlo'
-                        : 'Monte Carlo Projection'
+                    ? tx('Proyección Monte Carlo', 'Monte Carlo Projection')
                     : seriesMode === 'DD'
-                    ? isES
-                        ? 'Caída Histórica (Drawdown)'
-                        : 'Historical Drawdown'
-                    : isES
-                    ? 'Sharpe y Beta Rodante'
-                    : 'Rolling Sharpe & Beta'
+                    ? tx('Caída Histórica (Drawdown)', 'Historical Drawdown')
+                    : tx('Sharpe y Beta Rodante', 'Rolling Sharpe & Beta')
             }
             color={seriesMode === 'DD' ? '#f43f5e' : '#10b981'}
             rightSlot={
@@ -981,7 +948,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                     {[
                         { id: 'MC', lbl: 'Monte Carlo' },
                         { id: 'DD', lbl: 'Drawdown' },
-                        { id: 'ROLL', lbl: isES ? 'Sharpe y Beta' : 'Sharpe & Beta' }
+                        { id: 'ROLL', lbl: tx('Sharpe y Beta', 'Sharpe & Beta') }
                     ].map(m => {
                         const active = seriesMode === m.id;
                         return (
@@ -1010,12 +977,12 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                     <>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
                             <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
-                                {isES ? 'BANDAS VISIBLES:' : 'VISIBLE BANDS:'}
+                                {tx('BANDAS VISIBLES:', 'VISIBLE BANDS:')}
                             </span>
                             {[
-                                { lbl: isES ? 'P95 Optimista' : 'P95 Bullish', val: showP95, set: setShowP95, col: '#10b981' },
-                                { lbl: isES ? 'P50 Mediana' : 'P50 Median', val: showP50, set: setShowP50, col: '#6ee7b7' },
-                                { lbl: isES ? 'P05 Cola Adversa' : 'P05 Tail Risk', val: showP05, set: setShowP05, col: '#f43f5e' },
+                                { lbl: tx('P95 Optimista', 'P95 Bullish'), val: showP95, set: setShowP95, col: '#10b981' },
+                                { lbl: tx('P50 Mediana', 'P50 Median'), val: showP50, set: setShowP50, col: '#6ee7b7' },
+                                { lbl: tx('P05 Cola Adversa', 'P05 Tail Risk'), val: showP05, set: setShowP05, col: '#f43f5e' },
                                 { lbl: 'Benchmark S&P 500', val: showBench, set: setShowBench, col: '#94a3b8' }
                             ].map(b => (
                                 <button
@@ -1039,7 +1006,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                             <span style={{ fontSize: '11.5px', color: '#64748b', fontWeight: 800 }}>
-                                {isES ? 'HORIZONTE:' : 'HORIZON:'}
+                                {tx('HORIZONTE:', 'HORIZON:')}
                             </span>
                             {['6M', '12M', '24M'].map(h => (
                                 <button
@@ -1065,7 +1032,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                 ) : (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                         <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
-                            {isES ? 'COMPARAR CONTRA ACTIVO INDIVIDUAL:' : 'COMPARE AGAINST SINGLE ASSET:'}
+                            {tx('COMPARAR CONTRA ACTIVO INDIVIDUAL:', 'COMPARE AGAINST SINGLE ASSET:')}
                         </span>
                         {activeProfiles.map(a => a.sym).slice(0, 6).map(s => (
                             <button
@@ -1107,10 +1074,10 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                             <XAxis dataKey="m" tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
                             <YAxis domain={['auto', 'auto']} tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
                             <RechartsTooltip contentStyle={{ background: '#090d16', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }} />
-                            {showP95 && <Area type="monotone" dataKey="p95" name={isES ? 'P95 Banda Optimista' : 'P95 Bullish Band'} stroke="#10b981" strokeWidth={2.2} fill="url(#prodV2McGreen)" />}
-                            {showP50 && <Area type="monotone" dataKey="p50" name={isES ? 'P50 Mediana' : 'P50 Median'} stroke="#6ee7b7" strokeWidth={2} strokeDasharray="5 3" fill="none" />}
-                            {showBench && <Area type="monotone" dataKey="bench" name={isES ? 'S&P 500 Esperado' : 'Expected S&P 500'} stroke="#94a3b8" strokeWidth={1.4} strokeDasharray="3 3" fill="none" />}
-                            {showP05 && <Area type="monotone" dataKey="p05" name={isES ? 'P05 Cola Adversa' : 'P05 Adverse Tail'} stroke="#f43f5e" strokeWidth={2} fill="url(#prodV2McRed)" />}
+                            {showP95 && <Area type="monotone" dataKey="p95" name={tx('P95 Banda Optimista', 'P95 Bullish Band')} stroke="#10b981" strokeWidth={2.2} fill="url(#prodV2McGreen)" />}
+                            {showP50 && <Area type="monotone" dataKey="p50" name={tx('P50 Mediana', 'P50 Median')} stroke="#6ee7b7" strokeWidth={2} strokeDasharray="5 3" fill="none" />}
+                            {showBench && <Area type="monotone" dataKey="bench" name={tx('S&P 500 Esperado', 'Expected S&P 500')} stroke="#94a3b8" strokeWidth={1.4} strokeDasharray="3 3" fill="none" />}
+                            {showP05 && <Area type="monotone" dataKey="p05" name={tx('P05 Cola Adversa', 'P05 Adverse Tail')} stroke="#f43f5e" strokeWidth={2} fill="url(#prodV2McRed)" />}
                         </AreaChart>
                     ) : seriesMode === 'DD' ? (
                         <AreaChart data={RISK_TIME_SERIES} margin={{ top: 6, right: 14, left: -16, bottom: 0 }}>
@@ -1126,7 +1093,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                             <ReferenceLine y={0} stroke="rgba(148,163,184,0.35)" />
                             <RechartsTooltip contentStyle={{ background: '#090d16', border: '1px solid rgba(244,63,94,0.4)', borderRadius: '6px', fontSize: '13px' }} />
                             <Area type="monotone" dataKey="ddAsset" name={`Drawdown ${compareAsset} (%)`} stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="4 3" fill="none" />
-                            <Area type="monotone" dataKey="ddPort" name={isES ? '★ Drawdown Tu Cartera (%)' : '★ Portfolio Drawdown (%)'} stroke="#f43f5e" strokeWidth={2.2} fill="url(#prodV2DdRed)" />
+                            <Area type="monotone" dataKey="ddPort" name={tx('★ Drawdown Tu Cartera (%)', '★ Portfolio Drawdown (%)')} stroke="#f43f5e" strokeWidth={2.2} fill="url(#prodV2DdRed)" />
                         </AreaChart>
                     ) : (
                         <AreaChart data={RISK_TIME_SERIES} margin={{ top: 6, right: 14, left: -16, bottom: 0 }}>
@@ -1151,7 +1118,8 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
 }
 
 export default function PortfolioVista2Risk({ holdings = INITIAL_HOLDINGS, langCode = 'EN' }) {
-    const isES = langCode === 'ES';
+    const { localeTick } = useViewLocale(langCode);
+    const isES = `${langCode}_${localeTick}`;
     const liveMetrics = useMemo(() => computeLivePortfolioMetrics(holdings, isES), [holdings, isES]);
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>

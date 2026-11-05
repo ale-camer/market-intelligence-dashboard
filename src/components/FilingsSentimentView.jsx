@@ -1,3 +1,4 @@
+import { tx, useViewLocale } from '../data/i18n/viewLocaleService';
 import React, { useState, useMemo, useEffect } from 'react';
 import {
   FileText,
@@ -38,7 +39,7 @@ export default function FilingsSentimentView({
   const [isRetrieving, setIsRetrieving] = useState(false);
   const [focusedChunkId, setFocusedChunkId] = useState(SEC_10K_CHUNKS[0].id);
 
-  const isES = langCode === 'ES';
+  const { isES } = useViewLocale(langCode);
 
   useEffect(() => {
     if (SEC_FILING_TICKERS.includes(selectedAsset)) {
@@ -177,7 +178,7 @@ export default function FilingsSentimentView({
           }}
         >
           <Palette size={13} />
-          <span>{isES ? 'EXPLORADOR DE DISEÑO (RESEARCH):' : 'RESEARCH DESIGN EXPLORER:'}</span>
+          <span>{tx('EXPLORADOR DE DISEÑO (RESEARCH):', 'RESEARCH DESIGN EXPLORER:')}</span>
         </div>
 
         <div style={{ display: 'flex', gap: '0.25rem', flexWrap: 'wrap' }}>
@@ -239,9 +240,7 @@ export default function FilingsSentimentView({
           <input
             type="text"
             placeholder={
-              isES
-                ? 'Consultar SEC 10-K (pgvector) o noticias FinBERT (ej. margins, CoWoS, AI capex)...'
-                : 'Query SEC 10-K (pgvector) or FinBERT news (e.g. margins, CoWoS, AI capex)...'
+              tx('Consultar SEC 10-K (pgvector) o noticias FinBERT (ej. margins, CoWoS, AI capex)...', 'Query SEC 10-K (pgvector) or FinBERT news (e.g. margins, CoWoS, AI capex)...')
             }
             value={filingsQuery}
             onChange={(e) => setFilingsQuery(e.target.value)}

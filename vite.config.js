@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     watch: {
-      ignored: ['**/public/guide/**'],
+      ignored: ['**/public/guide/**', '**/public/locales/**'],
     },
     proxy: {
       '/cloud/p03': {

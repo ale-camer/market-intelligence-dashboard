@@ -1,3 +1,4 @@
+import { tx, useViewLocale } from '../data/i18n/viewLocaleService';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Palette, Info, X, Check, Search, ChevronDown, ChevronUp } from 'lucide-react';
 import HoverTooltip from './HoverTooltip';
@@ -112,7 +113,7 @@ export default function FooterBar({
   const searchInputRef = useRef(null);
   const palettePopoverRef = useRef(null);
   const paletteBtnRef = useRef(null);
-  const isES = currentLang?.code === 'ES';
+  const { isES } = useViewLocale(currentLang?.code || 'EN');
 
   useEffect(() => {
     if (!palettePopoverOpen) return undefined;
@@ -636,7 +637,7 @@ export default function FooterBar({
                   }}
                 >
                   <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#ffffff' }}>
-                    {isES ? '5 Ambientes de Lectura (Palette)' : '5 Visual Reading Themes (Palette)'}
+                    {tx('5 Ambientes de Lectura (Palette)', '5 Visual Reading Themes (Palette)')}
                   </span>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
@@ -706,7 +707,7 @@ export default function FooterBar({
 
             <HoverTooltip
               disabled={palettePopoverOpen}
-              title={isES ? 'Elegir Paleta' : 'Choose Palette'}
+              title={tx('Elegir Paleta', 'Choose Palette')}
               placement="top-right"
             >
               {(isHovered) => {

@@ -1,3 +1,4 @@
+import { tx, txList, txTpl, useViewLocale } from '../data/i18n/viewLocaleService';
 import React, { useState, useEffect, useMemo } from 'react';
 import { X } from 'lucide-react';
 import { INITIAL_HOLDINGS } from './portfolio/portfolioConstants';
@@ -15,7 +16,8 @@ export default function AgentCommitteeView({
     onToggleWatchlist,
     langCode = 'EN'
 }) {
-    const isES = langCode === 'ES';
+    const { localeTick } = useViewLocale(langCode);
+    const isES = `${langCode}_${localeTick}`;
     const [activeView, setActiveView] = useState('V1');
     const [copilotOpen, setCopilotOpen] = useState(false);
     const [copilotMsg, setCopilotMsg] = useState('');
@@ -24,15 +26,15 @@ export default function AgentCommitteeView({
     const portfolioViews = [
         {
             id: 'V1',
-            label: isES ? 'Constructor' : 'Builder'
+            label: tx('Constructor', 'Builder')
         },
         {
             id: 'V2',
-            label: isES ? 'Riesgo' : 'Risk'
+            label: tx('Riesgo', 'Risk')
         },
         {
             id: 'V3',
-            label: isES ? 'Simulador' : 'Simulator'
+            label: tx('Simulador', 'Simulator')
         }
     ];
 
@@ -74,13 +76,9 @@ export default function AgentCommitteeView({
         ]);
     };
 
-    const initialGreeting = isES
-        ? `Copiloto activo (${liveMetrics.enrichedHoldings.length} activos). Tu cartera proyecta +${liveMetrics.cagrPct}% CAGR con Sharpe ${liveMetrics.sharpeRatio}, Beta ${liveMetrics.portfolioBeta} y VaR 95% de ${liveMetrics.var95Pct}%.`
-        : `Copilot active (${liveMetrics.enrichedHoldings.length} assets). Your portfolio projects +${liveMetrics.cagrPct}% CAGR with ${liveMetrics.sharpeRatio} Sharpe, ${liveMetrics.portfolioBeta} Beta, and ${liveMetrics.var95Pct}% 95% VaR.`;
+    const initialGreeting = txTpl("Copiloto activo ({0} activos). Tu cartera proyecta +{1}% CAGR con Sharpe {2}, Beta {3} y VaR 95% de {4}%.", [liveMetrics.enrichedHoldings.length, liveMetrics.cagrPct, liveMetrics.sharpeRatio, liveMetrics.portfolioBeta, liveMetrics.var95Pct], "Copilot active ({0} assets). Your portfolio projects +{1}% CAGR with {2} Sharpe, {3} Beta, and {4}% 95% VaR.", [liveMetrics.enrichedHoldings.length, liveMetrics.cagrPct, liveMetrics.sharpeRatio, liveMetrics.portfolioBeta, liveMetrics.var95Pct]);
     const displayedThread = [{ role: 'ai', txt: initialGreeting }, ...copilotThread];
-    const quickChips = isES
-        ? ['Revisar solapamiento', 'Simular cobertura', 'Optimizar Sharpe']
-        : ['Check ETF overlap', 'Simulate Put hedge', 'Optimize Sharpe'];
+    const quickChips = txList(['Revisar solapamiento', 'Simular cobertura', 'Optimizar Sharpe'], ['Check ETF overlap', 'Simulate Put hedge', 'Optimize Sharpe']);
 
     return (
         <div
@@ -144,7 +142,7 @@ export default function AgentCommitteeView({
 
                 <button
                     onClick={() => setCopilotOpen(v => !v)}
-                    aria-label={isES ? 'Copiloto' : 'Copilot'}
+                    aria-label={tx('Copiloto', 'Copilot')}
                     style={{
                         position: 'absolute',
                         right: '4px',
@@ -165,7 +163,7 @@ export default function AgentCommitteeView({
                         transition: 'all 0.16s ease'
                     }}
                 >
-                    <span>{isES ? 'Copiloto' : 'Copilot'}</span>
+                    <span>{tx('Copiloto', 'Copilot')}</span>
                 </button>
             </div>
 
@@ -219,7 +217,7 @@ export default function AgentCommitteeView({
                             }}
                         >
                             <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
-                                {isES ? 'Copiloto de Cartera' : 'Portfolio Copilot'}
+                                {tx('Copiloto de Cartera', 'Portfolio Copilot')}
                             </span>
                             <button onClick={() => setCopilotOpen(false)} style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer' }}>
                                 <X size={14} />
@@ -270,7 +268,7 @@ export default function AgentCommitteeView({
                             <input
                                 value={copilotMsg}
                                 onChange={e => setCopilotMsg(e.target.value)}
-                                placeholder={isES ? 'Consultar sobre la cartera...' : 'Ask about your portfolio...'}
+                                placeholder={tx('Consultar sobre la cartera...', 'Ask about your portfolio...')}
                                 style={{
                                     flex: 1,
                                     background: 'transparent',
@@ -297,7 +295,7 @@ export default function AgentCommitteeView({
                                     cursor: 'pointer'
                                 }}
                             >
-                                {isES ? 'Enviar' : 'Send'}
+                                {tx('Enviar', 'Send')}
                             </button>
                         </div>
                     </div>

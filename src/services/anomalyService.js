@@ -1,3 +1,4 @@
+import { bilingual } from '../data/i18n/viewLocaleService';
 /**
  * Anomaly Detection Service (`anomalyService.js`)
  * Covers:
@@ -15,12 +16,9 @@ export const ANOMALY_PROFILES = {
     realizedVol: '31.8%',
     spreadDislocation: 'Nominal (1.2 bps)',
     contaminationParam: '0.05',
-    alertTitle: { EN: 'NOMINAL REGIME • BTC', ES: 'RÉGIMEN NOMINAL • BTC' },
+    alertTitle: bilingual('NOMINAL REGIME • BTC', 'RÉGIMEN NOMINAL • BTC'),
     alertTime: '16:02:10',
-    alertDesc: {
-      EN: 'Isolation Forest path length within 88th percentile of normal distribution. Full systematic position sizing authorized.',
-      ES: 'Profundidad de árbol Isolation Forest dentro del percentil 88 normal. Tamaño completo de posición autorizado.',
-    },
+    alertDesc: bilingual('Isolation Forest path length within 88th percentile of normal distribution. Full systematic position sizing authorized.', 'Profundidad de árbol Isolation Forest dentro del percentil 88 normal. Tamaño completo de posición autorizado.'),
     modelPayload: {
       close: 68620.0,
       close_rolling_mean_7: 67900.0,
@@ -38,12 +36,9 @@ export const ANOMALY_PROFILES = {
     realizedVol: '34.5%',
     spreadDislocation: 'Nominal (1.5 bps)',
     contaminationParam: '0.05',
-    alertTitle: { EN: 'LIQUIDITY STABLE • ETH', ES: 'LIQUIDEZ ESTABLE • ETH' },
+    alertTitle: bilingual('LIQUIDITY STABLE • ETH', 'LIQUIDEZ ESTABLE • ETH'),
     alertTime: '15:58:04',
-    alertDesc: {
-      EN: 'Spot-perpetual basis and 20-day rolling volume variance remain well below the 0.65 circuit breaker.',
-      ES: 'El basis spot-perpetuo y la varianza móvil de 20 días permanecen muy por debajo del umbral 0.65.',
-    },
+    alertDesc: bilingual('Spot-perpetual basis and 20-day rolling volume variance remain well below the 0.65 circuit breaker.', 'El basis spot-perpetuo y la varianza móvil de 20 días permanecen muy por debajo del umbral 0.65.'),
     modelPayload: {
       close: 2750.4,
       close_rolling_mean_7: 2718.0,
@@ -61,12 +56,9 @@ export const ANOMALY_PROFILES = {
     realizedVol: '64.2%',
     spreadDislocation: 'Widened (6.8 bps)',
     contaminationParam: '0.05',
-    alertTitle: { EN: 'VOLATILITY ALERT • SOL', ES: 'ALERTA DE VOLATILIDAD • SOL' },
+    alertTitle: bilingual('VOLATILITY ALERT • SOL', 'ALERTA DE VOLATILIDAD • SOL'),
     alertTime: '14:18:22',
-    alertDesc: {
-      EN: 'Statistical Anomaly Model flagged volume dislocation score: 0.659 (> 0.65 threshold). Position sizing trimmed 50% automatically.',
-      ES: 'Modelo de Anomalías Estadísticas detectó dislocación de volumen: 0.659 (> umbral 0.65). Reducción automática del 50% en posición.',
-    },
+    alertDesc: bilingual('Statistical Anomaly Model flagged volume dislocation score: 0.659 (> 0.65 threshold). Position sizing trimmed 50% automatically.', 'Modelo de Anomalías Estadísticas detectó dislocación de volumen: 0.659 (> umbral 0.65). Reducción automática del 50% en posición.'),
     modelPayload: {
       close: 178.2,
       close_rolling_mean_7: 164.5,
@@ -84,12 +76,9 @@ export const ANOMALY_PROFILES = {
     realizedVol: '42.1%',
     spreadDislocation: 'Nominal (0.9 bps)',
     contaminationParam: '0.05',
-    alertTitle: { EN: 'MOMENTUM INFLOW • NVDA', ES: 'FLUJO DE MOMENTUM • NVDA' },
+    alertTitle: bilingual('MOMENTUM INFLOW • NVDA', 'FLUJO DE MOMENTUM • NVDA'),
     alertTime: '15:45:19',
-    alertDesc: {
-      EN: 'Institutional block volume +1.45σ above 20d mean, but order-book depth absorbs flow without spread dislocation.',
-      ES: 'Volumen institucional +1.45σ sobre la media de 20d, pero la liquidez del libro absorbe el flujo sin dislocación de spread.',
-    },
+    alertDesc: bilingual('Institutional block volume +1.45σ above 20d mean, but order-book depth absorbs flow without spread dislocation.', 'Volumen institucional +1.45σ sobre la media de 20d, pero la liquidez del libro absorbe el flujo sin dislocación de spread.'),
     modelPayload: {
       close: 141.5,
       close_rolling_mean_7: 136.8,
@@ -107,12 +96,9 @@ export const ANOMALY_PROFILES = {
     realizedVol: '18.4%',
     spreadDislocation: 'Tight (0.4 bps)',
     contaminationParam: '0.05',
-    alertTitle: { EN: 'LOW VARIANCE • AAPL', ES: 'BAJA VARIANZA • AAPL' },
+    alertTitle: bilingual('LOW VARIANCE • AAPL', 'BAJA VARIANZA • AAPL'),
     alertTime: '15:50:00',
-    alertDesc: {
-      EN: 'Lowest anomaly score across tech cohort (0.195). Ideal volatility profile for fundamental overweight allocation.',
-      ES: 'Score de anomalía más bajo de la cohorte tech (0.195). Perfil de volatilidad óptimo para sobreponderación fundamental.',
-    },
+    alertDesc: bilingual('Lowest anomaly score across tech cohort (0.195). Ideal volatility profile for fundamental overweight allocation.', 'Score de anomalía más bajo de la cohorte tech (0.195). Perfil de volatilidad óptimo para sobreponderación fundamental.'),
     modelPayload: {
       close: 232.8,
       close_rolling_mean_7: 231.4,
@@ -130,12 +116,9 @@ export const ANOMALY_PROFILES = {
     realizedVol: '19.1%',
     spreadDislocation: 'Tight (0.5 bps)',
     contaminationParam: '0.05',
-    alertTitle: { EN: 'MEAN REVERSION • MSFT', ES: 'REVERSIÓN A LA MEDIA • MSFT' },
+    alertTitle: bilingual('MEAN REVERSION • MSFT', 'REVERSIÓN A LA MEDIA • MSFT'),
     alertTime: '15:12:40',
-    alertDesc: {
-      EN: 'Intraday drift compressed within ±0.4σ Bollinger channel. Zero structural anomalies detected.',
-      ES: 'Deriva intradía comprimida dentro del canal de Bollinger ±0.4σ. Sin anomalías estructurales.',
-    },
+    alertDesc: bilingual('Intraday drift compressed within ±0.4σ Bollinger channel. Zero structural anomalies detected.', 'Deriva intradía comprimida dentro del canal de Bollinger ±0.4σ. Sin anomalías estructurales.'),
     modelPayload: {
       close: 428.1,
       close_rolling_mean_7: 428.9,
@@ -153,12 +136,9 @@ export const ANOMALY_PROFILES = {
     realizedVol: '24.6%',
     spreadDislocation: 'Nominal (0.7 bps)',
     contaminationParam: '0.05',
-    alertTitle: { EN: 'STEADY ACCUMULATION • AMZN', ES: 'ACUMULACIÓN ESTABLE • AMZN' },
+    alertTitle: bilingual('STEADY ACCUMULATION • AMZN', 'ACUMULACIÓN ESTABLE • AMZN'),
     alertTime: '15:33:11',
-    alertDesc: {
-      EN: 'Gradual volume expansion accompanied by tight bid-ask spread. Isolation Forest confirms healthy trend.',
-      ES: 'Expansión gradual de volumen con spread bid-ask ajustado. Isolation Forest confirma tendencia saludable.',
-    },
+    alertDesc: bilingual('Gradual volume expansion accompanied by tight bid-ask spread. Isolation Forest confirms healthy trend.', 'Expansión gradual de volumen con spread bid-ask ajustado. Isolation Forest confirma tendencia saludable.'),
     modelPayload: {
       close: 186.4,
       close_rolling_mean_7: 184.2,
@@ -176,12 +156,9 @@ export const ANOMALY_PROFILES = {
     realizedVol: '22.3%',
     spreadDislocation: 'Nominal (0.6 bps)',
     contaminationParam: '0.05',
-    alertTitle: { EN: 'NOMINAL REGIME • GOOGL', ES: 'RÉGIMEN NOMINAL • GOOGL' },
+    alertTitle: bilingual('NOMINAL REGIME • GOOGL', 'RÉGIMEN NOMINAL • GOOGL'),
     alertTime: '15:20:05',
-    alertDesc: {
-      EN: 'Feature vector within normal historical covariance matrix.',
-      ES: 'Vector de features dentro de la matriz de covarianza histórica normal.',
-    },
+    alertDesc: bilingual('Feature vector within normal historical covariance matrix.', 'Vector de features dentro de la matriz de covarianza histórica normal.'),
     modelPayload: {
       close: 165.7,
       close_rolling_mean_7: 164.3,
@@ -199,12 +176,9 @@ export const ANOMALY_PROFILES = {
     realizedVol: '12.8%',
     spreadDislocation: 'Ultra-Tight (0.2 bps)',
     contaminationParam: '0.05',
-    alertTitle: { EN: 'BENCHMARK STABLE • SPY', ES: 'BENCHMARK ESTABLE • SPY' },
+    alertTitle: bilingual('BENCHMARK STABLE • SPY', 'BENCHMARK ESTABLE • SPY'),
     alertTime: '16:00:00',
-    alertDesc: {
-      EN: 'Macro equity index volatility anchored at 12.8%. No systemic cross-asset stress detected.',
-      ES: 'Volatilidad del índice macro anclada en 12.8%. Sin estrés sistémico entre clases de activos.',
-    },
+    alertDesc: bilingual('Macro equity index volatility anchored at 12.8%. No systemic cross-asset stress detected.', 'Volatilidad del índice macro anclada en 12.8%. Sin estrés sistémico entre clases de activos.'),
     modelPayload: {
       close: 580.4,
       close_rolling_mean_7: 578.1,
@@ -222,12 +196,9 @@ export const ANOMALY_PROFILES = {
     realizedVol: '16.2%',
     spreadDislocation: 'Ultra-Tight (0.3 bps)',
     contaminationParam: '0.05',
-    alertTitle: { EN: 'TECH INDEX NOMINAL • QQQ', ES: 'ÍNDICE TECH NOMINAL • QQQ' },
+    alertTitle: bilingual('TECH INDEX NOMINAL • QQQ', 'ÍNDICE TECH NOMINAL • QQQ'),
     alertTime: '16:00:00',
-    alertDesc: {
-      EN: 'Nasdaq-100 tracking error and liquidity depth operating within normal parameters.',
-      ES: 'Tracking error y profundidad de liquidez del Nasdaq-100 operando en parámetros normales.',
-    },
+    alertDesc: bilingual('Nasdaq-100 tracking error and liquidity depth operating within normal parameters.', 'Tracking error y profundidad de liquidez del Nasdaq-100 operando en parámetros normales.'),
     modelPayload: {
       close: 492.15,
       close_rolling_mean_7: 489.2,
