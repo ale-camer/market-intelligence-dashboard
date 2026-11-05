@@ -559,135 +559,79 @@ export const GLOBAL_VOLUME_SPARKLINE = [
 ];
 
 // Multi-granularity Time-Series Rollup Configuration:
-// Intraday (1m, 5m, 1H, 1D) -> Daily (1W, 1M, 3M) -> Weekly (1Y) -> Monthly (ALL: 2020..2026)
-const TIMEFRAME_GRANULARITY_CONFIG = {
+// Intraday (1m, 5m, 1H, 1D) -> Daily Aggregated (1W, 1M, 3M) -> Monthly Aggregated (1Y, ALL)
+export const TIMEFRAME_GRANULARITY_CONFIG = {
   '1M': {
-    count: 30,
+    stamps: ['15:49', '15:50', '15:51', '15:52', '15:53', '15:54', '15:55', '15:56', '15:57', '15:58', '15:59', '16:00'],
     tfSeed: 101,
     totalDriftScale: 0.18,
     volAmpScale: 0.22,
     volMult: 0.35,
-    granularity: '1m Intraday',
-    buildLabel: (i, n) => {
-      const minsAgo = n - 1 - i;
-      const totalMins = 16 * 60 - minsAgo;
-      const hh = String(Math.floor(totalMins / 60)).padStart(2, '0');
-      const mm = String(totalMins % 60).padStart(2, '0');
-      return `${hh}:${mm}`;
-    },
+    granularity: '1m Intraday Bars',
   },
   '5M': {
-    count: 28,
+    stamps: ['15:05', '15:10', '15:15', '15:20', '15:25', '15:30', '15:35', '15:40', '15:45', '15:50', '15:55', '16:00'],
     tfSeed: 203,
     totalDriftScale: 0.42,
     volAmpScale: 0.45,
     volMult: 0.6,
-    granularity: '5m Intraday',
-    buildLabel: (i, n) => {
-      const minsAgo = (n - 1 - i) * 5;
-      const totalMins = 16 * 60 - minsAgo;
-      const hh = String(Math.floor(totalMins / 60)).padStart(2, '0');
-      const mm = String(totalMins % 60).padStart(2, '0');
-      return `${hh}:${mm}`;
-    },
+    granularity: '5m Intraday Bars',
   },
   '1H': {
-    count: 24,
+    stamps: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
     tfSeed: 307,
     totalDriftScale: 0.78,
     volAmpScale: 0.75,
     volMult: 0.9,
-    granularity: '15m / 1H Session',
-    buildLabel: (i, n) => {
-      const minsAgo = (n - 1 - i) * 15;
-      const totalMins = 16 * 60 - minsAgo;
-      const hh = String(Math.floor(totalMins / 60)).padStart(2, '0');
-      const mm = String(totalMins % 60).padStart(2, '0');
-      return `${hh}:${mm}`;
-    },
+    granularity: '1H Session Bars',
   },
   '1D': {
-    count: 24,
+    stamps: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00'],
     tfSeed: 409,
     totalDriftScale: 1.0,
     volAmpScale: 1.0,
     volMult: 1.15,
-    granularity: 'Hourly (24h)',
-    buildLabel: (i) => `${String(i).padStart(2, '0')}:00`,
+    granularity: 'Intraday (24h)',
   },
   '1W': {
-    count: 21,
+    stamps: ['30 Oct', '31 Oct', '01 Nov', '02 Nov', '03 Nov', '04 Nov', '05 Nov'],
     tfSeed: 521,
     totalDriftScale: 2.35,
     volAmpScale: 1.75,
     volMult: 1.65,
-    granularity: 'Daily / 8h (7D)',
-    buildLabel: (i, n) => {
-      const daysAgo = Math.floor(((n - 1 - i) * 7) / n);
-      const d = new Date(Date.UTC(2026, 10, 5 - daysAgo));
-      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getUTCMonth()];
-      const slot = i % 3 === 0 ? '08h' : i % 3 === 1 ? '14h' : '20h';
-      return i === n - 1 ? 'Now' : `${mon} ${String(d.getUTCDate()).padStart(2, '0')} ${slot}`;
-    },
+    granularity: 'Daily Aggregated (1D Bars)',
   },
   '1M_CAL': {
-    count: 24,
+    stamps: ['06 Oct', '09 Oct', '12 Oct', '15 Oct', '19 Oct', '22 Oct', '26 Oct', '29 Oct', '02 Nov', '05 Nov'],
     tfSeed: 631,
     totalDriftScale: 4.4,
     volAmpScale: 2.6,
     volMult: 2.4,
-    granularity: 'Daily Close (1M)',
-    buildLabel: (i, n) => {
-      const daysAgo = Math.round(((n - 1 - i) * 30) / Math.max(1, n - 1));
-      const d = new Date(Date.UTC(2026, 10, 5 - daysAgo));
-      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getUTCMonth()];
-      return i === n - 1 ? 'Nov 05' : `${mon} ${String(d.getUTCDate()).padStart(2, '0')}`;
-    },
+    granularity: 'Daily Aggregated (30D)',
   },
   '3M': {
-    count: 32,
+    stamps: ['05 Aug', '15 Aug', '25 Aug', '04 Sep', '14 Sep', '24 Sep', '04 Oct', '15 Oct', '25 Oct', '05 Nov'],
     tfSeed: 743,
     totalDriftScale: 8.2,
     volAmpScale: 3.8,
     volMult: 3.5,
-    granularity: 'Daily Agg (3M)',
-    buildLabel: (i, n) => {
-      const daysAgo = Math.round(((n - 1 - i) * 90) / Math.max(1, n - 1));
-      const d = new Date(Date.UTC(2026, 10, 5 - daysAgo));
-      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getUTCMonth()];
-      return i === n - 1 ? 'Nov 05' : `${mon} ${String(d.getUTCDate()).padStart(2, '0')}`;
-    },
+    granularity: 'Daily / Weekly Rollup (90D)',
   },
   '1Y': {
-    count: 36,
+    stamps: ['Dec 25', 'Jan 26', 'Feb 26', 'Mar 26', 'Apr 26', 'May 26', 'Jun 26', 'Jul 26', 'Aug 26', 'Sep 26', 'Oct 26', 'Nov 26'],
     tfSeed: 859,
     totalDriftScale: 14.8,
     volAmpScale: 5.5,
     volMult: 5.2,
-    granularity: 'Weekly Agg (1Y)',
-    buildLabel: (i, n) => {
-      const daysAgo = Math.round(((n - 1 - i) * 365) / Math.max(1, n - 1));
-      const d = new Date(Date.UTC(2026, 10, 5 - daysAgo));
-      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getUTCMonth()];
-      const yr = String(d.getUTCFullYear()).slice(-2);
-      return `${mon} '${yr}`;
-    },
+    granularity: 'Monthly Aggregated (12M)',
   },
   'ALL': {
-    count: 42,
+    stamps: ['Jan 20', 'Jul 20', 'Jan 21', 'Jul 21', 'Jan 22', 'Jul 22', 'Jan 23', 'Jul 23', 'Jan 24', 'Jul 24', 'Jan 25', 'Nov 26'],
     tfSeed: 977,
     totalDriftScale: 24.5,
     volAmpScale: 7.8,
     volMult: 8.5,
     granularity: 'Monthly Rollup (2020–2026)',
-    buildLabel: (i, n) => {
-      const totalMonths = 82; // Jan 2020 -> Nov 2026
-      const mOffset = Math.round((i / Math.max(1, n - 1)) * totalMonths);
-      const yr = 2020 + Math.floor(mOffset / 12);
-      const mo = mOffset % 12;
-      const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][mo];
-      return `${mon} ${yr}`;
-    },
   },
 };
 
@@ -757,7 +701,8 @@ export function getAssetSeries(sym = 'BTC', timeframe = '1D') {
 
   const h = hashSym(`${asset.sym}:${tfKey}`);
   const symHash = hashSym(asset.sym);
-  const n = cfg.count;
+  const stamps = cfg.stamps || TIMEFRAME_GRANULARITY_CONFIG['1D'].stamps;
+  const n = stamps.length;
   const decimals = asset.price < 5 ? 4 : asset.price > 500 ? 1 : 2;
 
   const isLowVolClass = asset.cat === 'CASH' || asset.cat === 'FIXED_INCOME';
@@ -812,7 +757,7 @@ export function getAssetSeries(sym = 'BTC', timeframe = '1D') {
   const startVal = ratios[0] || 1;
 
   const series = ratios.map((ratio, idx) => {
-    const time = cfg.buildLabel(idx, n);
+    const time = stamps[idx];
     const rawPrice = asset.price * ratio;
     const roundedPrice = Number(rawPrice.toFixed(decimals));
 

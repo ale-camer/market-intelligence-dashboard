@@ -80,7 +80,71 @@ export function useViewLocale(langCode) {
   };
 }
 
+// Universal institutional English terms (Navigation, Quantitative Acronyms, Cloud/FinOps Headers)
+// that remain in canonical English across all 56 languages while descriptions & narratives localize.
+const CANONICAL_EN_TERMS = new Set([
+  'Markets',
+  'Portfolio',
+  'System',
+  'Guide',
+  'Table',
+  'Orbital',
+  'Heatmap',
+  'Main Tools',
+  'Analytics',
+  'Research',
+  'Technical',
+  'Compare %',
+  'Micro & Flow',
+  '3D/2D Curve',
+  'FX Cross',
+  '3D/2D Forward',
+  '3D Vol & Payoff',
+  '3D Surface',
+  '2D Curve',
+  '2D Smile',
+  'Payoff P&L',
+  'Builder',
+  'Risk',
+  'Simulator',
+  'Copilot',
+  'Performance',
+  'FinOps',
+  'All',
+  'Bull',
+  'Bear',
+  'Compare',
+  'Bullish',
+  'Bearish',
+  'Sparkline',
+  'Realized Vol',
+  '24h Volume',
+  'Volume (24h)',
+  'Price',
+  'MODULE',
+  'SERVICE / PIPELINE',
+  'RESOURCES & RUNTIME',
+  'SCHEDULE / TRIGGER',
+  'MONTHLY COST',
+  'View All',
+  'Selected',
+  'LIVE',
+  'OFFICIAL FILING',
+  'EXECUTIVE THESIS',
+  'WEIGHTED COMPOSITE',
+  'NEWS SENTIMENT',
+  'FINBERT SENTIMENT TRAJECTORY (24H)',
+  'BULL DRIVERS',
+  'BEAR RISKS',
+  'Analysis Lens',
+  'Quant Telemetry',
+  'Document Chat',
+  'Weighted Factors',
+  'News & Sentiment',
+]);
+
 export function tx(esText, enText, explicitLang) {
+  if (CANONICAL_EN_TERMS.has(enText)) return enText;
   const code = (explicitLang || activeViewLang || 'EN').toUpperCase();
   if (code === 'ES') return esText;
   if (code === 'EN') return enText;

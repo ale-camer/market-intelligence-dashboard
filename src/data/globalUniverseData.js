@@ -473,7 +473,7 @@ export const WORLD_USD_RATES = {
  * Triangulates ANY currency pair `baseCcy / quoteCcy` directly from `WORLD_USD_RATES`:
  * Rate(A/B) = (USD/B) / (USD/A)
  */
-export function computeCrossCurrencyRate(baseCcy = 'EUR', quoteCcy = 'USD', amount = 1000) {
+export function computeCrossCurrencyRate(baseCcy = 'EUR', quoteCcy = 'USD', amount = 1000, timeframe = '1D') {
   const base = WORLD_USD_RATES[baseCcy] || WORLD_USD_RATES.EUR;
   const quote = WORLD_USD_RATES[quoteCcy] || WORLD_USD_RATES.USD;
   const rawRate = quote.perUsd / base.perUsd;
@@ -491,13 +491,33 @@ export function computeCrossCurrencyRate(baseCcy = 'EUR', quoteCcy = 'USD', amou
     maximumFractionDigits: rawRate < 1 ? 4 : 2,
   });
 
-  // 8-point historical triangulated series for the chart
-  const stamps = ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', 'Now'];
-  const drift = crossChgPct / 100;
+  const fxStampsByTf = {
+    '1M': ['15:53', '15:54', '15:55', '15:56', '15:57', '15:58', '15:59', '16:00'],
+    '5M': ['15:25', '15:30', '15:35', '15:40', '15:45', '15:50', '15:55', '16:00'],
+    '1H': ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+    '1D': ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00'],
+    '1W': ['30 Oct', '31 Oct', '01 Nov', '02 Nov', '03 Nov', '04 Nov', '05 Nov'],
+    '1M_CAL': ['06 Oct', '09 Oct', '12 Oct', '15 Oct', '19 Oct', '22 Oct', '26 Oct', '29 Oct', '02 Nov', '05 Nov'],
+    '3M': ['05 Aug', '15 Aug', '25 Aug', '04 Sep', '14 Sep', '24 Sep', '04 Oct', '15 Oct', '25 Oct', '05 Nov'],
+    '1Y': ['Dec 25', 'Jan 26', 'Feb 26', 'Mar 26', 'Apr 26', 'May 26', 'Jun 26', 'Jul 26', 'Aug 26', 'Sep 26', 'Oct 26', 'Nov 26'],
+    'ALL': ['Jan 20', 'Jul 20', 'Jan 21', 'Jul 21', 'Jan 22', 'Jul 22', 'Jan 23', 'Jul 23', 'Jan 24', 'Jul 24', 'Jan 25', 'Nov 26'],
+  };
+  const stamps = fxStampsByTf[timeframe] || fxStampsByTf['1D'];
+  const tfScale =
+    timeframe === '1M' ? 0.25 :
+    timeframe === '5M' ? 0.5 :
+    timeframe === '1H' ? 0.8 :
+    timeframe === '1D' ? 1.0 :
+    timeframe === '1W' ? 2.2 :
+    timeframe === '1M_CAL' ? 4.0 :
+    timeframe === '3M' ? 7.5 :
+    timeframe === '1Y' ? 13.0 : 20.0;
+  const drift = Math.max(-0.35, Math.min(0.45, (crossChgPct / 100) * tfScale));
   const startRatio = 1 - drift;
+  const n = stamps.length;
   const crossSeries = stamps.map((time, idx) => {
-    const progress = idx / 7;
-    const wave = idx === 7 ? 0 : Math.sin(idx * 1.4 + base.perUsd) * 0.0028;
+    const progress = idx / Math.max(1, n - 1);
+    const wave = idx === n - 1 ? 0 : Math.sin(idx * 1.4 + base.perUsd + tfScale) * 0.0028 * Math.sqrt(tfScale);
     const r = rawRate * (startRatio + (1 - startRatio) * progress + wave);
     const dec = rawRate >= 100 ? 2 : 4;
     const price = Number(r.toFixed(dec));
@@ -507,8 +527,8 @@ export function computeCrossCurrencyRate(baseCcy = 'EUR', quoteCcy = 'USD', amou
       price,
       sma20,
       vwap: Number(((price + sma20) / 2).toFixed(dec)),
-      vol: Math.round(140 + (idx * 19) % 85),
-      zBar: Number(((idx - 3) * 0.35).toFixed(2)),
+      vol: Math.round((140 + (idx * 19) % 85) * Math.sqrt(tfScale)),
+      zBar: Number(((idx - Math.floor(n / 2)) * 0.35).toFixed(2)),
     };
   });
 

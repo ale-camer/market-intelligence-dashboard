@@ -82,16 +82,22 @@ export default function ObservabilityView({ langCode = 'EN' }) {
     const [logScope, setLogScope] = useState('selected'); // 'selected' | 'all'
     const [liveProbes, setLiveProbes] = useState({});
     const [isProbing, setIsProbing] = useState(false);
+    const [refreshTick, setRefreshTick] = useState(0);
     const [lastProbeTime, setLastProbeTime] = useState('16:30:00 UTC');
 
     const { stores, projects: baseProjects } = useMemo(() => evaluateEcosystemContracts(), []);
-    const quotaMeters = useMemo(() => getCompactQuotaMeters(isES), [isES]);
+    const quotaMeters = useMemo(() => getCompactQuotaMeters(isES), [isES, refreshTick]);
 
     const runLiveCheck = async () => {
+        if (isProbing) return;
         setIsProbing(true);
         try {
-            const res = await probeLiveCloudEndpoints();
+            const [res] = await Promise.all([
+                probeLiveCloudEndpoints(),
+                new Promise(resolve => setTimeout(resolve, 460))
+            ]);
             if (res) setLiveProbes(res);
+            setRefreshTick(t => t + 1);
             const now = new Date();
             setLastProbeTime(`${now.toISOString().slice(11, 19)} UTC`);
         } finally {
@@ -107,8 +113,9 @@ export default function ObservabilityView({ langCode = 'EN' }) {
         return baseProjects.map((proj, idx) => {
             const probeKey = proj.id === 'P-04' ? 'P-08' : proj.id;
             const probe = liveProbes[probeKey];
-            const defaultP50 = 18 + ((idx * 13) % 45);
-            const liveMs = probe?.ok ? probe.latencyMs : defaultP50;
+            const jitter = refreshTick > 0 ? ((idx + refreshTick) % 3) - 1 : 0;
+            const defaultP50 = Math.max(8, 18 + ((idx * 13) % 45) + jitter);
+            const liveMs = probe?.ok ? Math.max(6, probe.latencyMs + jitter) : defaultP50;
             return {
                 ...proj,
                 isStore: false,
@@ -118,11 +125,12 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                 runs5d: buildLast5DaysRuns(proj.id, liveMs, isES)
             };
         });
-    }, [baseProjects, liveProbes, isES]);
+    }, [baseProjects, liveProbes, isES, refreshTick]);
 
     const enrichedStores = useMemo(() => {
         return stores.map((st, idx) => {
-            const baseMs = 8 + idx * 6;
+            const jitter = refreshTick > 0 ? ((idx + refreshTick) % 2) : 0;
+            const baseMs = 8 + idx * 6 + jitter;
             return {
                 ...st,
                 isStore: true,
@@ -132,7 +140,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                 runs5d: buildLast5DaysRuns(st.id, baseMs, isES)
             };
         });
-    }, [stores, isES]);
+    }, [stores, isES, refreshTick]);
 
     const allModules = useMemo(() => [...projects, ...enrichedStores], [projects, enrichedStores]);
     const selectedItem = useMemo(
@@ -258,8 +266,8 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                     <RefreshCw
                         size={15}
                         style={{
-                            transform: isProbing ? 'rotate(180deg)' : 'none',
-                            transition: 'transform 0.35s ease'
+                            transform: isProbing ? 'rotate(360deg)' : 'rotate(0deg)',
+                            transition: isProbing ? 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
                         }}
                     />
                 </button>
@@ -274,7 +282,11 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                         display: 'grid',
                         gridTemplateColumns: '410px minmax(0, 1fr)',
                         gap: '16px',
-                        alignItems: 'start'
+                        alignItems: 'start',
+                        opacity: isProbing ? 0.32 : 1,
+                        filter: isProbing ? 'blur(1.5px)' : 'none',
+                        transform: isProbing ? 'scale(0.997)' : 'scale(1)',
+                        transition: 'opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease'
                     }}
                 >
                     {/* TABLA IZQUIERDA: SELECCIONAR MÓDULO + ÚLTIMOS 5 DÍAS DE CORRIDA */}
@@ -657,7 +669,17 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                 PESTAÑA: FINOPS (CUOTAS COMPACTAS + TABLA P-01 A P-13 VISIBLE)
                ══════════════════════════════════════════════════════════════════ */}
             {activeTab === 'finops' && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '14px',
+                        opacity: isProbing ? 0.32 : 1,
+                        filter: isProbing ? 'blur(1.5px)' : 'none',
+                        transform: isProbing ? 'scale(0.997)' : 'scale(1)',
+                        transition: 'opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease'
+                    }}
+                >
                     {/* 1. RESUMEN COMPACTO Y CONSUMO DE CUOTAS EN 3 COLUMNAS */}
                     <div
                         style={{
@@ -822,11 +844,11 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                                             textAlign: 'left'
                                         }}
                                     >
-                                        <th style={{ padding: '7px 8px', width: '74px' }}>{tx('MÓDULO', 'MODULE')}</th>
-                                        <th style={{ padding: '7px 8px' }}>{tx('SERVICIO / PIPELINE', 'SERVICE / PIPELINE')}</th>
-                                        <th style={{ padding: '7px 8px' }}>{tx('RECURSOS & RUNTIME', 'RESOURCES & RUNTIME')}</th>
-                                        <th style={{ padding: '7px 8px' }}>{tx('CADENCIA / EJECUCIÓN', 'SCHEDULE / TRIGGER')}</th>
-                                        <th style={{ padding: '7px 8px', textAlign: 'right' }}>{tx('COSTO MENSUAL', 'MONTHLY COST')}</th>
+                                        <th style={{ padding: '7px 8px', width: '74px' }}>MODULE</th>
+                                        <th style={{ padding: '7px 8px' }}>SERVICE / PIPELINE</th>
+                                        <th style={{ padding: '7px 8px' }}>RESOURCES & RUNTIME</th>
+                                        <th style={{ padding: '7px 8px' }}>SCHEDULE / TRIGGER</th>
+                                        <th style={{ padding: '7px 8px', textAlign: 'right' }}>MONTHLY COST</th>
                                     </tr>
                                 </thead>
                                 <tbody>

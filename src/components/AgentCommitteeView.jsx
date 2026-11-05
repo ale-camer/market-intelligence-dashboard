@@ -26,15 +26,15 @@ export default function AgentCommitteeView({
     const portfolioViews = [
         {
             id: 'V1',
-            label: tx('Constructor', 'Builder')
+            label: 'Builder'
         },
         {
             id: 'V2',
-            label: tx('Riesgo', 'Risk')
+            label: 'Risk'
         },
         {
             id: 'V3',
-            label: tx('Simulador', 'Simulator')
+            label: 'Simulator'
         }
     ];
 
@@ -163,7 +163,7 @@ export default function AgentCommitteeView({
                         transition: 'all 0.16s ease'
                     }}
                 >
-                    <span>{tx('Copiloto', 'Copilot')}</span>
+                    <span>Copilot</span>
                 </button>
             </div>
 

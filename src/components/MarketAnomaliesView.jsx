@@ -320,10 +320,10 @@ function RadialRingGauge({ pct = 50, color = '#10b981', label = '', sub = '', de
 }
 
 // Standardized Standalone Trajectory AreaChart (identical format to Level 1 '24h Aggregate Volume')
-function MiniSparkline({ sym, isPos, color, width = 94, height = 36 }) {
-  const series = useMemo(() => getAssetSeries(sym, '5M'), [sym]);
+function MiniSparkline({ sym, timeframe = '5M', isPos, color, width = 94, height = 36 }) {
+  const series = useMemo(() => getAssetSeries(sym, timeframe), [sym, timeframe]);
   const strokeColor = color || (isPos ? '#10b981' : '#f43f5e');
-  const gradId = `sparkGrad-${sym.replace(/[^a-zA-Z0-9_-]/g, '')}-${width}x${height}`;
+  const gradId = `sparkGrad-${sym.replace(/[^a-zA-Z0-9_-]/g, '')}-${timeframe}-${width}x${height}`;
 
   return (
     <div style={{ width: `${width}px`, height: `${height}px`, flexShrink: 0 }}>
@@ -475,7 +475,9 @@ export default function MarketAnomaliesView({
   const [lastUpdatedPart, setLastUpdatedPart] = useState(null); // 'bull' | 'bear' | null
   const [researchChatHistory, setResearchChatHistory] = useState([]);
   const [researchFactorFilter, setResearchFactorFilter] = useState('all'); // 'all' | 'bull' | 'bear' | 'twin'
-  const [researchExpandedKey, setResearchExpandedKey] = useState('BULL-0');
+  const [researchExpandedKey, setResearchExpandedKey] = useState('');
+  const [isRefreshingNews, setIsRefreshingNews] = useState(false);
+  const [newsRefreshTick, setNewsRefreshTick] = useState(0);
 
   const { localeTick } = useViewLocale(langCode);
   const isES = `${langCode}_${localeTick}`;
@@ -719,7 +721,10 @@ export default function MarketAnomaliesView({
   const triggerLiveP06Scoring = async (sym) => {
     setIsScoring(true);
     try {
-      const res = await runLiveAnomalyInference(sym);
+      const [res] = await Promise.all([
+        runLiveAnomalyInference(sym),
+        new Promise((resolve) => setTimeout(resolve, 420)),
+      ]);
       setLiveInference(res);
     } catch {
       setLiveInference(null);
@@ -801,7 +806,7 @@ export default function MarketAnomaliesView({
       setRagQuery('');
       setRagResult(null);
       setResearchChatHistory([]);
-      setResearchExpandedKey('BULL-0');
+      setResearchExpandedKey('');
       setLiveWireItems([]);
       setWireCursor(0);
       setLiveBullUpdates([]);
@@ -886,9 +891,20 @@ export default function MarketAnomaliesView({
 
   // Real live RSS news fetch for Level 2 Research (Yahoo Finance RSS + curated institutional wire)
   const refreshLiveAssetNews = async (force = false) => {
-    const rssItems = await fetchLiveAssetNews(selectedAsset, force);
-    if (Array.isArray(rssItems) && rssItems.length > 0) {
-      setLiveWireItems(rssItems);
+    if (force) setIsRefreshingNews(true);
+    try {
+      const [rssItems] = await Promise.all([
+        fetchLiveAssetNews(selectedAsset, force),
+        force ? new Promise((resolve) => setTimeout(resolve, 460)) : Promise.resolve(),
+      ]);
+      if (Array.isArray(rssItems) && rssItems.length > 0) {
+        setLiveWireItems(rssItems);
+      }
+      if (force) {
+        setNewsRefreshTick((t) => t + 1);
+      }
+    } finally {
+      if (force) setIsRefreshingNews(false);
     }
   };
 
@@ -4410,7 +4426,13 @@ export default function MarketAnomaliesView({
                     cursor: 'pointer',
                   }}
                 >
-                  <RefreshCw size={10} />
+                  <RefreshCw
+                    size={10}
+                    style={{
+                      transform: isScoring ? 'rotate(360deg)' : 'rotate(0deg)',
+                      transition: isScoring ? 'transform 0.42s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
+                    }}
+                  />
                   <span>{isScoring ? 'SCORING...' : liveInference ? `P-06 (${liveInference.latencyMs}ms)` : 'P-06'}</span>
                 </button>
               </HoverTooltip>
@@ -4423,7 +4445,12 @@ export default function MarketAnomaliesView({
                   return (
                     <button
                       key={tf.id}
-                      onClick={() => setTimeframe(tf.id)}
+                      onClick={() => {
+                        setTimeframe(tf.id);
+                        if (analysisLens === 'derivatives' && currentAsset.cat !== 'FX') {
+                          setAnalysisLens('technical');
+                        }
+                      }}
                       className="mono-metric"
                       style={{
                         background: 'transparent',
@@ -4469,7 +4496,23 @@ export default function MarketAnomaliesView({
             analysisLens === 'derivatives' &&
             currentAsset.cat === 'FX';
           const heroCurve = isHeroRatesTool ? computeSovereignCurveMetrics(selectedCurveCountry) : null;
-          const heroFxCross = isHeroFxTool ? computeCrossCurrencyRate(fxBaseCcy, fxQuoteCcy, fxAmount) : null;
+          const heroFxCross = isHeroFxTool ? computeCrossCurrencyRate(fxBaseCcy, fxQuoteCcy, fxAmount, timeframe) : null;
+
+          const activeTfMeta = TIMEFRAMES.find((tf) => tf.id === timeframe) || { id: '1D', label: '1D' };
+          const tfPeriodReturn =
+            series && series.length > 0 && typeof series[series.length - 1]?.pctReturn === 'number'
+              ? series[series.length - 1].pctReturn
+              : currentAsset.chgNum;
+          const tfReturnFormatted =
+            l2Section === 'analytics' && timeframe !== '1D'
+              ? `${tfPeriodReturn >= 0 ? '+' : ''}${Number(tfPeriodReturn).toFixed(2)}% (${activeTfMeta.label})`
+              : currentAsset.chg;
+          const tfReturnColor =
+            l2Section === 'analytics' && timeframe !== '1D'
+              ? tfPeriodReturn >= 0
+                ? '#10b981'
+                : '#f43f5e'
+              : assetMainColor;
 
           const heroBadgeCat = isHeroRatesTool
             ? `SOVEREIGN (${heroCurve.rating})`
@@ -4493,13 +4536,13 @@ export default function MarketAnomaliesView({
             ? `2s10s: ${heroCurve.spread2s10sBps >= 0 ? '+' : ''}${heroCurve.spread2s10sBps} bps`
             : isHeroFxTool
               ? heroFxCross.chgFormatted
-              : currentAsset.chg;
+              : tfReturnFormatted;
 
           const heroChgColor = isHeroRatesTool
             ? heroCurve.spread2s10sBps >= 0 ? '#10b981' : '#f43f5e'
             : isHeroFxTool
               ? heroFxCross.chg24h >= 0 ? '#10b981' : '#f43f5e'
-              : assetMainColor;
+              : tfReturnColor;
 
           const isWatchedHero = watchlistSyms.includes(currentAsset.sym);
 
@@ -4568,7 +4611,13 @@ export default function MarketAnomaliesView({
 
               {/* Centered Standalone Trajectory AreaChart matching Level 1 '24h Aggregate Volume' */}
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <MiniSparkline sym={currentAsset.sym} color={heroChgColor} width={118} height={46} />
+                <MiniSparkline
+                  sym={currentAsset.sym}
+                  timeframe={l2Section === 'analytics' ? timeframe : '1D'}
+                  color={heroChgColor}
+                  width={118}
+                  height={46}
+                />
               </div>
             </>
           );
@@ -4823,7 +4872,7 @@ export default function MarketAnomaliesView({
             const effectiveOptSpot = undCatalogObj ? undCatalogObj.price : currentAsset.price;
 
             const curveMetrics = isRatesCurveMode ? computeSovereignCurveMetrics(selectedCurveCountry) : null;
-            const fxCrossMetrics = isFxCrossMode ? computeCrossCurrencyRate(fxBaseCcy, fxQuoteCcy, fxAmount) : null;
+            const fxCrossMetrics = isFxCrossMode ? computeCrossCurrencyRate(fxBaseCcy, fxQuoteCcy, fxAmount, timeframe) : null;
             const commForwardMetrics = isCommodityCurveMode
               ? getCommodityForwardCurve(currentAsset.sym, currentAsset.price)
               : null;
@@ -6563,6 +6612,82 @@ export default function MarketAnomaliesView({
                     </div>
                   ) : (
                     <>
+                      {/* Multi-Granularity Timeframe & Rollup Header Strip */}
+                      {(() => {
+                        const firstPt = activeChartData[0] || {};
+                        const lastPt = activeChartData[activeChartData.length - 1] || {};
+                        const tfObj = TIMEFRAMES.find((tf) => tf.id === timeframe) || { label: '1D' };
+                        const granLabel =
+                          isRatesCurveMode
+                            ? `${selectedCurveCountry} Sovereign Term Structure (1M → 30Y)`
+                            : isCommodityCurveMode
+                              ? `${currentAsset.sym} Futures Term Structure (Spot → M24)`
+                              : isOptionsPayoffMode
+                                ? `${cleanUndSym} Expiration Payoff Profile`
+                                : isOptionsSmileMode
+                                  ? `${cleanUndSym} Implied Volatility Smile (7D–180D)`
+                                  : firstPt.granularity || 'Intraday (24h)';
+                        const rangeLabel =
+                          firstPt.time && lastPt.time ? `${firstPt.time} → ${lastPt.time}` : '';
+                        const periodRet =
+                          typeof lastPt.pctReturn === 'number'
+                            ? `${lastPt.pctReturn >= 0 ? '+' : ''}${lastPt.pctReturn.toFixed(2)}%`
+                            : currentAsset.chg;
+                        return (
+                          <div
+                            className="mono-metric"
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'space-between',
+                              padding: '2px 8px 4px',
+                              borderBottom: '1px solid rgba(148, 163, 184, 0.12)',
+                              fontSize: '11px',
+                              color: '#94a3b8',
+                              flexShrink: 0,
+                            }}
+                          >
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                              <span
+                                style={{
+                                  padding: '1px 6px',
+                                  borderRadius: '4px',
+                                  backgroundColor: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
+                                  border: '1px solid rgba(var(--ui-accent-rgb, 16, 185, 129), 0.38)',
+                                  color: 'var(--ui-accent, #10b981)',
+                                  fontWeight: 800,
+                                  fontSize: '10.5px',
+                                }}
+                              >
+                                {isRatesCurveMode || isCommodityCurveMode || isOptionsPayoffMode || isOptionsSmileMode
+                                  ? 'CURVE'
+                                  : tfObj.label}
+                              </span>
+                              <span style={{ color: '#e2e8f0', fontWeight: 700 }}>{granLabel}</span>
+                              {rangeLabel && <span style={{ color: '#64748b' }}>({rangeLabel})</span>}
+                            </div>
+                            {!isRatesCurveMode && !isCommodityCurveMode && !isOptionsPayoffMode && !isOptionsSmileMode && (
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                                {typeof firstPt.price === 'number' && typeof lastPt.price === 'number' && (
+                                  <span style={{ color: '#94a3b8' }}>
+                                    Open: <strong style={{ color: '#cbd5e1' }}>{firstPt.price}</strong> • Last:{' '}
+                                    <strong style={{ color: '#ffffff' }}>{lastPt.price}</strong>
+                                  </span>
+                                )}
+                                <span
+                                  style={{
+                                    fontWeight: 800,
+                                    color: (lastPt.pctReturn ?? currentAsset.chgNum) >= 0 ? '#10b981' : '#f43f5e',
+                                  }}
+                                >
+                                  {periodRet}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })()}
+
                       <div style={{ flex: showSubChart === 'none' ? 1 : 0.74, minHeight: 0 }}>
                         <ResponsiveContainer width="100%" height="100%">
                           <AreaChart data={activeChartData}>
@@ -6574,11 +6699,11 @@ export default function MarketAnomaliesView({
                             </defs>
                             <XAxis
                               dataKey="time"
+                              interval={0}
                               stroke="var(--text-dim)"
                               fontSize={11}
                               tickLine={false}
                               axisLine={false}
-                              hide={showSubChart !== 'none' && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isCommodityCurveMode}
                             />
                             <YAxis
                               domain={['auto', 'auto']}
@@ -6757,7 +6882,7 @@ export default function MarketAnomaliesView({
                         <div style={{ flex: 0.26, minHeight: 0, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '0.35rem' }}>
                           <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={activeChartData}>
-                              <XAxis dataKey="time" stroke="var(--text-dim)" fontSize={10} tickLine={false} axisLine={false} />
+                              <XAxis dataKey="time" interval={0} stroke="var(--text-dim)" fontSize={10} tickLine={false} axisLine={false} />
                               <YAxis stroke="var(--text-dim)" fontSize={10} orientation="right" tickLine={false} axisLine={false} />
                               <Tooltip
                                 contentStyle={{
@@ -7499,6 +7624,7 @@ export default function MarketAnomaliesView({
                   <button
                     type="button"
                     onClick={() => refreshLiveAssetNews(true)}
+                    disabled={isRefreshingNews}
                     title={tx('Actualizar Noticias en Vivo', 'Refresh Live News')}
                     aria-label={tx('Actualizar Noticias en Vivo', 'Refresh Live News')}
                     style={{
@@ -7515,12 +7641,29 @@ export default function MarketAnomaliesView({
                       cursor: 'pointer',
                     }}
                   >
-                    <RefreshCw size={13} />
+                    <RefreshCw
+                      size={13}
+                      style={{
+                        transform: isRefreshingNews ? 'rotate(360deg)' : 'rotate(0deg)',
+                        transition: isRefreshingNews ? 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
+                      }}
+                    />
                   </button>
                 </div>
 
                 {/* Top Box: Chronological Vertical Timeline with Glowing Nodes */}
-                <div style={{ flex: 1, overflowY: 'auto', paddingRight: '0.18rem', minHeight: 0 }}>
+                <div
+                  style={{
+                    flex: 1,
+                    overflowY: 'auto',
+                    paddingRight: '0.18rem',
+                    minHeight: 0,
+                    opacity: isRefreshingNews ? 0.32 : 1,
+                    filter: isRefreshingNews ? 'blur(1.5px)' : 'none',
+                    transform: isRefreshingNews ? 'scale(0.996)' : 'scale(1)',
+                    transition: 'opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease',
+                  }}
+                >
                   <div
                     style={{
                       position: 'relative',
@@ -7650,6 +7793,9 @@ export default function MarketAnomaliesView({
                     flexDirection: 'column',
                     gap: '0.22rem',
                     flexShrink: 0,
+                    opacity: isRefreshingNews ? 0.32 : 1,
+                    filter: isRefreshingNews ? 'blur(1.5px)' : 'none',
+                    transition: 'opacity 0.2s ease, filter 0.2s ease',
                   }}
                 >
                   <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
