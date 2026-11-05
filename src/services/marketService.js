@@ -18,6 +18,7 @@ import {
   computeSovereignCurveMetrics,
   WORLD_USD_RATES,
   computeCrossCurrencyRate,
+  LIVE_CHART_SERIES_CACHE,
   getHighVolumeOptionsChain,
   getCommodityForwardCurve,
   getAssetClassSpecificMetrics,
@@ -33,6 +34,7 @@ export {
   computeSovereignCurveMetrics,
   WORLD_USD_RATES,
   computeCrossCurrencyRate,
+  LIVE_CHART_SERIES_CACHE,
   getHighVolumeOptionsChain,
   getCommodityForwardCurve,
   getAssetClassSpecificMetrics,
@@ -562,15 +564,23 @@ export const GLOBAL_VOLUME_SPARKLINE = [
 // Intraday (1m, 5m, 1H, 1D) -> Daily Aggregated (1W, 1M, 3M) -> Monthly Aggregated (1Y, ALL)
 export const TIMEFRAME_GRANULARITY_CONFIG = {
   '1M': {
-    stamps: ['15:49', '15:50', '15:51', '15:52', '15:53', '15:54', '15:55', '15:56', '15:57', '15:58', '15:59', '16:00'],
+    stamps: [
+      '15:36', '15:37', '15:38', '15:39', '15:40', '15:41', '15:42', '15:43',
+      '15:44', '15:45', '15:46', '15:47', '15:48', '15:49', '15:50', '15:51',
+      '15:52', '15:53', '15:54', '15:55', '15:56', '15:57', '15:58', '15:59', '16:00',
+    ],
     tfSeed: 101,
     totalDriftScale: 0.18,
     volAmpScale: 0.22,
     volMult: 0.35,
-    granularity: '1m Intraday Bars',
+    granularity: '1m Live Bars',
   },
   '5M': {
-    stamps: ['15:05', '15:10', '15:15', '15:20', '15:25', '15:30', '15:35', '15:40', '15:45', '15:50', '15:55', '16:00'],
+    stamps: [
+      '14:00', '14:05', '14:10', '14:15', '14:20', '14:25', '14:30', '14:35',
+      '14:40', '14:45', '14:50', '14:55', '15:00', '15:05', '15:10', '15:15',
+      '15:20', '15:25', '15:30', '15:35', '15:40', '15:45', '15:50', '15:55', '16:00',
+    ],
     tfSeed: 203,
     totalDriftScale: 0.42,
     volAmpScale: 0.45,
@@ -578,7 +588,13 @@ export const TIMEFRAME_GRANULARITY_CONFIG = {
     granularity: '5m Intraday Bars',
   },
   '1H': {
-    stamps: ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00'],
+    stamps: [
+      '03 Nov 18:00', '03 Nov 20:00', '03 Nov 22:00', '04 Nov 00:00', '04 Nov 02:00',
+      '04 Nov 04:00', '04 Nov 06:00', '04 Nov 08:00', '04 Nov 10:00', '04 Nov 12:00',
+      '04 Nov 14:00', '04 Nov 16:00', '04 Nov 18:00', '04 Nov 20:00', '04 Nov 22:00',
+      '05 Nov 00:00', '05 Nov 02:00', '05 Nov 04:00', '05 Nov 06:00', '05 Nov 08:00',
+      '05 Nov 10:00', '05 Nov 12:00', '05 Nov 14:00', '05 Nov 16:00',
+    ],
     tfSeed: 307,
     totalDriftScale: 0.78,
     volAmpScale: 0.75,
@@ -586,7 +602,11 @@ export const TIMEFRAME_GRANULARITY_CONFIG = {
     granularity: '1H Session Bars',
   },
   '1D': {
-    stamps: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00'],
+    stamps: [
+      '00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07:00',
+      '08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00',
+      '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00',
+    ],
     tfSeed: 409,
     totalDriftScale: 1.0,
     volAmpScale: 1.0,
@@ -594,15 +614,24 @@ export const TIMEFRAME_GRANULARITY_CONFIG = {
     granularity: 'Intraday (24h)',
   },
   '1W': {
-    stamps: ['30 Oct', '31 Oct', '01 Nov', '02 Nov', '03 Nov', '04 Nov', '05 Nov'],
+    stamps: [
+      '30 Oct 08:00', '30 Oct 16:00', '31 Oct 00:00', '31 Oct 08:00', '31 Oct 16:00',
+      '01 Nov 00:00', '01 Nov 12:00', '02 Nov 00:00', '02 Nov 08:00', '02 Nov 16:00',
+      '03 Nov 00:00', '03 Nov 08:00', '03 Nov 16:00', '04 Nov 00:00', '04 Nov 08:00',
+      '04 Nov 16:00', '05 Nov 00:00', '05 Nov 08:00', '05 Nov 16:00',
+    ],
     tfSeed: 521,
     totalDriftScale: 2.35,
     volAmpScale: 1.75,
     volMult: 1.65,
-    granularity: 'Daily Aggregated (1D Bars)',
+    granularity: '1W Hourly Rollup (5D)',
   },
   '1M_CAL': {
-    stamps: ['06 Oct', '09 Oct', '12 Oct', '15 Oct', '19 Oct', '22 Oct', '26 Oct', '29 Oct', '02 Nov', '05 Nov'],
+    stamps: [
+      '04 Oct', '05 Oct', '06 Oct', '07 Oct', '08 Oct', '11 Oct', '12 Oct', '13 Oct',
+      '14 Oct', '15 Oct', '18 Oct', '19 Oct', '20 Oct', '21 Oct', '22 Oct', '26 Oct',
+      '27 Oct', '28 Oct', '29 Oct', '30 Oct', '02 Nov', '03 Nov', '04 Nov', '05 Nov',
+    ],
     tfSeed: 631,
     totalDriftScale: 4.4,
     volAmpScale: 2.6,
@@ -610,32 +639,324 @@ export const TIMEFRAME_GRANULARITY_CONFIG = {
     granularity: 'Daily Aggregated (30D)',
   },
   '3M': {
-    stamps: ['05 Aug', '15 Aug', '25 Aug', '04 Sep', '14 Sep', '24 Sep', '04 Oct', '15 Oct', '25 Oct', '05 Nov'],
+    stamps: [
+      '05 Aug', '09 Aug', '13 Aug', '17 Aug', '21 Aug', '25 Aug', '29 Aug', '02 Sep',
+      '06 Sep', '10 Sep', '14 Sep', '18 Sep', '22 Sep', '26 Sep', '30 Sep', '04 Oct',
+      '08 Oct', '12 Oct', '16 Oct', '20 Oct', '24 Oct', '28 Oct', '01 Nov', '05 Nov',
+    ],
     tfSeed: 743,
     totalDriftScale: 8.2,
     volAmpScale: 3.8,
     volMult: 3.5,
-    granularity: 'Daily / Weekly Rollup (90D)',
+    granularity: 'Daily Rollup (90D)',
   },
   '1Y': {
-    stamps: ['Dec 25', 'Jan 26', 'Feb 26', 'Mar 26', 'Apr 26', 'May 26', 'Jun 26', 'Jul 26', 'Aug 26', 'Sep 26', 'Oct 26', 'Nov 26'],
+    stamps: [
+      'Nov 25', 'Dec 25', 'Jan 26', 'Feb 26', 'Mar 26', 'Apr 26', 'May 26',
+      'Jun 26', 'Jul 26', 'Aug 26', 'Sep 26', 'Oct 26', 'Nov 26',
+    ],
     tfSeed: 859,
     totalDriftScale: 14.8,
     volAmpScale: 5.5,
     volMult: 5.2,
-    granularity: 'Monthly Aggregated (12M)',
+    granularity: 'Weekly Aggregated (52W)',
   },
   'ALL': {
-    stamps: ['Jan 20', 'Jul 20', 'Jan 21', 'Jul 21', 'Jan 22', 'Jul 22', 'Jan 23', 'Jul 23', 'Jan 24', 'Jul 24', 'Jan 25', 'Nov 26'],
+    stamps: [
+      'Dec 21', 'Mar 22', 'Jun 22', 'Sep 22', 'Dec 22', 'Mar 23', 'Jun 23', 'Sep 23',
+      'Dec 23', 'Mar 24', 'Jun 24', 'Sep 24', 'Dec 24', 'Mar 25', 'Jun 25', 'Sep 25',
+      'Dec 25', 'Mar 26', 'Jun 26', 'Sep 26', 'Nov 26',
+    ],
     tfSeed: 977,
     totalDriftScale: 24.5,
     volAmpScale: 7.8,
     volMult: 8.5,
-    granularity: 'Monthly Rollup (2020–2026)',
+    granularity: 'Monthly Rollup (5Y)',
   },
 };
 
 const SERIES_MEMORY_CACHE = {};
+const IN_FLIGHT_SERIES_FETCHES = {};
+
+const YAHOO_SYMBOL_MAP = {
+  // Global Equity Indices
+  SPX: '^GSPC',
+  NDX: '^NDX',
+  DJI: '^DJI',
+  RUT: '^RUT',
+  SX5E: '^STOXX50E',
+  DAX: '^GDAXI',
+  UKX: '^FTSE',
+  CAC: '^FCHI',
+  IBEX: '^IBEX',
+  FTSEMIB: 'FTSEMIB.MI',
+  SMI: '^SSMI',
+  AEX: '^AEX',
+  OMX: '^OMX',
+  N225: '^N225',
+  HSI: '^HSI',
+  SHCOMP: '000001.SS',
+  CSI300: '000300.SS',
+  KOSPI: '^KS11',
+  TWII: '^TWII',
+  AS51: '^AXJO',
+  SENSEX: '^BSESN',
+  STI: '^STI',
+  IBOV: '^BVSP',
+  MEXBOL: '^MXX',
+  DXY: 'DX-Y.NYB',
+  // Volatility & Futures
+  VIX: '^VIX',
+  VXN: '^VXN',
+  MOVE: '^MOVE',
+  ES: 'ES=F',
+  NQ: 'NQ=F',
+  YM: 'YM=F',
+  RTY: 'RTY=F',
+  ZB: 'ZB=F',
+  ZN: 'ZN=F',
+  ZF: 'ZF=F',
+  // Commodities
+  CL: 'CL=F',
+  BRN: 'BZ=F',
+  NG: 'NG=F',
+  RB: 'RB=F',
+  HO: 'HO=F',
+  GC: 'GC=F',
+  SI: 'SI=F',
+  PL: 'PL=F',
+  PA: 'PA=F',
+  HG: 'HG=F',
+  ALI: 'ALI=F',
+  ZC: 'ZC=F',
+  ZS: 'ZS=F',
+  ZW: 'ZW=F',
+  KC: 'KC=F',
+  SB: 'SB=F',
+  CT: 'CT=F',
+  CC: 'CC=F',
+  LE: 'LE=F',
+  // Rates & Fixed Income Proxies
+  US2Y: '^IRX',
+  US5Y: '^FVX',
+  US10Y: '^TNX',
+  US30Y: '^TYX',
+  'UST-2Y': 'SHY',
+  'UST-5Y': 'IEI',
+  'UST-10Y': 'IEF',
+  'UST-20Y': 'TLT',
+  'UST-30Y': 'TLT',
+  'UST-TIPS': 'TIP',
+  'TBILL-3M': 'BIL',
+  'TBILL-6M': 'SGOV',
+  // Special Equity Symbols
+  'BRK.B': 'BRK-B',
+};
+
+/**
+ * Resolves any catalog symbol or `BASE/QUOTE` currency cross to its Yahoo Finance chart ticker.
+ */
+export function resolveYahooSymbol(sym = 'BTC', catHint = null) {
+  const clean = String(sym || 'BTC').trim().toUpperCase();
+  if (YAHOO_SYMBOL_MAP[clean]) {
+    return { yahooSym: YAHOO_SYMBOL_MAP[clean], isProxyScale: clean.startsWith('UST-') || clean.startsWith('TBILL-') };
+  }
+  if (clean.endsWith('-OPT')) {
+    return { yahooSym: clean.replace(/-OPT$/, ''), isProxyScale: true };
+  }
+  if (clean.includes('/')) {
+    const [base, quote] = clean.split('/');
+    if (base === 'USD' && quote && quote !== 'USD') {
+      return { yahooSym: `${quote}=X`, isProxyScale: false };
+    }
+    if (quote === 'USD' && base && base !== 'USD') {
+      return { yahooSym: `${base}USD=X`, isProxyScale: false };
+    }
+    if (base && quote) {
+      return { yahooSym: `${base}${quote}=X`, isProxyScale: false };
+    }
+  }
+  const catItem = ASSET_CATALOG.find((a) => a.sym === clean);
+  const cat = catHint || catItem?.cat;
+  if (cat === 'CRYPTO') {
+    return { yahooSym: `${clean}-USD`, isProxyScale: false };
+  }
+  if (cat === 'RATES' || cat === 'CASH') {
+    return { yahooSym: '^TNX', isProxyScale: true };
+  }
+  return { yahooSym: clean, isProxyScale: false };
+}
+
+const YAHOO_TIMEFRAME_QUERY = {
+  '1M': { range: '5d', interval: '1m', slice: 36, granularity: '1m Live Bars', fmt: 'time' },
+  '5M': { range: '5d', interval: '5m', slice: 36, granularity: '5m Intraday Bars', fmt: 'time' },
+  '1H': { range: '1mo', interval: '1h', slice: 32, granularity: '1H Session Bars', fmt: 'dayhour' },
+  '1D': { range: '5d', interval: '15m', slice: 40, granularity: 'Intraday (24h)', fmt: 'time' },
+  '1W': { range: '5d', interval: '1h', slice: 55, granularity: '1W Hourly Rollup (5D)', fmt: 'dayhour' },
+  '1M_CAL': { range: '1mo', interval: '1d', slice: 35, granularity: 'Daily Aggregated (30D)', fmt: 'day' },
+  '3M': { range: '3mo', interval: '1d', slice: 75, granularity: 'Daily Rollup (90D)', fmt: 'day' },
+  '1Y': { range: '1y', interval: '1wk', slice: 54, granularity: 'Weekly Aggregated (52W)', fmt: 'month' },
+  'ALL': { range: '5y', interval: '1mo', slice: 62, granularity: 'Monthly Rollup (5Y)', fmt: 'month' },
+};
+
+const SHORT_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+function formatYahooTimestamp(unixSec, fmt) {
+  const d = new Date(unixSec * 1000);
+  const dd = String(d.getUTCDate()).padStart(2, '0');
+  const mon = SHORT_MONTHS[d.getUTCMonth()] || 'Nov';
+  const yy = String(d.getUTCFullYear()).slice(-2);
+  const hh = String(d.getUTCHours()).padStart(2, '0');
+  const mm = String(d.getUTCMinutes()).padStart(2, '0');
+  if (fmt === 'time') return `${hh}:${mm}`;
+  if (fmt === 'dayhour') return `${dd} ${mon} ${hh}:00`;
+  if (fmt === 'day') return `${dd} ${mon}`;
+  return `${mon} ${yy}`;
+}
+
+/**
+ * Fetches real historical OHLCV bars from Yahoo Finance via `/cloud/yahoo-chart`
+ * and populates `LIVE_CHART_SERIES_CACHE` for both `getAssetSeries` and `computeCrossCurrencyRate`.
+ */
+export async function fetchLiveAssetSeries(sym = 'BTC', timeframe = '1D') {
+  const cleanSym = String(sym || 'BTC').trim().toUpperCase();
+  const tfKey = timeframe === '1M_HIST' ? '1M_CAL' : timeframe;
+  const cacheKey = `${cleanSym}_${tfKey}`;
+
+  if (Array.isArray(LIVE_CHART_SERIES_CACHE[cacheKey]) && LIVE_CHART_SERIES_CACHE[cacheKey].length >= 6) {
+    return LIVE_CHART_SERIES_CACHE[cacheKey];
+  }
+  if (IN_FLIGHT_SERIES_FETCHES[cacheKey]) {
+    return IN_FLIGHT_SERIES_FETCHES[cacheKey];
+  }
+
+  const qCfg = YAHOO_TIMEFRAME_QUERY[tfKey] || YAHOO_TIMEFRAME_QUERY['1D'];
+  const asset = ASSET_CATALOG.find((a) => a.sym === cleanSym);
+  const { yahooSym, isProxyScale } = resolveYahooSymbol(cleanSym, asset?.cat);
+
+  const promise = (async () => {
+    try {
+      const url = `/cloud/yahoo-chart/${encodeURIComponent(yahooSym)}?range=${qCfg.range}&interval=${qCfg.interval}&includePrePost=false`;
+      const res = await fetch(url, { signal: AbortSignal.timeout(4500) });
+      if (!res.ok) return null;
+      const data = await res.json();
+      const result = data?.chart?.result?.[0];
+      const timestamps = result?.timestamp || [];
+      const quote = result?.indicators?.quote?.[0] || {};
+      const closes = quote.close || [];
+      const lows = quote.low || [];
+      const highs = quote.high || [];
+      const vols = quote.volume || [];
+
+      const rawBars = [];
+      for (let i = 0; i < timestamps.length; i++) {
+        const c = closes[i];
+        if (typeof c === 'number' && Number.isFinite(c) && c > 0) {
+          let effectivePrice = c;
+          const lo = lows[i];
+          const hi = highs[i];
+          // On 1M daily charts, preserve extreme one-sided fixing dips (such as Oct 16–18 ARS=X 1,472.19 fixing)
+          if (
+            tfKey === '1M_CAL' &&
+            typeof lo === 'number' &&
+            lo > 0 &&
+            typeof hi === 'number' &&
+            (c - lo) / c > 0.015 &&
+            c - lo > 2.0 * Math.max(0.0001, hi - c)
+          ) {
+            effectivePrice = lo;
+          }
+          rawBars.push({
+            ts: timestamps[i],
+            price: effectivePrice,
+            vol: typeof vols[i] === 'number' && vols[i] > 0 ? vols[i] : 0,
+          });
+        }
+      }
+
+      if (rawBars.length < 6) return null;
+      const sliced = rawBars.slice(-qCfg.slice);
+
+      // Determine target spot price for scaling proxy tickers or exact spot alignment
+      let targetLastPrice = sliced[sliced.length - 1].price;
+      if (cleanSym.includes('/')) {
+        const [b, q] = cleanSym.split('/');
+        if (WORLD_USD_RATES[b] && WORLD_USD_RATES[q]) {
+          targetLastPrice = WORLD_USD_RATES[q].perUsd / WORLD_USD_RATES[b].perUsd;
+        }
+      } else if (asset && isProxyScale) {
+        targetLastPrice = asset.price;
+      }
+
+      const rawLast = sliced[sliced.length - 1].price;
+      const scaleFactor = isProxyScale && rawLast > 0 ? targetLastPrice / rawLast : 1.0;
+      const samplePrice = rawLast * scaleFactor;
+      const decimals = samplePrice < 5 ? 4 : samplePrice > 500 ? 2 : 2;
+      const startPrice = sliced[0].price * scaleFactor;
+
+      const avgVolRaw =
+        sliced.reduce((acc, b) => acc + (b.vol || 0), 0) / Math.max(1, sliced.length);
+
+      const formattedSeries = sliced.map((bar, idx) => {
+        const scaledP =
+          idx === sliced.length - 1 && !isProxyScale && Math.abs(targetLastPrice - rawLast) / Math.max(1, rawLast) < 0.02
+            ? targetLastPrice
+            : bar.price * scaleFactor;
+        const price = Number(scaledP.toFixed(decimals));
+
+        let winSum = 0;
+        let winCount = 0;
+        const lookback = Math.min(8, idx + 1);
+        for (let k = idx - lookback + 1; k <= idx; k++) {
+          winSum += sliced[Math.max(0, k)].price * scaleFactor;
+          winCount += 1;
+        }
+        const sma20 = Number((winSum / Math.max(1, winCount)).toFixed(decimals));
+        const vwap = Number(((price * 0.58 + sma20 * 0.42)).toFixed(decimals));
+        const bbSpread = Math.max(price * 0.006, Math.abs(price - sma20) * 1.65);
+        const bbUpper = Number((sma20 + bbSpread).toFixed(decimals));
+        const bbLower = Number((sma20 - bbSpread).toFixed(decimals));
+        const pctReturn = Number((((scaledP - startPrice) / Math.max(0.0001, startPrice)) * 100).toFixed(2));
+
+        let normVol = 180;
+        if (avgVolRaw > 0 && bar.vol > 0) {
+          normVol = Math.round(Math.min(650, Math.max(45, (bar.vol / avgVolRaw) * 210)));
+        } else {
+          const prevP = idx > 0 ? sliced[idx - 1].price * scaleFactor : scaledP;
+          const move = Math.abs(scaledP - prevP) / Math.max(0.0001, scaledP);
+          normVol = Math.round(145 + Math.min(380, move * 18000) + ((idx * 29) % 55));
+        }
+
+        return {
+          time: formatYahooTimestamp(bar.ts, qCfg.fmt),
+          price,
+          sma20,
+          vwap,
+          bbUpper,
+          bbLower,
+          pctReturn,
+          vol: normVol,
+          zBar: Number((((normVol - 190) / 85)).toFixed(2)),
+          granularity: qCfg.granularity,
+          isLiveYahoo: true,
+        };
+      });
+
+      LIVE_CHART_SERIES_CACHE[cacheKey] = formattedSeries;
+      if (asset && asset.sym !== cleanSym) {
+        LIVE_CHART_SERIES_CACHE[`${asset.sym}_${tfKey}`] = formattedSeries;
+      }
+      return formattedSeries;
+    } catch {
+      return null;
+    } finally {
+      delete IN_FLIGHT_SERIES_FETCHES[cacheKey];
+    }
+  })();
+
+  IN_FLIGHT_SERIES_FETCHES[cacheKey] = promise;
+  return promise;
+}
 
 export function getAssetBySymbol(sym = 'BTC') {
   const clean = String(sym || 'BTC').replace(/1!$/, '').replace(/-USD$/i, '');
@@ -691,8 +1012,25 @@ export async function syncLiveMarketSnapshot() {
 }
 
 export function getAssetSeries(sym = 'BTC', timeframe = '1D') {
+  const cleanSym = String(sym || 'BTC').trim().toUpperCase();
   const asset = getAssetBySymbol(sym);
   const tfKey = timeframe === '1M_HIST' ? '1M_CAL' : timeframe;
+
+  // 1. Check Real Live Yahoo Finance Cache first
+  const directLive = LIVE_CHART_SERIES_CACHE[`${cleanSym}_${tfKey}`] || LIVE_CHART_SERIES_CACHE[`${asset.sym}_${tfKey}`];
+  if (Array.isArray(directLive) && directLive.length >= 6) {
+    return directLive;
+  }
+
+  // 2. If FX pair, delegate to computeCrossCurrencyRate so FX Cross and Technical lens share identical curves
+  if (asset.cat === 'FX' && asset.sym.includes('/')) {
+    const [b, q] = asset.sym.split('/');
+    const fxRes = computeCrossCurrencyRate(b, q, 1000, tfKey);
+    if (fxRes?.crossSeries?.length) {
+      return fxRes.crossSeries;
+    }
+  }
+
   const cfg = TIMEFRAME_GRANULARITY_CONFIG[tfKey] || TIMEFRAME_GRANULARITY_CONFIG['1D'];
   const cacheKey = `${asset.sym}_${tfKey}_${asset.price}`;
   if (SERIES_MEMORY_CACHE[cacheKey]) {
@@ -720,7 +1058,7 @@ export function getAssetSeries(sym = 'BTC', timeframe = '1D') {
   const clampedDrift = Math.max(-0.58, Math.min(0.72, rawDrift));
   const startRatio = Math.max(0.28, 1 - clampedDrift);
 
-  // Build realistic multi-harmonic path with timeframe-specific macro regime inflections
+  // Build realistic multi-step random walk path with timeframe-specific regime inflections
   const ratios = [];
   let rw = 0;
   for (let i = 0; i < n; i++) {
@@ -729,26 +1067,24 @@ export function getAssetSeries(sym = 'BTC', timeframe = '1D') {
       continue;
     }
     const progress = i / (n - 1);
-    // Macro regime cycle (e.g. for ALL / 1Y: 2022 dip + 2024-2026 expansion; for intraday: session U-shape)
-    const freq1 = 1.35 + ((h % 7) * 0.28);
-    const freq2 = 2.9 + (((h >> 3) % 5) * 0.42);
-    const freq3 = 5.4 + (((h >> 6) % 7) * 0.55);
-    const phase1 = (h % 19) * 0.33;
-    const phase2 = ((h >> 4) % 13) * 0.47;
+    const freq1 = 1.85 + ((h % 9) * 0.37);
+    const freq2 = 3.4 + (((h >> 3) % 7) * 0.53);
+    const freq3 = 6.1 + (((h >> 6) % 9) * 0.67);
+    const phase1 = (h % 23) * 0.41;
+    const phase2 = ((h >> 4) % 17) * 0.59;
 
     const stepNoise =
-      Math.sin(i * 1.7 + phase1) * 0.45 +
-      Math.cos(i * 2.6 + phase2) * 0.35 +
-      Math.sin(i * 4.1 + (h % 11)) * 0.2;
-    rw = rw * 0.72 + stepNoise * volAmp * 0.55;
+      Math.sin((i + 1) * (1.79 + (h % 5) * 0.23) + phase1) * 0.48 +
+      Math.cos((i + 2) * (2.93 + ((h >> 2) % 5) * 0.31) + phase2) * 0.34 +
+      Math.sin((i + 3) * 4.37 + (h % 13)) * 0.18;
+    rw = rw * 0.74 + stepNoise * volAmp * 0.72;
 
-    const cycle1 = Math.sin(progress * Math.PI * freq1 + phase1) * volAmp * 0.85;
-    const cycle2 = Math.cos(progress * Math.PI * freq2 + phase2) * volAmp * 0.48;
-    const cycle3 = Math.sin(progress * Math.PI * freq3) * volAmp * 0.24;
+    const cycle1 = Math.sin(progress * Math.PI * freq1 + phase1) * volAmp * 0.55;
+    const cycle2 = Math.cos(progress * Math.PI * freq2 + phase2) * volAmp * 0.38;
+    const cycle3 = Math.sin(progress * Math.PI * freq3) * volAmp * 0.22;
 
-    // Smoothly pin endpoints: taper oscillation at i=n-1 so last point lands cleanly on current price
-    const endTaper = 1 - Math.pow(progress, 3.2) * 0.75;
-    const trendRatio = startRatio + (1 - startRatio) * Math.pow(progress, tfKey === 'ALL' ? 1.35 : 1.0);
+    const endTaper = 1 - Math.pow(progress, 3.2) * 0.78;
+    const trendRatio = startRatio + (1 - startRatio) * Math.pow(progress, tfKey === 'ALL' ? 1.45 : 1.0);
     const r = Math.max(0.18, trendRatio + (cycle1 + cycle2 + cycle3 + rw) * endTaper);
     ratios.push(r);
   }
@@ -761,7 +1097,6 @@ export function getAssetSeries(sym = 'BTC', timeframe = '1D') {
     const rawPrice = asset.price * ratio;
     const roundedPrice = Number(rawPrice.toFixed(decimals));
 
-    // 5-bar moving average for SMA20 proxy and session VWAP
     let winSum = 0;
     let winCount = 0;
     const lookback = Math.min(6, idx + 1);
@@ -778,7 +1113,6 @@ export function getAssetSeries(sym = 'BTC', timeframe = '1D') {
     const bbLower = Number((sma20 - bbSpread).toFixed(decimals));
     const pctFromStart = Number((((ratio - startVal) / Math.max(0.0001, startVal)) * 100).toFixed(2));
 
-    // U-shaped session volume profile + volatility spikes on large moves
     const prevRatio = idx > 0 ? ratios[idx - 1] : ratio;
     const barMove = Math.abs(ratio - prevRatio) / Math.max(0.001, volAmp);
     const uShape = 1 + 0.35 * Math.cos((idx / Math.max(1, n - 1) - 0.5) * 2 * Math.PI);

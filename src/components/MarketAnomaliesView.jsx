@@ -33,6 +33,7 @@ import {
   GLOBAL_VOLUME_SPARKLINE,
   getAssetBySymbol,
   getAssetSeries,
+  fetchLiveAssetSeries,
   SOVEREIGN_YIELD_CURVES,
   computeSovereignCurveMetrics,
   WORLD_USD_RATES,
@@ -320,8 +321,8 @@ function RadialRingGauge({ pct = 50, color = '#10b981', label = '', sub = '', de
 }
 
 // Standardized Standalone Trajectory AreaChart (identical format to Level 1 '24h Aggregate Volume')
-function MiniSparkline({ sym, timeframe = '5M', isPos, color, width = 94, height = 36 }) {
-  const series = useMemo(() => getAssetSeries(sym, timeframe), [sym, timeframe]);
+function MiniSparkline({ sym, timeframe = '5M', isPos, color, width = 94, height = 36, version = 0 }) {
+  const series = useMemo(() => getAssetSeries(sym, timeframe), [sym, timeframe, version]);
   const strokeColor = color || (isPos ? '#10b981' : '#f43f5e');
   const gradId = `sparkGrad-${sym.replace(/[^a-zA-Z0-9_-]/g, '')}-${timeframe}-${width}x${height}`;
 
@@ -337,7 +338,7 @@ function MiniSparkline({ sym, timeframe = '5M', isPos, color, width = 94, height
           </defs>
           <YAxis domain={['dataMin', 'dataMax']} hide />
           <Area
-            type="monotone"
+            type="linear"
             dataKey="price"
             stroke={strokeColor}
             strokeWidth={2}
@@ -713,10 +714,47 @@ export default function MarketAnomaliesView({
     selectedOptStrategy,
   ]);
 
-  // Level 2 data
+  // Level 2 data & Real Yahoo Finance historical chart synchronization
+  const [liveSeriesVersion, setLiveSeriesVersion] = useState(0);
   const currentAsset = useMemo(() => getAssetBySymbol(selectedAsset), [selectedAsset]);
   const anomalyProfile = useMemo(() => getAnomalyProfile(selectedAsset), [selectedAsset]);
-  const series = useMemo(() => getAssetSeries(selectedAsset, timeframe), [selectedAsset, timeframe]);
+  const series = useMemo(
+    () => getAssetSeries(selectedAsset, timeframe),
+    [selectedAsset, timeframe, liveSeriesVersion]
+  );
+
+  useEffect(() => {
+    let active = true;
+    const tasks = [fetchLiveAssetSeries(selectedAsset, timeframe)];
+    if (currentAsset.cat === 'FX' && fxBaseCcy && fxQuoteCcy) {
+      tasks.push(fetchLiveAssetSeries(`${fxBaseCcy}/${fxQuoteCcy}`, timeframe));
+    }
+    if (compareSymbol) {
+      tasks.push(fetchLiveAssetSeries(compareSymbol, timeframe));
+    }
+    Promise.all(tasks).then((results) => {
+      if (active && results.some((r) => Array.isArray(r) && r.length > 0)) {
+        setLiveSeriesVersion((v) => v + 1);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, [selectedAsset, timeframe, currentAsset.cat, fxBaseCcy, fxQuoteCcy, compareSymbol]);
+
+  useEffect(() => {
+    if (viewMode !== 'screener') return undefined;
+    let active = true;
+    const topVisible = screenerRows.slice(0, 10).map((r) => r.sym);
+    Promise.all(topVisible.map((sym) => fetchLiveAssetSeries(sym, '5M'))).then((results) => {
+      if (active && results.some((r) => Array.isArray(r) && r.length > 0)) {
+        setLiveSeriesVersion((v) => v + 1);
+      }
+    });
+    return () => {
+      active = false;
+    };
+  }, [viewMode, categoryFilter, screenerRows]);
 
   const triggerLiveP06Scoring = async (sym) => {
     setIsScoring(true);
@@ -1034,11 +1072,18 @@ export default function MarketAnomaliesView({
   const compareSeries = useMemo(() => {
     if (!compareSymbol) return null;
     return getAssetSeries(compareSymbol, timeframe);
-  }, [compareSymbol, timeframe]);
+  }, [compareSymbol, timeframe, liveSeriesVersion]);
 
   const chartData = useMemo(() => {
     return series.map((pt, i) => {
-      const cmpPt = compareSeries ? compareSeries[i] : null;
+      const cmpIdx =
+        compareSeries && compareSeries.length > 0
+          ? Math.min(
+              compareSeries.length - 1,
+              Math.round((i / Math.max(1, series.length - 1)) * (compareSeries.length - 1))
+            )
+          : 0;
+      const cmpPt = compareSeries ? compareSeries[cmpIdx] : null;
       return {
         ...pt,
         cmpReturn: cmpPt ? cmpPt.pctReturn : null,
@@ -3578,7 +3623,7 @@ export default function MarketAnomaliesView({
                       {/* SPARKLINE */}
                       <td style={{ ...cellBase, padding: '10px 10px', textAlign: 'center' }}>
                         <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <MiniSparkline sym={row.sym} isPos={isPos} width={88} height={28} />
+                          <MiniSparkline sym={row.sym} isPos={isPos} width={88} height={28} version={liveSeriesVersion} />
                         </div>
                       </td>
 
@@ -4184,10 +4229,11 @@ export default function MarketAnomaliesView({
       {/* 2.1 TOP HORIZON BAR — V010 NEON-HALO BOXLESS NAVIGATION */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr auto 1fr',
+          display: 'flex',
+          flexWrap: 'wrap',
           alignItems: 'center',
-          gap: '0.75rem',
+          justifyContent: 'space-between',
+          gap: '0.5rem 0.85rem',
           paddingBottom: '0.5rem',
           borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
           flexShrink: 0,
@@ -4485,10 +4531,11 @@ export default function MarketAnomaliesView({
       {/* 2.2 V010 HERO HEADER: AREA-GLOW SPARKLINE WITH LIVE DOT + DUAL-TIER SEMANTIC PILLS */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'auto 1fr auto',
+          display: 'flex',
+          flexWrap: 'wrap',
           alignItems: 'center',
-          gap: '1.25rem',
+          justifyContent: 'space-between',
+          gap: '0.65rem 1.25rem',
           paddingBottom: '0.6rem',
           borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
           flexShrink: 0,
@@ -4620,11 +4667,12 @@ export default function MarketAnomaliesView({
               {/* Centered Standalone Trajectory AreaChart matching Level 1 '24h Aggregate Volume' */}
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <MiniSparkline
-                  sym={currentAsset.sym}
+                  sym={isHeroFxTool ? `${fxBaseCcy}/${fxQuoteCcy}` : currentAsset.sym}
                   timeframe={l2Section === 'analytics' ? timeframe : '1D'}
                   color={heroChgColor}
                   width={118}
                   height={46}
+                  version={liveSeriesVersion}
                 />
               </div>
             </>
@@ -5153,6 +5201,7 @@ export default function MarketAnomaliesView({
                     justifyContent: 'flex-start',
                     gap: '14px',
                     minHeight: 0,
+                    overflowY: 'auto',
                   }}
                 >
                   {/* BLOCK 1: 4 PRIMARY ANALYSIS LENSES (2x2 GRID) */}
@@ -6646,8 +6695,10 @@ export default function MarketAnomaliesView({
                             className="mono-metric"
                             style={{
                               display: 'flex',
+                              flexWrap: 'wrap',
                               alignItems: 'center',
                               justifyContent: 'space-between',
+                              gap: '4px 10px',
                               padding: '2px 8px 4px',
                               borderBottom: '1px solid rgba(148, 163, 184, 0.12)',
                               fontSize: '11px',
@@ -6655,7 +6706,7 @@ export default function MarketAnomaliesView({
                               flexShrink: 0,
                             }}
                           >
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                               <span
                                 style={{
                                   padding: '1px 6px',
@@ -6675,7 +6726,7 @@ export default function MarketAnomaliesView({
                               {rangeLabel && <span style={{ color: '#64748b' }}>({rangeLabel})</span>}
                             </div>
                             {!isRatesCurveMode && !isCommodityCurveMode && !isOptionsPayoffMode && !isOptionsSmileMode && (
-                              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
                                 {typeof firstPt.price === 'number' && typeof lastPt.price === 'number' && (
                                   <span style={{ color: '#94a3b8' }}>
                                     Open: <strong style={{ color: '#cbd5e1' }}>{firstPt.price}</strong> • Last:{' '}
@@ -6707,7 +6758,8 @@ export default function MarketAnomaliesView({
                             </defs>
                             <XAxis
                               dataKey="time"
-                              interval={0}
+                              interval={isRatesCurveMode || isCommodityCurveMode || isOptionsSmileMode ? 0 : 'preserveStartEnd'}
+                              minTickGap={isRatesCurveMode || isCommodityCurveMode || isOptionsSmileMode ? 6 : 28}
                               stroke="var(--text-dim)"
                               fontSize={11}
                               tickLine={false}
@@ -6739,7 +6791,7 @@ export default function MarketAnomaliesView({
 
                             {/* Primary Series */}
                             <Area
-                              type="monotone"
+                              type={isRatesCurveMode || isCommodityCurveMode || isOptionsSmileMode || isOptionsPayoffMode ? 'monotone' : 'linear'}
                               dataKey={isCompareMode ? 'pctReturn' : 'price'}
                               name={
                                 isRatesCurveMode
@@ -6890,7 +6942,15 @@ export default function MarketAnomaliesView({
                         <div style={{ flex: 0.26, minHeight: 0, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '0.35rem' }}>
                           <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={activeChartData}>
-                              <XAxis dataKey="time" interval={0} stroke="var(--text-dim)" fontSize={10} tickLine={false} axisLine={false} />
+                              <XAxis
+                                dataKey="time"
+                                interval={isRatesCurveMode || isCommodityCurveMode || isOptionsSmileMode ? 0 : 'preserveStartEnd'}
+                                minTickGap={isRatesCurveMode || isCommodityCurveMode || isOptionsSmileMode ? 6 : 28}
+                                stroke="var(--text-dim)"
+                                fontSize={10}
+                                tickLine={false}
+                                axisLine={false}
+                              />
                               <YAxis stroke="var(--text-dim)" fontSize={10} orientation="right" tickLine={false} axisLine={false} />
                               <Tooltip
                                 contentStyle={{

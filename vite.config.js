@@ -1,9 +1,46 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
+const yahooChartCache = new Map()
+
+function yahooChartProxyPlugin() {
+  return {
+    name: 'yahoo-chart-proxy',
+    configureServer(server) {
+      server.middlewares.use('/cloud/yahoo-chart', async (req, res) => {
+        try {
+          const pathAndQuery = req.url || ''
+          const cached = yahooChartCache.get(pathAndQuery)
+          if (cached && Date.now() - cached.ts < 120_000) {
+            res.statusCode = 200
+            res.setHeader('Content-Type', 'application/json; charset=utf-8')
+            res.end(cached.body)
+            return
+          }
+          const targetUrl = `https://query1.finance.yahoo.com/v8/finance/chart${pathAndQuery}`
+          const upstream = await fetch(targetUrl, {
+            headers: { 'User-Agent': 'Mozilla/5.0' },
+          })
+          const body = await upstream.text()
+          if (upstream.ok) {
+            yahooChartCache.set(pathAndQuery, { ts: Date.now(), body })
+          }
+          res.statusCode = upstream.status
+          res.setHeader('Content-Type', 'application/json; charset=utf-8')
+          res.end(body)
+        } catch (err) {
+          res.statusCode = 502
+          res.setHeader('Content-Type', 'application/json; charset=utf-8')
+          res.end(JSON.stringify({ error: String(err) }))
+        }
+      })
+    },
+  }
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), yahooChartProxyPlugin()],
   server: {
     watch: {
       ignored: ['**/public/guide/**', '**/public/locales/**'],
