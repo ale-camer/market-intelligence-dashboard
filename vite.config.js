@@ -5,6 +5,9 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   plugins: [react()],
   server: {
+    watch: {
+      ignored: ['**/public/guide/**'],
+    },
     proxy: {
       '/cloud/p03': {
         target: 'https://p03-market-events-obaffww4hq-uc.a.run.app',
