@@ -552,7 +552,7 @@ export default function MarketAnomaliesView({
 
     return {
       totalCount: source.length,
-      totalVolFormatted: `$${totalVol.toFixed(2)}B`,
+      totalVolFormatted: totalVol >= 1000 ? `$${(totalVol / 1000).toFixed(2)}T` : `$${totalVol.toFixed(2)}B`,
       volChgNum,
       volChgFormatted,
       isVolPos,
@@ -1147,14 +1147,14 @@ export default function MarketAnomaliesView({
         badge: 'RATES & TREASURIES',
         dimension: '3D Mesh / 2D',
         liveStat: 'US 10Y • 2s10s Spread',
-        liveValue: '4.24% (+16 bps)',
+        liveValue: '4.86% (+24 bps)',
         liveColor: '#10b981',
         svgType: 'mesh-rates',
         quickPresets: [
           {
             label: tx('🇺🇸 US10Y • Tesoro EE.UU.', '🇺🇸 US10Y • US Treasury'),
             statLabel: tx('US10Y • Spread 2s10s', 'US10Y • 2s10s Spread'),
-            statValue: '4.24% (+16 bps)',
+            statValue: '4.86% (+24 bps)',
             statColor: '#10b981',
             variant: 0,
             seriesLegend: [
@@ -1187,24 +1187,24 @@ export default function MarketAnomaliesView({
           {
             label: tx('🌍 Comparador G10 / EM', '🌍 G10 / EM Peer Matrix'),
             statLabel: tx('Dispersión 10Y G10/EM', 'G10/EM 10Y Dispersion'),
-            statValue: 'US 4.24% • DE 2.32% • BR 12.78%',
+            statValue: 'US 4.86% • DE 3.28% • BR 13.15%',
             statColor: '#38bdf8',
             variant: 1,
             seriesLegend: [
               {
-                label: 'US10Y (4.24%)',
+                label: 'US10Y (4.86%)',
                 color: '#38bdf8',
                 dashed: false,
                 desc: tx('Curva de referencia del Tesoro de EE.UU. (Benchmark global).', 'US Treasury benchmark curve across all maturities.'),
               },
               {
-                label: 'DE10Y Bund (2.32%)',
+                label: 'DE10Y Bund (3.28%)',
                 color: '#38bdf8',
                 dashed: true,
                 desc: tx('Curva soberana alemana (referencia libre de riesgo en la Eurozona).', 'German Bund sovereign curve (Eurozone risk-free benchmark).'),
               },
               {
-                label: 'JP10Y JGB (1.06%)',
+                label: 'JP10Y JGB (2.76%)',
                 color: 'rgba(255,255,255,0.55)',
                 dashed: false,
                 desc: tx('Curva soberana de Japón (ancla de tasas bajas del G10).', 'Japanese Government Bond curve (G10 low-yield anchor).'),
@@ -1220,7 +1220,7 @@ export default function MarketAnomaliesView({
           {
             label: tx('🇩🇪 DE10Y • Bund Alemán', '🇩🇪 DE10Y • German Bund'),
             statLabel: 'DE10Y Bund • 2s10s',
-            statValue: '2.32% (+14 bps)',
+            statValue: '3.28% (+34 bps)',
             statColor: '#a855f7',
             variant: 2,
             seriesLegend: [
@@ -1253,7 +1253,7 @@ export default function MarketAnomaliesView({
           {
             label: tx('🇧🇷 BR10Y • Soberano Brasil', '🇧🇷 BR10Y • Brazil Sovereign'),
             statLabel: 'BR10Y DI • 2s10s',
-            statValue: '12.78% (-14 bps)',
+            statValue: '13.15% (+7 bps)',
             statColor: '#f59e0b',
             variant: 3,
             seriesLegend: [
@@ -1448,7 +1448,7 @@ export default function MarketAnomaliesView({
           {
             label: 'NVDA • Long Straddle',
             statLabel: 'NVDA • Long Straddle (ATM)',
-            statValue: 'BE $121.3 / $158.7 • Γ +0.121',
+            statValue: 'BE $178.4 / $218.5 • Γ +0.085',
             statColor: '#10b981',
             variant: 0,
             seriesLegend: [
@@ -1570,14 +1570,14 @@ export default function MarketAnomaliesView({
         badge: 'FX & CARRY',
         dimension: '61×61 Matrix',
         liveStat: 'EUR / USD Spot & Carry',
-        liveValue: '1.0842 (+150 bps)',
+        liveValue: '1.1240 (+113 bps)',
         liveColor: '#10b981',
         svgType: 'fx-matrix',
         quickPresets: [
           {
             label: 'EUR / USD',
             statLabel: 'EUR / USD • Carry 10Y',
-            statValue: '1.0842 (+150 bps)',
+            statValue: '1.1240 (+113 bps)',
             statColor: '#10b981',
             variant: 0,
             seriesLegend: [
@@ -1601,7 +1601,7 @@ export default function MarketAnomaliesView({
           {
             label: 'USD / JPY',
             statLabel: 'USD / JPY • Carry 10Y',
-            statValue: '152.30 (-450 bps)',
+            statValue: '158.46 (-338 bps)',
             statColor: '#38bdf8',
             variant: 1,
             seriesLegend: [
@@ -1625,7 +1625,7 @@ export default function MarketAnomaliesView({
           {
             label: 'EUR / BRL',
             statLabel: 'EUR / BRL • Carry 10Y',
-            statValue: '6.1932 (+750 bps)',
+            statValue: '6.1391 (+950 bps)',
             statColor: '#f59e0b',
             variant: 2,
             seriesLegend: [
@@ -1668,14 +1668,14 @@ export default function MarketAnomaliesView({
         badge: 'COMMODITIES 3D',
         dimension: 'Spot → +24M 3D',
         liveStat: 'WTI (CL) • Roll Yield',
-        liveValue: '$68.40 (+4.8% Backw.)',
+        liveValue: '$88.49 (+4.8% Backw.)',
         liveColor: '#38bdf8',
         svgType: 'commodity-curve',
         quickPresets: [
           {
             label: '🛢️ CL • WTI Crude',
             statLabel: 'CL (WTI) • Roll Yield',
-            statValue: '$68.40 (+4.8% Backw.)',
+            statValue: '$88.49 (+4.8% Backw.)',
             statColor: '#38bdf8',
             variant: 0,
             seriesLegend: [
@@ -1702,7 +1702,7 @@ export default function MarketAnomaliesView({
           {
             label: '🥇 GC • Gold',
             statLabel: 'GC (Gold) • Term Carry',
-            statValue: '$2,748.50 (-3.6% Contango)',
+            statValue: '$4,119.10 (-3.6% Contango)',
             statColor: '#f59e0b',
             variant: 1,
             seriesLegend: [
@@ -1729,7 +1729,7 @@ export default function MarketAnomaliesView({
           {
             label: '🔥 NG • NatGas',
             statLabel: 'NG (NatGas) • Term Carry',
-            statValue: '$2.58 (-8.6% Contango)',
+            statValue: '$2.94 (-8.6% Contango)',
             statColor: '#10b981',
             variant: 2,
             seriesLegend: [
@@ -1962,12 +1962,14 @@ export default function MarketAnomaliesView({
               borderLeft: `3px solid ${pulseVolColor}`,
               borderRadius: '10px',
               padding: '10px 14px',
+              minWidth: 0,
+              overflow: 'hidden',
             }}
           >
             <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
               {tx('VOLUMEN AGREGADO (24H)', '24H AGGREGATE VOLUME')}
             </div>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '3px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '4px 8px', marginTop: '3px' }}>
               <span className="mono-metric" style={{ fontSize: '19px', fontWeight: 900, color: '#f8fafc' }}>
                 {pulseMetrics.totalVolFormatted}
               </span>
@@ -1988,6 +1990,8 @@ export default function MarketAnomaliesView({
               borderLeft: `3px solid ${pulseMetrics.avgRsiNum >= 50 ? '#10b981' : '#f43f5e'}`,
               borderRadius: '10px',
               padding: '10px 14px',
+              minWidth: 0,
+              overflow: 'hidden',
             }}
           >
             <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
@@ -2019,12 +2023,14 @@ export default function MarketAnomaliesView({
               borderLeft: '3px solid #10b981',
               borderRadius: '10px',
               padding: '10px 14px',
+              minWidth: 0,
+              overflow: 'hidden',
             }}
           >
             <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
               {tx('RÉGIMEN NORMAL (P-06)', 'NORMAL REGIME (P-06)')}
             </div>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '3px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '4px 8px', marginTop: '3px' }}>
               <span className="mono-metric" style={{ fontSize: '19px', fontWeight: 900, color: '#10b981' }}>
                 {pulseMetrics.normalPct}%
               </span>
@@ -2047,12 +2053,14 @@ export default function MarketAnomaliesView({
               borderLeft: `3px solid ${(pulseMetrics.topDislocations[0]?.volumeZNum ?? 1) >= 0 ? '#10b981' : '#f43f5e'}`,
               borderRadius: '10px',
               padding: '10px 14px',
+              minWidth: 0,
+              overflow: 'hidden',
             }}
           >
             <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
               {tx('MAYOR DESVÍO VOLUMEN (20D)', 'TOP VOLUME Z-SCORE (20D)')}
             </div>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '3px' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '4px 8px', marginTop: '3px' }}>
               <span
                 className="mono-metric"
                 style={{
@@ -5013,8 +5021,8 @@ export default function MarketAnomaliesView({
                   { label: 'CONVERTED TOTAL', val: `${fxCrossMetrics.convertedFormatted} ${fxQuoteCcy}`, sub: `From ${fxAmount.toLocaleString()} ${fxBaseCcy}`, color: '#38bdf8', accent: true },
                   { label: '10Y CARRY SPREAD', val: fxCrossMetrics.carryFormatted, sub: fxCrossMetrics.carryDiffBps >= 0 ? 'POSITIVE CARRY' : 'NEGATIVE CARRY', color: fxCrossMetrics.carryDiffBps >= 0 ? '#10b981' : '#f43f5e', accent: false },
                   { label: `INVERSE (${fxQuoteCcy}/${fxBaseCcy})`, val: fxCrossMetrics.inverseFormatted, sub: 'RECIPROCAL', color: '#ffffff', accent: false },
-                  { label: `${fxBaseCcy} POLICY RATE`, val: `${WORLD_USD_RATES[fxBaseCcy]?.rate10Y || 4.2}%`, sub: WORLD_USD_RATES[fxBaseCcy]?.name || fxBaseCcy, color: '#a78bfa', accent: false },
-                  { label: `${fxQuoteCcy} POLICY RATE`, val: `${WORLD_USD_RATES[fxQuoteCcy]?.rate10Y || 4.2}%`, sub: WORLD_USD_RATES[fxQuoteCcy]?.name || fxQuoteCcy, color: '#f59e0b', accent: false },
+                  { label: `${fxBaseCcy} POLICY RATE`, val: `${WORLD_USD_RATES[fxBaseCcy]?.policyRate ?? WORLD_USD_RATES[fxBaseCcy]?.rate10Y ?? 3.88}%`, sub: WORLD_USD_RATES[fxBaseCcy]?.name || fxBaseCcy, color: '#a78bfa', accent: false },
+                  { label: `${fxQuoteCcy} POLICY RATE`, val: `${WORLD_USD_RATES[fxQuoteCcy]?.policyRate ?? WORLD_USD_RATES[fxQuoteCcy]?.rate10Y ?? 0.5}%`, sub: WORLD_USD_RATES[fxQuoteCcy]?.name || fxQuoteCcy, color: '#f59e0b', accent: false },
                 ];
               }
               if (isCommodityCurveMode && commForwardMetrics) {
