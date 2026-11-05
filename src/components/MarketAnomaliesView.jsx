@@ -1813,6 +1813,7 @@ export default function MarketAnomaliesView({
 
     return (
       <div
+        className="responsive-page-container"
         style={{
           display: 'flex',
           flexDirection: 'column',
@@ -1992,6 +1993,7 @@ export default function MarketAnomaliesView({
 
         {/* 1.1 AGGREGATED MARKET INDICATORS (KPI FORMAT: 1PX BORDER + 3PX SEMANTIC LEFT BAR) */}
         <div
+          className="resp-kpi-grid-4"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
@@ -2784,6 +2786,7 @@ export default function MarketAnomaliesView({
 
           return (
             <div
+              className="resp-tools-3col"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'minmax(275px, 0.9fr) minmax(360px, 1.35fr) minmax(310px, 1.05fr)',
@@ -3395,6 +3398,7 @@ export default function MarketAnomaliesView({
         {/* ==================================================================== */}
         {visualMode === 'table' && (
           <div
+            className="resp-table-scroll-box"
             style={{
               width: '100%',
               borderRadius: '10px',
@@ -3717,6 +3721,7 @@ export default function MarketAnomaliesView({
         {/* ==================================================================== */}
         {visualMode === 'orbital' && (
           <div
+            className="resp-orbital-grid"
             style={{
               minHeight: '540px',
               display: 'grid',
@@ -4054,6 +4059,7 @@ export default function MarketAnomaliesView({
         {/* ==================================================================== */}
         {visualMode === 'heatmap' && (
           <div
+            className="resp-heatmap-row"
             style={{
               display: 'flex',
               flexDirection: 'row',
@@ -4212,12 +4218,13 @@ export default function MarketAnomaliesView({
 
   return (
     <div
+      className="resp-l2-shell"
       style={{
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
         gap: '0.65rem',
-        maxWidth: '1460px',
+        maxWidth: 'min(1860px, 100%)',
         width: '100%',
         margin: '0 auto',
         height: '100%',
@@ -5178,6 +5185,7 @@ export default function MarketAnomaliesView({
 
             return (
               <div
+                className="resp-l2-analytics-grid"
                 style={{
                   flex: 1,
                   minHeight: 0,
@@ -6662,7 +6670,10 @@ export default function MarketAnomaliesView({
                 {/* ============================================================ */}
                 {/* RIGHT UNOBSTRUCTED 3D / 2D STAGE (+45PX FULL VERTICAL HEIGHT)*/}
                 {/* ============================================================ */}
-                <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                <div
+                  className="resp-l2-chart-stage"
+                  style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: '0.35rem' }}
+                >
                   {is3DSurfaceActive && active3DSurfaceData ? (
                     <div style={{ flex: 1, minHeight: 0 }}>
                       <Surface3DViewer surfaceData={active3DSurfaceData} isES={isES} />
@@ -7243,6 +7254,7 @@ export default function MarketAnomaliesView({
 
           return (
             <div
+              className="resp-l2-research-grid"
               style={{
                 flex: 1,
                 minHeight: 0,

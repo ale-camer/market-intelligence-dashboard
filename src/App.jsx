@@ -258,6 +258,7 @@ export default function App() {
 
       <div style={{ flex: 1, display: 'flex', minHeight: 0, position: 'relative', zIndex: 5 }}>
         <main
+          className={isHome ? undefined : 'app-main-viewport'}
           style={{
             flex: 1,
             display: 'flex',
@@ -267,6 +268,7 @@ export default function App() {
             margin: isHome ? '0' : '3.8rem 0 3.2rem 0',
             padding: isHome ? '0' : '0 1.75rem',
             overflowY: isHome ? 'hidden' : 'auto',
+            overflowX: 'hidden',
             backgroundColor: isHome ? '#000000' : 'transparent',
           }}
         >

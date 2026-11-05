@@ -1106,6 +1106,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
 
     return (
         <div
+            className="resp-guide-outer"
             style={{
                 height: viewportHeightCalc,
                 overflow: 'hidden',
@@ -1117,8 +1118,9 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
             }}
         >
             <div
+                className="resp-guide-shell"
                 style={{
-                    maxWidth: '1380px',
+                    maxWidth: 'min(1860px, 100%)',
                     height: '100%',
                     margin: '0 auto',
                     display: 'grid',
@@ -1132,6 +1134,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                     1. MENÚ LATERAL IZQUIERDO CON SCROLL VERTICAL INDEPENDIENTE
                    ══════════════════════════════════════════════════════════════ */}
                 <aside
+                    className="resp-guide-sidebar"
                     style={{
                         height: '100%',
                         display: 'flex',
@@ -1241,6 +1244,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                    ══════════════════════════════════════════════════════════════ */}
                 <main
                     ref={contentScrollRef}
+                    className="resp-guide-main"
                     style={{
                         height: '100%',
                         overflowY: 'auto',

@@ -72,7 +72,7 @@ function Row1SummaryPills({ liveMetrics, isES = false }) {
         }
     ];
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px' }}>
+        <div className="resp-kpi-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px' }}>
             {pills.map(p => (
                 <div
                     key={p.lbl}
@@ -1124,7 +1124,7 @@ export default function PortfolioVista2Risk({ holdings = INITIAL_HOLDINGS, langC
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <Row1SummaryPills liveMetrics={liveMetrics} isES={isES} />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', alignItems: 'stretch' }}>
+            <div className="resp-portfolio-2col" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', alignItems: 'stretch' }}>
                 <Quad1DynamicMarkowitz liveMetrics={liveMetrics} isES={isES} />
                 <Quad3CorrelationAndAssetBeta liveMetrics={liveMetrics} isES={isES} />
                 <Quad2TornadoAndAssetTail liveMetrics={liveMetrics} isES={isES} />

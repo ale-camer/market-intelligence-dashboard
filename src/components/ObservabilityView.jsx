@@ -174,8 +174,9 @@ export default function ObservabilityView({ langCode = 'EN' }) {
 
     return (
         <div
+            className="resp-system-container"
             style={{
-                maxWidth: '1260px',
+                maxWidth: 'min(1860px, 100%)',
                 width: '100%',
                 margin: '0 auto',
                 padding: '6px 0 48px',
@@ -278,6 +279,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                ══════════════════════════════════════════════════════════════════ */}
             {activeTab === 'performance' && (
                 <div
+                    className="resp-system-perf-grid"
                     style={{
                         display: 'grid',
                         gridTemplateColumns: '410px minmax(0, 1fr)',
@@ -474,6 +476,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
 
                             {/* DETALLE DE LAS ÚLTIMAS 5 CORRIDAS DEL MÓDULO SELECCIONADO */}
                             <div
+                                className="resp-system-5d-grid"
                                 style={{
                                     display: 'grid',
                                     gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
@@ -715,6 +718,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
 
                         {/* GRILLA COMPACTA DE 3 COLUMNAS PARA LAS 6 CUOTAS */}
                         <div
+                            className="resp-system-finops-3col"
                             style={{
                                 display: 'grid',
                                 gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
@@ -832,7 +836,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                             </span>
                         </div>
 
-                        <div style={{ overflowX: 'auto' }}>
+                        <div className="resp-table-scroll-box" style={{ overflowX: 'auto' }}>
                             <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13.5px' }}>
                                 <thead>
                                     <tr

@@ -90,7 +90,7 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
     ];
 
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px' }}>
+        <div className="resp-kpi-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px' }}>
             {pills.map(p => (
                 <div
                     key={p.lbl}
@@ -601,7 +601,8 @@ function Quad4ExecutionLedger({ ledger, isES = false }) {
                 </span>
             }
         >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
+            <div className="resp-portfolio-table-scroll">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)', minWidth: '470px' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '0.9fr 0.75fr 1.15fr 0.7fr 0.7fr 0.75fr 0.85fr', color: '#64748b', fontWeight: 800, fontSize: '11px', padding: '0 6px' }}>
                     {headers.map((h, i) => (
                         <span key={h} style={{ textAlign: colAlign(i, headers.length) }}>{h}</span>
@@ -641,6 +642,7 @@ function Quad4ExecutionLedger({ ledger, isES = false }) {
                         </span>
                     </div>
                 ))}
+            </div>
             </div>
         </PortfolioCardShell>
     );
@@ -865,7 +867,7 @@ export default function PortfolioVista3AdHoc({
                 candidateInfo={candidateInfo}
                 isES={isES}
             />
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', alignItems: 'stretch' }}>
+            <div className="resp-portfolio-2col" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '12px', alignItems: 'stretch' }}>
                 <Quad1WhatIfAndKelly
                     activeSym={activeSym}
                     setActiveSym={setActiveSym}

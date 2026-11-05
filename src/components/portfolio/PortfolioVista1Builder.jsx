@@ -68,7 +68,7 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
     ];
 
     return (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px' }}>
+        <div className="resp-kpi-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px' }}>
             {pills.map(p => (
                 <div
                     key={p.lbl}
@@ -312,18 +312,19 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                 </>
             }
         >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4.5px' }}>
-                <div
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: '32px 1.3fr 0.85fr 118px 86px 46px',
-                        padding: '2px 6px',
-                        fontSize: '11.5px',
-                        fontWeight: 800,
-                        color: '#64748b',
-                        borderBottom: '1px solid rgba(148,163,184,0.12)'
-                    }}
-                >
+            <div className="resp-portfolio-table-scroll">
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '4.5px', minWidth: '460px' }}>
+                    <div
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: '32px 1.3fr 0.85fr 118px 86px 46px',
+                            padding: '2px 6px',
+                            fontSize: '11.5px',
+                            fontWeight: 800,
+                            color: '#64748b',
+                            borderBottom: '1px solid rgba(148,163,184,0.12)'
+                        }}
+                    >
                     {tableHeaders.map((h, i) => (
                         <span key={h} style={{ textAlign: colAlign(i, tableHeaders.length) }}>
                             {h}
@@ -470,6 +471,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                         </div>
                     );
                 })}
+                </div>
             </div>
         </PortfolioCardShell>
     );
@@ -556,7 +558,8 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
             }
         >
             {tab === 'XRAY' && (
-                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '6px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
+                <div className="resp-portfolio-table-scroll">
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '6px', fontSize: '11.5px', fontFamily: 'var(--font-mono)', minWidth: '410px' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.1fr 1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {xrayHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, xrayHeaders.length) }}>{h}</span>
@@ -584,10 +587,11 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
                         </div>
                     ))}
                 </div>
+                </div>
             )}
 
             {tab === 'EXP' && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', fontSize: '11.5px' }}>
+                <div className="resp-portfolio-3col-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', fontSize: '11.5px' }}>
                     <div style={{ background: 'transparent', padding: '7px', borderRadius: '6px' }}>
                         <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>
                             {tx('CLASE DE ACTIVO', 'ASSET CLASS')}
@@ -650,7 +654,7 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
             )}
 
             {tab === 'YIELD' && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+                <div className="resp-portfolio-3col-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                     <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
                         <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{tx('CUPONES TLT (4.4%)', 'TLT COUPONS (4.4%)')}</div>
                         <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>
@@ -718,7 +722,8 @@ function Row2RightMonthlyCalendar({ isES = false }) {
             color="#10b981"
             style={{ flex: 1 }}
         >
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '6px' }}>
+            <div className="resp-portfolio-table-scroll">
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '6px', minWidth: '510px' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '42px repeat(12, 1fr) 54px', gap: '3px', fontSize: '11.5px', color: '#64748b', fontWeight: 800 }}>
                     {headers.map((h, i) => (
                         <span key={h} style={{ textAlign: colAlign(i, headers.length) }}>{h}</span>
@@ -758,6 +763,7 @@ function Row2RightMonthlyCalendar({ isES = false }) {
                         </span>
                     </div>
                 ))}
+            </div>
             </div>
         </PortfolioCardShell>
     );
@@ -898,7 +904,7 @@ export default function PortfolioVista1Builder({
     return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <Row1SummaryPills holdings={holdings} liveMetrics={liveMetrics} isES={isES} />
-            <div style={{ display: 'grid', gridTemplateColumns: '0.95fr 1.15fr', gap: '12px', alignItems: 'stretch' }}>
+            <div className="resp-portfolio-builder-row2" style={{ display: 'grid', gridTemplateColumns: '0.95fr 1.15fr', gap: '12px', alignItems: 'stretch' }}>
                 <Row2LeftWeightTable
                     holdings={holdings}
                     setHoldings={setHoldings}

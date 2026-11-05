@@ -69,6 +69,9 @@ export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', 
                 flexDirection: 'column',
                 justifyContent: 'flex-start',
                 gap: '10px',
+                minWidth: 0,
+                maxWidth: '100%',
+                overflow: 'hidden',
                 ...style
             }}
         >
@@ -118,7 +121,7 @@ export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', 
                 </div>
             )}
 
-            <div style={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: 'auto' }}>
+            <div style={{ flex: 1, minHeight: 0, minWidth: 0, width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: 'auto', overflowX: 'hidden' }}>
                 {children}
             </div>
         </div>

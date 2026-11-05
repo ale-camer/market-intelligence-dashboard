@@ -82,11 +82,12 @@ export default function AgentCommitteeView({
 
     return (
         <div
+            className="responsive-page-container"
             style={{
                 minHeight: '100vh',
                 background: 'transparent',
                 color: '#f8fafc',
-                padding: '12px 18px 64px',
+                padding: '12px clamp(4px, 1.2vw, 18px) 64px',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '12px'
@@ -96,13 +97,16 @@ export default function AgentCommitteeView({
                 ENCABEZADO V010 GHOST (TEXTO FLOTANTE CON BRILLO SIN SUBRAYADO NI CAJA)
                ══════════════════════════════════════════════════════════════════ */}
             <div
+                className="resp-portfolio-subnav"
                 style={{
                     position: 'relative',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     minHeight: '38px',
-                    padding: '4px 12px'
+                    padding: '4px 12px',
+                    flexWrap: 'wrap',
+                    gap: '0.75rem'
                 }}
             >
                 <div
@@ -141,6 +145,7 @@ export default function AgentCommitteeView({
                 </div>
 
                 <button
+                    className="resp-portfolio-copilot-btn"
                     onClick={() => setCopilotOpen(v => !v)}
                     aria-label={tx('Copiloto', 'Copilot')}
                     style={{
@@ -170,8 +175,8 @@ export default function AgentCommitteeView({
             {/* ══════════════════════════════════════════════════════════════════
                 LIENZO DE LA VISTA ACTIVA + COPILOTO COLAPSABLE BAJO DEMANDA
                ══════════════════════════════════════════════════════════════════ */}
-            <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                <div style={{ flex: 1, minWidth: 0 }}>
+            <div className="resp-portfolio-main-row" style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+                <div style={{ flex: 1, minWidth: 0, width: '100%' }}>
                     {activeView === 'V1' && (
                         <PortfolioVista1Builder
                             holdings={holdings}
@@ -195,6 +200,7 @@ export default function AgentCommitteeView({
 
                 {copilotOpen && (
                     <div
+                        className="resp-copilot-drawer"
                         style={{
                             width: '320px',
                             flexShrink: 0,

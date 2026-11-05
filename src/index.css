@@ -222,3 +222,394 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   RESPONSIVE ARCHITECTURE (MOBILE 390px • TABLET/SPLIT 768px • 2K/4K 2560px+)
+   ========================================================================== */
+
+.app-header-bar {
+  padding: 0.52rem clamp(0.75rem, 2.4vw, 2.2rem) !important;
+}
+
+.app-footer-bar {
+  padding: 0.42rem clamp(0.75rem, 2.4vw, 2.2rem) !important;
+}
+
+.app-main-viewport {
+  padding: 0 clamp(0.65rem, 2.2vw, 2.2rem) !important;
+  overflow-x: hidden !important;
+}
+
+.responsive-page-container {
+  width: 100%;
+  max-width: min(1920px, 100%);
+  margin: 0 auto;
+}
+
+/* Horizontal Scroll Containers for Data-Dense Tables */
+.resp-table-scroll-box {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.resp-table-scroll-box > table {
+  min-width: 760px;
+}
+
+.resp-portfolio-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.resp-portfolio-table-scroll > table {
+  min-width: 560px;
+}
+
+/* Level 1 & Portfolio KPI Grids */
+.resp-kpi-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.resp-kpi-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* Markets Workbench, Orbital & Heatmap */
+.resp-tools-3col {
+  display: grid;
+  grid-template-columns: minmax(255px, 0.9fr) minmax(320px, 1.35fr) minmax(285px, 1.05fr);
+  gap: 0.95rem;
+  width: 100%;
+  align-items: stretch;
+}
+
+.resp-orbital-grid {
+  min-height: 540px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 330px;
+  gap: 0.85rem;
+}
+
+.resp-heatmap-row {
+  display: flex;
+  flex-direction: row;
+  gap: 0.7rem;
+  padding-bottom: 0.5rem;
+  height: 540px;
+}
+
+/* Markets Level 2 (Analytics & Research) */
+.resp-l2-shell {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.65rem;
+  max-width: min(1860px, 100%);
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.15rem 0.5rem 0.35rem 0.5rem;
+}
+
+.resp-l2-analytics-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 315px minmax(0, 1fr);
+  gap: 0.85rem;
+  align-items: stretch;
+}
+
+.resp-l2-research-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1.25fr) minmax(0, 0.98fr);
+  gap: 0.95rem;
+  align-items: stretch;
+}
+
+/* Portfolio Layouts */
+.resp-portfolio-builder-row2 {
+  display: grid;
+  grid-template-columns: 0.95fr 1.15fr;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.resp-portfolio-builder-row2 > *,
+.resp-portfolio-2col > *,
+.resp-l2-analytics-grid > *,
+.resp-l2-research-grid > *,
+.resp-tools-3col > *,
+.resp-orbital-grid > *,
+.resp-system-perf-grid > * {
+  min-width: 0;
+}
+
+.resp-portfolio-2col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: stretch;
+}
+
+.resp-portfolio-3col-inner {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+/* System (Observability & FinOps) Layouts */
+.resp-system-container {
+  max-width: min(1860px, 100%);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.resp-system-perf-grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: clamp(310px, 28vw, 420px) minmax(0, 1fr);
+  gap: 0.75rem;
+  overflow: hidden;
+}
+
+.resp-system-5d-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.resp-system-finops-3col {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+/* User Guide Layout */
+.resp-guide-shell {
+  width: 100%;
+  max-width: min(1860px, 100%);
+  margin: 0 auto;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 1.75rem;
+  padding: 0.35rem 0.5rem;
+  overflow: hidden;
+  user-select: none;
+}
+
+.resp-guide-article-inner {
+  max-width: min(1180px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   ULTRA-WIDE / 2K / 4K MONITORS (>= 1800px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1800px) {
+  .responsive-page-container,
+  .resp-l2-shell,
+  .resp-system-container,
+  .resp-guide-shell {
+    max-width: min(2340px, 95vw) !important;
+  }
+
+  .resp-l2-analytics-grid {
+    grid-template-columns: 365px minmax(0, 1fr) !important;
+    gap: 1.15rem !important;
+  }
+
+  .resp-l2-research-grid {
+    grid-template-columns: 390px minmax(0, 1.3fr) minmax(0, 1.05fr) !important;
+    gap: 1.15rem !important;
+  }
+
+  .resp-system-perf-grid {
+    grid-template-columns: 450px minmax(0, 1fr) !important;
+    gap: 1.1rem !important;
+  }
+
+  .resp-guide-shell {
+    grid-template-columns: 280px minmax(0, 1fr) !important;
+    gap: 2.4rem !important;
+  }
+
+  .resp-guide-article-inner {
+    max-width: min(1560px, 100%) !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   SMALL LAPTOP / SPLIT-SCREEN / TABLET LANDSCAPE (<= 1180px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1180px) {
+  .resp-kpi-grid-6 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+
+  .resp-tools-3col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .resp-l2-research-grid {
+    grid-template-columns: 1fr !important;
+    flex: none !important;
+    height: auto !important;
+  }
+
+  .resp-portfolio-builder-row2 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   TABLET PORTRAIT / HALF-SCREEN WINDOW (<= 980px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 980px) {
+  .resp-kpi-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .resp-orbital-grid {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+
+  .resp-l2-shell {
+    height: auto !important;
+    min-height: 100% !important;
+    overflow-y: visible !important;
+  }
+
+  .resp-l2-analytics-grid {
+    grid-template-columns: 1fr !important;
+    flex: none !important;
+    height: auto !important;
+  }
+
+  .resp-l2-chart-stage {
+    order: -1;
+    min-height: 390px !important;
+    height: 410px !important;
+  }
+
+  .resp-portfolio-2col {
+    grid-template-columns: 1fr !important;
+  }
+
+  .resp-portfolio-main-row {
+    flex-direction: column !important;
+  }
+
+  .resp-copilot-drawer {
+    width: 100% !important;
+  }
+
+  .resp-system-perf-grid {
+    grid-template-columns: 1fr !important;
+    flex: none !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .resp-system-finops-3col {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .resp-guide-outer {
+    height: auto !important;
+    min-height: calc(100vh - 108px) !important;
+    overflow: visible !important;
+    padding: 6px 4px 24px !important;
+  }
+
+  .resp-guide-shell {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow: visible !important;
+    gap: 0.9rem !important;
+  }
+
+  .resp-guide-sidebar {
+    height: auto !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09) !important;
+    padding-right: 0 !important;
+    padding-bottom: 0.65rem !important;
+    max-height: 190px !important;
+    overflow-y: auto !important;
+  }
+
+  .resp-guide-main {
+    height: auto !important;
+    overflow-y: visible !important;
+    padding-right: 0 !important;
+    padding-bottom: 32px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE / SMARTPHONE VIEWPORTS (<= 680px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 680px) {
+  .resp-kpi-grid-6 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  .resp-heatmap-row {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 680px !important;
+  }
+
+  .resp-l2-chart-stage {
+    min-height: 340px !important;
+    height: 360px !important;
+  }
+
+  .resp-portfolio-subnav {
+    justify-content: center !important;
+    gap: 0.75rem !important;
+  }
+
+  .resp-portfolio-copilot-btn {
+    position: static !important;
+    transform: none !important;
+  }
+
+  .resp-portfolio-3col-inner {
+    grid-template-columns: 1fr !important;
+  }
+
+  .resp-system-5d-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .resp-system-finops-3col {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .resp-kpi-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+}
