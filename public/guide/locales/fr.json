@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Vue réduite",
+    "mainView": "Vue principale",
+    "expandedView": "Vue étendue",
+    "inThisSection": "Dans cette rubrique vous trouverez :",
+    "deepDive": "Plongée profonde",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "mathFormula": "Formule mathématique",
+    "practicalExample": "Exemple pratique :"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Lorsque vous ouvrez une plateforme financière traditionnelle, la première chose qui apparaît généralement sont des dizaines de graphiques, de tableaux clignotants et de menus partout. Par où commencer lorsque vous souhaitez simplement vérifier le marché ou vérifier l’évolution de votre portefeuille ?",
+        "L'écran Home est conçu précisément pour éviter ce bruit initial. Il vous accueille dans un espace propre et clair où tout le contrôle est concentré dans deux barres fixes : une au dessus pour aller travailler et une autre en dessous pour configurer la plateforme à votre convenance."
+      ],
+      "intro": "L'écran Home vous accueille avec un espace propre et clair où tout le contrôle est concentré dans deux barres fixes : une au dessus pour aller travailler et une autre en dessous pour configurer la plateforme à votre convenance.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Le point de départ clair qui divise votre travail en analyse de marché et gestion de portefeuille.",
+          "paragraphs": [
+            "Imaginez que vous commencez à trader tôt le matin. Parfois, vous voudrez voir quelles actions, obligations ou devises évoluent le plus ; D’autres fois, vous irez directement examiner le risque de votre portefeuille ou simulerez un achat avant de l’exécuter.",
+            "Comment éviter de mélanger les deux choses sur un même écran surchargé ? La couverture sépare clairement ce chemin de la première seconde :"
+          ],
+          "lead": "Comment éviter de mélanger les deux choses sur un même écran surchargé ? La couverture sépare clairement ce chemin de la première seconde :",
+          "bullets": [
+            {
+              "bold": "Espace sans distractions",
+              "code": "Donde se decodifican los mercados",
+              "text": "Lorsque vous entrez, il n'y a pas de tables ouvertes ni d'alertes qui vous obligent à fermer les fenêtres avant de commencer ; Vous choisissez quel module ouvrir."
+            },
+            {
+              "bold": "Deux voies claires",
+              "code": "Markets / Portfolio",
+              "text": "L'ensemble du flux de l'application est divisé en deux étapes principales : d'abord rechercher des opportunités sur les marchés, puis construire ou tester votre portefeuille."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "La barre supérieure pour sauter en un clic entre la maison, les marchés et votre portefeuille.",
+          "paragraphs": [
+            "Lorsque vous approfondissez les détails d’un actif ou testez des modifications apportées à votre portefeuille, il est très facile de perdre la trace d’où vous en étiez. Comment passer de l’examen d’un graphique boursier à l’examen de votre portefeuille sans passer par les sous-menus ?",
+            "La barre supérieure reste toujours fixe sur l'écran et vous donne un accès direct aux trois points principaux :"
+          ],
+          "lead": "La barre supérieure reste toujours fixe sur l'écran et vous donne un accès direct aux trois points principaux :",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Où que vous soyez, un clic sur le symbole à gauche vous renvoie immédiatement à la page principale."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "C'est votre espace de recherche. Ici vous filtrez les 213 actifs disponibles, suivez les cotations en direct, analysez les graphiques techniques et consultez les synthèses de bilans ou l'actualité."
+            },
+            {
+              "bold": "Portefeuille",
+              "code": "Portfolio",
+              "text": "C'est votre table de décision. Ici, vous définissez quel pourcentage de votre capital est consacré à chaque actif, mesurez combien vous pourriez perdre en cas de crise et simulez de nouvelles opérations avant de risquer de l'argent."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Le pied de page pour vérifier l’état du système, revenir à ce guide ou ajuster la mise en page.",
+          "paragraphs": [
+            "Lors de l’analyse des données en temps réel, des questions opérationnelles peuvent se poser à tout moment : les cotations arrivent-elles correctement ? Que signifiait un indicateur de points ? Puis-je baisser la luminosité de l'écran ?",
+            "Le pied de page regroupe tous ces outils de support et de configuration afin qu'ils soient toujours à portée de main sans gêner le centre de l'écran :"
+          ],
+          "lead": "Le pied de page regroupe tous ces outils de support et de configuration afin qu'ils soient toujours à portée de main sans gêner le centre de l'écran :",
+          "bullets": [
+            {
+              "bold": "Statut System",
+              "code": "System",
+              "text": "Le point vert confirme d'un coup d'œil que tout est en ordre. Lorsque vous l'ouvrez, vous pouvez voir en détail l'état des serveurs, des bases de données et la vitesse de réponse."
+            },
+            {
+              "bold": "Utilisateur Guide",
+              "code": "Guide",
+              "text": "Ouvrez ce manuel interactif à tout moment pour voir comment utiliser un écran ou approfondir ses calculs."
+            },
+            {
+              "bold": "Préférences visuelles",
+              "code": "Idioma / Palette",
+              "text": "Sur le côté droit, vous avez les commandes pour changer la langue de toute l'application ou régler l'éclairage de fond."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Langues",
+          "summary": "Le moteur de recherche pour traduire sur place l’intégralité de la plateforme dans votre langue.",
+          "paragraphs": [
+            "Les conditions financières et les rapports de marché ont déjà leur propre complexité sans ajouter de barrière linguistique. Si vous préférez lire les explications en espagnol, en anglais ou dans toute autre langue, vous pouvez les modifier instantanément.",
+            "Voici comment fonctionne le sélecteur depuis le coin inférieur droit :"
+          ],
+          "lead": "Voici comment fonctionne le sélecteur depuis le coin inférieur droit :",
+          "bullets": [
+            {
+              "bold": "recherche instantanée",
+              "code": "Select Language",
+              "text": "En cliquant sur le drapeau actuel, vous ouvrez une fenêtre dans laquelle vous pouvez choisir entre 56 langues en écrivant son nom ou son code (par exemple ES, EN, PT, FR ou DE)."
+            },
+            {
+              "bold": "Mémoire automatique",
+              "code": "mid_lang_v1",
+              "text": "L'intégralité de l'écran est traduite instantanément sans recharger la page et votre choix est enregistré pour la prochaine fois que vous entrez."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Thèmes visuels pour adapter le contraste de l'écran sans altérer les couleurs financières.",
+          "paragraphs": [
+            "Passer plusieurs heures devant des graphismes au contraste qui ne s'adapte pas à la lumière de votre environnement finit par fatiguer vos yeux. Cependant, changer les couleurs d’une plateforme financière présente un danger classique : perdre la référence de ce qui monte et de ce qui descend.",
+            "Pour résoudre ce problème, le sélecteur de thème sépare la couleur de l'environnement de la couleur des données :"
+          ],
+          "lead": "Pour résoudre ce problème, le sélecteur de thème sépare la couleur de l'environnement de la couleur des données :",
+          "bullets": [
+            {
+              "bold": "Cinq environnements de lecture",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "À chaque clic, vous alternez entre des arrière-plans noirs purs, bleutés ou chauds jusqu'à ce que vous trouviez celui qui convient le mieux à vos yeux."
+            },
+            {
+              "bold": "Une sémantique financière intacte",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Quel que soit le sujet que vous changez, la règle universelle du marché ne change jamais : le vert signifie toujours une hausse ou un gain, et le rouge signifie toujours une baisse, une perte ou une alerte au risque."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Imaginez que vous souhaitiez détecter où se trouvent les meilleures opportunités du jour parmi plus de deux cents obligations, actions, indices, devises et matières premières. Si vous deviez ouvrir les graphiques un par un, le marché se fermerait avant que vous ayez fini de les regarder.",
+            "Le Screener rassemble les 213 actifs de la plateforme dans un seul tableau de bord en direct. Il vous permet de filtrer par marché en une seconde, de prendre le pouls global de la journée et de choisir parmi quatre façons différentes de visualiser les actifs performants."
+          ],
+          "intro": "Le Screener rassemble les 213 actifs de la plateforme dans un seul tableau de bord en direct afin que vous puissiez filtrer par marché et repérer les opportunités en un coup d'œil.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Catégories",
+              "summary": "Principaux filtres pour vous concentrer sur une seule classe d'actifs ou sur votre liste de surveillance.",
+              "paragraphs": [
+                "Cela n’a aucun sens d’analyser un bon du Trésor avec les mêmes paramètres qu’une action technologique ou pétrolière. Quand on mélange tout dans une même liste, on finit par comparer des poires avec des pommes.",
+                "Comment restreindre l’écran exactement au marché qui vous intéresse aujourd’hui ? La barre supérieure vous permet de séparer l'univers en un clic :"
+              ],
+              "lead": "La barre supérieure vous permet de séparer l'univers en un clic :",
+              "bullets": [
+                {
+                  "bold": "Image complète",
+                  "code": "Todos",
+                  "text": "Il présente les 213 instruments ensemble et classés par volume négocié afin que vous puissiez voir où circule le plus d'argent dans le monde."
+                },
+                {
+                  "bold": "Suivi personnel",
+                  "code": "★ Watchlist",
+                  "text": "Isolez uniquement les actifs que vous avez marqués comme favoris pour les surveiller de près sans distractions."
+                },
+                {
+                  "bold": "Dix marchés spécialisés",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "En choisissant l'une de ces catégories, tout l'écran adapte ses indicateurs et les colonnes du tableau aux règles de ce secteur."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Détail de la manière dont sont classés les 213 actifs du catalogue et à quels critères de volume et de liquidité ils répondent."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "pouls 24h",
+              "summary": "Les quatre premières cartes qui vous indiquent si le marché est calme, euphorique ou stressé.",
+              "paragraphs": [
+                "Avant d’acheter ou de vendre un actif spécifique, il convient de savoir dans quel climat évolue l’ensemble. S’agit-il d’une journée de volume normale ou l’argent institutionnel arrive-t-il d’un seul coup ? Tous les actifs sont-ils en hausse ou y a-t-il des signes de tension ?",
+                "Les quatre cartes situées sous les filtres vous donnent cette lecture générale en quelques secondes :"
+              ],
+              "lead": "Les quatre cartes situées sous les filtres vous donnent cette lecture générale en quelques secondes :",
+              "bullets": [
+                {
+                  "bold": "Activité totale de la journée",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Cela représente les milliards de dollars échangés dans la catégorie active et vous montre s'il y a plus ou moins de participation aujourd'hui qu'hier."
+                },
+                {
+                  "bold": "Force moyenne du groupe",
+                  "code": "AVG RSI 14",
+                  "text": "Il résume dans un compteur circulaire si les prix du secteur s'accompagnent d'une pression acheteuse (vert, au-dessus de 50) ou d'une pression vendeuse (rouge, en dessous de 50)."
+                },
+                {
+                  "bold": "Thermomètre de normalité",
+                  "code": "Régimen Normal P-06",
+                  "text": "Il calcule le pourcentage des actifs qui évoluent selon leurs paramètres habituels et vous indique par nom et prénom quel est l'instrument présentant la plus grande anomalie de la journée."
+                },
+                {
+                  "bold": "Des entrées d’argent inhabituelles",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Le podium des trois actifs qui exploitent aujourd'hui un volume extraordinairement élevé par rapport à leur moyenne du mois dernier se démarque."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Explication détaillée de la façon dont le RSI moyen, le volume Z-Score et le détecteur d'anomalies P-06 sont calculés."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tableau",
+              "summary": "La liste interactive avec recherche rapide, favoris et colonnes qui s'adaptent à chaque marché.",
+              "paragraphs": [
+                "Lorsque vous savez déjà quel secteur vous souhaitez examiner et que vous devez comparer des chiffres spécifiques ligne par ligne, la vue tableau est votre outil principal.",
+                "Au lieu de vous montrer une feuille de calcul rigide et identique pour tout le monde, le tableau s'adapte à ce que vous recherchez :"
+              ],
+              "lead": "Au lieu de vous montrer une feuille de calcul rigide et identique pour tout le monde, le tableau s'adapte à ce que vous recherchez :",
+              "bullets": [
+                {
+                  "bold": "Moteur de recherche et star des favoris",
+                  "code": "Buscar activo / ★",
+                  "text": "Dans le premier en-tête de colonne, vous pouvez saisir n'importe quel symbole ou nom pour accéder directement à cet actif, ou appuyer sur l'étoile à gauche pour l'enregistrer sur votre Watchlist."
+                },
+                {
+                  "bold": "Colonnes intelligentes selon la catégorie",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Si vous filtrez les actions, les multiples de valorisation et les marges apparaissent ; Si vous choisissez Obligations ou Taux, vous voyez la pente de la courbe et la sensibilité aux taux ; Si vous regardez les produits dérivés, vous voyez une volatilité implicite."
+                },
+                {
+                  "bold": "Accédez directement à une analyse approfondie",
+                  "code": "Click en cualquier fila",
+                  "text": "Cliquez simplement sur n’importe quel actif de la liste pour ouvrir votre station complète de graphiques techniques et de rapports fondamentaux."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Liste des métriques spécifiques présentées dans le tableau pour chacune des 10 catégories d'actifs."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Le radar visuel pour détecter en un coup d'oeil quels actifs s'éloignent de leur moyenne historique.",
+              "paragraphs": [
+                "La lecture de deux cents lignes de chiffres peut vous faire manquer un actif qui commence à évoluer de manière explosive. Comment détecter instantanément quel instrument s’écarte de la norme ?",
+                "La vue Orbital transforme la table en radar à trois anneaux concentriques :"
+              ],
+              "lead": "La vue Orbital transforme la table en radar à trois anneaux concentriques :",
+              "bullets": [
+                {
+                  "bold": "Choix des critères",
+                  "code": "INDICADOR",
+                  "text": "Vous décidez ce que mesure le radar : anomalies statistiques, sauts de volume, force des prix (RSI), volatilité ou gain au cours des dernières 24 heures."
+                },
+                {
+                  "bold": "Lecture par distance et par couleur",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Plus un point est proche ou éloigné selon l'indicateur et plus sa couleur verte ou rouge est intense, plus son mouvement est pertinent par rapport à sa propre histoire."
+                },
+                {
+                  "bold": "Inspection sans changer d'écran",
+                  "code": "Panel lateral en vivo",
+                  "text": "En plaçant le curseur sur n'importe quel nœud radar, son prix, son graphique intrajournalier propre et ses trois mesures de risque s'affichent à droite."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Comment la position de chaque actif dans les anneaux radar est calculée en fonction de son écart historique."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Carte thermique",
+              "summary": "La mosaïque de blocs proportionnels pour identifier les gagnants et les perdants en une seconde.",
+              "paragraphs": [
+                "Il y a des moments où vous souhaitez simplement répondre à une petite question : qui mène la hausse aujourd’hui et qui tire le marché vers le bas ?",
+                "La Heat Map organise les dix principaux actifs du filtre actif en blocs proportionnels afin que vous n'ayez pas à lire un seul tableau :"
+              ],
+              "lead": "La Heat Map classe les dix principaux actifs du filtre actif en blocs proportionnels :",
+              "bullets": [
+                {
+                  "bold": "Taille selon importance",
+                  "code": "Puestos #1 a #10",
+                  "text": "Les instruments ayant le plus grand poids dans la métrique choisie occupent les colonnes de gauche avec les cases les plus grandes."
+                },
+                {
+                  "bold": "Intensité des couleurs",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Le ton du bloc vous indique immédiatement l'ampleur du mouvement, depuis des variations modérées jusqu'à des hausses ou des baisses brusques."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Le raccourci en trois étapes vers des calculateurs avancés de taux, d'options, de forex et de contrats à terme.",
+              "paragraphs": [
+                "En plus des graphiques de prix traditionnels, la plateforme comprend quatre moteurs spéciaux pour les titres à revenu fixe, les options, les croisements de devises et les courbes des matières premières. Comment y accéder sans rechercher actif par actif ?",
+                "Cette vue vous guide de gauche à droite dans trois colonnes très simples :"
+              ],
+              "lead": "Cette vue vous guide de gauche à droite dans trois colonnes très simples :",
+              "bullets": [
+                {
+                  "bold": "D'abord tu choisis la famille",
+                  "code": "1. Clases de Activo",
+                  "text": "Vous choisissez si vous souhaitez travailler avec des taux et des obligations, avec des options sur actions/indices/crypto, avec des devises ou avec des matières premières."
+                },
+                {
+                  "bold": "Ensuite tu vérifies ce que fait le moteur",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Au centre, vous lisez un résumé clair de ce que montre cet outil et comment vous orienter le long de ses axes."
+                },
+                {
+                  "bold": "Enfin, choisissez celui actif et ouvrez",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Vous regardez un aperçu en direct du graphique, recherchez tous les actifs compatibles dans cette famille et ouvrez la station complète en un seul clic."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Une fois que vous avez trouvé un atout intéressant dans le Screener, il est temps d'y regarder de plus près. Est-il dans une tendance haussière ou est-il à bout de souffle ? Battez-vous vos concurrents ? Que disent le volume et le marché des produits dérivés ?",
+            "La station Analytics concentre toute l'analyse technique, comparative et quantitative de cet actif sur un seul écran. Ci-dessus vous avez le résumé général et à gauche quatre lentilles pour changer l'angle d'analyse sans perdre de vue le graphique."
+          ],
+          "intro": "La station Analytics concentre les moteurs techniques, comparatifs, d'analyse de flux et 3D/2D d'un actif individuel sur un seul écran.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Le tableau de bord supérieur pour changer d'actif, choisir la période et afficher vos cinq indicateurs clés.",
+              "paragraphs": [
+                "Lorsque vous étudiez un actif, vous alternez généralement entre le court terme d'aujourd'hui et le film des derniers mois, voire même passez à un autre symbole similaire. Comment faire tout cela sans revenir en arrière ?",
+                "L'en-tête supérieur regroupe les commandes de navigation et l'onglet rapide de l'instrument :"
+              ],
+              "lead": "L'en-tête supérieur regroupe les commandes de navigation et l'onglet rapide de l'instrument :",
+              "bullets": [
+                {
+                  "bold": "Changement de bien ou retour à la liste",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "En haut à gauche, vous pouvez revenir à Screener ou saisir le nom de tout autre instrument pour modifier les graphiques sur place."
+                },
+                {
+                  "bold": "Neuf fenêtres de temps",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Dans la marge de droite, vous modifiez l'échelle du graphique des mouvements minute par minute à l'historique complet."
+                },
+                {
+                  "bold": "Cinq indicateurs avancés",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "À côté du prix, vous avez toujours en vue le volume négocié, les deux données clés de sa catégorie, la force de la tendance et le niveau de normalité statistique."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Technique",
+              "summary": "Le graphique des prix avec moyennes mobiles, bandes de volatilité et volume pour suivre la tendance.",
+              "paragraphs": [
+                "Regarder uniquement le dernier prix ne permet pas de savoir si un actif accélère, s'il rebondit par rapport à sa moyenne ou s'il a déjà augmenté trop vite en quelques jours.",
+                "La première lentille sur le rail de gauche permet de superposer sur le graphique les références techniques les plus utilisées du marché :"
+              ],
+              "lead": "Le premier objectif sur le rail gauche permet de superposer les références techniques les plus utilisées :",
+              "bullets": [
+                {
+                  "bold": "Adresse et prix moyen réel",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Vous pouvez activer la moyenne mobile sur 20 périodes et le prix moyen pondéré en fonction du volume pour voir immédiatement si l'actif se négocie au-dessus ou en dessous de son niveau d'équilibre."
+                },
+                {
+                  "bold": "Zones excédentaires et confirmation du volume",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Les bandes dessinent le plafond et le plancher statistiques du prix, tandis que les barres inférieures confirment si le mouvement est soutenu par le volume."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Formules et critères d'interprétation de la Moyenne Mobile (SMA 20), des Bandes de Bollinger et du VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Comparer %",
+              "summary": "Le comparateur de pourcentage à partir de 0 % pour mesurer si votre actif est plus ou moins performant qu'un autre de la même catégorie.",
+              "paragraphs": [
+                "Une action en hausse de 5 % semble être une excellente nouvelle, mais si son indice de référence ou son principal concurrent est en hausse de 12 % au cours de la même période, vous êtes en fait à la traîne.",
+                "Le deuxième objectif dissipe ce doute en plaçant les deux atouts sur la même ligne de départ :"
+              ],
+              "lead": "Le deuxième objectif dissipe ce doute en plaçant les deux atouts sur la même ligne de départ :",
+              "bullets": [
+                {
+                  "bold": "Rechercher des paires cohérentes",
+                  "code": "Buscar par compatible",
+                  "text": "Le moteur de recherche filtre automatiquement les actifs de la même famille (par exemple, actions contre actions, ETF ou indices), afin que la comparaison ait un sens financier."
+                },
+                {
+                  "bold": "Avantage net en pourcentage",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Les deux courbes partent de 0 % et le rail de gauche calcule le nombre de points de pourcentage d'avantage (en vert) ou de désavantage (en rouge) de votre actif."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Débit",
+              "summary": "Le détecteur d'achats institutionnels hors modèle, de liquidité et de coûts de spread.",
+              "paragraphs": [
+                "Souvent, des fonds importants accumulent ou déchargent des positions avant que le prix ne fasse un mouvement soudain. Comment détecter cette trace cachée dans le volume et la liquidité du carnet d’ordres ?",
+                "Le troisième objectif se concentre sur ce qui se passe sous la citation :"
+              ],
+              "lead": "Le troisième objectif se concentre sur ce qui se passe sous la citation :",
+              "bullets": [
+                {
+                  "bold": "Pics de volume statistiques",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Modifie le panneau inférieur pour vous montrer combien de fois le volume actuel s'écarte de la normale, révélant ainsi une activité institutionnelle inhabituelle."
+                },
+                {
+                  "bold": "Stress de liquidité et anomalies",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Il mesure en points de base si l'écart entre acheteurs et vendeurs se creuse et si le moteur statistique détecte des comportements atypiques."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Comment les spreads d'ouverture et les pics statistiques du flux de commandes sont mesurés."
+            },
+            {
+              "id": "ana-engines",
+              "label": "Moteurs 3D/2D",
+              "summary": "Le quatrième objectif qui déploie un outil ad hoc dynamique qui varie selon la classe d'actifs.",
+              "paragraphs": [
+                "Contrairement aux trois premières lentilles (qui sont communes à tous les instruments), la quatrième lentille sur le rail de gauche est un outil ad hoc qui change dynamiquement en fonction de l'actif que vous analysez : par exemple, dans la visite en direct, comme il s'agit d'une action (NVDA), elle active la volatilité implicite 3D et la surface de paiement des options, tandis que sur d'autres marchés, elle déploie son propre moteur spécialisé.",
+                "Le quatrième bouton détecte la classe d'actifs ouverte et active automatiquement l'outil ad hoc correspondant :"
+              ],
+              "lead": "Le quatrième bouton détecte quel actif vous avez ouvert et active l'outil ad hoc qui lui correspond :",
+              "bullets": [
+                {
+                  "bold": "En actions, indices, produits dérivés et crypto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Affichez la surface de volatilité implicite en 3D, les options sourient à l'expiration et un simulateur à 6 stratégies pour voir combien vous gagneriez ou perdriez aujourd'hui et à l'expiration."
+                },
+                {
+                  "bold": "En taux, obligations et liquidité",
+                  "code": "Curva 3D/2D",
+                  "text": "Il vous permet de comparer les courbes de rendement de 42 pays avec celles des États-Unis et de l'Allemagne, en mesurant si la courbe est normale ou inversée (2s10s) et dans quelle mesure le prix varie en fonction des changements de taux (DV01)."
+                },
+                {
+                  "bold": "En devises",
+                  "code": "FX & Carry",
+                  "text": "Il propose un convertisseur et un triangulateur entre 61 devises qui calcule également le différentiel de taux d'intérêt sur 10 ans en faveur ou contre le maintien de cette paire."
+                },
+                {
+                  "bold": "En matières premières",
+                  "code": "Forward 3D/2D",
+                  "text": "Représente les prix des contrats à terme mois par mois pour montrer si le marché paie plus pour une livraison à terme (Contango) ou pour une livraison immédiate (Backwardation), ainsi que l'état des stocks physiques."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Détail mathématique des surfaces de volatilité, des courbes de rendement souverain, du portage des devises et des courbes des contrats à terme."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Le graphique vous montre ce que fait le prix, mais il ne vous dit pas pourquoi. Pour savoir ce qui se cache derrière un mouvement, il faudrait lire des dizaines de pages de bilans trimestriels, de relevés des banques centrales, de rapports d’inventaire et de câbles d’information.",
+            "La station Research fait le gros du travail à votre place. Il combine l’intelligence artificielle documentaire vérifiée par rapport aux rapports officiels avec la lecture de l’actualité en temps réel, organisant toutes les preuves pour et contre dans trois colonnes claires."
+          ],
+          "intro": "La station Research résume les bilans officiels, les rapports macroéconomiques et l'actualité en temps réel dans trois colonnes claires.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Remarque et posture",
+              "summary": "Les trois premières cartes qui résument le verdict fondamental et l'humour de l'actualité.",
+              "paragraphs": [
+                "Les fondamentaux de l’actif accompagnent-ils la hausse des prix ou les nouvelles détériorent-elles les perspectives ? Avant de lire les détails, vous avez besoin d’une conclusion rapide.",
+                "Dans le coin supérieur droit, vous disposez de trois indicateurs qui résument l'état général du bien :"
+              ],
+              "lead": "Dans le coin supérieur droit, vous avez trois indicateurs qui résument l'état général :",
+              "bullets": [
+                {
+                  "bold": "Posture et poids de chaque source",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Il définit le verdict général et précise le poids qu'il accorde aux documents officiels par rapport aux actualités en fonction du type d'actif (par exemple, 80 % de bilans et 20 % d'actualités dans une action)."
+                },
+                {
+                  "bold": "Note combinée",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Il synthétise en un seul score le résultat net des fondamentaux plus le flux d'informations du jour."
+                },
+                {
+                  "bold": "Porte-thermomètres",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Placer sur une barre de -100 à +100 si le ton de la presse ces dernières heures est pessimiste (rouge), neutre ou enthousiaste (vert)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Comment les rapports officiels sont comparés aux actualités en fonction du type d'actif."
+            },
+            {
+              "id": "res-rag",
+              "label": "Bavarder RAG",
+              "summary": "L'assistant documentaire a quitté le poste pour poser des questions précises sur les bilans et les rapports officiels.",
+              "paragraphs": [
+                "Supposons que vous vouliez savoir exactement ce qu'une entreprise a déclaré à propos de ses marges dans son dernier bilan annuel 10-K, ou ce que la Réserve fédérale a dit dans ses dernières minutes. Le rechercher manuellement prend du temps ; Demander un chat générique sans sources peut vous donner des données inventées.",
+                "La colonne de gauche résout ce problème avec un assistant connecté exclusivement à une documentation officielle vérifiée :"
+              ],
+              "lead": "La colonne de gauche vous propose un assistant connecté à la documentation officielle vérifiée :",
+              "bullets": [
+                {
+                  "bold": "Thèse initiale et questions guidées",
+                  "code": "Chat Documental RAG",
+                  "text": "Cela commence par un résumé avec des citations vérifiées et quatre boutons de référence rapide adaptés à la catégorie d'actif, ainsi qu'un champ pour que vous puissiez rédiger vos propres questions."
+                },
+                {
+                  "bold": "Accès direct à votre portefeuille",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Si après avoir étudié les fondamentaux, vous décidez que l'actif en vaut la peine, ce bouton en haut du chat vous renvoie directement au simulateur de portefeuille."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Fonctionnement de la recherche documentaire vérifiée (RAG) et de ses filtres de sécurité."
+            },
+            {
+              "id": "res-factors",
+              "label": "Facteurs",
+              "summary": "L'accordéon central avec les cinq drivers haussiers et les cinq risques baissiers classés par impact.",
+              "paragraphs": [
+                "Aucun investissement n’est parfait ou mauvais à cent pour cent : il y a toujours des arguments en faveur et des risques latents. Le secret est de savoir lesquels pèsent le plus aujourd’hui.",
+                "La colonne centrale met les deux côtés face à face afin que vous puissiez prendre une décision équilibrée :"
+              ],
+              "lead": "La colonne centrale met les deux côtés face à face afin que vous puissiez prendre une décision équilibrée :",
+              "bullets": [
+                {
+                  "bold": "Equilibre des forces et filtres",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Au-dessus, vous voyez la barre d'enchères entre acheteurs et vendeurs, et en dessous, vous pouvez filtrer les cinq catalyseurs positifs (en vert) ou les cinq principaux risques (en rouge)."
+                },
+                {
+                  "bold": "Détail et exploration en un clic",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Lorsque vous touchez un facteur de la liste, son explication complète s'affiche avec un bouton pour demander à Chat RAG plus d'informations sur ce point spécifique."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Impulsion",
+              "summary": "La bonne chronologie avec les derniers titres évalués par l'IA et la courbe d'humeur sur 24 heures.",
+              "paragraphs": [
+                "Un seul titre de dernière minute sur les bénéfices, l’inflation ou la réglementation peut complètement changer l’ambiance de la journée. Comment savoir quelle nouvelle vient de sortir et quel effet elle a ?",
+                "La colonne de droite surveille le flux d'informations minute par minute :"
+              ],
+              "lead": "La colonne de droite surveille le flux d'informations minute par minute :",
+              "bullets": [
+                {
+                  "bold": "Chronologie qualifiée",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Répertorie les cinq titres les plus récents avec leur époque et leur agence, en les notant en vert s'ils sont favorables ou en rouge s'ils constituent une menace."
+                },
+                {
+                  "bold": "Simulateur d'impact et de courbe journalière",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Vous pouvez déclencher un fil sous tension avec le bouton du haut pour voir comment il recalcule tout l'écran et suivre dans le graphique ci-dessous l'évolution de l'ambiance au cours des dernières 24 heures."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Comment le modèle FinBERT analyse le langage financier de chaque titulaire."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Constructeur",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Choisir séparément les bons actifs ne suffit pas pour avoir un bon portefeuille. Si vous investissez trop de capital dans des actifs qui évoluent de la même manière, ou si vous ne mesurez pas leurs performances combinées dans le passé, vous investissez aveuglément.",
+            "Constructor & Performance (la première vue du Portfolio) est l'atelier où vous construisez votre portefeuille. Il vous permet d'ajouter n'importe lequel des 213 actifs, d'ajuster le pourcentage que vous attribuez à chacun sans avoir à gérer des contrôles imprécis et d'auditer instantanément sa composition interne et son historique."
+          ],
+          "intro": "Constructor & Performance est l'atelier où vous construisez votre portefeuille, ajustez le poids de chaque actif et auditez sa performance historique.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Résumé",
+              "summary": "Les six meilleures cartes recalculées en direct à chaque fois que vous modifiez votre portefeuille.",
+              "paragraphs": [
+                "Chaque fois que vous ajoutez un actif ou modifiez un pourcentage dans votre portefeuille, vous devez savoir immédiatement si cet ajustement a amélioré votre rendement attendu ou a aggravé votre exposition à la baisse.",
+                "La rangée supérieure garde toujours visibles les six indicateurs principaux du portefeuille :"
+              ],
+              "lead": "La rangée supérieure garde toujours visibles les six indicateurs principaux du portefeuille :",
+              "bullets": [
+                {
+                  "bold": "Performance et efficacité",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Ils vous indiquent quel bénéfice annuel composé le portefeuille projette sur votre capital et quel rendement vous obtenez pour chaque unité de risque assumée."
+                },
+                {
+                  "bold": "Perte quotidienne attendue et baisse historique",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Ils calculent combien d’euros vous pourriez perdre lors d’une mauvaise journée dans les limites de ce qui était statistiquement prévisible et quel a été le revers le plus profond de l’année dernière."
+                },
+                {
+                  "bold": "Valeur ajoutée et diversification",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Ils mesurent de combien de points votre portefeuille bat l'indice de référence et combien de risques vous réduisez grâce à la combinaison de différents actifs."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Formules de rendement composites (CAGR), ratios Sharpe et Sortino et valeur à risque (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Pondération",
+              "summary": "Le tableau de gauche pour ajouter des actifs, les activer ou désactiver et définir le pourcentage exact de chaque position.",
+              "paragraphs": [
+                "Qu’arriverait-il aux chiffres de votre portefeuille si vous fermiez temporairement une action technologique aujourd’hui ou si vous répartissiez l’argent de manière égale entre toutes vos positions ?",
+                "Le panneau de gauche vous permet d'effectuer tous ces tests de manière claire et directe :"
+              ],
+              "lead": "Le panneau de gauche vous permet d'effectuer tous ces tests de manière claire et directe :",
+              "bullets": [
+                {
+                  "bold": "Moteur de recherche des 213 actifs",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Vous pouvez rechercher n'importe quel instrument sur la plateforme ou filtrer vos favoris pour l'ajouter au tableau en un seul clic."
+                },
+                {
+                  "bold": "Démarrage rapide et édition précise",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Chaque ligne comporte une case à cocher pour inclure ou exclure l'actif en temps réel et une case numérique pour saisir le pourcentage exact sans utiliser de curseurs imprécis."
+                },
+                {
+                  "bold": "Trois raccourcis de rééquilibrage",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "En haut du tableau vous disposez de boutons pour répartir des poids égaux entre tous les actifs actifs, ramener automatiquement la somme à 100% ou revenir au portefeuille d'origine."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "Radiographie",
+              "summary": "Le panneau supérieur droit avec cinq onglets pour découvrir les concentrations cachées, les flux de trésorerie et la garde.",
+              "paragraphs": [
+                "L’une des erreurs les plus courantes en matière d’investissement est de croire que vous êtes diversifié parce que vous possédez cinq actifs différents, alors qu’en réalité vous avez acheté une action individuelle ainsi que deux ETF contenant la même action.",
+                "Le panneau X-ray analyse votre portefeuille de l'intérieur à travers cinq onglets :"
+              ],
+              "lead": "Le panneau X-ray analyse votre portefeuille de l'intérieur à travers cinq onglets :",
+              "bullets": [
+                {
+                  "bold": "Détecteur de position répétée",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Additionnez ce que vous avez investi directement dans chaque entreprise plus la part cachée que vous avez au sein d'indices ou d'ETF (comme SPY ou QQQ), en vous avertissant en rouge si vous dépassez les limites prudentes."
+                },
+                {
+                  "bold": "Carte d’exposition et origine du retour",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Ils vous montrent quel pourcentage vous avez réellement dans chaque type d'actif et devise, et quelle part de votre profit provient du choix de bons secteurs par rapport au choix de bons actifs."
+                },
+                {
+                  "bold": "Revenu annuel projeté et sécurité",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Ils calculent combien de dollars vous allez collecter au cours de l’année pour les dividendes, les coupons et les intérêts, et vérifient la solvabilité des dépositaires où repose votre capital."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Comment l’exposition indirecte est calculée au sein des ETF et la répartition de l’attribution Brinson."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Calendrier",
+              "summary": "Le graphique mensuel de janvier à décembre pour voir la régularité de vos gains et pertes.",
+              "paragraphs": [
+                "Un bon rendement annuel peut cacher des mois de baisses très fortes, difficiles à tolérer en pratique. Dans quelle mesure le portefeuille que vous venez de constituer est-il cohérent d’un mois à l’autre ?",
+                "Juste en dessous de la radiographie, le calendrier détaille l'historique mensuel :"
+              ],
+              "lead": "Juste en dessous de la radiographie, le calendrier détaille l'historique mensuel :",
+              "bullets": [
+                {
+                  "bold": "Mois verts et mois rouges",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Chaque cellule est instantanément recalculée en fonction des poids de votre tableau et est peinte en vert ou en rouge selon le résultat de ce mois, se fermant à droite avec le résultat cumulé de l'année."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Le graphique plein écran ci-dessous pour comparer votre portefeuille à quatre stratégies classiques.",
+              "paragraphs": [
+                "Avant de considérer votre portefeuille comme bon, le test fondamental demeure : est-ce vraiment mieux que de laisser l'argent dans le S&P 500 ou dans un portefeuille traditionnel 60/40 ?",
+                "Le panneau inférieur occupe toute la largeur de l'écran pour mettre votre design aux normes du marché :"
+              ],
+              "lead": "Le panneau inférieur compare votre conception aux normes du marché :",
+              "bullets": [
+                {
+                  "bold": "Cinq horizons de tests",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Il vous permet d'évaluer les performances de votre mix au cours des derniers trimestres et sur des cycles pluriannuels complets."
+                },
+                {
+                  "bold": "Quatre références en face-à-face",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Superposez la courbe verte de votre portefeuille actif à l'un des quatre modèles classiques afin de voir clairement quand il est en avance et comment il résiste à la baisse."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Risque",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "À une époque où le marché augmente calmement, presque tous les portefeuilles semblent sûrs. Le vrai problème apparaît lorsqu’une crise éclate, que les taux d’intérêt augmentent soudainement et que des actifs qui semblaient indépendants commencent simultanément à chuter.",
+            "Quantitative Risk & Stress (la deuxième vue du Portfolio) soumet votre portefeuille à des tests extrêmes avant qu'ils ne se produisent dans la vie réelle. Grâce à quatre quadrants symétriques et à un simulateur de scénarios futurs ci-dessous, il vous montre exactement où se trouvent vos points vulnérables."
+          ],
+          "intro": "Quantitative Risk & Stress teste votre portefeuille pour les crises historiques, la contagion de la corrélation et les projections Monte Carlo.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "La carte interactive des risques et des rendements pour voir à quel point vous êtes proche du portefeuille le plus efficace possible.",
+              "paragraphs": [
+                "Avec les mêmes actifs que vous avez déjà dans votre portefeuille, il existe des milliers de façons de répartir les pourcentages. La combinaison que vous avez choisie est-elle celle qui rapporte le mieux au risque que vous prenez, ou pourriez-vous gagner la même chose avec moins de surprises ?",
+                "Le premier quadrant en haut à gauche dessine cette carte vivante des possibilités :"
+              ],
+              "lead": "Le premier quadrant en haut à gauche dessine cette carte vivante des possibilités :",
+              "bullets": [
+                {
+                  "bold": "Votre position par rapport aux portefeuilles optimaux",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Il montre où se situe votre portefeuille actuel par rapport au point de volatilité la plus faible possible et au point d'efficacité risque-rendement maximale."
+                },
+                {
+                  "bold": "Couches visuelles et inspection par actif",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Vous pouvez activer ou désactiver les couches de modèle et cliquer sur n'importe quel nœud pour lire la contribution exacte de cet actif ci-dessous."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Frontière efficace du Markowitz et calcul de la variance minimale et du portefeuille maximal du Sharpe."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornade et VaR",
+              "summary": "Le simulateur de crise historique, répartition des pertes quotidiennes par actif et asymétrie de marché.",
+              "paragraphs": [
+                "Si un krach comme celui de 2008, un ralentissement économique en 2020 ou une hausse des taux en 2022 devaient se répéter demain, combien perdrait votre portefeuille actuel et quel actif en serait le principal responsable ?",
+                "Le quadrant inférieur gauche répond à ces trois questions dans trois onglets spécifiques :"
+              ],
+              "lead": "Le quadrant inférieur gauche répond à ces questions dans trois onglets spécifiques :",
+              "bullets": [
+                {
+                  "bold": "Test contre cinq crises réelles",
+                  "code": "1. Tornado Stress",
+                  "text": "Comparez barre par barre la chute de votre portefeuille par rapport au S&P 500 face à cinq chocs historiques majeurs."
+                },
+                {
+                  "bold": "Classement des risques par poste",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Triez vos avoirs en fonction du nombre de dollars de perte quotidienne potentielle que chacun contribue au portefeuille total."
+                },
+                {
+                  "bold": "Comportement dans les hauts et les bas",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Il vous montre de quel pourcentage des roues haussières du marché chaque actif profite et combien il parvient à amortir lorsque le marché baisse."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Méthodologie des scénarios de stress historiques, contribution marginale au VaR et ratios de capture."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Corrélation",
+              "summary": "La matrice croisée pour vérifier si vos actifs se diversifient réellement ou s'ils sont infectés lors d'une panique.",
+              "paragraphs": [
+                "Avoir plusieurs actifs dans votre portefeuille ne réduit le risque que s’ils n’évoluent pas tous dans la même direction en même temps. Mais en période de panique financière, de nombreuses corrélations qui semblaient faibles augmentent fortement.",
+                "Le quadrant supérieur droit vous permet d'auditer cette relation dans deux scénarios :"
+              ],
+              "lead": "Le quadrant supérieur droit vous permet d'auditer cette relation dans deux scénarios :",
+              "bullets": [
+                {
+                  "bold": "Crossover entre actifs et sensibilité",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Il montre à quel point chaque paire d'actifs évolue de manière similaire (en vert ou en bleu clair lorsqu'ils se diversifient bien, et en rouge lorsqu'ils se rapprochent trop) et quelle est leur sensibilité au marché."
+                },
+                {
+                  "bold": "Simulateur de contagion en crise",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "En un clic vous changez les corrélations d'une année normale en celles d'un moment de panique pour découvrir quelles positions ne vous protégeraient plus."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Calcul des coefficients de corrélation de Pearson dans des conditions normales et sous stress de marché."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Choc et Markov",
+              "summary": "Le tableau d'impact commun entre les taux et la bourse, plus les probabilités d'un changement du cycle économique.",
+              "paragraphs": [
+                "Dans l’économie réelle, les problèmes surviennent rarement un par un : bien souvent, une hausse des taux d’intérêt coïncide avec une baisse des actions. Qu’arrive-t-il à votre portefeuille si les deux facteurs sont combinés en même temps ?",
+                "Le quadrant inférieur droit croise les deux variables et mesure les probabilités de changement de régime :"
+              ],
+              "lead": "Le quadrant inférieur droit croise les deux variables et mesure le cycle du marché :",
+              "bullets": [
+                {
+                  "bold": "Planche à double impact",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Mouvements de taux croisés (-100 à +200 points de base) avec des baisses ou des hausses du S&P 500 (-20% à +10%), permettant de filtrer par l'ensemble du portefeuille ou par un actif individuel."
+                },
+                {
+                  "bold": "Probabilités de transition de cycle",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Calculez la probabilité que le marché reste calme ou entre dans une phase volatile, inflationniste ou de crise."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sensibilité conjointe aux taux et aux variables, et matrice de transition d'état de Markov."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Le panneau inférieur est en plein écran avec les projections probabilistes futures et les déclins historiques.",
+              "paragraphs": [
+                "Il est utile de regarder le passé, mais lorsque vous investissez dans l’avenir, vous devez savoir dans quelle fourchette de résultats votre capital peut évoluer au cours des six prochains mois, d’un an ou de deux ans.",
+                "Le panneau inférieur pleine largeur rassemble trois outils temporaires pour projeter et contrôler ce chemin :"
+              ],
+              "lead": "Le panneau inférieur rassemble trois outils temporaires pour projeter ce chemin :",
+              "bullets": [
+                {
+                  "bold": "Dix mille scénarios futurs",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Dessinez le cône d'évolution probable de votre portefeuille en distinguant le scénario optimiste (P95 en vert), la trajectoire centrale attendue (P50) et le scénario défavorable (P05 en rouge)."
+                },
+                {
+                  "bold": "Profondeur des chutes et stabilité dans le temps",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Ils vous permettent de faire basculer le graphique pour voir combien de temps le portefeuille est resté en dessous de ses plus hauts historiques ou quelle est la stabilité de son efficacité et de son risque sur des fenêtres mobiles de 60 jours."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Simulation stochastique Monte Carlo de 10 000 routes et métriques glissantes sur 60 jours."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulateur",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Avant d’acheter un nouvel actif, de réduire une position ou de payer une couverture avec des options, la même question se pose toujours : cette opération améliore-t-elle vraiment mon portefeuille ou ajoute-t-elle des risques inutiles ? Et quel capital dois-je y investir ?",
+            "Le laboratoire de stratégie Ad-Hoc (la troisième vue du Portfolio) est votre simulateur pré-opératoire. Il vous permet de charger des jeux tactiques, de calculer la taille idéale de votre position, de tester l'assurance à la baisse et de voir l'impact exact avant et après sans encore toucher à votre portefeuille de base."
+          ],
+          "intro": "Le laboratoire de stratégie Ad-Hoc est votre simulateur pré-négociation pour tester les ordres, dimensionner les positions et mesurer la couverture.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Impact",
+              "summary": "Les six meilleures cartes qui comparent votre portefeuille actuel au résultat après les jeux simulés.",
+              "paragraphs": [
+                "Pour savoir si une idée tactique en vaut la peine, il ne suffit pas que l'actif soit attrayant à lui seul : il doit améliorer les chiffres de l'ensemble du portefeuille.",
+                "La ligne du haut vous montre en permanence la comparaison entre votre portefeuille actuel et le portefeuille avec la simulation appliquée :"
+              ],
+              "lead": "La rangée du haut compare votre portefeuille actuel au portefeuille avec la simulation appliquée :",
+              "bullets": [
+                {
+                  "bold": "Effet sur le profit et l'efficacité",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Ils affichent le numéro de base à côté du numéro projeté, éclairant la différence en vert si le jeu ajoute de l'efficacité ou en rouge s'il la détériore."
+                },
+                {
+                  "bold": "Effet sur le risque, le capital et les règles",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Ils vous indiquent dans quelle mesure votre perte maximale attendue change, quel pourcentage du portefeuille vous engagez dans les tests et si toutes les limites de sécurité sont respectées."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If et Kelly",
+              "summary": "Le simulateur de billets d'achat/vente et le calculateur pour définir combien d'argent risquer.",
+              "paragraphs": [
+                "De nombreuses bonnes idées d'investissement finissent par donner lieu à des pertes en raison d'une erreur dans la taille du pari : mettre trop peu ne fait pas bouger l'aiguille, mais mettre trop peut ruiner le portefeuille si le mouvement tourne mal.",
+                "Le premier quadrant en haut à gauche relie la fiche de preuve au calcul mathématique de la taille :"
+              ],
+              "lead": "Le premier quadrant réunit le rapport de test avec le calcul mathématique de la taille :",
+              "bullets": [
+                {
+                  "bold": "Chargement de la commande test",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Vous choisissez n'importe quel actif, indiquez si vous souhaitez acheter, vendre ou couvrir et chargez le montant en dollars. Dans la liste ci-dessous, vous pouvez activer ou désactiver chaque commande simulée pour comparer son effet."
+                },
+                {
+                  "bold": "Taille de position optimale",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Sur la base de votre probabilité de succès estimée et du rapport entre profit et perte, il calcule quel pourcentage maximum de capital doit être alloué pour croître sans vous surexposer."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Calcul mathématique du critère de Kelly et de sa version conservatrice Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Mettre OTM et marge",
+              "summary": "Le simulateur d'assurance avec des options pour les fortes baisses du marché et le moniteur d'appel de marge.",
+              "paragraphs": [
+                "Lorsque vous craignez une forte correction du marché, vendre toutes vos positions est généralement coûteux et inefficace. L’alternative professionnelle est de souscrire une assurance avec options de protection, mais combien coûte cette assurance par an et dans quelle mesure vous protège-t-elle réellement ?",
+                "Le quadrant inférieur gauche vous permet de mesurer à la fois la couverture et le niveau d’endettement :"
+              ],
+              "lead": "Le quadrant inférieur gauche mesure à la fois la couverture et le niveau de garantie :",
+              "bullets": [
+                {
+                  "bold": "Comparateur d'écrans de protection",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Il vous permet d'alterner entre fonctionner sans couverture ou appliquer trois types d'assurance avec options (sur la volatilité SPY, QQQ ou VIX), en comparant le coût annuel de la prime aux dollars que vous économiseriez en cas de crash de 20 %."
+                },
+                {
+                  "bold": "Tirer parti du contrôle et des garanties",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Surveillez le pourcentage de marge de maintenance que vous avez utilisé et le pourcentage de baisse que le portefeuille subirait avant d'entrer dans la zone d'appel de marge."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Opération de couverture avec options de vente hors de la monnaie et calcul des garanties Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Comité et livre",
+              "summary": "Les deux panneaux de droite avec examen automatique des limites de risque, de l'historique des commandes et du copilote.",
+              "paragraphs": [
+                "Dans l’enthousiasme suscité par l’essai d’une transaction, il est facile d’oublier qu’un actif concentre plus de 20 % de l’ensemble de votre portefeuille ou qu’il évolue au milieu d’une grave anomalie statistique.",
+                "Les deux quadrants de droite vous servent de contrôle automatique des risques et de piste d'audit :"
+              ],
+              "lead": "Les deux quadrants de droite servent de contrôle et d’enregistrement des risques :",
+              "bullets": [
+                {
+                  "bold": "Revue en trois dimensions",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Ils évaluent vos ordres simulés à partir des limites techniques, fondamentales et de sécurité (avertissement si une position dépasse la limite de 20% du capital ou si elle présente des anomalies élevées)."
+                },
+                {
+                  "bold": "Assistant de carnet de commandes et de portefeuille",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Le panneau inférieur enregistre chaque simulation avec son impact sur le risque, tandis que le bouton de dialogue en haut à droite ouvre le chat pour poser des questions directes sur votre portefeuille."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Règles de contrôle des risques pré-opérationnelles et limites de concentration par actif."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Le graphique ci-dessous en plein écran pour vérifier que votre stratégie fonctionne en dehors de la période d'essai.",
+              "paragraphs": [
+                "Toute stratégie peut être ajustée en regardant le passé jusqu'à ce qu'elle apparaisse infaillible sur le graphique historique. Le véritable défi est de savoir si cela continue de fonctionner face aux nouvelles données du marché.",
+                "Le panneau inférieur pleine largeur soumet la stratégie à la validation la plus rigoureuse avant de passer en production :"
+              ],
+              "lead": "Le panneau du bas soumet la stratégie à une validation dans l'échantillon et hors échantillon :",
+              "bullets": [
+                {
+                  "bold": "Séparation entre la conception et les tests réels",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Il divise le graphique historique en une première étape où la stratégie est calibrée et une deuxième étape avec des données inédites pour vérifier si elle maintient son avantage sur le portefeuille de base."
+                },
+                {
+                  "bold": "Note de robustesse statistique",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Si l’indicateur d’efficacité dépasse 70%, cela confirme que les résultats sont cohérents et ne sont pas le produit d’avoir imposé les chiffres au passé."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ce que mesure l'indice d'efficacité Walk-Forward (WFE) et comment il détecte les stratégies suroptimisées."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Filtre de liquidité (ADV)",
+        "intro": "Pour qu'un actif puisse être négocié sans qu'un seul ordre ne fausse son prix, la plateforme exige un seuil minimum de volume quotidien moyen en dollars sur les 20 derniers jours ouvrés.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Cours de clôtureᵢ × Volume négociéᵢ)",
+          "denominator": "20 roues habiles",
+          "vars": [
+            "Cours de clôture : cours de clôture officiel du jour i exprimé en USD.",
+            "Volume négociéᵢ : nombre total d'unités négociées ce jour-là."
+          ]
+        },
+        "lead": "Sur la base du volume journalier moyen, le catalogue classe la profondeur de chaque instrument :",
+        "bullets": [
+          {
+            "bold": "Liquidité institutionnelle élevée",
+            "code": "> $500M diarios",
+            "text": "Vous permet d’entrer et de sortir immédiatement de positions importantes sans modifier le prix du marché."
+          },
+          {
+            "bold": "Liquidité du catalogue standard",
+            "code": "$50M a $500M diarios",
+            "text": "Convient aux portefeuilles diversifiés avec des coûts d'achat/vente très faibles."
+          },
+          {
+            "bold": "Surveillance de la propagation",
+            "code": "< $50M diarios",
+            "text": "En période de volatilité, il est conseillé de vérifier l'ouverture des pourboires avant d'exécuter des ordres importants."
+          }
+        ],
+        "example": "Si une action se négocie à 200 $ et s'échange en moyenne 5 millions d'actions par roue au cours du mois dernier, son volume quotidien moyen (ADV) est de 1 milliard de dollars (1,0 milliard de dollars)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalisation en USD",
+        "intro": "Le catalogue combinant obligations européennes, indices asiatiques, matières premières et cryptomonnaies, tous les flux de volumes sont convertis en dollars américains en temps réel afin de pouvoir être comparés à la même échelle.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Volume en devise locale : montant négocié dans la devise d'origine du marché (EUR, JPY, GBP, BRL, etc.).",
+            "Taux de change au comptant : cotation actuelle dans le moteur de 61 devises."
+          ]
+        },
+        "lead": "Cette conversion impacte directement deux endroits de l'écran :",
+        "bullets": [
+          {
+            "bold": "Vue d'ensemble Classement Tous",
+            "code": "213 activos",
+            "text": "Classez les instruments du plus grand mouvement d’argent réel au moins réel dans le monde."
+          },
+          {
+            "bold": "Carte de volume ajoutée",
+            "code": "Volumen 24h en $B",
+            "text": "Il permet d'ajouter sans distorsion le volume des actifs cotés dans différents pays."
+          }
+        ],
+        "example": "Si une obligation allemande s'échange à 4 milliards d'euros par jour et que l'EUR/USD s'échange à 1,08, le système calcule 4,32 milliards de dollars dans le pouls mondial."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "MOYENNE RSI (14)",
+        "intro": "Comment mesurer si un marché a progressé avec une véritable force ou s’il a déjà augmenté trop rapidement et est épuisé ? Le Relative Strength Index (RSI) compare les hausses moyennes aux baisses moyennes des 14 derniers tours sur une échelle de 0 à 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Augmentations moyennes₁₄ / Diminutions moyennes₁₄)",
+          "vars": [
+            "Average Raising₁₄ : moyenne lissée des points gagnés sur les jours haussiers des 14 dernières roues.",
+            "Pertes moyennes₁₄ : moyenne lissée des points perdus les jours baissiers de la même période."
+          ]
+        },
+        "lead": "Voici comment sont interprétées les trois sections de l’échelle dans l’anneau circulaire :",
+        "bullets": [
+          {
+            "bold": "Force d’achat et surachat",
+            "code": "70 a 100",
+            "text": "Les augmentations dépassent de loin les récentes diminutions. Il montre une grande dynamique haussière, bien qu'au-dessus de 70, il avertisse que le prix pourrait avoir besoin d'une pause."
+          },
+          {
+            "bold": "zone d'équilibre",
+            "code": "30 a 70",
+            "text": "Le marché évolue à un rythme durable. Franchir le niveau intermédiaire (> 50 en vert) confirme la domination de l'acheteur, tandis que tomber en dessous (< 50 en rouge) indique la domination du vendeur."
+          },
+          {
+            "bold": "Punition et survente",
+            "code": "0 a 30",
+            "text": "Les chutes ont été si fréquentes et prononcées que l’actif commence à paraître statistiquement bon marché et sujet à un rebond."
+          }
+        ],
+        "example": "Si au cours des 14 dernières roues un groupe d'actions a augmenté en moyenne de 2 $ par jour haussier et n'a baissé que de 1 $ par jour baissier, son ratio de force est de 2 et son RSI indique 66,7 (poussée haussière en vert)."
+      },
+      {
+        "id": "p06",
+        "label": "Régime Normal (P-06)",
+        "intro": "Un actif peut paraître calme si l'on ne regarde que son prix, mais en même temps souffrir d'un étrange bond de volume et d'une ouverture anormale de ses pics d'achat et de vente. Le moteur Isolation Forest (P-06) croise ces variables en même temps pour détecter un comportement atypique.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)) : nombre moyen de coupes aléatoires nécessaires pour isoler le comportement actuel du reste de l'histoire.",
+            "x : vecteur de 4 variables (Retour 24h, Vol Z-Score 20d, Volatilité Réalisée 30d et Spread en bps)."
+          ]
+        },
+        "lead": "Plus le coup du jour est rare, plus il est isolé rapidement et plus le score est proche de 1,00 :",
+        "bullets": [
+          {
+            "bold": "Régime normal",
+            "code": "0.00 a 0.49",
+            "text": "Le prix, le volume et la liquidité évoluent conformément à la moyenne historique de l'actif."
+          },
+          {
+            "bold": "Haute activité",
+            "code": "0.50 a 0.64",
+            "text": "Au moins une des variables a commencé à s’écarter de son comportement habituel ; Il est conseillé de surveiller de près le flux des commandes."
+          },
+          {
+            "bold": "Luxation ou anomalie critique",
+            "code": "0.65 a 1.00",
+            "text": "L’actif enregistre un comportement statistiquement extrême. Dans le module portfolio, le dépassement de ce seuil active le frein de sécurité."
+          }
+        ],
+        "example": "Si une obligation souveraine évolue à peine de 0,1% en prix mais que son volume est multiplié par quatre et son spread triple en quelques minutes, le détecteur franchit les trois points de données et élève son score à 0,74 (Dislocation en rouge)."
+      },
+      {
+        "id": "zscore",
+        "label": "Contournement du volume (Z-Score)",
+        "intro": "Dire que 500 millions de dollars ont été exploités aujourd'hui, c'est beaucoup pour une entreprise de taille moyenne, mais très peu pour S&P 500. Le Volume Z-Score rassemble tous les atouts dans la même unité universelle : combien d'écarts types (σ) représente le volume actuel par rapport à sa propre moyenne sur 20 roues.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Volume aujourd'hui (24h) − Volume moyen (20j)",
+          "denominator": "Écart type du volume (20d)",
+          "vars": [
+            "Volume moyen (20j) : volume habituel de l'actif au cours du dernier mois ouvré.",
+            "Écart type (20d) : dans quelle mesure ce volume varie normalement d'un jour à l'autre."
+          ]
+        },
+        "lead": "De cette façon, vous pouvez comparer n'importe quel actif sur la même échelle d'unités sigma (σ) :",
+        "bullets": [
+          {
+            "bold": "Activité habituelle",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Le volume de la journée s'inscrit tout à fait dans la routine des quatre dernières semaines."
+          },
+          {
+            "bold": "Forte participation",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Il y a un intérêt supérieur à la moyenne qui commence à valider la tendance du jour."
+          },
+          {
+            "bold": "Affrontement institutionnel",
+            "code": "> +2.0σ",
+            "text": "Cela se produit dans moins de 5 % des tours de l’année et reflète généralement l’entrée ou la sortie massive de fonds importants."
+          }
+        ],
+        "example": "Si une action se négocie habituellement à 100 millions de dollars par jour avec une variation typique de ± 20 millions de dollars et qu'elle se négocie aujourd'hui à 160 millions de dollars, elle est 60 millions de dollars au-dessus de sa moyenne, ce qui équivaut exactement à +3,0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Revenu fixe (2s10s et DV01)",
+        "intro": "Lorsque vous filtrez Obligations ou Taux dans le tableau, les deux mesures clés pour évaluer la dette souveraine apparaissent : la pente de la courbe (2s10s) et la valeur monétaire d'un point de base (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 point de base (1 pb) : équivalent à 0,01% de performance.",
+            "DV01 ($/$1M) : combien de dollars une position de 1 million de dollars gagne ou perd si le taux évolue de 1 point de base."
+          ]
+        },
+        "lead": "Comment lire ces deux nombres sur la grille :",
+        "bullets": [
+          {
+            "bold": "Courbe normale ou positive",
+            "code": "2s10s > 0 bps",
+            "text": "Les obligations à 10 ans paient un taux plus élevé que les obligations à 2 ans, reflétant l’attente d’une croissance économique saine."
+          },
+          {
+            "bold": "courbe inversée",
+            "code": "2s10s < 0 bps",
+            "text": "Les taux courts dépassent les taux longs ; historiquement, il met en garde contre un refroidissement économique ou des restrictions monétaires."
+          }
+        ],
+        "example": "Si le Trésor à 10 ans rapporte 4,20% et le Trésor à 2 ans 4,55%, la colonne 2s10 marque -35 pdb (courbe inversée en rouge)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Actions (P/E et marge)",
+        "intro": "Lors du filtrage des actions S&P/NDX, le tableau affiche le multiple des bénéfices projetés (P/E Forward) et la marge brute d'exploitation afin que vous puissiez comparer la valorisation par rapport à la rentabilité.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Cours actuel de l'action",
+          "denominator": "Bénéfice estimé par action (12 prochains mois)",
+          "vars": [
+            "P/E Forward : combien d'années de bénéfices futurs vous payez au prix d'aujourd'hui.",
+            "Marge brute (%) : pourcentage des ventes qui reste sous forme de bénéfice brut après déduction du coût direct."
+          ]
+        },
+        "lead": "Que rechercher en croisant les deux colonnes :",
+        "bullets": [
+          {
+            "bold": "Évaluation exigeante ou modérée",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Un multiple élevé indique que le marché intègre une forte croissance future ; un chiffre faible reflète généralement des entreprises matures ou précieuses."
+          },
+          {
+            "bold": "Pouvoir de tarification",
+            "code": "Margen Bruto > 50%",
+            "text": "Des marges élevées montrent que les entreprises dotées de forts avantages concurrentiels sont capables de défendre leurs bénéfices contre l’inflation."
+          }
+        ],
+        "example": "Si une action se négocie à 150 $ et qu’on estime qu’elle rapportera 6 $ par action au cours des 12 prochains mois, son P/E à terme est de 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Produits dérivés, devises et matières premières",
+        "intro": "Pour les marchés d'options, de change et de contrats à terme physiques, les deux colonnes dynamiques montrent le coût implicite du risque ou de la récompense pour le maintien de la position au fil du temps.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Dérivés) : volatilité annualisée que le marché des options actualise pour les 30 prochains jours.",
+            "Carry 10Y (FX) et Roll Yield (Matières premières) : gain ou coût annuel dû au différentiel de taux ou au rollover des contrats à terme."
+          ]
+        },
+        "lead": "Comment profiter de ces colonnes en fonction de l'actif :",
+        "bullets": [
+          {
+            "bold": "Dans Produits dérivés",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Ils vous indiquent quel pourcentage de mouvement le marché attend et si les options pour couvrir les chutes (Puts) sont chères."
+          },
+          {
+            "bold": "En devises et matières premières",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Ils apparaissent en vert si l'entretien du bien vous rapporte un revenu supplémentaire ou en rouge s'il a un coût de possession."
+          }
+        ],
+        "example": "Si une option présente une volatilité implicite (ATM IV) de 35 % par an, le marché anticipe un mouvement proche de ± 10 % pour les 30 prochains jours."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Cartographie radiale radar",
+        "intro": "Pour placer jusqu'à 45 actifs dans les trois anneaux radar sans chevauchement, la vue Orbital transforme la valeur de l'indicateur choisi en une distance au centre (rayon r) normalisée entre le minimum et le maximum du groupe.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Valeur de l'actif − Valeur minimale du groupe",
+          "denominator": "Valeur maximale du groupe - Valeur minimale du groupe",
+          "vars": [
+            "r → 0 (Inner Ring) : concentre les actifs avec une plus grande intensité ou un écart positif.",
+            "r → 1 (Outer Ring) : localise les actifs périphériques ou ceux avec la lecture relative la plus basse."
+          ]
+        },
+        "lead": "Comment lire la position et la couleur de chaque planète sur le radar :",
+        "bullets": [
+          {
+            "bold": "Bague intérieure de mise au point",
+            "code": "Centro del radar",
+            "text": "Rassemblez les principaux actifs de l’indicateur que vous avez sélectionné ci-dessus afin que votre vision se porte en premier sur ce qui est le plus important."
+          },
+          {
+            "bold": "Sémantique historique des couleurs",
+            "code": "Verde vs Rojo",
+            "text": "Le nœud s’allume en vert lorsqu’il dépasse favorablement sa moyenne historique et en rouge lorsqu’il reflète un déclin ou un stress."
+          }
+        ],
+        "example": "Si vous triez le radar par déviation de volume (Z-Score), celui actif avec +3,4σ est situé dans l'anneau central lumineux, tandis que celui avec 0,1σ est sur l'orbite extérieure."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) et bandes de Bollinger",
+        "intro": "La moyenne mobile simple sur 20 périodes (SMA 20) marque la tendance de base de l'actif, tandis que les bandes de Bollinger dessinent un canal dynamique en ajoutant et en soustrayant deux écarts types (2σ) autour de cette moyenne.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20) : moyenne arithmétique des 20 dernières clôtures.",
+            "Bande passante (BB width) : pourcentage de distance entre les bandes supérieure et inférieure."
+          ]
+        },
+        "lead": "Statistiquement, environ 95 % des cotations se situent dans les deux bandes :",
+        "bullets": [
+          {
+            "bold": "Prix au-dessus de la moyenne",
+            "code": "Precio > SMA 20",
+            "text": "Cela indique que la tendance à court terme est haussière et que la moyenne agit généralement comme un plancher de support."
+          },
+          {
+            "bold": "Toucher de bande supérieure ou inférieure",
+            "code": "±2σ",
+            "text": "Il prévient que le prix s'est écarté trop rapidement de sa moyenne récente et qu'il peut prendre une pause."
+          },
+          {
+            "bold": "compression de bande",
+            "code": "BB Width bajo",
+            "text": "Lorsque les bandes deviennent très étroites, le marché accumule de l'énergie avant un mouvement fort."
+          }
+        ],
+        "example": "Si le SMA(20) d'un titre est de 100 $ et que son écart type sur 20 roues est de 4 $, la bande supérieure est à 108 $ et la bande inférieure est à 92 $."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Institutionnel",
+        "intro": "Contrairement à une moyenne commune qui accorde un poids égal à toutes les heures de la journée, le VWAP pondère chaque prix en fonction du montant d'argent réellement négocié à ce niveau. C'est la principale référence utilisée par les tables institutionnelles.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Prix typiqueᵢ × Volume négociéᵢ)",
+          "denominator": "∑ Volume négociéᵢ",
+          "vars": [
+            "Prix typiqueᵢ : moyenne entre le maximum, le minimum et la clôture de chaque bougie.",
+            "Volume négociéᵢ : volume négocié spécifiquement dans cette section."
+          ]
+        },
+        "lead": "Comment les traders professionnels utilisent la ligne VWAP :",
+        "bullets": [
+          {
+            "bold": "Contrôle d'exécution",
+            "code": "Comprar bajo el VWAP",
+            "text": "Si un fonds institutionnel achète en dessous du VWAP pour la période, il obtient un meilleur prix que la moyenne pondérée du marché."
+          },
+          {
+            "bold": "Niveau de défense de tendance",
+            "code": "Soporte / Resistencia",
+            "text": "Tant que l'actif reste supérieur à VWAP, ceux qui ont acheté au cours de la période réalisent un profit moyen."
+          }
+        ],
+        "example": "Si 1 million d'actions étaient négociées à 100 $ et que seulement 100 000 actions étaient négociées à 110 $, la moyenne simple indiquerait 105 $, mais le VWAP indique 100,91 $ car presque tout l'argent a été négocié à 100 $."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Déplacement de spread (pdb)",
+        "intro": "Le spread est la différence entre le meilleur cours vendeur et le meilleur cours acheteur du carnet d’ordres. Lorsque les teneurs de marché perçoivent un risque ou un manque de liquidité, ils creusent cet écart pour se protéger.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Prix demandé - Prix acheteur )",
+          "denominator": "Prix moyen (prix moyen)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Prix ​​Ask / Bid : argument de vente et point d'achat actuels dans le livre.",
+            "10 000 : Facteur de conversion pour exprimer la différence en points de base (pdb)."
+          ]
+        },
+        "lead": "Ce que vous indique la lecture de la luxation propagée sur le rail gauche :",
+        "bullets": [
+          {
+            "bold": "Livre profond et fluide",
+            "code": "Spread estable en verde",
+            "text": "Les liquidités sont abondantes aux deux extrémités et le coût implicite d’entrée ou de sortie est minime."
+          },
+          {
+            "bold": "Friction ou retrait de liquidité",
+            "code": "Salto en bps",
+            "text": "Cela se produit généralement quelques secondes avant les annonces macroéconomiques ou lors de ventes de panique, ce qui rend l'exécution plus coûteuse."
+          }
+        ],
+        "example": "Si un actif a un pourboire d’achat à 99,95 $ et un pourboire de vente à 100,05 $, la différence de 0,10 $ sur 100 $ équivaut à 10 points de base (10 points de base)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Options (Black-Scholes et Grecs)",
+        "intro": "Dans le moteur d'options, la plateforme représente deux courbes de profits et pertes (P&L) : comment la stratégie se terminerait le jour d'expiration et combien elle vaut aujourd'hui (T+0) en appliquant le modèle Black-Scholes.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S et K : prix actuel de l'actif sous-jacent (Spot) et prix d'exercice de l'option (Strike).",
+            "Net Greeks : Δ Delta (sensibilité au prix), Γ Gamma (accélération Delta), Θ Theta (usure quotidienne de l'heure) et ν Vega (sensibilité à la volatilité)."
+          ]
+        },
+        "lead": "Comment lire les grecs de votre stratégie sur les pilules du rail gauche :",
+        "bullets": [
+          {
+            "bold": "Direction et accélération",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Un Delta positif l’emporte lorsque l’actif augmente ; un Gamma positif fait gagner de plus en plus vite si le mouvement s'accélère."
+          },
+          {
+            "bold": "Passage du temps et incertitude",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta vous indique combien de dollars la position perd ou gagne chaque jour qui passe ; Vega, dans quelle mesure cela change si la volatilité implicite augmente de 1 %."
+          }
+        ],
+        "example": "Un Long Straddle (acheter Call et Put sur le même strike) a un Delta proche de 0 (peu importe s'il monte ou descend), mais un Vega positif et a besoin que le prix dépasse ses deux points d'équilibre (Seuils de rentabilité)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Courbes souveraines (Papillon et DV01)",
+        "intro": "Le moteur obligataire compare les rendements de 3 mois à 30 ans pour 42 pays et calcule à la fois la pente (2s10s) et la courbure de la tranche médiane (Butterfly 2s5s10s) ainsi que la sensibilité monétaire (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "Taux 2 ans, 5 ans, 10 ans : rendements souverains à 2, 5 et 10 ans du pays sélectionné.",
+            "Taux réel à 10 ans : rendement nominal à 10 ans moins le taux de référence ou l'inflation implicite."
+          ]
+        },
+        "lead": "À quoi sert chaque indicateur dans l’analyse des obligations :",
+        "bullets": [
+          {
+            "bold": "Courbure de la section médiane",
+            "code": "Butterfly 2s5s10s",
+            "text": "Il mesure si la tranche à 5 ans est chère ou bon marché par rapport aux tranches extrêmes de 2 et 10 ans."
+          },
+          {
+            "bold": "Risque de durée en dollars",
+            "code": "DV01 por $1M",
+            "text": "Il vous indique exactement de combien de dollars un portefeuille d'un million de dollars varie avec un mouvement de 0,01 % du taux."
+          }
+        ],
+        "example": "Une obligation à 10 ans avec un DV01 de 820 $ par million perdra environ 82 000 $ si les taux du marché augmentent de 100 points de base (+1,00 %)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Devises (Carry) et Futures (Roll Yield)",
+        "intro": "Dans les devises, lorsqu'une paire n'est pas cotée directement elle est calculée par triangulation par rapport au dollar et son différentiel de taux (Carry) est mesuré. Dans les matières premières, la performance de renouvellement se mesure entre le contrat immédiat et le contrat à 12 mois (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Prix ​​spot (Front M1) − Prix futur (M12)",
+          "denominator": "Prix futur (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Backwardation (Spot > Future) : la rareté physique amène aujourd’hui les contrats à terme roulants à générer un profit positif (Roll Yield > 0).",
+            "Contango (Spot < Future) : Les coûts de stockage rendent les futures plus chers et leur renouvellement a un coût négatif."
+          ]
+        },
+        "lead": "Quel impact cela a sur votre portefeuille lorsque vous occupez un poste :",
+        "bullets": [
+          {
+            "bold": "Carry Trade positif sur les devises",
+            "code": "Carry Spread > 0 bps",
+            "text": "Si vous achetez une devise à taux d’intérêt élevé en vous finançant dans une devise à taux bas, vous percevrez ce différentiel en votre faveur."
+          },
+          {
+            "bold": "Vent favorable dans les matières premières",
+            "code": "Backwardation en verde",
+            "text": "Lorsque les stocks physiques sont faibles, le contrat proche vaut plus que le contrat lointain et l'investisseur obtient un rendement supplémentaire en reconduisant le contrat."
+          }
+        ],
+        "example": "Si le pétrole à 1 mois se négocie à 72 $ et le contrat à 12 mois à 68 $, le marché est en déport avec un Roll Yield positif de +5,88 % par an."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Note totale pondérée",
+        "intro": "Tous les actifs ne transitent pas par les mêmes sources : dans une entreprise, les états financiers audités (SEC 10-K/10-Q) ont beaucoup de poids, alors que sur le marché des crypto ou des devises, les flux et communications quotidiens ont plus de poids.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not : pondération automatique selon la catégorie (ex : 80% / 20% en Actions ; 85% / 15% en Frais).",
+            "Échelle finale : va de −100 (pessimisme maximum) à +100 (convaincue haussière maximale)."
+          ]
+        },
+        "lead": "Voici comment le score composite se traduit dans l’opinion supérieure :",
+        "bullets": [
+          {
+            "bold": "Position haussière",
+            "code": "BULLISH / Nota > +15",
+            "text": "Les catalyseurs documentaires et le flux d’informations l’emportent clairement sur les facteurs de risque."
+          },
+          {
+            "bold": "Posture neutre ou mixte",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Même les forces entre les fondamentaux et l’actualité ; Il est conseillé de revoir l’accordéon de 10 facteurs avant de se décider."
+          },
+          {
+            "bold": "Position défensive ou baissière",
+            "code": "BEARISH / Nota < -15",
+            "text": "Les alertes sur les bilans, la détérioration des marges ou les nouvelles défavorables prédominent."
+          }
+        ],
+        "example": "Dans une action (80% fondamentaux / 20% actualités), si les balances affichent +50 points et que l'actualité du jour montre +20, le Score Total Pondéré est (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Recherche vérifiée (RAG)",
+        "intro": "Pour empêcher l'intelligence artificielle d'inventer des chiffres, Document Chat utilise la génération de récupération augmentée (RAG) : il recherche d'abord les paragraphes pertinents dans les rapports officiels de l'actif et rédige ensuite seulement la réponse en citant la source.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Consultation sur les vecteurs (Q) · Document officiel sur les vecteurs (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vecteur Q et D : représentations numériques de votre question et des fragments officiels (10-K, minutes du FOMC, rapports EIA).",
+            "3-Layer Guardrail : filtre qui bloque les requêtes sans rapport avec les finances ou sans support documentaire."
+          ]
+        },
+        "lead": "Ce que garantit ce mécanisme lorsque vous posez une question dans le chat :",
+        "bullets": [
+          {
+            "bold": "Ancrage dans les sources primaires",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Chaque donnée sur les revenus, la dette, les stocks ou les taux provient du document réglementaire correspondant à cet actif."
+          },
+          {
+            "bold": "Arrêtez les questions hors sujet",
+            "code": "Guardrail activo",
+            "text": "Si quelqu'un essaie de consulter des sujets non financiers, l'assistant rejette la requête et reste concentré sur l'analyse de l'instrument."
+          }
+        ],
+        "example": "Lorsque vous appuyez sur la puce des facteurs de risque sur un titre, le moteur récupère la section Article 1A (Facteurs de risque) de son dernier formulaire 10-K et résume les points critiques."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "Score neuronal FinBERT",
+        "intro": "Un dictionnaire typique confond souvent les mots financiers (par exemple, « baisse des coûts » ou « réduction de la dette » sont d'excellentes nouvelles même s'ils utilisent le mot baisse ou réduction). FinBERT est un réseau neuronal formé spécifiquement avec des textes financiers.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P (Positif) et P (Négatif) : probabilités attribuées par le modèle que le titre soit haussier ou baissier pour l'actif.",
+            "Courbe 24h : moyenne mobile exponentielle des gros titres des dernières 24 heures."
+          ]
+        },
+        "lead": "Comment chaque nœud est évalué dans la chronologie de droite :",
+        "bullets": [
+          {
+            "bold": "Support de catalyseur",
+            "code": "+20 a +100 en verde",
+            "text": "Dépassement des bénéfices estimés, amélioration de la cote de crédit ou baisse des taux favorable."
+          },
+          {
+            "bold": "Câble d'information neutre",
+            "code": "-19 a +19 en ámbar",
+            "text": "Annonces opérationnelles de routine qui ne modifient pas l’évaluation structurelle de l’instrument."
+          },
+          {
+            "bold": "Détenteur du risque",
+            "code": "-20 a -100 en rojo",
+            "text": "Avertissements réglementaires, baisses de marge, grèves ou données d’inflation pires que prévu."
+          }
+        ],
+        "example": "Si le modèle attribue 82 % de probabilité positive, 12 % de probabilité neutre et 6 % de probabilité négative à un titre, le nœud affiche un impact net de +76 en vert."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe et Sortino",
+        "intro": "Les deux premières cartes du haut mesurent la croissance annuelle de votre capital (CAGR) et l'efficacité de cette croissance par rapport aux chocs que vous devez subir (Sharpe et Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Rendement annuel Portfolio (Rp) − Taux sans risque (Rf)",
+          "denominator": "Volatilité annuelle Portfolio (σp)",
+          "vars": [
+            "Rf (4,30%) : rendement de base que vous pourriez obtenir sans risque en bons du Trésor.",
+            "Ratio Sortino : utilise la même formule mais au dénominateur il ne pénalise que la volatilité des jours négatifs (chutes)."
+          ]
+        },
+        "lead": "Comment évaluer la qualité de votre portefeuille avec ces chiffres :",
+        "bullets": [
+          {
+            "bold": "Portefeuille efficace",
+            "code": "Sharpe > 1.00",
+            "text": "Le rendement excédentaire que vous obtenez au-dessus du taux sans risque dépasse de loin la volatilité supposée."
+          },
+          {
+            "bold": "Des performances exceptionnelles",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Cela indique une combinaison très bien diversifiée où les hausses sont constantes et les baisses sont contenues."
+          }
+        ],
+        "example": "Si votre portefeuille rendement annuel de 15,3 %, le taux sans risque est de 4,3 % et votre volatilité annuelle est de 10 %, votre rendement excédentaire est de 11 % et votre ratio Sharpe est de 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95 %, CVaR 99 % et retrait",
+        "intro": "Les troisième et quatrième cartes indiquent combien vous pouvez perdre lors d'une journée mauvaise mais statistiquement normale (VaR 95 %), combien lors d'une journée de panique extrême (CVaR 99 %) et quel a été le plus gros recul par rapport à un pic précédent (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1 645 : facteur statistique qui couvre 95 % des roues normales de l'année (19 jours sur 20).",
+            "CVaR 99 % (déficit attendu) : perte moyenne lorsque le marché dépasse ce seuil et entre dans le top 1 % des pires jours."
+          ]
+        },
+        "lead": "Quelle différence pratique y a-t-il entre regarder le VaR et regarder le Max Drawdown :",
+        "bullets": [
+          {
+            "bold": "Risque d'un seul jour",
+            "code": "VaR 95% 1D en USD",
+            "text": "Il vous prépare psychologiquement et financièrement à ce que votre compte puisse basculer dans une mauvaise direction sans que cela signifie que la stratégie a échoué."
+          },
+          {
+            "bold": "Résistance dans une séquence défavorable",
+            "code": "Max Drawdown 12M",
+            "text": "Il mesure la chute accumulée d’une pointe à l’autre depuis le point le plus haut jusqu’au sol avant de récupérer à nouveau."
+          }
+        ],
+        "example": "Dans un portefeuille de 100 000 $ avec un VaR quotidien de 95 % de 1,45 % (1 450 $), dans 19 roues de trading sur 20, vos pertes quotidiennes ne dépasseront pas 1 450 $."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Chevauchement des rayons X (#12)",
+        "intro": "Lorsque vous achetez un ETF comme SPY ou QQQ, vous achetez des dizaines d’actions à l’intérieur. Si vous avez également acheté directement certaines de ces mêmes actions, votre exposition réelle est la somme des deux choses.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Direct Weightᵢ : pourcentage de votre portefeuille alloué directement au titre i.",
+            "Pourcentage au sein de l'ETFₖ : poids officiel de cette entreprise au sein de l'indice ou du fonds k."
+          ]
+        },
+        "lead": "Pourquoi il est essentiel de revoir ce premier onglet avant de fermer le portefeuille :",
+        "bullets": [
+          {
+            "bold": "Visibilité des concentrations cachées",
+            "code": "Directo + Indirecto",
+            "text": "Il désassemble automatiquement chaque ETF de votre portefeuille et vous montre une seule barre avec le véritable pourcentage que vous avez dans chaque entreprise."
+          },
+          {
+            "bold": "Alerte excédentaire",
+            "code": "> 20% en rojo",
+            "text": "Si la somme totale dépasse le seuil prudent de concentration sur un seul nom, la ligne s'éclaire pour que vous puissiez rééquilibrer."
+          }
+        ],
+        "example": "Si vous placez 15 % de votre portefeuille dans le NVDA direct et en avez également 30 % dans l'ETF SPY (où le NVDA pèse environ 7 %), la radiographie révèle que votre exposition réelle au NVDA est de 15 % + (30 % × 7 %) = 17,1 %."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Décomposition Alpha Brinson (#2)",
+        "intro": "Lorsque votre portefeuille bat (ou perd par rapport) à son indice de référence, le modèle Brinson-Fachler détermine exactement d'où vient cette différence : aviez-vous raison dans quels secteurs surpondérer ou aviez-vous raison de choisir les meilleurs actifs dans chaque secteur ?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Effet d'allocation : (pondération Portfolio − pondération de l'indice de référence) × rendement sectoriel dans l'indice de référence.",
+            "Effet de sélection : Pondération dans l'indice de référence × (Retour sur vos actifs − Rendement du secteur)."
+          ]
+        },
+        "lead": "Comment lire les trois barres d'attribution du troisième onglet :",
+        "bullets": [
+          {
+            "bold": "Succès macro ou sectoriel",
+            "code": "Asignación Sectorial",
+            "text": "Il est positif en vert lorsque l’on accorde plus de poids que le marché aux classes d’actifs qui ont le plus augmenté."
+          },
+          {
+            "bold": "Ciblage réussi des actifs",
+            "code": "Selección de Activos",
+            "text": "Il est positif lorsque les instruments spécifiques que vous avez choisis ont affiché des performances supérieures à la moyenne de leur propre secteur."
+          }
+        ],
+        "example": "Si votre portefeuille a battu S&P 500 de +3,20 %, cet onglet vous permet de voir que +2,10 % proviennent du choix de meilleures actions (Sélection) et +1,10 % d'une plus grande pondération en technologie (Allocation)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Frontière efficace et CML",
+        "intro": "Dans le plan Markowitz, le rendement attendu d'un portefeuille est la moyenne pondérée du rendement de ses actifs, mais sa volatilité est inférieure à la moyenne grâce au fait que les actifs n'évoluent pas à 100 % de la même manière.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ : pourcentage du capital alloué aux actifs i et j.",
+            "ρᵢⱼ (Corrélation) : degré auquel les deux actifs évoluent ensemble (−1 à +1). Plus ρᵢⱼ est faible, plus le risque total est réduit."
+          ]
+        },
+        "lead": "Ce que représentent les trois références dans le graphique :",
+        "bullets": [
+          {
+            "bold": "Écart minimum",
+            "code": "Min-Var",
+            "text": "Il s’agit du point le plus à gauche de la courbe : la combinaison exacte de pondérations qui permet d’obtenir la volatilité la plus faible possible."
+          },
+          {
+            "bold": "Máximo Sharpe et Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "C’est le point où la ligne partant du taux sans risque touche la frontière efficiente, offrant le plus grand profit par unité de risque."
+          }
+        ],
+        "example": "Si vous combinez à parts égales deux actifs ayant chacun 20 % de volatilité mais une corrélation nulle (ρ = 0), la volatilité du portefeuille n'est pas de 20 %, mais chute à 14,1 %."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR par Active et Capture",
+        "intro": "Pour savoir quelle position ajoute le plus de risque au portefeuille, la contribution marginale de chaque actif est mesurée en fonction de son poids et de sa corrélation avec le reste. De plus, les taux de capture mesurent l'asymétrie par rapport aux montées et descentes du S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Retour de votre actif ou Portfolio dans des roues haussières (ou baissières)",
+          "denominator": "Retour du S&P 500 sur ces mêmes roues",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100 %) – Gagnez plus que l’indice lorsque le marché monte.",
+            "Downside Capture (< 100%) : baisse moins que l'indice lorsque le marché baisse (tampon défensif)."
+          ]
+        },
+        "lead": "Le profil idéal que vous recherchez en examinant le troisième onglet du quadrant :",
+        "bullets": [
+          {
+            "bold": "asymétrie positive",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Participez pleinement aux marchés haussiers mais protégez votre capital lorsque le marché boursier se corrige."
+          },
+          {
+            "bold": "Refuge ou actifs décorrélés",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Des instruments tels que les obligations courtes ou l’or qui ont tendance à rester fermes ou à augmenter lors des baisses des marchés boursiers."
+          }
+        ],
+        "example": "Si dans les mois où le S&P 500 a augmenté de 10%, votre portefeuille a gagné 11% (Upside 110%), et lorsque l'indice a baissé de 10%, votre portefeuille n'a baissé que de 6% (Downside 60%), vous avez une forte asymétrie en votre faveur."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Corrélation normale et crise",
+        "intro": "Le coefficient de Pearson (r) mesure de -1,00 à +1,00 la façon dont deux actifs évoluent l'un par rapport à l'autre. Le danger dans la gestion de portefeuille est que lors d'un krach boursier, la corrélation entre les actifs risqués tend généralement vers +1,00 (contagion).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Covariance (renvoie l'actif i, renvoie l'actif j)",
+          "denominator": "Volatilité des actifs i (σᵢ) × Volatilité des actifs j (σⱼ)",
+          "vars": [
+            "r proche de 0 ou négatif : excellente diversification (quand l'un baisse, l'autre ne suit pas).",
+            "r in Crisis Queue : recalcule la matrice en prenant uniquement les 5% des pires roues du marché."
+          ]
+        },
+        "lead": "Comment lire les couleurs de la matrice 6x6 dans les deux régimes :",
+        "bullets": [
+          {
+            "bold": "Une vraie diversification",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Les deux actifs réagissent à des facteurs économiques différents et se compensent mutuellement."
+          },
+          {
+            "bold": "Concentration ou contagion",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Ils se déplacent pratiquement comme un bloc ; Avoir les deux ne réduit pas vos chutes lors d’une mauvaise journée."
+          }
+        ],
+        "example": "Deux actions de secteurs différents peuvent avoir une corrélation modérée de 0,42 dans une année normale, mais lorsque vous activez le bouton Crisis Queue, vous verrez qu'elle monte à 0,81 car dans la panique, elles vendent ensemble."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "Choc 2D (Taux × Bourse)",
+        "intro": "La matrice 2D combine simultanément l'impact d'un mouvement des taux d'intérêt (via la Duration Taux et la Sensibilité aux Taux) avec une baisse ou une hausse de l'indice S&P 500 (via Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500 : scénario de variation boursière sur l'axe horizontal (−20% à +10%).",
+            "Δ Taux : scénario d'évolution des taux d'intérêt en points de base sur l'axe vertical (−100 à +200 bps)."
+          ]
+        },
+        "lead": "A quoi sert le croisement des deux axes dans le tableau :",
+        "bullets": [
+          {
+            "bold": "Scénario de stagflation ou de hausse des taux",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Comme ce qui s’est produit en 2022, où les actions et les obligations longues ont souffert en même temps."
+          },
+          {
+            "bold": "Scénario d'abri classique",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Où des taux plus bas font monter le prix des bons du Trésor et amortissent la chute des actions."
+          }
+        ],
+        "example": "En filtrant une obligation longue comme US10Y ou TLT, vous pouvez voir dans le tableau comment elle prend de la valeur lorsque les taux baissent (-100 points de base), agissant comme un parachute si S&P 500 chute le même jour."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Régimes markoviens (#11)",
+        "intro": "Une chaîne de Markov modélise l’économie comme un système qui saute entre quatre états possibles (calme haussier, volatile haussier, inflation/taux et crise) et calcule la probabilité de passer de l’un à l’autre.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Diagonale principale (i = j) : probabilité que le régime actuel reste inchangé.",
+            "Hors diagonale (i ≠ j) : probabilité de passer à un nouveau climat de marché."
+          ]
+        },
+        "lead": "Comment profiter de la matrice de transition dans le deuxième onglet :",
+        "bullets": [
+          {
+            "bold": "Persistance du cycle actuel",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Les régimes calmes ont généralement une forte persistance (> 75 %), permettant de maintenir les positions tendancielles."
+          },
+          {
+            "bold": "Alerte précoce en matière de rotation",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Lorsque la probabilité de transition vers des états volatils augmente, il est conseillé de réduire l'effet de levier ou d'activer la couverture."
+          }
+        ],
+        "example": "Si le marché est aujourd'hui dans un régime haussier volatil et que la ligne marque 62 % de permanence, 20 % de retour au calme haussier et 18 % de passage au stress/crise, vous savez que près d'un scénario sur cinq aboutit à une correction."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Projection Monte Carlo (10 000 chemins)",
+        "intro": "Sur la base du rendement attendu et de la volatilité actuelle de votre portefeuille, le simulateur génère jour par jour 10 000 trajectoires futures possibles en appliquant le modèle stochastique du mouvement brownien géométrique.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ et σ : rendement annuel attendu et volatilité annualisée de votre portefeuille actuel.",
+            "Z : variable aléatoire normale standard tirée 10 000 fois le long de l'horizon (6M, 12M ou 24M)."
+          ]
+        },
+        "lead": "De ces 10 000 simulations, les trois courbes principales du graphique sont extraites :",
+        "bullets": [
+          {
+            "bold": "Scénario favorable",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Un niveau qui n'est dépassé que par 5% des scénarios les plus optimistes."
+          },
+          {
+            "bold": "Trajectoire centrale attendue",
+            "code": "Mediana P50",
+            "text": "Le résultat typique où la moitié des simulations sont au-dessus et l'autre moitié en dessous."
+          },
+          {
+            "bold": "Scénario de stress à terme",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Le plancher défavorable : dans 95 % des trajectoires simulées, votre portefeuille se retrouve au-dessus de cette ligne."
+          }
+        ],
+        "example": "Sur un horizon de 12 mois sur une base de 100, si P50 indique 116 et P05 indique 94, votre attente centrale est de gagner +16% et dans une année très défavorable vous risquez près de -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Critère de Kelly (#14)",
+        "intro": "Le critère de Kelly répond scientifiquement au pourcentage de votre capital que vous devez allouer à une opération lorsque vous connaissez votre probabilité de succès (Win-Rate) et combien vous gagnez en cas de succès par rapport à ce que vous perdez en cas d'échec (Payoff Ratio).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p et q : probabilité de gagner (p) et probabilité de perdre (q = 1 − p).",
+            "b (Ratio de gain) : profit moyen divisé par perte moyenne (par exemple, gagner 2 $ pour chaque 1 $ risqué implique b = 2)."
+          ]
+        },
+        "lead": "Pourquoi les managers professionnels utilisent la variante Half-Kelly (0,5×) :",
+        "bullets": [
+          {
+            "bold": "Kelly terminé",
+            "code": "Full Kelly 1.0×",
+            "text": "Il maximise la croissance mathématique à long terme, mais génère des fluctuations très brusques s’il y a une série d’erreurs consécutives."
+          },
+          {
+            "bold": "Recommandé Demi Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "En utilisant la moitié du pourcentage suggéré, vous capturez 75 % de la croissance potentielle mais réduisez la volatilité de moitié."
+          }
+        ],
+        "example": "Si une stratégie atteint 55 % du temps (p = 0,55, q = 0,45) et paie 2 contre 1 (b = 2), le Kelly complet donne (0,55×2 − 0,45) / 2 = 32,5 %, et le prudent Half-Kelly recommande d'allouer 16,25 %."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Mettez le bouclier OTM (#6)",
+        "intro": "Une option de vente hors de la monnaie (par exemple, 5 % en dessous du prix actuel du S&P 500) fonctionne comme une franchise d'assurance : elle a un petit coût fixe (la prime), mais si le marché baisse de 20 % ou 30 %, sa valeur est multipliée de manière convexe et compense les pertes de votre portefeuille.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Coût annuel (Carry Drag) : pourcentage annuel qu'il en coûte pour renouveler l'assurance si le marché ne baisse pas.",
+            "Crash Protection (-20%) : dollars récupérés par le contrat Put lors d'un crash grave."
+          ]
+        },
+        "lead": "Comment comparer les options du simulateur dans le premier onglet :",
+        "bullets": [
+          {
+            "bold": "Assurance indicielle directe",
+            "code": "SPY Put 5% OTM",
+            "text": "Il limite la perte maximale à partir d'une baisse de 5% en échange d'un coût annuel modéré."
+          },
+          {
+            "bold": "Couverture capitalisée ou volatilité",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Le collier réduit le coût en vendant une commande subséquente ; L'appel sur le VIX explose en faveur lorsque la panique se déclenche sur le marché."
+          }
+        ],
+        "example": "Si la protection d'un portefeuille de 100 000 $ avec SPY Put 5 % OTM coûte 1,1 % par an (1 100 $), mais qu'en cas de krach de -20 %, cela réduit la baisse de votre portefeuille à moins de la moitié, les économies nettes dépassent 7 000 $."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Marge et distance jusqu’à l’appel de marge (#13)",
+        "intro": "Lorsque vous opérez avec des produits dérivés ou à effet de levier, le courtier exige de maintenir un pourcentage minimum de fonds propres sur la valeur totale de la position (Marge de Maintien). Si une chute réduit votre capital en dessous de ce plancher, un appel de marge est déclenché.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Dette ou solde financé",
+          "denominator": "1 − % de marge de maintenance (Reg-T)",
+          "vars": [
+            "Exposition brute : somme totale des positions ouvertes divisée par les capitaux propres (par exemple 1,18×).",
+            "Distance à l'appel de marge (%) : pourcentage de baisse que le portefeuille supporte encore avant d'atteindre le seuil."
+          ]
+        },
+        "lead": "Niveaux de sécurité dans la barre de surveillance :",
+        "bullets": [
+          {
+            "bold": "Grande zone de dégagement",
+            "code": "Distancia > 30% en verde",
+            "text": "L'effet de levier est faible et le portefeuille peut absorber même une crise grave sans ventes forcées."
+          },
+          {
+            "bold": "zone de prudence",
+            "code": "Distancia < 15% en rojo",
+            "text": "Une correction modérée du marché épuiserait les garanties disponibles et obligerait à liquider les positions au pire moment."
+          }
+        ],
+        "example": "Avec un effet de levier modéré de 1,18× et une marge de maintenance utilisée de 22 %, votre portefeuille dispose d'un coussin de sécurité de plus de 38 % en cas de baisse avant toute réclamation de garantie."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Règlement du Comité des 3 Piliers",
+        "intro": "Afin qu'aucune décision impulsive ne mette en péril la survie du portefeuille, le Comité évalue chaque ordre en combinant la note technique, la note fondamentale et deux règles strictes et non négociables de contrôle des risques.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV : aucun actif individuel ne peut concentrer plus d’un cinquième de l’actif total.",
+            "Arrêt d'anomalie (P-06 ≥ 0,65) : si l'actif entre en dislocation statistique, le système réduit l'exposition maximale à 5 %."
+          ]
+        },
+        "lead": "Ce que signifie chaque État dans le verdict et dans le livre d’exécution :",
+        "bullets": [
+          {
+            "bold": "Commande approuvée sans restrictions",
+            "code": "APROBADO en verde",
+            "text": "Les trois piliers coïncident favorablement et la taille des positions respecte toutes les limites de concentration et de liquidité."
+          },
+          {
+            "bold": "Commande ajustée par garde-corps",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Lorsqu'un ticket dépasse la limite des 20% ou tente d'acheter massivement en pleine anomalie, le garde-fou prévient du dépassement."
+          }
+        ],
+        "example": "Si vous essayez de simuler un achat qui porterait une seule action à 26 % de votre portefeuille, le pilier 3 (Risk & Sizing Guardrail) signale l'alerte de concentration afin que vous l'ajustiez en dessous de 20 %."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Efficacité Walk-Forward (WFE)",
+        "intro": "Pour vérifier qu'une stratégie n'a pas été simplement conçue pour paraître belle dans le passé (surajustement), le test Walk-Forward compare ses performances au cours de la période de conception (In-Sample) à ses performances dans des données ultérieures inédites (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Rendement annualisé Out-of-Sample (validation pure)",
+          "denominator": "Rendement annualisé In-Sample (Formation)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS) : section historique utilisée pour calibrer les poids et les règles de la stratégie.",
+            "Out-of-Sample (OOS) : section suivante où la stratégie est testée en conditions réelles sans toucher à ses paramètres."
+          ]
+        },
+        "lead": "Comment l’industrie quantitative évalue le pourcentage WFE :",
+        "bullets": [
+          {
+            "bold": "Stratégie robuste et cohérente",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Elle conserve la grande majorité de sa capacité à générer des bénéfices face aux nouvelles conditions de marché."
+          },
+          {
+            "bold": "Stratégie fragile ou sur-équipée",
+            "code": "WFE < 50% en rojo",
+            "text": "Cela fonctionnait bien dans la théorie du passé mais perd de son efficacité dans la réalité ; Il n'est pas conseillé de l'exécuter avec de l'argent réel."
+          }
+        ],
+        "example": "Si une stratégie a généré un rendement annualisé de 20 % lors de sa phase de conception (In-Sample) et lors de la phase de test réelle ultérieure (Out-of-Sample), elle a généré un rendement annualisé de 18,8 %, son efficacité WFE est de (18,8/20) = 94,0 %."
+      }
+    ]
+  }
+}

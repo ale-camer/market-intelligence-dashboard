@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Naka-collapse na View",
+    "mainView": "Pangunahing View",
+    "expandedView": "Pinalawak na View",
+    "inThisSection": "Sa seksyong ito makikita mo ang:",
+    "deepDive": "Deep Dive",
+    "previous": "Nakaraang",
+    "next": "Susunod",
+    "mathFormula": "Formula ng Matematika",
+    "practicalExample": "Praktikal na halimbawa:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Kapag nagbukas ka ng tradisyunal na platform sa pananalapi, ang unang bagay na karaniwang lumalabas ay dose-dosenang mga chart, mga flashing na talahanayan, at mga menu sa lahat ng dako. Saan ka magsisimula kapag gusto mo lang suriin ang merkado o tingnan kung paano ang iyong portfolio?",
+        "Ang screen ng Home ay eksaktong idinisenyo upang maiwasan ang paunang ingay na iyon. Inaanyayahan ka nito sa isang malinis at malinaw na espasyo kung saan ang lahat ng kontrol ay nakatutok sa dalawang nakapirming bar: ang isa sa itaas para magtrabaho at ang isa sa ibaba para i-configure ang platform na angkop sa iyo."
+      ],
+      "intro": "Ang screen ng Home ay tinatanggap ka ng isang malinis at malinaw na espasyo kung saan ang lahat ng kontrol ay nakatutok sa dalawang nakapirming bar: isa sa itaas para magtrabaho at isa pa sa ibaba upang i-configure ang platform na angkop sa iyo.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Ang malinaw na panimulang punto na naghahati sa iyong trabaho sa pagsusuri sa merkado at pamamahala ng portfolio.",
+          "paragraphs": [
+            "Isipin na magsisimula kang mag-trade sa umaga. Minsan gugustuhin mong tingnan kung aling mga stock, mga bono o mga pera ang pinakamadalas na gumagalaw; Sa ibang pagkakataon, diretso ka upang suriin ang panganib ng iyong portfolio o gayahin ang isang pagbili bago ito isagawa.",
+            "Paano mo maiiwasan ang paghahalo ng dalawang bagay sa parehong overloaded na screen? Ang takip ay malinaw na naghihiwalay sa landas na iyon mula sa unang segundo:"
+          ],
+          "lead": "Paano mo maiiwasan ang paghahalo ng dalawang bagay sa parehong overloaded na screen? Ang takip ay malinaw na naghihiwalay sa landas na iyon mula sa unang segundo:",
+          "bullets": [
+            {
+              "bold": "Space na walang distractions",
+              "code": "Donde se decodifican los mercados",
+              "text": "Kapag pumasok ka, walang bukas na mga talahanayan o alerto na pumipilit sa iyong isara ang mga bintana bago magsimula; Pumili ka kung aling module ang bubuksan."
+            },
+            {
+              "bold": "Dalawang malinaw na landas",
+              "code": "Markets / Portfolio",
+              "text": "Ang buong daloy ng application ay nahahati sa dalawang pangunahing yugto: unang mga pagkakataon sa pagsasaliksik sa mga merkado at pagkatapos ay buuin o subukan ang iyong portfolio."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Ang nangungunang bar upang tumalon sa isang pag-click sa pagitan ng tahanan, mga merkado at iyong portfolio.",
+          "paragraphs": [
+            "Habang sinusuri mo ang mga detalye ng isang asset o pagsubok ng mga pagbabago sa iyong portfolio, napakadaling mawala sa pagsubaybay kung nasaan ka. Paano ka pupunta mula sa pagtingin sa isang stock chart hanggang sa pagsusuri sa iyong portfolio nang hindi dumadaan sa mga submenu?",
+            "Ang tuktok na bar ay palaging nananatiling naayos sa screen at nagbibigay sa iyo ng direktang access sa tatlong pangunahing punto:"
+          ],
+          "lead": "Ang tuktok na bar ay palaging nananatiling naayos sa screen at nagbibigay sa iyo ng direktang access sa tatlong pangunahing punto:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Nasaan ka man, ang pag-click sa simbolo sa kaliwa ay agad na nagbabalik sa iyo sa pangunahing pahina."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Ito ang iyong lugar ng pananaliksik. Dito mo i-filter ang 213 available na asset, sundan ang mga live na quote, pag-aralan ang mga teknikal na chart at kumonsulta sa mga buod o balita ng balanse."
+            },
+            {
+              "bold": "Wallet",
+              "code": "Portfolio",
+              "text": "Ito ang iyong talahanayan ng desisyon. Dito mo tutukuyin kung anong porsyento ng iyong kapital ang napupunta sa bawat asset, sukatin kung magkano ang maaari mong mawala sa isang krisis at gayahin ang mga bagong operasyon bago ipagsapalaran ang pera."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Ang footer upang suriin ang status ng system, bumalik sa gabay na ito, o ayusin ang layout.",
+          "paragraphs": [
+            "Habang sinusuri ang data sa real time, may mga tanong sa pagpapatakbo na maaaring lumitaw anumang oras: tama ba ang pagdating ng mga quote? Ano ang ibig sabihin ng point indicator? Maaari ko bang bawasan ang liwanag ng screen?",
+            "Pinagpangkat-pangkat ng footer ang lahat ng mga tool sa suporta at pagsasaayos na iyon upang laging nasa kamay ang mga ito nang hindi nakaharang sa gitna ng screen:"
+          ],
+          "lead": "Pinagpangkat-pangkat ng footer ang lahat ng mga tool sa suporta at pagsasaayos na iyon upang laging nasa kamay ang mga ito nang hindi nakaharang sa gitna ng screen:",
+          "bullets": [
+            {
+              "bold": "Katayuan ng System",
+              "code": "System",
+              "text": "Ang berdeng tuldok ay nagpapatunay sa isang sulyap na ang lahat ay nasa ayos. Kapag binuksan mo ito makikita mo nang detalyado ang katayuan ng mga server, database at bilis ng pagtugon."
+            },
+            {
+              "bold": "User Guide",
+              "code": "Guide",
+              "text": "Buksan ang interactive na manual na ito anumang oras upang makita kung paano gumamit ng screen o mas malalim na suriin ang mga kalkulasyon nito."
+            },
+            {
+              "bold": "Mga kagustuhan sa visual",
+              "code": "Idioma / Palette",
+              "text": "Sa kanang bahagi mayroon kang mga kontrol upang baguhin ang wika ng buong application o ayusin ang background lighting."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Mga wika",
+          "summary": "Ang search engine upang isalin ang buong platform sa iyong wika sa lugar.",
+          "paragraphs": [
+            "Ang mga tuntunin sa pananalapi at mga ulat sa merkado ay mayroon nang sariling kumplikado nang hindi nagdaragdag ng hadlang sa wika. Kung mas gusto mong basahin ang mga paliwanag sa Espanyol, Ingles o anumang iba pang wika, maaari mo itong baguhin kaagad.",
+            "Ganito gumagana ang tagapili mula sa kanang sulok sa ibaba:"
+          ],
+          "lead": "Ganito gumagana ang tagapili mula sa kanang sulok sa ibaba:",
+          "bullets": [
+            {
+              "bold": "agarang paghahanap",
+              "code": "Select Language",
+              "text": "Ang pag-click sa kasalukuyang bandila ay magbubukas ng isang window kung saan maaari kang pumili sa pagitan ng 56 na wika sa pamamagitan ng pagsusulat ng pangalan o code nito (halimbawa, ES, EN, PT, FR o DE)."
+            },
+            {
+              "bold": "Awtomatikong memorya",
+              "code": "mid_lang_v1",
+              "text": "Ang buong screen ay agad na isinalin nang hindi nire-reload ang pahina at ang iyong pinili ay nai-save para sa mga susunod na pagkakataong pumasok ka."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Mga visual na tema upang iakma ang kaibahan ng screen nang hindi binabago ang mga kulay sa pananalapi.",
+          "paragraphs": [
+            "Ang paggugol ng ilang oras sa harap ng mga graphics na may contrast na hindi umaangkop sa liwanag sa iyong kapaligiran ay nakakapagod sa iyong mga mata. Gayunpaman, ang pagbabago ng mga kulay ng isang platform sa pananalapi ay may klasikong panganib: ang pagkawala ng sanggunian kung ano ang tumataas at kung ano ang bumababa.",
+            "Upang malutas ito, pinaghihiwalay ng tagapili ng tema ang kulay ng kapaligiran mula sa kulay ng data:"
+          ],
+          "lead": "Upang malutas ito, pinaghihiwalay ng tagapili ng tema ang kulay ng kapaligiran mula sa kulay ng data:",
+          "bullets": [
+            {
+              "bold": "Limang kapaligiran sa pagbabasa",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Sa bawat pag-click, umiikot ka sa pagitan ng purong itim, mala-bughaw o mainit na background hanggang sa mahanap mo ang pinakakomportable para sa iyong mga mata."
+            },
+            {
+              "bold": "Intact financial semantics",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Anuman ang paksang baguhin mo, ang pangkalahatang tuntunin ng merkado ay hindi kailanman binabago: ang berde ay palaging nangangahulugan ng pagtaas o pagtaas, at ang pula ay palaging nangangahulugan ng pagbagsak, pagkawala o alerto sa panganib."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Isipin na gusto mong makita kung saan ang pinakamagagandang pagkakataon sa araw na ito ay kabilang sa higit sa dalawang daang mga bono, stock, indeks, pera at hilaw na materyales. Kung isa-isa mong bubuksan ang mga chart, magsasara ang merkado bago mo matapos ang pagtingin sa kanila.",
+            "Pinagsasama-sama ng Screener ang lahat ng 213 asset sa platform sa isang live na dashboard. Nagbibigay-daan ito sa iyong mag-filter ayon sa market sa isang segundo, sukatin ang kabuuang pulso ng araw, at pumili mula sa apat na magkakaibang paraan upang tingnan kung aling mga asset ang gumaganap."
+          ],
+          "intro": "Dinadala ng Screener ang lahat ng 213 asset sa platform sa isang live na dashboard para ma-filter mo ayon sa market at makakita ng mga pagkakataon sa isang sulyap.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Mga kategorya",
+              "summary": "Mga nangungunang filter upang tumuon sa isang klase ng asset o sa iyong listahan ng panonood.",
+              "paragraphs": [
+                "Walang saysay na pag-aralan ang isang Treasury bond na may parehong sukatan gaya ng stock o langis ng teknolohiya. Kapag pinaghalo mo ang lahat sa parehong listahan, nagtatapos ka sa paghahambing ng mga peras sa mga mansanas.",
+                "Paano mo paliitin ang screen nang eksakto sa merkado na interesado ka ngayon? Hinahayaan ka ng tuktok na bar na paghiwalayin ang uniberso sa isang pag-click:"
+              ],
+              "lead": "Hinahayaan ka ng tuktok na bar na paghiwalayin ang uniberso sa isang pag-click:",
+              "bullets": [
+                {
+                  "bold": "Buong larawan",
+                  "code": "Todos",
+                  "text": "Ipinapakita nito ang 213 na instrumento nang magkakasama at inayos ayon sa dami ng na-trade para makita mo kung saan dumadaloy ang pinakamaraming pera sa buong mundo."
+                },
+                {
+                  "bold": "Personal na pagsubaybay",
+                  "code": "★ Watchlist",
+                  "text": "Ihiwalay lang ang mga asset na minarkahan mo bilang mga paborito para masubaybayan nang mabuti ang mga ito nang walang mga abala."
+                },
+                {
+                  "bold": "Sampung espesyal na merkado",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Sa pamamagitan ng pagpili ng alinman sa mga kategoryang ito, iniaangkop ng buong screen ang mga indicator nito at ang mga column ng talahanayan sa mga panuntunan ng sektor na iyon."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detalye kung paano inuri ang 213 asset sa catalog at kung anong dami at pamantayan ng pagkatubig ang natutugunan ng mga ito."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24h na pulso",
+              "summary": "Ang nangungunang apat na card na nagsasabi sa iyo kung ang market ay kalmado, euphoric o nasa ilalim ng stress.",
+              "paragraphs": [
+                "Bago bumili o magbenta ng isang partikular na asset, ipinapayong malaman kung anong klima ang gumagalaw sa kabuuan. Ito ba ay isang normal na araw ng dami o ang institutional na pera ay pumapasok nang sabay-sabay? Ang lahat ba ng kahit na mga asset ay tumataas o may mga palatandaan ng tensyon?",
+                "Ang apat na card sa ibaba ng mga filter ay nagbibigay sa iyo ng pangkalahatang pagbabasa sa loob ng ilang segundo:"
+              ],
+              "lead": "Ang apat na card sa ibaba ng mga filter ay nagbibigay sa iyo ng pangkalahatang pagbabasa sa loob ng ilang segundo:",
+              "bullets": [
+                {
+                  "bold": "Kabuuang aktibidad para sa araw",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Nagdaragdag ito ng hanggang bilyun-bilyong dolyar na nakalakal sa aktibong kategorya at ipinapakita sa iyo kung may mas marami o mas kaunting partisipasyon ngayon kaysa kahapon."
+                },
+                {
+                  "bold": "Average na Lakas ng Grupo",
+                  "code": "AVG RSI 14",
+                  "text": "Ito ay nagbubuod sa isang pabilog na metro kung ang mga presyo ng sektor ay may buying pressure (berde, higit sa 50) o may selling pressure (pula, mas mababa sa 50)."
+                },
+                {
+                  "bold": "Normality thermometer",
+                  "code": "Régimen Normal P-06",
+                  "text": "Kinakalkula nito kung anong porsyento ng mga asset ang lumilipat sa kanilang karaniwang mga parameter at sinasabi sa iyo ang pangalan at apelyido na siyang instrumento na may pinakamalaking anomalya sa araw."
+                },
+                {
+                  "bold": "Hindi pangkaraniwang pag-agos ng pera",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Ang podium ng tatlong asset na ngayon ay nagpapatakbo ng napakataas na volume kumpara sa kanilang average noong nakaraang buwan."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detalyadong paliwanag kung paano kinakalkula ang average na RSI, volume Z-Score at anomaly detector P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "mesa",
+              "summary": "Ang interactive na listahan na may mabilis na paghahanap, mga paborito at mga column na umaangkop sa bawat market.",
+              "paragraphs": [
+                "Kapag alam mo na kung aling sektor ang gusto mong tingnan at kailangan mong ihambing ang mga partikular na numero sa bawat hilera, ang view ng talahanayan ang iyong pangunahing tool.",
+                "Sa halip na magpakita sa iyo ng isang matibay na spreadsheet na pareho para sa lahat, ang talahanayan ay nagsasaayos sa kung ano ang iyong hinahanap:"
+              ],
+              "lead": "Sa halip na magpakita sa iyo ng isang matibay na spreadsheet na pareho para sa lahat, ang talahanayan ay nagsasaayos sa kung ano ang iyong hinahanap:",
+              "bullets": [
+                {
+                  "bold": "Search engine at mga paboritong bituin",
+                  "code": "Buscar activo / ★",
+                  "text": "Sa unang column header maaari kang mag-type ng anumang simbolo o pangalan para direktang pumunta sa asset na iyon, o i-tap ang star sa kaliwa para i-save ito sa iyong Watchlist."
+                },
+                {
+                  "bold": "Mga matalinong column ayon sa kategorya",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Kung i-filter mo ang Mga Pagbabahagi, lilitaw ang mga valuation multiple at margin; Kung pipiliin mo ang Mga Bono o Rate, makikita mo ang slope ng curve at ang pagiging sensitibo sa mga rate; Kung titingnan mo ang Derivatives makikita mo ang ipinahiwatig na pagkasumpungin."
+                },
+                {
+                  "bold": "Dumiretso sa malalim na pagsusuri",
+                  "code": "Click en cualquier fila",
+                  "text": "I-click lang ang anumang asset sa listahan para buksan ang iyong buong istasyon ng mga teknikal na chart at pangunahing ulat."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Listahan ng mga partikular na sukatan na ipinapakita ng talahanayan para sa bawat isa sa 10 kategorya ng asset."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Ang visual radar upang makita sa isang sulyap kung aling mga asset ang lumalayo sa kanilang dating average.",
+              "paragraphs": [
+                "Ang pagbabasa ng dalawang daang row ng mga numero ay maaaring magdulot sa iyo na makaligtaan ang isang asset na nagsisimula nang gumalaw nang paputok. Paano mo agad matutukoy kung aling instrumento ang lumalayo sa pamantayan?",
+                "Binabago ng Orbital view ang talahanayan sa isang radar na may tatlong concentric ring:"
+              ],
+              "lead": "Binabago ng Orbital view ang talahanayan sa isang radar na may tatlong concentric ring:",
+              "bullets": [
+                {
+                  "bold": "Pagpili ng pamantayan",
+                  "code": "INDICADOR",
+                  "text": "Ikaw ang magpapasya kung ano ang sinusukat ng radar: mga istatistikal na anomalya, pagtaas ng dami, lakas ng presyo (RSI), pagkasumpungin o pagtaas sa huling 24 na oras."
+                },
+                {
+                  "bold": "Pagbasa ayon sa distansya at kulay",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Kung mas malapit o mas malayo ang isang punto ay ayon sa indicator at mas matindi ang berde o pula nitong kulay, mas may kaugnayan ang paggalaw nito kung ikukumpara sa sarili nitong kasaysayan."
+                },
+                {
+                  "bold": "Inspeksyon nang hindi binabago ang screen",
+                  "code": "Panel lateral en vivo",
+                  "text": "Sa pamamagitan ng paglalagay ng cursor sa anumang radar node, ang presyo nito, ang malinis na intraday chart at ang tatlong sukatan ng panganib nito ay ipinapakita sa kanan."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Paano kinakalkula ang posisyon ng bawat asset sa mga radar ring ayon sa makasaysayang paglihis nito."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Mapa ng init",
+              "summary": "Ang mosaic ng proporsyonal na mga bloke upang matukoy ang mga nanalo at natalo sa isang segundo.",
+              "paragraphs": [
+                "May mga pagkakataon na gusto mo lang sagutin ang isang mabilis na tanong: sino ang nangunguna sa pagtaas ngayon at sino ang humihila sa merkado pababa?",
+                "Inaayos ng Heat Map ang nangungunang sampung asset ng aktibong filter sa proporsyonal na mga bloke para hindi mo na kailangang magbasa ng isang talahanayan:"
+              ],
+              "lead": "Inayos ng Heat Map ang nangungunang sampung asset ng aktibong filter sa mga proporsyonal na bloke:",
+              "bullets": [
+                {
+                  "bold": "Sukat ayon sa kahalagahan",
+                  "code": "Puestos #1 a #10",
+                  "text": "Ang mga instrumentong may pinakamalaking timbang sa loob ng napiling sukatan ay sumasakop sa mga column sa kaliwa na may pinakamalalaking kahon."
+                },
+                {
+                  "bold": "Tindi ng kulay",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Ang tono ng block ay agad na nagsasabi sa iyo ng magnitude ng paggalaw, mula sa katamtamang mga pagkakaiba-iba hanggang sa biglaang pagtaas o pagbaba."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Ang tatlong hakbang na shortcut sa mga advanced na rate, opsyon, forex at futures calculators.",
+              "paragraphs": [
+                "Bilang karagdagan sa mga tradisyunal na chart ng presyo, ang platform ay may kasamang apat na espesyal na makina para sa fixed income, mga opsyon, currency crosses at commodity curves. Paano ka makakarating sa kanila nang hindi naghahanap ng asset ayon sa asset?",
+                "Ginagabayan ka ng view na ito mula kaliwa hanggang kanan sa tatlong napakasimpleng column:"
+              ],
+              "lead": "Ginagabayan ka ng view na ito mula kaliwa hanggang kanan sa tatlong napakasimpleng column:",
+              "bullets": [
+                {
+                  "bold": "Piliin mo muna ang pamilya",
+                  "code": "1. Clases de Activo",
+                  "text": "Pipiliin mo kung gusto mong magtrabaho sa Rate at Bonds, na may Options on Stocks/Indices/Crypto, with Currencies o sa Raw Materials."
+                },
+                {
+                  "bold": "Pagkatapos ay suriin mo kung ano ang ginagawa ng makina",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Sa gitna ay nabasa mo ang isang malinaw na buod ng kung ano ang ipinapakita ng tool na iyon at kung paano i-orient ang iyong sarili sa mga palakol nito."
+                },
+                {
+                  "bold": "Panghuli, piliin ang aktibo at buksan",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Manood ka ng live na preview ng chart, maghanap ng anumang katugmang asset sa pamilyang iyon, at buksan ang buong istasyon sa isang click."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Kapag nakahanap ka ng isang kawili-wiling asset sa Screener, oras na para tingnang mabuti. Nasa uptrend ba ito o naubusan na ng singaw? Tinatalo mo ba ang iyong mga katunggali? Ano ang sinasabi ng dami at ang derivatives market?",
+            "Ang istasyon ng Analytics ay nakatuon sa lahat ng teknikal, comparative at quantitative analysis ng asset na iyon sa isang screen. Sa itaas ay mayroon kang pangkalahatang buod at sa kaliwa ng apat na lente upang baguhin ang anggulo ng pagsusuri nang hindi nawawala ang paningin sa graph."
+          ],
+          "intro": "Ang istasyon ng Analytics ay nakatuon sa teknikal, comparative, flow analysis at 3D/2D engine ng isang indibidwal na asset sa isang screen.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Ang nangungunang dashboard para lumipat ng asset, piliin ang timeframe, at tingnan ang iyong limang pangunahing sukatan.",
+              "paragraphs": [
+                "Kapag nag-aaral ka ng isang asset, karaniwan mong pinapalitan ang maikling termino ngayon at ang pelikula ng mga nakaraang buwan, o kahit na lumipat sa pagtingin sa isa pang katulad na simbolo. Paano mo gagawin ang lahat ng iyon nang hindi babalik?",
+                "Pinagsasama-sama ng tuktok na header ang mga kontrol sa nabigasyon at ang tab na mabilis na instrumento:"
+              ],
+              "lead": "Pinagsasama-sama ng tuktok na header ang mga kontrol sa nabigasyon at ang tab na mabilis na instrumento:",
+              "bullets": [
+                {
+                  "bold": "Pagbabago ng asset o pagbabalik sa listahan",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Sa kaliwang itaas, maaari kang bumalik sa Screener o i-type ang pangalan ng anumang iba pang instrumento upang baguhin ang mga chart sa lugar."
+                },
+                {
+                  "bold": "Siyam na bintana ng oras",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Sa kanang margin, babaguhin mo ang sukat ng graph mula sa bawat minutong paggalaw hanggang sa buong kasaysayan."
+                },
+                {
+                  "bold": "Limang nangungunang tagapagpahiwatig",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Sa tabi ng presyong palagi mong nakikita sa dami ng na-trade, ang dalawang pangunahing data ng kategorya nito, ang lakas ng trend at ang antas ng istatistikal na normalidad."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Teknikal",
+              "summary": "Ang chart ng presyo na may mga moving average, volatility bands at volume para sundan ang trend.",
+              "paragraphs": [
+                "Ang pagtingin lamang sa huling presyo ay hindi magsasabi sa iyo kung ang isang asset ay bumibilis, kung ito ay talbog sa average nito o kung ito ay tumaas nang masyadong mabilis sa loob ng ilang araw.",
+                "Ang unang lens sa kaliwang riles ay nagbibigay-daan sa iyo na i-overlay ang pinaka ginagamit na teknikal na sanggunian sa merkado sa graph:"
+              ],
+              "lead": "Ang unang lens sa kaliwang riles ay nagbibigay-daan sa iyo upang i-overlay ang pinaka ginagamit na teknikal na mga sanggunian:",
+              "bullets": [
+                {
+                  "bold": "Address at aktwal na average na presyo",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Maaari mong i-on ang 20-period moving average at volume-weighted average na presyo upang makita kaagad kung ang asset ay nakikipagkalakalan sa itaas o mas mababa sa antas ng equilibrium nito."
+                },
+                {
+                  "bold": "Mga sobrang zone at kumpirmasyon ng volume",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Ang mga banda ay gumuhit ng istatistikal na kisame at sahig ng presyo, habang ang mas mababang mga bar ay nagkukumpirma kung ang paggalaw ay sinusuportahan ng volume."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mga formula at pamantayan sa interpretasyon ng Moving Average (SMA 20), Bollinger Bands at VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Ihambing ang %",
+              "summary": "Ang percentage comparator mula sa 0% upang masukat kung ang iyong asset ay gumaganap nang higit o mas mababa kaysa sa isa pa sa parehong kategorya.",
+              "paragraphs": [
+                "Ang isang stock na tumataas ng 5% ay tila magandang balita, ngunit kung ang benchmark o pangunahing katunggali nito ay tumaas ng 12% sa parehong panahon, talagang nahuhulog ka.",
+                "Nireresolba ng pangalawang lens ang pag-aalinlangan na iyon sa pamamagitan ng paglalagay ng dalawang asset sa parehong panimulang linya:"
+              ],
+              "lead": "Nireresolba ng pangalawang lens ang pag-aalinlangan na iyon sa pamamagitan ng paglalagay ng dalawang asset sa parehong panimulang linya:",
+              "bullets": [
+                {
+                  "bold": "Maghanap ng magkakaugnay na pares",
+                  "code": "Buscar par compatible",
+                  "text": "Awtomatikong pini-filter ng search engine ang mga asset mula sa iisang pamilya (hal. stock vs. stock, ETF, o indeks) para magkaroon ng financial sense ang paghahambing."
+                },
+                {
+                  "bold": "Netong bentahe sa porsyento",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Ang parehong mga kurba ay nagsisimula sa 0% at ang kaliwang riles ay kinakalkula kung gaano karaming porsyento ng mga puntos ng bentahe (sa berde) o kawalan (sa pula) ang mayroon ang iyong asset."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro at Daloy",
+              "summary": "Ang detektor ng mga pagbiling wala sa pattern ng institusyon, pagkatubig at mga gastos sa spread.",
+              "paragraphs": [
+                "Maraming beses na nag-iipon o naglalabas ng mga posisyon ang malalaking pondo bago gumawa ng biglaang paggalaw ang presyo. Paano mo malalaman ang nakatagong bakas na iyon sa dami at pagkatubig ng order book?",
+                "Nakatuon ang ikatlong lens sa kung ano ang nangyayari sa ibaba ng quote:"
+              ],
+              "lead": "Nakatuon ang ikatlong lens sa kung ano ang nangyayari sa ibaba ng quote:",
+              "bullets": [
+                {
+                  "bold": "Mga peak ng dami ng istatistika",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Binabago ang ilalim na panel upang ipakita sa iyo kung gaano karaming beses na lumihis ang kasalukuyang volume mula sa normal, na nagpapakita ng hindi pangkaraniwang aktibidad ng institusyonal."
+                },
+                {
+                  "bold": "Ang stress at anomalya sa liquidity",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Sinusukat nito sa mga batayan kung ang agwat sa pagitan ng mga mamimili at nagbebenta ay lumalawak at kung ang istatistikal na makina ay nakakita ng hindi tipikal na gawi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Paano sinusukat ang opening spread at statistical spike sa daloy ng order."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D na makina",
+              "summary": "Ang ikaapat na lens na nagde-deploy ng dynamic na ad-hoc tool na nag-iiba-iba ayon sa klase ng asset.",
+              "paragraphs": [
+                "Hindi tulad ng unang tatlong lens (na karaniwan sa lahat ng instrumento), ang pang-apat na lens sa kaliwang riles ay isang ad-hoc na tool na pabago-bagong nagbabago depende sa asset na iyong sinusuri: halimbawa, sa live na paglilibot, dahil ito ay isang stock (NVDA), pinapagana nito ang 3D Implicit Volatility at Options Payoff Surface ito, habang nasa ibang market nito ang pag-deploy nito.",
+                "Nakikita ng ikaapat na button ang open asset class at awtomatikong ina-activate ang kaukulang ad-hoc tool:"
+              ],
+              "lead": "Nakikita ng ikaapat na button kung aling asset ang binuksan mo at ina-activate ang ad-hoc tool na tumutugma dito:",
+              "bullets": [
+                {
+                  "bold": "Sa mga stock, index, derivatives at crypto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Ipakita ang 3D na ipinahiwatig na volatility surface, mga opsyon na ngumiti sa pamamagitan ng expiration, at isang 6 na diskarte na simulator upang makita kung magkano ang iyong makukuha o mawawala ngayon at sa expiration."
+                },
+                {
+                  "bold": "Sa mga rate, bono at pagkatubig",
+                  "code": "Curva 3D/2D",
+                  "text": "Nagbibigay-daan ito sa iyong paghambingin ang mga yield curves ng 42 bansa laban sa US at Germany, na sinusukat kung normal o baligtad ang curve (2s10s) at kung gaano kalaki ang pagkakaiba ng presyo sa mga pagbabago sa rate (DV01)."
+                },
+                {
+                  "bold": "Sa mga pera",
+                  "code": "FX & Carry",
+                  "text": "Nag-aalok ito ng converter at triangulator sa pagitan ng 61 currency na kinakalkula din ang 10-taong interest rate differential pabor o laban sa pagpapanatili ng pares na iyon."
+                },
+                {
+                  "bold": "Sa mga hilaw na materyales",
+                  "code": "Forward 3D/2D",
+                  "text": "Itina-chart ang mga presyo ng futures contract buwan-buwan para ipakita kung mas malaki ang babayaran ng market para sa forward (Contango) o para sa agarang paghahatid (Backwardation), kasama ang status ng mga pisikal na imbentaryo."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mathematical na detalye ng volatility surface, sovereign yield curves, currency carry at futures curves."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Ipinapakita sa iyo ng chart kung ano ang ginagawa ng presyo, ngunit hindi nito sinasabi sa iyo kung bakit. Upang malaman kung ano ang nasa likod ng isang kilusan, kailangan mong magbasa ng dose-dosenang mga pahina ng quarterly balance sheet, mga pahayag ng sentral na bangko, mga ulat ng imbentaryo at mga kable ng balita.",
+            "Ginagawa ng istasyon ng Research ang mabigat na pagbubuhat para sa iyo. Pinagsasama nito ang dokumentaryong artificial intelligence na na-verify laban sa mga opisyal na ulat sa real-time na pagbabasa ng balita, na nag-aayos ng lahat ng ebidensya para sa at laban sa tatlong malinaw na column."
+          ],
+          "intro": "Ang Station Research ay nagbubuod ng mga opisyal na sheet ng balanse, macroeconomic na ulat at real-time na balita sa tatlong malinaw na column.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Tandaan at Postura",
+              "summary": "Ang nangungunang tatlong card na nagbubuod sa pangunahing hatol at katatawanan ng balita.",
+              "paragraphs": [
+                "Ang mga batayan ba ng asset ay kasama ng pagtaas ng presyo o ang balita ay lumalala sa pananaw? Bago basahin ang detalye, kailangan mo ng mabilis na konklusyon sa ehekutibo.",
+                "Sa kanang sulok sa itaas, mayroon kang tatlong indicator na nagbubuod sa pangkalahatang status ng asset:"
+              ],
+              "lead": "Sa kanang sulok sa itaas, mayroon kang tatlong tagapagpahiwatig na nagbubuod sa pangkalahatang katayuan:",
+              "bullets": [
+                {
+                  "bold": "Postura at bigat ng bawat pinagmulan",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Tinutukoy nito ang pangkalahatang hatol at nililinaw kung anong bigat ang ibinibigay nito sa mga opisyal na dokumento kumpara sa mga balita depende sa uri ng asset (halimbawa, 80% balance sheet at 20% na balita sa isang stock)."
+                },
+                {
+                  "bold": "Pinagsamang rating",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Pinagsasama nito sa isang solong marka ang netong resulta ng mga batayan kasama ang daloy ng impormasyon sa araw."
+                },
+                {
+                  "bold": "Mga may hawak ng thermometer",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Ilagay sa isang bar mula -100 hanggang +100 kung ang tono ng pindutin sa huling ilang oras ay pessimistic (pula), neutral o masigasig (berde)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Paano tinitimbang ang mga opisyal na ulat laban sa mga balita depende sa uri ng asset."
+            },
+            {
+              "id": "res-rag",
+              "label": "Makipag-chat RAG",
+              "summary": "Ang kaliwang documentary assistant para magtanong ng mga partikular na tanong tungkol sa mga balanse at opisyal na ulat.",
+              "paragraphs": [
+                "Ipagpalagay na gusto mong malaman kung ano ang eksaktong sinabi ng isang kumpanya tungkol sa mga margin nito sa pinakabagong taunang balanse na 10-K, o kung ano ang sinabi ng Federal Reserve sa mga pinakabagong minuto nito. Ang paghahanap nito sa pamamagitan ng kamay ay nangangailangan ng oras; Ang pagtatanong sa isang generic na chat na walang source ay maaaring magbigay sa iyo ng gawa-gawang data.",
+                "Niresolba ito ng kaliwang column gamit ang isang wizard na eksklusibong konektado sa na-verify na opisyal na dokumentasyon:"
+              ],
+              "lead": "Ang kaliwang column ay nag-aalok sa iyo ng wizard na konektado sa opisyal na na-verify na dokumentasyon:",
+              "bullets": [
+                {
+                  "bold": "Paunang thesis at mga gabay na tanong",
+                  "code": "Chat Documental RAG",
+                  "text": "Nagsisimula ito sa isang executive summary na may mga na-verify na quote at apat na quick reference na button na inangkop sa kategorya ng asset, pati na rin ang isang field para magsulat ka ng sarili mong mga tanong."
+                },
+                {
+                  "bold": "Direktang hakbang sa iyong portfolio",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Kung pagkatapos magsaliksik sa mga pangunahing kaalaman ay magpapasya kang sulit ang asset, direktang ipapadala sa iyo ng button na ito sa itaas ng chat sa portfolio simulator."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ang pagpapatakbo ng na-verify na paghahanap ng dokumentaryo (RAG) at ang mga panseguridad na filter nito."
+            },
+            {
+              "id": "res-factors",
+              "label": "Mga salik",
+              "summary": "Ang central accordion na may limang bullish driver at ang limang bearish na panganib na inayos ayon sa epekto.",
+              "paragraphs": [
+                "Walang puhunan na isang daang porsyento na perpekto o isang daang porsyento na masama: palaging may mga argumento na pabor at nakatagong mga panganib. Ang sikreto ay ang pag-alam kung alin ang mas tumitimbang ngayon.",
+                "Inilalagay ng gitnang column ang magkabilang panig nang magkaharap upang makagawa ka ng balanseng desisyon:"
+              ],
+              "lead": "Inilalagay ng gitnang column ang magkabilang panig nang magkaharap upang makagawa ka ng balanseng desisyon:",
+              "bullets": [
+                {
+                  "bold": "Pilitin ang balanse at mga filter",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Sa itaas makikita mo ang bidding bar sa pagitan ng mga mamimili at nagbebenta, at sa ibaba maaari mong i-filter ang limang positibong catalyst (sa berde) o ang limang pangunahing panganib (sa pula)."
+                },
+                {
+                  "bold": "Detalye at drill-down sa isang click",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Kapag pinindot mo ang anumang salik sa listahan, ang kumpletong paliwanag nito ay ipapakita kasama ng isang pindutan upang tanungin ang Chat RAG para sa higit pang impormasyon tungkol sa partikular na puntong iyon."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Pulse",
+              "summary": "Ang tamang timeline na may pinakabagong mga headline na may rating na AI at ang 24-hour mood curve.",
+              "paragraphs": [
+                "Ang isang solong huling minutong headline tungkol sa mga kita, inflation o mga regulasyon ay maaaring ganap na magbago sa mood ng araw. Paano mo malalaman kung anong balita ang kalalabas lang at ano ang epekto nito?",
+                "Sinusubaybayan ng kanang column ang daloy ng impormasyon bawat minuto:"
+              ],
+              "lead": "Sinusubaybayan ng kanang column ang daloy ng impormasyon bawat minuto:",
+              "bullets": [
+                {
+                  "bold": "Kwalipikadong timeline",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Inililista ang limang pinakabagong ulo ng balita kasama ang kanilang oras at ahensya, na nagbibigay ng marka sa kanila ng berde kung pabor ang mga ito o pula kung nagbabanta ang mga ito."
+                },
+                {
+                  "bold": "Epekto at pang-araw-araw na curve simulator",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Maaari kang mag-trigger ng live wire gamit ang tuktok na button upang makita kung paano nito muling kinakalkula ang buong screen at sundan sa graph sa ibaba kung paano nagbago ang mood sa nakalipas na 24 na oras."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Paano sinusuri ng modelong FinBERT ang pananalapi na wika ng bawat may hawak."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Tagabuo",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Ang pagpili ng magagandang asset nang hiwalay ay hindi sapat para magkaroon ng magandang portfolio. Kung naglalagay ka ng masyadong malaking puhunan sa mga asset na pareho ang paglipat, o kung hindi mo sukatin kung paano sila gaganap nang magkasama sa nakaraan, namumuhunan ka nang walang taros.",
+            "Constructor & Performance (ang unang view ng Portfolio) ay ang workshop kung saan mo bubuo ang iyong portfolio. Binibigyang-daan ka nitong magdagdag ng alinman sa 213 asset, ayusin kung anong porsyento ang itatalaga mo sa bawat isa nang hindi nakikitungo sa mga hindi tumpak na kontrol, at agad na i-audit ang parehong panloob na komposisyon at kasaysayan nito."
+          ],
+          "intro": "Ang Constructor & Performance ay ang workshop kung saan mo binuo ang iyong portfolio, ayusin ang bigat ng bawat asset at i-audit ang makasaysayang pagganap nito.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Buod",
+              "summary": "Ang nangungunang anim na card na muling kinalkula nang live sa tuwing babaguhin mo ang iyong portfolio.",
+              "paragraphs": [
+                "Sa tuwing magdaragdag ka ng asset o magpalit ng porsyento sa iyong portfolio, kailangan mong malaman kaagad kung napabuti ng pagsasaayos na iyon ang iyong inaasahang pagbabalik o pinalala ang iyong downside exposure.",
+                "Palaging pinapanatili ng nangungunang hilera na nakikita ang anim na pangunahing sukatan ng portfolio:"
+              ],
+              "lead": "Palaging pinapanatili ng nangungunang hilera na nakikita ang anim na pangunahing sukatan ng portfolio:",
+              "bullets": [
+                {
+                  "bold": "Pagganap at kahusayan",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Sinasabi nila sa iyo kung anong pinagsama-samang taunang kita ang mga proyekto ng portfolio sa iyong kapital at kung magkano ang kita na nakukuha mo para sa bawat yunit ng panganib na ipinapalagay."
+                },
+                {
+                  "bold": "Inaasahang araw-araw na pagkawala at makasaysayang pagbaba",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Kinakalkula nila kung gaano karaming mga dolyar ang maaari mong mawala sa isang masamang araw sa loob ng kung ano ang nakikinita sa istatistika at kung ano ang pinakamalalim na pag-urong sa nakaraang taon."
+                },
+                {
+                  "bold": "Nagdagdag ng halaga at pagkakaiba-iba",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Sinusukat nila kung gaano karaming mga puntos ang iyong portfolio ang nakakatalo sa benchmark na index at kung gaano kalaki ang panganib na iyong binabawasan salamat sa pagsasama-sama ng iba't ibang mga asset."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mga composite return formula (CAGR), Sharpe at Sortino ratio, at Value at Risk (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Pagtitimbang",
+              "summary": "Ang kaliwang talahanayan upang magdagdag ng mga asset, i-on o i-off ang mga ito at tukuyin ang eksaktong porsyento ng bawat posisyon.",
+              "paragraphs": [
+                "Ano ang mangyayari sa iyong mga numero ng portfolio kung pansamantala mong isasara ang isang tech na stock ngayon o hatiin ang pera nang pantay-pantay sa lahat ng iyong mga posisyon?",
+                "Hinahayaan ka ng kaliwang panel na gawin ang lahat ng pagsubok na iyon sa malinis at direktang paraan:"
+              ],
+              "lead": "Hinahayaan ka ng kaliwang panel na gawin ang lahat ng pagsubok na iyon sa malinis at direktang paraan:",
+              "bullets": [
+                {
+                  "bold": "Search engine para sa 213 asset",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Maaari kang maghanap ng anumang instrumento sa platform o i-filter ang iyong mga paborito upang idagdag ito sa talahanayan sa isang click."
+                },
+                {
+                  "bold": "Mabilis na pagsisimula at tumpak na pag-edit",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Ang bawat row ay may checkbox upang isama o ibukod ang asset sa real time at isang numero na kahon upang ilagay ang eksaktong porsyento nang hindi gumagamit ng hindi tumpak na mga slider."
+                },
+                {
+                  "bold": "Tatlong rebalancing shortcut",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Sa tuktok ng talahanayan mayroon kang mga pindutan upang ipamahagi ang pantay na timbang sa pagitan ng lahat ng aktibong asset, awtomatikong dalhin ang kabuuan sa 100% o bumalik sa orihinal na portfolio."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "X-ray",
+              "summary": "Ang kanang itaas na panel na may limang tab upang matuklasan ang mga nakatagong konsentrasyon, daloy ng pera at kustodiya.",
+              "paragraphs": [
+                "Ang isa sa mga pinakakaraniwang pagkakamali kapag nag-iinvest ay ang paniniwalang ikaw ay sari-sari dahil mayroon kang limang magkakaibang mga asset, kung sa katotohanan ay bumili ka ng isang indibidwal na stock at din ng dalawang ETF na may parehong stock sa loob.",
+                "Sinusuri ng X-ray panel ang iyong portfolio mula sa loob hanggang sa limang tab:"
+              ],
+              "lead": "Sinusuri ng X-ray panel ang iyong portfolio mula sa loob hanggang sa limang tab:",
+              "bullets": [
+                {
+                  "bold": "Paulit-ulit na position detector",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Magdagdag ng kung ano ang direktang namuhunan mo sa bawat kumpanya at ang nakatagong bahagi na mayroon ka sa loob ng mga indeks o ETF (gaya ng SPY o QQQ), na nagbabala sa iyo kung lumampas ka sa maingat na limitasyon."
+                },
+                {
+                  "bold": "Exposure map at pinagmulan ng pagbabalik",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Ipinapakita nila sa iyo kung anong porsyento ang aktwal mong mayroon sa bawat uri ng asset at currency, at kung gaano kalaki sa iyong kita ang nagmula sa pagpili ng magagandang sektor kumpara sa pagpili ng magagandang asset."
+                },
+                {
+                  "bold": "Tinatayang taunang kita at seguridad",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Kinakalkula nila kung gaano karaming mga dolyar ang iyong kokolektahin sa taon para sa mga dibidendo, kupon at interes, at i-audit ang solvency ng mga tagapag-alaga kung saan nakasalalay ang iyong kapital."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Paano kinakalkula ang hindi direktang pagkakalantad sa loob ng mga ETF at ang breakdown ng attribution sa Brinson."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Kalendaryo",
+              "summary": "Ang buwanang tsart mula Enero hanggang Disyembre upang makita ang regularidad ng iyong mga kita at pagkalugi.",
+              "paragraphs": [
+                "Ang isang magandang taunang pagbabalik ay maaaring magtago ng mga buwan ng napakatalim na pagbagsak na sa pagsasagawa ay mahirap tiisin. Gaano ka-consistent month to month ang portfolio na pinagsama-sama mo lang?",
+                "Sa ibaba lamang ng X-ray, pinaghiwa-hiwalay ng kalendaryo ang buwanang kasaysayan:"
+              ],
+              "lead": "Sa ibaba lamang ng X-ray, pinaghiwa-hiwalay ng kalendaryo ang buwanang kasaysayan:",
+              "bullets": [
+                {
+                  "bold": "Mga berdeng buwan at pulang buwan",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Ang bawat cell ay agad na muling kinakalkula ayon sa mga timbang sa iyong talahanayan at pininturahan ng berde o pula depende sa resulta ng buwang iyon, na nagsasara sa kanan kasama ang pinagsama-samang resulta para sa taon."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Ang full screen graph sa ibaba upang ihambing ang iyong portfolio laban sa apat na klasikong diskarte.",
+              "paragraphs": [
+                "Bago mo isaalang-alang ang iyong portfolio na mabuti, ang pangunahing pagsubok ay nananatili: ito ba ay talagang mas mahusay kaysa sa pag-iwan ng pera sa S&P 500 o sa isang tradisyonal na 60/40 portfolio?",
+                "Ang ilalim na panel ay sumasakop sa buong lapad ng screen upang ilagay ang iyong disenyo sa mga pamantayan ng merkado:"
+              ],
+              "lead": "Inilalagay ng ilalim na panel ang iyong disenyo laban sa mga pamantayan ng merkado:",
+              "bullets": [
+                {
+                  "bold": "Limang abot-tanaw ng pagsubok",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Binibigyang-daan ka nitong suriin kung paano gumanap ang iyong mix sa mga kamakailang quarter at sa buong multi-year cycle."
+                },
+                {
+                  "bold": "Apat na sanggunian nang harapan",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "I-overlay ang berdeng curve ng iyong aktibong portfolio laban sa alinman sa apat na klasikong modelo para malinaw mong makita kung nasa unahan ito at kung paano ito tumatagal sa downside."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Panganib",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Sa mga oras na ang merkado ay tumataas nang mahinahon, halos anumang portfolio ay tila ligtas. Ang tunay na problema ay lilitaw kapag ang isang krisis ay sumiklab, ang mga rate ng interes ay biglang tumaas at ang mga ari-arian na tila nagsasarili ay nagsisimulang bumagsak nang sabay-sabay.",
+            "Inilalagay ng Quantitative Risk & Stress (ang pangalawang view ng Portfolio) ang iyong portfolio sa pamamagitan ng matinding pagsubok bago ito mangyari sa totoong buhay. Sa pamamagitan ng apat na simetriko quadrant at isang hinaharap na scenario simulator sa ibaba, eksaktong ipinapakita nito sa iyo kung nasaan ang iyong mga vulnerable na punto."
+          ],
+          "intro": "Sinusuri ng Quantitative Risk & Stress ang iyong portfolio para sa mga makasaysayang krisis, pagkakaugnay ng contagion, at mga projection ng Monte Carlo.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Ang interactive na panganib at mapa ng pagbabalik upang makita kung gaano ka kalapit sa pinakamabisang portfolio na posible.",
+              "paragraphs": [
+                "Sa parehong mga asset na mayroon ka na sa iyong portfolio, mayroong libu-libong mga paraan upang ipamahagi ang mga porsyento. Ang kumbinasyon ba na pinili mo ang pinakamahusay na nagbabayad para sa panganib na gagawin mo, o maaari kang manalo ng pareho na may mas kaunting mga sorpresa?",
+                "Ang unang kuwadrante sa kaliwang tuktok ay gumuhit ng live na mapa ng mga posibilidad:"
+              ],
+              "lead": "Ang unang kuwadrante sa kaliwang itaas ay gumuhit ng live na mapa ng mga posibilidad:",
+              "bullets": [
+                {
+                  "bold": "Ang iyong posisyon laban sa pinakamainam na mga portfolio",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Ipinapakita nito kung saan matatagpuan ang iyong kasalukuyang portfolio kaugnay sa punto ng pinakamababang posibleng pagkasumpungin at ang punto ng pinakamataas na kahusayan sa pagbabalik ng panganib."
+                },
+                {
+                  "bold": "Mga visual na layer at inspeksyon ayon sa asset",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Maaari mong i-on o i-off ang mga layer ng modelo at mag-click sa anumang node para basahin ang eksaktong kontribusyon ng asset na iyon sa ibaba."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mahusay na hangganan ng Markowitz at pagkalkula ng minimum na pagkakaiba at maximum na Sharpe na mga portfolio."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Buhawi at VaR",
+              "summary": "Ang makasaysayang krisis simulator, araw-araw na pagkawala breakdown sa pamamagitan ng asset at market asymmetry.",
+              "paragraphs": [
+                "Kung ang isang pag-crash tulad noong 2008, ang paghina ng ekonomiya noong 2020, o ang pagtaas ng rate sa 2022 ay mauulit bukas, magkano ang mawawala sa kasalukuyan mong portfolio at anong asset ang magiging pangunahing salarin?",
+                "Sinasagot ng lower left quadrant ang tatlong tanong na iyon sa tatlong partikular na tab:"
+              ],
+              "lead": "Sinasagot ng lower left quadrant ang mga tanong na iyon sa tatlong partikular na tab:",
+              "bullets": [
+                {
+                  "bold": "Subukan laban sa limang tunay na krisis",
+                  "code": "1. Tornado Stress",
+                  "text": "Ihambing ang bar sa pamamagitan ng bar kung magkano ang iyong portfolio ay mahuhulog laban sa S&P 500 sa harap ng limang pangunahing makasaysayang pagkabigla."
+                },
+                {
+                  "bold": "Pagraranggo ng panganib ayon sa posisyon",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Pagbukud-bukurin ang iyong mga hawak ayon sa kung gaano karaming mga dolyar ng potensyal na pagkawala ng bawat isa sa kabuuang portfolio."
+                },
+                {
+                  "bold": "Pag-uugali sa ups and downs",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Ipinapakita nito sa iyo kung anong porsyento ng mga bullish wheels ng market ang sinasamantala ng bawat asset at kung gaano ito nakakaahon kapag bumagsak ang market."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pamamaraan ng mga makasaysayang senaryo ng stress, marginal na kontribusyon sa VaR at mga ratio ng pagkuha."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Kaugnayan",
+              "summary": "Ang cross matrix upang suriin kung ang iyong mga asset ay talagang nag-iba-iba o kung sila ay nahawahan sa panahon ng gulat.",
+              "paragraphs": [
+                "Ang pagkakaroon ng ilang asset sa iyong portfolio ay nakakabawas lamang ng panganib kung hindi lahat sila ay gumagalaw sa parehong direksyon sa parehong oras. Ngunit sa panahon ng panic sa pananalapi, maraming mga ugnayan na tila mababa ang tumalon nang husto pataas.",
+                "Binibigyang-daan ka ng kanang kuwadrante sa itaas na i-audit ang ugnayang iyon sa dalawang sitwasyon:"
+              ],
+              "lead": "Binibigyang-daan ka ng kanang kuwadrante sa itaas na i-audit ang ugnayang iyon sa dalawang sitwasyon:",
+              "bullets": [
+                {
+                  "bold": "Crossover sa pagitan ng mga asset at sensitivity",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Ipinapakita nito kung gaano kapareho ang paggalaw ng bawat pares ng mga asset (sa berde o mapusyaw na asul kapag maayos ang kanilang pag-iba-iba, at sa pula kapag masyadong magkalapit ang mga ito) at kung ano ang pagiging sensitibo ng mga ito sa merkado."
+                },
+                {
+                  "bold": "Contagion simulator sa krisis",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Sa isang pag-click, babaguhin mo ang mga ugnayan ng isang normal na taon sa isang sandali ng pagkasindak upang matuklasan kung aling mga posisyon ang hindi na magpoprotekta sa iyo."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pagkalkula ng mga coefficient ng ugnayan ng Pearson sa ilalim ng normal na mga kondisyon at sa ilalim ng stress sa merkado."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash at Markov",
+              "summary": "Ang talahanayan ng magkasanib na epekto sa pagitan ng mga rate at ng stock market, kasama ang mga probabilidad ng pagbabago sa ikot ng ekonomiya.",
+              "paragraphs": [
+                "Sa totoong ekonomiya, ang mga problema ay bihirang dumating nang paisa-isa: maraming beses ang pagtaas ng mga rate ng interes ay kasabay ng pagbagsak ng mga stock. Ano ang mangyayari sa iyong portfolio kung ang dalawang salik ay pinagsama sa parehong oras?",
+                "Ang ibabang kanang kuwadrante ay tumatawid sa parehong mga variable at sinusukat ang mga probabilidad ng pagbabago ng rehimen:"
+              ],
+              "lead": "Ang ibabang kanang kuwadrante ay tumatawid sa parehong mga variable at sinusukat ang ikot ng merkado:",
+              "bullets": [
+                {
+                  "bold": "Double impact board",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Mga cross rate na paggalaw (-100 hanggang +200 na batayan na puntos) na may mga pagbagsak o pagtaas ng S&P 500 (-20% hanggang +10%), na nagbibigay-daan sa iyong mag-filter ayon sa buong portfolio o ng isang indibidwal na asset."
+                },
+                {
+                  "bold": "Mga posibilidad ng paglipat ng ikot",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Kalkulahin kung gaano ang posibilidad na manatiling kalmado ang merkado o pumasok sa isang pabagu-bago ng isip, inflationary o yugto ng krisis."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pinagsamang sensitivity sa mga rate at variable, at Markov state transition matrix."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Ang ibabang panel ay full screen na may mga probabilistikong projection sa hinaharap at makasaysayang pagbaba.",
+              "paragraphs": [
+                "Ang pagtingin sa nakaraan ay kapaki-pakinabang, ngunit kapag namumuhunan pasulong ang kailangan mong malaman ay nasa loob ng kung anong hanay ng mga resulta ang iyong kapital ay maaaring ilipat sa susunod na anim na buwan, isang taon o dalawang taon.",
+                "Pinagsasama-sama ng full-width na panel sa ibaba ang tatlong pansamantalang tool upang i-project at kontrolin ang landas na iyon:"
+              ],
+              "lead": "Pinagsasama-sama ng panel sa ibaba ang tatlong pansamantalang tool upang i-proyekto ang landas na iyon:",
+              "bullets": [
+                {
+                  "bold": "Sampung libong mga senaryo sa hinaharap",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Iguhit ang kono ng posibleng ebolusyon ng iyong portfolio, na nakikilala ang optimistikong senaryo (P95 sa berde), ang inaasahang gitnang landas (P50) at ang masamang senaryo (P05 sa pula)."
+                },
+                {
+                  "bold": "Lalim ng pagbagsak at katatagan sa paglipas ng panahon",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Nagbibigay-daan sa iyo ang mga ito na i-toggle ang chart upang makita kung gaano katagal nanatili ang portfolio sa ibaba nito sa lahat ng oras na pinakamataas o kung gaano katatag ang kahusayan at panganib nito sa paglipas ng 60-araw na mga window."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo stochastic simulation ng 10,000 kalsada at 60-araw na rolling metrics."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulator",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Bago bumili ng bagong asset, bawasan ang isang posisyon o magbayad para sa hedging gamit ang mga opsyon, ang parehong tanong ay palaging lumilitaw: ang operasyong ito ba ay talagang nagpapabuti sa aking portfolio o nagdaragdag ba ito ng hindi kinakailangang panganib? At gaano karaming puhunan ang dapat kong ilagay dito?",
+            "Ang Ad-Hoc Strategy Lab (ang ikatlong view ng Portfolio) ay ang iyong pre-operating simulator. Binibigyang-daan ka nitong mag-load ng mga taktikal na paglalaro, kalkulahin ang iyong perpektong laki ng posisyon, subukan ang downside insurance, at makita ang eksaktong bago at pagkatapos ng epekto nang hindi pa hinahawakan ang iyong base portfolio."
+          ],
+          "intro": "Ang Ad-Hoc Strategy Laboratory ay ang iyong pre-trade simulator upang subukan ang mga order, laki ng mga posisyon at sukatin ang saklaw.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Epekto",
+              "summary": "Ang nangungunang anim na card na naghahambing ng iyong kasalukuyang portfolio laban sa resulta pagkatapos ng mga simulate na paglalaro.",
+              "paragraphs": [
+                "Upang malaman kung sulit ang isang taktikal na ideya, hindi sapat para sa asset na magmukhang kaakit-akit sa sarili nitong: kailangan nitong pahusayin ang mga numero para sa buong portfolio.",
+                "Permanenteng ipinapakita sa iyo ng nangungunang hilera ang paghahambing sa pagitan ng iyong kasalukuyang portfolio at ang portfolio na may inilapat na simulation:"
+              ],
+              "lead": "Inihahambing ng nangungunang hilera ang iyong kasalukuyang portfolio laban sa portfolio gamit ang simulation na inilapat:",
+              "bullets": [
+                {
+                  "bold": "Epekto sa kita at kahusayan",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Ipinapakita nila ang base number sa tabi ng inaasahang numero, na nagbibigay-liwanag sa pagkakaiba sa berde kung ang dula ay nagdaragdag ng kahusayan o sa pula kung ito ay lumala."
+                },
+                {
+                  "bold": "Epekto sa panganib, kapital at mga patakaran",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Sinasabi nila sa iyo kung gaano kalaki ang mga pagbabago sa iyong maximum na inaasahang pagkawala, ilang porsyento ng portfolio ang iyong ginagawa sa mga pagsubok at kung ang lahat ng mga limitasyon sa seguridad ay iginagalang."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If at Kelly",
+              "summary": "Ang pagbili/pagbebenta ng ticket simulator at ang calculator upang tukuyin kung gaano karaming pera ang ipagsapalaran.",
+              "paragraphs": [
+                "Maraming magagandang ideya sa pamumuhunan ang nauuwi sa pagkalugi dahil sa isang pagkakamali sa laki ng taya: ang paglalagay ng masyadong maliit ay hindi nakakagalaw sa karayom, ngunit ang paglalagay ng sobra ay maaaring makasira sa portfolio kung ang paglipat ay mali.",
+                "Ang unang kuwadrante sa kaliwang itaas ay nag-uugnay sa sheet ng ebidensya sa pagkalkula ng matematika ng laki:"
+              ],
+              "lead": "Pinagsasama ng unang kuwadrante ang ulat ng pagsubok sa pagkalkula ng sukat ng matematika:",
+              "bullets": [
+                {
+                  "bold": "Pag-load ng order sa pagsubok",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Pumili ka ng anumang asset, ipahiwatig kung gusto mong bumili, magbenta o mag-cover at i-load ang halaga sa dolyar. Sa listahan sa ibaba maaari mong i-on o i-off ang bawat simulate na order upang ihambing ang epekto nito."
+                },
+                {
+                  "bold": "Pinakamainam na laki ng posisyon",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Batay sa iyong tinantyang probabilidad ng tagumpay at ang kaugnayan sa pagitan ng kita at pagkalugi, kinakalkula nito kung anong maximum na porsyento ng kapital ang dapat ilaan upang lumago nang hindi labis na nalalantad ang iyong sarili."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pagkalkula ng matematika ng Kelly Criterion at ang konserbatibong bersyon nito Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Ilagay ang OTM at Margin",
+              "summary": "Ang insurance simulator na may mga opsyon para sa malakas na pagtanggi sa merkado at ang margin call monitor.",
+              "paragraphs": [
+                "Kapag natatakot ka sa isang malakas na pagwawasto sa merkado, ang pagbebenta ng lahat ng iyong mga posisyon ay karaniwang magastos at hindi epektibo. Ang alternatibong propesyonal ay kumuha ng insurance na may mga opsyon sa proteksyon, ngunit magkano ang halaga ng insurance na iyon bawat taon at gaano ka talaga pinoprotektahan nito?",
+                "Ang ibabang kaliwang kuwadrante ay nagpapahintulot sa iyo na sukatin ang parehong saklaw at antas ng utang:"
+              ],
+              "lead": "Ang ibabang kaliwang kuwadrante ay sumusukat sa parehong saklaw at antas ng mga garantiya:",
+              "bullets": [
+                {
+                  "bold": "Paghahambing ng mga proteksiyon na kalasag",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Binibigyang-daan ka nitong magpalit-palit sa pagitan ng pagpapatakbo nang walang saklaw o paglalapat ng tatlong uri ng insurance na may mga opsyon (sa SPY, QQQ o VIX volatility), na ihambing ang taunang halaga ng premium laban sa mga dolyar na matitipid mo sa isang 20% na pag-crash."
+                },
+                {
+                  "bold": "Gamitin ang kontrol at collateral",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Subaybayan kung anong porsyento ng margin ng pagpapanatili ang iyong ginamit at kung anong porsyento ang pagbaba ng portfolio ay magtitiis bago pumasok sa margin call zone."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Operasyon ng hedging gamit ang mga opsyon na wala sa pera Put at pagkalkula ng mga garantiya Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Komite at Aklat",
+              "summary": "Ang dalawang kanang panel na may awtomatikong pagsusuri ng mga limitasyon sa panganib, kasaysayan ng order at Co-pilot.",
+              "paragraphs": [
+                "Sa sigasig na subukan ang isang trade, madaling makaligtaan na ang isang asset ay nakatuon ng higit sa 20% ng iyong buong portfolio o na ito ay tumatakbo sa gitna ng isang matinding istatistikal na anomalya.",
+                "Ang dalawang quadrant sa kanan ay nagsisilbing iyong awtomatikong kontrol sa panganib at audit trail:"
+              ],
+              "lead": "Ang dalawang kuwadrante sa kanan ay gumaganap bilang kontrol sa panganib at pagpaparehistro:",
+              "bullets": [
+                {
+                  "bold": "Suriin sa tatlong dimensyon",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Sinusuri nila ang iyong mga simulate na order mula sa teknikal, pangunahing at mahirap na mga limitasyon sa seguridad (babala kung ang anumang posisyon ay lumampas sa 20% na limitasyon sa kapital o kung mayroon itong mataas na mga anomalya)."
+                },
+                {
+                  "bold": "Log ng order at portfolio assistant",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Itinatala ng panel sa ibaba ang bawat simulation na may epekto nito sa panganib, habang binubuksan ng dialogue button sa kanang itaas ang chat para magtanong ng mga direktang tanong tungkol sa iyong portfolio."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mga panuntunan sa pagkontrol sa panganib bago ang operasyon at mga limitasyon sa konsentrasyon bawat asset."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Ang graph sa ibaba sa full screen upang tingnan kung gumagana ang iyong diskarte sa labas ng panahon ng pagsubok.",
+              "paragraphs": [
+                "Ang anumang diskarte ay maaaring isaayos sa pamamagitan ng pagtingin sa nakaraan hanggang sa ito ay lumitaw na walang kabuluhan sa makasaysayang tsart. Ang tunay na hamon ay ang pag-alam kung patuloy itong gagana kapag nahaharap sa bagong data ng merkado.",
+                "Inilalagay ng full-width na panel sa ibaba ang diskarte sa pamamagitan ng pinaka mahigpit na pagpapatunay bago pumunta sa produksyon:"
+              ],
+              "lead": "Ang ilalim na panel ay sumasailalim sa diskarte sa in-sample at out-of-sample na pagpapatunay:",
+              "bullets": [
+                {
+                  "bold": "Paghihiwalay sa pagitan ng disenyo at aktwal na pagsubok",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Hinahati nito ang makasaysayang graph sa isang unang yugto kung saan na-calibrate ang diskarte at isang pangalawang yugto na may hindi nakikitang data upang masuri kung napapanatili nito ang kalamangan nito sa base portfolio."
+                },
+                {
+                  "bold": "Tala ng tibay ng istatistika",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Kung ang tagapagpahiwatig ng kahusayan ay lumampas sa 70%, kinukumpirma nito na ang mga resulta ay pare-pareho at hindi ang produkto ng pagpilit ng mga numero sa nakaraan."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ano ang sinusukat ng Walk-Forward Efficiency Index (WFE) at kung paano ito nakakakita ng mga overoptimized na diskarte."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Liquidity Filter (ADV)",
+        "intro": "Upang ang isang asset ay mai-trade nang walang isang order na bumabaluktot sa presyo nito, ang platform ay nangangailangan ng isang minimum na threshold ng average na pang-araw-araw na volume sa dolyar sa nakalipas na 20 araw ng negosyo.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Pagsasara ng Presyoᵢ × Traded Volumeᵢ)",
+          "denominator": "20 mahusay na gulong",
+          "vars": [
+            "Presyo ng Pagsara: opisyal na presyo ng pagsasara ng araw na ipinahayag ko sa USD.",
+            "Traded Volumeᵢ: kabuuang bilang ng mga unit na na-trade sa araw na iyon."
+          ]
+        },
+        "lead": "Batay sa average na pang-araw-araw na dami, inuri ng catalog ang lalim ng bawat instrumento:",
+        "bullets": [
+          {
+            "bold": "Mataas na pagkatubig ng institusyon",
+            "code": "> $500M diarios",
+            "text": "Binibigyang-daan kang pumasok at lumabas kaagad sa malalaking posisyon nang hindi ginagalaw ang presyo sa merkado."
+          },
+          {
+            "bold": "Standard Catalog Liquidity",
+            "code": "$50M a $500M diarios",
+            "text": "Angkop para sa sari-sari na mga portfolio na may napakababang gastos sa pagbili/pagbebenta."
+          },
+          {
+            "bold": "Ikalat ang pagsubaybay",
+            "code": "< $50M diarios",
+            "text": "Sa mga oras ng pagkasumpungin ay ipinapayong suriin ang pagbubukas ng mga tip bago magsagawa ng malalaking order."
+          }
+        ],
+        "example": "Kung ang isang stock ay nakikipagkalakalan sa $200 at nangangalakal sa average na 5 milyong pagbabahagi bawat gulong sa nakalipas na buwan, ang average na pang-araw-araw na volume (ADV) nito ay $1 bilyon ($1.0B)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalization sa USD",
+        "intro": "Habang pinagsasama ng catalog ang mga European bond, Asian index, commodities at cryptocurrencies, lahat ng volume flow ay kino-convert sa US dollars sa real time para maikumpara sila sa parehong sukat.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Dami ng Lokal na Currency: halagang na-trade sa orihinal na currency ng market (EUR, JPY, GBP, BRL, atbp.).",
+            "Spot Exchange Rate: kasalukuyang quote sa 61 currency engine."
+          ]
+        },
+        "lead": "Direktang nakakaapekto ang conversion na ito sa dalawang lugar sa screen:",
+        "bullets": [
+          {
+            "bold": "Pangkalahatang View Ranking Lahat",
+            "code": "213 activos",
+            "text": "Pag-order ng mga instrumento mula sa pinakamalaki hanggang sa pinakamaliit na tunay na paggalaw ng pera sa buong mundo."
+          },
+          {
+            "bold": "Idinagdag ang Volume Card",
+            "code": "Volumen 24h en $B",
+            "text": "Pinapayagan nito ang dami ng mga asset na nakalista sa iba't ibang bansa na maidagdag nang walang mga pagbaluktot."
+          }
+        ],
+        "example": "Kung ang isang Aleman na bono ay nakikipagkalakalan ng €4 bilyon sa isang araw at ang EUR/USD ay nakikipagkalakalan sa 1.08, ang sistema ay nagko-compute ng $4.32B sa pandaigdigang pulso."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Paano mo masusukat kung ang isang merkado ay tumataas nang may tunay na lakas o kung ito ay mabilis na tumaas at naubos na? Inihahambing ng Relative Strength Index (RSI) ang average na pagtaas laban sa average na pagbagsak ng huling 14 na round sa sukat na 0 hanggang 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Average Ups₁₄ / Average Downs₁₄)",
+          "vars": [
+            "Average na Pagtaas₁₄: smoothed average ng mga puntos na nakuha sa mga bullish na araw ng huling 14 na gulong.",
+            "Average na Pagkalugi₁₄: smoothed average ng mga puntos na nawala sa mga bearish na araw ng parehong panahon."
+          ]
+        },
+        "lead": "Ganito binibigyang-kahulugan ang tatlong seksyon ng iskala sa pabilog na singsing:",
+        "bullets": [
+          {
+            "bold": "Puwersa ang pagbili at overbought",
+            "code": "70 a 100",
+            "text": "Ang mga pagtaas ay higit na lumampas sa mga kamakailang pagbaba. Nagpapakita ito ng mahusay na bullish momentum, bagama't sa itaas ng 70 nagbabala ito na ang presyo ay maaaring mangailangan ng pag-pause."
+          },
+          {
+            "bold": "zone ng balanse",
+            "code": "30 a 70",
+            "text": "Ang merkado ay gumagalaw sa isang napapanatiling bilis. Ang pagtawid sa intermediate na antas (> 50 sa berde) ay nagpapatunay sa pangingibabaw ng mamimili, habang ang pagbagsak sa ibaba (< 50 sa pula) ay nagpapahiwatig ng dominasyon ng nagbebenta."
+          },
+          {
+            "bold": "Parusa at overselling",
+            "code": "0 a 30",
+            "text": "Ang talon ay napakadalas at malinaw na ang asset ay nagsisimulang magmukhang mura sa istatistika at madaling kapitan ng rebound."
+          }
+        ],
+        "example": "Kung sa huling 14 na gulong isang grupo ng mga stock ang tumaas sa average na $2 bawat bullish na araw at bumaba lang ng $1 bawat bearish na araw, ang ratio ng lakas nito ay 2 at ang RSI nito ay 66.7 (bullish push in green)."
+      },
+      {
+        "id": "p06",
+        "label": "Normal na Rehime (P-06)",
+        "intro": "Ang isang asset ay maaaring mukhang kalmado kung titingnan mo lamang ang presyo nito, ngunit sa parehong oras ay dumaranas ng kakaibang pagtaas ng volume at isang abnormal na pagbubukas sa mga pinakamataas na pagbili at pagbebenta nito. Ang Isolation Forest engine (P-06) ay tumatawid sa mga variable na ito nang sabay upang makita ang hindi tipikal na gawi.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): average na bilang ng mga random na pagbawas na kinakailangan upang ihiwalay ang gawi ngayon mula sa natitirang kasaysayan.",
+            "x: vector ng 4 na variable (Return 24h, Vol Z-Score 20d, Realized Volatility 30d at Spread sa bps)."
+          ]
+        },
+        "lead": "Ang mas bihirang galaw ngayon, mas mabilis itong nakahiwalay at mas malapit ang marka sa 1.00:",
+        "bullets": [
+          {
+            "bold": "Normal na rehimen",
+            "code": "0.00 a 0.49",
+            "text": "Ang presyo, dami at pagkatubig ay gumagalaw alinsunod sa makasaysayang average ng asset."
+          },
+          {
+            "bold": "Mataas na aktibidad",
+            "code": "0.50 a 0.64",
+            "text": "Hindi bababa sa isa sa mga variable ang nagsimulang lumihis mula sa karaniwang pag-uugali nito; Maipapayo na maingat na subaybayan ang daloy ng mga order."
+          },
+          {
+            "bold": "Dislokasyon o kritikal na anomalya",
+            "code": "0.65 a 1.00",
+            "text": "Ang asset ay nagrerehistro ng istatistikal na matinding gawi. Sa portfolio module, ang paglampas sa threshold na ito ay magpapagana sa safety brake."
+          }
+        ],
+        "example": "Kung ang isang sovereign bond ay halos hindi gumagalaw ng 0.1% sa presyo ngunit ang volume nito ay dumami sa apat at ang spread nito ay triple sa loob ng ilang minuto, ang detector ay tatawid sa tatlong data point at itataas ang marka nito sa 0.74 (Dislokasyon sa pula)."
+      },
+      {
+        "id": "zscore",
+        "label": "Volume Bypass (Z-Score)",
+        "intro": "Ang pagsasabing 500 milyong dolyar ang pinatakbo ngayon ay malaki para sa isang katamtamang laki ng kumpanya, ngunit napakaliit para sa S&P 500. Dinadala ng Volume Z-Score ang lahat ng asset sa parehong unibersal na unit: kung gaano karaming mga standard deviations (σ) ang volume ngayon mula sa sarili nitong 20-wheel average.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Volume Ngayon (24h) − Average Volume (20d)",
+          "denominator": "Standard Deviation ng Volume (20d)",
+          "vars": [
+            "Average na Volume (20d): karaniwang dami ng asset noong nakaraang buwan ng negosyo.",
+            "Standard Deviation (20d): kung gaano ang karaniwang pagkakaiba-iba ng volume na ito mula sa isang araw hanggang sa susunod."
+          ]
+        },
+        "lead": "Sa ganitong paraan maaari mong ihambing ang anumang asset sa parehong sukat ng mga yunit ng sigma (σ):",
+        "bullets": [
+          {
+            "bold": "Karaniwang aktibidad",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Ang dami ng araw ay ganap na nasa loob ng nakagawian ng huling apat na linggo."
+          },
+          {
+            "bold": "Mataas na partisipasyon",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Mayroong mas mataas kaysa sa average na interes na nagsisimulang patunayan ang takbo ng araw."
+          },
+          {
+            "bold": "Salungatan sa institusyon",
+            "code": "> +2.0σ",
+            "text": "Ito ay nangyayari sa mas mababa sa 5% ng mga pag-ikot ng taon at karaniwang sumasalamin sa napakalaking pagpasok o paglabas ng malalaking pondo."
+          }
+        ],
+        "example": "Kung ang isang stock ay karaniwang nakikipagkalakalan ng $100M araw-araw na may karaniwang variation na ±$20M at ngayon ay nakikipagkalakalan ng $160M, ito ay $60M sa itaas ng average nito, na eksaktong katumbas ng +3.0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Fixed Income (2s10s at DV01)",
+        "intro": "Kapag na-filter mo ang Mga Bono o Rate sa talahanayan, lalabas ang dalawang pangunahing sukatan para sa pagsusuri ng sovereign debt: ang slope ng curve (2s10s) at ang monetary value ng isang basis point (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 basis point (1 bp): katumbas ng 0.01% na performance.",
+            "DV01 ($/$1M): Ilang dolyar ang nanalo o natatalo sa isang $1 milyon na posisyon kung ang rate ay gumagalaw ng 1 basis point."
+          ]
+        },
+        "lead": "Paano basahin ang dalawang numerong ito sa grid:",
+        "bullets": [
+          {
+            "bold": "Normal o positibong kurba",
+            "code": "2s10s > 0 bps",
+            "text": "Ang mga 10-taong bono ay nagbabayad ng mas mataas na rate kaysa sa 2-taong mga bono, na sumasalamin sa isang inaasahan ng malusog na paglago ng ekonomiya."
+          },
+          {
+            "bold": "baligtad na kurba",
+            "code": "2s10s < 0 bps",
+            "text": "Ang mga maikling rate ay lumampas sa mahabang rate; sa kasaysayan ay nagbabala ito sa paglamig ng ekonomiya o paghihigpit sa pera."
+          }
+        ],
+        "example": "Kung ang 10-taong Treasury ay magbubunga ng 4.20% at ang 2-taong Treasury ay magbubunga ng 4.55%, ang 2s10s column ay nagmamarka ng -35 bps (inverted curve sa pula)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Mga Pagbabahagi (P/E at Margin)",
+        "intro": "Kapag nagfi-filter ng S&P/NDX Stocks, ipinapakita ng talahanayan ang inaasahang maramihang kita (P/E Forward) at Gross Operating Margin para maihambing mo ang valuation versus profitability.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Kasalukuyang Share Price",
+          "denominator": "Tinantyang Mga Kita sa Bawat Bahagi (Susunod na 12 Buwan)",
+          "vars": [
+            "P/E Forward: Ilang taon ng hinaharap na kita ang binabayaran mo sa presyo ngayon.",
+            "Gross Margin (%): porsyento ng mga benta na nananatili bilang kabuuang kita pagkatapos ibabawas ang direktang gastos."
+          ]
+        },
+        "lead": "Ano ang hahanapin kapag tumatawid sa magkabilang column:",
+        "bullets": [
+          {
+            "bold": "Demanding kumpara sa katamtamang pagtatasa",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Ang isang mataas na maramihang ay nagpapahiwatig na ang merkado ay nagpepresyo sa malakas na paglago sa hinaharap; ang isang mababa ay karaniwang sumasalamin sa mga mature o mahalagang kumpanya."
+          },
+          {
+            "bold": "Lakas sa Pagpepresyo",
+            "code": "Margen Bruto > 50%",
+            "text": "Ang mataas na margin ay nagpapakita ng mga kumpanyang may malakas na competitive advantage na may kakayahang ipagtanggol ang kanilang mga kita laban sa inflation."
+          }
+        ],
+        "example": "Kung ang isang stock ay nakikipagkalakalan sa $150 at tinatayang kikita ng $6 bawat bahagi sa susunod na 12 buwan, ang Forward P/E nito ay 25.0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Derivatives, FX at Commodities",
+        "intro": "Para sa mga opsyon, forex at pisikal na futures market, ipinapakita ng dalawang dynamic na column ang ipinahiwatig na halaga ng panganib o gantimpala para sa paghawak sa posisyon sa paglipas ng panahon.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Derivatives): annualized volatility na ang mga opsyon sa market discounts para sa susunod na 30 araw.",
+            "Carry 10Y (FX) at Roll Yield (Commodities): taunang kita o gastos mula sa rate differential o futures rollover."
+          ]
+        },
+        "lead": "Paano samantalahin ang mga column na ito depende sa asset:",
+        "bullets": [
+          {
+            "bold": "Sa Derivatives",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Sinasabi nila sa iyo kung anong porsyento ng paggalaw ang inaasahan ng market at kung mahal ang mga opsyon para masakop ang falls (Puts)."
+          },
+          {
+            "bold": "Sa Mga Pera at Hilaw na Materyal",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Ipinapakita ang mga ito sa berde kung ang pagpapanatili ng asset ay nagbabayad sa iyo ng karagdagang kita o sa pula kung mayroon itong gastos sa pagdadala."
+          }
+        ],
+        "example": "Kung ang isang opsyon ay nagpapakita ng ipinahiwatig na pagkasumpungin (ATM IV) na 35% taun-taon, ibinabawas ng merkado ang isang paglipat na malapit sa ±10% para sa susunod na 30 araw."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radar Radial Mapping",
+        "intro": "Upang maglagay ng hanggang 45 na asset sa tatlong radar ring nang hindi nagsasapawan, binabago ng Orbital view ang halaga ng napiling indicator sa isang distansya sa gitna (radius r) na na-normalize sa pagitan ng minimum at maximum ng grupo.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Halaga ng Asset − Pinakamababang Halaga ng Grupo",
+          "denominator": "Pinakamataas na Halaga ng Grupo − Pinakamababang Halaga ng Grupo",
+          "vars": [
+            "r → 0 (Inner Ring): tinutuon ang mga asset na may mas mataas na intensity o positibong paglihis.",
+            "r → 1 (Outer Ring): hinahanap ang mga peripheral na asset o ang may pinakamababang relative reading."
+          ]
+        },
+        "lead": "Paano basahin ang posisyon at kulay ng bawat planeta sa radar:",
+        "bullets": [
+          {
+            "bold": "Tumutok sa panloob na singsing",
+            "code": "Centro del radar",
+            "text": "Ipunin ang mga nangungunang asset mula sa indicator na iyong pinili sa itaas upang ang iyong view ay mauna sa kung ano ang pinakamahalaga."
+          },
+          {
+            "bold": "Makasaysayang mga semantika ng kulay",
+            "code": "Verde vs Rojo",
+            "text": "Ang node ay umiilaw sa berde kapag lumampas ito sa dating average nito at sa pula kapag ito ay nagpapakita ng pagbaba o stress."
+          }
+        ],
+        "example": "Kung pag-uuri-uriin mo ang radar ayon sa Volume Deviation (Z-Score), ang aktibo na may +3.4σ ay matatagpuan sa maliwanag na gitnang singsing, habang ang isa na may 0.1σ ay nasa panlabas na orbit."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) at Bollinger Bands",
+        "intro": "Ang 20-period na Simple Moving Average (SMA 20) ay nagmamarka sa base trend ng asset, habang ang Bollinger Bands ay gumuhit ng dynamic na channel sa pamamagitan ng pagdaragdag at pagbabawas ng dalawang standard deviations (2σ) sa paligid ng average na iyon.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): arithmetic average ng huling 20 na pagsasara.",
+            "Bandwidth (BB Width): porsyento ng distansya sa pagitan ng upper at lower band."
+          ]
+        },
+        "lead": "Sa istatistika, humigit-kumulang 95% ng mga panipi ang nangyayari sa loob ng dalawang banda:",
+        "bullets": [
+          {
+            "bold": "Presyo sa itaas ng average",
+            "code": "Precio > SMA 20",
+            "text": "Ito ay nagpapahiwatig na ang panandaliang trend ay bullish at ang average ay karaniwang gumaganap bilang isang support floor."
+          },
+          {
+            "bold": "Upper o lower band touch",
+            "code": "±2σ",
+            "text": "Nagbabala ito na ang presyo ay masyadong mabilis na nag-stretch mula sa kamakailang average nito at maaaring huminga."
+          },
+          {
+            "bold": "compression ng banda",
+            "code": "BB Width bajo",
+            "text": "Kapag ang mga banda ay naging napakakitid, ang merkado ay nagtatayo ng enerhiya bago ang isang malakas na hakbang."
+          }
+        ],
+        "example": "Kung ang SMA(20) ng stock ay $100 at ang 20-wheel standard deviation nito ay $4, ang upper band ay nasa $108 at ang lower band ay nasa $92."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Institusyonal",
+        "intro": "Hindi tulad ng karaniwang average na nagbibigay ng pantay na timbang sa lahat ng oras ng araw, tinitimbang ng VWAP ang bawat presyo ayon sa halaga ng pera na aktwal na na-trade sa antas na iyon. Ito ang pangunahing sanggunian na ginagamit ng mga talahanayan ng institusyonal.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Karaniwang Presyoᵢ × Traded Volumeᵢ)",
+          "denominator": "∑ Na-trade na Damiᵢ",
+          "vars": [
+            "Karaniwang Presyoᵢ: average sa pagitan ng maximum, minimum at close ng bawat kandila.",
+            "Traded Volumeᵢ: volume traded na partikular sa seksyong iyon."
+          ]
+        },
+        "lead": "Paano ginagamit ng mga propesyonal na mangangalakal ang linyang VWAP:",
+        "bullets": [
+          {
+            "bold": "Kontrol sa pagpapatupad",
+            "code": "Comprar bajo el VWAP",
+            "text": "Kung ang isang institusyonal na pondo ay bumili ng mas mababa sa VWAP para sa panahon, ito ay nakakuha ng mas mahusay na presyo kaysa sa market weighted average."
+          },
+          {
+            "bold": "Trend Defense Level",
+            "code": "Soporte / Resistencia",
+            "text": "Hangga't ang asset ay nananatiling higit sa VWAP, ang mga bumili sa panahon ay nasa average na kita."
+          }
+        ],
+        "example": "Kung ang 1 milyong share ay na-trade sa $100 at 100 thousand shares lang ang na-trade sa $110, ang simpleng average ay magsasabing $105, ngunit ang VWAP ay nagbabasa ng $100.91 dahil halos lahat ng pera ay na-trade sa $100."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Spread Displacement (bps)",
+        "intro": "Ang spread ay ang pagkakaiba sa pagitan ng pinakamahusay na presyo ng pagtatanong at ang pinakamahusay na presyo ng bid sa order book. Kapag naramdaman ng mga gumagawa ng merkado ang panganib o kakulangan ng pagkatubig, binubuksan nila ang puwang na iyon upang protektahan ang kanilang sarili.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Ask Price − Bid Price )",
+          "denominator": "Average na Presyo (Mid-Price)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Ask / Bid Price: selling point at buying point na kasalukuyang nasa libro.",
+            "10,000: Conversion factor para ipahayag ang pagkakaiba sa mga basis point (bps)."
+          ]
+        },
+        "lead": "Ano ang sinasabi sa iyo ng Spread Dislocation reading sa kaliwang riles:",
+        "bullets": [
+          {
+            "bold": "Malalim at tuluy-tuloy na libro",
+            "code": "Spread estable en verde",
+            "text": "Mayroong maraming pagkatubig sa magkabilang dulo at ang implicit na halaga ng pagpasok o paglabas ay minimal."
+          },
+          {
+            "bold": "Friction o withdrawal ng liquidity",
+            "code": "Salto en bps",
+            "text": "Karaniwan itong nangyayari ilang segundo bago ang mga anunsyo ng macroeconomic o sa panahon ng panic selling, na ginagawang mas mahal ang pagpapatupad."
+          }
+        ],
+        "example": "Kung ang isang asset ay may tip sa pagbili sa $99.95 at isang tip sa pagbebenta sa $100.05, ang pagkakaiba ng $0.10 sa $100 ay katumbas ng 10 batayan na puntos (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Mga Opsyon (Black-Scholes at Greeks)",
+        "intro": "Sa engine ng mga pagpipilian, ang platform ay nag-graph ng dalawang kurba ng tubo at pagkawala (P&L): kung paano magtatapos ang diskarte sa araw ng pag-expire at kung magkano ang halaga ngayon (T+0) sa paglalapat ng modelong Black-Scholes.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S at K: kasalukuyang presyo ng pinagbabatayan na asset (Spot) at strike price ng opsyon (Strike).",
+            "Mga Net Greek: Δ Delta (sensitivity ng presyo), Γ Gamma (Acceleration ng Delta), Θ Theta (pang-araw-araw na pagsusuot ng oras) at ν Vega (sensitivity ng volatility)."
+          ]
+        },
+        "lead": "Paano basahin ang mga Greeks ng iyong diskarte sa kaliwang rail pill:",
+        "bullets": [
+          {
+            "bold": "Pagpipiloto at acceleration",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Isang positibong Delta ang mananalo kapag tumaas ang asset; ang isang positibong Gamma ay nagpapabilis at mas mabilis na nakakakuha kung ang paggalaw ay bumilis."
+          },
+          {
+            "bold": "Paglipas ng panahon at kawalan ng katiyakan",
+            "code": "Θ Theta / ν Vega",
+            "text": "Sinasabi sa iyo ng Theta kung gaano karaming mga dolyar ang nawawala o natamo ng posisyon para sa bawat araw na lumilipas; Vega kung gaano ito nagbabago kung ang ipinahiwatig na pagkasumpungin ay tumaas ng 1%."
+          }
+        ],
+        "example": "Ang Long Straddle (bumili ng Call and Put sa parehong strike) ay may Delta na malapit sa 0 (hindi mahalaga kung ito ay tumaas o bumaba), ngunit positibong Vega at kailangan ang presyo upang lumampas sa dalawang punto ng equilibrium nito (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Sovereign Curves (Butterfly at DV01)",
+        "intro": "Inihahambing ng fixed income engine ang mga ani mula 3 buwan hanggang 30 taon para sa 42 bansa at kinakalkula ang slope (2s10s) at ang curvature ng middle tranche (Butterfly 2s5s10s) at ang monetary sensitivity (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y rate: 2, 5 at 10 taon na sovereign yield ng napiling bansa.",
+            "Real 10Y Rate: 10-year nominal yield na binawasan ang reference rate o implicit inflation."
+          ]
+        },
+        "lead": "Para saan ang bawat indicator sa pagsusuri ng bono:",
+        "bullets": [
+          {
+            "bold": "Curvature ng gitnang seksyon",
+            "code": "Butterfly 2s5s10s",
+            "text": "Ito ay sumusukat kung ang 5-taong tranche ay mahal o mura kumpara sa 2-taon at 10-taong mga sukdulan."
+          },
+          {
+            "bold": "Panganib sa Tagal ng Dolyar",
+            "code": "DV01 por $1M",
+            "text": "Sinasabi nito sa iyo nang eksakto kung gaano karaming mga dolyar ang isang milyong dolyar na portfolio ay nag-iiba sa isang 0.01% na paggalaw sa rate."
+          }
+        ],
+        "example": "Ang isang 10-taong bono na may DV01 na $820 kada milyon ay mawawalan ng humigit-kumulang $82,000 kung tumaas ang mga rate sa merkado ng 100 na batayan (+1.00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Mga Currency (Carry) at Futures (Roll Yield)",
+        "intro": "Sa mga currency, kapag ang isang pares ay hindi direktang sinipi ito ay kinakalkula sa pamamagitan ng triangulation laban sa dolyar at ang rate differential nito (Carry) ay sinusukat. Sa mga hilaw na materyales, ang pagganap ng pag-renew ay sinusukat sa pagitan ng agarang kontrata at ng 12-buwang kontrata (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Spot Price (Front M1) − Presyo sa Hinaharap (M12)",
+          "denominator": "Presyo sa Hinaharap (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Backwardation (Spot > Future): Ang pisikal na kakulangan ngayon ay nagdudulot ng rolling futures upang makabuo ng positibong tubo (Roll Yield > 0).",
+            "Contango (Spot < Future): Ang mga gastos sa storage ay nagpapamahal sa futures at ang pag-renew sa mga ito ay may negatibong gastos."
+          ]
+        },
+        "lead": "Paano ito nakakaapekto sa iyong pocketbook kapag may hawak na posisyon:",
+        "bullets": [
+          {
+            "bold": "Positibong Carry Trade sa mga pera",
+            "code": "Carry Spread > 0 bps",
+            "text": "Kung bumili ka ng currency na may mataas na rate ng interes sa pamamagitan ng pagpopondo sa iyong sarili sa isang currency na may mababang rate, kukunin mo ang pagkakaibang iyon na pabor sa iyo."
+          },
+          {
+            "bold": "Kanais-nais na hangin sa mga hilaw na materyales",
+            "code": "Backwardation en verde",
+            "text": "Kapag ang mga pisikal na imbentaryo ay mababa, ang kalapit na kontrata ay nagkakahalaga ng higit pa kaysa sa malayo at ang mamumuhunan ay kumikita ng karagdagang kita sa pamamagitan ng pag-roll sa kontrata."
+          }
+        ],
+        "example": "Kung ang 1-buwan na langis ay ine-trade sa $72 at ang 12-buwang kontrata ay kinakalakal sa $68, ang market ay nasa Backwardation na may positibong Roll Yield na +5.88% taun-taon."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Kabuuang Timbang na Marka",
+        "intro": "Hindi lahat ng asset ay gumagalaw sa parehong source: sa isang kumpanya, ang mga na-audit na financial statement (SEC 10-K/10-Q) ay may malaking timbang, habang sa crypto market o mga currency, ang mga pang-araw-araw na daloy at komunikasyon ay may mas timbang.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: awtomatikong pagtimbang ayon sa kategorya (hal. 80% / 20% sa Shares; 85% / 15% sa Bayarin).",
+            "Pangwakas na Scale: mula −100 (maximum pessimism) hanggang +100 (maximum bullish conviction)."
+          ]
+        },
+        "lead": "Ito ay kung paano isinalin ang pinagsama-samang marka sa superior na opinyon:",
+        "bullets": [
+          {
+            "bold": "Bullish na paninindigan",
+            "code": "BULLISH / Nota > +15",
+            "text": "Ang mga documentary catalyst at daloy ng balita ay malinaw na mas malaki kaysa sa mga kadahilanan ng panganib."
+          },
+          {
+            "bold": "Neutral o halo-halong postura",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Maging ang mga puwersa sa pagitan ng mga pangunahing kaalaman at balita; Maipapayo na suriin ang akurdyon ng 10 mga kadahilanan bago magpasya."
+          },
+          {
+            "bold": "Defensive o bearish na tindig",
+            "code": "BEARISH / Nota < -15",
+            "text": "Nangibabaw ang mga alerto sa mga balanse, pagkasira ng mga margin o masamang headline."
+          }
+        ],
+        "example": "Sa isang stock (80% fundamentals / 20% news), kung ang mga balanse ay nagpapakita ng +50 puntos at ang balita ng araw ay nagpapakita ng +20, ang Kabuuang Weighted Score ay (0.80 × 50) + (0.20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Na-verify na Paghahanap (RAG)",
+        "intro": "Para pigilan ang artificial intelligence sa pag-imbento ng mga numero, gumagamit ang Document Chat ng Generation Augmented Recovery (RAG): unang hinahanap nito ang mga nauugnay na talata sa mga opisyal na ulat ng asset at pagkatapos ay isusulat lamang ang tugon na binabanggit ang pinagmulan.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Konsultasyon sa Vector (Q) · Opisyal na Dokumento ng Vector (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vector Q at D: mga numerical na representasyon ng iyong tanong at ang mga opisyal na fragment (10-K, FOMC minuto, mga ulat ng EIA).",
+            "3-Layer Guardrail: filter na humaharang sa mga query na hindi nauugnay sa pananalapi o walang suporta sa dokumentaryo."
+          ]
+        },
+        "lead": "Ano ang ginagarantiya ng mekanismong ito kapag nagtanong ka sa chat:",
+        "bullets": [
+          {
+            "bold": "Pag-angkla sa mga pangunahing mapagkukunan",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Ang bawat data sa kita, utang, mga imbentaryo o mga rate ay nagmumula sa dokumento ng regulasyon na naaayon sa asset na iyon."
+          },
+          {
+            "bold": "Itigil ang mga tanong sa labas ng paksa",
+            "code": "Guardrail activo",
+            "text": "Kung may sumubok na kumunsulta sa mga paksang hindi pinansyal, tatanggihan ng katulong ang query at pinapanatili ang pagtuon sa pagsusuri ng instrumento."
+          }
+        ],
+        "example": "Kapag na-tap mo ang risk factor chip sa isang stock, kukunin ng engine ang Item 1A (Risk Factors) na seksyon ng pinakabagong 10-K na form nito at ibubuod ang mga kritikal na punto."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Neuronal Score",
+        "intro": "Ang isang tipikal na diksyunaryo ay kadalasang nakakalito sa mga salita sa pananalapi (halimbawa, ang \"pagbawas sa mga gastos\" o \"pagbawas ng utang\" ay mahusay na balita kahit na ginagamit nila ang salitang pagkahulog o pagbabawas). Ang FinBERT ay isang neural network na partikular na sinanay sa mga tekstong pinansyal.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(Positive) at P(Negative): mga probabilidad na itinalaga ng modelo sa headline na bullish o bearish para sa asset.",
+            "24h curve: exponential moving average ng mga headline ng huling 24 na oras."
+          ]
+        },
+        "lead": "Paano nagre-rate ang bawat node sa timeline sa kanan:",
+        "bullets": [
+          {
+            "bold": "May hawak ng katalista",
+            "code": "+20 a +100 en verde",
+            "text": "Pagtalo sa mga tinantyang kita, pag-upgrade ng credit rating o paborableng pagbawas sa rate."
+          },
+          {
+            "bold": "Neutral na impormasyon cable",
+            "code": "-19 a +19 en ámbar",
+            "text": "Mga regular na anunsyo sa pagpapatakbo na hindi nagbabago sa pagtatasa ng istruktura ng instrumento."
+          },
+          {
+            "bold": "May hawak ng panganib",
+            "code": "-20 a -100 en rojo",
+            "text": "Mga babala sa regulasyon, pagbaba ng margin, strike o mas masahol pa kaysa sa inaasahang data ng inflation."
+          }
+        ],
+        "example": "Kung ang modelo ay nagtatalaga ng 82% positibong posibilidad, 12% neutral at 6% negatibong posibilidad sa isang headline, ang node ay nagpapakita ng netong epekto na +76 sa berde."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe at Sortino",
+        "intro": "Sinusukat ng unang dalawang nangungunang card kung gaano kalaki ang lumalagong kapital bawat taon (CAGR) at kung gaano kahusay ang paglagong iyon kaugnay ng mga pagkabigla na kailangan mong tiisin (Sharpe at Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Taunang Portfolio Return (Rp) − Risk Free Rate (Rf)",
+          "denominator": "Taunang Portfolio Volatility (σp)",
+          "vars": [
+            "Rf (4.30%): base yield na maaari mong makuha nang walang panganib sa mga kuwenta ng Treasury.",
+            "Sortino Ratio: gumagamit ng parehong formula ngunit sa denominator ay pinaparusahan lamang nito ang pagkasumpungin ng mga negatibong araw (falls)."
+          ]
+        },
+        "lead": "Paano suriin ang kalidad ng iyong portfolio gamit ang mga numerong ito:",
+        "bullets": [
+          {
+            "bold": "Mahusay na portfolio",
+            "code": "Sharpe > 1.00",
+            "text": "Ang labis na kita na nakamit mo sa itaas ng walang panganib na rate ay higit na lumampas sa ipinapalagay na pagkasumpungin."
+          },
+          {
+            "bold": "Natitirang pagganap",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Ito ay nagpapahiwatig ng isang napakahusay na sari-sari na kumbinasyon kung saan ang mga pagtaas ay pare-pareho at ang pagbagsak ay nakapaloob."
+          }
+        ],
+        "example": "Kung ang iyong portfolio ay nagbabalik ng 15.3% taun-taon, ang risk-free rate ay 4.3% at ang iyong taunang pagkasumpungin ay 10%, ang iyong labis na kita ay 11% at ang iyong Sharpe Ratio ay 1.10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% at Drawdown",
+        "intro": "Sinasagot ng ikatlo at ikaapat na card kung gaano kalaki ang matatalo mo sa isang masama ngunit normal na araw sa istatistika (VaR 95%), kung magkano sa araw ng matinding panic (CVaR 99%), at kung ano ang pinakamalaking pullback mula sa nakaraang peak (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1,645: statistical factor na sumasaklaw sa 95% ng mga normal na gulong ng taon (19 sa bawat 20 araw).",
+            "CVaR 99% (Inaasahang Pagkukulang): Average na pagkalugi kapag nasira ng market ang threshold na iyon at pumasok sa nangungunang 1% ng pinakamasamang araw."
+          ]
+        },
+        "lead": "Anong praktikal na pagkakaiba ang mayroon sa pagitan ng pagtingin sa VaR at pagtingin sa Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Isang araw na panganib",
+            "code": "VaR 95% 1D en USD",
+            "text": "Inihahanda ka nito sa sikolohikal at pinansyal para sa kung ano ang maaaring i-ugoy ng iyong account sa masamang direksyon nang hindi nangangahulugan na nabigo ang diskarte."
+          },
+          {
+            "bold": "Paglaban sa isang masamang guhit",
+            "code": "Max Drawdown 12M",
+            "text": "Sinusukat nito ang naipon na patak mula sa dulo hanggang sa dulo mula sa pinakamataas na punto hanggang sa sahig bago muling bumawi."
+          }
+        ],
+        "example": "Sa isang $100,000 na portfolio na may pang-araw-araw na VaR 95% ng 1.45% ($1,450), sa 19 sa 20 trading wheels ang iyong araw-araw na pagkalugi ay hindi lalampas sa $1,450."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "X-Ray Overlap (#12)",
+        "intro": "Kapag bumili ka ng ETF tulad ng SPY o QQQ, bibili ka ng dose-dosenang shares sa loob. Kung direktang binili mo rin ang ilan sa mga parehong share na iyon, ang iyong tunay na pagkakalantad ay ang kabuuan ng dalawang bagay.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Direktang Timbangᵢ: porsyento ng iyong portfolio na direktang inilaan sa stock i.",
+            "Porsiyento sa loob ng ETFₖ: opisyal na timbang ng kumpanyang iyon sa loob ng index o pondo k."
+          ]
+        },
+        "lead": "Bakit mahalagang suriin ang unang tab na ito bago isara ang portfolio:",
+        "bullets": [
+          {
+            "bold": "Nakatagong Pagpapakita ng Konsentrasyon",
+            "code": "Directo + Indirecto",
+            "text": "Awtomatiko nitong dini-disassemble ang bawat ETF sa iyong portfolio at ipinapakita sa iyo ang isang bar na may totoong porsyento na mayroon ka sa bawat kumpanya."
+          },
+          {
+            "bold": "Sobrang alerto",
+            "code": "> 20% en rojo",
+            "text": "Kung ang kabuuang kabuuan ay lumampas sa maingat na threshold ng konsentrasyon sa isang pangalan, ang row ay iilaw upang maaari kang muling balansehin."
+          }
+        ],
+        "example": "Kung inilagay mo ang 15% ng iyong portfolio sa direktang NVDA at mayroon ding 30% sa SPY ETF (kung saan ang NVDA ay tumitimbang ng humigit-kumulang 7%), ipinapakita ng X-Ray na ang iyong tunay na pagkakalantad sa NVDA ay 15% + (30% × 7%) = 17.1%."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Pagkabulok ng Alpha Brinson (#2)",
+        "intro": "Kapag natalo ang iyong portfolio (o natalo laban) sa benchmark nito, ang modelong Brinson-Fachler ay eksaktong naghihiwalay kung saan nanggaling ang pagkakaibang iyon: tama ka ba sa kung aling mga sektor ang sobra sa timbang o tama ka ba sa pagpili ng pinakamahusay na mga asset sa loob ng bawat sektor?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Epekto ng Paglalaan: (Portfolio Timbang − Benchmark na Timbang) × Pagbabalik ng Sektor sa Benchmark.",
+            "Epekto ng Pagpili: Timbang sa Benchmark × (Return on your Assets − Return of the Sector)."
+          ]
+        },
+        "lead": "Paano basahin ang tatlong attribution bar sa ikatlong tab:",
+        "bullets": [
+          {
+            "bold": "Tagumpay ng macro o sektor",
+            "code": "Asignación Sectorial",
+            "text": "Positibo ito sa berde kapag naglagay ka ng higit na timbang kaysa sa merkado sa mga klase ng asset na tumaas nang higit."
+          },
+          {
+            "bold": "Ang matagumpay na pag-target ng mga asset",
+            "code": "Selección de Activos",
+            "text": "Ito ay positibo kapag ang mga partikular na instrumento na iyong pinili ay gumanap nang higit sa average para sa kanilang sariling sektor."
+          }
+        ],
+        "example": "Kung natalo ng iyong portfolio ang S&P 500 ng +3.20%, binibigyang-daan ka ng tab na ito na makita na ang +2.10% ay nagmula sa pagpili ng mas mahuhusay na stock (Selection) at +1.10% mula sa pagkakaroon ng higit na timbang sa teknolohiya (Allocation)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Mahusay na Frontier at CML",
+        "intro": "Sa eroplanong Markowitz, ang inaasahang pagbabalik ng isang portfolio ay ang weighted average ng pagbabalik ng mga asset nito, ngunit ang pagkasumpungin nito ay mas mababa kaysa sa average salamat sa katotohanan na ang mga asset ay hindi gumagalaw nang 100% pareho.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: porsyento ng kapital na inilaan sa mga asset i at j.",
+            "ρᵢⱼ (Correlation): antas kung saan ang parehong asset ay gumagalaw nang magkasama (−1 hanggang +1). Kung mas mababa ang ρᵢⱼ, mas mababawasan ang kabuuang panganib."
+          ]
+        },
+        "lead": "Ano ang kinakatawan ng tatlong sanggunian sa graph:",
+        "bullets": [
+          {
+            "bold": "Minimum na Pagkakaiba",
+            "code": "Min-Var",
+            "text": "Ito ang pinakakaliwang punto sa curve: ang eksaktong kumbinasyon ng mga timbang na nakakamit ang pinakamababang posibleng volatility."
+          },
+          {
+            "bold": "Máximo Sharpe at Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Ito ang punto kung saan ang linya na nagsisimula mula sa rate na walang panganib ay nakadikit sa mahusay na hangganan, na nag-aalok ng pinakamalaking tubo sa bawat yunit ng panganib."
+          }
+        ],
+        "example": "Kung pagsasamahin mo sa pantay na bahagi ang dalawang asset na may 20% volatility bawat isa ngunit zero correlation (ρ = 0), ang volatility ng portfolio ay hindi 20%, ngunit bumaba sa 14.1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR sa pamamagitan ng Active at Capture",
+        "intro": "Upang malaman kung aling posisyon ang nagdaragdag ng higit na panganib sa portfolio, ang marginal na kontribusyon ng bawat asset ay sinusukat ayon sa timbang nito at ang kaugnayan nito sa iba. Bilang karagdagan, sinusukat ng mga ratio ng pagkuha ang kawalaan ng simetrya laban sa pagtaas at pagbaba ng S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Ibalik ang iyong Asset o Portfolio sa mga Bullish (o Bearish) na gulong",
+          "denominator": "Pagbabalik ng S&P 500 sa parehong mga gulong",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100%) – Kumita ng higit sa index kapag tumaas ang market.",
+            "Downside Capture (< 100%): mas mababa sa index kapag bumaba ang market (defensive buffer)."
+          ]
+        },
+        "lead": "Ang perpektong profile na hinahanap mo kapag sinusuri ang ikatlong tab ng quadrant:",
+        "bullets": [
+          {
+            "bold": "positibong kawalaan ng simetrya",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Makilahok nang buo sa mga bull market ngunit protektahan ang kapital kapag nagtama ang stock market."
+          },
+          {
+            "bold": "Refuge o hindi nauugnay na mga ari-arian",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Mga instrumento tulad ng maikling bono o ginto na malamang na manatiling matatag o tumaas sa panahon ng pagbaba ng stock market."
+          }
+        ],
+        "example": "Kung sa mga buwan kung kailan tumaas ang S&P 500 ng 10%, nakakuha ang iyong portfolio ng 11% (Upside 110%), at nang bumagsak ang index ng 10% ang iyong portfolio ay bumagsak lamang ng 6% (Downside 60%), mayroon kang malakas na asymmetry sa iyong pabor."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normal vs Crisis Correlation",
+        "intro": "Ang Pearson coefficient (r) ay sumusukat mula -1.00 hanggang +1.00 kung paano gumagalaw ang dalawang asset sa isa't isa. Ang panganib sa pamamahala ng portfolio ay na sa panahon ng pag-crash ng merkado ang ugnayan sa pagitan ng mga asset ng panganib ay karaniwang pumapasok sa +1.00 (contagion).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Covariance (Ibinabalik ang Asset i, Ibinabalik ang Asset j)",
+          "denominator": "Volatility ng Asset i (σᵢ) × Volatility ng Asset j (σⱼ)",
+          "vars": [
+            "r malapit sa 0 o negatibo: mahusay na pagkakaiba-iba (kapag ang isa ay bumaba, ang isa ay hindi sumusunod).",
+            "r sa Crisis Queue: muling kinakalkula ang matrix na kumukuha lamang ng 5% ng pinakamasamang gulong sa merkado."
+          ]
+        },
+        "lead": "Paano basahin ang mga kulay ng 6x6 matrix sa parehong mga rehimen:",
+        "bullets": [
+          {
+            "bold": "Tunay na pagkakaiba-iba",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Ang parehong mga asset ay tumutugon sa iba't ibang mga pang-ekonomiyang driver at binabayaran ang bawat isa."
+          },
+          {
+            "bold": "Konsentrasyon o contagion",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Gumagalaw sila bilang isang bloke; Ang pagkakaroon ng pareho ay hindi nakakabawas sa iyong pagkahulog sa isang masamang araw."
+          }
+        ],
+        "example": "Dalawang stock mula sa iba't ibang sektor ay maaaring may katamtamang ugnayan na 0.42 sa isang normal na taon, ngunit kapag na-activate mo ang Crisis Queue button makikita mo na ito ay tumataas sa 0.81 dahil sa gulat ay sabay silang nagbebenta."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D Shock (Mga Rate × Stock Market)",
+        "intro": "Ang 2D matrix ay sabay-sabay na pinagsasama ang epekto ng paggalaw sa mga rate ng interes (sa pamamagitan ng Fixed Income Duration at Rate Sensitivity) sa pagbaba o pagtaas sa S&P 500 index (sa pamamagitan ng Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: senaryo ng pagkakaiba-iba ng stock market sa horizontal axis (−20% hanggang +10%).",
+            "Δ Rate: senaryo ng pagbabago sa mga rate ng interes sa mga batayang punto sa vertical axis (−100 hanggang +200 bps)."
+          ]
+        },
+        "lead": "Ano ang layunin ng pagtawid sa dalawang palakol sa talahanayan:",
+        "bullets": [
+          {
+            "bold": "Stagflation o rate hike scenario",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Tulad ng nangyari noong 2022, kung saan sabay na nagdurusa ang mga stock at long bond."
+          },
+          {
+            "bold": "Klasikong senaryo ng tirahan",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Kung saan ang mas mababang mga rate ay nagpapataas ng presyo ng mga Treasury bond at pinapagaan ang pagbagsak ng mga stock."
+          }
+        ],
+        "example": "Pag-filter para sa isang mahabang bond tulad ng US10Y o TLT na makikita mo sa talahanayan kung paano ito magkakaroon ng halaga kapag bumaba ang mga rate (-100 bps), na nagsisilbing parachute kung bumagsak ang S&P 500 sa araw ding iyon."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Mga Rehimeng Markov (#11)",
+        "intro": "Itinulad ng Markov chain ang ekonomiya bilang isang sistema na tumatalon sa pagitan ng apat na posibleng estado (Calm Bullish, Volatile Bullish, Inflation/Rates at Krisis) at kinakalkula ang posibilidad na lumipat mula sa isa patungo sa isa pa.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Pangunahing dayagonal (i = j): posibilidad na ang kasalukuyang rehimen ay nananatiling hindi nagbabago.",
+            "Off-diagonal (i ≠ j): posibilidad ng pag-ikot sa isang bagong klima ng merkado."
+          ]
+        },
+        "lead": "Paano samantalahin ang transition matrix sa pangalawang tab:",
+        "bullets": [
+          {
+            "bold": "Ang pagtitiyaga ng kasalukuyang cycle",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Ang mga kalmadong rehimen ay karaniwang may mataas na pagtitiyaga (> 75%), na nagpapahintulot sa mga posisyon ng trend na mapanatili."
+          },
+          {
+            "bold": "Maagang Babala sa Pag-ikot",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Kapag tumaas ang posibilidad ng paglipat sa mga pabagu-bagong estado, ipinapayong bawasan ang leverage o i-activate ang hedging."
+          }
+        ],
+        "example": "Kung ang market ngayon ay nasa Volatile Bull regime at ang row ay nagmamarka ng 62% ng pagiging permanente, 20% ng pagbabalik sa Bull Calm at 18% ng pagpunta sa Stress/Crisis, alam mo na halos 1 sa 5 mga sitwasyon ay nagreresulta sa isang pagwawasto."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo Projection (10,000 Path)",
+        "intro": "Batay sa inaasahang pagbabalik at kasalukuyang volatility ng iyong portfolio, ang simulator ay bumubuo ng 10,000 posibleng mga trajectory sa hinaharap araw-araw gamit ang stochastic Geometric Brownian Movement na modelo.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ at σ: inaasahang taunang pagbabalik at annualized volatility ng iyong kasalukuyang portfolio.",
+            "Z: karaniwang normal na random na variable na iginuhit nang 10,000 beses sa abot-tanaw (6M, 12M o 24M)."
+          ]
+        },
+        "lead": "Mula sa 10,000 simulation na ito, ang tatlong pangunahing kurba ng graph ay nakuha:",
+        "bullets": [
+          {
+            "bold": "Paborableng senaryo",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Ang antas na nalampasan lamang ng 5% ng mga pinaka-optimistikong sitwasyon."
+          },
+          {
+            "bold": "Inaasahang gitnang tilapon",
+            "code": "Mediana P50",
+            "text": "Ang karaniwang resulta kung saan ang kalahati ng mga simulation ay nasa itaas at ang kalahati ay nasa ibaba."
+          },
+          {
+            "bold": "Term stress scenario",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Ang masamang palapag: sa 95% ng mga simulate na landas napupunta ang iyong portfolio sa itaas ng linyang ito."
+          }
+        ],
+        "example": "Sa isang 12-buwan na abot-tanaw sa base na 100, kung ang P50 ay 116 at ang P05 ay 94, ang iyong pangunahing inaasahan ay kumita ng +16% at sa isang napakasamang taon ay nanganganib ka ng malapit sa -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly Criterion (#14)",
+        "intro": "Siyentipikong sinasagot ng Kelly Criterion kung ilang porsyento ng iyong kapital ang dapat mong ilaan sa isang operasyon kapag alam mo ang iyong posibilidad ng tagumpay (Win-Rate) at kung magkano ang iyong panalo kapag nagtagumpay ka laban sa kung ano ang nawala sa iyo kapag nabigo ka (Payoff Ratio).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p at q: posibilidad na manalo (p) at posibilidad na matalo (q = 1 − p).",
+            "b (Payoff Ratio): ang average na tubo na hinati sa average na pagkalugi (halimbawa, ang kita ng $2 para sa bawat $1 na nanganganib ay nagpapahiwatig ng b = 2)."
+          ]
+        },
+        "lead": "Bakit ginagamit ng mga propesyonal na tagapamahala ang Half-Kelly (0.5×) na variant:",
+        "bullets": [
+          {
+            "bold": "Kelly Kumpleto",
+            "code": "Full Kelly 1.0×",
+            "text": "Pina-maximize nito ang pangmatagalang paglago ng matematika, ngunit bumubuo ng napakatalim na mga swings kung mayroong magkakasunod na mga error."
+          },
+          {
+            "bold": "Inirerekomenda ang Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Sa pamamagitan ng paggamit ng kalahati ng iminungkahing porsyento, nakukuha mo ang 75% ng potensyal na paglago ngunit pinuputol ang pagkasumpungin sa kalahati."
+          }
+        ],
+        "example": "Kung ang isang diskarte ay umabot sa 55% ng oras (p = 0.55, q = 0.45) at nagbabayad ng 2 hanggang 1 (b = 2), ang buong Kelly ay nagbibigay ng (0.55×2 − 0.45) / 2 = 32.5%, at ang maingat na Half-Kelly ay nagrerekomenda ng paglalaan ng 16.25%."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Ilagay ang OTM Shield (#6)",
+        "intro": "Ang isang out-of-the-money put option (halimbawa, 5% sa ibaba ng kasalukuyang presyo ng S&P 500) ay gumagana tulad ng isang insurance deductible: ito ay may maliit, fixed cost (ang premium), ngunit kung ang market ay bumaba ng 20% o 30%, ang halaga nito ay i-multiply ng convexly at offsets ang iyong mga pagkalugi sa portfolio.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Taunang Gastos (Carry Drag): taunang porsyento na gastos sa pag-renew ng insurance kung hindi bumagsak ang merkado.",
+            "Proteksyon sa Pag-crash (-20%): mga dolyar na nabawi ng kontrata ng Put sa panahon ng matinding pag-crash."
+          ]
+        },
+        "lead": "Paano ihambing ang mga opsyon sa simulator sa unang tab:",
+        "bullets": [
+          {
+            "bold": "Direktang index ng seguro",
+            "code": "SPY Put 5% OTM",
+            "text": "Nililimitahan nito ang maximum na pagkawala mula sa isang 5% na pagbaba bilang kapalit ng isang katamtamang taunang gastos."
+          },
+          {
+            "bold": "Pinondohan o pagkasumpungin na saklaw",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Binabawasan ng Collar ang gastos sa pamamagitan ng pagbebenta ng Call up; Ang Panawagan sa VIX ay sumasabog sa pabor kapag nag-trigger ang panic sa merkado."
+          }
+        ],
+        "example": "Kung ang pagprotekta sa isang $100,000 na portfolio na may SPY Put 5% OTM ay nagkakahalaga ng 1.1% bawat taon ($1,100), ngunit sa kaganapan ng isang -20% na pag-crash ay binabawasan nito ang pagbaba ng iyong portfolio sa mas mababa sa kalahati, ang netong ipon ay lumampas sa $7,000."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Margin at Distansya sa Margin Call (#13)",
+        "intro": "Kapag nagpapatakbo ka gamit ang mga derivatives o leverage, ang broker ay nangangailangan ng pagpapanatili ng isang minimum na porsyento ng equity capital sa kabuuang halaga ng posisyon (Maintenance Margin). Kung binabawasan ng pagkahulog ang iyong kapital sa ibaba ng palapag na iyon, ma-trigger ang isang Margin Call.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Balanse sa Utang o Pinansyal",
+          "denominator": "1 − % Maintenance Margin (Reg-T)",
+          "vars": [
+            "Gross Exposure: kabuuang kabuuan ng mga bukas na posisyon na hinati sa equity (hal. 1.18×).",
+            "Distansya sa Margin Call (%): pagbaba ng porsyento na sinusuportahan pa rin ng portfolio bago maabot ang threshold."
+          ]
+        },
+        "lead": "Mga antas ng seguridad sa monitoring bar:",
+        "bullets": [
+          {
+            "bold": "Malaking clearance zone",
+            "code": "Distancia > 30% en verde",
+            "text": "Ang leverage ay mababa at ang portfolio ay maaaring sumipsip ng kahit isang matinding krisis nang walang sapilitang pagbebenta."
+          },
+          {
+            "bold": "zone ng pag-iingat",
+            "code": "Distancia < 15% en rojo",
+            "text": "Ang isang katamtamang pagwawasto sa merkado ay mauubos ang libreng collateral at mapipilitang ma-liquidate ang mga posisyon sa pinakamasamang sandali."
+          }
+        ],
+        "example": "Sa katamtamang leverage na 1.18× at ginamit na margin ng maintenance na 22%, ang iyong portfolio ay may safety cushion na higit sa 38% downside bago ang anumang collateral claims."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Mga Panuntunan ng 3 Pillars Committee",
+        "intro": "Upang walang mapusok na desisyon na magsasapanganib sa kaligtasan ng portfolio, sinusuri ng Komite ang bawat order sa pamamagitan ng pagsasama-sama ng teknikal na tala, ang pangunahing tala at dalawang mahirap, hindi mapag-usapan na mga panuntunan sa pagkontrol sa peligro.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: walang indibidwal na asset ang makakapag-concentrate ng higit sa isang ikalimang bahagi ng kabuuang asset.",
+            "Anomaly Stop (P-06 ≥ 0.65): kung ang asset ay pumasok sa statistical dislocation, babawasan ng system ang maximum exposure sa 5%."
+          ]
+        },
+        "lead": "Ano ang ibig sabihin ng bawat estado sa hatol at sa Aklat ng Pagpapatupad:",
+        "bullets": [
+          {
+            "bold": "Inaprubahan ang order nang walang mga paghihigpit",
+            "code": "APROBADO en verde",
+            "text": "Ang tatlong mga haligi ay nagtutugma nang mabuti at ang laki ng posisyon ay gumagalang sa lahat ng mga limitasyon ng konsentrasyon at pagkatubig."
+          },
+          {
+            "bold": "Inayos ang pagkakasunud-sunod ng guardrail",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Kapag ang isang tiket ay lumampas sa 20% na limitasyon o sinubukang bumili ng malaki sa gitna ng isang anomalya, ang guardrail ay nagbabala sa labis."
+          }
+        ],
+        "example": "Kung sinusubukan mong gayahin ang isang pagbili na kukuha ng isang stock sa 26% ng iyong portfolio, ibina-flag ng Pillar 3 (Risk & Sizing Guardrail) ang alerto sa konsentrasyon upang maisaayos mo ito nang mas mababa sa 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Kahusayan Walk-Forward (WFE)",
+        "intro": "Upang matiyak na ang isang diskarte ay hindi lamang ginawa upang magmukhang maganda sa nakaraan (overfitting), inihahambing ng Walk-Forward test kung paano ito gumanap sa panahon ng disenyo (In-Sample) laban sa pagganap nito sa kasunod na hindi pa nakikitang data (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Annualized Return Out-of-Sample (Purong Pagpapatunay)",
+          "denominator": "Annualized Return In-Sample (Pagsasanay)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): makasaysayang seksyon na ginamit upang i-calibrate ang mga timbang at panuntunan ng diskarte.",
+            "Out-of-Sample (OOS): susunod na seksyon kung saan ang diskarte ay nasubok sa totoong mga kondisyon nang hindi hinahawakan ang mga parameter nito."
+          ]
+        },
+        "lead": "Paano nire-rate ng quantitative industry ang porsyento ng WFE:",
+        "bullets": [
+          {
+            "bold": "Matatag at pare-parehong diskarte",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Pinapanatili nito ang karamihan sa kakayahan nitong makabuo ng kita kapag nahaharap sa mga bagong kondisyon sa merkado."
+          },
+          {
+            "bold": "Marupok o overfit na diskarte",
+            "code": "WFE < 50% en rojo",
+            "text": "Ito ay gumana nang maayos sa teorya ng nakaraan ngunit nawawalan ng bisa sa katotohanan; Hindi ipinapayong isagawa ito gamit ang totoong pera."
+          }
+        ],
+        "example": "Kung ang isang diskarte ay nagbalik ng 20% ​​annualized sa yugto ng disenyo nito (In-Sample) at sa kasunod na aktwal na yugto ng pagsubok (Out-of-Sample) nagbalik ito ng 18.8% annualized, ang WFE na kahusayan nito ay (18.8 / 20) = 94.0%."
+      }
+    ]
+  }
+}

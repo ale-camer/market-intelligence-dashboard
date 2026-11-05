@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Élő vizuális végigjátszás",
+      "clickPlayPause": "Kattintson a lejátszáshoz vagy szüneteltetéshez (szóköz)",
+      "subtitles": "Feliratok (C)",
+      "fullscreen": "Teljes képernyő (F)",
+      "exitFullscreen": "Kilépés a teljes képernyőről (F vagy Esc)",
+      "portTabs": [
+        "Építő",
+        "Kockázat",
+        "Szimulátor",
+        "Másodpilóta"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Nyelvek",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • Kategóriák",
+      "scr-pulse": "02 • 24 órás pulzus",
+      "scr-table": "03 • táblázat",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Hőtérkép",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • Műszaki",
+      "ana-compare": "03 • Összehasonlítás %",
+      "ana-micro": "04 • Micro & Flow",
+      "ana-engines": "05 • 3D/2D motorok",
+      "res-hero": "01 • Pontszám és álláspont",
+      "res-rag": "02 • RAG Chat",
+      "res-factors": "03 • Tényezők",
+      "res-pulse24h": "04 • FinBERT impulzus",
+      "p1-pills": "01 • Összegzés",
+      "p1-table": "02 • Súlyszámítás",
+      "p1-xray": "03 • Röntgen",
+      "p1-calendar": "04 • Naptár",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornado és VaR",
+      "p2-corr": "03 • Összefüggés",
+      "p2-shock2d": "04 • Sokk és Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Hatás",
+      "p3-whatif": "02 • What-If és Kelly",
+      "p3-tailhedge": "03 • OTM Put & Margin",
+      "p3-committee": "04 • Bizottság és napló",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Üdvözöljük a Home képernyőn: a figyelemeltereléstől mentes kiindulópont, ahol a piacok dekódolásra kerülnek.",
+      "home-header": "A Header bal felső sarkában a λ ikonra kattintva mindig visszatérhet ehhez a fő színpadhoz.",
+      "home-markets": "A Header tetején helyezkedik el a Markets, az Ön munkaállomása, amellyel élőben kutathatja mind a 213 globális eszközt.",
+      "home-portfolio": "Közvetlenül mellette a középső menüben található a Portfolio, amely allokációkat, stressz-teszt kockázatot és kereskedéseket szimulál.",
+      "home-system": "A bal alsó Footer ablakban a System megnyitja a szerverek és adatbázisok élő megfigyelhetőségét.",
+      "home-guide": "Mellette a Guide megnyitja ezt az interaktív, lépésenkénti kézikönyvet, amikor csak szüksége van rá.",
+      "home-langs": "A jobb alsó sarokban található nyelv gomb megnyitja a középen elhelyezett modált, és a platformot 56 nyelvre fordítja le.",
+      "home-palettes": "A Palette pedig megnyitja az 5 vizuális olvasási témát, miközben szigorúan érintetlenül tartja a pénzügyi zöldet és a pirosat.",
+      "scr-categories": "A felső Kategóriák sávon szűrhet az Összes 213 eszköz, a Watchlist vagy 10 speciális piac között.",
+      "scr-pulse": "A 4 Pulse 24h kártyák összesített hangerőt, átlagos RSI-t, P-06 üzemmódot és felső hangerő-elmozdulásokat mutatnak.",
+      "scr-table": "Az interaktív Table azonnali keresést, kedvenceket és intelligens oszlopokat tartalmaz az egyes eszközosztályokhoz szabva.",
+      "scr-orbital": "A Orbital nézet az élő oldalsó ellenőrző panellel három koncentrikus gyűrűre térképezi fel az eszközöket.",
+      "scr-heatmap": "A Heatmap a 10 legjobb eszközt arányos blokkokba rendezi a zöld és a piros 8 árnyalatában.",
+      "scr-maintools": "A Main Tools pedig három lépésben elvezeti Önt a szuverén görbékhez, a 3D volatilitáshoz, az FX keresztezéshez és a határidős motorokhoz.",
+      "ana-hero": "A Header egyesíti az eszközváltót, 9 időkeretet 1 perctől ALL-ig, és az 5 alapvető indikátort.",
+      "ana-technical": "A műszaki objektívek SMA 20, VWAP és 2σ Bollinger szalagokat fednek, alsó hangerő-visszaigazolással.",
+      "ana-compare": "Az Összehasonlítás %-kal mérheti a nettó százalékos előnyt vagy a Alpha Spread-t 0%-ról egy kompatibilis partnerrel vagy indexszel szemben.",
+      "ana-micro": "A Micro & Flow a 20d Z-Score, a spread likviditási diszlokáció és a P-06 anomália pontszám segítségével érzékeli a volumencsúcsokat.",
+      "ana-engines": "A negyedik lap egy dinamikus ad-hoc eszköz, amely eszközosztályonként változik: mivel a NVDA egy részvény, megnyitja a 3D volatilitás és opciók kifizetését, míg a kötvények, a deviza és az áruk saját speciális eszközeiket indítják el.",
+      "res-hero": "A tetején a Score & Stance összefoglalja az alapvető ítéletet, a súlyozott értékelést és a hőmérőt.",
+      "res-rag": "A bal oldali oszlopban a RAG Document Chat megválaszolja a hivatalos SEC 10-K és 10-Q bejelentéseken alapuló ellenőrzött lekérdezéseket.",
+      "res-factors": "A középső oszlopban a Factors harmonika a legjobb 5 bikahajtót állítja szembe az első 5 medvekockával.",
+      "res-pulse24h": "A jobb oldalon a FinBERT Pulse valós időben dönti el a legfrissebb híreket, és ábrázolja a 24 órás hangulatgörbét.",
+      "p1-pills": "A 6 összefoglaló kártya újraszámolja az élő CAGR, Sharpe és Sortino, 95% VaR, Max Drawdown, Alfa és diverzifikációt.",
+      "p1-table": "A Súlyozás táblázatban adja hozzá a 213 elem bármelyikét, állítsa be a pontos százalékos súlyokat, vagy 100%-ra egyensúlyozza újra.",
+      "p1-xray": "A jobb felső sarokban az 5 lapos röntgenpanel az ETF átfedéseit, a kitettséget, a Brinson-hozzárendelést, a pénzforgalmat és a felügyeletet vizsgálja.",
+      "p1-calendar": "Az X-Ray alatt a Havi naptár a januártól decemberig tartó hozamkonzisztenciát és az YTD összegeket jeleníti meg.",
+      "p1-backtest": "A teljes szélességben alul a Backtesting összehasonlítja portfólióját a S&P 500, 60/40, All-Weather és Min-Variance modellekkel.",
+      "p2-markowitz": "Az első kvadráns a 2D Markowitz Efficient Frontier-t ábrázolja, és pozícionálja portfólióját a Min-Var és Max-Sharpe-hez képest.",
+      "p2-tornado": "A bal alsó kvadráns 5 történelmi válságot, eszközenkénti 95%-os VaR hozzájárulást és fejjel/lefelé mutató rögzítést tesztel.",
+      "p2-corr": "A jobb felső sarokban a 6×6 Mátrix összehasonlítja a normál körülmények közötti összefüggéseket a válsággal való fertőzéssel.",
+      "p2-shock2d": "A jobb alsó sarokban a Shock & Markov keresztezi a kamatlábakat a S&P 500 lépésekkel, és megbecsüli a rendszerváltásokat.",
+      "p2-montecarlo": "Az alsó panel pedig 10 000 Monte Carlo útvonalat vetít a P95, P50 és P05, a víz alatti lehúzás és a gördülő Sharpe között.",
+      "p3-impact": "A 6 Impact kártya összehasonlítja jelenlegi portfólióját a szimulált kereskedések utáni előrejelzett állapottal.",
+      "p3-whatif": "A bal felső sarokban a What-If & Kelly szimulálja a jegyek vételét vagy eladását, és kiszámítja az optimális Half-Kelly pozícióméretet.",
+      "p3-tailhedge": "A bal alsó sarokban az OTM Put & Margin szimulálja a védelmi opciós pajzsokat, és figyeli a Reg-T karbantartási rátát.",
+      "p3-committee": "A két jobb oldali panelen a 3 pillérből álló Bizottság a kockázati védőkorlátokat a végrehajtási napló és a másodpilóta mellett ellenőrzi.",
+      "p3-walkforward": "Alul pedig a Walk-Forward diagram a In-Sample és Out-of-Sample teljesítményét a WFE indexszel érvényesíti."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 12.7
+      },
+      {
+        "id": "home-header",
+        "startPct": 12.7,
+        "endPct": 22
+      },
+      {
+        "id": "home-markets",
+        "startPct": 22,
+        "endPct": 36.9
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 36.9,
+        "endPct": 51.9
+      },
+      {
+        "id": "home-system",
+        "startPct": 51.9,
+        "endPct": 62
+      },
+      {
+        "id": "home-guide",
+        "startPct": 62,
+        "endPct": 73.4
+      },
+      {
+        "id": "home-langs",
+        "startPct": 73.4,
+        "endPct": 86.7
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 86.7,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 16
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 16,
+        "endPct": 35
+      },
+      {
+        "id": "scr-table",
+        "startPct": 35,
+        "endPct": 51.6
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 51.6,
+        "endPct": 66.1
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 66.1,
+        "endPct": 78.6
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 78.6,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 15
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 15,
+        "endPct": 30.1
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 30.1,
+        "endPct": 48.4
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 48.4,
+        "endPct": 67.6
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 67.6,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 22
+      },
+      {
+        "id": "res-rag",
+        "startPct": 22,
+        "endPct": 51.1
+      },
+      {
+        "id": "res-factors",
+        "startPct": 51.1,
+        "endPct": 73.2
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 73.2,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 21.3
+      },
+      {
+        "id": "p1-table",
+        "startPct": 21.3,
+        "endPct": 42.5
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 42.5,
+        "endPct": 64
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 64,
+        "endPct": 79.9
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 79.9,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 19.9
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 19.9,
+        "endPct": 41
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 41,
+        "endPct": 58.8
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 58.8,
+        "endPct": 77.9
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 77.9,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 17.4
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 17.4,
+        "endPct": 39.1
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 39.1,
+        "endPct": 59.6
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 59.6,
+        "endPct": 81
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 81,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

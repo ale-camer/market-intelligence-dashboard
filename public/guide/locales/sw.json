@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Mwonekano Uliokunjwa",
+    "mainView": "Mtazamo Mkuu",
+    "expandedView": "Mwonekano Uliopanuliwa",
+    "inThisSection": "Katika sehemu hii utapata:",
+    "deepDive": "Dive ya kina",
+    "previous": "Iliyotangulia",
+    "next": "Inayofuata",
+    "mathFormula": "Mfumo wa Hisabati",
+    "practicalExample": "Mfano wa vitendo:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Unapofungua jukwaa la kitamaduni la kifedha, jambo la kwanza ambalo huonekana kwa kawaida ni chati nyingi, meza zinazomulika na menyu kila mahali. Unaanza wapi unapotaka tu kuangalia soko au kuangalia jinsi kwingineko yako inavyofanya?",
+        "Skrini ya Home imeundwa kwa usahihi ili kuepuka kelele hiyo ya awali. Inakukaribisha kwa nafasi safi na wazi ambapo udhibiti wote umewekwa katika pau mbili zisizohamishika: moja juu ili kufanya kazi na nyingine hapa chini ili kusanidi jukwaa ili kukufaa."
+      ],
+      "intro": "Skrini ya Home inakukaribisha kwa nafasi safi na wazi ambapo udhibiti wote umewekwa katika pau mbili zisizobadilika: moja juu ili kufanya kazi na nyingine hapa chini ili kusanidi jukwaa ili kukufaa.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Sehemu ya kuanzia ambayo inagawanya kazi yako katika uchanganuzi wa soko na usimamizi wa kwingineko.",
+          "paragraphs": [
+            "Fikiria kuwa unaanza kufanya biashara asubuhi. Wakati mwingine utataka kuangalia ili kuona ni hisa zipi, dhamana au sarafu zinazosonga zaidi; Nyakati nyingine utaenda moja kwa moja kukagua hatari ya kwingineko yako au kuiga ununuzi kabla ya kuutekeleza.",
+            "Je, unaepuka vipi kuchanganya vitu hivyo viwili kwenye skrini moja iliyojaa kupita kiasi? Jalada linatenganisha wazi njia hiyo na sekunde ya kwanza:"
+          ],
+          "lead": "Je, unaepuka vipi kuchanganya vitu hivyo viwili kwenye skrini moja iliyojaa kupita kiasi? Jalada linatenganisha wazi njia hiyo na sekunde ya kwanza:",
+          "bullets": [
+            {
+              "bold": "Nafasi bila vikwazo",
+              "code": "Donde se decodifican los mercados",
+              "text": "Unapoingia, hakuna meza wazi au arifa zinazokulazimisha kufunga madirisha kabla ya kuanza; Unachagua moduli ya kufungua."
+            },
+            {
+              "bold": "Njia mbili wazi",
+              "code": "Markets / Portfolio",
+              "text": "Mtiririko mzima wa maombi umegawanywa katika hatua kuu mbili: kwanza fursa za utafiti kwenye masoko na kisha ujenge au ujaribu kwingineko yako."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Sehemu ya juu ya kuruka kwa mbofyo mmoja kati ya nyumba, soko na kwingineko yako.",
+          "paragraphs": [
+            "Unapochunguza maelezo ya kipengee au mabadiliko ya jaribio kwenye kwingineko yako, ni rahisi sana kupoteza wimbo wa mahali ulipokuwa. Je, unaendaje kutoka kwa kuangalia chati ya hisa hadi kukagua kwingineko yako bila kupitia menyu ndogo?",
+            "Upau wa juu daima hubakia kwenye skrini na hukupa ufikiaji wa moja kwa moja kwa vidokezo vitatu kuu:"
+          ],
+          "lead": "Upau wa juu daima hubakia kwenye skrini na hukupa ufikiaji wa moja kwa moja kwa vidokezo vitatu kuu:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Popote ulipo, kubofya ishara upande wa kushoto mara moja inakurudisha kwenye ukurasa kuu."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Ni nafasi yako ya utafiti. Hapa unachuja vipengee 213 vinavyopatikana, kufuata manukuu ya moja kwa moja, kuchanganua chati za kiufundi na kushauriana na muhtasari wa laha ya usawa au habari."
+            },
+            {
+              "bold": "Mkoba",
+              "code": "Portfolio",
+              "text": "Ni meza ya maamuzi yako. Hapa unafafanua ni asilimia ngapi ya mtaji wako huenda kwa kila mali, kupima ni kiasi gani unaweza kupoteza katika mgogoro na kuiga shughuli mpya kabla ya kuhatarisha pesa."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Kijachini cha kuangalia hali ya mfumo, kurudi kwa mwongozo huu, au kurekebisha mpangilio.",
+          "paragraphs": [
+            "Wakati wa kuchanganua data kwa wakati halisi, kuna maswali ya uendeshaji ambayo yanaweza kutokea wakati wowote: je, nukuu zinafika kwa usahihi? Kiashiria cha uhakika kilimaanisha nini? Je, ninaweza kupunguza mwangaza wa skrini?",
+            "Sehemu ya kijachini hupanga zana hizo zote za usaidizi na usanidi ili ziwe karibu kila wakati bila kupata njia ya katikati ya skrini:"
+          ],
+          "lead": "Sehemu ya kijachini hupanga zana hizo zote za usaidizi na usanidi ili ziwe karibu kila wakati bila kupata njia ya katikati ya skrini:",
+          "bullets": [
+            {
+              "bold": "Hali ya System",
+              "code": "System",
+              "text": "Nukta ya kijani inathibitisha kwa mtazamo kwamba kila kitu kiko katika mpangilio. Unapoifungua unaweza kuona kwa undani hali ya seva, hifadhidata na kasi ya majibu."
+            },
+            {
+              "bold": "Mtumiaji Guide",
+              "code": "Guide",
+              "text": "Fungua mwongozo huu wasilianifu wakati wowote ili kuona jinsi ya kutumia skrini au chunguza kwa kina hesabu zake."
+            },
+            {
+              "bold": "Mapendeleo ya kuona",
+              "code": "Idioma / Palette",
+              "text": "Upande wa kulia una vidhibiti vya kubadilisha lugha ya programu nzima au kurekebisha mwangaza wa mandharinyuma."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Lugha",
+          "summary": "Injini ya utafutaji ya kutafsiri jukwaa zima katika lugha yako papo hapo.",
+          "paragraphs": [
+            "Masharti ya kifedha na ripoti za soko tayari zina utata wao wenyewe bila kuongeza kizuizi cha lugha. Ikiwa ungependa kusoma maelezo katika Kihispania, Kiingereza au lugha nyingine yoyote, unaweza kuibadilisha papo hapo.",
+            "Hivi ndivyo kiteuzi kinavyofanya kazi kutoka kona ya chini kulia:"
+          ],
+          "lead": "Hivi ndivyo kiteuzi kinavyofanya kazi kutoka kona ya chini kulia:",
+          "bullets": [
+            {
+              "bold": "utafutaji wa papo hapo",
+              "code": "Select Language",
+              "text": "Kubofya bendera ya sasa hufungua dirisha ambapo unaweza kuchagua kati ya lugha 56 kwa kuandika jina au msimbo wake (kwa mfano, ES, EN, PT, FR au DE)."
+            },
+            {
+              "bold": "Kumbukumbu ya moja kwa moja",
+              "code": "mid_lang_v1",
+              "text": "Skrini nzima inatafsiriwa papo hapo bila kupakia upya ukurasa na chaguo lako litahifadhiwa kwa mara nyingine utakapoingiza."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Mandhari zinazoonekana ili kurekebisha utofautishaji wa skrini bila kubadilisha rangi za fedha.",
+          "paragraphs": [
+            "Kutumia saa kadhaa mbele ya michoro na tofauti ambayo haiendani na mwangaza katika mazingira yako mwishowe huchosha macho yako. Walakini, kubadilisha rangi za jukwaa la kifedha kuna hatari ya kawaida: kupoteza kumbukumbu ya kile kinachopanda na kinachoshuka.",
+            "Ili kutatua hili, kiteuzi cha mandhari hutenganisha rangi ya mazingira kutoka kwa rangi ya data:"
+          ],
+          "lead": "Ili kutatua hili, kiteuzi cha mandhari hutenganisha rangi ya mazingira kutoka kwa rangi ya data:",
+          "bullets": [
+            {
+              "bold": "Mazingira matano ya kusoma",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Kwa kila kubofya unazunguka kati ya mandharinyuma nyeusi, samawati au joto hadi upate ile inayokufaa zaidi macho yako."
+            },
+            {
+              "bold": "Semantiki za kifedha zisizobadilika",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Haijalishi ni mada gani unayobadilisha, sheria ya ulimwengu wote ya soko haibadilishwi: kijani kibichi kila wakati inamaanisha kupanda au faida, na nyekundu daima inamaanisha kuanguka, kupoteza au tahadhari ya hatari."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Fikiria kuwa unataka kugundua ni wapi fursa bora za siku ziko kati ya bondi zaidi ya mia mbili, hisa, fahirisi, sarafu na malighafi. Ikiwa ungefungua chati moja baada ya nyingine, soko lingefungwa kabla ya kumaliza kuziangalia.",
+            "Screener huleta pamoja mali zote 213 kwenye jukwaa hadi kwenye dashibodi moja ya moja kwa moja. Inakuruhusu kuchuja kulingana na soko kwa sekunde, kupima kiwango cha jumla cha siku, na kuchagua kutoka kwa njia nne tofauti za kutazama ni mali gani inayofanya kazi."
+          ],
+          "intro": "Screener huleta vipengee vyote 213 kwenye jukwaa kwenye dashibodi moja ya moja kwa moja ili uweze kuchuja kwa soko na kuona fursa kwa haraka.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategoria",
+              "summary": "Vichujio bora vya kuangazia darasa moja la kipengee au orodha yako ya kutazama.",
+              "paragraphs": [
+                "Haijalishi kuchanganua dhamana ya Hazina kwa kutumia vipimo sawa na hisa ya teknolojia au mafuta. Unapochanganya kila kitu kwenye orodha sawa, unaishia kulinganisha pears na apples.",
+                "Je, unapunguzaje skrini haswa kwenye soko ambalo linakuvutia leo? Upau wa juu hukuruhusu kutenganisha ulimwengu kwa mbofyo mmoja:"
+              ],
+              "lead": "Upau wa juu hukuruhusu kutenganisha ulimwengu kwa mbofyo mmoja:",
+              "bullets": [
+                {
+                  "bold": "Picha kamili",
+                  "code": "Todos",
+                  "text": "Inaonyesha zana 213 kwa pamoja na kuagizwa kwa kiasi kilichouzwa ili uweze kuona ambapo pesa nyingi zaidi hutiririka duniani kote."
+                },
+                {
+                  "bold": "Ufuatiliaji wa kibinafsi",
+                  "code": "★ Watchlist",
+                  "text": "Tenga tu vipengee ambavyo umetia alama kuwa vipendwa ili kuvifuatilia kwa karibu bila kukengeushwa."
+                },
+                {
+                  "bold": "Masoko kumi maalumu",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Kwa kuchagua mojawapo ya kategoria hizi, skrini nzima inabadilisha viashiria vyake na safu za meza kwa sheria za sekta hiyo."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Maelezo ya jinsi mali 213 kwenye katalogi zinavyoainishwa na ni kiasi gani na vigezo vya ukwasi vinavyotimiza."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24h mapigo",
+              "summary": "Kadi nne za juu zinazokuambia ikiwa soko ni shwari, furaha au chini ya dhiki.",
+              "paragraphs": [
+                "Kabla ya kununua au kuuza mali maalum, ni vyema kujua katika hali gani ya hali ya hewa nzima inakwenda. Je, hii ni siku ya ujazo wa kawaida au pesa za taasisi zinaingia zote mara moja? Je, mali zote zinaongezeka au kuna dalili za mvutano?",
+                "Kadi nne zilizo chini ya vichungi hukupa usomaji huo wa jumla katika sekunde chache:"
+              ],
+              "lead": "Kadi nne zilizo chini ya vichungi hukupa usomaji huo wa jumla katika sekunde chache:",
+              "bullets": [
+                {
+                  "bold": "Jumla ya shughuli kwa siku",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Inaongeza hadi mabilioni ya dola zinazouzwa katika aina inayotumika na hukuonyesha kama kuna ushiriki zaidi au kidogo leo kuliko jana."
+                },
+                {
+                  "bold": "Wastani wa Nguvu ya Kikundi",
+                  "code": "AVG RSI 14",
+                  "text": "Inatoa muhtasari wa mita ya mduara kama bei za sekta zinakuja na shinikizo la kununua (kijani, zaidi ya 50) au kwa shinikizo la kuuza (nyekundu, chini ya 50)."
+                },
+                {
+                  "bold": "Kipimajoto cha kawaida",
+                  "code": "Régimen Normal P-06",
+                  "text": "Hukokotoa ni asilimia ngapi ya mali husogezwa ndani ya vigezo vyake vya kawaida na kukuambia kwa jina na jina ambalo ndilo chombo chenye hitilafu kubwa zaidi ya siku hiyo."
+                },
+                {
+                  "bold": "Uingizaji wa pesa usio wa kawaida",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Ukumbi wa mali tatu ambazo leo zinafanya kazi kwa kiwango cha juu sana ikilinganishwa na wastani wao wa mwezi uliopita unaonekana wazi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ufafanuzi wa kina wa jinsi RSI wastani, kiasi cha Z-Score na kigunduzi kisicho cha kawaida P-06 kinavyokokotolewa."
+            },
+            {
+              "id": "scr-table",
+              "label": "Jedwali",
+              "summary": "Orodha shirikishi yenye utafutaji wa haraka, vipendwa na safu wima zinazolingana na kila soko.",
+              "paragraphs": [
+                "Unapojua tayari ni sekta gani unayotaka kuangalia na unahitaji kulinganisha nambari mahususi safu kwa safu, mwonekano wa jedwali ndio zana yako kuu.",
+                "Badala ya kukuonyesha lahajedwali gumu ambayo ni sawa kwa kila mtu, jedwali hurekebisha kile unachotafuta:"
+              ],
+              "lead": "Badala ya kukuonyesha lahajedwali gumu ambayo ni sawa kwa kila mtu, jedwali hurekebisha kile unachotafuta:",
+              "bullets": [
+                {
+                  "bold": "Injini ya utafutaji na nyota inayopendwa",
+                  "code": "Buscar activo / ★",
+                  "text": "Katika kichwa cha safu wima ya kwanza unaweza kuandika alama au jina lolote ili kwenda moja kwa moja kwenye kipengee hicho, au uguse nyota iliyo upande wa kushoto ili kuihifadhi kwenye Watchlist yako."
+                },
+                {
+                  "bold": "Safu wima mahiri kulingana na kategoria",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Ukichuja Hisa, vizidishio vya uthamini na ukingo huonekana; Ukichagua Dhamana au Viwango unaona mteremko wa curve na unyeti wa viwango; Ukiangalia Derivatives unaona tete iliyodokezwa."
+                },
+                {
+                  "bold": "Rukia moja kwa moja kwenye uchambuzi wa kina",
+                  "code": "Click en cualquier fila",
+                  "text": "Bofya tu kipengee chochote kwenye orodha ili kufungua kituo chako kamili cha chati za kiufundi na ripoti za kimsingi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Orodha ya vipimo mahususi ambavyo jedwali linaonyesha kwa kila aina ya vipengee 10."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Rada inayoonekana ya kugundua kwa muhtasari ni mali gani inasogea mbali na wastani wao wa kihistoria.",
+              "paragraphs": [
+                "Kusoma safu mia mbili za nambari kunaweza kukufanya ukose kipengee ambacho kinaanza kusonga kwa kasi. Je, unawezaje kugundua papo hapo ni chombo kipi kinapotoka kutoka kwa kawaida?",
+                "Mwonekano wa Orbital hubadilisha jedwali kuwa rada yenye pete tatu makini:"
+              ],
+              "lead": "Mwonekano wa Orbital hubadilisha jedwali kuwa rada yenye pete tatu makini:",
+              "bullets": [
+                {
+                  "bold": "Uchaguzi wa vigezo",
+                  "code": "INDICADOR",
+                  "text": "Unaamua ni hatua zipi za rada: hitilafu za takwimu, kuruka kwa sauti, nguvu ya bei (RSI), tete au faida katika saa 24 zilizopita."
+                },
+                {
+                  "bold": "Kusoma kwa umbali na rangi",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Hatua ya karibu au zaidi ni kwa mujibu wa kiashiria na zaidi rangi yake ya kijani au nyekundu, ni muhimu zaidi harakati yake ikilinganishwa na historia yake mwenyewe."
+                },
+                {
+                  "bold": "Ukaguzi bila kubadilisha skrini",
+                  "code": "Panel lateral en vivo",
+                  "text": "Kwa kuwekea kielekezi kwenye nodi yoyote ya rada, bei yake, chati yake safi ya siku ya ndani na vipimo vyake vitatu vya hatari huonyeshwa upande wa kulia."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Jinsi nafasi ya kila kipengee kwenye pete za rada inavyohesabiwa kulingana na mkengeuko wake wa kihistoria."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Ramani ya joto",
+              "summary": "Mosaic ya vizuizi sawia ili kutambua washindi na walioshindwa katika sekunde moja.",
+              "paragraphs": [
+                "Kuna wakati unataka tu kujibu swali la haraka: ni nani anayeongoza kupanda leo na ni nani anayeshusha soko chini?",
+                "Ramani ya Joto hupanga vipengee kumi vya juu vya kichujio kinachotumika kuwa vizuizi sawia ili sio lazima usome jedwali moja:"
+              ],
+              "lead": "Ramani ya Joto huagiza vipengee kumi vya juu vya kichujio kinachotumika kuwa vizuizi sawia:",
+              "bullets": [
+                {
+                  "bold": "Ukubwa kulingana na umuhimu",
+                  "code": "Puestos #1 a #10",
+                  "text": "Vifaa vyenye uzito mkubwa zaidi ndani ya kipimo kilichochaguliwa huchukua safu wima zilizo upande wa kushoto na visanduku vikubwa zaidi."
+                },
+                {
+                  "bold": "Ukali wa rangi",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Toni ya kuzuia mara moja inakuambia ukubwa wa harakati, kutoka kwa tofauti za wastani hadi kuongezeka kwa ghafla au kuanguka."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Njia ya mkato ya hatua tatu kwa viwango vya juu, chaguo, vikokotoo vya forex na siku zijazo.",
+              "paragraphs": [
+                "Kando na chati za bei za kitamaduni, jukwaa linajumuisha injini nne maalum za mapato ya kudumu, chaguo, misalaba ya sarafu na mikondo ya bidhaa. Je, unafikaje kwao bila kutafuta mali kwa kutumia mali?",
+                "Mtazamo huu unakuongoza kutoka kushoto kwenda kulia katika safu wima tatu rahisi sana:"
+              ],
+              "lead": "Mtazamo huu unakuongoza kutoka kushoto kwenda kulia katika safu wima tatu rahisi sana:",
+              "bullets": [
+                {
+                  "bold": "Kwanza unachagua familia",
+                  "code": "1. Clases de Activo",
+                  "text": "Unachagua ikiwa ungependa kufanya kazi na Viwango na Dhamana, na Chaguo kwenye Hisa/Fahirisi/Crypto, kwa Sarafu au kwa Malighafi."
+                },
+                {
+                  "bold": "Kisha angalia injini inafanya nini",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Katikati unasoma muhtasari wazi wa kile chombo hicho kinaonyesha na jinsi ya kujielekeza kwenye shoka zake."
+                },
+                {
+                  "bold": "Hatimaye, chagua inayotumika na ufungue",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Unatazama onyesho la moja kwa moja la chati, tafuta mali yoyote inayooana katika familia hiyo, na ufungue stesheni nzima kwa mbofyo mmoja."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Mara tu unapopata kipengee cha kupendeza kwenye Screener, ni wakati wa kuangalia kwa karibu. Je, iko kwenye hali ya juu au imeishiwa na mvuke? Je, unawashinda washindani wako? Je, kiasi na soko la derivatives linasema nini?",
+            "Kituo cha Analytics huzingatia uchanganuzi wote wa kiufundi, linganishi na wa kiasi wa mali hiyo kwenye skrini moja. Hapo juu unayo muhtasari wa jumla na upande wa kushoto wa lenzi nne za kubadilisha pembe ya uchanganuzi bila kupoteza mtazamo wa grafu."
+          ],
+          "intro": "Kituo cha Analytics huzingatia kiufundi, kulinganisha, uchambuzi wa mtiririko na injini za 3D/2D za mali ya mtu binafsi kwenye skrini moja.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Dashibodi ya juu ya kubadilisha vipengee, kuchagua muda uliowekwa na kuangalia vipimo vyako vitano muhimu.",
+              "paragraphs": [
+                "Unaposoma kipengee, kwa kawaida unabadilisha kati ya muda mfupi wa leo na filamu ya miezi michache iliyopita, au hata kubadili kuangalia alama nyingine sawa. Unafanyaje yote hayo bila kurudi nyuma?",
+                "Kijajuu cha juu huleta pamoja vidhibiti vya kusogeza na kichupo cha haraka cha chombo:"
+              ],
+              "lead": "Kijajuu cha juu huleta pamoja vidhibiti vya kusogeza na kichupo cha haraka cha chombo:",
+              "bullets": [
+                {
+                  "bold": "Kubadilisha mali au kurudi kwenye orodha",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Katika sehemu ya juu kushoto unaweza kurudi Screener au kuandika jina la chombo kingine chochote ili kubadilisha chati papo hapo."
+                },
+                {
+                  "bold": "Dirisha tisa za wakati",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Kwenye ukingo wa kulia unabadilisha ukubwa wa grafu kutoka miondoko ya dakika kwa dakika hadi historia nzima."
+                },
+                {
+                  "bold": "Viashiria vitano vinavyoongoza",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Karibu na bei ambayo kila wakati unatazama kiasi kilichouzwa, data mbili muhimu za kitengo chake, nguvu ya mwenendo na kiwango cha kawaida cha takwimu."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Kiufundi",
+              "summary": "Chati ya bei yenye wastani unaosonga, bendi za tete na sauti ya kufuata mtindo.",
+              "paragraphs": [
+                "Kuangalia bei ya mwisho pekee hakuambii ikiwa mali inaongezeka kwa kasi, ikiwa inashuka kutoka kwa wastani wake au ikiwa tayari imepanda haraka sana katika siku chache.",
+                "Lenzi ya kwanza kwenye reli ya kushoto hukuruhusu kufunika marejeleo ya kiufundi yanayotumika zaidi kwenye soko kwenye grafu:"
+              ],
+              "lead": "Lenzi ya kwanza kwenye reli ya kushoto hukuruhusu kufunika marejeleo ya kiufundi yanayotumika zaidi:",
+              "bullets": [
+                {
+                  "bold": "Anwani na bei halisi ya wastani",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Unaweza kuwasha wastani wa kusogeza wa vipindi 20 na wastani wa bei iliyopimwa ili kuona mara moja ikiwa kipengee kinauzwa juu au chini ya kiwango chake cha msawazo."
+                },
+                {
+                  "bold": "Kanda za ziada na uthibitisho wa kiasi",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Bendi huchota dari ya takwimu na sakafu ya bei, wakati baa za chini zinathibitisha ikiwa harakati inasaidiwa na kiasi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Fomula na vigezo vya tafsiri ya Wastani wa Kusonga (SMA 20), Bendi za Bollinger na VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Linganisha %",
+              "summary": "Kilinganishi cha asilimia kutoka 0% ili kupima kama kipengee chako kinafanya kazi zaidi au chini ya nyingine katika kategoria sawa.",
+              "paragraphs": [
+                "Hisa inayopanda kwa 5% inaonekana kama habari njema, lakini ikiwa kiwango chake au mshindani wake mkuu ameongezeka kwa 12% katika kipindi sawa, basi umesalia nyuma.",
+                "Lenzi ya pili inasuluhisha shaka hiyo kwa kuweka mali hizo mbili kwenye mstari sawa wa kuanzia:"
+              ],
+              "lead": "Lenzi ya pili inasuluhisha shaka hiyo kwa kuweka mali hizo mbili kwenye mstari sawa wa kuanzia:",
+              "bullets": [
+                {
+                  "bold": "Tafuta jozi thabiti",
+                  "code": "Buscar par compatible",
+                  "text": "Injini ya utafutaji huchuja kiotomatiki vipengee kutoka kwa familia moja (k.m. hisa dhidi ya hisa, ETF, au fahirisi) ili ulinganisho uwe na maana ya kifedha."
+                },
+                {
+                  "bold": "Faida halisi kwa asilimia",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Mikondo yote miwili huanza kutoka 0% na reli ya kushoto hukokotoa asilimia ngapi ya pointi za faida (katika kijani kibichi) au hasara (katika nyekundu) mali yako ina."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Mtiririko",
+              "summary": "Kigunduzi cha ununuzi usio na muundo wa kitaasisi, ukwasi na gharama za uenezi.",
+              "paragraphs": [
+                "Mara nyingi pesa kubwa hujilimbikiza au kupakua nafasi kabla ya bei kufanya harakati za ghafla. Je, unagunduaje alama hiyo iliyofichwa katika kiasi na ukwasi wa kitabu cha kuagiza?",
+                "Lenzi ya tatu inaangazia kile kinachotokea chini ya nukuu:"
+              ],
+              "lead": "Lenzi ya tatu inaangazia kile kinachotokea chini ya nukuu:",
+              "bullets": [
+                {
+                  "bold": "Vilele vya kiasi cha takwimu",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Hubadilisha kidirisha cha chini ili kukuonyesha ni mara ngapi sauti ya sasa inapotoka kutoka kwa kawaida, na kuonyesha shughuli zisizo za kawaida za kitaasisi."
+                },
+                {
+                  "bold": "Dhiki ya ukwasi na makosa",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Hupima kwa msingi ikiwa pengo kati ya wanunuzi na wauzaji linaongezeka na iwapo injini ya takwimu itatambua tabia isiyo ya kawaida."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Jinsi ufunguzi unavyoenea na miiba ya takwimu katika mtiririko wa mpangilio hupimwa."
+            },
+            {
+              "id": "ana-engines",
+              "label": "Injini za 3D/2D",
+              "summary": "Lenzi ya nne ambayo hutumia zana ya matangazo-hoc inayobadilika ambayo hubadilika kulingana na aina ya mali.",
+              "paragraphs": [
+                "Tofauti na lenzi tatu za kwanza (ambazo ni za kawaida kwa vyombo vyote), lenzi ya nne kwenye reli ya kushoto ni zana ya dharula ambayo hubadilika kwa nguvu kulingana na mali unayochanganua: kwa mfano, katika ziara ya moja kwa moja, kwa vile ni hisa (NVDA), huwezesha Tete ya 3D Isiyo wazi na Chaguzi katika Mifumo ya Malipo ya soko nyingine inamiliki uso wake maalum.",
+                "Kitufe cha nne hutambua darasa wazi la mali na kuamilisha kiotomatiki zana inayolingana ya ad-hoc:"
+              ],
+              "lead": "Kitufe cha nne hutambua ni kipengee gani umefungua na kuamilisha zana ya ad-hoc inayolingana nayo:",
+              "bullets": [
+                {
+                  "bold": "Katika hisa, fahirisi, derivatives na crypto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Onyesha hali tete iliyodokezwa ya 3D, chaguo tabasamu baada ya kuisha, na kiigaji cha mikakati 6 ili kuona ni kiasi gani ungepata au kupoteza leo na muda wake utakapoisha."
+                },
+                {
+                  "bold": "Katika viwango, bondi na ukwasi",
+                  "code": "Curva 3D/2D",
+                  "text": "Inakuruhusu kulinganisha mikondo ya mavuno ya nchi 42 dhidi ya Marekani na Ujerumani, kupima iwapo mduara ni wa kawaida au uliogeuzwa (2s10s) na ni kiasi gani cha bei hutofautiana na mabadiliko ya kiwango (DV01)."
+                },
+                {
+                  "bold": "Katika sarafu",
+                  "code": "FX & Carry",
+                  "text": "Inatoa kibadilishaji fedha na pembetatu kati ya sarafu 61 ambayo pia hukokotoa tofauti ya kiwango cha riba cha miaka 10 ili kupendelea au dhidi ya kudumisha jozi hizo."
+                },
+                {
+                  "bold": "Katika malighafi",
+                  "code": "Forward 3D/2D",
+                  "text": "Huweka chati za bei za mikataba ya siku zijazo mwezi baada ya mwezi ili kuonyesha kama soko hulipa zaidi kwa usambazaji wa bidhaa (Contango) au kwa uwasilishaji wa haraka (Backwardation), pamoja na hali ya orodha halisi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Maelezo ya kihisabati ya nyuso tete, curves huru za mavuno, kubeba sarafu na mikondo ya siku zijazo."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Chati inakuonyesha bei inafanya nini, lakini haikuambii kwa nini. Ili kujua kinachosababisha harakati itabidi usome kurasa nyingi za salio la robo mwaka, taarifa za benki kuu, ripoti za hesabu na nyaya za habari.",
+            "Kituo cha Research hukuinulia mizigo hiyo nzito. Inachanganya taarifa za upelelezi wa hali halisi zilizothibitishwa dhidi ya ripoti rasmi na usomaji wa habari wa wakati halisi, ikipanga ushahidi wote wa na dhidi yake katika safu wima tatu zilizo wazi."
+          ],
+          "intro": "Kituo Research ni muhtasari wa laha rasmi za mizani, ripoti za uchumi mkuu na habari za wakati halisi katika safu wima tatu zilizo wazi.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Kumbuka & Mkao",
+              "summary": "Kadi tatu kuu zinazotoa muhtasari wa uamuzi wa kimsingi na ucheshi wa habari.",
+              "paragraphs": [
+                "Je, misingi ya mali inaambatana na kupanda kwa bei au habari inazorotesha mtazamo? Kabla ya kusoma maelezo, unahitaji hitimisho la haraka la mtendaji.",
+                "Katika kona ya juu kulia una viashiria vitatu vinavyofupisha hali ya jumla ya mali:"
+              ],
+              "lead": "Katika kona ya juu kulia una viashiria vitatu vinavyofupisha hali ya jumla:",
+              "bullets": [
+                {
+                  "bold": "Mkao na uzito wa kila chanzo",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Inafafanua uamuzi wa jumla na kufafanua ni uzito gani inatoa kwa hati rasmi dhidi ya habari kulingana na aina ya mali (kwa mfano, salio la 80% na 20% ya habari katika hisa)."
+                },
+                {
+                  "bold": "Ukadiriaji wa pamoja",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Inakusanya katika alama moja matokeo halisi ya misingi pamoja na mtiririko wa taarifa wa siku."
+                },
+                {
+                  "bold": "Wamiliki wa thermometer",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Weka kwenye bar kutoka -100 hadi +100 ikiwa sauti ya vyombo vya habari katika masaa machache ya mwisho ni tamaa (nyekundu), neutral au shauku (kijani)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Jinsi ripoti rasmi hupimwa dhidi ya habari kulingana na aina ya kipengee."
+            },
+            {
+              "id": "res-rag",
+              "label": "Piga gumzo RAG",
+              "summary": "Msaidizi wa hali halisi wa kushoto atauliza maswali mahususi kuhusu laha za usawa na ripoti rasmi.",
+              "paragraphs": [
+                "Tuseme unataka kujua ni nini hasa kampuni ilisema kuhusu ukingo wake katika karatasi yake ya hivi punde ya kila mwaka ya 10-K, au kile ambacho Hifadhi ya Shirikisho ilisema katika dakika zake za hivi punde. Kuitafuta kwa mkono inachukua muda; Kuuliza gumzo la kawaida bila vyanzo kunaweza kukupa data iliyoundwa.",
+                "Safu wima ya kushoto inasuluhisha hili kwa kutumia mchawi uliounganishwa pekee kwa hati rasmi zilizothibitishwa:"
+              ],
+              "lead": "Safu wima ya kushoto inakupa mchawi aliyeunganishwa kwa hati rasmi zilizothibitishwa:",
+              "bullets": [
+                {
+                  "bold": "Tasnifu ya awali na maswali yaliyoongozwa",
+                  "code": "Chat Documental RAG",
+                  "text": "Huanza na muhtasari mkuu wenye manukuu yaliyoidhinishwa na vitufe vinne vya marejeleo vya haraka vilivyorekebishwa kwa aina ya vipengee, pamoja na sehemu ya wewe kuandika maswali yako mwenyewe."
+                },
+                {
+                  "bold": "Hatua ya moja kwa moja kwenye kwingineko yako",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Iwapo baada ya kutafiti mambo ya msingi utaamua kuwa kipengee kina thamani yake, kitufe hiki kilicho juu ya gumzo kinakutuma moja kwa moja kwenye kiigaji kwingineko."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Uendeshaji wa utafutaji wa hali halisi ulioidhinishwa (RAG) na vichujio vyake vya usalama."
+            },
+            {
+              "id": "res-factors",
+              "label": "Mambo",
+              "summary": "Accordion ya kati iliyo na viendeshaji tano vya kukuza na hatari tano za bei zilizopangwa kulingana na athari.",
+              "paragraphs": [
+                "Hakuna uwekezaji ambao ni kamilifu kwa asilimia mia moja au mbaya kwa asilimia mia moja: daima kuna mabishano ya kupendelea na hatari za siri. Siri ni kujua ni zipi zenye uzito zaidi leo.",
+                "Safu ya katikati inaweka pande zote mbili ana kwa ana ili uweze kufanya uamuzi wa usawa:"
+              ],
+              "lead": "Safu ya katikati inaweka pande zote mbili ana kwa ana ili uweze kufanya uamuzi wa usawa:",
+              "bullets": [
+                {
+                  "bold": "Lazimisha usawa na vichungi",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Hapo juu unaona upau wa zabuni kati ya wanunuzi na wauzaji, na chini unaweza kuchuja vichocheo vitano vyema (katika kijani) au hatari tano kuu (katika nyekundu)."
+                },
+                {
+                  "bold": "Maelezo na kuchimba chini kwa mbofyo mmoja",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Unapogusa kipengele chochote kwenye orodha, maelezo yake kamili yanaonyeshwa pamoja na kitufe cha kuuliza Chat RAG kwa maelezo zaidi kuhusu hatua hiyo mahususi."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "Mapigo ya FinBERT",
+              "summary": "Ratiba inayofaa iliyo na vichwa vya habari vya hivi punde vilivyokadiriwa na AI na mwendo wa saa 24.",
+              "paragraphs": [
+                "Kichwa kimoja cha habari cha dakika ya mwisho kuhusu mapato, mfumuko wa bei au kanuni kinaweza kubadilisha kabisa hali ya siku. Unajuaje ni habari gani imetoka hivi punde na ina athari gani?",
+                "Safu wima ya kulia hufuatilia mtiririko wa taarifa dakika baada ya dakika:"
+              ],
+              "lead": "Safu wima ya kulia hufuatilia mtiririko wa taarifa dakika baada ya dakika:",
+              "bullets": [
+                {
+                  "bold": "Ratiba ya matukio iliyohitimu",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Huorodhesha vichwa vitano vya hivi majuzi zaidi pamoja na wakati na wakala wao, na kuvipatia alama za kijani ikiwa ni vyema au vyekundu ikiwa vinaleta tishio."
+                },
+                {
+                  "bold": "Kiigaji cha athari na curve ya kila siku",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Unaweza kuwasha waya wa moja kwa moja kwa kitufe cha juu ili kuona jinsi inavyokokotoa upya skrini nzima na ufuate kwenye grafu iliyo hapa chini jinsi hali hiyo ilivyokuwa katika saa 24 zilizopita."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Jinsi muundo wa FinBERT huchanganua lugha ya kifedha ya kila mmiliki."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Mjenzi",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Kuchagua mali nzuri kando haitoshi kuwa na kwingineko nzuri. Ukiweka mtaji mwingi katika mali zinazosonga sawa, au ikiwa hupimi jinsi wangefanya kazi pamoja hapo awali, unawekeza kwa upofu.",
+            "Constructor & Performance (mwonekano wa kwanza wa Portfolio) ni warsha ambapo unaunda kwingineko yako. Inakuruhusu kuongeza mali yoyote kati ya 213, kurekebisha asilimia unayokabidhi kwa kila moja bila kushughulika na vidhibiti visivyo sahihi, na kukagua utunzi wake wa ndani na historia yake papo hapo."
+          ],
+          "intro": "Constructor & Performance ni warsha ambapo unaunda jalada lako, kurekebisha uzito wa kila kipengee na kukagua utendaji wake wa kihistoria.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Muhtasari",
+              "summary": "Kadi sita bora ambazo huhesabiwa upya huishi kila wakati unaporekebisha kwingineko yako.",
+              "paragraphs": [
+                "Kila wakati unapoongeza kipengee au kubadilisha asilimia katika kwingineko yako, unahitaji kujua mara moja ikiwa marekebisho hayo yaliboresha faida yako uliyotarajia au yalizidisha udhihirisho wako wa upande wa chini.",
+                "Safu mlalo ya juu kila wakati huweka vipimo sita vya msingi vya kwingineko vionekane:"
+              ],
+              "lead": "Safu mlalo ya juu kila wakati huweka vipimo sita vya msingi vya kwingineko vionekane:",
+              "bullets": [
+                {
+                  "bold": "Utendaji na ufanisi",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Wanakuambia ni faida gani ya kila mwaka ya miradi ya kwingineko kwenye mtaji wako na ni faida ngapi unapata kwa kila kitengo cha hatari kinachodhaniwa."
+                },
+                {
+                  "bold": "Hasara ya kila siku inayotarajiwa na kushuka kwa kihistoria",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Wanakokotoa ni dola ngapi unazoweza kupoteza kwa siku mbaya ndani ya kile kilichoonekana kitakwimu na kipi kilikuwa kikwazo kikubwa zaidi katika mwaka uliopita."
+                },
+                {
+                  "bold": "Thamani iliyoongezwa na mseto",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Wanapima ni alama ngapi kwingineko yako inashinda faharasa ya benchmark na ni hatari ngapi unapunguza shukrani kwa kuchanganya mali tofauti."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Uwiano wa fomula za urejeshaji mchanganyiko (CAGR), Sharpe na Sortino uwiano, na Thamani Hatarini (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Kupima uzito",
+              "summary": "Jedwali la kushoto la kuongeza vipengee, kuwasha au kuzima na kufafanua asilimia kamili ya kila nafasi.",
+              "paragraphs": [
+                "Je, nini kitatokea kwa nambari zako za kwingineko ikiwa utafunga kwa muda hisa za teknolojia leo au ugawanye pesa kwa usawa kati ya nafasi zako zote?",
+                "Paneli ya kushoto hukuruhusu kufanya majaribio hayo yote kwa njia safi na ya moja kwa moja:"
+              ],
+              "lead": "Paneli ya kushoto hukuruhusu kufanya majaribio hayo yote kwa njia safi na ya moja kwa moja:",
+              "bullets": [
+                {
+                  "bold": "Injini ya utafutaji ya mali 213",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Unaweza kutafuta chombo chochote kwenye jukwaa au kuchuja vipendwa vyako ili kukiongeza kwenye jedwali kwa mbofyo mmoja."
+                },
+                {
+                  "bold": "Anza haraka na uhariri sahihi",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Kila safu mlalo ina kisanduku cha kuteua cha kujumuisha au kutenga kipengee kwa wakati halisi na kisanduku cha nambari cha kuingiza asilimia kamili bila kutumia vitelezi visivyo sahihi."
+                },
+                {
+                  "bold": "Njia tatu za kusawazisha upya",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Juu ya jedwali una vitufe vya kusambaza uzani sawa kati ya vipengee vyote vinavyotumika, kuleta kiotomatiki jumla hadi 100% au urudishe kwenye kwingineko asili."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "X-ray",
+              "summary": "Paneli ya juu kulia iliyo na vichupo vitano vya kugundua viwango vilivyofichwa, mtiririko wa pesa na ulinzi.",
+              "paragraphs": [
+                "Mojawapo ya makosa ya kawaida wakati wa kuwekeza ni kuamini kuwa wewe ni mseto kwa sababu una mali tano tofauti, wakati ukweli ulinunua hisa ya mtu binafsi na pia ETF mbili ambazo zina hisa sawa ndani.",
+                "Paneli ya X-ray huchanganua kwingineko yako kutoka ndani kupitia vichupo vitano:"
+              ],
+              "lead": "Paneli ya X-ray huchanganua kwingineko yako kutoka ndani kupitia vichupo vitano:",
+              "bullets": [
+                {
+                  "bold": "Kigunduzi cha nafasi inayorudiwa",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Ongeza kile ambacho umewekeza moja kwa moja katika kila kampuni pamoja na sehemu iliyofichwa uliyo nayo ndani ya fahirisi au ETFs (kama vile SPY au QQQ), ikikuonya kwa rangi nyekundu ikiwa utavuka mipaka ya busara."
+                },
+                {
+                  "bold": "Ramani ya mwangaza na asili ya kurudi",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Zinakuonyesha ni asilimia ngapi unayo katika kila aina ya mali na sarafu, na ni kiasi gani cha faida ulichopata kutokana na kuchagua sekta nzuri dhidi ya kuchagua mali nzuri."
+                },
+                {
+                  "bold": "Makadirio ya mapato ya kila mwaka na usalama",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Wanakokotoa ni dola ngapi utakazokusanya kwa mwaka kwa gawio, kuponi na riba, na kukagua uteuzi wa walinzi ambapo mtaji wako unategemea."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Jinsi udhihirisho usio wa moja kwa moja unavyokokotolewa ndani ya ETFs na uchanganuzi wa maelezo ya Brinson."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Kalenda",
+              "summary": "Chati ya kila mwezi kuanzia Januari hadi Desemba ili kuona utaratibu wa faida na hasara zako.",
+              "paragraphs": [
+                "Kurudi kwa kila mwaka nzuri kunaweza kujificha miezi ya maporomoko makali sana ambayo katika mazoezi ni vigumu kuvumilia. Je, jalada uliloweka pamoja linalingana kwa kiasi gani mwezi hadi mwezi?",
+                "Chini kidogo ya X-ray, kalenda inachambua historia ya kila mwezi:"
+              ],
+              "lead": "Chini kidogo ya X-ray, kalenda inachambua historia ya kila mwezi:",
+              "bullets": [
+                {
+                  "bold": "Miezi ya kijani na miezi nyekundu",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Kila seli huhesabiwa upya papo hapo kulingana na uzani katika jedwali lako na hupakwa rangi ya kijani au nyekundu kulingana na matokeo ya mwezi huo, ikifungwa upande wa kulia na matokeo limbikizi ya mwaka."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Grafu ya skrini nzima hapa chini ili kulinganisha kwingineko yako dhidi ya mikakati minne ya kawaida.",
+              "paragraphs": [
+                "Kabla ya kuzingatia kwingineko yako kuwa nzuri, mtihani wa kimsingi unabaki: ni bora zaidi kuliko kuacha pesa kwenye S&P 500 au kwenye jalada la jadi la 60/40?",
+                "Paneli ya chini inachukua upana mzima wa skrini ili kuweka muundo wako hadi viwango vya soko:"
+              ],
+              "lead": "Paneli ya chini inaweka muundo wako dhidi ya viwango vya soko:",
+              "bullets": [
+                {
+                  "bold": "Upeo tano wa majaribio",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Inakuruhusu kutathmini jinsi mchanganyiko wako ulivyofanya kazi katika robo za hivi majuzi na katika mizunguko kamili ya miaka mingi."
+                },
+                {
+                  "bold": "Marejeleo manne ya ana kwa ana",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Wekelea mkunjo wa kijani wa kwingineko yako dhidi ya miundo yoyote minne ya kawaida ili uweze kuona kwa uwazi wakati iko mbele na jinsi inavyoshikilia upande wa chini."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Hatari",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Katika nyakati ambapo soko huinuka kwa utulivu, karibu kwingineko yoyote inaonekana salama. Tatizo halisi huonekana wakati mgogoro unazuka, viwango vya riba hupanda ghafla na mali ambazo zilionekana kuwa huru huanza kuanguka zote kwa wakati mmoja.",
+            "Kiasi cha Hatari na Mkazo (mwonekano wa pili wa Portfolio) huweka jalada lako kupitia majaribio makali kabla hayajatokea katika maisha halisi. Kupitia roboduara nne za ulinganifu na kiigaji cha hali ya baadaye hapa chini, hukuonyesha mahali ambapo maeneo yako hatarishi yapo."
+          ],
+          "intro": "Kiasi cha Hatari na Mfadhaiko hujaribu kwingineko yako kwa majanga ya kihistoria, uambukizo wa uwiano, na makadirio ya Monte Carlo.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Hatari shirikishi na ramani ya kurejesha ili kuona jinsi ulivyo karibu na kwingineko bora zaidi iwezekanavyo.",
+              "paragraphs": [
+                "Ukiwa na mali sawa na ambayo tayari unayo kwenye kwingineko yako, kuna maelfu ya njia za kusambaza asilimia. Je, mchanganyiko uliochagua ndio unaolipa bora zaidi kwa hatari unayochukua, au unaweza kushinda sawa na mshangao machache?",
+                "Roboduara ya kwanza juu kushoto huchora ramani ya moja kwa moja ya uwezekano:"
+              ],
+              "lead": "Roboduara ya kwanza juu kushoto huchora ramani ya moja kwa moja ya uwezekano:",
+              "bullets": [
+                {
+                  "bold": "Msimamo wako dhidi ya portfolios mojawapo",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Inaonyesha mahali ambapo kwingineko yako ya sasa iko kuhusiana na kiwango cha tete kinachowezekana na uhakika wa ufanisi wa juu wa kurejesha hatari."
+                },
+                {
+                  "bold": "Tabaka zinazoonekana na ukaguzi kwa mali",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Unaweza kuwasha au kuzima tabaka za kielelezo na ubofye nodi yoyote ili kusoma mchango kamili wa mali hiyo hapa chini."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mpaka mzuri wa Markowitz na kukokotoa tofauti ya chini kabisa na jalada la juu zaidi la Sharpe."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Kimbunga na VaR",
+              "summary": "Kiigaji cha kihistoria cha mgogoro, uchanganuzi wa hasara ya kila siku kwa mali na usawa wa soko.",
+              "paragraphs": [
+                "Ikiwa ajali kama ile ya mwaka wa 2008, kushuka kwa uchumi mwaka wa 2020, au ongezeko la kiwango cha 2022 lingerudiwa kesho, je, jalada lako la sasa lingepoteza kiasi gani na msababishi mkuu wa mali?",
+                "Roboduara ya chini kushoto inajibu maswali hayo matatu katika vichupo vitatu mahususi:"
+              ],
+              "lead": "Roboduara ya chini kushoto hujibu maswali hayo katika vichupo vitatu mahususi:",
+              "bullets": [
+                {
+                  "bold": "Jaribu dhidi ya majanga matano halisi",
+                  "code": "1. Tornado Stress",
+                  "text": "Linganisha sehemu kwa paa ni kiasi gani kwingineko chako kingeanguka dhidi ya S&P 500 kutokana na majanga makubwa matano ya kihistoria."
+                },
+                {
+                  "bold": "Kiwango cha hatari kwa nafasi",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Panga hisa zako kulingana na ni dola ngapi za hasara inayoweza kutokea kila siku ambayo kila moja huchangia kwenye kwingineko jumla."
+                },
+                {
+                  "bold": "Tabia katika kupanda na kushuka",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Inakuonyesha ni asilimia ngapi ya magurudumu ya soko ya soko ambayo kila kipengee kinanufaika nacho na ni kiasi gani kinaweza kudhibiti soko linapoanguka."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mbinu ya matukio ya kihistoria ya mkazo, mchango wa kando kwa VaR na uwiano wa kukamata."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Uwiano",
+              "summary": "Mchanganyiko wa kuangalia kama mali yako inaweza kutofautiana au ikiwa imeambukizwa wakati wa hofu.",
+              "paragraphs": [
+                "Kuwa na mali kadhaa kwenye kwingineko yako kunapunguza tu hatari ikiwa zote hazisongi katika mwelekeo mmoja kwa wakati mmoja. Lakini wakati wa hofu ya kifedha, uhusiano mwingi ambao ulionekana kuwa wa chini unaruka juu sana.",
+                "Roboduara ya juu kulia hukuruhusu kukagua uhusiano huo katika hali mbili:"
+              ],
+              "lead": "Roboduara ya juu kulia hukuruhusu kukagua uhusiano huo katika hali mbili:",
+              "bullets": [
+                {
+                  "bold": "Mchanganyiko kati ya mali na unyeti",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Inaonyesha jinsi kila jozi ya mali inavyosonga (katika kijani kibichi au samawati isiyokolea inapotofautiana vyema, na katika nyekundu inapokaribiana sana) na jinsi usikivu wao ni kwa soko."
+                },
+                {
+                  "bold": "Mwigizaji wa uambukizaji katika shida",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Kwa mbofyo mmoja unabadilisha miunganisho ya mwaka wa kawaida hadi yale ya muda wa hofu ili kugundua ni nafasi zipi hazitakulinda tena."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Uhesabuji wa migawo ya uunganisho ya Pearson chini ya hali ya kawaida na chini ya dhiki ya soko."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Mgongano na Markov",
+              "summary": "Jedwali la pamoja la athari kati ya viwango na soko la hisa, pamoja na uwezekano wa mabadiliko katika mzunguko wa uchumi.",
+              "paragraphs": [
+                "Katika uchumi halisi, matatizo hayaji moja baada ya nyingine: mara nyingi kupanda kwa viwango vya riba kunaambatana na kushuka kwa hisa. Je, nini kitatokea kwa kwingineko yako ikiwa vipengele viwili vimeunganishwa kwa wakati mmoja?",
+                "Roboduara ya chini ya kulia huvuka vigezo vyote viwili na kupima uwezekano wa mabadiliko ya utawala:"
+              ],
+              "lead": "Roboduara ya chini kulia huvuka vigeu vyote viwili na kupima mzunguko wa soko:",
+              "bullets": [
+                {
+                  "bold": "Ubao wa athari mara mbili",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Misondo ya viwango vya mtambuka (-100 hadi +200 msingi pointi) na maporomoko au kupanda kwa S&P 500 (-20% hadi +10%), kukuruhusu kuchuja kwa kwingineko nzima au kwa mali ya mtu binafsi."
+                },
+                {
+                  "bold": "Uwezekano wa mpito wa mzunguko",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Kokotoa uwezekano wa soko kubaki shwari au kuingia katika awamu tete, mfumuko wa bei au mgogoro."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Unyeti wa pamoja kwa viwango na vigeu, na matrix ya mpito ya hali ya Markov."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Paneli ya chini ni skrini nzima yenye makadirio ya uwezekano wa siku zijazo na kushuka kwa kihistoria.",
+              "paragraphs": [
+                "Kuangalia yaliyopita ni muhimu, lakini wakati wa kuwekeza mbele unachohitaji kujua ni ndani ya aina gani ya matokeo mtaji wako unaweza kusonga katika miezi sita ijayo, mwaka au miaka miwili.",
+                "Paneli ya chini ya upana kamili huleta pamoja zana tatu za muda za kutayarisha na kudhibiti njia hiyo:"
+              ],
+              "lead": "Jopo la chini linaleta pamoja zana tatu za muda za kutayarisha njia hiyo:",
+              "bullets": [
+                {
+                  "bold": "Matukio elfu kumi ya siku zijazo",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Chora koni ya uwezekano wa mabadiliko ya kwingineko yako, ukitofautisha hali ya matumaini (P95 kwa kijani), njia kuu inayotarajiwa (P50) na hali mbaya (P05 katika nyekundu)."
+                },
+                {
+                  "bold": "Kina cha maporomoko na utulivu kwa muda",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Zinakuruhusu ugeuze chati ili kuona ni muda gani kwingineko ilikaa chini ya viwango vyake vya juu au jinsi ufanisi na hatari yake ilivyokuwa thabiti kwa kukunja madirisha ya siku 60."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo uigaji stochastic wa barabara 10,000 na vipimo vya siku 60."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Mwimbaji",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Kabla ya kununua mali mpya, kupunguza nafasi au kulipia ua na chaguzi, swali kama hilo linatokea kila wakati: je, operesheni hii inaboresha kwingineko yangu au inaongeza hatari isiyo ya lazima? Na niweke mtaji kiasi gani ndani yake?",
+            "Maabara ya Mbinu ya Ad-Hoc (mwonekano wa tatu wa Portfolio) ni kiigaji chako kinachofanya kazi mapema. Inakuruhusu kupakia michezo ya kimbinu, kukokotoa ukubwa wa nafasi yako inayofaa, jaribu bima ya upande wa chini, na kuona matokeo kamili kabla na baada ya athari bila kugusa kwingineko yako ya msingi."
+          ],
+          "intro": "Maabara ya Mkakati wa Ad-Hoc ndiyo kiigaji chako cha biashara ya awali ili kupima maagizo, nafasi za ukubwa na kupima huduma.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Athari",
+              "summary": "Kadi sita za juu zinazolinganisha jalada lako la sasa dhidi ya matokeo baada ya michezo iliyoiga.",
+              "paragraphs": [
+                "Ili kujua ikiwa wazo la busara linafaa, haitoshi kwa mali kuonekana kuvutia peke yake: inapaswa kuboresha nambari za kwingineko nzima.",
+                "Safu mlalo ya juu hukuonyesha kabisa ulinganisho kati ya kwingineko yako ya sasa na kwingineko na uigaji uliotumika:"
+              ],
+              "lead": "Safu mlalo ya juu inalinganisha jalada lako la sasa dhidi ya jalada na uigaji uliotumika:",
+              "bullets": [
+                {
+                  "bold": "Athari kwa faida na ufanisi",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Huonyesha nambari ya msingi karibu na nambari iliyokadiriwa, ikiangazia tofauti ya kijani ikiwa igizo linaongeza ufanisi au kwa rangi nyekundu ikiwa itaharibika."
+                },
+                {
+                  "bold": "Athari kwa hatari, mtaji na sheria",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Wanakuambia ni kiasi gani cha juu zaidi kinachotarajiwa cha upotevu kinabadilika, ni asilimia ngapi ya kwingineko unayoweka kwenye majaribio na ikiwa viwango vyote vya usalama vinazingatiwa."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If na Kelly",
+              "summary": "Kiigaji cha tikiti cha ununuzi/uuzaji na kikokotoo kufafanua ni kiasi gani cha pesa cha kuhatarisha.",
+              "paragraphs": [
+                "Mawazo mengi mazuri ya uwekezaji huishia kutoa hasara kutokana na makosa katika saizi ya dau: kuweka kidogo sana hakusongii sindano, lakini kuweka sana kunaweza kuharibu kwingineko ikiwa hatua itaenda vibaya.",
+                "Roboduara ya kwanza kwenye sehemu ya juu kushoto inaunganisha karatasi ya ushahidi na hesabu ya ukubwa wa hisabati:"
+              ],
+              "lead": "Roboduara ya kwanza inaunganisha ripoti ya jaribio na hesabu ya hisabati ya ukubwa:",
+              "bullets": [
+                {
+                  "bold": "Jaribio la upakiaji wa agizo",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Unachagua mali yoyote, onyesha ikiwa unataka kununua, kuuza au kufunika na kupakia kiasi hicho kwa dola. Katika orodha iliyo hapa chini unaweza kuwasha au kuzima kila agizo lililoiga ili kulinganisha athari yake."
+                },
+                {
+                  "bold": "Ukubwa bora wa nafasi",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Kulingana na makadirio ya uwezekano wako wa kufaulu na uhusiano kati ya faida na hasara, huhesabu ni asilimia ngapi ya juu ya mtaji inapaswa kutengwa ili kukua bila kujionyesha kupita kiasi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hesabu ya hisabati ya Kigezo cha Kelly na toleo lake la kihafidhina la Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Weka OTM & Pambizo",
+              "summary": "Kiigaji cha bima chenye chaguo za kushuka kwa kasi kwa soko na kifuatilia simu cha ukingo.",
+              "paragraphs": [
+                "Unapoogopa urekebishaji mkali wa soko, kuuza nafasi zako zote kwa kawaida ni gharama kubwa na haifai. Njia mbadala ya kitaalamu ni kuchukua bima yenye njia za ulinzi, lakini bima hiyo inagharimu kiasi gani kwa mwaka na inakulinda kiasi gani?",
+                "Roboduara ya chini kushoto hukuruhusu kupima kiwango cha malipo na deni:"
+              ],
+              "lead": "Roboduara ya chini kushoto hupima chanjo na kiwango cha dhamana:",
+              "bullets": [
+                {
+                  "bold": "Mlinganisho wa ngao za kinga",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Inakuruhusu kubadilisha kati ya kufanya kazi bila bima au kutumia aina tatu za bima ukitumia chaguo (kwenye SPY, QQQ au VIX tete), ukitofautisha gharama ya kila mwaka ya malipo dhidi ya dola ambazo ungeokoa katika ajali ya 20%."
+                },
+                {
+                  "bold": "Kuongeza udhibiti na dhamana",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Fuatilia ni asilimia ngapi ya ukingo wa matengenezo umetumia na ni asilimia ngapi kushuka kwa kwingineko kunaweza kustahimili kabla ya kuingia katika eneo la ukingo wa simu."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Uendeshaji wa ua kwa kutumia nje ya pesa Chaguzi za Weka na hesabu ya dhamana Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Kamati & Kitabu",
+              "summary": "Paneli mbili za kulia zilizo na ukaguzi wa kiotomatiki wa mipaka ya hatari, historia ya agizo na majaribio Mwenza.",
+              "paragraphs": [
+                "Katika shauku ya kujaribu biashara, ni rahisi kupuuza kwamba mali inazingatia zaidi ya 20% ya kwingineko yako yote au kwamba inafanya kazi katikati ya hitilafu kali ya takwimu.",
+                "Roboduara mbili upande wa kulia hutumika kama udhibiti wako wa hatari kiotomatiki na njia ya ukaguzi:"
+              ],
+              "lead": "Roboduara mbili kwenye utendaji sahihi kama udhibiti wa hatari na usajili:",
+              "bullets": [
+                {
+                  "bold": "Kagua katika vipimo vitatu",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Wanatathmini maagizo yako yaliyoigwa kutoka kwa vikomo vya kiufundi, vya kimsingi na ngumu vya usalama (onyo ikiwa nafasi yoyote inazidi kikomo cha mtaji cha 20% au ikiwa ina hitilafu nyingi)."
+                },
+                {
+                  "bold": "Agiza logi na msaidizi wa kwingineko",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Paneli ya chini hurekodi kila uigaji na athari zake kwa hatari, huku kitufe cha mazungumzo kilicho juu kulia hufungua gumzo ili kuuliza maswali ya moja kwa moja kuhusu kwingineko yako."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sheria za udhibiti wa hatari za kabla ya operesheni na vikomo vya mkusanyiko kwa kila mali."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Grafu iliyo hapa chini katika skrini nzima ili kuangalia kama mkakati wako unafanya kazi nje ya kipindi cha majaribio.",
+              "paragraphs": [
+                "Mkakati wowote unaweza kurekebishwa kwa kuangalia yaliyopita hadi ionekane kama isiyofaa kwenye chati ya kihistoria. Changamoto ya kweli ni kujua ikiwa inaendelea kufanya kazi wakati inakabiliwa na data mpya ya soko.",
+                "Paneli ya chini ya upana kamili huweka mkakati kupitia uthibitishaji mkali zaidi kabla ya kuanza uzalishaji:"
+              ],
+              "lead": "Paneli ya chini inazingatia mkakati wa uthibitishaji wa sampuli na nje ya sampuli:",
+              "bullets": [
+                {
+                  "bold": "Tofauti kati ya muundo na upimaji halisi",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Inagawanya grafu ya kihistoria katika hatua ya kwanza ambapo mkakati umesahihishwa na hatua ya pili na data isiyoonekana ili kuangalia ikiwa inadumisha manufaa yake juu ya kwingineko msingi."
+                },
+                {
+                  "bold": "Kidokezo cha uimara wa takwimu",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Ikiwa kiashiria cha ufanisi kinazidi 70%, inathibitisha kuwa matokeo ni thabiti na sio bidhaa ya kulazimisha nambari za zamani."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kipimo cha Walk-Forward cha Ufanisi (WFE) hupima na jinsi kinavyotambua mikakati iliyoboreshwa kupita kiasi."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Kichujio cha Liquidity (ADV)",
+        "intro": "Ili mali iuzwe bila agizo moja kupotosha bei yake, mfumo unahitaji kiwango cha chini cha kiwango cha wastani cha kila siku kwa dola katika siku 20 zilizopita za kazi.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Bei ya Kufungaᵢ × Kiwango cha Biasharaᵢ)",
+          "denominator": "Magurudumu 20 ya ustadi",
+          "vars": [
+            "Bei ya Kufunga: bei rasmi ya kufunga ya siku niliyoonyeshwa kwa USD.",
+            "Kiwango cha Biasharaᵢ: jumla ya idadi ya vitengo vilivyouzwa siku hiyo."
+          ]
+        },
+        "lead": "Kulingana na wastani wa sauti ya kila siku, katalogi inaainisha kina cha kila chombo:",
+        "bullets": [
+          {
+            "bold": "Ukwasi mkubwa wa kitaasisi",
+            "code": "> $500M diarios",
+            "text": "Hukuruhusu kuingia na kuondoka katika nafasi kubwa mara moja bila kuhamisha bei ya soko."
+          },
+          {
+            "bold": "Ukwasi wa Katalogi ya Kawaida",
+            "code": "$50M a $500M diarios",
+            "text": "Inafaa kwa portfolios tofauti na gharama ya chini sana ya ununuzi / uuzaji."
+          },
+          {
+            "bold": "Ufuatiliaji wa kuenea",
+            "code": "< $50M diarios",
+            "text": "Katika nyakati za tete ni vyema kuangalia ufunguzi wa vidokezo kabla ya kutekeleza maagizo makubwa."
+          }
+        ],
+        "example": "Ikiwa hisa inauzwa kwa $200 na inafanya biashara kwa wastani wa hisa milioni 5 kwa kila gurudumu katika mwezi uliopita, kiasi chake cha wastani cha kila siku (ADV) ni $1 bilioni ($1.0B)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Kurekebisha hadi USD",
+        "intro": "Kadiri orodha inavyochanganya dhamana za Uropa, fahirisi za Asia, bidhaa na sarafu za siri, mtiririko wote wa kiasi hubadilishwa hadi dola za Marekani kwa wakati halisi ili ziweze kulinganishwa kwa kipimo sawa.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Kiasi cha Sarafu ya Ndani: kiasi kilichouzwa kwa sarafu ya soko asilia (EUR, JPY, GBP, BRL, n.k.).",
+            "Kiwango cha ubadilishaji wa Spot: nukuu ya sasa katika injini ya sarafu 61."
+          ]
+        },
+        "lead": "Ugeuzaji huu unaathiri moja kwa moja maeneo mawili kwenye skrini:",
+        "bullets": [
+          {
+            "bold": "Mtazamo wa Jumla Uorodheshaji Wote",
+            "code": "213 activos",
+            "text": "Agiza zana kutoka kwa uhamishaji mkubwa hadi mdogo wa kweli wa pesa ulimwenguni."
+          },
+          {
+            "bold": "Kadi ya Sauti iliyoongezwa",
+            "code": "Volumen 24h en $B",
+            "text": "Inaruhusu kiasi cha mali zilizoorodheshwa katika nchi tofauti kuongezwa bila upotoshaji."
+          }
+        ],
+        "example": "Iwapo dhamana ya Ujerumani itauza €4 bilioni kwa siku na EUR/USD ikifanya biashara kwa 1.08, mfumo huo unajumuisha $4.32B katika mzunguko wa kimataifa."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Je, unapimaje ikiwa soko limekuwa likipanda kwa nguvu za kweli au ikiwa tayari limepanda haraka sana na limechoka? Kielezo cha Nguvu Husika (RSI) inalinganisha ongezeko la wastani dhidi ya maporomoko ya wastani ya raundi 14 zilizopita kwa kipimo cha 0 hadi 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Wastani wa Kupanda₁₄ / Wastani wa Kushuka₁₄)",
+          "vars": [
+            "Wastani wa Kuongeza₁₄: wastani uliolainishwa wa pointi zilizopatikana katika siku za biashara za magurudumu 14 zilizopita.",
+            "Wastani wa Hasara₁₄: wastani uliolainishwa wa pointi zilizopotea kwa siku zisizopungua za kipindi sawa."
+          ]
+        },
+        "lead": "Hivi ndivyo sehemu tatu za kipimo zinavyofasiriwa katika pete ya duara:",
+        "bullets": [
+          {
+            "bold": "Kununua nguvu na kununuliwa kupita kiasi",
+            "code": "70 a 100",
+            "text": "Ongezeko hilo linazidi kupungua kwa hivi karibuni. Inaonyesha kasi kubwa ya kukuza, ingawa zaidi ya 70 inaonya kuwa bei inaweza kuhitaji pause."
+          },
+          {
+            "bold": "eneo la usawa",
+            "code": "30 a 70",
+            "text": "Soko linaenda kwa kasi endelevu. Kuvuka kiwango cha kati (> 50 kwa kijani) huthibitisha utawala wa mnunuzi, huku kushuka chini (< 50 katika nyekundu) kunaonyesha kutawala kwa muuzaji."
+          },
+          {
+            "bold": "Adhabu na uangalizi",
+            "code": "0 a 30",
+            "text": "Maporomoko hayo yalikuwa ya mara kwa mara na yalitamkwa hivi kwamba mali inaanza kuonekana kuwa ya bei nafuu kitakwimu na kukabiliwa na kurudishwa tena."
+          }
+        ],
+        "example": "Ikiwa katika magurudumu 14 ya mwisho kikundi cha hifadhi kilipanda wastani wa $ 2 kwa siku ya biashara na ilianguka tu $ 1 kwa siku ya kupungua, uwiano wake wa nguvu ni 2 na RSI yake inasoma 66.7 (bullish push in green)."
+      },
+      {
+        "id": "p06",
+        "label": "Utawala wa Kawaida (P-06)",
+        "intro": "Mali inaweza kuonekana kuwa shwari ikiwa unatazama bei yake tu, lakini wakati huo huo kuwa na shida na kuruka kwa kushangaza kwa kiasi na ufunguzi usio wa kawaida katika kilele chake cha ununuzi na uuzaji. Injini ya Isolation Forest (P-06) huvuka vigezo hivi kwa wakati mmoja ili kugundua tabia isiyo ya kawaida.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): wastani wa idadi ya vipunguzi vya nasibu vinavyohitajika ili kutenga tabia ya leo kutoka kwa historia yote.",
+            "x: vekta ya vigeu 4 (Rudi 24h, Vol Z-Score 20d, Uvumilivu Uliotambulika 30d na Kuenea katika bps)."
+          ]
+        },
+        "lead": "Hatua ya leo ni adimu, ndivyo inavyotengwa haraka na ndivyo alama inavyokaribia 1.00:",
+        "bullets": [
+          {
+            "bold": "Utawala wa kawaida",
+            "code": "0.00 a 0.49",
+            "text": "Bei, ujazo na ukwasi husogea kulingana na wastani wa kihistoria wa mali."
+          },
+          {
+            "bold": "Shughuli ya juu",
+            "code": "0.50 a 0.64",
+            "text": "Angalau moja ya vigezo ilianza kupotoka kutoka kwa tabia yake ya kawaida; Inashauriwa kufuatilia kwa karibu mtiririko wa maagizo."
+          },
+          {
+            "bold": "Kutengwa au hitilafu muhimu",
+            "code": "0.65 a 1.00",
+            "text": "Kipengee husajili tabia iliyokithiri kitakwimu. Katika moduli ya kwingineko, kuzidi kizingiti hiki huwasha breki ya usalama."
+          }
+        ],
+        "example": "Iwapo dhamana kuu itasogea kwa shida 0.1% katika bei lakini ujazo wake ukiongezeka kwa nne na kuenea kwake mara tatu kwa dakika, kigunduzi huvuka alama tatu za data na kupandisha alama yake hadi 0.74 (Kutengana kwa rangi nyekundu)."
+      },
+      {
+        "id": "zscore",
+        "label": "Kiwango cha Bypass (Z-Score)",
+        "intro": "Kusema kwamba dola milioni 500 ziliendeshwa leo ni nyingi kwa kampuni ya ukubwa wa kati, lakini ni kidogo sana kwa S&P 500. Volume Z-Score huleta mali zote kwa kitengo sawa cha ulimwengu wote: ni mikengeuko mingapi ya kawaida (σ) ni ujazo wa leo kutoka kwa wastani wake wa magurudumu 20.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Juzuu ya Leo (saa 24) − Kiwango cha Wastani (siku 20)",
+          "denominator": "Mkengeuko Wastani wa Sauti (20d)",
+          "vars": [
+            "Kiwango cha Wastani (20d): kiasi cha kawaida cha mali katika mwezi uliopita wa kazi.",
+            "Mkengeuko wa Kawaida (20d): ni kiasi gani cha sauti hii kawaida hutofautiana kutoka siku moja hadi nyingine."
+          ]
+        },
+        "lead": "Kwa njia hii unaweza kulinganisha mali yoyote kwa kiwango sawa cha vitengo vya sigma (σ):",
+        "bullets": [
+          {
+            "bold": "Shughuli ya kawaida",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Kiasi cha siku kiko ndani ya utaratibu wa wiki nne zilizopita."
+          },
+          {
+            "bold": "Ushiriki wa juu",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Kuna riba ya juu kuliko wastani ambayo inaanza kuthibitisha mwelekeo wa siku."
+          },
+          {
+            "bold": "Mgongano wa taasisi",
+            "code": "> +2.0σ",
+            "text": "Hutokea katika chini ya 5% ya duru za mwaka na kwa kawaida huakisi kuingia au kutoka kwa pesa nyingi."
+          }
+        ],
+        "example": "Ikiwa hisa kwa kawaida hufanya biashara ya $100M kila siku na toleo la kawaida la ±$20M na leo linauza $160M, ni $60M juu ya wastani wake, ambayo ni sawa kabisa na +3.0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Mapato ya kudumu (2s10s na DV01)",
+        "intro": "Unapochuja Dhamana au Viwango kwenye jedwali, vipimo viwili muhimu vya kutathmini deni kuu huonekana: mteremko wa curve (2s10s) na thamani ya fedha ya msingi (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "Pointi 1 ya msingi (bp 1): sawa na utendakazi wa 0.01%.",
+            "DV01 ($/$1M): Nafasi ya $1 milioni itashinda au kupoteza dola ngapi ikiwa kiwango kitasogeza pointi 1 ya msingi."
+          ]
+        },
+        "lead": "Jinsi ya kusoma nambari hizi mbili kwenye gridi ya taifa:",
+        "bullets": [
+          {
+            "bold": "Curve ya kawaida au chanya",
+            "code": "2s10s > 0 bps",
+            "text": "Dhamana za miaka 10 hulipa kiwango cha juu zaidi ya bondi za miaka 2, inayoakisi matarajio ya ukuaji wa uchumi wenye afya."
+          },
+          {
+            "bold": "mkunjo uliogeuzwa",
+            "code": "2s10s < 0 bps",
+            "text": "Viwango vifupi vinazidi viwango vya muda mrefu; kihistoria inaonya juu ya kupoa kiuchumi au kizuizi cha pesa."
+          }
+        ],
+        "example": "Ikiwa Hazina ya miaka 10 itatoa 4.20% na Hazina ya miaka 2 itatoa 4.55%, safu wima ya 2s10s alama -35 bps (curve inverted katika nyekundu)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Hisa (P/E na Pembeni)",
+        "intro": "Wakati wa kuchuja Hisa za S&P/NDX, jedwali linaonyesha mapato yanayotarajiwa mara nyingi (P/E Forward) na Pato la Jumla la Uendeshaji ili uweze kulinganisha hesabu dhidi ya faida.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Bei ya Sasa ya Kushiriki",
+          "denominator": "Makadirio ya Mapato kwa Kila Hisa (Miezi 12 Ijayo)",
+          "vars": [
+            "P/E Forward: Ni miaka mingapi ya mapato unayolipa kwa bei ya leo.",
+            "Pato la Jumla (%): asilimia ya mauzo ambayo inasalia kama faida ya jumla baada ya kutoa gharama ya moja kwa moja."
+          ]
+        },
+        "lead": "Nini cha kutafuta wakati wa kuvuka safu zote mbili:",
+        "bullets": [
+          {
+            "bold": "Kudai dhidi ya tathmini ya wastani",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Mchanganuo wa juu unaonyesha kuwa soko lina bei katika ukuaji dhabiti wa siku zijazo; ya chini kwa kawaida huakisi makampuni yaliyokomaa au yenye thamani."
+          },
+          {
+            "bold": "Nguvu ya Bei",
+            "code": "Margen Bruto > 50%",
+            "text": "Viwango vya juu vinaonyesha kampuni zilizo na faida kubwa za ushindani zenye uwezo wa kutetea faida zao dhidi ya mfumuko wa bei."
+          }
+        ],
+        "example": "Ikiwa hisa inauzwa kwa $150 na inakadiriwa kupata $6 kwa kila hisa katika kipindi cha miezi 12 ijayo, P/E yake ya Mbele ni 25.0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Derivatives, FX na Bidhaa",
+        "intro": "Kwa chaguo, soko za forex na za siku zijazo, safu wima mbili zinazobadilika zinaonyesha gharama iliyodokezwa ya hatari au zawadi ya kushikilia nafasi hiyo baada ya muda.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Derivatives): tete ya kila mwaka ambayo soko la chaguzi hupunguzwa kwa siku 30 zijazo.",
+            "Beba 10Y (FX) na Roll Yield (Bidhaa): faida ya kila mwaka au gharama kutoka kwa tofauti ya viwango au uboreshaji wa siku zijazo."
+          ]
+        },
+        "lead": "Jinsi ya kuchukua faida ya safuwima hizi kulingana na kipengee:",
+        "bullets": [
+          {
+            "bold": "Katika Viingilio",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Wanakuambia ni asilimia ngapi ya harakati soko linatarajia na kama chaguo za kufunika maporomoko (Weka) ni ghali."
+          },
+          {
+            "bold": "Katika Sarafu na Malighafi",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Zinaonyesha rangi ya kijani ikiwa kutunza mali hukupa mapato ya ziada au kwa rangi nyekundu ikiwa ina gharama ya kubeba."
+          }
+        ],
+        "example": "Iwapo chaguo linaonyesha hali tete (ATM IV) ya 35% kila mwaka, soko litapunguza karibu ±10% kwa siku 30 zijazo."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Ramani ya Radi ya Radi",
+        "intro": "Kuweka hadi mali 45 katika pete tatu za rada bila kuingiliana, mwonekano wa Orbital hubadilisha thamani ya kiashiria kilichochaguliwa kuwa umbali wa katikati (radius r) iliyorekebishwa kati ya kiwango cha chini na cha juu cha kikundi.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Thamani ya Mali − Thamani ya Chini ya Kikundi",
+          "denominator": "Thamani ya Juu ya Kikundi - Kiwango cha Chini cha Thamani ya Kikundi",
+          "vars": [
+            "r → 0 (Pete ya Ndani): huzingatia mali kwa nguvu zaidi au mkengeuko chanya.",
+            "r → 1 (Pete ya Nje): hutafuta mali za pembeni au zile zilizo na usomaji wa chini kabisa wa jamaa."
+          ]
+        },
+        "lead": "Jinsi ya kusoma msimamo na rangi ya kila sayari kwenye rada:",
+        "bullets": [
+          {
+            "bold": "Kuzingatia pete ya ndani",
+            "code": "Centro del radar",
+            "text": "Kusanya vipengee vinavyoongoza kutoka kwa kiashirio ulichochagua hapo juu ili mtazamo wako uende kwa kile ambacho ni muhimu zaidi kwanza."
+          },
+          {
+            "bold": "Semantiki za rangi za kihistoria",
+            "code": "Verde vs Rojo",
+            "text": "Nodi huwaka kwa kijani kibichi inapozidi wastani wake wa kihistoria vyema na kwa rangi nyekundu inapoakisi kupungua au mkazo."
+          }
+        ],
+        "example": "Ukipanga rada kwa Mkengeuko wa Kiasi (Z-Score), inayotumika yenye +3.4σ iko kwenye pete ya kati inayong'aa, huku yenye 0.1σ iko kwenye obiti ya nje."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) na Bendi za Bollinger",
+        "intro": "Wastani wa Kusonga Rahisi wa vipindi 20 (SMA 20) huashiria mwelekeo wa msingi wa mali, huku Bendi za Bollinger huchora chaneli inayobadilika kwa kuongeza na kutoa mikengeuko miwili ya kawaida (2σ) karibu na wastani huo.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): wastani wa hesabu wa kufungwa kwa 20 zilizopita.",
+            "Kipimo (Upana wa BB): umbali wa asilimia kati ya mikanda ya juu na ya chini."
+          ]
+        },
+        "lead": "Kitakwimu, takriban 95% ya nukuu hutokea ndani ya bendi hizi mbili:",
+        "bullets": [
+          {
+            "bold": "Bei juu ya wastani",
+            "code": "Precio > SMA 20",
+            "text": "Inaonyesha kuwa mwelekeo wa muda mfupi ni wa kukuza na wastani kawaida hufanya kama sakafu ya usaidizi."
+          },
+          {
+            "bold": "Mguso wa bendi ya juu au ya chini",
+            "code": "±2σ",
+            "text": "Inaonya kuwa bei iliongezeka haraka sana kutoka kwa wastani wake wa hivi majuzi na inaweza kuchukua pumziko."
+          },
+          {
+            "bold": "ukandamizaji wa bendi",
+            "code": "BB Width bajo",
+            "text": "Wakati bendi zinakuwa nyembamba sana, soko hujenga nishati kabla ya hoja kali."
+          }
+        ],
+        "example": "Ikiwa SMA(20) ya hisa ni $100 na mkengeuko wake wa kawaida wa magurudumu 20 ni $4, bendi ya juu ni $108 na bendi ya chini ni $92."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Taasisi",
+        "intro": "Tofauti na wastani wa kawaida ambao hutoa uzito sawa kwa saa zote za siku, VWAP hupima kila bei kwa kiasi cha pesa ambacho kiliuzwa kwa kiwango hicho. Ni kumbukumbu kuu inayotumiwa na majedwali ya taasisi.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Bei ya Kawaidaᵢ × Kiwango cha Kuuzwaᵢ)",
+          "denominator": "∑ Kiwango cha Biasharaᵢ",
+          "vars": [
+            "Bei ya Kawaida: wastani kati ya kiwango cha juu, cha chini na cha kufunga cha kila mshumaa.",
+            "Kiwango cha Kuuzwaᵢ: kiasi kinachouzwa haswa katika sehemu hiyo."
+          ]
+        },
+        "lead": "Jinsi wafanyabiashara wa kitaalam hutumia laini ya VWAP:",
+        "bullets": [
+          {
+            "bold": "Udhibiti wa utekelezaji",
+            "code": "Comprar bajo el VWAP",
+            "text": "Iwapo hazina ya taasisi itanunua chini ya VWAP kwa kipindi hicho, ilipata bei nzuri kuliko wastani wa uzani wa soko."
+          },
+          {
+            "bold": "Kiwango cha Ulinzi cha Mwenendo",
+            "code": "Soporte / Resistencia",
+            "text": "Mradi tu mali inasalia juu ya VWAP, wale walionunua katika kipindi hicho wako katika faida ya wastani."
+          }
+        ],
+        "example": "Ikiwa hisa milioni 1 zingeuzwa kwa $ 100 na hisa elfu 100 pekee ziliuzwa kwa $ 110, wastani rahisi ungesema $ 105, lakini VWAP inasoma $ 100.91 kwa sababu karibu pesa zote ziliuzwa kwa $ 100."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Uhamisho wa Kueneza (bps)",
+        "intro": "Kuenea ni tofauti kati ya bei bora zaidi ya kuuliza na bei bora ya zabuni katika kitabu cha agizo. Watengenezaji soko wanapoona hatari au ukosefu wa ukwasi, hufungua pengo hilo ili kujilinda.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Uliza Bei − Bei ya Zabuni)",
+          "denominator": "Bei ya Wastani (Bei ya Kati)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Uliza / Bei ya Zabuni: mahali pa kuuza na mahali pa ununuzi sasa kwenye kitabu.",
+            "10,000: Kigezo cha ubadilishaji ili kueleza tofauti katika pointi za msingi (bps)."
+          ]
+        },
+        "lead": "Kile usomaji wa Usambazaji wa Kueneza kwenye reli ya kushoto inakuambia:",
+        "bullets": [
+          {
+            "bold": "Kitabu cha kina na maji",
+            "code": "Spread estable en verde",
+            "text": "Kuna ukwasi mwingi katika ncha zote mbili na gharama kamili ya kuingia au kutoka ni ndogo."
+          },
+          {
+            "bold": "Msuguano au uondoaji wa ukwasi",
+            "code": "Salto en bps",
+            "text": "Kawaida hutokea sekunde chache kabla ya matangazo ya uchumi mkuu au wakati wa uuzaji wa hofu, na kufanya utekelezaji kuwa ghali zaidi."
+          }
+        ],
+        "example": "Ikiwa kipengee kina kidokezo cha ununuzi cha $99.95 na kidokezo cha kuuza ni $100.05, tofauti ya $0.10 zaidi ya $100 ni sawa na pointi 10 za msingi (bps 10)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Chaguzi (Black-Scholes na Wagiriki)",
+        "intro": "Katika injini ya chaguo, jukwaa huchora mikondo miwili ya faida na hasara (P&L): jinsi mkakati huo ungeisha siku ya mwisho wa matumizi na ni kiasi gani cha thamani leo (T+0) kwa kutumia muundo wa Black-Scholes.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S na K: bei ya sasa ya kipengee cha msingi (Spot) na bei ya mgomo ya chaguo (Mgomo).",
+            "Wagiriki Halisi: Δ Delta (unyeti wa bei), Γ Gamma (kuongeza kasi kwa Delta), Θ Theta (mavazi ya kila siku) na ν Vega (hisia tete)."
+          ]
+        },
+        "lead": "Jinsi ya kusoma Wagiriki wa mkakati wako kwenye vidonge vya reli ya kushoto:",
+        "bullets": [
+          {
+            "bold": "Uendeshaji na kuongeza kasi",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Delta chanya inashinda wakati mali inapoongezeka; Gamma chanya hukufanya kupata haraka na haraka ikiwa harakati itaharakisha."
+          },
+          {
+            "bold": "Kupita kwa wakati na kutokuwa na uhakika",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta inakuambia nafasi inapoteza au faida ya dola ngapi kwa kila siku inayopita; Vega ni kiasi gani inabadilika ikiwa tete inayoonyeshwa inaongezeka kwa 1%."
+          }
+        ],
+        "example": "Long Straddle (nunua Call and put on the same mgomo) ina Delta karibu na 0 (haijalishi ikiwa inapanda au kushuka), lakini Vega chanya na inahitaji bei kuvuka pointi zake mbili za usawa (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Sovereign Curves (Kipepeo na DV01)",
+        "intro": "Injini ya mapato ya kudumu inalinganisha mavuno kutoka miezi 3 hadi miaka 30 kwa nchi 42 na huhesabu mteremko (2s10s) na mkunjo wa tranche ya kati (Butterfly 2s5s10s) na unyeti wa fedha (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "Kiwango cha 2Y, 5Y, 10Y: Mavuno huru ya miaka 2, 5 na 10 ya nchi iliyochaguliwa.",
+            "Kiwango Halisi cha 10Y: mavuno ya kawaida ya miaka 10 ukiondoa kiwango cha marejeleo au mfumuko wa bei uliobainishwa."
+          ]
+        },
+        "lead": "Kila kiashirio ni cha nini katika uchanganuzi wa dhamana:",
+        "bullets": [
+          {
+            "bold": "Curvature ya sehemu ya kati",
+            "code": "Butterfly 2s5s10s",
+            "text": "Inapima ikiwa awamu ya miaka 5 ni ghali au ya bei nafuu ikilinganishwa na viwango vya juu vya miaka 2 na 10."
+          },
+          {
+            "bold": "Hatari ya Muda wa Dola",
+            "code": "DV01 por $1M",
+            "text": "Inakueleza kwa uhakika ni dola ngapi kwingineko ya dola milioni inatofautiana na mwendo wa 0.01% katika kiwango."
+          }
+        ],
+        "example": "Bondi ya miaka 10 yenye DV01 ya $820 kwa milioni itapoteza takriban $82,000 ikiwa viwango vya soko vitapanda pointi 100 za msingi (+1.00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Sarafu (Beba) na Wakati Ujao (Mazao Mrefu)",
+        "intro": "Katika sarafu, wakati jozi haijanukuliwa moja kwa moja inahesabiwa kwa triangulation dhidi ya dola na tofauti ya kiwango chake (Carry) inapimwa. Katika malighafi, utendakazi wa usasishaji hupimwa kati ya mkataba wa haraka na mkataba wa miezi 12 (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Bei ya Mahali (Mbele M1) − Bei ya Baadaye (M12)",
+          "denominator": "Bei ya Baadaye (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Kurudi nyuma (Doa > Wakati Ujao): Uhaba wa kimwili leo husababisha mustakabali unaoendelea kuzalisha faida chanya (Roll Yield > 0).",
+            "Contango (Spot < Future): Gharama za kuhifadhi hufanya siku zijazo kuwa ghali zaidi na kuzifanya upya kuna gharama mbaya."
+          ]
+        },
+        "lead": "Jinsi hii inavyoathiri kitabu chako cha mfuko wakati unashikilia nafasi:",
+        "bullets": [
+          {
+            "bold": "Biashara Chanya ya Kubeba kwa sarafu",
+            "code": "Carry Spread > 0 bps",
+            "text": "Ukinunua sarafu yenye kiwango cha juu cha riba kwa kujifadhili kwa sarafu iliyo na kiwango cha chini, utakusanya tofauti hiyo kwa niaba yako."
+          },
+          {
+            "bold": "Upepo mzuri katika malighafi",
+            "code": "Backwardation en verde",
+            "text": "Wakati orodha halisi ni ndogo, mkataba wa karibu una thamani zaidi kuliko ule wa mbali na mwekezaji hupata faida ya ziada kwa kusaini mkataba."
+          }
+        ],
+        "example": "Ikiwa mafuta ya mwezi 1 yanauzwa kwa $72 na mkataba wa miezi 12 unauzwa kwa $68, soko liko kwenye Backwardation na Mavuno mazuri ya +5.88% kila mwaka."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Jumla ya daraja la uzani",
+        "intro": "Sio mali zote zinazotembea kupitia vyanzo sawa: katika kampuni, taarifa za fedha zilizokaguliwa (SEC 10-K/10-Q) zina uzito mkubwa, wakati katika soko la crypto au sarafu, mtiririko wa kila siku na mawasiliano yana uzito zaidi.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: uzani otomatiki kulingana na kategoria (k.m. 80% / 20% katika Hisa; 85% / 15% katika Ada).",
+            "Kiwango cha Mwisho: ni kati ya −100 (upeo wa kukata tamaa) hadi +100 (kiwango cha juu cha imani)."
+          ]
+        },
+        "lead": "Hivi ndivyo alama ya mchanganyiko inavyotafsiriwa kwa maoni ya juu:",
+        "bullets": [
+          {
+            "bold": "Msimamo wa bullish",
+            "code": "BULLISH / Nota > +15",
+            "text": "Vichocheo vya hali halisi na mtiririko wa habari hupita kwa wazi sababu za hatari."
+          },
+          {
+            "bold": "Mkao wa neutral au mchanganyiko",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Hata nguvu kati ya mambo ya msingi na habari; Inashauriwa kupitia upya accordion ya mambo 10 kabla ya kuamua."
+          },
+          {
+            "bold": "Msimamo wa kujihami au dhaifu",
+            "code": "BEARISH / Nota < -15",
+            "text": "Tahadhari kwenye laha za mizani, kuzorota kwa ukingo au vichwa vya habari vibaya hutawala."
+          }
+        ],
+        "example": "Katika hisa (80% msingi / 20% habari), ikiwa mizani inaonyesha +50 pointi na habari za siku zinaonyesha +20, Alama ya Jumla ya Uzito ni (0.80 × 50) + (0.20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Utafutaji Uliothibitishwa (RAG)",
+        "intro": "Ili kuzuia akili ya bandia kutoka kwa kuunda takwimu, Gumzo la Hati hutumia Urejeshaji wa Kizazi cha Augmented (RAG): kwanza hutafuta aya zinazohusika katika ripoti rasmi za mali na kisha kuandika jibu linalotaja chanzo.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Ushauri wa Vekta (Q) · Hati Rasmi ya Vekta (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vekta Q na D: uwakilishi wa nambari za swali lako na vipande rasmi (10-K, dakika za FOMC, ripoti za EIA).",
+            "3-Layer Guardrail: kichujio kinachozuia hoja zisizohusiana na fedha au bila usaidizi wa hali halisi."
+          ]
+        },
+        "lead": "Utaratibu huu unahakikisha nini unapouliza swali kwenye gumzo:",
+        "bullets": [
+          {
+            "bold": "Kusisitiza katika vyanzo vya msingi",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Kila data kuhusu mapato, deni, orodha au viwango hutoka kwa hati ya udhibiti inayolingana na mali hiyo."
+          },
+          {
+            "bold": "Acha maswali yasiyo na mada",
+            "code": "Guardrail activo",
+            "text": "Ikiwa mtu anajaribu kushauriana na mada zisizo za kifedha, msaidizi anakataa swali na kuweka kipaumbele kwenye uchambuzi wa chombo."
+          }
+        ],
+        "example": "Unapogusa chipu ya vipengele vya hatari kwenye hisa, injini itapata sehemu ya Kipengee 1A (Mambo Hatari) ya fomu yake ya hivi punde ya 10-K na kufupisha mambo muhimu."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "Alama ya FinBERT ya Neuronal",
+        "intro": "Kamusi ya kawaida mara nyingi huchanganya maneno ya kifedha (kwa mfano, \"kuanguka kwa gharama\" au \"kupunguza deni\" ni habari bora hata ikiwa hutumia neno kuanguka au kupunguza). FinBERT ni mtandao wa neva uliofunzwa mahususi kwa maandishi ya kifedha.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(Chanya) na P(Hasi): uwezekano uliotolewa na modeli kwa kichwa cha habari kuwa chanya au cha bei kwa mali.",
+            "Msururu wa saa 24: wastani wa kusonga mbele kwa kasi zaidi wa vichwa vya habari vya saa 24 zilizopita."
+          ]
+        },
+        "lead": "Jinsi kila nodi inavyokadiria katika ratiba ya matukio upande wa kulia:",
+        "bullets": [
+          {
+            "bold": "Mwenye kichocheo",
+            "code": "+20 a +100 en verde",
+            "text": "Kushinda makadirio ya mapato, uboreshaji wa ukadiriaji wa mikopo au kupunguza viwango vinavyofaa."
+          },
+          {
+            "bold": "Kebo ya habari isiyo na upande",
+            "code": "-19 a +19 en ámbar",
+            "text": "Matangazo ya kawaida ya uendeshaji ambayo hayabadilishi tathmini ya muundo wa chombo."
+          },
+          {
+            "bold": "Mwenye hatari",
+            "code": "-20 a -100 en rojo",
+            "text": "Maonyo ya udhibiti, kushuka kwa ukingo, maonyo au data mbaya zaidi kuliko ilivyotarajiwa ya mfumuko wa bei."
+          }
+        ],
+        "example": "Iwapo muundo utaweka uwezekano chanya wa 82%, uwezekano wa 12% usio na upande na 6% uwezekano hasi kwa kichwa, nodi inaonyesha athari halisi ya +76 katika kijani."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe na Sortino",
+        "intro": "Kadi mbili za kwanza za kwanza hupima kiasi cha mtaji wako hukua kwa mwaka (CAGR) na jinsi ukuaji huo ulivyo na ufanisi kuhusiana na mishtuko unayopaswa kuvumilia (Sharpe na Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Urejesho wa Mwaka wa Portfolio (Rp) − Kiwango cha Bila Hatari (Rf)",
+          "denominator": "Tete ya Mwaka ya Portfolio (σp)",
+          "vars": [
+            "Rf (4.30%): mavuno ya msingi ambayo unaweza kupata bila hatari katika bili za Hazina.",
+            "Uwiano wa Sortino: hutumia fomula sawa lakini katika denominator inaadhibu tu kubadilika kwa siku hasi (maporomoko)."
+          ]
+        },
+        "lead": "Jinsi ya kutathmini ubora wa kwingineko yako na nambari hizi:",
+        "bullets": [
+          {
+            "bold": "Kwingineko yenye ufanisi",
+            "code": "Sharpe > 1.00",
+            "text": "Marejesho ya ziada unayopata juu ya kiwango kisicho na hatari huzidi sana tete inayodhaniwa."
+          },
+          {
+            "bold": "Utendaji bora",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Inaonyesha mchanganyiko mzuri sana ambapo ongezeko ni thabiti na maporomoko yanadhibitiwa."
+          }
+        ],
+        "example": "Ikiwa kwingineko yako itarejesha 15.3% kila mwaka, kiwango kisicho na hatari ni 4.3% na tete yako ya kila mwaka ni 10%, mapato yako ya ziada ni 11% na Uwiano wako wa Sharpe ni 1.10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% na Drawdown",
+        "intro": "Kadi ya tatu na ya nne hujibu ni kiasi gani unaweza kupoteza kwa siku mbaya lakini ya kawaida ya takwimu (VaR 95%), ni kiasi gani kwa siku ya hofu kali (CVaR 99%), na ni nini kipigo kikubwa zaidi kutoka kwa kilele kilichopita (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1,645: kipengele cha takwimu ambacho kinashughulikia 95% ya magurudumu ya kawaida ya mwaka (19 kati ya kila siku 20).",
+            "CVaR 99% (Upungufu Unaotarajiwa): Wastani wa hasara soko linapovunja kizingiti hicho na kuingia kwenye 1% ya juu ya siku mbaya zaidi."
+          ]
+        },
+        "lead": "Kuna tofauti gani ya vitendo kati ya kutazama VaR na kutazama Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Hatari ya siku moja",
+            "code": "VaR 95% 1D en USD",
+            "text": "Inakutayarisha kisaikolojia na kifedha kwa kile ambacho akaunti yako inaweza kuelekea katika mwelekeo mbaya bila hivyo kumaanisha kuwa mkakati umeshindwa."
+          },
+          {
+            "bold": "Upinzani katika safu mbaya",
+            "code": "Max Drawdown 12M",
+            "text": "Hupima tone lililokusanywa kutoka ncha hadi ncha kutoka sehemu ya juu hadi sakafu kabla ya kupona tena."
+          }
+        ],
+        "example": "Katika jalada la $100,000 lenye VaR ya kila siku 95% ya 1.45% ($1,450), katika magurudumu 19 kati ya 20 ya biashara hasara zako za kila siku hazitazidi $1,450."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Muingiliano wa X-Ray (#12)",
+        "intro": "Unaponunua ETF kama SPY au QQQ, unanunua hisa nyingi ndani. Ikiwa pia umenunua baadhi ya hisa hizo moja kwa moja, mfiduo wako halisi ni jumla ya mambo hayo mawili.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Uzito wa Moja kwa Mojaᵢ: asilimia ya kwingineko yako iliyotengwa moja kwa moja kwa hisa i.",
+            "Asilimia ndani ya ETFₖ: uzito rasmi ambao kampuni hiyo inayo ndani ya faharasa au hazina k."
+          ]
+        },
+        "lead": "Kwa nini ni muhimu kukagua kichupo hiki cha kwanza kabla ya kufunga kwingineko:",
+        "bullets": [
+          {
+            "bold": "Mwonekano wa Mkazo uliofichwa",
+            "code": "Directo + Indirecto",
+            "text": "Hutenganisha kiotomatiki kila ETF katika kwingineko yako na kukuonyesha upau mmoja na asilimia halisi uliyo nayo katika kila kampuni."
+          },
+          {
+            "bold": "Tahadhari ya kupita kiasi",
+            "code": "> 20% en rojo",
+            "text": "Ikiwa jumla ya jumla inazidi kizingiti cha busara cha mkusanyiko kwenye jina moja, safu mlalo huwaka ili uweze kusawazisha tena."
+          }
+        ],
+        "example": "Ukiweka 15% ya kwingineko yako katika NVDA ya moja kwa moja na pia kuwa na 30% katika SPY ETF (ambapo NVDA ina uzito wa takriban 7%), X-Ray inaonyesha kwamba mfiduo wako halisi kwa NVDA ni 15% + (30% 1 × 7%)."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Mtengano wa Alpha Brinson (#2)",
+        "intro": "Kwingineko yako inaposhinda (au inapoteza dhidi ya) kigezo chake, muundo wa Brinson-Fachler hutenganisha hasa ambapo tofauti hiyo ilitoka: je, ulikuwa sahihi katika sekta zipi za kuwa na uzito kupita kiasi au ulikuwa sahihi katika kuchagua mali bora ndani ya kila sekta?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Athari ya Ugawaji: (Portfolio Uzito - Uzito wa Benchmark) × Kurudi kwa Sekta katika Kigezo.",
+            "Athari ya Uteuzi: Uzito katika Benchmark × (Rudisha Mali zako - Kurudi kwa Sekta)."
+          ]
+        },
+        "lead": "Jinsi ya kusoma baa tatu za sifa kwenye kichupo cha tatu:",
+        "bullets": [
+          {
+            "bold": "Mafanikio makubwa au sekta",
+            "code": "Asignación Sectorial",
+            "text": "Ni chanya katika kijani wakati unaweka uzito zaidi kuliko soko kwenye madarasa ya mali ambayo yamepanda zaidi."
+          },
+          {
+            "bold": "Ulengaji kwa ufanisi wa mali",
+            "code": "Selección de Activos",
+            "text": "Ni vyema wakati zana mahususi ulizochagua zilifanya kazi zaidi ya wastani kwa sekta yao."
+          }
+        ],
+        "example": "Ikiwa kwingineko yako ilishinda S&P 500 kwa +3.20%, kichupo hiki kinakuwezesha kuona kwamba +2.10% ilitoka kwa kuchagua hisa bora (Uteuzi) na +1.10% kutokana na kuwa na uzito zaidi katika teknolojia (Mgao)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Frontier Efficient na CML",
+        "intro": "Katika ndege ya Markowitz, kurudi kutarajiwa kwa kwingineko ni wastani wa uzito wa kurudi kwa mali zake, lakini tete yake ni ya chini kuliko shukrani ya wastani kwa ukweli kwamba mali hazihamishi 100% sawa.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: asilimia ya mtaji uliogawiwa mali i na j.",
+            "ρᵢⱼ (Uwiano): kiwango ambacho mali zote husogea pamoja (−1 hadi +1). Kadiri ρᵢⱼ ilivyo chini, ndivyo hatari ya jumla inavyopungua."
+          ]
+        },
+        "lead": "Marejeleo matatu kwenye grafu yanawakilisha nini:",
+        "bullets": [
+          {
+            "bold": "Tofauti ya Chini",
+            "code": "Min-Var",
+            "text": "Ni sehemu ya kushoto kabisa kwenye mkunjo: mseto kamili wa uzani unaofanikisha tetemeko la chini kabisa linalowezekana."
+          },
+          {
+            "bold": "Máximo Sharpe na Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Ni mahali ambapo mstari unaoanza kutoka kwa kiwango kisicho na hatari hugusa mpaka unaofaa, ukitoa faida kubwa zaidi kwa kila kitengo cha hatari."
+          }
+        ],
+        "example": "Ikiwa unachanganya katika sehemu sawa mali mbili ambazo zina tete ya 20% kila moja lakini uwiano wa sifuri (ρ = 0), tete ya kwingineko sio 20%, lakini inashuka hadi 14.1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR by Active and Capture",
+        "intro": "Ili kujua ni nafasi gani inayoongeza hatari zaidi kwa kwingineko, mchango wa ukingo wa kila kipengee hupimwa kulingana na uzito wake na uwiano wake na zingine. Kwa kuongeza, uwiano wa kukamata hupima asymmetry dhidi ya kupanda na kushuka kwa S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Kurudishwa kwa Mali yako au Portfolio katika magurudumu ya Bullish (au Bearish)",
+          "denominator": "Kurudi kwa S&P 500 kwenye magurudumu yale yale",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100%) - Pata zaidi ya index wakati soko linapanda.",
+            "Kunasa Kando (< 100%): huanguka chini ya faharasa wakati soko linashuka (bafa ya ulinzi)."
+          ]
+        },
+        "lead": "Wasifu unaofaa unaotafuta unapokagua kichupo cha tatu cha roboduara:",
+        "bullets": [
+          {
+            "bold": "asymmetry chanya",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Shiriki kikamilifu katika masoko ya fahali lakini linda mtaji wakati soko la hisa linasahihisha."
+          },
+          {
+            "bold": "Kimbilio au mali zisizo na uhusiano",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Nyenzo kama vile dhamana fupi au dhahabu ambazo huwa thabiti au kuongezeka wakati soko la hisa linapungua."
+          }
+        ],
+        "example": "Ikiwa katika miezi ambayo S&P 500 ilipanda 10% kwingineko yako ilipata 11% (Upside 110%), na wakati index ilipungua 10% kwingineko yako ilianguka tu 6% (Downside 60%), una asymmetry kali katika neema yako."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Uwiano wa Kawaida dhidi ya Mgogoro",
+        "intro": "Mgawo wa Pearson (r) hupima kutoka -1.00 hadi +1.00 jinsi vipengee viwili vinavyosogea kulingana na vingine. Hatari katika usimamizi wa kwingineko ni kwamba wakati wa ajali ya soko uunganisho kati ya mali hatari huongezeka hadi +1.00 (uambukizi).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Covariance (Hurejesha Mali i, Hurejesha Mali j)",
+          "denominator": "Kubadilika kwa Kipengee i (σᵢ) × Kubadilika kwa Kipengee j (σⱼ)",
+          "vars": [
+            "r karibu na 0 au hasi: mseto bora (wakati moja inashuka, nyingine haifuati).",
+            "r katika Foleni ya Mgogoro: huhesabu upya matriki kwa kuchukua tu 5% ya magurudumu mabaya zaidi kwenye soko."
+          ]
+        },
+        "lead": "Jinsi ya kusoma rangi za matrix 6x6 katika serikali zote mbili:",
+        "bullets": [
+          {
+            "bold": "Mseto wa kweli",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Mali zote mbili hujibu vichochezi tofauti vya kiuchumi na hulipa fidia."
+          },
+          {
+            "bold": "Kuzingatia au kuambukiza",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Wanasonga kivitendo kama kizuizi; Kuwa na zote mbili hakupunguzi kuanguka kwako siku mbaya."
+          }
+        ],
+        "example": "Hifadhi mbili kutoka sekta tofauti zinaweza kuwa na uwiano wa wastani wa 0.42 katika mwaka wa kawaida, lakini unapowasha kitufe cha Foleni ya Mgogoro utaona kwamba inaongezeka hadi 0.81 kwa sababu kwa hofu wanauza pamoja."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "Mshtuko wa 2D (Viwango × Soko la Hisa)",
+        "intro": "Mchanganyiko wa 2D huchanganya wakati huo huo athari ya harakati katika viwango vya riba (kupitia Muda Usiobadilika wa Mapato na Unyeti wa Kiwango) na kushuka au kupanda kwa faharasa ya S&P 500 (kupitia Beta ya Usawa).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: hali ya kubadilika kwa soko la hisa kwenye mhimili mlalo (-20% hadi +10%).",
+            "Δ Viwango: hali ya mabadiliko ya viwango vya riba katika pointi za msingi kwenye mhimili wima (−100 hadi +200 bps)."
+          ]
+        },
+        "lead": "Kusudi la kuvuka shoka mbili kwenye jedwali ni nini:",
+        "bullets": [
+          {
+            "bold": "Hali ya kupanda kwa kasi au kupanda kwa kasi",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Kama ilivyotokea mwaka wa 2022, ambapo hisa na dhamana ndefu huteseka kwa wakati mmoja."
+          },
+          {
+            "bold": "Hali ya makazi ya kawaida",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Ambapo viwango vya chini huongeza bei ya hati fungani za Hazina na kupunguza kuanguka kwa hisa."
+          }
+        ],
+        "example": "Kuchuja bondi ndefu kama US10Y au TLT unaweza kuona kwenye jedwali jinsi inavyopata thamani viwango vinaposhuka (bps-100), ikifanya kazi kama parachuti ikiwa S&P 500 itaanguka siku hiyo hiyo."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Utawala wa Markov (#11)",
+        "intro": "Msururu wa Markov unaonyesha uchumi kama mfumo unaoruka kati ya hali nne zinazowezekana (Calm Bullish, Volatile Bullish, Mfumuko wa Bei/Viwango na Crisis) na kukokotoa uwezekano wa kuhama kutoka moja hadi nyingine.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Ulalo kuu (i = j): uwezekano kwamba utawala wa sasa unabaki bila kubadilika.",
+            "Isiyo na ulalo (i ≠ j): uwezekano wa kuzunguka kwa hali ya hewa mpya ya soko."
+          ]
+        },
+        "lead": "Jinsi ya kuchukua faida ya matrix ya mpito kwenye kichupo cha pili:",
+        "bullets": [
+          {
+            "bold": "Kudumu kwa mzunguko wa sasa",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Taratibu tulivu kwa kawaida huwa na usugu wa hali ya juu (> 75%), na kuruhusu mienendo kudumishwa."
+          },
+          {
+            "bold": "Mzunguko Onyo la Mapema",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Wakati uwezekano wa mpito kwa hali tete unapoongezeka, inashauriwa kupunguza kiwango au kuamsha ua."
+          }
+        ],
+        "example": "Ikiwa soko leo liko katika mfumo Tete wa Fahali na safu mlalo inaashiria 62% ya kudumu, 20% ya kurudi kwenye Bull Calm na 18% ya kwenda kwenye Stress/Crisis, unajua kwamba karibu hali 1 kati ya 5 husababisha marekebisho."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Makadirio ya Monte Carlo (Njia 10,000)",
+        "intro": "Kulingana na mapato yanayotarajiwa na tete ya sasa ya kwingineko yako, kiigaji hutengeneza njia 10,000 zinazowezekana siku baada ya siku kwa kutumia muundo wa Stochastic Geometric Brownian Movement.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ na σ: mapato yanayotarajiwa ya kila mwaka na hali tete ya kila mwaka ya kwingineko yako ya sasa.",
+            "Z: kigezo cha kawaida cha kawaida kilichochorwa mara 10,000 kwenye upeo wa macho (6M, 12M au 24M)."
+          ]
+        },
+        "lead": "Kutoka kwa masimulizi haya 10,000, mikunjo mitatu kuu ya grafu imetolewa:",
+        "bullets": [
+          {
+            "bold": "Hali inayopendeza",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Kiwango ambacho kinapitwa na 5% tu ya hali zenye matumaini zaidi."
+          },
+          {
+            "bold": "Njia ya kati inayotarajiwa",
+            "code": "Mediana P50",
+            "text": "Matokeo ya kawaida ambapo nusu ya simuleringar ni juu na nusu nyingine ni chini."
+          },
+          {
+            "bold": "Hali ya mkazo wa muda",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Sakafu mbaya: katika 95% ya njia zilizoiga kwingineko yako inaishia juu ya mstari huu."
+          }
+        ],
+        "example": "Katika upeo wa macho wa miezi 12 kwa msingi wa 100, ikiwa P50 inasoma 116 na P05 inasoma 94, matarajio yako kuu ni kupata +16% na katika mwaka mbaya sana una hatari ya karibu -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kigezo cha Kelly (#14)",
+        "intro": "Kigezo cha Kelly kinajibu kisayansi ni asilimia ngapi ya mtaji wako unapaswa kutenga kwa operesheni wakati unajua uwezekano wako wa kufaulu (Win-Rate) na ni kiasi gani unashinda unapofanikiwa dhidi ya kile unachopoteza unaposhindwa (Payoff Ratio).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p na q: uwezekano wa kushinda (p) na uwezekano wa kupoteza (q = 1 - p).",
+            "b (Uwiano wa Malipo): faida ya wastani ikigawanywa na hasara ya wastani (kwa mfano, kupata $2 kwa kila $1 iliyo hatarini kunamaanisha b = 2)."
+          ]
+        },
+        "lead": "Kwa nini wasimamizi wa kitaalamu hutumia lahaja ya Half-Kelly (0.5×):",
+        "bullets": [
+          {
+            "bold": "Kelly Kamili",
+            "code": "Full Kelly 1.0×",
+            "text": "Inakuza ukuaji wa hisabati wa muda mrefu, lakini hutoa mabadiliko makali sana ikiwa kuna safu ya makosa mfululizo."
+          },
+          {
+            "bold": "Imependekezwa Nusu Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Kwa kutumia nusu ya asilimia iliyopendekezwa unakamata 75% ya ukuaji unaowezekana lakini ukata tete kwa nusu."
+          }
+        ],
+        "example": "Iwapo mkakati utafikia 55% ya muda (p = 0.55, q = 0.45) na kulipa 2 hadi 1 (b = 2), Kelly kamili atatoa (0.55×2 -0.45) / 2 = 32.5%, na Half-Kelly mwenye busara anapendekeza 6.2% igawanye."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Weka OTM Shield (#6)",
+        "intro": "Chaguo la kuweka nje ya pesa (kwa mfano, 5% chini ya bei ya sasa ya S&P 500) hufanya kazi kama malipo ya bima: ina gharama ndogo, isiyobadilika (malipo), lakini ikiwa soko litashuka kwa 20% au 30%, thamani yake huzidishwa kwa usawa na kufidia hasara zako za kwingineko.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Gharama ya Mwaka (Carry Drag): asilimia ya kila mwaka ambayo inagharimu kufanya upya bima ikiwa soko halitaanguka.",
+            "Ulinzi wa Kuacha Kufanya Kazi (-20%): dola zilizopatikana na mkataba wa Put wakati wa ajali mbaya."
+          ]
+        },
+        "lead": "Jinsi ya kulinganisha chaguzi za simulator kwenye kichupo cha kwanza:",
+        "bullets": [
+          {
+            "bold": "Bima ya index ya moja kwa moja",
+            "code": "SPY Put 5% OTM",
+            "text": "Inaweka upeo wa hasara kutoka kwa kushuka kwa 5% kwa kubadilishana na gharama ya wastani ya kila mwaka."
+          },
+          {
+            "bold": "Chanjo inayofadhiliwa au tete",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Kola inapunguza gharama kwa kuuza Call up; Simu kwenye VIX inalipuka kwa manufaa wakati hofu inapozuka sokoni."
+          }
+        ],
+        "example": "Iwapo kulinda jalada la $100,000 kwa SPY Put 5% OTM inagharimu 1.1% kwa mwaka ($1,100), lakini katika tukio la ajali -20% itapunguza kupungua kwa kwingineko yako hadi chini ya nusu, akiba halisi inazidi $7,000."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Pambizo na Umbali kwa Simu ya Pembezoni (#13)",
+        "intro": "Unapofanya kazi na derivatives au nyongeza, wakala anahitaji kudumisha asilimia ya chini ya mtaji wa usawa juu ya jumla ya thamani ya nafasi (Maintenance Margin). Ikiwa kuanguka kunapunguza mtaji wako chini ya sakafu hiyo, Simu ya Pembezoni inaanzishwa.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Deni au Salio la Fedha",
+          "denominator": "1 − % Pango ya Matengenezo (Reg-T)",
+          "vars": [
+            "Mfiduo wa Jumla: jumla ya nafasi zilizo wazi zilizogawanywa na usawa (k.m. 1.18×).",
+            "Umbali wa Simu ya Pembezoni (%): kushuka kwa asilimia ambayo kwingineko bado inaauni kabla ya kufikia kizingiti."
+          ]
+        },
+        "lead": "Viwango vya usalama katika upau wa ufuatiliaji:",
+        "bullets": [
+          {
+            "bold": "Eneo kubwa la kibali",
+            "code": "Distancia > 30% en verde",
+            "text": "Uwezo ni mdogo na kwingineko inaweza kunyonya hata shida kali bila mauzo ya kulazimishwa."
+          },
+          {
+            "bold": "eneo la tahadhari",
+            "code": "Distancia < 15% en rojo",
+            "text": "Marekebisho ya wastani ya soko yatamaliza dhamana ya bure na kulazimisha nafasi kufutwa wakati mbaya zaidi."
+          }
+        ],
+        "example": "Kwa kiwango cha wastani cha 1.18× na ukingo wa matengenezo uliotumika wa 22%, kwingineko yako ina mto wa usalama wa zaidi ya 38% upande wa chini kabla ya madai yoyote ya dhamana."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Kanuni za Kamati ya Mihimili 3",
+        "intro": "Ili kusiwe na uamuzi wa msukumo unaohatarisha uhai wa jalada, Kamati hutathmini kila agizo kwa kuchanganya noti ya kiufundi, noti ya msingi na sheria mbili ngumu, zisizoweza kujadiliwa za udhibiti wa hatari.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: hakuna mali ya mtu binafsi inayoweza kuzingatia zaidi ya moja ya tano ya jumla ya mali.",
+            "Anomaly Stop (P-06 ≥ 0.65): ikiwa kipengee kitaingia katika mtengano wa takwimu, mfumo hupunguza upeo wa kukaribia aliyeambukizwa hadi 5%."
+          ]
+        },
+        "lead": "Nini maana ya kila hali katika hukumu na katika Kitabu cha Utekelezaji:",
+        "bullets": [
+          {
+            "bold": "Agizo limeidhinishwa bila vikwazo",
+            "code": "APROBADO en verde",
+            "text": "Nguzo tatu zinapatana vyema na ukubwa wa nafasi huheshimu viwango vyote vya mkusanyiko na ukwasi."
+          },
+          {
+            "bold": "Agizo limerekebishwa na guardrail",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Tikiti inapozidi kikomo cha 20% au inapojaribu kununua sana katikati ya hitilafu, mlinzi anaonya kuhusu ziada."
+          }
+        ],
+        "example": "Ikiwa unajaribu kuiga ununuzi ambao unaweza kuchukua hisa moja hadi 26% ya jalada lako, Nguzo ya 3 (Risk & Sizing Guardrail) hualamisha tahadhari ya mkusanyiko ili uirekebishe chini ya 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Ufanisi Walk-Forward (WFE)",
+        "intro": "Ili kuhakikisha kuwa mkakati haukuundwa tu ili uonekane mzuri hapo awali (utumiaji kupita kiasi), jaribio la Walk-Forward linalinganisha jinsi lilivyofanya kazi katika kipindi cha usanifu (In-Sample) dhidi ya utendaji wake katika data iliyofuata ambayo haijawahi kuonekana (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Urejesho wa Mwaka Out-of-Sample (Uthibitishaji Safi)",
+          "denominator": "Urejesho wa Mwaka In-Sample (Mafunzo)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): sehemu ya kihistoria inayotumika kurekebisha uzito na sheria za mkakati.",
+            "Out-of-Sample (OOS): sehemu inayofuata ambapo mkakati unajaribiwa katika hali halisi bila kugusa vigezo vyake."
+          ]
+        },
+        "lead": "Jinsi tasnia ya kiasi inavyokadiria asilimia WFE:",
+        "bullets": [
+          {
+            "bold": "Mkakati thabiti na thabiti",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Inahifadhi idadi kubwa ya uwezo wake wa kuzalisha faida inapokabiliwa na hali mpya ya soko."
+          },
+          {
+            "bold": "Mkakati dhaifu au uliokithiri",
+            "code": "WFE < 50% en rojo",
+            "text": "Ilifanya kazi vizuri katika nadharia ya zamani lakini inapoteza ufanisi katika ukweli; Haipendekezi kutekeleza kwa pesa halisi."
+          }
+        ],
+        "example": "Ikiwa mkakati ulirejesha 20% kila mwaka wakati wa hatua ya muundo wake (In-Sample) na katika hatua ya majaribio halisi iliyofuata (Out-of-Sample) ilirejesha 18.8% kila mwaka, ufanisi wake wa WFE ni (18.8 / 20) = 94.0%."
+      }
+    ]
+  }
+}

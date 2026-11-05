@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Vista reduïda",
+    "mainView": "Vista principal",
+    "expandedView": "Vista ampliada",
+    "inThisSection": "En aquesta secció trobareu:",
+    "deepDive": "Immersió profunda",
+    "previous": "Anterior",
+    "next": "A continuació",
+    "mathFormula": "Fórmula matemàtica",
+    "practicalExample": "Exemple pràctic:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Quan obriu una plataforma financera tradicional, el primer que apareix habitualment són desenes de gràfics, taules intermitents i menús a tot arreu. Per on comences quan només vols consultar el mercat o comprovar com està la teva cartera?",
+        "La pantalla Home està dissenyada precisament per evitar aquest soroll inicial. Et rep amb un espai net i clar on tot el control es concentra en dues barres fixes: una a dalt per anar a treballar i una altra a sota per configurar la plataforma a la teva mida."
+      ],
+      "intro": "La pantalla Home us acull amb un espai net i clar on tot el control es concentra en dues barres fixes: una a dalt per anar a treballar i una altra a sota per configurar la plataforma a la vostra mida.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "El punt de partida clar que divideix el vostre treball en anàlisi de mercat i gestió de carteres.",
+          "paragraphs": [
+            "Imagineu que comenceu a operar a primera hora del matí. De vegades, voldreu mirar quines accions, bons o divises es mouen més; Altres vegades aniràs directament a revisar el risc de la teva cartera o a simular una compra abans d'executar-la.",
+            "Com eviteu barrejar les dues coses a la mateixa pantalla sobrecarregada? La portada separa clarament aquest camí del primer segon:"
+          ],
+          "lead": "Com eviteu barrejar les dues coses a la mateixa pantalla sobrecarregada? La portada separa clarament aquest camí del primer segon:",
+          "bullets": [
+            {
+              "bold": "Espai sense distraccions",
+              "code": "Donde se decodifican los mercados",
+              "text": "Quan entres, no hi ha taules obertes ni alertes que t'obliguin a tancar finestres abans de començar; Tu tries quin mòdul vols obrir."
+            },
+            {
+              "bold": "Dos camins clars",
+              "code": "Markets / Portfolio",
+              "text": "Tot el flux de l'aplicació es divideix en dues etapes principals: primer investigar oportunitats als mercats i després construir o provar la teva cartera."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "La barra superior per saltar amb un clic entre la llar, els mercats i la teva cartera.",
+          "paragraphs": [
+            "A mesura que aprofundeixes en els detalls d'un actiu o proves de canvis a la teva cartera, és molt fàcil perdre la noció d'on eres. Com es passa de mirar un gràfic de valors a revisar la seva cartera sense passar per submenús?",
+            "La barra superior sempre roman fixa a la pantalla i us permet accedir directament als tres punts principals:"
+          ],
+          "lead": "La barra superior sempre roman fixa a la pantalla i us permet accedir directament als tres punts principals:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Siguis on siguis, fent clic al símbol de l'esquerra tornarà immediatament a la pàgina principal."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "És el teu espai de recerca. Aquí filtreu els 213 actius disponibles, seguiu les cotitzacions en directe, analitzeu gràfics tècnics i consulteu resums de balanç o notícies."
+            },
+            {
+              "bold": "Cartera",
+              "code": "Portfolio",
+              "text": "És la teva taula de decisions. Aquí definiu quin percentatge del vostre capital es destina a cada actiu, mesureu quant podríeu perdre en una crisi i simuleu noves operacions abans d'arriscar diners."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "El peu de pàgina per comprovar l'estat del sistema, tornar a aquesta guia o ajustar el disseny.",
+          "paragraphs": [
+            "Mentre s'analitzen dades en temps real, hi ha preguntes operatives que poden sorgir en qualsevol moment: les cotitzacions arriben correctament? Què significava un indicador de punts? Puc reduir la brillantor de la pantalla?",
+            "El peu de pàgina agrupa totes aquelles eines de suport i configuració perquè estiguin sempre a mà sense entorpir el centre de la pantalla:"
+          ],
+          "lead": "El peu de pàgina agrupa totes aquelles eines de suport i configuració perquè estiguin sempre a mà sense entorpir el centre de la pantalla:",
+          "bullets": [
+            {
+              "bold": "Estat System",
+              "code": "System",
+              "text": "El punt verd confirma a simple vista que tot està en ordre. Quan l'obres pots veure amb detall l'estat dels servidors, bases de dades i velocitat de resposta."
+            },
+            {
+              "bold": "Usuari Guide",
+              "code": "Guide",
+              "text": "Obriu aquest manual interactiu en qualsevol moment per veure com utilitzar una pantalla o aprofundir en els seus càlculs."
+            },
+            {
+              "bold": "Preferències visuals",
+              "code": "Idioma / Palette",
+              "text": "A la part dreta teniu els controls per canviar l'idioma de tota l'aplicació o ajustar la il·luminació de fons."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Idiomes",
+          "summary": "El cercador per traduir tota la plataforma al vostre idioma al moment.",
+          "paragraphs": [
+            "Les condicions financeres i els informes de mercat ja tenen la seva pròpia complexitat sense afegir una barrera lingüística. Si preferiu llegir les explicacions en castellà, anglès o qualsevol altre idioma, podeu canviar-ho a l'instant.",
+            "Així és com funciona el selector des de la cantonada inferior dreta:"
+          ],
+          "lead": "Així és com funciona el selector des de la cantonada inferior dreta:",
+          "bullets": [
+            {
+              "bold": "cerca instantània",
+              "code": "Select Language",
+              "text": "Si feu clic a la bandera actual, s'obre una finestra on podeu triar entre 56 idiomes escrivint el seu nom o codi (per exemple, ES, EN, PT, FR o DE)."
+            },
+            {
+              "bold": "Memòria automàtica",
+              "code": "mid_lang_v1",
+              "text": "Tota la pantalla es tradueix a l'instant sense tornar a carregar la pàgina i la teva elecció es desa per a les properes vegades que entris."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Temes visuals per adaptar el contrast de la pantalla sense alterar els colors financers.",
+          "paragraphs": [
+            "Passar diverses hores davant de gràfics amb un contrast que no s'adapta a la llum del teu entorn acaba cansant la vista. Tanmateix, canviar els colors d'una plataforma financera té un perill clàssic: perdre la referència del que puja i del que baixa.",
+            "Per solucionar-ho, el selector de temes separa el color de l'entorn del color de les dades:"
+          ],
+          "lead": "Per solucionar-ho, el selector de temes separa el color de l'entorn del color de les dades:",
+          "bullets": [
+            {
+              "bold": "Cinc entorns de lectura",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Amb cada clic vas girant entre fons negre pur, blavós o càlid fins a trobar el més còmode per als teus ulls."
+            },
+            {
+              "bold": "Semàntica financera intacta",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "No importa de quin tema canvieu, la regla universal del mercat mai s'altera: el verd sempre significa pujada o guany, i vermell sempre significa caiguda, pèrdua o alerta de risc."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Imagineu que voleu detectar on es troben les millors oportunitats del dia entre més de dos-cents bons, accions, índexs, divises i matèries primeres. Si obrís els gràfics un per un, el mercat es tancaria abans que acabes de mirar-los.",
+            "El Screener reuneix els 213 actius de la plataforma en un únic tauler de control en directe. Us permet filtrar per mercat en un segon, mesurar el pols general del dia i triar entre quatre maneres diferents de veure quins actius funcionen."
+          ],
+          "intro": "El Screener reuneix els 213 actius de la plataforma en un únic tauler en directe perquè pugueu filtrar per mercat i detectar oportunitats d'un cop d'ull.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Categories",
+              "summary": "Filtres principals per centrar-se en una sola classe d'actius o en la vostra llista de seguiment.",
+              "paragraphs": [
+                "No té sentit analitzar un bon del Tresor amb les mateixes mètriques que les accions de tecnologia o el petroli. Quan ho barreges tot en la mateixa llista, acabes comparant peres amb pomes.",
+                "Com reduïu la pantalla exactament al mercat que us interessa avui? La barra superior us permet separar l'univers amb un sol clic:"
+              ],
+              "lead": "La barra superior us permet separar l'univers amb un sol clic:",
+              "bullets": [
+                {
+                  "bold": "Imatge completa",
+                  "code": "Todos",
+                  "text": "Mostra els 213 instruments junts i ordenats per volum negociat perquè pugueu veure on flueix més diners a nivell mundial."
+                },
+                {
+                  "bold": "Seguiment personal",
+                  "code": "★ Watchlist",
+                  "text": "Aïlleu només els actius que hàgiu marcat com a favorits per controlar-los de prop sense distraccions."
+                },
+                {
+                  "bold": "Deu mercats especialitzats",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "En triar qualsevol d'aquestes categories, tota la pantalla adapta els seus indicadors i les columnes de la taula a les normes d'aquest sector."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detall de com es classifiquen els 213 actius del catàleg i quins criteris de volum i liquiditat compleixen."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "pols de 24 h",
+              "summary": "Les quatre cartes principals que us indiquen si el mercat està tranquil, eufòric o estrès.",
+              "paragraphs": [
+                "Abans de comprar o vendre un actiu concret, és aconsellable saber en quin clima es mou el conjunt. És un dia de volum normal o els diners institucionals entren tots alhora? Tots els actius estan augmentant o hi ha signes de tensió?",
+                "Les quatre targetes que hi ha a sota dels filtres us donen aquesta lectura general en pocs segons:"
+              ],
+              "lead": "Les quatre targetes que hi ha a sota dels filtres us donen aquesta lectura general en pocs segons:",
+              "bullets": [
+                {
+                  "bold": "Activitat total del dia",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Suma milers de milions de dòlars negociats a la categoria activa i us mostra si hi ha més o menys participació avui que ahir."
+                },
+                {
+                  "bold": "Força mitjana del grup",
+                  "code": "AVG RSI 14",
+                  "text": "Resumeix en un metre circular si els preus del sector vénen amb pressió de compra (verd, per sobre de 50) o amb pressió de venda (vermell, per sota de 50)."
+                },
+                {
+                  "bold": "Termòmetre de normalitat",
+                  "code": "Régimen Normal P-06",
+                  "text": "Calcula quin percentatge dels actius es mou dins dels seus paràmetres habituals i t'indica per nom i cognoms quin és l'instrument amb major anomalia del dia."
+                },
+                {
+                  "bold": "Entrades inusuals de diners",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Destaca el podi dels tres actius que avui funcionen amb un volum extraordinàriament elevat respecte a la mitjana de l'últim mes."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Explicació detallada de com es calculen l'RSI mitjà, el volum Z-Score i el detector d'anomalies P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "Taula",
+              "summary": "La llista interactiva amb cerca ràpida, favorits i columnes que s'adapten a cada mercat.",
+              "paragraphs": [
+                "Quan ja sabeu quin sector voleu mirar i necessiteu comparar números específics fila per fila, la vista de taula és la vostra eina principal.",
+                "En lloc de mostrar-vos un full de càlcul rígid que sigui igual per a tothom, la taula s'ajusta al que cerqueu:"
+              ],
+              "lead": "En lloc de mostrar-vos un full de càlcul rígid que sigui igual per a tothom, la taula s'ajusta al que cerqueu:",
+              "bullets": [
+                {
+                  "bold": "Cercador i estrella dels favorits",
+                  "code": "Buscar activo / ★",
+                  "text": "A la capçalera de la primera columna, podeu escriure qualsevol símbol o nom per anar directament a aquest recurs, o bé tocar l'estrella de l'esquerra per desar-lo al vostre Watchlist."
+                },
+                {
+                  "bold": "Columnes intel·ligents segons la categoria",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Si filtreu Accions, apareixen múltiples i marges de valoració; Si trieu Bons o Taxes, veureu el pendent de la corba i la sensibilitat a les taxes; Si mireu els derivats, veieu una volatilitat implícita."
+                },
+                {
+                  "bold": "Passeu directament a l'anàlisi profunda",
+                  "code": "Click en cualquier fila",
+                  "text": "Simplement feu clic a qualsevol actiu de la llista per obrir la vostra estació completa de gràfics tècnics i informes fonamentals."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Llista de les mètriques específiques que mostra la taula per a cadascuna de les 10 categories d'actius."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "El radar visual per detectar d'un cop d'ull quins actius s'allunyen de la seva mitjana històrica.",
+              "paragraphs": [
+                "Llegir dues-centes files de números pot fer que et perdis un actiu que comença a moure's de manera explosiva. Com detecteu a l'instant quin instrument s'allunya de la norma?",
+                "La vista Orbital transforma la taula en un radar amb tres anells concèntrics:"
+              ],
+              "lead": "La vista Orbital transforma la taula en un radar amb tres anells concèntrics:",
+              "bullets": [
+                {
+                  "bold": "Elecció de criteris",
+                  "code": "INDICADOR",
+                  "text": "Tu decideixes què mesura el radar: anomalies estadístiques, salts de volum, força de preus (RSI), volatilitat o guany en les últimes 24 hores."
+                },
+                {
+                  "bold": "Lectura per distància i color",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Com més proper o més allunyat està un punt segons l'indicador i com més intens és el seu color verd o vermell, més rellevant és el seu moviment en comparació amb la seva pròpia història."
+                },
+                {
+                  "bold": "Inspecció sense canviar de pantalla",
+                  "code": "Panel lateral en vivo",
+                  "text": "Si col·loca el cursor en qualsevol node de radar, es mostren a la dreta el seu preu, el seu gràfic intradiari net i les seves tres mètriques de risc."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Com es calcula la posició de cada actiu als anells de radar segons la seva desviació històrica."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Mapa de calor",
+              "summary": "El mosaic de blocs proporcionals per identificar els guanyadors i els perdedors en un segon.",
+              "paragraphs": [
+                "Hi ha moments en què només voleu respondre una pregunta ràpida: qui lidera l'ascens avui i qui arrossega el mercat a la baixa?",
+                "El mapa de calor organitza els deu actius principals del filtre actiu en blocs proporcionals perquè no hagis de llegir ni una taula:"
+              ],
+              "lead": "El mapa de calor ordena els deu principals actius del filtre actiu en blocs proporcionals:",
+              "bullets": [
+                {
+                  "bold": "Mida segons importància",
+                  "code": "Puestos #1 a #10",
+                  "text": "Els instruments amb més pes dins de la mètrica escollida ocupen les columnes de l'esquerra amb els quadres més grans."
+                },
+                {
+                  "bold": "Intensitat del color",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "El to del bloc us indica immediatament la magnitud del moviment, des de variacions moderades fins a pujades o baixades abruptes."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "La drecera de tres passos a les calculadores de taxes avançades, opcions, divises i futurs.",
+              "paragraphs": [
+                "A més dels gràfics de preus tradicionals, la plataforma inclou quatre motors especials per a renda fixa, opcions, creus de divises i corbes de matèries primeres. Com arribar-hi sense cercar actiu per actiu?",
+                "Aquesta vista us guia d'esquerra a dreta en tres columnes molt senzilles:"
+              ],
+              "lead": "Aquesta vista us guia d'esquerra a dreta en tres columnes molt senzilles:",
+              "bullets": [
+                {
+                  "bold": "Primer trieu la família",
+                  "code": "1. Clases de Activo",
+                  "text": "Seleccioneu si voleu treballar amb tarifes i bons, amb opcions sobre accions/índexs/criptografia, amb divises o amb matèries primeres."
+                },
+                {
+                  "bold": "Després comproveu què fa el motor",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Al centre llegeixes un resum clar del que mostra aquesta eina i com orientar-te pels seus eixos."
+                },
+                {
+                  "bold": "Finalment, trieu l'actiu i obriu",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Mireu una vista prèvia en directe del gràfic, cerqueu qualsevol actiu compatible d'aquesta família i obriu l'estació completa amb un sol clic."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Un cop hàgiu trobat un actiu interessant a la Screener, és el moment de fer una ullada més de prop. Està en tendència alcista o s'ha quedat sense força? Estàs guanyant als teus competidors? Què diuen el volum i el mercat de derivats?",
+            "L'estació Analytics concentra tota l'anàlisi tècnica, comparativa i quantitativa d'aquest actiu en una sola pantalla. A dalt tens el resum general i a l'esquerra quatre lents per canviar l'angle d'anàlisi sense perdre de vista el gràfic."
+          ],
+          "intro": "L'estació Analytics concentra els motors tècnics, comparatius, d'anàlisi de flux i 3D/2D d'un actiu individual en una sola pantalla.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "El tauler superior per canviar d'actiu, triar el període de temps i veure les cinc mètriques clau.",
+              "paragraphs": [
+                "Quan estàs estudiant un actiu, acostumes a alternar entre el curt termini d'avui i la pel·lícula dels últims mesos, o fins i tot canvies a mirar un altre símbol similar. Com ho fas tot això sense tornar enrere?",
+                "La capçalera superior reuneix els controls de navegació i la pestanya ràpida de l'instrument:"
+              ],
+              "lead": "La capçalera superior reuneix els controls de navegació i la pestanya ràpida de l'instrument:",
+              "bullets": [
+                {
+                  "bold": "Canvi d'actiu o retorn a la llista",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "A la part superior esquerra podeu tornar a Screener o escriure el nom de qualsevol altre instrument per canviar els gràfics al moment."
+                },
+                {
+                  "bold": "Nou finestres del temps",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Al marge dret, canvieu l'escala del gràfic des de moviments minut a minut fins a tot l'historial."
+                },
+                {
+                  "bold": "Cinc indicadors avançats",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Al costat del preu sempre tens a la vista el volum negociat, les dues dades clau de la seva categoria, la força de la tendència i el nivell de normalitat estadística."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Tècnic",
+              "summary": "El gràfic de preus amb mitjanes mòbils, bandes de volatilitat i volum per seguir la tendència.",
+              "paragraphs": [
+                "Mirar només l'últim preu no us indica si un actiu s'està accelerant, si està rebotant en la seva mitjana o si ja ha augmentat massa ràpidament en pocs dies.",
+                "La primera lent del carril esquerre permet superposar al gràfic les referències tècniques més utilitzades del mercat:"
+              ],
+              "lead": "La primera lent del rail esquerre permet superposar les referències tècniques més utilitzades:",
+              "bullets": [
+                {
+                  "bold": "Adreça i preu mitjà real",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Podeu activar la mitjana mòbil de 20 períodes i el preu mitjà ponderat per volum per veure immediatament si l'actiu cotitza per sobre o per sota del seu nivell d'equilibri."
+                },
+                {
+                  "bold": "Zones d'excés i confirmació de volum",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Les bandes dibuixen el sostre i el sòl estadístics del preu, mentre que les barres inferiors confirmen si el moviment és compatible amb el volum."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Fórmules i criteris d'interpretació de la Mitjana Mòbil (SMA 20), Bandes de Bollinger i VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Comparar %",
+              "summary": "El comparador de percentatges del 0% per mesurar si el vostre actiu funciona més o menys que un altre de la mateixa categoria.",
+              "paragraphs": [
+                "Un valor que pugi un 5% sembla una gran notícia, però si el seu punt de referència o principal competidor augmenta un 12% en el mateix període, en realitat esteu quedant enrere.",
+                "La segona lent resol aquest dubte posant els dos actius en la mateixa línia de partida:"
+              ],
+              "lead": "La segona lent resol aquest dubte posant els dos actius en la mateixa línia de partida:",
+              "bullets": [
+                {
+                  "bold": "Cerca parelles coherents",
+                  "code": "Buscar par compatible",
+                  "text": "El motor de cerca filtra automàticament els actius de la mateixa família (per exemple, accions versus accions, ETF o índexs), de manera que la comparació té sentit financer."
+                },
+                {
+                  "bold": "Avantatge net en percentatge",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Les dues corbes comencen des del 0% i el carril esquerre calcula quants punts percentuals d'avantatge (en verd) o de desavantatge (en vermell) té el vostre actiu."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro i flux",
+              "summary": "El detector de compres institucionals fora de patró, liquiditat i costos de spread.",
+              "paragraphs": [
+                "Moltes vegades, grans fons s'acumulen o descarreguen posicions abans que el preu faci un moviment sobtat. Com detecteu aquest rastre amagat en el volum i la liquiditat del llibre de comandes?",
+                "La tercera lent se centra en el que passa a sota de la cita:"
+              ],
+              "lead": "La tercera lent se centra en el que passa a sota de la cita:",
+              "bullets": [
+                {
+                  "bold": "Pics de volum estadístics",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Canvia el tauler inferior per mostrar-vos quantes vegades el volum actual es desvia del normal, revelant una activitat institucional inusual."
+                },
+                {
+                  "bold": "Estrès de liquiditat i anomalies",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Mesura en punts bàsics si la bretxa entre compradors i venedors s'està ampliant i si el motor estadístic detecta comportaments atípics."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Com es mesuren els spreads d'obertura i els pics estadístics del flux d'ordres."
+            },
+            {
+              "id": "ana-engines",
+              "label": "Motors 3D/2D",
+              "summary": "La quarta lent que desplega una eina ad-hoc dinàmica que varia segons la classe d'actiu.",
+              "paragraphs": [
+                "A diferència de les tres primeres lents (que són comunes a tots els instruments), la quarta lent del rail esquerre és una eina ad-hoc que canvia dinàmicament en funció de l'actiu que s'analitza: per exemple, en la gira en directe, com que és un estoc (NVDA), habilita el 3D Implicit Volatility i Opcions en mercats propis, mentre que en els seus motors especialitzats Payoff.",
+                "El quart botó detecta la classe d'actius oberts i activa automàticament l'eina ad-hoc corresponent:"
+              ],
+              "lead": "El quart botó detecta quin actiu teniu obert i activa l'eina ad-hoc que li correspon:",
+              "bullets": [
+                {
+                  "bold": "En accions, índexs, derivats i cripto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Mostra la superfície de volatilitat implícita en 3D, les opcions somriuen per venciment i un simulador de 6 estratègies per veure quant guanyaríeu o perdríeu avui i al venciment."
+                },
+                {
+                  "bold": "En tipus, bons i liquiditat",
+                  "code": "Curva 3D/2D",
+                  "text": "Permet comparar les corbes de rendiment de 42 països amb els EUA i Alemanya, mesurant si la corba és normal o invertida (2s10s) i quant varia el preu amb els canvis de tipus (DV01)."
+                },
+                {
+                  "bold": "En divises",
+                  "code": "FX & Carry",
+                  "text": "Ofereix un convertidor i triangulador entre 61 monedes que també calcula el diferencial de tipus d'interès a 10 anys a favor o en contra de mantenir aquest parell."
+                },
+                {
+                  "bold": "En matèries primeres",
+                  "code": "Forward 3D/2D",
+                  "text": "Gràfics els preus dels contractes de futurs mes a mes per mostrar si el mercat paga més per forward (Contango) o per lliurament immediat (backwardation), juntament amb l'estat dels inventaris físics."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detall matemàtic de les superfícies de volatilitat, corbes de rendiments sobirans, transport de divises i corbes de futurs."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "El gràfic us mostra què està fent el preu, però no us diu per què. Per saber què hi ha darrere d'un moviment, hauríeu de llegir desenes de pàgines de balanços trimestrals, extractes del banc central, informes d'inventari i cables de notícies.",
+            "L'estació Research fa aquest treball pesat per vosaltres. Combina la intel·ligència artificial documental verificada amb informes oficials amb la lectura de notícies en temps real, organitzant totes les proves a favor i en contra en tres columnes clares."
+          ],
+          "intro": "L'estació Research resumeix balanços oficials, informes macroeconòmics i notícies en temps real en tres columnes clares.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Nota i postura",
+              "summary": "Les tres primeres cartes que resumeixen el veredicte fonamental i l'humor de la notícia.",
+              "paragraphs": [
+                "Els fonaments de l'actiu acompanyen la pujada del preu o les notícies empitjoren les perspectives? Abans de llegir el detall, necessiteu una conclusió executiva ràpida.",
+                "A la cantonada superior dreta teniu tres indicadors que resumeixen l'estat general de l'actiu:"
+              ],
+              "lead": "A la cantonada superior dreta teniu tres indicadors que resumeixen l'estat general:",
+              "bullets": [
+                {
+                  "bold": "Postura i pes de cada font",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Defineix el veredicte general i aclareix quin pes dóna als documents oficials enfront de les notícies en funció del tipus d'actiu (per exemple, un 80% de balanços i un 20% de notícies en un valor)."
+                },
+                {
+                  "bold": "Valoració combinada",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Sintetitza en una única puntuació el resultat net dels fonaments més el flux d'informació del dia."
+                },
+                {
+                  "bold": "Portatermòmetres",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Col·loca en una barra de -100 a +100 si el to de premsa de les últimes hores és pessimista (vermell), neutre o entusiasta (verd)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Com es ponderen els informes oficials amb les notícies en funció del tipus d'actiu."
+            },
+            {
+              "id": "res-rag",
+              "label": "Xat RAG",
+              "summary": "L'auxiliar documental es va deixar per fer preguntes concretes sobre balanços i informes oficials.",
+              "paragraphs": [
+                "Suposem que voleu saber què va dir exactament una empresa sobre els seus marges al seu darrer balanç anual 10-K, o què va dir la Reserva Federal en els seus últims minuts. Cercar-lo a mà porta temps; Demanar un xat genèric sense fonts pot donar-te dades inventades.",
+                "La columna de l'esquerra ho resol amb un assistent connectat exclusivament a documentació oficial verificada:"
+              ],
+              "lead": "La columna de l'esquerra us ofereix un assistent connectat a la documentació oficial verificada:",
+              "bullets": [
+                {
+                  "bold": "Tesi inicial i preguntes guiades",
+                  "code": "Chat Documental RAG",
+                  "text": "Comença amb un resum executiu amb pressupostos verificats i quatre botons de referència ràpida adaptats a la categoria d'actius, així com un camp per escriure les vostres pròpies preguntes."
+                },
+                {
+                  "bold": "Pas directe a la vostra cartera",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Si després d'investigar els fonaments decideixes que l'actiu val la pena, aquest botó a la part superior del xat t'envia directament al simulador de cartera."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Funcionament de la cerca documental verificada (RAG) i els seus filtres de seguretat."
+            },
+            {
+              "id": "res-factors",
+              "label": "Factors",
+              "summary": "L'acordió central amb els cinc conductors alcistes i els cinc riscos baixistes ordenats per impacte.",
+              "paragraphs": [
+                "Cap inversió és cent per cent perfecta o cent per cent dolenta: sempre hi ha arguments a favor i riscos latents. El secret és saber quins pesen més avui.",
+                "La columna central posa els dos costats cara a cara perquè pugueu prendre una decisió equilibrada:"
+              ],
+              "lead": "La columna central posa els dos costats cara a cara perquè pugueu prendre una decisió equilibrada:",
+              "bullets": [
+                {
+                  "bold": "Balanç de força i filtres",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "A dalt veus la barra d'ofertes entre compradors i venedors, i a continuació pots filtrar els cinc catalitzadors positius (en verd) o els cinc riscos principals (en vermell)."
+                },
+                {
+                  "bold": "Detall i desglossa en un sol clic",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Quan toqueu qualsevol factor de la llista, es mostra la seva explicació completa juntament amb un botó per demanar a Chat RAG més informació sobre aquest punt específic."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Pols",
+              "summary": "La línia de temps adequada amb els últims titulars classificats per IA i la corba de l'estat d'ànim de 24 hores.",
+              "paragraphs": [
+                "Un únic titular d'última hora sobre guanys, inflació o regulacions pot canviar completament l'estat d'ànim del dia. Com saps quines notícies acaben de sortir i quin efecte està tenint?",
+                "La columna de la dreta controla el flux d'informació minut a minut:"
+              ],
+              "lead": "La columna de la dreta controla el flux d'informació minut a minut:",
+              "bullets": [
+                {
+                  "bold": "Cronologia qualificada",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Enumera els cinc titulars més recents amb el seu temps i agència, puntuant-los en verd si són favorables o en vermell si representen una amenaça."
+                },
+                {
+                  "bold": "Simulador d'impacte i corba diària",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Podeu activar un cable en directe amb el botó superior per veure com torna a calcular tota la pantalla i seguir al gràfic següent com ha evolucionat l'estat d'ànim durant les últimes 24 hores."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Com el model FinBERT analitza el llenguatge financer de cada titular."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Constructor",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Escollir bons actius per separat no és suficient per tenir una bona cartera. Si poseu massa capital en actius que es mouen igual, o si no mesureu com haurien funcionat junts en el passat, esteu invertint a cegues.",
+            "Constructor & Performance (la primera vista de Portfolio) és el taller on creeu la vostra cartera. Permet afegir qualsevol dels 213 actius, ajustar quin percentatge assigneu a cadascun sense fer front a controls impreciss i auditar a l'instant tant la seva composició interna com el seu historial."
+          ],
+          "intro": "Constructor & Performance és el taller on construeix la teva cartera, ajusta el pes de cada actiu i audita el seu rendiment històric.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Resum",
+              "summary": "Les sis cartes principals que es tornen a calcular en directe cada vegada que modifiqueu la vostra cartera.",
+              "paragraphs": [
+                "Cada vegada que afegiu un actiu o canvieu un percentatge a la vostra cartera, heu de saber immediatament si aquest ajust va millorar la vostra rendibilitat esperada o va empitjorar la vostra exposició a la baixa.",
+                "La fila superior sempre manté visibles les sis mètriques mestres de la cartera:"
+              ],
+              "lead": "La fila superior sempre manté visibles les sis mètriques mestres de la cartera:",
+              "bullets": [
+                {
+                  "bold": "Rendiment i eficiència",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Us indiquen quin benefici anual compost projecta la cartera sobre el vostre capital i quanta rendibilitat obteniu per cada unitat de risc assumida."
+                },
+                {
+                  "bold": "Pèrdua diària prevista i caiguda històrica",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Calculen quants dòlars es podria perdre en un mal dia dins del que era estadísticament previsible i quin va ser el revés més profund de l'últim any."
+                },
+                {
+                  "bold": "Valor afegit i diversificació",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Mesuren quants punts la vostra cartera supera l'índex de referència i quant risc esteu reduint gràcies a la combinació de diferents actius."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Fórmules de rendiment compostes (CAGR), ràtios Sharpe i Sortino i valor en risc (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Ponderació",
+              "summary": "La taula de l'esquerra per afegir actius, activar-los o desactivar-los i definir el percentatge exacte de cada posició.",
+              "paragraphs": [
+                "Què passaria amb els números de la vostra cartera si tanqueu temporalment un valor tecnològic avui o repartiu els diners per parts iguals entre totes les vostres posicions?",
+                "El tauler esquerre us permet fer totes aquestes proves d'una manera neta i directa:"
+              ],
+              "lead": "El tauler esquerre us permet fer totes aquestes proves d'una manera neta i directa:",
+              "bullets": [
+                {
+                  "bold": "Cercador dels 213 actius",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Pots cercar qualsevol instrument a la plataforma o filtrar els teus favorits per afegir-lo a la taula amb un sol clic."
+                },
+                {
+                  "bold": "Engegada ràpida i edició precisa",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Cada fila té una casella de selecció per incloure o excloure l'actiu en temps real i una casella numèrica per introduir el percentatge exacte sense utilitzar controls lliscants imprecís."
+                },
+                {
+                  "bold": "Tres dreceres de reequilibri",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "A la part superior de la taula teniu botons per distribuir el mateix pes entre tots els actius actius, portar automàticament la suma al 100% o tornar a la cartera original."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "radiografia",
+              "summary": "El tauler superior dret amb cinc pestanyes per descobrir concentracions ocultes, flux d'efectiu i custòdia.",
+              "paragraphs": [
+                "Un dels errors més habituals a l'hora d'invertir és creure que estàs diversificat perquè tens cinc actius diferents, quan en realitat has comprat una acció individual i també dos ETF que tenen les mateixes accions a dins.",
+                "El panell de raigs X analitza la vostra cartera des de dins a través de cinc pestanyes:"
+              ],
+              "lead": "El panell de raigs X analitza la vostra cartera des de dins a través de cinc pestanyes:",
+              "bullets": [
+                {
+                  "bold": "Detector de posició repetida",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Sumeu el que heu invertit directament a cada empresa més la part oculta que teniu dins d'índexs o ETF (com ara SPY o QQQ), advertint-vos en vermell si supereu els límits prudents."
+                },
+                {
+                  "bold": "Mapa d'exposició i origen del retorn",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Us mostren quin percentatge teniu realment en cada tipus d'actiu i moneda, i quina part del vostre benefici prové de l'elecció de bons sectors en comparació amb l'elecció de bons actius."
+                },
+                {
+                  "bold": "Ingressos anuals previstos i seguretat",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Calculen quants dòlars cobraràs durant l'any per dividends, cupons i interessos, i auditen la solvència dels custodis on descansa el teu capital."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Com es calcula l'exposició indirecta als ETF i el desglossament de l'atribució de Brinson."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Calendari",
+              "summary": "El gràfic mensual de gener a desembre per veure la regularitat dels vostres guanys i pèrdues.",
+              "paragraphs": [
+                "Una bona rendibilitat anual pot amagar mesos de caigudes molt fortes que a la pràctica són difícils de tolerar. Quina és la coherència de mes a mes la cartera que acabes de crear?",
+                "Just a sota de la radiografia, el calendari desglossa l'historial mensual:"
+              ],
+              "lead": "Just a sota de la radiografia, el calendari desglossa l'historial mensual:",
+              "bullets": [
+                {
+                  "bold": "Mesos verds i mesos vermells",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Cada cel·la es torna a calcular a l'instant segons els pesos de la teva taula i es pinta de verd o vermell segons el resultat d'aquell mes, tancant a la dreta amb el resultat acumulat de l'any."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "El gràfic de pantalla completa a continuació per comparar la vostra cartera amb quatre estratègies clàssiques.",
+              "paragraphs": [
+                "Abans de considerar que la vostra cartera és bona, la prova fonamental continua: és realment millor que deixar els diners a la S&P 500 o a una cartera tradicional 60/40?",
+                "El panell inferior ocupa tota l'amplada de la pantalla per adaptar el vostre disseny als estàndards del mercat:"
+              ],
+              "lead": "El panell inferior situa el vostre disseny en contra dels estàndards del mercat:",
+              "bullets": [
+                {
+                  "bold": "Cinc horitzons de prova",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Us permet avaluar el rendiment de la vostra combinació tant en els últims trimestres com en cicles plurianuals complets."
+                },
+                {
+                  "bold": "Quatre referències presencials",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Superposeu la corba verda de la vostra cartera activa amb qualsevol dels quatre models clàssics perquè pugueu veure clarament quan s'avança i com es manté a la baixa."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Risc",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "En moments en què el mercat puja amb calma, gairebé qualsevol cartera sembla segura. El veritable problema apareix quan esclata una crisi, els tipus d'interès pugen de cop i els actius que semblaven independents comencen a baixar alhora.",
+            "Quantitative Risk & Stress (la segona vista de Portfolio) sotmet la vostra cartera a proves extremes abans que passin a la vida real. A través de quatre quadrants simètrics i un simulador d'escenaris futurs a continuació, us mostra exactament on es troben els vostres punts vulnerables."
+          ],
+          "intro": "Quantitative Risk & Stress prova la vostra cartera per a crisis històriques, contagi de correlació i projeccions Monte Carlo.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "El mapa interactiu de risc i rendibilitat per veure a quina distància esteu de la cartera més eficient possible.",
+              "paragraphs": [
+                "Amb els mateixos actius que ja teniu a la vostra cartera, hi ha milers de maneres de distribuir els percentatges. La combinació que has escollit és la que paga millor pel risc que corres, o pots guanyar la mateixa amb menys sorpreses?",
+                "El primer quadrant de la part superior esquerra dibuixa aquest mapa de possibilitats en viu:"
+              ],
+              "lead": "El primer quadrant de la part superior esquerra dibuixa aquest mapa de possibilitats en viu:",
+              "bullets": [
+                {
+                  "bold": "La seva posició davant les carteres òptimes",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Mostra on es troba la vostra cartera actual en relació amb el punt de menor volatilitat possible i el punt de màxima eficiència entre el risc i la rendibilitat."
+                },
+                {
+                  "bold": "Capes visuals i inspecció per actiu",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Podeu activar o desactivar les capes del model i fer clic a qualsevol node per llegir la contribució exacta d'aquest actiu a continuació."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Frontera eficient de Markowitz i càlcul de les carteres de variància mínima i màxima Sharpe."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado i VaR",
+              "summary": "El simulador de crisi històrica, desglossament de pèrdues diàries per actiu i asimetria del mercat.",
+              "paragraphs": [
+                "Si demà es repeteix una caiguda com la del 2008, la desacceleració econòmica del 2020 o la pujada de tipus el 2022, quant perdria la vostra cartera actual i quin actiu seria el principal culpable?",
+                "El quadrant inferior esquerre respon aquestes tres preguntes en tres pestanyes específiques:"
+              ],
+              "lead": "El quadrant inferior esquerre respon aquestes preguntes en tres pestanyes específiques:",
+              "bullets": [
+                {
+                  "bold": "Prova contra cinc crisis reals",
+                  "code": "1. Tornado Stress",
+                  "text": "Compareu barra per barra quant cauria la vostra cartera enfront de la S&P 500 davant de cinc grans xocs històrics."
+                },
+                {
+                  "bold": "Classificació del risc per posició",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Ordena les teves participacions segons quants dòlars de pèrdua potencial diària contribueix cadascun a la cartera total."
+                },
+                {
+                  "bold": "Comportament en alts i baixos",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Us mostra quin percentatge de les rodes alcistes del mercat aprofita cada actiu i quant aconsegueix amortir quan el mercat cau."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Metodologia dels escenaris històrics d'estrès, contribució marginal a VaR i ràtios de captura."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Correlació",
+              "summary": "La matriu creuada per comprovar si els vostres actius es diversifiquen realment o si s'infecten durant un pànic.",
+              "paragraphs": [
+                "Tenir diversos actius a la vostra cartera només redueix el risc si no tots es mouen en la mateixa direcció al mateix temps. Però en temps de pànic financer, moltes correlacions que semblaven baixes salten bruscament a l'alça.",
+                "El quadrant superior dret us permet auditar aquesta relació en dos escenaris:"
+              ],
+              "lead": "El quadrant superior dret us permet auditar aquesta relació en dos escenaris:",
+              "bullets": [
+                {
+                  "bold": "Encreuament entre actius i sensibilitat",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Mostra com de semblant es mou cada parell d'actius (en verd o blau clar quan es diversifiquen bé, i en vermell quan s'apropen massa) i quina és la seva sensibilitat al mercat."
+                },
+                {
+                  "bold": "Simulador de contagi en crisi",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Amb un sol clic canvies les correlacions d'un any normal per les d'un moment de pànic per descobrir quines posicions ja no et protegirien."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Càlcul dels coeficients de correlació de Pearson en condicions normals i sota estrès de mercat."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash i Markov",
+              "summary": "La taula d'impacte conjunta entre tipus i borsa, més les probabilitats d'un canvi en el cicle econòmic.",
+              "paragraphs": [
+                "En l'economia real, els problemes rarament apareixen d'un en un: moltes vegades una pujada dels tipus d'interès coincideix amb una caiguda de les existències. Què passa amb la teva cartera si es combinen els dos factors alhora?",
+                "El quadrant inferior dret creua ambdues variables i mesura les probabilitats de canvi de règim:"
+              ],
+              "lead": "El quadrant inferior dret creua ambdues variables i mesura el cicle del mercat:",
+              "bullets": [
+                {
+                  "bold": "Tauler de doble impacte",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Moviments creuats de tipus (-100 a +200 punts bàsics) amb caigudes o pujades de S&P 500 (-20% a +10%), que us permeten filtrar per tota la cartera o per un actiu individual."
+                },
+                {
+                  "bold": "Probabilitats de transició de cicle",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Calcula la probabilitat que el mercat es mantingui en calma o entri en una fase volàtil, inflacionista o de crisi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sensibilitat conjunta a taxes i variables, i matriu de transició d'estat de Markov."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "El panell inferior és a pantalla completa amb projeccions probabilístiques futures i descensos històrics.",
+              "paragraphs": [
+                "Mirar el passat és útil, però a l'hora d'invertir endavant el que cal saber és dins de quin rang de resultats es pot moure el vostre capital en els propers sis mesos, un any o dos anys.",
+                "El tauler inferior d'amplada completa reuneix tres eines temporals per projectar i controlar aquest camí:"
+              ],
+              "lead": "El tauler inferior reuneix tres eines temporals per projectar aquest camí:",
+              "bullets": [
+                {
+                  "bold": "Deu mil escenaris futurs",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Dibuixa el con d'evolució probable de la teva cartera, distingint l'escenari optimista (P95 en verd), el camí central esperat (P50) i l'escenari advers (P05 en vermell)."
+                },
+                {
+                  "bold": "Profunditat de les caigudes i estabilitat en el temps",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Us permeten canviar el gràfic per veure quant de temps es va mantenir la cartera per sota dels seus màxims històrics o com d'estables van ser la seva eficiència i risc durant les finestres de 60 dies."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo Simulació estocàstica de 10.000 carreteres i mètriques de rotació de 60 dies."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulador",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Abans de comprar un nou actiu, reduir una posició o pagar una cobertura amb opcions, sempre sorgeix la mateixa pregunta: realment aquesta operació millora la meva cartera o afegeix un risc innecessari? I quant capital hi he de posar?",
+            "L'Ad-Hoc Strategy Lab (la tercera vista de Portfolio) és el vostre simulador preoperatiu. Us permet carregar jugades tàctiques, calcular la mida de la vostra posició ideal, provar l'assegurança a la baixa i veure l'impacte exacte abans i després sense tocar encara la vostra cartera base."
+          ],
+          "intro": "El Laboratori d'Estratègies Ad-Hoc és el vostre simulador de pre-comercialització per provar comandes, dimensionar posicions i mesurar la cobertura.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Impacte",
+              "summary": "Les sis cartes principals que comparen la vostra cartera actual amb el resultat després de les jugades simulades.",
+              "paragraphs": [
+                "Per saber si una idea tàctica val la pena, no n'hi ha prou que l'actiu sembli atractiu per si sol: ha de millorar les xifres de tota la cartera.",
+                "La fila superior us mostra permanentment la comparació entre la vostra cartera actual i la cartera amb la simulació aplicada:"
+              ],
+              "lead": "La fila superior compara la vostra cartera actual amb la cartera amb la simulació aplicada:",
+              "bullets": [
+                {
+                  "bold": "Efecte sobre el benefici i l'eficiència",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Mostren el número base al costat del número projectat, il·luminant la diferència en verd si la jugada afegeix eficiència o en vermell si la deteriora."
+                },
+                {
+                  "bold": "Efecte sobre el risc, el capital i les normes",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Us indiquen quant canvia la vostra pèrdua màxima esperada, quin percentatge de la cartera us comprometeu a les proves i si es respecten tots els límits de seguretat."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If i Kelly",
+              "summary": "El simulador de compra/venda de bitllets i la calculadora per definir quants diners arriscar.",
+              "paragraphs": [
+                "Moltes bones idees d'inversió acaben donant lloc a pèrdues per un error en la mida de l'aposta: posar poc no mou l'agulla, però posar massa pot arruïnar la cartera si la jugada surt malament.",
+                "El primer quadrant de la part superior esquerra enllaça el full d'evidència amb el càlcul matemàtic de la mida:"
+              ],
+              "lead": "El primer quadrant uneix l'informe de prova amb el càlcul matemàtic de la mida:",
+              "bullets": [
+                {
+                  "bold": "Càrrega de la comanda de prova",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Trieu qualsevol actiu, indiqueu si voleu comprar, vendre o cobrir i carregar l'import en dòlars. A la llista següent, podeu activar o desactivar cada ordre simulada per comparar el seu efecte."
+                },
+                {
+                  "bold": "Mida òptima de la posició",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "A partir de la vostra probabilitat estimada d'èxit i de la relació entre guanys i pèrdues, calcula quin percentatge màxim de capital s'ha d'assignar per créixer sense sobreexposar-vos."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Càlcul matemàtic del criteri de Kelly i la seva versió conservadora Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Posa OTM i marge",
+              "summary": "El simulador d'assegurances amb opcions per a fortes caigudes del mercat i el monitor de trucades de marge.",
+              "paragraphs": [
+                "Quan temeu una forta correcció del mercat, vendre totes les vostres posicions sol ser costosa i ineficient. L'alternativa professional és contractar una assegurança amb opcions de protecció, però quant costa aquesta assegurança a l'any i quant et protegeix realment?",
+                "El quadrant inferior esquerre permet mesurar tant la cobertura com el nivell de deute:"
+              ],
+              "lead": "El quadrant inferior esquerre mesura tant la cobertura com el nivell de garanties:",
+              "bullets": [
+                {
+                  "bold": "Comparador d'escuts protectors",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Permet alternar entre operar sense cobertura o aplicar tres tipus d'assegurances amb opcions (a la volatilitat SPY, QQQ o VIX), contrastant el cost anual de la prima amb els dòlars que estalviaria en un accident del 20%."
+                },
+                {
+                  "bold": "Control de palanquejament i garantia",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Superviseu quin percentatge de marge de manteniment heu utilitzat i quin percentatge de caiguda suportaria la cartera abans d'entrar a la zona de trucada de marge."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Operació de cobertura amb opcions de venda fora de diners i càlcul de garanties Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Comissió i llibre",
+              "summary": "Els dos panells de la dreta amb revisió automàtica dels límits de risc, historial de comandes i copilot.",
+              "paragraphs": [
+                "En l'entusiasme de provar un comerç, és fàcil passar per alt que un actiu concentra més del 20% de tota la vostra cartera o que està operant enmig d'una greu anomalia estadística.",
+                "Els dos quadrants de la dreta serveixen com a control automàtic de riscos i pista d'auditoria:"
+              ],
+              "lead": "Els dos quadrants de la dreta funcionen com a control i registre de riscos:",
+              "bullets": [
+                {
+                  "bold": "Revisió en tres dimensions",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Avaluen les vostres comandes simulades a partir dels límits tècnics, fonamentals i de seguretat durs (advertència si alguna posició supera el límit del 20% de capital o si presenta anomalies elevades)."
+                },
+                {
+                  "bold": "Assistent de registre de comandes i cartera",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "El panell inferior registra cada simulació amb el seu impacte en el risc, mentre que el botó de diàleg a la part superior dreta obre el xat per fer preguntes directes sobre la vostra cartera."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Normes de control del risc previ a l'operació i límits de concentració per actiu."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "El gràfic següent a pantalla completa per comprovar que la vostra estratègia funciona fora del període de prova.",
+              "paragraphs": [
+                "Qualsevol estratègia es pot ajustar mirant el passat fins que aparegui infal·lible al gràfic històric. El veritable repte és saber si continua funcionant davant de noves dades de mercat.",
+                "El panell inferior d'amplada completa sotmet l'estratègia a la validació més rigorosa abans d'entrar en producció:"
+              ],
+              "lead": "El panell inferior sotmet l'estratègia a la validació dins i fora de la mostra:",
+              "bullets": [
+                {
+                  "bold": "Separació entre disseny i proves reals",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Divideix el gràfic històric en una primera etapa on es calibra l'estratègia i una segona etapa amb dades no vistes per comprovar si manté el seu avantatge sobre la cartera base."
+                },
+                {
+                  "bold": "Nota de robustesa estadística",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Si l'indicador d'eficiència supera el 70%, confirma que els resultats són coherents i no el producte d'haver forçat els números al passat."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Què mesura l'índex d'eficiència Walk-Forward (WFE) i com detecta estratègies sobreoptimitzades."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Filtre de liquiditat (ADV)",
+        "intro": "Perquè un actiu es negocii sense que una sola comanda distorsioni el seu preu, la plataforma requereix un llindar mínim de volum mitjà diari en dòlars durant els darrers 20 dies laborables.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Preu de tancamentᵢ × Volum comercialitzatᵢ)",
+          "denominator": "20 rodes hàbils",
+          "vars": [
+            "Preu de tancament: preu oficial de tancament del dia i expressat en USD.",
+            "Volum comercialitzatᵢ: nombre total d'unitats negociades aquell dia."
+          ]
+        },
+        "lead": "A partir del volum mitjà diari, el catàleg classifica la profunditat de cada instrument:",
+        "bullets": [
+          {
+            "bold": "Alta liquiditat institucional",
+            "code": "> $500M diarios",
+            "text": "Li permet entrar i sortir de posicions grans immediatament sense moure el preu del mercat."
+          },
+          {
+            "bold": "Liquiditat del catàleg estàndard",
+            "code": "$50M a $500M diarios",
+            "text": "Apte per a carteres diversificades amb costos de compra/venda molt baixos."
+          },
+          {
+            "bold": "Seguiment de propagació",
+            "code": "< $50M diarios",
+            "text": "En moments de volatilitat s'aconsella comprovar l'obertura de propines abans d'executar grans comandes."
+          }
+        ],
+        "example": "Si una acció cotitza a 200 dòlars i cotitza una mitjana de 5 milions d'accions per roda durant l'últim mes, el seu volum diari mitjà (ADV) és de 1.000 milions de dòlars (1,0 milions de dòlars)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalització a USD",
+        "intro": "Com que el catàleg combina bons europeus, índexs asiàtics, matèries primeres i criptomonedes, tots els fluxos de volum es converteixen en dòlars dels EUA en temps real perquè es puguin comparar a la mateixa escala.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Volum de la moneda local: quantitat negociada en la moneda original del mercat (EUR, JPY, GBP, BRL, etc.).",
+            "Tipus de canvi al comptat: cotització actual del motor de 61 divises."
+          ]
+        },
+        "lead": "Aquesta conversió afecta directament dos llocs de la pantalla:",
+        "bullets": [
+          {
+            "bold": "Vista general Classificació Tots",
+            "code": "213 activos",
+            "text": "Ordena els instruments de major a menor moviment de diners a tot el món."
+          },
+          {
+            "bold": "Targeta de volum afegit",
+            "code": "Volumen 24h en $B",
+            "text": "Permet afegir el volum d'actius que figuren en diferents països sense distorsions."
+          }
+        ],
+        "example": "Si un bon alemany cotitza 4.000 milions d'euros al dia i l'euro/USD cotitza a 1,08, el sistema calcula 4,32 milions de dòlars en el pols global."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "RSI AVG (14)",
+        "intro": "Com es mesura si un mercat ha pujat amb una força real o si ja ha pujat massa ràpid i està esgotat? L'índex de força relativa (RSI) compara les pujades mitjanes amb les caigudes mitjanes de les últimes 14 rondes en una escala de 0 a 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Pujades mitjanes₁₄ / Baixes mitjanes₁₄)",
+          "vars": [
+            "Pujada mitjana₁₄: mitjana suavitzada dels punts guanyats els dies alcistes de les últimes 14 rodes.",
+            "Pèrdues mitjanes₁₄: mitjana suavitzada dels punts perduts els dies baixistes del mateix període."
+          ]
+        },
+        "lead": "Així s'interpreten les tres seccions de l'escala en l'anell circular:",
+        "bullets": [
+          {
+            "bold": "Força de compra i sobrecompra",
+            "code": "70 a 100",
+            "text": "Els augments superen amb escreix els descensos recents. Mostra un gran impuls alcista, tot i que per sobre dels 70 adverteix que el preu pot necessitar una pausa."
+          },
+          {
+            "bold": "zona d'equilibri",
+            "code": "30 a 70",
+            "text": "El mercat es mou a un ritme sostenible. Creuar el nivell intermedi (> 50 en verd) confirma el domini del comprador, mentre que baixar per sota (< 50 en vermell) indica el domini del venedor."
+          },
+          {
+            "bold": "Càstig i venda excessiva",
+            "code": "0 a 30",
+            "text": "Les caigudes van ser tan freqüents i pronunciades que l'actiu comença a semblar estadísticament barat i propens a un rebot."
+          }
+        ],
+        "example": "Si a les últimes 14 rodes un grup d'accions va pujar de mitjana 2 dòlars per dia alcista i només va caure 1 $ per dia baixista, la seva ràtio de força és de 2 i el seu RSI és de 66,7 (impuls alcista en verd)."
+      },
+      {
+        "id": "p06",
+        "label": "Règim normal (P-06)",
+        "intro": "Un actiu pot semblar tranquil si només observem el seu preu, però al mateix temps pateix un estrany salt de volum i una obertura anormal en els seus pics de compra i venda. El motor Isolation Forest (P-06) creua aquestes variables alhora per detectar comportaments atípics.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): nombre mitjà de talls aleatoris necessaris per aïllar el comportament actual de la resta de la història.",
+            "x: vector de 4 variables (Retorn 24h, Vol Z-Score 20d, Volatilitat realitzada 30d i Spread en bps)."
+          ]
+        },
+        "lead": "Com més rar és el moviment d'avui, més ràpid s'aïlla i més a prop s'acosta a l'1,00:",
+        "bullets": [
+          {
+            "bold": "Règim normal",
+            "code": "0.00 a 0.49",
+            "text": "El preu, el volum i la liquiditat es mouen en línia amb la mitjana històrica de l'actiu."
+          },
+          {
+            "bold": "Alta activitat",
+            "code": "0.50 a 0.64",
+            "text": "Almenys una de les variables va començar a desviar-se del seu comportament habitual; És recomanable controlar de prop el flux de comandes."
+          },
+          {
+            "bold": "Luxació o anomalia crítica",
+            "code": "0.65 a 1.00",
+            "text": "L'actiu registra un comportament estadísticament extrem. En el mòdul de cartera, superar aquest llindar activa el fre de seguretat."
+          }
+        ],
+        "example": "Si un bon sobirà amb prou feines es mou un 0,1% de preu, però el seu volum es multiplica per quatre i el seu diferencial es triplica en minuts, el detector creua els tres punts de dades i augmenta la seva puntuació a 0,74 (Dislocació en vermell)."
+      },
+      {
+        "id": "zscore",
+        "label": "Bypass de volum (Z-Score)",
+        "intro": "Dir que avui es van operar 500 milions de dòlars és molt per a una empresa mitjana, però molt poc per a S&P 500. El volum Z-Score porta tots els actius a la mateixa unitat universal: quantes desviacions estàndard (σ) és el volum actual de la seva pròpia mitjana de 20 rodes.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Volum avui (24h) − Volum mitjà (20d)",
+          "denominator": "Desviació estàndard del volum (20 d)",
+          "vars": [
+            "Volum mitjà (20d): volum habitual de l'actiu durant l'últim mes comercial.",
+            "Desviació estàndard (20d): quant varia aquest volum normalment d'un dia a l'altre."
+          ]
+        },
+        "lead": "D'aquesta manera podeu comparar qualsevol actiu a la mateixa escala d'unitats sigma (σ):",
+        "bullets": [
+          {
+            "bold": "Activitat habitual",
+            "code": "-1.0σ a +1.0σ",
+            "text": "El volum del dia està completament dins de la rutina de les últimes quatre setmanes."
+          },
+          {
+            "bold": "Alta participació",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Hi ha un interès superior a la mitjana que comença a validar la tendència del dia."
+          },
+          {
+            "bold": "Xoc institucional",
+            "code": "> +2.0σ",
+            "text": "Es produeix en menys del 5% de les rondes de l'any i sol reflectir l'entrada o sortida massiva de grans fons."
+          }
+        ],
+        "example": "Si una acció normalment cotitza 100 milions de dòlars diaris amb una variació típica de ± 20 milions de dòlars i avui cotitza 160 milions de dòlars, és 60 milions de dòlars per sobre de la seva mitjana, que equival exactament a +3,0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Renda fixa (2s10s i DV01)",
+        "intro": "Quan filtreu Bons o Tipus a la taula, apareixen les dues mètriques clau per avaluar el deute sobirà: el pendent de la corba (2s10s) i el valor monetari d'un punt base (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 punt bàsic (1 pb): equivalent a un rendiment del 0,01%.",
+            "DV01 ($/$1M): Quants dòlars guanya o perd una posició d'1 milió de dòlars si la taxa es mou 1 punt bàsic."
+          ]
+        },
+        "lead": "Com llegir aquests dos nombres a la graella:",
+        "bullets": [
+          {
+            "bold": "Corba normal o positiva",
+            "code": "2s10s > 0 bps",
+            "text": "Els bons a 10 anys paguen una taxa més alta que els bons a 2 anys, cosa que reflecteix una expectativa de creixement econòmic saludable."
+          },
+          {
+            "bold": "corba invertida",
+            "code": "2s10s < 0 bps",
+            "text": "Les tarifes curtes superen les tarifes llargues; històricament adverteix del refredament econòmic o de la restricció monetària."
+          }
+        ],
+        "example": "Si el Tresor a 10 anys dóna un 4,20% i el Tresor a 2 anys un 4,55%, la columna 2s10s marca -35 pb (corba invertida en vermell)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Accions (P/E i marge)",
+        "intro": "Quan es filtren les accions de S&P/NDX, la taula mostra el múltiple de guanys previst (P/E forward) i el marge d'explotació bruta perquè pugueu comparar la valoració amb la rendibilitat.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Preu de l'acció actual",
+          "denominator": "Guanys per acció estimats (els propers 12 mesos)",
+          "vars": [
+            "P/E Forward: quants anys de guanys futurs està pagant al preu actual.",
+            "Marge brut (%): percentatge de vendes que queda com a benefici brut després de deduir el cost directe."
+          ]
+        },
+        "lead": "Què cal cercar en creuar ambdues columnes:",
+        "bullets": [
+          {
+            "bold": "Valoració exigent vs moderada",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Un múltiple alt indica que el mercat està valorant un fort creixement futur; un de baix sol reflectir empreses madures o valuoses."
+          },
+          {
+            "bold": "Potència de preus",
+            "code": "Margen Bruto > 50%",
+            "text": "Els alts marges mostren empreses amb forts avantatges competitius capaços de defensar els seus beneficis contra la inflació."
+          }
+        ],
+        "example": "Si una acció cotitza a 150 dòlars i s'estima que guanyarà 6 dòlars per acció durant els propers 12 mesos, el seu P/E a termini és de 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Derivats, divises i matèries primeres",
+        "intro": "Per als mercats d'opcions, divises i futurs físics, les dues columnes dinàmiques mostren el cost implícit del risc o la recompensa per mantenir la posició al llarg del temps.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Derivats): volatilitat anualitzada que el mercat d'opcions descompta durant els propers 30 dies.",
+            "Carry 10Y (FX) i Roll Yield (Matèries primeres): guany o cost anual del diferencial de tipus o de la renovació de futurs."
+          ]
+        },
+        "lead": "Com aprofitar aquestes columnes en funció de l'actiu:",
+        "bullets": [
+          {
+            "bold": "En Derivats",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Us indiquen quin percentatge de moviment espera el mercat i si les opcions per cobrir caigudes (Puts) són cares."
+          },
+          {
+            "bold": "En Monedes i Matèries Primeres",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Es mostren en verd si el manteniment de l'actiu us comporta ingressos addicionals o en vermell si té un cost de manteniment."
+          }
+        ],
+        "example": "Si una opció mostra una volatilitat implícita (ATM IV) del 35% anual, el mercat descompta un moviment proper al ±10% durant els propers 30 dies."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Cartografia radial de radar",
+        "intro": "Per col·locar fins a 45 actius als tres anells de radar sense solapar-se, la vista Orbital transforma el valor de l'indicador escollit en una distància al centre (radi r) normalitzada entre el mínim i el màxim del grup.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Valor patrimonial − Valor mínim del Grup",
+          "denominator": "Valor màxim del grup − Valor mínim del grup",
+          "vars": [
+            "r → 0 (Anell interior): concentra els actius amb major intensitat o desviació positiva.",
+            "r → 1 (Anell exterior): localitza els actius perifèrics o els que tenen la lectura relativa més baixa."
+          ]
+        },
+        "lead": "Com llegir la posició i el color de cada planeta al radar:",
+        "bullets": [
+          {
+            "bold": "Focus anell interior",
+            "code": "Centro del radar",
+            "text": "Recolliu els actius principals de l'indicador que heu seleccionat anteriorment perquè la vostra visió vagi primer al que és més important."
+          },
+          {
+            "bold": "Semàntica històrica del color",
+            "code": "Verde vs Rojo",
+            "text": "El node s'il·lumina en verd quan supera favorablement la seva mitjana històrica i en vermell quan reflecteix un descens o estrès."
+          }
+        ],
+        "example": "Si ordeneu el radar per desviació de volum (Z-Score), l'actiu amb +3,4σ es troba a l'anell central brillant, mentre que un amb 0,1σ es troba a l'òrbita exterior."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) i Bandes de Bollinger",
+        "intro": "La mitjana mòbil simple de 20 períodes (SMA 20) marca la tendència base de l'actiu, mentre que les bandes de Bollinger dibuixen un canal dinàmic afegint i restant dues desviacions estàndard (2σ) al voltant d'aquesta mitjana.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): mitjana aritmètica dels darrers 20 tancaments.",
+            "Amplada de banda (BB Width): distància percentual entre les bandes superior i inferior."
+          ]
+        },
+        "lead": "Estadísticament, al voltant del 95% de les cotitzacions es produeixen dins de les dues bandes:",
+        "bullets": [
+          {
+            "bold": "Preu per sobre de la mitjana",
+            "code": "Precio > SMA 20",
+            "text": "Indica que la tendència a curt termini és alcista i que la mitjana sol actuar com a sòl de suport."
+          },
+          {
+            "bold": "Tacte de banda superior o inferior",
+            "code": "±2σ",
+            "text": "Adverteix que el preu s'ha estirat massa ràpidament des de la seva mitjana recent i pot prendre un respir."
+          },
+          {
+            "bold": "compressió de banda",
+            "code": "BB Width bajo",
+            "text": "Quan les bandes es tornen molt estretes, el mercat acumula energia abans d'un moviment fort."
+          }
+        ],
+        "example": "Si l'SMA(20) d'una acció és de 100 dòlars i la seva desviació estàndard de 20 rodes és de 4 dòlars, la banda superior es troba a 108 dòlars i la banda inferior a 92 dòlars."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Institucional",
+        "intro": "A diferència d'una mitjana comuna que dóna el mateix pes a totes les hores del dia, el VWAP pondera cada preu per la quantitat de diners que es va comerciar realment a aquest nivell. És la referència principal utilitzada per les taules institucionals.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Preu típicᵢ × Volum comercialitzatᵢ)",
+          "denominator": "∑ Volum comercialitzatᵢ",
+          "vars": [
+            "Preu típicᵢ: mitjana entre el màxim, el mínim i el tancament de cada espelma.",
+            "Volum comercialitzatᵢ: volum comercialitzat específicament en aquesta secció."
+          ]
+        },
+        "lead": "Com utilitzen els comerciants professionals la línia VWAP:",
+        "bullets": [
+          {
+            "bold": "Control d'execució",
+            "code": "Comprar bajo el VWAP",
+            "text": "Si un fons institucional compra per sota del VWAP durant el període, va obtenir un preu millor que la mitjana ponderada del mercat."
+          },
+          {
+            "bold": "Nivell de defensa de tendències",
+            "code": "Soporte / Resistencia",
+            "text": "Mentre l'actiu es mantingui per sobre de VWAP, els que van comprar durant el període tenen un benefici mitjà."
+          }
+        ],
+        "example": "Si 1 milió d'accions es cotitzessin a 100 dòlars i només 100 mil accions es negociessin a 110 dòlars, la mitjana simple diria 105 dòlars, però el VWAP llegeix 100,91 dòlars perquè gairebé tots els diners es van comerciar a 100 dòlars."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Desplaçament de propagació (bps)",
+        "intro": "El spread és la diferència entre el millor preu de compra i el millor preu d'oferta al llibre de comandes. Quan els creadors de mercat perceben el risc o la manca de liquiditat, obren aquesta bretxa per protegir-se.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "(Preu de consulta − Preu d'oferta)",
+          "denominator": "Preu mitjà (preu mitjà)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Preu de pregunta/oferta: punt de venda i punt de compra actual al llibre.",
+            "10.000: Factor de conversió per expressar la diferència de punts bàsics (bps)."
+          ]
+        },
+        "lead": "Què us diu la lectura de la dislocació propagada al rail esquerre:",
+        "bullets": [
+          {
+            "bold": "Llibre profund i fluid",
+            "code": "Spread estable en verde",
+            "text": "Hi ha liquiditat abundant als dos extrems i el cost implícit d'entrada o sortida és mínim."
+          },
+          {
+            "bold": "Fricció o retirada de liquiditat",
+            "code": "Salto en bps",
+            "text": "Normalment es produeix segons abans dels anuncis macroeconòmics o durant la venda de pànic, fent que l'execució sigui més cara."
+          }
+        ],
+        "example": "Si un actiu té una propina de compra de 99,95 dòlars i una propina de venda de 100,05 dòlars, la diferència de 0,10 dòlars sobre 100 dòlars equival a 10 punts bàsics (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Opcions (Black-Scholes i Greeks)",
+        "intro": "Al motor d'opcions, la plataforma representa gràficament dues corbes de pèrdues i guanys (P&L): com acabaria l'estratègia el dia de caducitat i quant val avui (T+0) aplicant el model de Black-Scholes.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S i K: preu actual de l'actiu subjacent (Spot) i preu d'exercici de l'opció (Strike).",
+            "Nets grecs: Δ Delta (sensibilitat al preu), Γ Gamma (acceleració delta), Θ Theta (desgast diari del temps) i ν Vega (sensibilitat a la volatilitat)."
+          ]
+        },
+        "lead": "Com llegir els grecs de la vostra estratègia a les píndoles del carril esquerre:",
+        "bullets": [
+          {
+            "bold": "Direcció i acceleració",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Un Delta positiu guanya quan l'actiu puja; un Gamma positiu et fa guanyar cada cop més ràpid si el moviment s'accelera."
+          },
+          {
+            "bold": "El pas del temps i la incertesa",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta us indica quants dòlars perd o guanya la posició per cada dia que passa; Vega quant canvia si la volatilitat implícita augmenta un 1%."
+          }
+        ],
+        "example": "Un Long Straddle (comprar Call i Put en el mateix strike) té un Delta proper a 0 (no importa si puja o baixa), però Vega positiu i necessita que el preu superi els seus dos punts d'equilibri (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Corbes sobiranes (Butterfly i DV01)",
+        "intro": "El motor de renda fixa compara els rendiments de 3 mesos a 30 anys per a 42 països i calcula tant el pendent (2s10s) com la curvatura del tram mitjà (Butterfly 2s5s10s) i la sensibilitat monetària (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "Taxa 2Y, 5Y, 10Y: rendiments sobirans a 2, 5 i 10 anys del país seleccionat.",
+            "Taxa real a 10 anys: rendiment nominal a 10 anys menys el tipus de referència o inflació implícita."
+          ]
+        },
+        "lead": "Per a què serveix cada indicador en l'anàlisi de bons:",
+        "bullets": [
+          {
+            "bold": "Curvatura de la secció mitjana",
+            "code": "Butterfly 2s5s10s",
+            "text": "Mesura si el tram de 5 anys és car o barat en relació amb els extrems de 2 i 10 anys."
+          },
+          {
+            "bold": "Risc de durada del dòlar",
+            "code": "DV01 por $1M",
+            "text": "Us indica exactament quants dòlars varia una cartera de milions de dòlars amb un moviment del 0,01% de la taxa."
+          }
+        ],
+        "example": "Un bon a 10 anys amb un DV01 de 820 dòlars per milió perdrà aproximadament 82.000 dòlars si els tipus de mercat pugen 100 punts bàsics (+1,00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Monedes (carry) i futurs (rendiment en roll)",
+        "intro": "A les monedes, quan un parell no cotitza directament, es calcula per triangulació respecte al dòlar i es mesura el seu diferencial de tipus (Carry). En matèries primeres, el rendiment de renovació es mesura entre el contracte immediat i el contracte de 12 mesos (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Preu al comptat (M1 davanter) − Preu futur (M12)",
+          "denominator": "Preu futur (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Endarreriment (Spot > Futur): l'escassetat física d'avui fa que els futurs rodants generin un benefici positiu (Rendiment del rodet > 0).",
+            "Contango (Spot < Futur): els costos d'emmagatzematge fan que els futurs siguin més cars i renovar-los té un cost negatiu."
+          ]
+        },
+        "lead": "Com afecta això a la vostra butxaca quan ocupa una posició:",
+        "bullets": [
+          {
+            "bold": "Positive Carry Trade en divises",
+            "code": "Carry Spread > 0 bps",
+            "text": "Si compres una moneda amb un tipus d'interès elevat finançant-te en una moneda amb un tipus d'interès baix, cobraràs aquest diferencial al teu favor."
+          },
+          {
+            "bold": "Vent favorable en matèries primeres",
+            "code": "Backwardation en verde",
+            "text": "Quan els inventaris físics són baixos, el contracte proper val més que el llunyà i l'inversor obté una rendibilitat addicional en tirar el contracte."
+          }
+        ],
+        "example": "Si el petroli d'1 mes cotitza a 72 dòlars i el contracte de 12 mesos cotitza a 68 dòlars, el mercat es troba en retrocés amb un rendiment positiu del 5,88% anual."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Nota total ponderada",
+        "intro": "No tots els actius es mouen per les mateixes fonts: en una empresa, els estats financers auditats (SEC 10-K/10-Q) tenen molt de pes, mentre que al mercat criptogràfic o a les monedes tenen més pes els fluxos diaris i les comunicacions.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fons / Peso_No: ponderació automàtica segons categoria (p. ex. 80% / 20% en Accions; 85% / 15% en Comissions).",
+            "Escala final: oscil·la entre -100 (màxim pessimisme) i +100 (màxim convicció alcista)."
+          ]
+        },
+        "lead": "Així és com es tradueix la puntuació composta en l'opinió superior:",
+        "bullets": [
+          {
+            "bold": "Postura alcista",
+            "code": "BULLISH / Nota > +15",
+            "text": "Els catalitzadors documentals i el flux de notícies superen clarament els factors de risc."
+          },
+          {
+            "bold": "Postura neutral o mixta",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Fins i tot forces entre fonaments i notícies; És aconsellable revisar l'acordió de 10 factors abans de decidir-se."
+          },
+          {
+            "bold": "Postura defensiva o baixista",
+            "code": "BEARISH / Nota < -15",
+            "text": "Predominen les alertes sobre balanços, deteriorament de marges o titulars adversos."
+          }
+        ],
+        "example": "En un estoc (80% fonamentals / 20% notícies), si els saldos mostren +50 punts i les notícies del dia mostren +20, la puntuació total ponderada és (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Cerca verificada (RAG)",
+        "intro": "Per evitar que la intel·ligència artificial inventi xifres, Document Chat utilitza Generation Augmented Recovery (RAG): primer cerca els paràgrafs rellevants als informes oficials de l'actiu i només després escriu la resposta citant la font.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Consulta vectorial (Q) · Document oficial vectorial (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vector Q i D: representacions numèriques de la vostra pregunta i els fragments oficials (10-K, actes FOMC, informes EIA).",
+            "Guardrail de 3 capes: filtre que bloqueja consultes no relacionades amb les finances o sense suport documental."
+          ]
+        },
+        "lead": "Què garanteix aquest mecanisme quan feu una pregunta al xat:",
+        "bullets": [
+          {
+            "bold": "Ancoratge en fonts primàries",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Cada dada d'ingressos, deute, existències o tipus procedeix del document regulador corresponent a aquest actiu."
+          },
+          {
+            "bold": "Atura les preguntes fora del tema",
+            "code": "Guardrail activo",
+            "text": "Si algú intenta consultar temes no financers, l'assistent rebutja la consulta i manté el focus en l'anàlisi de l'instrument."
+          }
+        ],
+        "example": "Quan toqueu el xip dels factors de risc d'un valor, el motor recupera la secció Item 1A (Factors de risc) del seu darrer formulari 10-K i resumeix els punts crítics."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Puntuació neuronal",
+        "intro": "Un diccionari típic sovint confon paraules financeres (per exemple, \"caiguda de costos\" o \"reducció del deute\" és una notícia excel·lent encara que utilitzen la paraula caiguda o reducció). FinBERT és una xarxa neuronal entrenada específicament amb textos financers.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(positiu) i P(negatiu): probabilitats que el model assigna al títol alcista o baixista per a l'actiu.",
+            "Corba 24h: mitjana mòbil exponencial dels titulars de les últimes 24 hores."
+          ]
+        },
+        "lead": "Com valora cada node a la línia de temps de la dreta:",
+        "bullets": [
+          {
+            "bold": "Porta catalitzador",
+            "code": "+20 a +100 en verde",
+            "text": "Superar els guanys estimats, millores de la qualificació creditícia o retallades de tipus favorables."
+          },
+          {
+            "bold": "Cable d'informació neutre",
+            "code": "-19 a +19 en ámbar",
+            "text": "Anuncis operatius de rutina que no alterin l'avaluació estructural de l'instrument."
+          },
+          {
+            "bold": "Titular del risc",
+            "code": "-20 a -100 en rojo",
+            "text": "Avisos reguladors, caigudes de marges, vagues o dades d'inflació pitjors del que s'esperava."
+          }
+        ],
+        "example": "Si el model assigna un 82% de probabilitat positiva, un 12% de neutre i un 6% de probabilitat negativa a un titular, el node mostra un impacte net de +76 en verd."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe i Sortino",
+        "intro": "Les dues primeres cartes superiors mesuren quant creix el vostre capital a l'any (CAGR) i quina eficàcia és aquest creixement en relació als xocs que heu de suportar (Sharpe i Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Rendiment anual Portfolio (Rp) − Taxa sense risc (Rf)",
+          "denominator": "Volatilitat anual Portfolio (σp)",
+          "vars": [
+            "Rf (4,30%): rendiment base que podríeu obtenir sense risc en lletres del Tresor.",
+            "Ratio Sortino: utilitza la mateixa fórmula però en el denominador només penalitza la volatilitat dels dies negatius (caigudes)."
+          ]
+        },
+        "lead": "Com avaluar la qualitat de la vostra cartera amb aquests números:",
+        "bullets": [
+          {
+            "bold": "Cartera eficient",
+            "code": "Sharpe > 1.00",
+            "text": "L'excés de rendibilitat que aconsegueix per sobre de la taxa sense risc supera amb escreix la volatilitat suposada."
+          },
+          {
+            "bold": "Rendiment excepcional",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Indica una combinació molt ben diversificada on els augments són consistents i es contenen les caigudes."
+          }
+        ],
+        "example": "Si la vostra cartera té un rendiment del 15,3% anual, la taxa sense risc és del 4,3% i la vostra volatilitat anual és del 10%, el vostre excés de rendibilitat és de l'11% i la vostra ràtio Sharpe és d'1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% i reducció",
+        "intro": "La tercera i quarta targeta responen quant pots perdre en un dia dolent però estadísticament normal (VaR 95%), quant en un dia de pànic extrem (CVaR 99%) i quin va ser el retrocés més gran d'un pic anterior (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1.645: factor estadístic que cobreix el 95% de les rodes normals de l'any (19 de cada 20 dies).",
+            "CVaR 99% (Dèficit esperat): Pèrdua mitjana quan el mercat trenca aquest llindar i entra a l'1% superior dels pitjors dies."
+          ]
+        },
+        "lead": "Quina diferència pràctica hi ha entre mirar el VaR i mirar el Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Risc d'un sol dia",
+            "code": "VaR 95% 1D en USD",
+            "text": "Et prepara psicològicament i econòmicament per al que el teu compte pot canviar en una mala direcció sense que això signifiqui que l'estratègia fracassa."
+          },
+          {
+            "bold": "Resistència en una ratxa adversa",
+            "code": "Max Drawdown 12M",
+            "text": "Mesura la caiguda acumulada de punta a punta des del punt més alt fins a terra abans de recuperar-se de nou."
+          }
+        ],
+        "example": "En una cartera de 100.000 dòlars amb un VaR diari del 95% de l'1,45% (1.450 dòlars), en 19 de les 20 rodes comercials, les vostres pèrdues diàries no superaran els 1.450 dòlars."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Superposició de raigs X (núm. 12)",
+        "intro": "Quan compres un ETF com SPY o QQQ, estàs comprant desenes d'accions a l'interior. Si també heu comprat algunes d'aquestes mateixes accions directament, la vostra exposició real és la suma de les dues coses.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Pes directeᵢ: percentatge de la vostra cartera assignat directament a les accions i.",
+            "Percentatge dins de l'ETFₖ: pes oficial que aquesta empresa té dins l'índex o fons k."
+          ]
+        },
+        "lead": "Per què és clau revisar aquesta primera pestanya abans de tancar la cartera:",
+        "bullets": [
+          {
+            "bold": "Visibilitat de concentració oculta",
+            "code": "Directo + Indirecto",
+            "text": "Desmunta automàticament cada ETF de la vostra cartera i us mostra una única barra amb el percentatge real que teniu a cada empresa."
+          },
+          {
+            "bold": "Excés d'alerta",
+            "code": "> 20% en rojo",
+            "text": "Si la suma total supera el llindar prudent de concentració en un sol nom, la fila s'il·lumina perquè pugueu reequilibrar-vos."
+          }
+        ],
+        "example": "Si poseu el 15% de la vostra cartera en NVDA directe i també teniu un 30% a l'ETF SPY (on NVDA pesa al voltant del 7%), la X-Ray revela que la vostra exposició real a NVDA és del 15% + (30% × 7%) = 17%."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Descomposició Alpha Brinson (núm. 2)",
+        "intro": "Quan la vostra cartera supera (o perd en contra) el seu punt de referència, el model Brinson-Fachler separa exactament d'on prové aquesta diferència: teníeu raó en quins sectors sobreponderar o vau triar els millors actius de cada sector?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Efecte de l'assignació: (Portfolio Weight − Benchmark Weight) × Rendiment del sector al Benchmark.",
+            "Efecte de selecció: pes en benchmark × (rendibilitat dels vostres actius − rendibilitat del sector)."
+          ]
+        },
+        "lead": "Com llegir les tres barres d'atribució a la tercera pestanya:",
+        "bullets": [
+          {
+            "bold": "Èxit macro o sectorial",
+            "code": "Asignación Sectorial",
+            "text": "És positiu en verd quan poses més pes que el mercat a les classes d'actius que més van pujar."
+          },
+          {
+            "bold": "Orientació correcta dels actius",
+            "code": "Selección de Activos",
+            "text": "És positiu quan els instruments específics que has escollit tenen un rendiment superior a la mitjana del seu sector."
+          }
+        ],
+        "example": "Si la vostra cartera va superar S&P 500 per un +3,20%, aquesta pestanya us permet veure que un +2,10% prové d'escollir millors accions (Selecció) i un +1,10% per tenir més pes en tecnologia (Assignació)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Frontera eficient i CML",
+        "intro": "En el pla Markowitz, la rendibilitat esperada d'una cartera és la mitjana ponderada de la rendibilitat dels seus actius, però la seva volatilitat és inferior a la mitjana gràcies al fet que els actius no es mouen al 100% igual.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: percentatge del capital assignat als actius i i j.",
+            "ρᵢⱼ (Correlació): grau en què tots dos actius es mouen junts (-1 a +1). Com més baix sigui ρᵢⱼ, més es redueix el risc total."
+          ]
+        },
+        "lead": "Què representen les tres referències del gràfic:",
+        "bullets": [
+          {
+            "bold": "Variància mínima",
+            "code": "Min-Var",
+            "text": "És el punt més esquerre de la corba: la combinació exacta de pesos que aconsegueix la menor volatilitat possible."
+          },
+          {
+            "bold": "Màximo Sharpe i Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "És el punt on la línia que parteix de la taxa sense risc toca la frontera eficient, oferint el major benefici per unitat de risc."
+          }
+        ],
+        "example": "Si combineu a parts iguals dos actius que tenen un 20% de volatilitat cadascun però una correlació nul·la (ρ = 0), la volatilitat de la cartera no és del 20%, sinó que baixa fins al 14,1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR per Active i Capture",
+        "intro": "Per saber quina posició aporta més risc a la cartera, es mesura l'aportació marginal de cada actiu segons el seu pes i la seva correlació amb la resta. A més, les ràtios de captura mesuren l'asimetria davant les pujades i les caigudes del S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Devolució del vostre actiu o Portfolio en rodes alcistes (o baixistes).",
+          "denominator": "Retorn de la S&P 500 sobre aquestes mateixes rodes",
+          "rhs": "× 100",
+          "vars": [
+            "Captura a l'alça (> 100%): guanyeu més que l'índex quan el mercat puja.",
+            "Captura a la baixa (< 100%): cau menys que l'índex quan el mercat baixa (tampó defensiu)."
+          ]
+        },
+        "lead": "El perfil ideal que busqueu en revisar la tercera pestanya del quadrant:",
+        "bullets": [
+          {
+            "bold": "asimetria positiva",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Participa plenament en mercats alcistes però protegeix el capital quan la borsa es corregeixi."
+          },
+          {
+            "bold": "Refugi o béns no correlacionats",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Instruments com els bons curts o l'or que tendeixen a mantenir-se ferms o a pujar durant les caigudes de la borsa."
+          }
+        ],
+        "example": "Si en els mesos en què el S&P 500 va pujar un 10% la teva cartera va guanyar un 11% (alça 110%), i quan l'índex va baixar un 10%, la teva cartera només va baixar un 6% (baixada 60%), tens una forta asimetria al teu favor."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Correlació normal vs crisi",
+        "intro": "El coeficient de Pearson (r) mesura de -1,00 a +1,00 com es mouen dos actius entre si. El perill en la gestió de carteres és que durant una caiguda del mercat la correlació entre actius de risc sol disparar cap a +1,00 (contagi).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Covariància (Retorna l'actiu i, Retorna l'actiu j)",
+          "denominator": "Volatilitat de l'actiu i (σᵢ) × Volatilitat de l'actiu j (σⱼ)",
+          "vars": [
+            "r propera a 0 o negativa: excel·lent diversificació (quan una baixa, l'altra no segueix).",
+            "r a Crisis Queue: recalcula la matriu prenent només el 5% de les pitjors rodes del mercat."
+          ]
+        },
+        "lead": "Com llegir els colors de la matriu 6x6 en ambdós règims:",
+        "bullets": [
+          {
+            "bold": "Diversificació real",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Tots dos actius responen a diferents motors econòmics i es compensen mútuament."
+          },
+          {
+            "bold": "Concentració o contagi",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Es mouen pràcticament com un bloc; Tenir tots dos no redueix les caigudes en un mal dia."
+          }
+        ],
+        "example": "Dues accions de diferents sectors poden tenir una correlació moderada de 0,42 en un any normal, però quan activeu el botó Crisis Queue veureu que puja a 0,81 perquè en pànic venen junts."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "Xoc 2D (tarifas × borsa)",
+        "intro": "La matriu 2D combina simultàniament l'impacte d'un moviment dels tipus d'interès (a través de la durada de la renda fixa i la sensibilitat de la taxa) amb una caiguda o pujada de l'índex S&P 500 (mitjançant Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: escenari de variació borsari en l'eix horitzontal (−20% a +10%).",
+            "Δ Tipus: escenari de variació dels tipus d'interès en punts bàsics de l'eix vertical (−100 a +200 pb)."
+          ]
+        },
+        "lead": "Quina és la finalitat de creuar els dos eixos de la taula:",
+        "bullets": [
+          {
+            "bold": "Escenari d'estagflació o pujada de tipus",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Com el que va passar el 2022, on les accions i els bons llargs pateixen alhora."
+          },
+          {
+            "bold": "Escenari clàssic de refugi",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "On els tipus més baixos augmenten el preu dels bons del Tresor i esmorteeixen la caiguda de les accions."
+          }
+        ],
+        "example": "Filtrant un bon llarg com US10Y o TLT, podeu veure a la taula com guanya valor quan cauen els tipus (-100 bps), actuant com un paracaigudes si S&P 500 cau aquell mateix dia."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Règims de Markov (núm. 11)",
+        "intro": "Una cadena de Markov modela l'economia com un sistema que salta entre quatre estats possibles (Calm Alcista, Volatil Alcista, Inflació/Taxes i Crisi) i calcula la probabilitat de passar d'un a l'altre.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Diagonal principal (i = j): probabilitat que el règim actual es mantingui sense canvis.",
+            "Fora de la diagonal (i ≠ j): probabilitat de rotar cap a un nou clima de mercat."
+          ]
+        },
+        "lead": "Com aprofitar la matriu de transició a la segona pestanya:",
+        "bullets": [
+          {
+            "bold": "Persistència del cicle actual",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Els règims tranquils solen tenir una persistència elevada (> 75%), cosa que permet mantenir les posicions de tendència."
+          },
+          {
+            "bold": "Alerta primerenca de rotació",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Quan augmenta la probabilitat de transició a estats volàtils, s'aconsella reduir l'apalancament o activar la cobertura."
+          }
+        ],
+        "example": "Si el mercat avui es troba en règim de Volatile Bull i la fila marca un 62% de permanència, un 20% de tornar a Bull Calm i un 18% d'anar a Estrès/Crisi, saps que gairebé 1 de cada 5 escenaris comporta una correcció."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Projecció Monte Carlo (10.000 camins)",
+        "intro": "A partir de la rendibilitat esperada i la volatilitat actual de la vostra cartera, el simulador genera 10.000 possibles trajectòries futures dia a dia aplicant el model de moviment brownià geomètric estocàstic.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ i σ: rendiment anual esperat i volatilitat anualitzada de la vostra cartera actual.",
+            "Z: variable aleatòria normal estàndard dibuixada 10.000 vegades al llarg de l'horitzó (6M, 12M o 24M)."
+          ]
+        },
+        "lead": "D'aquestes 10.000 simulacions, s'extreuen les tres corbes principals del gràfic:",
+        "bullets": [
+          {
+            "bold": "Escenari favorable",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "El nivell que només es supera en un 5% dels escenaris més optimistes."
+          },
+          {
+            "bold": "Trajectòria central esperada",
+            "code": "Mediana P50",
+            "text": "El resultat típic on la meitat de les simulacions estan per sobre i l'altra meitat estan per sota."
+          },
+          {
+            "bold": "Escenari d'estrès a terme",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "El sòl advers: en el 95% dels camins simulats la teva cartera acaba per sobre d'aquesta línia."
+          }
+        ],
+        "example": "En un horitzó de 12 mesos sobre una base de 100, si P50 llegeix 116 i P05 llegeix 94, la teva expectativa central és guanyar un +16% i en un any molt advers arrisques prop del -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Criteri Kelly (núm. 14)",
+        "intro": "El criteri de Kelly respon científicament quin percentatge del vostre capital hauríeu d'assignar a una operació quan coneixeu la vostra probabilitat d'èxit (Win-Rate) i quant guanyeu quan trieu en comparació amb el que perdeu quan fracasseu (Payoff Rate).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p i q: probabilitat de guanyar (p) i probabilitat de perdre (q = 1 − p).",
+            "b (Payoff Ratio): benefici mitjà dividit per la pèrdua mitjana (per exemple, guanyar 2 $ per cada $ 1 arriscat implica b = 2)."
+          ]
+        },
+        "lead": "Per què els directius professionals utilitzen la variant Half-Kelly (0,5×):",
+        "bullets": [
+          {
+            "bold": "Kelly completa",
+            "code": "Full Kelly 1.0×",
+            "text": "Maximitza el creixement matemàtic a llarg termini, però genera oscil·lacions molt pronunciades si hi ha una ratxa d'errors seguides."
+          },
+          {
+            "bold": "Mitja Kelly recomanada",
+            "code": "Half-Kelly 0.5×",
+            "text": "Si utilitzeu la meitat del percentatge suggerit, captureu el 75% del creixement potencial però reduïu la volatilitat a la meitat."
+          }
+        ],
+        "example": "Si una estratègia arriba al 55% del temps (p = 0,55, q = 0,45) i paga 2 a 1 (b = 2), la Kelly completa dóna (0,55×2 − 0,45) / 2 = 32,5%, i el prudent Half-Kelly recomana assignar el 16,25%."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Posa l'escut OTM (núm. 6)",
+        "intro": "Una opció de venda fora dels diners (per exemple, un 5% per sota del preu actual de S&P 500) funciona igual que un deduïble d'assegurança: té un cost fix i petit (la prima), però si el mercat baixa un 20% o un 30%, el seu valor es multiplica de manera convexa i compensa les pèrdues de la cartera.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Cost anual (Carry Drag): percentatge anual que costa renovar l'assegurança si el mercat no cau.",
+            "Protecció contra accidents (-20%): dòlars recuperats pel contracte Put durant un accident greu."
+          ]
+        },
+        "lead": "Com comparar les opcions del simulador a la primera pestanya:",
+        "bullets": [
+          {
+            "bold": "Assegurança d'índex directe",
+            "code": "SPY Put 5% OTM",
+            "text": "Limita la pèrdua màxima d'una caiguda del 5% a canvi d'un cost anual moderat."
+          },
+          {
+            "bold": "Cobertura de finançament o de volatilitat",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "El Collar redueix el cost venent una trucada; La crida a VIX explota a favor quan el pànic s'activa al mercat."
+          }
+        ],
+        "example": "Si protegir una cartera de 100.000 dòlars amb SPY Put 5% OTM costa un 1,1% a l'any (1.100 dòlars), però en cas d'un accident del -20%, redueix la caiguda de la vostra cartera a menys de la meitat, l'estalvi net supera els 7.000 dòlars."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Marge i distància a la trucada de marge (núm. 13)",
+        "intro": "Quan opereu amb derivats o palanquejament, el corredor requereix mantenir un percentatge mínim de capital social sobre el valor total de la posició (marge de manteniment). Si una caiguda redueix el vostre capital per sota d'aquest sòl, s'activa una crida de marge.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Deute o saldo finançat",
+          "denominator": "1 − % de marge de manteniment (Reg-T)",
+          "vars": [
+            "Exposició bruta: suma total de posicions obertes dividida pel capital (per exemple, 1,18×).",
+            "Distance to Margin Call (%): caiguda percentual que encara suporta la cartera abans d'arribar al llindar."
+          ]
+        },
+        "lead": "Nivells de seguretat a la barra de monitorització:",
+        "bullets": [
+          {
+            "bold": "Àmplia zona lliure",
+            "code": "Distancia > 30% en verde",
+            "text": "El palanquejament és baix i la cartera pot absorbir fins i tot una crisi severa sense vendes forçades."
+          },
+          {
+            "bold": "zona de precaució",
+            "code": "Distancia < 15% en rojo",
+            "text": "Una correcció moderada del mercat esgotaria la garantia gratuïta i obligaria a liquidar les posicions en el pitjor moment."
+          }
+        ],
+        "example": "Amb un palanquejament moderat d'1,18 × i un marge de manteniment utilitzat del 22%, la vostra cartera té un coixí de seguretat de més del 38% abans de qualsevol reclamació de garantia."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Normes de la Comissió dels 3 Pilars",
+        "intro": "Perquè cap decisió impulsiva posi en perill la supervivència de la cartera, el Comitè avalua cada comanda combinant la nota tècnica, la nota fonamental i dues regles de control de riscos dures i no negociables.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: cap actiu individual pot concentrar més d'una cinquena part del total dels actius.",
+            "Anomaly Stop (P-06 ≥ 0,65): si l'actiu entra en una dislocació estadística, el sistema redueix l'exposició màxima al 5%."
+          ]
+        },
+        "lead": "Què significa cada estat al veredicte i al Llibre d'execució:",
+        "bullets": [
+          {
+            "bold": "Ordre aprovada sense restriccions",
+            "code": "APROBADO en verde",
+            "text": "Els tres pilars coincideixen favorablement i la mida de la posició respecta tots els límits de concentració i liquiditat."
+          },
+          {
+            "bold": "Ordre ajustat per barana",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Quan un bitllet supera el límit del 20% o intenta comprar amb força enmig d'una anomalia, la barana avisa de l'excés."
+          }
+        ],
+        "example": "Si esteu intentant simular una compra que portaria un sol estoc al 26% de la vostra cartera, el pilar 3 (guarda de risc i mida) marca l'alerta de concentració perquè l'ajusteu per sota del 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Eficiència Walk-Forward (WFE)",
+        "intro": "Per comprovar que una estratègia no es va dissenyar simplement per tenir un bon aspecte en el passat (sobreajust), la prova Walk-Forward compara com va funcionar durant el període de disseny (In-Sample) amb el seu rendiment en dades posteriors mai vistes (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Rendiment anualitzat Out-of-Sample (validació pura)",
+          "denominator": "Rendiment anualitzat In-Sample (formació)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): secció històrica utilitzada per calibrar els pesos i regles de l'estratègia.",
+            "Out-of-Sample (OOS): següent apartat on es prova l'estratègia en condicions reals sense tocar els seus paràmetres."
+          ]
+        },
+        "lead": "Com la indústria quantitativa valora el percentatge WFE:",
+        "bullets": [
+          {
+            "bold": "Estratègia sòlida i coherent",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Conserva la gran majoria de la seva capacitat de generar beneficis davant les noves condicions del mercat."
+          },
+          {
+            "bold": "Estratègia fràgil o sobreadaptada",
+            "code": "WFE < 50% en rojo",
+            "text": "Va funcionar bé en la teoria del passat però perd efectivitat en la realitat; No és aconsellable executar-lo amb diners reals."
+          }
+        ],
+        "example": "Si una estratègia va retornar un 20% anualitzat durant la seva etapa de disseny (In-Sample) i en la fase de prova real posterior (Out-of-Sample) va retornar un 18,8% anualitzat, la seva eficiència WFE és (18,8 / 20) = 94,0%."
+      }
+    ]
+  }
+}

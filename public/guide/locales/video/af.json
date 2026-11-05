@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Regstreekse visuele deurloop",
+      "clickPlayPause": "Klik om te speel of te onderbreek (Spasie)",
+      "subtitles": "Onderskrifte (C)",
+      "fullscreen": "Volskerm (F)",
+      "exitFullscreen": "Verlaat Volskerm (F of Esc)",
+      "portTabs": [
+        "Bouer",
+        "Risiko",
+        "Simulator",
+        "Medevlieënier"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Tale",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • Kategorieë",
+      "scr-pulse": "02 • 24h Pols",
+      "scr-table": "03 • Tafel",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Hittekaart",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • Tegnies",
+      "ana-compare": "03 • Vergelyk %",
+      "ana-micro": "04 • Mikro en vloei",
+      "ana-engines": "05 • 3D/2D-enjins",
+      "res-hero": "01 • Telling en houding",
+      "res-rag": "02 • RAG Chat",
+      "res-factors": "03 • Faktore",
+      "res-pulse24h": "04 • FinBERT Pols",
+      "p1-pills": "01 • Opsomming",
+      "p1-table": "02 • Gewig",
+      "p1-xray": "03 • X-straal",
+      "p1-calendar": "04 • Kalender",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornado en VaR",
+      "p2-corr": "03 • Korrelasie",
+      "p2-shock2d": "04 • Skok & Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Impak",
+      "p3-whatif": "02 • What-If & Kelly",
+      "p3-tailhedge": "03 • OTM Put & Marge",
+      "p3-committee": "04 • Komitee & Logboek",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Welkom by die Home-skerm: jou afleidingsvrye beginpunt waar markte gedekodeer word.",
+      "home-header": "In die boonste linkerhoek van die Header, deur op die λ-ikoon te klik, bring jy altyd terug na hierdie hoofverhoog.",
+      "home-markets": "Gesentreer aan die bokant van die Header is Markets, jou werkstasie om al 213 globale bates regstreeks na te vors.",
+      "home-portfolio": "Reg langs dit in die gesentreerde spyskaart is Portfolio, om toekennings te bou, strestoetsrisiko en ambagte te simuleer.",
+      "home-system": "Links onder in Footer maak System die regstreekse waarneembaarheidmonitor vir bedieners en databasisse oop.",
+      "home-guide": "Daarby maak Guide hierdie interaktiewe stap-vir-stap handleiding oop wanneer jy dit ook al nodig het.",
+      "home-langs": "In die onderste regterhoek maak die taalknoppie die gesentreerde modaal oop om die platform in 56 tale te vertaal.",
+      "home-palettes": "En Palette maak die 5 visuele leestemas oop terwyl finansiële groen en rooi streng ongeskonde bly.",
+      "scr-categories": "Filter in die boonste kategorieëbalk oor Al 213 bates, jou Watchlist of 10 gespesialiseerde markte.",
+      "scr-pulse": "Die 4 Pulse 24h-kaarte wys saamgestelde volume, gemiddelde RSI, P-06-regime en topvolume-ontwrigtings.",
+      "scr-table": "Die interaktiewe tabel bevat direkte soektog, gunstelinge en slimkolomme wat vir elke bateklas aangepas is.",
+      "scr-orbital": "Die Orbital-aansig karteer bates oor drie konsentriese ringe deur afwyking met 'n lewendige sy-inspeksiepaneel.",
+      "scr-heatmap": "Die Heatmap rangskik die top 10 bates in proporsionele blokke oor 8 skakerings van groen en rooi.",
+      "scr-maintools": "En Main Tools lei jou in drie stappe na soewereine kurwes, 3D-wisselvalligheid, FX-kruis en termynenjins.",
+      "ana-hero": "Die Header kombineer die batewisselaar, 9 tydraamwerke van 1m tot ALLE, en die 5 kernaanwysers.",
+      "ana-technical": "Die Tegniese lens bedek SMA 20, VWAP en 2σ Bollinger Bands met onderste volume bevestiging.",
+      "ana-compare": "Met Vergelyk %, meet netto persentasie voordeel of Alpha Spread vanaf 0% teenoor 'n versoenbare eweknie of indeks.",
+      "ana-micro": "Micro & Flow bespeur volumestygings via 20d Z-telling, verspreide likiditeitsontwrigting en die P-06-anomalietelling.",
+      "ana-engines": "Die vierde oortjie is 'n dinamiese ad-hoc-instrument wat volgens bateklas verskil: omdat NVDA 'n aandeel is, maak dit 3D Volatiliteit & Opsies-uitbetaling oop, terwyl effekte, FX en kommoditeite hul eie gespesialiseerde gereedskap bekendstel.",
+      "res-hero": "Aan die bokant, som Score & Stance die fundamentele uitspraak, geweegde gradering en koptermometer op.",
+      "res-rag": "In die linkerkolom beantwoord RAG Document Chat geverifieerde navrae wat in amptelike SEC 10-K- en 10-Q-filings gegrond is.",
+      "res-factors": "In die middelkolom kontrasteer die Factors-trekklavier die top 5 bulbestuurders teen die top 5 beerrisiko's.",
+      "res-pulse24h": "Aan die regterkant, FinBERT Pulse tellings brekende nuus in reële tyd en plot die 24-uur sentiment kurwe.",
+      "p1-pills": "Die 6 Opsommingskaarte herbereken lewendige CAGR, Sharpe en Sortino, 95% VaR, Max Drawdown, Alpha, en diversifikasie.",
+      "p1-table": "Voeg enige van die 213 bates in die Gewigstabel by, stel presiese persentasiegewigte in of herbalanseer na 100%.",
+      "p1-xray": "Regs bo, die 5-oortjie X-Ray-paneel oudit ETF-oorvleueling, blootstelling, Brinson-toeskrywing, kontantvloei en bewaring.",
+      "p1-calendar": "Onder X-straal, die Maandelikse kalender vertoon Januarie-tot-Desember terugkeer konsekwentheid en YTD totale.",
+      "p1-backtest": "En aan die onderkant van die volle breedte vergelyk Backtesting jou portefeulje met die S&P 500, 60/40, All-Weather en Min-Variance.",
+      "p2-markowitz": "Die eerste kwadrant plot die 2D Markowitz Efficient Frontier en posisioneer jou portefeulje teenoor Min-Var en Max-Sharpe.",
+      "p2-tornado": "Die linker-onderste kwadrant toets 5 historiese krisisse, 95% VaR-bydrae per bate, en onderstebo/onderkant-vaslegging.",
+      "p2-corr": "Regs bo vergelyk die 6×6-matriks korrelasies in normale toestande teen krisisstertbesmetting.",
+      "p2-shock2d": "Regs onder kruis Shock & Markov rentekoersverskuiwings met S&P 500-skuiwe en skat regime-oorgange.",
+      "p2-montecarlo": "En die onderste paneel projekteer 10 000 Monte Carlo-paaie oor P95, P50 en P05, onderwater-onttrekking en rollende Sharpe.",
+      "p3-impact": "Die 6 impakkaarte vergelyk jou huidige portefeulje met die geprojekteerde toestand ná jou gesimuleerde ambagte.",
+      "p3-whatif": "Links bo, What-If & Kelly simuleer koop of verkoop kaartjies en bereken die optimale Half-Kelly posisie grootte.",
+      "p3-tailhedge": "Links onder simuleer OTM Put & Margin beskermende opsieskerms en monitor Reg-T onderhoudsmarge.",
+      "p3-committee": "In die twee regterpanele oudit die 3-pilaarkomitee risiko-relings langs die uitvoeringslogboek en medevlieënier.",
+      "p3-walkforward": "En onderaan bevestig die Walk-Forward-grafiek In-Sample- en Out-of-Sample-prestasie met die WFE-indeks."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 10.7
+      },
+      {
+        "id": "home-header",
+        "startPct": 10.7,
+        "endPct": 23.8
+      },
+      {
+        "id": "home-markets",
+        "startPct": 23.8,
+        "endPct": 38
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 38,
+        "endPct": 53.5
+      },
+      {
+        "id": "home-system",
+        "startPct": 53.5,
+        "endPct": 65.1
+      },
+      {
+        "id": "home-guide",
+        "startPct": 65.1,
+        "endPct": 75.5
+      },
+      {
+        "id": "home-langs",
+        "startPct": 75.5,
+        "endPct": 88.1
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 88.1,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 18.2
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 18.2,
+        "endPct": 38.1
+      },
+      {
+        "id": "scr-table",
+        "startPct": 38.1,
+        "endPct": 53.9
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 53.9,
+        "endPct": 69.3
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 69.3,
+        "endPct": 82.5
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 82.5,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 15.2
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 15.2,
+        "endPct": 29.6
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 29.6,
+        "endPct": 48.5
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 48.5,
+        "endPct": 65.8
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 65.8,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 25.1
+      },
+      {
+        "id": "res-rag",
+        "startPct": 25.1,
+        "endPct": 51.6
+      },
+      {
+        "id": "res-factors",
+        "startPct": 51.6,
+        "endPct": 74.1
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 74.1,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 24.2
+      },
+      {
+        "id": "p1-table",
+        "startPct": 24.2,
+        "endPct": 42.6
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 42.6,
+        "endPct": 63.3
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 63.3,
+        "endPct": 79.7
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 79.7,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 17.9
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 17.9,
+        "endPct": 41.4
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 41.4,
+        "endPct": 60
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 60,
+        "endPct": 76.3
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 76.3,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 18.4
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 18.4,
+        "endPct": 40.7
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 40.7,
+        "endPct": 59.5
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 59.5,
+        "endPct": 78
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 78,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

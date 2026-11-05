@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Live Visual Walkthrough",
+      "clickPlayPause": "Smelltu til að spila eða gera hlé (rými)",
+      "subtitles": "Textar (C)",
+      "fullscreen": "Fullskjár (F)",
+      "exitFullscreen": "Hætta á öllum skjánum (F eða Esc)",
+      "portTabs": [
+        "Byggingaraðili",
+        "Áhætta",
+        "Hermir",
+        "Stýrimaður"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Tungumál",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • Flokkar",
+      "scr-pulse": "02 • 24 klst púls",
+      "scr-table": "03 • Tafla",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Hitakort",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • Tæknilegt",
+      "ana-compare": "03 • Bera saman %",
+      "ana-micro": "04 • Micro & Flow",
+      "ana-engines": "05 • 3D/2D vélar",
+      "res-hero": "01 • Skor og afstaða",
+      "res-rag": "02 • RAG Spjall",
+      "res-factors": "03 • Þættir",
+      "res-pulse24h": "04 • FinBERT púls",
+      "p1-pills": "01 • Samantekt",
+      "p1-table": "02 • Væging",
+      "p1-xray": "03 • Röntgengeisli",
+      "p1-calendar": "04 • Dagatal",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornado & VaR",
+      "p2-corr": "03 • Fylgni",
+      "p2-shock2d": "04 • Shock & Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Áhrif",
+      "p3-whatif": "02 • What-If og Kelly",
+      "p3-tailhedge": "03 • OTM Put & Margin",
+      "p3-committee": "04 • Nefnd & Dagskrá",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Velkomin á Home skjáinn: truflunarlaus upphafsstaðurinn þinn þar sem markaðir verða afkóðaðir.",
+      "home-header": "Efst í vinstra horninu á Header, með því að smella á λ táknið færirðu þig alltaf aftur á þetta aðalstig.",
+      "home-markets": "Miðja efst á Header er Markets, vinnustöðin þín til að rannsaka allar 213 alþjóðlegar eignir í beinni.",
+      "home-portfolio": "Rétt við hliðina á honum í miðju valmyndinni er Portfolio, til að byggja upp úthlutun, álagsprófa áhættu og líkja eftir viðskiptum.",
+      "home-system": "Neðst í Footer neðst til vinstri opnar System lifandi eftirlitsskjáinn fyrir netþjóna og gagnagrunna.",
+      "home-guide": "Við hliðina á henni opnar Guide þessa gagnvirku skref-fyrir-skref handbók hvenær sem þú þarft á henni að halda.",
+      "home-langs": "Neðst í hægra horninu opnar tungumálahnappurinn miðlæga aðferðina til að þýða pallinn á 56 tungumál.",
+      "home-palettes": "Og Palette opnar 5 sjónræna lestrarþemu en heldur fjárhagslegum grænum og rauðum nákvæmlega óskertum.",
+      "scr-categories": "Í efstu flokkastikunni skaltu sía yfir allar 213 eignirnar, Watchlist þína eða 10 sérhæfða markaði.",
+      "scr-pulse": "4 Pulse 24h kortin sýna uppsafnað rúmmál, meðaltal RSI, P-06 stjórnkerfi og hæsta hljóðstyrk.",
+      "scr-table": "Gagnvirka taflan býður upp á skyndileit, eftirlæti og snjalla dálka sem eru sérsniðnir að hverjum eignaflokki.",
+      "scr-orbital": "Orbital útsýnið kortleggur eignir yfir þrjá sammiðja hringi með fráviki með lifandi hliðarskoðunarborði.",
+      "scr-heatmap": "Hitakortið raðar efstu 10 eignunum í hlutfallslega kubba í 8 tónum af grænu og rauðu.",
+      "scr-maintools": "Og Main Tools leiðir þig í þremur skrefum að fullveldisferlum, þrívíddarsveiflu, FX krossi og framtíðarvélum.",
+      "ana-hero": "Header sameinar eignaskiptana, 9 tímaramma frá 1m til ALL, og 5 kjarnavísana.",
+      "ana-technical": "Tæknilinsan leggst yfir SMA 20, VWAP og 2σ Bollinger bönd með staðfestingu á botni hljóðstyrks.",
+      "ana-compare": "Með Bera saman % skaltu mæla nettóhlutfallsforskot eða Alpha Spread frá 0% á móti samhæfum jafningja eða vísitölu.",
+      "ana-micro": "Micro & Flow skynjar rúmmálsauka með 20d Z-Score, dreift lausafjárstöðu og P-06 fráviksskor.",
+      "ana-engines": "Fjórði flipinn er kraftmikið sértækt tól sem er mismunandi eftir eignaflokkum: vegna þess að NVDA er hlutabréf opnar það 3D flökt og valmöguleika útborgun, á meðan skuldabréf, gjaldeyrir og hrávörur hefja sín eigin sérhæfðu verkfæri.",
+      "res-hero": "Efst tekur Score & Stance saman grundvallardóminn, vegið einkunn og fyrirsagnarhitamæli.",
+      "res-rag": "Í vinstri dálknum svarar RAG Document Chat staðfestum fyrirspurnum byggðar á opinberum SEC 10-K og 10-Q skráningum.",
+      "res-factors": "Í miðju dálkinum, Factors harmonikkan andstæða 5 efstu naut ökumenn á móti efstu 5 björn áhættu.",
+      "res-pulse24h": "Hægra megin, FinBERT Pulse skorar fyrirsagnir í rauntíma og teiknar upp 24 klst tilfinningaferilinn.",
+      "p1-pills": "Samantektarspjöldin 6 endurreikna lifandi CAGR, Sharpe og Sortino, 95% VaR, Max Drawdown, Alpha og fjölbreytni.",
+      "p1-table": "Í vogunartöflunni skaltu bæta við einhverju af 213 eignunum, stilla nákvæmar prósentuvogir eða endurjafna í 100%.",
+      "p1-xray": "Efst til hægri, 5-flipa X-Ray panel endurskoðun ETF skarast, áhættuskuldbinding, Brinson eignarhluti, sjóðstreymi og vörslu.",
+      "p1-calendar": "Fyrir neðan röntgenmynd sýnir mánaðardagatalið samkvæmni janúar til desember og heildartölur á árinu.",
+      "p1-backtest": "Og í botninum á fullri breidd, ber Backtesting eignasafnið þitt saman við S&P 500, 60/40, All-Weather og Min-Variance.",
+      "p2-markowitz": "Fyrsti fjórðungurinn sýnir 2D Markowitz Efficient Frontier og staðsetur eignasafnið þitt á móti Min-Var og Max-Sharpe.",
+      "p2-tornado": "Fjórðungurinn neðst til vinstri prófar 5 sögulegar kreppur, 95% VaR framlag á hverja eign og upptöku/niðurhlið.",
+      "p2-corr": "Efst til hægri ber 6×6 fylkið saman fylgni við venjulegar aðstæður og smit hala.",
+      "p2-shock2d": "Neðst til hægri fer Shock & Markov yfir vaxtabreytingar með S&P 500 hreyfingum og áætlar stjórnarskipti.",
+      "p2-montecarlo": "Og neðsta spjaldið varpar 10.000 Monte Carlo slóðum yfir P95, P50 og P05, neðansjávar Drawdown og rúllandi Sharpe.",
+      "p3-impact": "Áhrifaspjöldin 6 bera saman núverandi eignasafn þitt við áætlað ástand eftir hermdar viðskipti þín.",
+      "p3-whatif": "Efst til vinstri, What-If & Kelly líkja eftir kaupa eða selja miða og reikna út bestu Half-Kelly stöðustærð.",
+      "p3-tailhedge": "Neðst til vinstri, OTM Put & Margin líkir eftir hlífðarvalkostum og fylgist með Reg-T viðhaldsframlegð.",
+      "p3-committee": "Í tveimur hægri spjöldum úttektar 3-stoða nefndin áhættuvarnarhandriði við hlið framkvæmdadagbókar og aðstoðarflugmanns.",
+      "p3-walkforward": "Og neðst, Walk-Forward grafið staðfestir árangur In-Sample og Out-of-Sample með WFE vísitölunni."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 11.8
+      },
+      {
+        "id": "home-header",
+        "startPct": 11.8,
+        "endPct": 24.4
+      },
+      {
+        "id": "home-markets",
+        "startPct": 24.4,
+        "endPct": 37.8
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 37.8,
+        "endPct": 53.7
+      },
+      {
+        "id": "home-system",
+        "startPct": 53.7,
+        "endPct": 64.7
+      },
+      {
+        "id": "home-guide",
+        "startPct": 64.7,
+        "endPct": 75.6
+      },
+      {
+        "id": "home-langs",
+        "startPct": 75.6,
+        "endPct": 87.6
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 87.6,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 18.6
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 18.6,
+        "endPct": 38.8
+      },
+      {
+        "id": "scr-table",
+        "startPct": 38.8,
+        "endPct": 55.7
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 55.7,
+        "endPct": 68.9
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 68.9,
+        "endPct": 81.9
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 81.9,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 13.4
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 13.4,
+        "endPct": 28.3
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 28.3,
+        "endPct": 47.7
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 47.7,
+        "endPct": 65.7
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 65.7,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 21
+      },
+      {
+        "id": "res-rag",
+        "startPct": 21,
+        "endPct": 49.5
+      },
+      {
+        "id": "res-factors",
+        "startPct": 49.5,
+        "endPct": 74.7
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 74.7,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 22.3
+      },
+      {
+        "id": "p1-table",
+        "startPct": 22.3,
+        "endPct": 42.6
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 42.6,
+        "endPct": 63.7
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 63.7,
+        "endPct": 77.9
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 77.9,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 19.7
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 19.7,
+        "endPct": 41.5
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 41.5,
+        "endPct": 57.6
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 57.6,
+        "endPct": 75.5
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 75.5,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 16.4
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 16.4,
+        "endPct": 39.8
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 39.8,
+        "endPct": 59.2
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 59.2,
+        "endPct": 79.4
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 79.4,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

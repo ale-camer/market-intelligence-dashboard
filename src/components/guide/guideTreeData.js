@@ -7,7 +7,7 @@
         **Concepto (Referencia en pantalla).** Explicación clara y útil.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-import { GUIDE_MODALS_BY_SECTION } from './guideModalsData';
+import { GUIDE_MODALS_BY_SECTION } from './guideModalsData.js';
 
 export const GUIDE_TREE_PAGES = [
     {
@@ -33,7 +33,7 @@ export const GUIDE_TREE_PAGES = [
                 bullets: [
                     {
                         bold: 'Espacio sin distracciones',
-                        code: 'Market Intelligence Dashboard',
+                        code: 'Donde se decodifican los mercados',
                         text: 'Al entrar no hay tablas ni alertas abiertas que te obliguen a cerrar ventanas antes de empezar; vos elegís qué módulo abrir.'
                     },
                     {
@@ -451,12 +451,12 @@ export const GUIDE_TREE_PAGES = [
                     {
                         id: 'ana-engines',
                         label: 'Motores 3D/2D',
-                        summary: 'La cuarta lente que abre la calculadora especializada según estés en acciones, bonos, divisas o materias primas.',
+                        summary: 'La cuarta lente que despliega una herramienta ad-hoc dinámica que varía según la clase de activo.',
                         paragraphs: [
-                            'Cada mercado profesional tiene su propia herramienta de precisión: quien opera opciones mira superficies de volatilidad y payoffs; quien opera bonos mira curvas soberanas; quien opera divisas mira tasas de carry; y quien opera materias primas mira curvas de futuros.',
-                            'El cuarto botón del riel izquierdo detecta qué activo tenés abierto y activa automáticamente el motor que le corresponde:'
+                            'A diferencia de las tres primeras lentes (que son comunes a todos los instrumentos), la cuarta lente del riel izquierdo es una herramienta ad-hoc que cambia dinámicamente según el activo que estés analizando: por ejemplo, en el recorrido en vivo, al tratarse de una acción (NVDA), habilita la Superficie 3D de Volatilidad Implícita y Payoff de opciones, mientras que en otros mercados despliega su propio motor especializado.',
+                            'El cuarto botón detecta la clase de activo abierta y activa automáticamente la herramienta ad-hoc que le corresponde:'
                         ],
-                        lead: 'El cuarto botón detecta qué activo tenés abierto y activa el motor que le corresponde:',
+                        lead: 'El cuarto botón detecta qué activo tenés abierto y activa la herramienta ad-hoc que le corresponde:',
                         bullets: [
                             {
                                 bold: 'En acciones, índices, derivados y crypto',

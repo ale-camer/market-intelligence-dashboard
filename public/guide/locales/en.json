@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Collapsed View",
+    "mainView": "Main View",
+    "expandedView": "Expanded View",
+    "inThisSection": "In this section you will find:",
+    "deepDive": "Deep Dive",
+    "previous": "Previous",
+    "next": "Next",
+    "mathFormula": "Mathematical Formula",
+    "practicalExample": "Practical example: "
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "When you open a traditional financial platform, the first thing that usually appears are dozens of charts, flashing tables, and menus everywhere. Where do you start when you just want to check the market or check how your portfolio is doing?",
+        "The Home screen is designed precisely to avoid that initial noise. It welcomes you with a clean and clear space where all control is concentrated in two fixed bars: one above to go to work and another below to configure the platform to suit you."
+      ],
+      "intro": "The Home screen welcomes you with a clean and clear space where all control is concentrated in two fixed bars: one above to go to work and another below to configure the platform to suit you.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "The clear starting point that divides your work into market analysis and portfolio management.",
+          "paragraphs": [
+            "Imagine that you start trading first thing in the morning. Sometimes you'll want to look to see which stocks, bonds or currencies are moving the most; Other times you will go straight to review the risk of your portfolio or simulate a purchase before executing it.",
+            "How do you avoid mixing the two things on the same overloaded screen? The cover clearly separates that path from the first second:"
+          ],
+          "lead": "How do you avoid mixing the two things on the same overloaded screen? The cover clearly separates that path from the first second:",
+          "bullets": [
+            {
+              "bold": "Space without distractions",
+              "code": "Donde se decodifican los mercados",
+              "text": "When you enter, there are no open tables or alerts that force you to close windows before starting; You choose which module to open."
+            },
+            {
+              "bold": "Two clear paths",
+              "code": "Markets / Portfolio",
+              "text": "The entire flow of the application is divided into two main stages: first research opportunities in the markets and then build or test your portfolio."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "The top bar to jump in one click between the home, the markets and your portfolio.",
+          "paragraphs": [
+            "As you delve into the details of an asset or test changes to your portfolio, it's very easy to lose track of where you were. How do you go from looking at a stock chart to reviewing your portfolio without going through submenus?",
+            "The top bar always remains fixed on the screen and gives you direct access to the three main points:"
+          ],
+          "lead": "The top bar always remains fixed on the screen and gives you direct access to the three main points:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Wherever you are, clicking on the symbol on the left immediately returns you to the main page."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "It is your research space. Here you filter the 213 available assets, follow live quotes, analyze technical charts and consult balance sheet summaries or news."
+            },
+            {
+              "bold": "Wallet",
+              "code": "Portfolio",
+              "text": "It's your decision table. Here you define what percentage of your capital goes to each asset, measure how much you could lose in a crisis and simulate new operations before risking money."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "The footer to check the system status, return to this guide, or adjust the layout.",
+          "paragraphs": [
+            "While analyzing data in real time, there are operational questions that can arise at any time: are the quotes arriving correctly? What did a point indicator mean? Can I lower the screen brightness?",
+            "The footer groups all those support and configuration tools so that they are always at hand without getting in the way of the center of the screen:"
+          ],
+          "lead": "The footer groups all those support and configuration tools so that they are always at hand without getting in the way of the center of the screen:",
+          "bullets": [
+            {
+              "bold": "System status",
+              "code": "System",
+              "text": "The green dot confirms at a glance that everything is in order. When you open it you can see in detail the status of the servers, databases and response speed."
+            },
+            {
+              "bold": "User Guide",
+              "code": "Guide",
+              "text": "Open this interactive manual at any time to see how to use a screen or delve deeper into its calculations."
+            },
+            {
+              "bold": "Visual preferences",
+              "code": "Idioma / Palette",
+              "text": "On the right side you have the controls to change the language of the entire application or adjust the background lighting."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Languages",
+          "summary": "The search engine to translate the entire platform into your language on the spot.",
+          "paragraphs": [
+            "Financial terms and market reports already have their own complexity without adding a language barrier. If you prefer to read the explanations in Spanish, English or any other language, you can change it instantly.",
+            "This is how the selector works from the lower right corner:"
+          ],
+          "lead": "This is how the selector works from the lower right corner:",
+          "bullets": [
+            {
+              "bold": "instant search",
+              "code": "Select Language",
+              "text": "Clicking on the current flag opens a window where you can choose between 56 languages by writing its name or code (for example, ES, EN, PT, FR or DE)."
+            },
+            {
+              "bold": "Automatic memory",
+              "code": "mid_lang_v1",
+              "text": "The entire screen is translated instantly without reloading the page and your choice is saved for the next times you enter."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Visual themes to adapt the contrast of the screen without altering the financial colors.",
+          "paragraphs": [
+            "Spending several hours in front of graphics with a contrast that does not adapt to the light in your environment ends up tiring your eyes. However, changing the colors of a financial platform has a classic danger: losing the reference of what is going up and what is going down.",
+            "To solve this, the theme selector separates the environment color from the data color:"
+          ],
+          "lead": "To solve this, the theme selector separates the environment color from the data color:",
+          "bullets": [
+            {
+              "bold": "Five reading environments",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "With each click you rotate between pure black, bluish or warm backgrounds until you find the one that is most comfortable for your eyes."
+            },
+            {
+              "bold": "Intact financial semantics",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "No matter what topic you change, the universal rule of the market is never altered: green always means rise or gain, and red always means fall, loss or risk alert."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Imagine that you want to detect where the best opportunities of the day are among more than two hundred bonds, stocks, indices, currencies and raw materials. If you were to open the charts one by one, the market would close before you finished looking at them.",
+            "The Screener brings together all 213 assets on the platform into a single live dashboard. It allows you to filter by market in a second, gauge the overall pulse of the day, and choose from four different ways to view which assets are performing."
+          ],
+          "intro": "The Screener brings all 213 assets on the platform into a single live dashboard so you can filter by market and spot opportunities at a glance.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Categories",
+              "summary": "Top filters to focus on a single asset class or your watchlist.",
+              "paragraphs": [
+                "It makes no sense to analyze a Treasury bond with the same metrics as a technology stock or oil. When you mix everything in the same list, you end up comparing pears with apples.",
+                "How do you narrow the screen exactly to the market that interests you today? The top bar lets you separate the universe with one click:"
+              ],
+              "lead": "The top bar lets you separate the universe with one click:",
+              "bullets": [
+                {
+                  "bold": "Full picture",
+                  "code": "Todos",
+                  "text": "It shows the 213 instruments together and ordered by traded volume so you can see where the most money flows globally."
+                },
+                {
+                  "bold": "Personal tracking",
+                  "code": "★ Watchlist",
+                  "text": "Isolate only the assets you have marked as favorites to monitor them closely without distractions."
+                },
+                {
+                  "bold": "Ten specialized markets",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "By choosing any of these categories, the entire screen adapts its indicators and the table columns to the rules of that sector."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detail of how the 213 assets in the catalog are classified and what volume and liquidity criteria they meet."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24h pulse",
+              "summary": "The top four cards that tell you if the market is calm, euphoric or under stress.",
+              "paragraphs": [
+                "Before buying or selling a specific asset, it is advisable to know in what climate the whole is moving. Is this a normal volume day or is institutional money coming in all at once? Are all even assets rising or are there signs of tension?",
+                "The four cards below the filters give you that general reading in a few seconds:"
+              ],
+              "lead": "The four cards below the filters give you that general reading in a few seconds:",
+              "bullets": [
+                {
+                  "bold": "Total activity for the day",
+                  "code": "Volumen Agregado 24h",
+                  "text": "It adds up to billions of dollars traded in the active category and shows you if there is more or less participation today than yesterday."
+                },
+                {
+                  "bold": "Average Group Strength",
+                  "code": "AVG RSI 14",
+                  "text": "It summarizes in a circular meter whether the prices of the sector come with buying pressure (green, above 50) or with selling pressure (red, below 50)."
+                },
+                {
+                  "bold": "Normality thermometer",
+                  "code": "Régimen Normal P-06",
+                  "text": "It calculates what percentage of the assets move within their usual parameters and tells you by name and surname which is the instrument with the greatest anomaly of the day."
+                },
+                {
+                  "bold": "Unusual inflows of money",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "The podium of the three assets that today are operating an extraordinarily high volume compared to their average for the last month stands out."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detailed explanation of how the average RSI, volume Z-Score and anomaly detector P-06 are calculated."
+            },
+            {
+              "id": "scr-table",
+              "label": "Table",
+              "summary": "The interactive list with quick search, favorites and columns that adapt to each market.",
+              "paragraphs": [
+                "When you already know which sector you want to look at and need to compare specific numbers row by row, the table view is your main tool.",
+                "Instead of showing you a rigid spreadsheet that is the same for everyone, the table adjusts to what you are looking for:"
+              ],
+              "lead": "Instead of showing you a rigid spreadsheet that is the same for everyone, the table adjusts to what you are looking for:",
+              "bullets": [
+                {
+                  "bold": "Search engine and favorites star",
+                  "code": "Buscar activo / ★",
+                  "text": "In the first column header you can type any symbol or name to go directly to that asset, or tap the star to the left to save it to your Watchlist."
+                },
+                {
+                  "bold": "Smart columns according to the category",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "If you filter Shares, valuation multiples and margins appear; If you choose Bonds or Rates you see the slope of the curve and the sensitivity to rates; If you look at Derivatives you see implied volatility."
+                },
+                {
+                  "bold": "Jump straight to deep analysis",
+                  "code": "Click en cualquier fila",
+                  "text": "Simply click on any asset in the list to open your full station of technical charts and fundamental reports."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "List of the specific metrics that the table shows for each of the 10 asset categories."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "The visual radar to detect at a glance which assets are moving away from their historical average.",
+              "paragraphs": [
+                "Reading two hundred rows of numbers can cause you to miss an asset that is starting to move explosively. How do you instantly detect which instrument is straying from the norm?",
+                "The Orbital view transforms the table into a radar with three concentric rings:"
+              ],
+              "lead": "The Orbital view transforms the table into a radar with three concentric rings:",
+              "bullets": [
+                {
+                  "bold": "Choice of criteria",
+                  "code": "INDICADOR",
+                  "text": "You decide what the radar measures: statistical anomalies, volume jumps, price strength (RSI), volatility or gain in the last 24 hours."
+                },
+                {
+                  "bold": "Reading by distance and color",
+                  "code": "Nodos verdes y rojos",
+                  "text": "The closer or further away a point is according to the indicator and the more intense its green or red color, the more relevant its movement is compared to its own history."
+                },
+                {
+                  "bold": "Inspection without changing screen",
+                  "code": "Panel lateral en vivo",
+                  "text": "By resting the cursor on any radar node, its price, its clean intraday chart and its three risk metrics are displayed on the right."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "How the position of each asset in the radar rings is calculated according to its historical deviation."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Heat Map",
+              "summary": "The mosaic of proportional blocks to identify the winners and losers in a second.",
+              "paragraphs": [
+                "There are times when you just want to answer a quick question: who is leading the rise today and who is dragging the market down?",
+                "The Heat Map arranges the top ten assets of the active filter into proportional blocks so you don't have to read a single table:"
+              ],
+              "lead": "The Heat Map orders the top ten assets of the active filter into proportional blocks:",
+              "bullets": [
+                {
+                  "bold": "Size according to importance",
+                  "code": "Puestos #1 a #10",
+                  "text": "The instruments with the greatest weight within the chosen metric occupy the columns on the left with the largest boxes."
+                },
+                {
+                  "bold": "Color intensity",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "The tone of the block immediately tells you the magnitude of the movement, from moderate variations to abrupt rises or falls."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "The three-step shortcut to advanced rates, options, forex and futures calculators.",
+              "paragraphs": [
+                "In addition to traditional price charts, the platform includes four special engines for fixed income, options, currency crosses and commodity curves. How do you get to them without searching asset by asset?",
+                "This view guides you from left to right in three very simple columns:"
+              ],
+              "lead": "This view guides you from left to right in three very simple columns:",
+              "bullets": [
+                {
+                  "bold": "First you choose the family",
+                  "code": "1. Clases de Activo",
+                  "text": "You select whether you want to work with Rates and Bonds, with Options on Stocks/Indices/Crypto, with Currencies or with Raw Materials."
+                },
+                {
+                  "bold": "Then you check what the engine does",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "In the center you read a clear summary of what that tool shows and how to orient yourself along its axes."
+                },
+                {
+                  "bold": "Finally, choose the active one and open",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "You watch a live preview of the chart, search for any compatible assets in that family, and open the full station with one click."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Once you found an interesting asset in the Screener, it's time to take a closer look. Is it in an uptrend or has it run out of steam? Are you beating your competitors? What do the volume and the derivatives market say?",
+            "The Analytics station concentrates all the technical, comparative and quantitative analysis of that asset on a single screen. Above you have the general summary and on the left four lenses to change the angle of analysis without losing sight of the graph."
+          ],
+          "intro": "The Analytics station concentrates technical, comparative, flow analysis and 3D/2D engines of an individual asset on a single screen.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "The top dashboard to switch assets, choose the timeframe, and view your five key metrics.",
+              "paragraphs": [
+                "When you are studying an asset, you usually alternate between today's short term and the film of the last few months, or even switch to looking at another similar symbol. How do you do all that without going back?",
+                "The top header brings together the navigation controls and the instrument quick tab:"
+              ],
+              "lead": "The top header brings together the navigation controls and the instrument quick tab:",
+              "bullets": [
+                {
+                  "bold": "Change of asset or return to the list",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "At the top left you can return to Screener or type the name of any other instrument to change charts on the spot."
+                },
+                {
+                  "bold": "Nine windows of time",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "On the right margin you change the scale of the graph from minute-by-minute movements to the entire history."
+                },
+                {
+                  "bold": "Five leading indicators",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Next to the price you always have in view the traded volume, the two key data of its category, the strength of the trend and the level of statistical normality."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Technical",
+              "summary": "The price chart with moving averages, volatility bands and volume to follow the trend.",
+              "paragraphs": [
+                "Looking only at the last price does not tell you if an asset is accelerating, if it is bouncing off its average or if it has already risen too quickly in a few days.",
+                "The first lens on the left rail allows you to overlay the most used technical references on the market on the graph:"
+              ],
+              "lead": "The first lens on the left rail allows you to overlay the most used technical references:",
+              "bullets": [
+                {
+                  "bold": "Address and actual average price",
+                  "code": "SMA 20 / VWAP",
+                  "text": "You can turn on the 20-period moving average and volume-weighted average price to immediately see if the asset is trading above or below its equilibrium level."
+                },
+                {
+                  "bold": "Excess zones and volume confirmation",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "The bands draw the statistical ceiling and floor of the price, while the lower bars confirm whether the movement is supported by volume."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Formulas and interpretation criteria of the Moving Average (SMA 20), Bollinger Bands and VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Compare %",
+              "summary": "The percentage comparator from 0% to measure whether your asset performs more or less than another in the same category.",
+              "paragraphs": [
+                "A stock going up 5% seems like great news, but if its benchmark or main competitor is up 12% in the same period, you're actually falling behind.",
+                "The second lens resolves that doubt by putting the two assets on the same starting line:"
+              ],
+              "lead": "The second lens resolves that doubt by putting the two assets on the same starting line:",
+              "bullets": [
+                {
+                  "bold": "Search for coherent pairs",
+                  "code": "Buscar par compatible",
+                  "text": "The search engine automatically filters out assets from the same family (e.g. stocks vs. stocks, ETFs, or indices) so the comparison makes financial sense."
+                },
+                {
+                  "bold": "Net advantage in percentage",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Both curves start from 0% and the left rail calculates how many percentage points of advantage (in green) or disadvantage (in red) your asset has."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Flow",
+              "summary": "The detector of institutional out-of-pattern purchases, liquidity and spread costs.",
+              "paragraphs": [
+                "Many times large funds accumulate or unload positions before the price makes a sudden movement. How do you detect that hidden trace in the volume and liquidity of the order book?",
+                "The third lens focuses on what happens below the quote:"
+              ],
+              "lead": "The third lens focuses on what happens below the quote:",
+              "bullets": [
+                {
+                  "bold": "Statistical volume peaks",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Changes the bottom panel to show you how many times the current volume deviates from normal, revealing unusual institutional activity."
+                },
+                {
+                  "bold": "Liquidity stress and anomalies",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "It measures in basis points whether the gap between buyers and sellers is widening and whether the statistical engine detects atypical behavior."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "How opening spreads and statistical spikes in order flow are measured."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D engines",
+              "summary": "The fourth lens that deploys a dynamic ad-hoc tool that varies by asset class.",
+              "paragraphs": [
+                "Unlike the first three lenses (which are common to all instruments), the fourth lens on the left rail is an ad-hoc tool that changes dynamically depending on the asset you are analyzing: for example, in the live tour, as it is a stock (NVDA), it enables the 3D Implicit Volatility and Options Payoff Surface, while in other markets it deploys its own specialized engine.",
+                "The fourth button detects the open asset class and automatically activates the corresponding ad-hoc tool:"
+              ],
+              "lead": "The fourth button detects which asset you have open and activates the ad-hoc tool that corresponds to it:",
+              "bullets": [
+                {
+                  "bold": "In stocks, indices, derivatives and crypto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Display the 3D implied volatility surface, options smile by expiration, and a 6-strategy simulator to see how much you would gain or lose today and at expiration."
+                },
+                {
+                  "bold": "In rates, bonds and liquidity",
+                  "code": "Curva 3D/2D",
+                  "text": "It allows you to compare the yield curves of 42 countries against the US and Germany, measuring whether the curve is normal or inverted (2s10s) and how much the price varies with rate changes (DV01)."
+                },
+                {
+                  "bold": "In currencies",
+                  "code": "FX & Carry",
+                  "text": "It offers a converter and triangulator between 61 currencies that also calculates the 10-year interest rate differential in favor or against maintaining that pair."
+                },
+                {
+                  "bold": "In raw materials",
+                  "code": "Forward 3D/2D",
+                  "text": "Charts the prices of futures contracts month by month to show whether the market pays more for forward (Contango) or for immediate delivery (Backwardation), along with the status of physical inventories."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mathematical detail of volatility surfaces, sovereign yield curves, currency carry and futures curves."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "The chart shows you what the price is doing, but it doesn't tell you why. To know what is behind a movement you would have to read dozens of pages of quarterly balance sheets, central bank statements, inventory reports and news cables.",
+            "The Research station does that heavy lifting for you. It combines documentary artificial intelligence verified against official reports with real-time news reading, organizing all the evidence for and against in three clear columns."
+          ],
+          "intro": "Station Research summarizes official balance sheets, macroeconomic reports and real-time news in three clear columns.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Note & Posture",
+              "summary": "The top three cards that summarize the fundamental verdict and humor of the news.",
+              "paragraphs": [
+                "Do the fundamentals of the asset accompany the rise in price or is the news deteriorating the outlook? Before reading the detail, you need a quick executive conclusion.",
+                "In the upper right corner you have three indicators that summarize the general status of the asset:"
+              ],
+              "lead": "In the upper right corner you have three indicators that summarize the general status:",
+              "bullets": [
+                {
+                  "bold": "Posture and weight of each source",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "It defines the general verdict and clarifies what weight it gives to official documents versus news depending on the type of asset (for example, 80% balance sheets and 20% news in a stock)."
+                },
+                {
+                  "bold": "Combined rating",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "It synthesizes into a single score the net result of the fundamentals plus the information flow of the day."
+                },
+                {
+                  "bold": "Thermometer holders",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Place on a bar from -100 to +100 if the tone of the press in the last few hours is pessimistic (red), neutral or enthusiastic (green)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "How official reports are weighted against news depending on the type of asset."
+            },
+            {
+              "id": "res-rag",
+              "label": "Chat RAG",
+              "summary": "The left documentary assistant to ask specific questions about balance sheets and official reports.",
+              "paragraphs": [
+                "Suppose you want to know what exactly a company said about its margins in its latest annual balance sheet 10-K, or what the Federal Reserve said in its latest minutes. Searching for it by hand takes time; Asking a generic chat without sources can give you made-up data.",
+                "The left column solves this with a wizard connected exclusively to verified official documentation:"
+              ],
+              "lead": "The left column offers you a wizard connected to official verified documentation:",
+              "bullets": [
+                {
+                  "bold": "Initial thesis and guided questions",
+                  "code": "Chat Documental RAG",
+                  "text": "It starts with an executive summary with verified quotes and four quick reference buttons adapted to the asset category, as well as a field for you to write your own questions."
+                },
+                {
+                  "bold": "Direct step to your portfolio",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "If after researching the fundamentals you decide that the asset is worth it, this button at the top of the chat sends you directly to the portfolio simulator."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Operation of the verified documentary search (RAG) and its security filters."
+            },
+            {
+              "id": "res-factors",
+              "label": "Factors",
+              "summary": "The central accordion with the five bullish drivers and the five bearish risks ordered by impact.",
+              "paragraphs": [
+                "No investment is one hundred percent perfect or one hundred percent bad: there are always arguments in favor and latent risks. The secret is knowing which ones weigh more today.",
+                "The center column puts both sides face to face so you can make a balanced decision:"
+              ],
+              "lead": "The center column puts both sides face to face so you can make a balanced decision:",
+              "bullets": [
+                {
+                  "bold": "Force balance and filters",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Above you see the bidding bar between buyers and sellers, and below you can filter the five positive catalysts (in green) or the five main risks (in red)."
+                },
+                {
+                  "bold": "Detail and drill-down in one click",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "When you touch any factor on the list, its complete explanation is displayed along with a button to ask Chat RAG for more information about that specific point."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Pulse",
+              "summary": "The right timeline with the latest AI-rated headlines and the 24-hour mood curve.",
+              "paragraphs": [
+                "A single last-minute headline about earnings, inflation or regulations can completely change the mood of the day. How do you know what news has just come out and what effect it is having?",
+                "The right column monitors the information flow minute by minute:"
+              ],
+              "lead": "The right column monitors the information flow minute by minute:",
+              "bullets": [
+                {
+                  "bold": "Qualified timeline",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Lists the five most recent headlines with their time and agency, scoring them green if they are favorable or red if they pose a threat."
+                },
+                {
+                  "bold": "Impact and daily curve simulator",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "You can trigger a live wire with the top button to see how it recalculates the entire screen and follow in the graph below how the mood evolved over the last 24 hours."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "How the FinBERT model analyzes the financial language of each holder."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Builder",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Choosing good assets separately is not enough to have a good portfolio. If you put too much capital into assets that move the same, or if you don't measure how they would have performed together in the past, you are investing blindly.",
+            "Constructor & Performance (the first view of Portfolio) is the workshop where you build your portfolio. It allows you to add any of the 213 assets, adjust what percentage you assign to each one without dealing with imprecise controls, and instantly audit both its internal composition and its history."
+          ],
+          "intro": "Constructor & Performance is the workshop where you build your portfolio, adjust the weight of each asset and audit its historical performance.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Summary",
+              "summary": "The top six cards that are recalculated live every time you modify your portfolio.",
+              "paragraphs": [
+                "Every time you add an asset or change a percentage in your portfolio, you need to know immediately whether that adjustment improved your expected return or worsened your downside exposure.",
+                "The top row always keeps the portfolio's six master metrics visible:"
+              ],
+              "lead": "The top row always keeps the portfolio's six master metrics visible:",
+              "bullets": [
+                {
+                  "bold": "Performance and efficiency",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "They tell you what compound annual profit the portfolio projects on your capital and how much return you are getting for each unit of risk assumed."
+                },
+                {
+                  "bold": "Expected daily loss and historical drop",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "They calculate how many dollars you could lose on a bad day within what was statistically foreseeable and what was the deepest setback in the last year."
+                },
+                {
+                  "bold": "Added value and diversification",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "They measure how many points your portfolio beats the benchmark index and how much risk you are reducing thanks to combining different assets."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Composite return formulas (CAGR), Sharpe and Sortino ratios, and Value at Risk (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Weighting",
+              "summary": "The left table to add assets, turn them on or off and define the exact percentage of each position.",
+              "paragraphs": [
+                "What would happen to your portfolio numbers if you temporarily shut down a tech stock today or split the money equally among all your positions?",
+                "The left panel lets you do all those tests in a clean and direct way:"
+              ],
+              "lead": "The left panel lets you do all those tests in a clean and direct way:",
+              "bullets": [
+                {
+                  "bold": "Search engine for the 213 assets",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "You can search for any instrument on the platform or filter your favorites to add it to the table with one click."
+                },
+                {
+                  "bold": "Quick start-up and accurate editing",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Each row has a checkbox to include or exclude the asset in real time and a number box to enter the exact percentage without using imprecise sliders."
+                },
+                {
+                  "bold": "Three rebalancing shortcuts",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "At the top of the table you have buttons to distribute equal weights between all active assets, automatically bring the sum to 100% or return to the original portfolio."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "X-ray",
+              "summary": "The top right panel with five tabs to discover hidden concentrations, cash flow and custody.",
+              "paragraphs": [
+                "One of the most common mistakes when investing is believing that you are diversified because you have five different assets, when in reality you bought an individual stock and also two ETFs that have that same stock inside.",
+                "The X-ray panel analyzes your portfolio from the inside through five tabs:"
+              ],
+              "lead": "The X-ray panel analyzes your portfolio from the inside through five tabs:",
+              "bullets": [
+                {
+                  "bold": "Repeated position detector",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Add up what you have invested directly in each company plus the hidden portion you have within indices or ETFs (such as SPY or QQQ), warning you in red if you exceed prudent limits."
+                },
+                {
+                  "bold": "Exposure map and origin of return",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "They show you what percentage you actually have in each asset type and currency, and how much of your profit came from choosing good sectors versus choosing good assets."
+                },
+                {
+                  "bold": "Projected annual income and security",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "They calculate how many dollars you are going to collect in the year for dividends, coupons and interest, and audit the solvency of the custodians where your capital rests."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "How indirect exposure is calculated within ETFs and the Brinson attribution breakdown."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Calendar",
+              "summary": "The monthly chart from January to December to see the regularity of your profits and losses.",
+              "paragraphs": [
+                "A good annual return can hide months of very sharp falls that in practice are difficult to tolerate. How consistent month to month is the portfolio you just put together?",
+                "Just below the X-ray, the calendar breaks down the monthly history:"
+              ],
+              "lead": "Just below the X-ray, the calendar breaks down the monthly history:",
+              "bullets": [
+                {
+                  "bold": "Green months and red months",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Each cell is instantly recalculated according to the weights in your table and is painted green or red depending on the result of that month, closing on the right with the cumulative result for the year."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "The full screen graph below to compare your portfolio against four classic strategies.",
+              "paragraphs": [
+                "Before you consider your portfolio good, the fundamental test remains: is it really better than leaving the money in the S&P 500 or in a traditional 60/40 portfolio?",
+                "The bottom panel occupies the entire width of the screen to put your design up to market standards:"
+              ],
+              "lead": "The bottom panel puts your design against market standards:",
+              "bullets": [
+                {
+                  "bold": "Five horizons of testing",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "It allows you to evaluate how your mix performed both in recent quarters and across full multi-year cycles."
+                },
+                {
+                  "bold": "Four face-to-face references",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Overlay your active portfolio's green curve against any of the four classic models so you can clearly see when it's ahead and how it's holding up on the downside."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Risk",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "In times when the market rises calmly, almost any portfolio seems safe. The real problem appears when a crisis breaks out, interest rates rise suddenly and assets that seemed independent begin to fall all at the same time.",
+            "Quantitative Risk & Stress (the second view of Portfolio) puts your portfolio through extreme tests before they happen in real life. Through four symmetrical quadrants and a future scenario simulator below, it shows you exactly where your vulnerable points are."
+          ],
+          "intro": "Quantitative Risk & Stress tests your portfolio for historical crises, correlation contagion, and Monte Carlo projections.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "The interactive risk and return map to see how close you are to the most efficient portfolio possible.",
+              "paragraphs": [
+                "With the same assets that you already have in your portfolio, there are thousands of ways to distribute the percentages. Is the combination you chose the one that pays the best for the risk you take, or could you win the same with fewer surprises?",
+                "The first quadrant at the top left draws that live map of possibilities:"
+              ],
+              "lead": "The first quadrant on the top left draws that live map of possibilities:",
+              "bullets": [
+                {
+                  "bold": "Your position against the optimal portfolios",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "It shows where your current portfolio is located in relation to the point of lowest possible volatility and the point of maximum risk-return efficiency."
+                },
+                {
+                  "bold": "Visual layers and inspection by asset",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "You can turn the model layers on or off and click on any node to read the exact contribution of that asset below."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Efficient frontier of Markowitz and calculation of the minimum variance and maximum Sharpe portfolios."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado & VaR",
+              "summary": "The historical crisis simulator, daily loss breakdown by asset and market asymmetry.",
+              "paragraphs": [
+                "If a crash like the one in 2008, the economic slowdown in 2020, or the rate hike in 2022 were to be repeated tomorrow, how much would your current portfolio lose and what asset would be the main culprit?",
+                "The lower left quadrant answers those three questions in three specific tabs:"
+              ],
+              "lead": "The lower left quadrant answers those questions in three specific tabs:",
+              "bullets": [
+                {
+                  "bold": "Test against five real crises",
+                  "code": "1. Tornado Stress",
+                  "text": "Compare bar by bar how much your portfolio would fall against the S&P 500 in the face of five major historical shocks."
+                },
+                {
+                  "bold": "Risk ranking by position",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Sort your holdings according to how many dollars of potential daily loss each one contributes to the total portfolio."
+                },
+                {
+                  "bold": "Behavior in ups and downs",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "It shows you what percentage of the market's bullish wheels each asset takes advantage of and how much it manages to cushion when the market falls."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Methodology of historical stress scenarios, marginal contribution to VaR and capture ratios."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Correlation",
+              "summary": "The cross matrix to check if your assets really diversify or if they are infected during a panic.",
+              "paragraphs": [
+                "Having several assets in your portfolio only reduces risk if they do not all move in the same direction at the same time. But in times of financial panic, many correlations that seemed low jump sharply upward.",
+                "The top right quadrant allows you to audit that relationship in two scenarios:"
+              ],
+              "lead": "The top right quadrant allows you to audit that relationship in two scenarios:",
+              "bullets": [
+                {
+                  "bold": "Crossover between assets and sensitivity",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "It shows how similar each pair of assets moves (in green or light blue when they diversify well, and in red when they move too close together) and what their sensitivity is to the market."
+                },
+                {
+                  "bold": "Contagion simulator in crisis",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "With one click you change the correlations of a normal year to those of a moment of panic to discover which positions would no longer protect you."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Calculation of Pearson correlation coefficients under normal conditions and under market stress."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash & Markov",
+              "summary": "The joint impact table between rates and the stock market, plus the probabilities of a change in the economic cycle.",
+              "paragraphs": [
+                "In the real economy, problems rarely come one by one: many times a rise in interest rates coincides with a fall in stocks. What happens to your portfolio if the two factors are combined at the same time?",
+                "The lower right quadrant crosses both variables and measures the probabilities of regime change:"
+              ],
+              "lead": "The lower right quadrant crosses both variables and measures the market cycle:",
+              "bullets": [
+                {
+                  "bold": "Double impact board",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Cross rate movements (-100 to +200 basis points) with falls or rises of the S&P 500 (-20% to +10%), allowing you to filter by the entire portfolio or by an individual asset."
+                },
+                {
+                  "bold": "Cycle transition probabilities",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Calculate how likely the market is to remain calm or enter a volatile, inflationary or crisis phase."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Joint sensitivity to rates and variables, and Markov state transition matrix."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "The bottom panel is full screen with future probabilistic projections and historical declines.",
+              "paragraphs": [
+                "Looking at the past is useful, but when investing forward what you need to know is within what range of results your capital can move in the next six months, a year or two years.",
+                "The full-width bottom panel brings together three temporary tools to project and control that path:"
+              ],
+              "lead": "The bottom panel brings together three temporary tools to project that path:",
+              "bullets": [
+                {
+                  "bold": "Ten thousand future scenarios",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Draw the cone of probable evolution of your portfolio, distinguishing the optimistic scenario (P95 in green), the expected central path (P50) and the adverse scenario (P05 in red)."
+                },
+                {
+                  "bold": "Depth of falls and stability over time",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "They allow you to toggle the chart to see how long the portfolio stayed below its all-time highs or how stable its efficiency and risk were over rolling 60-day windows."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo stochastic simulation of 10,000 roads and 60-day rolling metrics."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulator",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Before buying a new asset, reducing a position or paying for hedging with options, the same question always arises: is this operation really improving my portfolio or is it adding unnecessary risk? And how much capital should I put into it?",
+            "The Ad-Hoc Strategy Lab (the third view of Portfolio) is your pre-operating simulator. It allows you to load tactical plays, calculate your ideal position size, test downside insurance, and see the exact before and after impact without yet touching your base portfolio."
+          ],
+          "intro": "The Ad-Hoc Strategy Laboratory is your pre-trade simulator to test orders, size positions and measure coverage.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Impact",
+              "summary": "The top six cards that compare your current portfolio against the result after the simulated plays.",
+              "paragraphs": [
+                "To know if a tactical idea is worth it, it's not enough for the asset to look attractive on its own: it has to improve the numbers for the entire portfolio.",
+                "The top row permanently shows you the comparison between your current portfolio and the portfolio with the simulation applied:"
+              ],
+              "lead": "The top row compares your current portfolio against the portfolio with the simulation applied:",
+              "bullets": [
+                {
+                  "bold": "Effect on profit and efficiency",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "They show the base number next to the projected number, illuminating the difference in green if the play adds efficiency or in red if it deteriorates it."
+                },
+                {
+                  "bold": "Effect on risk, capital and rules",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "They tell you how much your maximum expected loss changes, what percentage of the portfolio you are committing to the tests and whether all security limits are respected."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If & Kelly",
+              "summary": "The purchase/sale ticket simulator and the calculator to define how much money to risk.",
+              "paragraphs": [
+                "Many good investment ideas end up giving rise to losses due to an error in the size of the bet: putting too little does not move the needle, but putting too much can ruin the portfolio if the move goes wrong.",
+                "The first quadrant at the top left links the evidence sheet with the mathematical calculation of size:"
+              ],
+              "lead": "The first quadrant unites the test report with the mathematical calculation of size:",
+              "bullets": [
+                {
+                  "bold": "Test order loading",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "You choose any asset, indicate if you want to buy, sell or cover and load the amount in dollars. In the list below you can turn each simulated order on or off to compare its effect."
+                },
+                {
+                  "bold": "Optimal position size",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Based on your estimated probability of success and the relationship between profit and loss, it calculates what maximum percentage of capital should be allocated to grow without overexposing yourself."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mathematical calculation of the Kelly Criterion and its conservative version Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Put OTM & Margin",
+              "summary": "The insurance simulator with options for strong market declines and the margin call monitor.",
+              "paragraphs": [
+                "When you fear a strong market correction, selling all your positions is usually costly and inefficient. The professional alternative is to take out insurance with protective options, but how much does that insurance cost per year and how much does it really protect you?",
+                "The lower left quadrant allows you to measure both coverage and debt level:"
+              ],
+              "lead": "The lower left quadrant measures both coverage and level of guarantees:",
+              "bullets": [
+                {
+                  "bold": "Comparator of protective shields",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "It allows you to alternate between operating without coverage or applying three types of insurance with options (on SPY, QQQ or VIX volatility), contrasting the annual cost of the premium against the dollars you would save in a 20% crash."
+                },
+                {
+                  "bold": "Leverage control and collateral",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Monitor what percentage of maintenance margin you have used and what percentage drop the portfolio would endure before entering the margin call zone."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Operation of hedging with out-of-the-money Put options and calculation of guarantees Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Committee & Book",
+              "summary": "The two right panels with automatic review of risk limits, order history and Co-pilot.",
+              "paragraphs": [
+                "In the enthusiasm of trying out a trade, it is easy to overlook that an asset is concentrating more than 20% of your entire portfolio or that it is operating in the midst of a severe statistical anomaly.",
+                "The two quadrants on the right serve as your automatic risk control and audit trail:"
+              ],
+              "lead": "The two quadrants on the right function as risk control and registration:",
+              "bullets": [
+                {
+                  "bold": "Review in three dimensions",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "They evaluate your simulated orders from the technical, fundamental and hard security limits (warning if any position exceeds the 20% capital limit or if it has high anomalies)."
+                },
+                {
+                  "bold": "Order log and portfolio assistant",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "The bottom panel records each simulation with its impact on risk, while the dialogue button at the top right opens the chat to ask direct questions about your portfolio."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pre-operation risk control rules and concentration limits per asset."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "The graph below in full screen to check that your strategy works outside the trial period.",
+              "paragraphs": [
+                "Any strategy can be adjusted by looking at the past until it appears foolproof on the historical chart. The real challenge is knowing if it continues to work when faced with new market data.",
+                "The full-width bottom panel puts the strategy through the most rigorous validation before going into production:"
+              ],
+              "lead": "The bottom panel subjects the strategy to in-sample and out-of-sample validation:",
+              "bullets": [
+                {
+                  "bold": "Separation between design and actual testing",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "It divides the historical graph into a first stage where the strategy is calibrated and a second stage with unseen data to check if it maintains its advantage over the base portfolio."
+                },
+                {
+                  "bold": "Statistical robustness note",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "If the efficiency indicator exceeds 70%, it confirms that the results are consistent and not the product of having forced the numbers on the past."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "What the Walk-Forward Efficiency Index (WFE) measures and how it detects overoptimized strategies."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Liquidity Filter (ADV)",
+        "intro": "In order for an asset to be traded without a single order distorting its price, the platform requires a minimum threshold of average daily volume in dollars over the last 20 business days.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Closing Priceᵢ × Traded Volumeᵢ)",
+          "denominator": "20 skillful wheels",
+          "vars": [
+            "Closing Price: official closing price of day i expressed in USD.",
+            "Traded Volumeᵢ: total number of units traded on that day."
+          ]
+        },
+        "lead": "Based on average daily volume, the catalog classifies the depth of each instrument:",
+        "bullets": [
+          {
+            "bold": "High institutional liquidity",
+            "code": "> $500M diarios",
+            "text": "Allows you to enter and exit large positions immediately without moving the market price."
+          },
+          {
+            "bold": "Standard Catalog Liquidity",
+            "code": "$50M a $500M diarios",
+            "text": "Suitable for diversified portfolios with very low purchase/sale costs."
+          },
+          {
+            "bold": "Spread monitoring",
+            "code": "< $50M diarios",
+            "text": "In times of volatility it is advisable to check the opening of tips before executing large orders."
+          }
+        ],
+        "example": "If a stock is trading at $200 and trades on average 5 million shares per wheel over the past month, its average daily volume (ADV) is $1 billion ($1.0B)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalization to USD",
+        "intro": "As the catalog combines European bonds, Asian indices, commodities and cryptocurrencies, all volume flows are converted to US dollars in real time so that they can be compared on the same scale.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Local Currency Volume: amount traded in the original market currency (EUR, JPY, GBP, BRL, etc.).",
+            "Spot Exchange Rate: current quote in the 61 currency engine."
+          ]
+        },
+        "lead": "This conversion directly impacts two places on the screen:",
+        "bullets": [
+          {
+            "bold": "Overall View Ranking All",
+            "code": "213 activos",
+            "text": "Order the instruments from greatest to least real movement of money worldwide."
+          },
+          {
+            "bold": "Added Volume Card",
+            "code": "Volumen 24h en $B",
+            "text": "It allows the volume of assets listed in different countries to be added without distortions."
+          }
+        ],
+        "example": "If a German bond trades €4 billion a day and the EUR/USD cross trades at 1.08, the system computes $4.32B in the global pulse."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "How do you measure if a market has been rising with genuine strength or if it has already risen too quickly and is exhausted? The Relative Strength Index (RSI) compares the average rises against the average falls of the last 14 rounds on a scale of 0 to 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Average Ups₁₄ / Average Downs₁₄)",
+          "vars": [
+            "Average Raising₁₄: smoothed average of the points earned on the bullish days of the last 14 wheels.",
+            "Average Losses₁₄: smoothed average of the points lost on the bearish days of the same period."
+          ]
+        },
+        "lead": "This is how the three sections of the scale are interpreted in the circular ring:",
+        "bullets": [
+          {
+            "bold": "Buying force and overbought",
+            "code": "70 a 100",
+            "text": "The increases far exceed the recent decreases. It shows great bullish momentum, although above 70 it warns that the price may need a pause."
+          },
+          {
+            "bold": "balance zone",
+            "code": "30 a 70",
+            "text": "The market moves at a sustainable pace. Crossing the intermediate level (> 50 in green) confirms buyer dominance, while falling below (< 50 in red) indicates seller dominance."
+          },
+          {
+            "bold": "Punishment and overselling",
+            "code": "0 a 30",
+            "text": "The falls were so frequent and pronounced that the asset is beginning to look statistically cheap and prone to a rebound."
+          }
+        ],
+        "example": "If in the last 14 wheels a group of stocks rose on average $2 per bullish day and only fell $1 per bearish day, its strength ratio is 2 and its RSI reads 66.7 (bullish push in green)."
+      },
+      {
+        "id": "p06",
+        "label": "Normal Regime (P-06)",
+        "intro": "An asset may seem calm if you only look at its price, but at the same time be suffering from a strange jump in volume and an abnormal opening in its buying and selling peaks. The Isolation Forest engine (P-06) crosses these variables at the same time to detect atypical behavior.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): average number of random cuts necessary to isolate today's behavior from the rest of history.",
+            "x: vector of 4 variables (Return 24h, Vol Z-Score 20d, Realized Volatility 30d and Spread in bps)."
+          ]
+        },
+        "lead": "The rarer today's move is, the faster it is isolated and the closer the score is to 1.00:",
+        "bullets": [
+          {
+            "bold": "Normal regime",
+            "code": "0.00 a 0.49",
+            "text": "Price, volume and liquidity move in line with the asset's historical average."
+          },
+          {
+            "bold": "High activity",
+            "code": "0.50 a 0.64",
+            "text": "At least one of the variables began to deviate from its usual behavior; It is advisable to closely monitor the flow of orders."
+          },
+          {
+            "bold": "Dislocation or critical anomaly",
+            "code": "0.65 a 1.00",
+            "text": "The asset registers statistically extreme behavior. In the portfolio module, exceeding this threshold activates the safety brake."
+          }
+        ],
+        "example": "If a sovereign bond barely moves 0.1% in price but its volume multiplies by four and its spread triples in minutes, the detector crosses the three data points and raises its score to 0.74 (Dislocation in red)."
+      },
+      {
+        "id": "zscore",
+        "label": "Volume Bypass (Z-Score)",
+        "intro": "Saying that 500 million dollars were operated today is a lot for a medium-sized company, but very little for S&P 500. The Volume Z-Score brings all assets to the same universal unit: how many standard deviations (σ) is today's volume from its own 20-wheel average.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Volume Today (24h) − Average Volume (20d)",
+          "denominator": "Standard Deviation of Volume (20d)",
+          "vars": [
+            "Average Volume (20d): usual volume of the asset during the last business month.",
+            "Standard Deviation (20d): how much this volume normally varies from one day to the next."
+          ]
+        },
+        "lead": "This way you can compare any asset on the same scale of sigma (σ) units:",
+        "bullets": [
+          {
+            "bold": "Usual activity",
+            "code": "-1.0σ a +1.0σ",
+            "text": "The volume of the day is completely within the routine of the last four weeks."
+          },
+          {
+            "bold": "High participation",
+            "code": "+1.0σ a +2.0σ",
+            "text": "There is a higher than average interest that is beginning to validate the trend of the day."
+          },
+          {
+            "bold": "Institutional clash",
+            "code": "> +2.0σ",
+            "text": "It occurs in less than 5% of the rounds of the year and usually reflects the massive entry or exit of large funds."
+          }
+        ],
+        "example": "If a stock usually trades $100M daily with a typical variation of ±$20M and today trades $160M, it is $60M above its average, which is exactly equivalent to +3.0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Fixed Income (2s10s and DV01)",
+        "intro": "When you filter Bonds or Rates in the table, the two key metrics for evaluating sovereign debt appear: the slope of the curve (2s10s) and the monetary value of a basis point (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 basis point (1 bp): equivalent to 0.01% performance.",
+            "DV01 ($/$1M): How many dollars a $1 million position wins or loses if the rate moves 1 basis point."
+          ]
+        },
+        "lead": "How to read these two numbers on the grid:",
+        "bullets": [
+          {
+            "bold": "Normal or positive curve",
+            "code": "2s10s > 0 bps",
+            "text": "10-year bonds pay a higher rate than 2-year bonds, reflecting an expectation of healthy economic growth."
+          },
+          {
+            "bold": "inverted curve",
+            "code": "2s10s < 0 bps",
+            "text": "Short rates exceed long rates; historically it warns of economic cooling or monetary restriction."
+          }
+        ],
+        "example": "If the 10-year Treasury yields 4.20% and the 2-year Treasury yields 4.55%, the 2s10s column marks -35 bps (inverted curve in red)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Shares (P/E and Margin)",
+        "intro": "When filtering S&P/NDX Stocks, the table displays the projected earnings multiple (P/E Forward) and Gross Operating Margin so you can compare valuation versus profitability.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Current Share Price",
+          "denominator": "Estimated Earnings Per Share (Next 12 Months)",
+          "vars": [
+            "P/E Forward: How many years of future earnings you are paying at today's price.",
+            "Gross Margin (%): percentage of sales that remains as gross profit after deducting the direct cost."
+          ]
+        },
+        "lead": "What to look for when crossing both columns:",
+        "bullets": [
+          {
+            "bold": "Demanding vs moderate assessment",
+            "code": "P/E > 30x vs < 18x",
+            "text": "A high multiple indicates that the market is pricing in strong future growth; a low one usually reflects mature or valuable companies."
+          },
+          {
+            "bold": "Pricing Power",
+            "code": "Margen Bruto > 50%",
+            "text": "High margins show companies with strong competitive advantages capable of defending their profits against inflation."
+          }
+        ],
+        "example": "If a stock is trading at $150 and is estimated to earn $6 per share over the next 12 months, its Forward P/E is 25.0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Derivatives, FX and Commodities",
+        "intro": "For options, forex and physical futures markets, the two dynamic columns show the implied cost of risk or reward for holding the position over time.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Derivatives): annualized volatility that the options market discounts for the next 30 days.",
+            "Carry 10Y (FX) and Roll Yield (Commodities): annual gain or cost from rate differential or futures rollover."
+          ]
+        },
+        "lead": "How to take advantage of these columns depending on the asset:",
+        "bullets": [
+          {
+            "bold": "In Derivatives",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "They tell you what percentage of movement the market expects and whether the options to cover falls (Puts) are expensive."
+          },
+          {
+            "bold": "In Currencies and Raw Materials",
+            "code": "Carry Spread y Roll Yield",
+            "text": "They show in green if maintaining the asset pays you additional income or in red if it has a carrying cost."
+          }
+        ],
+        "example": "If an option shows an implied volatility (ATM IV) of 35% annually, the market discounts a move close to ±10% for the next 30 days."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radar Radial Mapping",
+        "intro": "To place up to 45 assets in the three radar rings without overlapping, the Orbital view transforms the value of the chosen indicator into a distance to the center (radius r) normalized between the minimum and maximum of the group.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Asset Value − Minimum Value of the Group",
+          "denominator": "Maximum Value of the Group − Minimum Value of the Group",
+          "vars": [
+            "r → 0 (Inner Ring): concentrates the assets with greater intensity or positive deviation.",
+            "r → 1 (Outer Ring): locates the peripheral assets or those with the lowest relative reading."
+          ]
+        },
+        "lead": "How to read the position and color of each planet on the radar:",
+        "bullets": [
+          {
+            "bold": "Focus inner ring",
+            "code": "Centro del radar",
+            "text": "Gather the leading assets from the indicator you selected above so that your view goes to what is most important first."
+          },
+          {
+            "bold": "Historical color semantics",
+            "code": "Verde vs Rojo",
+            "text": "The node lights up in green when it exceeds its historical average favorably and in red when it reflects decline or stress."
+          }
+        ],
+        "example": "If you sort the radar by Volume Deviation (Z-Score), the active one with +3.4σ is located in the bright central ring, while one with 0.1σ is in the outer orbit."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) and Bollinger Bands",
+        "intro": "The 20-period Simple Moving Average (SMA 20) marks the base trend of the asset, while the Bollinger Bands draw a dynamic channel by adding and subtracting two standard deviations (2σ) around that average.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): arithmetic average of the last 20 closings.",
+            "Bandwidth (BB Width): percentage distance between the upper and lower bands."
+          ]
+        },
+        "lead": "Statistically, about 95% of quotes occur within the two bands:",
+        "bullets": [
+          {
+            "bold": "Price above average",
+            "code": "Precio > SMA 20",
+            "text": "It indicates that the short-term trend is bullish and the average usually acts as a support floor."
+          },
+          {
+            "bold": "Upper or lower band touch",
+            "code": "±2σ",
+            "text": "It warns that the price stretched too quickly from its recent average and can take a breather."
+          },
+          {
+            "bold": "band compression",
+            "code": "BB Width bajo",
+            "text": "When the bands become very narrow, the market builds up energy before a strong move."
+          }
+        ],
+        "example": "If a stock's SMA(20) is $100 and its 20-wheel standard deviation is $4, the upper band is at $108 and the lower band is at $92."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Institutional",
+        "intro": "Unlike a common average that gives equal weight to all hours of the day, the VWAP weights each price by the amount of money that was actually traded at that level. It is the main reference used by institutional tables.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Typical Priceᵢ × Traded Volumeᵢ)",
+          "denominator": "∑ Traded Volumeᵢ",
+          "vars": [
+            "Typical Priceᵢ: average between the maximum, minimum and close of each candle.",
+            "Traded Volumeᵢ: volume traded specifically in that section."
+          ]
+        },
+        "lead": "How professional traders use the VWAP line:",
+        "bullets": [
+          {
+            "bold": "Execution control",
+            "code": "Comprar bajo el VWAP",
+            "text": "If an institutional fund buys below the VWAP for the period, it got a better price than the market weighted average."
+          },
+          {
+            "bold": "Trend Defense Level",
+            "code": "Soporte / Resistencia",
+            "text": "As long as the asset remains above VWAP, those who bought in the period are in average profit."
+          }
+        ],
+        "example": "If 1 million shares were traded at $100 and only 100 thousand shares were traded at $110, the simple average would say $105, but the VWAP reads $100.91 because almost all the money was traded at $100."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Spread Displacement (bps)",
+        "intro": "The spread is the difference between the best ask price and the best bid price in the order book. When market makers perceive risk or lack of liquidity, they open that gap to protect themselves.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Ask Price − Bid Price )",
+          "denominator": "Average Price (Mid-Price)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Ask / Bid Price: selling point and buying point current in the book.",
+            "10,000: Conversion factor to express the difference in basis points (bps)."
+          ]
+        },
+        "lead": "What the Spread Dislocation reading on the left rail tells you:",
+        "bullets": [
+          {
+            "bold": "Deep and fluid book",
+            "code": "Spread estable en verde",
+            "text": "There is abundant liquidity at both ends and the implicit cost of entering or exiting is minimal."
+          },
+          {
+            "bold": "Friction or withdrawal of liquidity",
+            "code": "Salto en bps",
+            "text": "It usually occurs seconds before macroeconomic announcements or during panic selling, making execution more expensive."
+          }
+        ],
+        "example": "If an asset has a buying tip at $99.95 and a selling tip at $100.05, the difference of $0.10 over $100 is equivalent to 10 basis points (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Options (Black-Scholes and Greeks)",
+        "intro": "In the options engine, the platform graphs two profit and loss (P&L) curves: how the strategy would end on expiration day and how much it is worth today (T+0) applying the Black-Scholes model.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S and K: current price of the underlying asset (Spot) and strike price of the option (Strike).",
+            "Net Greeks: Δ Delta (price sensitivity), Γ Gamma (Delta acceleration), Θ Theta (daily time wear) and ν Vega (volatility sensitivity)."
+          ]
+        },
+        "lead": "How to read the Greeks of your strategy on the left rail pills:",
+        "bullets": [
+          {
+            "bold": "Steering and acceleration",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "A positive Delta wins when the asset rises; a positive Gamma makes you gain faster and faster if the movement speeds up."
+          },
+          {
+            "bold": "Passage of time and uncertainty",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta tells you how many dollars the position loses or gains for each passing day; Vega how much it changes if implied volatility rises by 1%."
+          }
+        ],
+        "example": "A Long Straddle (buy Call and Put on the same strike) has Delta close to 0 (it doesn't matter if it goes up or down), but positive Vega and needs the price to move beyond its two equilibrium points (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Sovereign Curves (Butterfly and DV01)",
+        "intro": "The fixed income engine compares yields from 3 months to 30 years for 42 countries and calculates both the slope (2s10s) and the curvature of the middle tranche (Butterfly 2s5s10s) and the monetary sensitivity (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y rate: 2, 5 and 10 year sovereign yields of the selected country.",
+            "Real 10Y Rate: 10-year nominal yield minus the reference rate or implicit inflation."
+          ]
+        },
+        "lead": "What each indicator is for in bond analysis:",
+        "bullets": [
+          {
+            "bold": "Curvature of the middle section",
+            "code": "Butterfly 2s5s10s",
+            "text": "It measures whether the 5-year tranche is expensive or cheap relative to the 2-year and 10-year extremes."
+          },
+          {
+            "bold": "Dollar Duration Risk",
+            "code": "DV01 por $1M",
+            "text": "It tells you exactly how many dollars a million-dollar portfolio varies with a 0.01% movement in the rate."
+          }
+        ],
+        "example": "A 10-year bond with a DV01 of $820 per million will lose approximately $82,000 if market rates rise 100 basis points (+1.00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Currencies (Carry) and Futures (Roll Yield)",
+        "intro": "In currencies, when a pair is not quoted directly it is calculated by triangulation against the dollar and its rate differential (Carry) is measured. In raw materials, renewal performance is measured between the immediate contract and the 12-month contract (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Spot Price (Front M1) − Future Price (M12)",
+          "denominator": "Future Price (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Backwardation (Spot > Future): Physical scarcity today causes rolling futures to generate a positive profit (Roll Yield > 0).",
+            "Contango (Spot < Future): Storage costs make futures more expensive and renewing them has a negative cost."
+          ]
+        },
+        "lead": "How this impacts your pocketbook when holding a position:",
+        "bullets": [
+          {
+            "bold": "Positive Carry Trade in currencies",
+            "code": "Carry Spread > 0 bps",
+            "text": "If you buy a currency with a high interest rate by financing yourself in a currency with a low rate, you will collect that differential in your favor."
+          },
+          {
+            "bold": "Favorable wind in raw materials",
+            "code": "Backwardation en verde",
+            "text": "When physical inventories are low, the nearby contract is worth more than the distant one and the investor earns an extra return by rolling the contract."
+          }
+        ],
+        "example": "If 1-month oil is trading at $72 and the 12-month contract is trading at $68, the market is in Backwardation with a positive Roll Yield of +5.88% annually."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Total Weighted Grade",
+        "intro": "Not all assets move through the same sources: in a company, audited financial statements (SEC 10-K/10-Q) have a lot of weight, while in the crypto market or currencies, daily flows and communications have more weight.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: automatic weighting according to category (e.g. 80% / 20% in Shares; 85% / 15% in Fees).",
+            "Final Scale: ranges from −100 (maximum pessimism) to +100 (maximum bullish conviction)."
+          ]
+        },
+        "lead": "This is how the composite score is translated in the superior opinion:",
+        "bullets": [
+          {
+            "bold": "Bullish stance",
+            "code": "BULLISH / Nota > +15",
+            "text": "Documentary catalysts and news flow clearly outweigh risk factors."
+          },
+          {
+            "bold": "Neutral or mixed posture",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Even forces between fundamentals and news; It is advisable to review the accordion of 10 factors before deciding."
+          },
+          {
+            "bold": "Defensive or bearish stance",
+            "code": "BEARISH / Nota < -15",
+            "text": "Alerts on balance sheets, deterioration of margins or adverse headlines predominate."
+          }
+        ],
+        "example": "In a stock (80% fundamentals / 20% news), if the balances show +50 points and the news of the day shows +20, the Total Weighted Score is (0.80 × 50) + (0.20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Verified Search (RAG)",
+        "intro": "To prevent artificial intelligence from inventing figures, Document Chat uses Generation Augmented Recovery (RAG): first it searches for the relevant paragraphs in the official reports of the asset and only then writes the response citing the source.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vector Consultation (Q) · Vector Official Document (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vector Q and D: numerical representations of your question and the official fragments (10-K, FOMC minutes, EIA reports).",
+            "3-Layer Guardrail: filter that blocks queries unrelated to finances or without documentary support."
+          ]
+        },
+        "lead": "What this mechanism guarantees when you ask a question in the chat:",
+        "bullets": [
+          {
+            "bold": "Anchoring in primary sources",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Each data on income, debt, inventories or rates comes from the regulatory document corresponding to that asset."
+          },
+          {
+            "bold": "Stop off-topic questions",
+            "code": "Guardrail activo",
+            "text": "If someone tries to consult non-financial topics, the assistant rejects the query and keeps the focus on the analysis of the instrument."
+          }
+        ],
+        "example": "When you tap the risk factors chip on a stock, the engine retrieves the Item 1A (Risk Factors) section of its latest 10-K form and summarizes the critical points."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Neuronal Score",
+        "intro": "A typical dictionary often confuses financial words (for example, \"fall in costs\" or \"debt reduction\" is excellent news even if they use the word fall or reduction). FinBERT is a neural network trained specifically with financial texts.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(Positive) and P(Negative): probabilities assigned by the model to the headline being bullish or bearish for the asset.",
+            "24h curve: exponential moving average of the headlines of the last 24 hours."
+          ]
+        },
+        "lead": "How each node rates in the timeline on the right:",
+        "bullets": [
+          {
+            "bold": "Catalyst holder",
+            "code": "+20 a +100 en verde",
+            "text": "Beating estimated earnings, credit rating upgrades or favorable rate cuts."
+          },
+          {
+            "bold": "Neutral information cable",
+            "code": "-19 a +19 en ámbar",
+            "text": "Routine operational announcements that do not alter the structural assessment of the instrument."
+          },
+          {
+            "bold": "Risk holder",
+            "code": "-20 a -100 en rojo",
+            "text": "Regulatory warnings, margin drops, strikes or worse-than-expected inflation data."
+          }
+        ],
+        "example": "If the model assigns 82% positive probability, 12% neutral and 6% negative probability to a headline, the node shows a net impact of +76 in green."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe and Sortino",
+        "intro": "The first two top cards measure how much your capital grows per year (CAGR) and how efficient that growth is in relation to the shocks you have to endure (Sharpe and Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Annual Portfolio Return (Rp) − Risk Free Rate (Rf)",
+          "denominator": "Annual Portfolio Volatility (σp)",
+          "vars": [
+            "Rf (4.30%): base yield that you could obtain without risk in Treasury bills.",
+            "Sortino Ratio: uses the same formula but in the denominator it only penalizes the volatility of negative days (falls)."
+          ]
+        },
+        "lead": "How to evaluate the quality of your portfolio with these numbers:",
+        "bullets": [
+          {
+            "bold": "Efficient portfolio",
+            "code": "Sharpe > 1.00",
+            "text": "The excess return you achieve above the risk-free rate far exceeds the assumed volatility."
+          },
+          {
+            "bold": "Outstanding performance",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "It indicates a very well diversified combination where increases are consistent and falls are contained."
+          }
+        ],
+        "example": "If your portfolio returns 15.3% annually, the risk-free rate is 4.3% and your annual volatility is 10%, your excess return is 11% and your Sharpe Ratio is 1.10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% and Drawdown",
+        "intro": "The third and fourth cards answer how much you can lose on a bad but statistically normal day (VaR 95%), how much on an extreme panic day (CVaR 99%), and what was the biggest pullback from a previous peak (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1,645: statistical factor that covers 95% of the normal wheels of the year (19 out of every 20 days).",
+            "CVaR 99% (Expected Shortfall): Average loss when the market breaks that threshold and enters the top 1% of worst days."
+          ]
+        },
+        "lead": "What practical difference is there between looking at the VaR and looking at the Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Single day risk",
+            "code": "VaR 95% 1D en USD",
+            "text": "It prepares you psychologically and financially for what your account can swing in a bad direction without it meaning that the strategy failed."
+          },
+          {
+            "bold": "Resistance in an adverse streak",
+            "code": "Max Drawdown 12M",
+            "text": "It measures the accumulated drop from tip to tip from the highest point to the floor before recovering again."
+          }
+        ],
+        "example": "In a $100,000 portfolio with a daily VaR 95% of 1.45% ($1,450), in 19 out of 20 trading wheels your daily losses will not exceed $1,450."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "X-Ray Overlap (#12)",
+        "intro": "When you buy an ETF like SPY or QQQ, you are buying dozens of shares inside. If you also have purchased some of those same shares directly, your real exposure is the sum of the two things.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Direct Weightᵢ: percentage of your portfolio allocated directly to the stock i.",
+            "Percentage within the ETFₖ: official weight that that company has within the index or fund k."
+          ]
+        },
+        "lead": "Why it is key to review this first tab before closing the portfolio:",
+        "bullets": [
+          {
+            "bold": "Hidden Concentration Visibility",
+            "code": "Directo + Indirecto",
+            "text": "It automatically disassembles each ETF in your portfolio and shows you a single bar with the true percentage you have in each company."
+          },
+          {
+            "bold": "Excess alert",
+            "code": "> 20% en rojo",
+            "text": "If the total sum exceeds the prudent threshold of concentration on a single name, the row lights up so you can rebalance."
+          }
+        ],
+        "example": "If you put 15% of your portfolio in direct NVDA and also have 30% in the SPY ETF (where NVDA weighs about 7%), the X-Ray reveals that your real exposure to NVDA is 15% + (30% × 7%) = 17.1%."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alpha Brinson decomposition (#2)",
+        "intro": "When your portfolio beats (or loses against) its benchmark, the Brinson-Fachler model separates exactly where that difference came from: were you right in which sectors to overweight or were you right in choosing the best assets within each sector?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Allocation Effect: (Portfolio Weight − Benchmark Weight) × Sector Return in the Benchmark.",
+            "Selection Effect: Weight in Benchmark × (Return on your Assets − Return of the Sector)."
+          ]
+        },
+        "lead": "How to read the three attribution bars in the third tab:",
+        "bullets": [
+          {
+            "bold": "Macro or sector success",
+            "code": "Asignación Sectorial",
+            "text": "It is positive in green when you put more weight than the market on the asset classes that rose the most."
+          },
+          {
+            "bold": "Successful targeting of assets",
+            "code": "Selección de Activos",
+            "text": "It is positive when the specific instruments you chose performed more than the average for their own sector."
+          }
+        ],
+        "example": "If your portfolio beat S&P 500 by +3.20%, this tab allows you to see that +2.10% came from choosing better stocks (Selection) and +1.10% from having more weight in technology (Allocation)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Efficient Frontier and CML",
+        "intro": "In the Markowitz plane, the expected return of a portfolio is the weighted average of the return of its assets, but its volatility is lower than average thanks to the fact that the assets do not move 100% the same.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: percentage of capital allocated to assets i and j.",
+            "ρᵢⱼ (Correlation): degree to which both assets move together (−1 to +1). The lower ρᵢⱼ is, the more the total risk is reduced."
+          ]
+        },
+        "lead": "What the three references in the graph represent:",
+        "bullets": [
+          {
+            "bold": "Minimum Variance",
+            "code": "Min-Var",
+            "text": "It is the leftmost point on the curve: the exact combination of weights that achieves the lowest possible volatility."
+          },
+          {
+            "bold": "Máximo Sharpe and Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "It is the point where the line that starts from the risk-free rate touches the efficient frontier, offering the greatest profit per unit of risk."
+          }
+        ],
+        "example": "If you combine in equal parts two assets that have 20% volatility each but zero correlation (ρ = 0), the volatility of the portfolio is not 20%, but drops to 14.1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR by Active and Capture",
+        "intro": "To know which position is adding more risk to the portfolio, the marginal contribution of each asset is measured according to its weight and its correlation with the rest. In addition, the capture ratios measure the asymmetry against the rises and falls of the S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Return of your Asset or Portfolio in Bullish (or Bearish) wheels",
+          "denominator": "Return of the S&P 500 on those same wheels",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100%) – Earn more than the index when the market goes up.",
+            "Downside Capture (< 100%): falls less than the index when the market goes down (defensive buffer)."
+          ]
+        },
+        "lead": "The ideal profile you are looking for when reviewing the third tab of the quadrant:",
+        "bullets": [
+          {
+            "bold": "positive asymmetry",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Participate fully in bull markets but protect capital when the stock market corrects."
+          },
+          {
+            "bold": "Refuge or uncorrelated assets",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Instruments such as short bonds or gold that tend to remain firm or rise during stock market declines."
+          }
+        ],
+        "example": "If in the months when the S&P 500 rose 10% your portfolio gained 11% (Upside 110%), and when the index fell 10% your portfolio only fell 6% (Downside 60%), you have a strong asymmetry in your favor."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normal vs Crisis Correlation",
+        "intro": "The Pearson coefficient (r) measures from -1.00 to +1.00 how two assets move relative to each other. The danger in portfolio management is that during a market crash the correlation between risk assets usually shoots towards +1.00 (contagion).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Covariance (Returns Asset i, Returns Asset j)",
+          "denominator": "Asset Volatility i (σᵢ) × Asset Volatility j (σⱼ)",
+          "vars": [
+            "r close to 0 or negative: excellent diversification (when one goes down, the other does not follow).",
+            "r in Crisis Queue: recalculates the matrix taking only the 5% of the worst wheels on the market."
+          ]
+        },
+        "lead": "How to read the colors of the 6x6 matrix in both regimes:",
+        "bullets": [
+          {
+            "bold": "Real diversification",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Both assets respond to different economic drivers and compensate each other."
+          },
+          {
+            "bold": "Concentration or contagion",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "They move practically as a block; Having both does not reduce your falls on a bad day."
+          }
+        ],
+        "example": "Two stocks from different sectors may have a moderate correlation of 0.42 in a normal year, but when you activate the Crisis Queue button you will see that it rises to 0.81 because in a panic they sell together."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D Shock (Rates × Stock Market)",
+        "intro": "The 2D matrix simultaneously combines the impact of a movement in interest rates (via Fixed Income Duration and Rate Sensitivity) with a fall or rise in the S&P 500 index (via Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: stock market variation scenario on the horizontal axis (−20% to +10%).",
+            "Δ Rates: scenario of change in interest rates in basis points on the vertical axis (−100 to +200 bps)."
+          ]
+        },
+        "lead": "What is the purpose of crossing the two axes in the table:",
+        "bullets": [
+          {
+            "bold": "Stagflation or rate hike scenario",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Like what happened in 2022, where stocks and long bonds suffer at the same time."
+          },
+          {
+            "bold": "Classic shelter scenario",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Where lower rates raise the price of Treasury bonds and cushion the fall of stocks."
+          }
+        ],
+        "example": "Filtering for a long bond like US10Y or TLT you can see in the table how it gains value when rates fall (-100 bps), acting as a parachute if S&P 500 falls that same day."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markov Regimes (#11)",
+        "intro": "A Markov chain models the economy as a system that jumps between four possible states (Calm Bullish, Volatile Bullish, Inflation/Rates and Crisis) and calculates the probability of moving from one to the other.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Main diagonal (i = j): probability that the current regime remains unchanged.",
+            "Off-diagonal (i ≠ j): probability of rotating to a new market climate."
+          ]
+        },
+        "lead": "How to take advantage of the transition matrix in the second tab:",
+        "bullets": [
+          {
+            "bold": "Persistence of the current cycle",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Calm regimes usually have high persistence (> 75%), allowing trend positions to be maintained."
+          },
+          {
+            "bold": "Rotation Early Warning",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "When the probability of transition to volatile states increases, it is advisable to reduce leverage or activate hedging."
+          }
+        ],
+        "example": "If the market today is in a Volatile Bull regime and the row marks 62% of permanence, 20% of returning to Bull Calm and 18% of going to Stress/Crisis, you know that almost 1 in 5 scenarios results in a correction."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo Projection (10,000 Paths)",
+        "intro": "Based on the expected return and current volatility of your portfolio, the simulator generates 10,000 possible future trajectories day by day applying the stochastic Geometric Brownian Movement model.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ and σ: expected annual return and annualized volatility of your current portfolio.",
+            "Z: standard normal random variable drawn 10,000 times along the horizon (6M, 12M or 24M)."
+          ]
+        },
+        "lead": "From these 10,000 simulations, the three main curves of the graph are extracted:",
+        "bullets": [
+          {
+            "bold": "Favorable scenario",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "The level that is only exceeded by 5% of the most optimistic scenarios."
+          },
+          {
+            "bold": "Expected central trajectory",
+            "code": "Mediana P50",
+            "text": "The typical result where half of the simulations are above and the other half are below."
+          },
+          {
+            "bold": "Term stress scenario",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "The adverse floor: in 95% of the simulated paths your portfolio ends up above this line."
+          }
+        ],
+        "example": "In a 12-month horizon on a base of 100, if P50 reads 116 and P05 reads 94, your central expectation is to earn +16% and in a very adverse year you risk close to -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly Criterion (#14)",
+        "intro": "The Kelly Criterion scientifically answers what percentage of your capital you should allocate to an operation when you know your probability of success (Win-Rate) and how much you win when you succeed versus what you lose when you fail (Payoff Ratio).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p and q: probability of winning (p) and probability of losing (q = 1 − p).",
+            "b (Payoff Ratio): average profit divided by average loss (for example, earning $2 for every $1 risked implies b = 2)."
+          ]
+        },
+        "lead": "Why professional managers use the Half-Kelly (0.5×) variant:",
+        "bullets": [
+          {
+            "bold": "Kelly Complete",
+            "code": "Full Kelly 1.0×",
+            "text": "It maximizes long-term mathematical growth, but generates very sharp swings if there is a streak of errors in a row."
+          },
+          {
+            "bold": "Recommended Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "By using half the suggested percentage you capture 75% of the potential growth but cut the volatility in half."
+          }
+        ],
+        "example": "If a strategy hits 55% of the time (p = 0.55, q = 0.45) and pays 2 to 1 (b = 2), the full Kelly gives (0.55×2 − 0.45) / 2 = 32.5%, and the prudent Half-Kelly recommends allocating 16.25%."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Put OTM Shield (#6)",
+        "intro": "An out-of-the-money put option (for example, 5% below the current price of S&P 500) works just like an insurance deductible: it has a small, fixed cost (the premium), but if the market drops 20% or 30%, its value is multiplied convexly and offsets your portfolio losses.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Annual Cost (Carry Drag): annual percentage that it costs to renew the insurance if the market does not fall.",
+            "Crash Protection (-20%): dollars recovered by the Put contract during a severe crash."
+          ]
+        },
+        "lead": "How to compare simulator options in the first tab:",
+        "bullets": [
+          {
+            "bold": "Direct index insurance",
+            "code": "SPY Put 5% OTM",
+            "text": "It limits the maximum loss from a 5% drop in exchange for a moderate annual cost."
+          },
+          {
+            "bold": "Funded or volatility coverage",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "The Collar reduces the cost by selling a Call up; The Call on VIX explodes in favor when panic triggers in the market."
+          }
+        ],
+        "example": "If protecting a $100,000 portfolio with SPY Put 5% OTM costs 1.1% per year ($1,100), but in the event of a -20% crash it cuts your portfolio's decline to less than half, the net savings exceeds $7,000."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Margin and Distance to Margin Call (#13)",
+        "intro": "When you operate with derivatives or leverage, the broker requires maintaining a minimum percentage of equity capital over the total value of the position (Maintenance Margin). If a fall reduces your capital below that floor, a Margin Call is triggered.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Debt or Financed Balance",
+          "denominator": "1 − % Maintenance Margin (Reg-T)",
+          "vars": [
+            "Gross Exposure: total sum of open positions divided by equity (e.g. 1.18×).",
+            "Distance to Margin Call (%): percentage drop that the portfolio still supports before hitting the threshold."
+          ]
+        },
+        "lead": "Security levels in the monitoring bar:",
+        "bullets": [
+          {
+            "bold": "Large clearance zone",
+            "code": "Distancia > 30% en verde",
+            "text": "Leverage is low and the portfolio can absorb even a severe crisis without forced sales."
+          },
+          {
+            "bold": "caution zone",
+            "code": "Distancia < 15% en rojo",
+            "text": "A moderate market correction would exhaust free collateral and force positions to be liquidated at the worst moment."
+          }
+        ],
+        "example": "With a moderate leverage of 1.18× and a used maintenance margin of 22%, your portfolio has a safety cushion of more than 38% downside before any collateral claims."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Rules of the 3 Pillars Committee",
+        "intro": "So that no impulsive decision jeopardizes the survival of the portfolio, the Committee evaluates each order by combining the technical note, the fundamental note and two hard, non-negotiable risk control rules.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: no individual asset can concentrate more than one fifth of the total assets.",
+            "Anomaly Stop (P-06 ≥ 0.65): if the asset enters statistical dislocation, the system cuts the maximum exposure to 5%."
+          ]
+        },
+        "lead": "What each state means in the verdict and in the Book of Execution:",
+        "bullets": [
+          {
+            "bold": "Order approved without restrictions",
+            "code": "APROBADO en verde",
+            "text": "The three pillars coincide favorably and the position size respects all concentration and liquidity limits."
+          },
+          {
+            "bold": "Order adjusted by guardrail",
+            "code": "RECORTE PREVENTIVO",
+            "text": "When a ticket exceeds the 20% limit or tries to buy heavily in the middle of an anomaly, the guardrail warns of the excess."
+          }
+        ],
+        "example": "If you are trying to simulate a purchase that would take a single stock to 26% of your portfolio, Pillar 3 (Risk & Sizing Guardrail) flags the concentration alert so you adjust it below 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Efficiency Walk-Forward (WFE)",
+        "intro": "To check that a strategy was not simply made up to look good in the past (overfitting), the Walk-Forward test compares how it performed in the design period (In-Sample) against its performance in subsequent never-before-seen data (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Annualized Return Out-of-Sample (Pure Validation)",
+          "denominator": "Annualized Return In-Sample (Training)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): historical section used to calibrate the strategy's weights and rules.",
+            "Out-of-Sample (OOS): next section where the strategy is tested in real conditions without touching its parameters."
+          ]
+        },
+        "lead": "How the quantitative industry rates the WFE percentage:",
+        "bullets": [
+          {
+            "bold": "Robust and consistent strategy",
+            "code": "WFE ≥ 70% en verde",
+            "text": "It retains the vast majority of its ability to generate profits when faced with new market conditions."
+          },
+          {
+            "bold": "Fragile or overfit strategy",
+            "code": "WFE < 50% en rojo",
+            "text": "It worked well in the theory of the past but loses effectiveness in reality; It is not advisable to execute it with real money."
+          }
+        ],
+        "example": "If a strategy returned 20% annualized during its design stage (In-Sample) and in the subsequent actual testing stage (Out-of-Sample) it returned 18.8% annualized, its WFE efficiency is (18.8 / 20) = 94.0%."
+      }
+    ]
+  }
+}

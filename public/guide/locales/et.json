@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Ahendatud vaade",
+    "mainView": "Põhivaade",
+    "expandedView": "Laiendatud vaade",
+    "inThisSection": "Sellest jaotisest leiate:",
+    "deepDive": "Sügav sukeldumine",
+    "previous": "Eelmine",
+    "next": "Edasi",
+    "mathFormula": "Matemaatiline valem",
+    "practicalExample": "Praktiline näide:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Kui avate traditsioonilise finantsplatvormi, kuvatakse esimese asjana tavaliselt kümneid diagramme, vilkuvaid tabeleid ja menüüsid kõikjal. Millest alustate, kui soovite lihtsalt turgu kontrollida või kontrollida, kuidas teie portfellil läheb?",
+        "Home ekraan on loodud täpselt selle esialgse müra vältimiseks. See tervitab teid puhta ja selge ruumiga, kus kogu juhtimine on koondunud kahele fikseeritud ribale: üks ülal, et minna tööle ja teine ​​allpool, et seadistada platvorm teile sobivaks."
+      ],
+      "intro": "Ekraan Home tervitab teid puhta ja selge ruumiga, kus kogu juhtimine on koondunud kahele fikseeritud ribale: üks ülal, et minna tööle ja teine ​​allpool, et seadistada platvorm teile sobivaks.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Selge lähtepunkt, mis jagab teie töö turuanalüüsiks ja portfellihalduseks.",
+          "paragraphs": [
+            "Kujutage ette, et alustate kauplemist esimese asjana hommikul. Mõnikord soovite vaadata, millised aktsiad, võlakirjad või valuutad liiguvad kõige rohkem; Muul ajal lähete otse oma portfelli riski üle vaatama või simuleerite ostu enne selle sooritamist.",
+            "Kuidas vältida kahe asja segamist samal ülekoormatud ekraanil? Kaas eraldab selle tee selgelt esimesest sekundist:"
+          ],
+          "lead": "Kuidas vältida kahe asja segamist samal ülekoormatud ekraanil? Kaas eraldab selle tee selgelt esimesest sekundist:",
+          "bullets": [
+            {
+              "bold": "Ruum ilma segajateta",
+              "code": "Donde se decodifican los mercados",
+              "text": "Kui sisenete, ei ole avatud tabeleid ega hoiatusi, mis sunniksid teid enne alustamist aknad sulgema; Saate valida, milline moodul avada."
+            },
+            {
+              "bold": "Kaks selget teed",
+              "code": "Markets / Portfolio",
+              "text": "Kogu rakenduse voog on jagatud kahte põhietappi: esmalt uurige turgudel võimalusi ja seejärel koostage või testige oma portfelli."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Ülemine riba ühe klõpsuga kodu, turgude ja oma portfelli vahel hüppamiseks.",
+          "paragraphs": [
+            "Vara üksikasjadesse süvenedes või oma portfelli muudatusi katsetades on väga lihtne kaotada oma asukoht. Kuidas minna aktsiagraafiku vaatamisest portfelli ülevaatamiseni ilma alammenüüde läbimata?",
+            "Ülemine riba jääb alati ekraanile fikseerituks ja annab teile otsese juurdepääsu kolmele põhipunktile:"
+          ],
+          "lead": "Ülemine riba jääb alati ekraanile fikseerituks ja annab teile otsese juurdepääsu kolmele põhipunktile:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Ükskõik, kus te ka poleks, klõpsates vasakul asuval sümbolil, naasete kohe avalehele."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "See on teie uurimisruum. Siin saate filtreerida 213 saadaolevat vara, jälgida reaalajas hinnapakkumisi, analüüsida tehnilisi graafikuid ja vaadata bilansi kokkuvõtteid või uudiseid."
+            },
+            {
+              "bold": "Rahakott",
+              "code": "Portfolio",
+              "text": "See on teie otsuste tabel. Siin saate määratleda, kui suur protsent teie kapitalist läheb igale varale, mõõta, kui palju võite kriisi korral kaotada, ja simuleerida uusi toiminguid enne rahaga riskimist."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Jalus süsteemi oleku kontrollimiseks, selle juhendi juurde naasmiseks või paigutuse kohandamiseks.",
+          "paragraphs": [
+            "Andmeid reaalajas analüüsides võib igal ajal tekkida tööküsimusi: kas hinnapakkumised tulevad õigesti? Mida punktinäitaja tähendas? Kas ma saan ekraani heledust vähendada?",
+            "Jalus rühmitab kõik need tugi- ja konfiguratsioonitööriistad nii, et need oleksid alati käepärast, ilma et need ekraani keskosa takistaksid:"
+          ],
+          "lead": "Jalus rühmitab kõik need tugi- ja konfiguratsioonitööriistad nii, et need oleksid alati käepärast, ilma et need ekraani keskosa takistaksid:",
+          "bullets": [
+            {
+              "bold": "System olek",
+              "code": "System",
+              "text": "Roheline täpp kinnitab esmapilgul, et kõik on korras. Selle avamisel näete üksikasjalikult serverite olekut, andmebaase ja reageerimiskiirust."
+            },
+            {
+              "bold": "Kasutaja Guide",
+              "code": "Guide",
+              "text": "Avage see interaktiivne juhend igal ajal, et näha, kuidas ekraani kasutada või selle arvutustesse süveneda."
+            },
+            {
+              "bold": "Visuaalsed eelistused",
+              "code": "Idioma / Palette",
+              "text": "Paremal küljel on juhtnupud kogu rakenduse keele muutmiseks või taustavalgustuse reguleerimiseks."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Keeled",
+          "summary": "Otsingumootor, mis tõlgib kogu platvormi kohapeal teie keelde.",
+          "paragraphs": [
+            "Finantstingimustel ja turuaruannetel on juba oma keerukus ilma keelebarjääri lisamata. Kui eelistate lugeda selgitusi hispaania, inglise või mõnes muus keeles, saate seda kohe muuta.",
+            "Selektor töötab alumises paremas nurgas järgmiselt:"
+          ],
+          "lead": "Selektor töötab paremas alanurgas järgmiselt:",
+          "bullets": [
+            {
+              "bold": "vahetu otsing",
+              "code": "Select Language",
+              "text": "Praegusel lipul klõpsates avaneb aken, kus saate valida 56 keele vahel, kirjutades selle nime või koodi (näiteks ES, EN, PT, FR või DE)."
+            },
+            {
+              "bold": "Automaatne mälu",
+              "code": "mid_lang_v1",
+              "text": "Kogu ekraan tõlgitakse koheselt ilma lehte uuesti laadimata ja teie valik salvestatakse järgmisteks sisenemiskordadeks."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Visuaalsed teemad ekraani kontrasti kohandamiseks ilma finantsvärve muutmata.",
+          "paragraphs": [
+            "Kui veedate mitu tundi graafika ees, mille kontrastsus ei kohandu teie keskkonna valgusega, väsitab teie silmi. Finantsplatvormi värvide muutmisel on aga klassikaline oht: kaotada viide sellele, mis tõuseb ja mis langeb.",
+            "Selle lahendamiseks eraldab teemavalija keskkonna värvi andmevärvist:"
+          ],
+          "lead": "Selle lahendamiseks eraldab teemavalija keskkonna värvi andmevärvist:",
+          "bullets": [
+            {
+              "bold": "Viis lugemiskeskkonda",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Iga klõpsuga pöörlete puhta musta, sinaka või sooja tausta vahel, kuni leiate selle, mis on teie silmadele kõige mugavam."
+            },
+            {
+              "bold": "Terve finantssemantika",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Ükskõik mis teemat ka ei muuda, turu universaalset reeglit ei muudeta kunagi: roheline tähendab alati tõusu või tõusu ja punane alati langust, kaotust või riskihoiatust."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Kujutage ette, et soovite enam kui kahesaja võlakirja, aktsia, indeksi, valuuta ja tooraine hulgas tuvastada, kus on päeva parimad võimalused. Kui avate edetabelid ükshaaval, sulguks turg enne, kui olete nende vaatamise lõpetanud.",
+            "Screener koondab kõik platvormi 213 vara ühte reaalajas armatuurlauale. See võimaldab teil sekundiga turu järgi filtreerida, mõõta päeva üldist pulssi ja valida nelja erineva viisi vahel, et vaadata, millised varad toimivad."
+          ],
+          "intro": "Screener koondab kõik 213 platvormi vara ühele reaalajas armatuurlauale, et saaksite turupõhiselt filtreerida ja võimalusi hetkega märgata.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategooriad",
+              "summary": "Parimad filtrid, et keskenduda ühele varaklassile või teie jälgimisloendile.",
+              "paragraphs": [
+                "Riigivõlakirja ei ole mõtet analüüsida samade näitajatega kui tehnoloogiaaktsiat või naftat. Kui segate kõik samas loendis kokku, võrdlete pirne õuntega.",
+                "Kuidas kitsendada ekraan täpselt sellele turule, mis teid täna huvitab? Ülemine riba võimaldab teil universumi eraldada ühe klõpsuga:"
+              ],
+              "lead": "Ülemine riba võimaldab teil universumi eraldada ühe klõpsuga:",
+              "bullets": [
+                {
+                  "bold": "Täispilt",
+                  "code": "Todos",
+                  "text": "See näitab 213 instrumenti koos ja kauplemismahu järgi järjestatuna, et saaksite näha, kuhu kogu maailmas liigub kõige rohkem raha."
+                },
+                {
+                  "bold": "Isiklik jälgimine",
+                  "code": "★ Watchlist",
+                  "text": "Eraldage ainult need varad, mille olete lemmikuteks märkinud, et neid tähelepanelikult jälgida ilma segajateta."
+                },
+                {
+                  "bold": "Kümme spetsialiseeritud turgu",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Valides ühe neist kategooriatest, kohandab kogu ekraan oma indikaatorid ja tabeli veerud selle sektori reeglitega."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Üksikasjalik teave selle kohta, kuidas kataloogis olevad 213 vara on klassifitseeritud ning millistele mahu- ja likviidsuskriteeriumidele need vastavad."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24h pulss",
+              "summary": "Neli parimat kaarti, mis näitavad, kas turg on rahulik, eufooriline või stressis.",
+              "paragraphs": [
+                "Enne konkreetse vara ostmist või müümist on soovitav teada, millises kliimas tervik liigub. Kas see on tavaline mahupäev või tuleb institutsiooniline raha korraga? Kas kõik varad kasvavad või on märke pingetest?",
+                "Filtrite all olevad neli kaarti annavad teile mõne sekundiga selle üldise näidu:"
+              ],
+              "lead": "Filtrite all olevad neli kaarti annavad teile mõne sekundiga selle üldise näidu:",
+              "bullets": [
+                {
+                  "bold": "Kogu päeva tegevus",
+                  "code": "Volumen Agregado 24h",
+                  "text": "See annab kokku miljardeid dollareid, millega kaubeldakse aktiivses kategoorias ja näitab, kas täna on osalus rohkem või vähem kui eile."
+                },
+                {
+                  "bold": "Grupi keskmine tugevus",
+                  "code": "AVG RSI 14",
+                  "text": "See võtab ringikujulise meetriga kokku, kas sektori hinnad tulevad ostusurvega (roheline, üle 50) või müügisurvega (punane, alla 50)."
+                },
+                {
+                  "bold": "Normaalne termomeeter",
+                  "code": "Régimen Normal P-06",
+                  "text": "See arvutab välja, mitu protsenti varadest liigub oma tavaliste parameetrite piires ning ütleb teile nime- ja perekonnanime järgi, milline on päeva suurima anomaaliaga instrument."
+                },
+                {
+                  "bold": "Ebatavalised raha sissevoolud",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Silma paistab nende kolme vara poodiumikoht, mis täna tegutsevad viimase kuu keskmisega võrreldes erakordselt suure mahuga."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Üksikasjalik selgitus selle kohta, kuidas arvutatakse keskmine RSI, maht Z-Score ja anomaaliadetektor P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tabel",
+              "summary": "Interaktiivne loend kiire otsingu, lemmikute ja veergudega, mis kohanduvad iga turuga.",
+              "paragraphs": [
+                "Kui teate juba, millist sektorit soovite vaadata ja peate konkreetseid numbreid ridade kaupa võrdlema, on tabelivaade teie peamine tööriist.",
+                "Selle asemel, et näidata teile jäika arvutustabelit, mis on kõigile sama, kohandub tabel teie otsitavaga."
+              ],
+              "lead": "Selle asemel, et näidata teile jäika arvutustabelit, mis on kõigile sama, kohandub tabel teie otsitavaga.",
+              "bullets": [
+                {
+                  "bold": "Otsingumootori ja lemmikute täht",
+                  "code": "Buscar activo / ★",
+                  "text": "Esimesse veeru päisesse saate sisestada mis tahes sümboli või nime, et minna otse selle vara juurde, või puudutada vasakul olevat tärni, et salvestada see seadmesse Watchlist."
+                },
+                {
+                  "bold": "Nutikad veerud vastavalt kategooriale",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Kui filtreerite Aktsiad, kuvatakse väärtuskordajad ja marginaalid; Kui valite Võlakirjad või Intressid, näete kõvera kallet ja tundlikkust intressimäärade suhtes; Kui vaatate tuletisinstrumente, näete kaudset volatiilsust."
+                },
+                {
+                  "bold": "Hüppa otse sügava analüüsi juurde",
+                  "code": "Click en cualquier fila",
+                  "text": "Tehniliste graafikute ja põhiaruannete täieliku jaama avamiseks klõpsake lihtsalt loendis mis tahes varal."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Tabelis kuvatavate konkreetsete mõõdikute loend iga 10 varakategooria kohta."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Visuaalne radar, mis võimaldab ühe pilguga tuvastada, millised varad oma ajaloolisest keskmisest eemalduvad.",
+              "paragraphs": [
+                "Kahesaja numbrirea lugemine võib põhjustada plahvatuslikult liikuma hakkavat vara. Kuidas tuvastada koheselt, milline instrument normist kõrvale kaldub?",
+                "Orbital vaade muudab laua kolme kontsentrilise rõngaga radariks:"
+              ],
+              "lead": "Orbital vaade muudab laua kolme kontsentrilise rõngaga radariks:",
+              "bullets": [
+                {
+                  "bold": "Kriteeriumide valik",
+                  "code": "INDICADOR",
+                  "text": "Teie otsustate, mida radar mõõdab: statistilised anomaaliad, mahu hüpped, hinna tugevus (RSI), volatiilsus või kasv viimase 24 tunni jooksul."
+                },
+                {
+                  "bold": "Lugemine kauguse ja värvi järgi",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Mida lähemal või kaugemal on punkt vastavalt indikaatorile ja mida intensiivsem on selle roheline või punane värv, seda asjakohasem on selle liikumine tema enda ajalooga võrreldes."
+                },
+                {
+                  "bold": "Ülevaatus ilma ekraani vahetamata",
+                  "code": "Panel lateral en vivo",
+                  "text": "Kui asetate kursori mis tahes radarisõlmele, kuvatakse paremal selle hind, puhas päevasisene diagramm ja kolm riskimõõdikut."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kuidas arvutatakse iga vara asukohta radarirõngastes selle ajaloolise hälbe järgi."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Kuumuse kaart",
+              "summary": "Proportsionaalsete plokkide mosaiik, et tuvastada võitjad ja kaotajad sekundiga.",
+              "paragraphs": [
+                "On aegu, mil tahad lihtsalt vastata kiirele küsimusele: kes juhib täna tõusu ja kes veab turgu alla?",
+                "Heat Map korraldab aktiivse filtri kümme esimest vara proportsionaalsetesse plokkidesse, nii et te ei pea lugema ühte tabelit:"
+              ],
+              "lead": "Heat Map järjestab aktiivse filtri kümme esimest vara proportsionaalsetesse plokkidesse:",
+              "bullets": [
+                {
+                  "bold": "Suurus vastavalt tähtsusele",
+                  "code": "Puestos #1 a #10",
+                  "text": "Valitud mõõdiku suurima kaaluga instrumendid hõivavad suurimate kastidega vasakpoolsed veerud."
+                },
+                {
+                  "bold": "Värvi intensiivsus",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Ploki toon ütleb teile kohe liikumise ulatuse, alates mõõdukatest variatsioonidest kuni järskude tõusude või langusteni."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Kolmeastmeline otsetee täpsemate intressimäärade, optsioonide, forexi ja futuurikalkulaatorite juurde.",
+              "paragraphs": [
+                "Lisaks traditsioonilistele hinnagraafikutele sisaldab platvorm nelja spetsiaalset mootorit fikseeritud tulu, optsioonide, valuutaristide ja kaubakõverate jaoks. Kuidas nendeni jõuda ilma varade kaupa otsimata?",
+                "See vaade juhendab teid vasakult paremale kolmes väga lihtsas veerus:"
+              ],
+              "lead": "See vaade juhendab teid vasakult paremale kolmes väga lihtsas veerus:",
+              "bullets": [
+                {
+                  "bold": "Kõigepealt valite pere",
+                  "code": "1. Clases de Activo",
+                  "text": "Saate valida, kas soovite töötada intressimäärade ja võlakirjadega, aktsiate/indeksite/krüptovalikutega, valuutade või toorainetega."
+                },
+                {
+                  "bold": "Seejärel kontrollige, mida mootor teeb",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Keskel on selge kokkuvõte sellest, mida see tööriist näitab ja kuidas selle telgedel orienteeruda."
+                },
+                {
+                  "bold": "Lõpuks valige aktiivne ja avage",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Vaatate graafiku otseülekannet, otsite selle perekonna ühilduvaid varasid ja avate täisjaama ühe klõpsuga."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Kui olete Screener-st huvitava vara leidnud, on aeg seda lähemalt vaadata. Kas see on tõusutrendis või on aur otsas? Kas sa alistad oma konkurente? Mida ütlevad maht ja tuletisinstrumentide turg?",
+            "Jaam Analytics koondab kogu selle vara tehnilise, võrdleva ja kvantitatiivse analüüsi ühele ekraanile. Ülal on üldine kokkuvõte ja vasakul neli objektiivi analüüsinurga muutmiseks graafikut silmist kaotamata."
+          ],
+          "intro": "Jaam Analytics koondab üksiku vara tehnilise, võrdleva, vooluanalüüsi ja 3D/2D mootorid ühele ekraanile.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Ülemine armatuurlaud varade vahetamiseks, ajavahemiku valimiseks ja viie peamise mõõdiku vaatamiseks.",
+              "paragraphs": [
+                "Vara uurides valite tavaliselt vaheldumisi tänase lühiajalise ja viimaste kuude filmi vahel või isegi vaatate mõnda muud sarnast sümbolit. Kuidas seda kõike teha ilma tagasi pöördumata?",
+                "Ülemine päis koondab navigeerimisnupud ja instrumendi kiirkaardi:"
+              ],
+              "lead": "Ülemine päis koondab navigeerimisnupud ja instrumendi kiirkaardi:",
+              "bullets": [
+                {
+                  "bold": "Vara muutmine või naasmine nimekirja",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Üleval vasakul saate naasta Screener juurde või tippida mõne muu instrumendi nime, et graafikuid kohapeal muuta."
+                },
+                {
+                  "bold": "Üheksa ajaakent",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Paremal veeris muudate graafiku skaalat minuti kaupa liikumisest kogu ajaloole."
+                },
+                {
+                  "bold": "Viis juhtivat näitajat",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Hinna kõrval on alati silmas peetud kaubeldavat mahtu, selle kategooria kaht põhiandmeid, trendi tugevust ja statistilise normaalsuse taset."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Tehniline",
+              "summary": "Hindade graafik liikuvate keskmiste, volatiilsusvahemike ja mahuga trendi järgimiseks.",
+              "paragraphs": [
+                "Ainult viimast hinda vaadates ei saa aru, kas vara kiireneb, põrkab oma keskmisest alla või on mõne päevaga juba liiga kiiresti tõusnud.",
+                "Esimene vasakpoolsel siinil olev objektiiv võimaldab teil graafikule üle kanda turul enimkasutatud tehnilised viited:"
+              ],
+              "lead": "Esimene vasakpoolsel siinil olev objektiiv võimaldab teil üle kanda enimkasutatavad tehnilised viited:",
+              "bullets": [
+                {
+                  "bold": "Aadress ja tegelik keskmine hind",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Saate sisse lülitada 20 perioodi libiseva keskmise ja mahuga kaalutud keskmise hinna, et kohe näha, kas vara kaupleb oma tasakaalutasemest kõrgemal või madalamal."
+                },
+                {
+                  "bold": "Liigne tsoonid ja helitugevuse kinnitus",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Ribad joonistavad hinna statistilise lae ja põranda, alumised ribad aga kinnitavad, kas liikumist toetab maht."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Liikuva keskmise (SMA 20), Bollingeri ribade ja VWAP valemid ja tõlgenduskriteeriumid."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Võrdle %",
+              "summary": "Protsentuaalne võrdlus 0%-st, et mõõta, kas teie vara toimib paremini või vähem kui mõni teine samasse kategooriasse kuuluv vara.",
+              "paragraphs": [
+                "Aktsia, mis tõuseb 5%, näib olevat suurepärane uudis, kuid kui selle etalon või peamine konkurent on samal perioodil tõusnud 12%, jääte tegelikult maha.",
+                "Teine objektiiv lahendab selle kahtluse, asetades kaks vara samale stardijoonele:"
+              ],
+              "lead": "Teine objektiiv lahendab selle kahtluse, asetades kaks vara samale stardijoonele:",
+              "bullets": [
+                {
+                  "bold": "Otsige sidusaid paare",
+                  "code": "Buscar par compatible",
+                  "text": "Otsingumootor filtreerib automaatselt välja sama perekonna varad (nt aktsiad vs. aktsiad, ETF-id või indeksid), nii et võrdlus on rahaliselt mõttekas."
+                },
+                {
+                  "bold": "Puhas eelis protsentides",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Mõlemad kõverad algavad 0%-st ja vasakpoolne rööp arvutab, mitu protsendipunkti on teie vara eelis (roheline) või puudus (punane)."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Flow",
+              "summary": "Institutsionaalsete mustriväliste ostude, likviidsuse ja hinnavahe kulude detektor.",
+              "paragraphs": [
+                "Mitu korda kogunevad suured fondid või tühjendavad positsioone enne, kui hind järsult liigub. Kuidas tuvastada see varjatud jälg tellimusraamatu mahus ja likviidsuses?",
+                "Kolmas objektiiv keskendub sellele, mis toimub tsitaadi all:"
+              ],
+              "lead": "Kolmas objektiiv keskendub sellele, mis toimub tsitaadi all:",
+              "bullets": [
+                {
+                  "bold": "Statistilised mahu tipud",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Muudab alumist paneeli, et näidata, mitu korda praegune helitugevus tavapärasest kõrvale kaldub, paljastades ebatavalise institutsionaalse tegevuse."
+                },
+                {
+                  "bold": "Likviidsusstress ja anomaaliad",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "See mõõdab baaspunktides, kas vahe ostjate ja müüjate vahel suureneb ja kas statistikamootor tuvastab ebatüüpilise käitumise."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kuidas mõõdetakse tellimuste voo avanemisvahesid ja statistilisi hüppeid."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D mootorid",
+              "summary": "Neljas objektiiv, mis kasutab dünaamilist ad-hoc tööriista, mis erineb varaklasside kaupa.",
+              "paragraphs": [
+                "Erinevalt kolmest esimesest objektiivist (mis on ühised kõikidele instrumentidele) on neljas vasakpoolsel siinil olev objektiiv ad-hoc tööriist, mis muutub dünaamiliselt olenevalt analüüsitavast varast: näiteks reaalajas ringkäigul, kuna tegemist on aktsiaga (NVDA), võimaldab see 3D kaudset volatiilsust ja valikuvõimalusi, samas kui teistel eriturul on see kasutusel.",
+                "Neljas nupp tuvastab avatud varaklassi ja aktiveerib automaatselt vastava ad-hoc tööriista:"
+              ],
+              "lead": "Neljas nupp tuvastab, milline vara teil on avatud, ja aktiveerib sellele vastava ad-hoc tööriista:",
+              "bullets": [
+                {
+                  "bold": "Aktsiates, indeksites, tuletisinstrumentides ja krüptodes",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Kuvage 3D kaudne volatiilsuspind, valikute naeratus aegumise järgi ja 6-strateegia simulaator, et näha, kui palju võidaksite või kaotaksite täna ja aegumise ajal."
+                },
+                {
+                  "bold": "Intresside, võlakirjade ja likviidsuse osas",
+                  "code": "Curva 3D/2D",
+                  "text": "See võimaldab võrrelda 42 riigi tulukõveraid USA ja Saksamaaga, mõõtes, kas kõver on normaalne või ümberpööratud (2s10s) ja kui palju hind muutub intressimäärade muutustega (DV01)."
+                },
+                {
+                  "bold": "Valuutates",
+                  "code": "FX & Carry",
+                  "text": "See pakub konverterit ja triangulaatorit 61 valuuta vahel, mis arvutab ka 10-aastase intressimäära erinevuse selle paari säilitamise kasuks või vastu."
+                },
+                {
+                  "bold": "Toorainetes",
+                  "code": "Forward 3D/2D",
+                  "text": "Joonistab futuurlepingute hinnad kuude kaupa, et näidata, kas turg maksab rohkem forward (Contango) või kohese tarnimise (tagasimakse) eest, koos tegelike varude olekuga."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Volatiilsuspindade matemaatilised üksikasjad, riigi tulukõverad, valuuta ülekande- ja futuurikõverad."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Diagramm näitab teile, mida hind teeb, kuid see ei ütle teile, miks. Et teada saada, mis liikumise taga on, peaksite lugema kümneid lehekülgi kvartalibilansse, keskpanga väljavõtteid, laoaruandeid ja uudistekaableid.",
+            "Jaam Research teeb selle raske tõstmise teie eest ära. See ühendab dokumentaalse tehisintellekti, mida on kontrollitud ametlike aruannete alusel, reaalajas uudiste lugemisega, koondades kõik tõendid poolt ja vastu kolme selgesse veergu."
+          ],
+          "intro": "Station Research võtab kolmes selges veerus kokku ametlikud bilansid, makromajandusaruanded ja reaalajas uudised.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Märkus ja kehahoiak",
+              "summary": "Kolm parimat kaarti, mis võtavad kokku uudise põhimõttelise otsuse ja huumori.",
+              "paragraphs": [
+                "Kas hinnatõusuga kaasnevad vara põhinäitajad või halvendavad uudised väljavaateid? Enne üksikasjade lugemist peate tegema kiire järelduse.",
+                "Paremas ülanurgas on kolm indikaatorit, mis võtavad kokku vara üldise oleku:"
+              ],
+              "lead": "Paremas ülanurgas on kolm indikaatorit, mis võtavad kokku üldise oleku:",
+              "bullets": [
+                {
+                  "bold": "Iga allika asend ja kaal",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "See määratleb üldise otsuse ja selgitab, millise kaalu see annab ametlikele dokumentidele versus uudistele olenevalt vara liigist (näiteks 80% bilansid ja 20% uudised aktsias)."
+                },
+                {
+                  "bold": "Kombineeritud hinnang",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "See sünteesib üheks skooriks põhialuste puhastulemuse ja päeva teabevoo."
+                },
+                {
+                  "bold": "Termomeetri hoidikud",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Asetage latile vahemikus -100 kuni +100, kui ajakirjanduse toon on viimastel tundidel pessimistlik (punane), neutraalne või entusiastlik (roheline)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ametlike aruannete kaalumine uudiste suhtes sõltuvalt vara tüübist."
+            },
+            {
+              "id": "res-rag",
+              "label": "Vestlus RAG",
+              "summary": "Vasakpoolne dokumentaalfilmi assistent bilansi ja ametlike aruannete kohta konkreetsete küsimuste esitamiseks.",
+              "paragraphs": [
+                "Oletame, et soovite teada, mida täpselt ütles ettevõte oma marginaalide kohta oma viimases aastabilansis 10-K või mida Föderaalreserv oma viimases protokollis ütles. Selle käsitsi otsimine võtab aega; Üldise vestluse küsimine ilma allikateta võib anda väljamõeldud andmeid.",
+                "Vasakpoolne veerg lahendab selle viisardiga, mis on ühendatud ainult kinnitatud ametliku dokumentatsiooniga:"
+              ],
+              "lead": "Vasakpoolne veerg pakub teile viisardit, mis on ühendatud ametliku kinnitatud dokumentatsiooniga:",
+              "bullets": [
+                {
+                  "bold": "Algne lõputöö ja juhendatud küsimused",
+                  "code": "Chat Documental RAG",
+                  "text": "See algab kommenteeritud hinnapakkumiste ja nelja kiirviite nupuga, mis on kohandatud varade kategooriasse, ning väljaga, kuhu saate oma küsimusi kirjutada."
+                },
+                {
+                  "bold": "Otsene samm oma portfelli juurde",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Kui pärast põhialuste uurimist otsustate, et vara on seda väärt, suunab see vestluse ülaosas olev nupp teid otse portfelli simulaatorisse."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kontrollitud dokumentaalotsingu (RAG) ja selle turvafiltrite kasutamine."
+            },
+            {
+              "id": "res-factors",
+              "label": "tegurid",
+              "summary": "Keskne akordion koos viie bullish drive'i ja viie löögi järgi tellitud karuriskiga.",
+              "paragraphs": [
+                "Ükski investeering pole sada protsenti täiuslik ega sada protsenti halb: alati on pooltargumente ja varjatud riske. Saladus on teada, millised neist kaaluvad tänapäeval rohkem.",
+                "Keskmine veerg asetab mõlemad pooled vastamisi, et saaksite teha tasakaalustatud otsuse:"
+              ],
+              "lead": "Keskmine veerg asetab mõlemad küljed vastamisi, et saaksite teha tasakaalustatud otsuse:",
+              "bullets": [
+                {
+                  "bold": "Jõu tasakaalustus ja filtrid",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Ülal näete pakkumisriba ostjate ja müüjate vahel ning allpool saate filtreerida viis positiivset katalüsaatorit (roheline) või viis peamist riski (punane)."
+                },
+                {
+                  "bold": "Üksikasjad ja põhjalikud andmed ühe klõpsuga",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Kui puudutate loendis mõnda tegurit, kuvatakse selle täielik selgitus koos nupuga, mille abil saate Chat RAG-lt selle konkreetse punkti kohta lisateavet küsida."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT impulss",
+              "summary": "Õige ajaskaala uusimate AI-reitinguga pealkirjade ja 24-tunnise meeleolukõveraga.",
+              "paragraphs": [
+                "Üksainus viimase hetke pealkiri sissetulekute, inflatsiooni või regulatsioonide kohta võib päeva meeleolu täielikult muuta. Kuidas teada saada, millised uudised just ilmusid ja millist mõju need avaldavad?",
+                "Parempoolne veerg jälgib infovoogu minutite kaupa:"
+              ],
+              "lead": "Parempoolne veerg jälgib infovoogu minutite kaupa:",
+              "bullets": [
+                {
+                  "bold": "Kvalifitseeritud ajaskaala",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Loetleb viis viimast pealkirja nende aja ja tegutsemisvõimega, hinnates need roheliseks, kui need on soodsad, või punaseks, kui need kujutavad endast ohtu."
+                },
+                {
+                  "bold": "Mõju ja päevakõvera simulaator",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Saate käivitada pinge all oleva juhtme ülemise nupuga, et näha, kuidas see kogu ekraani ümber arvutab, ja jälgida alloleval graafikul, kuidas meeleolu viimase 24 tunni jooksul arenes."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kuidas FinBERT mudel analüüsib iga omaniku finantskeelt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Ehitaja",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Hea portfelli omamiseks ei piisa heade varade eraldi valimisest. Kui investeerite liiga palju kapitali varadesse, mis liiguvad samamoodi, või kui te ei mõõda, kuidas need oleksid varem koos toiminud, investeerite pimesi.",
+            "Constructor & Performance (Portfolio esimene vaade) on töötuba, kus koostate oma portfelli. See võimaldab teil lisada mis tahes 213 varast, reguleerida, kui palju protsente igale varale määrata, ilma ebatäpsete juhtelementidega tegelemata, ja koheselt auditeerida nii selle sisemist koostist kui ka ajalugu."
+          ],
+          "intro": "Constructor & Performance on töötuba, kus koostate oma portfelli, kohandate iga vara kaalu ja auditite selle ajaloolist toimivust.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Kokkuvõte",
+              "summary": "Kuus parimat kaarti, mis arvutatakse reaalajas iga kord, kui oma portfelli muudate.",
+              "paragraphs": [
+                "Iga kord, kui lisate oma portfelli vara või muudate protsenti, peate kohe teadma, kas see korrigeerimine parandas teie oodatavat tootlust või halvendas teie negatiivset mõju.",
+                "Ülemine rida hoiab alati nähtaval portfelli kuus põhimõõdikut:"
+              ],
+              "lead": "Ülemine rida hoiab alati nähtaval portfelli kuus põhimõõdikut:",
+              "bullets": [
+                {
+                  "bold": "Jõudlus ja tõhusus",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Need ütlevad teile, millist liitkasumit portfell teie kapitalile prognoosib ja kui palju tulu saate iga võetud riskiühiku eest."
+                },
+                {
+                  "bold": "Oodatav igapäevane kaotus ja ajalooline langus",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Nad arvutavad, kui palju dollareid võite kaotada halval päeval statistiliselt prognoositava ja mis oli viimase aasta sügavaim tagasilöök."
+                },
+                {
+                  "bold": "Lisaväärtus ja mitmekesistamine",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Need mõõdavad, mitu punkti teie portfell ületab võrdlusindeksit ja kui palju riski te tänu erinevate varade kombineerimisele vähendate."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Liittootlusvalemid (CAGR), Sharpe ja Sortino suhtarvud ning riskiväärtus (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Kaalumine",
+              "summary": "Vasakpoolne tabel varade lisamiseks, nende sisse- või väljalülitamiseks ja iga positsiooni täpse protsendi määramiseks.",
+              "paragraphs": [
+                "Mis juhtuks teie portfelli numbritega, kui sulgeksite ajutiselt mõne tehnikaaktsia täna või jagaksite raha võrdselt kõigi oma positsioonide vahel?",
+                "Vasakpoolne paneel võimaldab teil kõiki neid teste teha puhtal ja otsesel viisil."
+              ],
+              "lead": "Vasakpoolne paneel võimaldab teil kõiki neid teste teha puhtal ja otsesel viisil.",
+              "bullets": [
+                {
+                  "bold": "Otsingumootor 213 varade jaoks",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Saate otsida platvormil mis tahes instrumenti või filtreerida oma lemmikuid, et see ühe klõpsuga tabelisse lisada."
+                },
+                {
+                  "bold": "Kiire käivitamine ja täpne redigeerimine",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Igal real on märkeruut vara reaalajas kaasamiseks või välistamiseks ja numbrikast täpse protsendi sisestamiseks ilma ebatäpseid liugureid kasutamata."
+                },
+                {
+                  "bold": "Kolm tasakaalustamise otseteed",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Tabeli ülaosas on nupud, mille abil jaotada võrdsed kaalud kõikide aktiivsete varade vahel, viia summa automaatselt 100%-ni või naasta algse portfelli juurde."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "röntgen",
+              "summary": "Parempoolne ülemine paneel viie vahekaardiga peidetud kontsentratsioonide, rahavoogude ja hooldusõiguse avastamiseks.",
+              "paragraphs": [
+                "Üks levinumaid vigu investeerimisel on uskumine, et olete hajutatud, kuna teil on viis erinevat vara, kuigi tegelikult ostsite üksiku aktsia ja ka kaks ETF-i, millel on sama aktsia sees.",
+                "Röntgenipaneel analüüsib teie portfelli seestpoolt viie vahekaardi kaudu:"
+              ],
+              "lead": "Röntgenipaneel analüüsib teie portfelli seestpoolt viie vahekaardi kaudu:",
+              "bullets": [
+                {
+                  "bold": "Korduva asukoha detektor",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Lisage igasse ettevõttesse otse investeeritud summa ja peidetud osa, mis teil on indeksites või ETF-ides (nt SPY või QQQ), hoiatades teid punasega, kui ületate mõistlikke limiite."
+                },
+                {
+                  "bold": "Kokkupuute kaart ja tagastamise päritolu",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Need näitavad teile, kui suur protsent teil tegelikult on igas varatüübis ja valuutas ning kui suur osa teie kasumist tuli heade sektorite valimisel võrreldes heade varade valimisega."
+                },
+                {
+                  "bold": "Prognoositav aasta sissetulek ja tagatis",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Nad arvutavad, kui palju dollareid kavatsete aasta jooksul dividendide, kupongide ja intresside jaoks koguda, ning auditeerivad kontohaldurite maksevõimet, kus teie kapital asub."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kaudse kokkupuute arvutamine ETFides ja Brinsoni omistamise jaotuses."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Kalender",
+              "summary": "Kuugraafik jaanuarist detsembrini, et näha oma kasumite ja kahjumite korrapärasust.",
+              "paragraphs": [
+                "Hea aastatootlus võib varjata kuid väga järske langusi, mida praktikas on raske taluda. Kui järjepidev on kuust kuusse just kokku pandud portfell?",
+                "Röntgenpildi all jaotab kalender igakuise ajaloo:"
+              ],
+              "lead": "Röntgenpildi all jaotab kalender igakuise ajaloo:",
+              "bullets": [
+                {
+                  "bold": "Rohelised kuud ja punased kuud",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Iga lahter arvutatakse koheselt ümber vastavalt teie tabelis olevatele kaaludele ja värvitakse olenevalt selle kuu tulemusest roheliseks või punaseks ning suletakse paremalt aasta kumulatiivse tulemusega."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Allolev täisekraani graafik, et võrrelda oma portfelli nelja klassikalise strateegiaga.",
+              "paragraphs": [
+                "Enne kui hindate oma portfelli heaks, jääb alles põhiline test: kas see on tõesti parem kui jätta raha S&P 500 või traditsioonilisse 60/40 portfelli?",
+                "Alumine paneel võtab enda alla kogu ekraani laiuse, et viia teie disain turustandarditele vastavaks:"
+              ],
+              "lead": "Alumine paneel vastab teie disainile turustandarditele:",
+              "bullets": [
+                {
+                  "bold": "Testimise viis horisonti",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "See võimaldab teil hinnata, kuidas teie segu toimis nii viimastes kvartalites kui ka mitmeaastaste tsüklite lõikes."
+                },
+                {
+                  "bold": "Neli näost näkku viidet",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Katke oma aktiivse portfelli roheline kõver ükskõik millise nelja klassikalise mudeli vastu, et saaksite selgelt näha, millal see ees on ja kuidas see miinuspoolel vastu peab."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Risk",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Aegadel, mil turg tõuseb rahulikult, tundub peaaegu iga portfell turvaline. Tõeline probleem ilmneb siis, kui puhkeb kriis, intressimäärad tõusevad järsult ja iseseisvana tundunud varad hakkavad korraga langema.",
+            "Kvantitatiivne risk ja stress (Portfolio teine ​​​​vaade) paneb teie portfelli läbi äärmuslike testide, enne kui need päriselus juhtuvad. Nelja sümmeetrilise kvadrandi ja allpool oleva tulevikustsenaariumisimulaatori kaudu näitab see teile täpselt, kus on teie haavatavad punktid."
+          ],
+          "intro": "Kvantitatiivne risk ja stress testib teie portfelli ajalooliste kriiside, korrelatsiooni leviku ja Monte Carlo prognooside suhtes.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Interaktiivne riski- ja tootluskaart, et näha, kui lähedal olete võimalikult tõhusale portfellile.",
+              "paragraphs": [
+                "Sama varaga, mis teil juba portfellis on, on protsentide jaotamiseks tuhandeid viise. Kas see kombinatsioon, mille valisite, tasub teie võetud riski eest kõige paremini või saaksite sama võita vähemate üllatustega?",
+                "Esimene kvadrant vasakus ülanurgas joonistab selle võimaluste reaalajas kaardi:"
+              ],
+              "lead": "Esimene kvadrant üleval vasakul joonistab selle võimaluste reaalajas kaardi:",
+              "bullets": [
+                {
+                  "bold": "Teie positsioon optimaalsete portfellide vastu",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "See näitab, kus teie praegune portfell asub madalaima võimaliku volatiilsuse ja maksimaalse riski-tulu efektiivsuse punkti suhtes."
+                },
+                {
+                  "bold": "Visuaalsed kihid ja ülevaatus varade kaupa",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Saate mudelikihid sisse või välja lülitada ja klõpsata mis tahes sõlmel, et lugeda allpool selle vara täpset panust."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Markowitz tõhus piir ning minimaalse dispersiooni ja maksimaalse Sharpe portfellide arvutamine."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornaado ja VaR",
+              "summary": "Ajalooline kriisisimulaator, igapäevane kahjumi jaotus varade ja turu asümmeetria järgi.",
+              "paragraphs": [
+                "Kui homme peaks korduma 2008. aasta krahh, 2020. aasta majanduskasvu aeglustumine või 2022. aasta intressitõus, siis kui palju teie praegune portfell kaotaks ja milline vara oleks selle peasüüdlane?",
+                "Alumine vasakpoolne kvadrant vastab neile kolmele küsimusele kolmel konkreetsel vahekaardil:"
+              ],
+              "lead": "Alumine vasakpoolne kvadrant vastab neile küsimustele kolmel konkreetsel vahekaardil:",
+              "bullets": [
+                {
+                  "bold": "Testige viie tõelise kriisi vastu",
+                  "code": "1. Tornado Stress",
+                  "text": "Võrrelge tulpade kaupa, kui palju teie portfell langeks S&P 500 vastu viie suure ajaloolise šoki korral."
+                },
+                {
+                  "bold": "Riskide järjestus positsioonide järgi",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Sorteerige oma osalused vastavalt sellele, kui palju dollareid potentsiaalset igapäevast kahju igaüks annab kogu portfelli."
+                },
+                {
+                  "bold": "Käitumine tõusude ja mõõnadega",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "See näitab teile, millise protsendi turu tõusvatest ratastest iga vara ära kasutab ja kui palju suudab see turu langemisel pehmendada."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ajalooliste stressistsenaariumide metoodika, marginaalne panus VaR-sse ja püüdmissuhted."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Korrelatsioon",
+              "summary": "Ristmaatriks kontrollimaks, kas teie varad on tõesti mitmekesised või on need paanika ajal nakatunud.",
+              "paragraphs": [
+                "Mitme vara omamine portfellis vähendab riski ainult siis, kui need kõik ei liigu samal ajal samas suunas. Kuid finantspaanika ajal hüppavad paljud madalana tunduvad korrelatsioonid järsult ülespoole.",
+                "Parempoolne ülemine kvadrand võimaldab teil seda suhet auditeerida kahe stsenaariumi korral."
+              ],
+              "lead": "Parempoolne ülemine kvadrand võimaldab teil seda suhet auditeerida kahe stsenaariumi korral.",
+              "bullets": [
+                {
+                  "bold": "Üleminek varade ja tundlikkuse vahel",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "See näitab, kui sarnaselt iga varapaar liigub (rohelise või helesinisega, kui need hajuvad hästi, ja punasega, kui nad liiguvad liiga lähedale) ja milline on nende tundlikkus turu suhtes."
+                },
+                {
+                  "bold": "Nakkussimulaator kriisis",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Ühe klõpsuga muudate tavalise aasta korrelatsioonid paanikahetke omadeks, et avastada, millised positsioonid teid enam ei kaitse."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pearsoni korrelatsioonikoefitsientide arvutamine tavatingimustes ja turu stressi tingimustes."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash & Markov",
+              "summary": "Intressimäärade ja aktsiaturu ühine mõjutabel pluss majandustsükli muutumise tõenäosused.",
+              "paragraphs": [
+                "Reaalmajanduses tekivad probleemid harva ükshaaval: sageli langeb intressitõus kokku aktsiate langusega. Mis juhtub teie portfelliga, kui need kaks tegurit kombineeritakse korraga?",
+                "Alumine parem kvadrant ületab mõlemad muutujad ja mõõdab režiimi muutumise tõenäosust:"
+              ],
+              "lead": "Alumine parem kvadrant läbib mõlemad muutujad ja mõõdab turutsüklit:",
+              "bullets": [
+                {
+                  "bold": "Kahekordne löökplaat",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Ristkursside liikumised (-100 kuni +200 baaspunkti) koos S&P 500 languse või tõusuga (-20% kuni +10%), mis võimaldab teil filtreerida kogu portfelli või üksiku vara järgi."
+                },
+                {
+                  "bold": "Tsükli ülemineku tõenäosused",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Arvutage välja, kui tõenäoline on, et turg jääb rahulikuks või siseneb volatiilsesse, inflatsiooni- või kriisifaasi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Liigese tundlikkus kiiruste ja muutujate suhtes ning Markovi oleku üleminekumaatriks."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Alumine paneel on täisekraanil tulevaste tõenäosusprognooside ja ajalooliste langustega.",
+              "paragraphs": [
+                "Minevikku vaatamine on kasulik, kuid edasi investeerides peate teadma, millises tulemustevahemikus teie kapital järgmise kuue kuu, aasta või kahe aasta jooksul liigub.",
+                "Täislaiuses alumine paneel koondab kolm ajutist tööriista selle tee projekteerimiseks ja juhtimiseks:"
+              ],
+              "lead": "Alumine paneel koondab selle tee projekteerimiseks kolm ajutist tööriista:",
+              "bullets": [
+                {
+                  "bold": "Kümme tuhat tulevikustsenaariumi",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Joonistage oma portfelli tõenäolise arengu koonus, eristades optimistlikku stsenaariumi (P95 rohelisega), eeldatavat keskmist rada (P50) ja ebasoodsat stsenaariumi (P05 punasega)."
+                },
+                {
+                  "bold": "Kukkumiste sügavus ja stabiilsus aja jooksul",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Need võimaldavad teil diagrammi ümber lülitada, et näha, kui kaua püsis portfell alla kõigi aegade kõrgeimaid tasemeid või kui stabiilne oli selle tõhusus ja risk 60-päevase perioodi jooksul."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo 10 000 tee stohhastiline simulatsioon ja 60 päeva veeremõõdikud."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulaator",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Enne uue vara ostmist, positsiooni vähendamist või optsioonidega maandamise eest tasumist tekib alati sama küsimus: kas see operatsioon tõesti parandab mu portfelli või lisab asjatut riski? Ja kui palju kapitali ma sellesse panen?",
+            "Ad-Hoc Strategy Lab (Portfolio kolmas vaade) on teie operatsioonieelne simulaator. See võimaldab teil laadida taktikalisi mänge, arvutada välja oma ideaalse positsiooni suuruse, testida negatiivset kindlustust ja näha täpset mõju enne ja pärast seda, ilma et peaksite veel oma põhiportfelli puudutama."
+          ],
+          "intro": "Ad-Hoc Strategy Laboratory on teie kauplemiseelne simulaator tellimuste, suuruse positsioonide testimiseks ja katvuse mõõtmiseks.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Mõju",
+              "summary": "Kuus parimat kaarti, mis võrdlevad teie praegust portfelli tulemusega pärast simuleeritud mänge.",
+              "paragraphs": [
+                "Et teada saada, kas taktikaline idee on seda väärt, ei piisa ainult sellest, et vara näeb välja atraktiivne: see peab parandama kogu portfelli numbreid.",
+                "Ülemine rida näitab püsivalt teie praeguse portfelli võrdlust rakendatud simulatsiooniga portfelliga:"
+              ],
+              "lead": "Ülemine rida võrdleb teie praegust portfelli portfelliga kasutatud simulatsiooniga:",
+              "bullets": [
+                {
+                  "bold": "Mõju kasumile ja efektiivsusele",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Need näitavad prognoositava numbri kõrval põhinumbrit, valgustades erinevust roheliselt, kui mäng suurendab tõhusust, või punaselt, kui see halvendab."
+                },
+                {
+                  "bold": "Mõju riskile, kapitalile ja reeglitele",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Need annavad teile teada, kui palju teie maksimaalne oodatav kahjum muutub, kui suure protsendi portfellist te testimistele panustate ja kas kõik turvalimiidid on täidetud."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If ja Kelly",
+              "summary": "Ostu/müügi piletisimulaator ja kalkulaator, et määrata, kui palju raha riskida.",
+              "paragraphs": [
+                "Paljud head investeerimisideed toovad lõpuks kaasa kaotuse panuse suuruse vea tõttu: liiga vähe pannes nõela ei liiguta, kuid liiga palju pannes võib portfelli rikkuda, kui liigutus läheb valesti.",
+                "Esimene kvadrant vasakus ülanurgas seob tõenduslehe suuruse matemaatilise arvutusega:"
+              ],
+              "lead": "Esimene kvadrant ühendab katsearuande suuruse matemaatilise arvutusega:",
+              "bullets": [
+                {
+                  "bold": "Testtellimuse laadimine",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Valite mis tahes vara, märkate, kas soovite osta, müüa või katta, ja laadite summa dollarites. Allolevas loendis saate iga simuleeritud tellimuse sisse või välja lülitada, et võrrelda selle mõju."
+                },
+                {
+                  "bold": "Optimaalne positsiooni suurus",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Teie hinnangulise edu tõenäosuse ning kasumi ja kahjumi vahelise suhte põhjal arvutab see välja, milline maksimaalne protsent kapitalist tuleks eraldada, et kasvada ilma ennast üle eksponeerimata."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kelly kriteeriumi ja selle konservatiivse versiooni Half-Kelly matemaatiline arvutus."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Pange OTM & Margin",
+              "summary": "Kindlustussimulaator koos võimalustega tugeva turulanguse jaoks ja lisatagatise nõudmise monitor.",
+              "paragraphs": [
+                "Kui kardate tugevat turukorrektsiooni, on kõigi oma positsioonide müümine tavaliselt kulukas ja ebaefektiivne. Professionaalne alternatiiv on sõlmida kaitsevõimalustega kindlustus, kuid kui palju see kindlustus aastas maksab ja kui palju see sind tegelikult kaitseb?",
+                "Alumine vasakpoolne kvadrant võimaldab mõõta nii katvust kui ka võlataset:"
+              ],
+              "lead": "Alumine vasak kvadrant mõõdab nii garantiide ulatust kui ka taset:",
+              "bullets": [
+                {
+                  "bold": "Kaitsekilpide võrdlus",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "See võimaldab teil vaheldumisi töötada ilma katteta või rakendada kolme tüüpi kindlustust koos optsioonidega (SPY, QQQ või VIX volatiilsuse korral), vastandades iga-aastast kindlustusmakse maksumust dollaritele, mida säästate 20% krahhi korral."
+                },
+                {
+                  "bold": "Finantsvõimenduse kontroll ja tagatis",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Jälgige, mitu protsenti hooldusmarginaalist olete kasutanud ja millise protsendi languse portfell kannataks enne lisatagatise nõudmise tsooni sisenemist."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Maandamise toimimine raha väljalangenud müügioptsioonidega ja garantiide arvutamine Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Komitee ja raamat",
+              "summary": "Kaks paremat paneeli riskilimiitide, tellimuste ajaloo ja kaaspiloodi automaatse ülevaatusega.",
+              "paragraphs": [
+                "Tehingu katsetamise entusiasmis on lihtne kahe silma vahele jätta, et vara koondub rohkem kui 20% kogu teie portfellist või et see toimib keset tõsist statistilist anomaaliat.",
+                "Kaks parempoolset kvadranti toimivad teie automaatse riskikontrolli ja kontrolljäljena:"
+              ],
+              "lead": "Kaks paremal asuvat kvadranti toimivad riskikontrolli ja registreerimisena:",
+              "bullets": [
+                {
+                  "bold": "Ülevaade kolmes dimensioonis",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Nad hindavad teie simuleeritud korraldusi tehniliste, fundamentaalsete ja rangete turvapiirangute alusel (hoiatus, kui mõni positsioon ületab 20% kapitalilimiiti või kui sellel on suuri kõrvalekaldeid)."
+                },
+                {
+                  "bold": "Tellimuste logi ja portfelli assistent",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Alumine paneel salvestab iga simulatsiooni koos selle mõjuga riskile, samas kui paremas ülanurgas olev dialooginupp avab vestluse, et esitada otseküsimusi teie portfelli kohta."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Operatsioonieelse riski kontrolli reeglid ja kontsentratsioonilimiidid vara kohta."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Allolev graafik täisekraanil, et kontrollida, kas teie strateegia töötab väljaspool prooviperioodi.",
+              "paragraphs": [
+                "Mis tahes strateegiat saab kohandada, vaadates minevikku, kuni see tundub ajaloolises graafikus lollikindel. Tõeline väljakutse on teada, kas see uute turuandmetega silmitsi seistes jätkab tööd.",
+                "Täislaiuses alumine paneel viib strateegia läbi kõige rangema valideerimise enne tootmist:"
+              ],
+              "lead": "Alumine paneel kontrollib strateegiat nii valimisiseselt kui ka väljaspool valimit:",
+              "bullets": [
+                {
+                  "bold": "Disaini ja tegeliku testimise eraldamine",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "See jagab ajaloolise graafiku esimeseks etapiks, kus strateegia kalibreeritakse, ja teiseks etapiks nähtamatute andmetega, et kontrollida, kas see säilitab oma eelised baasportfelli ees."
+                },
+                {
+                  "bold": "Statistilise tugevuse märkus",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Kui efektiivsusnäitaja ületab 70%, kinnitab see, et tulemused on järjepidevad, mitte aga numbrite minevikku peale surumise tulemus."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mida mõõdab Walk-Forward tõhususindeks (WFE) ja kuidas see tuvastab üleoptimeeritud strateegiad."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Likviidsusfilter (ADV)",
+        "intro": "Selleks, et varaga saaks kaubelda ilma, et üks korraldus selle hinda moonutaks, nõuab platvorm viimase 20 tööpäeva keskmise päevamahu miinimumläve dollarites.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (sulgemishind × kauplemismahtᵢ)",
+          "denominator": "20 osavat ratast",
+          "vars": [
+            "Sulgemishind: päeva i ametlik sulgemishind on väljendatud USD-des.",
+            "Kaubeldatud maht: sellel päeval kaubeldavate osakute koguarv."
+          ]
+        },
+        "lead": "Keskmise päevamahu põhjal klassifitseerib kataloog iga instrumendi sügavuse:",
+        "bullets": [
+          {
+            "bold": "Kõrge institutsiooniline likviidsus",
+            "code": "> $500M diarios",
+            "text": "Võimaldab siseneda ja väljuda suurtele positsioonidele koheselt ilma turuhinda liigutamata."
+          },
+          {
+            "bold": "Standardkataloogi likviidsus",
+            "code": "$50M a $500M diarios",
+            "text": "Sobib väga madalate ostu-müügikuludega hajutatud portfellidele."
+          },
+          {
+            "bold": "Spread monitooring",
+            "code": "< $50M diarios",
+            "text": "Volatiilsuse ajal on soovitatav enne suurte tellimuste täitmist kontrollida jootraha avamist."
+          }
+        ],
+        "example": "Kui aktsia kaupleb 200 dollariga ja kaubeldakse viimase kuu jooksul keskmiselt 5 miljoni aktsiaga ratta kohta, on selle keskmine päevane maht (ADV) 1 miljard dollarit (1,0 miljardit dollarit)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normaliseerimine USD-ks",
+        "intro": "Kuna kataloogis on ühendatud Euroopa võlakirjad, Aasia indeksid, toorained ja krüptovaluutad, konverteeritakse kõik mahuvood reaalajas USA dollaritesse, et neid saaks võrrelda samal skaalal.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Kohaliku valuuta maht: algses turuvaluutas (EUR, JPY, GBP, BRL jne) kaubeldav summa.",
+            "Kohtvahetuskurss: praegune noteering 61 valuuta mootoris."
+          ]
+        },
+        "lead": "See konversioon mõjutab otseselt kahte kohta ekraanil.",
+        "bullets": [
+          {
+            "bold": "Üldvaade Edetabel Kõik",
+            "code": "213 activos",
+            "text": "Tellige instrumendid suurimast reaalsest raha liikumisest kogu maailmas kõige väiksemani."
+          },
+          {
+            "bold": "Lisatud mahukaart",
+            "code": "Volumen 24h en $B",
+            "text": "See võimaldab moonutusteta lisada erinevates riikides loetletud varade mahtu."
+          }
+        ],
+        "example": "Kui Saksa võlakirjaga kaubeldakse 4 miljardi euro väärtuses päevas ja EUR/USD ristkauplemine on 1,08, arvutab süsteem globaalse impulsi väärtuseks 4,32 miljardit dollarit."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Kuidas mõõta, kas turg on tõusnud tõeliselt tugevalt või on see juba liiga kiiresti tõusnud ja ammendunud? Suhtelise tugevuse indeks (RSI) võrdleb keskmist tõusu viimase 14 vooru keskmiste kukkumistega skaalal 0–100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (keskmine tõus₁₄ / keskmine langus₁₄)",
+          "vars": [
+            "Keskmine tõus₁₄: viimase 14 ratta tõusvatel päevadel teenitud punktide silutud keskmine.",
+            "Keskmine kaotus₁4: sama perioodi languspäevadel kaotatud punktide tasandatud keskmine."
+          ]
+        },
+        "lead": "Ringikujulises rõngas tõlgendatakse skaala kolme osa järgmiselt:",
+        "bullets": [
+          {
+            "bold": "Ostujõud ja üle ostetud",
+            "code": "70 a 100",
+            "text": "Kasv ületab tunduvalt hiljutisi langusi. See näitab suurt tõusutempot, kuigi üle 70 hoiatab, et hind võib vajada pausi."
+          },
+          {
+            "bold": "tasakaalu tsoon",
+            "code": "30 a 70",
+            "text": "Turg liigub jätkusuutlikus tempos. Keskmise taseme ületamine (> 50 rohelisega) kinnitab ostja domineerimist, allapoole langemine (< 50 punasega) aga müüja domineerimist."
+          },
+          {
+            "bold": "Karistamine ja ülemüümine",
+            "code": "0 a 30",
+            "text": "Kukkumised olid nii sagedased ja tugevad, et vara hakkab näima statistiliselt odav ja tagasilöögile kalduv."
+          }
+        ],
+        "example": "Kui viimase 14 ratta jooksul tõusis aktsiagrupp keskmiselt 2 dollarit tõusupäeva kohta ja langes vaid 1 dollari võrra languse päeva kohta, siis selle tugevussuhe on 2 ja RSI on 66,7 (rohelises tõusus)."
+      },
+      {
+        "id": "p06",
+        "label": "Tavarežiim (P-06)",
+        "intro": "Vara võib tunduda rahulik, kui vaatate ainult selle hinda, kuid samal ajal kannatate kummalise mahu hüppe ja ostu-müügi tippude ebanormaalse avanemise all. Mootor Isolation Forest (P-06) ületab need muutujad samal ajal, et tuvastada ebatüüpiline käitumine.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): keskmine juhuslike lõigete arv, mis on vajalik tänapäeva käitumise isoleerimiseks muust ajaloost.",
+            "x: 4 muutuja vektor (Return 24h, Vol Z-Score 20d, Realized Volatility 30d ja Spread in bps)."
+          ]
+        },
+        "lead": "Mida haruldasem on tänane käik, seda kiiremini see isoleeritakse ja seda lähemal on skoor 1.00-le:",
+        "bullets": [
+          {
+            "bold": "Tavaline režiim",
+            "code": "0.00 a 0.49",
+            "text": "Hind, maht ja likviidsus liiguvad kooskõlas vara ajaloolise keskmisega."
+          },
+          {
+            "bold": "Kõrge aktiivsus",
+            "code": "0.50 a 0.64",
+            "text": "Vähemalt üks muutujatest hakkas oma tavapärasest käitumisest kõrvale kalduma; Soovitav on tellimuste voogu tähelepanelikult jälgida."
+          },
+          {
+            "bold": "Dislokatsioon või kriitiline anomaalia",
+            "code": "0.65 a 1.00",
+            "text": "Vara registreerib statistiliselt äärmusliku käitumise. Portfelli moodulis aktiveerib selle läve ületamine turvapiduri."
+          }
+        ],
+        "example": "Kui riigivõlakirja hind liigub vaevu 0,1%, kuid selle maht korrutub neljaga ja selle levik kolmekordistub minutitega, ületab detektor kolme andmepunkti ja tõstab oma skoori 0,74-ni (dislokatsioon punasega)."
+      },
+      {
+        "id": "zscore",
+        "label": "Helitugevuse ümbersõit (Z-Score)",
+        "intro": "Öelda, et täna käitati 500 miljonit dollarit, on keskmise suurusega ettevõtte jaoks palju, kuid S&P 500 jaoks väga vähe. Volume Z-Score koondab kõik varad samasse universaalseadmesse: mitu standardhälvet (σ) on tänane maht selle enda 20 ratta keskmisest.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Helitugevus täna (24h) – keskmine helitugevus (20p)",
+          "denominator": "Helitugevuse standardhälve (20 p)",
+          "vars": [
+            "Keskmine maht (20 p): vara tavapärane maht viimase töökuu jooksul.",
+            "Standardhälve (20d): kui palju see maht tavaliselt päevast päeva muutub."
+          ]
+        },
+        "lead": "Nii saate võrrelda mis tahes vara samal sigma (σ) skaalal:",
+        "bullets": [
+          {
+            "bold": "Tavaline tegevus",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Päeva maht on täielikult viimase nelja nädala rutiini piires."
+          },
+          {
+            "bold": "Suur osalus",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Seal on keskmisest kõrgem huvi, mis hakkab kinnitama päeva trendi."
+          },
+          {
+            "bold": "Institutsioonide kokkupõrge",
+            "code": "> +2.0σ",
+            "text": "Seda esineb vähem kui 5% aastaringidest ja see peegeldab tavaliselt suurte fondide massilist sisenemist või väljumist."
+          }
+        ],
+        "example": "Kui tavaliselt kaubeldakse aktsiaga 100 miljonit dollarit päevas, tüüpilise kõikumisega ±20 miljonit dollarit ja täna 160 miljonit dollarit, on see 60 miljonit dollarit keskmisest kõrgem, mis on täpselt võrdne +3,0σ-ga."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Püsitulu (2s10s ja DV01)",
+        "intro": "Kui filtreerite tabelis võlakirjad või intressimäärad, kuvatakse riigivõla hindamise kaks peamist mõõdikut: kõvera kalle (2s10s) ja baaspunkti rahaline väärtus (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 baaspunkt (1 bp): võrdub 0,01% tootlusega.",
+            "DV01 ($/$1M): kui palju dollareid 1 miljoni dollarine positsioon võidab või kaotab, kui kurss liigub 1 baaspunkti võrra."
+          ]
+        },
+        "lead": "Kuidas neid kahte numbrit ruudustikul lugeda:",
+        "bullets": [
+          {
+            "bold": "Normaalne või positiivne kõver",
+            "code": "2s10s > 0 bps",
+            "text": "10-aastased võlakirjad maksavad kõrgemat intressimäära kui 2-aastased võlakirjad, mis peegeldab terve majanduskasvu ootust."
+          },
+          {
+            "bold": "ümberpööratud kõver",
+            "code": "2s10s < 0 bps",
+            "text": "Lühikesed intressimäärad ületavad pikki intressimäärasid; ajalooliselt hoiatab see majanduse jahenemise või rahapoliitiliste piirangute eest."
+          }
+        ],
+        "example": "Kui 10-aastane riigikassa tootlus on 4,20% ja 2-aastane riigikassa tootlus 4,55%, märgib 2s10s veerg -35 bps (pööratud kõver punasega)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Aktsiad (P/E ja marginaal)",
+        "intro": "S&P/NDX-i aktsiate filtreerimisel kuvatakse tabelis prognoositud tulu mitmekordne (P/E Forward) ja brutokasumi marginaal, et saaksite võrrelda väärtust kasumlikkusega.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Aktsia praegune hind",
+          "denominator": "Hinnanguline tulu aktsia kohta (järgmised 12 kuud)",
+          "vars": [
+            "P/E Forward: mitu aastat tulevast sissetulekut maksate tänase hinnaga.",
+            "Brutomarginaal (%): protsent müügist, mis jääb brutokasumiks peale otsekulude mahaarvamist."
+          ]
+        },
+        "lead": "Mida otsida mõlema veeru ületamisel:",
+        "bullets": [
+          {
+            "bold": "Nõudlik vs mõõdukas hinnang",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Kõrge kordaja näitab, et turg hindab tugevat tulevast kasvu; madal peegeldab tavaliselt küpseid või väärtuslikke ettevõtteid."
+          },
+          {
+            "bold": "Hinnakujundus Võimsus",
+            "code": "Margen Bruto > 50%",
+            "text": "Kõrged marginaalid näitavad tugeva konkurentsieelisega ettevõtteid, kes suudavad oma kasumit inflatsiooni eest kaitsta."
+          }
+        ],
+        "example": "Kui aktsia kaupleb 150 dollari juures ja teenib järgmise 12 kuu jooksul hinnanguliselt 6 dollarit aktsia kohta, on selle forward P/E 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Tuletisinstrumendid, valuutavahetus ja kaubad",
+        "intro": "Optsioonide, forexi ja füüsiliste futuuriturgude puhul näitavad kaks dünaamilist veergu positsiooni hoidmise riski- või tasu eeldatavat kulu aja jooksul.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (tuletisväärtpaberid): aastane volatiilsus, mida optsiooniturud järgmise 30 päeva jooksul allahindlusi teevad.",
+            "Carry 10Y (FX) ja Roll Yield (Toored): aastane kasum või kulu intresside erinevusest või futuuride ümberlükkamisest."
+          ]
+        },
+        "lead": "Kuidas neid veerge olenevalt varast kasutada?",
+        "bullets": [
+          {
+            "bold": "In Tuletised",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Need ütlevad teile, mitu protsenti liikumist turg ootab ja kas kukkumiste katmise võimalused (Puts) on kallid."
+          },
+          {
+            "bold": "Valuutades ja toorainetes",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Need on rohelised, kui vara hooldamine annab teile lisatulu, või punaselt, kui sellel on bilansiline kulu."
+          }
+        ],
+        "example": "Kui optsiooni eeldatav volatiilsus (ATM IV) on 35% aastas, diskonteerib turg järgmise 30 päeva jooksul liikumist ±10% lähedale."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radari radiaalne kaardistamine",
+        "intro": "Kuni 45 vara paigutamiseks kolme radarirõngasse ilma kattumiseta muudab Orbital vaade valitud indikaatori väärtuse kauguseks keskpunktist (raadius r), mis on normaliseeritud rühma miinimumi ja maksimumi vahel.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Vara väärtus − Grupi minimaalne väärtus",
+          "denominator": "Grupi maksimaalne väärtus − Grupi minimaalne väärtus",
+          "vars": [
+            "r → 0 (sisemine ring): koondab suurema intensiivsusega või positiivse hälbega varad.",
+            "r → 1 (välimine ring): otsib välisseadmeid või need, mille suhteline näit on madalaim."
+          ]
+        },
+        "lead": "Kuidas radaril iga planeedi asukohta ja värvi lugeda:",
+        "bullets": [
+          {
+            "bold": "Fookuse sisemine rõngas",
+            "code": "Centro del radar",
+            "text": "Koguge ülal valitud indikaatorist kokku peamised varad, et teie vaade läheks kõigepealt kõige olulisemale."
+          },
+          {
+            "bold": "Ajalooline värvisemantika",
+            "code": "Verde vs Rojo",
+            "text": "Sõlm süttib roheliselt, kui see ületab soodsalt oma ajaloolist keskmist, ja punaselt, kui see peegeldab langust või stressi."
+          }
+        ],
+        "example": "Kui sorteerite radari helitugevuse kõrvalekalde (Z-Score) järgi, asub aktiivne rada, mille väärtus on +3,4σ, heledas keskringis, samas kui radar, mille väärtus on 0,1σ, on välisorbiidil."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) ja Bollingeri ribad",
+        "intro": "20-perioodi lihtne liikuv keskmine (SMA 20) tähistab vara baastrendi, samas kui Bollingeri ribad joonistavad dünaamilise kanali, lisades ja lahutades selle keskmise ümber kaks standardhälvet (2σ).",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): viimase 20 sulgemise aritmeetiline keskmine.",
+            "Ribalaius (BB laius): ülemise ja alumise riba vaheline kaugus protsentuaalselt."
+          ]
+        },
+        "lead": "Statistiliselt esineb umbes 95% tsitaatidest kahes ribas:",
+        "bullets": [
+          {
+            "bold": "Hind üle keskmise",
+            "code": "Precio > SMA 20",
+            "text": "See näitab, et lühiajaline trend on tõusev ja keskmine toimib tavaliselt tugipõrandana."
+          },
+          {
+            "bold": "Ülemise või alumise riba puudutus",
+            "code": "±2σ",
+            "text": "See hoiatab, et hind tõusis hiljutisest keskmisest liiga kiiresti ja võib hinge tõmmata."
+          },
+          {
+            "bold": "riba kokkusurumine",
+            "code": "BB Width bajo",
+            "text": "Kui ribad muutuvad väga kitsaks, kogub turg energiat enne tugevat liikumist."
+          }
+        ],
+        "example": "Kui aktsia SMA(20) on 100 $ ja selle 20 ratta standardhälve on $ 4, on ülemine riba 108 $ ja alumine 92 $."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP institutsionaalne",
+        "intro": "Erinevalt tavalisest keskmisest, mis annab võrdse kaalu kõikidele päevatundidele, kaalub VWAP iga hinda rahasummaga, millega sellel tasemel tegelikult kaubeldi. See on peamine viide, mida institutsionaalsed tabelid kasutavad.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (tavaline hind × kauplemismaht)",
+          "denominator": "∑ Kaubeldav mahtᵢ",
+          "vars": [
+            "Tüüpiline hind: keskmine iga küünla maksimumi, miinimumi ja lähedase väärtuse vahel.",
+            "Kaubeldatud maht: konkreetselt selles jaotises kaubeldav maht."
+          ]
+        },
+        "lead": "Kuidas professionaalsed kauplejad VWAP sarja kasutavad:",
+        "bullets": [
+          {
+            "bold": "Täitmise kontroll",
+            "code": "Comprar bajo el VWAP",
+            "text": "Kui institutsionaalne fond ostab perioodiks alla VWAP, sai see turu kaalutud keskmisest parema hinna."
+          },
+          {
+            "bold": "Trendi kaitsetase",
+            "code": "Soporte / Resistencia",
+            "text": "Kuni vara püsib VWAP kohal, on sellel perioodil ostnud keskmises kasumis."
+          }
+        ],
+        "example": "Kui 1 miljon aktsiat kaubeldaks 100 dollariga ja ainult 100 tuhat aktsiat 110 dollariga, oleks lihtne keskmine 105 dollarit, kuid VWAP näitab 100,91 dollarit, sest peaaegu kogu raha kaubeldi 100 dollariga."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Spread nihe (bps)",
+        "intro": "Vahe on tellimusraamatu parima müügihinna ja parima pakkumishinna vahe. Kui turutegijad tajuvad riski või likviidsuse puudumist, avavad nad selle tühimiku enda kaitsmiseks.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Küsi hind – pakkumishind )",
+          "denominator": "Keskmine hind (keskmine hind)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Küsi / Paku Hind: müügiargumendi ja ostupunkti vool raamatus.",
+            "10 000: teisendustegur, et väljendada erinevust baaspunktides (bps)."
+          ]
+        },
+        "lead": "Mida ütleb Spread Dislokatsiooni näit vasakul siinil:",
+        "bullets": [
+          {
+            "bold": "Sügav ja sujuv raamat",
+            "code": "Spread estable en verde",
+            "text": "Mõlemas otsas on palju likviidsust ja sisenemise või väljumise kaudsed kulud on minimaalsed."
+          },
+          {
+            "bold": "Hõõrdumine või likviidsuse vähenemine",
+            "code": "Salto en bps",
+            "text": "Tavaliselt toimub see mõni sekund enne makromajanduslikke teadaandeid või paanikamüügi ajal, muutes täitmise kulukamaks."
+          }
+        ],
+        "example": "Kui vara näpunäide on 99,95 dollarit ja müügivihje 100,05 dollarit, võrdub 0,10 dollari ja 100 dollari vahe 10 baaspunktiga (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Valikud (mustad koolid ja kreeklased)",
+        "intro": "Optsioonimootoris joonistab platvorm kaks kasumi ja kahjumi (P&L) kõverat: kuidas strateegia lõppeks aegumispäeval ja kui palju see täna (T+0) väärt on Black-Scholesi mudelit rakendades.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S ja K: alusvara jooksev hind (Spot) ja optsiooni täitmishind (Strike).",
+            "Netokreeklased: Δ Delta (hinnatundlikkus), Γ Gamma (Delta kiirendus), Θ Teeta (igapäevane kulumine) ja ν Vega (volatiilsuse tundlikkus)."
+          ]
+        },
+        "lead": "Kuidas lugeda kreeklasi oma strateegiast vasakpoolsete rööpapillide kohta:",
+        "bullets": [
+          {
+            "bold": "Juhtimine ja kiirendus",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Positiivne Delta võidab, kui vara tõuseb; positiivne Gamma paneb sind üha kiiremini võitma, kui liikumine kiireneb."
+          },
+          {
+            "bold": "Aja kulg ja ebakindlus",
+            "code": "Θ Theta / ν Vega",
+            "text": "Teeta näitab, kui palju dollareid positsioon kaotab või võidab iga päevaga; Vega, kui palju see muutub, kui kaudne volatiilsus tõuseb 1%."
+          }
+        ],
+        "example": "Long Straddle (ostke Call ja Put on sama strike) Delta on 0 lähedal (pole vahet, kas see tõuseb või langeb), kuid Vega on positiivne ja vajab hinda, et liikuda kaugemale oma kahest tasakaalupunktist (murdepunktid)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Suveräänsed kõverad (Butterfly ja DV01)",
+        "intro": "Fikseeritud tuluga mootor võrdleb 42 riigi tootlusi 3 kuust 30 aastani ja arvutab nii keskmise osa kalle (2s10s) kui ka kõveruse (Butterfly 2s5s10s) ja rahalise tundlikkuse (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y kurss: valitud riigi 2, 5 ja 10 aasta suveräänsete võlakirjade intressimäär.",
+            "Reaalne 10 aasta määr: 10 aasta nominaaltootlus miinus viiteintress või kaudne inflatsioon."
+          ]
+        },
+        "lead": "Milleks iga näitaja võlakirjade analüüsis on:",
+        "bullets": [
+          {
+            "bold": "Keskmise lõigu kumerus",
+            "code": "Butterfly 2s5s10s",
+            "text": "See mõõdab, kas 5-aastane osa on kallis või odav võrreldes 2- ja 10-aastaste äärmustega."
+          },
+          {
+            "bold": "Dollari kestuse risk",
+            "code": "DV01 por $1M",
+            "text": "See ütleb teile täpselt, kui palju dollareid miljoni dollari portfell varieerub 0,01% kursi liikumisega."
+          }
+        ],
+        "example": "10-aastane võlakiri DV01-ga 820 dollarit miljoni kohta kaotab ligikaudu 82 000 dollarit, kui turuintressid tõusevad 100 baaspunkti (+1,00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Valuutad (ülekande) ja futuurid (rulli tootlus)",
+        "intro": "Valuutates, kui paari otseselt ei noteerita, arvutatakse see triangulatsiooni teel dollari suhtes ja mõõdetakse selle kursivahet (Carry). Toorainete puhul mõõdetakse uuendamise tulemuslikkust vahetu lepingu ja 12-kuulise lepingu (rulli tootlus) vahel.",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Kohahind (esiosa M1) – tulevane hind (M12)",
+          "denominator": "Tuleviku hind (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Tagasiminek (punkt > tulevik): füüsiline nappus põhjustab täna jooksvate futuuride positiivset kasumit (Roll Yield > 0).",
+            "Contango (Spot < Future): ladustamiskulud muudavad futuurid kallimaks ja nende uuendamisel on negatiivne kulu."
+          ]
+        },
+        "lead": "Kuidas see mõjutab teie taskuraamatut positsiooni hoidmisel:",
+        "bullets": [
+          {
+            "bold": "Positiivne kaubavahetus valuutades",
+            "code": "Carry Spread > 0 bps",
+            "text": "Kui ostate kõrge intressimääraga valuutat, rahastades end madala intressimääraga valuutas, kogute selle vahe enda kasuks."
+          },
+          {
+            "bold": "Tooraines soodne tuul",
+            "code": "Backwardation en verde",
+            "text": "Kui füüsilised varud on madalad, on lähedalasuv leping väärt rohkem kui kauge ja investor teenib lepingut veeretades lisatulu."
+          }
+        ],
+        "example": "Kui 1-kuuline nafta kaubeldakse hinnaga 72 dollarit ja 12-kuuline leping 68 dollariga, on turg tagasilöögis ja aastas on positiivne tõusutootlus +5,88%."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Kaalutud hinne kokku",
+        "intro": "Kõik varad ei liigu samade allikate kaudu: ettevõttes on auditeeritud finantsaruannetel (SEC 10-K/10-Q) suur kaal, samas kui krüptoturul või valuutades on igapäevastel voogudel ja suhtlusel suurem kaal.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: automaatne kaalumine vastavalt kategooriale (nt 80% / 20% aktsiates; 85% / 15% tasudes).",
+            "Lõplik skaala: vahemikus –100 (maksimaalne pessimism) kuni +100 (maksimaalne bullish veendumus)."
+          ]
+        },
+        "lead": "Kõrgema arvamuse kohaselt koondskoor tõlgitakse järgmiselt:",
+        "bullets": [
+          {
+            "bold": "Bullish seisukoht",
+            "code": "BULLISH / Nota > +15",
+            "text": "Dokumentaalsed katalüsaatorid ja uudistevoog kaaluvad selgelt üles riskitegurid."
+          },
+          {
+            "bold": "Neutraalne või segatud kehahoiak",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Isegi jõud põhialuste ja uudiste vahel; Enne otsustamist on soovitatav üle vaadata 10 teguri akordion."
+          },
+          {
+            "bold": "Kaitsev või karune hoiak",
+            "code": "BEARISH / Nota < -15",
+            "text": "Domineerivad hoiatused bilansside, marginaalide halvenemise või ebasoodsate pealkirjade kohta."
+          }
+        ],
+        "example": "Aktsia puhul (80% fundamentaalnäitajad / 20% uudised), kui saldod näitavad +50 punkti ja päeva uudised +20, on kaalutud koguskoor (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Kinnitatud otsing (RAG)",
+        "intro": "Tehisintellekti arvude väljamõtlemise takistamiseks kasutab Document Chat Generation Augmented Recovery (RAG) süsteemi: esmalt otsib see vara ametlikest aruannetest vastavad lõigud ja alles seejärel kirjutab vastuse, viidates allikale.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vektori konsultatsioon (Q) · Vektori ametlik dokument (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vektor Q ja D: teie küsimuse ja ametlike fragmentide arvulised esitused (10-K, FOMC protokollid, EIA aruanded).",
+            "3-kihiline kaitsepiire: filter, mis blokeerib päringud, mis ei ole seotud rahandusega või ilma dokumentaalse toeta."
+          ]
+        },
+        "lead": "Mida see mehhanism tagab, kui esitate vestluses küsimuse:",
+        "bullets": [
+          {
+            "bold": "Ankurdamine algallikatesse",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Kõik andmed sissetulekute, võlgade, varude või intressimäärade kohta pärinevad sellele varale vastavast regulatiivdokumendist."
+          },
+          {
+            "bold": "Lõpetage teemavälised küsimused",
+            "code": "Guardrail activo",
+            "text": "Kui keegi püüab konsulteerida mitterahalistel teemadel, lükkab assistent päringu tagasi ja keskendub instrumendi analüüsile."
+          }
+        ],
+        "example": "Kui puudutate aktsial riskitegurite kiipi, hangib mootor oma uusima vormi 10-K jaotise Item 1A (Riskitegurid) ja teeb kokkuvõtte kriitilistest punktidest."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "Neuronaalne skoor FinBERT",
+        "intro": "Tüüpiline sõnastik ajab sageli finantssõnu segamini (näiteks \"kulude langus\" või \"võla vähendamine\" on suurepärane uudis isegi siis, kui nad kasutavad sõna kukkumine või vähendamine). FinBERT on spetsiaalselt finantstekstide jaoks koolitatud närvivõrk.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(positiivne) ja P(negatiivne): mudeli poolt määratud tõenäosus, et pealkiri on vara puhul tõusev või langev.",
+            "24h kõver: viimase 24 tunni pealkirjade eksponentsiaalne liikuv keskmine."
+          ]
+        },
+        "lead": "Kuidas iga sõlm parempoolsel ajateljel hindab:",
+        "bullets": [
+          {
+            "bold": "Katalüsaatori hoidja",
+            "code": "+20 a +100 en verde",
+            "text": "Prognoositud sissetulekute ületamine, krediidireitingu tõstmine või soodsad intressikärped."
+          },
+          {
+            "bold": "Neutraalne infokaabel",
+            "code": "-19 a +19 en ámbar",
+            "text": "Rutiinsed tegevusteated, mis ei muuda instrumendi struktuurilist hinnangut."
+          },
+          {
+            "bold": "Riski omanik",
+            "code": "-20 a -100 en rojo",
+            "text": "Regulatiivsed hoiatused, marginaali langus, streik või oodatust halvemad inflatsiooniandmed."
+          }
+        ],
+        "example": "Kui mudel määrab pealkirjale 82% positiivse tõenäosuse, 12% neutraalse ja 6% negatiivse tõenäosuse, näitab sõlm netomõju +76 roheliselt."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe ja Sortino",
+        "intro": "Esimesed kaks parimat kaarti mõõdavad, kui palju teie kapital aastas kasvab (CAGR) ja kui tõhus see kasv on võrreldes põrutustega, mida peate taluma (Sharpe ja Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Aastane Portfolio tootlus (Rp) – riskivaba määr (Rf)",
+          "denominator": "Aastane Portfolio volatiilsus (σp)",
+          "vars": [
+            "Rf (4,30%): baastootlus, mille saate riigivõlakirjades ilma riskita.",
+            "Sortino Ratio: kasutab sama valemit, kuid nimetajas karistab see ainult negatiivsete päevade (languste) volatiilsust."
+          ]
+        },
+        "lead": "Kuidas hinnata oma portfelli kvaliteeti nende numbritega:",
+        "bullets": [
+          {
+            "bold": "Tõhus portfell",
+            "code": "Sharpe > 1.00",
+            "text": "Ülemäärane tootlus, mille saavutate üle riskivaba intressimäära, ületab tunduvalt eeldatud volatiilsust."
+          },
+          {
+            "bold": "Silmapaistev jõudlus",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "See näitab väga hästi mitmekesist kombinatsiooni, kus tõusud on järjepidevad ja langused on piiratud."
+          }
+        ],
+        "example": "Kui teie portfelli tootlus on 15,3% aastas, on riskivaba määr 4,3% ja teie aastane volatiilsus 10%, teie liigne tootlus on 11% ja teie Sharpe suhe on 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% ja allahindlus",
+        "intro": "Kolmas ja neljas kaart vastavad sellele, kui palju võite kaotada halval, kuid statistiliselt tavalisel päeval (VaR 95%), kui palju ekstreemsel paanikapäeval (CVaR 99%) ja milline oli suurim tagasitõmbumine eelmisest tipust (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1645: statistiline tegur, mis katab 95% aasta tavaratastest (19 päeva 20-st).",
+            "CVaR 99% (oodatav puudujääk): keskmine kahjum, kui turg ületab selle läve ja jõuab halvimate päevade 1% hulka."
+          ]
+        },
+        "lead": "Mis praktiline erinevus on VaR ja Max Drawdown vaatamise vahel?",
+        "bullets": [
+          {
+            "bold": "Ühepäevane risk",
+            "code": "VaR 95% 1D en USD",
+            "text": "See valmistab teid psühholoogiliselt ja rahaliselt ette selleks, et teie konto võib halvas suunas kõikuda, ilma et see tähendaks, et strateegia ebaõnnestus."
+          },
+          {
+            "bold": "Vastupidavus ebasoodsas järjestuses",
+            "code": "Max Drawdown 12M",
+            "text": "See mõõdab kogunenud langust tipust otsani kõrgeimast punktist põrandale enne taastumist."
+          }
+        ],
+        "example": "100 000-dollarilise portfelli puhul, mille igapäevane VaR on 95% 1,45% (1450 dollarit), ei ületa teie päevane kahju 19-l 20-st kauplemisrattast 1450 dollarit."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Röntgenikiirguse kattumine (nr 12)",
+        "intro": "Kui ostate ETF-i, nagu SPY või QQQ, ostate kümneid aktsiaid. Kui olete ka osa neist samadest aktsiatest otse ostnud, on teie tegelik kokkupuude kahe asja summaga.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Otsene kaal: protsent teie portfellist, mis on eraldatud otse aktsiale i.",
+            "Protsent ETFₖ: ametlik kaal, mis sellel ettevõttel on indeksis või fondis k."
+          ]
+        },
+        "lead": "Miks on oluline see esimene vahekaart enne portfelli sulgemist üle vaadata?",
+        "bullets": [
+          {
+            "bold": "Varjatud kontsentratsiooni nähtavus",
+            "code": "Directo + Indirecto",
+            "text": "See võtab automaatselt lahti kõik teie portfellis olevad ETF-id ja kuvab teile ühe riba tegeliku protsendiga igas ettevõttes."
+          },
+          {
+            "bold": "Liigne hoiatus",
+            "code": "> 20% en rojo",
+            "text": "Kui kogusumma ületab ühele nimele keskendumise mõistliku läve, süttib rida, et saaksite tasakaalu taastada."
+          }
+        ],
+        "example": "Kui paigutate 15% oma portfellist otsesesse NVDA ja teil on ka 30% SPY ETF-is (kus NVDA kaalub umbes 7%), näitab röntgenikiirgus, et teie tegelik kokkupuude NVDA-ga on 15% + (30% × 7%) = 17.1%."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alfa Brinsoni lagunemine (nr 2)",
+        "intro": "Kui teie portfell ületab (või kaotab) oma võrdlusindeksit, eristab Brinson-Fachleri mudel täpselt, kust see erinevus tuli: kas teil oli õigus, millistes sektorites kaalusite ülekaalu või valisite igas sektoris parimad varad?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Jaotuse efekt: (Portfolio kaal − võrdlusaluse kaal) × sektori tulu võrdlusaluses.",
+            "Valiku efekt: kaal võrdlusaluses × (varade tulu – sektori tootlus)."
+          ]
+        },
+        "lead": "Kolmanda vahekaardi kolme omistamisriba lugemine:",
+        "bullets": [
+          {
+            "bold": "Makro või sektori edu",
+            "code": "Asignación Sectorial",
+            "text": "Rohelises on positiivne, kui paned enim tõusnud varaklassidele turust suurema kaalu."
+          },
+          {
+            "bold": "Varade edukas sihtimine",
+            "code": "Selección de Activos",
+            "text": "On positiivne, kui teie valitud konkreetsed instrumendid toimisid oma sektori keskmisest rohkem."
+          }
+        ],
+        "example": "Kui teie portfell ületas S&P 500-i +3,20%, võimaldab see vahekaart näha, et +2,10% tulenes paremate aktsiate valimisest (Valik) ja +1,10% suuremast kaalust tehnoloogia vallas (Alokatsioon)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Tõhus Frontier ja CML",
+        "intro": "Markowitz tasapinnas on portfelli oodatav tootlus selle varade tootluse kaalutud keskmine, kuid selle volatiilsus on keskmisest madalam tänu sellele, et varad ei liigu 100% samaväärselt.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: varadele i ja j eraldatud kapitali protsent.",
+            "ρᵢⱼ (korrelatsioon): aste, mil määral mõlemad varad koos liiguvad (−1 kuni +1). Mida väiksem on ρᵢⱼ, seda rohkem väheneb kogurisk."
+          ]
+        },
+        "lead": "Mida tähistavad kolm graafikul olevat viidet:",
+        "bullets": [
+          {
+            "bold": "Minimaalne dispersioon",
+            "code": "Min-Var",
+            "text": "See on kõvera kõige vasakpoolsem punkt: täpne kaalude kombinatsioon, mis saavutab väikseima võimaliku volatiilsuse."
+          },
+          {
+            "bold": "Máximo Sharpe ja Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "See on punkt, kus riskivabast intressimäärast algav joon puudutab tõhusat piiri, pakkudes suurimat kasumit riskiühiku kohta."
+          }
+        ],
+        "example": "Kui liita võrdsetes osades kaks vara, millel on 20% volatiilsus, kuid nullkorrelatsioon (ρ = 0), ei ole portfelli volatiilsus 20%, vaid langeb 14,1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR, Active and Capture",
+        "intro": "Et teada saada, milline positsioon lisab portfellile rohkem riske, mõõdetakse iga vara marginaalset panust vastavalt selle kaalule ja korrelatsioonile ülejäänuga. Lisaks mõõdavad püüdmissuhted asümmeetriat S&P 500 tõusu ja languse suhtes.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Oma vara või Portfolio tagastamine bullish (või Bearish) ratastega",
+          "denominator": "S&P 500 tagastamine samadel ratastel",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100%) – teenige turu tõustes rohkem kui indeks.",
+            "Downside Capture (< 100%): turu languse korral langeb indeksist vähem (kaitsepuhver)."
+          ]
+        },
+        "lead": "Ideaalne profiil, mida otsite kvadrandi kolmanda vahekaardi ülevaatamisel:",
+        "bullets": [
+          {
+            "bold": "positiivne asümmeetria",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Osalege täielikult pulliturgudel, kuid kaitske kapitali, kui aktsiaturg korrigeerib."
+          },
+          {
+            "bold": "Varjupaik või korrelatsioonita varad",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Sellised instrumendid nagu lühikesed võlakirjad või kuld, mis kipuvad aktsiaturu languse ajal püsima või tõusma."
+          }
+        ],
+        "example": "Kui kuudel, mil S&P 500 tõusis 10%, tõusis teie portfell 11% (üles 110%) ja kui indeks langes 10%, langes teie portfell vaid 6% (miinus 60%), on teie kasuks tugev asümmeetria."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normaalne vs kriisi korrelatsioon",
+        "intro": "Pearsoni koefitsient (r) mõõdab -1,00 kuni +1,00, kuidas kaks vara liiguvad üksteise suhtes. Portfellihalduse oht seisneb selles, et turukrahhi ajal langeb riskivarade vaheline korrelatsioon tavaliselt +1,00 suunas (nakkus).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kovariatsioon (tagastab vara i, tagastab vara j)",
+          "denominator": "Vara volatiilsus i (σᵢ) × Vara volatiilsus j (σⱼ)",
+          "vars": [
+            "r 0-le lähedane või negatiivne: suurepärane hajutamine (kui üks langeb, siis teine ei järgne).",
+            "r in Crisis Queue: arvutab maatriksi ümber, võttes ainult 5% turu halvimatest ratastest."
+          ]
+        },
+        "lead": "Kuidas lugeda 6x6 maatriksi värve mõlemas režiimis:",
+        "bullets": [
+          {
+            "bold": "Tõeline mitmekesistamine",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Mõlemad varad reageerivad erinevatele majanduslikele teguritele ja kompenseerivad üksteist."
+          },
+          {
+            "bold": "Kontsentratsioon või nakatumine",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Nad liiguvad praktiliselt plokina; Mõlema olemasolu ei vähenda teie kukkumisi halval päeval."
+          }
+        ],
+        "example": "Kahel erinevatest sektoritest pärit aktsial võib tavalisel aastal olla mõõdukas korrelatsioon 0,42, kuid Kriisijärjekorra nupu aktiveerimisel näete, et see tõuseb 0,81-ni, sest paanikas müüakse neid koos."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D šokk (hinnad × aktsiaturg)",
+        "intro": "2D-maatriks ühendab samaaegselt intressimäärade liikumise mõju (fikseeritud tulu kestuse ja intressimäära tundlikkuse kaudu) S&P 500 indeksi languse või tõusuga (aktsia beeta kaudu).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: aktsiaturu kõikumise stsenaarium horisontaalteljel (−20% kuni +10%).",
+            "Δ Rates: intressimäärade muutumise stsenaarium baaspunktides vertikaalteljel (–100 kuni +200 baaspunkti)."
+          ]
+        },
+        "lead": "Mis on tabelis kahe telje ristamise eesmärk:",
+        "bullets": [
+          {
+            "bold": "Stagflatsiooni või intressitõusu stsenaarium",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Nagu see, mis juhtus 2022. aastal, kus aktsiad ja pikad võlakirjad kannatavad korraga."
+          },
+          {
+            "bold": "Klassikaline varjupaiga stsenaarium",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Kui madalamad intressimäärad tõstavad riigivõlakirjade hinda ja pehmendavad aktsiate langust."
+          }
+        ],
+        "example": "Pika võlakirja (nt US10Y või TLT) filtreerimisel näete tabelist, kuidas see väärtus tõuseb, kui intressimäärad langevad (-100 bps), toimides langevarjuna, kui S&P 500 samal päeval kukub."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markovi režiimid (nr 11)",
+        "intro": "Markovi kett modelleerib majandust kui süsteemi, mis hüppab nelja võimaliku oleku vahel (rahulik tõus, muutlik tõus, inflatsioon/määr ja kriis) ja arvutab ühest teise liikumise tõenäosuse.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Põhidiagonaal (i = j): tõenäosus, et praegune režiim jääb muutumatuks.",
+            "Diagonaalist väljas (i ≠ j): uude turukliimaani pöördumise tõenäosus."
+          ]
+        },
+        "lead": "Kuidas teisel vahekaardil üleminekumaatriksi eeliseid kasutada:",
+        "bullets": [
+          {
+            "bold": "Praeguse tsükli püsivus",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Rahulikel režiimidel on tavaliselt kõrge püsivus (> 75%), mis võimaldab säilitada trendipositsioone."
+          },
+          {
+            "bold": "Rotatsiooni varajane hoiatus",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Kui lenduvatesse olekutesse ülemineku tõenäosus suureneb, on soovitav vähendada finantsvõimendust või aktiveerida riskimaandus."
+          }
+        ],
+        "example": "Kui turg on praegu volatile Bull režiimis ja see rida tähistab 62% püsivusest, 20% Bull Calmi naasmisest ja 18% stressi/kriisi tulekust, siis teate, et peaaegu iga 5 stsenaariumi korral on tulemuseks korrektsioon."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo projektsioon (10 000 rada)",
+        "intro": "Tuginedes teie portfelli eeldatavale tootlusele ja praegusele volatiilsusele, genereerib simulaator päevast päeva 10 000 võimalikku tulevast trajektoori, kasutades stohhastilist geomeetrilist Browni liikumise mudelit.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ ja σ: teie praeguse portfelli eeldatav aastane tootlus ja aastane volatiilsus.",
+            "Z: standardne tavaline juhuslik suurus, mis on tõmmatud piki horisonti 10 000 korda (6M, 12M või 24M)."
+          ]
+        },
+        "lead": "Nendest 10 000 simulatsioonist eraldatakse graafiku kolm peamist kõverat:",
+        "bullets": [
+          {
+            "bold": "Soodne stsenaarium",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Tase, mida ületab kõige optimistlikumate stsenaariumide puhul vaid 5%."
+          },
+          {
+            "bold": "Eeldatav kesktrajektoor",
+            "code": "Mediana P50",
+            "text": "Tüüpiline tulemus, kus pool simulatsioonidest on üleval ja teine pool allpool."
+          },
+          {
+            "bold": "Tähtajaline stressistsenaarium",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Ebasoodne alammäär: 95% simuleeritud radadest jõuab teie portfell sellest joonest kõrgemale."
+          }
+        ],
+        "example": "12-kuulises perspektiivis 100 baasil, kui P50 näitab 116 ja P05 on 94, on teie keskne ootus teenida +16% ja väga ebasoodsa aasta jooksul on risk -6% lähedal."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly kriteerium (nr 14)",
+        "intro": "Kelly kriteerium annab teadusliku vastuse, kui suure protsendi oma kapitalist peaksite operatsioonile eraldama, kui teate oma õnnestumise tõenäosust (võidumäär) ja kui palju võidate õnnestumise korral võrreldes sellega, mida ebaõnnestumise korral kaotate (väljamaksete suhe).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p ja q: võidu tõenäosus (p) ja kaotuse tõenäosus (q = 1 − p).",
+            "b (väljamaksete suhe): keskmine kasum jagatud keskmise kahjuga (näiteks 2 dollari teenimine iga riskitud 1 dollari kohta tähendab b = 2)."
+          ]
+        },
+        "lead": "Miks professionaalsed juhid kasutavad varianti Half-Kelly (0,5×):",
+        "bullets": [
+          {
+            "bold": "Kelly Complete",
+            "code": "Full Kelly 1.0×",
+            "text": "See maksimeerib pikaajalist matemaatilist kasvu, kuid tekitab väga järske kõikumisi, kui järjestikust vigade jada."
+          },
+          {
+            "bold": "Soovitatav Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Kasutades poole soovitatud protsendist, saavutate 75% potentsiaalsest kasvust, kuid vähendate volatiilsust poole võrra."
+          }
+        ],
+        "example": "Kui strateegia tabab 55% ajast (p = 0,55, q = 0,45) ja maksab 2 kuni 1 (b = 2), annab Kelly täisväärtuse (0,55 × 2 - 0,45) / 2 = 32,5% ja mõistlik Half-Kelly soovitab eraldada 16,25%."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Pane OTM Shield (nr 6)",
+        "intro": "Rahata müügioptsioon (näiteks 5% alla S&P 500 praeguse hinna) toimib täpselt nagu kindlustusomavastutus: sellel on väike püsikulu (preemia), kuid kui turg langeb 20% või 30%, korrutatakse selle väärtus kumeralt ja see korvab teie portfelli kahjumi.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Aastane kulu (kandetõmme): aastane protsent, mis kulub kindlustuse uuendamiseks, kui turg ei lange.",
+            "Krahhikaitse (-20%): tõsise krahhi ajal müügilepinguga tagasi saadud dollarid."
+          ]
+        },
+        "lead": "Simulaatori valikute võrdlemine esimesel vahekaardil:",
+        "bullets": [
+          {
+            "bold": "Otseindeksikindlustus",
+            "code": "SPY Put 5% OTM",
+            "text": "See piirab maksimaalset kahju 5% langusest vastutasuks mõõduka aastakulu eest."
+          },
+          {
+            "bold": "Rahastatud või volatiilsusega kate",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Kaelarihm vähendab kulusid, müües üleskutse; Call on VIX plahvatab kasuks, kui turul vallandub paanika."
+          }
+        ],
+        "example": "Kui 100 000 dollari suuruse portfelli kaitsmine SPY Put 5% OTM-iga maksab 1,1% aastas (1100 dollarit), kuid -20% krahhi korral vähendab see teie portfelli langust alla poole, ületab neto sääst 7000 dollarit."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Marginaali ja marginaali kõne kaugus (nr 13)",
+        "intro": "Kui kasutate tuletisinstrumente või finantsvõimendust, nõuab maakler omakapitali minimaalse protsendi säilitamist positsiooni koguväärtusest (hooldusmarginaal). Kui kukkumine vähendab teie kapitali allapoole seda korrust, käivitatakse lisatagatis.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Võlg või finantseeritud saldo",
+          "denominator": "1–% hooldusvaru (Reg-T)",
+          "vars": [
+            "Brutopositsioon: avatud positsioonide kogusumma jagatud omakapitaliga (nt 1,18×).",
+            "Kaugus tagatisnõudest (%): protsentuaalne langus, mida portfell veel toetab enne läve saavutamist."
+          ]
+        },
+        "lead": "Turvatasemed jälgimisribal:",
+        "bullets": [
+          {
+            "bold": "Suur kliirensitsoon",
+            "code": "Distancia > 30% en verde",
+            "text": "Finantsvõimendus on madal ja portfell suudab ilma sundmüükideta vastu võtta isegi tõsise kriisi."
+          },
+          {
+            "bold": "ettevaatustsoon",
+            "code": "Distancia < 15% en rojo",
+            "text": "Mõõdukas turukorrektsioon ammendaks vabad tagatised ja sunniks positsioone halvimal hetkel likvideerima."
+          }
+        ],
+        "example": "Mõõduka finantsvõimendusega 1,18× ja kasutatud hooldusmarginaaliga 22%, on teie portfelli turvapadi rohkem kui 38% allapoole enne tagatisnõudeid."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Kolme samba komitee eeskirjad",
+        "intro": "Et ükski impulsiivne otsus ei ohustaks portfelli püsimist, hindab komitee iga tellimust, kombineerides tehnilist märkust, põhimärki ja kahte ranget, mittekaubeldavat riskikontrollireeglit.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: ükski vara ei saa koondada rohkem kui viiendikku koguvarast.",
+            "Anomaalia Stop (P-06 ≥ 0,65): kui vara muutub statistiliseks nihkeks, vähendab süsteem maksimaalset säritust 5% -ni."
+          ]
+        },
+        "lead": "Mida iga riik kohtuotsuses ja hukkamisraamatus tähendab:",
+        "bullets": [
+          {
+            "bold": "Tellimus kinnitatud ilma piiranguteta",
+            "code": "APROBADO en verde",
+            "text": "Kolm sammast langevad soodsalt kokku ning positsiooni suurus järgib kõiki kontsentratsiooni- ja likviidsuspiire."
+          },
+          {
+            "bold": "Järjekorda reguleeritud kaitsepiirdega",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Kui pilet ületab 20% piiri või üritab keset anomaaliat suurelt osta, hoiatab kaitsepiire ületamise eest."
+          }
+        ],
+        "example": "Kui proovite simuleerida ostu, mille puhul üks aktsia moodustaks teie portfellist 26%, märgib sammas 3 (riski ja suuruse kaitsepiire) kontsentratsioonihoiatuse, nii et reguleerite seda alla 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Tõhusus Walk-Forward (WFE)",
+        "intro": "Kontrollimaks, et strateegiat ei loodud lihtsalt selleks, et minevikus hea välja näha (ülepaigutamine), võrdleb Walk-Forward test selle toimimist kavandamisperioodil (In-Sample) selle toimivusega hilisemates seninägematutes andmetes (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Aastane tootlus Out-of-Sample (puhas valideerimine)",
+          "denominator": "Aastane tulu In-Sample (koolitus)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): ajalooline osa, mida kasutatakse strateegia kaalude ja reeglite kalibreerimiseks.",
+            "Out-of-Sample (OOS): järgmine jaotis, kus strateegiat testitakse reaalsetes tingimustes ilma selle parameetreid puudutamata."
+          ]
+        },
+        "lead": "Kuidas kvantitatiivne tööstus hindab WFE protsenti:",
+        "bullets": [
+          {
+            "bold": "Tugev ja järjekindel strateegia",
+            "code": "WFE ≥ 70% en verde",
+            "text": "See säilitab suure osa oma võimest teenida kasumit uute turutingimustega silmitsi seistes."
+          },
+          {
+            "bold": "Habras või liiga sobiv strateegia",
+            "code": "WFE < 50% en rojo",
+            "text": "See toimis hästi mineviku teoorias, kuid kaotab tegelikkuses tõhususe; Päris rahaga seda teostada pole soovitav."
+          }
+        ],
+        "example": "Kui strateegia tootlus oli kavandamisetapis (In-Sample) aastapõhiselt 20% ja sellele järgnenud tegelikus testimisetapis (Out-of-Sample) 18,8%, on selle WFE efektiivsus (18,8 / 20) = 94,0%."
+      }
+    ]
+  }
+}

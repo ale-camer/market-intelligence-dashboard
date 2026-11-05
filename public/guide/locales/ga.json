@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Amharc Laghdaithe",
+    "mainView": "Príomhradharc",
+    "expandedView": "Amharc Leathnaithe",
+    "inThisSection": "Sa chuid seo gheobhaidh tú:",
+    "deepDive": "Léim go domhain",
+    "previous": "Roimhe Seo",
+    "next": "Ar aghaidh",
+    "mathFormula": "Foirmle Matamaitice",
+    "practicalExample": "Sampla praiticiúil:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Nuair a osclaíonn tú ardán airgeadais traidisiúnta, is é an chéad rud a fheictear de ghnáth ná mórán cairteacha, táblaí gealánacha, agus biachláir i ngach áit. Cá dtosóidh tú nuair nach bhfuil uait ach an margadh a sheiceáil nó conas atá ag éirí le do phunann?",
+        "Tá an scáileán Home deartha go beacht chun an torann tosaigh sin a sheachaint. Cuireann sé fáilte romhat le spás glan soiléir ina bhfuil an rialú go léir comhchruinnithe i dhá bharra seasta: ceann amháin thuas chun dul ag obair agus ceann eile thíos chun an t-ardán a chumrú a oireann duit."
+      ],
+      "intro": "Cuireann an scáileán Home fáilte romhat le spás glan agus soiléir ina bhfuil an rialú go léir comhchruinnithe i dhá bharra seasta: ceann amháin thuas chun dul ag obair agus ceann eile thíos chun an t-ardán a chumrú a oireann duit.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Is é an pointe tosaigh soiléir a roinneann do chuid oibre in anailís mhargaidh agus bainistíocht punainne.",
+          "paragraphs": [
+            "Samhlaigh go dtosaíonn tú ag trádáil an chéad rud ar maidin. Uaireanta beidh tú ag iarraidh féachaint cé na stoic, bannaí nó airgeadraí is mó atá ag gluaiseacht; Uaireanta eile rachaidh tú díreach chun an riosca a bhaineann le do phunann a athbhreithniú nó chun ceannach a insamhail sula ndéanfaidh tú é.",
+            "Conas a sheachnaíonn tú an dá rud a mheascadh ar an scáileán ró-ualaithe céanna? Scarann an clúdach go soiléir an cosán sin ón gcéad soicind:"
+          ],
+          "lead": "Conas a sheachnaíonn tú an dá rud a mheascadh ar an scáileán ró-ualaithe céanna? Scarann an clúdach go soiléir an cosán sin ón gcéad soicind:",
+          "bullets": [
+            {
+              "bold": "Spás gan seachráin",
+              "code": "Donde se decodifican los mercados",
+              "text": "Nuair a théann tú isteach, níl aon táblaí oscailte nó foláirimh a chuireann iallach ort fuinneoga a dhúnadh sula dtosaíonn tú; Roghnaíonn tú cén modúl atá le hoscailt."
+            },
+            {
+              "bold": "Dhá cosán soiléir",
+              "code": "Markets / Portfolio",
+              "text": "Tá sreabhadh iomlán an iarratais roinnte ina dhá phríomhchéim: deiseanna taighde ar dtús sna margaí agus ansin déan do phunann a thógáil nó a thástáil."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "An barra barr chun léim i gceann cliceáil idir an baile, na margaí agus do phunann.",
+          "paragraphs": [
+            "De réir mar a dhéanann tú mionscrúdú ar shonraí sócmhainne nó athruithe tástála ar do phunann, tá sé an-éasca súil a chailleadh ar an áit a raibh tú. Conas a théann tú ó amharc ar chairt stoc go dtí athbhreithniú a dhéanamh ar do phunann gan dul trí fo-roghchláir?",
+            "Fanann an barra uachtarach seasta ar an scáileán i gcónaí agus tugann sé rochtain dhíreach duit ar na trí phríomhphointí:"
+          ],
+          "lead": "Fanann an barra uachtarach seasta ar an scáileán i gcónaí agus tugann sé rochtain dhíreach duit ar na trí phríomhphointí:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Cibé áit a bhfuil tú, má chliceálann tú ar an tsiombail ar chlé, filleann tú láithreach chuig an bpríomhleathanach."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Is é do spás taighde é. Déanann tú scagadh anseo ar na 213 sócmhainn atá ar fáil, leanann tú comharthaí athfhriotail bheo, déanann tú anailís ar chairteacha teicniúla agus breathnaíonn tú ar achoimrí nó ar nuacht an chláir chomhardaithe."
+            },
+            {
+              "bold": "Sparán",
+              "code": "Portfolio",
+              "text": "Sin é do bhord cinntí. Anseo sainíonn tú cén céatadán de do chaipiteal a théann chuig gach sócmhainn, tomhais cé mhéad a d'fhéadfá a chailleadh i ngéarchéim agus insamhail oibríochtaí nua sula gcuirtear airgead i mbaol."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "An buntásc chun stádas an chórais a sheiceáil, filleadh ar an treoir seo, nó an leagan amach a choigeartú.",
+          "paragraphs": [
+            "Agus anailís á déanamh ar shonraí i bhfíor-am, tá ceisteanna oibríochtúla ann a d'fhéadfadh teacht chun cinn ag am ar bith: an bhfuil na comharthaí athfhriotail ag teacht i gceart? Cad a bhí i gceist le táscaire pointe? An féidir liom gile an scáileáin a ísliú?",
+            "Déanann an buntásc na huirlisí tacaíochta agus cumraíochta sin go léir a ghrúpáil ionas go mbeidh siad ar fáil i gcónaí gan dul isteach ar lár an scáileáin:"
+          ],
+          "lead": "Déanann an buntásc na huirlisí tacaíochta agus cumraíochta sin go léir a ghrúpáil ionas go mbeidh siad ar fáil i gcónaí gan dul isteach ar lár an scáileáin:",
+          "bullets": [
+            {
+              "bold": "Stádas System",
+              "code": "System",
+              "text": "Deimhníonn an ponc glas sracfhéachaint go bhfuil gach rud in ord. Nuair a osclaíonn tú é feicfidh tú go mion stádas na bhfreastalaithe, na mbunachair shonraí agus an luas freagartha."
+            },
+            {
+              "bold": "Úsáideoir Guide",
+              "code": "Guide",
+              "text": "Oscail an lámhleabhar idirghníomhach seo am ar bith le fáil amach conas scáileán a úsáid nó taiscéaladh níos doimhne isteach ina chuid ríomhaireachtaí."
+            },
+            {
+              "bold": "Roghanna amhairc",
+              "code": "Idioma / Palette",
+              "text": "Ar an taobh dheis tá na rialuithe agat chun teanga an fheidhmchláir iomláin a athrú nó an soilsiú cúlra a choigeartú."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Teangacha",
+          "summary": "An t-inneall cuardaigh chun an t-ardán iomlán a aistriú go do theanga ar an bpointe.",
+          "paragraphs": [
+            "Tá a gcastacht féin ag téarmaí airgeadais agus tuarascálacha margaidh cheana féin gan bacainn teanga a chur leis. Más fearr leat na mínithe a léamh i Spáinnis, i mBéarla nó i dteanga ar bith eile, is féidir leat é a athrú láithreach.",
+            "Seo mar a oibríonn an roghnóir ón gcúinne íochtair ar dheis:"
+          ],
+          "lead": "Seo mar a oibríonn an roghnóir ón gcúinne íochtair ar dheis:",
+          "bullets": [
+            {
+              "bold": "cuardach láithreach",
+              "code": "Select Language",
+              "text": "Má chliceálann tú ar an mbratach reatha osclaíonn tú fuinneog inar féidir leat idir 56 teanga a roghnú trína hainm nó a cód a scríobh (mar shampla, ES, EN, PT, FR nó DE)."
+            },
+            {
+              "bold": "Cuimhne uathoibríoch",
+              "code": "mid_lang_v1",
+              "text": "Aistrítear an scáileán iomlán láithreach gan an leathanach a athlódáil agus sábhálfar do rogha don chéad uair eile a rachaidh tú isteach."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Téamaí amhairc chun codarsnacht an scáileáin a oiriúnú gan na dathanna airgeadais a athrú.",
+          "paragraphs": [
+            "Nuair a chaitheann tú roinnt uaireanta an chloig os comhair grafaicí le codarsnacht nach bhfuil in oiriúint don solas i do thimpeallacht, cuireann sé tuirse ort do shúile. Mar sin féin, tá baol clasaiceach ag athrú dathanna ardán airgeadais: an tagairt ar cad atá ar bun agus cad atá ag dul síos a chailliúint.",
+            "Chun é seo a réiteach, scarann an roghnóir téamaí dath an chomhshaoil ón dath sonraí:"
+          ],
+          "lead": "Chun é seo a réiteach, scarann an roghnóir téamaí dath an chomhshaoil ón dath sonraí:",
+          "bullets": [
+            {
+              "bold": "Cúig thimpeallacht léitheoireachta",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Le gach cliceáil rothlaíonn tú idir chúlraí íona dubh, gormacha nó te go dtí go bhfaighidh tú an ceann is compordaí do do shúile."
+            },
+            {
+              "bold": "Séimeantaic airgeadais slán",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Is cuma cén t-ábhar a athraíonn tú, ní athraítear riail uilíoch an mhargaidh riamh: ciallaíonn glas ardú nó gnóthachan i gcónaí, agus ciallaíonn dearg i gcónaí titim, caillteanas nó foláireamh riosca."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Samhlaigh gur mian leat a bhrath cá bhfuil na deiseanna is fearr ar an lá i measc níos mó ná dhá chéad bannaí, stoic, innéacsanna, airgeadraí agus amhábhair. Dá n-osclódh tú na cairteacha ceann ar cheann, dhúnfadh an margadh sula gcríochnódh tú ag féachaint orthu.",
+            "Tugann an Screener na 213 sócmhainn ar fad ar an ardán le chéile in aon phainéal beo amháin. Ligeann sé duit scagadh de réir an mhargaidh i soicind, buille iomlán an lae a thomhas, agus ceithre bhealach éagsúla a roghnú chun féachaint cé na sócmhainní atá ag feidhmiú."
+          ],
+          "intro": "Tugann an Screener na 213 sócmhainn go léir ar an ardán isteach i ndeais bheo amháin ionas gur féidir leat scagadh de réir margaidh agus deiseanna a aimsiú go sracfhéachaint.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Catagóirí",
+              "summary": "Barr-scagairí chun díriú ar aicme sócmhainní amháin nó ar do liosta faire.",
+              "paragraphs": [
+                "Ní dhéanann sé aon chiall anailís a dhéanamh ar bhanna Státchiste leis na méadrachtaí céanna le stoc teicneolaíochta nó ola. Nuair a mheascann tú gach rud ar an liosta céanna, déanann tú comparáid idir piorraí agus úlla.",
+                "Conas a chaolann tú an scáileán go díreach chuig an margadh a bhfuil suim agat sa lá atá inniu ann? Ligeann an barra barr duit an cruinne a scaradh le cliceáil amháin:"
+              ],
+              "lead": "Ligeann an barra barr duit an cruinne a scaradh le cliceáil amháin:",
+              "bullets": [
+                {
+                  "bold": "Pictiúr iomlán",
+                  "code": "Todos",
+                  "text": "Taispeánann sé na 213 ionstraim le chéile agus ordaítear iad de réir toirte trádálaithe ionas gur féidir leat a fheiceáil cá bhfuil an t-airgead is mó ag sreabhadh ar fud an domhain."
+                },
+                {
+                  "bold": "Rianú pearsanta",
+                  "code": "★ Watchlist",
+                  "text": "Ná leithrigh ach na sócmhainní atá marcáilte agat mar ceanáin chun monatóireacht ghéar a dhéanamh orthu gan aon seachrán."
+                },
+                {
+                  "bold": "Deich margaí speisialaithe",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Trí aon cheann de na catagóirí seo a roghnú, déanann an scáileán iomlán a tháscairí agus na colúin tábla a oiriúnú do rialacha na hearnála sin."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sonraí faoin gcaoi a rangaítear na 213 sócmhainní sa chatalóg agus na critéir toirte agus leachtachta a chomhlíonann siad."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "cuisle 24h",
+              "summary": "Na ceithre chárta is fearr a insíonn duit an bhfuil an margadh socair, euphoric nó faoi strus.",
+              "paragraphs": [
+                "Sula gceannaítear nó sula ndíolann tú sócmhainn ar leith, is inmholta go mbeadh a fhios agat cén aeráid ina bhfuil an t-iomlán ag gluaiseacht. An gnáthlá toirte é seo nó an bhfuil airgead institiúideach ag teacht isteach go léir láithreach? An bhfuil na sócmhainní go léir ag ardú fiú nó an bhfuil comharthaí teannais ann?",
+                "Tugann na ceithre chárta thíos na scagairí an léamh ginearálta sin duit i gceann cúpla soicind:"
+              ],
+              "lead": "Tugann na ceithre chárta thíos na scagairí an léamh ginearálta sin duit i gceann cúpla soicind:",
+              "bullets": [
+                {
+                  "bold": "Gníomhaíocht iomlán don lá",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Cuireann sé suas le billiúin dollar a thrádáiltear sa chatagóir gníomhach agus léiríonn sé duit má tá rannpháirtíocht níos mó nó níos lú inniu ná inné."
+                },
+                {
+                  "bold": "Meán Neart Grúpa",
+                  "code": "AVG RSI 14",
+                  "text": "Déanann sé achoimre i méadar ciorclach cibé an dtagann praghsanna na hearnála le brú ceannaigh (glas, os cionn 50) nó le brú díola (dearg, faoi bhun 50)."
+                },
+                {
+                  "bold": "Teirmiméadar normáltachta",
+                  "code": "Régimen Normal P-06",
+                  "text": "Ríomhann sé cén céatadán de na sócmhainní a ghluaiseann laistigh dá ngnáthpharaiméadair agus insíonn sé duit de réir ainm agus sloinne cé acu ionstraim leis an aimhrialtacht is mó sa lá."
+                },
+                {
+                  "bold": "Sreafaí airgid neamhghnách",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Seasann an podium de na trí shócmhainn atá inniu ann líon thar a bheith ard i gcomparáid lena meán don mhí seo caite."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Míniú mionsonraithe ar an gcaoi a ríomhtar an meán-RSI, an toirt Z-Score agus an brathadóir aimhrialtachta P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tábla",
+              "summary": "An liosta idirghníomhach le cuardach tapa, ceanáin agus colúin a oiriúnú do gach margadh.",
+              "paragraphs": [
+                "Nuair atá a fhios agat cheana féin cén earnáil ar mhaith leat féachaint uirthi agus nuair a chaithfidh tú uimhreacha sonracha a chur i gcomparáid as a chéile, is é an t-amharc tábla do phríomhuirlis.",
+                "In ionad scarbhileog docht a thaispeáint duit atá mar an gcéanna do gach duine, déanann an tábla a choigeartú de réir a bhfuil uait:"
+              ],
+              "lead": "In ionad scarbhileog docht a thaispeáint duit atá mar an gcéanna do gach duine, déanann an tábla a choigeartú de réir a bhfuil uait:",
+              "bullets": [
+                {
+                  "bold": "Inneall cuardaigh agus ceanáin réalta",
+                  "code": "Buscar activo / ★",
+                  "text": "Sa chéad cheanntásc colún is féidir leat aon siombail nó ainm a chlóscríobh chun dul díreach chuig an tsócmhainn sin, nó tapáil ar an réalta ar chlé chun é a shábháil ar do Watchlist."
+                },
+                {
+                  "bold": "Colúin cliste de réir na catagóire",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Má dhéanann tú Scaireanna a scagadh, feicfear iolraí luachála agus corrlaigh; Má roghnaíonn tú Bannaí nó Rátaí feiceann tú fána an chuair agus íogaireacht rátaí; Má fhéachann tú ar Dhíorthaigh feiceann tú luaineacht intuigthe."
+                },
+                {
+                  "bold": "Léim díreach chuig anailís dhomhain",
+                  "code": "Click en cualquier fila",
+                  "text": "Níl le déanamh ach cliceáil ar aon sócmhainn ar an liosta chun do stáisiún iomlán de chairteacha teicniúla agus de thuarascálacha bunúsacha a oscailt."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Liosta de na méadrachtaí ar leith a thaispeánann an tábla do gach ceann de na 10 gcatagóir sócmhainne."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "An radar amhairc chun a bhrath go sracfhéachaint ar na sócmhainní atá ag bogadh ar shiúl óna meán stairiúil.",
+              "paragraphs": [
+                "Má léann tú dhá chéad sraith uimhreacha is féidir go gcaillfidh tú sócmhainn atá ag tosú ag gluaiseacht go pléascach. Conas a bhraitheann tú láithreach cén uirlis atá ag imeacht ón norm?",
+                "Athraíonn an radharc Orbital an tábla ina radar le trí fháinne chomhlárnacha:"
+              ],
+              "lead": "Athraíonn an radharc Orbital an tábla ina radar le trí fháinne chomhlárnacha:",
+              "bullets": [
+                {
+                  "bold": "Rogha critéar",
+                  "code": "INDICADOR",
+                  "text": "Socraíonn tú cad a thomhaiseann an radar: aimhrialtachtaí staidrimh, léimeanna toirte, neart praghsanna (RSI), luaineacht nó gnóthachan le 24 uair an chloig anuas."
+                },
+                {
+                  "bold": "Léamh de réir achair agus datha",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Dá gaire nó níos faide ar shiúl atá pointe de réir an táscaire agus dá dhéine a dath glas nó dearg, is amhlaidh is ábhartha a ghluaiseacht i gcomparáid lena stair féin."
+                },
+                {
+                  "bold": "Cigireacht gan scáileán a athrú",
+                  "code": "Panel lateral en vivo",
+                  "text": "Tríd an cúrsóir a scíth a ligean ar aon nód radair, taispeántar a phraghas, a chairt ghlan ionlae agus a thrí mhéadracht riosca ar dheis."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Conas a ríomhtar suíomh gach sócmhainne sna fáinní radair de réir a diall stairiúil."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Léarscáil Teas",
+              "summary": "An mósáic de bhloic chomhréire chun na buaiteoirí agus na cailliúnaithe a aithint i soicind.",
+              "paragraphs": [
+                "Tá amanna ann nuair nach bhfuil uait ach ceist thapa a fhreagairt: cé atá i gceannas ar an ardú inniu agus cé atá ag tarraingt an mhargaidh anuas?",
+                "Socraíonn an Léarscáil Teasa na deich sócmhainní is fearr den scagaire gníomhach ina mbloic chomhréireacha ionas nach mbeidh ort tábla amháin a léamh:"
+              ],
+              "lead": "Ordaíonn an Léarscáil Teasa na deich sócmhainní is airde den scagaire gníomhach ina mbloic chomhréireacha:",
+              "bullets": [
+                {
+                  "bold": "Méid de réir tábhacht",
+                  "code": "Puestos #1 a #10",
+                  "text": "Áitíonn na hionstraimí leis an meáchan is mó laistigh den mhéadrach roghnaithe na colúin ar chlé leis na boscaí is mó."
+                },
+                {
+                  "bold": "Déine dath",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Insíonn ton an bhloc láithreach duit méid na gluaiseachta, ó éagsúlachtaí measartha go arduithe tobann nó titim."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "An t-aicearra trí chéim go dtí ardrátaí, roghanna, forex agus áireamháin todhchaíochtaí.",
+              "paragraphs": [
+                "Chomh maith le cairteacha praghsanna traidisiúnta, cuimsíonn an t-ardán ceithre inneall speisialta le haghaidh ioncam seasta, roghanna, crosanna airgeadra agus cuair tráchtearraí. Conas is féidir leat teacht orthu gan sócmhainn a chuardach de réir sócmhainne?",
+                "Treoraíonn an t-amharc seo tú ó chlé go deas i dtrí cholún an-simplí:"
+              ],
+              "lead": "Treoraíonn an t-amharc seo tú ó chlé go deas i dtrí cholún an-simplí:",
+              "bullets": [
+                {
+                  "bold": "Ar dtús roghnaíonn tú an teaghlach",
+                  "code": "1. Clases de Activo",
+                  "text": "Roghnaíonn tú cé acu an bhfuil tú ag iarraidh oibriú le Rátaí agus Bannaí, le Roghanna ar Stoic/Innéacsanna/Cripte, le hairgeadraí nó le hAmhábhair."
+                },
+                {
+                  "bold": "Ansin seiceálann tú cad a dhéanann an t-inneall",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Sa lár léann tú achoimre shoiléir ar a léiríonn an uirlis sin agus conas tú féin a dhíriú ar a haiseanna."
+                },
+                {
+                  "bold": "Ar deireadh, roghnaigh an ceann gníomhach agus oscailte",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Féachann tú ar réamhamharc beo ar an gcairt, cuardaigh tú aon sócmhainní comhoiriúnacha sa teaghlach sin, agus osclaíonn tú an stáisiún iomlán le cliceáil amháin."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Nuair a fuair tú sócmhainn suimiúil sa Screener, tá sé in am breathnú níos dlúithe a dhéanamh. An bhfuil sé ag dul in airde nó ar rith sé as gal? An bhfuil tú i mbun do chuid iomaitheoirí? Cad a deir an toirt agus margadh na ndíorthach?",
+            "Díríonn stáisiún Analytics an anailís theicniúil, chomparáideach agus chainníochtúil ar fad ar an tsócmhainn sin ar scáileán amháin. Thuas tá an achoimre ghinearálta agus ar an taobh clé ceithre lionsaí chun an uillinn anailíse a athrú gan radharc a chailleadh ar an ngraf."
+          ],
+          "intro": "Díríonn an stáisiún Analytics innill theicniúla, chomparáideacha, anailíse sreafa agus 3D/2D de shócmhainn aonair ar scáileán amháin.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "An painéal barr chun sócmhainní a aistriú, an fráma ama a roghnú, agus féachaint ar do chúig phríomhmhéadracht.",
+              "paragraphs": [
+                "Agus tú ag déanamh staidéir ar shócmhainn, is gnách go n-athraíonn tú idir gearrthéarma an lae inniu agus scannán na míonna beaga anuas, nó fiú aistríonn tú go dtí féachaint ar shiombail eile dá samhail. Conas a dhéanann tú é sin go léir gan dul ar ais?",
+                "Tugann an ceanntásc uachtarach na rialuithe loingseoireachta agus cluaisín tapa na hionstraime le chéile:"
+              ],
+              "lead": "Tugann an ceanntásc uachtarach na rialuithe loingseoireachta agus cluaisín tapa na hionstraime le chéile:",
+              "bullets": [
+                {
+                  "bold": "Athrú sócmhainne nó filleadh ar an liosta",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Ag an mbarr ar chlé is féidir leat filleadh ar Screener nó ainm aon ionstraime eile a chlóscríobh chun cairteacha a athrú ar an láthair."
+                },
+                {
+                  "bold": "Naoi bhfuinneog ama",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Ar an imeall ar dheis athraíonn tú scála an ghraif ó ghluaiseachtaí nóiméad go nóiméad go dtí an stair iomlán."
+                },
+                {
+                  "bold": "Cúig cinn de na táscairí",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "In aice leis an bpraghas atá agat i gcónaí i bhfianaise an méid trádála, an dá phríomhshonraí dá chatagóir, neart an treocht agus leibhéal na normáltachta staidrimh."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Teicniúil",
+              "summary": "An chairt praghas le meán ag gluaiseacht, bannaí luaineachta agus toirt chun leanúint leis an treocht.",
+              "paragraphs": [
+                "Ag féachaint ar an bpraghas deiridh amháin ní insíonn sé duit an bhfuil sócmhainn ag luasghéarú, má tá sé ag preabadh as a meán nó má tá sé tar éis ardú ró-ghasta cheana féin i gceann cúpla lá.",
+                "Ligeann an chéad lionsa ar an iarnród clé duit na tagairtí teicniúla is mó a úsáidtear ar an margadh a fhorleagan ar an ngraf:"
+              ],
+              "lead": "Ligeann an chéad lionsa ar an iarnród clé duit na tagairtí teicniúla is mó a úsáidtear a fhorleagan:",
+              "bullets": [
+                {
+                  "bold": "Seoladh agus meánphraghas iarbhír",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Is féidir leat an meánphraghas gluaiseachta 20-tréimhse agus meánphraghas ualaithe toirte a chur ar siúl chun a fheiceáil láithreach an bhfuil an tsócmhainn ag trádáil os cionn nó faoi bhun a leibhéal cothromaíochta."
+                },
+                {
+                  "bold": "Criosanna barrachais agus dearbhú toirte",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Tarraingíonn na bannaí uasteorainn staitistiúil agus urlár an phraghais, agus dearbhaíonn na barraí níos ísle an bhfuil an ghluaiseacht tacaithe ag toirt."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Foirmlí agus critéir léirmhínithe na Meán Gluaiste (SMA 20), Bannaí Bollinger agus VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Déan comparáid idir %",
+              "summary": "An comparadóir céatadáin ó 0% chun a thomhas cibé an bhfeidhmíonn do shócmhainn níos mó nó níos lú ná ceann eile sa chatagóir chéanna.",
+              "paragraphs": [
+                "Is cosúil go bhfuil stoc ag dul suas 5% mar nuacht iontach, ach má tá a thagarmharc nó a phríomh-iomaitheoir suas 12% sa tréimhse chéanna, tá tú ag titim taobh thiar i ndáiríre.",
+                "Réitíonn an dara lionsa an t-amhras sin tríd an dá shócmhainn a chur ar an líne thosaigh chéanna:"
+              ],
+              "lead": "Réitíonn an dara lionsa an t-amhras sin tríd an dá shócmhainn a chur ar an líne thosaigh chéanna:",
+              "bullets": [
+                {
+                  "bold": "Cuardaigh le haghaidh péirí comhleanúnach",
+                  "code": "Buscar par compatible",
+                  "text": "Déanann an t-inneall cuardaigh sócmhainní ón teaghlach céanna a scagadh amach go huathoibríoch (m.sh. stoic vs. stoic, ETFanna, nó innéacsanna) agus mar sin bíonn ciall airgeadais leis an gcomparáid."
+                },
+                {
+                  "bold": "Buntáiste glan i gcéatadán",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Tosaíonn an dá chuar ó 0% agus ríomhann an t-iarnród clé cé mhéad pointe céatadáin buntáiste (i glas) nó míbhuntáiste (i dearg) atá ag do shócmhainn."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micrea & Sreabhadh",
+              "summary": "An brathadóir ar cheannacháin eis-patrún institiúideach, ar chostais leachtachta agus leathadh.",
+              "paragraphs": [
+                "Is iomaí uair a dhéanann cistí móra suíomhanna a charnadh nó a dhíluchtú sula ndéanann an praghas gluaiseacht tobann. Conas a bhraitheann tú an rian folaithe sin i dtoirt agus i leachtacht an leabhair ordaithe?",
+                "Díríonn an tríú lionsa ar cad a tharlaíonn faoi bhun an athfhriotail:"
+              ],
+              "lead": "Díríonn an tríú lionsa ar cad a tharlaíonn faoi bhun an athfhriotail:",
+              "bullets": [
+                {
+                  "bold": "Buaiceanna toirte staidrimh",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Athraítear an bunphainéal chun a thaispeáint duit cá mhéad uair a imíonn an méid reatha ón ngnáthmhéid, rud a léiríonn gníomhaíocht institiúideach neamhghnách."
+                },
+                {
+                  "bold": "Strus leachtachta agus aimhrialtachtaí",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Tomhaiseann sé i mbunphointí an bhfuil an bhearna idir ceannaitheoirí agus díoltóirí ag méadú agus an mbraitheann an t-inneall staidrimh iompar aitíopúil."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Conas a thomhaistear leatháin tosaigh agus spící staitistiúla in ord sreafa."
+            },
+            {
+              "id": "ana-engines",
+              "label": "Innill 3D/2D",
+              "summary": "Is é an ceathrú lionsa a úsáideann uirlis dhinimiciúil ad hoc a athraíonn de réir aicme sócmhainne.",
+              "paragraphs": [
+                "Murab ionann agus na chéad trí lionsaí (atá coitianta do gach ionstraim), is uirlis ad-hoc é an ceathrú lionsa ar an iarnród clé a athraíonn go dinimiciúil ag brath ar an tsócmhainn atá á anailísiú agat: mar shampla, sa turas beo, toisc gur stoc é (NVDA), cuireann sé ar chumas an luaineacht intuigthe agus na roghanna 3D Payoff Surface, agus i margaí eile imscarann ​​sé inneall speisialaithe.",
+                "Aimsíonn an ceathrú cnaipe an rang sócmhainní oscailte agus gníomhaíonn sé an uirlis ad-hoc comhfhreagrach go huathoibríoch:"
+              ],
+              "lead": "Aimsíonn an ceathrú cnaipe an tsócmhainn atá oscailte agat agus gníomhaíonn sé an uirlis ad-hoc a fhreagraíonn dó:",
+              "bullets": [
+                {
+                  "bold": "I stoic, innéacsanna, díorthaigh agus crypto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Taispeáin an dromchla luaineachta intuigthe 3D, miongháire roghanna faoi dhul in éag, agus insamhlóir 6-straitéis chun a fháil amach cé mhéad a ghnóthófá nó a chaillfeá inniu agus ag dul in éag."
+                },
+                {
+                  "bold": "I rátaí, bannaí agus leachtacht",
+                  "code": "Curva 3D/2D",
+                  "text": "Ligeann sé duit cuair toraidh 42 tír a chur i gcomparáid le SAM agus an Ghearmáin, ag tomhas cé acu an cuar gnáth nó inbhéartaithe (2s10s) agus cé mhéad a athraíonn an praghas de réir athruithe rátaí (DV01)."
+                },
+                {
+                  "bold": "In airgeadraí",
+                  "code": "FX & Carry",
+                  "text": "Tairgeann sé tiontaire agus triantánóir idir 61 airgeadra a ríomhann freisin an difreálach ráta úis 10 mbliana i bhfabhar nó i gcoinne an péire sin a chothabháil."
+                },
+                {
+                  "bold": "In amhábhair",
+                  "code": "Forward 3D/2D",
+                  "text": "Cairtíonn sé praghsanna na gconarthaí todhchaíochtaí mí i ndiaidh míosa lena thaispeáint cé acu an n-íocann an margadh níos mó as cur ar aghaidh (Contango) nó as seachadadh láithreach (Cúlchiste), mar aon le stádas na bhfardal fisiceach."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sonraí matamaitice ar dhromchlaí luaineachta, cuair toraidh cheannasaigh, iompraíonn airgeadra agus cuair todhchaíochtaí."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Taispeánann an chairt duit cad atá á dhéanamh ag an bpraghas, ach ní insíonn sé duit cén fáth. Le fios a bheith agat cad atá taobh thiar de ghluaiseacht bheadh ​​ort mórán leathanach de chláir chomhardaithe ráithiúla, ráitis bhainc cheannais, tuarascálacha fardail agus cáblaí nuachta a léamh.",
+            "Déanann an stáisiún Research an t-ardú trom sin duit. Nascann sé faisnéis shaorga dhoiciméadach arna fíorú i gcoinne tuarascálacha oifigiúla le léamh nuachta fíor-ama, ag eagrú na fianaise go léir ar son agus i gcoinne i dtrí cholún shoiléir."
+          ],
+          "intro": "Déanann Station Research achoimre ar chláir chomhardaithe oifigiúla, tuarascálacha maicreacnamaíocha agus nuacht fíor-ama i dtrí cholún shoiléir.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Nóta & Posture",
+              "summary": "Na trí chárta is fearr a thugann achoimre ar fhíorasc bunúsach agus ar ghreann na nuachta.",
+              "paragraphs": [
+                "An bhfuil bunghnéithe na sócmhainne ag gabháil leis an ardú ar phraghas nó an bhfuil an nuacht ag dul in olcas ar an ionchas? Sula léann tú na sonraí, ní mór duit conclúid feidhmiúcháin tapa.",
+                "Sa chúinne uachtarach ar dheis tá trí tháscaire a thugann achoimre ar stádas ginearálta na sócmhainne:"
+              ],
+              "lead": "Sa chúinne uachtarach ar dheis tá trí tháscaire a thugann achoimre ar an stádas ginearálta:",
+              "bullets": [
+                {
+                  "bold": "posture agus meáchan gach foinse",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Sainmhíníonn sé an fíorasc ginearálta agus soiléiríonn sé an meáchan a thugann sé ar dhoiciméid oifigiúla i gcomparáid le nuacht ag brath ar an gcineál sócmhainne (mar shampla, cláir chomhardaithe 80% agus nuacht 20% i stoc)."
+                },
+                {
+                  "bold": "Rátáil comhcheangailte",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Sintéisíonn sé toradh glan na mbunúsanna mar aon le sreabhadh faisnéise an lae in aon scór amháin."
+                },
+                {
+                  "bold": "Sealbhóirí teirmiméadar",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Cuir ar bharra ó -100 go +100 má tá ton an phreasa le cúpla uair an chloig anuas Doirbh (dearg), neodrach nó díograiseach (glas)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mar a dhéantar tuarascálacha oifigiúla a ualú i gcoinne nuachta ag brath ar an gcineál sócmhainne."
+            },
+            {
+              "id": "res-rag",
+              "label": "Comhrá RAG",
+              "summary": "An cúntóir faisnéise ar chlé chun ceisteanna sonracha a chur faoi chláir chomhardaithe agus tuarascálacha oifigiúla.",
+              "paragraphs": [
+                "Cuir i gcás gur mhaith leat a fháil amach cad go díreach a dúirt cuideachta faoina corrlaigh ina clár comhardaithe bliantúil 10-K is déanaí, nó cad a dúirt an Cúlchiste Feidearálach ina miontuairiscí is déanaí. Tógann sé am chun é a chuardach de láimh; Má chuirtear ceist ar chomhrá cineálach gan foinsí is féidir sonraí comhdhéanta a thabhairt duit.",
+                "Réitíonn an colún ar chlé é seo le draoi atá ceangailte go heisiach le doiciméadú oifigiúil fíoraithe:"
+              ],
+              "lead": "Cuireann an colún ar chlé draoi ar fáil duit atá ceangailte le doiciméadúchán oifigiúil fíoraithe:",
+              "bullets": [
+                {
+                  "bold": "Tráchtas tosaigh agus ceisteanna treoraithe",
+                  "code": "Chat Documental RAG",
+                  "text": "Tosaíonn sé le hachoimre feidhmiúcháin le Sleachta fíoraithe agus ceithre chnaipe mearthagartha curtha in oiriúint don chatagóir sócmhainne, chomh maith le réimse inar féidir leat do cheisteanna féin a scríobh."
+                },
+                {
+                  "bold": "Céim dhíreach chuig do phunann",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Más rud é tar éis duit taighde a dhéanamh ar na bunghnéithe, má chinneann tú gur fiú an tsócmhainn, seolann an cnaipe seo ag barr an chomhrá díreach chuig an Insamhlóir punainne tú."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Feidhmiú an chuardaigh dhoiciméadach fhíoraithe (RAG) agus a scagairí slándála."
+            },
+            {
+              "id": "res-factors",
+              "label": "Fachtóirí",
+              "summary": "An cairdín lárnach leis na cúig tiománaithe bullish agus na cúig rioscaí bearish arna n-ordú de réir tionchair.",
+              "paragraphs": [
+                "Níl aon infheistíocht céad faoin gcéad foirfe nó céad faoin gcéad dona: bíonn argóintí i bhfabhar agus rioscaí folaigh i gcónaí. Is é an rún fios a bheith agat cé na cinn a mheáchan níos mó inniu.",
+                "Cuireann an colún sa lár an dá thaobh aghaidh le duine ionas gur féidir leat cinneadh cothrom a dhéanamh:"
+              ],
+              "lead": "Cuireann an colún sa lár an dá thaobh aghaidh le duine ionas gur féidir leat cinneadh cothrom a dhéanamh:",
+              "bullets": [
+                {
+                  "bold": "Comhardaithe fórsa agus scagairí",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Os cionn feiceann tú an barra tairisceana idir ceannaitheoirí agus díoltóirí, agus thíos is féidir leat na cúig chatalaíoch dearfacha (i glas) nó na cúig phríomhriosca (i dearg) a scagadh."
+                },
+                {
+                  "bold": "Sonraigh agus druil síos i gceann cliceáil",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Nuair a dhéanann tú teagmháil le haon fhachtóir ar an liosta, taispeántar a mhíniú iomlán mar aon le cnaipe chun tuilleadh eolais a fháil ar Chat RAG faoin bpointe sonrach sin."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Pulse",
+              "summary": "An t-amlíne cheart leis na ceannlínte rátáil AI is déanaí agus an cuar giúmar 24 uair an chloig.",
+              "paragraphs": [
+                "Féadfaidh ceannlíne aonair nóiméad deireanach faoi thuilleamh, boilsciú nó rialacháin meon an lae a athrú go hiomlán. Cén chaoi a bhfuil a fhios agat cén nuacht atá díreach tagtha amach agus cén éifeacht atá aige?",
+                "Déanann an colún ar dheis monatóireacht ar an sreabhadh faisnéise nóiméad ar nóiméid:"
+              ],
+              "lead": "Déanann an colún ar dheis monatóireacht ar an sreabhadh faisnéise nóiméad ar nóiméid:",
+              "bullets": [
+                {
+                  "bold": "Amlíne cháilithe",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Liostaíonn sé na cúig cheannlíne is déanaí lena n-am agus a ngníomhaireacht, ag scóráil glas iad má tá siad fabhrach nó dearg má tá siad ina bhagairt."
+                },
+                {
+                  "bold": "Tionchar agus insamhlóir cuar laethúil",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Is féidir leat sreang beo a spreagadh leis an gcnaipe barr chun a fheiceáil conas a athríomhann sé an scáileán iomlán agus lean sa ghraf thíos conas a tháinig an giúmar chun cinn le 24 uair an chloig anuas."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Conas a dhéanann an tsamhail FinBERT anailís ar theanga airgeadais gach sealbhóir."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Tógálaí",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Ní leor sócmhainní maithe a roghnú ar leithligh chun punann maith a bheith agat. Má chuireann tú an iomarca caipitil isteach i sócmhainní a bhogann mar a chéile, nó mura dtomhaiseann tú conas a d’fheidhmigh siad le chéile san am atá caite, tá tú ag infheistiú go dall.",
+            "Is é Cruthaitheoir & Feidhmíocht (an chéad radharc de Portfolio) an cheardlann ina dtógann tú do phunann. Ligeann sé duit aon cheann de na 213 sócmhainn a shuimiú, an céatadán a shannann tú do gach ceann acu a choigeartú gan déileáil le rialuithe míchruinn, agus iniúchadh a dhéanamh láithreach ar a chomhdhéanamh inmheánach agus ar a stair."
+          ],
+          "intro": "Ceardlann is ea Cruthaitheoir & Feidhmíocht ina dtógann tú do phunann, a choigeartóidh tú meáchan gach sócmhainne agus ina ndéanann tú iniúchadh ar a feidhmíocht stairiúil.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Achoimre",
+              "summary": "Beo ar na sé chárta is fearr a athríomh gach uair a mhodhnóidh tú do phunann.",
+              "paragraphs": [
+                "Gach uair a chuireann tú sócmhainn leis nó nuair a athraíonn tú céatadán i do phunann, ní mór duit fios a bheith agat láithreach cé acu a d’fheabhsaigh an coigeartú sin do thoradh ionchasach nó an ndeachaigh sé in olcas do neamhchosaint.",
+                "Coinníonn an tsraith uachtarach sé mháistir-mhéadracht na punainne infheicthe i gcónaí:"
+              ],
+              "lead": "Coinníonn an tsraith uachtarach sé mháistir-mhéadracht na punainne infheicthe i gcónaí:",
+              "bullets": [
+                {
+                  "bold": "Feidhmíocht agus éifeachtúlacht",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Insíonn siad duit cén brabús bliantúil cumaisc a thionscnaíonn an phunann ar do chaipiteal agus cé mhéad toradh a fhaigheann tú ar gach aonad riosca a nglactar leis."
+                },
+                {
+                  "bold": "Caillteanas laethúil ionchasach agus titim stairiúil",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Ríomhann siad cé mhéad dollar a d'fhéadfá a chailleadh ar dhrochlá laistigh den mhéid a bhí intuartha go staitistiúil agus cad é an t-aischur is doimhne le bliain anuas."
+                },
+                {
+                  "bold": "Luach breise agus éagsúlú",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Tomhaiseann siad cé mhéad pointe a sháraíonn do phunann an t-innéacs tagarmharcála agus cé mhéad riosca atá á laghdú agat mar gheall ar shócmhainní éagsúla a chomhcheangal."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Foirmlí tuairisceáin ilchodacha (CAGR), cóimheasa Sharpe agus Sortino, agus Luach i mBaol (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "ualú",
+              "summary": "An tábla ar chlé chun sócmhainní a chur leis, iad a chasadh air nó as agus an céatadán beacht de gach suíomh a shainiú.",
+              "paragraphs": [
+                "Cad a tharlódh d'uimhreacha do phunann dá ndúnfá stoc teicneolaíochta go sealadach inniu nó dá roinnfeá an t-airgead go cothrom i measc do phoist ar fad?",
+                "Ligeann an painéal ar chlé duit na tástálacha sin go léir a dhéanamh ar bhealach glan díreach:"
+              ],
+              "lead": "Ligeann an painéal ar chlé duit na tástálacha sin go léir a dhéanamh ar bhealach glan díreach:",
+              "bullets": [
+                {
+                  "bold": "Inneall cuardaigh le haghaidh 213 sócmhainní",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Is féidir leat aon ionstraim a chuardach ar an ardán nó do cheanáin a scagadh chun é a chur leis an tábla le cliceáil amháin."
+                },
+                {
+                  "bold": "Tús tapa agus eagarthóireacht chruinn",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Tá ticbhosca ag gach sraith chun an tsócmhainn a áireamh nó a eisiamh i bhfíor-am agus bosca uimhreacha chun an céatadán cruinn a chur isteach gan úsáid a bhaint as sleamhnáin mhíchruinn."
+                },
+                {
+                  "bold": "Trí aicearra athchothromaithe",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Ag barr an tábla tá cnaipí agat chun meáchain chomhionann a dháileadh idir na sócmhainní gníomhacha go léir, tabhair an tsuim go 100% go huathoibríoch nó fill ar an bpunann bunaidh."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "X-gha",
+              "summary": "An painéal barr ar dheis le cúig chluaisín chun tiúchan folaithe, sreabhadh airgid agus coimeád a fháil amach.",
+              "paragraphs": [
+                "Ceann de na botúin is coitianta nuair a bhíonn tú ag infheistiú ná a chreidiúint go bhfuil tú éagsúlaithe toisc go bhfuil cúig shócmhainn éagsúla agat, nuair a cheannaigh tú stoc aonair i ndáiríre agus dhá ETF freisin a bhfuil an stoc céanna taobh istigh acu.",
+                "Déanann an painéal X-gha anailís ar do phunann ón taobh istigh trí chúig chluaisín:"
+              ],
+              "lead": "Déanann an painéal X-gha anailís ar do phunann ón taobh istigh trí chúig chluaisín:",
+              "bullets": [
+                {
+                  "bold": "Brathadóir suímh arís agus arís eile",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Cuir le chéile an méid atá infheistithe agat go díreach i ngach cuideachta móide an chuid folaithe atá agat laistigh d’innéacsanna nó ETFanna (cosúil le SPY nó QQQ), ag tabhairt rabhadh duit i ndath dearg má sháraíonn tú teorainneacha stuama."
+                },
+                {
+                  "bold": "Léarscáil nochta agus bunús an tuairisceáin",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Léiríonn siad duit cén céatadán atá agat i ndáiríre i ngach cineál sócmhainne agus airgeadra, agus cé mhéad de do bhrabús a tháinig ó roghnú earnálacha maithe i gcomparáid le sócmhainní maithe a roghnú."
+                },
+                {
+                  "bold": "Ioncam agus slándáil bhliantúil réamh-mheasta",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Ríomhann siad cé mhéad dollar atá tú chun a bhailiú sa bhliain le haghaidh díbhinní, cúpóin agus ús, agus déanann siad iniúchadh ar shócmhainneacht na gcaomhnóirí ina bhfuil do chaipiteal suite."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "An chaoi a ríomhtar risíocht indíreach laistigh de ETFanna agus de mhiondealú sannadh Brinson."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Féilire",
+              "summary": "An chairt mhíosúil ó Eanáir go Nollaig chun rialtacht do bhrabúis agus do chaillteanais a fheiceáil.",
+              "paragraphs": [
+                "Is féidir le tuairisceán bliantúil maith míonna de thitim an-ghéar a cheilt ar deacair iad a fhulaingt go praiticiúil. Cé chomh comhsheasmhach ó mhí go mí atá an phunann atá curtha le chéile agat?",
+                "Díreach faoi bhun an X-gha, déanann an féilire an stair mhíosúil a bhriseadh síos:"
+              ],
+              "lead": "Díreach faoi bhun an X-gha, déanann an féilire an stair mhíosúil a bhriseadh síos:",
+              "bullets": [
+                {
+                  "bold": "Míonna glasa agus míonna dearga",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Déantar gach cill a athríomh láithreach de réir na meáchain i do tábla agus péinteáilte glas nó dearg ag brath ar thoradh na míosa sin, ag druidim ar dheis leis an toradh carnach don bhliain."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "An graf lánscáileáin thíos chun do phunann a chur i gcomparáid le ceithre straitéis chlasaiceach.",
+              "paragraphs": [
+                "Sula measann tú go bhfuil do phunann go maith, tá an tástáil bhunúsach fós: an bhfuil sé i ndáiríre níos fearr ná an t-airgead a fhágáil sa S&P 500 nó i bpunann 60/40 traidisiúnta?",
+                "Tá leithead iomlán an scáileáin ag an bpainéal bun chun do dhearadh a chur in oiriúint do chaighdeáin an mhargaidh:"
+              ],
+              "lead": "Cuireann an bunphainéal do dhearadh in aghaidh caighdeáin an mhargaidh:",
+              "bullets": [
+                {
+                  "bold": "Cúig dhearcadh tástála",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Ligeann sé duit measúnú a dhéanamh ar an gcaoi ar éirigh le do mheascán le ráithe anuas agus thar thimthriallta ilbhliantúla iomlána."
+                },
+                {
+                  "bold": "Ceithre thagairt aghaidh le duine",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Forleagan cuar glas do phunann gníomhach i gcoinne aon cheann de na ceithre mhúnla clasaiceacha ionas gur féidir leat a fheiceáil go soiléir nuair atá sé chun tosaigh agus conas atá sé ag seasamh suas ar an taobh thíos."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Riosca",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "In amanna nuair a ardaíonn an margadh go socair, is cosúil go bhfuil beagnach aon phunann sábháilte. Feictear an fhíorfhadhb nuair a thagann géarchéim amach, ardaíonn rátaí úis go tobann agus tosaíonn sócmhainní a bhfuil cuma neamhspleách orthu ag titim ar fad ag an am céanna.",
+            "Cuireann Riosca & Strus Cainníochtúil (an dara radharc ar Portfolio) do phunann trí thástálacha foircneacha sula dtarlaíonn siad sa saol fíor. Trí cheithre cheathrú siméadracha agus insamhlóir cásanna todhchaí thíos, taispeánann sé duit go díreach cá bhfuil do phointí leochaileacha."
+          ],
+          "intro": "Déanann Riosca Cainníochtúil & Strus do phunann a thástáil le haghaidh géarchéimeanna stairiúla, contagion comhghaolaithe, agus réamh-mheastacháin Monte Carlo.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "An léarscáil riosca agus fillte idirghníomhach lena fháil amach cé chomh gar agus atá tú don phunann is éifeachtaí agus is féidir.",
+              "paragraphs": [
+                "Leis na sócmhainní céanna atá agat cheana féin i do phunann, tá na mílte bealaí ann chun na céatadáin a dháileadh. An é an meascán a roghnaigh tú an ceann is fearr a íocann as an riosca a ghlacann tú, nó an bhféadfá an bua céanna a dhéanamh le níos lú iontas?",
+                "Tarraingíonn an chéad cheathrú ag barr ar chlé léarscáil bheo na bhféidearthachtaí:"
+              ],
+              "lead": "Tarraingíonn an chéad cheathrú ar bharr na láimhe clé léarscáil bheo na bhféidearthachtaí:",
+              "bullets": [
+                {
+                  "bold": "Do sheasamh i gcoinne na punanna is fearr",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Léiríonn sé an áit a bhfuil do phunann reatha suite i gcomparáid leis an bpointe luaineachta is ísle agus is féidir agus pointe na huaséifeachtúlachta priacal aischuir."
+                },
+                {
+                  "bold": "Sraitheanna amhairc agus iniúchadh de réir sócmhainne",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Is féidir leat sraitheanna na samhla a chasadh air nó as agus cliceáil ar aon nód chun ranníocaíocht bheacht na sócmhainne sin a léamh thíos."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Teorainn éifeachtach Markowitz agus ríomh an athraitheas íosta agus na punanna uasta Sharpe."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado & VaR",
+              "summary": "An t-insamhlóir géarchéime stairiúil, miondealú caillteanas laethúil de réir sócmhainní agus neamhshiméadracht an mhargaidh.",
+              "paragraphs": [
+                "Dá ndéanfaí timpiste cosúil leis an gceann in 2008, an moilliú geilleagrach in 2020, nó ardú rátaí in 2022 a athdhéanamh amárach, cé mhéad a chaillfeadh do phunann reatha agus cén tsócmhainn a bheadh ​​mar an príomhchúisitheoir?",
+                "Freagraíonn an ceathrú íochtair ar chlé na trí cheist sin i dtrí chluaisín ar leith:"
+              ],
+              "lead": "Freagraíonn an ceathrú íochtair ar chlé na ceisteanna sin i dtrí chluaisín ar leith:",
+              "bullets": [
+                {
+                  "bold": "Tástáil i gcoinne cúig ghéarchéim fíor",
+                  "code": "1. Tornado Stress",
+                  "text": "Déan comparáid idir barra ar bharra cé mhéad a thitfeadh ar do phunann in aghaidh an S&P 500 in aghaidh cúig mhórshuaite stairiúla."
+                },
+                {
+                  "bold": "Rangú riosca de réir suímh",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Sórtáil do shealúchais de réir cé mhéad dollar de chaillteanas laethúil féideartha a chuireann gach ceann acu leis an bpunann iomlán."
+                },
+                {
+                  "bold": "Iompar i ups agus downs",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Taispeánann sé duit cén céatadán de rothaí bullish an mhargaidh a mbaineann gach sócmhainn leas as agus cé mhéad a bhainistíonn sé a mhaolú nuair a thiteann an margadh."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Modheolaíocht cásanna struis stairiúla, ranníocaíocht imeallach le VaR agus cóimheasa gabhála."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Comhghaol",
+              "summary": "An tras-maitrís chun a sheiceáil an bhfuil do shócmhainní éagsúlú i ndáiríre nó má tá siad ionfhabhtaithe le linn scaoll.",
+              "paragraphs": [
+                "Má bhíonn roinnt sócmhainní i do phunann ní laghdaítear an riosca mura mbogann siad go léir sa treo céanna ag an am céanna. Ach le linn scaoll airgeadais, léim go leor comhghaolta a raibh an chuma orthu íseal go géar aníos.",
+                "Ligeann an ceathrún uachtarach ar dheis duit an gaol sin a iniúchadh in dhá chás:"
+              ],
+              "lead": "Ligeann an ceathrún uachtarach ar dheis duit an gaol sin a iniúchadh in dhá chás:",
+              "bullets": [
+                {
+                  "bold": "Trasnú idir sócmhainní agus íogaireacht",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Léiríonn sé cé chomh cosúil a ghluaiseann gach péire sócmhainní (i glas nó gorm éadrom nuair a bhíonn siad éagsúil go maith, agus i dearg nuair a bhogann siad ró-ghar dá chéile) agus cén íogaireacht atá acu don mhargadh."
+                },
+                {
+                  "bold": "Insamhlóir gabhála i ngéarchéim",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Le clic amháin athraíonn tú comhghaolta gnáthbhliana go dtí nóiméad scaoll le fáil amach cé na poist nach gcosnódh tú a thuilleadh."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Comhéifeachtaí comhghaoil ​​Pearson a ríomh faoi ghnáthchoinníollacha agus faoi strus margaidh."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash agus Markov",
+              "summary": "An comhthábla tionchair idir rátaí agus an stocmhargadh, móide na dóchúlachtaí go dtiocfaidh athrú ar an timthriall eacnamaíoch.",
+              "paragraphs": [
+                "Sa fhíorgheilleagar, is annamh a thagann fadhbanna ceann ar cheann: is iomaí uair a thagann ardú ar rátaí úis i gcomhthráth le titim i stoic. Cad a tharlaíonn do do phunann má chuirtear an dá thoisc le chéile ag an am céanna?",
+                "Trasnaíonn an ceathrú íochtair ar dheis an dá athróg agus tomhaiseann sé na dóchúlachtaí a bhaineann le hathrú réime:"
+              ],
+              "lead": "Trasnaíonn an ceathrú íochtair ar dheis an dá athróg agus tomhaiseann sé timthriall an mhargaidh:",
+              "bullets": [
+                {
+                  "bold": "Bord tionchair dúbailte",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Gluaiseachtaí trasráta (-100 go +200 bonnphointe) le titim nó arduithe ar an S&P 500 (-20% go +10%), rud a ligeann duit scagadh de réir na punainne iomlán nó de réir sócmhainn aonair."
+                },
+                {
+                  "bold": "Dóchúlachtaí trasdul rothair",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Ríomh cé chomh dóchúil is atá an margadh fanacht socair nó dul isteach i gcéim luaineach, boilscithe nó géarchéime."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Comhíogaireacht maidir le rátaí agus athróga, agus maitrís aistrithe stáit Markov."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Tá an bunphainéal lánscáileáin le réamh-mheastacháin dóchúlachta agus laghduithe stairiúla amach anseo.",
+              "paragraphs": [
+                "Tá sé úsáideach breathnú ar an am atá thart, ach nuair a bhíonn tú ag infheistiú ar aghaidh ní mór duit fios a bheith agat cad é an raon torthaí a fhéadfaidh do chaipiteal a bhogadh sna sé mhí, bliain nó dhá bhliain atá romhainn.",
+                "Tugann an bunphainéal lánleithead trí uirlis shealadacha le chéile chun an cosán sin a theilgean agus a rialú:"
+              ],
+              "lead": "Tugann an bunphainéal trí uirlis shealadacha le chéile chun an cosán sin a theilgean:",
+              "bullets": [
+                {
+                  "bold": "Deich míle cás amach anseo",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Tarraing cón éabhlóid dhóchúil do phunann, ag déanamh idirdhealú idir an cás dóchasach (P95 i glas), an cosán lárnach ionchasach (P50) agus an cás díobhálach (P05 i dearg)."
+                },
+                {
+                  "bold": "Doimhneacht titim agus cobhsaíocht le himeacht ama",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Ligeann siad duit an chairt a scoránaigh féachaint cé chomh fada agus a d'fhan an phunann faoi bhun a buaicphointí uile-ama nó cé chomh cobhsaí agus a bhí a éifeachtúlacht agus a riosca os cionn fuinneoga rollacha 60-lá."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Insamhladh stochastic Monte Carlo de 10,000 bóthar agus méadracht rollta 60 lá."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Insamhlóir",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Roimh shócmhainn nua a cheannach, suíomh a laghdú nó íoc as fálaithe le roghanna, tagann an cheist chéanna i gcónaí: an bhfuil an oibríocht seo ag feabhsú mo phunann i ndáiríre nó an bhfuil riosca neamhriachtanach ag baint leis? Agus cé mhéad caipitil ba chóir dom a chur isteach ann?",
+            "Is é an Saotharlann Straitéise Ad-Hoc (an tríú radharc de Portfolio) d’insamhlóir réamhoibríochta. Ligeann sé duit drámaí oirbheartaíochta a luchtú, méid do shuímh idéalach a ríomh, árachas míbhuntáiste a thástáil, agus an tionchar cruinn a fheiceáil roimh agus tar éis an tionchair gan baint go fóill le do bhunphunann."
+          ],
+          "intro": "Is í an tSaotharlann Straitéise Ad-Hoc d’insamhlóir réamhthrádála chun orduithe, suíomhanna méide a thástáil agus chun clúdach a thomhas.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Tionchar",
+              "summary": "Na sé chárta is fearr a dhéanann comparáid idir do phunann reatha agus an toradh i ndiaidh na ndrámaí insamhladh.",
+              "paragraphs": [
+                "Chun a fháil amach an fiú smaoineamh oirbheartaíochta é, ní leor go bhféachfadh an tsócmhainn tarraingteach ina haonar: caithfidh sé na huimhreacha don phunann iomlán a fheabhsú.",
+                "Taispeánann an tsraith uachtarach go buan duit an chomparáid idir do phunann reatha agus an phunann leis an ionsamhladh a cuireadh i bhfeidhm:"
+              ],
+              "lead": "Déanann an tsraith uachtarach do phunann reatha i gcomparáid leis an bpunann leis an ionsamhladh a cuireadh i bhfeidhm:",
+              "bullets": [
+                {
+                  "bold": "Éifeacht ar bhrabús agus éifeachtúlacht",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Taispeánann siad an bonnuimhir in aice leis an uimhir réamh-mheasta, ag léiriú an difríocht i ndath glas má chuireann an dráma le héifeachtúlacht nó i ndearg má thagann meath uirthi."
+                },
+                {
+                  "bold": "Éifeacht ar riosca, caipiteal agus rialacha",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Insíonn siad duit cé mhéad a athraíonn d’uaschaillteanas ionchasach, cén céatadán den phunann a bhfuil tú ag tabhairt faoi na tástálacha agus an n-urramaítear na teorainneacha slándála go léir."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If & Kelly",
+              "summary": "An t-insamhlóir ticéad ceannaigh/díola agus an t-áireamhán chun an méid airgid a bheidh le riosca a shainiú.",
+              "paragraphs": [
+                "Ar deireadh go leor smaointe infheistíochta maith is cúis le caillteanais mar gheall ar earráid i méid an geall: a chur ró-beag ní bogadh an tsnáthaid, ach a chur i bhfad ró-féadfaidh an phunann scrios má théann an t-aistriú mícheart.",
+                "Nascann an chéad cheathrú ag barr ar chlé an bhileog fhianaise leis an ríomh matamaitice ar mhéid:"
+              ],
+              "lead": "Déanann an chéad cheathrú an tuarascáil tástála a aontú leis an ríomh matamaitice ar mhéid:",
+              "bullets": [
+                {
+                  "bold": "Íoslódáil an t-ordú tástála",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Roghnaíonn tú aon sócmhainn, cuir in iúl más mian leat a cheannach, a dhíol nó a chlúdach agus an méid a luchtú i ndollair. Sa liosta thíos is féidir leat gach ord insamhlaithe a chasadh air nó as chun a éifeacht a chur i gcomparáid."
+                },
+                {
+                  "bold": "Méid suímh is fearr",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Bunaithe ar do dhóchúlacht mheasta go n-éireoidh leat agus ar an ngaol idir brabús agus caillteanas, ríomhann sé cén céatadán uasta den chaipiteal ba cheart a leithdháileadh chun fás gan tú féin a nochtadh ró-mhór."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ríomh matamaiticiúil Chritéar Kelly agus a leagan coimeádach Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Cuir OTM & Imeall",
+              "summary": "An t-insamhlóir árachais le roghanna maidir le meath láidir ar an margadh agus an monatóir ar ghlaonna corrlaigh.",
+              "paragraphs": [
+                "Nuair a bhíonn eagla ort roimh cheartú láidir sa mhargadh, is gnách go mbíonn sé costasach agus mí-éifeachtach do phoist go léir a dhíol. Is é an rogha ghairmiúil ná árachas a fháil le roghanna cosanta, ach cé mhéad a chosnaíonn an t-árachas sin in aghaidh na bliana agus cé mhéad a chosnaíonn sé tú i ndáiríre?",
+                "Ligeann an ceathrú íochtair ar chlé duit an clúdach agus an leibhéal fiachais a thomhas:"
+              ],
+              "lead": "Tomhaiseann an ceathrú íochtair ar chlé cumhdach agus leibhéal ráthaíochtaí araon:",
+              "bullets": [
+                {
+                  "bold": "Comparadóir sciatha cosanta",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Ligeann sé duit malairt a dhéanamh idir oibriú gan clúdach nó trí chineál árachais a chur i bhfeidhm le roghanna (ar luaineacht SPY, QQQ nó VIX), i gcodarsnacht le costas bliantúil na préimhe i gcoinne na ndollair a shábhálfá i dtimpiste 20%."
+                },
+                {
+                  "bold": "Rialú giarála agus comhthaobhachta",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Monatóireacht a dhéanamh ar an gcéatadán den chorrlach cothabhála a d’úsáid tú agus cén laghdú céatadánach a mhairfidh ar an bpunann sula dtéann tú isteach sa chrios glaonna corrlaigh."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Oibriú fálaithe le roghanna lasmuigh den airgead Cuir agus ríomh ráthaíochtaí Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Coiste & Leabhar",
+              "summary": "An dá phainéal cearta a bhfuil athbhreithniú uathoibríoch ar theorainneacha riosca, stair ordú agus Comhphíolótach.",
+              "paragraphs": [
+                "Agus an díograis a bhaineann le triail a bhaint as trádáil, is furasta dearmad a dhéanamh go bhfuil sócmhainn ag díriú níos mó ná 20% de do phunann iomlán nó go bhfuil sí ag feidhmiú i lár aimhrialtacht thromchúiseach staidrimh.",
+                "Feidhmíonn an dá cheathrú ar dheis mar do rian rialaithe riosca agus iniúchta uathoibríoch:"
+              ],
+              "lead": "Feidhmíonn an dá cheathrú ar dheis mar rialú riosca agus clárú:",
+              "bullets": [
+                {
+                  "bold": "Léirmheas i dtrí thoise",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Déanann siad measúnú ar d’orduithe insamhlaithe ó na teorainneacha teicniúla, bunúsacha agus crua slándála (rabhadh má sháraíonn aon suíomh an teorainn caipitil 20% nó má tá aimhrialtachtaí arda ann)."
+                },
+                {
+                  "bold": "Loga ordú agus cúntóir punainne",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Taifeadann an painéal íochtair gach insamhalta lena thionchar ar riosca, agus osclaíonn an cnaipe idirphlé ar bharr na láimhe deise an comhrá chun ceisteanna díreacha a chur faoi do phunann."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Rialacha rialaithe riosca réamhoibríochta agus teorainneacha tiúchana in aghaidh na sócmhainne."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "An graf thíos i lánscáileán le seiceáil go n-oibríonn do straitéis lasmuigh den tréimhse trialach.",
+              "paragraphs": [
+                "Is féidir aon straitéis a choigeartú trí bhreathnú ar an am atá caite go dtí go bhfeictear go bhfuil sé bréagach ar an gcairt stairiúil. Is é an fíor-dhúshlán ná fios a bheith agat má leanann sé ar aghaidh ag obair nuair a bhíonn sonraí margaidh nua os comhair.",
+                "Cuireann an bunphainéal lánleithead an straitéis tríd an mbailíochtú is déine sula dtéann sí i dtáirgeadh:"
+              ],
+              "lead": "Cuireann an bunphainéal faoi réir na straitéise do bhailíochtú insampla agus lasmuigh den sampla:",
+              "bullets": [
+                {
+                  "bold": "Scaradh idir dearadh agus tástáil iarbhír",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Roinneann sé an graf stairiúil ina chéad chéim ina ndéantar an straitéis a chalabrú agus ina dhara céim le sonraí nach bhfacthas riamh cheana lena sheiceáil an bhfuil a bhuntáiste fós aige thar an mbunphunann."
+                },
+                {
+                  "bold": "Nóta stóinseachta staidrimh",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Má sháraíonn an táscaire éifeachtúlachta 70%, deimhníonn sé go bhfuil na torthaí comhsheasmhach agus nach bhfuil an toradh ar éigean ar na huimhreacha ar an am atá caite."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Cad a thomhaiseann Innéacs Éifeachtúlachta Walk-Forward (WFE) agus conas a aimsíonn sé straitéisí ró-uasmhéadaithe."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Scagaire Leachtachta (ADV)",
+        "intro": "Ionas gur féidir sócmhainn a thrádáil gan ordú aonair a praghas a shaobhadh, éilíonn an t-ardán tairseach íosta de mheánmhéid laethúil i ndollair le 20 lá gnó anuas.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Praghas Deiridh × × Imleabhar Trádálaithe)",
+          "denominator": "20 rothaí sciliúla",
+          "vars": [
+            "Praghas Deiridh: praghas deiridh oifigiúil an lae arna shloinneadh i USD.",
+            "Toirt Trádáilte: líon iomlán na n-aonad a thrádáiltear ar an lá sin."
+          ]
+        },
+        "lead": "Bunaithe ar an meántoirt laethúil, rangaíonn an chatalóg doimhneacht gach ionstraime:",
+        "bullets": [
+          {
+            "bold": "Leachtacht institiúideach ard",
+            "code": "> $500M diarios",
+            "text": "Ligeann sé duit dul isteach i suíomhanna móra agus iad a fhágáil láithreach gan praghas an mhargaidh a bhogadh."
+          },
+          {
+            "bold": "Leachtacht Chaighdeánach Catalóg",
+            "code": "$50M a $500M diarios",
+            "text": "Oiriúnach do phunanna éagsúlaithe le costais cheannaigh/díola an-íseal."
+          },
+          {
+            "bold": "Monatóireacht a dhéanamh ar scaipeadh",
+            "code": "< $50M diarios",
+            "text": "In amanna luaineachta tá sé inmholta oscailt leideanna a sheiceáil sula ndéantar orduithe móra."
+          }
+        ],
+        "example": "Má tá stoc ag trádáil ag $200 agus má dhéanann sé trádáil ar 5 mhilliún scair in aghaidh an rotha ar an meán le mí anuas, is é $1 billiún ($1.0B) a mheánmhéid laethúil (ADV)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalú go USD",
+        "intro": "De réir mar a chomhcheanglaíonn an chatalóg bannaí Eorpacha, innéacsanna na hÁise, tráchtearraí agus cryptocurrencies, déantar gach sreabhadh toirte a thiontú go dollar SAM i bhfíor-am ionas gur féidir iad a chur i gcomparáid ar an scála céanna.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Méid Airgeadra Áitiúil: an méid a thrádáiltear in airgeadra bunaidh an mhargaidh (EUR, JPY, GBP, BRL, etc.).",
+            "Ráta Malairte Spota: luachan reatha san inneall 61 airgeadra."
+          ]
+        },
+        "lead": "Bíonn tionchar díreach ag an tiontú seo ar dhá áit ar an scáileán:",
+        "bullets": [
+          {
+            "bold": "Rangú Amharc Foriomlán Uile",
+            "code": "213 activos",
+            "text": "Ordaigh na hionstraimí ón ngluaiseacht airgid is mó agus is lú ar fud an domhain."
+          },
+          {
+            "bold": "Cárta Imleabhar Cuireadh leis",
+            "code": "Volumen 24h en $B",
+            "text": "Ligeann sé méid na sócmhainní atá liostaithe i dtíortha éagsúla a shuimiú gan aon saobhadh."
+          }
+        ],
+        "example": "Má thrádálann banna Gearmánach €4 billiún in aghaidh an lae agus má thras-thrádálann an EUR/USD ag 1.08, ríomhann an córas $4.32B sa chuisle domhanda."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "Meánlíon RSI (14)",
+        "intro": "Conas a thomhaiseann tú an bhfuil margadh ag ardú le fíor-neart nó an bhfuil ardú ró-ghasta air cheana féin agus an bhfuil sé ídithe? Déanann an tInnéacs Neart Coibhneasta (RSI) comparáid idir na harduithe meánacha agus na meán-laghduithe sna 14 bhabhta deiridh ar scála 0 go 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Meán aníos₁₄ / Average Downs₁₄)",
+          "vars": [
+            "Meán Ardú₁₄: meán smoothed na bpointí a tuilleadh ar laethanta bullish na 14 roth deiridh.",
+            "Meánchaillteanais₁₄: meán réidh na bpointí a cailleadh ar laethanta bearish na tréimhse céanna."
+          ]
+        },
+        "lead": "Seo mar a léirmhínítear na trí chuid den scála sa fáinne ciorclach:",
+        "bullets": [
+          {
+            "bold": "Ceannach fórsa agus rócheannach",
+            "code": "70 a 100",
+            "text": "Tá na méaduithe i bhfad níos airde ná na laghduithe le déanaí. Léiríonn sé móiminteam bullish iontach, cé go dtugann os cionn 70 rabhadh go bhféadfadh sos a bheith ag teastáil ón bpraghas."
+          },
+          {
+            "bold": "crios comhardaithe",
+            "code": "30 a 70",
+            "text": "Gluaiseann an margadh ar luas inbhuanaithe. Deimhníonn trasnú an leibhéal idirmheánach (> 50 i glas) ceannas an cheannaitheora, agus léiríonn titim faoi bhun (< 50 i dearg) ceannas an díoltóra."
+          },
+          {
+            "bold": "Pionós agus ró-dhíol",
+            "code": "0 a 30",
+            "text": "Bhí an titim chomh minic agus chomh soiléir go bhfuil an tsócmhainn ag tosú ag breathnú saor ó thaobh staitistice de agus go bhfuil seans maith ann go dtiocfaidh sí ar ais."
+          }
+        ],
+        "example": "Más rud é le 14 roth anuas d'ardaigh grúpa stoic ar an meán $2 in aghaidh an lae bullish agus nár thit ach $1 in aghaidh an lae bearish, is é 2 a chóimheas neart agus léann a RSI 66.7 (brú bullish i glas)."
+      },
+      {
+        "id": "p06",
+        "label": "Gnáthchóras (P-06)",
+        "intro": "D'fhéadfadh cuma shocair a bheith ar shócmhainn mura fhéachann tú ach ar a praghas, ach ag an am céanna a bheith ag fulaingt ó léim aisteach i méid agus oscailt neamhghnách ina buaiceanna ceannach agus díola. Trasnaíonn an t-inneall Isolation Forest (P-06) na hathróga seo ag an am céanna chun iompar aitíopúil a bhrath.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): meánlíon na gciorruithe randamacha is gá chun iompar an lae inniu a leithlisiú ón gcuid eile den stair.",
+            "x: veicteoir de 4 athróg (Fill 24h, Vol Z-Score 20d, Realized Volatility 30d agus Spread in bps)."
+          ]
+        },
+        "lead": "Dá annamha a bhíonn gluaiseacht an lae inniu, is amhlaidh is tapúla a leithlisítear é agus is amhlaidh is gaire don scór 1.00:",
+        "bullets": [
+          {
+            "bold": "Gnáth-réimeas",
+            "code": "0.00 a 0.49",
+            "text": "Gluaiseann praghas, toirt agus leachtacht ar aon dul le meán stairiúil na sócmhainne."
+          },
+          {
+            "bold": "Ardghníomhaíocht",
+            "code": "0.50 a 0.64",
+            "text": "Thosaigh ceann amháin ar a laghad de na hathróga ag imeacht óna ghnáthiompraíocht; Tá sé inmholta monatóireacht ghéar a dhéanamh ar shreabhadh na n-orduithe."
+          },
+          {
+            "bold": "Dislocation nó aimhrialtacht chriticiúil",
+            "code": "0.65 a 1.00",
+            "text": "Cláraíonn an tsócmhainn iompar foircneach go staitistiúil. Sa mhodúl punainne, má sháraítear an tairseach seo, gníomhaíonn sé an coscán sábháilteachta."
+          }
+        ],
+        "example": "Más ar éigean a bhogann banna ceannasach 0.1% i bpraghas ach go méadaíonn a thoirt faoi cheathair agus a leathán faoi thrí i nóiméid, trasnaíonn an brathadóir na trí phointe sonraí agus ardaíonn sé a scór go 0.74 (Díláithriú i ndearg)."
+      },
+      {
+        "id": "zscore",
+        "label": "Seachbhóthar Toirt (Z-Score)",
+        "intro": "Ag rá go n-oibríodh 500 milliún dollar inniu go leor do chuideachta mheánmhéide, ach is beag do S&P 500. Tugann Imleabhar Z-Score na sócmhainní go léir chuig an aonad uilíoch céanna: cé mhéad diallas caighdeánach (σ) atá i méid an lae inniu óna mheán 20 roth féin.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Imleabhar Inniu (24h) − Meánmhéid (20d)",
+          "denominator": "Diall Caighdeánach Toirte (20d)",
+          "vars": [
+            "Meánmhéid (20d): gnáthmhéid na sócmhainne le linn na míosa gnó deiridh.",
+            "Diall Caighdeánach (20d): cé mhéad a athraíonn an méid seo de ghnáth ó lá go lá."
+          ]
+        },
+        "lead": "Ar an mbealach seo is féidir leat aon sócmhainn ar an scála céanna aonad sigma (σ) a chur i gcomparáid:",
+        "bullets": [
+          {
+            "bold": "Gnáthghníomhaíocht",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Tá toirt an lae go hiomlán laistigh de ghnáthamh na gceithre seachtaine seo caite."
+          },
+          {
+            "bold": "Rannpháirtíocht ard",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Tá leas níos airde ná an meán ann atá ag tosú ag bailíochtú treocht an lae."
+          },
+          {
+            "bold": "Clash institiúideach",
+            "code": "> +2.0σ",
+            "text": "Tarlaíonn sé i níos lú ná 5% de bhabhtaí na bliana agus de ghnáth léiríonn sé iontráil nó imeacht ollmhór cistí móra."
+          }
+        ],
+        "example": "Más gnách le stoc $100M a thrádáil go laethúil le hathrú tipiciúil de ±$20M agus má thrádáiltear $160M sa lá atá inniu ann, tá sé $60M os cionn an mheáin, atá comhionann go díreach le +3.0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Ioncam Seasta (2s10s agus DV01)",
+        "intro": "Nuair a dhéanann tú Bannaí nó Rátaí a scagadh sa tábla, feictear an dá phríomh-mhéadracht chun fiachas ceannasach a mheas: fána an chuair (2s10s) agus luach airgeadaíochta bonnphointe (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 bonnphointe (1 bp): comhionann le feidhmíocht 0.01%.",
+            "DV01 ($/$1M): Cé mhéad dollar a bhuaigh nó a chailleann suíomh $1 milliún má bhogann an ráta 1 bhonnphointe."
+          ]
+        },
+        "lead": "Conas an dá uimhir seo a léamh ar an eangach:",
+        "bullets": [
+          {
+            "bold": "Cuar gnáth nó dearfach",
+            "code": "2s10s > 0 bps",
+            "text": "Íocann bannaí 10 mbliana ráta níos airde ná bannaí 2 bhliain, rud a léiríonn ionchas le fás eacnamaíoch sláintiúil."
+          },
+          {
+            "bold": "cuar inbhéartaithe",
+            "code": "2s10s < 0 bps",
+            "text": "Sáraíonn rátaí gearra rátaí fada; go stairiúil tugann sé rabhadh maidir le fuarú eacnamaíoch nó srianadh airgeadaíochta."
+          }
+        ],
+        "example": "Má fhaigheann an Chisteáin 10 mbliana 4.20% agus toradh an Chisteáin 2 bhliain 4.55%, marcanna colún 2s10s -35 bps (cuar inbhéartaithe i dearg)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Scaireanna (P/E agus Imeall)",
+        "intro": "Agus Stoic S&P/NDX á scagadh, taispeánann an tábla an t-iolra tuillimh réamh-mheasta (P/E ar Aghaidh) agus an tOllchorrlach Oibriúcháin ionas gur féidir leat luacháil a chur i gcomparáid le brabúsacht.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Praghas Scair Reatha",
+          "denominator": "Tuilleamh Measta in aghaidh na Scair (na 12 mhí seo chugainn)",
+          "vars": [
+            "P/E Ar Aghaidh: Cé mhéad bliain de thuilleamh amach anseo atá tú ag íoc ar phraghas an lae inniu.",
+            "Corrlach Comhlán (%): céatadán na ndíolachán atá fós mar ollbhrabús tar éis an costas díreach a asbhaint."
+          ]
+        },
+        "lead": "Cad ba cheart a lorg agus an dá cholún á dtrasnú:",
+        "bullets": [
+          {
+            "bold": "Éileamh vs measúnú measartha",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Léiríonn iolrachas ard go bhfuil an margadh ag praghsáil i bhfás láidir amach anseo; is gnách go léiríonn ceann íseal cuideachtaí aibí nó luachmhara."
+          },
+          {
+            "bold": "Cumhacht Praghsála",
+            "code": "Margen Bruto > 50%",
+            "text": "Léiríonn corrlaigh arda cuideachtaí a bhfuil buntáistí iomaíocha láidre acu atá in ann a mbrabús a chosaint ar bhoilsciú."
+          }
+        ],
+        "example": "Má tá stoc ag trádáil ag $150 agus meastar go dtuilleann sé $6 in aghaidh na scaire thar na 12 mhí atá romhainn, is é 25.0x a P/E ar Aghaidh."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Díorthaigh, FX agus Tráchtearraí",
+        "intro": "Maidir le margaí roghanna, forex agus todhchaíochtaí fisiceacha, léiríonn an dá cholún dinimiciúla an costas intuigthe riosca nó luaíochta as an suíomh a shealbhú le himeacht ama.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "BAT IV (Díorthaigh): luaineacht bhliantúil go laghdóidh margadh na roghanna go ceann 30 lá.",
+            "Déan 10Y (FX) agus Toradh Rolla (Tráchtearraí): gnóthachan nó costas bliantúil ó dhifreáil rátaí nó tar-rolladh todhchaíochtaí."
+          ]
+        },
+        "lead": "Conas leas a bhaint as na colúin seo ag brath ar an tsócmhainn:",
+        "bullets": [
+          {
+            "bold": "I nDíorthaigh",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Insíonn siad duit cén céatadán de ghluaiseacht a bhfuil súil ag an margadh agus cé acu an bhfuil na roghanna chun titim a chlúdach (Cuireann) costasach."
+          },
+          {
+            "bold": "In Airgeadraí agus Amhábhair",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Léiríonn siad i glas má íocann cothabháil na sócmhainne ioncam breise duit nó i dearg má tá costas iompair aige."
+          }
+        ],
+        "example": "Má thaispeánann rogha luaineacht intuigthe (ATM IV) de 35% in aghaidh na bliana, lascainíonn an margadh bogadh gar do ±10% go ceann 30 lá."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Léarscáiliú Radach Radar",
+        "intro": "Chun suas le 45 sócmhainní a chur sna trí fháinne radair gan forluí, déanann an t-amharc Orbital luach an táscaire roghnaithe a athrú go fad go dtí an lárionad (ga r) normalaithe idir íosmhéid agus uasmhéid an ghrúpa.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Luach Sócmhainne − Íosluach an Ghrúpa",
+          "denominator": "Uasluach an Ghrúpa − Íosluach an Ghrúpa",
+          "vars": [
+            "r → 0 (Fáinne Istigh): comhchruinnítear na sócmhainní le déine níos mó nó le diall dearfach.",
+            "r → 1 (Fáinne Amuigh): aimsíonn sé na sócmhainní forimeallacha nó iad siúd a bhfuil an léamh coibhneasta is ísle acu."
+          ]
+        },
+        "lead": "Conas suíomh agus dath gach phláinéid ar an radar a léamh:",
+        "bullets": [
+          {
+            "bold": "Fócas fáinne istigh",
+            "code": "Centro del radar",
+            "text": "Cruinnigh na príomhshócmhainní ón táscaire a roghnaigh tú thuas ionas go mbeidh do thuairim ag dul go dtí an rud is tábhachtaí ar dtús."
+          },
+          {
+            "bold": "Séimeantaic dath stairiúil",
+            "code": "Verde vs Rojo",
+            "text": "Soilse an nód suas i glas nuair a sháraíonn sé an meán stairiúil go fabhrach agus i dearg nuair a léiríonn sé meath nó strus."
+          }
+        ],
+        "example": "Má shórtáil tú an radar de réir Diall Toirt (Z-Score), tá an ceann gníomhach le +3.4σ suite sa fáinne lárnach geal, agus tá ceann le 0.1σ san fhithis sheachtraigh."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) agus Bannaí Bollinger",
+        "intro": "Léiríonn an Meán Gluaisteán Simplí 20-tréimhse (SMA 20) buntreocht na sócmhainne, agus tarraingíonn na Bandaí Bollinger cainéal dinimiciúil trí dhá dhiall caighdeánach (2σ) a shuimiú agus a dhealú timpeall an mheáin sin.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): meán uimhríochtúil na 20 dúnadh deiridh.",
+            "Bandaleithid (Leithead BB): céatadáin achar idir na bandaí uachtaracha agus íochtaracha."
+          ]
+        },
+        "lead": "Go staitistiúil, tarlaíonn thart ar 95% de na comharthaí athfhriotail laistigh den dá bhanda:",
+        "bullets": [
+          {
+            "bold": "Praghas os cionn an mheáin",
+            "code": "Precio > SMA 20",
+            "text": "Tugann sé le fios go bhfuil an treocht gearrthéarmach bullish agus is gnách go bhfeidhmíonn an meán mar urlár tacaíochta."
+          },
+          {
+            "bold": "dteagmháil banna uachtair nó íochtair",
+            "code": "±2σ",
+            "text": "Tugann sé rabhadh gur shín an praghas ró-thapa ón meán a bhí ann le déanaí agus go bhféadfadh sé análú a ghlacadh."
+          },
+          {
+            "bold": "comhbhrú banna",
+            "code": "BB Width bajo",
+            "text": "Nuair a éiríonn na bannaí an-chúng, méadaíonn an margadh fuinneamh roimh bogadh láidir."
+          }
+        ],
+        "example": "Más $100 é SMA(20) stoic agus más é $4 an diall caighdeánach 20 roth, is é $108 an banda uachtarach agus $92 an banda íochtair."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Institiúideach",
+        "intro": "Murab ionann agus meánmhéid coiteann a thugann meáchan comhionann le huaireanta uile an lae, cuireann an VWAP gach praghas de réir an méid airgid a thrádáiltear go hiarbhír ag an leibhéal sin. Is í an phríomhthagairt a úsáideann táblaí institiúideacha.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Praghas tipiciúla × × Imleabhar Trádálaithe)",
+          "denominator": "∑ Imleabhar Trádáilteᵢ",
+          "vars": [
+            "Praghas Tipiciúil: meán idir uasmhéid, íosmhéid agus gar gach coinneal.",
+            "Volumeᵢ Trádáilte: toirt a thrádáiltear go sonrach sa chuid sin."
+          ]
+        },
+        "lead": "Conas a úsáideann trádálaithe gairmiúla an líne VWAP:",
+        "bullets": [
+          {
+            "bold": "Rialú forghníomhaithe",
+            "code": "Comprar bajo el VWAP",
+            "text": "Má cheannaíonn ciste institiúideach faoi bhun an VWAP don tréimhse, fuair sé praghas níos fearr ná meán ualaithe an mhargaidh."
+          },
+          {
+            "bold": "Leibhéal Cosanta Treocht",
+            "code": "Soporte / Resistencia",
+            "text": "Chomh fada agus a fhanann an tsócmhainn os cionn VWAP, tá na cinn a cheannaigh sa tréimhse i meánbhrabús."
+          }
+        ],
+        "example": "Dá ndéanfaí 1 milliún scaireanna a thrádáil ar $100 agus mura ndéanfaí ach 100 míle scaireanna a thrádáil ag $110, déarfadh an meán simplí $105, ach léann an VWAP $100.91 toisc gur thrádáileadh beagnach an t-airgead go léir ag $100."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Díláithriú Scaip (bps)",
+        "intro": "Is é an scaipeadh an difríocht idir an praghas fiafraí is fearr agus an praghas tairisceana is fearr sa leabhar ordaithe. Nuair a bhraitheann déantóirí margaidh riosca nó easpa leachtachta, osclaíonn siad an bhearna sin chun iad féin a chosaint.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Iarr Praghas - Praghas Tairisceana )",
+          "denominator": "Meánphraghas (Meánphraghas)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Ceist / Praghas Tairisceana: pointe díola agus pointe ceannaigh reatha sa leabhar.",
+            "10,000: Fachtóir tiontaithe chun an difríocht i mbunphointí (bps) a chur in iúl."
+          ]
+        },
+        "lead": "Cad a insíonn an léamh Scaip Dislocation ar an iarnród clé leat:",
+        "bullets": [
+          {
+            "bold": "Leabhar domhain agus sreabhán",
+            "code": "Spread estable en verde",
+            "text": "Tá leachtacht flúirseach ag an dá cheann agus is beag an costas a bhaineann le dul isteach agus amach."
+          },
+          {
+            "bold": "Frithchuimilt nó tarraingt siar leachtachta",
+            "code": "Salto en bps",
+            "text": "Tarlaíonn sé de ghnáth soicind roimh fhógraí maicreacnamaíocha nó le linn díol scaoll, rud a fhágann go bhfuil an forghníomhú níos costasaí."
+          }
+        ],
+        "example": "Má tá leid cheannaigh ag sócmhainn ar $99.95 agus leid díola ar $100.05, is ionann an difríocht $0.10 thar $100 agus 10 mbonnphointe (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Roghanna (Scoileanna Dubha agus Gréagaigh)",
+        "intro": "San inneall roghanna, grafaíonn an t-ardán dhá chuar brabúis agus caillteanais (P&L): conas a chríochnódh an straitéis ar lá éaga agus cé mhéad is fiú inniu (T+0) samhail Black-Scholes a chur i bhfeidhm.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S agus K: praghas reatha na bunsócmhainn (Spota) agus praghas stailce na rogha (Stailc).",
+            "Glan-Ghréagaigh: Δ Delta (íogaireacht praghais), Γ Gáma (luasghéarú Delta), Θ Theta (caitheamh laethúil) agus ν Vega (íogaireacht luaineachta)."
+          ]
+        },
+        "lead": "Conas na Gréagaigh de do straitéis a léamh ar na pills iarnróid chlé:",
+        "bullets": [
+          {
+            "bold": "Stiúradh agus luasghéarú",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Buann Delta dearfach nuair a ardaíonn an tsócmhainn; Déanann Gáma dearfach tú a fháil níos tapúla agus níos tapúla má luasaíonn an ghluaiseacht suas."
+          },
+          {
+            "bold": "Imeacht ama agus éiginnteacht",
+            "code": "Θ Theta / ν Vega",
+            "text": "Insíonn Theta duit cé mhéad dollar a chaillfidh nó a ghnóthaíonn an suíomh gach lá a rith; Vega cé mhéad a athraíonn sé má ardaíonn luaineacht intuigthe 1%."
+          }
+        ],
+        "example": "A Long Straddle (ceannaigh Call and Put ar an stailc chéanna) tá Delta gar do 0 (is cuma má théann sé suas nó síos), ach Vega dearfach agus caithfidh sé an praghas bogadh thar a dhá phointe cothromaíochta (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Cuar Ceannasacha (Féileacán agus DV01)",
+        "intro": "Déanann an t-inneall ioncaim sheasta comparáid idir torthaí ó 3 mhí go 30 bliain do 42 tír agus ríomhann sé fána (2s10s) agus cuaire an tráinse láir (Féileacán 2s5s10s) agus íogaireacht airgeadaíochta (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "Ráta 2Y, 5Y, 10Y: torthaí ceannasacha 2, 5 agus 10 mbliana na tíre roghnaithe.",
+            "Fíorráta 10Y: Toradh ainmniúil 10 mbliana lúide an ráta tagartha nó boilsciú intuigthe."
+          ]
+        },
+        "lead": "Cad dó atá gach táscaire san anailís bannaí:",
+        "bullets": [
+          {
+            "bold": "Cuaire an ailt lár",
+            "code": "Butterfly 2s5s10s",
+            "text": "Tomhaiseann sé cibé an bhfuil an tráinse 5 bliana costasach nó saor i gcomparáid leis na foircinní 2 bhliain agus 10 mbliana."
+          },
+          {
+            "bold": "Riosca Fad Dollar",
+            "code": "DV01 por $1M",
+            "text": "Insíonn sé duit go díreach cé mhéad dollar a athraíonn punann milliún dollar le gluaiseacht 0.01% sa ráta."
+          }
+        ],
+        "example": "Caillfidh banna 10 mbliana le DV01 $820 in aghaidh an mhilliúin tuairim is $82,000 má ardaíonn rátaí an mhargaidh 100 bonnphointe (+1.00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Airgeadraí (Iompar) agus Todhchaíochtaí (Cur isteach Rolla)",
+        "intro": "In airgeadraí, nuair nach luaitear péire go díreach déantar é a ríomh trí thriantánú i gcoinne an dollar agus déantar a dhifreálach rátaí (Iompar) a thomhas. Sna hamhábhair, déantar feidhmíocht athnuachana a thomhas idir an conradh láithreach agus an conradh 12 mhí (Toradh Rolla).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Spotphraghas (Tosach M1) - Praghas Amach Anseo (M12)",
+          "denominator": "Praghas Amach Anseo (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Siardhátú (Spota > Todhchaí): Cruthaíonn ganntanas fisiceach sa lá atá inniu ann brabús dearfach sa todhchaí (Todhchaí Rolla > 0).",
+            "Contango (Spota < Todhchaí): Déanann costais stórála todhchaíochtaí níos costasaí agus bíonn costas diúltach ag baint le hathnuachan a dhéanamh orthu."
+          ]
+        },
+        "lead": "An tionchar a bhíonn aige seo ar do leabhar póca nuair a bhíonn post agat:",
+        "bullets": [
+          {
+            "bold": "Dearfach Iompar Trádáil in airgeadraí",
+            "code": "Carry Spread > 0 bps",
+            "text": "Má cheannaíonn tú airgeadra a bhfuil ráta ard úis aige trí tú féin a mhaoiniú in airgeadra a bhfuil ráta íseal aige, baileoidh tú an difreálach sin i do fhabhar."
+          },
+          {
+            "bold": "Gaoth fabhrach in amhábhair",
+            "code": "Backwardation en verde",
+            "text": "Nuair a bhíonn fardail fhisiceacha íseal, is fiú an conradh in aice láimhe níos mó ná an ceann i bhfad i gcéin agus tuilleann an t-infheisteoir toradh breise tríd an gconradh a rolladh."
+          }
+        ],
+        "example": "Má tá ola 1 mhí ag trádáil ag $72 agus má tá an conradh 12 mhí ag trádáil ag $68, tá an margadh i gCúlchoimeád le Toradh Rolla dearfach +5.88% in aghaidh na bliana."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Grád Ualaithe Iomlán",
+        "intro": "Ní ghluaiseann gach sócmhainn trí na foinsí céanna: i gcuideachta, tá go leor meáchain ag ráitis airgeadais iniúchta (SEC 10-K/10-Q), agus sa mhargadh cripte nó in airgeadraí, tá níos mó meáchain ag sreabhadh laethúil agus cumarsáid.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: ualú uathoibríoch de réir catagóire (m.sh. 80% / 20% i Scaireanna; 85% / 15% i dTáillí).",
+            "Scála Deiridh: raonta ó −100 (doirbh uasmhéid) go +100 (ciontú bullish uasta)."
+          ]
+        },
+        "lead": "Seo mar a aistrítear an scór ilchodach sa tuairim uachtarach:",
+        "bullets": [
+          {
+            "bold": "Seasamh Bullish",
+            "code": "BULLISH / Nota > +15",
+            "text": "Is léir go bhfuil catalaíoch clár faisnéise agus sreabhadh nuachta níos tábhachtaí ná fachtóirí riosca."
+          },
+          {
+            "bold": "Staidiúir neodrach nó measctha",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Fiú fórsaí idir bunúsacha agus nuacht; Tá sé inmholta athbhreithniú a dhéanamh ar an mbosca de 10 dtosca roimh chinneadh a dhéanamh."
+          },
+          {
+            "bold": "Seasamh cosantach nó bearish",
+            "code": "BEARISH / Nota < -15",
+            "text": "Is iad foláirimh ar chláir chomhardaithe, meath ar chorrlaigh nó ceannlínte díobhálacha."
+          }
+        ],
+        "example": "I stoc (80% bunúsacha / nuacht 20%), má léiríonn na hiarmhéideanna +50 pointe agus léiríonn nuacht an lae +20, is é an Scór Ualaithe Iomlán (0.80 × 50) + (0.20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Cuardach Deimhnithe (RAG)",
+        "intro": "Chun hintleacht shaorga a chosc ó fhigiúirí a chumadh, úsáideann Document Chat Aisghabháil Méadaithe Giniúint (RAG): ar dtús déanann sé cuardach ar na míreanna ábhartha i dtuarascálacha oifigiúla na sócmhainne agus go dtí sin scríobhann sé an freagra ag lua na foinse.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Comhairliúchán Veicteoir (Q) · Veicteoir Doiciméad Oifigiúil (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Veicteoir Q agus D: léirithe uimhriúla ar do cheist agus na blúirí oifigiúla (10-K, miontuairiscí FOMC, tuarascálacha EIA).",
+            "Ráille cosanta 3 Chiseal: scagaire a chuireann bac ar cheisteanna nach mbaineann le hairgeadas nó gan tacaíocht doiciméadach."
+          ]
+        },
+        "lead": "An rud a ráthaíonn an mheicníocht seo nuair a chuireann tú ceist sa chomhrá:",
+        "bullets": [
+          {
+            "bold": "Ancaireacht i mbunfhoinsí",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Tagann gach sonraí ar ioncam, fiacha, fardail nó rátaí ón doiciméad rialála a fhreagraíonn don tsócmhainn sin."
+          },
+          {
+            "bold": "Cuir deireadh le ceisteanna nach mbaineann le hábhar",
+            "code": "Guardrail activo",
+            "text": "Má dhéanann duine iarracht dul i gcomhairle le hábhair neamhairgeadais, diúltaíonn an cúntóir don cheist agus coinníonn sé an fócas ar anailís na hionstraime."
+          }
+        ],
+        "example": "Nuair a chliceálann tú an sliseanna fachtóirí riosca ar stoc, aisghabhann an t-inneall an mhír Mír 1A (Fachtóirí Riosca) den fhoirm 10-K is déanaí aige agus déanann sé achoimre ar na pointí criticiúla."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Scór Néarónach",
+        "intro": "Is minic a chuireann foclóir tipiciúil mearbhall ar fhocail airgeadais (mar shampla, is nuacht iontach é \"titim i gcostais\" nó \"laghdú fiachais\" fiú má úsáideann siad an focal titim nó laghdú). Is líonra néarúil é FinBERT atá oilte go sonrach le téacsanna airgeadais.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(Positive) agus P(Diúltach): dóchúlachtaí arna sannadh ag an tsamhail don cheannlíne a bheith bullish nó bearish don tsócmhainn.",
+            "Cuar 24h: meán gluaiseachta easpónantúil na gceannlínte le 24 uair an chloig deiridh."
+          ]
+        },
+        "lead": "Mar a rátaíonn gach nód san amlíne ar dheis:",
+        "bullets": [
+          {
+            "bold": "Sealbhóir catalaíoch",
+            "code": "+20 a +100 en verde",
+            "text": "Tuilleamh measta a shárú, uasghráduithe rátála creidmheasa nó ciorruithe fabhracha ar rátaí."
+          },
+          {
+            "bold": "Cábla faisnéise neodrach",
+            "code": "-19 a +19 en ámbar",
+            "text": "Gnáthfhógraí oibríochtúla nach n-athraíonn measúnú struchtúrach na hionstraime."
+          },
+          {
+            "bold": "Sealbhóir riosca",
+            "code": "-20 a -100 en rojo",
+            "text": "Rabhadh rialála, titeann corrlaigh, stailceanna nó sonraí boilscithe níos measa ná mar a bhíothas ag súil leis."
+          }
+        ],
+        "example": "Má shann an tsamhail dóchúlacht 82% dearfach, dóchúlacht 12% neodrach agus dóchúlacht 6% diúltach do cheannlíne, léiríonn an nód tionchar glan de +76 i glas."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe agus Sortino",
+        "intro": "Tomhaiseann an chéad dá chárta barr cé mhéad a fhásann do chaipiteal in aghaidh na bliana (CAGR) agus cé chomh héifeachtach is atá an fás sin maidir leis na suaitheadh ​​a chaithfidh tú a fhulaingt (Sharpe agus Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Tuairisceán Bliantúil Portfolio (Rp) − Ráta Saor ó Riosca (Rf)",
+          "denominator": "luaineacht bhliantúil Portfolio (σp)",
+          "vars": [
+            "Rf (4.30%): buntoradh a d’fhéadfá a fháil gan riosca i mbillí Státchiste.",
+            "Cóimheas Sortino: úsáidtear an fhoirmle chéanna ach san ainmneoir ní ghearrann sé ach pionós ar luaineacht laethanta diúltacha (titim)."
+          ]
+        },
+        "lead": "Conas cáilíocht do phunann a mheas leis na huimhreacha seo:",
+        "bullets": [
+          {
+            "bold": "Punann éifeachtach",
+            "code": "Sharpe > 1.00",
+            "text": "Tá an toradh barrachais a ghnóthaíonn tú os cionn an ráta saor ó riosca i bhfad níos airde ná an luaineacht a mheastar."
+          },
+          {
+            "bold": "Feidhmíocht den scoth",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Léiríonn sé teaglaim an-éagsúlaithe ina bhfuil méaduithe comhsheasmhach agus ina gcoinnítear titimí."
+          }
+        ],
+        "example": "Má fhaigheann do phunann 15.3% ar ais go bliantúil, is é 4.3% an ráta saor ó riosca agus 10% do luaineacht bhliantúil, is é 11% do thuairisceán farasbairr agus is é 1.10 do Chóimheas Sharpe."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% agus Tarraingt anuas",
+        "intro": "Freagraíonn an tríú agus an ceathrú cárta cé mhéad is féidir leat a chailleadh ar lá olc ach gnáth go staitistiúil (VaR 95%), cé mhéad ar lá scaoll an-mhór (CVaR 99%), agus cad é an tarraingt siar is mó ó bhuaic roimhe seo (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1,645: fachtóir staidrimh a chlúdaíonn 95% de ghnáth-rothaí na bliana (19 as gach 20 lá).",
+            "CVaR 99% (Gan easnamh a bhfuiltear ag súil leis): Meánchaillteanas nuair a bhriseann an margadh an tairseach sin agus nuair a théann sé isteach sa 1% is airde de na laethanta is measa."
+          ]
+        },
+        "lead": "Cén difríocht phraiticiúil atá idir féachaint ar an VaR agus féachaint ar an Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Riosca aon lae",
+            "code": "VaR 95% 1D en USD",
+            "text": "Ullmhaíonn sé tú go síceolaíoch agus go airgeadais le haghaidh cad is féidir le do chuntas a luascadh i dtreo dona gan a chiallaíonn gur theip ar an straitéis."
+          },
+          {
+            "bold": "Friotaíocht i stríoc díobhálach",
+            "code": "Max Drawdown 12M",
+            "text": "Tomhaiseann sé an titim carntha ó bharr go barr ón bpointe is airde go dtí an t-urlár sula dtagann sé ar ais arís."
+          }
+        ],
+        "example": "I bpunann $100,000 le VaR laethúil 95% de 1.45% ($1,450), i 19 as 20 roth trádála ní sháróidh do chaillteanais laethúla $1,450."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Forluí X-gha (#12)",
+        "intro": "Nuair a cheannaíonn tú ETF cosúil le SPY nó QQQ, tá an iliomad scaireanna á gceannach agat taobh istigh. Má tá cuid de na scaireanna céanna sin ceannaithe agat go díreach freisin, is é do nochtadh fíor suim an dá rud.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Meáchan Díreach: céatadán de do phunann a leithdháileadh go díreach ar an stoc i.",
+            "Céatadán laistigh den ETFₖ: ualú oifigiúil atá ag an gcuideachta sin laistigh den innéacs nó den chiste k."
+          ]
+        },
+        "lead": "Cén fáth a bhfuil sé ríthábhachtach an chéad chluaisín seo a athbhreithniú sula ndúnfar an phunann:",
+        "bullets": [
+          {
+            "bold": "Infheictheacht Tiúchan Hidden",
+            "code": "Directo + Indirecto",
+            "text": "Déanann sé gach ETF i do phunann a dhíchóimeáil go huathoibríoch agus taispeánann sé barra amháin duit leis an bhfíorchéatadán atá agat i ngach cuideachta."
+          },
+          {
+            "bold": "Foláireamh barrachais",
+            "code": "> 20% en rojo",
+            "text": "Má sháraíonn an tsuim iomlán an tairseach stuama comhchruinnithe ar aon ainm amháin, lasann an tsraith chun gur féidir leat athchothromú."
+          }
+        ],
+        "example": "Má chuireann tú 15% de do phunann i NVDA díreach agus má tá 30% san ETF SPY freisin (mar a bhfuil meáchan NVDA thart ar 7%), taispeánann an X-Ray gurb é do nochtadh fíor do NVDA ná 15% + (30% × 7%) = 17%."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "lobhadh Alfa Brinson (#2)",
+        "intro": "Nuair a sháraíonn (nó a chailleann do phunann in aghaidh) a tagarmharc, scarann samhail Brinson-Fachler go díreach ónar tháinig an difríocht sin: an raibh an ceart agat cé na hearnálacha a d’éirigh leo róthrom nó an raibh tú ceart i roghnú na sócmhainní is fearr laistigh de gach earnáil?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Tionchar Leithdháilte: (Meáchan Portfolio − Meáchan Tagarmharc) × Tuairisceán Earnála sa Tagarmharc.",
+            "Tionchar Roghnúcháin: Meáchan sa Tagarmharc × (Fill ar do Shócmhainní − Tuairisceán na hEarnála)."
+          ]
+        },
+        "lead": "Conas na trí bharra sannacháin sa tríú cluaisín a léamh:",
+        "bullets": [
+          {
+            "bold": "Rath macra nó earnála",
+            "code": "Asignación Sectorial",
+            "text": "Tá sé dearfach i glas nuair a chuireann tú níos mó meáchain ná an margadh ar na haicmí sócmhainne a d'ardaigh an chuid is mó."
+          },
+          {
+            "bold": "Díriú rathúil ar shócmhainní",
+            "code": "Selección de Activos",
+            "text": "Tá sé dearfach nuair a d’fheidhmigh na hionstraimí sonracha a roghnaigh tú níos mó ná an meán dá n-earnáil féin."
+          }
+        ],
+        "example": "Má bhuaileann do phunann S&P 500 le +3.20%, ceadaíonn an táb seo duit a fheiceáil gur tháinig +2.10% ó stoic níos fearr (Roghnú) agus +1.10% ó bheith níos mó meáchain sa teicneolaíocht (Cionroinnt)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Teorainn Éifeachtach agus CML",
+        "intro": "Sa phlána Markowitz, is é an toradh ionchais ar phunann ná meán ualaithe tuairisceán a cuid sócmhainní, ach tá a luaineacht níos ísle ná an meán a bhuíochas leis an bhfíric nach bogann na sócmhainní 100% mar an gcéanna.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: céatadán den chaipiteal arna leithdháileadh ar shócmhainní i agus j.",
+            "ρᵢⱼ (Comhghaol): an méid a ghluaiseann an dá shócmhainn le chéile (−1 go +1). Dá ísle ρᵢⱼ is ea is mó a laghdaítear an riosca iomlán."
+          ]
+        },
+        "lead": "Cad a sheasann na trí thagairt sa ghraf:",
+        "bullets": [
+          {
+            "bold": "Athraitheas Íosta",
+            "code": "Min-Var",
+            "text": "Is é an pointe is faide ar chlé ar an gcuar: an meascán cruinn meáchain a ghnóthaíonn an luaineacht is ísle is féidir."
+          },
+          {
+            "bold": "Máximo Sharpe agus Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Is é an pointe a théann an líne a thosaíonn ón ráta saor ó riosca i dteagmháil leis an teorainn éifeachtach, ag tairiscint an bhrabúis is mó in aghaidh an aonaid riosca."
+          }
+        ],
+        "example": "Má chomhcheanglaíonn tú i gcodanna comhionanna dhá shócmhainn a bhfuil luaineacht 20% an ceann acu ach comhghaol nialasach (ρ = 0), níl luaineacht na punainne 20%, ach titeann sé go 14.1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR ag Gníomhach agus Gabháil",
+        "intro": "648/2012 Téacs atá ábhartha maidir leis an LEE Chun a fháil amach cén suíomh a chuireann an riosca is mó leis an bpunann, déantar ranníocaíocht imeallach gach sócmhainne a thomhas de réir a meáchain agus a comhghaolmhaireachta leis an gcuid eile. Ina theannta sin, déanann na cóimheasa gabhála an neamhshiméadracht a thomhas i gcoinne arduithe agus titim an S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Tabhair ar ais do Shócmhainn nó Portfolio i rothaí Bullish (nó Bearish).",
+          "denominator": "Fill ar ais an S&P 500 ar na rothaí céanna",
+          "rhs": "× 100",
+          "vars": [
+            "Gabháil Buntáiste (> 100%) - Níos mó a thuilleamh ná an t-innéacs nuair a théann an margadh in airde.",
+            "Gabháil Taobh Buntáiste (< 100%): titim níos lú ná an t-innéacs nuair a théann an margadh síos (maolán cosanta)."
+          ]
+        },
+        "lead": "An phróifíl idéalach atá uait agus tú ag athbhreithniú an tríú cluaisín den cheathrú:",
+        "bullets": [
+          {
+            "bold": "neamhshiméadracht dhearfach",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Páirt iomlán a ghlacadh i margaí tarbh ach caipiteal a chosaint nuair a cheartaíonn an stocmhargadh."
+          },
+          {
+            "bold": "Tearmann nó sócmhainní neamhchomhghaolmhara",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Ionstraimí amhail gearrbhannaí nó ór a bhfuil claonadh acu fanacht daingean nó a ardaíonn le linn laghduithe ar an stocmhargadh."
+          }
+        ],
+        "example": "Más rud é sna míonna nuair a d'ardaigh an S&P 500 10% do phunann a fuarthas 11% (Bun os cionn 110%), agus nuair a thit an t-innéacs 10% thit do phunann ach 6% (Downside 60%), tá tú neamhshiméadracht láidir i do dtús báire."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Comhghaol Gnáth vs Géarchéime",
+        "intro": "Tomhaiseann comhéifeacht Pearson (r) ó -1.00 go +1.00 conas a ghluaiseann dhá shócmhainn i gcoibhneas lena chéile. Is é an chontúirt i mbainistíocht punainne ná go dtagann an comhghaol idir sócmhainní riosca i dtreo +1.00 (gabháil) le linn timpiste margaidh.",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Comhathraitheas (Sócmhainn Tuairisceáin i, Sócmhainn Tuairisceáin j)",
+          "denominator": "Sluaineacht Sócmhainní i (σᵢ) × Sluaineacht Sócmhainní j (σⱼ)",
+          "vars": [
+            "r gar do 0 nó diúltach: éagsúlú den scoth (nuair a théann ceann amháin síos, ní leanann an ceann eile).",
+            "r i gCeiú Géarchéime: athríomh ar an maitrís ag glacadh ach an 5% de na rothaí is measa ar an margadh."
+          ]
+        },
+        "lead": "Conas dathanna na maitrís 6x6 a léamh sa dá réimeas:",
+        "bullets": [
+          {
+            "bold": "Fíor-éagsúlú",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Freagraíonn an dá shócmhainn do thiománaithe eacnamaíocha éagsúla agus déanann siad cúiteamh dá chéile."
+          },
+          {
+            "bold": "Tiúchan nó contagion",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Bogann siad go praiticiúil mar bhloc; Má bhíonn an dá cheann agat ní laghdaítear do thitim ar dhrochlá."
+          }
+        ],
+        "example": "D’fhéadfadh comhghaol measartha de 0.42 a bheith ag dhá stoc ó earnálacha éagsúla i ngnáthbhliain, ach nuair a ghníomhaíonn tú an cnaipe Queue Géarchéime feicfidh tú go n-ardaíonn sé go 0.81 toisc go ndíolann siad le chéile i scaoll."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "Turraing 2T (Rátaí × Stocmhargadh)",
+        "intro": "Comhcheanglaíonn an maitrís 2D ag an am céanna tionchar gluaiseachta i rátaí úis (trí Fad Ioncaim Sheasta agus Íogaireacht Rátaí) le titim nó ardú san innéacs S&P 500 (trí Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: cás éagsúlachta sa stocmhargadh ar an ais chothrománach (−20% go +10%).",
+            "Δ Rátaí: cás athraithe ar rátaí úis i mbunphointí ar an ais ingearach (−100 go +200 bps)."
+          ]
+        },
+        "lead": "Cad é an cuspóir atá leis an dá ais sa tábla a thrasnú:",
+        "bullets": [
+          {
+            "bold": "Cás marbhántacht nó ardú rátaí",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Cosúil leis an méid a tharla in 2022, áit a bhfuil stoic agus bannaí fada ag fulaingt ag an am céanna."
+          },
+          {
+            "bold": "Cás foscadh clasaiceach",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Sa chás go n-ardaíonn rátaí níos ísle praghas na mbannaí Státchiste agus go laghdaítear titim na stoc."
+          }
+        ],
+        "example": "Agus tú ag scagadh le haghaidh banna fada cosúil le US10Y nó TLT is féidir leat a fheiceáil sa tábla conas a ghnóthaíonn sé luach nuair a thiteann rátaí (-100 bps), ag feidhmiú mar pharasiúit má thiteann S&P 500 an lá céanna."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Réimeas Markov (#11)",
+        "intro": "Múnlaíonn slabhra Markov an geilleagar mar chóras a léimeann idir ceithre stát féideartha (Tairbh So-ghalaithe, Boilsciú/Rátaí agus Géarchéim) agus a ríomhann an dóchúlacht go n-aistreofar ó cheann amháin go stát eile.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Príomhtrasnánach (i = j): an dóchúlacht go bhfanann an réimeas reatha gan athrú.",
+            "Lasmuigh den trasnánach (i ≠ j): an dóchúlacht go rothlóidh sé go dtí aeráid mhargaidh nua."
+          ]
+        },
+        "lead": "Conas leas a bhaint as an maitrís trasdula sa dara cluaisín:",
+        "bullets": [
+          {
+            "bold": "Marthanacht an timthriall reatha",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Is iondúil go mbíonn ard-mharthanacht (> 75%) ag réimis shocair, rud a fhágann gur féidir staideanna treochtaí a choinneáil."
+          },
+          {
+            "bold": "Rabhadh Luath-uainíochta",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Nuair a mhéadaíonn an dóchúlacht go dtarlóidh aistriú go stáit luaineacha, moltar an ghiaráil a laghdú nó an fhálú a ghníomhachtú."
+          }
+        ],
+        "example": "Má tá margadh an lae inniu i réimeas Tairbh So-ghalaithe agus má tá 62% de bhuanseasmhacht, 20% de dhul ar ais go dtí Tarbh Socair agus 18% de dhul ar ais go dtí Strus/Géarchéim, tá a fhios agat go ndéantar ceartúchán ar bheagnach 1 as 5 chás."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Teilgean Monte Carlo (10,000 cosán)",
+        "intro": "Bunaithe ar an toradh a bhfuiltear ag súil leis agus luaineacht reatha do phunann, gineann an t-insamhlóir 10,000 ruthag féideartha amach anseo ó lá go lá agus an tsamhail de Ghluaiseacht Gheoiméadrach Gheoiméadrach Gheoiméadrach stochastic á cur i bhfeidhm.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ agus σ: tuairisceán bliantúil ionchais agus luaineacht bhliantúil do phunann reatha.",
+            "Z: gnáth-athraitheach randamach caighdeánach tarraingthe 10,000 uair feadh na spéire (6M, 12M nó 24M)."
+          ]
+        },
+        "lead": "As na 10,000 insamhalta seo, baintear na trí phríomhchuar den ghraf:",
+        "bullets": [
+          {
+            "bold": "Cás fabhrach",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Is é an leibhéal nach sáraítear ach 5% de na cásanna is dóchasaí."
+          },
+          {
+            "bold": "Trajectory lárnach ionchais",
+            "code": "Mediana P50",
+            "text": "Is é an toradh tipiciúil áit a bhfuil leath de na insamhaltaí thuas agus an leath eile thíos."
+          },
+          {
+            "bold": "Cás strus téarma",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "An t-urlár díobhálach: i 95% de na cosáin insamhlaithe críochnaíonn do phunann os cionn na líne seo."
+          }
+        ],
+        "example": "I léaslíne 12 mhí ar bhonn 100, má léann P50 116 agus má léann P05 94, is é an ionchas lárnach atá agat ná +16% a thuilleamh agus i mbliain an-díobhálach tá riosca gar do -6% agat."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Critéar Kelly (#14)",
+        "intro": "Freagraíonn Critéar Kelly go heolaíoch cén céatadán de do chaipiteal ba chóir duit a leithdháileadh ar oibríocht nuair a bhíonn an dóchúlacht go n-éireoidh leat (Ráta Bua) agus cé mhéad a bhuaigh tú nuair a éiríonn leat i gcomparáid leis an méid a chailleann tú nuair a theipeann ort (Cóimheas Íoctha).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) - q",
+          "denominator": "b",
+          "vars": [
+            "p agus q: dóchúlacht buaite (p) agus an dóchúlacht go gcaillfear (q = 1 − p).",
+            "b (Cóimheas Íoctha): meánbhrabús roinnte ar an meánchaillteanas (mar shampla, má thuilleann tú $2 in aghaidh gach $1 riosca b = 2)."
+          ]
+        },
+        "lead": "Cén fáth a n-úsáideann bainisteoirí gairmiúla an leagan Half-Kelly (0.5×):",
+        "bullets": [
+          {
+            "bold": "Kelly Críochnaithe",
+            "code": "Full Kelly 1.0×",
+            "text": "Uasmhéadaíonn sé fás matamaitice fadtéarmach, ach gineann sé luascáin an-ghéar má bhíonn stríoc earráidí i ndiaidh a chéile."
+          },
+          {
+            "bold": "Leath Molta Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Trí leath an chéatadáin a mholtar a úsáid, gabhann tú 75% den fhás ionchasach ach gearrann tú an luaineacht ina dhá leath."
+          }
+        ],
+        "example": "Má bhuaileann straitéis 55% den am (p = 0.55, q = 0.45) agus go n-íocann sí 2 go 1 (b = 2), tugann an Kelly iomlán (0.55 × 2 − 0.45) / 2 = 32.5%, agus molann an Half-Kelly stuama 16.25% a leithdháileadh."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Cuir Sciath OTM (#6)",
+        "intro": "Feidhmíonn rogha cuir amach as an airgead (mar shampla, 5% faoi bhun an phraghais reatha S&P 500) díreach mar atá in-asbhainte árachais: tá costas beag, seasta aige (an phréimh), ach má thiteann an margadh 20% nó 30%, déantar a luach a iolrú go dronnach agus seachnaíonn sé do chaillteanais phunann.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Costas Bliantúil (Déan Tarraing): céatadán bliantúil a chosnaíonn sé chun an t-árachas a athnuachan mura dtiteann an margadh.",
+            "Cosaint ar Thuairte (-20%): dollar a ghnóthaigh an conradh Put le linn timpiste thromchúiseach."
+          ]
+        },
+        "lead": "Conas roghanna insamhlóir a chur i gcomparáid sa chéad chluaisín:",
+        "bullets": [
+          {
+            "bold": "Árachas innéacs díreach",
+            "code": "SPY Put 5% OTM",
+            "text": "Cuireann sé teorainn leis an gcaillteanas uasta ó thitim 5% mar mhalairt ar chostas measartha bliantúil."
+          },
+          {
+            "bold": "Clúdach maoinithe nó luaineachta",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Laghdaíonn an Collar an costas trí Ghlao Suas a dhíol; Pléascann an Glao ar VIX i bhfabhar nuair a spreagann scaoll sa mhargadh."
+          }
+        ],
+        "example": "Má chosnaíonn punann $100,000 le SPY Cuir 5% OTM costas 1.1% in aghaidh na bliana ($1,100), ach i gcás timpiste -20% laghdaítear laghdú do phunann go dtí níos lú ná leath, sáraíonn an glanchoigiltis $7,000."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Imeall agus Glao Fad go dtí an Imeall (#13)",
+        "intro": "Nuair a oibríonn tú le díorthaigh nó le giaráil, éilíonn an bróicéir íoschéatadán de chaipiteal cothromais a choinneáil thar luach iomlán an tsuímh (Corrlach Cothabhála). Má laghdaítear do chaipiteal faoin urlár sin de bharr titim, spreagtar Glao Imeall.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Fiach nó Iarmhéid Airgeadais",
+          "denominator": "1 − % Corrlach Cothabhála (Reg-T)",
+          "vars": [
+            "Ollnochtadh: suim iomlán na suíomhanna oscailte roinnte ar chothromas (m.sh. 1.18×).",
+            "Glao Fad go dtí an Imeall (%): titim chéatadáin a thacaíonn an phunann fós sula mbuaileann sí an tairseach."
+          ]
+        },
+        "lead": "Leibhéil slándála sa bharra monatóireachta:",
+        "bullets": [
+          {
+            "bold": "Crios imréitigh mór",
+            "code": "Distancia > 30% en verde",
+            "text": "Tá an ghiaráil íseal agus is féidir leis an bpunann fiú géarchéim thromchúiseach a ionsú gan díolachán éigeantach."
+          },
+          {
+            "bold": "crios rabhaidh",
+            "code": "Distancia < 15% en rojo",
+            "text": "Dá ndéanfaí ceartú measartha ar an margadh, ídíodh comhthaobhacht in aisce agus cuirfear iallach air suíomhanna a leachtú ag an nóiméad is measa."
+          }
+        ],
+        "example": "Le giaráil mheasartha de 1.18 × agus corrlach cothabhála úsáidte de 22%, tá maolú sábháilteachta níos mó ná 38% ar do phunann roimh aon éileamh comhthaobhachta."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Rialacha Choiste na 3 Cholún",
+        "intro": "Ionas nach gcuirfidh aon chinneadh ríogach slán leis an bpunann, déanann an Coiste measúnú ar gach ordú tríd an nóta teicniúil, an nóta bunúsach agus dhá riail rialaithe riosca chrua doshannta a chomhcheangal.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Teorainn Chrua 20% NAV: ní féidir le haon sócmhainn aonair níos mó ná an cúigiú cuid de na sócmhainní iomlána a chomhchruinniú.",
+            "Stop Aimhrialtacht (P-06 ≥ 0.65): má théann an tsócmhainn isteach i dislocation staidrimh, gearrann an córas an nochtadh uasta go 5%."
+          ]
+        },
+        "lead": "Cad a chiallaíonn gach stát sa bhreith agus sa Leabhar Forghníomhaithe:",
+        "bullets": [
+          {
+            "bold": "Ordú ceadaithe gan srianta",
+            "code": "APROBADO en verde",
+            "text": "Comhtharlaíonn na trí philéar go fabhrach agus comhlíonann méid an tsuímh na teorainneacha tiúchana agus leachtachta go léir."
+          },
+          {
+            "bold": "Ordú arna choigeartú le ráille cosanta",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Nuair a sháraíonn ticéad an teorainn 20% nó nuair a dhéanann sé iarracht ceannach go mór i lár aimhrialtacht, tugann an ráille cosanta rabhadh faoin mbarrachas."
+          }
+        ],
+        "example": "Má tá tú ag iarraidh insamhail a dhéanamh ar cheannachán a thógfadh stoc amháin go 26% de do phunann, cuireann Colún 3 (Ráille Garda Riosca & Méid) an foláireamh comhchruinnithe chun cinn ionas go ndéanann tú é a choigeartú faoi bhun 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Éifeachtúlacht Walk-Forward (WFE)",
+        "intro": "Le seiceáil nach raibh straitéis déanta suas le breathnú go maith san am a chuaigh thart (rófheisteas), déanann an tástáil Walk-Forward comparáid idir an chaoi a d’fheidhmigh sí sa tréimhse deartha (In-Sample) agus a feidhmíochta i sonraí nach bhfacthas riamh roimhe seo (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Tuairisceán Bliantúil Out-of-Sample (Bailíochtú Glan)",
+          "denominator": "Tuairisceán Bliantúil In-Sample (Oiliúint)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): roinn stairiúil a úsáidtear chun meáchain agus rialacha na straitéise a chalabrú.",
+            "Out-of-Sample (OOS): an chéad chuid eile ina ndéantar an straitéis a thástáil i bhfíorchoinníollacha gan baint lena paraiméadair."
+          ]
+        },
+        "lead": "Mar a rátálann an tionscal cainníochtúil an céatadán WFE:",
+        "bullets": [
+          {
+            "bold": "Straitéis láidir agus comhsheasmhach",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Coinníonn sé an chuid is mó dá chumas brabúis a ghiniúint nuair a bhíonn coinníollacha margaidh nua os a gcomhair."
+          },
+          {
+            "bold": "Straitéis leochaileach nó rófheistithe",
+            "code": "WFE < 50% en rojo",
+            "text": "D'oibrigh sé go maith i dteoiric an am atá caite ach cailleann sé éifeachtacht i ndáiríre; Níl sé inmholta é a fhorghníomhú le fíor-airgead."
+          }
+        ],
+        "example": "Má d'fhill straitéis 20% bliantúil le linn a céim deartha (In-Sample) agus sa chéim tástála iarbhír ina dhiaidh sin (Out-of-Sample) d'fhill sé 18.8% bliantúil, is é a éifeachtúlacht WFE (18.8 / 20) = 94.0%."
+      }
+    ]
+  }
+}

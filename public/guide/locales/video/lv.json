@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Vizuāla tiešraide",
+      "clickPlayPause": "Noklikšķiniet, lai atskaņotu vai apturētu (atstarpe)",
+      "subtitles": "Subtitri (C)",
+      "fullscreen": "Pilnekrāna režīms (F)",
+      "exitFullscreen": "Iziet pilnekrāna režīmā (F vai Esc)",
+      "portTabs": [
+        "Celtnieks",
+        "Risks",
+        "Simulators",
+        "Otrais pilots"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Valodas",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • Kategorijas",
+      "scr-pulse": "02 • 24h pulss",
+      "scr-table": "03 • Tabula",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Siltuma karte",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • Tehniski",
+      "ana-compare": "03 • Salīdzināt %",
+      "ana-micro": "04 • Mikro un plūsma",
+      "ana-engines": "05 • 3D/2D dzinēji",
+      "res-hero": "01 • Rezultāts un nostāja",
+      "res-rag": "02 • RAG Tērzēšana",
+      "res-factors": "03 • Faktori",
+      "res-pulse24h": "04 • FinBERT impulss",
+      "p1-pills": "01 • Kopsavilkums",
+      "p1-table": "02 • Svēršana",
+      "p1-xray": "03 • Rentgens",
+      "p1-calendar": "04 • Kalendārs",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornado un VaR",
+      "p2-corr": "03 • Korelācija",
+      "p2-shock2d": "04 • Šoks un Markovs",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Ietekme",
+      "p3-whatif": "02 • What-If un Kellija",
+      "p3-tailhedge": "03 • OTM Put & Margin",
+      "p3-committee": "04 • Komiteja un žurnāls",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Laipni lūdzam Home ekrānā: jūsu sākumpunkts bez traucējumiem, kur tiek atšifrēti tirgi.",
+      "home-header": "Header augšējā kreisajā stūrī, noklikšķinot uz ikonas λ, jūs vienmēr atgriezīsities šajā galvenajā posmā.",
+      "home-markets": "Header augšdaļā atrodas Markets — jūsu darbstacija, lai tiešsaistē izpētītu visus 213 globālos īpašumus.",
+      "home-portfolio": "Tieši blakus tai centrētajā izvēlnē ir Portfolio, lai izveidotu piešķīrumus, veiktu stresa testu un simulētu darījumus.",
+      "home-system": "Apakšējā kreisajā stūrī Footer System atver serveru un datu bāzu reāllaika novērošanas monitoru.",
+      "home-guide": "Blakus tam Guide atver šo interaktīvo soli pa solim sniegto rokasgrāmatu, kad vien tā ir nepieciešama.",
+      "home-langs": "Apakšējā labajā stūrī valodas poga atver centrālo modālu, lai tulkotu platformu 56 valodās.",
+      "home-palettes": "Un Palette atver 5 vizuālās lasīšanas tēmas, vienlaikus saglabājot finanšu zaļo un sarkano krāsu stingri neskartu.",
+      "scr-categories": "Augšējā kategoriju joslā filtrējiet visus 213 līdzekļus, savu Watchlist vai 10 specializētos tirgus.",
+      "scr-pulse": "4 pulsu 24 h kartes parāda apkopoto skaļumu, vidējo RSI, P-06 režīmu un lielākās skaļuma dislokācijas.",
+      "scr-table": "Interaktīvajā tabulā ir tūlītēja meklēšana, izlase un viedās kolonnas, kas pielāgotas katrai līdzekļu klasei.",
+      "scr-orbital": "Orbital skats kartē aktīvus trīs koncentriskos gredzenos pēc novirzes ar dzīvās puses pārbaudes paneli.",
+      "scr-heatmap": "Heatmap sakārto 10 populārākos līdzekļus proporcionālos blokos 8 zaļās un sarkanās toņos.",
+      "scr-maintools": "Un Main Tools trīs soļos ved uz suverēnām līknēm, 3D nepastāvību, FX krosu un nākotnes dzinējiem.",
+      "ana-hero": "Header apvieno līdzekļu pārslēdzēju, 9 laika periodus no 1 min līdz VISIEM un 5 galvenos indikatorus.",
+      "ana-technical": "Tehniskie objektīvi pārklāj SMA 20, VWAP un 2σ Bollingera joslas ar apakšējā skaļuma apstiprinājumu.",
+      "ana-compare": "Izmantojot opciju Salīdzināt %, izmēriet neto procentuālo priekšrocību vai Alpha Spread no 0% salīdzinājumā ar saderīgu līdzinieku vai indeksu.",
+      "ana-micro": "Micro & Flow nosaka skaļuma pieaugumu, izmantojot 20 d Z score, izkliedes likviditātes dislokāciju un P-06 anomālijas rādītāju.",
+      "ana-engines": "Ceturtā cilne ir dinamisks ad-hoc rīks, kas atšķiras atkarībā no aktīvu klases: tā kā NVDA ir pamatkapitāls, tas atver 3D svārstīgumu un opciju izmaksu, savukārt obligācijas, FX un preces ievieš savus specializētos rīkus.",
+      "res-hero": "Augšdaļā Score & Stance apkopo pamata spriedumu, svērto vērtējumu un virsraksta termometru.",
+      "res-rag": "Kreisajā kolonnā RAG Document Chat atbild uz pārbaudītiem vaicājumiem, kas pamatoti ar oficiālajiem SEC 10-K un 10-Q dokumentiem.",
+      "res-factors": "Vidējā kolonnā Factors akordeons pretstata 5 labākajiem vēršu dzinējiem un 5 labākajiem lāču riskiem.",
+      "res-pulse24h": "Labajā pusē FinBERT Pulse iegūst aktuālus virsrakstus reāllaikā un zīmē 24 stundu noskaņojuma līkni.",
+      "p1-pills": "6 kopsavilkuma kartītes pārrēķina reāllaika CAGR, Sharpe un Sortino, 95% VaR, Max Drawdown, alfa un dažādošanu.",
+      "p1-table": "Svēruma tabulā pievienojiet jebkuru no 213 līdzekļiem, iestatiet precīzu procentuālo svaru vai līdzsvarojiet līdz 100%.",
+      "p1-xray": "Augšējā labajā stūrī 5 cilņu rentgenstaru panelis pārbauda ETF pārklāšanos, ekspozīciju, Brinsona attiecinājumu, naudas plūsmu un glabāšanu.",
+      "p1-calendar": "Zem rentgena attēla Mēneša kalendārs parāda atdeves konsekvenci no janvāra līdz decembrim un kopsummas YTD.",
+      "p1-backtest": "Pilna platuma apakšā Backtesting salīdzina jūsu portfeli ar S&P 500, 60/40, All-Weather un Min-Variance.",
+      "p2-markowitz": "Pirmajā kvadrantā ir attēlots 2D Markowitz Efficient Frontier un pozicionēts jūsu portfelis salīdzinājumā ar Min-Var un Max-Sharpe.",
+      "p2-tornado": "Apakšējā kreisajā kvadrantā tiek pārbaudītas 5 vēsturiskās krīzes, 95% VaR ieguldījums uz katru līdzekli un augšupvērsta/negatīva uztveršana.",
+      "p2-corr": "Augšējā labajā stūrī 6 × 6 Matrix salīdzina korelācijas normālos apstākļos ar krīzes astes izplatību.",
+      "p2-shock2d": "Apakšējā labajā stūrī Shock & Markov šķērso procentu likmju izmaiņas ar S&P 500 kustībām un novērtē režīma pārejas.",
+      "p2-montecarlo": "Apakšējais panelis paredz 10 000 Monte Carlo ceļu pāri P95, P50 un P05, zemūdens nolaišanu un ritošo Sharpe.",
+      "p3-impact": "6 Ietekmes kartes salīdzina jūsu pašreizējo portfeli ar prognozēto stāvokli pēc simulētajiem darījumiem.",
+      "p3-whatif": "Augšējā kreisajā pusē What-If un Kelly simulē biļešu pirkšanu vai pārdošanu un aprēķina optimālo Half-Kelly pozīcijas lielumu.",
+      "p3-tailhedge": "Apakšējā kreisajā stūrī OTM Put & Margin simulē aizsardzības iespēju vairogus un uzrauga Reg-T apkopes rezervi.",
+      "p3-committee": "Divos labajās paneļos 3 pīlāru komiteja revidē riska aizsargmargas kopā ar izpildes žurnālu un Copilot.",
+      "p3-walkforward": "Un apakšā Walk-Forward diagramma apstiprina In-Sample un Out-of-Sample veiktspēju ar WFE indeksu."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 10.8
+      },
+      {
+        "id": "home-header",
+        "startPct": 10.8,
+        "endPct": 22.9
+      },
+      {
+        "id": "home-markets",
+        "startPct": 22.9,
+        "endPct": 37.2
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 37.2,
+        "endPct": 50.8
+      },
+      {
+        "id": "home-system",
+        "startPct": 50.8,
+        "endPct": 62.8
+      },
+      {
+        "id": "home-guide",
+        "startPct": 62.8,
+        "endPct": 74.4
+      },
+      {
+        "id": "home-langs",
+        "startPct": 74.4,
+        "endPct": 87
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 87,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 18
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 18,
+        "endPct": 37.2
+      },
+      {
+        "id": "scr-table",
+        "startPct": 37.2,
+        "endPct": 53.4
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 53.4,
+        "endPct": 68.6
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 68.6,
+        "endPct": 83.9
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 83.9,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 15.1
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 15.1,
+        "endPct": 30
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 30,
+        "endPct": 50.2
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 50.2,
+        "endPct": 70.4
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 70.4,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 18.8
+      },
+      {
+        "id": "res-rag",
+        "startPct": 18.8,
+        "endPct": 49
+      },
+      {
+        "id": "res-factors",
+        "startPct": 49,
+        "endPct": 74.1
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 74.1,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 20.9
+      },
+      {
+        "id": "p1-table",
+        "startPct": 20.9,
+        "endPct": 41.7
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 41.7,
+        "endPct": 63.6
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 63.6,
+        "endPct": 79.6
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 79.6,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 19.9
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 19.9,
+        "endPct": 43.8
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 43.8,
+        "endPct": 60.1
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 60.1,
+        "endPct": 78.8
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 78.8,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 18.6
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 18.6,
+        "endPct": 41
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 41,
+        "endPct": 60.9
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 60.9,
+        "endPct": 79.4
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 79.4,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Ikuspegi tolestua",
+    "mainView": "Ikuspegi Nagusia",
+    "expandedView": "Ikuspegi zabaldua",
+    "inThisSection": "Atal honetan aurkituko duzu:",
+    "deepDive": "Murgiltze sakona",
+    "previous": "Aurrekoa",
+    "next": "Hurrengoa",
+    "mathFormula": "Formula matematikoa",
+    "practicalExample": "Adibide praktikoa:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Finantza-plataforma tradizional bat irekitzen duzunean, normalean agertzen den lehenengo gauza dozenaka grafiko, taula keinukari eta menu nonahi dira. Non hasten zara merkatua egiaztatu edo zure zorroa nola dagoen egiaztatu nahi duzunean?",
+        "Home pantaila hasierako zarata saihesteko diseinatuta dago. Leku garbi eta argi batekin hartzen zaitu ongietorria, non kontrol guztia bi barra finkotan kontzentratzen den: bata goian lanera joateko eta bestea behean plataforma zure arabera konfiguratzeko."
+      ],
+      "intro": "Home pantailak espazio garbi eta argi batekin hartzen zaitu ongietorria, non kontrol guztia bi barra finkotan kontzentratzen den: bata goian lanera joateko eta bestea behean plataforma zure arabera konfiguratzeko.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Zure lana merkatuaren azterketan eta zorroen kudeaketan banatzen duen abiapuntu argia.",
+          "paragraphs": [
+            "Imajinatu goizean negoziatzen hasten zarela. Batzuetan begiratu nahi izango duzu zein akzio, bonu edo moneta mugitzen diren gehien ikusteko; Beste batzuetan zuzenean joango zara zure zorroaren arriskua berrikustera edo erosketa bat exekutatu aurretik simulatzera.",
+            "Nola saihestu gainkargatutako pantaila berean bi gauzak nahastea? Azalak argi bereizten du bide hori lehen segundotik:"
+          ],
+          "lead": "Nola saihestu gainkargatutako pantaila berean bi gauzak nahastea? Azalak argi bereizten du bide hori lehen segundotik:",
+          "bullets": [
+            {
+              "bold": "Distrakziorik gabeko espazioa",
+              "code": "Donde se decodifican los mercados",
+              "text": "Sartzen zarenean, ez dago ireki aurretik leihoak ixtera behartzen zaituen mahairik edo alertarik; Zuk aukeratzen duzu zein modulu ireki."
+            },
+            {
+              "bold": "Bi bide garbi",
+              "code": "Markets / Portfolio",
+              "text": "Aplikazioaren fluxu osoa bi fase nagusitan banatzen da: lehenengo merkatuetan aukerak ikertu eta gero zure zorroa eraiki edo probatu."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Hasierako, merkatuen eta zure zorroaren artean klik bakarrean salto egiteko goiko barra.",
+          "paragraphs": [
+            "Aktibo baten xehetasunetan sakontzen duzunean edo zure zorroan egindako aldaketak probatzen dituzun heinean, oso erraza da non zaudenaren arrastoa galtzea. Nola igarotzen zara akzio-diagrama bat aztertzetik zure zorroa berrikustera azpimenuetatik pasatu gabe?",
+            "Goiko barra pantailan finkatuta geratzen da beti eta hiru puntu nagusietarako sarbide zuzena ematen dizu:"
+          ],
+          "lead": "Goiko barra pantailan finkatuta geratzen da beti eta hiru puntu nagusietarako sarbide zuzena ematen dizu:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Zauden tokian zaudela, ezkerreko ikurrean klik eginez gero orri nagusira itzuliko zara berehala."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Zure ikerketa espazioa da. Hemen erabilgarri dauden 213 aktibo iragazten dituzu, zuzeneko aurrekontuak jarraitu, grafiko teknikoak aztertu eta balantzeen laburpenak edo berriak kontsultatzen dituzu."
+            },
+            {
+              "bold": "Diru-zorroa",
+              "code": "Portfolio",
+              "text": "Zure erabaki mahaia da. Hemen definitzen duzu zure kapitalaren zein ehuneko den aktibo bakoitzerako, krisian zenbat gal dezakezun neurtu eta eragiketa berriak simulatu dirua arriskatu aurretik."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Oina sistemaren egoera egiaztatzeko, gida honetara itzultzeko edo diseinua doitzeko.",
+          "paragraphs": [
+            "Datuak denbora errealean aztertzen diren bitartean, edozein momentutan sor daitezkeen galdera operatiboak: komatxoak behar bezala iristen al dira? Zer esan nahi zuen puntu adierazle batek? Pantailaren distira jaitsi al dezaket?",
+            "Oin-oinak euskarri eta konfigurazio tresna horiek guztiak taldekatzen ditu, beti eskura izan daitezen, pantailaren erdigunean oztopatu gabe:"
+          ],
+          "lead": "Oin-oinak euskarri eta konfigurazio tresna horiek guztiak taldekatzen ditu, beti eskura izan daitezen, pantailaren erdigunean oztopatu gabe:",
+          "bullets": [
+            {
+              "bold": "System egoera",
+              "code": "System",
+              "text": "Puntu berdeak begirada batean dena ondo dagoela baieztatzen du. Irekitzen duzunean zerbitzarien, datu-baseen eta erantzun-abiaduraren egoera zehatz-mehatz ikus dezakezu."
+            },
+            {
+              "bold": "Guide erabiltzailea",
+              "code": "Guide",
+              "text": "Ireki eskuliburu interaktibo hau edozein unetan pantaila bat nola erabiltzen den ikusteko edo haren kalkuluetan sakontzeko."
+            },
+            {
+              "bold": "Ikusizko hobespenak",
+              "code": "Idioma / Palette",
+              "text": "Eskuineko aldean, aplikazio osoaren hizkuntza aldatzeko edo atzeko argia doitzeko kontrolak dituzu."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Hizkuntzak",
+          "summary": "Plataforma osoa zure hizkuntzara berehala itzultzeko bilatzailea.",
+          "paragraphs": [
+            "Finantza-baldintzek eta merkatu-txostenek dagoeneko badute beren konplexutasuna hizkuntza-hesirik gehitu gabe. Azalpenak gaztelaniaz, ingelesez edo beste edozein hizkuntzatan irakurtzea nahiago baduzu, berehala alda dezakezu.",
+            "Honela funtzionatzen du hautatzaileak beheko eskuineko izkinan:"
+          ],
+          "lead": "Honela funtzionatzen du hautatzaileak beheko eskuineko izkinan:",
+          "bullets": [
+            {
+              "bold": "berehalako bilaketa",
+              "code": "Select Language",
+              "text": "Uneko banderaren gainean klik eginez gero, leiho bat irekitzen da, non 56 hizkuntzaren artean aukeratu dezakezun izena edo kodea idatziz (adibidez, ES, EN, PT, FR edo DE)."
+            },
+            {
+              "bold": "Memoria automatikoa",
+              "code": "mid_lang_v1",
+              "text": "Pantaila osoa berehala itzultzen da orria berriro kargatu gabe eta zure aukera sartzen zaren hurrengo aldietarako gordetzen da."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Gai bisualak pantailaren kontrastea egokitzeko, finantza-koloreak aldatu gabe.",
+          "paragraphs": [
+            "Zure inguruneko argira egokitzen ez den kontraste batekin grafikoen aurrean ordu batzuk pasatzeak begiak nekatu egiten ditu. Hala ere, finantza-plataforma baten koloreak aldatzeak arrisku klasiko bat du: gora doanaren eta jaisten ari denaren erreferentzia galtzea.",
+            "Hau konpontzeko, gai-hautatzaileak ingurunearen kolorea datuen koloretik bereizten du:"
+          ],
+          "lead": "Hau konpontzeko, gai-hautatzaileak ingurunearen kolorea datuen koloretik bereizten du:",
+          "bullets": [
+            {
+              "bold": "Bost irakurketa ingurune",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Klik bakoitzean atzealde beltz, urdinxk edo epelen artean biratzen duzu zure begietarako erosoena dena aurkitu arte."
+            },
+            {
+              "bold": "Finantza-semantika osorik",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Edozein gai aldatzen duzun edozein dela ere, merkatuaren arau unibertsala ez da inoiz aldatzen: berdeak beti gorakada edo irabazia esan nahi du, eta gorriak beti esan nahi du erorketa, galera edo arrisku alerta."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Imajinatu berrehun bonu, akzio, indize, moneta eta lehengai baino gehiagoren artean eguneko aukera onenak non dauden detektatu nahi duzula. Zerrendak banan-banan irekiko bazenitu, merkatua itxiko litzateke haiek begiratzen amaitu baino lehen.",
+            "Screener plataformako 213 aktibo guztiak zuzeneko panel bakarrean biltzen ditu. Segundu batean merkatuaren arabera iragazteko, eguneko pultsu orokorra neurtzeko eta lau modu ezberdinen artean aukeratzeko aukera ematen dizu zein aktibo dauden funtzionatzen ari diren ikusteko."
+          ],
+          "intro": "Screener-k plataformako 213 aktibo guztiak zuzeneko panel bakarrera ekartzen ditu, merkatuaren arabera iragaz ditzazun eta begirada batean aukerak antzeman ditzakezu.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategoriak",
+              "summary": "Iragazki nagusiak aktibo-klase bakarrean edo zure jarraipen-zerrendan zentratzeko.",
+              "paragraphs": [
+                "Ez du zentzurik Ogasun bonu bat teknologiaren akzio edo petrolioaren neurri berdinekin aztertzeak. Zerrenda berean dena nahasten duzunean, udareak sagarrekin alderatzen dituzu.",
+                "Nola murriztu pantaila zehazki gaur interesatzen zaizun merkatura? Goiko barrak unibertsoa klik batekin bereizteko aukera ematen dizu:"
+              ],
+              "lead": "Goiko barrak unibertsoa klik batekin bereizteko aukera ematen dizu:",
+              "bullets": [
+                {
+                  "bold": "Irudi osoa",
+                  "code": "Todos",
+                  "text": "213 tresnak batera eta negoziatutako bolumenaren arabera ordenatuta erakusten ditu, mundu mailan diru gehien nora doan ikus dezazun."
+                },
+                {
+                  "bold": "Jarraipen pertsonala",
+                  "code": "★ Watchlist",
+                  "text": "Isolatu gogoko gisa markatu dituzun aktiboak soilik distrakziorik gabe kontrolatzeko."
+                },
+                {
+                  "bold": "Hamar merkatu espezializatu",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Kategoria horietako edozein aukeratuz gero, pantaila osoak bere adierazleak eta taulako zutabeak sektore horretako arauetara egokitzen ditu."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Katalogoko 213 aktiboak nola sailkatzen diren eta zer bolumen eta likidezia irizpide betetzen dituzten zehaztea."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24 orduko pultsua",
+              "summary": "Merkatua lasai, euforiko edo estres pean dagoen esaten dizuten lau karta nagusiak.",
+              "paragraphs": [
+                "Aktibo zehatz bat erosi edo saldu aurretik, osotasuna zein klimatan mugitzen den jakitea komeni da. Bolumen-egun normala al da edo instituzioen dirua aldi berean sartzen da? Aktibo guztiak igotzen al dira edo tentsio zantzuak daude?",
+                "Iragazkien azpian dauden lau txartelek irakurketa orokor hori ematen dizute segundo gutxitan:"
+              ],
+              "lead": "Iragazkien azpian dauden lau txartelek irakurketa orokor hori ematen dizute segundo gutxitan:",
+              "bullets": [
+                {
+                  "bold": "Eguneko jarduera osoa",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Kategoria aktiboan negoziatutako milaka milioi dolar gehitzen ditu eta gaur atzo baino parte-hartze gehiago edo gutxiago dagoen erakusten dizu."
+                },
+                {
+                  "bold": "Taldearen batez besteko indarra",
+                  "code": "AVG RSI 14",
+                  "text": "Metro zirkular batean laburbiltzen du sektoreko prezioak erosteko presioarekin (berdea, 50etik gorakoa) edo saltzeko presioarekin (gorria, 50etik beherakoa)."
+                },
+                {
+                  "bold": "Normaltasun termometroa",
+                  "code": "Régimen Normal P-06",
+                  "text": "Aktiboen zein ehuneko mugitzen diren bere ohiko parametroen barruan kalkulatzen du eta izen-abizenez esaten dizu zein den eguneko anomalia handiena duen tresna."
+                },
+                {
+                  "bold": "Ezohiko diru sarrerak",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Gaur egun, azken hilabeteko batez bestekoarekin alderatuta, izugarrizko bolumen handian funtzionatzen duten hiru aktiboen podiuma nabarmentzen da."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Batez besteko RSI, Z-Score bolumena eta P-06 anomalien detektagailua nola kalkulatzen diren azaltzea."
+            },
+            {
+              "id": "scr-table",
+              "label": "Taula",
+              "summary": "Zerrenda interaktiboa bilaketa bizkorrarekin, gogokoekin eta merkatu bakoitzerako egokitzen diren zutabeekin.",
+              "paragraphs": [
+                "Dagoeneko zein sektore begiratu nahi duzun eta zenbaki zehatzak errenkadaz errenkada alderatu behar dituzunean, taularen ikuspegia da zure tresna nagusia.",
+                "Guztientzako berdina den kalkulu-orri zurrun bat erakutsi beharrean, taula bilatzen ari zarenera egokitzen da:"
+              ],
+              "lead": "Guztientzako berdina den kalkulu-orri zurrun bat erakutsi beharrean, taula bilatzen ari zarenera egokitzen da:",
+              "bullets": [
+                {
+                  "bold": "Bilatzailea eta gogokoen izarra",
+                  "code": "Buscar activo / ★",
+                  "text": "Lehen zutabeko goiburuan edozein ikur edo izen idatzi dezakezu zuzenean aktibo horretara joateko, edo sakatu ezkerreko izarra zure Watchlist-n gordetzeko."
+                },
+                {
+                  "bold": "Zutabe adimendunak kategoriaren arabera",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Akzioak iragazten badituzu, balorazio-multiploak eta marjinak agertzen dira; Bonuak edo Tasak aukeratzen badituzu, kurbaren malda eta tasekiko sentikortasuna ikusiko dituzu; Deribatuei begiratuz gero, hegazkortasun inplizitua ikusten duzu."
+                },
+                {
+                  "bold": "Joan zuzenean analisi sakonera",
+                  "code": "Click en cualquier fila",
+                  "text": "Egin klik zerrendako edozein aktibotan taula teknikoen eta oinarrizko txostenen geltoki osoa irekitzeko."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Taulak 10 aktibo kategoria bakoitzerako erakusten dituen neurri zehatzen zerrenda."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Ikusizko radarra begirada batean detektatzeko zein aktiboak beren batez besteko historikotik urruntzen ari diren.",
+              "paragraphs": [
+                "Berrehun zenbaki errenkadak irakurtzeak lehergailuz mugitzen hasten den aktibo bat galtzea eragin dezake. Nola hautematen duzu berehala zein tresna aldentzen den arautik?",
+                "Orbital ikuspegiak mahaia hiru eraztun zentrokide dituen radar bihurtzen du:"
+              ],
+              "lead": "Orbital ikuspegiak mahaia hiru eraztun zentrokide dituen radar bihurtzen du:",
+              "bullets": [
+                {
+                  "bold": "Irizpideen aukeraketa",
+                  "code": "INDICADOR",
+                  "text": "Zuk erabakitzen duzu zer neurtzen duen radarrak: anomalia estatistikoak, bolumen-jauziak, prezioen indarra (RSI), hegazkortasuna edo irabazia azken 24 orduetan."
+                },
+                {
+                  "bold": "Distantzia eta kolorearen arabera irakurtzea",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Puntu bat zenbat eta hurbilago edo urrunago egon adierazlearen arabera eta zenbat eta biziago bere kolore berdea edo gorria, orduan eta garrantzitsuagoa da bere mugimendua bere historiarekin alderatuta."
+                },
+                {
+                  "bold": "Pantaila aldatu gabe ikuskatzea",
+                  "code": "Panel lateral en vivo",
+                  "text": "Kurtsorea edozein radar-nodotan jarrita, bere prezioa, bere eguneko barruko grafiko garbia eta bere hiru arrisku-neurriak eskuinaldean bistaratzen dira."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Radar-eraztunetan aktibo bakoitzaren posizioa nola kalkulatzen den bere desbideratze historikoaren arabera."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Bero mapa",
+              "summary": "Bloke proportzionalen mosaikoa, segundo batean irabazleak eta galtzaileak identifikatzeko.",
+              "paragraphs": [
+                "Batzuetan galdera azkar bati erantzun nahi diozu: nor da gaur igoera liderra eta nor ari da merkatua behera arrastatzen?",
+                "Bero-mapak iragazki aktiboaren hamar aktibo nagusiak bloke proportzionaletan antolatzen ditu, taula bakar bat irakurri beharrik ez izateko:"
+              ],
+              "lead": "Bero-mapak iragazki aktiboaren hamar aktibo nagusiak bloke proportzionaletan ordenatzen ditu:",
+              "bullets": [
+                {
+                  "bold": "Tamaina garrantziaren arabera",
+                  "code": "Puestos #1 a #10",
+                  "text": "Aukeratutako metrikaren barruan pisu handiena duten instrumentuek ezkerreko zutabeak hartzen dituzte lauki handienekin."
+                },
+                {
+                  "bold": "Kolore-intentsitatea",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Blokearen tonuak berehala adierazten dizu mugimenduaren magnitudea, aldakuntza moderatuetatik igoera edo jaitsiera bortitzaraino."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Hiru urratseko lasterbidea tasa, aukeren, forex eta etorkizuneko kalkulagailu aurreratuetarako.",
+              "paragraphs": [
+                "Prezioen diagrama tradizionalez gain, plataformak lau motor berezi ditu errenta finkoetarako, aukerak, moneta-gurutzeak eta salgaien kurbak. Nola iritsi haietara aktiboen arabera aktibo bilatu gabe?",
+                "Ikuspegi honek ezkerretik eskuinera gidatzen zaitu hiru zutabe oso errazetan:"
+              ],
+              "lead": "Ikuspegi honek ezkerretik eskuinera gidatzen zaitu hiru zutabe oso errazetan:",
+              "bullets": [
+                {
+                  "bold": "Lehenik eta behin, familia aukeratzen duzu",
+                  "code": "1. Clases de Activo",
+                  "text": "Hautatzen duzu tasekin eta bonuekin lan egin nahi duzun, akzioen/indizeen/kriptoaren aukerekin, monetaekin edo lehengaiekin."
+                },
+                {
+                  "bold": "Ondoren, motorrak zer egiten duen egiaztatzen duzu",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Erdian tresna horrek erakusten duenaren laburpen argia irakurtzen duzu eta bere ardatzetan nola orientatu."
+                },
+                {
+                  "bold": "Azkenik, hautatu aktiboa eta ireki",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Grafikoaren zuzeneko aurrebista bat ikusten duzu, familia horretako aktibo bateragarriak bilatu eta geltoki osoa klik batekin irekitzen duzu."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Screener-n aktibo interesgarri bat aurkitu duzunean, hurbilagotik begiratzeko garaia da. Goranzko joeran dago ala lurrunik gabe geratu da? Zure lehiakideak irabazten ari al zara? Zer diote bolumenak eta deribatuen merkatuak?",
+            "Analytics estazioak aktibo horren azterketa tekniko, konparatibo eta kuantitatibo guztiak pantaila bakarrean biltzen ditu. Goian laburpen orokorra duzu eta ezkerraldean lau lente grafikoa bistatik galdu gabe analisi-angelua aldatzeko."
+          ],
+          "intro": "Analytics estazioak aktibo indibidual baten analisi teknikoak, konparatiboak, fluxuen analisia eta 3D/2D motorrak pantaila bakarrean biltzen ditu.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Goiko panela aktiboak aldatzeko, denbora-tartea aukeratzeko eta zure bost neurketa gakoak ikusteko.",
+              "paragraphs": [
+                "Aktibo bat ikasten ari zarenean, normalean, gaurko epe laburra eta azken hilabeteetako filma txandakatu ohi dituzu, edo antzeko beste ikur bat aztertzera ere aldatzen zara. Nola egiten duzu hori guztia atzera egin gabe?",
+                "Goiko goiburuak nabigazio kontrolak eta tresnaren fitxa azkarra biltzen ditu:"
+              ],
+              "lead": "Goiko goiburuak nabigazio kontrolak eta tresnaren fitxa azkarra biltzen ditu:",
+              "bullets": [
+                {
+                  "bold": "Ondasunen aldaketa edo zerrendara itzultzea",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Goiko ezkerrean Screener-ra itzul zaitezke edo beste edozein instrumenturen izena idatz dezakezu taulak berehala aldatzeko."
+                },
+                {
+                  "bold": "Denboraren bederatzi leiho",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Eskuineko ertzean grafikoaren eskala aldatzen duzu minutuz minutuko mugimenduetatik historia osora."
+                },
+                {
+                  "bold": "Bost adierazle nagusi",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Beti ikusten duzun prezioaren ondoan negoziatutako bolumena, bere kategoriako bi datu nagusiak, joeraren indarra eta normaltasun estatistikoaren maila."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Teknikoa",
+              "summary": "Prezioen taula batez besteko mugikorrekin, hegazkortasun-bandekin eta bolumenarekin joera jarraitzeko.",
+              "paragraphs": [
+                "Azken prezioari soilik begiratuta ez dizu esango aktibo bat bizkortzen ari den, batez bestekoa errebotatzen ari den edo egun gutxitan azkarregi igo den.",
+                "Ezkerreko errailaren lehen lenteak merkatuan gehien erabiltzen diren erreferentzia teknikoak grafikoan gainjartzeko aukera ematen du:"
+              ],
+              "lead": "Ezkerreko errailaren lehen lenteari esker, gehien erabiltzen diren erreferentzia teknikoak gainjar daitezke:",
+              "bullets": [
+                {
+                  "bold": "Helbidea eta benetako batez besteko prezioa",
+                  "code": "SMA 20 / VWAP",
+                  "text": "20 aldiko batez besteko mugikorra eta bolumen-haztatutako batez besteko prezioa aktibatu ditzakezu berehala aktiboa oreka-mailaren gainetik edo azpitik dagoen ala ez ikusteko."
+                },
+                {
+                  "bold": "Gehiegizko zonak eta bolumenaren berrespena",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Bandek prezioaren sabaia eta zorua estatistikoa marrazten dute, beheko barrak mugimendua bolumenak onartzen duen ala ez baieztatzen duten bitartean."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Moving Average (SMA 20), Bollinger Banden eta VWAPren formulak eta interpretazio irizpideak."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Konparatu %",
+              "summary": "Ehuneko konparatzailea % 0tik zure aktibo kategoria bereko beste batek baino errendimendu handiagoa edo txikiagoa duen neurtzeko.",
+              "paragraphs": [
+                "% 5 igoko den akzio batek albiste bikaina dirudi, baina bere erreferentzia edo lehiakide nagusia aldi berean % 12 igotzen bada, atzeratuta zaude.",
+                "Bigarren lenteak zalantza hori konpontzen du bi aktiboak hasierako lerro berean jarriz:"
+              ],
+              "lead": "Bigarren lenteak zalantza hori konpontzen du bi aktiboak hasierako lerro berean jarriz:",
+              "bullets": [
+                {
+                  "bold": "Bikote koherenteak bilatu",
+                  "code": "Buscar par compatible",
+                  "text": "Bilatzaileak automatikoki iragazten ditu familia bereko aktiboak (adibidez, akzioak eta akzioak, ETFak edo indizeak), konparazioak finantza-zentzua izan dezan."
+                },
+                {
+                  "bold": "Abantaila garbia ehunekotan",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Bi kurbak % 0tik hasten dira eta ezkerreko errailak zenbat portzentaje puntu dituen abantaila (berdez) edo desabantaila (gorriz) zure aktiboa kalkulatzen du."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Mikro eta Fluxua",
+              "summary": "Ereduz kanpoko erosketen, likidezia eta zabaltze-kostuen detektagailua.",
+              "paragraphs": [
+                "Askotan funts handiak pilatzen edo deskargatzen dira posizioak prezioak bat-bateko mugimendua egin aurretik. Nola hautematen duzu ezkutuko arrasto hori eskaera-zorroaren bolumenean eta likidezian?",
+                "Hirugarren lenteak aipamenaren azpian gertatzen dena zentratzen du:"
+              ],
+              "lead": "Hirugarren lenteak aipamenaren azpian gertatzen dena zentratzen du:",
+              "bullets": [
+                {
+                  "bold": "Bolumen estatistikoen gailurrak",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Beheko panela aldatzen du, uneko bolumena ohikotik zenbat aldiz desbideratzen den erakusteko, ezohiko jarduera instituzionala agerian utziz."
+                },
+                {
+                  "bold": "Likidezia estresa eta anomaliak",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Oinarrizko puntuetan neurtzen du erosleen eta saltzaileen arteko aldea handitzen ari ote den eta ea motor estatistikoak portaera atipikoak antzematen dituen."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Nola neurtzen diren irekiera hedatzen eta ordena-fluxuaren punta estatistikoak."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D motorrak",
+              "summary": "Aktibo klasearen arabera aldatzen den ad-hoc tresna dinamikoa zabaltzen duen laugarren lentea.",
+              "paragraphs": [
+                "Lehenengo hiru lenteak ez bezala (tresna guztietan komunak direnak), ezkerreko errailaren laugarren lentea, aztertzen ari zaren aktiboaren arabera dinamikoki aldatzen den tresna ad-hoc da: adibidez, zuzeneko biran, stock bat denez (NVDA), 3D Implicit Volatility eta Options Payoff merkatu berezietan zabaltzen dituen bitartean.",
+                "Laugarren botoiak aktibo-klase irekia detektatzen du eta dagokion ad-hoc tresna automatikoki aktibatzen du:"
+              ],
+              "lead": "Laugarren botoiak zein aktibo duzun irekita detektatzen du eta horri dagokion ad-hoc tresna aktibatzen du:",
+              "bullets": [
+                {
+                  "bold": "Akzioetan, indizeetan, deribatuetan eta kriptoetan",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Erakutsi 3D inplizitutako hegazkortasun-azalera, aukeren irribarrea iraungipenaren arabera eta 6 estrategiako simulagailu bat gaur eta iraungitzean zenbat irabazi edo galduko zenukeen ikusteko."
+                },
+                {
+                  "bold": "Tasetan, bonuetan eta likidezian",
+                  "code": "Curva 3D/2D",
+                  "text": "42 herrialdetako errendimendu-kurbak AEB eta Alemaniarekin alderatzeko aukera ematen du, kurba normala edo alderantzizkoa den neurtuz (2s10s) eta prezioa tasa aldaketekin zenbat aldatzen den (DV01)."
+                },
+                {
+                  "bold": "Monetetan",
+                  "code": "FX & Carry",
+                  "text": "61 dibisen arteko bihurgailu eta triangulatzaile bat eskaintzen du, pare hori mantentzearen aldeko edo kontrako 10 urteko interes-tasaren diferentziala ere kalkulatzen duena."
+                },
+                {
+                  "bold": "Lehengaietan",
+                  "code": "Forward 3D/2D",
+                  "text": "Etorkizuneko kontratuen prezioak hilabetez hilabete erakusten ditu merkatuak gehiago ordaintzen duen aurrerapenagatik (Contango) edo berehalako entregagatik (atzerakapena), inbentario fisikoen egoerarekin batera."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hegazkortasun-azaleren, errendimendu subiranoaren kurben, moneta-garraioaren eta etorkizuneko kurben xehetasun matematikoa."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Taulak prezioa zertan ari den erakusten dizu, baina ez du esaten zergatik. Mugimendu baten atzean zer dagoen jakiteko hiruhilekoko balantzeen, banku zentraleko adierazpenen, inbentarioen txostenen eta albisteen kableen hamaika orrialde irakurri beharko zenituzke.",
+            "Research geltokiak lan handia egiten du zuretzat. Txosten ofizialekin egiaztatutako adimen artifizial dokumentala eta denbora errealeko albisteen irakurketa uztartzen ditu, alde eta kontrako froga guztiak hiru zutabe argitan antolatuz."
+          ],
+          "intro": "Research geltokiak balantze ofizialak, txosten makroekonomikoak eta denbora errealeko albisteak laburbiltzen ditu hiru zutabe argitan.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Oharra eta jarrera",
+              "summary": "Albistearen oinarrizko epaia eta umorea laburbiltzen dituzten lehen hiru kartak.",
+              "paragraphs": [
+                "Aktiboaren oinarriek prezioaren igoerarekin batera al dute edo albisteek aurreikuspenak okerrera egiten al dute? Xehetasuna irakurri aurretik, ondorio exekutibo azkar bat behar duzu.",
+                "Goiko eskuineko izkinan aktiboaren egoera orokorra laburbiltzen duten hiru adierazle dituzu:"
+              ],
+              "lead": "Goiko eskuineko izkinan egoera orokorra laburbiltzen duten hiru adierazle dituzu:",
+              "bullets": [
+                {
+                  "bold": "Iturri bakoitzaren postura eta pisua",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Epai orokorra zehazten du eta argitzen du zein pisu ematen dien dokumentu ofizialei aktibo motaren arabera albisteen aldean (adibidez, %80ko balantzeak eta %20ko albisteak stock batean)."
+                },
+                {
+                  "bold": "Balorazio konbinatua",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Puntuazio bakarrean sintetizatzen du oinarrien emaitza garbia gehi eguneko informazio-fluxua."
+                },
+                {
+                  "bold": "Termometro euskarriak",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Jarri -100etik +100era barra batean, azken orduetako prentsaren tonua ezkorra (gorria), neutroa edo gogotsu (berdea) bada."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Txosten ofizialak albisteekin nola haztatu diren aktibo motaren arabera."
+            },
+            {
+              "id": "res-rag",
+              "label": "Txateatu RAG",
+              "summary": "Ezkerreko dokumental laguntzailea balantzeei eta txosten ofizialei buruzko galdera zehatzak egiteko.",
+              "paragraphs": [
+                "Demagun jakin nahi duzula konpainia batek bere marjinei buruz zer esan zuen bere azken urteko balantzean 10-K, edo Erreserba Federalak bere azken minutuetan zer esan zuen. Eskuz bilatzea denbora behar da; Iturbururik gabeko txat generiko bati galdetzeak datu asmatuak eman dizkizu.",
+                "Ezkerreko zutabeak egiaztatutako dokumentazio ofizialarekin soilik konektatuta dagoen morroi batekin konpontzen du:"
+              ],
+              "lead": "Ezkerreko zutabean egiaztatutako dokumentazio ofizialarekin konektatutako morroia eskaintzen dizu:",
+              "bullets": [
+                {
+                  "bold": "Hasierako tesia eta galdera gidatuak",
+                  "code": "Chat Documental RAG",
+                  "text": "Laburpen exekutibo batekin hasten da egiaztatutako aurrekontuekin eta aktiboen kategoriara egokitutako erreferentzia azkarreko lau botoiekin, baita zure galderak idazteko eremu batekin ere."
+                },
+                {
+                  "bold": "Zure zorrorako urrats zuzena",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Oinarriak ikertu ondoren aktibo horrek merezi duela erabakitzen baduzu, txataren goialdean dagoen botoi honek zuzenean zorroaren simulagailura bidaltzen zaitu."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Egiaztatutako bilaketa dokumentalaren (RAG) eta haren segurtasun-iragazkien funtzionamendua."
+            },
+            {
+              "id": "res-factors",
+              "label": "Faktoreak",
+              "summary": "Erdiko akordeoia bost gidari bullishekin eta inpaktuaren arabera ordenatutako bost arrisku bearishekin.",
+              "paragraphs": [
+                "Inbertsiorik ez da ehuneko ehun perfektua edo ehuneko ehun txarra: beti daude aldeko argudioak eta arrisku latenteak. Sekretua gaur egun zeinek pisu handiagoa duten jakitea da.",
+                "Erdiko zutabeak bi aldeak aurrez aurre jartzen ditu erabaki orekatu bat har dezazun:"
+              ],
+              "lead": "Erdiko zutabeak bi aldeak aurrez aurre jartzen ditu erabaki orekatu bat har dezazun:",
+              "bullets": [
+                {
+                  "bold": "Indar oreka eta iragazkiak",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Goian erosleen eta saltzaileen arteko eskaintza-barra ikusten duzu, eta behean bost katalizatzaile positiboak (berdez) edo bost arrisku nagusiak (gorriz) iragazi ditzakezu."
+                },
+                {
+                  "bold": "Xehetasuna eta zulatu klik bakarrean",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Zerrendako edozein faktore ukitzen duzunean, haren azalpen osoa bistaratzen da botoi batekin batera Chat RAG puntu zehatz horri buruzko informazio gehiago eskatzeko."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Pultsua",
+              "summary": "Denbora-lerro egokia AI-ren arabera baloratu diren azken tituluekin eta 24 orduko aldarte-kurbarekin.",
+              "paragraphs": [
+                "Irabazien, inflazioaren edo araudiari buruzko azken orduko titular bakar batek erabat alda dezake eguneko giroa. Nola dakizu zer albiste atera berri den eta zer eragin duen?",
+                "Eskuineko zutabeak minutuz minutu informazio-fluxua kontrolatzen du:"
+              ],
+              "lead": "Eskuineko zutabeak minutuz minutu informazio-fluxua kontrolatzen du:",
+              "bullets": [
+                {
+                  "bold": "Denbora-lerro kualifikatua",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Azken bost izenburuak zerrendatzen ditu bere denborarekin eta agentziarekin, berdez puntuatuz aldekoak badira edo gorria mehatxua bada."
+                },
+                {
+                  "bold": "Inpaktua eta eguneroko kurba simulatzailea",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Zuzeneko hari bat abiarazi dezakezu goiko botoiarekin pantaila osoa nola birkalkulatzen duen ikusteko eta jarraitzeko beheko grafikoan nola eboluzionatu den aldartea azken 24 orduetan."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "FinBERT ereduak nola aztertzen duen titular bakoitzaren finantza-hizkuntza."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Eraikitzailea",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Aktibo onak bereiz hautatzea ez da nahikoa zorro on bat izateko. Kapital gehiegi jartzen baduzu berdin mugitzen diren aktiboetan, edo iraganean elkarrekin nola funtzionatuko zuten neurtzen ez baduzu, itsu-itsuan inbertitzen ari zara.",
+            "Constructor & Performance (Portfolio-ren lehen ikuspegia) zure zorroa eraikitzen duzun tailerra da. 213 aktiboetako edozein gehitzeko, bakoitzari zer ehuneko esleitzen diozun doitzeko aukera ematen du, kontrol zehatzik gabe landu gabe, eta berehala ikuskatu bai bere barne-osaketa bai bere historia."
+          ],
+          "intro": "Constructor & Performance zure zorroa eraikitzeko, aktibo bakoitzaren pisua doitzeko eta bere errendimendu historikoa ikuskatzeko tailerra da.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Laburpena",
+              "summary": "Zure zorroa aldatzen duzun bakoitzean berriro kalkulatzen diren lehen sei kartak zuzenean.",
+              "paragraphs": [
+                "Zure zorroan aktibo bat gehitzen duzun edo ehuneko bat aldatzen duzun bakoitzean, berehala jakin behar duzu doikuntza horrek espero duzun etekina hobetu duen edo beheranzko esposizioa okertu duen.",
+                "Goiko errenkadak beti mantentzen ditu zorroaren sei metrika nagusiak ikusgai:"
+              ],
+              "lead": "Goiko errenkadak beti mantentzen ditu zorroaren sei metrika nagusiak ikusgai:",
+              "bullets": [
+                {
+                  "bold": "Errendimendua eta eraginkortasuna",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Zorroak zure kapitalean zein urteko irabazi konposatu proiektatzen duen eta hartutako arrisku-unitate bakoitzeko zenbat etekin lortzen ari zaren esaten dizute."
+                },
+                {
+                  "bold": "Aurreikusitako eguneroko galera eta jaitsiera historikoa",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Egun txar batean zenbat dolar gal ditzakezun kalkulatzen dute estatistikoki aurreikus daitekeenaren barruan eta zein izan den azken urtean izandako atzerapausorik sakonena."
+                },
+                {
+                  "bold": "Balio erantsia eta dibertsifikazioa",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Zure zorroak erreferentziako indizea gainditzen duen zenbat puntu eta zenbat arrisku murrizten ari zaren neurtzen dute aktibo desberdinak konbinatzeari esker."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Errentagarritasun-formula konposatuak (CAGR), Sharpe eta Sortino ratioak eta Arriskuan dagoen balioa (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Ponderazioa",
+              "summary": "Ezkerreko taula aktiboak gehitzeko, aktibatu edo desaktibatzeko eta posizio bakoitzaren ehuneko zehatza definitzeko.",
+              "paragraphs": [
+                "Zer gertatuko litzateke zure zorroaren zenbakiekin gaur egun teknologiako akzio bat itxiko bazenu edo dirua berdin banatuko bazenu posizio guztien artean?",
+                "Ezkerreko panelak proba horiek guztiak modu garbi eta zuzenean egiteko aukera ematen dizu:"
+              ],
+              "lead": "Ezkerreko panelak proba horiek guztiak modu garbi eta zuzenean egiteko aukera ematen dizu:",
+              "bullets": [
+                {
+                  "bold": "213 aktiboen bilatzailea",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Plataforman edozein tresna bilatu edo gogokoenak iragazi ditzakezu mahaian gehitzeko klik bakarrarekin."
+                },
+                {
+                  "bold": "Abiarazi azkarra eta edizio zehatza",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Errenkada bakoitzak kontrol-lauki bat dauka aktiboa denbora errealean sartzeko edo baztertzeko eta zenbaki-koadro bat ehuneko zehatza sartzeko graduatzaile zehatzik gabe erabili gabe."
+                },
+                {
+                  "bold": "Hiru lasterbide berrerokatzeko",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Taularen goialdean aktibo aktibo guztien artean pisu berdinak banatzeko botoiak dituzu, automatikoki batura % 100era itzultzeko edo jatorrizko zorrora itzultzeko."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "X izpiak",
+              "summary": "Goiko eskuineko panela bost fitxekin ezkutuko kontzentrazioa, diru-fluxua eta zaintza ezagutzeko.",
+              "paragraphs": [
+                "Inbertitzean akats ohikoenetako bat dibertsifikatu zarela sinestea da, bost aktibo ezberdin dituzulako, errealitatean akzio indibidual bat erosi zenuenean eta baita barruan akzio bera duten bi ETF ere.",
+                "X izpien panelak zure zorroa barrutik aztertzen du bost fitxaren bidez:"
+              ],
+              "lead": "X izpien panelak zure zorroa barrutik aztertzen du bost fitxaren bidez:",
+              "bullets": [
+                {
+                  "bold": "Errepikatuko posizio detektagailua",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Gehitu enpresa bakoitzean zuzenean inbertitu duzuna gehi indizeen edo ETFen barruan duzun ezkutuko zatia (adibidez, SPY edo QQQ), gorriz ohartaraziz muga zuhurra gainditzen baduzu."
+                },
+                {
+                  "bold": "Esposizio-mapa eta itzuleraren jatorria",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Aktibo mota eta moneta bakoitzean benetan zer ehuneko duzun erakusten dizute, eta zure irabaziaren zenbat sektore onak hautatzetik aktibo onak hautatzetik atera zen."
+                },
+                {
+                  "bold": "Aurreikusitako urteko diru-sarrerak eta segurtasuna",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Dibidenduengatik, kupoiengatik eta interesengatik urtean zenbat dolar bilduko dituzun kalkulatzen dute, eta zure kapitala dagoen zaindarien kaudimena ikuskatzen dute."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Nola kalkulatzen den zeharkako esposizioa ETF-en eta Brinson-en atribuzioaren banaketa."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Egutegia",
+              "summary": "Urtarriletik abendura arteko hileko grafikoa zure irabazien eta galeren erregulartasuna ikusteko.",
+              "paragraphs": [
+                "Urteko etekin on batek praktikan jasaten zailak diren erorketa oso zorrotzak ezkutatu ditzake. Zenbaterainokoa da hilabetez hilabete bildu berri duzun zorroa?",
+                "X izpien azpian, egutegiak hileko historia xehatzen du:"
+              ],
+              "lead": "X izpien azpian, egutegiak hileko historia xehatzen du:",
+              "bullets": [
+                {
+                  "bold": "Hilabete berdeak eta hilabete gorriak",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Gelaxka bakoitza berehala kalkulatzen da zure taulako pisuen arabera eta berdez edo gorriz margotzen da hilabete horretako emaitzaren arabera, eskuinaldean itxiz urteko emaitza metatuarekin."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Beheko pantaila osoko grafikoa zure zorroa lau estrategia klasikoekin alderatzeko.",
+              "paragraphs": [
+                "Zure zorroa ona ikusi aurretik, oinarrizko proba geratzen da: benetan hobea al da dirua S&P 500 edo 60/40 zorro tradizional batean uztea baino?",
+                "Beheko panelak pantailaren zabalera osoa hartzen du zure diseinua merkatuko estandarretara jartzeko:"
+              ],
+              "lead": "Beheko panelak zure diseinua merkatuko estandarren aurka jartzen du:",
+              "bullets": [
+                {
+                  "bold": "Bost horizonte probak",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Zure nahasketak azken hiruhilekoetan zein urte anitzeko ziklo osoan nola jokatu duen ebaluatzeko aukera ematen du."
+                },
+                {
+                  "bold": "Lau erreferentzia aurrez aurre",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Gainjarri zure zorro aktiboaren kurba berdea lau modelo klasikoetako edozeinen aurka, argi eta garbi ikus dezazun noiz dagoen aurrerantzean eta nola eusten dion beherakadari."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Arriskua",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Merkatua lasai igotzen den garaiotan, ia edozein zorro seguru dirudi. Benetako arazoa krisia pizten denean agertzen da, interes-tasak bat-batean igotzen direnean eta independenteak ziruditen aktiboak aldi berean jaisten hasten direnean.",
+            "Arrisku eta Estres Kuantitatiboak (Portfolioren bigarren ikuspegia) zure zorroa muturreko probak egiten ditu bizitza errealean gertatu aurretik. Beheko lau koadrante simetrikoen eta etorkizuneko eszenatoki simulagailu baten bidez, zure puntu ahulak non dauden erakusten dizu."
+          ],
+          "intro": "Arrisku eta Estres kuantitatiboak zure zorroa probatzen du krisi historikoetarako, korrelazio kutsadurarako eta Monte Carlo proiekzioetarako.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Arrisku eta errentagarritasun mapa interaktiboa ahalik eta zorro eraginkorrenetik zenbateraino zauden ikusteko.",
+              "paragraphs": [
+                "Zure zorroan dituzun aktibo berberekin, ehunekoak banatzeko milaka modu daude. Aukeratu duzun konbinazioa hartzen duzun arriskuagatik onena ordaintzen duena da, ala ezusteko gutxiagorekin berdin irabaz dezakezu?",
+                "Goiko ezkerreko lehen koadranteak aukeren mapa zuzena marrazten du:"
+              ],
+              "lead": "Goiko ezkerreko lehen koadranteak aukeren mapa zuzena marrazten du:",
+              "bullets": [
+                {
+                  "bold": "Zure posizioa zorro optimoen aurrean",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Zure uneko zorroa non dagoen erakusten du, ahalik eta hegazkortasun txikieneko puntuarekin eta arrisku-errentagarritasun handiena duen puntuarekin."
+                },
+                {
+                  "bold": "Ikus-geruzak eta aktiboen araberako ikuskapena",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Eredu-geruzak aktibatu edo desaktibatu eta edozein nodotan klik egin dezakezu behean aktibo horren ekarpen zehatza irakurtzeko."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Markowitz-ren muga eraginkorra eta gutxieneko bariantza eta gehienez Sharpe zorroen kalkulua."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado eta VaR",
+              "summary": "Krisi historikoaren simulagailua, eguneroko galeraren banaketa aktiboaren eta merkatuaren asimetriaren arabera.",
+              "paragraphs": [
+                "2008koa bezalako kraskadura, 2020ko moteltze ekonomikoa edo 2022ko tasen igoera bihar errepikatuko balitz, zenbat galduko luke zure egungo zorroak eta zein aktibo izango litzateke errudun nagusia?",
+                "Beheko ezkerreko koadranteak hiru galdera horiei erantzuten die hiru fitxa zehatzetan:"
+              ],
+              "lead": "Beheko ezkerreko koadranteak hiru fitxa zehatzetan erantzuten ditu galdera horiei:",
+              "bullets": [
+                {
+                  "bold": "Bost benetako krisien aurkako proba",
+                  "code": "1. Tornado Stress",
+                  "text": "Konparatu barraz barra zure zorroa S&P 500-ren aurka zenbat eroriko litzatekeen bost shock historiko handien aurrean."
+                },
+                {
+                  "bold": "Arriskuen sailkapena posizioaren arabera",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Ordenatu zure ondasunak bakoitzak zorro guztiari zenbat dolar ematen dizkion eguneroko galera potentzialaren arabera."
+                },
+                {
+                  "bold": "Gorabeheretan jokaera",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Aktibo bakoitzak merkatuaren goranzko gurpilen zein ehuneko aprobetxatzen duen eta merkatua jaisten denean zenbat kuxatzen duen erakusten du."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Estres-eszenatoki historikoen metodologia, VaR-ri ekarpen marjinala eta harrapaketa ratioak."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Korrelazioa",
+              "summary": "Gurutze-matrizea zure aktiboak benetan dibertsifikatzen diren edo izu batean kutsatuta dauden egiaztatzeko.",
+              "paragraphs": [
+                "Zure zorroan hainbat aktibo edukitzeak arriskua murrizten du denak aldi berean norabide berean mugitzen ez badira. Baina finantza-izuaren garaian, baxua ziruditen korrelazio askok gora egiten dute nabarmen.",
+                "Goiko eskuineko koadranteak erlazio hori bi agertokitan ikuskatzeko aukera ematen du:"
+              ],
+              "lead": "Goiko eskuineko koadranteak erlazio hori bi agertokitan ikuskatzeko aukera ematen du:",
+              "bullets": [
+                {
+                  "bold": "Aktiboen eta sentikortasunaren arteko gurutzaketa",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Aktibo bikote bakoitza zein antzeko mugitzen den erakusten du (berdez edo urdin argiz ondo dibertsifikatzen direnean, eta gorriz elkarrengandik hurbilegi mugitzen direnean) eta merkatuarekiko duten sentsibilitatea zein den erakusten du."
+                },
+                {
+                  "bold": "Kutsadura simulagailua krisian",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Klik batekin, urte normal baten korrelazioak izu-une bateko korrelazioak aldatzen dituzu, jada babestuko ez zaituen posizioak ezagutzeko."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pearsonen korrelazio-koefizienteen kalkulua baldintza normaletan eta merkatuaren estresean."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash eta Markov",
+              "summary": "Tasa eta burtsaren arteko eragin-taula bateratua, gehi ziklo ekonomikoa aldatzeko probabilitateak.",
+              "paragraphs": [
+                "Ekonomia errealean, arazoak oso gutxitan etortzen dira banan-banan: askotan interes-tasen igoera akzioen jaitsierarekin bat dator. Zer gertatuko da zure zorroarekin bi faktoreak aldi berean konbinatzen badira?",
+                "Beheko eskuineko koadranteak bi aldagaiak zeharkatzen ditu eta erregimen aldaketarako probabilitateak neurtzen ditu:"
+              ],
+              "lead": "Beheko eskuineko koadranteak bi aldagaiak zeharkatzen ditu eta merkatuaren zikloa neurtzen du:",
+              "bullets": [
+                {
+                  "bold": "Inpaktu bikoitzeko taula",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Tasa gurutzatuaren mugimenduak (-100 eta +200 oinarrizko puntuak) S&P 500ren jaitsierak edo igoerak (%-20tik +%10era), zorro osoaren edo aktibo indibidual baten arabera iragazteko aukera emanez."
+                },
+                {
+                  "bold": "Zikloaren trantsizio probabilitateak",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Kalkulatu merkatuak lasai egoteko edo lurrunkor, inflazionista edo krisi-fase batean sartzeko."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Tasa eta aldagaiekiko sentsibilitatea bateratua, eta Markoven egoera-trantsizio-matrizea."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Beheko panela pantaila osokoa da, etorkizuneko proiekzio probabilistikoekin eta gainbehera historikoekin.",
+              "paragraphs": [
+                "Iraganari begiratzea erabilgarria da, baina aurrera inbertitzerakoan jakin behar duzuna da zure kapitala hurrengo sei hilabeteetan, urtebete edo bi urteetan zein emaitzen tartean mugi daitekeen.",
+                "Zabalera osoko beheko panelak bide hori proiektatzeko eta kontrolatzeko aldi baterako hiru tresna biltzen ditu:"
+              ],
+              "lead": "Beheko panelak bide hori proiektatzeko aldi baterako hiru tresna biltzen ditu:",
+              "bullets": [
+                {
+                  "bold": "Hamar mila etorkizuneko eszenatoki",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Marraztu zure zorroaren bilakaera probablearen konoa, eszenatoki baikorra (P95 berdez), espero den erdiko bidea (P50) eta agertoki kaltegarria (P05 gorriz) bereiziz."
+                },
+                {
+                  "bold": "Erorketen sakonera eta egonkortasuna denboran zehar",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Grafikoa aldatzeko aukera ematen dizute, zorroa bere garai guztietako goien azpitik zenbat denbora egon den edo eraginkortasuna eta arriskua zenbateraino egon den 60 eguneko leihoetan zehar."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo 10.000 errepideen eta 60 eguneko neurgailuen simulazio estokastikoa."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulagailua",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Aktibo berri bat erosi, posizio bat murriztu edo aukerekin estaldura ordaindu aurretik, galdera bera sortzen da beti: eragiketa honek benetan hobetzen al du nire zorroa edo alferrikako arriskua gehitzen ari da? Eta zenbat kapital jarri behar dut horretan?",
+            "Ad-Hoc Strategy Lab (Portfolioren hirugarren ikuspegia) zure operazio aurreko simulagailua da. Jokaldi taktikoak kargatzeko aukera ematen dizu, zure posizioaren tamaina ideala kalkulatzeko, beherapen-asegurua probatzeko eta inpaktua aurretik eta ondoren zehatza ikusteko, zure oinarrizko zorroa oraindik ukitu gabe."
+          ],
+          "intro": "Ad-Hoc Strategy Laboratory zure merkataritza aurreko simulagailua da eskaerak, tamaina posizioak eta estaldura neurtzeko.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Eragina",
+              "summary": "Simulatutako jokoen ondoren zure egungo zorroa emaitzarekin alderatzen duten lehen sei kartak.",
+              "paragraphs": [
+                "Ideia taktiko batek merezi duen jakiteko, ez da nahikoa aktiboa bere kabuz erakargarria izatea: zorro osoko zenbakiak hobetu behar ditu.",
+                "Goiko errenkadak beti erakusten dizu zure egungo zorroaren eta aplikatutako simulazioa duen zorroaren arteko konparaketa:"
+              ],
+              "lead": "Goiko errenkadak zure egungo zorroarekin konparatzen du aplikatutako simulazioarekin:",
+              "bullets": [
+                {
+                  "bold": "Mozkinean eta eraginkortasunean eragina",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Oinarrizko zenbakia erakusten dute proiektatutako zenbakiaren ondoan, antzezlanak eraginkortasuna gehitzen badu berdez aldea argiztatuz edo hondatzen badu gorriz."
+                },
+                {
+                  "bold": "Arriskuan, kapitalean eta arauetan eragina",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Esaten dizute zenbat aldatzen den espero duzun gehienezko galera, probak egiteko zorroaren zein ehunekotan ari zaren eta segurtasun-muga guztiak errespetatzen diren."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If & Kelly",
+              "summary": "Erosketa/salmenta txartelaren simulagailua eta zenbat diru arriskatu zehazteko kalkulagailua.",
+              "paragraphs": [
+                "Inbertsio-ideia on askok galerak sortzen dituzte apustuaren tamaina akats baten ondorioz: gutxiegi jartzeak ez du orratza mugitzen, baina gehiegi jartzeak zorroa hondatu dezake mugimendua gaizki ateratzen bada.",
+                "Goiko ezkerreko lehen koadranteak froga-orria tamainaren kalkulu matematikoarekin lotzen du:"
+              ],
+              "lead": "Lehenengo koadranteak proba-txostena tamainaren kalkulu matematikoarekin bat egiten du:",
+              "bullets": [
+                {
+                  "bold": "Proba eskaera kargatzea",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Edozein aktibo aukeratzen duzu, adierazi erosi, saldu edo estali nahi duzun eta zenbatekoa dolarretan kargatu. Beheko zerrendan simulatutako ordena bakoitza aktibatu edo desaktibatu dezakezu bere eragina alderatzeko."
+                },
+                {
+                  "bold": "Posizio-tamaina optimoa",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Zure arrakasta izateko probabilitatearen eta irabazien eta galeren arteko erlazioaren arabera, zenbat kapitalaren gehienezko ehunekoa esleitu behar den kalkulatzen du zure burua gehiegi azaldu gabe hazteko."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kelly irizpidearen kalkulu matematikoa eta bere bertsio kontserbadorea Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Jarri OTM eta Marjina",
+              "summary": "Aseguru-simulagailua merkatuaren beherakada indartsuetarako aukerak eta marjina-deien monitorea.",
+              "paragraphs": [
+                "Merkatuaren zuzenketa indartsu baten beldur zarenean, zure posizio guztiak saltzea garestia eta eraginkorra izan ohi da. Alternatiba profesionala babes aukerak dituen asegurua kontratatzea da, baina zenbat balio du aseguru horrek urtean eta zenbat babesten zaitu benetan?",
+                "Beheko ezkerreko koadranteak estaldura eta zor maila neurtzeko aukera ematen du:"
+              ],
+              "lead": "Beheko ezkerreko koadranteak estaldura eta berme maila neurtzen ditu:",
+              "bullets": [
+                {
+                  "bold": "Babes-ezkutuen konparatzailea",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Estaldurarik gabe jardutea edo aukerak dituzten hiru aseguru-mota aplikatzea (SPY, QQQ edo VIX hegazkortasunean) txandakatzeko aukera ematen du, primaren urteko kostua %20ko istripu batean aurreztuko zenukeen dolarrekin kontrastatuz."
+                },
+                {
+                  "bold": "Apalankatu kontrola eta bermeak",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Kontrolatu zer ehuneko mantentze-marjina erabili duzun eta zer ehuneko jaitsiera jasango lukeen zorroak marjina-deien eremuan sartu aurretik."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Estalduraren eragiketa diruz kanpoko Put aukerak eta abalen kalkulua Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Batzordea eta Liburua",
+              "summary": "Eskuineko bi panelak arrisku-mugen berrikuspen automatikoa dutenak, eskaeren historia eta kopilotua.",
+              "paragraphs": [
+                "Merkataritza bat probatzeko ilusioarekin, erraza da aktibo bat zure zorro osoaren % 20 baino gehiago kontzentratzen ari dela edo anomalia estatistiko larriaren erdian funtzionatzen ari dela.",
+                "Eskuineko bi koadranteek arriskuen kontrol automatikoko eta auditoretza-bide gisa balio dute:"
+              ],
+              "lead": "Eskuineko bi koadranteek arriskuen kontrol eta erregistro gisa funtzionatzen dute:",
+              "bullets": [
+                {
+                  "bold": "Iritzia hiru dimentsiotan",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Zure simulatutako eskaerak segurtasun-muga tekniko, oinarrizko eta gogorren arabera ebaluatzen dituzte (abisua posizioren batek %20ko kapitalaren muga gainditzen badu edo anomalia handiak baditu)."
+                },
+                {
+                  "bold": "Eskaeren erregistroa eta zorroaren laguntzailea",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Beheko panelak simulazio bakoitza arriskuan duen eraginarekin erregistratzen du, eta goiko eskuineko elkarrizketa-botoiak txata irekitzen du zure zorroari buruzko galdera zuzenak egiteko."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Eragiketa aurreko arriskuak kontrolatzeko arauak eta aktibo bakoitzeko kontzentrazio-mugak."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Beheko grafikoa pantaila osoan zure estrategiak proba-alditik kanpo funtzionatzen duela egiaztatzeko.",
+              "paragraphs": [
+                "Edozein estrategia egokitu daiteke iraganera begiratuz grafiko historikoan inongorik agertu arte. Benetako erronka merkatuko datu berrien aurrean lanean jarraitzen duen jakitea da.",
+                "Zabalera osoko beheko panelak estrategia baliozkotze zorrotzenaren bidez jartzen du ekoizpenean sartu aurretik:"
+              ],
+              "lead": "Beheko panelak lagin barruan eta lagintik kanpo balioztatzea jartzen du estrategia:",
+              "bullets": [
+                {
+                  "bold": "Diseinuaren eta benetako proben arteko bereizketa",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Grafiko historikoa lehen fase batean banatzen du, non estrategia kalibratu den, eta bigarren fase batean ikusten ez diren datuekin, oinarrizko zorroarekiko abantaila mantentzen duen egiaztatzeko."
+                },
+                {
+                  "bold": "Sendotasun estatistikoaren oharra",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Eraginkortasun-adierazleak % 70 gainditzen badu, emaitzak koherenteak direla baieztatzen du eta ez zenbakiak iraganean behartu izanaren produktua."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Walk-Forward Eraginkortasun Indizeak (WFE) zer neurtzen duen eta nola detektatzen dituen gehiegizko estrategiak."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Likidezia-iragazkia (ADV)",
+        "intro": "Aktibo bat saltzeko agindu bakar batek bere prezioa desitxuratu gabe negoziatzeko, plataformak azken 20 lanegunetan dolarretan eguneko batez besteko bolumenaren gutxieneko atalasea eskatzen du.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Ixteko prezioaᵢ × Negoziatutako bolumenaᵢ)",
+          "denominator": "20 gurpil trebe",
+          "vars": [
+            "Itxiera-prezioa: USD-tan adierazitako eguneko itxiera-prezio ofiziala.",
+            "Negoziatutako bolumenaᵢ: egun horretan negoziatutako unitate kopurua guztira."
+          ]
+        },
+        "lead": "Eguneko batez besteko bolumenaren arabera, katalogoak tresna bakoitzaren sakonera sailkatzen du:",
+        "bullets": [
+          {
+            "bold": "Likidezia instituzional handia",
+            "code": "> $500M diarios",
+            "text": "Posizio handietan berehala sartu eta irteteko aukera ematen du, merkatuko prezioa mugitu gabe."
+          },
+          {
+            "bold": "Katalogo estandarraren likidezia",
+            "code": "$50M a $500M diarios",
+            "text": "Erosketa/salmenta kostu oso baxuak dituzten zorro dibertsifikatuetarako egokia."
+          },
+          {
+            "bold": "Hedapenaren jarraipena",
+            "code": "< $50M diarios",
+            "text": "Hegazkortasun garaian aholkuen irekiera egiaztatzea komeni da eskaera handiak exekutatu aurretik."
+          }
+        ],
+        "example": "Akzio bat 200 $-tan saltzen bada eta azken hilabetean gurpil bakoitzeko batez beste 5 milioi akzio negoziatzen baditu, bere eguneroko batez besteko bolumena (ADV) $ 1.000 milioi ($ 1.0B) da."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalizazioa USDra",
+        "intro": "Katalogoak Europako bonuak, Asiako indizeak, salgaiak eta kriptografia-monetak konbinatzen dituenez, bolumen-fluxu guztiak AEBetako dolar bihurtzen dira denbora errealean, eskala berean alderatu ahal izateko.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Tokiko Moneta Bolumena: jatorrizko merkatuko monetan (EUR, JPY, GBP, BRL, etab.) negoziatutako zenbatekoa.",
+            "Spot Truke-tasa: 61 moneta-motorreko egungo aurrekontua."
+          ]
+        },
+        "lead": "Bihurketa honek pantailako bi lekutan eragiten du zuzenean:",
+        "bullets": [
+          {
+            "bold": "Ikuspegi orokorra Sailkapena Guztiak",
+            "code": "213 activos",
+            "text": "Ordenatu tresnak mundu osoko diru-mugimendu handienetik erreal txikienera."
+          },
+          {
+            "bold": "Bolumen txartela gehitu da",
+            "code": "Volumen 24h en $B",
+            "text": "Hainbat herrialdetan zerrendatutako aktiboen bolumena gehitzeko aukera ematen du distortsiorik gabe."
+          }
+        ],
+        "example": "Bono alemaniar batek egunean 4.000 milioi euro negoziatzen baditu eta EUR/USD gurutzatua 1,08an negoziatzen badu, sistemak 4,32 milioi dolar kalkulatzen ditu pultsu globalean."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "Batez besteko RSI (14)",
+        "intro": "Nola neurtzen da merkatu bat benetako indarrarekin gora egin duen edo dagoeneko azkarregi igo bada eta agortuta badago? Indar erlatiboaren indizeak (RSI) batez besteko igoerak azken 14 txandetako batez besteko jaitsierekin alderatzen ditu 0tik 100era bitarteko eskalan.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Batezbesteko igoerak₁₄ / Batez besteko beherakadak₁₄)",
+          "vars": [
+            "Batez besteko igoera₁₄: azken 14 gurpiletako egun bullishetan irabazitako puntuen batez besteko leundua.",
+            "Batez besteko galerak₁₄: aldi bereko egun beherakoetan galdutako puntuen batez besteko leundua."
+          ]
+        },
+        "lead": "Honela interpretatzen dira eskalaren hiru atalak eraztun zirkularrean:",
+        "bullets": [
+          {
+            "bold": "Erosteko indarra eta gainerosketa",
+            "code": "70 a 100",
+            "text": "Igoerek azkeneko jaitsierak askoz gainditzen dituzte. Bullish bultzada handia erakusten du, nahiz eta 70etik gora prezioak eten bat behar duela ohartarazten duen."
+          },
+          {
+            "bold": "oreka eremua",
+            "code": "30 a 70",
+            "text": "Merkatua erritmo iraunkorrean mugitzen da. Tarteko maila gurutzatzeak (> 50 berdez) eroslearen nagusitasuna berresten du, eta azpitik erortzeak (< 50 gorriz) saltzailearen nagusitasuna adierazten du."
+          },
+          {
+            "bold": "Zigorra eta gehiegizko salmenta",
+            "code": "0 a 30",
+            "text": "Jaitsierak hain maiz eta nabarmenak izan ziren, non aktiboa estatistikoki merkea eta erreboterako joera izaten hasten ari da."
+          }
+        ],
+        "example": "Azken 14 gurpiletan akzio-talde batek batez beste 2 $ igotzen baziren egun bullish bakoitzeko eta $ 1 bakarrik jaitsi bazen, bere indar-erlazioa 2 da eta bere RSI 66.7 irakurtzen du (bullish push berdean)."
+      },
+      {
+        "id": "p06",
+        "label": "Erregimen arrunta (P-06)",
+        "intro": "Aktibo batek lasaia dirudi bere prezioari soilik begiratuz gero, baina, aldi berean, bolumenaren jauzi arraroa eta bere erosketa-salmenta-gailuretan irekiera anormala jasaten ari da. Isolation Forest motorrak (P-06) aldagai hauek zeharkatzen ditu aldi berean portaera atipikoa detektatzeko.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): ausazko ebaketa-kopurua behar den batez bestekoa, gaurko jokabidea historiako gainerakoetatik isolatzeko.",
+            "x: 4 aldagairen bektorea (Itzuli 24h, Vol Z-Score 20d, Realized Volatility 30d eta Spread bps-tan)."
+          ]
+        },
+        "lead": "Zenbat eta arraroagoa den gaurko jokaldia, orduan eta azkarrago isolatu eta puntuazioa 1.00tik gertuago egongo da:",
+        "bullets": [
+          {
+            "bold": "Erregimen normala",
+            "code": "0.00 a 0.49",
+            "text": "Prezioa, bolumena eta likidezia aktiboaren batez besteko historikoarekin bat datoz."
+          },
+          {
+            "bold": "Jarduera handia",
+            "code": "0.50 a 0.64",
+            "text": "Aldagaietako bat gutxienez bere ohiko portaeratik aldentzen hasi zen; Eskaeren fluxua gertutik kontrolatzea komeni da."
+          },
+          {
+            "bold": "Deslokazioa edo anomalia kritikoa",
+            "code": "0.65 a 1.00",
+            "text": "Aktiboak estatistikoki muturreko portaera erregistratzen du. Portafolioaren moduluan, atalase hori gainditzeak segurtasun-balazta aktibatzen du."
+          }
+        ],
+        "example": "Bono subirano batek prezioan % 0,1 apenas mugitzen badu baina bere bolumena lau bider biderkatzen bada eta bere hedapena minututan hirukoiztu egiten bada, detektagailuak hiru datu-puntuak zeharkatzen ditu eta puntuazioa 0,74ra igotzen du (Dislocation gorrian)."
+      },
+      {
+        "id": "zscore",
+        "label": "Bolumenaren saihesbidea (Z-Score)",
+        "intro": "Gaur egun 500 milioi dolar operatu zirela esatea asko da enpresa ertain batentzat, baina oso gutxi S&P 500rentzat. Z-Score bolumenak aktibo guztiak unitate unibertsal berera ekartzen ditu: zenbat desbideratze estandar (σ) da gaur egungo bolumena bere 20 gurpileko batez bestekotik.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Gaurko bolumena (24 ordu) − Batez besteko bolumena (20 egun)",
+          "denominator": "Bolumenaren desbideratze estandarra (20d)",
+          "vars": [
+            "Batez besteko bolumena (20d): aktiboaren ohiko bolumena azken negozio hilabetean.",
+            "Desbideratze estandarra (20d): bolumen hori zenbat aldatzen den normalean egun batetik bestera."
+          ]
+        },
+        "lead": "Horrela, sigma (σ) unitateen eskala bereko edozein aktibo konparatu dezakezu:",
+        "bullets": [
+          {
+            "bold": "Ohiko jarduera",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Egunaren bolumena azken lau asteetako errutinaren barruan dago erabat."
+          },
+          {
+            "bold": "Parte-hartze handia",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Batez besteko interes handiagoa dago eguneko joera balioztatzen hasten dena."
+          },
+          {
+            "bold": "Talka instituzionala",
+            "code": "> +2.0σ",
+            "text": "Urteko txanden % 5 baino gutxiagotan gertatzen da eta normalean funts handien sarrera edo irteera masiboa islatzen du."
+          }
+        ],
+        "example": "Baldintza batek normalean 100 milioi dolar saltzen ditu egunero ± 20 milioi dolarren aldakuntza tipiko batekin eta gaur egun 160 milioi dolar merkaturatzen baditu, bere batez bestekoaren gainetik 60 milioi dolar daude, hau da, +3,0σ-ren baliokidea."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Errenta finkoa (2s10s eta DV01)",
+        "intro": "Taulan Bonuak edo Tasak iragazten dituzunean, zor subiranoa ebaluatzeko funtsezko bi neurketak agertzen dira: kurbaren malda (2s10s) eta oinarrizko puntu baten diru-balioa (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "Oinarrizko puntu 1 (1 pb): % 0,01eko errendimenduaren baliokidea.",
+            "DV01 ($/$ 1M): $ 1 milioi posizio batek zenbat dolar irabazi edo galtzen dituen tasa oinarrizko puntu bat mugitzen bada."
+          ]
+        },
+        "lead": "Nola irakurri bi zenbaki hauek saretan:",
+        "bullets": [
+          {
+            "bold": "Kurba normala edo positiboa",
+            "code": "2s10s > 0 bps",
+            "text": "10 urteko bonuek 2 urteko bonuek baino tasa handiagoa ordaintzen dute, hazkunde ekonomiko osasuntsuaren itxaropena islatuz."
+          },
+          {
+            "bold": "alderantzizko kurba",
+            "code": "2s10s < 0 bps",
+            "text": "Tasa laburrek tasa luzeak gainditzen dituzte; historikoki hozte ekonomikoaz edo diru murrizketez ohartarazten du."
+          }
+        ],
+        "example": "10 urteko Ogasunak % 4,20 ematen badu eta 2 urteko Ogasunak % 4,55 ematen badu, 2s10s zutabeak -35 bps markatzen du (gorriz dagoen kurba alderantzizkoa)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Akzioak (P/E eta Marjina)",
+        "intro": "S&P/NDX akzioak iragazten dituzunean, taulak aurreikusitako irabazien aniztasuna (P/E Forward) eta Operazio Marjina Gordina bistaratzen ditu, balorazioa errentagarritasunarekin alderatu ahal izateko.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Uneko akzioen prezioa",
+          "denominator": "Akzio bakoitzeko irabazi estimatuak (hurrengo 12 hilabeteak)",
+          "vars": [
+            "P/E Forward: Etorkizuneko zenbat urteko irabaziak gaur egungo prezioan ordaintzen ari zaren.",
+            "Marjina Gordina (%): kostu zuzena kendu ondoren irabazi gordina gisa geratzen den salmenten ehunekoa."
+          ]
+        },
+        "lead": "Zer bilatu behar den bi zutabeak zeharkatzean:",
+        "bullets": [
+          {
+            "bold": "Ebaluazio zorrotza vs moderatua",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Multiplo altu batek merkatuak etorkizuneko hazkunde sendoan prezioak jartzen dituela adierazten du; baxuak normalean enpresa helduak edo baliotsuak islatzen ditu."
+          },
+          {
+            "bold": "Prezioen boterea",
+            "code": "Margen Bruto > 50%",
+            "text": "Marjina handiek lehiakortasun abantaila handiak dituzten enpresak erakusten dituzte beren irabaziak inflazioaren aurka defendatzeko gai direnak."
+          }
+        ],
+        "example": "Baldintza bat 150 $-tan saltzen bada eta hurrengo 12 hilabeteetan akzio bakoitzeko 6 $ irabazten badu, bere Aurrerako P/E 25.0x da."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Deribatuak, FX eta Salgaiak",
+        "intro": "Aukeren, forex eta etorkizuneko merkatu fisikoen kasuan, bi zutabe dinamikoek denboran zehar posizioa mantentzearen arriskuaren edo sariaren inplizitutako kostua erakusten dute.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Deribatuak): hurrengo 30 egunetarako aukerak merkaturatzen dituen urteko hegazkortasuna.",
+            "Carry 10Y (FX) eta Roll Yield (Salgaiak): urteko irabazia edo kostua tasa diferentzialaren edo etorkizuneko iraulpenaren ondorioz."
+          ]
+        },
+        "lead": "Nola aprobetxatu zutabe hauek aktiboaren arabera:",
+        "bullets": [
+          {
+            "bold": "Deribatuetan",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Merkatuak zer mugimendu-portzentaia espero duen eta erorketak (Puts) estaltzeko aukerak garestiak diren esaten dizute."
+          },
+          {
+            "bold": "Moneta eta Lehengaietan",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Berdez erakusten dute aktiboa mantentzeak diru-sarrera gehigarriak ematen badiezu edo gorriz garraiatzeko kostua badu."
+          }
+        ],
+        "example": "Aukera batek urtero % 35eko hegazkortasun inplizitua (ATM IV) erakusten badu, merkatuak hurrengo 30 egunetan ±% 10etik hurbil dagoen mugimendua deskontatzen du."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radar Erradiala Mapeatzea",
+        "intro": "Hiru radar-eraztunetan 45 aktibo gehienez gainjarri gabe jartzeko, Orbital ikuspegiak aukeratutako adierazlearen balioa zentrorako distantzia batean (r erradioa) taldearen minimoaren eta maximoaren artean normalizatuta bihurtzen du.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Ondarearen balioa − Taldearen gutxieneko balioa",
+          "denominator": "Taldearen Gehieneko Balioa − Taldearen Gutxieneko Balioa",
+          "vars": [
+            "r → 0 (Barruko Eraztuna): aktiboak intentsitate handiagoarekin edo desbideratze positiboarekin kontzentratzen ditu.",
+            "r → 1 (Kanpoko Eraztuna): aktibo periferikoak edo irakurketa erlatibo txikiena dutenak kokatzen ditu."
+          ]
+        },
+        "lead": "Nola irakurri radarrean planeta bakoitzaren posizioa eta kolorea:",
+        "bullets": [
+          {
+            "bold": "Fokatu barruko eraztuna",
+            "code": "Centro del radar",
+            "text": "Bildu goiko aktibo nagusiak hautatu duzun adierazletik, zure ikuspegia lehenik garrantzitsuenera joan dadin."
+          },
+          {
+            "bold": "Koloreen semantika historikoa",
+            "code": "Verde vs Rojo",
+            "text": "Nodoa berdez pizten da bere batez besteko historikoa ongi gainditzen duenean eta gorriz gainbehera edo estresa islatzen duenean."
+          }
+        ],
+        "example": "Radar bolumen-desbiderazioaren arabera (Z-Score) ordenatzen baduzu, +3,4σ duen aktiboa erdiko eraztun distiratsuan kokatzen da, eta 0,1σ duen bat kanpoko orbitan."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) eta Bollinger Bandak",
+        "intro": "20 aldiko Batezbesteko Mugikor Sinpleak (SMA 20) aktiboaren oinarrizko joera markatzen du, eta Bollinger Bandek kanal dinamiko bat marrazten dute batez besteko horren inguruan bi desbideratze estandar (2σ) gehituz eta kenduz.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): azken 20 itxieren batez besteko aritmetikoa.",
+            "Bandwidth (BB Width): goiko eta beheko banden arteko distantzia portzentajea."
+          ]
+        },
+        "lead": "Estatistikoki, komatxoen % 95 inguru bi bandetan gertatzen dira:",
+        "bullets": [
+          {
+            "bold": "Batez besteko prezioa",
+            "code": "Precio > SMA 20",
+            "text": "Epe laburreko joera bullish dela eta batez bestekoak normalean euskarri gisa jokatzen duela adierazten du."
+          },
+          {
+            "bold": "Goiko edo beheko banda ukitua",
+            "code": "±2σ",
+            "text": "Ohartarazten du prezioa azkarregi luzatu dela bere azken batez bestekotik eta arnasa hartu dezakeela."
+          },
+          {
+            "bold": "banda konpresioa",
+            "code": "BB Width bajo",
+            "text": "Bandak oso estu bihurtzen direnean, merkatuak energia pilatzen du mugimendu indartsu baten aurretik."
+          }
+        ],
+        "example": "Baldintza baten SMA (20) $ 100 bada eta bere 20 gurpileko desbideratze estandarra $ 4 bada, goiko banda $ 108 da eta beheko banda $ 92."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Instituzionala",
+        "intro": "Eguneko ordu guztiei pisu berdina ematen dien batez besteko arrunt batek ez bezala, VWAP-k prezio bakoitza maila horretan negoziatzen den diru kopuruaren arabera neurtzen du. Mahai instituzionalek erabiltzen duten erreferentzia nagusia da.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Prezio tipikoaᵢ × Negoziatutako bolumenaᵢ)",
+          "denominator": "∑ Negoziatutako bolumenaᵢ",
+          "vars": [
+            "Prezio tipikoaᵢ: kandela bakoitzaren maximo, minimo eta itxi arteko batez bestekoa.",
+            "Negoziatutako bolumenaᵢ: atal horretan bereziki negoziatutako bolumena."
+          ]
+        },
+        "lead": "Merkatari profesionalek VWAP linea nola erabiltzen duten:",
+        "bullets": [
+          {
+            "bold": "Exekuzio kontrola",
+            "code": "Comprar bajo el VWAP",
+            "text": "Funts instituzional batek aldirako VWAP azpitik erosten badu, merkatuko batez besteko haztatutakoa baino prezio hobea lortuko du."
+          },
+          {
+            "bold": "Joera Defentsa Maila",
+            "code": "Soporte / Resistencia",
+            "text": "Aktiboak VWAP gainetik jarraitzen duen bitartean, epean erosi zutenek batez besteko irabazia dute."
+          }
+        ],
+        "example": "Milioi 1 akzio 100 $-tan negoziatuko balira eta 100 mila akzio bakarrik 110 $-tan negoziatuko balira, batez besteko sinpleak $ 105 esango luke, baina VWAP-ek 100,91 $ irakurtzen du, ia diru guztia 100 $-tan negoziatzen zelako."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Hedapen-desplazamendua (bps)",
+        "intro": "Hedapena eskaera-koadernoko eskaintza-prezio onenaren eta eskaintza-prezio onenaren arteko aldea da. Merkatu-sortzaileek arriskua edo likidezia falta hautematen dutenean, hutsune hori irekitzen dute beren burua babesteko.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Galdetu prezioa − Eskaintzeko prezioa )",
+          "denominator": "Batez besteko prezioa (erdiko prezioa)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Eskatu / Eskaintzen Prezioa: saltzeko puntua eta erosketa puntua liburuan unean unekoa.",
+            "10.000: Oinarrizko puntuetan (bps) aldea adierazteko bihurketa-faktorea."
+          ]
+        },
+        "lead": "Ezkerreko errailaren Zabaldu dislokazioaren irakurketak esaten dizuna:",
+        "bullets": [
+          {
+            "bold": "Liburu sakon eta arina",
+            "code": "Spread estable en verde",
+            "text": "Likidezia ugari dago bi muturretan eta sarrera edo irtetearen kostu inplizitua minimoa da."
+          },
+          {
+            "bold": "Marruskadura edo likidezia kentzea",
+            "code": "Salto en bps",
+            "text": "Normalean iragarpen makroekonomikoak baino segundo batzuk lehenago edo izuaren salmentan gertatzen da, eta exekuzioa garestitzen du."
+          }
+        ],
+        "example": "Aktibo batek erosteko aholkua 99,95 $-tan eta salmenta-aholkua 100,05 $-tan badu, 100 $ baino gehiagoko 0,10 $-ren aldea 10 oinarrizko punturen baliokidea da (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Aukerak (Black-Scholes eta greziarrak)",
+        "intro": "Aukera-motorean, plataformak bi irabazi eta galeren (P&L) kurba grafikatzen ditu: estrategia iraungitze egunean nola amaituko zen eta zenbat balio duen gaur (T+0) Black-Scholes eredua aplikatuz.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S eta K: azpiko aktiboaren egungo prezioa (Spot) eta aukeraren greba prezioa (Strike).",
+            "Greko garbiak: Δ Delta (prezio-sentsibilitatea), Γ Gamma (Delta azelerazioa), Θ Theta (eguneroko denbora higadura) eta ν Vega (hegazkortasun-sentsibilitatea)."
+          ]
+        },
+        "lead": "Nola irakurri zure estrategiaren greziarrak ezkerreko trenbideko piluletan:",
+        "bullets": [
+          {
+            "bold": "Gidatzea eta azelerazioa",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Delta positibo batek irabaziko du aktiboa igotzen denean; Gamma positiboak gero eta azkarrago irabazten zaitu mugimendua bizkortzen bada."
+          },
+          {
+            "bold": "Denboraren joana eta ziurgabetasuna",
+            "code": "Θ Theta / ν Vega",
+            "text": "Thetak esaten dizu zenbat dolar galtzen edo irabazten duen posizioak igarotzen den egun bakoitzeko; Vega zenbat aldatzen den hegazkortasun inplizitua %1 igotzen bada."
+          }
+        ],
+        "example": "Long Straddle batek (erosi Deitu eta jarri greba berean) Delta 0tik gertu dauka (berdin du gora edo behera doan), baina Vega positiboa eta prezioa behar du bere bi oreka puntuetatik haratago (Breakevens) mugitzeko."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Kurba subiranoak (Butterfly eta DV01)",
+        "intro": "Errenta finkoko motorrak 42 herrialdetako 3 hilabetetik 30 urte arteko etekinak alderatzen ditu eta malda (2s10s) eta erdiko zatiaren kurbadura (Butterfly 2s5s10s) eta moneta-sentsibilitatea (DV01) kalkulatzen ditu.",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y tasa: hautatutako herrialdearen 2, 5 eta 10 urteko errendimendu subiranoak.",
+            "10Y tasa erreala: 10 urteko etekin nominala ken erreferentzia-tasa edo inflazio inplizitua."
+          ]
+        },
+        "lead": "Adierazle bakoitzak zertarako balio duen bonuen analisian:",
+        "bullets": [
+          {
+            "bold": "Erdiko atalaren kurbadura",
+            "code": "Butterfly 2s5s10s",
+            "text": "5 urteko zatia garestia edo merkea den neurtzen du 2 urteko eta 10 urteko muturrekiko."
+          },
+          {
+            "bold": "Dolararen Iraupen Arriskua",
+            "code": "DV01 por $1M",
+            "text": "Milioi dolarreko zorro bat zenbat dolar aldatzen den zehatz-mehatz esaten dizu tasaren % 0,01eko mugimenduarekin."
+          }
+        ],
+        "example": "820 $ milioiko DV01 duen 10 urteko bonu batek 82.000 $ gutxi gorabehera galduko ditu merkatu-tasak oinarrizko 100 puntu igotzen badira (+% 1,00)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Monetak (Carry) eta Etorkizunak (Roll Yield)",
+        "intro": "Monetatan, bikote bat zuzenean kotizatzen ez denean dolarraren aurkako triangulazioaren bidez kalkulatzen da eta bere tasa diferentziala (Carry) neurtzen da. Lehengaietan, berritze-errendimendua berehalako kontratuaren eta 12 hilabeteko kontratuaren (Roll Yield) artean neurtzen da.",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Spot prezioa (Aurrealdeko M1) − Etorkizuneko prezioa (M12)",
+          "denominator": "Etorkizuneko prezioa (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Atzerapausoa (Spot > Etorkizuna): gaur egungo eskasi fisikoak etorkizuneko biribilguneek irabazi positiboak sortzen dituzte (Roll Yield > 0).",
+            "Contango (Spot < Etorkizuna): Biltegiratze kostuek etorkizunak garestitzen dituzte eta berritzeak kostu negatiboa du."
+          ]
+        },
+        "lead": "Honek nola eragiten dion zure patrikan posizio bat mantentzen:",
+        "bullets": [
+          {
+            "bold": "Positiboa Carry Trade monetan",
+            "code": "Carry Spread > 0 bps",
+            "text": "Interes tasa handiko moneta bat erosten baduzu, zure burua tasa baxuko moneta batean finantzatuz, diferentzial hori zure alde bilduko duzu."
+          },
+          {
+            "bold": "Haize ona lehengaietan",
+            "code": "Backwardation en verde",
+            "text": "Inbentario fisikoak baxuak direnean, gertuko kontratuak urrunekoa baino gehiago balio du eta inbertitzaileak etekin gehigarria lortzen du kontratua jaurtiz."
+          }
+        ],
+        "example": "Hilabete bateko petrolioa 72 $-tan saltzen bada eta 12 hilabeteko kontratua 68 $-tan saltzen bada, merkatua atzerapenean dago + 5,88% urteko Roll Yield positiboarekin."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Guztira haztatutako kalifikazioa",
+        "intro": "Aktibo guztiak ez dira iturri berdinetatik mugitzen: enpresa batean, ikuskaturiko finantza-egoerek (SEC 10-K/10-Q) pisu handia dute, eta kriptografia-merkatuan edo monetetan, aldiz, eguneroko fluxuek eta komunikazioek pisu handiagoa dute.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Funtsa / Peso_Ez: haztapen automatikoa kategoriaren arabera (adibidez, % 80 / % 20 Akzioetan; % 85 / % 15 Kuotan).",
+            "Azken Eskala: −100 (gehienezko ezkortasuna) eta +100 (gehienezko konbentzimendu bullish) bitartekoa da."
+          ]
+        },
+        "lead": "Honela itzultzen da puntuazio konposatua goiko iritzian:",
+        "bullets": [
+          {
+            "bold": "Bullish jarrera",
+            "code": "BULLISH / Nota > +15",
+            "text": "Dokumentalen katalizatzaileak eta albisteen fluxuak arrisku faktoreak gainditzen ditu argi eta garbi."
+          },
+          {
+            "bold": "Jarrera neutrala edo mistoa",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Oinarri eta albisteen arteko indarrak ere; Erabaki aurretik 10 faktoreren akordeoia berrikustea komeni da."
+          },
+          {
+            "bold": "Defentsan edo bearish jarrera",
+            "code": "BEARISH / Nota < -15",
+            "text": "Balantzeen gaineko alertak, marjinen hondatzea edo kontrako titularrak dira nagusi."
+          }
+        ],
+        "example": "Akzio batean (% 80 oinarriak / % 20 albisteak), balantzeak +50 puntu erakusten baditu eta eguneko albisteek +20 erakusten badute, puntuazio haztatua guztira (0,80 × 50) + (0,20 × 20) = +44 da."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Egiaztatutako bilaketa (RAG)",
+        "intro": "Adimen artifizialak zifrak asma ez ditzan, Document Chat-ek Generation Augmented Recovery (RAG) erabiltzen du: lehenik eta behin, aktiboaren txosten ofizialetan dagozkion paragrafoak bilatzen ditu eta gero erantzuna idazten du iturria aipatuz.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Bektore-kontsulta (Q) · Bektore-dokumentu ofiziala (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Q eta D bektorea: zure galderaren zenbakizko irudikapenak eta zati ofizialak (10-K, FOMC aktak, EIA txostenak).",
+            "3-Layer Guardrail: finantzarekin zerikusirik ez duten edo dokumentazio-laguntzarik gabeko kontsultak blokeatzen dituen iragazkia."
+          ]
+        },
+        "lead": "Mekanismo honek zer bermatzen duen txatean galdera bat egiten duzunean:",
+        "bullets": [
+          {
+            "bold": "Lehen mailako iturrietan ainguratzea",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Diru-sarreren, zorren, izakinen edo tasen datu bakoitza aktibo horri dagokion arauzko dokumentutik dator."
+          },
+          {
+            "bold": "Gelditu gaitik kanpoko galderak",
+            "code": "Guardrail activo",
+            "text": "Norbait finantzarioak ez diren gaiak kontsultatzen saiatzen bada, laguntzaileak kontsulta baztertzen du eta tresnaren analisian jartzen du arreta."
+          }
+        ],
+        "example": "Arrisku-faktoreen txipa ukitzen duzunean, motorrak bere azken 10-K inprimakiko 1A elementua (Arrisku-faktoreak) atala berreskuratzen du eta puntu kritikoak laburbiltzen ditu."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Neuronal Score",
+        "intro": "Hiztegi tipiko batek finantza-hitzak nahasten ditu askotan (adibidez, \"kostuen jaitsiera\" edo \"zorraren murrizketa\" albiste bikaina da jaitsiera edo murrizketa hitza erabiltzen badute ere). FinBERT finantza-testuekin bereziki trebatutako neurona-sare bat da.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P (Positiboa) eta P (Negatiboa): ereduak titularrari esleitutako probabilitateak aktiboarentzako igoerak edo beherakoak izatea.",
+            "24 orduko kurba: azken 24 orduetako titularren batez besteko higigarri esponentziala."
+          ]
+        },
+        "lead": "Eskuineko denbora-lerroan nodo bakoitzak nola balio duen:",
+        "bullets": [
+          {
+            "bold": "Katalizatzailearen euskarria",
+            "code": "+20 a +100 en verde",
+            "text": "Aurreikusitako irabaziak, kreditu-kalifikazioaren igoerak edo mesedeko tasen murrizketak gainditzea."
+          },
+          {
+            "bold": "Neutro informazio kablea",
+            "code": "-19 a +19 en ámbar",
+            "text": "Tresnaren egitura-ebaluazioa aldatzen ez duten ohiko operazio-iragarkiak."
+          },
+          {
+            "bold": "Arriskuaren titularra",
+            "code": "-20 a -100 en rojo",
+            "text": "Arauzko abisuak, marjina jaitsierak, grebak edo espero baino okerragoak diren inflazio-datuak."
+          }
+        ],
+        "example": "Ereduak titular bati %82 probabilitate positiboa, %12 neutroa eta %6 negatiboa esleitzen badio, nodoak +76ko eragin garbia erakusten du berdez."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe eta Sortino",
+        "intro": "Lehen bi goiko txartelek neurtzen dute zenbat hazten den zure kapitala urtean (CAGR) eta zenbaterainokoa den hazkunde hori jasan behar dituzun kolpeen aldean (Sharpe eta Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Urteko Portfolio Errentagarritasuna (Rp) − Arriskurik gabeko tasa (Rf)",
+          "denominator": "Urteko Portfolio Lurrunkortasuna (σp)",
+          "vars": [
+            "Rf (% 4,30): Altxorraren letretan arriskurik gabe lor dezakezun oinarrizko etekina.",
+            "Sortino Ratioa: formula bera erabiltzen du baina izendatzailean egun negatiboen (jaitsiera) hegazkortasuna soilik zigortzen du."
+          ]
+        },
+        "lead": "Nola ebaluatu zure zorroaren kalitatea zenbaki hauekin:",
+        "bullets": [
+          {
+            "bold": "Zorro eraginkorra",
+            "code": "Sharpe > 1.00",
+            "text": "Arriskurik gabeko tasaren gainetik lortzen duzun gehiegizko errentagarritasunak suposatutako hegazkortasuna askoz gainditzen du."
+          },
+          {
+            "bold": "Errendimendu bikaina",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Oso ondo dibertsifikatutako konbinazio bat adierazten du, non igoerak koherenteak diren eta jaitsierak edukita dauden."
+          }
+        ],
+        "example": "Zure zorroa % 15,3 itzultzen badu urtero, arriskurik gabeko tasa % 4,3koa da eta zure urteko hegazkortasuna % 10ekoa, gehiegizko etekina % 11koa da eta zure Sharpe ratioa 1,10ekoa da."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR % 95, CVaR % 99 eta beherapena",
+        "intro": "Hirugarren eta laugarren txartelek erantzuten dute zenbat gal dezakezun egun txar baina estatistikoki normal batean (VaR % 95), zenbat izu-egun batean (CVaR % 99) eta zein izan zen aurreko gailur batetik atzerakada handiena (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1.645: urteko gurpil arrunten %95 hartzen duen faktore estatistikoa (20 egunetik 19).",
+            "CVaR % 99 (Itxarotako Gabezia): Merkatuak atalase hori hautsi eta egun txarrenen goiko % 1ean sartzen denean, batez besteko galera."
+          ]
+        },
+        "lead": "Zer desberdintasun praktiko dago VaR eta Max Drawdown begiratzearen artean:",
+        "bullets": [
+          {
+            "bold": "Egun bakarreko arriskua",
+            "code": "VaR 95% 1D en USD",
+            "text": "Psikologikoki eta ekonomikoki zure kontuak norabide txarrean alda dezakeenerako prestatzen zaitu, estrategiak porrot egin duela esan gabe."
+          },
+          {
+            "bold": "Erresistentzia kontrako marra batean",
+            "code": "Max Drawdown 12M",
+            "text": "Puntatik puntara metatutako tantoa neurtzen du punturik altuenetik lurrera berriro berreskuratu aurretik."
+          }
+        ],
+        "example": "Eguneroko VaR % 1,45eko % 95eko 100.000 $ zorro batean (1.450 $), 20 merkataritza-gurpiletik 19tan zure eguneroko galerak ez dira $ 1.450 baino gehiago izango."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "X izpien gainjartzea (#12)",
+        "intro": "SPY edo QQQ bezalako ETF bat erosten duzunean, dozenaka akzio erosten ari zara barruan. Akzio horietako batzuk zuzenean erosi badituzu, zure benetako esposizioa bi gauzen batura da.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Pisu zuzenaᵢ: zure zorroaren ehunekoa zuzenean stockari esleitutako i.",
+            "ETFₖ barneko ehunekoa: enpresa horrek indizearen edo fondoaren barruan duen pisu ofiziala k."
+          ]
+        },
+        "lead": "Zergatik da gakoa zorroa itxi aurretik lehen fitxa hau berrikustea:",
+        "bullets": [
+          {
+            "bold": "Ezkutuko Kontzentrazio Ikusgarritasuna",
+            "code": "Directo + Indirecto",
+            "text": "Zure zorroko ETF bakoitza automatikoki desmuntatzen du eta barra bakar bat erakusten dizu enpresa bakoitzean duzun benetako ehunekoarekin."
+          },
+          {
+            "bold": "Gehiegizko alerta",
+            "code": "> 20% en rojo",
+            "text": "Batura osoak izen bakar baten kontzentrazio-atalase zuhurra gainditzen badu, errenkada argitzen da berriro orekatu ahal izateko."
+          }
+        ],
+        "example": "Zure zorroaren % 15 zuzeneko NVDA jartzen baduzu eta % 30 ere badaukazu SPY ETF-n (non NVDA-k % 7 inguru pisatzen duen), X-Ray-k agerian uzten du NVDA-ren benetako esposizioa % 15 + (% 30 × % 7) = 17 dela."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alpha Brinsonen deskonposizioa (#2)",
+        "intro": "Zure zorroak bere erreferentea gainditzen duenean (edo galtzen duenean, Brinson-Fachler ereduak bereizten du zehazki nondik datorren diferentzia hori: arrazoi al zenuen zein sektoretan gehiegizko pisua hartu edo ondo al zenuen sektore bakoitzeko aktibo onenak aukeratzerakoan?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Esleipen-eragina: (Portfolio Pisua − Erreferentziazko Pisua) × Erreferentzia Sektoreko Errentagarritasuna.",
+            "Hautaketa-efektua: Pisua Erreferentzia-n × (Zure Aktiboen itzulera − Sektorearen itzulera)."
+          ]
+        },
+        "lead": "Nola irakurri hirugarren fitxako hiru atribuzio-barrak:",
+        "bullets": [
+          {
+            "bold": "Makro edo sektoreko arrakasta",
+            "code": "Asignación Sectorial",
+            "text": "Berdean positiboa da merkatuak baino pisu gehiago jartzen duzunean gehien igo diren aktibo klaseetan."
+          },
+          {
+            "bold": "Aktiboen bideratze arrakastatsua",
+            "code": "Selección de Activos",
+            "text": "Positiboa da aukeratutako instrumentu zehatzek beren sektoreko batez bestekoa baino errendimendu handiagoa izan dutenean."
+          }
+        ],
+        "example": "Zure zorroak S&P 500 % 3,20 irabazi badu, fitxa honek aukera ematen dizu +% 2,10 akzio hobeak aukeratzetik (Hautapena) eta +% 1,10 teknologian pisu gehiago izateagatik (Eslekzioa) izan dela ikusteko."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Muga eraginkorra eta CML",
+        "intro": "Markowitz planoan, zorro baten espero den etekina bere aktiboen etekinaren batez besteko haztatua da, baina bere hegazkortasuna batez bestekoa baino txikiagoa da aktiboek % 100 berdin mugitzen ez dutelako.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: i eta j aktiboei esleitutako kapitalaren ehunekoa.",
+            "ρᵢⱼ (korrelazioa): bi ondasunak elkarrekin mugitzen diren maila (-1etik +1era). Zenbat eta ρᵢⱼ txikiagoa izan, orduan eta arrisku osoa murrizten da."
+          ]
+        },
+        "lead": "Grafikoko hiru erreferentziak adierazten dutena:",
+        "bullets": [
+          {
+            "bold": "Bariantza minimoa",
+            "code": "Min-Var",
+            "text": "Kurbaren ezkerreko puntua da: ahalik eta hegazkortasun txikiena lortzen duen pisuen konbinazio zehatza."
+          },
+          {
+            "bold": "Máximo Sharpe eta Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Arriskurik gabeko tasatik abiatzen den lerroak muga eraginkorra ukitzen duen puntua da, arrisku-unitate bakoitzeko etekin handiena eskainiz."
+          }
+        ],
+        "example": "Zati berdinetan konbinatzen badituzu %20ko hegazkortasuna baina zero korrelazioa duten bi aktibo (ρ = 0), zorroaren hegazkortasuna ez da %20koa, baina %14,1era jaisten da."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR Active eta Capture-ren bidez",
+        "intro": "Zorroari arrisku gehiago gehitzen dion posizioa zein den jakiteko, aktibo bakoitzaren ekarpen marjinalaren pisuaren eta gainerakoekin duen korrelazioaren arabera neurtzen da. Gainera, harrapaketa-ratioek asimetria neurtzen dute S&P 500-ren igoeraren eta jaitsieraren aurrean.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Zure Aktiboaren edo Portfolioren itzulera Bullish (edo Bearish) gurpiletan",
+          "denominator": "S&P 500 itzulera gurpil haietan",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (>% 100) - Merkatuak gora egiten duenean indizea baino gehiago irabazi.",
+            "Downside Capture (<% 100): merkatua jaisten denean indizea baino gutxiago jaisten da (buffer defentsiboa)."
+          ]
+        },
+        "lead": "Koadranteko hirugarren fitxa berrikustean bilatzen ari zaren profil aproposa:",
+        "bullets": [
+          {
+            "bold": "asimetria positiboa",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Erabat parte hartu zezen-merkatuetan, baina babestu kapitala burtsak zuzentzen duenean."
+          },
+          {
+            "bold": "Aterpea edo korrelaziorik gabeko ondasunak",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Burtsaren beherakadetan irmo mantendu edo gora egiten duten bonu laburrak edo urrea bezalako tresnak."
+          }
+        ],
+        "example": "S&P 500 %10 igo zeneko hilabeteetan zure zorroak %11 irabazi bazuen (%110eko gorakada), eta indizea %10eko jaitsieran zure zorroak %6 baino ez egin (%60 beherakoa), asimetria handia duzu zure alde."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normala vs Krisiaren korrelazioa",
+        "intro": "Pearson koefizienteak (r) -1,00tik +1,00era bi aktibo elkarren artean nola mugitzen diren neurtzen du. Zorroaren kudeaketan arriskua da merkatu-hondamendi batean arrisku-aktiboen arteko korrelazioa normalean +1,00 aldera (kutsadura) igotzen dela.",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kobariantza (I aktiboak itzultzen ditu, j aktiboak itzultzen ditu)",
+          "denominator": "Aktiboen hegazkortasuna i (σᵢ) × Aktiboen hegazkortasuna j (σⱼ)",
+          "vars": [
+            "r 0tik hurbil edo negatiboa: dibertsifikazio bikaina (bat jaisten denean, besteak ez du jarraitzen).",
+            "r Crisis Queue-n: matrizea berriro kalkulatzen du merkatuan dauden gurpil txarrenen %5a bakarrik hartuta."
+          ]
+        },
+        "lead": "Nola irakurri 6x6 matrizearen koloreak bi erregimenetan:",
+        "bullets": [
+          {
+            "bold": "Benetako dibertsifikazioa",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Bi aktiboek eragile ekonomiko ezberdinei erantzuten diete eta elkarri konpentsatzen diote."
+          },
+          {
+            "bold": "Kontzentrazioa edo kutsadura",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Ia bloke gisa mugitzen dira; Biak izateak ez ditu zure erorketak murrizten egun txar batean."
+          }
+        ],
+        "example": "Sektore ezberdinetako bi akziok 0,42ko korrelazio moderatua izan dezakete urte normal batean, baina Krisi Ilara botoia aktibatzen duzunean ikusiko duzu 0,81era igotzen dela, izuan elkarrekin saltzen direlako."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D Shock (Tasa × Burtsa)",
+        "intro": "2D matrizeak aldi berean konbinatzen ditu interes-tasen mugimenduaren eragina (Errenta Finkoaren Iraupena eta Tasa Sentsibilitatearen bidez) S&P 500 indizearen jaitsiera edo igoera (Equity Beta bidez).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: burtsaren aldakuntzaren eszenatokia ardatz horizontalean (%-20tik +10era).",
+            "Δ Tasak: interes-tasen aldaketaren eszenatokia ardatz bertikaleko oinarrizko puntutan (−100 eta +200 bps)."
+          ]
+        },
+        "lead": "Zein da taulako bi ardatzak gurutzatzearen helburua:",
+        "bullets": [
+          {
+            "bold": "Stagflation edo tasa igoera eszenatokia",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "2022an gertatu zena bezala, non akzioek eta bonu luzeek aldi berean pairatzen duten."
+          },
+          {
+            "bold": "Aterpearen eszenatoki klasikoa",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Tasa baxuagoek Altxorraren bonuen prezioa igotzen duten eta akzioen jaitsiera moteltzen dutenean."
+          }
+        ],
+        "example": "US10Y edo TLT bezalako bonu luze baten iragazketan, taulan ikus dezakezu nola irabazten duen balioa tasak jaisten direnean (-100 bps), jausgailu gisa jokatuz S&P 500 egun berean erortzen bada."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markov erregimenak (#11)",
+        "intro": "Markov-en kate batek ekonomia lau egoera posibleren artean jauzi egiten duen sistema gisa modelatzen du (Balzkari lasaia, Bullish Lurrunkorra, Inflazioa/Tasa eta Krisia) eta batetik bestera pasatzeko probabilitatea kalkulatzen du.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Diagonal nagusia (i = j): egungo erregimena aldatu gabe geratzeko probabilitatea.",
+            "Diagonaletik kanpo (i ≠ j): merkatu-klima berri batera biratzeko probabilitatea."
+          ]
+        },
+        "lead": "Nola aprobetxatu bigarren fitxako trantsizio-matrizea:",
+        "bullets": [
+          {
+            "bold": "Egungo zikloaren iraupena",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Erregimen lasaiek iraunkortasun handia izan ohi dute (>% 75), joera-posizioak mantentzea ahalbidetuz."
+          },
+          {
+            "bold": "Errotazio Goiz Alerta",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Egoera lurrunkorretarako trantsizio probabilitatea handitzen denean, palanka murriztea edo estaldura aktibatzea komeni da."
+          }
+        ],
+        "example": "Gaur egungo merkatua Zezen Lurrunkorren erregimenean badago eta errenkadak iraunkortasunaren % 62, Bull Calm-era itzultzearen % 20 eta Estres/Krisira joatearen % 18 markatzen badu, badakizu ia 5 agertokitik 1ek zuzenketa bat eragiten duela."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo proiekzioa (10.000 bide)",
+        "intro": "Zure zorroaren espero den errentagarritasunean eta egungo hegazkortasunean oinarrituta, simulagailuak etorkizuneko 10.000 ibilbide posible sortzen ditu egunez egun Mugimendu Browniar Geometriko Estokastikoa eredua aplikatuz.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ eta σ: espero den urteko etekina eta urteko hegazkortasuna zure egungo zorroaren.",
+            "Z: ausazko aldagai normal estandarra 10.000 aldiz marraztua horizontean zehar (6M, 12M edo 24M)."
+          ]
+        },
+        "lead": "10.000 simulazio horietatik, grafikoaren hiru kurba nagusiak ateratzen dira:",
+        "bullets": [
+          {
+            "bold": "Eszenatoki onuragarria",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Eszenatoki baikorrenen %5ak bakarrik gainditzen duen maila."
+          },
+          {
+            "bold": "Espero zen erdiko ibilbidea",
+            "code": "Mediana P50",
+            "text": "Emaitza tipikoa non simulazioen erdia goian eta beste erdia behean dagoen."
+          },
+          {
+            "bold": "Epearen estresaren eszenatokia",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Kontrako solairua: simulatutako bideen %95ean zure zorroa lerro honen gainetik amaitzen da."
+          }
+        ],
+        "example": "100eko oinarrian 12 hilabeteko horizonte batean, P50-k 116 irakurtzen badu eta P05-ek 94 irakurtzen badu, zure itxaropen zentrala % 16 irabaztea da eta oso kaltegarria den urte batean -% 6tik gertu arriskua duzu."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly irizpidea (#14)",
+        "intro": "Kelly Irizpideak zientifikoki erantzuten du zure kapitalaren zein ehuneko esleitu behar duzun eragiketa bati arrakasta izateko probabilitatea ezagutzen duzunean (Irabazi-tasa) eta zenbat irabazten duzun arrakasta lortzen duzunaren aldean galtzen duzuna (Payoff ratioa).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p eta q: irabazteko probabilitatea (p) eta galtzeko probabilitatea (q = 1 − p).",
+            "b (Payoff ratioa): batez besteko irabazia batez besteko galerarekin banatuta (adibidez, arriskuan dagoen $ 1 bakoitzeko $ 2 irabazteak b = 2 dakar)."
+          ]
+        },
+        "lead": "Zergatik erabiltzen duten kudeatzaile profesionalek Half-Kelly (0,5×) aldaera:",
+        "bullets": [
+          {
+            "bold": "Kelly osoa",
+            "code": "Full Kelly 1.0×",
+            "text": "Epe luzerako hazkunde matematikoa maximizatzen du, baina oso aldaketa zorrotzak sortzen ditu segidan akatsen bat egonez gero."
+          },
+          {
+            "bold": "Half Kelly gomendatua",
+            "code": "Half-Kelly 0.5×",
+            "text": "Iradokitako ehunekoaren erdia erabiliz, hazkunde potentzialaren % 75 harrapatzen duzu baina hegazkortasuna erdira murrizten duzu."
+          }
+        ],
+        "example": "Estrategia batek denboraren % 55 lortzen badu (p = 0,55, q = 0,45) eta 2 eta 1 ordaintzen badu (b = 2), Kelly osoak (0,55×2 - 0,45) / 2 = % 32,5 ematen du, eta Half-Kelly zuhurrak % 16,25 esleitzea gomendatzen du."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Jarri OTM Ezkutua (#6)",
+        "intro": "Diruz kanpoko put-aukera batek (adibidez, S&P 500ren egungo prezioaren % 5 azpitik) aseguru-kenkariak bezala funtzionatzen du: kostu finko txikia du (prima), baina merkatua % 20 edo % 30 jaisten bada, bere balioa ganbila biderkatzen da eta zure zorroaren galerak konpentsatzen ditu.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Urteko kostua (Carry Drag): merkatua jaisten ez bada asegurua berritzeak kostatzen duen urteko ehunekoa.",
+            "Crash Protection (%-20): Put kontratuak istripu larri batean berreskuratutako dolarrak."
+          ]
+        },
+        "lead": "Nola alderatu simulagailuaren aukerak lehenengo fitxan:",
+        "bullets": [
+          {
+            "bold": "Indize zuzeneko asegurua",
+            "code": "SPY Put 5% OTM",
+            "text": "Gehienezko galera mugatzen du % 5eko jaitsiera batetik urteko kostu moderatuaren truke."
+          },
+          {
+            "bold": "Finantzatutako edo hegazkortasunaren estaldura",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Lepokoak kostua murrizten du Deialdi bat salduz; The Call on VIX-ek lehertzen du merkatuan izua pizten denean."
+          }
+        ],
+        "example": "SPY 100.000 $-ko zorroa babestea % 5 OTM-rekin % 1,1 kostatzen bada (1.100 $), baina -% 20ko hutsegite bat gertatuz gero, zure zorroaren beherakada erdira murrizten da, aurrezki garbiak 7.000 $ gainditzen ditu."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Marjina eta marjinarako distantzia deia (#13)",
+        "intro": "Deribatuekin edo palanka batekin jarduten duzunean, artekariak posizioaren balio osoaren gainean kapital propioaren gutxieneko ehuneko bat mantentzea eskatzen du (Mantentze-marjina). Jaitsiera batek zure kapitala zoru horretatik behera murrizten badu, Margin Call bat abiarazten da.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Zorra edo Finantzatutako Balantzea",
+          "denominator": "1 − Mantentze-marjina % (Reg-T)",
+          "vars": [
+            "Esposizio gordina: posizio irekien batura osoa ondarearekin banatuta (adibidez, 1,18×).",
+            "Marjina-deiarekiko distantzia (%): zorroak oraindik onartzen duen portzentajea atalasea iritsi aurretik."
+          ]
+        },
+        "lead": "Jarraipen-barrako segurtasun-mailak:",
+        "bullets": [
+          {
+            "bold": "Garbigune handia",
+            "code": "Distancia > 30% en verde",
+            "text": "Apalankada txikia da eta zorroak krisi larria ere xurga dezake behartutako salmentarik gabe."
+          },
+          {
+            "bold": "kontu-eremua",
+            "code": "Distancia < 15% en rojo",
+            "text": "Merkatuaren zuzenketa moderatuak doako bermeak agortuko lituzke eta unerik txarrenean posizioak likidatzera behartuko lituzke."
+          }
+        ],
+        "example": "1,18×-ko palanka moderatua eta erabilitako mantentze-marjina % 22koarekin, zure zorroak % 38 baino gehiagoko segurtasun kuxin bat du bermeen erreklamazioen aurretik."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "3 Zutabeen Batzordearen arauak",
+        "intro": "Inpultso-erabakirik ez den zorroaren biziraupena arriskuan jarri ez dezan, Batzordeak eskaera bakoitza ebaluatzen du, ohar teknikoa, oinarrizko oharra eta bi arrisku-kontrol-arau gogor eta negoziaezin batuz.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: aktibo indibidual batek ezin du aktibo osoaren bosten bat baino gehiago kontzentratu.",
+            "Anomalia Gelditzea (P-06 ≥ 0,65): aktiboa dislokazio estatistikoan sartzen bada, sistemak gehienezko esposizioa %5era murrizten du."
+          ]
+        },
+        "lead": "Zer esan nahi du estatu bakoitzak epaian eta Exekuzio Liburuan:",
+        "bullets": [
+          {
+            "bold": "Murrizketarik gabe onartutako agindua",
+            "code": "APROBADO en verde",
+            "text": "Hiru zutabeek bat datoz mesede eta posizioaren tamainak kontzentrazio- eta likidezia-muga guztiak errespetatzen ditu."
+          },
+          {
+            "bold": "Baranda bidez egokitutako ordena",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Txartel batek % 20ko muga gainditzen duenean edo anomalia baten erdian asko erosten saiatzen denean, baranda soberakinaren berri ematen du."
+          }
+        ],
+        "example": "Baldintza bakar bat zure zorroaren % 26ra eramango lukeen erosketa simulatzen saiatzen ari bazara, 3. zutabeak (Arriskuak eta Dimentsioaren Baranda) kontzentrazio alerta adierazten du, % 20tik behera doitzeko."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Eraginkortasuna Walk-Forward (WFE)",
+        "intro": "Estrategia bat iraganean itxura ona izateko sortua ez zela egiaztatzeko (gehiegizko egokitzapena), Walk-Forward probak diseinu-aldian (In-Sample) nola egin zuen alderatzen du inoiz ikusi gabeko datuekin (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Urteko itzulera Out-of-Sample (balioztapen hutsa)",
+          "denominator": "Urteko itzulera In-Sample (Prestakuntza)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): estrategiaren pisuak eta arauak kalibratzeko erabiltzen den atal historikoa.",
+            "Out-of-Sample (OOS): estrategia baldintza errealetan probatzen den hurrengo atala bere parametroak ukitu gabe."
+          ]
+        },
+        "lead": "Industria kuantitatiboak nola baloratzen du WFE ehunekoa:",
+        "bullets": [
+          {
+            "bold": "Estrategia sendoa eta koherentea",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Merkatu-baldintza berriei aurre eginez irabaziak sortzeko ahalmenaren gehiengoa mantentzen du."
+          },
+          {
+            "bold": "Hauskorra edo gehiegizko estrategia",
+            "code": "WFE < 50% en rojo",
+            "text": "Iraganeko teorian ondo funtzionatu zuen baina errealitatean eraginkortasuna galtzen du; Ez da komeni benetako diruarekin gauzatzea."
+          }
+        ],
+        "example": "Estrategia batek bere diseinu-fasean (In-Sample) % 20 urtekoa itzultzen badu eta ondorengo benetako proba-etapan (Out-of-Sample) % 18,8 urtekoa itzultzen badu, bere WFE eraginkortasuna (18,8 / 20) = % 94,0 da."
+      }
+    ]
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Zuzeneko Ikusizko Ibilbidea",
+      "clickPlayPause": "Egin klik erreproduzitzeko edo pausatzeko (Zunea)",
+      "subtitles": "Azpitituluak (C)",
+      "fullscreen": "Pantaila osoa (F)",
+      "exitFullscreen": "Irten pantaila osotik (F edo Esc)",
+      "portTabs": [
+        "Eraikitzailea",
+        "Arriskua",
+        "Simulagailua",
+        "Kopilota"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Hizkuntzak",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • Kategoriak",
+      "scr-pulse": "02 • 24h Pultsua",
+      "scr-table": "03 • Taula",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Bero-mapa",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • Teknikoa",
+      "ana-compare": "03 • Konparatu %",
+      "ana-micro": "04 • Mikro eta Fluxua",
+      "ana-engines": "05 • 3D/2D Motorrak",
+      "res-hero": "01 • Puntuazioa eta jarrera",
+      "res-rag": "02 • RAG Txata",
+      "res-factors": "03 • Faktoreak",
+      "res-pulse24h": "04 • FinBERT Pultsua",
+      "p1-pills": "01 • Laburpena",
+      "p1-table": "02 • Ponderazioa",
+      "p1-xray": "03 • X izpiak",
+      "p1-calendar": "04 • Egutegia",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornado eta VaR",
+      "p2-corr": "03 • Korrelazioa",
+      "p2-shock2d": "04 • Shock eta Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Eragina",
+      "p3-whatif": "02 • What-If & Kelly",
+      "p3-tailhedge": "03 • OTM Put & Margin",
+      "p3-committee": "04 • Batzordea eta erregistroa",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Ongi etorri Home pantailara: zure distrakziorik gabeko abiapuntua non merkatuak deskodetzen diren.",
+      "home-header": "Header-ren goiko ezkerreko izkinan, λ ikonoa sakatzean, beti itzuliko zara etapa nagusi honetara.",
+      "home-markets": "Headerren goialdean zentratuta Markets dago, 213 aktibo global guztiak zuzenean ikertzeko zure lantokia.",
+      "home-portfolio": "Zentratutako menuan ondoan dago Portfolio, esleipenak eraikitzeko, estres-probaren arriskua eta merkataritzak simulatzeko.",
+      "home-system": "Beheko ezkerreko Footer-k, System-k zerbitzarien eta datu-baseen zuzeneko behagarritasun-monitorea irekitzen du.",
+      "home-guide": "Haren ondoan, Guide-k urratsez urrats eskuliburu interaktibo hau irekitzen du behar duzun bakoitzean.",
+      "home-langs": "Behe-eskuineko izkinan, hizkuntza-botoiak zentratutako modala irekitzen du plataforma 56 hizkuntzatara itzultzeko.",
+      "home-palettes": "Eta Palette-k ikusmenezko irakurketa-gaiak irekitzen ditu, finantza berdea eta gorria osorik mantenduz.",
+      "scr-categories": "Goiko Kategorien barran, iragazi 213 aktibo guztietan, zure Watchlist edo 10 merkatu espezializatuetan.",
+      "scr-pulse": "4 Pulse 24h txartelek bolumen agregatua, batez besteko RSI, P-06 erregimena eta bolumen goreneko dislokazioak erakusten dituzte.",
+      "scr-table": "Taula interaktiboak berehalako bilaketa, gogokoenak eta zutabe adimendunak eskaintzen ditu aktibo-klase bakoitzari egokitutako.",
+      "scr-orbital": "Orbital ikuspegiak hiru eraztun zentrokideen bidez mapatzen ditu aktiboak desbiderapenaren arabera, zuzeneko alboko ikuskapen-panel batekin.",
+      "scr-heatmap": "Bero-mapak 10 aktibo nagusiak bloke proportzionaletan antolatzen ditu 8 tonu berde eta gorritan.",
+      "scr-maintools": "Eta Main Tools-k hiru urratsetan gidatzen zaitu kurba subiranoetara, 3D hegazkortasuna, FX gurutzea eta etorkizuneko motorretara.",
+      "ana-hero": "Header-k aktiboen aldatzailea, 1m-tik ALL-era 9 denbora-tarte eta 5 oinarrizko adierazleak konbinatzen ditu.",
+      "ana-technical": "Lente teknikoak SMA 20, VWAP eta 2σ Bollinger Bandak gainjartzen ditu beheko bolumenaren berrespenarekin.",
+      "ana-compare": "Konparatu %-arekin, neurtu ehuneko abantaila garbia edo Alpha Spread % 0tik pareko edo indize bateragarri baten aldean.",
+      "ana-micro": "Micro & Flow-ek bolumen-pikak detektatzen ditu 20d Z-Score-ren bidez, hedatu likidezia dislokazioaren bidez eta P-06 anomaliaren puntuazioaren bidez.",
+      "ana-engines": "Laugarren fitxa aktiboen klasearen arabera aldatzen den ad-hoc tresna dinamikoa da: NVDA akzio bat denez, 3D Lurrunkortasuna eta Aukerak ordaintzea irekitzen du, bonuek, FXek eta salgaiek beren tresna espezializatuak abiarazten dituzten bitartean.",
+      "res-hero": "Goialdean, Score & Stance-k oinarrizko epaia, balorazio haztatua eta goiburuko termometroa laburbiltzen ditu.",
+      "res-rag": "Ezkerreko zutabean, RAG Document Chat-ek SEC 10-K eta 10-Q artxibo ofizialetan oinarritutako egiaztatutako galderei erantzuten die.",
+      "res-factors": "Erdiko zutabean, Faktoreak akordeoiak 5 zezen-gidari nagusiak kontrastatu ditu 5 bear-arrisku nagusiekin.",
+      "res-pulse24h": "Eskuinean, FinBERT Pulse-k titularrak hausten ditu denbora errealean eta 24 orduko sentimendu-kurba markatzen du.",
+      "p1-pills": "6 Laburpen txartelek zuzeneko CAGR, Sharpe eta Sortino, % 95 VaR, Max Drawdown, Alpha eta dibertsifikazioa birkalkulatzen dituzte.",
+      "p1-table": "Ponderazio-taulan, gehitu 213 aktiboetako edozein, ezarri portzentajeen pisu zehatzak edo orekatu % 100ean.",
+      "p1-xray": "Goiko eskuinaldean, 5 fitxako X-Ray panelak ETF gainjartzea, esposizioa, Brinson-en atribuzioa, diru-fluxua eta zaintza ikuskatzen ditu.",
+      "p1-calendar": "X Izpien azpian, Hileroko Egutegiak urtarriletik abendura arteko itzuleraren koherentzia eta YTD guztirakoak erakusten ditu.",
+      "p1-backtest": "Eta zabalera osoko behealdean, Backtesting-k zure zorroa S&P 500, 60/40, All-Weather eta Min-Variance-ekin alderatzen du.",
+      "p2-markowitz": "Lehenengo koadranteak 2D Markowitz Efficient Frontier marrazten du eta zure zorroa Min-Var eta Max-Sharperen aldean kokatzen du.",
+      "p2-tornado": "Beheko ezkerreko koadranteak 5 krisi historiko probatzen ditu, aktibo bakoitzeko % 95 VaR ekarpena eta Gora/Behera harrapatzea.",
+      "p2-corr": "Goi-eskuinean, 6×6 Matrix-ek baldintza normaletako korrelazioak alderatzen ditu krisi-buztanaren kutsadurarekin.",
+      "p2-shock2d": "Beheko eskuinaldean, Shock & Markov-ek interes-tasaren aldaketak zeharkatzen ditu S&P 500 mugimenduekin eta erregimen-trantsizioak estimatzen ditu.",
+      "p2-montecarlo": "Eta beheko panelak 10.000 Monte Carlo bide proiektatzen ditu P95, P50 eta P05, urpeko Drawdown eta Sharpe zeharkatuz.",
+      "p3-impact": "6 Eragin-txartelek zure egungo zorroa simulatutako merkataritzaren ondoren proiektatutako egoerarekin alderatzen dute.",
+      "p3-whatif": "Goiko ezkerrean, What-If & Kelly-k txartelak erostea edo saltzea simulatzen du eta Half-Kelly posizioaren tamaina optimoa kalkulatzen du.",
+      "p3-tailhedge": "Beheko ezkerrean, OTM Put & Margin-ek babes-aukera ezkutuak simulatzen ditu eta Reg-T mantentze-marjina kontrolatzen du.",
+      "p3-committee": "Eskuineko bi paneletan, 3 zutabeko Batzordeak arrisku-barandak ikuskatzen ditu Exekuzio-egunkariarekin eta kopiloarekin batera.",
+      "p3-walkforward": "Eta behealdean, Walk-Forward grafikoak In-Sample eta Out-of-Sample errendimendua baliozkotzen du WFE indizearekin."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 11.6
+      },
+      {
+        "id": "home-header",
+        "startPct": 11.6,
+        "endPct": 22.8
+      },
+      {
+        "id": "home-markets",
+        "startPct": 22.8,
+        "endPct": 36.9
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 36.9,
+        "endPct": 52.9
+      },
+      {
+        "id": "home-system",
+        "startPct": 52.9,
+        "endPct": 64.3
+      },
+      {
+        "id": "home-guide",
+        "startPct": 64.3,
+        "endPct": 74.1
+      },
+      {
+        "id": "home-langs",
+        "startPct": 74.1,
+        "endPct": 86.3
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 86.3,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 14.9
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 14.9,
+        "endPct": 37.2
+      },
+      {
+        "id": "scr-table",
+        "startPct": 37.2,
+        "endPct": 51.2
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 51.2,
+        "endPct": 69.8
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 69.8,
+        "endPct": 80.8
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 80.8,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 13.1
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 13.1,
+        "endPct": 27.4
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 27.4,
+        "endPct": 46.2
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 46.2,
+        "endPct": 70.4
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 70.4,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 26.7
+      },
+      {
+        "id": "res-rag",
+        "startPct": 26.7,
+        "endPct": 54
+      },
+      {
+        "id": "res-factors",
+        "startPct": 54,
+        "endPct": 78.1
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 78.1,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 20.3
+      },
+      {
+        "id": "p1-table",
+        "startPct": 20.3,
+        "endPct": 40.1
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 40.1,
+        "endPct": 58.9
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 58.9,
+        "endPct": 78.2
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 78.2,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 16.5
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 16.5,
+        "endPct": 37.3
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 37.3,
+        "endPct": 53
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 53,
+        "endPct": 78.4
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 78.4,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 19.2
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 19.2,
+        "endPct": 41.4
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 41.4,
+        "endPct": 60.9
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 60.9,
+        "endPct": 81.5
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 81.5,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

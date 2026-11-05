@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Samrunið útsýni",
+    "mainView": "Aðalsýn",
+    "expandedView": "Stækkað útsýni",
+    "inThisSection": "Í þessum hluta finnur þú:",
+    "deepDive": "Djúp kafa",
+    "previous": "Fyrri",
+    "next": "Næst",
+    "mathFormula": "Stærðfræðiformúla",
+    "practicalExample": "Hagnýtt dæmi:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Þegar þú opnar hefðbundinn fjármálavettvang er það fyrsta sem venjulega birtist heilmikið af töflum, blikkandi töflum og valmyndum alls staðar. Hvar byrjarðu þegar þú vilt bara athuga markaðinn eða athuga hvernig eignasafnið þitt gengur?",
+        "Home skjárinn er hannaður nákvæmlega til að forðast þann upphafshávaða. Það tekur á móti þér með hreinu og tæru rými þar sem öll stjórn er safnað saman í tveimur föstum börum: einum fyrir ofan til að fara í vinnuna og aðra fyrir neðan til að stilla pallinn sem hentar þér."
+      ],
+      "intro": "Home skjárinn býður þig velkominn með hreinu og tæru rými þar sem öll stjórn er einbeitt í tveimur föstum börum: einum fyrir ofan til að fara í vinnuna og aðra fyrir neðan til að stilla pallinn sem hentar þér.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Skýr upphafspunkturinn sem skiptir vinnu þinni í markaðsgreiningu og eignasafnsstjórnun.",
+          "paragraphs": [
+            "Ímyndaðu þér að þú byrjar að eiga viðskipti á morgnana. Stundum þarftu að skoða hvaða hlutabréf, skuldabréf eða gjaldmiðlar hreyfast mest; Að öðru leyti muntu fara beint til að endurskoða áhættu eignasafnsins þíns eða líkja eftir kaupum áður en þú framkvæmir þau.",
+            "Hvernig forðastu að blanda þessu tvennu saman á sama ofhlaðna skjánum? Forsíðan skilur greinilega þá leið frá fyrstu sekúndu:"
+          ],
+          "lead": "Hvernig forðastu að blanda þessu tvennu saman á sama ofhlaðna skjánum? Forsíðan skilur greinilega þá leið frá fyrstu sekúndu:",
+          "bullets": [
+            {
+              "bold": "Rými án truflana",
+              "code": "Donde se decodifican los mercados",
+              "text": "Þegar þú ferð inn eru engar opnar töflur eða viðvaranir sem neyða þig til að loka gluggum áður en þú byrjar; Þú velur hvaða einingu á að opna."
+            },
+            {
+              "bold": "Tvær skýrar leiðir",
+              "code": "Markets / Portfolio",
+              "text": "Allt flæði umsóknarinnar er skipt í tvö meginþrep: fyrst rannsóknartækifæri á mörkuðum og síðan byggja eða prófa eignasafnið þitt."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Efsta stikan til að hoppa með einum smelli á milli heimilisins, markaðanna og eignasafnsins þíns.",
+          "paragraphs": [
+            "Þegar þú kafar ofan í smáatriði eignar eða prófar breytingar á eignasafni þínu er mjög auðvelt að missa yfirsýn yfir hvar þú varst. Hvernig ferðu frá því að skoða hlutabréfakort yfir í að skoða eignasafnið þitt án þess að fara í gegnum undirvalmyndir?",
+            "Efsta stikan er alltaf föst á skjánum og gefur þér beinan aðgang að þremur aðalatriðum:"
+          ],
+          "lead": "Efsta stikan er alltaf föst á skjánum og gefur þér beinan aðgang að þremur aðalatriðum:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Hvar sem þú ert, með því að smella á táknið til vinstri kemurðu strax aftur á aðalsíðuna."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Það er rannsóknarrýmið þitt. Hér síar þú 213 tiltækar eignir, fylgist með lifandi tilvitnunum, greinir tæknirit og skoðar samantektir eða fréttir af efnahagsreikningi."
+            },
+            {
+              "bold": "Veski",
+              "code": "Portfolio",
+              "text": "Það er ákvörðunarborðið þitt. Hér skilgreinir þú hversu mikið hlutfall af fjármagni þínu fer í hverja eign, mælir hversu miklu þú gætir tapað í kreppu og líkir eftir nýjum rekstri áður en þú tekur peninga í hættu."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Fóturinn til að athuga stöðu kerfisins, fara aftur í þessa handbók eða stilla útlitið.",
+          "paragraphs": [
+            "Þegar gögn eru greind í rauntíma eru rekstrarspurningar sem geta vaknað hvenær sem er: eru tilvitnanir að berast rétt? Hvað þýddi punktavísir? Get ég lækkað birtustig skjásins?",
+            "Fóturinn flokkar öll þessi stuðnings- og stillingarverkfæri þannig að þau séu alltaf við höndina án þess að koma í veg fyrir miðju skjásins:"
+          ],
+          "lead": "Fóturinn flokkar öll þessi stuðnings- og stillingarverkfæri þannig að þau séu alltaf við höndina án þess að koma í veg fyrir miðju skjásins:",
+          "bullets": [
+            {
+              "bold": "System staða",
+              "code": "System",
+              "text": "Græni punkturinn staðfestir í fljótu bragði að allt sé í lagi. Þegar þú opnar það geturðu séð í smáatriðum stöðu netþjónanna, gagnagrunna og svarhraða."
+            },
+            {
+              "bold": "Notandi Guide",
+              "code": "Guide",
+              "text": "Opnaðu þessa gagnvirku handbók hvenær sem er til að sjá hvernig á að nota skjá eða kafa dýpra í útreikninga hans."
+            },
+            {
+              "bold": "Sjónrænar óskir",
+              "code": "Idioma / Palette",
+              "text": "Hægra megin hefurðu stjórntækin til að breyta tungumáli alls forritsins eða stilla bakgrunnslýsinguna."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Tungumál",
+          "summary": "Leitarvélin til að þýða allan pallinn á þitt tungumál á staðnum.",
+          "paragraphs": [
+            "Fjárhagsskilmálar og markaðsskýrslur hafa nú þegar sinn eigin margbreytileika án þess að bæta við tungumálahindrun. Ef þú vilt frekar lesa skýringarnar á spænsku, ensku eða einhverju öðru tungumáli geturðu breytt því samstundis.",
+            "Svona virkar veljarinn frá neðra hægra horninu:"
+          ],
+          "lead": "Svona virkar veljarinn frá neðra hægra horninu:",
+          "bullets": [
+            {
+              "bold": "augnablik leit",
+              "code": "Select Language",
+              "text": "Með því að smella á núverandi fána opnast gluggi þar sem þú getur valið á milli 56 tungumála með því að skrifa nafn þess eða kóða (til dæmis ES, EN, PT, FR eða DE)."
+            },
+            {
+              "bold": "Sjálfvirkt minni",
+              "code": "mid_lang_v1",
+              "text": "Allur skjárinn er þýddur samstundis án þess að endurhlaða síðuna og val þitt er vistað fyrir næstu skipti sem þú ferð inn."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Sjónræn þemu til að laga birtuskil skjásins án þess að breyta fjárhagslegum litum.",
+          "paragraphs": [
+            "Að eyða nokkrum klukkustundum fyrir framan grafík með birtuskilum sem aðlagast ekki birtunni í umhverfi þínu endar með því að þreyta augun. Hins vegar er klassísk hætta að breyta litum fjármálavettvangs: að missa tilvísunina um hvað er að hækka og hvað er að fara niður.",
+            "Til að leysa þetta, aðskilur þemavalið umhverfislitinn frá gagnalitnum:"
+          ],
+          "lead": "Til að leysa þetta, aðskilur þemavalið umhverfislitinn frá gagnalitnum:",
+          "bullets": [
+            {
+              "bold": "Fimm lestrarumhverfi",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Með hverjum smelli snýst þú á milli hreins svarts, bláleits eða heits bakgrunns þar til þú finnur þann sem er þægilegastur fyrir augun."
+            },
+            {
+              "bold": "Ósnortin fjármálamerkingarfræði",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Sama hvaða umræðuefni þú breytir, þá er alhliða reglum markaðarins aldrei breytt: grænt þýðir alltaf hækkun eða hagnað og rautt þýðir alltaf fall, tap eða áhættuviðvörun."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Ímyndaðu þér að þú viljir greina hvar bestu tækifæri dagsins eru meðal meira en tvö hundruð skuldabréfa, hlutabréfa, vísitalna, gjaldmiðla og hráefna. Ef þú myndir opna töflurnar eitt af öðru myndi markaðurinn loka áður en þú kláraðir að skoða þau.",
+            "Screener sameinar allar 213 eignirnar á pallinum í eitt lifandi mælaborð. Það gerir þér kleift að sía eftir markaði á einni sekúndu, mæla heildarpúls dagsins og velja úr fjórum mismunandi leiðum til að skoða hvaða eignir eru að skila árangri."
+          ],
+          "intro": "Screener færir allar 213 eignirnar á pallinum í eitt lifandi mælaborð svo þú getur síað eftir markaði og séð tækifæri í fljótu bragði.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Flokkar",
+              "summary": "Helstu síur til að einbeita sér að einum eignaflokki eða vaktlistanum þínum.",
+              "paragraphs": [
+                "Það þýðir ekkert að greina ríkisskuldabréf með sömu mæligildum og tæknihlutabréf eða olíu. Þegar þú blandar öllu saman á sama lista endarðu á því að bera saman perur og epli.",
+                "Hvernig þrengir þú skjáinn nákvæmlega að þeim markaði sem vekur áhuga þinn í dag? Efsta stikan gerir þér kleift að aðskilja alheiminn með einum smelli:"
+              ],
+              "lead": "Efsta stikan gerir þér kleift að aðskilja alheiminn með einum smelli:",
+              "bullets": [
+                {
+                  "bold": "Heildarmynd",
+                  "code": "Todos",
+                  "text": "Það sýnir 213 skjölin saman og raðað eftir veltumagni svo þú getir séð hvert mest peningar streyma á heimsvísu."
+                },
+                {
+                  "bold": "Persónuleg mælingar",
+                  "code": "★ Watchlist",
+                  "text": "Einangraðu aðeins þær eignir sem þú hefur merkt sem uppáhalds til að fylgjast náið með þeim án truflana."
+                },
+                {
+                  "bold": "Tíu sérhæfðir markaðir",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Með því að velja einhvern af þessum flokkum aðlagar allur skjárinn vísana sína og töfludálkana að reglum þess geira."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Upplýsingar um hvernig 213 eignir í vörulistanum eru flokkaðar og hvaða magn og lausafjárviðmið þær uppfylla."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24 klst púls",
+              "summary": "Fjögur efstu spilin sem segja þér hvort markaðurinn sé rólegur, vellíðan eða undir álagi.",
+              "paragraphs": [
+                "Áður en þú kaupir eða selur tiltekna eign er ráðlegt að vita í hvaða loftslagi heildin hreyfist. Er þetta venjulegur magndagur eða koma stofnanafé inn í einu? Eru allar eignir jafnvel að hækka eða eru merki um spennu?",
+                "Spjöldin fjögur fyrir neðan síurnar gefa þér almennan lestur á nokkrum sekúndum:"
+              ],
+              "lead": "Spjöldin fjögur fyrir neðan síurnar gefa þér almennan lestur á nokkrum sekúndum:",
+              "bullets": [
+                {
+                  "bold": "Heildarvirkni dagsins",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Það gerir allt að milljörðum dollara sem verslað er í virka flokknum og sýnir þér hvort það er meiri eða minni þátttaka í dag en í gær."
+                },
+                {
+                  "bold": "Meðalstyrkur hóps",
+                  "code": "AVG RSI 14",
+                  "text": "Það dregur saman í hringlaga metra hvort verð í greininni fylgir kaupþrýstingi (grænt, yfir 50) eða með söluþrýstingi (rautt, undir 50)."
+                },
+                {
+                  "bold": "Normality hitamælir",
+                  "code": "Régimen Normal P-06",
+                  "text": "Það reiknar út hversu hátt hlutfall eignanna færist innan venjulegra breytu og segir þér með nafni og eftirnafni hver er tækið með mesta frávik dagsins."
+                },
+                {
+                  "bold": "Óvenjulegt innstreymi peninga",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Verðlaunapallur þeirra þriggja eigna sem í dag reka óvenju mikið magn miðað við meðaltal síðasta mánaðar stendur upp úr."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ítarleg útskýring á því hvernig meðaltal RSI, rúmmál Z-Score og fráviksskynjari P-06 er reiknað út."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tafla",
+              "summary": "Gagnvirki listinn með fljótlegri leit, uppáhaldi og dálkum sem laga sig að hverjum markaði.",
+              "paragraphs": [
+                "Þegar þú veist nú þegar hvaða geira þú vilt skoða og þarft að bera saman tilteknar tölur röð fyrir röð, þá er töfluskjárinn aðalverkfærið þitt.",
+                "Í stað þess að sýna þér stífan töflureikni sem er eins fyrir alla, aðlagast taflan að því sem þú ert að leita að:"
+              ],
+              "lead": "Í stað þess að sýna þér stífan töflureikni sem er eins fyrir alla, aðlagast taflan að því sem þú ert að leita að:",
+              "bullets": [
+                {
+                  "bold": "Leitarvél og uppáhaldsstjörnur",
+                  "code": "Buscar activo / ★",
+                  "text": "Í fyrsta dálkhausnum geturðu slegið inn hvaða tákn eða nafn sem er til að fara beint í þá eign, eða bankaðu á stjörnuna til vinstri til að vista það á Watchlist."
+                },
+                {
+                  "bold": "Snjallsúlur eftir flokki",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Ef þú síar Hlutabréf birtast verðmatsmargfeldi og framlegð; Ef þú velur skuldabréf eða vexti sérðu halla ferilsins og næmni fyrir vöxtum; Ef þú horfir á afleiður sérðu óljóst flökt."
+                },
+                {
+                  "bold": "Farðu beint í djúpa greiningu",
+                  "code": "Click en cualquier fila",
+                  "text": "Smelltu einfaldlega á hvaða eign sem er á listanum til að opna heildarstöðina þína með tæknikortum og grundvallarskýrslum."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Listi yfir tiltekna mælikvarða sem taflan sýnir fyrir hvern af 10 eignaflokkunum."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Sjónræn ratsjá til að greina í fljótu bragði hvaða eignir eru að fjarlægast sögulegt meðaltal þeirra.",
+              "paragraphs": [
+                "Að lesa tvö hundruð raðir af tölum getur valdið því að þú missir af eign sem er farin að hreyfast í sprengi. Hvernig finnurðu samstundis hvaða hljóðfæri er að villast frá norminu?",
+                "Orbital útsýnið umbreytir borðinu í ratsjá með þremur sammiðja hringjum:"
+              ],
+              "lead": "Orbital útsýnið umbreytir borðinu í ratsjá með þremur sammiðja hringjum:",
+              "bullets": [
+                {
+                  "bold": "Val á viðmiðum",
+                  "code": "INDICADOR",
+                  "text": "Þú ákveður hvað ratsjáin mælir: tölfræðileg frávik, magnstökk, verðstyrk (RSI), sveiflur eða aukning á síðasta sólarhring."
+                },
+                {
+                  "bold": "Lestur eftir fjarlægð og lit",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Því nær eða lengra sem punktur er samkvæmt vísinum og því sterkari sem græni eða rauði liturinn er, því meira viðeigandi er hreyfing hans miðað við eigin sögu."
+                },
+                {
+                  "bold": "Skoðun án þess að skipta um skjá",
+                  "code": "Panel lateral en vivo",
+                  "text": "Með því að láta bendilinn hvíla á hvaða ratsjárhnút sem er, birtast verð hans, hreint dagrit og þrjár áhættumælingar til hægri."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hvernig staða hverrar eignar í radarhringjunum er reiknuð út samkvæmt sögulegu fráviki hennar."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Hitakort",
+              "summary": "Mósaík af hlutfallslegum kubbum til að bera kennsl á sigurvegara og tapara á sekúndu.",
+              "paragraphs": [
+                "Það eru tímar þar sem þú vilt bara svara stuttri spurningu: hver leiðir hækkunina í dag og hver er að draga markaðinn niður?",
+                "Hitakortið raðar tíu efstu eignum virku síunnar í hlutfallslega blokkir svo þú þarft ekki að lesa eina töflu:"
+              ],
+              "lead": "Hitakortið skipar tíu efstu eignum virku síunnar í hlutfallslega blokkir:",
+              "bullets": [
+                {
+                  "bold": "Stærð eftir mikilvægi",
+                  "code": "Puestos #1 a #10",
+                  "text": "Hljóðfærin með mesta þyngd innan valinnar mæligildis eru í dálkunum til vinstri með stærstu reitunum."
+                },
+                {
+                  "bold": "Litastyrkur",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Tónn kubbsins segir þér strax umfang hreyfingarinnar, allt frá hóflegum breytingum til skyndilegra hækkana eða falla."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Þriggja þrepa flýtileiðin að háþróuðum vöxtum, valréttum, gjaldeyris- og framtíðarreikningum.",
+              "paragraphs": [
+                "Auk hefðbundinna verðkorta inniheldur vettvangurinn fjórar sérstakar vélar fyrir fastar tekjur, valmöguleika, gjaldmiðlakross og hrávöruferla. Hvernig kemstu að þeim án þess að leita eign fyrir eign?",
+                "Þessi sýn leiðir þig frá vinstri til hægri í þremur mjög einföldum dálkum:"
+              ],
+              "lead": "Þessi sýn leiðir þig frá vinstri til hægri í þremur mjög einföldum dálkum:",
+              "bullets": [
+                {
+                  "bold": "Fyrst velur þú fjölskylduna",
+                  "code": "1. Clases de Activo",
+                  "text": "Þú velur hvort þú vilt vinna með gengi og skuldabréf, með valkostum á hlutabréfum/vísitölum/kryptó, með gjaldmiðlum eða með hráefni."
+                },
+                {
+                  "bold": "Svo athugarðu hvað vélin gerir",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Í miðjunni lesið þið skýra samantekt um hvað þetta tól sýnir og hvernig á að stilla ykkur eftir ásum þess."
+                },
+                {
+                  "bold": "Að lokum skaltu velja þann virka og opna",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Þú horfir á sýnishorn af töflunni í beinni, leitar að samhæfum eignum í þeirri fjölskyldu og opnar alla stöðina með einum smelli."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Þegar þú hefur fundið áhugaverða eign í Screener er kominn tími til að skoða það nánar. Er það í uppgangi eða hefur það klárast? Ertu að sigra keppinauta þína? Hvað segja magnið og afleiðumarkaðurinn?",
+            "Analytics stöðin einbeitir sér að allri tæknilegri, samanburðar- og megindlegri greiningu á þeirri eign á einum skjá. Hér að ofan er almenn samantekt og vinstra megin fjórar linsur til að breyta greiningarhorninu án þess að missa sjónar á línuritinu."
+          ],
+          "intro": "Analytics stöðin einbeitir tæknilegum, samanburðar-, flæðisgreiningum og 3D/2D vélum einstakrar eignar á einum skjá.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Efsta mælaborðið til að skipta um eignir, velja tímaramma og skoða fimm lykilmælingar þínar.",
+              "paragraphs": [
+                "Þegar þú ert að læra eign skiptir þú venjulega á milli skammtíma dagsins og kvikmyndar síðustu mánaða, eða skiptir jafnvel yfir í að horfa á annað svipað tákn. Hvernig gerirðu þetta allt án þess að fara til baka?",
+                "Efsta hausinn sameinar leiðsögustýringar og flýtiflipann á tækinu:"
+              ],
+              "lead": "Efsta hausinn sameinar leiðsögustýringar og flýtiflipann á tækinu:",
+              "bullets": [
+                {
+                  "bold": "Breyta eign eða fara aftur á listann",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Efst til vinstri geturðu farið aftur í Screener eða slegið inn nafn hvers annars hljóðfæris til að breyta kortum á staðnum."
+                },
+                {
+                  "bold": "Níu gluggar tímans",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Á hægri spássíu breytir þú kvarðanum á línuritinu úr hreyfingum mínútu fyrir mínútu yfir í alla söguna."
+                },
+                {
+                  "bold": "Fimm leiðandi vísbendingar",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Við hliðina á verðinu sem þú hefur alltaf fyrir augum verslaðs magns, tvö lykilgögn í flokki þess, styrk þróunarinnar og hversu tölfræðilegt eðlilegt er."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Tæknilegt",
+              "summary": "Verðmyndin með hreyfanlegum meðaltölum, sveiflusviðum og magni til að fylgja þróuninni.",
+              "paragraphs": [
+                "Að horfa aðeins á síðasta verð segir þér ekki hvort eign sé að hraða, hvort hún sé að skoppast af meðaltali sínu eða hvort hún hafi þegar hækkað of hratt á nokkrum dögum.",
+                "Fyrsta linsan á vinstri teinum gerir þér kleift að leggja yfir mest notuðu tæknilegu tilvísanir á markaðnum á línuritinu:"
+              ],
+              "lead": "Fyrsta linsan á vinstri teinum gerir þér kleift að leggja yfir mest notaðar tæknilegar tilvísanir:",
+              "bullets": [
+                {
+                  "bold": "Heimilisfang og raunverulegt meðalverð",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Þú getur kveikt á 20 tímabila hlaupandi meðaltali og rúmmálsvegið meðalverð til að sjá strax hvort eignin er í viðskiptum yfir eða undir jafnvægisstigi."
+                },
+                {
+                  "bold": "Umframsvæði og staðfesting á hljóðstyrk",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Böndin draga upp tölfræðilega þakið og gólf verðsins, en neðri súlurnar staðfesta hvort hreyfingin sé studd af rúmmáli."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Formúlur og túlkunarviðmið meðaltalsins (SMA 20), Bollinger Bands og VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Bera saman %",
+              "summary": "Hlutfallssamanburðarhlutfallið frá 0% til að mæla hvort eign þín standi meira eða minna en önnur í sama flokki.",
+              "paragraphs": [
+                "Hlutabréf sem hækka um 5% virðast vera frábærar fréttir, en ef viðmiðun þess eða helsti keppinautur hækkar um 12% á sama tímabili, þá ertu í raun að dragast aftur úr.",
+                "Önnur linsan leysir þann vafa með því að setja eignirnar tvær á sömu upphafslínu:"
+              ],
+              "lead": "Önnur linsan leysir þann vafa með því að setja eignirnar tvær á sömu upphafslínu:",
+              "bullets": [
+                {
+                  "bold": "Leitaðu að samhangandi pörum",
+                  "code": "Buscar par compatible",
+                  "text": "Leitarvélin síar sjálfkrafa út eignir úr sömu fjölskyldu (t.d. hlutabréf á móti hlutabréfum, ETFs eða vísitölum) þannig að samanburðurinn er fjárhagslega skynsamlegur."
+                },
+                {
+                  "bold": "Hreint forskot í prósentum",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Báðar ferlurnar byrja á 0% og vinstri teinn reiknar út hversu mörg prósentustig af forskoti (í grænu) eða ókosti (í rauðu) eignin þín hefur."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Flow",
+              "summary": "Skynjari stofnanakaupa, lausafjár og dreifingarkostnaðar.",
+              "paragraphs": [
+                "Margir sinnum safnast stórir sjóðir eða afferma stöður áður en verðið tekur skyndilega hreyfingu. Hvernig finnur þú þessi falna ummerki í magni og lausafjárstöðu pantanabókarinnar?",
+                "Þriðja linsan einbeitir sér að því sem gerist fyrir neðan tilvitnunina:"
+              ],
+              "lead": "Þriðja linsan einbeitir sér að því sem gerist fyrir neðan tilvitnunina:",
+              "bullets": [
+                {
+                  "bold": "Tölfræðilegt rúmmál toppar",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Breytir neðsta spjaldið til að sýna þér hversu oft núverandi hljóðstyrkur víkur frá venjulegu, sýnir óvenjulega starfsemi stofnana."
+                },
+                {
+                  "bold": "Lausafjárstreita og frávik",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Það mælir í grunnstigum hvort bilið milli kaupenda og seljenda sé að aukast og hvort tölfræðivélin greini óhefðbundna hegðun."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hvernig opnunardreifing og tölfræðilegir toppar í pöntunarflæði eru mældir."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D vélar",
+              "summary": "Fjórða linsan sem notar kraftmikið ad-hoc tól sem er mismunandi eftir eignaflokkum.",
+              "paragraphs": [
+                "Ólíkt fyrstu þremur linsunum (sem eru sameiginlegar fyrir öll hljóðfæri), er fjórða linsan á vinstri teinum sértækt tól sem breytist á kraftmikinn hátt eftir eigninni sem þú ert að greina: til dæmis, í beinni ferð, þar sem það er hlutabréf (NVDA), gerir það kleift að þrívíddar óbeinar sveiflur og valkostir Payoff er sérhæfður á öðrum markaði, meðan það er sérhæft.",
+                "Fjórði hnappurinn greinir opna eignaflokkinn og virkjar sjálfkrafa samsvarandi sértækt tól:"
+              ],
+              "lead": "Fjórði hnappurinn greinir hvaða eign þú ert með opna og virkjar ad-hoc tólið sem samsvarar henni:",
+              "bullets": [
+                {
+                  "bold": "Í hlutabréfum, vísitölum, afleiðum og dulmáli",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Sýndu 3D óstöðugleikayfirborðið, valmöguleikar sem brosa þegar þeir renna út og 6-hermi til að sjá hversu mikið þú myndir græða eða tapa í dag og þegar það rennur út."
+                },
+                {
+                  "bold": "Í vöxtum, skuldabréfum og lausafé",
+                  "code": "Curva 3D/2D",
+                  "text": "Það gerir þér kleift að bera saman ávöxtunarferla 42 landa á móti Bandaríkjunum og Þýskalandi, mæla hvort ferillinn sé eðlilegur eða öfugur (2s10s) og hversu mikið verðið er breytilegt með gengisbreytingum (DV01)."
+                },
+                {
+                  "bold": "Í gjaldmiðlum",
+                  "code": "FX & Carry",
+                  "text": "Það býður upp á breytir og þríhyrninga milli 61 gjaldmiðils sem reiknar einnig 10 ára vaxtamun í hag eða á móti því að viðhalda því pari."
+                },
+                {
+                  "bold": "Í hráefni",
+                  "code": "Forward 3D/2D",
+                  "text": "Skýrir verð framvirkra samninga mánuð fyrir mánuð til að sýna hvort markaðurinn borgar meira fyrir framvirkt (Contango) eða fyrir tafarlausa afhendingu (Backwardation), ásamt stöðu raunverulegra birgða."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Stærðfræðileg smáatriði flöktunarflata, ávöxtunarferla ríkisins, gjaldeyrisburðar og framtíðarferla."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Myndin sýnir þér hvað verðið er að gera, en það segir þér ekki hvers vegna. Til að vita hvað er á bak við hreyfingu þarftu að lesa tugi síðna af ársfjórðungslegum efnahagsreikningum, seðlabankayfirlitum, birgðaskýrslum og fréttasnúrum.",
+            "Research stöðin gerir þessar þungu lyftingar fyrir þig. Það sameinar gervigreind heimildarmynda sem staðfest er gegn opinberum skýrslum og rauntíma fréttalestur, og skipuleggur allar sönnunargögn með og á móti í þremur skýrum dálkum."
+          ],
+          "intro": "Stöð Research tekur saman opinbera efnahagsreikninga, þjóðhagsskýrslur og rauntímafréttir í þremur skýrum dálkum.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Athugið og stelling",
+              "summary": "Þrjú efstu spilin sem draga saman grundvallardóminn og húmorinn í fréttunum.",
+              "paragraphs": [
+                "Fylgja grundvallaratriði eignarinnar verðhækkuninni eða eru fréttirnar að versna horfur? Áður en þú lest smáatriðin þarftu fljótlega niðurstöðu stjórnenda.",
+                "Í efra hægra horninu eru þrjár vísbendingar sem draga saman almenna stöðu eignarinnar:"
+              ],
+              "lead": "Í efra hægra horninu eru þrjár vísbendingar sem draga saman almenna stöðu:",
+              "bullets": [
+                {
+                  "bold": "Staða og þyngd hverrar uppsprettu",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Það skilgreinir almennan dóm og skýrir hvaða vægi það gefur opinberum skjölum á móti fréttum eftir tegund eignar (til dæmis 80% efnahagsreikningar og 20% fréttir í hlutabréfum)."
+                },
+                {
+                  "bold": "Samsett einkunn",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Það sameinar í eitt stig heildarniðurstöðu grunnþáttanna auk upplýsingaflæðis dagsins."
+                },
+                {
+                  "bold": "Hitamælahaldarar",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Settu á stöng frá -100 til +100 ef tónn pressunnar á síðustu klukkustundum er svartsýnn (rauður), hlutlaus eða áhugasamur (grænn)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hvernig opinberar skýrslur eru vegnar á móti fréttum eftir tegund eigna."
+            },
+            {
+              "id": "res-rag",
+              "label": "Spjall RAG",
+              "summary": "Vinstri heimildarmyndaaðstoðarmaðurinn til að spyrja sérstakra spurninga um efnahagsreikninga og opinberar skýrslur.",
+              "paragraphs": [
+                "Segjum sem svo að þú viljir vita nákvæmlega hvað fyrirtæki sagði um framlegð sína í nýjasta ársreikningi sínum 10-K, eða hvað Seðlabankinn sagði í síðustu fundargerð sinni. Að leita að því í höndunum tekur tíma; Að spyrja almennt spjall án heimilda getur gefið þér tilbúin gögn.",
+                "Vinstri dálkurinn leysir þetta með töframanni sem er eingöngu tengdur við staðfest opinber skjöl:"
+              ],
+              "lead": "Vinstri dálkurinn býður þér töframann sem tengist opinberum staðfestum skjölum:",
+              "bullets": [
+                {
+                  "bold": "Upphafsritgerð og spurningar með leiðsögn",
+                  "code": "Chat Documental RAG",
+                  "text": "Það byrjar á yfirliti með staðfestum tilvitnunum og fjórum flýtivísunarhnappum sem eru aðlagaðir að eignaflokknum, auk reits þar sem þú getur skrifað þínar eigin spurningar."
+                },
+                {
+                  "bold": "Beint skref í eignasafnið þitt",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Ef þú ákveður eftir að hafa rannsakað grundvallaratriðin að eignin sé þess virði, þá sendir þessi hnappur efst á spjallinu þig beint í eignasafnsherminn."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Rekstur staðfestrar heimildaleitar (RAG) og öryggissíur hennar."
+            },
+            {
+              "id": "res-factors",
+              "label": "Þættir",
+              "summary": "Miðja harmonikkan með fimm bullish ökumönnum og fimm bearish áhættur raðað eftir höggi.",
+              "paragraphs": [
+                "Engin fjárfesting er hundrað prósent fullkomin eða hundrað prósent slæm: það eru alltaf rök fyrir því og duld áhætta. Leyndarmálið er að vita hverjir vega þyngra í dag.",
+                "Miðsúlan setur báðar hliðar augliti til auglitis svo þú getir tekið yfirvegaða ákvörðun:"
+              ],
+              "lead": "Miðsúlan setur báðar hliðar augliti til auglitis svo þú getir tekið yfirvegaða ákvörðun:",
+              "bullets": [
+                {
+                  "bold": "Þvingaðu jafnvægi og síur",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Hér að ofan sérðu tilboðsstikuna á milli kaupenda og seljenda og hér að neðan geturðu síað fimm jákvæðu hvata (grænt) eða fimm helstu áhætturnar (í rauðu)."
+                },
+                {
+                  "bold": "Smáatriði og drill-down með einum smelli",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Þegar þú snertir einhvern þátt á listanum birtist heildarskýring hans ásamt hnappi til að biðja Chat RAG um frekari upplýsingar um það tiltekna atriði."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT púls",
+              "summary": "Rétt tímalína með nýjustu AI-einkunnum fyrirsögnum og 24 klukkustunda skapferil.",
+              "paragraphs": [
+                "Ein fyrirsögn á síðustu stundu um tekjur, verðbólgu eða reglugerðir getur gjörbreytt stemningu dagsins. Hvernig veistu hvaða fréttir eru nýkomnar út og hvaða áhrif þær hafa?",
+                "Hægri dálkurinn fylgist með upplýsingaflæðinu mínútu fyrir mínútu:"
+              ],
+              "lead": "Hægri dálkurinn fylgist með upplýsingaflæðinu mínútu fyrir mínútu:",
+              "bullets": [
+                {
+                  "bold": "Hæfð tímalína",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Listar upp fimm nýjustu fyrirsagnirnar með tíma og umboði, skorar þær grænar ef þær eru hagstæðar eða rauðar ef ógn stafar af þeim."
+                },
+                {
+                  "bold": "Áhrif og daglegur ferill hermir",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Þú getur kveikt á virkum vír með efsta hnappinum til að sjá hvernig hann endurreikur allan skjáinn og fylgst með á grafinu hér að neðan hvernig stemningin þróaðist síðasta sólarhringinn."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hvernig FinBERT líkanið greinir fjármálatungumál hvers handhafa."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Byggingaraðili",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Það er ekki nóg að velja góðar eignir sérstaklega til að eiga gott eignasafn. Ef þú setur of mikið fjármagn í eignir sem hreyfast eins, eða ef þú mælir ekki hvernig þær hefðu staðið sig saman í fortíðinni, þá ertu að fjárfesta í blindni.",
+            "Constructor & Performance (fyrsta sýn á Portfolio) er verkstæðið þar sem þú byggir upp eignasafnið þitt. Það gerir þér kleift að bæta við hvaða 213 eignum sem er, stilla hvaða prósentu þú úthlutar hverjum og einum án þess að takast á við ónákvæmt eftirlit og endurskoða samstundis bæði innri samsetningu og sögu þess."
+          ],
+          "intro": "Constructor & Performance er verkstæðið þar sem þú byggir upp eignasafnið þitt, stillir vægi hverrar eignar og endurskoðar sögulegan árangur hennar.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Samantekt",
+              "summary": "Efstu sex spilin sem eru endurreiknuð í beinni í hvert skipti sem þú breytir eignasafninu þínu.",
+              "paragraphs": [
+                "Í hvert skipti sem þú bætir við eign eða breytir hlutfalli í eignasafni þínu þarftu að vita strax hvort sú leiðrétting hafi bætt væntanlegri ávöxtun þína eða versnað áhættuna þína.",
+                "Efsta röðin heldur sex aðalmælingum safnsins alltaf sýnilegum:"
+              ],
+              "lead": "Efsta röðin heldur sex aðalmælingum safnsins alltaf sýnilegum:",
+              "bullets": [
+                {
+                  "bold": "Afköst og skilvirkni",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Þeir segja þér hvaða samsetta árlega hagnað eignasafnið gefur af fjármagni þínu og hversu mikla ávöxtun þú færð fyrir hverja áhættueiningu sem gert er ráð fyrir."
+                },
+                {
+                  "bold": "Áætlað daglegt tap og sögulegt fall",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Þeir reikna út hversu mörgum dollurum þú gætir tapað á slæmum degi innan þess sem var tölfræðilega fyrirsjáanlegt og hvað var dýpsta áfallið á síðasta ári."
+                },
+                {
+                  "bold": "Virðisauki og fjölbreytni",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Þeir mæla hversu mörg stig eignasafnið þitt ber viðmiðunarvísitöluna og hversu mikla áhættu þú ert að minnka þökk sé því að sameina mismunandi eignir."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Samsettar ávöxtunarformúlur (CAGR), Sharpe og Sortino hlutföll og Value at Risk (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Væging",
+              "summary": "Vinstri taflan til að bæta við eignum, kveikja eða slökkva á þeim og skilgreina nákvæmlega hlutfall hverrar stöðu.",
+              "paragraphs": [
+                "Hvað myndi gerast um eignasafnsnúmerin þín ef þú lokar tímabundið tæknihlutabréfi í dag eða skiptir peningunum jafnt á allar stöður þínar?",
+                "Vinstra spjaldið gerir þér kleift að gera allar þessar prófanir á hreinan og beinan hátt:"
+              ],
+              "lead": "Vinstra spjaldið gerir þér kleift að gera allar þessar prófanir á hreinan og beinan hátt:",
+              "bullets": [
+                {
+                  "bold": "Leitarvél fyrir 213 eignirnar",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Þú getur leitað að hvaða hljóðfæri sem er á pallinum eða síað uppáhaldið þitt til að bæta því við borðið með einum smelli."
+                },
+                {
+                  "bold": "Fljótleg gangsetning og nákvæm klipping",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Hver röð er með gátreit til að innihalda eða útiloka eignina í rauntíma og tölureit til að slá inn nákvæma prósentu án þess að nota ónákvæma rennibraut."
+                },
+                {
+                  "bold": "Þrjár flýtileiðir í jafnvægi",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Efst á töflunni hefurðu hnappa til að dreifa jöfnu vægi á milli allra virkra eigna, færa summan sjálfkrafa í 100% eða fara aftur í upprunalega eignasafnið."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "Röntgengeisli",
+              "summary": "Efsta hægri spjaldið með fimm flipa til að uppgötva falinn styrk, sjóðstreymi og vörslu.",
+              "paragraphs": [
+                "Ein algengustu mistökin við fjárfestingu er að trúa því að þú sért fjölbreyttur vegna þess að þú ert með fimm mismunandi eignir, þegar þú keyptir í raun einstaka hlutabréf og einnig tvö ETF sem eru með sama hlutabréf inni.",
+                "Röntgenspjaldið greinir eignasafnið þitt innan frá í gegnum fimm flipa:"
+              ],
+              "lead": "Röntgenspjaldið greinir eignasafnið þitt innan frá í gegnum fimm flipa:",
+              "bullets": [
+                {
+                  "bold": "Endurtekinn stöðuskynjari",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Leggðu saman það sem þú hefur fjárfest beint í hverju fyrirtæki auk falinn hluta sem þú ert með í vísitölum eða ETFs (eins og SPY eða QQQ) og varar þig við með rauðu ef þú ferð yfir skynsamleg mörk."
+                },
+                {
+                  "bold": "Lýðingarkort og uppruna skila",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Þeir sýna þér hvaða prósentu þú hefur í raun og veru í hverri eignategund og gjaldmiðli, og hversu mikið af hagnaði þínum kom frá því að velja góða geira á móti því að velja góðar eignir."
+                },
+                {
+                  "bold": "Áætluð árstekjur og öryggi",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Þeir reikna út hversu marga dollara þú ætlar að safna á árinu fyrir arð, afsláttarmiða og vexti og endurskoða gjaldþol vörsluaðila þar sem fjármagn þitt hvílir."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hvernig óbein áhættuskuldbinding er reiknuð innan verðbréfasjóða og Brinson attribution sundurliðun."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Dagatal",
+              "summary": "Mánaðarritið frá janúar til desember til að sjá hversu reglulegur hagnaður þinn og tap er.",
+              "paragraphs": [
+                "Góð ársávöxtun getur leynt mjög miklum lækkunum mánuðum saman sem í reynd er erfitt að þola. Hversu samkvæmur mánuður til mánuður er eignasafnið sem þú settir saman?",
+                "Rétt fyrir neðan röntgenmyndina sundurliðar dagatalið mánaðarlega sögu:"
+              ],
+              "lead": "Rétt fyrir neðan röntgenmyndina sundurliðar dagatalið mánaðarlega sögu:",
+              "bullets": [
+                {
+                  "bold": "Grænir mánuðir og rauðir mánuðir",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Hver hólf er endurreiknuð samstundis í samræmi við þyngdina í töflunni þinni og er máluð grænn eða rauður eftir útkomu mánaðarins og lokar til hægri með uppsafnaða niðurstöðu ársins."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Grafið á öllum skjánum hér að neðan til að bera saman eignasafnið þitt við fjórar klassískar aðferðir.",
+              "paragraphs": [
+                "Áður en þú telur eignasafnið þitt gott er grundvallarprófið eftir: er það virkilega betra en að skilja peningana eftir í S&P 500 eða í hefðbundnu 60/40 eignasafni?",
+                "Neðsta spjaldið tekur alla breidd skjásins til að setja hönnun þína í samræmi við markaðsstaðla:"
+              ],
+              "lead": "Neðsta spjaldið setur hönnun þína gegn markaðsstöðlum:",
+              "bullets": [
+                {
+                  "bold": "Fimm sjóndeildarhring prófunar",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Það gerir þér kleift að meta hvernig blandan þín stóð sig bæði á undanförnum misserum og yfir heilar margra ára lotur."
+                },
+                {
+                  "bold": "Fjórar tilvísanir augliti til auglitis",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Leggðu græna feril virkrar eignasafns þíns á móti einhverju af hinum fjórum klassísku gerðum svo þú sjáir greinilega hvenær það er á undan og hvernig það heldur uppi á ókosti."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Áhætta",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Á tímum þegar markaðurinn hækkar í rólegheitum virðist nánast hvaða eignasafn sem er. Hið raunverulega vandamál birtist þegar kreppa brýst út, vextir hækka skyndilega og eignir sem virtust sjálfstæðar fara að lækka á sama tíma.",
+            "Magnbundin áhætta og streita (annað útsýnið af Portfolio) setur eignasafnið þitt í gegnum öfgafullar prófanir áður en þær gerast í raunveruleikanum. Með fjórum samhverfum fjórðungum og framtíðarsviðshermi hér að neðan sýnir það þér nákvæmlega hvar viðkvæmir punktar þínir eru."
+          ],
+          "intro": "Magnbundin áhætta og streita prófar eignasafnið þitt fyrir sögulegar kreppur, fylgnismit og Monte Carlo áætlanir.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Gagnvirka áhættu- og ávöxtunarkortið til að sjá hversu nálægt þú ert hagkvæmasta eignasafninu sem mögulegt er.",
+              "paragraphs": [
+                "Með sömu eignir og þú ert nú þegar með í eignasafninu þínu, eru þúsundir leiða til að dreifa prósentunum. Er samsetningin sem þú valdir sú sem borgar best fyrir áhættuna sem þú tekur, eða gætirðu unnið það sama með færri óvart?",
+                "Fyrsti fjórðungurinn efst til vinstri teiknar þetta lifandi kort af möguleikum:"
+              ],
+              "lead": "Fyrsti fjórðungurinn efst til vinstri teiknar þetta lifandi kort af möguleikum:",
+              "bullets": [
+                {
+                  "bold": "Staða þín gegn bestu eignasöfnum",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Það sýnir hvar núverandi eignasafn þitt er staðsett í tengslum við lægsta mögulega flökt og hámarksávöxtun áhættu."
+                },
+                {
+                  "bold": "Sjónræn lög og skoðun eftir eign",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Þú getur kveikt eða slökkt á líkanalögunum og smellt á hvaða hnút sem er til að lesa nákvæmlega framlag þeirrar eignar hér að neðan."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Skilvirk landamæri Markowitz og útreikningur á lágmarksfráviki og hámarki Sharpe safns."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado & VaR",
+              "summary": "Sögulegi kreppuhermirinn, sundurliðun daglegra tapa eftir eigna- og markaðsósamhverfu.",
+              "paragraphs": [
+                "Ef hrun eins og árið 2008, efnahagssamdrátturinn árið 2020 eða vaxtahækkunin árið 2022 yrði endurtekin á morgun, hversu miklu myndi núverandi eignasafn þitt tapa og hvaða eign væri aðal sökudólgurinn?",
+                "Neðri vinstri fjórðungurinn svarar þessum þremur spurningum í þremur sérstökum flipa:"
+              ],
+              "lead": "Neðri vinstri fjórðungurinn svarar þessum spurningum í þremur sérstökum flipa:",
+              "bullets": [
+                {
+                  "bold": "Próf gegn fimm raunverulegum kreppum",
+                  "code": "1. Tornado Stress",
+                  "text": "Berðu saman bar fyrir strik hversu mikið eignasafn þitt myndi falla á móti S&P 500 í ljósi fimm stórra sögulegra áfalla."
+                },
+                {
+                  "bold": "Röðun áhættu eftir stöðu",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Raðaðu eign þína eftir því hversu marga dollara af hugsanlegu daglegu tapi hver og einn leggur til heildarsafnsins."
+                },
+                {
+                  "bold": "Hegðun í hæðir og lægðir",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Það sýnir þér hversu mikið hlutfall af bullish hjólum markaðarins hver eign nýtir sér og hversu mikið hún nær að draga úr þegar markaðurinn fellur."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Aðferðafræði sögulegra streitusviðsmynda, jaðarframlag til VaR og fanghlutföll."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Fylgni",
+              "summary": "Krossfylki til að athuga hvort eignir þínar séu raunverulega fjölbreyttar eða hvort þær séu sýktar í læti.",
+              "paragraphs": [
+                "Að hafa nokkrar eignir í eignasafni þínu dregur aðeins úr áhættu ef þær fara ekki allar í sömu átt á sama tíma. En á tímum fjárhagslegrar skelfingar stökkva margar fylgnir sem virtust lágt verulega upp á við.",
+                "Efsta hægri fjórðungurinn gerir þér kleift að endurskoða þessi tengsl í tveimur tilfellum:"
+              ],
+              "lead": "Efsta hægri fjórðungurinn gerir þér kleift að endurskoða þessi tengsl í tveimur tilfellum:",
+              "bullets": [
+                {
+                  "bold": "Skipting milli eigna og næmni",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Það sýnir hversu líkt hvert par af eignum hreyfist (í grænu eða ljósbláu þegar þær eru vel dreifðar og í rauðu þegar þær fara of nálægt) og hver næmni þeirra er fyrir markaðnum."
+                },
+                {
+                  "bold": "Smithermir í kreppu",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Með einum smelli breytir þú fylgni venjulegs árs yfir í augnablik af skelfingu til að uppgötva hvaða stöður myndu ekki lengur vernda þig."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Útreikningur á Pearson fylgnistuðlum við venjulegar aðstæður og við markaðsálag."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash & Markov",
+              "summary": "Sameiginleg áhrifatöflu vaxta og hlutabréfamarkaðar ásamt líkum á breytingu á hagsveiflu.",
+              "paragraphs": [
+                "Í raunhagkerfinu koma vandamálin sjaldan eitt af öðru: oft fellur vaxtahækkun saman við lækkun hlutabréfa. Hvað verður um eignasafnið þitt ef þessir tveir þættir eru sameinaðir á sama tíma?",
+                "Neðri hægri fjórðungurinn fer yfir báðar breyturnar og mælir líkurnar á stjórnkerfisbreytingum:"
+              ],
+              "lead": "Neðri hægri fjórðungurinn fer yfir báðar breyturnar og mælir markaðssveifluna:",
+              "bullets": [
+                {
+                  "bold": "Tvöfalt höggborð",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Krossvextir (-100 til +200 punktar) með lækkun eða hækkun á S&P 500 (-20% til +10%), sem gerir þér kleift að sía eftir öllu eignasafninu eða eftir einstökum eignum."
+                },
+                {
+                  "bold": "Líkur á umskiptum hringrásar",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Reiknaðu hversu líklegt er að markaðurinn haldi ró sinni eða fari í sveiflukenndan, verðbólgu- eða kreppustig."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sameiginlegt næmi fyrir gengi og breytum og Markov ástandsbreytingarfylki."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Neðsta spjaldið er á öllum skjánum með líkindaspám í framtíðinni og sögulegum lækkunum.",
+              "paragraphs": [
+                "Það er gagnlegt að skoða fortíðina, en þegar þú fjárfestir fram á við er það sem þú þarft að vita innan hvaða árangurs fjármagn þitt getur færst til á næstu sex mánuðum, ári eða tveimur árum.",
+                "Neðsta spjaldið í fullri breidd sameinar þrjú tímabundin verkfæri til að varpa fram og stjórna þeirri leið:"
+              ],
+              "lead": "Neðsta spjaldið sameinar þrjú tímabundin verkfæri til að varpa þeirri leið:",
+              "bullets": [
+                {
+                  "bold": "Tíu þúsund framtíðarsviðsmyndir",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Teiknaðu keiluna af líklegri þróun eignasafns þíns, gerðu greinarmun á bjartsýnu atburðarásinni (P95 í grænu), væntanlega miðlægu leiðina (P50) og óhagstæða atburðarásina (P05 í rauðu)."
+                },
+                {
+                  "bold": "Falldýpt og stöðugleiki yfir tíma",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Þeir gera þér kleift að skipta um töfluna til að sjá hversu lengi eignasafnið var undir sögulegu hámarki eða hversu stöðug skilvirkni þess og áhætta var yfir rúllandi 60 daga gluggum."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo stokastísk uppgerð af 10.000 vegum og 60 daga veltingsmælingum."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Hermir",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Áður en ég kaupi nýja eign, lækkar stöðu eða greiðir fyrir áhættuvarnir með valréttum, vaknar alltaf sama spurningin: bætir þessi aðgerð virkilega eignasafnið mitt eða bætir hún óþarfa áhættu? Og hversu mikið fjármagn ætti ég að setja í það?",
+            "Ad-Hoc Strategy Lab (þriðja sýn Portfolio) er hermir þinn fyrir notkun. Það gerir þér kleift að hlaða taktískum leikritum, reikna út kjörstöðustærð þína, prófa gallatryggingu og sjá nákvæmlega fyrir og eftir áhrif án þess að snerta grunnsafnið þitt."
+          ],
+          "intro": "Ad-Hoc Strategy Laboratory er forverslunarhermir til að prófa pantanir, stærðarstöður og mæla umfang.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Áhrif",
+              "summary": "Sex efstu spilin sem bera núverandi eignasafn þitt saman við niðurstöðuna eftir hermdarspilin.",
+              "paragraphs": [
+                "Til að vita hvort taktísk hugmynd sé þess virði er ekki nóg að eignin líti aðlaðandi út ein og sér: hún þarf að bæta tölurnar fyrir allt eignasafnið.",
+                "Efsta röðin sýnir þér varanlega samanburð á núverandi eignasafni þínu og eignasafni með uppgerðinni sem beitt er:"
+              ],
+              "lead": "Efsta röðin ber saman núverandi eignasafn þitt við eignasafnið með uppgerðinni sem beitt er:",
+              "bullets": [
+                {
+                  "bold": "Áhrif á hagnað og skilvirkni",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Þeir sýna grunntöluna við hliðina á áætluðu tölunni, lýsa mismuninn grænt ef leikritið bætir skilvirkni eða í rauðu ef það versnar."
+                },
+                {
+                  "bold": "Áhrif á áhættu, fjármagn og reglur",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Þeir segja þér hversu mikið áætluð hámarkstap þitt breytist, hversu mikið hlutfall af eignasafninu þú ert að skuldbinda þig til að prófa og hvort öll öryggismörk séu virt."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If og Kelly",
+              "summary": "Kaup/sölu miða hermir og reiknivél til að skilgreina hversu mikið fé á að hætta.",
+              "paragraphs": [
+                "Margar góðar fjárfestingarhugmyndir gefa á endanum tilefni til taps vegna villu í stærð veðmálsins: að setja of lítið færir ekki nálina, en að setja of mikið getur eyðilagt eignasafnið ef færslan fer úrskeiðis.",
+                "Fyrsti fjórðungurinn efst til vinstri tengir sönnunarblaðið við stærðfræðilega útreikninga á stærð:"
+              ],
+              "lead": "Fyrsti fjórðungur sameinar prófunarskýrsluna með stærðfræðilegum útreikningi á stærð:",
+              "bullets": [
+                {
+                  "bold": "Hleðsla prófpöntunar",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Þú velur hvaða eign sem er, gefur til kynna hvort þú vilt kaupa, selja eða dekka og hleður upphæðinni í dollurum. Á listanum hér að neðan geturðu kveikt eða slökkt á hverri hermapöntun til að bera saman áhrif hennar."
+                },
+                {
+                  "bold": "Besta stöðustærð",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Byggt á áætluðum líkum þínum á árangri og sambandinu milli hagnaðar og taps, reiknar það út hvaða hámarkshlutfall fjármagns ætti að úthluta til að vaxa án þess að oflýsa sjálfum þér."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Stærðfræðilegur útreikningur á Kelly Criterion og íhaldssamri útgáfu þess Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Settu OTM & Margin",
+              "summary": "Tryggingahermirinn með valkostum fyrir miklar lækkanir á markaði og framlegðarsímtöl.",
+              "paragraphs": [
+                "Þegar þú óttast sterka leiðréttingu á markaði er venjulega kostnaðarsamt og óhagkvæmt að selja allar stöður þínar. Faglegur valkostur er að taka tryggingar með verndarmöguleikum, en hvað kostar sú trygging á ári og hversu mikið verndar hún þig í raun?",
+                "Neðri vinstri fjórðungurinn gerir þér kleift að mæla bæði umfang og skuldastig:"
+              ],
+              "lead": "Neðri vinstri fjórðungur mælir bæði umfang og ábyrgðarstig:",
+              "bullets": [
+                {
+                  "bold": "Samanburður á hlífðarhlífum",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Það gerir þér kleift að skipta á milli þess að starfa án trygginga eða nota þrjár gerðir af tryggingum með valkostum (á SPY, QQQ eða VIX flökt), þar sem árlegur kostnaður við iðgjaldið er andstæður þeim dollurum sem þú myndir spara í 20% hruni."
+                },
+                {
+                  "bold": "Nýttu stjórn og tryggingar",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Fylgstu með hversu hátt hlutfall viðhaldsframlegðar þú hefur notað og hvaða prósentufall eignasafnið myndi þola áður en þú ferð inn á framlegðarsvæðið."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Rekstur áhættuvarna með sölurétti utan peninga og útreikningur á ábyrgðum Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Nefnd og bók",
+              "summary": "Tvö hægri spjaldið með sjálfvirkri skoðun á áhættumörkum, pöntunarsögu og aðstoðarflugmanni.",
+              "paragraphs": [
+                "Í ákefðinni við að prófa viðskipti er auðvelt að horfa framhjá því að eign er að safna meira en 20% af öllu eignasafni þínu eða að hún starfar í miðri alvarlegu tölfræðilegu fráviki.",
+                "Fjórðungarnir tveir til hægri þjóna sem sjálfvirka áhættustýringu og endurskoðunarferil:"
+              ],
+              "lead": "Fjórðungarnir tveir til hægri virka sem áhættueftirlit og skráning:",
+              "bullets": [
+                {
+                  "bold": "Upprifjun í þrívídd",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Þeir meta hermir pantanir þínar út frá tæknilegum, grundvallar- og hörðum öryggismörkum (viðvörun ef einhver staða fer yfir 20% eiginfjármörkin eða ef hún hefur mikla frávik)."
+                },
+                {
+                  "bold": "Pöntunarskrá og aðstoðarmaður í eignasafni",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Neðsta spjaldið skráir hverja uppgerð með áhrifum hennar á áhættu, en samræðuhnappurinn efst til hægri opnar spjallið til að spyrja beinna spurninga um eignasafnið þitt."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Reglur um áhættueftirlit fyrir rekstur og samþjöppunarmörk á hverja eign."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Grafið hér að neðan á öllum skjánum til að athuga hvort stefnan þín virki utan prufutímabilsins.",
+              "paragraphs": [
+                "Hægt er að breyta hvaða stefnu sem er með því að skoða fortíðina þar til hún virðist vera pottþétt á sögulegu töflunni. Raunverulega áskorunin er að vita hvort það heldur áfram að virka þegar það stendur frammi fyrir nýjum markaðsgögnum.",
+                "Neðsta spjaldið í fullri breidd setur stefnuna í gegnum ströngustu löggildingu áður en hún fer í framleiðslu:"
+              ],
+              "lead": "Neðsta spjaldið leggur stefnuna undir löggildingu innan úrtaks og utan úrtaks:",
+              "bullets": [
+                {
+                  "bold": "Aðskilnaður á milli hönnunar og raunverulegrar prófunar",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Það skiptir sögulegu línuriti í fyrsta stig þar sem stefnan er kvarðuð og annað stig með óséðum gögnum til að athuga hvort það haldi forskoti sínu yfir grunnsafnið."
+                },
+                {
+                  "bold": "Tölfræðileg styrkleiki athugasemd",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Ef skilvirknivísirinn fer yfir 70%, staðfestir það að niðurstöðurnar eru samkvæmar og ekki afurð þess að hafa þvingað tölurnar á fortíðina."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hvað Walk-Forward skilvirknivísitalan (WFE) mælir og hvernig hún greinir ofbjartsýni."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Lausafjársía (ADV)",
+        "intro": "Til þess að hægt sé að eiga viðskipti með eign án þess að ein pöntun skekki verð hennar, krefst vettvangurinn lágmarksþröskuld fyrir meðaltal daglegt magn í dollurum síðustu 20 virka daga.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (lokaverðᵢ × viðskiptamagnᵢ)",
+          "denominator": "20 hæfileikarík hjól",
+          "vars": [
+            "Lokaverð: opinbert lokaverð dagsins í gefið upp í USD.",
+            "Viðskiptamagnᵢ: heildarfjöldi eininga sem verslað var þann dag."
+          ]
+        },
+        "lead": "Byggt á meðaltali daglegs rúmmáls flokkar vörulistinn dýpt hvers hljóðfæris:",
+        "bullets": [
+          {
+            "bold": "Mikil lausafjárstaða stofnana",
+            "code": "> $500M diarios",
+            "text": "Gerir þér kleift að slá inn og hætta stórum stöðum strax án þess að færa markaðsverðið."
+          },
+          {
+            "bold": "Hefðbundin lausafjárstaða vörulista",
+            "code": "$50M a $500M diarios",
+            "text": "Hentar fyrir fjölbreytt eignasöfn með mjög lágum kaup-/sölukostnaði."
+          },
+          {
+            "bold": "Dreifðu eftirlit",
+            "code": "< $50M diarios",
+            "text": "Á tímum óstöðugleika er ráðlegt að athuga opnun ábendinga áður en stórar pantanir eru framkvæmdar."
+          }
+        ],
+        "example": "Ef hlutabréf eru í viðskiptum á $200 og verslað er að meðaltali 5 milljónir hluta á hjól síðasta mánuðinn, er meðaltal daglegt magn (ADV) $1 milljarður ($1,0B)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Stöðlun í USD",
+        "intro": "Þar sem vörulistinn sameinar evrópsk skuldabréf, asískar vísitölur, hrávörur og dulritunargjaldmiðla er öllu magnstreymi umreiknað í Bandaríkjadali í rauntíma svo hægt sé að bera þau saman á sama mælikvarða.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Rúmmál staðbundinnar gjaldmiðils: magn sem verslað er með í upprunalegum markaðsgjaldmiðli (EUR, JPY, GBP, BRL, osfrv.).",
+            "Spot Exchange Rate: núverandi verð í 61 gjaldmiðilsvélinni."
+          ]
+        },
+        "lead": "Þessi umbreyting hefur bein áhrif á tvo staði á skjánum:",
+        "bullets": [
+          {
+            "bold": "Yfirlitsröðun Allar",
+            "code": "213 activos",
+            "text": "Pantaðu tækin frá mestu til minnstu raunverulegra peningahreyfingar um allan heim."
+          },
+          {
+            "bold": "Bætt magnkorti við",
+            "code": "Volumen 24h en $B",
+            "text": "Það gerir kleift að bæta við magni eigna sem skráðar eru í mismunandi löndum án röskunar."
+          }
+        ],
+        "example": "Ef þýskt skuldabréf verslar 4 milljarða evra á dag og EUR/USD krossviðskipti á 1,08, reiknar kerfið $4,32B í heimspúlsinum."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Hvernig mælir þú hvort markaður hafi verið að hækka með raunverulegum styrk eða hvort hann hafi þegar hækkað of hratt og er búinn? Hlutfallsstyrksvísitalan (RSI) ber meðalhækkun saman við meðalfall síðustu 14 umferðir á kvarðanum 0 til 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Meðalhækkanir₁₄ / meðaltalslækkanir₁₄)",
+          "vars": [
+            "Meðaltalshækkun₁₄: jafnað meðaltal stiga sem aflað er á bullish daga síðustu 14 hjólanna.",
+            "Meðaltap₁₄: jafnað meðaltal þeirra punkta sem tapast á lægri dögum sama tímabils."
+          ]
+        },
+        "lead": "Svona eru þrír hlutar kvarðans túlkaðir í hringlaga hringnum:",
+        "bullets": [
+          {
+            "bold": "Kaupafl og ofkaup",
+            "code": "70 a 100",
+            "text": "Hækkanirnar eru langt umfram lækkanirnar að undanförnu. Það sýnir mikla bullish skriðþunga, þó yfir 70 það varar við því að verðið gæti þurft hlé."
+          },
+          {
+            "bold": "jafnvægissvæði",
+            "code": "30 a 70",
+            "text": "Markaðurinn hreyfist á sjálfbærum hraða. Að fara yfir millistigið (> 50 í grænu) staðfestir yfirráð kaupenda, en að falla undir (< 50 í rauðu) gefur til kynna markaðsyfirráð."
+          },
+          {
+            "bold": "Refsing og ofsala",
+            "code": "0 a 30",
+            "text": "Fallin voru svo tíð og áberandi að eignin er farin að líta út fyrir að vera tölfræðilega ódýr og hætt við að hún taki aftur upp."
+          }
+        ],
+        "example": "Ef á síðustu 14 hjólunum hækkaði hópur hlutabréfa að meðaltali $ 2 á bullish dag og lækkaði aðeins $ 1 á bearish dag, er styrkleikahlutfall þess 2 og RSI hennar les 66,7 (bullish push í grænu)."
+      },
+      {
+        "id": "p06",
+        "label": "Venjulegt stjórnkerfi (P-06)",
+        "intro": "Eign kann að virðast róleg ef aðeins er horft til verðs hennar, en á sama tíma þjást af undarlegu magni og óeðlilegri opnun í kaup- og sölutoppum. Isolation Forest vélin (P-06) fer yfir þessar breytur á sama tíma til að greina óhefðbundna hegðun.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): meðalfjöldi handahófskenndra skera sem þarf til að einangra hegðun nútímans frá restinni af sögunni.",
+            "x: vektor af 4 breytum (Return 24h, Vol Z-Score 20d, Realized Volatility 30d og Spread in bps)."
+          ]
+        },
+        "lead": "Því sjaldgæfara sem hreyfingin er í dag, því hraðar er hún einangruð og því nær 1.00:",
+        "bullets": [
+          {
+            "bold": "Venjuleg stjórn",
+            "code": "0.00 a 0.49",
+            "text": "Verð, magn og lausafjárstaða hreyfast í takt við sögulegt meðaltal eignarinnar."
+          },
+          {
+            "bold": "Mikil virkni",
+            "code": "0.50 a 0.64",
+            "text": "Að minnsta kosti ein af breytunum fór að víkja frá venjulegri hegðun sinni; Ráðlegt er að fylgjast náið með pantanaflæðinu."
+          },
+          {
+            "bold": "Tilfærsla eða alvarlegt frávik",
+            "code": "0.65 a 1.00",
+            "text": "Eign skráir tölfræðilega öfgafulla hegðun. Í eignasafnseiningunni, ef farið er yfir þennan þröskuld, virkjar öryggisbremsan."
+          }
+        ],
+        "example": "Ef ríkisskuldabréf hækkar varla um 0,1% í verði en rúmmál þess margfaldast með fjórum og álag þess þrefaldast á mínútum, fer skynjarinn yfir gagnapunktana þrjá og hækkar einkunn sína í 0,74 (Ráður í rauðu)."
+      },
+      {
+        "id": "zscore",
+        "label": "Hljóðstyrkshjáveiting (Z-Score)",
+        "intro": "Að segja að 500 milljónir dollara hafi verið reknar í dag er mikið fyrir meðalstórt fyrirtæki, en mjög lítið fyrir S&P 500. Volume Z-Score færir allar eignir í sömu alhliða einingu: hversu mörg staðalfrávik (σ) er rúmmál dagsins frá eigin 20 hjóla meðaltali.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Hljóðstyrkur í dag (24 klst.) - Meðalmagn (20 d.)",
+          "denominator": "Staðalfrávik rúmmáls (20d)",
+          "vars": [
+            "Meðalrúmmál (20d): venjulegt magn eignarinnar á síðasta viðskiptamánuði.",
+            "Staðalfrávik (20d): hversu mikið þetta magn er venjulega breytilegt frá einum degi til annars."
+          ]
+        },
+        "lead": "Þannig geturðu borið saman hvaða eign sem er á sama kvarða sigma (σ) eininga:",
+        "bullets": [
+          {
+            "bold": "Venjuleg starfsemi",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Rúmmál dagsins er algjörlega innan rútínu síðustu fjögurra vikna."
+          },
+          {
+            "bold": "Mikil þátttaka",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Það er meiri áhugi en meðaltalið sem er að byrja að sannreyna þróun dagsins."
+          },
+          {
+            "bold": "Stofnanaárekstur",
+            "code": "> +2.0σ",
+            "text": "Það gerist í innan við 5% af lotum ársins og endurspeglar venjulega mikla innkomu eða brottför stórra sjóða."
+          }
+        ],
+        "example": "Ef hlutabréf verslast venjulega fyrir $100M daglega með dæmigerðum afbrigðum upp á ±$20M og verslar í dag $160M, er það $60M yfir meðaltali, sem jafngildir nákvæmlega +3,0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Fastar tekjur (2s10s og DV01)",
+        "intro": "Þegar þú síar skuldabréf eða vexti í töflunni birtast tveir lykilmælikvarðar til að meta ríkisskuldir: halli ferilsins (2s10s) og peningalegt gildi grunnpunkts (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 grunnpunktur (1 bp): jafngildir 0,01% afkomu.",
+            "DV01 ($/$1M): Hversu marga dollara vinnur eða tapar $1 milljón dollara ef gengið færist um 1 punkt."
+          ]
+        },
+        "lead": "Hvernig á að lesa þessar tvær tölur á ristinni:",
+        "bullets": [
+          {
+            "bold": "Venjulegur eða jákvæður ferill",
+            "code": "2s10s > 0 bps",
+            "text": "10 ára skuldabréf greiða hærri vexti en 2 ára skuldabréf, sem endurspeglar væntingar um heilbrigðan hagvöxt."
+          },
+          {
+            "bold": "öfugur ferill",
+            "code": "2s10s < 0 bps",
+            "text": "Stuttir vextir eru hærri en langir; sögulega varar það við efnahagslegri kólnun eða peningalegum takmörkunum."
+          }
+        ],
+        "example": "Ef 10 ára ávöxtun ríkissjóðs gefur 4,20% og 2 ára ávöxtun ríkissjóðs 4,55%, markar 2s10s dálkurinn -35 bps (snúin ferill í rauðu)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Hlutabréf (V/H og framlegð)",
+        "intro": "Þegar S&P/NDX hlutabréf eru síuð, sýnir taflan áætluð hagnaðarmarföld (V/H framvirkt) og framlegð svo þú getir borið saman verðmat á móti arðsemi.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Núverandi hlutabréfaverð",
+          "denominator": "Áætlaður hagnaður á hlut (næstu 12 mánuðir)",
+          "vars": [
+            "P/E Forward: Hversu mörg ár af framtíðartekjum þú ert að borga á verði í dag.",
+            "Framlegð (%): hlutfall af sölu sem stendur eftir sem framlegð að frádregnum beinum kostnaði."
+          ]
+        },
+        "lead": "Hvað á að leita að þegar farið er yfir báða dálkana:",
+        "bullets": [
+          {
+            "bold": "Krefjandi vs hóflegt mat",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Hátt margfeldi gefur til kynna að markaðurinn sé að verðleggja sterkan framtíðarvöxt; lágt endurspeglar venjulega þroskuð eða verðmæt fyrirtæki."
+          },
+          {
+            "bold": "Verðlagning Power",
+            "code": "Margen Bruto > 50%",
+            "text": "Mikil framlegð sýnir fyrirtæki með sterka samkeppnisforskot sem geta varið hagnað sinn gegn verðbólgu."
+          }
+        ],
+        "example": "Ef hlutabréf eru í viðskiptum á $ 150 og er áætlað að vinna sér inn $ 6 á hlut á næstu 12 mánuðum, er framvirkt V/H þess 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Afleiður, gjaldeyrir og hrávörur",
+        "intro": "Fyrir valkosti, gjaldeyri og líkamlega framtíðarmarkaði, sýna tveir kraftmiklu dálkarnir óbein kostnaður við áhættu eða umbun fyrir að halda stöðunni með tímanum.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Afleiður): ársbundið flökt sem valréttarmarkaðurinn gefur afslætti næstu 30 daga.",
+            "Berið 10Y (FX) og Roll Yield (Cormodities): árlegur hagnaður eða kostnaður af gengismun eða framtíðarveltu."
+          ]
+        },
+        "lead": "Hvernig á að nýta þessa dálka eftir eigninni:",
+        "bullets": [
+          {
+            "bold": "Í Afleiður",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Þeir segja þér hvaða hlutfall af hreyfingu markaðurinn býst við og hvort valkostirnir til að mæta falli (Puts) séu dýrir."
+          },
+          {
+            "bold": "Í gjaldmiðlum og hráefnum",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Þær birtast með grænu ef viðhald á eigninni skilar þér aukatekjum eða með rauðu ef hún hefur burðarkostnað."
+          }
+        ],
+        "example": "Ef valkostur sýnir óbeina sveiflu (ATM IV) upp á 35% árlega, gefur markaðurinn afslátt af hreyfingu nálægt ±10% næstu 30 daga."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radar Radial Mapping",
+        "intro": "Til að setja allt að 45 eignir í ratsjárhringana þrjá án þess að skarast, breytir Orbital sýn gildi valda vísis í fjarlægð til miðju (radíus r) sem er staðlað á milli lágmarks og hámarks hópsins.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Eignavirði − Lágmarksvirði samstæðunnar",
+          "denominator": "Hámarksverðmæti samstæðunnar − Lágmarksvirði samstæðunnar",
+          "vars": [
+            "r → 0 (innri hringur): sameinar eignirnar með meiri styrkleika eða jákvæðu fráviki.",
+            "r → 1 (Ytri hringur): staðsetur jaðareignir eða þær sem hafa lægsta hlutfallslegan lestur."
+          ]
+        },
+        "lead": "Hvernig á að lesa stöðu og lit hverrar plánetu á ratsjánni:",
+        "bullets": [
+          {
+            "bold": "Fókus á innri hring",
+            "code": "Centro del radar",
+            "text": "Safnaðu leiðandi eignum úr vísinum sem þú valdir hér að ofan svo að skoðun þín fari að því sem er mikilvægast fyrst."
+          },
+          {
+            "bold": "Söguleg litamerkingarfræði",
+            "code": "Verde vs Rojo",
+            "text": "Hnúturinn kviknar í grænu þegar hann fer vel yfir sögulegt meðaltal og í rauðu þegar hann endurspeglar hnignun eða streitu."
+          }
+        ],
+        "example": "Ef þú flokkar ratsjána eftir Volume Deviation (Z-Score) er sá virki með +3,4σ staðsettur í bjarta miðhringnum, en sá með 0,1σ er á ytri brautinni."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) og Bollinger hljómsveitir",
+        "intro": "20 tímabila einfalt hreyfanlegt meðaltal (SMA 20) markar grunnþróun eignarinnar, en Bollinger Bands draga kraftmikla rás með því að leggja saman og draga frá tvö staðalfrávik (2σ) í kringum það meðaltal.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): reiknað meðaltal síðustu 20 lokana.",
+            "Bandbreidd (BB Width): prósentu fjarlægð milli efri og neðri bandsins."
+          ]
+        },
+        "lead": "Tölfræðilega séð eiga um það bil 95% tilvitnanna sér stað innan þessara tveggja hljómsveita:",
+        "bullets": [
+          {
+            "bold": "Verð yfir meðallagi",
+            "code": "Precio > SMA 20",
+            "text": "Það gefur til kynna að skammtímaþróunin sé bullish og meðaltalið virkar venjulega sem stuðningsgólf."
+          },
+          {
+            "bold": "Snerting á efri eða neðri bandi",
+            "code": "±2σ",
+            "text": "Það varar við því að verðið hafi teygt sig of hratt frá nýlegu meðaltali og getur tekið andardrátt."
+          },
+          {
+            "bold": "bandþjöppun",
+            "code": "BB Width bajo",
+            "text": "Þegar böndin verða mjög þröng, byggir markaðurinn upp orku fyrir sterka hreyfingu."
+          }
+        ],
+        "example": "Ef SMA(20) hlutabréfa er $100 og 20 hjóla staðalfrávik þess er $4, þá er efri bandið á $108 og neðra bandið á $92."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP stofnana",
+        "intro": "Ólíkt venjulegu meðaltali sem gefur jafnt vægi til allra tíma sólarhringsins, vegur VWAP hvert verð með því magni sem var í raun verslað á því stigi. Það er aðalviðmiðunin sem stofnanatöflur nota.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Dæmigert verðᵢ × viðskiptamagnᵢ)",
+          "denominator": "∑ Viðskiptamagnᵢ",
+          "vars": [
+            "Dæmigert verð: meðaltal á milli hámarks, lágmarks og lokunar hvers kerti.",
+            "Viðskiptamagnᵢ: magn sem verslað er sérstaklega í þeim hluta."
+          ]
+        },
+        "lead": "Hvernig fagmenn nota VWAP línuna:",
+        "bullets": [
+          {
+            "bold": "Framkvæmdareftirlit",
+            "code": "Comprar bajo el VWAP",
+            "text": "Ef stofnanasjóður kaupir undir VWAP fyrir tímabilið fékk hann betra verð en markaðsvegið meðaltal."
+          },
+          {
+            "bold": "Trend varnarstig",
+            "code": "Soporte / Resistencia",
+            "text": "Svo lengi sem eignin er yfir VWAP eru þeir sem keyptu á tímabilinu í meðalhagnaði."
+          }
+        ],
+        "example": "Ef verslað væri með 1 milljón hluti á $100 og aðeins 100 þúsund hlutir voru verslað á $110, myndi einfalda meðaltalið segja $105, en VWAP hljóðar upp á $100,91 vegna þess að næstum allir peningarnir voru verslaðir á $100."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Dreifð tilfærsla (bps)",
+        "intro": "Álagið er munurinn á besta útboðsverði og besta tilboðsverði í pantanabók. Þegar viðskiptavakar skynja áhættu eða lausafjárskort, opna þeir það bil til að verja sig.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "(Spyrja verð - Tilboðsverð)",
+          "denominator": "Meðalverð (miðverð)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Spyrja/tilboðsverð: Sölu- og kauppunktur í bókinni.",
+            "10.000: Viðskiptastuðull til að tjá mismuninn á grunnpunktum (bps)."
+          ]
+        },
+        "lead": "Það sem lestur dreifðrar dislocation á vinstri teinum segir þér:",
+        "bullets": [
+          {
+            "bold": "Djúp og fljótandi bók",
+            "code": "Spread estable en verde",
+            "text": "Það er mikið lausafé í báðum endum og óbeinn kostnaður við að komast inn eða út er í lágmarki."
+          },
+          {
+            "bold": "Núningur eða afturköllun lausafjár",
+            "code": "Salto en bps",
+            "text": "Það gerist venjulega sekúndum fyrir þjóðhagslegar tilkynningar eða við skelfingarsölu, sem gerir framkvæmd dýrari."
+          }
+        ],
+        "example": "Ef eign er með kaupábendingu á $99,95 og söluábendingu á $100,05, jafngildir munurinn $0,10 yfir $100 10 punkta (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Valmöguleikar (Black-Scholes og Grikkir)",
+        "intro": "Í valkostavélinni myndar vettvangurinn tvær hagnaðar- og tapferlar (P&L): hvernig stefnan myndi enda á fyrningardegi og hversu mikið það er þess virði í dag (T+0) með því að beita Black-Scholes líkaninu.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S og K: núverandi verð undirliggjandi eignar (Spot) og verkfallsverð valréttarins (Strike).",
+            "Nettó Grikkir: Δ Delta (verðnæmni), Γ Gamma (Delta hröðun), Θ Theta (daglegur klæðnaður) og ν Vega (sveiflunæmi)."
+          ]
+        },
+        "lead": "Hvernig á að lesa Grikkina um stefnu þína á vinstri járnbrautartöflunum:",
+        "bullets": [
+          {
+            "bold": "Stýri og hröðun",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Jákvæð Delta vinnur þegar eignin hækkar; jákvætt Gamma gerir þér kleift að ná hraðar og hraðar ef hreyfingin hraðar."
+          },
+          {
+            "bold": "Tíminn liðinn og óvissa",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta segir þér hversu mörgum dollurum staðan tapar eða hagnast fyrir hvern dag sem líður; Vega hversu mikið það breytist ef óbeint flökt hækkar um 1%."
+          }
+        ],
+        "example": "A Long Straddle (kaupa Call and Set on the same strike) hefur Delta nálægt 0 (það skiptir ekki máli hvort það fer upp eða niður), en jákvætt Vega og þarf verðið til að fara út fyrir tvo jafnvægispunkta (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Sovereign Curves (Fiðrildi og DV01)",
+        "intro": "Fastatekjuvélin ber saman ávöxtunarkröfu frá 3 mánuðum til 30 ára fyrir 42 lönd og reiknar bæði halla (2s10s) og sveigju miðstigs (Butterfly 2s5s10s) og peningalegt næmi (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y hlutfall: 2ja, 5 og 10 ára ávöxtunarkrafa ríkisins í valnu landi.",
+            "Raunvextir 10 ára: 10 ára nafnávöxtun að frádregnum viðmiðunarvöxtum eða óbeinni verðbólgu."
+          ]
+        },
+        "lead": "Til hvers er hver vísir í skuldabréfagreiningu:",
+        "bullets": [
+          {
+            "bold": "Beyging miðhluta",
+            "code": "Butterfly 2s5s10s",
+            "text": "Það mælir hvort 5 ára áfanginn sé dýr eða ódýr miðað við 2 ára og 10 ára öfgar."
+          },
+          {
+            "bold": "Dollar endingartíma áhættu",
+            "code": "DV01 por $1M",
+            "text": "Það segir þér nákvæmlega hversu marga dollara milljón dollara eignasafn er mismunandi með 0,01% hreyfingu á genginu."
+          }
+        ],
+        "example": "10 ára skuldabréf með DV01 upp á $820 á milljón mun tapa um það bil $82.000 ef markaðsvextir hækka um 100 punkta (+1,00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Gjaldmiðlar (Carry) og framtíðarsamningar (Roll Yield)",
+        "intro": "Í gjaldmiðlum, þegar ekki er vitnað beint í par, er það reiknað með þríhyrningi gagnvart dollar og gengismunur þess (Carry) mældur. Í hráefnum er endurnýjunarárangur mældur á milli strax samnings og 12 mánaða samnings (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Markaðsverð (framan M1) - Framtíðarverð (M12)",
+          "denominator": "Framtíðarverð (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Afturábak (Blettur > Framtíð): Líkamlegur skortur í dag veldur því að framvirkir framtíðarframleiðendur skila jákvæðum hagnaði (Rúlluávöxtun > 0).",
+            "Contango (Spot < Future): Geymslukostnaður gerir framtíðarsamninga dýrari og endurnýjun þeirra hefur neikvæðan kostnað í för með sér."
+          ]
+        },
+        "lead": "Hvernig þetta hefur áhrif á vasabókina þína þegar þú heldur stöðu:",
+        "bullets": [
+          {
+            "bold": "Jákvæð vöruviðskipti með gjaldmiðla",
+            "code": "Carry Spread > 0 bps",
+            "text": "Ef þú kaupir gjaldmiðil með háum vöxtum með því að fjármagna þig í gjaldmiðli með lágum vöxtum muntu innheimta þann mismun þér í hag."
+          },
+          {
+            "bold": "Hagstæður vindur í hráefni",
+            "code": "Backwardation en verde",
+            "text": "Þegar efnisbirgðir eru litlar er nærliggjandi samningur meira virði en sá sem er fjarlægur og fjárfestirinn fær aukaávöxtun með því að rúlla samningnum."
+          }
+        ],
+        "example": "Ef 1 mánaða olía er á $72 og 12 mánaða samningurinn er á $68, þá er markaðurinn í Backwardation með jákvæða veltuávöxtun upp á +5,88% árlega."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Heildarvegin einkunn",
+        "intro": "Ekki fara allar eignir í gegnum sömu heimildir: í fyrirtæki hafa endurskoðaðir reikningsskil (SEC 10-K/10-Q) mikið vægi, en á dulritunarmarkaði eða gjaldmiðlum hafa daglegt flæði og samskipti meira vægi.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: sjálfvirk vog eftir flokkum (t.d. 80% / 20% í hlutabréfum; 85% / 15% í þóknun).",
+            "Lokakvarði: er á bilinu -100 (hámarksbölsýni) til +100 (hámarks sannfæring)."
+          ]
+        },
+        "lead": "Svona er samsett skorið þýtt í yfirlitinu:",
+        "bullets": [
+          {
+            "bold": "Bullandi afstaða",
+            "code": "BULLISH / Nota > +15",
+            "text": "Heimildarhvatar og fréttaflæði vega greinilega þyngra en áhættuþættir."
+          },
+          {
+            "bold": "Hlutlaus eða blönduð stelling",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Jafnvel öfl milli grundvallaratriði og frétta; Það er ráðlegt að endurskoða harmonikkuna með 10 þáttum áður en tekin er ákvörðun."
+          },
+          {
+            "bold": "Varnar- eða bearísk afstaða",
+            "code": "BEARISH / Nota < -15",
+            "text": "Viðvaranir um efnahagsreikninga, rýrnun framlegðar eða skaðlegar fyrirsagnir eru ríkjandi."
+          }
+        ],
+        "example": "Í hlutabréfum (80% grundvallaratriði / 20% fréttir), ef staðan sýnir +50 stig og fréttir dagsins sýna +20, er heildarvegið stig (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Staðfest leit (RAG)",
+        "intro": "Til að koma í veg fyrir að gervigreind finni upp tölur notar Document Chat Generation Augmented Recovery (RAG): fyrst leitar það að viðeigandi málsgreinum í opinberum skýrslum eignarinnar og skrifar síðan svarið með því að vitna í upprunann.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vigurráðgjöf (Q) · Vector opinbert skjal (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vector Q og D: tölulegar framsetningar á spurningunni þinni og opinberu brotunum (10-K, FOMC fundargerðir, EIA skýrslur).",
+            "3-Layer Guardrail: sía sem hindrar fyrirspurnir sem tengjast ekki fjármálum eða án heimildastuðnings."
+          ]
+        },
+        "lead": "Hvað tryggir þetta fyrirkomulag þegar þú spyrð spurningar í spjallinu:",
+        "bullets": [
+          {
+            "bold": "Akkeri í frumheimildum",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Sérhver gögn um tekjur, skuldir, birgðir eða vexti koma úr eftirlitsskjali sem samsvarar þeirri eign."
+          },
+          {
+            "bold": "Hættu spurningum utan við efnið",
+            "code": "Guardrail activo",
+            "text": "Ef einhver reynir að hafa samráð við efni sem ekki eru fjárhagsleg, hafnar aðstoðarmaðurinn fyrirspurninni og heldur fókusnum á greiningu tækisins."
+          }
+        ],
+        "example": "Þegar þú smellir á áhættuþættina á hlutabréfum, sækir vélin lið 1A (Áhættuþættir) hlutann í nýjasta 10-K eyðublaðinu sínu og tekur saman mikilvæg atriði."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT taugastig",
+        "intro": "Dæmigerð orðabók ruglar oft saman fjármálaorðum (t.d. „lækkun kostnaðar“ eða „lækkun skulda“ eru frábærar fréttir jafnvel þótt þær noti orðið fall eða lækkun). FinBERT er taugakerfi sem er þjálfað sérstaklega með fjármálatexta.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(Jákvæð) og P(Neikvæð): líkur sem líkanið úthlutar á fyrirsögnina eru bullish eða bearish fyrir eignina.",
+            "24h ferill: veldisvísis hlaupandi meðaltal af fyrirsögnum síðasta sólarhrings."
+          ]
+        },
+        "lead": "Hvernig hver hnút gildir á tímalínunni til hægri:",
+        "bullets": [
+          {
+            "bold": "Hvatahaldari",
+            "code": "+20 a +100 en verde",
+            "text": "Að slá á áætlaðar tekjur, hækka lánshæfismat eða hagstæðar vaxtalækkanir."
+          },
+          {
+            "bold": "Hlutlaus upplýsingasnúra",
+            "code": "-19 a +19 en ámbar",
+            "text": "Venjulegar rekstrartilkynningar sem breyta ekki byggingarmati tækisins."
+          },
+          {
+            "bold": "Áhættuhafi",
+            "code": "-20 a -100 en rojo",
+            "text": "Viðvaranir frá reglugerðum, lækkun framlegðar, verkföll eða verri verðbólguupplýsingar en búist var við."
+          }
+        ],
+        "example": "Ef líkanið úthlutar 82% jákvæðum líkum, 12% hlutlausum og 6% neikvæðum líkum á fyrirsögn sýnir hnúturinn nettóáhrif +76 í grænu."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe og Sortino",
+        "intro": "Fyrstu tvö efstu spilin mæla hversu mikið fjármagn þitt vex á ári (CAGR) og hversu skilvirkur sá vöxtur er miðað við þau áföll sem þú þarft að þola (Sharpe og Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Árleg Portfolio ávöxtun (Rp) - Áhættulaust hlutfall (Rf)",
+          "denominator": "Árleg Portfolio sveiflur (σp)",
+          "vars": [
+            "Rf (4,30%): grunnávöxtun sem þú gætir fengið án áhættu í ríkisvíxlum.",
+            "Sortino hlutfall: notar sömu formúlu en í nefnara refsar það aðeins sveiflur neikvæðra daga (fall)."
+          ]
+        },
+        "lead": "Hvernig á að meta gæði eignasafnsins með þessum tölum:",
+        "bullets": [
+          {
+            "bold": "Skilvirk eignasafn",
+            "code": "Sharpe > 1.00",
+            "text": "Umframávöxtunin sem þú nærð yfir áhættulausu vextina er langt umfram áætluð flökt."
+          },
+          {
+            "bold": "Framúrskarandi frammistaða",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Það gefur til kynna mjög vel fjölbreytta samsetningu þar sem hækkanir eru í samræmi og falla eru í skefjum."
+          }
+        ],
+        "example": "Ef eignasafnið þitt skilar 15,3% ávöxtun árlega, þá er áhættulausa hlutfallið 4,3% og árlegt flökt þitt er 10%, umframávöxtun þín er 11% og Sharpe hlutfallið þitt er 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% og Drawdown",
+        "intro": "Þriðja og fjórða spjaldið svarar hversu miklu þú getur tapað á slæmum en tölfræðilega eðlilegum degi (VaR 95%), hversu miklu á öfgafullum lætidegi (CVaR 99%) og hvað var mesta afturförin frá fyrri hámarki (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1.645: tölfræðilegur þáttur sem nær yfir 95% af venjulegum hjólum ársins (19 af hverjum 20 dögum).",
+            "CVaR 99% (Væntanlegur skortur): Meðaltap þegar markaðurinn brýtur þann þröskuld og fer inn í efsta 1% af verstu dögum."
+          ]
+        },
+        "lead": "Hvaða hagnýti munur er á því að horfa á VaR og að horfa á Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Eins dags áhættu",
+            "code": "VaR 95% 1D en USD",
+            "text": "Það undirbýr þig sálfræðilega og fjárhagslega fyrir það sem reikningurinn þinn getur sveiflast í slæma átt án þess að það þýði að stefnan hafi mistekist."
+          },
+          {
+            "bold": "Viðnám í óhagstæðri röð",
+            "code": "Max Drawdown 12M",
+            "text": "Það mælir uppsafnað fall frá odd til odds frá hæsta punkti til gólfs áður en hann jafnar sig aftur."
+          }
+        ],
+        "example": "Í $100.000 eignasafni með daglegu VaR 95% af 1.45% ($1.450), í 19 af 20 viðskiptahjólum mun daglegt tap þitt ekki fara yfir $1.450."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Skörun röntgengeisla (#12)",
+        "intro": "Þegar þú kaupir ETF eins og SPY eða QQQ ertu að kaupa heilmikið af hlutabréfum inni. Ef þú hefur líka keypt eitthvað af þessum sömu hlutum beint, er raunveruleg útsetning þín summan af þessum tveimur hlutum.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Bein þyngdᵢ: hlutfall af eignasafni þínu sem er úthlutað beint á hlutabréfið i.",
+            "Hlutfall innan ETFₖ: opinbert vægi sem það fyrirtæki hefur innan vísitölunnar eða sjóðsins k."
+          ]
+        },
+        "lead": "Af hverju það er lykilatriði að skoða þennan fyrsta flipa áður en safninu er lokað:",
+        "bullets": [
+          {
+            "bold": "Falinn styrkur sýnileiki",
+            "code": "Directo + Indirecto",
+            "text": "Það tekur sjálfkrafa í sundur hvert ETF í eignasafninu þínu og sýnir þér eina stiku með raunverulegu hlutfalli sem þú hefur í hverju fyrirtæki."
+          },
+          {
+            "bold": "Ofviðvörun",
+            "code": "> 20% en rojo",
+            "text": "Ef heildarupphæðin fer yfir skynsamlegan þröskuld einbeitingar á einu nafni kviknar röðin svo þú getir náð jafnvægi."
+          }
+        ],
+        "example": "Ef þú setur 15% af eignasafni þínu í beina NVDA og ert líka með 30% í SPY ETF (þar sem NVDA vegur um 7%), sýnir röntgengeislinn að raunveruleg útsetning þín fyrir NVDA er 15% + (30% × 7%) = 17.%."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alpha Brinson niðurbrot (#2)",
+        "intro": "Þegar eignasafnið þitt slær (eða tapar) á viðmiði sínu, skilur Brinson-Fachler líkanið nákvæmlega hvaðan þessi munur kom: varstu rétt í hvaða geirum þú ættir að vega yfir eða varstu rétt í því að velja bestu eignirnar innan hvers geira?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Úthlutunaráhrif: (Portfolio Þyngd − Viðmiðunarþyngd) × Sector Return í Benchmark.",
+            "Valáhrif: Vægi í viðmiðun × (Ávöxtun eigna þinna - Ávöxtun geirans)."
+          ]
+        },
+        "lead": "Hvernig á að lesa tilvísunarstikurnar þrjár á þriðja flipanum:",
+        "bullets": [
+          {
+            "bold": "Macro eða geira velgengni",
+            "code": "Asignación Sectorial",
+            "text": "Það er jákvætt í grænu þegar þú leggur meira vægi en markaðurinn á þá eignaflokka sem hækkuðu mest."
+          },
+          {
+            "bold": "Árangursrík miðun eigna",
+            "code": "Selección de Activos",
+            "text": "Það er jákvætt þegar tilteknu hljóðfærin sem þú valdir stóðu sig meira en meðaltalið fyrir eigin geira."
+          }
+        ],
+        "example": "Ef eignasafnið þitt sló S&P 500 um +3,20%, gerir þessi flipi þér kleift að sjá að +2,10% kom frá því að velja betri hlutabréf (úrval) og +1,10% af því að hafa meira vægi í tækni (úthlutun)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Skilvirkt Frontier og CML",
+        "intro": "Í Markowitz flugvélinni er vænt ávöxtun eignasafns vegið meðaltal ávöxtunar eigna þess, en sveiflur þess eru minni en meðaltal þökk sé því að eignirnar hreyfast ekki 100% eins.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: hlutfall af fjármagni sem er úthlutað til eigna i og j.",
+            "ρᵢⱼ (Fylgni): að hve miklu leyti hreyfast báðar eignirnar saman (−1 til +1). Því lægra sem ρᵢⱼ er, því meira minnkar heildaráhættan."
+          ]
+        },
+        "lead": "Hvað tákna þrjár tilvísanir á línuritinu:",
+        "bullets": [
+          {
+            "bold": "Lágmarksfrávik",
+            "code": "Min-Var",
+            "text": "Það er sá punktur sem er lengst til vinstri á ferlinum: nákvæm samsetning lóða sem nær lægstu mögulegu sveiflum."
+          },
+          {
+            "bold": "Máximo Sharpe og Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Það er punkturinn þar sem línan sem byrjar á áhættulausu genginu snertir skilvirku landamærin og býður upp á mestan hagnað á áhættueiningu."
+          }
+        ],
+        "example": "Ef þú sameinar í jöfnum hlutum tvær eignir sem hafa 20% flökt hver en núll fylgni (ρ = 0), er flökt eignasafnsins ekki 20%, heldur lækkar það niður í 14,1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR frá Active and Capture",
+        "intro": "Til að vita hvaða staða bætir meiri áhættu við eignasafnið er jaðarframlag hverrar eignar metið í samræmi við vægi hennar og fylgni við restina. Að auki mæla tökuhlutföllin ósamhverfu á móti hækkunum og lækkunum S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Skil á eigninni þinni eða Portfolio í bullish (eða bearish) hjólum",
+          "denominator": "Skil á S&P 500 á sömu hjólunum",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100%) – Aflaðu meira en vísitalan þegar markaðurinn hækkar.",
+            "Downside Capture (< 100%): fellur minna en vísitalan þegar markaðurinn lækkar (varnarlausn)."
+          ]
+        },
+        "lead": "Tilvalið snið sem þú ert að leita að þegar þú skoðar þriðja flipa fjórðungsins:",
+        "bullets": [
+          {
+            "bold": "jákvæða ósamhverfu",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Taktu fullan þátt í nautamörkuðum en vernda fjármagn þegar hlutabréfamarkaðurinn leiðréttir."
+          },
+          {
+            "bold": "Athvarf eða ósamræmdar eignir",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Verkfæri eins og stutt skuldabréf eða gull sem hafa tilhneigingu til að vera traust eða hækka á meðan hlutabréfamarkaðir lækka."
+          }
+        ],
+        "example": "Ef á þeim mánuðum þegar S&P 500 hækkaði um 10% hækkaði eignasafnið þitt um 11% (á móti 110%) og þegar vísitalan lækkaði um 10% lækkaði eignasafnið þitt aðeins um 6% (niður 60%), þá ertu með sterka ósamhverfu þér í hag."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Venjuleg vs kreppufylgni",
+        "intro": "Pearson stuðullinn (r) mælir frá -1,00 til +1,00 hvernig tvær eignir hreyfast miðað við hvor aðra. Hættan við eignastýringu er sú að við hrun á markaði skýtur fylgni áhættueigna yfirleitt í átt að +1,00 (smit).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Sambreytileiki (skilar eign i, skilar eign j)",
+          "denominator": "Sveiflur eigna i (σᵢ) × Sveiflur eigna j (σⱼ)",
+          "vars": [
+            "r nálægt 0 eða neikvætt: frábær fjölbreytni (þegar einn lækkar fylgir hinn ekki).",
+            "r í Crisis Queue: endurreiknar fylkið sem tekur aðeins 5% af verstu hjólunum á markaðnum."
+          ]
+        },
+        "lead": "Hvernig á að lesa litina á 6x6 fylkinu í báðum kerfum:",
+        "bullets": [
+          {
+            "bold": "Raunveruleg fjölbreytni",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Báðar eignirnar bregðast við mismunandi efnahagslegum drifkraftum og bæta hvor aðra upp."
+          },
+          {
+            "bold": "Einbeiting eða smit",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Þeir hreyfast nánast sem blokk; Að hafa bæði dregur ekki úr falli á slæmum degi."
+          }
+        ],
+        "example": "Tvö hlutabréf úr mismunandi geirum gætu haft miðlungs fylgni upp á 0,42 á venjulegu ári, en þegar þú virkjar Crisis Queue hnappinn muntu sjá að það hækkar í 0,81 vegna þess að í læti selja þau saman."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D Shock (gengi × hlutabréfamarkað)",
+        "intro": "2D fylkið sameinar samtímis áhrif hreyfingar á vöxtum (í gegnum fastatekjutíma og vaxtanæmni) og lækkun eða hækkun S&P 500 vísitölunnar (í gegnum Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: breyting á hlutabréfamarkaði á lárétta ásnum (−20% til +10%).",
+            "Δ Vextir: sviðsmynd breytinga á vöxtum í grunnpunktum á lóðrétta ásnum (−100 til +200 bps)."
+          ]
+        },
+        "lead": "Hver er tilgangurinn með því að fara yfir ása tvo í töflunni:",
+        "bullets": [
+          {
+            "bold": "Stagflation eða vaxtahækkun atburðarás",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Eins og það sem gerðist árið 2022, þar sem hlutabréf og löng skuldabréf þjást á sama tíma."
+          },
+          {
+            "bold": "Klassísk atburðarás fyrir skjól",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Þar sem lægri vextir hækka verð á ríkisbréfum og draga úr falli hlutabréfa."
+          }
+        ],
+        "example": "Með því að sía fyrir langt skuldabréf eins og US10Y eða TLT geturðu séð í töflunni hvernig það fær verðmæti þegar vextir lækka (-100 bps), og virkar sem fallhlíf ef S&P 500 fellur sama dag."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markov Regimes (#11)",
+        "intro": "A Markov keðja mótar hagkerfið sem kerfi sem hoppar á milli fjögurra mögulegra ríkja (Calm Bullish, Óstöðugt bullish, Verðbólga/vextir og kreppa) og reiknar út líkurnar á því að fara úr einu í annað.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Aðalská (i = j): líkur á að núverandi fyrirkomulag haldist óbreytt.",
+            "Off-ská (i ≠ j): líkur á að snúast í nýtt markaðsaðlag."
+          ]
+        },
+        "lead": "Hvernig á að nýta sér umbreytingarfylki á öðrum flipanum:",
+        "bullets": [
+          {
+            "bold": "Þrautseigja núverandi hringrásar",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Róleg kerfi hafa venjulega mikla þrautseigju (> 75%), sem gerir kleift að viðhalda þróunarstöðu."
+          },
+          {
+            "bold": "Snemma viðvörun um snúning",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Þegar líkurnar á umskiptum yfir í óstöðug ríki aukast er ráðlegt að draga úr skuldsetningu eða virkja áhættuvarnir."
+          }
+        ],
+        "example": "Ef markaðurinn í dag er í sveiflukenndu nautakerfi og röðin markar 62% af varanleika, 20% af því að fara aftur til Bull Calm og 18% af því að fara í streitu/kreppu, þá veistu að næstum 1 af hverjum 5 tilfellum leiðir til leiðréttingar."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo vörpun (10.000 slóðir)",
+        "intro": "Byggt á væntri ávöxtun og núverandi sveiflur í eignasafni þínu, myndar hermirinn 10.000 mögulegar framtíðarferlar dag frá degi með því að beita stochastic geometrískum Brownian Movement líkaninu.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ og σ: væntanleg árleg ávöxtun og árstíðni í núverandi eignasafni þínu.",
+            "Z: venjuleg venjuleg slembibreyta dregin 10.000 sinnum eftir sjóndeildarhringnum (6M, 12M eða 24M)."
+          ]
+        },
+        "lead": "Úr þessum 10.000 uppgerðum eru þrír meginferlar grafsins dregnir út:",
+        "bullets": [
+          {
+            "bold": "Hagstæð atburðarás",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Það stig sem aðeins er farið yfir um 5% af bjartsýnustu atburðarásinni."
+          },
+          {
+            "bold": "Væntanlegur miðferill",
+            "code": "Mediana P50",
+            "text": "Dæmigerð niðurstaða þar sem helmingur uppgerðanna er fyrir ofan og hinn helmingurinn er fyrir neðan."
+          },
+          {
+            "bold": "Term streitu atburðarás",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Óhagstæða gólfið: á 95% af hermdu leiðunum endar eignasafnið þitt fyrir ofan þessa línu."
+          }
+        ],
+        "example": "Á 12 mánaða sjóndeildarhring miðað við grunninn 100, ef P50 les 116 og P05 les 94, er miðlæg vænting þín að vinna sér inn +16% og á mjög slæmu ári er hætta á nálægt -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly Criterion (#14)",
+        "intro": "Kelly viðmiðunin svarar vísindalega hvaða prósentu af fjármagni þínu þú ættir að úthluta í aðgerð þegar þú veist líkurnar á árangri (Win-Rate) og hversu mikið þú vinnur þegar þér tekst á móti því sem þú tapar þegar þér mistakast (Payoff Ratio).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p og q: líkur á að vinna (p) og líkur á að tapa (q = 1 − p).",
+            "b (Payoff Ratio): meðalhagnaður deilt með meðaltapi (til dæmis, að vinna sér inn $2 fyrir hvern $1 sem er í áhættuhópi þýðir að b = 2)."
+          ]
+        },
+        "lead": "Hvers vegna faglegir stjórnendur nota Half-Kelly (0,5×) afbrigði:",
+        "bullets": [
+          {
+            "bold": "Kelly lokið",
+            "code": "Full Kelly 1.0×",
+            "text": "Það hámarkar stærðfræðilegan vöxt til lengri tíma litið, en myndar mjög skarpar sveiflur ef villur eru í röð."
+          },
+          {
+            "bold": "Mælt er með Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Með því að nota helming af ráðlögðu hlutfalli fangar þú 75% af hugsanlegum vexti en minnkar sveifluna um helming."
+          }
+        ],
+        "example": "Ef stefna slær 55% af tímanum (p = 0,55, q = 0,45) og borgar 2 á móti 1 (b = 2), gefur fullt Kelly (0,55×2 − 0,45) / 2 = 32,5% og skynsamur Half-Kelly mælir með að úthluta 16.25%."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Settu OTM skjöld (#6)",
+        "intro": "Söluréttur fyrir utan peninga (til dæmis 5% undir núverandi verði S&P 500) virkar alveg eins og sjálfsábyrgð vátrygginga: hann hefur lítinn fastan kostnað (iðgjaldið), en ef markaðurinn lækkar um 20% eða 30% er verðmæti hans margfaldað kúpt og vegur upp á móti tapi á eignasafni þínu.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Annual Cost (Carry Drag): árlegt hlutfall sem það kostar að endurnýja trygginguna ef markaðurinn fellur ekki.",
+            "Hrunvörn (-20%): dollarar endurheimtir með Put samningnum við alvarlegt hrun."
+          ]
+        },
+        "lead": "Hvernig á að bera saman hermirvalkosti á fyrsta flipanum:",
+        "bullets": [
+          {
+            "bold": "Bein vísitölutrygging",
+            "code": "SPY Put 5% OTM",
+            "text": "Það takmarkar hámarkstap frá 5% lækkun í skiptum fyrir hóflegan árlegan kostnað."
+          },
+          {
+            "bold": "Fjármögnuð eða óstöðugleikavernd",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "The Collar dregur úr kostnaði með því að selja Call up; Call on VIX springur í hag þegar læti koma af stað á markaðnum."
+          }
+        ],
+        "example": "Ef verndun $100.000 eignasafns með SPY Put 5% OTM kostar 1,1% á ári ($1.100), en ef um -20% hrun er að ræða minnkar það hnignun eignasafns þíns í minna en helming, nettósparnaður fer yfir $7.000."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Framlegð og fjarlægð til framlegðarkalls (#13)",
+        "intro": "Þegar þú starfar með afleiður eða skuldsetningu krefst miðlarinn að viðhalda lágmarkshlutfalli af eigin fé yfir heildarverðmæti stöðunnar (viðhaldsframlegð). Ef fall dregur úr fjármagni þínu niður fyrir þá hæð er framlegðarkall af stað.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Skuldir eða fjármögnuð jafnvægi",
+          "denominator": "1 − % Viðhaldsframlegð (Reg-T)",
+          "vars": [
+            "Heildarútsetning: heildarsumma opinna staða deilt með eigin fé (t.d. 1,18×).",
+            "Fjarlægð til framlegðarkalls (%): prósentufall sem eignasafnið styður enn áður en það nær þröskuldinum."
+          ]
+        },
+        "lead": "Öryggisstig á vöktunarstikunni:",
+        "bullets": [
+          {
+            "bold": "Stórt úthreinsunarsvæði",
+            "code": "Distancia > 30% en verde",
+            "text": "Skuldsetning er lítil og eignasafnið getur tekið á sig jafnvel alvarlega kreppu án nauðungarsölu."
+          },
+          {
+            "bold": "varúðarsvæði",
+            "code": "Distancia < 15% en rojo",
+            "text": "Hófleg leiðrétting á markaði myndi tæma ókeypis veð og neyða stöður til gjaldþrotaskipta á versta augnabliki."
+          }
+        ],
+        "example": "Með hóflegri skuldsetningu upp á 1,18× og notaða viðhaldsframlegð upp á 22%, hefur eignasafnið þitt öryggispúða sem er meira en 38% hæðir fyrir allar tryggingarkröfur."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Reglur 3ja stoðanefndar",
+        "intro": "Svo að engin hvatvís ákvörðun stofni afkomu eignasafnsins í hættu, metur nefndin hverja pöntun með því að sameina tækniskýrsluna, grundvallarskýrsluna og tvær harðar, óviðsemjanlegar áhættueftirlitsreglur.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: engin einstök eign getur safnað saman meira en fimmtung af heildareignum.",
+            "Fráviksstöðvun (P-06 ≥ 0,65): ef eignin fer í tölfræðilega tilfærslu lækkar kerfið hámarksáhættu í 5%."
+          ]
+        },
+        "lead": "Hvað þýðir hvert ríki í dómnum og í aftökubókinni:",
+        "bullets": [
+          {
+            "bold": "Pöntun samþykkt án takmarkana",
+            "code": "APROBADO en verde",
+            "text": "Stoðirnar þrjár falla vel saman og stöðustærðin virðir öll samþjöppunar- og lausafjármörk."
+          },
+          {
+            "bold": "Pöntun stillt með handriði",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Þegar miði fer yfir 20% hámarkið eða reynir að kaupa mikið í miðju óeðli, varar varnarhandrið við of mikið."
+          }
+        ],
+        "example": "Ef þú ert að reyna að líkja eftir kaupum sem myndu taka eitt hlutabréf upp í 26% af eignasafni þínu, flaggar Pillar 3 (Risk & Sizing Guardrail) samþjöppunarviðvörunina svo þú stillir hana undir 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Skilvirkni Walk-Forward (WFE)",
+        "intro": "Til að ganga úr skugga um að stefna hafi ekki einfaldlega verið gerð til að líta vel út í fortíðinni (offitting), ber Walk-Forward prófið saman hvernig það stóð sig á hönnunartímabilinu (In-Sample) og frammistöðu þess í síðari gögnum sem aldrei hafa sést áður (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Árleg ávöxtun Out-of-Sample (hrein staðfesting)",
+          "denominator": "Árleg ávöxtun In-Sample (þjálfun)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): sögulegur hluti notaður til að kvarða þyngd og reglur stefnunnar.",
+            "Out-of-Sample (OOS): næsti hluti þar sem stefnan er prófuð við raunverulegar aðstæður án þess að snerta færibreytur hennar."
+          ]
+        },
+        "lead": "Hvernig magniðnaðurinn metur WFE hlutfallið:",
+        "bullets": [
+          {
+            "bold": "Öflug og stöðug stefna",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Það heldur yfirgnæfandi meirihluta getu sinnar til að skapa hagnað þegar það stendur frammi fyrir nýjum markaðsaðstæðum."
+          },
+          {
+            "bold": "Brothætt eða offitt stefna",
+            "code": "WFE < 50% en rojo",
+            "text": "Það virkaði vel í fortíðarkenningum en tapar árangri í raunveruleikanum; Það er ekki ráðlegt að framkvæma það með alvöru peningum."
+          }
+        ],
+        "example": "Ef stefna skilaði 20% á ársgrundvelli á hönnunarstigi (In-Sample) og á síðara raunverulegu prófunarstigi (Out-of-Sample) skilaði hún 18,8% á ársgrundvelli, er WFE skilvirkni hennar (18,8 / 20) = 94,0%."
+      }
+    ]
+  }
+}

@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Chế độ xem thu gọn",
+    "mainView": "Chế độ xem chính",
+    "expandedView": "Chế độ xem mở rộng",
+    "inThisSection": "Trong phần này bạn sẽ tìm thấy:",
+    "deepDive": "Lặn sâu",
+    "previous": "trước đó",
+    "next": "Tiếp theo",
+    "mathFormula": "Công thức toán học",
+    "practicalExample": "Ví dụ thực tế:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Khi bạn mở một nền tảng tài chính truyền thống, điều đầu tiên thường xuất hiện là hàng chục biểu đồ, bảng nhấp nháy và menu ở khắp mọi nơi. Bạn bắt đầu từ đâu khi bạn chỉ muốn kiểm tra thị trường hoặc kiểm tra xem danh mục đầu tư của bạn đang hoạt động như thế nào?",
+        "Màn hình Home được thiết kế chính xác để tránh tiếng ồn ban đầu đó. Nó chào đón bạn với một không gian sạch sẽ và thoáng đãng, nơi mọi quyền kiểm soát tập trung vào hai thanh cố định: một thanh ở trên để làm việc và một thanh khác ở dưới để cấu hình nền tảng phù hợp với bạn."
+      ],
+      "intro": "Màn hình Home chào đón bạn bằng một không gian sạch sẽ và thông thoáng, nơi mọi điều khiển đều tập trung ở hai thanh cố định: một thanh ở trên để làm việc và một thanh ở dưới để cấu hình nền tảng phù hợp với bạn.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Điểm khởi đầu rõ ràng giúp phân chia công việc của bạn thành phân tích thị trường và quản lý danh mục đầu tư.",
+          "paragraphs": [
+            "Hãy tưởng tượng bạn bắt đầu giao dịch vào buổi sáng. Đôi khi bạn muốn xem cổ phiếu, trái phiếu hoặc tiền tệ nào đang biến động nhiều nhất; Những lần khác, bạn sẽ xem xét thẳng rủi ro của danh mục đầu tư của mình hoặc mô phỏng giao dịch mua trước khi thực hiện nó.",
+            "Làm cách nào để tránh trộn lẫn hai thứ trên cùng một màn hình quá tải? Tấm bìa ngăn cách rõ ràng con đường đó với giây đầu tiên:"
+          ],
+          "lead": "Làm cách nào để tránh trộn lẫn hai thứ trên cùng một màn hình quá tải? Tấm bìa ngăn cách rõ ràng con đường đó với giây đầu tiên:",
+          "bullets": [
+            {
+              "bold": "Không gian không bị xao lãng",
+              "code": "Donde se decodifican los mercados",
+              "text": "Khi bạn vào, không có bảng nào đang mở hoặc cảnh báo buộc bạn phải đóng cửa sổ trước khi bắt đầu; Bạn chọn mô-đun nào để mở."
+            },
+            {
+              "bold": "Hai con đường rõ ràng",
+              "code": "Markets / Portfolio",
+              "text": "Toàn bộ quy trình đăng ký được chia thành hai giai đoạn chính: đầu tiên là nghiên cứu các cơ hội trên thị trường, sau đó xây dựng hoặc thử nghiệm danh mục đầu tư của bạn."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Thanh trên cùng để chuyển đến trang chủ, thị trường và danh mục đầu tư của bạn chỉ bằng một cú nhấp chuột.",
+          "paragraphs": [
+            "Khi bạn đi sâu vào chi tiết về một tài sản hoặc kiểm tra các thay đổi đối với danh mục đầu tư của mình, bạn rất dễ quên mất mình đang ở đâu. Làm thế nào để bạn chuyển từ việc xem biểu đồ chứng khoán sang xem lại danh mục đầu tư của mình mà không cần xem qua các menu con?",
+            "Thanh trên cùng luôn cố định trên màn hình và cho phép bạn truy cập trực tiếp vào ba điểm chính:"
+          ],
+          "lead": "Thanh trên cùng luôn cố định trên màn hình và cho phép bạn truy cập trực tiếp vào ba điểm chính:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Dù bạn ở đâu, nhấp vào biểu tượng bên trái sẽ ngay lập tức đưa bạn trở lại trang chính."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Đó là không gian nghiên cứu của bạn. Tại đây, bạn lọc 213 tài sản có sẵn, theo dõi báo giá trực tiếp, phân tích biểu đồ kỹ thuật và tham khảo bản tóm tắt hoặc tin tức về bảng cân đối kế toán."
+            },
+            {
+              "bold": "Ví",
+              "code": "Portfolio",
+              "text": "Đó là bảng quyết định của bạn. Tại đây, bạn xác định tỷ lệ phần trăm vốn của mình dành cho mỗi tài sản, đo lường số tiền bạn có thể mất trong một cuộc khủng hoảng và mô phỏng các hoạt động mới trước khi mạo hiểm tiền bạc."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Phần chân trang để kiểm tra trạng thái hệ thống, quay lại hướng dẫn này hoặc điều chỉnh bố cục.",
+          "paragraphs": [
+            "Trong khi phân tích dữ liệu theo thời gian thực, có những câu hỏi vận hành có thể phát sinh bất cứ lúc nào: báo giá có đến đúng không? Chỉ báo điểm có nghĩa là gì? Tôi có thể giảm độ sáng màn hình được không?",
+            "Phần chân trang nhóm tất cả các công cụ hỗ trợ và cấu hình đó để chúng luôn ở trong tầm tay mà không chiếm vị trí giữa màn hình:"
+          ],
+          "lead": "Phần chân trang nhóm tất cả các công cụ hỗ trợ và cấu hình đó để chúng luôn ở trong tầm tay mà không chiếm vị trí giữa màn hình:",
+          "bullets": [
+            {
+              "bold": "Trạng thái System",
+              "code": "System",
+              "text": "Dấu chấm màu xanh lá cây xác nhận trong nháy mắt rằng mọi thứ đều theo thứ tự. Khi mở nó, bạn có thể xem chi tiết trạng thái của máy chủ, cơ sở dữ liệu và tốc độ phản hồi."
+            },
+            {
+              "bold": "Người dùng Guide",
+              "code": "Guide",
+              "text": "Mở sổ tay hướng dẫn tương tác này bất kỳ lúc nào để biết cách sử dụng màn hình hoặc tìm hiểu sâu hơn về các tính toán của màn hình."
+            },
+            {
+              "bold": "Tùy chọn trực quan",
+              "code": "Idioma / Palette",
+              "text": "Ở bên phải, bạn có các nút điều khiển để thay đổi ngôn ngữ của toàn bộ ứng dụng hoặc điều chỉnh ánh sáng nền."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Ngôn ngữ",
+          "summary": "Công cụ tìm kiếm sẽ dịch toàn bộ nền tảng sang ngôn ngữ của bạn ngay lập tức.",
+          "paragraphs": [
+            "Các điều khoản tài chính và báo cáo thị trường vốn có độ phức tạp riêng mà không cần thêm rào cản ngôn ngữ. Nếu bạn muốn đọc phần giải thích bằng tiếng Tây Ban Nha, tiếng Anh hoặc bất kỳ ngôn ngữ nào khác, bạn có thể thay đổi nó ngay lập tức.",
+            "Đây là cách bộ chọn hoạt động từ góc dưới bên phải:"
+          ],
+          "lead": "Đây là cách bộ chọn hoạt động từ góc dưới bên phải:",
+          "bullets": [
+            {
+              "bold": "tìm kiếm tức thời",
+              "code": "Select Language",
+              "text": "Nhấp vào cờ hiện tại sẽ mở ra một cửa sổ nơi bạn có thể chọn giữa 56 ngôn ngữ bằng cách viết tên hoặc mã của ngôn ngữ đó (ví dụ: ES, EN, PT, FR hoặc DE)."
+            },
+            {
+              "bold": "Bộ nhớ tự động",
+              "code": "mid_lang_v1",
+              "text": "Toàn bộ màn hình được dịch ngay lập tức mà không cần tải lại trang và lựa chọn của bạn sẽ được lưu lại cho những lần bạn nhập tiếp theo."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Chủ đề trực quan để điều chỉnh độ tương phản của màn hình mà không làm thay đổi màu sắc tài chính.",
+          "paragraphs": [
+            "Dành vài giờ trước đồ họa có độ tương phản không thích ứng với ánh sáng trong môi trường sẽ khiến bạn mỏi mắt. Tuy nhiên, việc thay đổi màu sắc của nền tảng tài chính có một mối nguy hiểm kinh điển: làm mất đi sự tham chiếu về những gì đang tăng và những gì đang giảm.",
+            "Để giải quyết vấn đề này, bộ chọn chủ đề sẽ tách màu môi trường khỏi màu dữ liệu:"
+          ],
+          "lead": "Để giải quyết vấn đề này, bộ chọn chủ đề sẽ tách màu môi trường khỏi màu dữ liệu:",
+          "bullets": [
+            {
+              "bold": "Năm môi trường đọc",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Với mỗi cú nhấp chuột, bạn sẽ xoay giữa các nền đen tuyền, xanh lam hoặc ấm áp cho đến khi tìm thấy nền thoải mái nhất cho mắt mình."
+            },
+            {
+              "bold": "Ngữ nghĩa tài chính nguyên vẹn",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Cho dù bạn thay đổi chủ đề gì, quy luật chung của thị trường không bao giờ thay đổi: màu xanh lá cây luôn có nghĩa là tăng hoặc tăng và màu đỏ luôn có nghĩa là giảm, thua lỗ hoặc cảnh báo rủi ro."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Hãy tưởng tượng rằng bạn muốn phát hiện đâu là những cơ hội tốt nhất trong ngày trong số hơn hai trăm trái phiếu, cổ phiếu, chỉ số, tiền tệ và nguyên liệu thô. Nếu bạn mở từng biểu đồ một, thị trường sẽ đóng cửa trước khi bạn xem xong chúng.",
+            "Screener tập hợp tất cả 213 nội dung trên nền tảng vào một bảng điều khiển trực tiếp duy nhất. Nó cho phép bạn lọc theo thị trường trong một giây, đánh giá nhịp độ chung trong ngày và chọn từ bốn cách khác nhau để xem nội dung nào đang hoạt động."
+          ],
+          "intro": "Screener đưa tất cả 213 nội dung trên nền tảng vào một bảng điều khiển trực tiếp duy nhất để bạn có thể lọc theo thị trường và phát hiện nhanh các cơ hội.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Danh mục",
+              "summary": "Các bộ lọc hàng đầu để tập trung vào một loại tài sản hoặc danh sách theo dõi của bạn.",
+              "paragraphs": [
+                "Thật vô nghĩa khi phân tích một trái phiếu kho bạc có cùng số liệu như cổ phiếu công nghệ hoặc dầu mỏ. Khi bạn trộn tất cả mọi thứ trong cùng một danh sách, bạn sẽ so sánh quả lê với quả táo.",
+                "Làm thế nào để bạn thu hẹp màn hình chính xác vào thị trường mà bạn quan tâm ngày hôm nay? Thanh trên cùng cho phép bạn tách vũ trụ chỉ bằng một cú nhấp chuột:"
+              ],
+              "lead": "Thanh trên cùng cho phép bạn tách vũ trụ chỉ bằng một cú nhấp chuột:",
+              "bullets": [
+                {
+                  "bold": "Hình ảnh đầy đủ",
+                  "code": "Todos",
+                  "text": "Nó hiển thị 213 công cụ cùng nhau và được sắp xếp theo khối lượng giao dịch để bạn có thể biết nơi nào có nhiều tiền nhất trên toàn cầu."
+                },
+                {
+                  "bold": "Theo dõi cá nhân",
+                  "code": "★ Watchlist",
+                  "text": "Chỉ tách biệt những nội dung bạn đã đánh dấu là mục yêu thích để theo dõi chúng chặt chẽ mà không bị phân tâm."
+                },
+                {
+                  "bold": "10 chợ chuyên biệt",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Bằng cách chọn bất kỳ danh mục nào trong số này, toàn bộ màn hình sẽ điều chỉnh các chỉ báo và các cột trong bảng theo các quy tắc của lĩnh vực đó."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Chi tiết về cách phân loại 213 tài sản trong danh mục cũng như tiêu chí về khối lượng và tính thanh khoản mà chúng đáp ứng."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "mạch 24h",
+              "summary": "Bốn lá bài hàng đầu cho bạn biết thị trường đang bình lặng, hưng phấn hay đang căng thẳng.",
+              "paragraphs": [
+                "Trước khi mua hoặc bán một tài sản cụ thể, bạn nên biết toàn bộ tài sản đó đang chuyển động trong bối cảnh nào. Đây có phải là một ngày có khối lượng giao dịch bình thường hay tiền của tổ chức sẽ đổ về cùng một lúc? Tất cả tài sản đều tăng giá hay có dấu hiệu căng thẳng?",
+                "Bốn thẻ bên dưới bộ lọc sẽ cung cấp cho bạn thông tin chung sau vài giây:"
+              ],
+              "lead": "Bốn thẻ bên dưới bộ lọc sẽ cung cấp cho bạn thông tin chung sau vài giây:",
+              "bullets": [
+                {
+                  "bold": "Tổng số hoạt động trong ngày",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Nó cộng thêm tới hàng tỷ đô la được giao dịch trong danh mục đang hoạt động và cho bạn biết hôm nay có nhiều hay ít người tham gia hơn ngày hôm qua."
+                },
+                {
+                  "bold": "Sức mạnh nhóm trung bình",
+                  "code": "AVG RSI 14",
+                  "text": "Nó tóm tắt trong một thước tròn xem giá của ngành đi kèm với áp lực mua (màu xanh lá cây, trên 50) hay do áp lực bán (màu đỏ, dưới 50)."
+                },
+                {
+                  "bold": "Nhiệt kế chuẩn",
+                  "code": "Régimen Normal P-06",
+                  "text": "Nó tính toán phần trăm tài sản di chuyển trong các thông số thông thường của chúng và cho bạn biết theo tên và họ, công cụ nào có điểm bất thường lớn nhất trong ngày."
+                },
+                {
+                  "bold": "Dòng tiền vào bất thường",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Nổi bật là ba tài sản mà ngày nay đang hoạt động với khối lượng cực kỳ cao so với mức trung bình của chúng trong tháng trước."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Giải thích chi tiết về cách tính chỉ số RSI trung bình, khối lượng Z-Score và bộ phát hiện bất thường P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "Bảng",
+              "summary": "Danh sách tương tác với tính năng tìm kiếm nhanh, mục yêu thích và các cột thích ứng với từng thị trường.",
+              "paragraphs": [
+                "Khi bạn đã biết mình muốn xem lĩnh vực nào và cần so sánh các con số cụ thể theo từng hàng, chế độ xem bảng là công cụ chính của bạn.",
+                "Thay vì hiển thị cho bạn một bảng tính cứng nhắc giống nhau cho tất cả mọi người, bảng sẽ điều chỉnh theo những gì bạn đang tìm kiếm:"
+              ],
+              "lead": "Thay vì hiển thị cho bạn một bảng tính cứng nhắc giống nhau cho tất cả mọi người, bảng sẽ điều chỉnh theo những gì bạn đang tìm kiếm:",
+              "bullets": [
+                {
+                  "bold": "Công cụ tìm kiếm và ngôi sao yêu thích",
+                  "code": "Buscar activo / ★",
+                  "text": "Trong tiêu đề cột đầu tiên, bạn có thể nhập bất kỳ ký hiệu hoặc tên nào để truy cập trực tiếp vào nội dung đó hoặc nhấn vào ngôi sao ở bên trái để lưu nó vào Watchlist của bạn."
+                },
+                {
+                  "bold": "Cột thông minh theo danh mục",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Nếu bạn lọc Cổ phiếu, bội số định giá và tỷ suất lợi nhuận sẽ xuất hiện; Nếu bạn chọn Trái phiếu hoặc Lãi suất, bạn sẽ thấy độ dốc của đường cong và mức độ nhạy cảm với lãi suất; Nếu bạn nhìn vào Công cụ phái sinh, bạn sẽ thấy sự biến động ngụ ý."
+                },
+                {
+                  "bold": "Chuyển thẳng đến phân tích chuyên sâu",
+                  "code": "Click en cualquier fila",
+                  "text": "Chỉ cần nhấp vào bất kỳ tài sản nào trong danh sách để mở toàn bộ các biểu đồ kỹ thuật và báo cáo cơ bản."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Danh sách các chỉ số cụ thể mà bảng hiển thị cho từng loại trong số 10 danh mục nội dung."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Radar trực quan để phát hiện nhanh những tài sản nào đang di chuyển ra khỏi mức trung bình lịch sử của chúng.",
+              "paragraphs": [
+                "Đọc hai trăm hàng số có thể khiến bạn bỏ lỡ một tài sản đang bắt đầu chuyển động bùng nổ. Làm thế nào để bạn phát hiện ngay nhạc cụ nào đang đi chệch khỏi tiêu chuẩn?",
+                "Chế độ xem Orbital biến bảng thành radar có ba vòng đồng tâm:"
+              ],
+              "lead": "Chế độ xem Orbital biến bảng thành radar có ba vòng đồng tâm:",
+              "bullets": [
+                {
+                  "bold": "Lựa chọn tiêu chí",
+                  "code": "INDICADOR",
+                  "text": "Bạn quyết định những gì radar đo lường: sự bất thường về thống kê, khối lượng tăng vọt, cường độ giá (RSI), biến động hoặc mức tăng trong 24 giờ qua."
+                },
+                {
+                  "bold": "Đọc theo khoảng cách và màu sắc",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Một điểm càng gần hoặc càng xa theo chỉ báo và màu xanh lục hoặc đỏ của nó càng đậm thì chuyển động của nó càng phù hợp hơn với lịch sử của chính nó."
+                },
+                {
+                  "bold": "Kiểm tra mà không cần thay đổi màn hình",
+                  "code": "Panel lateral en vivo",
+                  "text": "Bằng cách đặt con trỏ lên bất kỳ nút radar nào, giá của nó, biểu đồ trong ngày rõ ràng và ba chỉ số rủi ro của nó sẽ được hiển thị ở bên phải."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Cách tính vị trí của từng tài sản trong vòng radar theo độ lệch lịch sử của nó."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Bản đồ nhiệt",
+              "summary": "Khảm các khối tỷ lệ để xác định người thắng và người thua trong một giây.",
+              "paragraphs": [
+                "Có những lúc bạn chỉ muốn trả lời một câu hỏi ngắn gọn: Ai đang dẫn đầu đà tăng hôm nay và ai đang kéo thị trường đi xuống?",
+                "Bản đồ nhiệt sắp xếp mười nội dung hàng đầu của bộ lọc đang hoạt động thành các khối tỷ lệ để bạn không cần phải đọc một bảng nào:"
+              ],
+              "lead": "Bản đồ nhiệt sắp xếp mười nội dung hàng đầu của bộ lọc đang hoạt động thành các khối tỷ lệ:",
+              "bullets": [
+                {
+                  "bold": "Kích thước theo mức độ quan trọng",
+                  "code": "Puestos #1 a #10",
+                  "text": "Các công cụ có trọng lượng lớn nhất trong số liệu đã chọn chiếm các cột bên trái với các ô lớn nhất."
+                },
+                {
+                  "bold": "Cường độ màu",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Âm thanh của khối ngay lập tức cho bạn biết cường độ của chuyển động, từ những thay đổi vừa phải đến tăng hoặc giảm đột ngột."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Phím tắt ba bước để truy cập các tỷ giá, quyền chọn, công cụ tính toán ngoại hối và tương lai nâng cao.",
+              "paragraphs": [
+                "Ngoài các biểu đồ giá truyền thống, nền tảng này còn bao gồm bốn công cụ đặc biệt dành cho thu nhập cố định, quyền chọn, tỷ giá chéo tiền tệ và đường cong hàng hóa. Làm thế nào để bạn tiếp cận họ mà không cần tìm kiếm từng nội dung một?",
+                "Chế độ xem này hướng dẫn bạn từ trái sang phải theo ba cột rất đơn giản:"
+              ],
+              "lead": "Chế độ xem này hướng dẫn bạn từ trái sang phải theo ba cột rất đơn giản:",
+              "bullets": [
+                {
+                  "bold": "Đầu tiên bạn chọn gia đình",
+                  "code": "1. Clases de Activo",
+                  "text": "Bạn chọn xem bạn muốn làm việc với Tỷ giá và Trái phiếu, với Quyền chọn về Cổ phiếu/Chỉ số/Tiền điện tử, với Tiền tệ hay với Nguyên liệu thô."
+                },
+                {
+                  "bold": "Sau đó bạn kiểm tra xem động cơ làm gì",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Ở trung tâm, bạn đọc bản tóm tắt rõ ràng về những gì công cụ đó hiển thị và cách định hướng bản thân dọc theo các trục của nó."
+                },
+                {
+                  "bold": "Cuối cùng, chọn cái đang hoạt động và mở",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Bạn xem bản xem trước trực tiếp của biểu đồ, tìm kiếm mọi nội dung tương thích trong nhóm đó và mở toàn bộ trạm chỉ bằng một cú nhấp chuột."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Sau khi bạn tìm thấy nội dung thú vị trong Screener, đã đến lúc xem xét kỹ hơn. Nó đang trong xu hướng tăng hay đã hết hơi? Bạn có đang đánh bại đối thủ cạnh tranh của mình không? Khối lượng và thị trường phái sinh nói lên điều gì?",
+            "Trạm Analytics tập trung tất cả các phân tích kỹ thuật, so sánh và định lượng của tài sản đó trên một màn hình. Phía trên bạn có phần tóm tắt chung và bên trái có bốn thấu kính để thay đổi góc phân tích mà không làm mất đi biểu đồ."
+          ],
+          "intro": "Trạm Analytics tập trung các động cơ kỹ thuật, so sánh, phân tích dòng chảy và 3D/2D của một tài sản riêng lẻ trên một màn hình.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Trang tổng quan trên cùng để chuyển đổi nội dung, chọn khung thời gian và xem năm số liệu chính của bạn.",
+              "paragraphs": [
+                "Khi bạn đang nghiên cứu một tài sản, bạn thường xen kẽ giữa ngắn hạn ngày hôm nay và phim của vài tháng trước, hoặc thậm chí chuyển sang xem một biểu tượng tương tự khác. Làm thế nào để bạn làm tất cả những điều đó mà không quay trở lại?",
+                "Tiêu đề trên cùng tập hợp các điều khiển điều hướng và tab nhanh của công cụ:"
+              ],
+              "lead": "Tiêu đề trên cùng tập hợp các điều khiển điều hướng và tab nhanh của công cụ:",
+              "bullets": [
+                {
+                  "bold": "Thay đổi tài sản hoặc quay lại danh sách",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Ở trên cùng bên trái, bạn có thể quay lại Screener hoặc nhập tên của bất kỳ công cụ nào khác để thay đổi biểu đồ ngay tại chỗ."
+                },
+                {
+                  "bold": "Chín cửa sổ thời gian",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Ở lề phải, bạn thay đổi tỷ lệ của biểu đồ từ chuyển động từng phút sang toàn bộ lịch sử."
+                },
+                {
+                  "bold": "Năm chỉ số hàng đầu",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Bên cạnh mức giá, bạn luôn có thể xem khối lượng giao dịch, hai dữ liệu chính của danh mục đó, sức mạnh của xu hướng và mức độ chuẩn mực thống kê."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "kỹ thuật",
+              "summary": "Biểu đồ giá với các đường trung bình động, dải biến động và khối lượng giao dịch theo xu hướng.",
+              "paragraphs": [
+                "Chỉ nhìn vào mức giá cuối cùng sẽ không cho bạn biết liệu một tài sản có đang tăng tốc hay không, liệu nó có bật lên khỏi mức trung bình hay nó đã tăng quá nhanh trong một vài ngày.",
+                "Ống kính đầu tiên trên thanh bên trái cho phép bạn phủ các tài liệu tham khảo kỹ thuật được sử dụng nhiều nhất trên thị trường lên biểu đồ:"
+              ],
+              "lead": "Ống kính đầu tiên trên thanh bên trái cho phép bạn che phủ các tài liệu tham khảo kỹ thuật được sử dụng nhiều nhất:",
+              "bullets": [
+                {
+                  "bold": "Địa chỉ và giá trung bình thực tế",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Bạn có thể bật đường trung bình động 20 kỳ và giá trung bình theo khối lượng để xem ngay liệu tài sản đó đang giao dịch trên hay dưới mức cân bằng của nó."
+                },
+                {
+                  "bold": "Vùng dư thừa và xác nhận khối lượng",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Các dải vẽ ra trần và sàn thống kê của giá, trong khi các thanh phía dưới xác nhận liệu chuyển động có được hỗ trợ bởi khối lượng hay không."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Công thức và tiêu chí giải thích của Đường trung bình động (SMA 20), Dải Bollinger và VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "So sánh %",
+              "summary": "Bộ so sánh tỷ lệ phần trăm từ 0% để đo xem nội dung của bạn hoạt động hiệu quả hơn hay kém hơn nội dung khác trong cùng danh mục.",
+              "paragraphs": [
+                "Một cổ phiếu tăng giá 5% có vẻ như là một tin tuyệt vời, nhưng nếu đối thủ cạnh tranh chính hoặc chuẩn của nó tăng 12% trong cùng thời kỳ thì bạn thực sự đang bị tụt lại phía sau.",
+                "Lăng kính thứ hai giải quyết mối nghi ngờ đó bằng cách đặt hai tài sản trên cùng một vạch xuất phát:"
+              ],
+              "lead": "Lăng kính thứ hai giải quyết mối nghi ngờ đó bằng cách đặt hai tài sản trên cùng một vạch xuất phát:",
+              "bullets": [
+                {
+                  "bold": "Tìm kiếm các cặp kết hợp",
+                  "code": "Buscar par compatible",
+                  "text": "Công cụ tìm kiếm tự động lọc ra các tài sản từ cùng một nhóm (ví dụ: cổ phiếu so với cổ phiếu, quỹ ETF hoặc chỉ số) để việc so sánh có ý nghĩa về mặt tài chính."
+                },
+                {
+                  "bold": "Lợi thế ròng tính bằng phần trăm",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Cả hai đường cong đều bắt đầu từ 0% và đường ray bên trái tính toán xem tài sản của bạn có bao nhiêu điểm phần trăm lợi thế (màu xanh lá cây) hoặc bất lợi (màu đỏ)."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Vi mô & dòng chảy",
+              "summary": "Công cụ phát hiện các hoạt động mua hàng ngoài khuôn mẫu của tổ chức, tính thanh khoản và chi phí chênh lệch.",
+              "paragraphs": [
+                "Nhiều khi số tiền lớn tích lũy hoặc dỡ bỏ các vị thế trước khi giá biến động đột ngột. Làm thế nào để bạn phát hiện dấu vết ẩn đó trong khối lượng và tính thanh khoản của sổ lệnh?",
+                "Lăng kính thứ ba tập trung vào những gì xảy ra bên dưới câu trích dẫn:"
+              ],
+              "lead": "Lăng kính thứ ba tập trung vào những gì xảy ra bên dưới câu trích dẫn:",
+              "bullets": [
+                {
+                  "bold": "Đỉnh khối lượng thống kê",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Thay đổi bảng điều khiển phía dưới để hiển thị cho bạn số lần khối lượng hiện tại lệch so với bình thường, cho thấy hoạt động thể chế bất thường."
+                },
+                {
+                  "bold": "Căng thẳng thanh khoản và những bất thường",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Nó đo lường bằng các điểm cơ bản xem khoảng cách giữa người mua và người bán có ngày càng rộng hay không và liệu công cụ thống kê có phát hiện hành vi không điển hình hay không."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Cách đo lường mức chênh lệch khi mở lệnh và mức tăng đột biến thống kê trong luồng lệnh."
+            },
+            {
+              "id": "ana-engines",
+              "label": "Động cơ 3D/2D",
+              "summary": "Ống kính thứ tư triển khai một công cụ đặc biệt linh hoạt thay đổi tùy theo loại nội dung.",
+              "paragraphs": [
+                "Không giống như ba thấu kính đầu tiên (phổ biến cho tất cả các công cụ), thấu kính thứ tư trên thanh bên trái là một công cụ đặc biệt thay đổi linh hoạt tùy thuộc vào nội dung bạn đang phân tích: ví dụ: trong chuyến tham quan trực tiếp, vì nó là cổ phiếu (NVDA), nó cho phép Bề mặt thanh toán tùy chọn và biến động tiềm ẩn 3D, trong khi ở các thị trường khác, nó triển khai công cụ chuyên dụng của riêng mình.",
+                "Nút thứ tư phát hiện loại tài sản mở và tự động kích hoạt công cụ đặc biệt tương ứng:"
+              ],
+              "lead": "Nút thứ tư sẽ phát hiện nội dung nào bạn đã mở và kích hoạt công cụ đặc biệt tương ứng với nội dung đó:",
+              "bullets": [
+                {
+                  "bold": "Trong cổ phiếu, chỉ số, công cụ phái sinh và tiền điện tử",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Hiển thị bề mặt biến động ngụ ý 3D, các tùy chọn mỉm cười khi hết hạn và trình mô phỏng 6 chiến lược để xem bạn sẽ lãi hoặc lỗ bao nhiêu trong ngày hôm nay và khi hết hạn."
+                },
+                {
+                  "bold": "Về lãi suất, trái phiếu và tính thanh khoản",
+                  "code": "Curva 3D/2D",
+                  "text": "Nó cho phép bạn so sánh đường cong lợi suất của 42 quốc gia so với Mỹ và Đức, đo xem đường cong là bình thường hay đảo ngược (2 giây 10) và giá thay đổi bao nhiêu khi tỷ giá thay đổi (DV01)."
+                },
+                {
+                  "bold": "Bằng tiền tệ",
+                  "code": "FX & Carry",
+                  "text": "Nó cung cấp một công cụ chuyển đổi và tam giác giữa 61 loại tiền tệ, đồng thời tính toán chênh lệch lãi suất 10 năm theo hướng có lợi hoặc chống lại việc duy trì cặp tiền đó."
+                },
+                {
+                  "bold": "Trong nguyên liệu",
+                  "code": "Forward 3D/2D",
+                  "text": "Biểu đồ giá của các hợp đồng tương lai hàng tháng để cho biết thị trường trả nhiều tiền hơn cho giao dịch kỳ hạn (Contango) hay giao hàng ngay lập tức (Backwardation), cùng với tình trạng hàng tồn kho thực tế."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Chi tiết toán học của bề mặt biến động, đường cong lợi suất có chủ quyền, đường cong tiền tệ và đường cong tương lai."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Biểu đồ cho bạn biết giá đang diễn biến như thế nào nhưng không cho bạn biết lý do tại sao. Để biết điều gì đằng sau một chuyển động, bạn sẽ phải đọc hàng chục trang bảng cân đối kế toán hàng quý, báo cáo của ngân hàng trung ương, báo cáo tồn kho và các bản tin.",
+            "Trạm Research sẽ thực hiện công việc nặng nhọc đó cho bạn. Nó kết hợp trí tuệ nhân tạo tài liệu được xác minh dựa trên các báo cáo chính thức với việc đọc tin tức theo thời gian thực, sắp xếp tất cả các bằng chứng ủng hộ và phản đối trong ba cột rõ ràng."
+          ],
+          "intro": "Trạm Research tóm tắt các bảng cân đối chính thức, báo cáo kinh tế vĩ mô và tin tức thời gian thực trong ba cột rõ ràng.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Lưu ý & Tư thế",
+              "summary": "Ba lá bài hàng đầu tóm tắt nhận định cơ bản và sự hài hước của tin tức.",
+              "paragraphs": [
+                "Các nguyên tắc cơ bản của tài sản có đi kèm với việc tăng giá hay tin tức làm xấu đi triển vọng? Trước khi đọc chi tiết, bạn cần có một kết luận điều hành nhanh chóng.",
+                "Ở góc trên bên phải, bạn có ba chỉ báo tóm tắt trạng thái chung của nội dung:"
+              ],
+              "lead": "Ở góc trên bên phải, bạn có ba chỉ báo tóm tắt trạng thái chung:",
+              "bullets": [
+                {
+                  "bold": "Tư thế và trọng lượng của mỗi nguồn",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Nó xác định phán quyết chung và làm rõ tầm quan trọng của các tài liệu chính thức so với tin tức tùy thuộc vào loại tài sản (ví dụ: 80% bảng cân đối kế toán và 20% tin tức về chứng khoán)."
+                },
+                {
+                  "bold": "Đánh giá kết hợp",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Nó tổng hợp thành một điểm duy nhất kết quả cuối cùng của các nguyên tắc cơ bản cộng với luồng thông tin trong ngày."
+                },
+                {
+                  "bold": "Giá đỡ nhiệt kế",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Đặt trên một thanh từ -100 đến +100 nếu tâm lý báo chí trong vài giờ qua là bi quan (màu đỏ), trung lập hoặc nhiệt tình (màu xanh lá cây)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Báo cáo chính thức được đánh giá như thế nào so với tin tức tùy thuộc vào loại nội dung."
+            },
+            {
+              "id": "res-rag",
+              "label": "Trò chuyện RAG",
+              "summary": "Trợ lý tài liệu bên trái sẽ đặt câu hỏi cụ thể về bảng cân đối kế toán và báo cáo chính thức.",
+              "paragraphs": [
+                "Giả sử bạn muốn biết chính xác một công ty đã nói gì về tỷ suất lợi nhuận của mình trong bảng cân đối kế toán hàng năm mới nhất 10-K hoặc Cục Dự trữ Liên bang đã nói gì trong những phút gần đây nhất. Tìm kiếm nó bằng tay cần có thời gian; Yêu cầu một cuộc trò chuyện chung chung mà không có nguồn có thể cung cấp cho bạn dữ liệu bịa đặt.",
+                "Cột bên trái giải quyết vấn đề này bằng một trình hướng dẫn được kết nối riêng với tài liệu chính thức đã được xác minh:"
+              ],
+              "lead": "Cột bên trái cung cấp cho bạn một trình hướng dẫn được kết nối với tài liệu đã được xác minh chính thức:",
+              "bullets": [
+                {
+                  "bold": "Luận văn ban đầu và câu hỏi hướng dẫn",
+                  "code": "Chat Documental RAG",
+                  "text": "Nó bắt đầu bằng một bản tóm tắt đầy đủ với các báo giá đã được xác minh và bốn nút tham khảo nhanh được điều chỉnh cho phù hợp với danh mục nội dung cũng như một trường để bạn viết câu hỏi của riêng mình."
+                },
+                {
+                  "bold": "Bước trực tiếp đến danh mục đầu tư của bạn",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Nếu sau khi nghiên cứu các nguyên tắc cơ bản, bạn quyết định rằng tài sản đó có giá trị thì nút này ở đầu cuộc trò chuyện sẽ đưa bạn trực tiếp đến trình mô phỏng danh mục đầu tư."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hoạt động tìm kiếm tài liệu đã được xác minh (RAG) và các bộ lọc bảo mật của nó."
+            },
+            {
+              "id": "res-factors",
+              "label": "Yếu tố",
+              "summary": "Chiếc đàn trung tâm với năm động lực tăng giá và năm rủi ro giảm giá được sắp xếp theo tác động.",
+              "paragraphs": [
+                "Không có khoản đầu tư nào là hoàn hảo một trăm phần trăm hoặc xấu một trăm phần trăm: luôn có những lý lẽ ủng hộ và những rủi ro tiềm ẩn. Bí quyết là biết hôm nay cái nào nặng hơn.",
+                "Cột giữa đặt hai bên đối diện nhau để bạn có thể đưa ra quyết định cân bằng:"
+              ],
+              "lead": "Cột giữa đặt hai bên đối diện nhau để bạn có thể đưa ra quyết định cân bằng:",
+              "bullets": [
+                {
+                  "bold": "Cân bằng lực lượng và bộ lọc",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Ở trên, bạn thấy thanh đấu thầu giữa người mua và người bán và bên dưới bạn có thể lọc năm chất xúc tác tích cực (màu xanh lá cây) hoặc năm rủi ro chính (màu đỏ)."
+                },
+                {
+                  "bold": "Chi tiết và xem chi tiết chỉ bằng một cú nhấp chuột",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Khi bạn chạm vào bất kỳ yếu tố nào trong danh sách, phần giải thích đầy đủ của nó sẽ được hiển thị cùng với nút để hỏi Chat RAG để biết thêm thông tin về điểm cụ thể đó."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "Xung FinBERT",
+              "summary": "Dòng thời gian phù hợp với các tiêu đề mới nhất được AI xếp hạng và đường cong tâm trạng 24 giờ.",
+              "paragraphs": [
+                "Một tiêu đề vào phút cuối về thu nhập, lạm phát hoặc các quy định có thể thay đổi hoàn toàn tâm trạng trong ngày. Làm sao bạn biết tin tức nào vừa được đưa ra và nó có tác dụng gì?",
+                "Cột bên phải theo dõi luồng thông tin từng phút:"
+              ],
+              "lead": "Cột bên phải theo dõi luồng thông tin từng phút:",
+              "bullets": [
+                {
+                  "bold": "Dòng thời gian đủ điều kiện",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Liệt kê năm tiêu đề gần đây nhất cùng với thời gian và cơ quan của chúng, cho điểm màu xanh lá cây nếu chúng có lợi hoặc màu đỏ nếu chúng gây ra mối đe dọa."
+                },
+                {
+                  "bold": "Tác động và mô phỏng đường cong hàng ngày",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Bạn có thể kích hoạt dây trực tiếp bằng nút trên cùng để xem cách nó tính toán lại toàn bộ màn hình và theo dõi biểu đồ bên dưới tâm trạng diễn biến như thế nào trong 24 giờ qua."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Cách mô hình FinBERT phân tích ngôn ngữ tài chính của từng chủ sở hữu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Người xây dựng",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Việc lựa chọn riêng những tài sản tốt là chưa đủ để có một danh mục đầu tư tốt. Nếu bạn đầu tư quá nhiều vốn vào những tài sản có chuyển động giống nhau hoặc nếu bạn không đo lường hiệu quả hoạt động của chúng trong quá khứ thì bạn đang đầu tư một cách mù quáng.",
+            "Trình xây dựng & Hiệu suất (góc nhìn đầu tiên về Portfolio) là hội thảo nơi bạn xây dựng danh mục đầu tư của mình. Nó cho phép bạn thêm bất kỳ tài sản nào trong số 213 tài sản, điều chỉnh tỷ lệ phần trăm bạn chỉ định cho từng tài sản mà không phải xử lý các biện pháp kiểm soát không chính xác và kiểm tra ngay lập tức cả thành phần nội bộ và lịch sử của tài sản đó."
+          ],
+          "intro": "Người xây dựng & Hiệu suất là hội thảo nơi bạn xây dựng danh mục đầu tư của mình, điều chỉnh trọng số của từng nội dung và kiểm tra hiệu suất lịch sử của nó.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Tóm tắt",
+              "summary": "Sáu thẻ hàng đầu được tính toán lại trực tiếp mỗi khi bạn sửa đổi danh mục đầu tư của mình.",
+              "paragraphs": [
+                "Mỗi khi bạn thêm một tài sản hoặc thay đổi tỷ lệ phần trăm trong danh mục đầu tư của mình, bạn cần biết ngay liệu điều chỉnh đó có cải thiện lợi nhuận kỳ vọng hay làm xấu đi khả năng giảm giá của bạn hay không.",
+                "Hàng trên cùng luôn hiển thị sáu số liệu chính của danh mục đầu tư:"
+              ],
+              "lead": "Hàng trên cùng luôn hiển thị sáu số liệu chính của danh mục đầu tư:",
+              "bullets": [
+                {
+                  "bold": "Hiệu suất và hiệu quả",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Chúng cho bạn biết lợi nhuận gộp hàng năm mà danh mục đầu tư mang lại dựa trên vốn của bạn là bao nhiêu và bạn sẽ nhận được bao nhiêu tiền lãi từ mỗi đơn vị rủi ro giả định."
+                },
+                {
+                  "bold": "Dự kiến lỗ hàng ngày và sụt giảm lịch sử",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Họ tính toán xem bạn có thể mất bao nhiêu đô la vào một ngày tồi tệ trong khoảng thời gian có thể dự đoán được về mặt thống kê và thất bại sâu sắc nhất trong năm qua là gì."
+                },
+                {
+                  "bold": "Giá trị gia tăng và đa dạng hóa",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Chúng đo lường xem danh mục đầu tư của bạn đánh bại chỉ số chuẩn bao nhiêu điểm và bạn giảm được bao nhiêu rủi ro nhờ kết hợp các tài sản khác nhau."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Công thức lợi nhuận tổng hợp (CAGR), tỷ lệ Sharpe và Sortino và Giá trị rủi ro (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Trọng số",
+              "summary": "Bảng bên trái để thêm tài sản, bật hoặc tắt chúng và xác định tỷ lệ phần trăm chính xác của từng vị trí.",
+              "paragraphs": [
+                "Điều gì sẽ xảy ra với số lượng danh mục đầu tư của bạn nếu hôm nay bạn tạm thời đóng cửa một cổ phiếu công nghệ hoặc chia đều số tiền cho tất cả các vị thế của mình?",
+                "Bảng điều khiển bên trái cho phép bạn thực hiện tất cả các bài kiểm tra đó một cách rõ ràng và trực tiếp:"
+              ],
+              "lead": "Bảng điều khiển bên trái cho phép bạn thực hiện tất cả các bài kiểm tra đó một cách rõ ràng và trực tiếp:",
+              "bullets": [
+                {
+                  "bold": "Công cụ tìm kiếm cho 213 tài sản",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Bạn có thể tìm kiếm bất kỳ công cụ nào trên nền tảng hoặc lọc các công cụ yêu thích của mình để thêm nó vào bảng chỉ bằng một cú nhấp chuột."
+                },
+                {
+                  "bold": "Khởi động nhanh và chỉnh sửa chính xác",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Mỗi hàng có một hộp kiểm để bao gồm hoặc loại trừ nội dung theo thời gian thực và một hộp số để nhập tỷ lệ phần trăm chính xác mà không cần sử dụng thanh trượt không chính xác."
+                },
+                {
+                  "bold": "Ba phím tắt tái cân bằng",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Ở đầu bảng, bạn có các nút để phân bổ trọng số bằng nhau giữa tất cả nội dung đang hoạt động, tự động đưa tổng lên 100% hoặc quay lại danh mục đầu tư ban đầu."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "tia X",
+              "summary": "Bảng trên cùng bên phải có năm tab để khám phá nồng độ ẩn, dòng tiền và quyền lưu ký.",
+              "paragraphs": [
+                "Một trong những sai lầm phổ biến nhất khi đầu tư là tin rằng bạn đa dạng hóa vì bạn có năm tài sản khác nhau, trong khi thực tế bạn đã mua một cổ phiếu riêng lẻ và cả hai quỹ ETF có cùng cổ phiếu đó.",
+                "Bảng X-quang phân tích danh mục đầu tư của bạn từ bên trong thông qua năm tab:"
+              ],
+              "lead": "Bảng X-quang phân tích danh mục đầu tư của bạn từ bên trong thông qua năm tab:",
+              "bullets": [
+                {
+                  "bold": "Máy dò vị trí lặp đi lặp lại",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Cộng số tiền bạn đã đầu tư trực tiếp vào mỗi công ty cộng với phần ẩn bạn có trong các chỉ số hoặc quỹ ETF (chẳng hạn như SPY hoặc QQQ), cảnh báo bạn bằng màu đỏ nếu bạn vượt quá giới hạn thận trọng."
+                },
+                {
+                  "bold": "Bản đồ tiếp xúc và nguồn gốc của sự trở lại",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Chúng cho bạn biết bạn thực sự có bao nhiêu phần trăm trong từng loại tài sản và loại tiền tệ, cũng như bao nhiêu lợi nhuận của bạn đến từ việc chọn ngành tốt so với chọn tài sản tốt."
+                },
+                {
+                  "bold": "Thu nhập và an ninh hàng năm dự kiến",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Họ tính toán số đô la bạn sẽ thu được trong năm để trả cổ tức, phiếu giảm giá và tiền lãi, đồng thời kiểm tra khả năng thanh toán của những người giám sát nơi vốn của bạn nằm ở đó."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Cách tính mức độ tiếp xúc gián tiếp trong ETF và phân tích phân bổ Brinson."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Lịch",
+              "summary": "Biểu đồ hàng tháng từ tháng 1 đến tháng 12 để xem mức độ đều đặn của các khoản lãi và lỗ của bạn.",
+              "paragraphs": [
+                "Lợi nhuận hàng năm tốt có thể che giấu những tháng sụt giảm rất mạnh mà trên thực tế khó có thể chấp nhận được. Danh mục đầu tư bạn vừa tổng hợp có nhất quán như thế nào qua từng tháng?",
+                "Ngay bên dưới ảnh chụp X-quang, lịch trình bày lịch sử hàng tháng:"
+              ],
+              "lead": "Ngay bên dưới ảnh chụp X-quang, lịch trình bày lịch sử hàng tháng:",
+              "bullets": [
+                {
+                  "bold": "Tháng xanh và tháng đỏ",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Mỗi ô được tính toán lại ngay lập tức theo trọng số trong bảng của bạn và được sơn màu xanh lá cây hoặc đỏ tùy thuộc vào kết quả của tháng đó, đóng ở bên phải với kết quả tích lũy trong năm."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Biểu đồ toàn màn hình bên dưới để so sánh danh mục đầu tư của bạn với bốn chiến lược cổ điển.",
+              "paragraphs": [
+                "Trước khi bạn coi danh mục đầu tư của mình là tốt, bài kiểm tra cơ bản vẫn là: nó có thực sự tốt hơn việc để tiền trong S&P 500 hoặc trong danh mục đầu tư 60/40 truyền thống không?",
+                "Bảng điều khiển phía dưới chiếm toàn bộ chiều rộng của màn hình để giúp thiết kế của bạn đạt tiêu chuẩn thị trường:"
+              ],
+              "lead": "Bảng điều khiển phía dưới đặt thiết kế của bạn theo tiêu chuẩn thị trường:",
+              "bullets": [
+                {
+                  "bold": "Năm chân trời thử nghiệm",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Nó cho phép bạn đánh giá kết hợp của bạn hoạt động như thế nào trong các quý gần đây và trong các chu kỳ nhiều năm."
+                },
+                {
+                  "bold": "Bốn tài liệu tham khảo trực tiếp",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Xếp chồng đường cong màu xanh lá cây của danh mục đầu tư đang hoạt động của bạn lên bất kỳ mô hình nào trong số bốn mô hình cổ điển để bạn có thể thấy rõ khi nào nó đi trước và nó đang duy trì xu hướng giảm như thế nào."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Rủi ro",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Vào những thời điểm thị trường bình ổn tăng trưởng, hầu như mọi danh mục đầu tư đều có vẻ an toàn. Vấn đề thực sự xuất hiện khi một cuộc khủng hoảng nổ ra, lãi suất tăng đột ngột và những tài sản tưởng chừng như độc lập bắt đầu sụt giảm cùng một lúc.",
+            "Rủi ro định lượng & Căng thẳng (góc nhìn thứ hai của Portfolio) đặt danh mục đầu tư của bạn qua các thử nghiệm khắc nghiệt trước khi chúng xảy ra trong đời thực. Thông qua bốn góc phần tư đối xứng và trình mô phỏng kịch bản trong tương lai bên dưới, nó cho bạn thấy chính xác điểm dễ bị tổn thương của mình ở đâu."
+          ],
+          "intro": "Rủi ro Định lượng & Căng thẳng kiểm tra danh mục đầu tư của bạn để tìm các cuộc khủng hoảng lịch sử, sự lây lan tương quan và các dự báo Monte Carlo.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Bản đồ rủi ro và lợi nhuận tương tác để xem mức độ gần của bạn với danh mục đầu tư hiệu quả nhất có thể.",
+              "paragraphs": [
+                "Với cùng những tài sản mà bạn đã có trong danh mục đầu tư của mình, có hàng nghìn cách để phân bổ tỷ lệ phần trăm. Sự kết hợp mà bạn chọn có phải là sự kết hợp mang lại lợi ích cao nhất cho rủi ro bạn gặp phải hay bạn có thể giành chiến thắng tương tự với ít bất ngờ hơn không?",
+                "Góc phần tư đầu tiên ở trên cùng bên trái vẽ ra bản đồ trực tiếp về các khả năng:"
+              ],
+              "lead": "Góc phần tư đầu tiên ở trên cùng bên trái vẽ ra bản đồ trực tiếp về các khả năng:",
+              "bullets": [
+                {
+                  "bold": "Vị trí của bạn so với danh mục đầu tư tối ưu",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Nó cho thấy danh mục đầu tư hiện tại của bạn nằm ở đâu so với điểm có độ biến động thấp nhất có thể và điểm có hiệu quả thu hồi rủi ro tối đa."
+                },
+                {
+                  "bold": "Các lớp trực quan và kiểm tra theo tài sản",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Bạn có thể bật hoặc tắt các lớp mô hình và nhấp vào bất kỳ nút nào để đọc phần đóng góp chính xác của nội dung đó bên dưới."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Biên giới hiệu quả của Markowitz và tính toán phương sai tối thiểu và danh mục Sharpe tối đa."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Lốc xoáy & VaR",
+              "summary": "Trình mô phỏng khủng hoảng lịch sử, phân tích tổn thất hàng ngày theo sự bất cân xứng của tài sản và thị trường.",
+              "paragraphs": [
+                "Nếu một vụ sụp đổ như năm 2008, suy thoái kinh tế vào năm 2020 hoặc việc tăng lãi suất vào năm 2022 lặp lại vào ngày mai, danh mục đầu tư hiện tại của bạn sẽ mất bao nhiêu và tài sản nào sẽ là thủ phạm chính?",
+                "Góc phần tư phía dưới bên trái trả lời ba câu hỏi đó trong ba tab cụ thể:"
+              ],
+              "lead": "Góc phần tư phía dưới bên trái trả lời những câu hỏi đó trong ba tab cụ thể:",
+              "bullets": [
+                {
+                  "bold": "Kiểm tra năm cuộc khủng hoảng thực sự",
+                  "code": "1. Tornado Stress",
+                  "text": "So sánh từng thanh xem danh mục đầu tư của bạn sẽ giảm bao nhiêu so với S&P 500 khi đối mặt với năm cú sốc lịch sử lớn."
+                },
+                {
+                  "bold": "Xếp hạng rủi ro theo vị trí",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Sắp xếp các khoản nắm giữ của bạn theo số tiền mà mỗi khoản nắm giữ hàng ngày có thể đóng góp vào tổng danh mục đầu tư."
+                },
+                {
+                  "bold": "Hành vi khi thăng trầm",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Nó cho bạn biết mỗi tài sản tận dụng được bao nhiêu phần trăm bánh xe tăng giá của thị trường và nó có thể đệm được bao nhiêu khi thị trường giảm."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Phương pháp luận về các kịch bản căng thẳng lịch sử, đóng góp cận biên cho VaR và tỷ lệ nắm bắt."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Tương quan",
+              "summary": "Ma trận chéo để kiểm tra xem tài sản của bạn có thực sự đa dạng hóa hay chúng có bị lây nhiễm trong thời kỳ hoảng loạn hay không.",
+              "paragraphs": [
+                "Việc có nhiều tài sản trong danh mục đầu tư của bạn chỉ làm giảm rủi ro nếu tất cả chúng không di chuyển theo cùng một hướng vào cùng một thời điểm. Nhưng trong thời kỳ khủng hoảng tài chính, nhiều mối tương quan tưởng chừng như thấp lại tăng mạnh.",
+                "Góc phần tư trên cùng bên phải cho phép bạn kiểm tra mối quan hệ đó trong hai trường hợp:"
+              ],
+              "lead": "Góc phần tư trên cùng bên phải cho phép bạn kiểm tra mối quan hệ đó trong hai trường hợp:",
+              "bullets": [
+                {
+                  "bold": "Sự giao thoa giữa tài sản và độ nhạy cảm",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Nó cho thấy mỗi cặp tài sản chuyển động giống nhau như thế nào (màu xanh lá cây hoặc xanh nhạt khi chúng đa dạng hóa tốt và màu đỏ khi chúng di chuyển quá gần nhau) và mức độ nhạy cảm của chúng đối với thị trường."
+                },
+                {
+                  "bold": "Trình mô phỏng lây nhiễm trong khủng hoảng",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Chỉ với một cú nhấp chuột, bạn thay đổi mối tương quan của một năm bình thường thành mối tương quan của một thời điểm hoảng loạn để khám phá ra những vị trí nào sẽ không còn bảo vệ bạn nữa."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Tính toán hệ số tương quan Pearson trong điều kiện bình thường và dưới áp lực thị trường."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Cuộc đụng độ & Markov",
+              "summary": "Bảng tác động chung giữa lãi suất và thị trường chứng khoán, cộng với xác suất thay đổi trong chu kỳ kinh tế.",
+              "paragraphs": [
+                "Trong nền kinh tế thực, các vấn đề hiếm khi xảy ra lần lượt: nhiều khi lãi suất tăng lại trùng hợp với sự sụt giảm của chứng khoán. Điều gì xảy ra với danh mục đầu tư của bạn nếu hai yếu tố này được kết hợp cùng một lúc?",
+                "Góc phần tư phía dưới bên phải vượt qua cả hai biến số và đo lường xác suất thay đổi chế độ:"
+              ],
+              "lead": "Góc phần tư phía dưới bên phải vượt qua cả hai biến số và đo lường chu kỳ thị trường:",
+              "bullets": [
+                {
+                  "bold": "Bảng tác động kép",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Biến động tỷ giá chéo (-100 đến +200 điểm cơ bản) với sự giảm hoặc tăng của S&P 500 (-20% đến +10%), cho phép bạn lọc theo toàn bộ danh mục đầu tư hoặc theo một tài sản riêng lẻ."
+                },
+                {
+                  "bold": "Xác suất chuyển tiếp chu kỳ",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Tính toán khả năng thị trường giữ bình tĩnh hoặc bước vào giai đoạn biến động, lạm phát hoặc khủng hoảng."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Độ nhạy chung đối với tỷ lệ và các biến số, và ma trận chuyển trạng thái Markov."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Bảng điều khiển phía dưới hiển thị toàn màn hình với các dự đoán xác suất trong tương lai và mức giảm lịch sử.",
+              "paragraphs": [
+                "Nhìn lại quá khứ là điều hữu ích, nhưng khi đầu tư về phía trước, điều bạn cần biết là nguồn vốn của bạn có thể chuyển động trong phạm vi kết quả nào trong sáu tháng, một năm hoặc hai năm tới.",
+                "Bảng điều khiển phía dưới có chiều rộng đầy đủ tập hợp ba công cụ tạm thời để chiếu và kiểm soát đường dẫn đó:"
+              ],
+              "lead": "Bảng phía dưới tập hợp ba công cụ tạm thời để chiếu đường dẫn đó:",
+              "bullets": [
+                {
+                  "bold": "Mười nghìn viễn cảnh tương lai",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Vẽ hình nón về sự phát triển có thể xảy ra của danh mục đầu tư của bạn, phân biệt kịch bản lạc quan (P95 màu xanh lá cây), đường đi trung tâm dự kiến (P50) và kịch bản bất lợi (P05 màu đỏ)."
+                },
+                {
+                  "bold": "Độ sâu rơi và độ ổn định theo thời gian",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Chúng cho phép bạn chuyển đổi biểu đồ để xem danh mục đầu tư đã duy trì dưới mức cao nhất mọi thời đại trong bao lâu hoặc mức độ ổn định của hiệu quả và rủi ro trong thời hạn 60 ngày."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mô phỏng ngẫu nhiên Monte Carlo của 10.000 con đường và số liệu di chuyển trong 60 ngày."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Trình mô phỏng",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Trước khi mua một tài sản mới, giảm vị thế hoặc thanh toán cho việc phòng ngừa rủi ro bằng các quyền chọn, câu hỏi tương tự luôn được đặt ra: hoạt động này có thực sự cải thiện danh mục đầu tư của tôi hay nó đang tăng thêm rủi ro không cần thiết? Và tôi nên đầu tư bao nhiêu vốn vào đó?",
+            "Phòng thí nghiệm chiến lược Ad-Hoc (chế độ xem thứ ba của Portfolio) là trình mô phỏng trước khi vận hành của bạn. Nó cho phép bạn tải các lượt chơi chiến thuật, tính toán quy mô vị thế lý tưởng của bạn, kiểm tra bảo hiểm nhược điểm và xem chính xác trước và sau tác động mà không cần chạm vào danh mục đầu tư cơ sở của bạn."
+          ],
+          "intro": "Phòng thí nghiệm chiến lược Ad-Hoc là trình mô phỏng trước giao dịch của bạn để kiểm tra các lệnh, xác định kích thước vị thế và đo lường mức độ phù hợp.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "tác động",
+              "summary": "Sáu thẻ hàng đầu so sánh danh mục đầu tư hiện tại của bạn với kết quả sau các lần chơi mô phỏng.",
+              "paragraphs": [
+                "Để biết liệu một ý tưởng chiến thuật có xứng đáng hay không, việc tài sản đó trông hấp dẫn thôi là chưa đủ: nó phải cải thiện các con số cho toàn bộ danh mục đầu tư.",
+                "Hàng trên cùng hiển thị vĩnh viễn cho bạn sự so sánh giữa danh mục đầu tư hiện tại của bạn và danh mục đầu tư đã áp dụng mô phỏng:"
+              ],
+              "lead": "Hàng trên cùng so sánh danh mục đầu tư hiện tại của bạn với danh mục đầu tư bằng mô phỏng được áp dụng:",
+              "bullets": [
+                {
+                  "bold": "Ảnh hưởng đến lợi nhuận và hiệu quả",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Chúng hiển thị số cơ bản bên cạnh số dự kiến, làm nổi bật sự khác biệt bằng màu xanh lá cây nếu trò chơi tăng thêm hiệu quả hoặc màu đỏ nếu trò chơi làm nó kém đi."
+                },
+                {
+                  "bold": "Ảnh hưởng đến rủi ro, vốn và các quy tắc",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Chúng cho bạn biết khoản lỗ dự kiến ​​tối đa của bạn thay đổi bao nhiêu, phần trăm danh mục đầu tư mà bạn cam kết thực hiện kiểm tra và liệu tất cả các giới hạn bảo mật có được tôn trọng hay không."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If & Kelly",
+              "summary": "Trình mô phỏng vé mua/bán và máy tính để xác định số tiền có thể gặp rủi ro.",
+              "paragraphs": [
+                "Nhiều ý tưởng đầu tư tốt cuối cùng lại dẫn đến thua lỗ do sai sót trong quy mô đặt cược: đặt quá ít không làm di chuyển kim, nhưng đặt quá nhiều có thể làm hỏng danh mục đầu tư nếu hành động sai lầm.",
+                "Góc phần tư thứ nhất ở trên cùng bên trái liên kết bảng bằng chứng với phép tính kích thước bằng toán học:"
+              ],
+              "lead": "Góc phần tư thứ nhất kết hợp báo cáo thử nghiệm với phép tính kích thước bằng toán học:",
+              "bullets": [
+                {
+                  "bold": "Đang tải đơn hàng thử nghiệm",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Bạn chọn bất kỳ tài sản nào, cho biết bạn muốn mua, bán hay trang trải và nạp số tiền bằng đô la. Trong danh sách bên dưới, bạn có thể bật hoặc tắt từng lệnh mô phỏng để so sánh hiệu quả của nó."
+                },
+                {
+                  "bold": "Kích thước vị trí tối ưu",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Dựa trên xác suất thành công ước tính của bạn và mối quan hệ giữa lãi và lỗ, nó tính toán tỷ lệ vốn tối đa nên được phân bổ để phát triển mà không khiến bản thân phải nỗ lực quá mức."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Tính toán toán học của Tiêu chí Kelly và phiên bản bảo thủ Half-Kelly của nó."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Đặt OTM & Ký quỹ",
+              "summary": "Trình mô phỏng bảo hiểm với các tùy chọn cho sự sụt giảm mạnh của thị trường và giám sát lệnh gọi ký quỹ.",
+              "paragraphs": [
+                "Khi bạn lo sợ thị trường sẽ điều chỉnh mạnh, việc bán tất cả vị thế của bạn thường tốn kém và không hiệu quả. Giải pháp thay thế chuyên nghiệp là mua bảo hiểm với các lựa chọn bảo vệ, nhưng bảo hiểm đó có giá bao nhiêu mỗi năm và nó thực sự bảo vệ bạn đến mức nào?",
+                "Góc phần tư phía dưới bên trái cho phép bạn đo lường cả khả năng chi trả và mức nợ:"
+              ],
+              "lead": "Góc phần tư phía dưới bên trái đo lường cả phạm vi và mức độ đảm bảo:",
+              "bullets": [
+                {
+                  "bold": "So sánh các lá chắn bảo vệ",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Nó cho phép bạn thay đổi giữa hoạt động không có bảo hiểm hoặc áp dụng ba loại bảo hiểm với các tùy chọn (đối với biến động SPY, QQQ hoặc VIX), so sánh chi phí bảo hiểm hàng năm so với số đô la bạn sẽ tiết kiệm được trong một vụ tai nạn 20%."
+                },
+                {
+                  "bold": "Kiểm soát đòn bẩy và tài sản thế chấp",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Theo dõi tỷ lệ phần trăm ký quỹ duy trì mà bạn đã sử dụng và tỷ lệ phần trăm giảm mà danh mục đầu tư sẽ phải chịu trước khi bước vào vùng gọi ký quỹ."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hoạt động phòng ngừa rủi ro với các quyền chọn bán hết tiền và tính toán bảo lãnh Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Ủy ban & Sách",
+              "summary": "Hai bảng bên phải có tính năng tự động xem xét giới hạn rủi ro, lịch sử đơn hàng và Co-pilot.",
+              "paragraphs": [
+                "Trong lúc hào hứng thử giao dịch, bạn có thể dễ dàng bỏ qua rằng một tài sản đang tập trung hơn 20% toàn bộ danh mục đầu tư của bạn hoặc nó đang hoạt động trong bối cảnh có sự bất thường về thống kê nghiêm trọng.",
+                "Hai góc phần tư bên phải đóng vai trò là đường kiểm tra và kiểm soát rủi ro tự động của bạn:"
+              ],
+              "lead": "Hai góc phần tư bên phải có chức năng kiểm soát và đăng ký rủi ro:",
+              "bullets": [
+                {
+                  "bold": "Xem xét trong ba chiều",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Họ đánh giá các lệnh mô phỏng của bạn từ các giới hạn kỹ thuật, cơ bản và bảo mật cứng (cảnh báo nếu bất kỳ vị thế nào vượt quá giới hạn vốn 20% hoặc nếu nó có mức độ bất thường cao)."
+                },
+                {
+                  "bold": "Trợ lý nhật ký đơn hàng và danh mục đầu tư",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Bảng dưới cùng ghi lại từng mô phỏng với tác động của nó đối với rủi ro, trong khi nút hội thoại ở trên cùng bên phải sẽ mở cuộc trò chuyện để đặt câu hỏi trực tiếp về danh mục đầu tư của bạn."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Quy tắc kiểm soát rủi ro trước hoạt động và giới hạn tập trung cho mỗi tài sản."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Biểu đồ bên dưới ở chế độ toàn màn hình để kiểm tra xem chiến lược của bạn có hoạt động ngoài thời gian dùng thử hay không.",
+              "paragraphs": [
+                "Bất kỳ chiến lược nào cũng có thể được điều chỉnh bằng cách nhìn lại quá khứ cho đến khi nó xuất hiện rõ ràng trên biểu đồ lịch sử. Thách thức thực sự là biết liệu nó có tiếp tục hoạt động hay không khi đối mặt với dữ liệu thị trường mới.",
+                "Bảng điều khiển phía dưới có chiều rộng đầy đủ giúp chiến lược trải qua quá trình xác thực nghiêm ngặt nhất trước khi đi vào sản xuất:"
+              ],
+              "lead": "Bảng dưới cùng đưa ra chiến lược xác thực trong mẫu và ngoài mẫu:",
+              "bullets": [
+                {
+                  "bold": "Tách biệt giữa thiết kế và thử nghiệm thực tế",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Nó chia biểu đồ lịch sử thành giai đoạn đầu tiên trong đó chiến lược được hiệu chỉnh và giai đoạn thứ hai với dữ liệu chưa được xem để kiểm tra xem liệu nó có duy trì được lợi thế so với danh mục cơ sở hay không."
+                },
+                {
+                  "bold": "Ghi chú về độ tin cậy thống kê",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Nếu chỉ số hiệu quả vượt quá 70%, điều đó khẳng định rằng kết quả là nhất quán chứ không phải là kết quả của việc ép buộc các con số trong quá khứ."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Chỉ số hiệu quả Walk-Forward (WFE) đo lường những gì và cách chỉ số này phát hiện các chiến lược được tối ưu hóa quá mức."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Bộ lọc thanh khoản (ADV)",
+        "intro": "Để một tài sản được giao dịch mà không có một lệnh nào làm sai lệch giá của nó, nền tảng này yêu cầu ngưỡng tối thiểu về khối lượng trung bình hàng ngày bằng đô la trong 20 ngày làm việc qua.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Giá đóng cửaᵢ × Khối lượng giao dịchᵢ)",
+          "denominator": "20 bánh xe khéo léo",
+          "vars": [
+            "Giá đóng cửa: giá đóng cửa chính thức của ngày thứ i được thể hiện bằng USD.",
+            "Khối lượng giao dịchᵢ: tổng số đơn vị giao dịch trong ngày hôm đó."
+          ]
+        },
+        "lead": "Dựa trên khối lượng trung bình hàng ngày, danh mục phân loại độ sâu của từng công cụ:",
+        "bullets": [
+          {
+            "bold": "Thanh khoản tổ chức cao",
+            "code": "> $500M diarios",
+            "text": "Cho phép bạn vào và thoát các vị thế lớn ngay lập tức mà không làm thay đổi giá thị trường."
+          },
+          {
+            "bold": "Thanh khoản danh mục tiêu chuẩn",
+            "code": "$50M a $500M diarios",
+            "text": "Thích hợp cho danh mục đầu tư đa dạng với chi phí mua/bán rất thấp."
+          },
+          {
+            "bold": "Giám sát lây lan",
+            "code": "< $50M diarios",
+            "text": "Trong thời điểm biến động, nên kiểm tra việc mở mẹo trước khi thực hiện các lệnh lớn."
+          }
+        ],
+        "example": "Nếu một cổ phiếu đang giao dịch ở mức 200 USD và giao dịch trung bình 5 triệu cổ phiếu trên mỗi bánh trong tháng qua thì khối lượng giao dịch trung bình hàng ngày (ADV) của nó là 1 tỷ USD (1,0 tỷ USD)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Bình thường hóa sang USD",
+        "intro": "Vì danh mục kết hợp trái phiếu Châu Âu, chỉ số Châu Á, hàng hóa và tiền điện tử nên tất cả các dòng khối lượng đều được chuyển đổi sang đô la Mỹ theo thời gian thực để có thể so sánh chúng trên cùng một quy mô.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Khối lượng nội tệ: số tiền được giao dịch bằng loại tiền tệ thị trường ban đầu (EUR, JPY, GBP, BRL, v.v.).",
+            "Tỷ giá hối đoái giao ngay: báo giá hiện tại trong công cụ tiền tệ 61."
+          ]
+        },
+        "lead": "Việc chuyển đổi này tác động trực tiếp đến hai vị trí trên màn hình:",
+        "bullets": [
+          {
+            "bold": "Xem tổng thể Xếp hạng Tất cả",
+            "code": "213 activos",
+            "text": "Sắp xếp các công cụ từ chuyển động tiền tệ thực tế lớn nhất đến ít nhất trên toàn thế giới."
+          },
+          {
+            "bold": "Đã thêm thẻ âm lượng",
+            "code": "Volumen 24h en $B",
+            "text": "Nó cho phép thêm khối lượng tài sản được liệt kê ở các quốc gia khác nhau mà không làm biến dạng."
+          }
+        ],
+        "example": "Nếu một trái phiếu Đức giao dịch 4 tỷ euro mỗi ngày và tỷ giá chéo EUR/USD giao dịch ở mức 1,08 thì hệ thống sẽ tính toán 4,32 tỷ USD theo nhịp độ toàn cầu."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Làm thế nào để bạn đo lường xem thị trường có đang tăng trưởng mạnh mẽ hay nó đã tăng quá nhanh và cạn kiệt? Chỉ số sức mạnh tương đối (RSI) so sánh mức tăng trung bình với mức giảm trung bình của 14 vòng gần nhất trên thang điểm từ 0 đến 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Tăng trung bình₁₄ / Giảm trung bình₁₄)",
+          "vars": [
+            "Mức tăng trung bình₁₄: mức trung bình được làm mịn của số điểm kiếm được trong những ngày tăng giá của 14 bánh cuối cùng.",
+            "Mức lỗ trung bình₁₄: mức trung bình được làm mịn của số điểm bị mất trong những ngày giảm giá trong cùng thời kỳ."
+          ]
+        },
+        "lead": "Đây là cách diễn giải ba phần của thang đo trong vòng tròn:",
+        "bullets": [
+          {
+            "bold": "Lực mua và mua quá mức",
+            "code": "70 a 100",
+            "text": "Mức tăng vượt xa mức giảm gần đây. Nó cho thấy đà tăng lớn, mặc dù trên 70, nó cảnh báo rằng giá có thể cần tạm dừng."
+          },
+          {
+            "bold": "vùng cân bằng",
+            "code": "30 a 70",
+            "text": "Thị trường di chuyển với tốc độ bền vững. Vượt qua mức trung gian (> 50 màu xanh lá cây) xác nhận sự thống trị của người mua, trong khi giảm xuống dưới (< 50 màu đỏ) cho thấy sự thống trị của người bán."
+          },
+          {
+            "bold": "Trừng phạt và bán quá mức",
+            "code": "0 a 30",
+            "text": "Sự sụt giảm diễn ra thường xuyên và rõ rệt đến mức tài sản bắt đầu có vẻ rẻ về mặt thống kê và có xu hướng phục hồi."
+          }
+        ],
+        "example": "Nếu trong 14 vòng cuối cùng, một nhóm cổ phiếu tăng trung bình 2 USD mỗi ngày tăng giá và chỉ giảm 1 USD mỗi ngày giảm giá thì tỷ lệ sức mạnh của nó là 2 và chỉ số RSI của nó là 66,7 (đẩy giá tăng trong màu xanh lá cây)."
+      },
+      {
+        "id": "p06",
+        "label": "Chế độ bình thường (P-06)",
+        "intro": "Một tài sản có thể có vẻ bình lặng nếu bạn chỉ nhìn vào giá của nó, nhưng đồng thời lại phải hứng chịu sự tăng vọt bất thường về khối lượng và sự mở cửa bất thường ở các đỉnh mua và bán của nó. Công cụ Isolation Forest (P-06) vượt qua các biến này cùng lúc để phát hiện hành vi không điển hình.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): số lần cắt ngẫu nhiên trung bình cần thiết để tách biệt hành vi ngày nay với phần còn lại của lịch sử.",
+            "x: vector gồm 4 biến (Return 24h, Vol Z-Score 20d, Biến động thực hiện 30d và Spread tính bằng bps)."
+          ]
+        },
+        "lead": "Động thái hôm nay càng hiếm thì càng bị cô lập nhanh và điểm càng gần 1,00:",
+        "bullets": [
+          {
+            "bold": "Chế độ bình thường",
+            "code": "0.00 a 0.49",
+            "text": "Giá, khối lượng và tính thanh khoản di chuyển phù hợp với mức trung bình lịch sử của tài sản."
+          },
+          {
+            "bold": "Hoạt động cao",
+            "code": "0.50 a 0.64",
+            "text": "Ít nhất một trong các biến số bắt đầu đi chệch khỏi hành vi thông thường của nó; Nên theo dõi chặt chẽ luồng đơn đặt hàng."
+          },
+          {
+            "bold": "Trật khớp hoặc dị thường nghiêm trọng",
+            "code": "0.65 a 1.00",
+            "text": "Nội dung đăng ký hành vi cực đoan về mặt thống kê. Trong mô-đun danh mục đầu tư, việc vượt quá ngưỡng này sẽ kích hoạt phanh an toàn."
+          }
+        ],
+        "example": "Nếu một trái phiếu chính phủ hầu như không biến động 0,1% về giá nhưng khối lượng của nó tăng gấp 4 và mức chênh lệch của nó tăng gấp ba lần trong vài phút, thì bộ phát hiện sẽ vượt qua ba điểm dữ liệu và nâng điểm của nó lên 0,74 (Sự lệch vị trí màu đỏ)."
+      },
+      {
+        "id": "zscore",
+        "label": "Bỏ qua âm lượng (Z-Score)",
+        "intro": "Nói rằng 500 triệu đô la được vận hành ngày nay là rất nhiều đối với một công ty cỡ trung bình, nhưng lại là rất ít đối với S&P 500. Khối lượng Z-Score đưa tất cả nội dung về cùng một đơn vị phổ quát: khối lượng ngày nay có bao nhiêu độ lệch chuẩn (σ) so với mức trung bình 20 bánh của chính nó.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Khối lượng hôm nay (24h) − Khối lượng trung bình (20 ngày)",
+          "denominator": "Độ lệch chuẩn của âm lượng (20d)",
+          "vars": [
+            "Khối lượng trung bình (20d): khối lượng thông thường của tài sản trong tháng làm việc vừa qua.",
+            "Độ lệch chuẩn (20d): khối lượng này thường thay đổi bao nhiêu từ ngày này sang ngày khác."
+          ]
+        },
+        "lead": "Bằng cách này, bạn có thể so sánh bất kỳ nội dung nào trên cùng một đơn vị sigma (σ):",
+        "bullets": [
+          {
+            "bold": "Hoạt động thông thường",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Khối lượng trong ngày hoàn toàn nằm trong thói quen của bốn tuần qua."
+          },
+          {
+            "bold": "Sự tham gia cao",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Có một mức lãi suất cao hơn mức trung bình đang bắt đầu xác nhận xu hướng trong ngày."
+          },
+          {
+            "bold": "Xung đột thể chế",
+            "code": "> +2.0σ",
+            "text": "Nó xảy ra ít hơn 5% số vòng trong năm và thường phản ánh sự gia nhập hoặc rút lui lớn của các quỹ lớn."
+          }
+        ],
+        "example": "Nếu một cổ phiếu thường giao dịch 100 triệu đô la hàng ngày với biến động điển hình là ±20 triệu đô la và hôm nay giao dịch là 160 triệu đô la, thì cổ phiếu đó cao hơn mức trung bình 60 triệu đô la, chính xác tương đương với +3,0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Thu nhập cố định (2s10s và DV01)",
+        "intro": "Khi bạn lọc Trái phiếu hoặc Lãi suất trong bảng, hai số liệu chính để đánh giá nợ chính phủ sẽ xuất hiện: độ dốc của đường cong (2s10s) và giá trị tiền tệ của một điểm cơ bản (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 điểm cơ bản (1 bp): tương đương với hiệu suất 0,01%.",
+            "DV01 ($/1 triệu USD): Vị thế 1 triệu USD thắng hay thua bao nhiêu đô la nếu tỷ giá di chuyển 1 điểm cơ bản."
+          ]
+        },
+        "lead": "Cách đọc hai số này trên lưới:",
+        "bullets": [
+          {
+            "bold": "Đường cong bình thường hoặc dương",
+            "code": "2s10s > 0 bps",
+            "text": "Trái phiếu kỳ hạn 10 năm có lãi suất cao hơn trái phiếu kỳ hạn 2 năm, phản ánh kỳ vọng về tăng trưởng kinh tế lành mạnh."
+          },
+          {
+            "bold": "đường cong ngược",
+            "code": "2s10s < 0 bps",
+            "text": "Lãi suất ngắn hạn vượt lãi suất dài hạn; về mặt lịch sử, nó cảnh báo về sự hạ nhiệt kinh tế hoặc hạn chế tiền tệ."
+          }
+        ],
+        "example": "Nếu Trái phiếu Kho bạc kỳ hạn 10 năm mang lại lợi suất 4,20% và Trái phiếu Kho bạc kỳ hạn 2 năm mang lại lợi suất 4,55% thì cột 2s10 đánh dấu -35 bps (đường cong đảo ngược màu đỏ)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Cổ phiếu (P/E và Ký quỹ)",
+        "intro": "Khi lọc Cổ phiếu S&P/NDX, bảng hiển thị bội số thu nhập dự kiến (P/E Forward) và Tỷ suất lợi nhuận gộp hoạt động để bạn có thể so sánh định giá với lợi nhuận.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Giá cổ phiếu hiện tại",
+          "denominator": "Thu nhập ước tính trên mỗi cổ phiếu (12 tháng tới)",
+          "vars": [
+            "P/E Forward: Bạn sẽ trả bao nhiêu năm thu nhập trong tương lai theo giá ngày hôm nay.",
+            "Tỷ suất lợi nhuận gộp (%): tỷ lệ phần trăm doanh thu vẫn là lợi nhuận gộp sau khi trừ đi chi phí trực tiếp."
+          ]
+        },
+        "lead": "Những gì cần tìm khi vượt qua cả hai cột:",
+        "bullets": [
+          {
+            "bold": "Đánh giá khắt khe và vừa phải",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Hệ số bội số cao cho thấy thị trường đang định giá sự tăng trưởng mạnh mẽ trong tương lai; mức thấp thường phản ánh các công ty trưởng thành hoặc có giá trị."
+          },
+          {
+            "bold": "Sức mạnh định giá",
+            "code": "Margen Bruto > 50%",
+            "text": "Tỷ suất lợi nhuận cao cho thấy các công ty có lợi thế cạnh tranh mạnh mẽ có khả năng bảo vệ lợi nhuận của mình trước lạm phát."
+          }
+        ],
+        "example": "Nếu một cổ phiếu đang giao dịch ở mức 150 USD và ước tính kiếm được 6 USD trên mỗi cổ phiếu trong 12 tháng tới thì P/E kỳ hạn của nó là 25,0 lần."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Công cụ phái sinh, ngoại hối và hàng hóa",
+        "intro": "Đối với các quyền chọn, thị trường ngoại hối và thị trường tương lai vật chất, hai cột động hiển thị chi phí rủi ro hoặc phần thưởng ngụ ý cho việc nắm giữ vị thế theo thời gian.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Công cụ phái sinh): biến động hàng năm mà thị trường quyền chọn chiết khấu trong 30 ngày tới.",
+            "Thực hiện 10Y (FX) và Năng suất cuộn (Hàng hóa): lãi hoặc chi phí hàng năm từ chênh lệch tỷ giá hoặc chuyển đổi hợp đồng tương lai."
+          ]
+        },
+        "lead": "Cách tận dụng các cột này tùy thuộc vào nội dung:",
+        "bullets": [
+          {
+            "bold": "Trong công cụ phái sinh",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Chúng cho bạn biết tỷ lệ biến động mà thị trường kỳ vọng và liệu các quyền chọn để bù đắp cho sự sụt giảm (Put) có đắt hay không."
+          },
+          {
+            "bold": "Bằng tiền tệ và nguyên liệu thô",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Chúng hiển thị bằng màu xanh lá cây nếu việc duy trì tài sản mang lại cho bạn thu nhập bổ sung hoặc màu đỏ nếu tài sản đó có chi phí lưu trữ."
+          }
+        ],
+        "example": "Nếu một quyền chọn cho thấy mức độ biến động ngụ ý (ATM IV) là 35% hàng năm thì thị trường sẽ giảm mức di chuyển gần ±10% trong 30 ngày tiếp theo."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Bản đồ xuyên tâm radar",
+        "intro": "Để đặt tối đa 45 tài sản trong ba vòng radar mà không bị chồng chéo, chế độ xem Orbital sẽ chuyển đổi giá trị của chỉ báo đã chọn thành khoảng cách đến tâm (bán kính r) được chuẩn hóa giữa mức tối thiểu và tối đa của nhóm.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Giá trị tài sản - Giá trị tối thiểu của nhóm",
+          "denominator": "Giá trị tối đa của nhóm - Giá trị tối thiểu của nhóm",
+          "vars": [
+            "r → 0 (Vòng trong): tập trung các tài sản có cường độ hoặc độ lệch dương lớn hơn.",
+            "r → 1 (Vòng ngoài): định vị các tài sản ngoại vi hoặc những tài sản có số đọc tương đối thấp nhất."
+          ]
+        },
+        "lead": "Cách đọc vị trí và màu sắc của từng hành tinh trên radar:",
+        "bullets": [
+          {
+            "bold": "Vòng trong lấy nét",
+            "code": "Centro del radar",
+            "text": "Tập hợp các nội dung hàng đầu từ chỉ báo bạn đã chọn ở trên để chế độ xem của bạn hướng đến nội dung quan trọng nhất trước tiên."
+          },
+          {
+            "bold": "Ngữ nghĩa màu sắc lịch sử",
+            "code": "Verde vs Rojo",
+            "text": "Nút này sáng lên màu xanh lục khi nó vượt quá mức trung bình lịch sử một cách thuận lợi và có màu đỏ khi nó phản ánh sự suy giảm hoặc căng thẳng."
+          }
+        ],
+        "example": "Nếu bạn sắp xếp radar theo Độ lệch âm lượng (Z-Score), radar hoạt động có +3,4σ nằm ở vòng sáng trung tâm, trong khi radar có 0,1σ nằm ở quỹ đạo bên ngoài."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) và Dải Bollinger",
+        "intro": "Đường trung bình động đơn giản 20 kỳ (SMA 20) đánh dấu xu hướng cơ bản của tài sản, trong khi Dải Bollinger vẽ một kênh động bằng cách cộng và trừ hai độ lệch chuẩn (2σ) xung quanh mức trung bình đó.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): trung bình số học của 20 lần đóng cửa gần nhất.",
+            "Bandwidth (BB width): khoảng cách phần trăm giữa dải trên và dải dưới."
+          ]
+        },
+        "lead": "Theo thống kê, khoảng 95% báo giá xảy ra trong hai phạm vi:",
+        "bullets": [
+          {
+            "bold": "Giá trên mức trung bình",
+            "code": "Precio > SMA 20",
+            "text": "Nó chỉ ra rằng xu hướng ngắn hạn là tăng và đường trung bình thường đóng vai trò là mức hỗ trợ."
+          },
+          {
+            "bold": "Cảm ứng dải trên hoặc dưới",
+            "code": "±2σ",
+            "text": "Nó cảnh báo rằng giá đã tăng quá nhanh so với mức trung bình gần đây và có thể tạm dừng."
+          },
+          {
+            "bold": "nén băng tần",
+            "code": "BB Width bajo",
+            "text": "Khi các dải trở nên rất hẹp, thị trường sẽ tích tụ năng lượng trước một biến động mạnh."
+          }
+        ],
+        "example": "Nếu SMA(20) của một cổ phiếu là 100 USD và độ lệch chuẩn 20 bánh của nó là 4 USD thì dải trên là 108 USD và dải dưới là 92 USD."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Thể chế",
+        "intro": "Không giống như mức trung bình chung đưa ra trọng số như nhau cho tất cả các giờ trong ngày, VWAP tính trọng số của mỗi mức giá theo số tiền thực sự được giao dịch ở mức đó. Đây là tài liệu tham khảo chính được sử dụng bởi các bảng thể chế.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Giá điển hìnhᵢ × Khối lượng giao dịchᵢ)",
+          "denominator": "∑ Khối lượng giao dịchᵢ",
+          "vars": [
+            "Giá điển hìnhᵢ: trung bình giữa mức tối đa, tối thiểu và đóng cửa của mỗi cây nến.",
+            "Khối lượng giao dịchᵢ: khối lượng giao dịch cụ thể trong mục đó."
+          ]
+        },
+        "lead": "Cách các nhà giao dịch chuyên nghiệp sử dụng dòng VWAP:",
+        "bullets": [
+          {
+            "bold": "Kiểm soát thực thi",
+            "code": "Comprar bajo el VWAP",
+            "text": "Nếu một quỹ tổ chức mua dưới mức VWAP trong kỳ, quỹ đó sẽ có mức giá tốt hơn mức trung bình của thị trường."
+          },
+          {
+            "bold": "Mức độ bảo vệ xu hướng",
+            "code": "Soporte / Resistencia",
+            "text": "Miễn là tài sản vẫn ở trên VWAP, những người mua trong kỳ sẽ thu được lợi nhuận trung bình."
+          }
+        ],
+        "example": "Nếu 1 triệu cổ phiếu được giao dịch ở mức 100 đô la và chỉ 100 nghìn cổ phiếu được giao dịch ở mức 110 đô la thì mức trung bình đơn giản sẽ là 105 đô la, nhưng VWAP lại ghi là 100,91 đô la vì hầu hết số tiền được giao dịch ở mức 100 đô la."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Độ dịch chuyển trải rộng (bps)",
+        "intro": "Mức chênh lệch là chênh lệch giữa giá chào bán tốt nhất và giá chào mua tốt nhất trong sổ lệnh. Khi các nhà tạo lập thị trường nhận thấy rủi ro hoặc thiếu thanh khoản, họ sẽ mở khoảng trống đó để tự bảo vệ mình.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Giá hỏi - Giá thầu )",
+          "denominator": "Giá trung bình (Giá trung bình)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Giá Ask/Bid: điểm bán và điểm mua hiện tại trên sổ.",
+            "10.000: Hệ số chuyển đổi để thể hiện sự chênh lệch về điểm cơ bản (bps)."
+          ]
+        },
+        "lead": "Dữ liệu về Độ lệch trải rộng trên thanh bên trái cho bạn biết điều gì:",
+        "bullets": [
+          {
+            "bold": "Cuốn sách sâu sắc và trôi chảy",
+            "code": "Spread estable en verde",
+            "text": "Có tính thanh khoản dồi dào ở cả hai đầu và chi phí ngầm để vào hoặc ra là tối thiểu."
+          },
+          {
+            "bold": "Ma sát hoặc rút thanh khoản",
+            "code": "Salto en bps",
+            "text": "Nó thường xảy ra vài giây trước khi có thông báo kinh tế vĩ mô hoặc trong quá trình bán tháo hoảng loạn, khiến việc thực hiện trở nên đắt đỏ hơn."
+          }
+        ],
+        "example": "Nếu một tài sản có mẹo mua ở mức 99,95 USD và mẹo bán ở mức 100,05 USD thì chênh lệch 0,10 USD so với 100 USD tương đương với 10 điểm cơ bản (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Tùy chọn (Black-Scholes và Hy Lạp)",
+        "intro": "Trong công cụ quyền chọn, nền tảng vẽ đồ thị hai đường cong lãi và lỗ (P&L): chiến lược sẽ kết thúc như thế nào vào ngày hết hạn và giá trị hôm nay (T+0) của nó khi áp dụng mô hình Black-Scholes.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S và K: giá hiện tại của tài sản cơ sở (Giao ngay) và giá thực hiện của quyền chọn (Strike).",
+            "Người Hy Lạp thực: Δ Delta (độ nhạy về giá), Γ Gamma (Gia tốc Delta), Θ Theta (thời gian mặc hàng ngày) và ν Vega (độ nhạy biến động)."
+          ]
+        },
+        "lead": "Cách đọc chữ Hy Lạp trong chiến lược của bạn trên các viên thuốc bên trái:",
+        "bullets": [
+          {
+            "bold": "Chỉ đạo và tăng tốc",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Delta dương sẽ thắng khi tài sản tăng lên; Gamma dương khiến bạn đạt được tốc độ ngày càng nhanh hơn nếu chuyển động tăng tốc."
+          },
+          {
+            "bold": "Thời gian trôi qua và sự không chắc chắn",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta cho bạn biết vị thế đó mất hoặc kiếm được bao nhiêu đô la mỗi ngày; Vega sẽ thay đổi bao nhiêu nếu biến động ngụ ý tăng 1%."
+          }
+        ],
+        "example": "Long Straddle (mua và bán trong cùng một cuộc đình công) có Delta gần bằng 0 (không quan trọng nó tăng hay giảm), nhưng Vega dương và cần giá vượt ra ngoài hai điểm cân bằng của nó (Điểm hòa vốn)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Đường cong chủ quyền (Butterfly và DV01)",
+        "intro": "Công cụ thu nhập cố định so sánh lợi suất từ 3 tháng đến 30 năm ở 42 quốc gia và tính toán cả độ dốc (2s10s) và độ cong của đợt giữa (Butterfly 2s5s10s) và độ nhạy tiền tệ (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "Lãi suất 2Y, 5Y, 10Y: Lợi suất trái phiếu chính phủ kỳ hạn 2, 5 và 10 năm của quốc gia được chọn.",
+            "Lãi suất thực 10 năm: Lãi suất danh nghĩa kỳ hạn 10 năm trừ đi lãi suất tham chiếu hoặc lạm phát tiềm ẩn."
+          ]
+        },
+        "lead": "Ý nghĩa của từng chỉ số trong phân tích trái phiếu:",
+        "bullets": [
+          {
+            "bold": "Độ cong của phần giữa",
+            "code": "Butterfly 2s5s10s",
+            "text": "Nó đo lường xem đợt 5 năm đắt hay rẻ so với kỳ hạn 2 năm và 10 năm."
+          },
+          {
+            "bold": "Rủi ro về thời hạn đô la",
+            "code": "DV01 por $1M",
+            "text": "Nó cho bạn biết chính xác danh mục đầu tư trị giá hàng triệu đô la thay đổi bao nhiêu với tỷ lệ biến động 0,01%."
+          }
+        ],
+        "example": "Một trái phiếu kỳ hạn 10 năm có DV01 là 820 USD trên một triệu sẽ mất khoảng 82.000 USD nếu lãi suất thị trường tăng 100 điểm cơ bản (+1,00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Tiền tệ (Carry) và Hợp đồng tương lai (Roll Yield)",
+        "intro": "Trong tiền tệ, khi một cặp không được trích dẫn trực tiếp, nó được tính bằng phương pháp tam giác so với đồng đô la và đo chênh lệch tỷ giá của nó (Carry). Đối với nguyên liệu thô, hiệu suất gia hạn được đo lường giữa hợp đồng ngay lập tức và hợp đồng 12 tháng (Năng suất cuộn).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Giá giao ngay (M1 trước) − Giá tương lai (M12)",
+          "denominator": "Giá tương lai (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Dự phòng (Giao ngay > Tương lai): Sự khan hiếm vật chất ngày nay khiến các hợp đồng tương lai luân phiên tạo ra lợi nhuận dương (Lợi suất cuộn > 0).",
+            "Contango (Giao ngay < Tương lai): Chi phí lưu trữ làm cho hợp đồng tương lai trở nên đắt hơn và việc gia hạn chúng có chi phí âm."
+          ]
+        },
+        "lead": "Điều này tác động như thế nào đến túi tiền của bạn khi nắm giữ một vị thế:",
+        "bullets": [
+          {
+            "bold": "Tích cực Giao dịch tiền tệ",
+            "code": "Carry Spread > 0 bps",
+            "text": "Nếu bạn mua một loại tiền tệ có lãi suất cao bằng cách tự tài trợ cho mình bằng một loại tiền tệ có lãi suất thấp, bạn sẽ thu được khoản chênh lệch đó có lợi cho mình."
+          },
+          {
+            "bold": "Gió thuận về nguyên liệu",
+            "code": "Backwardation en verde",
+            "text": "Khi hàng tồn kho thực tế ở mức thấp, hợp đồng gần đó có giá trị cao hơn hợp đồng ở xa và nhà đầu tư kiếm được thêm lợi nhuận bằng cách thực hiện hợp đồng."
+          }
+        ],
+        "example": "Nếu dầu kỳ hạn 1 tháng đang giao dịch ở mức 72 USD và hợp đồng 12 tháng đang giao dịch ở mức 68 USD thì thị trường đang ở trạng thái Backwardation với Lợi suất cuộn dương +5,88% hàng năm."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Tổng điểm có trọng số",
+        "intro": "Không phải tất cả tài sản đều di chuyển qua cùng một nguồn: trong một công ty, báo cáo tài chính đã được kiểm toán (SEC 10-K/10-Q) có trọng lượng lớn hơn, trong khi trên thị trường tiền điện tử hoặc tiền tệ, các luồng giao dịch hàng ngày và thông tin liên lạc có trọng lượng lớn hơn.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: tự động tính trọng số theo danh mục (ví dụ: 80% / 20% về Cổ phiếu; 85% / 15% về Phí).",
+            "Thang đo cuối cùng: dao động từ −100 (mức độ bi quan tối đa) đến +100 (mức độ tin cậy tăng giá tối đa)."
+          ]
+        },
+        "lead": "Đây là cách dịch điểm tổng hợp theo ý kiến cấp trên:",
+        "bullets": [
+          {
+            "bold": "Lập trường lạc quan",
+            "code": "BULLISH / Nota > +15",
+            "text": "Chất xúc tác tài liệu và luồng tin tức rõ ràng lớn hơn các yếu tố rủi ro."
+          },
+          {
+            "bold": "Tư thế trung lập hoặc hỗn hợp",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Ngay cả lực lượng giữa các nguyên tắc cơ bản và tin tức; Nên xem xét đàn accordion 10 yếu tố trước khi quyết định."
+          },
+          {
+            "bold": "Lập trường phòng thủ hoặc giảm giá",
+            "code": "BEARISH / Nota < -15",
+            "text": "Cảnh báo về bảng cân đối kế toán, sự suy giảm tỷ suất lợi nhuận hoặc các tiêu đề bất lợi chiếm ưu thế."
+          }
+        ],
+        "example": "Trong một cổ phiếu (80% thông tin cơ bản / 20% tin tức), nếu số dư hiển thị +50 điểm và tin tức trong ngày hiển thị +20 thì Tổng Điểm Trọng số là (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Tìm kiếm đã được xác minh (RAG)",
+        "intro": "Để ngăn trí tuệ nhân tạo phát minh ra số liệu, Trò chuyện tài liệu sử dụng Khôi phục tăng cường thế hệ (RAG): trước tiên, nó tìm kiếm các đoạn có liên quan trong báo cáo chính thức của nội dung và chỉ sau đó mới viết phản hồi trích dẫn nguồn.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Tư vấn Vector (Q) · Tài liệu chính thức của Vector (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vector Q và D: biểu thị bằng số cho câu hỏi của bạn và các đoạn chính thức (10-K, biên bản FOMC, báo cáo EIA).",
+            "Lan can 3 lớp: bộ lọc chặn các truy vấn không liên quan đến tài chính hoặc không có hỗ trợ tài liệu."
+          ]
+        },
+        "lead": "Cơ chế này đảm bảo điều gì khi bạn đặt câu hỏi trong cuộc trò chuyện:",
+        "bullets": [
+          {
+            "bold": "Neo vào các nguồn chính",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Mỗi dữ liệu về thu nhập, nợ, hàng tồn kho hoặc tỷ lệ đều xuất phát từ văn bản quy định tương ứng với tài sản đó."
+          },
+          {
+            "bold": "Dừng các câu hỏi lạc đề",
+            "code": "Guardrail activo",
+            "text": "Nếu ai đó cố gắng tham khảo các chủ đề phi tài chính, trợ lý sẽ từ chối truy vấn và tập trung vào việc phân tích công cụ."
+          }
+        ],
+        "example": "Khi bạn chạm vào chip hệ số rủi ro trên cổ phiếu, công cụ sẽ truy xuất phần Mục 1A (Hệ số rủi ro) của biểu mẫu 10-K mới nhất và tóm tắt các điểm quan trọng."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "Điểm thần kinh FinBERT",
+        "intro": "Một từ điển thông thường thường gây nhầm lẫn giữa các từ tài chính (ví dụ: \"giảm chi phí\" hoặc \"giảm nợ\" là những tin tức tuyệt vời ngay cả khi họ sử dụng từ giảm hoặc giảm). FinBERT là mạng lưới thần kinh được đào tạo đặc biệt bằng các văn bản tài chính.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(Dương) và P(Tiêu cực): xác suất được mô hình chỉ định cho dòng tiêu đề là tăng hoặc giảm đối với nội dung.",
+            "Đường cong 24 giờ: đường trung bình động hàm mũ của các tin tức nổi bật trong 24 giờ qua."
+          ]
+        },
+        "lead": "Cách mỗi nút xếp hạng trong dòng thời gian bên phải:",
+        "bullets": [
+          {
+            "bold": "Người giữ chất xúc tác",
+            "code": "+20 a +100 en verde",
+            "text": "Đánh bại thu nhập ước tính, nâng cấp xếp hạng tín dụng hoặc cắt giảm lãi suất thuận lợi."
+          },
+          {
+            "bold": "Cáp thông tin trung tính",
+            "code": "-19 a +19 en ámbar",
+            "text": "Thông báo vận hành thường xuyên không làm thay đổi đánh giá cấu trúc của công cụ."
+          },
+          {
+            "bold": "Người nắm giữ rủi ro",
+            "code": "-20 a -100 en rojo",
+            "text": "Cảnh báo theo quy định, giảm lợi nhuận, đình công hoặc dữ liệu lạm phát tồi tệ hơn dự kiến."
+          }
+        ],
+        "example": "Nếu mô hình chỉ định xác suất tích cực 82%, xác suất trung tính 12% và xác suất tiêu cực 6% cho dòng tiêu đề thì nút sẽ hiển thị tác động ròng là +76 với màu xanh lục."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe và Sortino",
+        "intro": "Hai thẻ hàng đầu đầu tiên đo lường mức vốn của bạn tăng lên mỗi năm (CAGR) và mức độ tăng trưởng đó hiệu quả như thế nào so với những cú sốc mà bạn phải chịu đựng (Sharpe và Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Lợi nhuận Portfolio hàng năm (Rp) − Lãi suất phi rủi ro (Rf)",
+          "denominator": "Biến động Portfolio hàng năm (σp)",
+          "vars": [
+            "Rf (4,30%): lãi suất cơ bản mà bạn có thể nhận được mà không gặp rủi ro từ tín phiếu Kho bạc.",
+            "Tỷ lệ Sortino: sử dụng công thức tương tự nhưng ở mẫu số, nó chỉ phạt sự biến động của những ngày âm (giảm)."
+          ]
+        },
+        "lead": "Cách đánh giá chất lượng danh mục đầu tư của bạn với những con số sau:",
+        "bullets": [
+          {
+            "bold": "Danh mục đầu tư hiệu quả",
+            "code": "Sharpe > 1.00",
+            "text": "Lợi nhuận vượt mức bạn đạt được trên mức lãi suất phi rủi ro vượt xa mức độ biến động giả định."
+          },
+          {
+            "bold": "Hiệu suất vượt trội",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Nó cho thấy một sự kết hợp rất đa dạng, trong đó mức tăng là nhất quán và mức giảm được ngăn chặn."
+          }
+        ],
+        "example": "Nếu danh mục đầu tư của bạn mang lại lợi nhuận 15,3% hàng năm, lãi suất phi rủi ro là 4,3% và độ biến động hàng năm của bạn là 10%, lợi nhuận vượt mức của bạn là 11% và Tỷ lệ Sharpe của bạn là 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% và mức rút vốn",
+        "intro": "Lá bài thứ ba và thứ tư trả lời bạn có thể thua bao nhiêu vào một ngày tồi tệ nhưng bình thường về mặt thống kê (VaR 95%), bao nhiêu vào một ngày cực kỳ hoảng loạn (CVaR 99%) và mức giảm lớn nhất so với đỉnh trước đó (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1.645: hệ số thống kê bao trùm 95% số bánh xe thông thường trong năm (19 trên 20 ngày).",
+            "CVaR 99% (Thiếu hụt dự kiến): Mức lỗ trung bình khi thị trường phá vỡ ngưỡng đó và lọt vào top 1% của những ngày tồi tệ nhất."
+          ]
+        },
+        "lead": "Có sự khác biệt thực tế nào giữa việc nhìn vào VaR và nhìn vào Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Rủi ro một ngày",
+            "code": "VaR 95% 1D en USD",
+            "text": "Nó chuẩn bị cho bạn về mặt tâm lý và tài chính trước những gì tài khoản của bạn có thể biến động theo hướng xấu mà không có nghĩa là chiến lược đã thất bại."
+          },
+          {
+            "bold": "Sự kháng cự trong một chuỗi bất lợi",
+            "code": "Max Drawdown 12M",
+            "text": "Nó đo độ rơi tích lũy từ đầu này đến đầu khác từ điểm cao nhất xuống sàn trước khi phục hồi trở lại."
+          }
+        ],
+        "example": "Trong danh mục đầu tư 100.000 đô la với VaR hàng ngày 95% của 1,45% ($1.450), ở 19 trên 20 vòng giao dịch, khoản lỗ hàng ngày của bạn sẽ không vượt quá 1.450 đô la."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Chồng chéo tia X (#12)",
+        "intro": "Khi bạn mua một quỹ ETF như SPY hoặc QQQ, bạn đang mua hàng chục cổ phiếu bên trong. Nếu bạn cũng đã trực tiếp mua một số cổ phiếu tương tự, thì mức độ tiếp xúc thực sự của bạn là tổng của hai thứ.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Tỷ trọng trực tiếpᵢ: tỷ lệ phần trăm danh mục đầu tư của bạn được phân bổ trực tiếp vào cổ phiếu i.",
+            "Tỷ lệ phần trăm trong ETFₖ: tỷ trọng chính thức mà công ty đó có trong chỉ số hoặc quỹ k."
+          ]
+        },
+        "lead": "Tại sao điều quan trọng là phải xem lại tab đầu tiên này trước khi đóng danh mục đầu tư:",
+        "bullets": [
+          {
+            "bold": "Khả năng hiển thị nồng độ ẩn",
+            "code": "Directo + Indirecto",
+            "text": "Nó tự động phân tách từng quỹ ETF trong danh mục đầu tư của bạn và hiển thị cho bạn một thanh duy nhất với tỷ lệ phần trăm thực sự mà bạn có trong mỗi công ty."
+          },
+          {
+            "bold": "Cảnh báo quá mức",
+            "code": "> 20% en rojo",
+            "text": "Nếu tổng số tiền vượt quá ngưỡng tập trung vào một tên duy nhất, hàng này sẽ sáng lên để bạn có thể cân bằng lại."
+          }
+        ],
+        "example": "Nếu bạn đặt 15% danh mục đầu tư của mình vào NVDA trực tiếp và cũng có 30% vào SPY ETF (trong đó NVDA nặng khoảng 7%), X-Ray sẽ tiết lộ rằng mức độ tiếp xúc thực sự của bạn với NVDA là 15% + (30% × 7%) = 17,1%."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Sự phân hủy Alpha Brinson (#2)",
+        "intro": "Khi danh mục đầu tư của bạn đánh bại (hoặc thua) so với điểm chuẩn của nó, mô hình Brinson-Fachler sẽ phân biệt chính xác sự khác biệt đó đến từ đâu: bạn đã đúng trong việc tăng tỷ trọng trong lĩnh vực nào hay bạn đã đúng khi chọn tài sản tốt nhất trong mỗi lĩnh vực?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Hiệu ứng phân bổ: (Trọng số Portfolio − Trọng số điểm chuẩn) × Lợi nhuận ngành trong điểm chuẩn.",
+            "Hiệu ứng lựa chọn: Trọng số theo điểm chuẩn × (Tỷ suất lợi nhuận trên tài sản của bạn - Tỷ suất lợi nhuận của ngành)."
+          ]
+        },
+        "lead": "Cách đọc ba thanh ghi công trong tab thứ ba:",
+        "bullets": [
+          {
+            "bold": "Thành công vĩ mô hoặc ngành",
+            "code": "Asignación Sectorial",
+            "text": "Màu xanh lục sẽ tích cực khi bạn đặt nhiều trọng số hơn thị trường vào các loại tài sản tăng giá nhiều nhất."
+          },
+          {
+            "bold": "Nhắm mục tiêu thành công tài sản",
+            "code": "Selección de Activos",
+            "text": "Sẽ là tích cực khi các công cụ cụ thể mà bạn chọn hoạt động tốt hơn mức trung bình cho lĩnh vực của chúng."
+          }
+        ],
+        "example": "Nếu danh mục đầu tư của bạn đánh bại S&P 500 với mức +3,20%, thì tab này cho bạn thấy rằng +2,10% đến từ việc chọn những cổ phiếu tốt hơn (Lựa chọn) và +1,10% từ việc có nhiều trọng số hơn về công nghệ (Phân bổ)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Biên giới hiệu quả và CML",
+        "intro": "Trong mặt phẳng Markowitz, lợi nhuận kỳ vọng của một danh mục đầu tư là bình quân gia quyền của lợi nhuận tài sản của nó, nhưng độ biến động của nó thấp hơn mức trung bình do tài sản không biến động giống nhau 100%.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: tỷ lệ vốn phân bổ cho tài sản i và j.",
+            "ρᵢⱼ (Tương quan): mức độ mà cả hai nội dung di chuyển cùng nhau (−1 đến +1). ρᵢⱼ càng thấp thì tổng rủi ro càng giảm."
+          ]
+        },
+        "lead": "Ba tham chiếu trong biểu đồ thể hiện điều gì:",
+        "bullets": [
+          {
+            "bold": "Phương sai tối thiểu",
+            "code": "Min-Var",
+            "text": "Đó là điểm ngoài cùng bên trái trên đường cong: sự kết hợp chính xác của các trọng số để đạt được độ biến động thấp nhất có thể."
+          },
+          {
+            "bold": "Máximo Sharpe và Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Đó là điểm mà đường bắt đầu từ lãi suất phi rủi ro chạm đường biên hiệu quả, mang lại lợi nhuận lớn nhất trên mỗi đơn vị rủi ro."
+          }
+        ],
+        "example": "Nếu bạn kết hợp hai tài sản bằng nhau, mỗi tài sản có độ biến động 20% ​​nhưng không có mối tương quan (ρ = 0), thì độ biến động của danh mục đầu tư không phải là 20% mà giảm xuống còn 14,1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR bằng cách kích hoạt và chụp",
+        "intro": "Để biết vị thế nào đang tăng thêm rủi ro cho danh mục đầu tư, phần đóng góp cận biên của mỗi tài sản được đo lường theo trọng số của nó và mối tương quan của nó với phần còn lại. Ngoài ra, tỷ lệ chụp còn đo lường sự bất đối xứng so với mức tăng giảm của S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Trả lại Tài sản của bạn hoặc Portfolio trong bánh xe Tăng (hoặc Giảm)",
+          "denominator": "Sự trở lại của S&P 500 trên cùng những bánh xe đó",
+          "rhs": "× 100",
+          "vars": [
+            "Chụp ngược (> 100%) – Kiếm nhiều hơn chỉ số khi thị trường đi lên.",
+            "Downside Capture (< 100%): giảm ít hơn chỉ số khi thị trường đi xuống (vùng đệm phòng thủ)."
+          ]
+        },
+        "lead": "Hồ sơ lý tưởng mà bạn đang tìm kiếm khi xem xét tab thứ ba của góc phần tư:",
+        "bullets": [
+          {
+            "bold": "sự bất đối xứng tích cực",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Tham gia đầy đủ vào thị trường giá lên nhưng bảo vệ vốn khi thị trường chứng khoán điều chỉnh."
+          },
+          {
+            "bold": "Nơi trú ẩn hoặc tài sản không tương quan",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Các công cụ như trái phiếu ngắn hạn hoặc vàng có xu hướng giữ vững hoặc tăng giá khi thị trường chứng khoán sụt giảm."
+          }
+        ],
+        "example": "Nếu trong những tháng S&P 500 tăng 10%, danh mục đầu tư của bạn tăng 11% (Tăng 110%) và khi chỉ số giảm 10%, danh mục đầu tư của bạn chỉ giảm 6% (Giảm 60%), thì bạn có sự bất đối xứng mạnh mẽ có lợi cho mình."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Tương quan bình thường và khủng hoảng",
+        "intro": "Hệ số Pearson (r) đo lường từ -1,00 đến +1,00 cách hai tài sản di chuyển tương đối với nhau. Điều nguy hiểm trong quản lý danh mục đầu tư là khi thị trường sụp đổ, mối tương quan giữa các tài sản rủi ro thường tăng lên mức +1,00 (lây lan).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Hiệp phương sai (Trả về nội dung i, Trả về nội dung j)",
+          "denominator": "Biến động tài sản i (σᵢ) × Biến động tài sản j (σⱼ)",
+          "vars": [
+            "r gần bằng 0 hoặc âm: đa dạng hóa tuyệt vời (khi cái này giảm thì cái kia không theo).",
+            "r trong Hàng đợi Khủng hoảng: tính toán lại ma trận chỉ lấy 5% số bánh xe tệ nhất trên thị trường."
+          ]
+        },
+        "lead": "Cách đọc màu của ma trận 6x6 ở cả hai chế độ:",
+        "bullets": [
+          {
+            "bold": "Đa dạng hóa thực sự",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Cả hai tài sản đều phản ứng với các động lực kinh tế khác nhau và bù đắp cho nhau."
+          },
+          {
+            "bold": "Tập trung hoặc lây nhiễm",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Họ thực tế di chuyển như một khối; Có cả hai điều này không làm giảm nguy cơ té ngã của bạn vào một ngày tồi tệ."
+          }
+        ],
+        "example": "Hai cổ phiếu thuộc các ngành khác nhau có thể có mối tương quan vừa phải là 0,42 trong một năm bình thường, nhưng khi kích hoạt nút Hàng đợi khủng hoảng, bạn sẽ thấy nó tăng lên 0,81 vì trong cơn hoảng loạn chúng sẽ bán cùng nhau."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "Cú sốc 2D (Tỷ giá × Thị trường chứng khoán)",
+        "intro": "Ma trận 2D đồng thời kết hợp tác động của biến động lãi suất (thông qua Thời hạn thu nhập cố định và Độ nhạy cảm với lãi suất) với sự giảm hoặc tăng chỉ số S&P 500 (thông qua Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: kịch bản biến động thị trường chứng khoán trên trục hoành (−20% đến +10%).",
+            "Δ Lãi suất: kịch bản thay đổi lãi suất theo điểm cơ bản trên trục tung (−100 đến +200 bps)."
+          ]
+        },
+        "lead": "Mục đích của việc vượt qua hai trục trong bảng là gì:",
+        "bullets": [
+          {
+            "bold": "Kịch bản đình trệ hoặc tăng lãi suất",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Giống như những gì đã xảy ra vào năm 2022, nơi cổ phiếu và trái phiếu dài hạn bị ảnh hưởng cùng một lúc."
+          },
+          {
+            "bold": "Kịch bản nơi trú ẩn cổ điển",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Khi lãi suất thấp hơn sẽ làm tăng giá trái phiếu kho bạc và giảm bớt sự sụt giảm của cổ phiếu."
+          }
+        ],
+        "example": "Khi lọc một trái phiếu dài hạn như US10Y hoặc TLT, bạn có thể thấy trong bảng cách nó tăng giá trị khi lãi suất giảm (-100 bps), hoạt động như một chiếc dù nếu S&P 500 rơi cùng ngày hôm đó."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Chế độ Markov (#11)",
+        "intro": "Chuỗi Markov mô hình hóa nền kinh tế như một hệ thống chuyển đổi giữa bốn trạng thái có thể xảy ra (Bình tĩnh tăng giá, Tăng giá dễ biến động, Lạm phát/Tỷ giá và Khủng hoảng) và tính toán xác suất chuyển từ trạng thái này sang trạng thái khác.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Đường chéo chính (i = j): xác suất chế độ hiện tại không thay đổi.",
+            "Đường chéo (i ≠ j): xác suất chuyển sang môi trường thị trường mới."
+          ]
+        },
+        "lead": "Cách tận dụng ma trận chuyển tiếp trong tab thứ hai:",
+        "bullets": [
+          {
+            "bold": "Sự tồn tại của chu kỳ hiện tại",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Chế độ bình tĩnh thường có tính kiên trì cao (> 75%), cho phép duy trì các vị thế xu hướng."
+          },
+          {
+            "bold": "Cảnh báo sớm xoay vòng",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Khi xác suất chuyển sang trạng thái biến động tăng lên, nên giảm đòn bẩy hoặc kích hoạt phòng ngừa rủi ro."
+          }
+        ],
+        "example": "Nếu thị trường ngày nay ở chế độ Volatile Bull và hàng đánh dấu 62% là trường tồn, 20% quay trở lại Bull Calm và 18% chuyển sang Căng thẳng/Khủng hoảng, bạn biết rằng gần như 1 trong 5 kịch bản dẫn đến sự điều chỉnh."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Phép chiếu Monte Carlo (10.000 đường dẫn)",
+        "intro": "Dựa trên lợi nhuận kỳ vọng và sự biến động hiện tại của danh mục đầu tư của bạn, trình mô phỏng tạo ra 10.000 quỹ đạo có thể xảy ra trong tương lai hàng ngày bằng cách áp dụng mô hình Chuyển động Brownian Hình học ngẫu nhiên.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ và σ: lợi nhuận kỳ vọng hàng năm và độ biến động hàng năm của danh mục đầu tư hiện tại của bạn.",
+            "Z: biến ngẫu nhiên chuẩn mực tiêu chuẩn được vẽ 10.000 lần dọc theo đường chân trời (6M, 12M hoặc 24M)."
+          ]
+        },
+        "lead": "Từ 10.000 mô phỏng này, ba đường cong chính của biểu đồ được rút ra:",
+        "bullets": [
+          {
+            "bold": "Kịch bản thuận lợi",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Mức chỉ vượt quá 5% trong các kịch bản lạc quan nhất."
+          },
+          {
+            "bold": "Quỹ đạo trung tâm dự kiến",
+            "code": "Mediana P50",
+            "text": "Kết quả điển hình trong đó một nửa số mô phỏng ở trên và nửa còn lại ở dưới."
+          },
+          {
+            "bold": "Kịch bản căng thẳng trong kỳ học",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Tầng bất lợi: trong 95% đường dẫn mô phỏng, danh mục đầu tư của bạn kết thúc trên đường này."
+          }
+        ],
+        "example": "Trong khoảng thời gian 12 tháng trên cơ sở 100, nếu P50 đọc 116 và P05 đọc 94, kỳ vọng trọng tâm của bạn là kiếm được +16% và trong một năm rất bất lợi, bạn có nguy cơ gần -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Tiêu chí Kelly (#14)",
+        "intro": "Tiêu chí Kelly trả lời một cách khoa học về tỷ lệ phần trăm vốn bạn nên phân bổ cho một hoạt động khi bạn biết xác suất thành công của mình (Tỷ lệ thắng) và số tiền bạn thắng khi thành công so với số tiền bạn mất khi thất bại (Tỷ lệ hoàn trả).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p và q: xác suất thắng (p) và xác suất thua (q = 1 − p).",
+            "b (Tỷ lệ hoàn trả): lợi nhuận trung bình chia cho tổn thất trung bình (ví dụ: kiếm được 2 đô la cho mỗi 1 đô la rủi ro ngụ ý b = 2)."
+          ]
+        },
+        "lead": "Tại sao các nhà quản lý chuyên nghiệp sử dụng biến thể Half-Kelly (0,5×):",
+        "bullets": [
+          {
+            "bold": "Kelly Hoàn thành",
+            "code": "Full Kelly 1.0×",
+            "text": "Nó tối đa hóa sự phát triển toán học dài hạn, nhưng tạo ra những biến động rất mạnh nếu có một chuỗi lỗi liên tiếp."
+          },
+          {
+            "bold": "Đề xuất một nửa Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Bằng cách sử dụng một nửa tỷ lệ phần trăm được đề xuất, bạn nắm bắt được 75% mức tăng trưởng tiềm năng nhưng giảm được một nửa mức độ biến động."
+          }
+        ],
+        "example": "Nếu một chiến lược đạt 55% thời gian (p = 0,55, q = 0,45) và trả 2 ăn 1 (b = 2), thì toàn bộ Kelly đưa ra (0,55×2 - 0,45) / 2 = 32,5% và Half-Kelly thận trọng khuyến nghị phân bổ 16,25%."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Đặt tấm chắn OTM (#6)",
+        "intro": "Quyền chọn bán hết tiền (ví dụ: thấp hơn 5% so với giá hiện tại của S&P 500) hoạt động giống như khoản khấu trừ bảo hiểm: nó có chi phí cố định nhỏ (phí bảo hiểm), nhưng nếu thị trường giảm 20% hoặc 30%, giá trị của nó sẽ được nhân lên và bù đắp khoản lỗ trong danh mục đầu tư của bạn.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Chi phí hàng năm (Carry Drag): tỷ lệ phần trăm hàng năm mà chi phí gia hạn bảo hiểm nếu thị trường không giảm.",
+            "Bảo vệ sự cố (-20%): đô la được thu hồi bởi hợp đồng Bán trong một sự cố nghiêm trọng."
+          ]
+        },
+        "lead": "Cách so sánh các tùy chọn trình mô phỏng trong tab đầu tiên:",
+        "bullets": [
+          {
+            "bold": "Bảo hiểm chỉ số trực tiếp",
+            "code": "SPY Put 5% OTM",
+            "text": "Nó hạn chế tổn thất tối đa từ mức giảm 5% để đổi lấy chi phí hàng năm vừa phải."
+          },
+          {
+            "bold": "Bảo hiểm được tài trợ hoặc biến động",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Collar giảm chi phí bằng cách bán Call up; Cuộc gọi trên VIX bùng nổ có lợi khi sự hoảng loạn gây ra trên thị trường."
+          }
+        ],
+        "example": "Nếu bảo vệ danh mục đầu tư trị giá 100.000 đô la bằng SPY Đặt 5% OTM có chi phí 1,1% mỗi năm (1.100 đô la), nhưng trong trường hợp xảy ra sự cố -20%, mức giảm của danh mục đầu tư của bạn sẽ giảm xuống dưới một nửa, số tiền tiết kiệm ròng sẽ vượt quá 7.000 đô la."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Ký quỹ và khoảng cách đến lệnh gọi ký quỹ (#13)",
+        "intro": "Khi bạn hoạt động với các công cụ phái sinh hoặc đòn bẩy, nhà môi giới yêu cầu duy trì tỷ lệ phần trăm vốn chủ sở hữu tối thiểu trên tổng giá trị của vị thế (Ký quỹ duy trì). Nếu sự sụt giảm làm giảm vốn của bạn xuống dưới mức sàn đó, Lệnh gọi ký quỹ sẽ được kích hoạt.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Nợ hoặc số dư tài trợ",
+          "denominator": "1 − % Ký quỹ duy trì (Reg-T)",
+          "vars": [
+            "Tổng mức tiếp xúc: tổng số vị thế mở chia cho vốn chủ sở hữu (ví dụ: 1,18×).",
+            "Khoảng cách đến lệnh gọi ký quỹ (%): tỷ lệ phần trăm giảm mà danh mục đầu tư vẫn hỗ trợ trước khi chạm ngưỡng."
+          ]
+        },
+        "lead": "Mức độ bảo mật trong thanh giám sát:",
+        "bullets": [
+          {
+            "bold": "Vùng giải phóng mặt bằng lớn",
+            "code": "Distancia > 30% en verde",
+            "text": "Đòn bẩy thấp và danh mục đầu tư có thể chịu đựng được ngay cả một cuộc khủng hoảng nghiêm trọng mà không cần phải bán ra."
+          },
+          {
+            "bold": "vùng thận trọng",
+            "code": "Distancia < 15% en rojo",
+            "text": "Một sự điều chỉnh vừa phải của thị trường sẽ làm cạn kiệt tài sản thế chấp miễn phí và buộc các vị thế phải được thanh lý vào thời điểm tồi tệ nhất."
+          }
+        ],
+        "example": "Với mức đòn bẩy vừa phải là 1,18× và tỷ lệ ký quỹ duy trì được sử dụng là 22%, danh mục đầu tư của bạn có mức đệm an toàn hơn 38% trước bất kỳ yêu cầu bồi thường tài sản thế chấp nào."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Nội quy của Ủy ban 3 trụ cột",
+        "intro": "Để không có quyết định bốc đồng nào gây nguy hiểm cho sự tồn tại của danh mục đầu tư, Ủy ban đánh giá từng lệnh bằng cách kết hợp ghi chú kỹ thuật, ghi chú cơ bản và hai quy tắc kiểm soát rủi ro cứng rắn, không thể thương lượng.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: không có tài sản riêng lẻ nào có thể tập trung hơn 1/5 tổng tài sản.",
+            "Dừng bất thường (P-06 ≥ 0,65): nếu tài sản rơi vào trạng thái sai lệch thống kê, hệ thống sẽ cắt mức hiển thị tối đa xuống 5%."
+          ]
+        },
+        "lead": "Ý nghĩa của mỗi bang trong bản án và trong Sách Thi hành án:",
+        "bullets": [
+          {
+            "bold": "Lệnh được phê duyệt mà không có hạn chế",
+            "code": "APROBADO en verde",
+            "text": "Ba trụ cột trùng khớp thuận lợi và quy mô vị thế tôn trọng mọi giới hạn tập trung và thanh khoản."
+          },
+          {
+            "bold": "Thứ tự được điều chỉnh bằng lan can",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Khi một vé vượt quá giới hạn 20% hoặc cố gắng mua nhiều vào giữa thời điểm bất thường, lan can sẽ cảnh báo về mức vượt quá."
+          }
+        ],
+        "example": "Nếu bạn đang cố gắng mô phỏng một giao dịch mua hàng sẽ chiếm 26% danh mục đầu tư của một cổ phiếu, thì Trụ cột 3 (Ran can bảo vệ rủi ro & định cỡ) sẽ gắn cờ cảnh báo tập trung để bạn điều chỉnh nó xuống dưới 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Hiệu suất Walk-Forward (WFE)",
+        "intro": "Để kiểm tra xem một chiến lược không chỉ được tạo ra để trông đẹp mắt trong quá khứ (trang bị quá mức), thử nghiệm Walk-Forward so sánh hiệu suất của chiến lược đó trong giai đoạn thiết kế (In-Sample) với hiệu suất của nó trong dữ liệu chưa từng thấy sau đó (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Lợi nhuận hàng năm Out-of-Sample (Xác thực thuần túy)",
+          "denominator": "Lợi nhuận hàng năm In-Sample (Đào tạo)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): phần lịch sử được sử dụng để hiệu chỉnh trọng số và quy tắc của chiến lược.",
+            "Out-of-Sample (OOS): phần tiếp theo trong đó chiến lược được thử nghiệm trong điều kiện thực tế mà không cần chạm vào các tham số của nó."
+          ]
+        },
+        "lead": "Ngành định lượng đánh giá tỷ lệ phần trăm WFE như thế nào:",
+        "bullets": [
+          {
+            "bold": "Chiến lược mạnh mẽ và nhất quán",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Nó vẫn giữ được phần lớn khả năng tạo ra lợi nhuận khi phải đối mặt với các điều kiện thị trường mới."
+          },
+          {
+            "bold": "Chiến lược mong manh hoặc quá phù hợp",
+            "code": "WFE < 50% en rojo",
+            "text": "Trước đây nó có tác dụng tốt về mặt lý thuyết nhưng lại mất đi tính hiệu quả trong thực tế; Không nên thực hiện nó bằng tiền thật."
+          }
+        ],
+        "example": "Nếu một chiến lược mang lại lợi nhuận 20% hàng năm trong giai đoạn thiết kế (In-Sample) và trong giai đoạn thử nghiệm thực tế tiếp theo (Out-of-Sample), chiến lược đó mang lại lợi nhuận 18,8% hàng năm, thì hiệu suất WFE của nó là (18,8 / 20) = 94,0%."
+      }
+    ]
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "اجرای زنده تصویری",
+      "clickPlayPause": "برای پخش یا توقف (Space) کلیک کنید",
+      "subtitles": "زیرنویس (C)",
+      "fullscreen": "تمام صفحه (F)",
+      "exitFullscreen": "خروج از تمام صفحه (F یا Esc)",
+      "portTabs": [
+        "سازنده",
+        "ریسک",
+        "شبیه ساز",
+        "کمک خلبان"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • زبان ها",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • دسته بندی ها",
+      "scr-pulse": "02 • نبض 24 ساعته",
+      "scr-table": "03 • جدول",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • نقشه حرارتی",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • فنی",
+      "ana-compare": "03 • مقایسه %",
+      "ana-micro": "04 • میکرو و جریان",
+      "ana-engines": "05 • موتورهای 3D/2D",
+      "res-hero": "01 • امتیاز و موضع",
+      "res-rag": "02 • RAG چت",
+      "res-factors": "03 • عوامل",
+      "res-pulse24h": "04 • پالس FinBERT",
+      "p1-pills": "01 • خلاصه",
+      "p1-table": "02 • وزن دهی",
+      "p1-xray": "03 • اشعه ایکس",
+      "p1-calendar": "04 • تقویم",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • تورنادو و VaR",
+      "p2-corr": "03 • همبستگی",
+      "p2-shock2d": "04 • شوک و مارکوف",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • تاثیر",
+      "p3-whatif": "02 • What-If و کلی",
+      "p3-tailhedge": "03 • OTM Put & Margin",
+      "p3-committee": "04 • کمیته و ثبت نام",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "به صفحه Home خوش آمدید: نقطه شروع بدون حواس پرتی شما که در آن بازارها رمزگشایی می شوند.",
+      "home-header": "در گوشه سمت چپ بالای Header، کلیک کردن روی نماد λ همیشه شما را به سمت راست به این مرحله اصلی بازمی‌گرداند.",
+      "home-markets": "در مرکز بالای Header، Markets قرار دارد، ایستگاه کاری شما برای تحقیق در مورد همه 213 دارایی جهانی به صورت زنده.",
+      "home-portfolio": "درست در کنار آن در منوی مرکزی Portfolio قرار دارد، برای ایجاد تخصیص، ریسک تست استرس و شبیه سازی معاملات.",
+      "home-system": "در پایین سمت چپ Footer، System مانیتور مشاهده زنده را برای سرورها و پایگاه‌های داده باز می‌کند.",
+      "home-guide": "در کنار آن، Guide هر زمان که به آن نیاز داشته باشید، این کتابچه راهنمای گام به گام تعاملی را باز می کند.",
+      "home-langs": "در گوشه سمت راست پایین، دکمه زبان مدال مرکزی را برای ترجمه پلت فرم به 56 زبان باز می کند.",
+      "home-palettes": "و Palette 5 تم خواندن بصری را باز می کند در حالی که سبز و قرمز مالی را کاملاً دست نخورده نگه می دارد.",
+      "scr-categories": "در نوار بالای دسته‌ها، همه 213 دارایی، Watchlist یا 10 بازار تخصصی را فیلتر کنید.",
+      "scr-pulse": "4 کارت Pulse 24h حجم جمع شده، میانگین RSI، رژیم P-06 و نابجایی های حجم بالایی را نشان می دهد.",
+      "scr-table": "جدول تعاملی دارای جستجوی فوری، موارد دلخواه و ستون‌های هوشمند متناسب با هر طبقه دارایی است.",
+      "scr-orbital": "نمای Orbital دارایی ها را در سه حلقه متحدالمرکز با انحراف با یک پانل بازرسی کناری زنده ترسیم می کند.",
+      "scr-heatmap": "Heatmap 10 دارایی برتر را در بلوک های متناسب در 8 سایه سبز و قرمز مرتب می کند.",
+      "scr-maintools": "و Main Tools شما را در سه مرحله به سمت منحنی های مستقل، نوسانات سه بعدی، متقاطع FX و موتورهای آتی راهنمایی می کند.",
+      "ana-hero": "Header سوئیچر دارایی، 9 تایم فریم از 1 متر تا ALL و 5 نشانگر اصلی را ترکیب می کند.",
+      "ana-technical": "لنز فنی باندهای SMA 20، VWAP، و 2σ Bollinger را با تایید حجم پایین پوشش می‌دهد.",
+      "ana-compare": "با مقایسه ٪، مزیت درصد خالص یا Alpha Spread را از 0٪ در برابر همتا یا شاخص سازگار اندازه گیری کنید.",
+      "ana-micro": "Micro & Flow افزایش حجم را از طریق 20d Z-Score، نابجایی نقدینگی گسترده و امتیاز ناهنجاری P-06 تشخیص می‌دهد.",
+      "ana-engines": "برگه چهارم یک ابزار ad-hoc پویا است که بر اساس طبقه دارایی متفاوت است: چون NVDA یک سهام است، نوسانات سه بعدی و پرداخت گزینه ها را باز می کند، در حالی که اوراق قرضه، FX و کالاها ابزارهای تخصصی خود را راه اندازی می کنند.",
+      "res-hero": "در بالا، Score & Stance حکم اساسی، رتبه بندی وزنی و دماسنج سرفصل را خلاصه می کند.",
+      "res-rag": "در ستون سمت چپ، RAG Document Chat به پرسش‌های تأیید شده مبتنی بر پرونده‌های رسمی SEC 10-K و 10-Q پاسخ می‌دهد.",
+      "res-factors": "در ستون مرکزی، آکاردئون Factors 5 راننده گاو نر برتر را در مقابل 5 خطر خرس برتر قرار می دهد.",
+      "res-pulse24h": "در سمت راست، FinBERT Pulse به عناوین بی‌نظیر در زمان واقعی امتیاز می‌دهد و منحنی احساسات 24 ساعته را ترسیم می‌کند.",
+      "p1-pills": "6 کارت خلاصه، CAGR، Sharpe و Sortino، 95٪ VaR، Max Drawdown، آلفا، و تنوع را دوباره محاسبه می کنند.",
+      "p1-table": "در جدول وزن، هر یک از 213 دارایی را اضافه کنید، درصد اوزان دقیق را تنظیم کنید، یا دوباره تعادل را به 100 درصد بدهید.",
+      "p1-xray": "بالا سمت راست، پانل 5 زبانه ایکس ری همپوشانی ETF، نوردهی، انتساب برینسون، جریان نقدی و نگهداری را بررسی می کند.",
+      "p1-calendar": "در زیر X-Ray، تقویم ماهانه ثبات بازدهی ژانویه تا دسامبر و مجموع YTD را نشان می‌دهد.",
+      "p1-backtest": "و در انتهای تمام عرض، Backtesting نمونه کارها شما را با S&P 500، 60/40، All-Weather و Min-Variance مقایسه می‌کند.",
+      "p2-markowitz": "ربع اول، مرز کارآمد 2 بعدی Markowitz را ترسیم می کند و مجموعه شما را در مقابل Min-Var و Max-Sharpe قرار می دهد.",
+      "p2-tornado": "ربع پایین سمت چپ، 5 بحران تاریخی، 95 درصد سهم VaR برای هر دارایی، و تصویر Upside/Downside را آزمایش می‌کند.",
+      "p2-corr": "بالا سمت راست، ماتریس 6×6 همبستگی ها را در شرایط عادی با سرایت دم بحران مقایسه می کند.",
+      "p2-shock2d": "در پایین سمت راست، Shock & Markov تغییرات نرخ بهره را با حرکات S&P 500 تلاقی می‌کند و انتقال رژیم را تخمین می‌زند.",
+      "p2-montecarlo": "و پانل پایینی 10000 مسیر Monte Carlo را در P95، P50، و P05، Drawdown زیر آب، و Sharpe نورد نشان می‌دهد.",
+      "p3-impact": "6 کارت Impact سبد فعلی شما را با وضعیت پیش بینی شده پس از معاملات شبیه سازی شده مقایسه می کنند.",
+      "p3-whatif": "بالا سمت چپ، What-If & Kelly خرید یا فروش بلیط را شبیه سازی می کند و اندازه موقعیت بهینه Half-Kelly را محاسبه می کند.",
+      "p3-tailhedge": "OTM Put & Margin در سمت چپ پایین سپرهای گزینه محافظ را شبیه سازی می کند و حاشیه تعمیر و نگهداری Reg-T را نظارت می کند.",
+      "p3-committee": "در دو پانل سمت راست، کمیته 3 ستونی حفاظ های خطر را در کنار گزارش اجرایی و Copilot بررسی می کند.",
+      "p3-walkforward": "و در پایین، نمودار Walk-Forward عملکرد In-Sample و Out-of-Sample را با شاخص WFE تأیید می کند."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 11.2
+      },
+      {
+        "id": "home-header",
+        "startPct": 11.2,
+        "endPct": 23.8
+      },
+      {
+        "id": "home-markets",
+        "startPct": 23.8,
+        "endPct": 38.8
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 38.8,
+        "endPct": 52.4
+      },
+      {
+        "id": "home-system",
+        "startPct": 52.4,
+        "endPct": 64.1
+      },
+      {
+        "id": "home-guide",
+        "startPct": 64.1,
+        "endPct": 75.9
+      },
+      {
+        "id": "home-langs",
+        "startPct": 75.9,
+        "endPct": 88.4
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 88.4,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 14.5
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 14.5,
+        "endPct": 34.4
+      },
+      {
+        "id": "scr-table",
+        "startPct": 34.4,
+        "endPct": 50
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 50,
+        "endPct": 66.4
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 66.4,
+        "endPct": 80.8
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 80.8,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 14.5
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 14.5,
+        "endPct": 27.7
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 27.7,
+        "endPct": 45
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 45,
+        "endPct": 65.6
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 65.6,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 19.7
+      },
+      {
+        "id": "res-rag",
+        "startPct": 19.7,
+        "endPct": 45
+      },
+      {
+        "id": "res-factors",
+        "startPct": 45,
+        "endPct": 69.3
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 69.3,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 20.7
+      },
+      {
+        "id": "p1-table",
+        "startPct": 20.7,
+        "endPct": 43.1
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 43.1,
+        "endPct": 63.4
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 63.4,
+        "endPct": 78.1
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 78.1,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 21.2
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 21.2,
+        "endPct": 42.6
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 42.6,
+        "endPct": 58
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 58,
+        "endPct": 78.3
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 78.3,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 17.9
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 17.9,
+        "endPct": 39.9
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 39.9,
+        "endPct": 62.9
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 62.9,
+        "endPct": 81.5
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 81.5,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

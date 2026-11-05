@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Sutrauktas vaizdas",
+    "mainView": "Pagrindinis vaizdas",
+    "expandedView": "Išplėstas vaizdas",
+    "inThisSection": "Šiame skyriuje rasite:",
+    "deepDive": "Gilus nardymas",
+    "previous": "Ankstesnis",
+    "next": "Kitas",
+    "mathFormula": "Matematinė formulė",
+    "practicalExample": "Praktinis pavyzdys:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Kai atidarote tradicinę finansinę platformą, pirmas dalykas, kuris paprastai pasirodo, yra daugybė diagramų, mirksinčių lentelių ir meniu. Nuo ko pradėti, kai tiesiog norite patikrinti rinką arba patikrinti, kaip sekasi jūsų portfeliui?",
+        "Ekranas Home sukurtas būtent taip, kad būtų išvengta pradinio triukšmo. Jis sveikina jus su švaria ir aiškia erdve, kurioje visas valdymas sutelktas dviejose fiksuotose juostose: viena viršuje, skirta eiti į darbą, o kita žemiau, kad platforma būtų sukonfigūruota taip, kaip jums tinka."
+      ],
+      "intro": "Ekranas Home sveikina jus su švaria ir aiškia erdve, kurioje visas valdymas sutelktas dviejose fiksuotose juostose: viena viršuje, skirta eiti į darbą, o kita žemiau, kad platforma būtų sukonfigūruota taip, kaip jums tinka.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Aiškus atskaitos taškas, skirstantis jūsų darbą į rinkos analizę ir portfelio valdymą.",
+          "paragraphs": [
+            "Įsivaizduokite, kad pirmiausia pradedate prekiauti ryte. Kartais norėsite pažiūrėti, kurios akcijos, obligacijos ar valiutos juda labiausiai; Kitais atvejais prieš atlikdami pirkimą iš karto peržiūrėsite savo portfelio riziką arba imituosite pirkimą.",
+            "Kaip išvengti dviejų dalykų maišymo tame pačiame perkrautame ekrane? Viršelis aiškiai atskiria tą kelią nuo pirmosios sekundės:"
+          ],
+          "lead": "Kaip išvengti dviejų dalykų maišymo tame pačiame perkrautame ekrane? Viršelis aiškiai atskiria tą kelią nuo pirmosios sekundės:",
+          "bullets": [
+            {
+              "bold": "Erdvė be trukdžių",
+              "code": "Donde se decodifican los mercados",
+              "text": "Kai įeinate, nėra atidarytų lentelių ar įspėjimų, kurie verčia jus uždaryti langus prieš pradedant; Jūs pasirenkate, kurį modulį atidaryti."
+            },
+            {
+              "bold": "Du aiškūs keliai",
+              "code": "Markets / Portfolio",
+              "text": "Visas programos srautas yra padalintas į du pagrindinius etapus: pirmiausia ištirkite galimybes rinkose, o tada sukurkite arba išbandykite savo portfelį."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Viršutinė juosta, skirta vienu spustelėjimu pereiti tarp namų, rinkų ir jūsų portfelio.",
+          "paragraphs": [
+            "Kai gilinatės į turto detales arba išbandote savo portfelio pakeitimus, labai lengva pamiršti, kur buvote. Kaip pereiti nuo akcijų diagramos peržiūros prie portfelio peržiūros neperžiūrėjus submeniu?",
+            "Viršutinė juosta visada lieka pritvirtinta prie ekrano ir suteikia tiesioginę prieigą prie trijų pagrindinių taškų:"
+          ],
+          "lead": "Viršutinė juosta visada lieka pritvirtinta prie ekrano ir suteikia tiesioginę prieigą prie trijų pagrindinių taškų:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Kad ir kur būtumėte, spustelėję kairėje esantį simbolį iškart grįšite į pagrindinį puslapį."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Tai jūsų tyrimų erdvė. Čia galite filtruoti 213 turimus turtus, sekti tiesiogines citatas, analizuoti technines diagramas ir peržiūrėti balansų suvestines ar naujienas."
+            },
+            {
+              "bold": "Piniginė",
+              "code": "Portfolio",
+              "text": "Tai jūsų sprendimų lentelė. Čia apibrėžiate, kokia procentinė dalis jūsų kapitalo atitenka kiekvienam turtui, išmatuojate, kiek galėtumėte prarasti krizės metu, ir imituojate naujas operacijas prieš rizikuodami pinigais."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Poraštė, skirta patikrinti sistemos būseną, grįžti į šį vadovą arba koreguoti išdėstymą.",
+          "paragraphs": [
+            "Analizuojant duomenis realiuoju laiku, bet kuriuo metu gali kilti operatyvinių klausimų: ar teisingai pateikiamos kainos? Ką reiškė taško indikatorius? Ar galiu sumažinti ekrano ryškumą?",
+            "Poraštė sugrupuoja visus palaikymo ir konfigūravimo įrankius taip, kad jie visada būtų po ranka ir netrukdytų ekrano centrui:"
+          ],
+          "lead": "Poraštė sugrupuoja visus palaikymo ir konfigūravimo įrankius taip, kad jie visada būtų po ranka ir netrukdytų ekrano centrui:",
+          "bullets": [
+            {
+              "bold": "System būsena",
+              "code": "System",
+              "text": "Žalias taškas iš pirmo žvilgsnio patvirtina, kad viskas tvarkoje. Jį atidarę galite detaliai matyti serverių būseną, duomenų bazes ir atsakymo greitį."
+            },
+            {
+              "bold": "Vartotojas Guide",
+              "code": "Guide",
+              "text": "Bet kuriuo metu atidarykite šį interaktyvų vadovą, kad pamatytumėte, kaip naudoti ekraną arba įsigilinkite į jo skaičiavimus."
+            },
+            {
+              "bold": "Vizualinės nuostatos",
+              "code": "Idioma / Palette",
+              "text": "Dešinėje pusėje yra valdikliai, skirti pakeisti visos programos kalbą arba reguliuoti foninį apšvietimą."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Kalbos",
+          "summary": "Paieškos variklis, kuris vietoje išvers visą platformą į jūsų kalbą.",
+          "paragraphs": [
+            "Finansinės sąlygos ir rinkos ataskaitos jau turi savo sudėtingumą, nepadidinant kalbos barjero. Jei norite skaityti paaiškinimus ispanų, anglų ar bet kuria kita kalba, galite jį iš karto pakeisti.",
+            "Štai kaip parinkiklis veikia apatiniame dešiniajame kampe:"
+          ],
+          "lead": "Štai kaip parinkiklis veikia apatiniame dešiniajame kampe:",
+          "bullets": [
+            {
+              "bold": "momentinė paieška",
+              "code": "Select Language",
+              "text": "Spustelėjus esamą vėliavėlę, atidaromas langas, kuriame galite pasirinkti iš 56 kalbų, parašydami jos pavadinimą arba kodą (pavyzdžiui, ES, EN, PT, FR arba DE)."
+            },
+            {
+              "bold": "Automatinė atmintis",
+              "code": "mid_lang_v1",
+              "text": "Visas ekranas išverčiamas akimirksniu, neperkraunant puslapio, o jūsų pasirinkimas išsaugomas kitą kartą, kai įeisite."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Vaizdinės temos, skirtos pritaikyti ekrano kontrastą nekeičiant finansinių spalvų.",
+          "paragraphs": [
+            "Kelių valandų praleidimas prie grafikos, kurios kontrastas nepritaikomas prie aplinkos šviesos, vargina akis. Tačiau keičiant finansinės platformos spalvas kyla klasikinis pavojus: prarasti nuorodą į tai, kas kyla, o kas mažėja.",
+            "Norėdami tai išspręsti, temos parinkiklis atskiria aplinkos spalvą nuo duomenų spalvos:"
+          ],
+          "lead": "Norėdami tai išspręsti, temos parinkiklis atskiria aplinkos spalvą nuo duomenų spalvos:",
+          "bullets": [
+            {
+              "bold": "Penkios skaitymo aplinkos",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Su kiekvienu paspaudimu sukasi tarp grynai juodo, melsvo ar šilto fono, kol atrasi tą, kuris labiausiai patinka tavo akims."
+            },
+            {
+              "bold": "Nepažeista finansinė semantika",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Kad ir kokią temą keistumėte, universali rinkos taisyklė niekada nesikeičia: žalia visada reiškia kilimą arba padidėjimą, o raudona visada reiškia kritimą, praradimą ar įspėjimą apie riziką."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Įsivaizduokite, kad norite nustatyti, kur yra geriausios dienos galimybės tarp daugiau nei dviejų šimtų obligacijų, akcijų, indeksų, valiutų ir žaliavų. Jei atidarytumėte diagramas po vieną, rinka užsidarytų jums nebaigus juos peržiūrėti.",
+            "Screener sujungia visus 213 platformoje esančių objektų į vieną tiesioginį prietaisų skydelį. Tai leidžia per sekundę filtruoti pagal rinką, įvertinti bendrą dienos pulsą ir pasirinkti iš keturių skirtingų būdų, kaip peržiūrėti, kurio turto našumas."
+          ],
+          "intro": "Screener sujungia visus 213 platformoje esančių išteklių į vieną tiesioginį prietaisų skydelį, kad galėtumėte filtruoti pagal rinką ir akimirksniu pastebėti galimybes.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategorijos",
+              "summary": "Geriausi filtrai, skirti sutelkti dėmesį į vieną išteklių klasę arba jūsų stebėjimo sąrašą.",
+              "paragraphs": [
+                "Nėra prasmės analizuoti iždo obligacijas taikant tuos pačius rodiklius kaip technologijų akcijas ar naftą. Kai viską sumaišote tame pačiame sąraše, jūs lyginate kriaušes su obuoliais.",
+                "Kaip susiaurinti ekraną būtent iki rinkos, kuri šiandien jus domina? Viršutinė juosta leidžia atskirti visatą vienu paspaudimu:"
+              ],
+              "lead": "Viršutinė juosta leidžia atskirti visatą vienu paspaudimu:",
+              "bullets": [
+                {
+                  "bold": "Visas vaizdas",
+                  "code": "Todos",
+                  "text": "Jame rodomos 213 priemonių kartu ir suskirstytos pagal prekybos apimtį, kad galėtumėte matyti, kur pasaulyje srautai daugiausiai pinigų."
+                },
+                {
+                  "bold": "Asmeninis sekimas",
+                  "code": "★ Watchlist",
+                  "text": "Išskirkite tik tuos išteklius, kuriuos pažymėjote kaip mėgstamiausius, kad galėtumėte atidžiai stebėti juos neblaškydami."
+                },
+                {
+                  "bold": "Dešimt specializuotų rinkų",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Pasirinkus bet kurią iš šių kategorijų, visas ekranas pritaiko savo rodiklius ir lentelės stulpelius prie to sektoriaus taisyklių."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Išsami informacija apie tai, kaip klasifikuojami kataloge esantys 213 turtai ir kokius apimties bei likvidumo kriterijus jie atitinka."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24h pulsas",
+              "summary": "Keturios geriausios kortos, rodančios, ar rinka rami, euforiška ar patiria stresą.",
+              "paragraphs": [
+                "Prieš perkant ar parduodant konkretų turtą, patartina žinoti, kokiame klimate juda visuma. Ar tai įprasta tūrio diena, ar instituciniai pinigai ateina iš karto? Ar visas turtas net auga, ar yra įtampos požymių?",
+                "Po filtrais esančios keturios kortelės per kelias sekundes pateikia bendrą informaciją:"
+              ],
+              "lead": "Po filtrais esančios keturios kortelės per kelias sekundes pateikia bendrą informaciją:",
+              "bullets": [
+                {
+                  "bold": "Bendra dienos veikla",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Tai sudaro milijardus dolerių, kuriais prekiaujama aktyvioje kategorijoje, ir parodo, ar šiandien dalyvauja daugiau ar mažiau nei vakar."
+                },
+                {
+                  "bold": "Vidutinė grupės jėga",
+                  "code": "AVG RSI 14",
+                  "text": "Jame apibendrinama, ar sektoriaus kainos ateina su pirkimo spaudimu (žalia, virš 50), ar su pardavimo spaudimu (raudona, žemiau 50)."
+                },
+                {
+                  "bold": "Normalus termometras",
+                  "code": "Régimen Normal P-06",
+                  "text": "Jis apskaičiuoja, kiek procentų turto juda pagal įprastus parametrus ir pagal vardą bei pavardę nurodo, kuris instrumentas turi didžiausią dienos anomaliją."
+                },
+                {
+                  "bold": "Neįprastos pinigų įplaukos",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Išsiskiria trijų aktyvų, kurie šiandien eksploatuojami ypač dideliais kiekiais, lyginant su pastarojo mėnesio vidurkiu, podiumas."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Išsamus paaiškinimas, kaip apskaičiuojamas vidutinis RSI, tūris Z-Score ir anomalijų detektorius P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "Lentelė",
+              "summary": "Interaktyvus sąrašas su greita paieška, mėgstamiausiais ir stulpeliais, kurie prisitaiko prie kiekvienos rinkos.",
+              "paragraphs": [
+                "Kai jau žinote, kurį sektorių norite peržiūrėti, ir turite palyginti konkrečius skaičius eilutėje po eilutės, lentelės vaizdas yra jūsų pagrindinis įrankis.",
+                "Vietoj to, kad būtų rodoma griežta skaičiuoklė, kuri yra vienoda visiems, lentelė prisitaiko prie to, ko ieškote:"
+              ],
+              "lead": "Vietoj to, kad būtų rodoma griežta skaičiuoklė, kuri yra vienoda visiems, lentelė prisitaiko prie to, ko ieškote:",
+              "bullets": [
+                {
+                  "bold": "Paieškos variklis ir mėgstamiausia žvaigždė",
+                  "code": "Buscar activo / ★",
+                  "text": "Pirmojo stulpelio antraštėje galite įvesti bet kurį simbolį ar pavadinimą, kad patektumėte tiesiai į tą išteklį, arba palieskite žvaigždutę kairėje, kad išsaugotumėte jį savo Watchlist."
+                },
+                {
+                  "bold": "Išmanieji stulpeliai pagal kategoriją",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Jei filtruojate Akcijas, atsiranda vertinimo kartotiniai ir maržos; Jei pasirenkate Obligacijos arba Palūkanos, matote kreivės nuolydį ir jautrumą palūkanų normoms; Jei žiūrite į išvestines priemones, matote numanomą nepastovumą."
+                },
+                {
+                  "bold": "Pereikite tiesiai į gilią analizę",
+                  "code": "Click en cualquier fila",
+                  "text": "Tiesiog spustelėkite bet kurį išteklius sąraše, kad atidarytumėte visą techninių diagramų ir pagrindinių ataskaitų stotį."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Konkrečios metrikos, kuri rodoma lentelėje kiekvienai iš 10 išteklių kategorijų, sąrašas."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Vaizdinis radaras, leidžiantis iš pirmo žvilgsnio aptikti, kurie ištekliai tolsta nuo istorinio vidurkio.",
+              "paragraphs": [
+                "Perskaitę du šimtus skaičių eilučių, galite praleisti turtą, kuris pradeda sprogti. Kaip iš karto nustatyti, kuris instrumentas nukrypsta nuo normos?",
+                "Orbital vaizdas paverčia stalą radaru su trimis koncentriniais žiedais:"
+              ],
+              "lead": "Orbital vaizdas paverčia stalą radaru su trimis koncentriniais žiedais:",
+              "bullets": [
+                {
+                  "bold": "Kriterijų pasirinkimas",
+                  "code": "INDICADOR",
+                  "text": "Jūs nusprendžiate, ką radaras matuoja: statistines anomalijas, apimties šuolius, kainos stiprumą (RSI), nepastovumą ar padidėjimą per pastarąsias 24 valandas."
+                },
+                {
+                  "bold": "Skaitymas pagal atstumą ir spalvą",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Kuo taškas yra arčiau ar toliau pagal rodiklį ir kuo intensyvesnė jo žalia ar raudona spalva, tuo jo judėjimas aktualesnis lyginant su jo paties istorija."
+                },
+                {
+                  "bold": "Patikra nekeičiant ekrano",
+                  "code": "Panel lateral en vivo",
+                  "text": "Palaikius žymeklį ant bet kurio radaro mazgo, dešinėje rodoma jo kaina, švari dienos diagrama ir trys rizikos metrikos."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kaip apskaičiuojama kiekvieno turto padėtis radaro žieduose pagal jo istorinį nuokrypį."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Šilumos žemėlapis",
+              "summary": "Proporcingų blokų mozaika, skirta per sekundę nustatyti nugalėtojus ir pralaimėjusius.",
+              "paragraphs": [
+                "Būna atvejų, kai norisi atsakyti į greitą klausimą: kas šiandien veda augimą, o kas tempia rinką žemyn?",
+                "Šilumos žemėlapis suskirsto dešimt geriausių aktyvaus filtro išteklių į proporcingus blokus, kad jums nereikėtų skaityti vienos lentelės:"
+              ],
+              "lead": "Šilumos žemėlapis suskirsto dešimt geriausių aktyvaus filtro išteklių į proporcingus blokus:",
+              "bullets": [
+                {
+                  "bold": "Dydis pagal svarbą",
+                  "code": "Puestos #1 a #10",
+                  "text": "Didžiausią svorį pasirinktoje metrikoje turintys instrumentai užima kairėje esančius stulpelius su didžiausiais langeliais."
+                },
+                {
+                  "bold": "Spalvos intensyvumas",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Bloko tonas iš karto parodo judesio mastą – nuo vidutinio sunkumo svyravimų iki staigių pakilimų ar kritimų."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Trijų žingsnių spartusis klavišas į išplėstinius kursų, opcionų, Forex ir ateities sandorių skaičiuotuvus.",
+              "paragraphs": [
+                "Be tradicinių kainų diagramų, platformoje yra keturi specialūs varikliai, skirti fiksuotoms pajamoms, opcionams, valiutos keitimui ir prekių kreivėms. Kaip juos pasiekti neieškodami pagal išteklių?",
+                "Šis vaizdas nukreipia jus iš kairės į dešinę trimis labai paprastais stulpeliais:"
+              ],
+              "lead": "Šis vaizdas nukreipia jus iš kairės į dešinę trimis labai paprastais stulpeliais:",
+              "bullets": [
+                {
+                  "bold": "Pirmiausia pasirenkate šeimą",
+                  "code": "1. Clases de Activo",
+                  "text": "Jūs pasirenkate, ar norite dirbti su palūkanų normomis ir obligacijomis, su opcionais dėl akcijų / indeksų / kriptovaliutų, su valiutomis ar su žaliavomis."
+                },
+                {
+                  "bold": "Tada patikrinkite, ką veikia variklis",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Centre skaitote aiškią santrauką, ką tas įrankis rodo ir kaip orientuotis pagal jo ašis."
+                },
+                {
+                  "bold": "Galiausiai pasirinkite aktyvųjį ir atidarykite",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Žiūrite tiesioginę diagramos peržiūrą, ieškote bet kokio suderinamo tos šeimos turto ir vienu spustelėjimu atidarote visą stotį."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Radę įdomų Screener turtą, laikas pažvelgti atidžiau. Ar ji kyla, ar jau nebegalima? Ar įveikiate savo konkurentus? Ką sako apimtis ir išvestinių finansinių priemonių rinka?",
+            "Analytics stotis sutelkia visą techninę, lyginamąją ir kiekybinę šio turto analizę viename ekrane. Viršuje yra bendra santrauka, o kairėje – keturi objektyvai, skirti pakeisti analizės kampą, nepamirštant grafiko."
+          ],
+          "intro": "Analytics stotis sukoncentruoja techninę, lyginamąją, srautų analizę ir atskiro turto 3D/2D variklius viename ekrane.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Viršutinė prietaisų skydelis, skirtas perjungti išteklius, pasirinkti laikotarpį ir peržiūrėti penkias pagrindines metrikas.",
+              "paragraphs": [
+                "Studijuodami turtą dažniausiai keičiate šiandienos trumpą laiką ir pastarųjų kelių mėnesių filmą arba netgi žiūrite į kitą panašų simbolį. Kaip visa tai padaryti negrįžtant atgal?",
+                "Viršutinėje antraštėje yra naršymo valdikliai ir prietaiso greitasis skirtukas:"
+              ],
+              "lead": "Viršutinėje antraštėje yra naršymo valdikliai ir prietaiso greitasis skirtukas:",
+              "bullets": [
+                {
+                  "bold": "Turto pakeitimas arba grįžimas į sąrašą",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Viršuje kairėje galite grįžti į Screener arba įvesti bet kurio kito instrumento pavadinimą, kad vietoje pakeistumėte diagramas."
+                },
+                {
+                  "bold": "Devyni laiko langai",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Dešinėje paraštėje keičiate diagramos skalę nuo judesių kas minutę iki visos istorijos."
+                },
+                {
+                  "bold": "Penki pagrindiniai rodikliai",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Šalia kainos visada matote prekybos apimtį, du pagrindinius jos kategorijos duomenis, tendencijos stiprumą ir statistinio normalumo lygį."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Techninė",
+              "summary": "Kainų diagrama su slankiaisiais vidurkiais, nepastovumo juostomis ir apimtimi, kad būtų galima sekti tendencijas.",
+              "paragraphs": [
+                "Žvelgiant tik į paskutinę kainą, negalima pasakyti, ar turtas įsibėgėja, ar jis atšoka nuo vidurkio, ar per kelias dienas jau per greitai pakilo.",
+                "Pirmasis objektyvas ant kairiojo bėgio leidžia grafike perdengti dažniausiai naudojamas technines nuorodas rinkoje:"
+              ],
+              "lead": "Pirmasis objektyvas ant kairiojo bėgio leidžia perdengti dažniausiai naudojamas technines nuorodas:",
+              "bullets": [
+                {
+                  "bold": "Adresas ir faktinė vidutinė kaina",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Galite įjungti 20 laikotarpių slenkamąjį vidurkį ir pagal apimtis svertinę vidutinę kainą, kad iš karto pamatytumėte, ar turtu prekiaujama aukščiau ar žemiau jo pusiausvyros lygio."
+                },
+                {
+                  "bold": "Perteklinių zonų ir tūrio patvirtinimas",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Juostos nubrėžia statistines kainos lubas ir grindis, o apatinės juostos patvirtina, ar judėjimą palaiko apimtis."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Slenkančio vidurkio (SMA 20), Bollingerio juostų ir VWAP formulės ir interpretavimo kriterijai."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Palyginti %",
+              "summary": "Procentų lyginamoji priemonė nuo 0 proc., skirta įvertinti, ar jūsų išteklius yra našesnis, ar mažesnis nei kito tos pačios kategorijos išteklius.",
+              "paragraphs": [
+                "Atrodo, kad akcijos pabrangsta 5 proc., atrodo puiki naujiena, tačiau jei jos etalonas arba pagrindinis konkurentas per tą patį laikotarpį pabrangsta 12 proc., jūs iš tikrųjų atsiliekate.",
+                "Antrasis objektyvas išsprendžia šią abejonę, sudėdamas du turtus ant tos pačios pradžios linijos:"
+              ],
+              "lead": "Antrasis objektyvas išsprendžia šią abejonę, sudėdamas du turtus ant tos pačios pradžios linijos:",
+              "bullets": [
+                {
+                  "bold": "Ieškokite nuoseklių porų",
+                  "code": "Buscar par compatible",
+                  "text": "Paieškos variklis automatiškai išfiltruoja turtą iš tos pačios šeimos (pvz., akcijas ir akcijas, ETF ar indeksus), todėl palyginimas yra finansiškai prasmingas."
+                },
+                {
+                  "bold": "Grynasis pranašumas procentais",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Abi kreivės prasideda nuo 0 %, o kairysis bėgis apskaičiuoja, kiek procentinių taškų pranašumo (žalia spalva) arba trūkumo (raudona spalva) turi jūsų turtas."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Mikro ir srautas",
+              "summary": "Institucinių neįprastų pirkimų, likvidumo ir kainų skirtumo aptikimas.",
+              "paragraphs": [
+                "Daug kartų didelės lėšos kaupia arba iškrauna pozicijas, kol kaina staiga nepajudina. Kaip aptikti tą paslėptą pėdsaką pavedimų knygos apimtyje ir likvidumui?",
+                "Trečiasis objektyvas sutelkia dėmesį į tai, kas vyksta po citata:"
+              ],
+              "lead": "Trečiasis objektyvas sutelkia dėmesį į tai, kas vyksta po citata:",
+              "bullets": [
+                {
+                  "bold": "Statistinės apimties smailės",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Pakeičia apatinį skydelį, kad būtų parodyta, kiek kartų dabartinis tūris nukrypsta nuo įprasto, atskleidžiant neįprastą institucijos veiklą."
+                },
+                {
+                  "bold": "Likvidumo įtampa ir anomalijos",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Jis matuoja baziniais taškais, ar atotrūkis tarp pirkėjų ir pardavėjų didėja ir ar statistinis variklis aptinka netipišką elgesį."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kaip matuojami užsakymų srauto pradžios skirtumai ir statistiniai šuoliai."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D varikliai",
+              "summary": "Ketvirtasis objektyvas, kuriame naudojamas dinaminis specialus įrankis, kuris skiriasi priklausomai nuo turto klasės.",
+              "paragraphs": [
+                "Skirtingai nuo pirmųjų trijų objektyvų (kurie yra bendri visiems instrumentams), ketvirtasis objektyvas ant kairiojo bėgio yra specialus įrankis, kuris dinamiškai keičiasi priklausomai nuo analizuojamo ištekliaus: pavyzdžiui, tiesioginio turo metu, kadangi tai yra akcija (NVDA), jis įgalina 3D implicit Volatility ir Options modulį, o kitose specialiose rinkose jį naudoja.",
+                "Ketvirtasis mygtukas aptinka atvirą turto klasę ir automatiškai suaktyvina atitinkamą specialų įrankį:"
+              ],
+              "lead": "Ketvirtasis mygtukas aptinka, kurį išteklį atidarėte, ir suaktyvina jį atitinkantį specialų įrankį:",
+              "bullets": [
+                {
+                  "bold": "Akcijose, indeksuose, išvestinėse finansinėse priemonėse ir kriptovaliutuose",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Parodykite 3D numanomo nepastovumo paviršių, parinkčių šypseną pasibaigus galiojimo laikui ir 6 strategijų simuliatorių, kad pamatytumėte, kiek uždirbtumėte ar prarastumėte šiandien ir pasibaigus galiojimo laikui."
+                },
+                {
+                  "bold": "Kainos, obligacijos ir likvidumas",
+                  "code": "Curva 3D/2D",
+                  "text": "Tai leidžia palyginti 42 šalių pajamingumo kreives su JAV ir Vokietija, matuojant, ar kreivė yra normali, ar atvirkštinė (2s10s) ir kiek kaina kinta priklausomai nuo kurso pokyčių (DV01)."
+                },
+                {
+                  "bold": "Valiutomis",
+                  "code": "FX & Carry",
+                  "text": "Jame yra 61 valiutos keitiklis ir trikampis, kuris taip pat apskaičiuoja 10 metų palūkanų normos skirtumą šios poros išlaikymo naudai arba prieš ją."
+                },
+                {
+                  "bold": "Žaliavose",
+                  "code": "Forward 3D/2D",
+                  "text": "Mėnesį po mėnesio pateikia ateities sandorių kainų diagramas, kad parodytų, ar rinka moka daugiau už išankstinius sandorius (Contango), ar už greitą pristatymą (atgalinis pristatymas), kartu su fizinių atsargų būsena."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Matematinės detalės apie nepastovumo paviršius, valstybių pajamingumo kreives, valiutos perkėlimo ir ateities sandorių kreives."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Diagrama rodo, ką daro kaina, bet nepasakoma, kodėl. Norėdami sužinoti, kas slypi už judėjimo, turėtumėte perskaityti dešimtis puslapių ketvirčio balansų, centrinio banko ataskaitas, inventoriaus ataskaitas ir naujienų laidus.",
+            "Research stotis atlieka tą sunkų kėlimą už jus. Jis sujungia dokumentinį dirbtinį intelektą, patikrintą pagal oficialius pranešimus, su naujienų skaitymu realiuoju laiku, suskirstydamas visus įrodymus už ir prieš tris aiškias stulpelius."
+          ],
+          "intro": "Stotis Research apibendrina oficialius balansus, makroekonomines ataskaitas ir realaus laiko naujienas trijose aiškiose skiltyse.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Pastaba ir laikysena",
+              "summary": "Trys geriausios kortelės, apibendrinančios esminį naujienų verdiktą ir humorą.",
+              "paragraphs": [
+                "Ar turto pagrindai lydi brangstant, ar naujienos blogina perspektyvą? Prieš skaitant detales, reikia greitos vykdomosios išvados.",
+                "Viršutiniame dešiniajame kampe yra trys rodikliai, kurie apibendrina bendrą turto būseną:"
+              ],
+              "lead": "Viršutiniame dešiniajame kampe yra trys rodikliai, kurie apibendrina bendrą būseną:",
+              "bullets": [
+                {
+                  "bold": "Kiekvieno šaltinio laikysena ir svoris",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Jame apibrėžiamas bendras verdiktas ir paaiškinama, kokią svarbą jis suteikia oficialiems dokumentams, palyginti su naujienomis, priklausomai nuo turto rūšies (pavyzdžiui, 80 % balansų ir 20 % naujienų akcijose)."
+                },
+                {
+                  "bold": "Kombinuotas įvertinimas",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Jis sujungia į vieną balą grynąjį pagrindų rezultatą ir dienos informacijos srautą."
+                },
+                {
+                  "bold": "Termometro laikikliai",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Padėkite ant juostos nuo -100 iki +100, jei pastarųjų valandų spaudos tonas yra pesimistinis (raudonas), neutralus arba entuziastingas (žalias)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kaip oficialios ataskaitos vertinamos atsižvelgiant į naujienas, atsižvelgiant į turto tipą."
+            },
+            {
+              "id": "res-rag",
+              "label": "Pokalbis RAG",
+              "summary": "Kairysis dokumentinio filmo padėjėjas užduoti konkrečius klausimus apie balansus ir oficialias ataskaitas.",
+              "paragraphs": [
+                "Tarkime, kad norite sužinoti, ką tiksliai bendrovė pasakė apie savo maržas savo naujausiame metiniame balanse 10-K arba ką Federalinis rezervas pasakė savo paskutinėmis minutėmis. Jo paieška ranka užtrunka; Užklausus bendro pokalbio be šaltinių, galite gauti išgalvotų duomenų.",
+                "Kairiajame stulpelyje tai išsprendžiama vedliu, prijungtu tik prie patikrintų oficialių dokumentų:"
+              ],
+              "lead": "Kairiajame stulpelyje pateikiamas vedlys, prijungtas prie oficialių patvirtintų dokumentų:",
+              "bullets": [
+                {
+                  "bold": "Pradinis baigiamasis darbas ir klausimai su vadovu",
+                  "code": "Chat Documental RAG",
+                  "text": "Jis prasideda santrauka su patikrintomis citatomis ir keturiais greitosios nuorodos mygtukais, pritaikytais turto kategorijai, taip pat lauku, kuriame galite rašyti savo klausimus."
+                },
+                {
+                  "bold": "Tiesioginis žingsnis į savo portfelį",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Jei ištyrę pagrindus nuspręsite, kad turtas to vertas, šis pokalbio viršuje esantis mygtukas nukreipia jus tiesiai į portfelio simuliatorių."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Patikrintos dokumentų paieškos (RAG) ir jos saugos filtrų veikimas."
+            },
+            {
+              "id": "res-factors",
+              "label": "Veiksniai",
+              "summary": "Centrinis akordeonas su penkiais „bulish“ varikliais ir penkiais „meškos“ keliais rizikuoja pagal smūgį.",
+              "paragraphs": [
+                "Jokia investicija nėra šimtu procentų tobula arba šimtu procentų bloga: visada yra argumentų už ir paslėpta rizika. Paslaptis yra žinoti, kurie iš jų šiandien sveria daugiau.",
+                "Centrinis stulpelis nukreipia abi puses viena į kitą, kad galėtumėte priimti subalansuotą sprendimą:"
+              ],
+              "lead": "Centrinis stulpelis nukreipia abi puses viena į kitą, kad galėtumėte priimti subalansuotą sprendimą:",
+              "bullets": [
+                {
+                  "bold": "Jėgos balansas ir filtrai",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Viršuje matote kainų siūlymo juostą tarp pirkėjų ir pardavėjų, o apačioje galite filtruoti penkis teigiamus katalizatorius (žalia spalva) arba penkias pagrindines rizikas (raudona spalva)."
+                },
+                {
+                  "bold": "Išsami informacija ir gilinimasis vienu paspaudimu",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Kai paliečiate bet kurį sąrašo veiksnį, rodomas visas jo paaiškinimas kartu su mygtuku, leidžiančiu paprašyti Chat RAG daugiau informacijos apie tą konkretų tašką."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT impulsas",
+              "summary": "Tinkama laiko juosta su naujausiomis AI įvertintomis antraštėmis ir 24 valandų nuotaikos kreive.",
+              "paragraphs": [
+                "Viena paskutinė paskutinės minutės antraštė apie uždarbį, infliaciją ar taisykles gali visiškai pakeisti dienos nuotaiką. Kaip žinoti, kokios naujienos ką tik pasirodė ir kokį poveikį jos daro?",
+                "Dešinysis stulpelis stebi informacijos srautą minutė po minutės:"
+              ],
+              "lead": "Dešinysis stulpelis stebi informacijos srautą minutė po minutės:",
+              "bullets": [
+                {
+                  "bold": "Kvalifikuota laiko juosta",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Išvardija penkias naujausias antraštes, nurodydamas laiką ir veiksmą, pažymėdamas žaliai, jei jos yra palankios, arba raudonai, jei kelia grėsmę."
+                },
+                {
+                  "bold": "Poveikio ir dienos kreivės simuliatorius",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Viršutiniu mygtuku galite įjungti laidą, kad pamatytumėte, kaip jis perskaičiuoja visą ekraną, ir toliau pateiktoje diagramoje stebėkite, kaip nuotaika keitėsi per pastarąsias 24 valandas."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kaip FinBERT modelis analizuoja kiekvieno turėtojo finansinę kalbą."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Statybininkas",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Norint turėti gerą portfelį, neužtenka atskirai pasirinkti gero turto. Jei per daug kapitalo įdedate į turtą, kuris juda vienodai, arba jei neįvertinate, kaip jie būtų buvę kartu praeityje, investuojate aklai.",
+            "Constructor & Performance (pirmasis Portfolio vaizdas) yra seminaras, kuriame kuriate savo portfelį. Tai leidžia jums pridėti bet kurį iš 213 išteklių, koreguoti, kiek procentų priskiriate kiekvienam iš jų, netaikant netikslių kontrolės priemonių, ir akimirksniu patikrinti jo vidinę sudėtį ir istoriją."
+          ],
+          "intro": "Constructor & Performance – tai seminaras, kuriame kuriate savo portfelį, koreguojate kiekvieno turto svorį ir patikrinate jo istorinį našumą.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Santrauka",
+              "summary": "Šešios geriausios kortelės, kurios perskaičiuojamos kiekvieną kartą, kai keičiate savo portfelį.",
+              "paragraphs": [
+                "Kiekvieną kartą, kai pridedate turtą arba keičiate procentinę dalį savo portfelyje, turite nedelsdami žinoti, ar šis koregavimas pagerino jūsų laukiamą grąžą, ar pablogino jūsų neigiamą poveikį.",
+                "Viršutinėje eilutėje visada matomos šešios pagrindinės portfelio metrikos:"
+              ],
+              "lead": "Viršutinėje eilutėje visada matomos šešios pagrindinės portfelio metrikos:",
+              "bullets": [
+                {
+                  "bold": "Našumas ir efektyvumas",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Jie nurodo, kokį sudėtinį metinį pelną portfelis numato jūsų kapitalui ir kokią grąžą gaunate už kiekvieną prisiimtos rizikos vienetą."
+                },
+                {
+                  "bold": "Numatomas kasdienis nuostolis ir istorinis kritimas",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Jie apskaičiuoja, kiek dolerių galite prarasti blogą dieną per tai, ką statistiškai buvo galima numatyti, ir kas buvo didžiausia nesėkmė per pastaruosius metus."
+                },
+                {
+                  "bold": "Pridėtinė vertė ir diversifikacija",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Jie matuoja, kiek taškų jūsų portfelis viršija lyginamąjį indeksą ir kiek sumažinate riziką derindami skirtingus aktyvus."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sudėtinės grąžos formulės (CAGR), Sharpe ir Sortino santykiai ir rizikos vertė (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Svoris",
+              "summary": "Kairioji lentelė, skirta pridėti išteklių, juos įjungti arba išjungti ir apibrėžti tikslią kiekvienos pozicijos procentinę dalį.",
+              "paragraphs": [
+                "Kas atsitiktų su jūsų portfelio skaičiais, jei šiandien laikinai uždarytumėte technologijų akcijas arba padalintumėte pinigus po lygiai visoms savo pozicijoms?",
+                "Kairiajame skydelyje galite atlikti visus šiuos bandymus švariai ir tiesiogiai:"
+              ],
+              "lead": "Kairiajame skydelyje galite atlikti visus šiuos bandymus švariai ir tiesiogiai:",
+              "bullets": [
+                {
+                  "bold": "213 išteklių paieškos variklis",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Galite ieškoti bet kurio platformoje esančio instrumento arba filtruoti mėgstamiausius, kad pridėtumėte jį prie lentelės vienu paspaudimu."
+                },
+                {
+                  "bold": "Greitas paleidimas ir tikslus redagavimas",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Kiekvienoje eilutėje yra žymimasis laukelis, skirtas įtraukti arba neįtraukti išteklių realiuoju laiku, ir skaičių laukelis, skirtas įvesti tikslią procentinę dalį, nenaudojant netikslių slankiklių."
+                },
+                {
+                  "bold": "Trys perbalansavimo spartieji klavišai",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Lentelės viršuje yra mygtukai, leidžiantys paskirstyti vienodą svorį tarp visų aktyvių išteklių, automatiškai padidinti sumą iki 100% arba grįžti į pradinį portfelį."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "Rentgenas",
+              "summary": "Viršutiniame dešiniajame skydelyje su penkiais skirtukais rasite paslėptas koncentracijas, pinigų srautus ir globą.",
+              "paragraphs": [
+                "Viena iš labiausiai paplitusių klaidų investuojant yra manyti, kad esate diversifikuotas, nes turite penkis skirtingus aktyvus, kai iš tikrųjų įsigijote atskiras akcijas ir du ETF, kuriuose yra tos pačios akcijos.",
+                "Rentgeno skydelis analizuoja jūsų portfelį iš vidaus per penkis skirtukus:"
+              ],
+              "lead": "Rentgeno skydelis analizuoja jūsų portfelį iš vidaus per penkis skirtukus:",
+              "bullets": [
+                {
+                  "bold": "Pakartotinės padėties detektorius",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Sudėkite tai, ką investavote tiesiogiai į kiekvieną įmonę, ir paslėptą dalį, kurią turite indeksuose arba ETF (pvz., SPY arba QQQ), įspėdami raudonai, jei viršysite protingas ribas."
+                },
+                {
+                  "bold": "Ekspozicijos žemėlapis ir grįžimo kilmė",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Jie parodo, kiek procentų iš tikrųjų turite kiekvienoje turto rūšyje ir valiuta, ir kiek jūsų pelno gavote pasirinkus gerus sektorius, palyginti su gero turto pasirinkimu."
+                },
+                {
+                  "bold": "Prognozuojamos metinės pajamos ir saugumas",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Jie apskaičiuoja, kiek dolerių per metus ketinate surinkti dividendams, kuponams ir palūkanoms, ir tikrina saugotojų, kuriuose yra jūsų kapitalas, mokumą."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kaip apskaičiuojama netiesioginė pozicija pagal ETF ir Brinsono priskyrimo suskirstymą."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Kalendorius",
+              "summary": "Mėnesio diagrama nuo sausio iki gruodžio, kad pamatytumėte savo pelno ir nuostolių reguliarumą.",
+              "paragraphs": [
+                "Gera metinė grąža gali slėpti kelis mėnesius labai staigių kritimų, kuriuos praktiškai sunku toleruoti. Ar kas mėnesį nuoseklus yra portfelis, kurį ką tik sudarėte?",
+                "Tiesiog po rentgeno spinduliu kalendorius suskaido mėnesio istoriją:"
+              ],
+              "lead": "Tiesiog po rentgeno spinduliu kalendorius suskaido mėnesio istoriją:",
+              "bullets": [
+                {
+                  "bold": "Žalieji mėnesiai ir raudoni mėnesiai",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Kiekvienas langelis akimirksniu perskaičiuojamas pagal jūsų lentelės svorius ir yra nudažytas žalia arba raudona spalva, atsižvelgiant į to mėnesio rezultatą, o dešinėje uždaromas sukauptu metų rezultatu."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Žemiau pateikiama viso ekrano diagrama, kad palygintumėte savo portfelį su keturiomis klasikinėmis strategijomis.",
+              "paragraphs": [
+                "Prieš vertinant savo portfelį geru, išlieka esminis išbandymas: ar tai tikrai geriau nei palikti pinigus S&P 500 ar tradiciniame 60/40 portfelyje?",
+                "Apatinis skydelis užima visą ekrano plotį, kad jūsų dizainas atitiktų rinkos standartus:"
+              ],
+              "lead": "Apatinis skydelis jūsų dizainą atitinka rinkos standartus:",
+              "bullets": [
+                {
+                  "bold": "Penki bandymų horizontai",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Tai leidžia įvertinti jūsų mišinio našumą tiek pastaraisiais ketvirčiais, tiek per visus kelių metų ciklus."
+                },
+                {
+                  "bold": "Keturios nuorodos akis į akį",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Uždenkite savo aktyvaus portfelio žalią kreivę su bet kuriuo iš keturių klasikinių modelių, kad galėtumėte aiškiai matyti, kada jis yra priekyje ir kaip jis išlieka neigiamas."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Rizika",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Tais laikais, kai rinka kyla ramiai, beveik bet koks portfelis atrodo saugus. Tikroji problema iškyla, kai prasideda krizė, staiga kyla palūkanų normos, o turtas, kuris atrodė nepriklausomas, pradeda kristi tuo pačiu metu.",
+            "Kiekybinė rizika ir stresas (antrasis Portfolio vaizdas) iškelia jūsų portfelį ekstremaliems išbandymams, kol jie neįvyksta realiame gyvenime. Per keturis simetriškus kvadrantus ir toliau pateiktą ateities scenarijų simuliatorių jis tiksliai parodo, kur yra jūsų pažeidžiami taškai."
+          ],
+          "intro": "Kiekybinė rizika ir stresas patikrina jūsų portfelį dėl istorinių krizių, koreliacijos užkrėtimo ir Monte Carlo prognozių.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Interaktyvus rizikos ir grąžos žemėlapis, kad pamatytumėte, kaip arti esate prie efektyviausio portfelio.",
+              "paragraphs": [
+                "Turėdami tą patį turtą, kurį jau turite savo portfelyje, yra tūkstančiai būdų paskirstyti procentus. Ar jūsų pasirinktas derinys yra toks, kuris geriausiai apmoka jūsų prisiimtą riziką, ar galėtumėte laimėti tą patį su mažiau netikėtumų?",
+                "Pirmas kvadrantas viršuje kairėje nubrėžia tą tiesioginį galimybių žemėlapį:"
+              ],
+              "lead": "Pirmas kvadrantas viršuje kairėje nubrėžia tą tiesioginį galimybių žemėlapį:",
+              "bullets": [
+                {
+                  "bold": "Jūsų pozicija prieš optimalius portfelius",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Tai rodo, kur yra jūsų dabartinis portfelis, atsižvelgiant į mažiausio įmanomo nepastovumo ir didžiausio rizikos ir grąžos efektyvumo tašką."
+                },
+                {
+                  "bold": "Vizualiniai sluoksniai ir patikrinimas pagal turtą",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Galite įjungti arba išjungti modelio sluoksnius ir spustelėti bet kurį mazgą, kad perskaitytumėte tikslų to turto indėlį žemiau."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Efektyvi Markowitz riba ir minimalios dispersijos bei maksimalaus Sharpe portfelių apskaičiavimas."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornadas ir VaR",
+              "summary": "Istorinės krizės simuliatorius, kasdienis nuostolių suskirstymas pagal turtą ir rinkos asimetrija.",
+              "paragraphs": [
+                "Jei rytoj pasikartotų tokia katastrofa kaip 2008 m., ekonomikos sulėtėjimas 2020 m. arba palūkanų kėlimas 2022 m., kiek prarastų jūsų dabartinis portfelis ir koks turtas būtų pagrindinis kaltininkas?",
+                "Apatinis kairysis kvadrantas atsako į šiuos tris klausimus trijuose konkrečiuose skirtukuose:"
+              ],
+              "lead": "Apatinis kairysis kvadrantas atsako į šiuos klausimus trijuose konkrečiuose skirtukuose:",
+              "bullets": [
+                {
+                  "bold": "Išbandykite penkias tikras krizes",
+                  "code": "1. Tornado Stress",
+                  "text": "Palyginkite juosta po takto, kiek jūsų portfelis nukristų prieš S&P 500 penkių pagrindinių istorinių sukrėtimų akivaizdoje."
+                },
+                {
+                  "bold": "Rizikos reitingas pagal pozicijas",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Rūšiuokite savo turimas atsargas pagal tai, kiek USD galimo kasdieninio nuostolio kiekvienas iš jų prisideda prie viso portfelio."
+                },
+                {
+                  "bold": "Elgesys pakilimų ir nuosmukių metu",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Tai parodo, kiek procentų rinkos pažangių ratų išnaudoja kiekvienas turtas ir kiek jis sugeba sušvelninti rinkai krentant."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Istorinių streso scenarijų metodika, ribinis indėlis į VaR ir fiksavimo koeficientai."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Koreliacija",
+              "summary": "Kryžminė matrica, skirta patikrinti, ar jūsų turtas tikrai įvairėja, ar jie yra užkrėsti panikos metu.",
+              "paragraphs": [
+                "Turint kelis aktyvus savo portfelyje, rizika sumažėja tik tuo atveju, jei jie ne visi juda ta pačia kryptimi vienu metu. Tačiau finansinės panikos laikais daugelis koreliacijų, kurios atrodė žemos, smarkiai šokteli aukštyn.",
+                "Viršutiniame dešiniajame kvadrante galite patikrinti ryšį dviem scenarijais:"
+              ],
+              "lead": "Viršutiniame dešiniajame kvadrante galite patikrinti ryšį dviem scenarijais:",
+              "bullets": [
+                {
+                  "bold": "Perėjimas tarp turto ir jautrumo",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Tai parodo, kaip panašiai juda kiekviena turto pora (žalia arba šviesiai mėlyna, kai gerai diversifikuojasi, ir raudona, kai juda per arti vienas kito) ir koks jų jautrumas rinkai."
+                },
+                {
+                  "bold": "Užkrato simuliatorius krizės metu",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Vienu spustelėjimu pakeisite įprastų metų koreliacijas į panikos momento koreliacijas, kad sužinotumėte, kurios pozicijos jūsų nebeapsaugos."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pirsono koreliacijos koeficientų skaičiavimas normaliomis sąlygomis ir esant rinkos įtampai."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash ir Markovas",
+              "summary": "Bendra palūkanų normų ir akcijų rinkos poveikio lentelė, pridėjus ekonomikos ciklo pasikeitimo tikimybes.",
+              "paragraphs": [
+                "Realioje ekonomikoje problemos retai kyla po vieną: palūkanų normų kilimas dažnai sutampa su akcijų kritimu. Kas atsitiks jūsų portfeliui, jei abu veiksniai derinami vienu metu?",
+                "Apatinis dešinysis kvadrantas kerta abu kintamuosius ir matuoja režimo pasikeitimo tikimybę:"
+              ],
+              "lead": "Apatinis dešinysis kvadrantas kerta abu kintamuosius ir matuoja rinkos ciklą:",
+              "bullets": [
+                {
+                  "bold": "Dviguba smūginė lenta",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Kryžminiai palūkanų normos pokyčiai (nuo -100 iki +200 bazinių punktų) su S&P 500 kritimu arba kilimu (nuo -20% iki +10%), leidžiantys filtruoti pagal visą portfelį arba atskirą turtą."
+                },
+                {
+                  "bold": "Ciklo perėjimo tikimybės",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Apskaičiuokite, kokia yra tikimybė, kad rinka išliks rami arba pateks į nepastovią, infliacijos ar krizės fazę."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sąnario jautrumas rodikliams ir kintamiesiems bei Markovo būsenos perėjimo matrica."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Apatiniame skydelyje rodomas visas ekranas su ateities tikimybinėmis prognozėmis ir istoriniais nuosmukiais.",
+              "paragraphs": [
+                "Pažvelgti į praeitį yra naudinga, tačiau investuojant į priekį reikia žinoti, kokiuose rezultatų diapazone jūsų kapitalas gali judėti per ateinančius šešis mėnesius, metus ar dvejus metus.",
+                "Viso pločio apatiniame skydelyje yra trys laikini įrankiai, skirti projektuoti ir valdyti tą kelią:"
+              ],
+              "lead": "Apatiniame skydelyje yra trys laikini įrankiai, skirti projektuoti tą kelią:",
+              "bullets": [
+                {
+                  "bold": "Dešimt tūkstančių ateities scenarijų",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Nubrėžkite galimos portfelio raidos kūgį, atskirdami optimistinį scenarijų (P95 žaliai), numatomą centrinį kelią (P50) ir nepalankų scenarijų (P05 raudonai)."
+                },
+                {
+                  "bold": "Kritimų gylis ir stabilumas laikui bėgant",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Jie leidžia perjungti diagramą, kad pamatytumėte, kiek laiko portfelis išliko žemiau visų laikų aukštumų arba koks stabilus buvo jo efektyvumas ir rizika slenkant 60 dienų laikotarpiui."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo stochastinis 10 000 kelių modeliavimas ir 60 dienų riedėjimo metrika."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simuliatorius",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Prieš perkant naują turtą, sumažinant poziciją ar mokant už apsidraudimą opcionais, visada iškyla tas pats klausimas: ar ši operacija tikrai pagerina mano portfelį, ar tai prideda nereikalingos rizikos? Ir kiek kapitalo turėčiau į jį įdėti?",
+            "Ad-Hoc strategijos laboratorija (trečiasis Portfolio vaizdas) yra jūsų treniruoklis prieš operaciją. Tai leidžia jums įkelti taktinius žaidimus, apskaičiuoti idealų pozicijos dydį, išbandyti neigiamą draudimą ir pamatyti tikslų poveikį prieš ir po jo, dar nepaliečiant pagrindinio portfelio."
+          ],
+          "intro": "Ad-hoc strategijos laboratorija yra jūsų priešprekybinis simuliatorius, skirtas išbandyti pavedimus, dydžio pozicijas ir matuoti aprėptį.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Poveikis",
+              "summary": "Šešios geriausios kortos, kurios lygina jūsų dabartinį portfelį su rezultatu po imituojamų žaidimų.",
+              "paragraphs": [
+                "Norint sužinoti, ar taktinė idėja to verta, neužtenka, kad turtas pats savaime atrodytų patraukliai: jis turi pagerinti viso portfelio skaičius.",
+                "Viršutinėje eilutėje nuolat rodomas dabartinio portfelio ir portfelio palyginimas su pritaikytu modeliavimu:"
+              ],
+              "lead": "Viršutinėje eilutėje jūsų dabartinis portfelis lyginamas su portfeliu su pritaikytu modeliavimu:",
+              "bullets": [
+                {
+                  "bold": "Poveikis pelnui ir efektyvumui",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Jie rodo bazinį skaičių šalia numatomo skaičiaus, nušviečiant skirtumą žaliai, jei žaidimas padidina efektyvumą, arba raudonai, jei jis jį pablogina."
+                },
+                {
+                  "bold": "Poveikis rizikai, kapitalui ir taisyklėms",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Jie nurodo, kiek pasikeičia jūsų maksimalus numatomas nuostolis, kiek portfelio procentą skiriate testams ir ar laikomasi visų saugumo ribų."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If ir Kelly",
+              "summary": "Bilietų pirkimo/pardavimo simuliatorius ir skaičiuotuvas, leidžiantis nustatyti, kiek pinigų rizikuoti.",
+              "paragraphs": [
+                "Daugelis gerų investavimo idėjų baigiasi nuostolių atsiradimu dėl statymo dydžio klaidos: įdėjus per mažai adata nepajudinama, tačiau per daug įdėjus gali sugadinti portfelį, jei judėjimas nepavyks.",
+                "Pirmas kvadrantas viršuje kairėje susieja įrodymų lapą su matematiniu dydžio skaičiavimu:"
+              ],
+              "lead": "Pirmasis kvadrantas sujungia bandymo ataskaitą su matematiniu dydžio skaičiavimu:",
+              "bullets": [
+                {
+                  "bold": "Bandomasis užsakymo įkėlimas",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Jūs pasirenkate bet kurį turtą, nurodote, ar norite pirkti, parduoti ar padengti, ir įkeliate sumą doleriais. Toliau pateiktame sąraše galite įjungti arba išjungti kiekvieną imituojamą užsakymą, kad palygintumėte jo poveikį."
+                },
+                {
+                  "bold": "Optimalus padėties dydis",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Remdamasis jūsų apskaičiuota sėkmės tikimybe ir pelno ir nuostolių santykiu, jis apskaičiuoja, kiek didžiausio kapitalo procento turėtų būti skirta augti, nepersistengiant."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kelly kriterijaus ir jo konservatyvios versijos Half-Kelly matematinis skaičiavimas."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Įdėkite OTM ir maržą",
+              "summary": "Draudimo simuliatorius su galimybėmis stipriam rinkos nuosmukiui ir garantinės įmokos stebėjimo priemonė.",
+              "paragraphs": [
+                "Kai bijote stiprios rinkos korekcijos, visų savo pozicijų pardavimas paprastai yra brangus ir neefektyvus. Profesionali alternatyva – apsidrausti su apsaugos galimybėmis, tačiau kiek tas draudimas kainuoja per metus ir kiek jis tikrai jus apsaugo?",
+                "Apatinis kairysis kvadrantas leidžia išmatuoti aprėptį ir skolos lygį:"
+              ],
+              "lead": "Apatinis kairysis kvadrantas matuoja aprėptį ir garantijų lygį:",
+              "bullets": [
+                {
+                  "bold": "Apsauginių skydų lygintuvas",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Tai leidžia pakaitomis dirbti be draudimo arba taikyti trijų rūšių draudimą su pasirinkimo galimybėmis (su SPY, QQQ arba VIX nepastovumu), palyginus metinę įmokos kainą su doleriais, kuriuos sutaupytumėte 20 % avarijos atveju."
+                },
+                {
+                  "bold": "Sverto kontrolė ir užstatas",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Stebėkite, kiek procentų išlaikymo maržos naudojote ir kiek procentų portfelio kritimo išgyventų prieš patekdami į garantinės įmokos zoną."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Apsidraudimo su išpirktais sandoriais operacija ir garantijų apskaičiavimas Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Komitetas ir knyga",
+              "summary": "Du dešinieji skydeliai su automatiniu rizikos limitų, užsakymų istorijos ir antrojo piloto peržiūra.",
+              "paragraphs": [
+                "Išbandžius sandorį, lengva nepastebėti, kad turtas sutelkia daugiau nei 20 % viso jūsų portfelio arba kad jis veikia esant rimtai statistinei anomalijai.",
+                "Du dešinėje esantys kvadrantai naudojami kaip automatinė rizikos kontrolė ir audito seka:"
+              ],
+              "lead": "Du dešinėje esantys kvadrantai veikia kaip rizikos kontrolė ir registracija:",
+              "bullets": [
+                {
+                  "bold": "Apžvalga trimis aspektais",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Jie įvertina jūsų imituotus pavedimus nuo techninių, pagrindinių ir griežtų saugumo ribų (įspėjimas, jei kuri nors pozicija viršija 20% kapitalo ribą arba turi didelių anomalijų)."
+                },
+                {
+                  "bold": "Užsakymų žurnalo ir portfelio asistentas",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Apatiniame skydelyje įrašomas kiekvienas modeliavimas ir jo poveikis rizikai, o dialogo mygtukas viršuje dešinėje atidaro pokalbį, kuriame galite užduoti tiesioginius klausimus apie jūsų portfelį."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Priešoperacinės rizikos kontrolės taisyklės ir koncentracijos limitai vienam turtui."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Žemiau pateikta diagrama visame ekrane, kad patikrintumėte, ar jūsų strategija veikia ne bandomuoju laikotarpiu.",
+              "paragraphs": [
+                "Bet kurią strategiją galima koreguoti žiūrint į praeitį, kol istorinėje diagramoje ji pasirodys patikima. Tikras iššūkis yra žinoti, ar jis ir toliau veiks, kai susiduriama su naujais rinkos duomenimis.",
+                "Viso pločio apatiniame skydelyje prieš pradedant gamybą taikomas griežčiausias strategijos patvirtinimas:"
+              ],
+              "lead": "Apatiniame skydelyje strategija tikrinama imtyje ir be imties:",
+              "bullets": [
+                {
+                  "bold": "Projektavimo ir faktinio bandymo atskyrimas",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Jis padalija istorinį grafiką į pirmąjį etapą, kuriame kalibruojama strategija, ir į antrą etapą su nematomais duomenimis, siekiant patikrinti, ar ji išlaiko pranašumą prieš bazinį portfelį."
+                },
+                {
+                  "bold": "Statistinio patikimumo pastaba",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Jei efektyvumo rodiklis viršija 70 proc., tai patvirtina, kad rezultatai yra nuoseklūs, o ne rezultatas, kad skaičiai buvo primesti praeityje."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ką matuoja Walk-Forward efektyvumo indeksas (WFE) ir kaip jis nustato pernelyg optimizuotas strategijas."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Likvidumo filtras (ADV)",
+        "intro": "Kad turtu būtų galima prekiauti be vieno pavedimo, iškreipiančio jo kainą, platforma reikalauja minimalios vidutinės dienos apimties doleriais per pastarąsias 20 darbo dienų.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (uždarymo kaina × prekybos apimtis)",
+          "denominator": "20 meistriškų ratų",
+          "vars": [
+            "Uždarymo kaina: oficiali i dienos uždarymo kaina, išreikšta USD.",
+            "Prekybos apimtisᵢ: bendras tą dieną parduotų vienetų skaičius."
+          ]
+        },
+        "lead": "Remiantis vidutiniu dienos tūriu, kataloge klasifikuojamas kiekvieno instrumento gylis:",
+        "bullets": [
+          {
+            "bold": "Didelis institucinis likvidumas",
+            "code": "> $500M diarios",
+            "text": "Leidžia iš karto įeiti ir išeiti iš didelių pozicijų nejudinant rinkos kainos."
+          },
+          {
+            "bold": "Standartinis katalogo likvidumas",
+            "code": "$50M a $500M diarios",
+            "text": "Tinka diversifikuotiems portfeliams su labai mažomis pirkimo/pardavimo sąnaudomis."
+          },
+          {
+            "bold": "Plitimo stebėjimas",
+            "code": "< $50M diarios",
+            "text": "Nepastovumo metu patartina patikrinti arbatpinigių atidarymą prieš atliekant didelius pavedimus."
+          }
+        ],
+        "example": "Jei akcija prekiaujama 200 USD ir per pastarąjį mėnesį prekiaujama vidutiniškai 5 mln. akcijų už vieną ratą, vidutinė dienos apimtis (ADV) yra 1 mlrd. USD (1,0 mlrd. USD)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalizavimas į USD",
+        "intro": "Kadangi kataloge yra Europos obligacijos, Azijos indeksai, žaliavos ir kriptovaliutos, visi srautai realiuoju laiku konvertuojami į JAV dolerius, kad juos būtų galima palyginti tuo pačiu mastu.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Vietos valiutos apimtis: suma, kuria prekiaujama pradine rinkos valiuta (EUR, JPY, GBP, BRL ir kt.).",
+            "Neatidėliotinas valiutos keitimo kursas: dabartinė kotiruotė 61 valiutos sistemoje."
+          ]
+        },
+        "lead": "Ši konversija tiesiogiai veikia dvi ekrano vietas:",
+        "bullets": [
+          {
+            "bold": "Bendras visų peržiūrų reitingas",
+            "code": "213 activos",
+            "text": "Užsisakykite instrumentus nuo didžiausio iki mažiausio realaus pinigų judėjimo visame pasaulyje."
+          },
+          {
+            "bold": "Pridėta tomo kortelė",
+            "code": "Volumen 24h en $B",
+            "text": "Tai leidžia be iškraipymų pridėti skirtingose šalyse išvardytų išteklių kiekį."
+          }
+        ],
+        "example": "Jei Vokietijos obligacija prekiaujama 4 milijardais eurų per dieną, o EUR/USD – 1,08, sistema apskaičiuoja 4,32 milijardo JAV dolerių pasauliniu impulsu."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Kaip išmatuoti, ar rinka tikrai augo, ar ji jau pakilo per greitai ir yra išnaudota? Santykinio stiprumo indeksas (RSI) lygina vidutinius pakilimus su paskutinių 14 raundų vidutiniais kritimais skalėje nuo 0 iki 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (vidutinis padidėjimas₁₄ / vidutinis kritimas₁₄)",
+          "vars": [
+            "Vidutinis padidėjimas₁₄: išlygintas taškų, uždirbtų per pastaruosius 14 ratų pakilimo dienų, vidurkis.",
+            "Vidutinis nuostolis44: išlygintas taškų, prarastų to paties laikotarpio kritinėmis dienomis, vidurkis."
+          ]
+        },
+        "lead": "Taip apskritame žiede interpretuojamos trys skalės dalys:",
+        "bullets": [
+          {
+            "bold": "Perkama jėga ir perpirkta",
+            "code": "70 a 100",
+            "text": "Padidėjimas gerokai viršija pastarojo meto sumažėjimą. Tai rodo didelį bulių pagreitį, nors virš 70 perspėja, kad kainą gali prireikti pristabdyti."
+          },
+          {
+            "bold": "balanso zona",
+            "code": "30 a 70",
+            "text": "Rinka juda tvariu tempu. Vidutinio lygio kirtimas (> 50 žaliai) patvirtina pirkėjo dominavimą, o kritimas žemiau (< 50 raudonai) rodo pardavėjo dominavimą."
+          },
+          {
+            "bold": "Bausmė ir perpardavimas",
+            "code": "0 a 30",
+            "text": "Kritimai buvo tokie dažni ir ryškūs, kad turtas pradeda atrodyti statistiškai pigus ir linkęs atšokti."
+          }
+        ],
+        "example": "Jei per pastaruosius 14 ratų akcijų grupė vidutiniškai pabrango 2 USD per didėjimo dieną ir nukrito tik 1 USD už kritimo dieną, jos stiprumo koeficientas yra 2, o RSI yra 66,7 (žalia spalva)."
+      },
+      {
+        "id": "p06",
+        "label": "Įprastas režimas (P-06)",
+        "intro": "Turtas gali atrodyti ramus, jei žiūrite tik į jo kainą, bet tuo pat metu kenčia nuo keisto apimties šuolio ir neįprasto pirkimo ir pardavimo smailių atsivėrimo. Isolation Forest variklis (P-06) kerta šiuos kintamuosius tuo pačiu metu, kad nustatytų netipišką elgesį.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): vidutinis atsitiktinių pjūvių skaičius, būtinas norint atskirti šiandieninį elgesį nuo likusios istorijos.",
+            "x: 4 kintamųjų vektorius (grąža 24h, Vol Z-Score 20d, Realized Volatility 30d ir Spread bps)."
+          ]
+        },
+        "lead": "Kuo retesnis šios dienos ėjimas, tuo greičiau jis izoliuojamas ir tuo balas artimesnis 1,00:",
+        "bullets": [
+          {
+            "bold": "Normalus režimas",
+            "code": "0.00 a 0.49",
+            "text": "Kaina, apimtis ir likvidumas kinta pagal istorinį turto vidurkį."
+          },
+          {
+            "bold": "Didelis aktyvumas",
+            "code": "0.50 a 0.64",
+            "text": "Bent vienas iš kintamųjų pradėjo nukrypti nuo įprasto elgesio; Patartina atidžiai stebėti užsakymų srautą."
+          },
+          {
+            "bold": "Dislokacija arba kritinė anomalija",
+            "code": "0.65 a 1.00",
+            "text": "Turtas registruoja statistiškai ekstremalų elgesį. Portfelio modulyje, viršijus šią ribą, įjungiamas apsauginis stabdys."
+          }
+        ],
+        "example": "Jei valstybės obligacijos kaina vos juda 0,1%, bet jos apimtis padaugėja iš keturių, o sklaida patrigubėja per minutes, detektorius kerta tris duomenų taškus ir padidina savo balą iki 0,74 (Dislokacija raudona)."
+      },
+      {
+        "id": "zscore",
+        "label": "Garso apėjimas (Z-Score)",
+        "intro": "Pasakyti, kad šiandien buvo eksploatuojama 500 milijonų dolerių, vidutinei įmonei yra daug, bet labai mažai S&P 500. „Volume Z-Score“ visą turtą sujungia į tą patį universalų įrenginį: kiek standartinių nuokrypių (σ) yra šiandieninis tūris nuo jo paties 20 ratų vidurkio.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Garsumas šiandien (24 val.) – vidutinis garsumas (20 d.)",
+          "denominator": "Standartinis garsumo nuokrypis (20 d.)",
+          "vars": [
+            "Vidutinė apimtis (20 d.): įprasta turto apimtis per pastarąjį darbo mėnesį.",
+            "Standartinis nuokrypis (20d): kiek šis tūris paprastai skiriasi nuo vienos dienos iki kitos."
+          ]
+        },
+        "lead": "Tokiu būdu galite palyginti bet kurį turtą toje pačioje sigmos (σ) vienetų skalėje:",
+        "bullets": [
+          {
+            "bold": "Įprasta veikla",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Dienos apimtis visiškai atitinka pastarųjų keturių savaičių rutiną."
+          },
+          {
+            "bold": "Didelis dalyvavimas",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Yra didesnis nei vidutinis susidomėjimas, kuris pradeda patvirtinti šios dienos tendencijas."
+          },
+          {
+            "bold": "Institucinis susidūrimas",
+            "code": "> +2.0σ",
+            "text": "Tai įvyksta mažiau nei 5 % metų raundų ir paprastai atspindi masinį didelių fondų įėjimą arba išėjimą."
+          }
+        ],
+        "example": "Jei akcijomis kasdien prekiaujama 100 mln. USD, o įprastas svyravimas yra ± 20 mln. USD, o šiandien prekiaujama 160 mln. USD, tai yra 60 mln. USD viršija vidurkį, o tai tiksliai atitinka +3,0 σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Fiksuotos pajamos (2s10s ir DV01)",
+        "intro": "Kai lentelėje filtruojate obligacijas arba normas, atsiranda dvi pagrindinės valstybės skolos vertinimo metrikos: kreivės nuolydis (2s10s) ir piniginė bazinio taško vertė (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 bazinis taškas (1 bp): atitinka 0,01 % efektyvumo.",
+            "DV01 ($/$1M): kiek dolerių 1 mln. USD pozicija laimi arba pralaimi, jei kursas pasislenka 1 baziniu tašku."
+          ]
+        },
+        "lead": "Kaip perskaityti šiuos du skaičius tinklelyje:",
+        "bullets": [
+          {
+            "bold": "Normali arba teigiama kreivė",
+            "code": "2s10s > 0 bps",
+            "text": "Už 10 metų trukmės obligacijas mokama didesnė palūkanų norma nei už 2 metų trukmės obligacijas, o tai rodo sveiko ekonomikos augimo lūkesčius."
+          },
+          {
+            "bold": "apversta kreivė",
+            "code": "2s10s < 0 bps",
+            "text": "Trumpi kursai viršija ilgus; istoriškai perspėja apie ekonomikos atšalimą arba pinigų apribojimus."
+          }
+        ],
+        "example": "Jei 10 metų iždo pajamingumas yra 4,20%, o 2 metų iždo pajamingumas - 4,55%, 2s10s stulpelis žymi -35 bps (apversta kreivė raudonai)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Akcijos (P/E ir marža)",
+        "intro": "Filtruojant S&P/NDX akcijas, lentelėje rodomas prognozuojamas pelno kartotinis (P/E Forward) ir bendroji veiklos marža, kad galėtumėte palyginti vertinimą su pelningumu.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Dabartinė akcijos kaina",
+          "denominator": "Apskaičiuotas pelnas vienai akcijai (ateinančius 12 mėnesių)",
+          "vars": [
+            "P/E Forward: kiek metų būsimo uždarbio mokate šiandienine kaina.",
+            "Bruto marža (%): pardavimų procentas, kuris lieka kaip bendrasis pelnas atėmus tiesiogines išlaidas."
+          ]
+        },
+        "lead": "Į ką atkreipti dėmesį kertant abi kolonas:",
+        "bullets": [
+          {
+            "bold": "Reiklus ar vidutinio sunkumo vertinimas",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Didelis kartotinys rodo, kad rinka kainodara stipriai augant ateityje; žemas dažniausiai atspindi brandžias ar vertingas įmones."
+          },
+          {
+            "bold": "Kainodaros galia",
+            "code": "Margen Bruto > 50%",
+            "text": "Didelės maržos rodo, kad įmonės, turinčios didelį konkurencinį pranašumą, gali apginti savo pelną nuo infliacijos."
+          }
+        ],
+        "example": "Jei akcija prekiaujama 150 USD ir numatoma, kad per ateinančius 12 mėnesių uždirbs 6 USD už akciją, jų išankstinis P/E yra 25,0 karto."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Išvestinės finansinės priemonės, valiuta ir prekės",
+        "intro": "Opcionų, Forex ir fizinių ateities sandorių rinkose dviejuose dinaminiuose stulpeliuose rodomos numanomos rizikos arba atlygio už pozicijos išlaikymą per tam tikrą laiką sąnaudos.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (išvestinės finansinės priemonės): metinis nepastovumas, kurį opcionų rinka sumažina ateinančias 30 dienų.",
+            "Carry 10Y (FX) ir Roll Yield (prekės): metinis pelnas arba kaina dėl palūkanų skirtumo arba ateities sandorių keitimo."
+          ]
+        },
+        "lead": "Kaip pasinaudoti šiais stulpeliais, atsižvelgiant į išteklius:",
+        "bullets": [
+          {
+            "bold": "Dariniuose",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Jie nurodo, kokio procento judėjimo tikisi rinka ir ar galimybės padengti kritimus (Puts) yra brangios."
+          },
+          {
+            "bold": "Valiutomis ir žaliavomis",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Jie rodomi žalia spalva, jei išlaikant turtą gaunamos papildomos pajamos, arba raudonai, jei jis turi balansinių išlaidų."
+          }
+        ],
+        "example": "Jei opciono numanomas nepastovumas (ATM IV) yra 35 % per metus, rinka diskontuoja artėjantį ±10 % per ateinančias 30 dienų."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radarinis radialinis žemėlapis",
+        "intro": "Kad trijuose radaro žieduose būtų iki 45 objektų be persidengimo, Orbital rodinys pakeičia pasirinkto indikatoriaus reikšmę į atstumą iki centro (spindulys r), normalizuojamą tarp grupės minimumo ir maksimumo.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Turto vertė – Grupės minimali vertė",
+          "denominator": "Grupės maksimali vertė − Minimali grupės vertė",
+          "vars": [
+            "r → 0 (vidinis žiedas): sutelkia turtus su didesniu intensyvumu arba teigiamu nuokrypiu.",
+            "r → 1 (Išorinis žiedas): nustato periferinius išteklius arba tuos, kurių santykinis rodmuo yra mažiausias."
+          ]
+        },
+        "lead": "Kaip radare perskaityti kiekvienos planetos padėtį ir spalvą:",
+        "bullets": [
+          {
+            "bold": "Fokusavimo vidinis žiedas",
+            "code": "Centro del radar",
+            "text": "Surinkite pagrindinius išteklius iš anksčiau pasirinkto rodiklio, kad pirmiausia matytumėte tai, kas svarbiausia."
+          },
+          {
+            "bold": "Istorinė spalvų semantika",
+            "code": "Verde vs Rojo",
+            "text": "Mazgas šviečia žaliai, kai palankiai viršija istorinį vidurkį, ir raudonai, kai atspindi nuosmukį ar stresą."
+          }
+        ],
+        "example": "Jei rūšiuojate radarą pagal tūrio nuokrypį (Z-Score), aktyvusis radaras su +3,4σ yra šviesiame centriniame žiede, o tas, kurio vertė yra 0,1σ, yra išorinėje orbitoje."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) ir Bollingerio juostos",
+        "intro": "20 laikotarpių paprastas slenkamasis vidurkis (SMA 20) žymi pagrindinę turto tendenciją, o Bollingerio juostos nubrėžia dinaminį kanalą, pridedant ir atimant du standartinius nuokrypius (2σ) aplink tą vidurkį.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): paskutinių 20 uždarymų aritmetinis vidurkis.",
+            "Juostos plotis (BB plotis): procentinis atstumas tarp viršutinės ir apatinės juostų."
+          ]
+        },
+        "lead": "Statistiškai apie 95 % kabučių yra dviejose juostose:",
+        "bullets": [
+          {
+            "bold": "Kaina virš vidutinės",
+            "code": "Precio > SMA 20",
+            "text": "Tai rodo, kad trumpalaikė tendencija yra pakili, o vidurkis paprastai veikia kaip atraminė grindų dalis."
+          },
+          {
+            "bold": "Viršutinės arba apatinės juostos prisilietimas",
+            "code": "±2σ",
+            "text": "Ji įspėja, kad kaina per greitai pakilo nuo pastarojo meto vidurkio ir gali užtrukti."
+          },
+          {
+            "bold": "juostos suspaudimas",
+            "code": "BB Width bajo",
+            "text": "Kai juostos tampa labai siauros, rinka kaupia energiją prieš stiprų judėjimą."
+          }
+        ],
+        "example": "Jei akcijos SMA(20) yra 100 USD, o 20 ratų standartinis nuokrypis yra 4 USD, viršutinė juosta yra 108 USD, o apatinė - 92 USD."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Institucinis",
+        "intro": "Skirtingai nuo įprasto vidurkio, kuris suteikia vienodą svorį visoms paros valandoms, VWAP kiekvieną kainą įvertina pinigų suma, kuria faktiškai buvo prekiaujama tame lygyje. Tai pagrindinė nuoroda, naudojama institucinėse lentelėse.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (tipinė kaina × prekybos apimtis)",
+          "denominator": "∑ Prekybos apimtisᵢ",
+          "vars": [
+            "Tipinė kaina: vidutinė kiekvienos žvakės didžiausia, mažiausia ir artima vertė.",
+            "Prekybos apimtisᵢ: konkrečiai toje sekcijoje parduodamas kiekis."
+          ]
+        },
+        "lead": "Kaip profesionalūs prekybininkai naudoja VWAP liniją:",
+        "bullets": [
+          {
+            "bold": "Vykdymo kontrolė",
+            "code": "Comprar bajo el VWAP",
+            "text": "Jei institucinis fondas perka žemiau VWAP per laikotarpį, jis gavo geresnę kainą nei rinkos svertinis vidurkis."
+          },
+          {
+            "bold": "Tendencijos gynybos lygis",
+            "code": "Soporte / Resistencia",
+            "text": "Kol turtas išlieka aukščiau VWAP, tuo laikotarpiu pirkusieji gauna vidutinį pelną."
+          }
+        ],
+        "example": "Jei 1 milijonas akcijų būtų prekiaujama 100 USD, o tik 100 tūkstančių akcijų būtų prekiaujama 110 USD, paprastas vidurkis būtų 105 USD, bet VWAP rodo 100,91 USD, nes beveik visi pinigai buvo parduodami už 100 USD."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Sklaidos poslinkis (bps)",
+        "intro": "Skirtumas yra skirtumas tarp geriausios paklausimo kainos ir geriausios siūlomos kainos pavedimų knygoje. Kai rinkos formuotojai suvokia riziką arba likvidumo trūkumą, jie atveria tą spragą, kad apsisaugotų.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "(Prašyti kaina – pasiūlymo kaina)",
+          "denominator": "Vidutinė kaina (vidutinė kaina)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Klausti / siūlyti Kaina: pardavimo taškas ir pirkimo taškas, esantis knygoje.",
+            "10 000: perskaičiavimo koeficientas skirtumui išreikšti baziniais taškais (bps)."
+          ]
+        },
+        "lead": "Ką jums sako išplitimo dislokacijos rodmuo ant kairiojo bėgio:",
+        "bullets": [
+          {
+            "bold": "Gili ir sklandi knyga",
+            "code": "Spread estable en verde",
+            "text": "Abiejuose galuose yra daug likvidumo, o numanomos įėjimo ar pasitraukimo išlaidos yra minimalios."
+          },
+          {
+            "bold": "Trintis arba likvidumo panaikinimas",
+            "code": "Salto en bps",
+            "text": "Paprastai tai įvyksta likus kelioms sekundėms iki makroekonominių pranešimų arba panikinio pardavimo metu, todėl vykdymas pabrangsta."
+          }
+        ],
+        "example": "Jei turto pirkimo arbatpinigiai yra 99,95 USD, o pardavimo arbatpinigiai – 100,05 USD, 0,10 USD skirtumas nuo 100 USD yra lygus 10 bazinių punktų (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Pasirinkimai (juodaodžiai ir graikai)",
+        "intro": "Opcionų variklyje platforma nubraižo dvi pelno ir nuostolių (P&L) kreives: kaip strategija baigtųsi galiojimo dieną ir kiek ji verta šiandien (T+0), taikant Black-Scholes modelį.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S ir K: dabartinė pagrindinio turto kaina (Spot) ir pasirinkimo sandorio realioji kaina (Strike).",
+            "Grynieji graikai: Δ Delta (kainos jautrumas), Γ Gama (Delta pagreitis), Θ Theta (kasdienis nusidėvėjimas) ir ν Vega (jautrumas nepastovumui)."
+          ]
+        },
+        "lead": "Kaip perskaityti graikus savo strategiją dėl kairiojo bėgio tablečių:",
+        "bullets": [
+          {
+            "bold": "Vairavimas ir pagreitis",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Teigiama Delta laimi, kai turtas didėja; teigiama gama leidžia jums įgyti vis greičiau, jei judėjimas pagreitėja."
+          },
+          {
+            "bold": "Laiko bėgimas ir netikrumas",
+            "code": "Θ Theta / ν Vega",
+            "text": "Teta nurodo, kiek dolerių pozicija praranda arba įgyja kiekvieną dieną; Vega, kiek jis pasikeičia, jei numanomas nepastovumas padidėja 1%."
+          }
+        ],
+        "example": "„Long Straddle“ (pirkite Call ir Put on tą patį streiką) Delta yra artima 0 (nesvarbu, ar ji kyla, ar mažėja), bet teigiama „Vega“ ir reikia, kad kaina pakiltų už dviejų pusiausvyros taškų (lūžių)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "„Suvereign Curves“ („Butterfly“ ir „DV01“)",
+        "intro": "Fiksuotų pajamų variklis palygina 42 šalių pajamingumą nuo 3 mėnesių iki 30 metų ir apskaičiuoja tiek nuolydį (2s10s), tiek vidutinės dalies kreivumą (Butterfly 2s5s10s), tiek piniginį jautrumą (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y kursas: 2, 5 ir 10 metų suverenios pasirinktos šalies pajamingumas.",
+            "Reali 10 metų norma: 10 metų nominalus pajamingumas atėmus orientacinę normą arba numanomą infliaciją."
+          ]
+        },
+        "lead": "Kam skirtas kiekvienas rodiklis obligacijų analizėje:",
+        "bullets": [
+          {
+            "bold": "Vidurinės dalies kreivumas",
+            "code": "Butterfly 2s5s10s",
+            "text": "Jis matuoja, ar 5 metų trukmės dalis yra brangi, ar pigi, palyginti su 2 metų ir 10 metų kraštutinumais."
+          },
+          {
+            "bold": "Dolerio trukmės rizika",
+            "code": "DV01 por $1M",
+            "text": "Tai tiksliai nurodo, kiek dolerių milijono dolerių portfelis skiriasi, kai kurso pokytis 0,01%."
+          }
+        ],
+        "example": "10 metų trukmės obligacija, kurios DV01 yra 820 USD už milijoną, praras maždaug 82 000 USD, jei rinkos palūkanų normos padidės 100 bazinių punktų (+1,00 %)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Valiutos (pernešimas) ir ateities sandoriai (ritimo pajamingumas)",
+        "intro": "Valiutomis, kai pora nėra kotiruojama tiesiogiai, ji apskaičiuojama trianguliacijos būdu dolerio atžvilgiu ir matuojamas jos kurso skirtumas (Carry). Žaliavų atnaujinimo efektyvumas matuojamas tarp tiesioginės sutarties ir 12 mėnesių sutarties (Ritinio išeiga).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Neatidėliotina kaina (priekinis M1) – ateities kaina (M12)",
+          "denominator": "Būsima kaina (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Atsilikimas (taškas > ateitis): dėl fizinio trūkumo šiandien kintantys ateities sandoriai generuoja teigiamą pelną (Roll Yield > 0).",
+            "Contango (Spot < Future): saugojimo išlaidos pabrangina ateities sandorius, o jų atnaujinimas turi neigiamą kainą."
+          ]
+        },
+        "lead": "Kaip tai paveikia jūsų kišenę, kai užimate poziciją:",
+        "bullets": [
+          {
+            "bold": "Teigiamas Carry Trade valiutomis",
+            "code": "Carry Spread > 0 bps",
+            "text": "Jei perkate valiutą su aukšta palūkanų norma, finansuodami save valiuta, kurios palūkanų norma yra žema, tą skirtumą surinksite savo naudai."
+          },
+          {
+            "bold": "Palankus vėjas žaliavose",
+            "code": "Backwardation en verde",
+            "text": "Kai fizinės atsargos yra mažos, šalia esanti sutartis yra vertingesnė už tolimą, o investuotojas uždirba papildomą grąžą vykdydamas sutartį."
+          }
+        ],
+        "example": "Jei 1 mėnesio naftos kaina yra 72 USD, o 12 mėnesių kontrakto kaina – 68 USD, rinka yra atgaline data ir teigiamas svyravimo pelnas yra +5,88% per metus."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Bendras svertinis įvertinimas",
+        "intro": "Ne visas turtas juda per tuos pačius šaltinius: įmonėje daug svorio turi audituotos finansinės ataskaitos (SEC 10-K/10-Q), o kriptovaliutų rinkoje ar valiutose kasdieniniai srautai ir komunikacijos turi didesnį svorį.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: automatinis svertinis įvertinimas pagal kategoriją (pvz., 80% / 20% akcijoms; 85% / 15% mokesčiams).",
+            "Galutinė skalė: svyruoja nuo –100 (maksimalus pesimizmas) iki +100 (didžiausias įsitikinimas)."
+          ]
+        },
+        "lead": "Štai kaip sudėtinis balas verčiamas aukščiausioje nuomonėje:",
+        "bullets": [
+          {
+            "bold": "Bukusiška pozicija",
+            "code": "BULLISH / Nota > +15",
+            "text": "Dokumentiniai katalizatoriai ir naujienų srautas aiškiai nusveria rizikos veiksnius."
+          },
+          {
+            "bold": "Neutrali arba mišri laikysena",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Net jėgos tarp pagrindų ir naujienų; Prieš apsisprendžiant patartina peržiūrėti 10 faktorių akordeoną."
+          },
+          {
+            "bold": "Gynybinė arba meškų pozicija",
+            "code": "BEARISH / Nota < -15",
+            "text": "Vyrauja įspėjimai apie balansus, maržos pablogėjimą arba nepalankias antraštes."
+          }
+        ],
+        "example": "Akcijoje (80 % pagrindų / 20 % naujienų), jei likučiai rodo +50 taškų, o dienos naujienos rodo +20, bendras svertinis balas yra (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Patvirtinta paieška (RAG)",
+        "intro": "Kad dirbtinis intelektas neišrastų figūrų, „Document Chat“ naudoja generacijos padidintą atkūrimą (RAG): pirmiausia oficialiose turto ataskaitose ieško atitinkamų pastraipų ir tik tada rašo atsakymą, nurodydamas šaltinį.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vektorinė konsultacija (Q) · Oficialus vektorinis dokumentas (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Q ir D vektoriai: skaitiniai jūsų klausimo ir oficialūs fragmentai (10-K, FOMC protokolai, PAV ataskaitos).",
+            "3 sluoksnių apsauga: filtras, blokuojantis užklausas, nesusijusias su finansais arba be dokumentinio palaikymo."
+          ]
+        },
+        "lead": "Ką šis mechanizmas garantuoja, kai užduodate klausimą pokalbyje:",
+        "bullets": [
+          {
+            "bold": "Pritvirtinimas pirminiuose šaltiniuose",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Visi duomenys apie pajamas, skolą, atsargas ar tarifus gaunami iš tą turtą atitinkančio norminio dokumento."
+          },
+          {
+            "bold": "Nutraukite ne į temą klausimus",
+            "code": "Guardrail activo",
+            "text": "Jei kas nors bando konsultuotis nefinansinėmis temomis, asistentas atmeta užklausą ir sutelkia dėmesį į instrumento analizę."
+          }
+        ],
+        "example": "Kai paliečiate akcijų rizikos veiksnių lustą, variklis nuskaito naujausios formos 10-K 1A elementą (rizikos faktoriai) ir apibendrina svarbiausius taškus."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT neuronų balas",
+        "intro": "Įprastas žodynas dažnai painioja finansinius žodžius (pavyzdžiui, „sumažėjimas“ arba „skolos mažinimas“ yra puiki žinia, net jei jie vartoja žodį kritimas arba sumažinimas). FinBERT yra neuroninis tinklas, specialiai parengtas finansiniams tekstams.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P (teigiamas) ir P (neigiamas): tikimybės, modelio priskiriamos antraštei, kad turtas bus aukštesnis arba mažesnis.",
+            "24h kreivė: eksponentinis slenkamasis pastarųjų 24 valandų antraščių vidurkis."
+          ]
+        },
+        "lead": "Kaip kiekvienas mazgas vertinamas laiko juostoje dešinėje:",
+        "bullets": [
+          {
+            "bold": "Katalizatoriaus laikiklis",
+            "code": "+20 a +100 en verde",
+            "text": "Apskaičiuotas uždarbis, kredito reitingo padidinimas ar palankūs palūkanų normų sumažinimai."
+          },
+          {
+            "bold": "Neutralus informacinis kabelis",
+            "code": "-19 a +19 en ámbar",
+            "text": "Įprasti veiklos pranešimai, kurie nekeičia instrumento struktūrinio vertinimo."
+          },
+          {
+            "bold": "Rizikos turėtojas",
+            "code": "-20 a -100 en rojo",
+            "text": "Reguliavimo įspėjimai, maržos sumažėjimas, streikai arba prastesni nei tikėtasi infliacijos duomenys."
+          }
+        ],
+        "example": "Jei modelis antraštei priskiria 82 % teigiamą tikimybę, 12 % neutralią ir 6 % neigiamą tikimybę, mazgas žaliai rodo +76 grynąjį poveikį."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe ir Sortino",
+        "intro": "Pirmosiose dviejose geriausiose kortelėse nurodoma, kiek jūsų kapitalas auga per metus (CAGR) ir kaip šis augimas yra efektyvus, palyginti su sukrėtimais, kuriuos turite ištverti (Sharpe ir Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Metinė Portfolio grąža (Rp) – nerizikinga norma (Rf)",
+          "denominator": "Metinis Portfolio nepastovumas (σp)",
+          "vars": [
+            "Rf (4,30%): bazinis pajamingumas, kurį galėtumėte gauti be rizikos iždo vekseliais.",
+            "Sortino koeficientas: naudojama ta pati formulė, bet vardiklyje jis neigiamai veikia tik neigiamų dienų (kritimų) nepastovumą."
+          ]
+        },
+        "lead": "Kaip įvertinti savo portfelio kokybę šiais skaičiais:",
+        "bullets": [
+          {
+            "bold": "Efektyvus portfelis",
+            "code": "Sharpe > 1.00",
+            "text": "Perteklinė grąža, kurią pasieksite virš nerizikingos normos, gerokai viršija numatytą nepastovumą."
+          },
+          {
+            "bold": "Išskirtinis pasirodymas",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Tai rodo labai gerai diversifikuotą derinį, kuriame padidėjimas yra nuoseklus, o kritimai yra riboti."
+          }
+        ],
+        "example": "Jei jūsų portfelio metinė grąža yra 15,3%, nerizikinga norma yra 4,3%, o metinis nepastovumas yra 10%, perteklinė grąža yra 11%, o jūsų Sharpe koeficientas yra 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% ir išskaitymas",
+        "intro": "Trečioji ir ketvirtoji kortos atsako, kiek galite prarasti blogą, bet statistiškai įprastą dieną (VaR 95%), kiek ekstremalios panikos dieną (CVaR 99%) ir koks buvo didžiausias atsitraukimas nuo ankstesnio piko (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1 645: statistinis koeficientas, apimantis 95 % įprastų ratų per metus (19 iš 20 dienų).",
+            "CVaR 99 % (numatomas trūkumas): vidutinis nuostolis, kai rinka peržengia tą slenkstį ir patenka į 1 % blogiausių dienų."
+          ]
+        },
+        "lead": "Koks praktinis skirtumas žiūrint į VaR ir į Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Vienos dienos rizika",
+            "code": "VaR 95% 1D en USD",
+            "text": "Tai parengia jus psichologiškai ir finansiškai tam, kam jūsų sąskaita gali pakrypti bloga linkme, o tai nereiškia, kad strategija žlugo."
+          },
+          {
+            "bold": "Atsparumas nepalankioje serijoje",
+            "code": "Max Drawdown 12M",
+            "text": "Jis matuoja sukauptą lašą nuo galo iki galo nuo aukščiausio taško iki grindų, prieš vėl atsigaunant."
+          }
+        ],
+        "example": "100 000 USD portfelyje, kurio kasdienis VaR 95% nuo 1,45% (1 450 USD), 19 iš 20 prekybos ratų jūsų dienos nuostoliai neviršys 1 450 USD."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Rentgeno spindulių persidengimas (nr. 12)",
+        "intro": "Kai perkate ETF, pvz., SPY arba QQQ, perkate dešimtis akcijų. Jei taip pat tiesiogiai įsigijote kai kurias iš tų pačių akcijų, jūsų tikroji pozicija yra dviejų dalykų suma.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Tiesioginis svoris: jūsų portfelio procentinė dalis, skirta tiesiogiai akcijoms i.",
+            "ETFₖ procentinė dalis: oficialus tos bendrovės svoris indekse arba fonde k."
+          ]
+        },
+        "lead": "Kodėl prieš uždarant portfelį svarbu peržiūrėti šį pirmąjį skirtuką:",
+        "bullets": [
+          {
+            "bold": "Paslėptos koncentracijos matomumas",
+            "code": "Directo + Indirecto",
+            "text": "Jis automatiškai išardo kiekvieną jūsų portfelyje esantį ETF ir parodo vieną juostą su tikru procentiniu kiekiu, kurį turite kiekvienoje įmonėje."
+          },
+          {
+            "bold": "Perteklinis įspėjimas",
+            "code": "> 20% en rojo",
+            "text": "Jei bendra suma viršija apdairią koncentracijos į vieną pavadinimą slenkstį, eilutė užsidega, kad galėtumėte iš naujo subalansuoti."
+          }
+        ],
+        "example": "Jei 15% savo portfelio įtrauksite į tiesioginį NVDA, o taip pat turite 30% į SPY ETF (kur NVDA sveria apie 7%), rentgeno spinduliai parodys, kad jūsų tikroji NVDA ekspozicija yra 15% + (30% × 7%) = 17.1%."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alfa Brinsono skilimas (#2)",
+        "intro": "Kai jūsų portfelis pranoksta (arba pralaimi) savo etaloną, Brinsono-Fachlerio modelis tiksliai atskiria, iš kur atsirado šis skirtumas: ar teisingai pasirinkote, kuriuose sektoriuose turėjote antsvorį, ar buvote teisūs pasirinkdami geriausią kiekvieno sektoriaus turtą?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Paskirstymo efektas: (Portfolio svoris − lyginamojo indekso svoris) × sektoriaus grąža lyginamajame indekse.",
+            "Pasirinkimo efektas: Svoris lyginamajame indekse × (Jūsų turto grąža – sektoriaus grąža)."
+          ]
+        },
+        "lead": "Kaip perskaityti tris priskyrimo juostas trečiajame skirtuke:",
+        "bullets": [
+          {
+            "bold": "Makro ar sektoriaus sėkmė",
+            "code": "Asignación Sectorial",
+            "text": "Žalia spalva teigiama, kai labiausiai išaugusioms turto klasėms suteikiate daugiau svorio nei rinka."
+          },
+          {
+            "bold": "Sėkmingas turto nukreipimas",
+            "code": "Selección de Activos",
+            "text": "Teigiamai, kai jūsų pasirinktos konkrečios priemonės veikia geriau nei vidutiniškai savo sektoriuje."
+          }
+        ],
+        "example": "Jei jūsų portfelis aplenkė S&P 500 +3,20%, šis skirtukas leidžia pamatyti, kad +2,10% atsirado dėl geresnių akcijų pasirinkimo (atranka) ir +1,10% dėl didesnio svorio technologijų srityje (paskirstymas)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Efektyvus pasienio ir CML",
+        "intro": "Markowitz plokštumoje laukiama portfelio grąža yra jo turto grąžos svertinis vidurkis, tačiau jo nepastovumas yra mažesnis nei vidutinis dėl to, kad turtas nejuda 100% vienodai.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: i ir j turtui paskirstyto kapitalo procentinė dalis.",
+            "ρᵢⱼ (koreliacija): laipsnis, kuriuo abu turtai juda kartu (nuo –1 iki +1). Kuo mažesnis ρᵢⱼ, tuo labiau sumažėja bendra rizika."
+          ]
+        },
+        "lead": "Ką reiškia trys nuorodos diagramoje:",
+        "bullets": [
+          {
+            "bold": "Minimalus dispersija",
+            "code": "Min-Var",
+            "text": "Tai yra kairiausias kreivės taškas: tikslus svorių derinys, pasiekiantis mažiausią įmanomą nepastovumą."
+          },
+          {
+            "bold": "Máximo Sharpe ir Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Tai taškas, kuriame linija, prasidedanti nuo nerizikingos normos, paliečia efektyvią ribą, siūlydama didžiausią pelną už rizikos vienetą."
+          }
+        ],
+        "example": "Jei lygiomis dalimis sujungsite du turtus, kurių nepastovumas yra 20%, bet koreliacija nulinė (ρ = 0), portfelio nepastovumas yra ne 20%, o sumažėja iki 14,1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "„Active and Capture“ VaR",
+        "intro": "Norint sužinoti, kuri pozicija padidina portfelio riziką, kiekvieno turto ribinis indėlis matuojamas pagal jo svorį ir koreliaciją su likusiu turtu. Be to, fiksavimo koeficientai matuoja asimetriją, palyginti su S&P 500 kilimais ir kritimais.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Turto arba Portfolio grąžinimas „Bullish“ (arba „Bearish“) ratais",
+          "denominator": "S&P 500 grąžinimas ant tų pačių ratų",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100%) – rinkai kylant uždirbkite daugiau nei indeksas.",
+            "Neigiamos pusės užfiksavimas (< 100%): krenta mažiau nei indeksas, kai rinka krenta žemyn (apsauginis buferis)."
+          ]
+        },
+        "lead": "Idealus profilis, kurio ieškote peržiūrint trečiąjį kvadranto skirtuką:",
+        "bullets": [
+          {
+            "bold": "teigiama asimetrija",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Visiškai dalyvaukite bulių rinkose, bet apsaugokite kapitalą, kai akcijų rinka pasitaisys."
+          },
+          {
+            "bold": "Prieglobstis arba nesusijęs turtas",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Priemonės, tokios kaip trumposios obligacijos ar auksas, kurios linkusios išlikti tvirtos arba kilti vertybinių popierių rinkos nuosmukio metu."
+          }
+        ],
+        "example": "Jei tais mėnesiais, kai S&P 500 pabrango 10%, jūsų portfelis pabrango 11% (110%), o indeksui nukritus 10%, portfelis nukrito tik 6% (60%), jūsų naudai yra didelė asimetrija."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normali ir krizės koreliacija",
+        "intro": "Pirsono koeficientas (r) matuoja nuo -1,00 iki +1,00, kaip du turtai juda vienas kito atžvilgiu. Pavojus portfelio valdymui yra tas, kad rinkos žlugimo metu koreliacija tarp rizikos aktyvų paprastai siekia +1.00 (užkrėtimas).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kovariacija (grąžina išteklius i, grąžina išteklius j)",
+          "denominator": "Turto nepastovumas i (σᵢ) × Turto nepastovumas j (σⱼ)",
+          "vars": [
+            "r artimas 0 arba neigiamas: puikus diversifikavimas (kai vienas nusileidžia, kitas neseka).",
+            "r Krizių eilėje: perskaičiuoja matricą, paimdama tik 5 % blogiausių ratų rinkoje."
+          ]
+        },
+        "lead": "Kaip perskaityti 6x6 matricos spalvas abiem režimais:",
+        "bullets": [
+          {
+            "bold": "Tikra diversifikacija",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Abu turtai reaguoja į skirtingus ekonominius veiksnius ir kompensuoja vienas kitą."
+          },
+          {
+            "bold": "Koncentracija arba užkrėtimas",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Jie juda praktiškai kaip blokas; Turėdami abu nesumažina jūsų kritimų blogą dieną."
+          }
+        ],
+        "example": "Dviejų skirtingų sektorių akcijų koreliacija normaliais metais gali turėti vidutinę 0,42, bet kai aktyvuosite mygtuką Krizių eilė, pamatysite, kad jis pakyla iki 0,81, nes panikuojant jos parduoda kartu."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D šokas (kainos × akcijų rinka)",
+        "intro": "2D matrica tuo pačiu metu sujungia palūkanų normų pasikeitimo poveikį (per fiksuotų pajamų trukmę ir normos jautrumą) su indekso S&P 500 kritimu arba kilimu (naudojant akcijų beta versiją).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: akcijų rinkos kitimo scenarijus horizontalioje ašyje (–20% iki +10%).",
+            "Δ Kursai: palūkanų normų kitimo baziniais taškais vertikalioje ašyje scenarijus (nuo –100 iki +200 bps)."
+          ]
+        },
+        "lead": "Koks yra dviejų lentelės ašių kirtimo tikslas:",
+        "bullets": [
+          {
+            "bold": "Stagfliacijos arba palūkanų kėlimo scenarijus",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Kaip tai atsitiko 2022 m., kai tuo pačiu metu kenčia akcijos ir ilgosios obligacijos."
+          },
+          {
+            "bold": "Klasikinis prieglaudos scenarijus",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Kai mažesnės palūkanų normos padidina iždo obligacijų kainą ir sušvelnina akcijų kritimą."
+          }
+        ],
+        "example": "Filtruodami ilgą obligaciją, pvz., US10Y arba TLT, lentelėje galite pamatyti, kaip ji įgyja vertę, kai kurso kritimas (-100 bps), veikia kaip parašiutas, jei S&P 500 nukrenta tą pačią dieną."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markovo režimai (nr. 11)",
+        "intro": "Markovo grandinė modeliuoja ekonomiką kaip sistemą, kuri šokinėja tarp keturių galimų būsenų (ramus bulius, nepastovus bukas, infliacija / rodikliai ir krizė) ir apskaičiuoja tikimybę pereiti iš vienos į kitą.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Pagrindinė įstrižainė (i = j): tikimybė, kad esamas režimas išliks nepakitęs.",
+            "Neįstrižainė (i ≠ j): pasisukimo į naują rinkos klimatą tikimybė."
+          ]
+        },
+        "lead": "Kaip pasinaudoti perėjimo matrica antrame skirtuke:",
+        "bullets": [
+          {
+            "bold": "Dabartinio ciklo išlikimas",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Ramūs režimai paprastai pasižymi dideliu patvarumu (> 75%), todėl galima išlaikyti tendencijų pozicijas."
+          },
+          {
+            "bold": "Išankstinis rotacijos įspėjimas",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Padidėjus perėjimo į nepastovią būseną tikimybei, patartina sumažinti svertą arba aktyvuoti apsidraudimą."
+          }
+        ],
+        "example": "Jei rinka šiandien yra nestabilaus buliaus režimo ir eilutė žymi 62% pastovumo, 20% grįžimo į Bull Calm ir 18% streso / krizės, žinote, kad beveik 1 iš 5 scenarijų sukelia korekciją."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo projekcija (10 000 kelių)",
+        "intro": "Remdamasis numatoma grąža ir esamu jūsų portfelio nepastovumu, treniruoklis kiekvieną dieną sukuria 10 000 galimų ateities trajektorijų, taikydamas stochastinį geometrinį Brauno judėjimo modelį.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ ir σ: laukiama metinė grąža ir dabartinio portfelio metinis nepastovumas.",
+            "Z: standartinis normalus atsitiktinis dydis, nubrėžtas 10 000 kartų išilgai horizonto (6M, 12M arba 24M)."
+          ]
+        },
+        "lead": "Iš šių 10 000 modeliavimų išskiriamos trys pagrindinės grafiko kreivės:",
+        "bullets": [
+          {
+            "bold": "Palankus scenarijus",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Lygis, kurį viršija tik 5% optimistiškiausių scenarijų."
+          },
+          {
+            "bold": "Numatoma centrinė trajektorija",
+            "code": "Mediana P50",
+            "text": "Tipiškas rezultatas, kai pusė modeliavimo yra aukščiau, o kita pusė yra žemiau."
+          },
+          {
+            "bold": "Termino streso scenarijus",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Nepalanki žemiausia riba: 95 % modeliuotų kelių jūsų portfelis atsiduria virš šios linijos."
+          }
+        ],
+        "example": "Per 12 mėnesių laikotarpį nuo 100, jei P50 rodo 116, o P05 - 94, jūsų pagrindinis lūkestis yra uždirbti +16%, o labai nepalankiais metais rizikuojate beveik -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly kriterijus (#14)",
+        "intro": "Kelly kriterijus moksliškai atsako, kiek procentų savo kapitalo turėtumėte skirti operacijai, kai žinote savo sėkmės tikimybę (laimėjimo koeficientas) ir kiek laimėsite pasisekus, palyginti su tuo, ką prarasite, kai nepavyks (išmokėjimo koeficientas).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p ir q: tikimybė laimėti (p) ir tikimybė pralaimėti (q = 1 − p).",
+            "b (Payoff Ratio): vidutinis pelnas, padalytas iš vidutinių nuostolių (pavyzdžiui, uždirbus 2 USD už kiekvieną rizikuotą 1 USD, reiškia b = 2)."
+          ]
+        },
+        "lead": "Kodėl profesionalūs vadovai naudoja Half-Kelly (0,5×) variantą:",
+        "bullets": [
+          {
+            "bold": "Kelly Complete",
+            "code": "Full Kelly 1.0×",
+            "text": "Tai maksimaliai padidina ilgalaikį matematinį augimą, tačiau sukuria labai staigius svyravimus, jei iš eilės yra klaidų."
+          },
+          {
+            "bold": "Rekomenduojama Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Naudodami pusę siūlomos procentinės dalies, užfiksuosite 75% potencialaus augimo, bet sumažinsite nepastovumą per pusę."
+          }
+        ],
+        "example": "Jei strategija pasiekia 55 % laiko (p = 0,55, q = 0,45) ir moka nuo 2 iki 1 (b = 2), visa Kelly suteikia (0,55 × 2 - 0,45) / 2 = 32,5%, o apdairus Half-Kelly rekomenduoja skirti 16,25%."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Įdėkite OTM skydą (#6)",
+        "intro": "Išpirkimo sandoris (pavyzdžiui, 5 % mažesnis už dabartinę S&P 500 kainą) veikia kaip draudimo franšizė: jis turi nedidelę fiksuotą kainą (įmoką), bet jei rinka nukrenta 20 % ar 30 %, jo vertė padauginama išgaubtai ir kompensuoja jūsų portfelio nuostolius.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Metinė kaina (Carry Drag): metinė procentinė dalis, kurią kainuoja atnaujinti draudimą, jei rinka nenukris.",
+            "Apsauga nuo avarijų (-20 %): pagal „Put“ sutartį per rimtą avariją atgauti doleriai."
+          ]
+        },
+        "lead": "Kaip palyginti treniruoklio parinktis pirmame skirtuke:",
+        "bullets": [
+          {
+            "bold": "Tiesioginis indekso draudimas",
+            "code": "SPY Put 5% OTM",
+            "text": "Tai riboja didžiausius nuostolius nuo 5% sumažėjimo mainais į vidutines metines išlaidas."
+          },
+          {
+            "bold": "Finansuojamas arba nepastovumo draudimas",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Antkaklis sumažina išlaidas parduodant Call up; Call on VIX sprogsta naudai, kai rinkoje kyla panika."
+          }
+        ],
+        "example": "Jei 100 000 USD portfelio apsauga naudojant SPY Put 5% OTM kainuoja 1,1% per metus (1 100 USD), tačiau 20% avarijos atveju jūsų portfelio nuosmukis sumažėja iki mažiau nei pusės, grynoji santaupa viršija 7 000 USD."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Maržos ir atstumo iki maržos skambutis (#13)",
+        "intro": "Kai dirbate su išvestinėmis finansinėmis priemonėmis arba svertu, brokeris reikalauja išlaikyti minimalų akcinio kapitalo procentą nuo visos pozicijos vertės (išlaikymo marža). Jei kritimas sumažina jūsų kapitalą žemiau šios žemiausios ribos, suaktyvinamas įmokos reikalavimas.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Skola arba finansuojamas likutis",
+          "denominator": "1 – % priežiūros marža (Reg-T)",
+          "vars": [
+            "Bendra pozicija: bendra atvirų pozicijų suma, padalinta iš nuosavybės (pvz., 1,18×).",
+            "Atstumas iki įmokos reikalavimo (%): procentinis kritimas, kurį portfelis vis dar palaiko prieš pasiekiant slenkstį."
+          ]
+        },
+        "lead": "Saugos lygiai stebėjimo juostoje:",
+        "bullets": [
+          {
+            "bold": "Didelė klirenso zona",
+            "code": "Distancia > 30% en verde",
+            "text": "Svertas yra mažas, o portfelis gali įveikti net sunkią krizę be priverstinio pardavimo."
+          },
+          {
+            "bold": "atsargumo zona",
+            "code": "Distancia < 15% en rojo",
+            "text": "Nuosaiki rinkos korekcija išnaudotų laisvą užstatą ir priverstų pozicijas likviduoti pačiu blogiausiu momentu."
+          }
+        ],
+        "example": "Su vidutiniu svertu 1,18× ir naudota 22 % išlaikymo marža, jūsų portfelis turi daugiau nei 38 % neigiamą poveikį, prieš pateikiant bet kokias užstatas."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "3 ramsčių komiteto taisyklės",
+        "intro": "Kad joks impulsyvus sprendimas nekeltų pavojaus portfelio išlikimui, Komitetas įvertina kiekvieną pavedimą derindamas techninę pastabą, pagrindinę pastabą ir dvi griežtas, neabejotinas rizikos kontrolės taisykles.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% GAV: joks atskiras turtas negali sutelkti daugiau nei penktadalio viso turto.",
+            "Anomalijos sustabdymas (P-06 ≥ 0,65): jei turtas patenka į statistinę dislokaciją, sistema sumažina maksimalią ekspoziciją iki 5%."
+          ]
+        },
+        "lead": "Ką kiekviena valstybė reiškia nuosprendyje ir vykdymo knygoje:",
+        "bullets": [
+          {
+            "bold": "Užsakymas patvirtintas be apribojimų",
+            "code": "APROBADO en verde",
+            "text": "Trys ramsčiai sutampa palankiai, o pozicijos dydis atitinka visas koncentracijos ir likvidumo ribas."
+          },
+          {
+            "bold": "Užsakymas pakoreguotas apsauginiu turėklu",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Kai bilietas viršija 20% ribą arba bandoma smarkiai pirkti esant anomalijai, apsauginis turėklas įspėja apie perviršį."
+          }
+        ],
+        "example": "Jei bandote imituoti pirkimą, kurio metu 26 % jūsų portfelio sudarytų vienos akcijos, 3 ramstis (Rizikos ir dydžio apsauga) pažymi koncentracijos įspėjimą, todėl jį pakoreguojate žemiau 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Efektyvumas Walk-Forward (WFE)",
+        "intro": "Siekiant patikrinti, ar strategija nebuvo tiesiog sukurta taip, kad praeityje atrodytų gerai (perdėtas pritaikymas), Walk-Forward testas palygina, kaip ji veikė projektavimo laikotarpiu (In-Sample) su vėlesniais niekada anksčiau nematytais duomenimis (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Metinė grąža Out-of-Sample (grynas patvirtinimas)",
+          "denominator": "Metinė grąža In-Sample (mokymas)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): istorinė dalis, naudojama strategijos svoriams ir taisyklėms kalibruoti.",
+            "Out-of-Sample (OOS): kitas skyrius, kuriame strategija išbandoma realiomis sąlygomis, neliečiant jos parametrų."
+          ]
+        },
+        "lead": "Kaip kiekybinė pramonė vertina WFE procentą:",
+        "bullets": [
+          {
+            "bold": "Tvirta ir nuosekli strategija",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Susidūrus su naujomis rinkos sąlygomis, ji išlaiko didžiąją dalį savo galimybių gauti pelną."
+          },
+          {
+            "bold": "Trapi arba per daug tinkama strategija",
+            "code": "WFE < 50% en rojo",
+            "text": "Jis gerai veikė praeities teorijoje, bet praranda efektyvumą realybėje; Nepatartina to vykdyti tikrais pinigais."
+          }
+        ],
+        "example": "Jei strategijos metinė grąža per jos projektavimo etapą (In-Sample) (In-Sample) ir vėlesniame faktiniame testavimo etape (Out-of-Sample) buvo 18,8%, jos WFE efektyvumas yra (18,8 / 20) = 94,0%."
+      }
+    ]
+  }
+}

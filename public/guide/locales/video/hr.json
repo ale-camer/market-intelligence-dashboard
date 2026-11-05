@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Vizualni pregled uživo",
+      "clickPlayPause": "Kliknite za reprodukciju ili pauzu (razmaknica)",
+      "subtitles": "Podnaslovi (C)",
+      "fullscreen": "Cijeli zaslon (F)",
+      "exitFullscreen": "Izlaz iz cijelog zaslona (F ili Esc)",
+      "portTabs": [
+        "Graditelj",
+        "Rizik",
+        "Simulator",
+        "Kopilot"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • jezici",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • kategorije",
+      "scr-pulse": "02 • 24h puls",
+      "scr-table": "03 • Tablica",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Toplinska karta",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • tehnički",
+      "ana-compare": "03 • Usporedi %",
+      "ana-micro": "04 • Mikro i protok",
+      "ana-engines": "05 • 3D/2D motori",
+      "res-hero": "01 • Rezultat i stav",
+      "res-rag": "02 • RAG Chat",
+      "res-factors": "03 • Čimbenici",
+      "res-pulse24h": "04 • FinBERT Puls",
+      "p1-pills": "01 • Sažetak",
+      "p1-table": "02 • Ponderiranje",
+      "p1-xray": "03 • X-zraka",
+      "p1-calendar": "04 • Kalendar",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornado & VaR",
+      "p2-corr": "03 • Korelacija",
+      "p2-shock2d": "04 • Šok & Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Utjecaj",
+      "p3-whatif": "02 • What-If & Kelly",
+      "p3-tailhedge": "03 • OTM Put & Margin",
+      "p3-committee": "04 • Odbor & Dnevnik",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Dobrodošli na zaslon Home: vaša početna točka bez ometanja gdje se tržišta dekodiraju.",
+      "home-header": "U gornjem lijevom kutu Header, klik na ikonu λ uvijek vas vraća na ovu glavnu pozornicu.",
+      "home-markets": "U sredini na vrhu Header je Markets, vaša radna stanica za istraživanje svih 213 globalnih sredstava uživo.",
+      "home-portfolio": "Odmah pokraj njega u središnjem izborniku nalazi se Portfolio, za izgradnju alokacija, stres test rizika i simulaciju trgovanja.",
+      "home-system": "Dolje u donjem lijevom Footer, System otvara monitor za praćenje uživo za poslužitelje i baze podataka.",
+      "home-guide": "Pored njega, Guide otvara ovaj interaktivni priručnik korak po korak kad god vam zatreba.",
+      "home-langs": "U donjem desnom kutu gumb za jezik otvara središnji modal za prijevod platforme na 56 jezika.",
+      "home-palettes": "A Palette otvara 5 tema za vizualno čitanje, dok je financijska zelena i crvena strogo netaknuta.",
+      "scr-categories": "Na gornjoj traci s kategorijama filtrirajte svih 213 sredstava, svoj Watchlist ili 10 specijaliziranih tržišta.",
+      "scr-pulse": "Kartice 4 Pulse 24h prikazuju agregirani volumen, prosječni RSI, režim P-06 i najveće dislokacije volumena.",
+      "scr-table": "Interaktivna tablica sadrži trenutno pretraživanje, favorite i pametne stupce prilagođene svakoj klasi imovine.",
+      "scr-orbital": "Pogled Orbital mapira imovinu preko tri koncentrična prstena odstupanjem s bočnom inspekcijskom pločom uživo.",
+      "scr-heatmap": "Toplinska karta raspoređuje 10 najboljih sredstava u proporcionalne blokove u 8 nijansi zelene i crvene.",
+      "scr-maintools": "A Main Tools vodi vas u tri koraka do suverenih krivulja, 3D volatilnosti, FX cross-a i motora budućnosti.",
+      "ana-hero": "Header kombinira izmjenjivač sredstava, 9 vremenskih okvira od 1m do ALL i 5 osnovnih indikatora.",
+      "ana-technical": "Tehnička leća prekriva SMA 20, VWAP i 2σ Bollingerove trake s potvrđivanjem donjeg volumena.",
+      "ana-compare": "Uz Usporedi %, izmjerite neto postotak prednosti ili Alpha Spread od 0% u odnosu na kompatibilnog konkurenta ili indeks.",
+      "ana-micro": "Micro & Flow otkriva skokove volumena putem 20d Z-Score-a, dislokacije likvidnosti širenja i P-06 rezultata anomalije.",
+      "ana-engines": "Četvrta kartica je dinamički ad-hoc alat koji se razlikuje prema klasi imovine: budući da je NVDA dionica, otvara 3D volatilnost i isplatu opcija, dok obveznice, FX i roba pokreću vlastite specijalizirane alate.",
+      "res-hero": "Na vrhu, Score & Stance sažima temeljnu presudu, ponderiranu ocjenu i glavni termometar.",
+      "res-rag": "U lijevom stupcu, RAG Document Chat odgovara na provjerene upite temeljene na službenim SEC 10-K i 10-Q podnescima.",
+      "res-factors": "U središnjem stupcu, harmonika faktora suprotstavlja 5 najvećih pokretača bikova i 5 najvećih rizika medvjeda.",
+      "res-pulse24h": "S desne strane, FinBERT Pulse bilježi najnovije naslove u stvarnom vremenu i iscrtava 24-satnu krivulju osjećaja.",
+      "p1-pills": "6 kartica sa sažetkom ponovno izračunava CAGR, Sharpe i Sortino, 95% VaR, Max Drawdown, Alpha i diverzifikaciju.",
+      "p1-table": "U tablici ponderiranja dodajte bilo koju od 213 imovine, postavite točne pondere u postocima ili rebalansirajte na 100%.",
+      "p1-xray": "Gore desno, X-Ray ploča s 5 kartica revidira preklapanje ETF-a, izloženost, Brinsonovu atribuciju, tok novca i skrbništvo.",
+      "p1-calendar": "Ispod rendgenske snimke, mjesečni kalendar prikazuje konzistentnost povrata od siječnja do prosinca i ukupne rezultate od početka godine.",
+      "p1-backtest": "A na dnu pune širine, Backtesting uspoređuje vaš portfelj sa S&P 500, 60/40, All-Weather i Min-Variance.",
+      "p2-markowitz": "Prvi kvadrant iscrtava 2D Markowitz Efficient Frontier i pozicionira vaš portfelj u odnosu na Min-Var i Max-Sharpe.",
+      "p2-tornado": "Donji lijevi kvadrant testira 5 povijesnih kriza, VaR doprinos od 95% po imovini i bilježenje Upside/Downside.",
+      "p2-corr": "Gore desno, Matrica 6×6 uspoređuje korelacije u normalnim uvjetima i zarazu kriznog repa.",
+      "p2-shock2d": "Dolje desno, Shock & Markov križa promjene kamatnih stopa s potezima S&P 500 i procjenjuje prijelaze režima.",
+      "p2-montecarlo": "A donja ploča projicira 10 000 Monte Carlo putanja preko P95, P50 i P05, podvodnog pada i kotrljajućeg Sharpe.",
+      "p3-impact": "6 Impact kartica uspoređuje vaš trenutni portfelj s projiciranim stanjem nakon vaših simuliranih trgovanja.",
+      "p3-whatif": "Gore lijevo, What-If & Kelly simulira kupnju ili prodaju ulaznica i izračunava optimalnu veličinu pozicije Half-Kelly.",
+      "p3-tailhedge": "Dolje lijevo, OTM Put & Margin simulira zaštitne opcijske štitove i nadzire maržu održavanja Reg-T.",
+      "p3-committee": "U dva desna panela, Odbor od 3 stupa revidira zaštitne ograde za rizik uz Dnevnik izvršenja i Kopilot.",
+      "p3-walkforward": "A na dnu, grafikon Walk-Forward potvrđuje performanse In-Sample i Out-of-Sample sa WFE indeksom."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 10.8
+      },
+      {
+        "id": "home-header",
+        "startPct": 10.8,
+        "endPct": 21.1
+      },
+      {
+        "id": "home-markets",
+        "startPct": 21.1,
+        "endPct": 35.3
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 35.3,
+        "endPct": 51.6
+      },
+      {
+        "id": "home-system",
+        "startPct": 51.6,
+        "endPct": 64.4
+      },
+      {
+        "id": "home-guide",
+        "startPct": 64.4,
+        "endPct": 75.4
+      },
+      {
+        "id": "home-langs",
+        "startPct": 75.4,
+        "endPct": 86.8
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 86.8,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 16.2
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 16.2,
+        "endPct": 37.7
+      },
+      {
+        "id": "scr-table",
+        "startPct": 37.7,
+        "endPct": 55.4
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 55.4,
+        "endPct": 69.7
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 69.7,
+        "endPct": 84
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 84,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 15.2
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 15.2,
+        "endPct": 33.1
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 33.1,
+        "endPct": 49.7
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 49.7,
+        "endPct": 71.9
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 71.9,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 20.4
+      },
+      {
+        "id": "res-rag",
+        "startPct": 20.4,
+        "endPct": 47.7
+      },
+      {
+        "id": "res-factors",
+        "startPct": 47.7,
+        "endPct": 72.3
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 72.3,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 21.2
+      },
+      {
+        "id": "p1-table",
+        "startPct": 21.2,
+        "endPct": 40
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 40,
+        "endPct": 60.9
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 60.9,
+        "endPct": 79.8
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 79.8,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 16.5
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 16.5,
+        "endPct": 37.3
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 37.3,
+        "endPct": 53.4
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 53.4,
+        "endPct": 75.9
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 75.9,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 21.1
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 21.1,
+        "endPct": 45.5
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 45.5,
+        "endPct": 62.4
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 62.4,
+        "endPct": 79.8
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 79.8,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

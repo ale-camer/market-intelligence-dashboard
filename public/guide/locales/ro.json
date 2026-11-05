@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Vizualizare restrânsă",
+    "mainView": "Vedere principală",
+    "expandedView": "Vizualizare extinsă",
+    "inThisSection": "În această secțiune veți găsi:",
+    "deepDive": "Deep Dive",
+    "previous": "Anterior",
+    "next": "În continuare",
+    "mathFormula": "Formula matematică",
+    "practicalExample": "Exemplu practic:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Când deschideți o platformă financiară tradițională, primul lucru care apare de obicei sunt zeci de diagrame, tabele intermitente și meniuri peste tot. De unde începi când vrei doar să verifici piața sau să verifici cum sta portofoliul tău?",
+        "Ecranul Home este proiectat tocmai pentru a evita acel zgomot initial. Te întâmpină cu un spațiu curat și clar în care tot controlul este concentrat în două bare fixe: una deasupra pentru a merge la lucru și alta dedesubt pentru a configura platforma potrivită pentru tine."
+      ],
+      "intro": "Ecranul Home vă întâmpină cu un spațiu curat și clar în care tot controlul este concentrat în două bare fixe: una deasupra pentru a merge la lucru și alta dedesubt pentru a configura platforma potrivită pentru dvs.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Punctul de plecare clar care vă împarte munca în analiza pieței și managementul portofoliului.",
+          "paragraphs": [
+            "Imaginați-vă că începeți să tranzacționați la prima oră dimineața. Uneori veți dori să vă uitați pentru a vedea care acțiuni, obligațiuni sau valute se mișcă cel mai mult; Alteori veți merge direct să revizuiți riscul portofoliului dvs. sau să simulați o achiziție înainte de a o executa.",
+            "Cum eviți să amesteci cele două lucruri pe același ecran supraîncărcat? Coperta separă clar acea cale de prima secundă:"
+          ],
+          "lead": "Cum eviți să amesteci cele două lucruri pe același ecran supraîncărcat? Coperta separă clar acea cale de prima secundă:",
+          "bullets": [
+            {
+              "bold": "Spațiu fără distrageri",
+              "code": "Donde se decodifican los mercados",
+              "text": "Când intri, nu există mese deschise sau alerte care te obligă să închizi ferestrele înainte de a începe; Tu alegi ce modul să deschizi."
+            },
+            {
+              "bold": "Două căi clare",
+              "code": "Markets / Portfolio",
+              "text": "Întregul flux al aplicației este împărțit în două etape principale: mai întâi cercetarea oportunităților pe piețe și apoi construiți sau testați-vă portofoliul."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Bara de sus pentru a sări cu un singur clic între casă, piețe și portofoliu.",
+          "paragraphs": [
+            "Pe măsură ce vă aprofundați în detaliile unui activ sau testați modificările aduse portofoliului dvs., este foarte ușor să pierdeți evidența unde vă aflați. Cum treci de la a te uita la un grafic bursier la a-ți revizui portofoliul fără a trece prin submeniuri?",
+            "Bara de sus rămâne întotdeauna fixă pe ecran și vă oferă acces direct la cele trei puncte principale:"
+          ],
+          "lead": "Bara de sus rămâne întotdeauna fixă pe ecran și vă oferă acces direct la cele trei puncte principale:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Oriunde v-ați afla, făcând clic pe simbolul din stânga, veți reveni imediat la pagina principală."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Este spațiul tău de cercetare. Aici filtrați cele 213 active disponibile, urmăriți cotațiile live, analizați diagrame tehnice și consultați rezumatele bilanțului sau știrile."
+            },
+            {
+              "bold": "Portofel",
+              "code": "Portfolio",
+              "text": "Este masa ta de decizie. Aici definiți ce procent din capitalul dvs. se adresează fiecărui activ, măsurați cât ați putea pierde într-o criză și simulați noi operațiuni înainte de a risca banii."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Subsolul pentru a verifica starea sistemului, a reveni la acest ghid sau pentru a ajusta aspectul.",
+          "paragraphs": [
+            "În timpul analizei datelor în timp real, există întrebări operaționale care pot apărea în orice moment: cotațiile ajung corect? Ce a însemnat un indicator punctual? Pot reduce luminozitatea ecranului?",
+            "Subsolul grupează toate aceste instrumente de asistență și configurare, astfel încât acestea să fie mereu la îndemână, fără să stea în calea centrului ecranului:"
+          ],
+          "lead": "Subsolul grupează toate aceste instrumente de asistență și configurare, astfel încât acestea să fie mereu la îndemână, fără să stea în calea centrului ecranului:",
+          "bullets": [
+            {
+              "bold": "Stare System",
+              "code": "System",
+              "text": "Punctul verde confirmă dintr-o privire că totul este în ordine. Când îl deschideți, puteți vedea în detaliu starea serverelor, bazele de date și viteza de răspuns."
+            },
+            {
+              "bold": "Utilizatorul Guide",
+              "code": "Guide",
+              "text": "Deschideți oricând acest manual interactiv pentru a vedea cum să utilizați un ecran sau să aprofundați în calculele acestuia."
+            },
+            {
+              "bold": "Preferințe vizuale",
+              "code": "Idioma / Palette",
+              "text": "În partea dreaptă aveți comenzile pentru a schimba limba întregii aplicații sau pentru a regla iluminarea de fundal."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Limbi",
+          "summary": "Motorul de căutare pentru a traduce întreaga platformă în limba dvs. pe loc.",
+          "paragraphs": [
+            "Termenii financiari și rapoartele de piață au deja propria lor complexitate, fără a adăuga o barieră lingvistică. Dacă preferați să citiți explicațiile în spaniolă, engleză sau orice altă limbă, le puteți schimba instantaneu.",
+            "Iată cum funcționează selectorul din colțul din dreapta jos:"
+          ],
+          "lead": "Iată cum funcționează selectorul din colțul din dreapta jos:",
+          "bullets": [
+            {
+              "bold": "căutare instantanee",
+              "code": "Select Language",
+              "text": "Făcând clic pe steagul curent, se deschide o fereastră în care puteți alege între 56 de limbi scriind numele sau codul acestuia (de exemplu, ES, EN, PT, FR sau DE)."
+            },
+            {
+              "bold": "Memorie automată",
+              "code": "mid_lang_v1",
+              "text": "Întregul ecran este tradus instantaneu fără a reîncărca pagina și alegerea dvs. este salvată pentru următoarea intrare."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Teme vizuale pentru a adapta contrastul ecranului fără a modifica culorile financiare.",
+          "paragraphs": [
+            "Petrecerea mai multor ore în fața graficelor cu un contrast care nu se adaptează la lumina din mediul înconjurător ajunge să obosească ochii. Cu toate acestea, schimbarea culorilor unei platforme financiare are un pericol clasic: pierderea referinței la ceea ce urcă și ce coboară.",
+            "Pentru a rezolva acest lucru, selectorul de teme separă culoarea mediului de culoarea datelor:"
+          ],
+          "lead": "Pentru a rezolva acest lucru, selectorul de teme separă culoarea mediului de culoarea datelor:",
+          "bullets": [
+            {
+              "bold": "Cinci medii de lectură",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Cu fiecare clic rotiți între fundaluri negru pur, albăstrui sau cald, până când îl găsiți pe cel mai confortabil pentru ochi."
+            },
+            {
+              "bold": "Semantică financiară intactă",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Indiferent de subiectul pe care îl schimbați, regula universală a pieței nu este niciodată modificată: verdele înseamnă întotdeauna creștere sau câștig, iar roșu înseamnă întotdeauna cădere, pierdere sau alertă de risc."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Imaginați-vă că doriți să detectați unde sunt cele mai bune oportunități ale zilei printre peste două sute de obligațiuni, acțiuni, indici, valute și materii prime. Dacă ar fi să deschideți graficele unul câte unul, piața s-ar închide înainte să terminați de privit.",
+            "Screener reunește toate cele 213 de active de pe platformă într-un singur tablou de bord live. Vă permite să filtrați după piață într-o secundă, să măsurați pulsul general al zilei și să alegeți dintre patru moduri diferite de a vedea ce active au performanțe."
+          ],
+          "intro": "Screener aduce toate cele 213 de active de pe platformă într-un singur tablou de bord live, astfel încât să puteți filtra după piață și să identificați oportunitățile dintr-o privire.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Categorii",
+              "summary": "Cele mai bune filtre pentru a vă concentra pe o singură clasă de active sau pe lista dvs. de urmărire.",
+              "paragraphs": [
+                "Nu are sens să analizăm o obligațiune de trezorerie cu aceleași valori ca o acțiune de tehnologie sau petrol. Când amesteci totul din aceeași listă, ajungi să compari perele cu mere.",
+                "Cum restrângi ecranul exact la piața care te interesează astăzi? Bara de sus vă permite să separați universul cu un singur clic:"
+              ],
+              "lead": "Bara de sus vă permite să separați universul cu un singur clic:",
+              "bullets": [
+                {
+                  "bold": "Poza completă",
+                  "code": "Todos",
+                  "text": "Acesta arată cele 213 instrumente împreună și ordonate după volumul tranzacționat, astfel încât să puteți vedea unde circulă cei mai mulți bani la nivel global."
+                },
+                {
+                  "bold": "Urmărire personală",
+                  "code": "★ Watchlist",
+                  "text": "Izolați numai activele pe care le-ați marcat ca favorite pentru a le monitoriza îndeaproape, fără distrageri."
+                },
+                {
+                  "bold": "Zece piețe specializate",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Alegând oricare dintre aceste categorii, întregul ecran își adaptează indicatorii și coloanele din tabel la regulile sectorului respectiv."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detaliu despre cum sunt clasificate cele 213 active din catalog și ce criterii de volum și lichiditate îndeplinesc."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "puls de 24 de ore",
+              "summary": "Primele patru cărți care vă spun dacă piața este calmă, euforică sau sub stres.",
+              "paragraphs": [
+                "Înainte de a cumpăra sau de a vinde un anumit activ, este indicat să știți în ce climat se mișcă întregul. Este aceasta o zi de volum normală sau banii instituționali vin toți deodată? Sunt toate chiar activele în creștere sau există semne de tensiune?",
+                "Cele patru carduri de sub filtre vă oferă acea citire generală în câteva secunde:"
+              ],
+              "lead": "Cele patru carduri de sub filtre vă oferă acea citire generală în câteva secunde:",
+              "bullets": [
+                {
+                  "bold": "Activitate totală pe zi",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Se adaugă miliarde de dolari tranzacționați în categoria activă și vă arată dacă există mai mult sau mai puțină participare astăzi decât ieri."
+                },
+                {
+                  "bold": "Puterea medie a grupului",
+                  "code": "AVG RSI 14",
+                  "text": "Rezumă într-un metru circular dacă prețurile sectorului vin cu presiune de cumpărare (verde, peste 50) sau cu presiune de vânzare (roșu, sub 50)."
+                },
+                {
+                  "bold": "Termometru de normalitate",
+                  "code": "Régimen Normal P-06",
+                  "text": "Acesta calculează ce procent din active se mișcă în parametrii lor obișnuiți și vă spune după nume și prenume care este instrumentul cu cea mai mare anomalie a zilei."
+                },
+                {
+                  "bold": "Intrări neobișnuite de bani",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Se remarcă podiumul celor trei active care astăzi operează un volum extraordinar de mare față de media lor din ultima lună."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Explicație detaliată a modului în care sunt calculate RSI mediu, volumul Z-Score și detectorul de anomalii P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tabelul",
+              "summary": "Lista interactivă cu căutare rapidă, favorite și coloane care se adaptează fiecărei piețe.",
+              "paragraphs": [
+                "Când știți deja ce sector doriți să vă uitați și trebuie să comparați anumite numere rând cu rând, vizualizarea tabelului este instrumentul dvs. principal.",
+                "În loc să vă arate o foaie de calcul rigidă care este aceeași pentru toată lumea, tabelul se adaptează la ceea ce căutați:"
+              ],
+              "lead": "În loc să vă arate o foaie de calcul rigidă care este aceeași pentru toată lumea, tabelul se adaptează la ceea ce căutați:",
+              "bullets": [
+                {
+                  "bold": "Motorul de căutare și stea favorite",
+                  "code": "Buscar activo / ★",
+                  "text": "În antetul primei coloane, puteți introduce orice simbol sau nume pentru a merge direct la acel material sau puteți atinge steaua din stânga pentru a-l salva pe Watchlist."
+                },
+                {
+                  "bold": "Coloane inteligente în funcție de categorie",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Dacă filtrezi Acțiuni, apar multiplii de evaluare și marjele; Dacă alegeți Obligațiuni sau Rate, vedeți panta curbei și sensibilitatea la rate; Dacă te uiți la instrumente derivate, vezi volatilitate implicită."
+                },
+                {
+                  "bold": "Treci direct la analiza profundă",
+                  "code": "Click en cualquier fila",
+                  "text": "Pur și simplu faceți clic pe orice activ din listă pentru a vă deschide stația completă de diagrame tehnice și rapoarte fundamentale."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Lista valorilor specifice pe care le prezintă tabelul pentru fiecare dintre cele 10 categorii de active."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Radarul vizual pentru a detecta dintr-o privire ce active se îndepărtează de media lor istorică.",
+              "paragraphs": [
+                "Citirea a două sute de rânduri de numere vă poate face să pierdeți un activ care începe să se miște exploziv. Cum detectezi instantaneu ce instrument se abate de la normă?",
+                "Vederea Orbital transformă tabelul într-un radar cu trei inele concentrice:"
+              ],
+              "lead": "Vederea Orbital transformă tabelul într-un radar cu trei inele concentrice:",
+              "bullets": [
+                {
+                  "bold": "Alegerea criteriilor",
+                  "code": "INDICADOR",
+                  "text": "Tu decizi ce măsoară radarul: anomalii statistice, salturi de volum, puterea prețului (RSI), volatilitate sau câștig în ultimele 24 de ore."
+                },
+                {
+                  "bold": "Citirea după distanță și culoare",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Cu cât un punct este mai aproape sau mai îndepărtat conform indicatorului și cu cât culoarea lui verde sau roșie este mai intensă, cu atât mișcarea lui este mai relevantă în comparație cu propria sa istorie."
+                },
+                {
+                  "bold": "Inspecție fără schimbarea ecranului",
+                  "code": "Panel lateral en vivo",
+                  "text": "Prin poziționarea cursorului pe orice nod radar, prețul acestuia, graficul său intraday curat și cele trei valori ale riscului sunt afișate în partea dreaptă."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Cum se calculează poziția fiecărui activ în inelele radar în funcție de abaterea sa istorică."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Harta de căldură",
+              "summary": "Mozaicul de blocuri proporționale pentru a identifica învingătorii și învinșii într-o secundă.",
+              "paragraphs": [
+                "Există momente în care doriți doar să răspundeți la o întrebare rapidă: cine conduce ascensiunea astăzi și cine trage piața în jos?",
+                "Harta termică aranjează primele zece elemente ale filtrului activ în blocuri proporționale, astfel încât să nu fie nevoie să citiți un singur tabel:"
+              ],
+              "lead": "Harta termică ordonează primele zece elemente ale filtrului activ în blocuri proporționale:",
+              "bullets": [
+                {
+                  "bold": "Dimensiunea in functie de importanta",
+                  "code": "Puestos #1 a #10",
+                  "text": "Instrumentele cu cea mai mare greutate în metrica aleasă ocupă coloanele din stânga cu cele mai mari casete."
+                },
+                {
+                  "bold": "Intensitatea culorii",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Tonul blocului vă spune imediat amploarea mișcării, de la variații moderate până la creșteri sau scăderi bruște."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Comanda rapidă în trei pași către calculatoare avansate de rate, opțiuni, forex și futures.",
+              "paragraphs": [
+                "Pe lângă graficele tradiționale de preț, platforma include patru motoare speciale pentru venit fix, opțiuni, încrucișări valutare și curbe de mărfuri. Cum ajungi la ele fără a căuta material după bun?",
+                "Această vizualizare vă ghidează de la stânga la dreapta în trei coloane foarte simple:"
+              ],
+              "lead": "Această vizualizare vă ghidează de la stânga la dreapta în trei coloane foarte simple:",
+              "bullets": [
+                {
+                  "bold": "Mai întâi alegi familia",
+                  "code": "1. Clases de Activo",
+                  "text": "Selectați dacă doriți să lucrați cu Rate și Obligațiuni, cu Opțiuni pe Acțiuni/Indici/Cripto, cu Monede sau cu Materii Prime."
+                },
+                {
+                  "bold": "Apoi verifici ce face motorul",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "În centru, citiți un rezumat clar a ceea ce arată acel instrument și cum să vă orientați de-a lungul axelor sale."
+                },
+                {
+                  "bold": "În cele din urmă, alege-l pe cel activ și deschide-l",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Urmărește o previzualizare live a diagramei, cauți orice active compatibile din acea familie și deschideți stația completă cu un singur clic."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Odată ce ați găsit un activ interesant în Screener, este timpul să aruncați o privire mai atentă. Este într-un trend ascendent sau a rămas fără abur? Îți învingi concurenții? Ce spun volumul și piața derivatelor?",
+            "Stația Analytics concentrează toată analiza tehnică, comparativă și cantitativă a acelui activ pe un singur ecran. Mai sus aveți rezumatul general și în stânga patru lentile pentru a schimba unghiul de analiză fără a pierde din vedere graficul."
+          ],
+          "intro": "Stația Analytics concentrează motoarele tehnice, comparative, de analiză a fluxului și 3D/2D ale unui activ individual pe un singur ecran.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Tabloul de bord superior pentru a schimba elementele, a alege intervalul de timp și a vizualiza cele cinci valori cheie.",
+              "paragraphs": [
+                "Când studiezi un activ, de obicei alternezi între scurtul termen de astăzi și filmul din ultimele luni, sau chiar treci la a te uita la un alt simbol similar. Cum faci toate astea fără să te întorci?",
+                "Antetul de sus reunește comenzile de navigare și fila rapidă a instrumentului:"
+              ],
+              "lead": "Antetul de sus reunește comenzile de navigare și fila rapidă a instrumentului:",
+              "bullets": [
+                {
+                  "bold": "Schimbarea bunului sau revenirea la listă",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "În stânga sus, puteți reveni la Screener sau puteți introduce numele oricărui alt instrument pentru a schimba diagramele pe loc."
+                },
+                {
+                  "bold": "Nouă ferestre de timp",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Pe marginea din dreapta modificați scara graficului de la mișcări minut cu minut la întregul istoric."
+                },
+                {
+                  "bold": "Cinci indicatori conducători",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Alături de preț aveți mereu în vedere volumul tranzacționat, cele două date cheie ale categoriei sale, puterea trendului și nivelul de normalitate statistică."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Tehnic",
+              "summary": "Graficul prețurilor cu medii mobile, benzi de volatilitate și volum pentru a urmări tendința.",
+              "paragraphs": [
+                "Privind doar ultimul preț, nu vă spune dacă un activ se accelerează, dacă se ridică de la medie sau dacă a crescut deja prea repede în câteva zile.",
+                "Prima lentilă de pe șina din stânga vă permite să suprapuneți pe grafic cele mai utilizate referințe tehnice de pe piață:"
+              ],
+              "lead": "Prima lentilă de pe șina din stânga vă permite să suprapuneți cele mai utilizate referințe tehnice:",
+              "bullets": [
+                {
+                  "bold": "Adresă și preț mediu real",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Puteți activa media mobilă pe 20 de perioade și prețul mediu ponderat în funcție de volum pentru a vedea imediat dacă activul se tranzacționează peste sau sub nivelul său de echilibru."
+                },
+                {
+                  "bold": "Zone în exces și confirmare volum",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Benzile trasează plafonul și plafonul statistic al prețului, în timp ce barele inferioare confirmă dacă mișcarea este susținută de volum."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Formule și criterii de interpretare ale mediei mobile (SMA 20), benzi Bollinger și VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Compara %",
+              "summary": "Comparatorul procentual de la 0% pentru a măsura dacă activul dvs. are performanțe mai mari sau mai puține decât altul din aceeași categorie.",
+              "paragraphs": [
+                "Un stoc care crește cu 5% pare o veste grozavă, dar dacă indicele sau principalul său concurent crește cu 12% în aceeași perioadă, de fapt rămâneți în urmă.",
+                "Al doilea obiectiv rezolvă această îndoială punând cele două active pe aceeași linie de plecare:"
+              ],
+              "lead": "Al doilea obiectiv rezolvă această îndoială punând cele două active pe aceeași linie de plecare:",
+              "bullets": [
+                {
+                  "bold": "Căutați perechi coerente",
+                  "code": "Buscar par compatible",
+                  "text": "Motorul de căutare filtrează automat activele din aceeași familie (de exemplu, acțiuni vs. acțiuni, ETF-uri sau indici), astfel încât comparația să aibă sens financiar."
+                },
+                {
+                  "bold": "Avantaj net în procente",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Ambele curbe încep de la 0%, iar șina din stânga calculează câte puncte procentuale de avantaj (cu verde) sau dezavantaj (cu roșu) are activul tău."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Flow",
+              "summary": "Detectorul de achiziții instituționale în afara tiparului, costuri de lichiditate și spread.",
+              "paragraphs": [
+                "De multe ori fonduri mari acumulează sau descarcă poziții înainte ca prețul să facă o mișcare bruscă. Cum detectezi acea urmă ascunsă în volumul și lichiditatea registrului de ordine?",
+                "Al treilea obiectiv se concentrează pe ceea ce se întâmplă sub citat:"
+              ],
+              "lead": "Al treilea obiectiv se concentrează pe ceea ce se întâmplă sub citat:",
+              "bullets": [
+                {
+                  "bold": "Vârfuri statistice de volum",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Schimbă panoul de jos pentru a vă arăta de câte ori se abate volumul curent de la normal, dezvăluind o activitate instituțională neobișnuită."
+                },
+                {
+                  "bold": "Stresul de lichiditate și anomalii",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Măsoară în puncte de bază dacă decalajul dintre cumpărători și vânzători se mărește și dacă motorul statistic detectează comportamentul atipic."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Cum sunt măsurate spread-urile de deschidere și vârfurile statistice ale fluxului de ordine."
+            },
+            {
+              "id": "ana-engines",
+              "label": "Motoare 3D/2D",
+              "summary": "Al patrulea obiectiv care implementează un instrument dinamic ad-hoc, care variază în funcție de clasa de active.",
+              "paragraphs": [
+                "Spre deosebire de primele trei lentile (care sunt comune tuturor instrumentelor), a patra lentilă de pe șina stângă este un instrument ad-hoc care se schimbă dinamic în funcție de activul pe care îl analizați: de exemplu, în turneul live, deoarece este un stoc (NVDA), activează 3D Implicit Volatility și Opțiuni, în timp ce își desfășoară alte piețe speciale Payoff.",
+                "Al patrulea buton detectează clasa de active deschisă și activează automat instrumentul ad-hoc corespunzător:"
+              ],
+              "lead": "Al patrulea buton detectează ce activ ai deschis și activează instrumentul ad-hoc care îi corespunde:",
+              "bullets": [
+                {
+                  "bold": "În acțiuni, indici, derivate și cripto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Afișați suprafața de volatilitate implicită 3D, opțiunile zâmbet după expirare și un simulator cu 6 strategii pentru a vedea cât ați câștiga sau pierde azi și la expirare."
+                },
+                {
+                  "bold": "În rate, obligațiuni și lichidități",
+                  "code": "Curva 3D/2D",
+                  "text": "Vă permite să comparați curbele de randament din 42 de țări față de SUA și Germania, măsurând dacă curba este normală sau inversată (2s10s) și cât de mult variază prețul cu modificările ratei (DV01)."
+                },
+                {
+                  "bold": "În valute",
+                  "code": "FX & Carry",
+                  "text": "Oferă un convertor și un triangulator între 61 de valute care calculează și diferența de dobândă pe 10 ani în favoarea sau împotriva menținerii acelei perechi."
+                },
+                {
+                  "bold": "În materii prime",
+                  "code": "Forward 3D/2D",
+                  "text": "Grafică prețurile contractelor futures lună de lună pentru a arăta dacă piața plătește mai mult pentru forward (Contango) sau pentru livrare imediată (Backwardation), împreună cu starea stocurilor fizice."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detalii matematice ale suprafețelor de volatilitate, curbelor randamentului suveran, transportului valutar și curbelor futures."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Graficul vă arată ce face prețul, dar nu vă spune de ce. Pentru a ști ce se află în spatele unei mișcări, ar trebui să citiți zeci de pagini de bilanţuri trimestriale, extrase de cont, rapoarte de inventar și cabluri de știri.",
+            "Stația Research face acest lucru greu pentru dvs. Combină inteligența artificială documentară verificată în raport cu rapoartele oficiale cu citirea știrilor în timp real, organizând toate dovezile pro și contra în trei coloane clare."
+          ],
+          "intro": "Stația Research rezumă bilanțurile oficiale, rapoartele macroeconomice și știrile în timp real în trei coloane clare.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Notă și postură",
+              "summary": "Primele trei cărți care rezumă verdictul fundamental și umorul știrilor.",
+              "paragraphs": [
+                "Fundamentele activului însoțesc creșterea prețului sau știrile deteriorează perspectivele? Înainte de a citi detaliile, aveți nevoie de o concluzie executivă rapidă.",
+                "În colțul din dreapta sus aveți trei indicatori care rezumă starea generală a activului:"
+              ],
+              "lead": "În colțul din dreapta sus aveți trei indicatori care rezumă starea generală:",
+              "bullets": [
+                {
+                  "bold": "Poziția și greutatea fiecărei surse",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Acesta definește verdictul general și clarifică ce pondere acordă documentelor oficiale față de știri în funcție de tipul de activ (de exemplu, 80% bilanțuri și 20% știri într-un stoc)."
+                },
+                {
+                  "bold": "Evaluare combinată",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Sintetizează într-un singur scor rezultatul net al elementelor fundamentale plus fluxul de informații al zilei."
+                },
+                {
+                  "bold": "Suporturi pentru termometre",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Așezați pe o bară de la -100 la +100 dacă tonul presei în ultimele ore este pesimist (roșu), neutru sau entuziast (verde)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Cum sunt ponderate rapoartele oficiale față de știri, în funcție de tipul de activ."
+            },
+            {
+              "id": "res-rag",
+              "label": "Chat RAG",
+              "summary": "Asistentul documentar a lăsat să pună întrebări specifice despre bilanţuri şi rapoarte oficiale.",
+              "paragraphs": [
+                "Să presupunem că doriți să știți ce a spus exact o companie despre marjele sale în ultimul său bilanţ anual 10-K sau ce a spus Rezerva Federală în ultimele sale procese-verbale. Căutarea manuală necesită timp; Cererea unui chat generic fără surse vă poate oferi date inventate.",
+                "Coloana din stânga rezolvă acest lucru cu un expert conectat exclusiv la documentația oficială verificată:"
+              ],
+              "lead": "Coloana din stânga vă oferă un expert conectat la documentația oficială verificată:",
+              "bullets": [
+                {
+                  "bold": "Teză inițială și întrebări ghidate",
+                  "code": "Chat Documental RAG",
+                  "text": "Începe cu un rezumat executiv cu citate verificate și patru butoane de referință rapidă adaptate categoriei de active, precum și un câmp în care să-ți scrii propriile întrebări."
+                },
+                {
+                  "bold": "Pas direct către portofoliul dvs",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Dacă după ce ai cercetat elementele de bază decizi că activul merită, acest buton din partea de sus a chat-ului te trimite direct la simulatorul de portofoliu."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Funcționarea căutării documentare verificate (RAG) și a filtrelor de securitate ale acesteia."
+            },
+            {
+              "id": "res-factors",
+              "label": "Factori",
+              "summary": "Acordeonul central cu cei cinci driver-uri urcarei și cele cinci riscuri de urs ordonate după impact.",
+              "paragraphs": [
+                "Nicio investiție nu este sută la sută perfectă sau sută la sută rea: există întotdeauna argumente în favoare și riscuri latente. Secretul este să știi care dintre ele cântăresc mai mult astăzi.",
+                "Coloana centrală pune ambele părți față în față, astfel încât să puteți lua o decizie echilibrată:"
+              ],
+              "lead": "Coloana centrală pune ambele părți față în față, astfel încât să puteți lua o decizie echilibrată:",
+              "bullets": [
+                {
+                  "bold": "Echilibrul de forță și filtre",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Deasupra vedeți bara de licitare între cumpărători și vânzători, iar mai jos puteți filtra cei cinci catalizatori pozitivi (cu verde) sau cele cinci riscuri principale (cu roșu)."
+                },
+                {
+                  "bold": "Detalii și detalii cu un singur clic",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Când atingeți orice factor din listă, explicația sa completă este afișată împreună cu un buton pentru a cere mai multe informații despre acel punct în Chat RAG."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Puls",
+              "summary": "Cronologia potrivită cu cele mai recente titluri evaluate AI și curba de dispoziție de 24 de ore.",
+              "paragraphs": [
+                "Un singur titlu de ultim moment despre câștiguri, inflație sau reglementări poate schimba complet starea de spirit a zilei. De unde știi ce știri tocmai au apărut și ce efect au?",
+                "Coloana din dreapta monitorizează fluxul de informații minut cu minut:"
+              ],
+              "lead": "Coloana din dreapta monitorizează fluxul de informații minut cu minut:",
+              "bullets": [
+                {
+                  "bold": "Cronologie calificată",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Enumeră cele mai recente cinci titluri cu timpul și agenția lor, notându-le verde dacă sunt favorabile sau roșu dacă reprezintă o amenințare."
+                },
+                {
+                  "bold": "Simulator de impact și curbă zilnică",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Puteți declanșa un fir live cu butonul de sus pentru a vedea cum recalculează întregul ecran și urmăriți în graficul de mai jos cum a evoluat starea de spirit în ultimele 24 de ore."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Cum modelul FinBERT analizează limbajul financiar al fiecărui deținător."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Constructor",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Alegerea separată a activelor bune nu este suficientă pentru a avea un portofoliu bun. Dacă puneți prea mult capital în active care se mișcă la fel sau dacă nu măsurați cum ar fi funcționat împreună în trecut, investiți orbește.",
+            "Constructor & Performance (prima vizualizare a Portfolio) este atelierul în care vă construiți portofoliul. Vă permite să adăugați oricare dintre cele 213 active, să ajustați procentajul pe care îl atribuiți fiecăruia fără a vă ocupa de controale imprecise și să auditați instantaneu atât compoziția internă, cât și istoricul acestuia."
+          ],
+          "intro": "Constructor & Performance este atelierul în care vă construiți portofoliul, ajustați ponderea fiecărui activ și auditați performanța istorică a acestuia.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Rezumat",
+              "summary": "Primele șase cărți care sunt recalculate live de fiecare dată când vă modificați portofoliul.",
+              "paragraphs": [
+                "De fiecare dată când adăugați un activ sau modificați un procent din portofoliul dvs., trebuie să știți imediat dacă această ajustare a îmbunătățit randamentul așteptat sau a înrăutățit expunerea la declin.",
+                "Rândul de sus păstrează întotdeauna vizibile cele șase valori principale ale portofoliului:"
+              ],
+              "lead": "Rândul de sus păstrează întotdeauna vizibile cele șase valori principale ale portofoliului:",
+              "bullets": [
+                {
+                  "bold": "Performanță și eficiență",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Ei vă spun ce profit anual compus proiectează portofoliul asupra capitalului dumneavoastră și cât de mult profitați pentru fiecare unitate de risc asumată."
+                },
+                {
+                  "bold": "Pierdere zilnică așteptată și scădere istorică",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Ei calculează câți dolari ai putea pierde într-o zi proastă în ceea ce era previzibil statistic și care a fost cel mai profund eșec din ultimul an."
+                },
+                {
+                  "bold": "Valoare adăugată și diversificare",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Acestea măsoară câte puncte depășește portofoliul dvs. indicele de referință și cât de mult riscați reduceți datorită combinării diferitelor active."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Formule de rentabilitate compuse (CAGR), rapoarte Sharpe și Sortino și Valoare la risc (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Ponderarea",
+              "summary": "Tabelul din stânga pentru a adăuga active, a le activa sau dezactiva și a defini procentul exact al fiecărei poziții.",
+              "paragraphs": [
+                "Ce s-ar întâmpla cu numerele portofoliului tău dacă ai închide temporar o acțiune tehnologică astăzi sau dacă ai împărți banii în mod egal între toate pozițiile tale?",
+                "Panoul din stânga vă permite să faceți toate aceste teste într-un mod curat și direct:"
+              ],
+              "lead": "Panoul din stânga vă permite să faceți toate aceste teste într-un mod curat și direct:",
+              "bullets": [
+                {
+                  "bold": "Motor de căutare pentru cele 213 active",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Puteți căuta orice instrument de pe platformă sau puteți filtra preferatele pentru a-l adăuga la tabel cu un singur clic."
+                },
+                {
+                  "bold": "Pornire rapidă și editare precisă",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Fiecare rând are o casetă de selectare pentru a include sau exclude activul în timp real și o casetă numerică pentru a introduce procentul exact fără a utiliza glisoare imprecise."
+                },
+                {
+                  "bold": "Trei comenzi rapide de reechilibrare",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "În partea de sus a tabelului aveți butoane pentru a distribui ponderi egale între toate activele active, pentru a aduce automat suma la 100% sau pentru a reveni la portofoliul inițial."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "cu raze X",
+              "summary": "Panoul din dreapta sus cu cinci file pentru a descoperi concentrațiile ascunse, fluxul de numerar și custodia.",
+              "paragraphs": [
+                "Una dintre cele mai frecvente greșeli atunci când investești este să crezi că ești diversificat pentru că ai cinci active diferite, când, în realitate, ai cumpărat o acțiune individuală și, de asemenea, două ETF-uri care au același stoc în interior.",
+                "Panoul cu raze X analizează portofoliul dvs. din interior prin cinci file:"
+              ],
+              "lead": "Panoul cu raze X analizează portofoliul dvs. din interior prin cinci file:",
+              "bullets": [
+                {
+                  "bold": "Detector de poziție repetat",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Adunați ceea ce ați investit direct în fiecare companie plus partea ascunsă pe care o aveți în indici sau ETF-uri (cum ar fi SPY sau QQQ), avertizându-vă cu roșu dacă depășiți limitele prudente."
+                },
+                {
+                  "bold": "Harta expunerii și originea întoarcerii",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Ele vă arată ce procent aveți de fapt în fiecare tip de activ și monedă și cât de mult din profitul dvs. a provenit din alegerea sectoarelor bune față de alegerea activelor bune."
+                },
+                {
+                  "bold": "Venitul anual proiectat și securitate",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Ei calculează câți dolari veți colecta în anul pentru dividende, cupoane și dobânzi și auditează solvabilitatea custodelor în care se află capitalul dumneavoastră."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Cum se calculează expunerea indirectă în cadrul ETF-urilor și defalcarea atribuirii Brinson."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Calendar",
+              "summary": "Graficul lunar din ianuarie până în decembrie pentru a vedea regularitatea profiturilor și pierderilor dvs.",
+              "paragraphs": [
+                "O rentabilitate anuală bună poate ascunde luni de căderi foarte puternice, care în practică sunt greu de tolerat. Cât de consistent este de la lună la lună portofoliul pe care tocmai l-ați alcătuit?",
+                "Chiar sub radiografie, calendarul prezintă istoricul lunar:"
+              ],
+              "lead": "Chiar sub radiografie, calendarul prezintă istoricul lunar:",
+              "bullets": [
+                {
+                  "bold": "Luni verzi și luni roșii",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Fiecare celulă este recalculată instantaneu în funcție de greutățile din tabelul tău și este vopsită în verde sau roșu în funcție de rezultatul lunii respective, închizându-se în dreapta cu rezultatul cumulat pentru anul."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Graficul pe ecran complet de mai jos pentru a vă compara portofoliul cu patru strategii clasice.",
+              "paragraphs": [
+                "Înainte să vă considerați portofoliul bun, rămâne testul fundamental: este chiar mai bine decât să lăsați banii în S&P 500 sau într-un portofoliu tradițional 60/40?",
+                "Panoul de jos ocupă întreaga lățime a ecranului pentru a vă aduce designul la standardele pieței:"
+              ],
+              "lead": "Panoul de jos vă pune designul la standardele pieței:",
+              "bullets": [
+                {
+                  "bold": "Cinci orizonturi de testare",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Vă permite să evaluați modul în care mixul dvs. a performat atât în ultimele trimestre, cât și pe parcursul întregii cicluri multianuale."
+                },
+                {
+                  "bold": "Patru referințe față în față",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Suprapuneți curba verde a portofoliului dvs. activ cu oricare dintre cele patru modele clasice, astfel încât să puteți vedea clar când este înainte și cum se menține în declin."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Risc",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "În vremuri în care piața crește calm, aproape orice portofoliu pare sigur. Adevărata problemă apare atunci când izbucnește o criză, ratele dobânzilor cresc brusc și activele care păreau independente încep să scadă toate în același timp.",
+            "Cantitative Risk & Stress (a doua vedere a Portfolio) vă supune portofoliului teste extreme înainte ca acestea să se întâmple în viața reală. Prin patru cadrane simetrice și un simulator de scenarii viitor de mai jos, vă arată exact unde vă sunt punctele vulnerabile."
+          ],
+          "intro": "Risc cantitativ și stres vă testează portofoliul pentru crize istorice, contagiune în corelație și proiecții Monte Carlo.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Harta interactivă de risc și rentabilitate pentru a vedea cât de aproape sunteți de cel mai eficient portofoliu posibil.",
+              "paragraphs": [
+                "Cu aceleași active pe care le aveți deja în portofoliu, există mii de moduri de a distribui procentele. Combinația pe care ai ales-o este cea care plătește cel mai bine pentru riscul pe care ți-l asumi sau ai putea câștiga la fel cu mai puține surprize?",
+                "Primul cadran din stânga sus desenează acea hartă live a posibilităților:"
+              ],
+              "lead": "Primul cadran din stânga sus desenează acea hartă live a posibilităților:",
+              "bullets": [
+                {
+                  "bold": "Poziția dumneavoastră față de portofoliile optime",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Acesta arată unde se află portofoliul dvs. actual în raport cu punctul de cea mai scăzută volatilitate posibilă și punctul de eficiență maximă risc-randament."
+                },
+                {
+                  "bold": "Straturi vizuale și inspecție pe activ",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Puteți activa sau dezactiva straturile de model și puteți face clic pe orice nod pentru a citi mai jos contribuția exactă a acelui activ."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Frontieră eficientă a Markowitz și calculul varianței minime și portofoliilor maxime Sharpe."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado și VaR",
+              "summary": "Simulatorul de criză istorică, defalcarea zilnică a pierderilor în funcție de activ și asimetria pieței.",
+              "paragraphs": [
+                "Dacă mâine s-ar repeta o prăbușire precum cea din 2008, încetinirea economică din 2020 sau creșterea ratelor din 2022, cât de mult ar pierde portofoliul dvs. actual și ce activ ar fi principalul vinovat?",
+                "Cadranul din stânga jos răspunde la aceste trei întrebări în trei file specifice:"
+              ],
+              "lead": "Cadranul din stânga jos răspunde la aceste întrebări în trei file specifice:",
+              "bullets": [
+                {
+                  "bold": "Testați împotriva a cinci crize reale",
+                  "code": "1. Tornado Stress",
+                  "text": "Comparați bar cu bară cât de mult ar scădea portofoliul dvs. față de S&P 500 în fața a cinci șocuri istorice majore."
+                },
+                {
+                  "bold": "Clasificarea riscului în funcție de poziție",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Sortați-vă deținerile în funcție de câți dolari de pierdere zilnică potențială contribuie fiecare la portofoliul total."
+                },
+                {
+                  "bold": "Comportament în suișuri și coborâșuri",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Vă arată de ce procent din roțile optimiste ale pieței profită fiecare activ și cât de mult reușește să amortizeze atunci când piața scade."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Metodologia scenariilor istorice de stres, contribuția marginală la VaR și ratele de captare."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Corelație",
+              "summary": "Matricea încrucișată pentru a verifica dacă activele dvs. se diversifică cu adevărat sau dacă sunt infectate în timpul unei panică.",
+              "paragraphs": [
+                "A avea mai multe active în portofoliu reduce riscul doar dacă nu se mișcă toate în aceeași direcție în același timp. Dar, în vremuri de panică financiară, multe corelații care păreau joase sar brusc în sus.",
+                "Cadranul din dreapta sus vă permite să auditați acea relație în două scenarii:"
+              ],
+              "lead": "Cadranul din dreapta sus vă permite să auditați acea relație în două scenarii:",
+              "bullets": [
+                {
+                  "bold": "Crossover între active și sensibilitate",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Arată cât de asemănătoare se mișcă fiecare pereche de active (în verde sau albastru deschis când se diversifică bine și în roșu când se apropie prea mult una dintre ele) și care este sensibilitatea lor față de piață."
+                },
+                {
+                  "bold": "Simulator de contagiune în criză",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Cu un singur clic schimbi corelațiile unui an normal cu cele ale unui moment de panică pentru a descoperi ce poziții nu te-ar mai proteja."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Calculul coeficienților de corelație Pearson în condiții normale și în condiții de stres al pieței."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Ciocnire și Markov",
+              "summary": "Tabelul de impact comun dintre rate și bursă, plus probabilitățile unei schimbări a ciclului economic.",
+              "paragraphs": [
+                "În economia reală, problemele apar rareori una câte una: de multe ori o creștere a dobânzilor coincide cu o scădere a stocurilor. Ce se întâmplă cu portofoliul tău dacă cei doi factori sunt combinați în același timp?",
+                "Cadranul din dreapta jos traversează ambele variabile și măsoară probabilitățile de schimbare a regimului:"
+              ],
+              "lead": "Cadranul din dreapta jos traversează ambele variabile și măsoară ciclul pieței:",
+              "bullets": [
+                {
+                  "bold": "Placa de impact dublu",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Mișcări încrucișate ale ratei (de la -100 la +200 puncte de bază) cu scăderi sau creșteri ale S&P 500 (de la -20% la +10%), permițându-vă să filtrați după întregul portofoliu sau după un activ individual."
+                },
+                {
+                  "bold": "Probabilități de tranziție de ciclu",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Calculați cât de probabil este piața să rămână calmă sau să intre într-o fază volatilă, inflaționistă sau de criză."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sensibilitatea comună la rate și variabile și matricea de tranziție a stării Markov."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Panoul de jos este ecran complet cu proiecții probabilistice viitoare și scăderi istorice.",
+              "paragraphs": [
+                "Este util să priviți trecutul, dar atunci când investiți înainte, ceea ce trebuie să știți este în ce interval de rezultate se poate muta capitalul dumneavoastră în următoarele șase luni, un an sau doi ani.",
+                "Panoul de jos pe toată lățimea reunește trei instrumente temporare pentru a proiecta și controla acea cale:"
+              ],
+              "lead": "Panoul de jos reunește trei instrumente temporare pentru a proiecta acea cale:",
+              "bullets": [
+                {
+                  "bold": "Zece mii de scenarii de viitor",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Desenați conul de evoluție probabilă a portofoliului dvs., distingând scenariul optimist (P95 în verde), calea centrală așteptată (P50) și scenariul advers (P05 în roșu)."
+                },
+                {
+                  "bold": "Adâncimea căderilor și stabilitatea în timp",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Acestea vă permit să comutați graficul pentru a vedea cât timp a rămas portofoliul sub maximele sale istorice sau cât de stabile au fost eficiența și riscul său peste ferestrele de 60 de zile."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo simulare stocastică a 10.000 de drumuri și valori de rulare pe 60 de zile."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulator",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Înainte de a cumpăra un nou activ, de a reduce o poziție sau de a plăti pentru acoperirea cu opțiuni, apare întotdeauna aceeași întrebare: această operațiune îmi îmbunătățește cu adevărat portofoliul sau adaugă riscuri inutile? Și cât capital ar trebui să pun în el?",
+            "Laboratorul de strategie ad-hoc (a treia vedere a Portfolio) este simulatorul dumneavoastră pre-operare. Vă permite să încărcați jocuri tactice, să calculați dimensiunea poziției ideale, să testați asigurarea dezavantajului și să vedeți exact impactul înainte și după, fără a vă atinge încă portofoliul de bază."
+          ],
+          "intro": "Laboratorul de strategie ad-hoc este simulatorul dvs. de pre-tranzacționare pentru a testa comenzile, a mări pozițiile și pentru a măsura acoperirea.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Impact",
+              "summary": "Primele șase cărți care vă compară portofoliul actual cu rezultatul după jocurile simulate.",
+              "paragraphs": [
+                "Pentru a ști dacă o idee tactică merită, nu este suficient ca activul să arate atractiv de unul singur: trebuie să îmbunătățească cifrele pentru întregul portofoliu.",
+                "Rândul de sus vă arată permanent comparația dintre portofoliul actual și portofoliul cu simularea aplicată:"
+              ],
+              "lead": "Rândul de sus compară portofoliul actual cu portofoliul cu simularea aplicată:",
+              "bullets": [
+                {
+                  "bold": "Efectul asupra profitului și eficienței",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Ele arată numărul de bază lângă numărul proiectat, luminând diferența în verde dacă jocul adaugă eficiență sau în roșu dacă o deteriorează."
+                },
+                {
+                  "bold": "Efectul asupra riscului, capitalului și regulilor",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Îți spun cât de mult se schimbă pierderea maximă așteptată, ce procent din portofoliu te angajezi la teste și dacă toate limitele de securitate sunt respectate."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If și Kelly",
+              "summary": "Simulatorul de bilete de cumpărare/vânzare și calculatorul pentru a defini câți bani să riscați.",
+              "paragraphs": [
+                "Multe idei bune de investiții ajung să dea naștere la pierderi din cauza unei erori în mărimea pariului: a pune prea puțin nu mișcă acul, dar a pune prea mult poate strica portofoliul dacă mutarea merge prost.",
+                "Primul cadran din stânga sus leagă foaia de dovezi cu calculul matematic al mărimii:"
+              ],
+              "lead": "Primul cadran unește raportul de testare cu calculul matematic al mărimii:",
+              "bullets": [
+                {
+                  "bold": "Încărcarea comenzii de testare",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Alegeți orice activ, indicați dacă doriți să cumpărați, să vindeți sau să acoperiți și încărcați suma în dolari. În lista de mai jos puteți activa sau dezactiva fiecare comandă simulată pentru a-și compara efectul."
+                },
+                {
+                  "bold": "Dimensiunea optimă a poziției",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Pe baza probabilității dvs. estimate de succes și a relației dintre profit și pierdere, calculează ce procent maxim de capital ar trebui alocat pentru a crește fără a vă supraexpune."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Calculul matematic al criteriului Kelly și versiunea sa conservatoare Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Puneți OTM și Marjă",
+              "summary": "Simulatorul de asigurări cu opțiuni pentru scăderi puternice ale pieței și monitorizarea apelurilor în marjă.",
+              "paragraphs": [
+                "Când vă temeți de o corecție puternică a pieței, vânzarea tuturor pozițiilor este de obicei costisitoare și ineficientă. Alternativa profesională este să închei o asigurare cu opțiuni de protecție, dar cât costă acea asigurare pe an și cât te protejează cu adevărat?",
+                "Cadranul din stânga jos vă permite să măsurați atât acoperirea, cât și nivelul datoriei:"
+              ],
+              "lead": "Cadranul din stânga jos măsoară atât acoperirea, cât și nivelul garanțiilor:",
+              "bullets": [
+                {
+                  "bold": "Comparator de scuturi de protecție",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Vă permite să alternați între operarea fără acoperire sau aplicarea a trei tipuri de asigurări cu opțiuni (pe volatilitatea SPY, QQQ sau VIX), contrastând costul anual al primei cu dolarii pe care i-ați economisi într-un accident de 20%."
+                },
+                {
+                  "bold": "Controlul efectului de pârghie și garanția",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Monitorizați ce procent din marja de întreținere ați folosit și ce procent de scădere ar suporta portofoliul înainte de a intra în zona de apel în marjă."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Operațiunea de acoperire cu opțiuni de vânzare în afara banilor și calculul garanțiilor Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Comitetul și cartea",
+              "summary": "Cele două panouri din dreapta cu revizuire automată a limitelor de risc, istoricul comenzilor și Co-pilot.",
+              "paragraphs": [
+                "În entuziasmul de a încerca o tranzacție, este ușor să treci cu vederea că un activ concentrează mai mult de 20% din întregul tău portofoliu sau că funcționează în mijlocul unei anomalii statistice severe.",
+                "Cele două cadrane din dreapta servesc drept control automat al riscurilor și pistă de audit:"
+              ],
+              "lead": "Cele două cadrane din dreapta funcționează ca control și înregistrare a riscurilor:",
+              "bullets": [
+                {
+                  "bold": "Recenzie în trei dimensiuni",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Aceștia vă evaluează comenzile simulate din limitele tehnice, fundamentale și de securitate (avertisment dacă vreo poziție depășește limita de capital de 20% sau dacă are anomalii mari)."
+                },
+                {
+                  "bold": "Jurnal de comenzi și asistent portofoliu",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Panoul de jos înregistrează fiecare simulare cu impactul ei asupra riscului, în timp ce butonul de dialog din dreapta sus deschide chatul pentru a pune întrebări directe despre portofoliul tău."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Reguli de control al riscului înainte de operare și limitele de concentrare pe activ."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Graficul de mai jos pe ecran complet pentru a verifica dacă strategia dumneavoastră funcționează în afara perioadei de probă.",
+              "paragraphs": [
+                "Orice strategie poate fi ajustată uitându-se la trecut, până când apare inegalabilă pe graficul istoric. Adevărata provocare este să știi dacă continuă să funcționeze atunci când se confruntă cu noi date de piață.",
+                "Panoul de jos pe toată lățimea pune strategia prin cea mai riguroasă validare înainte de a intra în producție:"
+              ],
+              "lead": "Panoul de jos supune strategia validării în eșantion și în afara eșantionului:",
+              "bullets": [
+                {
+                  "bold": "Separarea între proiectare și testarea efectivă",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Acesta împarte graficul istoric într-o primă etapă în care strategia este calibrată și o a doua etapă cu date nevăzute pentru a verifica dacă își menține avantajul față de portofoliul de bază."
+                },
+                {
+                  "bold": "Notă de robustețe statistică",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Dacă indicatorul de eficiență depășește 70%, acesta confirmă că rezultatele sunt consistente și nu produsul a forțat cifrele pe trecut."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ce măsoară Indicele de eficiență Walk-Forward (WFE) și cum detectează strategiile supraoptimizate."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Filtrul de lichiditate (ADV)",
+        "intro": "Pentru ca un activ să fie tranzacționat fără ca un singur ordin să-i distorsioneze prețul, platforma necesită un prag minim de volum mediu zilnic în dolari în ultimele 20 de zile lucrătoare.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Preț de închidereᵢ × Volum tranzacționatᵢ)",
+          "denominator": "20 de roți iscusite",
+          "vars": [
+            "Preț de închidere: prețul de închidere oficial al zilei i exprimat în USD.",
+            "Volum tranzacționatᵢ: numărul total de unități tranzacționate în ziua respectivă."
+          ]
+        },
+        "lead": "Pe baza volumului mediu zilnic, catalogul clasifică adâncimea fiecărui instrument:",
+        "bullets": [
+          {
+            "bold": "Lichiditate instituțională ridicată",
+            "code": "> $500M diarios",
+            "text": "Vă permite să intrați și să ieșiți imediat din poziții mari fără a muta prețul pieței."
+          },
+          {
+            "bold": "Lichiditatea catalogului standard",
+            "code": "$50M a $500M diarios",
+            "text": "Potrivit pentru portofolii diversificate cu costuri de cumpărare/vânzare foarte mici."
+          },
+          {
+            "bold": "Monitorizarea răspândirii",
+            "code": "< $50M diarios",
+            "text": "În perioadele de volatilitate este indicat să verificați deschiderea tipurilor înainte de a executa ordine mari."
+          }
+        ],
+        "example": "Dacă o acțiune se tranzacționează la 200 USD și tranzacționează în medie 5 milioane de acțiuni pe roată în ultima lună, volumul său zilnic mediu (ADV) este de 1 miliard USD (1,0 miliarde USD)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalizare la USD",
+        "intro": "Deoarece catalogul combină obligațiuni europene, indici asiatici, mărfuri și criptomonede, toate fluxurile de volum sunt convertite în dolari SUA în timp real, astfel încât să poată fi comparate la aceeași scară.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Volumul monedei locale: suma tranzacționată în moneda originală a pieței (EUR, JPY, GBP, BRL etc.).",
+            "Rata de schimb spot: cotația curentă în motorul de 61 de monede."
+          ]
+        },
+        "lead": "Această conversie afectează direct două locuri de pe ecran:",
+        "bullets": [
+          {
+            "bold": "Vedere generală Clasament Toate",
+            "code": "213 activos",
+            "text": "Comandați instrumentele de la cea mai mare la cea mai puțin reală mișcare a banilor în întreaga lume."
+          },
+          {
+            "bold": "Card de volum adăugat",
+            "code": "Volumen 24h en $B",
+            "text": "Permite adăugarea volumului de active listate în diferite țări fără distorsiuni."
+          }
+        ],
+        "example": "Dacă o obligațiune germană tranzacționează cu 4 miliarde de euro pe zi și tranzacțiile încrucișate EUR/USD la 1,08, sistemul calculează 4,32 miliarde de dolari în pulsul global."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Cum măsori dacă o piață a crescut cu o putere reală sau dacă a crescut deja prea repede și este epuizată? Indicele de putere relativă (RSI) compară creșterile medii cu scăderile medii din ultimele 14 runde pe o scară de la 0 la 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Măriri medii₁₄ / Scăderi medii₁₄)",
+          "vars": [
+            "Creștere medie₁₄: medie netezită a punctelor câștigate în zilele optimiste ale ultimelor 14 roți.",
+            "Pierderi medii₁₄: medie netezită a punctelor pierdute în zilele de urs din aceeași perioadă."
+          ]
+        },
+        "lead": "Iată cum sunt interpretate cele trei secțiuni ale scalei în inelul circular:",
+        "bullets": [
+          {
+            "bold": "Forța de cumpărare și supracumpărare",
+            "code": "70 a 100",
+            "text": "Creșterile depășesc cu mult scăderile recente. Arată un mare impuls optimist, deși peste 70 avertizează că prețul poate avea nevoie de o pauză."
+          },
+          {
+            "bold": "zona de echilibru",
+            "code": "30 a 70",
+            "text": "Piața se mișcă într-un ritm sustenabil. Trecerea nivelului intermediar (> 50 în verde) confirmă dominația cumpărătorului, în timp ce scăderea sub (< 50 în roșu) indică dominația vânzătorului."
+          },
+          {
+            "bold": "Pedeapsa și supravânzarea",
+            "code": "0 a 30",
+            "text": "Căderile au fost atât de frecvente și pronunțate, încât activul începe să pară ieftin din punct de vedere statistic și predispus la o revenire."
+          }
+        ],
+        "example": "Dacă în ultimele 14 roți un grup de acțiuni a crescut în medie cu 2 dolari pe zi optimistă și a scăzut doar 1 dolari pe zi de urs, raportul său de rezistență este de 2, iar RSI-ul său este de 66,7 (bullish push în verde)."
+      },
+      {
+        "id": "p06",
+        "label": "Regim normal (P-06)",
+        "intro": "Un activ poate părea calm dacă vă uitați doar la prețul său, dar în același timp suferă de un salt ciudat de volum și de o deschidere anormală în vârfurile sale de cumpărare și vânzare. Motorul Isolation Forest (P-06) traversează aceste variabile în același timp pentru a detecta comportamentul atipic.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): numărul mediu de tăieturi aleatorii necesare pentru a izola comportamentul de astăzi de restul istoriei.",
+            "x: vector de 4 variabile (Retur 24h, Vol Z-Score 20d, Realized Volatility 30d și Spread în bps)."
+          ]
+        },
+        "lead": "Cu cât mișcarea de astăzi este mai rară, cu atât este mai rapidă izolată și cu atât scorul este mai aproape de 1.00:",
+        "bullets": [
+          {
+            "bold": "Regim normal",
+            "code": "0.00 a 0.49",
+            "text": "Prețul, volumul și lichiditatea se deplasează în conformitate cu media istorică a activului."
+          },
+          {
+            "bold": "Activitate mare",
+            "code": "0.50 a 0.64",
+            "text": "Cel puțin una dintre variabile a început să se abată de la comportamentul său obișnuit; Este recomandabil să monitorizați îndeaproape fluxul comenzilor."
+          },
+          {
+            "bold": "Luxație sau anomalie critică",
+            "code": "0.65 a 1.00",
+            "text": "Activul înregistrează un comportament statistic extrem. În modulul portofoliu, depășirea acestui prag activează frâna de siguranță."
+          }
+        ],
+        "example": "Dacă o obligațiune suverană abia se mișcă cu 0,1% în preț, dar volumul ei se înmulțește cu patru și spread-ul se triplează în minute, detectorul traversează cele trei puncte de date și își ridică scorul la 0,74 (Dislocarea în roșu)."
+      },
+      {
+        "id": "zscore",
+        "label": "Ocolire volum (Z-Score)",
+        "intro": "A spune că astăzi s-au operat 500 de milioane de dolari este mult pentru o companie mijlocie, dar foarte puțin pentru S&P 500. Volumul Z-Score aduce toate activele la aceeași unitate universală: câte abateri standard (σ) este volumul actual de la propria medie pe 20 de roți.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Volumul azi (24h) − Volumul mediu (20d)",
+          "denominator": "Abaterea standard a volumului (20d)",
+          "vars": [
+            "Volumul mediu (20d): volumul obișnuit al activului în ultima lună de afaceri.",
+            "Deviația standard (20d): cât de mult variază în mod normal acest volum de la o zi la alta."
+          ]
+        },
+        "lead": "În acest fel puteți compara orice activ pe aceeași scară de unități sigma (σ):",
+        "bullets": [
+          {
+            "bold": "Activitate obișnuită",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Volumul zilei este complet în rutina ultimelor patru săptămâni."
+          },
+          {
+            "bold": "Participare ridicată",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Există un interes mai mare decât media care începe să valideze tendința zilei."
+          },
+          {
+            "bold": "Ciocnire instituțională",
+            "code": "> +2.0σ",
+            "text": "Apare în mai puțin de 5% din rundele anului și reflectă de obicei intrarea sau ieșirea masivă de fonduri mari."
+          }
+        ],
+        "example": "Dacă o acțiune tranzacționează de obicei cu 100 de milioane de dolari zilnic, cu o variație tipică de ± 20 de milioane de dolari, iar astăzi se tranzacționează cu 160 de milioane de dolari, este cu 60 de milioane de dolari peste media sa, ceea ce este exact echivalent cu +3,0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Venit fix (2s10s și DV01)",
+        "intro": "Când filtrați Obligațiuni sau Rate în tabel, apar cele două valori cheie pentru evaluarea datoriei suverane: panta curbei (2s10s) și valoarea monetară a unui punct de bază (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 punct de bază (1 pb): echivalent cu o performanță de 0,01%.",
+            "DV01 ($/$1M): Câți dolari câștigă sau pierde o poziție de 1 milion $ dacă rata se mișcă cu 1 punct de bază."
+          ]
+        },
+        "lead": "Cum să citești aceste două numere pe grilă:",
+        "bullets": [
+          {
+            "bold": "Curbă normală sau pozitivă",
+            "code": "2s10s > 0 bps",
+            "text": "Obligațiunile pe 10 ani plătesc o rată mai mare decât obligațiunile pe 2 ani, ceea ce reflectă așteptările unei creșteri economice sănătoase."
+          },
+          {
+            "bold": "curbă inversată",
+            "code": "2s10s < 0 bps",
+            "text": "Ratele scurte depășesc ratele lungi; istoric avertizează asupra răcirii economice sau a restricțiilor monetare."
+          }
+        ],
+        "example": "Dacă Trezoreria pe 10 ani dă 4,20% și Trezoreria pe 2 ani are 4,55%, coloana 2s10s marchează -35 bps (curba inversată în roșu)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Acțiuni (P/E și marjă)",
+        "intro": "Când filtrați acțiunile S&P/NDX, tabelul afișează câștigurile multiple (P/E Forward) și marja brută de operare, astfel încât să puteți compara evaluarea cu profitabilitatea.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Prețul actual al acțiunii",
+          "denominator": "Câștigurile pe acțiune estimate (următoarele 12 luni)",
+          "vars": [
+            "P/E Forward: Câți ani de câștiguri viitoare plătiți la prețul de astăzi.",
+            "Marja brută (%): procent din vânzări care rămâne ca profit brut după deducerea costului direct."
+          ]
+        },
+        "lead": "Ce să căutați când traversați ambele coloane:",
+        "bullets": [
+          {
+            "bold": "Evaluare exigentă vs moderată",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Un multiplu mare indică faptul că piața stabilește prețuri în creștere puternică viitoare; unul scăzut reflectă de obicei companii mature sau valoroase."
+          },
+          {
+            "bold": "Puterea de stabilire a prețurilor",
+            "code": "Margen Bruto > 50%",
+            "text": "Marjele mari arată companii cu avantaje competitive puternice capabile să-și apere profiturile împotriva inflației."
+          }
+        ],
+        "example": "Dacă o acțiune se tranzacționează la 150 USD și se estimează că va câștiga 6 USD pe acțiune în următoarele 12 luni, P/E forward este de 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Derivate, FX și mărfuri",
+        "intro": "Pentru piețele de opțiuni, valuta și piețele futures fizice, cele două coloane dinamice arată costul implicit al riscului sau al recompensei pentru menținerea poziției în timp.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Derivative): volatilitate anualizată pe care piața de opțiuni o reduce pentru următoarele 30 de zile.",
+            "Carry 10Y (FX) și Roll Yield (mărfuri): câștig anual sau cost din diferența de rate sau rularea futures."
+          ]
+        },
+        "lead": "Cum să profitați de aceste coloane în funcție de activ:",
+        "bullets": [
+          {
+            "bold": "În Derivate",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Ei vă spun la ce procent de mișcare se așteaptă piața și dacă opțiunile de acoperire a căderilor (Puts) sunt scumpe."
+          },
+          {
+            "bold": "În valute și materii prime",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Acestea sunt afișate cu verde dacă întreținerea activului vă aduce un venit suplimentar sau cu roșu dacă are un cost de transport."
+          }
+        ],
+        "example": "Dacă o opțiune prezintă o volatilitate implicită (ATM IV) de 35% anual, piața reduce o mișcare aproape de ±10% pentru următoarele 30 de zile."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Cartografiere radială radar",
+        "intro": "Pentru a plasa pana la 45 de active in cele trei inele radar fara a se suprapune, vizualizarea Orbital transforma valoarea indicatorului ales intr-o distanta pana la centru (raza r) normalizata intre minimul si maximul grupului.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Valoarea activului − Valoarea minimă a Grupului",
+          "denominator": "Valoarea maximă a grupului − Valoarea minimă a grupului",
+          "vars": [
+            "r → 0 (Inelul interior): concentrează activele cu o intensitate mai mare sau abatere pozitivă.",
+            "r → 1 (Inelul exterior): localizează activele periferice sau cele cu cea mai mică valoare relativă."
+          ]
+        },
+        "lead": "Cum să citiți poziția și culoarea fiecărei planete pe radar:",
+        "bullets": [
+          {
+            "bold": "Focus inel interior",
+            "code": "Centro del radar",
+            "text": "Adunați activele principale din indicatorul pe care l-ați selectat mai sus, astfel încât viziunea dvs. să meargă mai întâi la ceea ce este cel mai important."
+          },
+          {
+            "bold": "Semantică istorică a culorilor",
+            "code": "Verde vs Rojo",
+            "text": "Nodul se aprinde în verde când depășește favorabil media istorică și în roșu când reflectă declin sau stres."
+          }
+        ],
+        "example": "Dacă sortați radarul după Deviația de volum (Z-Score), cel activ cu +3,4σ se află în inelul central luminos, în timp ce unul cu 0,1σ se află pe orbita exterioară."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) și Benzile Bollinger",
+        "intro": "Media mobilă simplă pe 20 de perioade (SMA 20) marchează tendința de bază a activului, în timp ce benzile Bollinger trasează un canal dinamic prin adăugarea și scăderea a două abateri standard (2σ) în jurul acelei medii.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): media aritmetică a ultimelor 20 de închideri.",
+            "Lățimea de bandă (BB Width): distanța procentuală dintre benzile superioare și inferioare."
+          ]
+        },
+        "lead": "Statistic, aproximativ 95% dintre citate apar în cele două benzi:",
+        "bullets": [
+          {
+            "bold": "Pret peste medie",
+            "code": "Precio > SMA 20",
+            "text": "Indică faptul că tendința pe termen scurt este optimistă și media acționează de obicei ca un nivel de sprijin."
+          },
+          {
+            "bold": "Atingerea benzii superioare sau inferioare",
+            "code": "±2σ",
+            "text": "Acesta avertizează că prețul s-a întins prea repede față de media recentă și poate lua o pauză."
+          },
+          {
+            "bold": "compresia benzii",
+            "code": "BB Width bajo",
+            "text": "Când benzile devin foarte înguste, piața acumulează energie înainte de o mișcare puternică."
+          }
+        ],
+        "example": "Dacă SMA(20) al unui stoc este de 100 USD și deviația standard pe 20 de roți este de 4 USD, banda superioară este la 108 USD și banda inferioară este la 92 USD."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Instituțional",
+        "intro": "Spre deosebire de o medie comună care acordă o greutate egală tuturor orelor din zi, VWAP cântărește fiecare preț în funcție de suma de bani care a fost tranzacționată efectiv la acel nivel. Este principala referință folosită de tabelele instituționale.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Preț tipicᵢ × Volum tranzacționatᵢ)",
+          "denominator": "∑ Volumul tranzacționatᵢ",
+          "vars": [
+            "Preț tipicᵢ: medie între maxim, minim și închidere a fiecărei lumânări.",
+            "Volumul tranzacționatᵢ: volumul tranzacționat în mod specific în acea secțiune."
+          ]
+        },
+        "lead": "Cum folosesc comercianții profesioniști linia VWAP:",
+        "bullets": [
+          {
+            "bold": "Controlul execuției",
+            "code": "Comprar bajo el VWAP",
+            "text": "Dacă un fond instituțional cumpără sub VWAP pentru perioada respectivă, acesta a primit un preț mai bun decât media ponderată pe piață."
+          },
+          {
+            "bold": "Nivel de apărare pentru tendințe",
+            "code": "Soporte / Resistencia",
+            "text": "Atâta timp cât activul rămâne peste VWAP, cei care au cumpărat în perioada sunt în profit mediu."
+          }
+        ],
+        "example": "Dacă 1 milion de acțiuni au fost tranzacționate la 100 USD și doar 100 de mii de acțiuni au fost tranzacționate la 110 USD, media simplă ar spune 105 USD, dar VWAP arată 100,91 USD deoarece aproape toți banii au fost tranzacționați la 100 USD."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Spread Displacement (bps)",
+        "intro": "Spread-ul este diferența dintre cel mai bun preț cerut și cel mai bun preț licitat din registrul de comenzi. Atunci când formatorii de piață percep riscul sau lipsa lichidității, ei deschid acel decalaj pentru a se proteja.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Preț cerut − Preț licitat )",
+          "denominator": "Preț mediu (preț mediu)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Preț de cerere/licitare: punctul de vânzare și punctul de cumpărare curent în carte.",
+            "10.000: factor de conversie pentru a exprima diferența în puncte de bază (bps)."
+          ]
+        },
+        "lead": "Ce vă spune citirea Dislocare răspândită de pe șina stângă:",
+        "bullets": [
+          {
+            "bold": "Carte profundă și fluidă",
+            "code": "Spread estable en verde",
+            "text": "Există lichiditate abundentă la ambele capete și costul implicit de intrare sau de ieșire este minim."
+          },
+          {
+            "bold": "Frecare sau retragere de lichiditate",
+            "code": "Salto en bps",
+            "text": "Apare de obicei cu câteva secunde înainte de anunțurile macroeconomice sau în timpul vânzărilor în panică, ceea ce face execuția mai costisitoare."
+          }
+        ],
+        "example": "Dacă un activ are un bacșiș de cumpărare la 99,95 USD și un bacșiș de vânzare la 100,05 USD, diferența de 0,10 USD peste 100 USD este echivalentă cu 10 puncte de bază (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Opțiuni (Black-Scholes și Greeks)",
+        "intro": "În motorul de opțiuni, platforma prezintă două curbe de profit și pierdere (P&L): cum s-ar termina strategia în ziua expirării și cât valorează astăzi (T+0) aplicând modelul Black-Scholes.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S și ​​K: prețul curent al activului suport (Spot) și prețul de exercitare al opțiunii (Strike).",
+            "Greci net: Δ Delta (sensibilitatea la preț), Γ Gamma (accelerarea Delta), Θ Theta (uzura zilnică a timpului) și ν Vega (sensibilitatea la volatilitate)."
+          ]
+        },
+        "lead": "Cum să citești grecii strategiei tale pe pastilele din stânga:",
+        "bullets": [
+          {
+            "bold": "Direcție și accelerație",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "O Deltă pozitivă câștigă atunci când activul crește; un Gamma pozitiv te face să câștigi din ce în ce mai repede dacă mișcarea se accelerează."
+          },
+          {
+            "bold": "Trecerea timpului și incertitudinea",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta vă spune câți dolari pierde sau câștigă poziția pentru fiecare zi care trece; Vega cât de mult se schimbă dacă volatilitatea implicită crește cu 1%."
+          }
+        ],
+        "example": "Un Long Straddle (cumpărați Call și Put pe același strike) are Delta aproape de 0 (nu contează dacă merge în sus sau în jos), dar pozitiv Vega și are nevoie de preț pentru a depăși cele două puncte ale sale de echilibru (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Curbe suverane (Butterfly și DV01)",
+        "intro": "Motorul cu venit fix compară randamentele de la 3 luni la 30 de ani pentru 42 de țări și calculează atât panta (2s10s) cât și curbura tranșei de mijloc (Butterfly 2s5s10s) și sensibilitatea monetară (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "Rata 2Y, 5Y, 10Y: randamentele suverane pe 2, 5 și 10 ani ale țării selectate.",
+            "Rata reală la 10 ani: randamentul nominal pe 10 ani minus rata de referință sau inflația implicită."
+          ]
+        },
+        "lead": "Pentru ce este fiecare indicator în analiza obligațiunilor:",
+        "bullets": [
+          {
+            "bold": "Curbura secțiunii din mijloc",
+            "code": "Butterfly 2s5s10s",
+            "text": "Măsoară dacă tranșa de 5 ani este scumpă sau ieftină în raport cu extremele de 2 și 10 ani."
+          },
+          {
+            "bold": "Riscul de durată a dolarului",
+            "code": "DV01 por $1M",
+            "text": "Vă spune exact câți dolari variază un portofoliu de un milion de dolari cu o mișcare de 0,01% a ratei."
+          }
+        ],
+        "example": "O obligațiune pe 10 ani cu un DV01 de 820 USD per milion va pierde aproximativ 82.000 USD dacă ratele pieței cresc cu 100 de puncte de bază (+1,00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Monede (carry) și futures (randament roll)",
+        "intro": "În valute, atunci când o pereche nu este cotată direct, aceasta este calculată prin triangulație față de dolar și se măsoară diferența de curs (Carry). În materie de materii prime, performanța de reînnoire este măsurată între contractul imediat și contractul pe 12 luni (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Preț spot (față M1) − preț viitor (M12)",
+          "denominator": "Preț viitor (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Backwardation (Spot > Viitor): deficitul fizic de astăzi face ca futures rulante să genereze un profit pozitiv (Roll Yield > 0).",
+            "Contango (Spot < Viitor): Costurile de stocare fac futures mai scumpe, iar reînnoirea lor are un cost negativ."
+          ]
+        },
+        "lead": "Cum vă afectează acest lucru buzunarul atunci când dețineți o poziție:",
+        "bullets": [
+          {
+            "bold": "Positive Carry Trade în valute",
+            "code": "Carry Spread > 0 bps",
+            "text": "Dacă cumpărați o monedă cu o dobândă mare, finanțându-vă într-o monedă cu o rată scăzută, veți colecta acea diferență în favoarea dvs."
+          },
+          {
+            "bold": "Vânt favorabil în materie primă",
+            "code": "Backwardation en verde",
+            "text": "Când stocurile fizice sunt scăzute, contractul din apropiere valorează mai mult decât cel îndepărtat și investitorul câștigă un profit suplimentar prin rularea contractului."
+          }
+        ],
+        "example": "Dacă petrolul pe o lună se tranzacționează la 72 USD, iar contractul pe 12 luni se tranzacționează la 68 USD, piața se află în Backwardation cu un randament pozitiv de +5,88% anual."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Nota totală ponderată",
+        "intro": "Nu toate activele se deplasează prin aceleași surse: într-o companie, situațiile financiare auditate (SEC 10-K/10-Q) au mare greutate, în timp ce în piața cripto sau valute, fluxurile și comunicațiile zilnice au mai multă pondere.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fond / Peso_Nu: ponderare automată în funcție de categorie (de exemplu, 80% / 20% în Acțiuni; 85% / 15% în Comisioane).",
+            "Scala finală: variază de la −100 (pesimism maxim) la +100 (condamnare optimistă maximă)."
+          ]
+        },
+        "lead": "Iată cum se traduce scorul compus în opinia superioară:",
+        "bullets": [
+          {
+            "bold": "Poziție optimistă",
+            "code": "BULLISH / Nota > +15",
+            "text": "Catalizatorii documentare și fluxul de știri depășesc în mod clar factorii de risc."
+          },
+          {
+            "bold": "Postura neutră sau mixtă",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Chiar și forțe între fundamente și știri; Este recomandabil să revizuiți acordeonul de 10 factori înainte de a decide."
+          },
+          {
+            "bold": "Poziție defensivă sau de urs",
+            "code": "BEARISH / Nota < -15",
+            "text": "Predomină alertele privind bilanţurile, deteriorarea marjelor sau titlurile adverse."
+          }
+        ],
+        "example": "Într-un stoc (80% fundamentale / 20% știri), dacă soldurile arată +50 de puncte și știrile zilei arată +20, Scorul Total Ponderat este (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Căutare verificată (RAG)",
+        "intro": "Pentru a împiedica inteligența artificială să inventeze cifre, Document Chat folosește Generation Augmented Recovery (RAG): mai întâi caută paragrafele relevante în rapoartele oficiale ale activului și abia apoi scrie răspunsul citând sursa.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Consultare vectorială (Q) · Document oficial vectorial (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vector Q și D: reprezentări numerice ale întrebării dvs. și fragmentele oficiale (10-K, procese verbale FOMC, rapoarte EIA).",
+            "3-Layer Guardrail: filtru care blochează interogările care nu au legătură cu finanțele sau fără suport documentar."
+          ]
+        },
+        "lead": "Ce garantează acest mecanism atunci când pui o întrebare în chat:",
+        "bullets": [
+          {
+            "bold": "Ancorarea în surse primare",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Fiecare dată privind venitul, datoria, stocurile sau ratele provine din documentul de reglementare corespunzător activului respectiv."
+          },
+          {
+            "bold": "Opriți întrebările în afara subiectului",
+            "code": "Guardrail activo",
+            "text": "Dacă cineva încearcă să consulte subiecte non-financiare, asistentul respinge interogarea și păstrează accentul pe analiza instrumentului."
+          }
+        ],
+        "example": "Când atingeți cipul factorilor de risc pe un stoc, motorul preia secțiunea Articolul 1A (Factori de risc) din cel mai recent formular 10-K și rezumă punctele critice."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "Scorul neuronal FinBERT",
+        "intro": "Un dicționar tipic confundă adesea cuvintele financiare (de exemplu, „scăderea costurilor” sau „reducerea datoriilor” este o veste excelentă chiar dacă folosesc cuvântul scădere sau reducere). FinBERT este o rețea neuronală antrenată special cu texte financiare.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(Pozitiv) și P(Negativ): probabilitățile atribuite de model titlului să fie optimiste sau ursitoare pentru activ.",
+            "Curba 24 de ore: medie mobilă exponențială a titlurilor din ultimele 24 de ore."
+          ]
+        },
+        "lead": "Cum evaluează fiecare nod în cronologia din dreapta:",
+        "bullets": [
+          {
+            "bold": "Suport catalizator",
+            "code": "+20 a +100 en verde",
+            "text": "Depășirea veniturilor estimate, îmbunătățiri ale ratingului de credit sau reduceri favorabile ale ratelor."
+          },
+          {
+            "bold": "Cablu de informații neutru",
+            "code": "-19 a +19 en ámbar",
+            "text": "Anunțuri operaționale de rutină care nu modifică evaluarea structurală a instrumentului."
+          },
+          {
+            "bold": "Detinator de risc",
+            "code": "-20 a -100 en rojo",
+            "text": "Avertismente de reglementare, scăderi ale marjelor, greve sau date despre inflație mai proaste decât se aștepta."
+          }
+        ],
+        "example": "Dacă modelul atribuie 82% probabilitate pozitivă, 12% neutră și 6% probabilitate negativă unui titlu, nodul arată un impact net de +76 în verde."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe și Sortino",
+        "intro": "Primele două cărți de top măsoară cât de mult crește capitalul tău pe an (CAGR) și cât de eficientă este această creștere în raport cu șocurile pe care trebuie să le suporti (Sharpe și Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Randament anual Portfolio (Rp) − Rată fără risc (Rf)",
+          "denominator": "Volatilitatea anuală Portfolio (σp)",
+          "vars": [
+            "Rf (4,30%): randament de bază pe care l-ați putea obține fără risc în bonurile de trezorerie.",
+            "Raportul Sortino: folosește aceeași formulă dar la numitor penalizează doar volatilitatea zilelor negative (căderi)."
+          ]
+        },
+        "lead": "Cum să evaluezi calitatea portofoliului tău cu aceste numere:",
+        "bullets": [
+          {
+            "bold": "Portofoliu eficient",
+            "code": "Sharpe > 1.00",
+            "text": "Excesul de rentabilitate pe care îl obțineți peste rata fără risc depășește cu mult volatilitatea presupusă."
+          },
+          {
+            "bold": "Performanță remarcabilă",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Indică o combinație foarte bine diversificată în care creșterile sunt consistente și căderile sunt limitate."
+          }
+        ],
+        "example": "Dacă portofoliul dvs. are o rentabilitate de 15,3% anual, rata fără risc este de 4,3% și volatilitatea dvs. anuală este de 10%, randamentul dvs. în exces este de 11% și raportul dvs. Sharpe este de 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% și drawdown",
+        "intro": "A treia și a patra carte răspunde cât de mult poți pierde într-o zi proastă, dar normală din punct de vedere statistic (VaR 95%), cât de mult într-o zi de panică extremă (CVaR 99%) și care a fost cea mai mare retragere de la un vârf anterior (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1.645: factor statistic care acoperă 95% din roțile normale ale anului (19 din 20 de zile).",
+            "CVaR 99% (Deficit așteptat): Pierdere medie atunci când piața depășește acel prag și intră în top 1% din cele mai proaste zile."
+          ]
+        },
+        "lead": "Ce diferență practică există între a te uita la VaR și a te uita la Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Risc pentru o singură zi",
+            "code": "VaR 95% 1D en USD",
+            "text": "Vă pregătește din punct de vedere psihologic și financiar pentru ceea ce contul dvs. poate oscila într-o direcție proastă, fără ca aceasta să însemne că strategia a eșuat."
+          },
+          {
+            "bold": "Rezistență într-o serie adversă",
+            "code": "Max Drawdown 12M",
+            "text": "Măsoară căderea acumulată de la vârf la vârf din cel mai înalt punct până la podea înainte de a se recupera din nou."
+          }
+        ],
+        "example": "Într-un portofoliu de 100.000 USD cu un VaR zilnic de 95% de 1,45% (1.450 USD), în 19 din 20 de roți de tranzacționare, pierderile dvs. zilnice nu vor depăși 1.450 USD."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Suprapunere cu raze X (nr. 12)",
+        "intro": "Când cumpărați un ETF precum SPY sau QQQ, cumpărați zeci de acțiuni în interior. Dacă, de asemenea, ați cumpărat unele dintre aceleași acțiuni direct, expunerea dvs. reală este suma celor două lucruri.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Ponderea directăᵢ: procentul din portofoliu alocat direct stocului i.",
+            "Procent în cadrul ETFₖ: ponderea oficială pe care compania respectivă o are în cadrul indicelui sau fondului k."
+          ]
+        },
+        "lead": "De ce este esențial să revizuiți această primă filă înainte de a închide portofoliul:",
+        "bullets": [
+          {
+            "bold": "Vizibilitatea concentrației ascunse",
+            "code": "Directo + Indirecto",
+            "text": "Dezasambla automat fiecare ETF din portofoliu și vă arată o singură bară cu procentul real pe care îl aveți în fiecare companie."
+          },
+          {
+            "bold": "Exces de alertă",
+            "code": "> 20% en rojo",
+            "text": "Dacă suma totală depășește pragul prudent de concentrare pe un singur nume, rândul se aprinde, astfel încât să puteți reechilibra."
+          }
+        ],
+        "example": "Dacă puneți 15% din portofoliu în NVDA direct și aveți, de asemenea, 30% în ETF-ul SPY (unde NVDA cântărește aproximativ 7%), X-Ray arată că expunerea dvs. reală la NVDA este de 15% + (30% × 7%) = 17%."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Descompunerea Alpha Brinson (nr. 2)",
+        "intro": "Atunci când portofoliul tău depășește (sau pierde în fața) benchmark-ului său, modelul Brinson-Fachler separă exact de unde provine această diferență: ai avut dreptate în ce sectoare să supraponderezi sau ai avut dreptate în a alege cele mai bune active din fiecare sector?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Efectul de alocare: (Portfolio Weight − Benchmark Weight) × Rentabilitatea sectorului în Benchmark.",
+            "Efectul de selecție: Ponderea în Benchmark × (Rentabilitatea activelor dvs. − Rentabilitatea sectorului)."
+          ]
+        },
+        "lead": "Cum să citiți cele trei bare de atribuire din a treia filă:",
+        "bullets": [
+          {
+            "bold": "Succesul macro sau sectorial",
+            "code": "Asignación Sectorial",
+            "text": "Este pozitiv în verde când puneți mai multă pondere decât piața pe clasele de active care au crescut cel mai mult."
+          },
+          {
+            "bold": "Direcționarea cu succes a activelor",
+            "code": "Selección de Activos",
+            "text": "Este pozitiv când instrumentele specifice alese de tine au avut rezultate mai mari decât media pentru propriul sector."
+          }
+        ],
+        "example": "Dacă portofoliul dvs. a învins S&P 500 cu +3,20%, această filă vă permite să vedeți că +2,10% au venit din alegerea unor acțiuni mai bune (Selectare) și +1,10% din faptul că au mai multă pondere în tehnologie (Alocare)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Efficient Frontier și CML",
+        "intro": "În planul Markowitz, randamentul așteptat al unui portofoliu este media ponderată a randamentului activelor sale, dar volatilitatea acestuia este mai mică decât media datorită faptului că activele nu se mișcă 100% la fel.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: procentul de capital alocat activelor i și j.",
+            "ρᵢⱼ (corelație): gradul în care ambele active se mișcă împreună (−1 la +1). Cu cât ρᵢⱼ este mai mic, cu atât riscul total este mai redus."
+          ]
+        },
+        "lead": "Ce reprezintă cele trei referințe din grafic:",
+        "bullets": [
+          {
+            "bold": "Varianta minima",
+            "code": "Min-Var",
+            "text": "Este punctul cel mai din stânga al curbei: combinația exactă de ponderi care realizează cea mai scăzută volatilitate posibilă."
+          },
+          {
+            "bold": "Máximo Sharpe și Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Este punctul în care linia care pleacă de la rata fără risc atinge frontiera eficientă, oferind cel mai mare profit pe unitate de risc."
+          }
+        ],
+        "example": "Dacă combinați în părți egale două active care au o volatilitate de 20% fiecare, dar o corelație zero (ρ = 0), volatilitatea portofoliului nu este de 20%, ci scade la 14,1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR prin Active și Capture",
+        "intro": "Pentru a ști care poziție adaugă mai mult risc portofoliului, contribuția marginală a fiecărui activ este măsurată în funcție de ponderea acestuia și de corelația sa cu restul. În plus, rapoartele de captare măsoară asimetria față de creșterile și scăderile S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Returnarea activului dvs. sau a Portfolio în roți urcarea (sau ursist).",
+          "denominator": "Revenirea S&P 500 pe aceleași roți",
+          "rhs": "× 100",
+          "vars": [
+            "Captură în sus (> 100%) – Câștigă mai mult decât indicele atunci când piața crește.",
+            "Captura de jos (< 100%): scade mai puțin decât indicele atunci când piața scade (buffer defensiv)."
+          ]
+        },
+        "lead": "Profilul ideal pe care îl căutați când examinați a treia filă a cadranului:",
+        "bullets": [
+          {
+            "bold": "asimetrie pozitivă",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Participați pe deplin la piețele bull, dar protejați capitalul atunci când piața de valori se corectează."
+          },
+          {
+            "bold": "Refugiu sau bunuri necorelate",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Instrumente precum obligațiunile scurte sau aurul care tind să rămână ferme sau să crească în timpul declinului pieței de valori."
+          }
+        ],
+        "example": "Dacă în lunile în care S&P 500 a crescut cu 10% portofoliul tău a câștigat 11% (Upside 110%), iar când indicele a scăzut cu 10% portofoliul tău a scăzut doar cu 6% (Downside 60%), ai o puternică asimetrie în favoarea ta."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Corelația normală vs criză",
+        "intro": "Coeficientul Pearson (r) măsoară de la -1,00 la +1,00 modul în care două active se mișcă unul față de celălalt. Pericolul în managementul portofoliului este acela că, în timpul unui crash al pieței, corelația dintre activele de risc se ridică de obicei spre +1,00 (contagiune).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Covarianță (Returnează activul i, Returnează activul j)",
+          "denominator": "Volatilitatea activelor i (σᵢ) × Volatilitatea activelor j (σⱼ)",
+          "vars": [
+            "r aproape de 0 sau negativ: diversificare excelentă (când unul coboară, celălalt nu urmează).",
+            "r în Crisis Queue: recalculează matricea luând doar 5% dintre cele mai proaste roți de pe piață."
+          ]
+        },
+        "lead": "Cum să citiți culorile matricei 6x6 în ambele regimuri:",
+        "bullets": [
+          {
+            "bold": "Diversificare reală",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Ambele active răspund unor factori economici diferiți și se compensează reciproc."
+          },
+          {
+            "bold": "Concentrare sau contagiune",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Se mișcă practic ca un bloc; A avea ambele nu vă reduce căderile într-o zi proastă."
+          }
+        ],
+        "example": "Două acțiuni din sectoare diferite pot avea o corelație moderată de 0,42 într-un an normal, dar când activezi butonul Crisis Queue vei vedea că se ridică la 0,81 pentru că în panică se vând împreună."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "Șoc 2D (Rate × Bursă)",
+        "intro": "Matricea 2D combină simultan impactul unei mișcări a ratelor dobânzilor (prin Durata Venitului Fix și Sensibilitatea Ratei) cu o scădere sau creștere a indicelui S&P 500 (prin Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: scenariu de variație a pieței de valori pe axa orizontală (−20% până la +10%).",
+            "Δ Rate: scenariu de modificare a ratelor dobânzii în puncte de bază pe axa verticală (−100 până la +200 bps)."
+          ]
+        },
+        "lead": "Care este scopul încrucișării celor două axe din tabel:",
+        "bullets": [
+          {
+            "bold": "Stagflație sau scenariu de creștere a ratei",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "La fel ca ceea ce s-a întâmplat în 2022, unde acțiunile și obligațiunile lungi suferă în același timp."
+          },
+          {
+            "bold": "Scenariul clasic de adăpost",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "În cazul în care ratele mai mici cresc prețul obligațiunilor de trezorerie și atenuează scăderea acțiunilor."
+          }
+        ],
+        "example": "Filtrarea pentru o obligațiune lungă, cum ar fi US10Y sau TLT, puteți vedea în tabel cum câștigă valoare atunci când ratele scad (-100 bps), acționând ca o parașută dacă S&P 500 scade în aceeași zi."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Regimuri Markov (#11)",
+        "intro": "Un lanț Markov modelează economia ca un sistem care sare între patru stări posibile (Calm Bullish, Volatil Bullish, Inflație/Rate și Criză) și calculează probabilitatea de a trece de la una la alta.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Diagonala principală (i = j): probabilitatea ca regimul actual să rămână neschimbat.",
+            "În afara diagonalei (i ≠ j): probabilitatea de rotație la un nou climat de piață."
+          ]
+        },
+        "lead": "Cum să profitați de matricea de tranziție din a doua filă:",
+        "bullets": [
+          {
+            "bold": "Persistența ciclului curent",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Regimurile calme au de obicei o persistență ridicată (> 75%), permițând menținerea pozițiilor de tendință."
+          },
+          {
+            "bold": "Avertizare timpurie de rotație",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Când probabilitatea de tranziție la stări volatile crește, este recomandabil să se reducă efectul de levier sau să se activeze acoperirea."
+          }
+        ],
+        "example": "Dacă astăzi piața se află într-un regim Volatile Bull și rândul marchează 62% de permanență, 20% de revenire la Bull Calm și 18% de mers la Stres/Criză, știi că aproape 1 din 5 scenarii are ca rezultat o corecție."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Proiecție Monte Carlo (10.000 de căi)",
+        "intro": "Pe baza rentabilității așteptate și a volatilității actuale a portofoliului dvs., simulatorul generează 10.000 de traiectorii viitoare posibile zi de zi, aplicând modelul stocastic al Mișcării Browniene Geometrice.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ și σ: randamentul anual așteptat și volatilitatea anualizată a portofoliului dvs. actual.",
+            "Z: variabilă aleatorie normală standard desenată de 10.000 de ori de-a lungul orizontului (6M, 12M sau 24M)."
+          ]
+        },
+        "lead": "Din aceste 10.000 de simulări, sunt extrase cele trei curbe principale ale graficului:",
+        "bullets": [
+          {
+            "bold": "Scenariu favorabil",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Nivelul care este depășit doar cu 5% din cele mai optimiste scenarii."
+          },
+          {
+            "bold": "Traiectoria centrală așteptată",
+            "code": "Mediana P50",
+            "text": "Rezultatul tipic în care jumătate din simulări sunt deasupra și cealaltă jumătate sunt sub."
+          },
+          {
+            "bold": "Scenariul de stres pe termen",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Nivelul advers: în 95% din căile simulate, portofoliul tău ajunge deasupra acestei linii."
+          }
+        ],
+        "example": "Într-un orizont de 12 luni pe o bază de 100, dacă P50 arată 116 și P05 arată 94, așteptarea ta centrală este să câștigi +16%, iar într-un an foarte advers riști aproape de -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Criteriul Kelly (nr. 14)",
+        "intro": "Criteriul Kelly răspunde științific ce procent din capitalul tău ar trebui să aloci unei operațiuni atunci când știi probabilitatea de succes (Win-Rate) și cât de mult câștigi când reușești față de ceea ce pierzi când eșuezi (Payoff Rate).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p și q: probabilitatea de câștig (p) și probabilitatea de a pierde (q = 1 − p).",
+            "b (Payoff Ratio): profitul mediu împărțit la pierderea medie (de exemplu, câștigul de 2 USD pentru fiecare 1 USD riscat implică b = 2)."
+          ]
+        },
+        "lead": "De ce managerii profesioniști folosesc varianta Half-Kelly (0,5×):",
+        "bullets": [
+          {
+            "bold": "Kelly Complete",
+            "code": "Full Kelly 1.0×",
+            "text": "Maximizează creșterea matematică pe termen lung, dar generează oscilații foarte puternice dacă există o serie de erori la rând."
+          },
+          {
+            "bold": "Recomandat Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Folosind jumătate din procentul sugerat, capturați 75% din creșterea potențială, dar reduceți volatilitatea la jumătate."
+          }
+        ],
+        "example": "Dacă o strategie atinge 55% din timp (p = 0,55, q = 0,45) și plătește 2 la 1 (b = 2), Kelly complet dă (0,55×2 − 0,45) / 2 = 32,5%, iar prudentul Half-Kelly recomandă alocarea a 16,25%."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Pune scut OTM (#6)",
+        "intro": "O opțiune put out-of-the-money (de exemplu, cu 5% sub prețul actual al S&P 500) funcționează la fel ca o deductibilă de asigurare: are un cost fix, mic (prima), dar dacă piața scade cu 20% sau 30%, valoarea ei este înmulțită convex și compensează pierderile din portofoliu.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Cost anual (Carry Drag): procentul anual pe care îl costă reînnoirea asigurării dacă piața nu cade.",
+            "Protecție împotriva accidentelor (-20%): dolari recuperați prin contractul Put în timpul unui accident grav."
+          ]
+        },
+        "lead": "Cum să comparați opțiunile simulatorului în prima filă:",
+        "bullets": [
+          {
+            "bold": "Asigurare directă cu index",
+            "code": "SPY Put 5% OTM",
+            "text": "Limitează pierderea maximă de la o scădere de 5% în schimbul unui cost anual moderat."
+          },
+          {
+            "bold": "Acoperire cu finanțare sau volatilitate",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Gulerul reduce costul prin vânzarea unui Call up; Call on VIX explodează în favoarea când panica se declanșează pe piață."
+          }
+        ],
+        "example": "Dacă protejarea unui portofoliu de 100.000 USD cu SPY Put 5% OTM costă 1,1% pe an (1.100 USD), dar în cazul unui accident de -20% reduce declinul portofoliului la mai puțin de jumătate, economiile nete depășesc 7.000 USD."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Marja și distanța față de apelul în marjă (nr. 13)",
+        "intro": "Atunci când operați cu instrumente derivate sau cu efect de levier, brokerul solicită menținerea unui procent minim de capital propriu peste valoarea totală a poziției (Marja de întreținere). Dacă o scădere vă reduce capitalul sub acel nivel, este declanșat un apel de marjă.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Datorii sau soldul finanțat",
+          "denominator": "1 − % Marja de întreținere (Reg-T)",
+          "vars": [
+            "Expunere brută: suma totală a pozițiilor deschise împărțită la capitaluri proprii (de exemplu, 1,18×).",
+            "Distanța până la apelul în marjă (%): scădere procentuală pe care portofoliul o suportă în continuare înainte de a atinge pragul."
+          ]
+        },
+        "lead": "Niveluri de securitate în bara de monitorizare:",
+        "bullets": [
+          {
+            "bold": "Zona liberă mare",
+            "code": "Distancia > 30% en verde",
+            "text": "Levierul este scăzut, iar portofoliul poate absorbi chiar și o criză severă fără vânzări forțate."
+          },
+          {
+            "bold": "zona de precautie",
+            "code": "Distancia < 15% en rojo",
+            "text": "O corecție moderată a pieței ar epuiza garanțiile gratuite și ar forța ca pozițiile să fie lichidate în cel mai rău moment."
+          }
+        ],
+        "example": "Cu un efect de pârghie moderat de 1,18× și o marjă de întreținere utilizată de 22%, portofoliul dumneavoastră are o pernă de siguranță de peste 38% înaintea oricăror cereri de garanție."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Regulile Comitetului celor 3 Piloni",
+        "intro": "Pentru ca nicio decizie impulsivă să nu pericliteze supraviețuirea portofoliului, Comitetul evaluează fiecare comandă combinând nota tehnică, nota fundamentală și două reguli dure de control al riscului, nenegociabile.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: niciun activ individual nu poate concentra mai mult de o cincime din totalul activelor.",
+            "Oprire anomalie (P-06 ≥ 0,65): dacă activul intră în dislocare statistică, sistemul reduce expunerea maximă la 5%."
+          ]
+        },
+        "lead": "Ce înseamnă fiecare stat în verdict și în Cartea execuției:",
+        "bullets": [
+          {
+            "bold": "Comandă aprobată fără restricții",
+            "code": "APROBADO en verde",
+            "text": "Cei trei piloni coincid favorabil, iar dimensiunea poziției respectă toate limitele de concentrare și lichiditate."
+          },
+          {
+            "bold": "Ordine ajustată prin balustradă",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Când un bilet depășește limita de 20% sau încearcă să cumpere puternic în mijlocul unei anomalii, balustrada avertizează asupra excesului."
+          }
+        ],
+        "example": "Dacă încercați să simulați o achiziție care ar lua un singur stoc la 26% din portofoliul dvs., Pilonul 3 (Risc și dimensionare Guardrail) semnalează alerta de concentrare, astfel încât să o ajustați sub 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Eficiență Walk-Forward (WFE)",
+        "intro": "Pentru a verifica dacă o strategie nu a fost pur și simplu creată pentru a arăta bine în trecut (suprafitting), testul Walk-Forward compară modul în care a funcționat în perioada de proiectare (In-Sample) cu performanța sa în datele ulterioare nevăzute până acum (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Randament anualizat Out-of-Sample (validare pură)",
+          "denominator": "Randament anual In-Sample (Instruire)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): secțiune istorică utilizată pentru a calibra ponderile și regulile strategiei.",
+            "Out-of-Sample (OOS): următoarea secțiune în care strategia este testată în condiții reale fără a-i atinge parametrii."
+          ]
+        },
+        "lead": "Cum evaluează industria cantitativă procentul WFE:",
+        "bullets": [
+          {
+            "bold": "Strategie robustă și consecventă",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Își păstrează marea majoritate a capacității de a genera profituri atunci când se confruntă cu noile condiții de piață."
+          },
+          {
+            "bold": "Strategie fragilă sau supraadaptată",
+            "code": "WFE < 50% en rojo",
+            "text": "A funcționat bine în teoria trecutului, dar își pierde eficacitatea în realitate; Nu este indicat să-l executați cu bani reali."
+          }
+        ],
+        "example": "Dacă o strategie a returnat 20% anualizat în timpul etapei de proiectare (In-Sample) și în etapa de testare reală ulterioară (Out-of-Sample) a returnat 18,8% anual, eficiența sa WFE este (18,8 / 20) = 94,0%."
+      }
+    ]
+  }
+}

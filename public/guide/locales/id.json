@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Tampilan Runtuh",
+    "mainView": "Tampilan Utama",
+    "expandedView": "Tampilan Diperluas",
+    "inThisSection": "Di bagian ini Anda akan menemukan:",
+    "deepDive": "Menyelam Lebih Dalam",
+    "previous": "Sebelumnya",
+    "next": "Selanjutnya",
+    "mathFormula": "Rumus Matematika",
+    "practicalExample": "Contoh praktis:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Saat Anda membuka platform keuangan tradisional, hal pertama yang biasanya muncul adalah lusinan grafik, tabel berkedip, dan menu di mana-mana. Di mana Anda memulai ketika Anda hanya ingin memeriksa pasar atau memeriksa bagaimana kinerja portofolio Anda?",
+        "Layar Home dirancang dengan tepat untuk menghindari kebisingan awal tersebut. Ini menyambut Anda dengan ruang yang bersih dan jernih di mana semua kontrol terkonsentrasi di dua bilah tetap: satu di atas untuk berangkat kerja dan satu lagi di bawah untuk mengonfigurasi platform yang sesuai untuk Anda."
+      ],
+      "intro": "Layar Home menyambut Anda dengan ruang yang bersih dan jernih di mana semua kontrol terkonsentrasi di dua bilah tetap: satu di atas untuk berangkat kerja dan satu lagi di bawah untuk mengonfigurasi platform yang sesuai untuk Anda.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Titik awal yang jelas yang membagi pekerjaan Anda menjadi analisis pasar dan manajemen portofolio.",
+          "paragraphs": [
+            "Bayangkan Anda memulai trading di pagi hari. Terkadang Anda ingin melihat saham, obligasi, atau mata uang mana yang paling banyak bergerak; Di lain waktu, Anda akan langsung meninjau risiko portofolio Anda atau melakukan simulasi pembelian sebelum melaksanakannya.",
+            "Bagaimana Anda menghindari pencampuran dua hal pada layar kelebihan beban yang sama? Sampulnya dengan jelas memisahkan jalur itu dari detik pertama:"
+          ],
+          "lead": "Bagaimana Anda menghindari pencampuran dua hal pada layar kelebihan beban yang sama? Sampulnya dengan jelas memisahkan jalur itu dari detik pertama:",
+          "bullets": [
+            {
+              "bold": "Ruang tanpa gangguan",
+              "code": "Donde se decodifican los mercados",
+              "text": "Saat Anda masuk, tidak ada tabel terbuka atau peringatan yang memaksa Anda menutup jendela sebelum memulai; Anda memilih modul mana yang akan dibuka."
+            },
+            {
+              "bold": "Dua jalur yang jelas",
+              "code": "Markets / Portfolio",
+              "text": "Keseluruhan alur aplikasi dibagi menjadi dua tahap utama: pertama meneliti peluang di pasar dan kemudian membangun atau menguji portofolio Anda."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Bilah atas untuk melompat dalam satu klik antara rumah, pasar, dan portofolio Anda.",
+          "paragraphs": [
+            "Saat Anda mempelajari detail suatu aset atau menguji perubahan pada portofolio Anda, sangat mudah untuk kehilangan jejak di mana Anda berada. Bagaimana Anda beralih dari melihat grafik saham hingga meninjau portofolio Anda tanpa melalui submenu?",
+            "Bilah atas selalu tetap di layar dan memberi Anda akses langsung ke tiga poin utama:"
+          ],
+          "lead": "Bilah atas selalu tetap di layar dan memberi Anda akses langsung ke tiga poin utama:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Dimanapun Anda berada, mengklik simbol di sebelah kiri akan segera mengembalikan Anda ke halaman utama."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Ini adalah ruang penelitian Anda. Di sini Anda memfilter 213 aset yang tersedia, mengikuti kutipan langsung, menganalisis grafik teknis, dan melihat ringkasan neraca atau berita."
+            },
+            {
+              "bold": "Dompet",
+              "code": "Portfolio",
+              "text": "Itu meja keputusan Anda. Di sini Anda menentukan berapa persentase modal Anda yang digunakan untuk setiap aset, mengukur berapa banyak kerugian yang bisa Anda alami saat krisis, dan melakukan simulasi operasi baru sebelum mempertaruhkan uang."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Footer untuk memeriksa status sistem, kembali ke panduan ini, atau menyesuaikan tata letak.",
+          "paragraphs": [
+            "Saat menganalisis data secara real-time, ada pertanyaan operasional yang dapat muncul kapan saja: apakah kutipannya benar? Apa yang dimaksud dengan indikator titik? Bisakah saya menurunkan kecerahan layar?",
+            "Footer mengelompokkan semua alat dukungan dan konfigurasi tersebut sehingga selalu tersedia tanpa mengganggu bagian tengah layar:"
+          ],
+          "lead": "Footer mengelompokkan semua alat dukungan dan konfigurasi tersebut sehingga selalu tersedia tanpa mengganggu bagian tengah layar:",
+          "bullets": [
+            {
+              "bold": "Status System",
+              "code": "System",
+              "text": "Sekilas titik hijau menegaskan bahwa semuanya beres. Saat Anda membukanya, Anda dapat melihat secara detail status server, database, dan kecepatan respons."
+            },
+            {
+              "bold": "Pengguna Guide",
+              "code": "Guide",
+              "text": "Buka manual interaktif ini kapan saja untuk melihat cara menggunakan layar atau mempelajari perhitungannya lebih dalam."
+            },
+            {
+              "bold": "Preferensi visual",
+              "code": "Idioma / Palette",
+              "text": "Di sisi kanan Anda memiliki kontrol untuk mengubah bahasa seluruh aplikasi atau menyesuaikan pencahayaan latar belakang."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Bahasa",
+          "summary": "Mesin pencari untuk menerjemahkan seluruh platform ke dalam bahasa Anda saat itu juga.",
+          "paragraphs": [
+            "Istilah keuangan dan laporan pasar sudah memiliki kompleksitasnya sendiri tanpa menambah kendala bahasa. Jika Anda lebih suka membaca penjelasan dalam bahasa Spanyol, Inggris, atau bahasa lainnya, Anda dapat langsung mengubahnya.",
+            "Beginilah cara kerja pemilih dari sudut kanan bawah:"
+          ],
+          "lead": "Beginilah cara kerja pemilih dari sudut kanan bawah:",
+          "bullets": [
+            {
+              "bold": "pencarian instan",
+              "code": "Select Language",
+              "text": "Mengklik bendera saat ini akan membuka jendela di mana Anda dapat memilih di antara 56 bahasa dengan menuliskan nama atau kodenya (misalnya, ES, EN, PT, FR atau DE)."
+            },
+            {
+              "bold": "Memori otomatis",
+              "code": "mid_lang_v1",
+              "text": "Seluruh layar diterjemahkan secara instan tanpa memuat ulang halaman dan pilihan Anda disimpan untuk kali berikutnya Anda masuk."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Tema visual untuk menyesuaikan kontras layar tanpa mengubah warna finansial.",
+          "paragraphs": [
+            "Menghabiskan waktu beberapa jam di depan grafik dengan kontras yang tidak menyesuaikan dengan cahaya di lingkungan Anda akhirnya melelahkan mata. Namun, mengubah warna platform keuangan mempunyai bahaya klasik: kehilangan acuan mengenai apa yang sedang naik dan apa yang sedang turun.",
+            "Untuk mengatasi hal ini, pemilih tema memisahkan warna lingkungan dari warna data:"
+          ],
+          "lead": "Untuk mengatasi hal ini, pemilih tema memisahkan warna lingkungan dari warna data:",
+          "bullets": [
+            {
+              "bold": "Lima lingkungan membaca",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Dengan setiap klik, Anda memutar antara latar belakang hitam murni, kebiruan, atau hangat hingga Anda menemukan latar belakang yang paling nyaman untuk mata Anda."
+            },
+            {
+              "bold": "Semantik keuangan yang utuh",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Apa pun topik yang Anda ubah, aturan universal pasar tidak pernah berubah: hijau selalu berarti naik atau untung, dan merah selalu berarti turun, rugi, atau peringatan risiko."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Bayangkan Anda ingin mendeteksi peluang terbaik saat ini di antara lebih dari dua ratus obligasi, saham, indeks, mata uang, dan bahan mentah. Jika Anda membuka grafik satu per satu, pasar akan ditutup sebelum Anda selesai melihatnya.",
+            "Screener menyatukan 213 aset di platform ke dalam satu dasbor langsung. Ini memungkinkan Anda memfilter berdasarkan pasar dalam hitungan detik, mengukur keseluruhan denyut harian, dan memilih dari empat cara berbeda untuk melihat aset mana yang berkinerja baik."
+          ],
+          "intro": "Screener menghadirkan 213 aset di platform ke dalam satu dasbor langsung sehingga Anda dapat memfilter berdasarkan pasar dan melihat peluang secara sekilas.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategori",
+              "summary": "Filter teratas untuk fokus pada satu kelas aset atau daftar pantauan Anda.",
+              "paragraphs": [
+                "Tidak masuk akal untuk menganalisis obligasi Treasury dengan metrik yang sama seperti saham teknologi atau minyak. Saat Anda mencampur semuanya dalam daftar yang sama, Anda akhirnya membandingkan pir dengan apel.",
+                "Bagaimana Anda mempersempit layar tepat pada pasar yang Anda minati saat ini? Bilah atas memungkinkan Anda memisahkan alam semesta dengan satu klik:"
+              ],
+              "lead": "Bilah atas memungkinkan Anda memisahkan alam semesta dengan satu klik:",
+              "bullets": [
+                {
+                  "bold": "Gambar penuh",
+                  "code": "Todos",
+                  "text": "Ini menunjukkan 213 instrumen bersama-sama dan diurutkan berdasarkan volume yang diperdagangkan sehingga Anda dapat melihat ke mana uang paling banyak mengalir secara global."
+                },
+                {
+                  "bold": "Pelacakan pribadi",
+                  "code": "★ Watchlist",
+                  "text": "Pisahkan hanya aset yang telah Anda tandai sebagai favorit untuk memantaunya dengan cermat tanpa gangguan."
+                },
+                {
+                  "bold": "Sepuluh pasar khusus",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Dengan memilih salah satu kategori ini, seluruh layar menyesuaikan indikator dan kolom tabelnya dengan aturan sektor tersebut."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detail tentang bagaimana 213 aset dalam katalog diklasifikasikan dan kriteria volume dan likuiditas apa yang dipenuhi."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "pulsa 24 jam",
+              "summary": "Empat kartu teratas yang memberi tahu Anda apakah pasar sedang tenang, gembira, atau sedang stres.",
+              "paragraphs": [
+                "Sebelum membeli atau menjual aset tertentu, disarankan untuk mengetahui dalam iklim apa keseluruhannya bergerak. Apakah ini hari volume normal atau uang institusional masuk sekaligus? Apakah seluruh aset naik atau ada tanda-tanda ketegangan?",
+                "Empat kartu di bawah filter memberi Anda pembacaan umum dalam beberapa detik:"
+              ],
+              "lead": "Empat kartu di bawah filter memberi Anda pembacaan umum dalam beberapa detik:",
+              "bullets": [
+                {
+                  "bold": "Total aktivitas hari ini",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Ini menambahkan hingga miliaran dolar yang diperdagangkan dalam kategori aktif dan menunjukkan kepada Anda apakah ada lebih banyak atau lebih sedikit partisipasi hari ini dibandingkan kemarin."
+                },
+                {
+                  "bold": "Kekuatan Kelompok Rata-rata",
+                  "code": "AVG RSI 14",
+                  "text": "Ini merangkum dalam meteran melingkar apakah harga sektor tersebut datang dengan tekanan beli (hijau, di atas 50) atau dengan tekanan jual (merah, di bawah 50)."
+                },
+                {
+                  "bold": "Termometer normalitas",
+                  "code": "Régimen Normal P-06",
+                  "text": "Ini menghitung persentase aset yang bergerak dalam parameter biasanya dan memberi tahu Anda berdasarkan nama dan nama belakang instrumen mana yang memiliki anomali terbesar pada hari itu."
+                },
+                {
+                  "bold": "Aliran uang masuk yang tidak biasa",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Podium dari tiga aset yang saat ini mengoperasikan volume yang sangat tinggi dibandingkan dengan rata-rata bulan lalu sangat menonjol."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Penjelasan mendetail tentang cara menghitung rata-rata RSI, volume Z-Score, dan detektor anomali P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tabel",
+              "summary": "Daftar interaktif dengan pencarian cepat, favorit dan kolom yang menyesuaikan dengan masing-masing pasar.",
+              "paragraphs": [
+                "Ketika Anda sudah mengetahui sektor mana yang ingin Anda lihat dan perlu membandingkan angka tertentu baris demi baris, tampilan tabel adalah alat utama Anda.",
+                "Alih-alih menampilkan spreadsheet kaku yang sama untuk semua orang, tabel tersebut menyesuaikan dengan apa yang Anda cari:"
+              ],
+              "lead": "Alih-alih menampilkan spreadsheet kaku yang sama untuk semua orang, tabel tersebut menyesuaikan dengan apa yang Anda cari:",
+              "bullets": [
+                {
+                  "bold": "Mesin pencari dan bintang favorit",
+                  "code": "Buscar activo / ★",
+                  "text": "Di header kolom pertama Anda dapat mengetikkan simbol atau nama apa pun untuk langsung membuka aset tersebut, atau ketuk bintang di sebelah kiri untuk menyimpannya ke Watchlist Anda."
+                },
+                {
+                  "bold": "Kolom pintar sesuai kategori",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Jika Anda memfilter Saham, kelipatan dan margin penilaian akan muncul; Jika Anda memilih Obligasi atau Suku Bunga, Anda akan melihat kemiringan kurva dan sensitivitas terhadap suku bunga; Jika Anda melihat Derivatif, Anda melihat volatilitas yang tersirat."
+                },
+                {
+                  "bold": "Langsung ke analisis mendalam",
+                  "code": "Click en cualquier fila",
+                  "text": "Cukup klik aset apa pun dalam daftar untuk membuka stasiun lengkap grafik teknis dan laporan fundamental."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Daftar metrik spesifik yang ditampilkan tabel untuk masing-masing dari 10 kategori aset."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Radar visual untuk mendeteksi secara sekilas aset mana yang bergerak menjauh dari rata-rata historisnya.",
+              "paragraphs": [
+                "Membaca dua ratus baris angka dapat menyebabkan Anda melewatkan aset yang mulai bergerak secara eksplosif. Bagaimana Anda langsung mendeteksi instrumen mana yang menyimpang dari norma?",
+                "Tampilan Orbital mengubah tabel menjadi radar dengan tiga cincin konsentris:"
+              ],
+              "lead": "Tampilan Orbital mengubah tabel menjadi radar dengan tiga cincin konsentris:",
+              "bullets": [
+                {
+                  "bold": "Pilihan kriteria",
+                  "code": "INDICADOR",
+                  "text": "Anda memutuskan apa yang diukur radar: anomali statistik, lonjakan volume, kekuatan harga (RSI), volatilitas atau keuntungan dalam 24 jam terakhir."
+                },
+                {
+                  "bold": "Membaca berdasarkan jarak dan warna",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Semakin dekat atau jauh suatu titik menurut indikator dan semakin kuat warna hijau atau merahnya, semakin relevan pergerakannya dibandingkan dengan sejarahnya."
+                },
+                {
+                  "bold": "Inspeksi tanpa mengubah layar",
+                  "code": "Panel lateral en vivo",
+                  "text": "Dengan meletakkan kursor pada node radar mana pun, harganya, grafik intraday yang bersih, dan tiga metrik risikonya ditampilkan di sebelah kanan."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Bagaimana posisi setiap aset dalam lingkaran radar dihitung berdasarkan deviasi historisnya."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Peta Panas",
+              "summary": "Mosaik blok proporsional untuk mengidentifikasi pemenang dan pecundang dalam hitungan detik.",
+              "paragraphs": [
+                "Ada kalanya Anda hanya ingin menjawab pertanyaan singkat: siapa yang memimpin kenaikan saat ini dan siapa yang menyeret pasar ke bawah?",
+                "Peta Panas menyusun sepuluh aset teratas dari filter aktif ke dalam blok proporsional sehingga Anda tidak perlu membaca satu tabel pun:"
+              ],
+              "lead": "Peta Panas mengurutkan sepuluh aset teratas dari filter aktif ke dalam blok proporsional:",
+              "bullets": [
+                {
+                  "bold": "Ukuran menurut kepentingannya",
+                  "code": "Puestos #1 a #10",
+                  "text": "Instrumen dengan bobot terbesar dalam metrik yang dipilih menempati kolom di sebelah kiri dengan kotak terbesar."
+                },
+                {
+                  "bold": "Intensitas warna",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Nada balok langsung memberi tahu Anda besarnya pergerakan, mulai dari variasi sedang hingga naik atau turun secara tiba-tiba."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Pintasan tiga langkah menuju kurs tingkat lanjut, opsi, valas, dan kalkulator berjangka.",
+              "paragraphs": [
+                "Selain grafik harga tradisional, platform ini mencakup empat mesin khusus untuk pendapatan tetap, opsi, persilangan mata uang, dan kurva komoditas. Bagaimana Anda mendapatkannya tanpa mencari aset demi aset?",
+                "Tampilan ini memandu Anda dari kiri ke kanan dalam tiga kolom yang sangat sederhana:"
+              ],
+              "lead": "Tampilan ini memandu Anda dari kiri ke kanan dalam tiga kolom yang sangat sederhana:",
+              "bullets": [
+                {
+                  "bold": "Pertama Anda memilih keluarga",
+                  "code": "1. Clases de Activo",
+                  "text": "Anda memilih apakah Anda ingin bekerja dengan Suku Bunga dan Obligasi, dengan Opsi pada Saham/Indeks/Kripto, dengan Mata Uang atau dengan Bahan Baku."
+                },
+                {
+                  "bold": "Kemudian Anda memeriksa apa yang dilakukan mesin",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Di tengahnya Anda membaca ringkasan yang jelas tentang apa yang ditunjukkan alat itu dan bagaimana mengarahkan diri Anda ke sepanjang sumbunya."
+                },
+                {
+                  "bold": "Terakhir, pilih yang aktif dan buka",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Anda menonton pratinjau langsung grafik, mencari aset apa pun yang kompatibel dalam kelompok tersebut, dan membuka stasiun lengkap dengan satu klik."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Setelah Anda menemukan aset menarik di Screener, inilah saatnya untuk melihat lebih dekat. Apakah sedang dalam tren naik atau sudah kehabisan tenaga? Apakah Anda mengalahkan pesaing Anda? Apa yang dikatakan oleh volume dan pasar derivatif?",
+            "Stasiun Analytics memusatkan semua analisis teknis, komparatif, dan kuantitatif aset tersebut pada satu layar. Di atas Anda memiliki ringkasan umum dan di sebelah kiri empat lensa untuk mengubah sudut analisis tanpa melupakan grafik."
+          ],
+          "intro": "Stasiun Analytics memusatkan analisis teknis, komparatif, aliran, dan mesin 3D/2D dari aset individual pada satu layar.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Dasbor teratas untuk berpindah aset, memilih jangka waktu, dan melihat lima metrik utama Anda.",
+              "paragraphs": [
+                "Saat Anda mempelajari suatu aset, Anda biasanya bergantian antara jangka pendek hari ini dan film beberapa bulan terakhir, atau bahkan beralih untuk melihat simbol serupa lainnya. Bagaimana Anda melakukan semua itu tanpa kembali?",
+                "Header atas menyatukan kontrol navigasi dan tab cepat instrumen:"
+              ],
+              "lead": "Header atas menyatukan kontrol navigasi dan tab cepat instrumen:",
+              "bullets": [
+                {
+                  "bold": "Perubahan aset atau kembali ke daftar",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Di kiri atas Anda dapat kembali ke Screener atau mengetikkan nama instrumen lain untuk langsung mengubah grafik."
+                },
+                {
+                  "bold": "Sembilan jendela waktu",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Di margin kanan Anda mengubah skala grafik dari pergerakan menit demi menit ke seluruh riwayat."
+                },
+                {
+                  "bold": "Lima indikator utama",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Di samping harga, Anda selalu melihat volume perdagangan, dua data utama dari kategorinya, kekuatan tren dan tingkat normalitas statistik."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Teknis",
+              "summary": "Grafik harga dengan rata-rata pergerakan, pita volatilitas, dan volume untuk mengikuti tren.",
+              "paragraphs": [
+                "Hanya melihat harga terakhir tidak memberi tahu Anda apakah suatu aset mengalami akselerasi, apakah memantul dari rata-ratanya, atau apakah sudah naik terlalu cepat dalam beberapa hari.",
+                "Lensa pertama di rel kiri memungkinkan Anda untuk menampilkan referensi teknis yang paling banyak digunakan di pasar pada grafik:"
+              ],
+              "lead": "Lensa pertama di rel kiri memungkinkan Anda melapisi referensi teknis yang paling sering digunakan:",
+              "bullets": [
+                {
+                  "bold": "Alamat dan harga rata-rata sebenarnya",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Anda dapat mengaktifkan harga rata-rata pergerakan 20 periode dan rata-rata tertimbang volume untuk segera melihat apakah aset diperdagangkan di atas atau di bawah tingkat keseimbangannya."
+                },
+                {
+                  "bold": "Zona berlebih dan konfirmasi volume",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Garis-garis tersebut menggambarkan batas atas dan dasar statistik harga, sedangkan garis bawah mengkonfirmasi apakah pergerakan didukung oleh volume."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Rumus dan kriteria interpretasi Moving Average (SMA 20), Bollinger Bands dan VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Bandingkan %",
+              "summary": "Pembanding persentase dari 0% untuk mengukur apakah aset Anda berkinerja lebih baik atau lebih rendah dibandingkan aset lain dalam kategori yang sama.",
+              "paragraphs": [
+                "Sebuah saham yang naik 5% sepertinya merupakan berita bagus, tetapi jika saham acuan atau pesaing utamanya naik 12% pada periode yang sama, Anda sebenarnya tertinggal.",
+                "Lensa kedua mengatasi keraguan tersebut dengan menempatkan kedua aset pada garis awal yang sama:"
+              ],
+              "lead": "Lensa kedua mengatasi keraguan tersebut dengan menempatkan kedua aset pada garis awal yang sama:",
+              "bullets": [
+                {
+                  "bold": "Cari pasangan yang koheren",
+                  "code": "Buscar par compatible",
+                  "text": "Mesin pencari secara otomatis menyaring aset dari kelompok yang sama (misalnya saham vs. saham, ETF, atau indeks) sehingga perbandingannya masuk akal secara finansial."
+                },
+                {
+                  "bold": "Keuntungan bersih dalam persentase",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Kedua kurva dimulai dari 0% dan rel kiri menghitung berapa poin persentase keuntungan (berwarna hijau) atau kerugian (berwarna merah) yang dimiliki aset Anda."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Mikro & Aliran",
+              "summary": "Pendeteksi pembelian institusional di luar pola, likuiditas, dan biaya spread.",
+              "paragraphs": [
+                "Seringkali dana besar menumpuk atau membongkar posisi sebelum harga bergerak secara tiba-tiba. Bagaimana Anda mendeteksi jejak tersembunyi dalam volume dan likuiditas buku pesanan?",
+                "Lensa ketiga berfokus pada apa yang terjadi di bawah kutipan:"
+              ],
+              "lead": "Lensa ketiga berfokus pada apa yang terjadi di bawah kutipan:",
+              "bullets": [
+                {
+                  "bold": "Volume statistik mencapai puncaknya",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Mengubah panel bawah untuk menunjukkan berapa kali volume saat ini menyimpang dari normal, sehingga menunjukkan aktivitas institusi yang tidak biasa."
+                },
+                {
+                  "bold": "Stres dan anomali likuiditas",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Ini mengukur dalam basis poin apakah kesenjangan antara pembeli dan penjual semakin lebar dan apakah mesin statistik mendeteksi perilaku yang tidak biasa."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Bagaimana pembukaan spread dan lonjakan statistik dalam aliran pesanan diukur."
+            },
+            {
+              "id": "ana-engines",
+              "label": "mesin 3D/2D",
+              "summary": "Lensa keempat yang menerapkan alat ad-hoc dinamis yang bervariasi berdasarkan kelas aset.",
+              "paragraphs": [
+                "Berbeda dengan tiga lensa pertama (yang umum untuk semua instrumen), lensa keempat di rel kiri adalah alat ad-hoc yang berubah secara dinamis bergantung pada aset yang Anda analisis: misalnya, dalam tur langsung, karena merupakan saham (NVDA), lensa ini mengaktifkan Volatilitas Implisit 3D dan Permukaan Hasil Opsi, sementara di pasar lain lensa ini menerapkan mesin khusus miliknya sendiri.",
+                "Tombol keempat mendeteksi kelas aset terbuka dan secara otomatis mengaktifkan alat ad-hoc yang sesuai:"
+              ],
+              "lead": "Tombol keempat mendeteksi aset mana yang Anda buka dan mengaktifkan alat ad-hoc yang terkait dengannya:",
+              "bullets": [
+                {
+                  "bold": "Dalam saham, indeks, derivatif, dan kripto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Tampilkan permukaan volatilitas tersirat 3D, opsi tersenyum saat kedaluwarsa, dan simulator 6 strategi untuk melihat berapa banyak keuntungan atau kerugian yang akan Anda peroleh hari ini dan saat kedaluwarsa."
+                },
+                {
+                  "bold": "Dalam suku bunga, obligasi dan likuiditas",
+                  "code": "Curva 3D/2D",
+                  "text": "Hal ini memungkinkan Anda membandingkan kurva imbal hasil di 42 negara dengan AS dan Jerman, mengukur apakah kurva tersebut normal atau terbalik (2s10s) dan seberapa besar variasi harga terhadap perubahan kurs (DV01)."
+                },
+                {
+                  "bold": "Dalam mata uang",
+                  "code": "FX & Carry",
+                  "text": "Ia menawarkan konverter dan triangulator antara 61 mata uang yang juga menghitung perbedaan suku bunga 10 tahun yang mendukung atau menentang mempertahankan pasangan tersebut."
+                },
+                {
+                  "bold": "Dalam bahan baku",
+                  "code": "Forward 3D/2D",
+                  "text": "Memetakan harga kontrak berjangka dari bulan ke bulan untuk menunjukkan apakah pasar membayar lebih untuk kontrak berjangka (Contango) atau untuk pengiriman segera (Backwardation), beserta status persediaan fisik."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detail matematis dari permukaan volatilitas, kurva imbal hasil negara, pembawaan mata uang, dan kurva masa depan."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Grafik menunjukkan kepada Anda apa yang dilakukan harga, namun tidak memberi tahu Anda alasannya. Untuk mengetahui apa yang melatarbelakangi pergerakan ini, Anda harus membaca lusinan halaman neraca triwulanan, laporan bank sentral, laporan inventaris, dan kabel berita.",
+            "Stasiun Research melakukan pekerjaan berat itu untuk Anda. Ini menggabungkan kecerdasan buatan dokumenter yang diverifikasi berdasarkan laporan resmi dengan pembacaan berita real-time, mengatur semua bukti yang mendukung dan menentang dalam tiga kolom yang jelas."
+          ],
+          "intro": "Station Research merangkum neraca resmi, laporan makroekonomi, dan berita real-time dalam tiga kolom yang jelas.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Catatan & Postur",
+              "summary": "Tiga kartu teratas yang merangkum keputusan mendasar dan humor dari berita tersebut.",
+              "paragraphs": [
+                "Apakah fundamental aset tersebut menyertai kenaikan harga atau apakah berita tersebut memperburuk prospek? Sebelum membaca detailnya, Anda memerlukan kesimpulan eksekutif singkat.",
+                "Di sudut kanan atas Anda memiliki tiga indikator yang merangkum status umum aset:"
+              ],
+              "lead": "Di sudut kanan atas Anda memiliki tiga indikator yang merangkum status umum:",
+              "bullets": [
+                {
+                  "bold": "Postur dan berat masing-masing sumber",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Ini mendefinisikan keputusan umum dan mengklarifikasi bobot yang diberikan pada dokumen resmi versus berita tergantung pada jenis aset (misalnya, 80% neraca dan 20% berita di saham)."
+                },
+                {
+                  "bold": "Peringkat gabungan",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Ini menyatukan menjadi satu skor hasil bersih dari fundamental ditambah arus informasi hari itu."
+                },
+                {
+                  "bold": "Pemegang termometer",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Tempatkan pada bilah dari -100 hingga +100 jika nada pemberitaan dalam beberapa jam terakhir adalah pesimistis (merah), netral, atau antusias (hijau)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Bagaimana laporan resmi dibandingkan dengan berita bergantung pada jenis asetnya."
+            },
+            {
+              "id": "res-rag",
+              "label": "Obrolan RAG",
+              "summary": "Asisten dokumenter kiri untuk menanyakan pertanyaan spesifik tentang neraca dan laporan resmi.",
+              "paragraphs": [
+                "Misalkan Anda ingin tahu apa sebenarnya yang dikatakan sebuah perusahaan tentang marginnya dalam neraca tahunan terbaru 10-K, atau apa yang dikatakan Federal Reserve dalam risalah rapat terbarunya. Mencarinya dengan tangan membutuhkan waktu; Menanyakan obrolan umum tanpa sumber dapat memberi Anda data palsu.",
+                "Kolom kiri menyelesaikan masalah ini dengan wizard yang terhubung secara eksklusif ke dokumentasi resmi terverifikasi:"
+              ],
+              "lead": "Kolom kiri menawarkan Anda wizard yang terhubung ke dokumentasi resmi terverifikasi:",
+              "bullets": [
+                {
+                  "bold": "Tesis awal dan pertanyaan terbimbing",
+                  "code": "Chat Documental RAG",
+                  "text": "Ini dimulai dengan ringkasan eksekutif dengan kutipan terverifikasi dan empat tombol referensi cepat yang disesuaikan dengan kategori aset, serta bidang untuk Anda menulis pertanyaan Anda sendiri."
+                },
+                {
+                  "bold": "Langkah langsung ke portofolio Anda",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Jika setelah meneliti fundamental Anda memutuskan bahwa aset tersebut layak, tombol di bagian atas obrolan ini akan mengarahkan Anda langsung ke simulator portofolio."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pengoperasian pencarian dokumenter terverifikasi (RAG) dan filter keamanannya."
+            },
+            {
+              "id": "res-factors",
+              "label": "Faktor",
+              "summary": "Akordeon tengah dengan lima pendorong bullish dan lima risiko bearish yang diurutkan berdasarkan dampak.",
+              "paragraphs": [
+                "Tidak ada investasi yang seratus persen sempurna atau seratus persen buruk: selalu ada argumen yang mendukung dan risiko laten. Rahasianya adalah mengetahui mana yang lebih berbobot saat ini.",
+                "Kolom tengah menempatkan kedua sisi saling berhadapan sehingga Anda dapat membuat keputusan yang seimbang:"
+              ],
+              "lead": "Kolom tengah menempatkan kedua sisi saling berhadapan sehingga Anda dapat membuat keputusan yang seimbang:",
+              "bullets": [
+                {
+                  "bold": "Paksa keseimbangan dan filter",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Di atas Anda melihat bilah penawaran antara pembeli dan penjual, dan di bawah Anda dapat memfilter lima katalis positif (berwarna hijau) atau lima risiko utama (berwarna merah)."
+                },
+                {
+                  "bold": "Detail dan penelusuran dalam satu klik",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Saat Anda menyentuh faktor mana pun dalam daftar, penjelasan lengkapnya akan ditampilkan bersama dengan tombol untuk menanyakan informasi lebih lanjut kepada Chat RAG tentang poin spesifik tersebut."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "Pulsa FinBERT",
+              "summary": "Garis waktu yang tepat dengan berita utama berperingkat AI terbaru dan kurva suasana hati 24 jam.",
+              "paragraphs": [
+                "Satu berita utama di menit-menit terakhir tentang pendapatan, inflasi, atau peraturan dapat sepenuhnya mengubah suasana hari ini. Bagaimana Anda tahu berita apa yang baru saja keluar dan apa pengaruhnya?",
+                "Kolom kanan memantau aliran informasi menit demi menit:"
+              ],
+              "lead": "Kolom kanan memantau aliran informasi menit demi menit:",
+              "bullets": [
+                {
+                  "bold": "Garis waktu yang memenuhi syarat",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Cantumkan lima berita utama terkini beserta waktu dan agensinya, beri skor hijau jika menguntungkan atau merah jika menimbulkan ancaman."
+                },
+                {
+                  "bold": "Simulator dampak dan kurva harian",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Anda dapat memicu kabel listrik dengan tombol atas untuk melihat bagaimana ia menghitung ulang seluruh layar dan mengikuti grafik di bawah ini bagaimana suasana hati berkembang selama 24 jam terakhir."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Bagaimana model FinBERT menganalisis bahasa keuangan setiap pemegangnya."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Pembangun",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Memilih aset yang baik secara terpisah saja tidak cukup untuk memiliki portofolio yang baik. Jika Anda memasukkan terlalu banyak modal ke dalam aset yang pergerakannya sama, atau jika Anda tidak mengukur bagaimana kinerja aset tersebut di masa lalu, Anda berinvestasi secara membabi buta.",
+            "Konstruktor & Kinerja (tampilan pertama Portfolio) adalah bengkel tempat Anda membangun portofolio. Ini memungkinkan Anda untuk menambahkan salah satu dari 213 aset, menyesuaikan persentase yang Anda tetapkan untuk masing-masing aset tanpa berurusan dengan kontrol yang tidak tepat, dan langsung mengaudit komposisi internal dan riwayatnya."
+          ],
+          "intro": "Konstruktor & Kinerja adalah lokakarya tempat Anda membangun portofolio, menyesuaikan bobot setiap aset, dan mengaudit kinerja historisnya.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Ringkasan",
+              "summary": "Enam kartu teratas yang dihitung ulang secara langsung setiap kali Anda mengubah portofolio Anda.",
+              "paragraphs": [
+                "Setiap kali Anda menambahkan aset atau mengubah persentase dalam portofolio Anda, Anda perlu segera mengetahui apakah penyesuaian tersebut meningkatkan ekspektasi pengembalian atau memperburuk eksposur penurunan Anda.",
+                "Baris teratas selalu membuat enam metrik utama portofolio tetap terlihat:"
+              ],
+              "lead": "Baris teratas selalu membuat enam metrik utama portofolio tetap terlihat:",
+              "bullets": [
+                {
+                  "bold": "Kinerja dan efisiensi",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Mereka memberi tahu Anda berapa keuntungan tahunan gabungan yang diproyeksikan portofolio atas modal Anda dan berapa banyak keuntungan yang Anda peroleh untuk setiap unit risiko yang diasumsikan."
+                },
+                {
+                  "bold": "Perkiraan kerugian harian dan penurunan historis",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Mereka menghitung berapa banyak dolar yang bisa Anda hilangkan pada hari yang buruk dalam perkiraan statistik dan kemunduran terdalam dalam setahun terakhir."
+                },
+                {
+                  "bold": "Nilai tambah dan diversifikasi",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Mereka mengukur seberapa banyak poin portofolio Anda mengalahkan indeks acuan dan seberapa besar risiko yang Anda kurangi berkat penggabungan aset yang berbeda."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Rumus return komposit (CAGR), rasio Sharpe dan Sortino, serta Value at Risk (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Pembobotan",
+              "summary": "Tabel sebelah kiri untuk menambahkan aset, mengaktifkan atau menonaktifkannya, dan menentukan persentase pasti setiap posisi.",
+              "paragraphs": [
+                "Apa yang akan terjadi pada jumlah portofolio Anda jika Anda menutup sementara saham teknologi hari ini atau membagi uang tersebut secara merata di semua posisi Anda?",
+                "Panel kiri memungkinkan Anda melakukan semua pengujian tersebut dengan cara yang bersih dan langsung:"
+              ],
+              "lead": "Panel kiri memungkinkan Anda melakukan semua pengujian tersebut dengan cara yang bersih dan langsung:",
+              "bullets": [
+                {
+                  "bold": "Mesin pencari untuk 213 aset",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Anda dapat mencari instrumen apa pun di platform atau memfilter favorit Anda untuk menambahkannya ke tabel dengan satu klik."
+                },
+                {
+                  "bold": "Pengaktifan cepat dan pengeditan akurat",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Setiap baris memiliki kotak centang untuk memasukkan atau mengecualikan aset secara real time dan kotak angka untuk memasukkan persentase yang tepat tanpa menggunakan penggeser yang tidak tepat."
+                },
+                {
+                  "bold": "Tiga jalan pintas penyeimbangan kembali",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Di bagian atas tabel Anda memiliki tombol untuk mendistribusikan bobot yang sama antara semua aset aktif, secara otomatis menjadikan jumlahnya menjadi 100% atau kembali ke portofolio awal."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "sinar-X",
+              "summary": "Panel kanan atas dengan lima tab untuk menemukan konsentrasi tersembunyi, arus kas, dan hak asuh.",
+              "paragraphs": [
+                "Salah satu kesalahan paling umum ketika berinvestasi adalah percaya bahwa Anda terdiversifikasi karena Anda memiliki lima aset berbeda, padahal kenyataannya Anda membeli satu saham dan juga dua ETF yang memiliki saham yang sama di dalamnya.",
+                "Panel X-ray menganalisis portofolio Anda dari dalam melalui lima tab:"
+              ],
+              "lead": "Panel X-ray menganalisis portofolio Anda dari dalam melalui lima tab:",
+              "bullets": [
+                {
+                  "bold": "Detektor posisi berulang",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Jumlahkan apa yang telah Anda investasikan secara langsung di setiap perusahaan ditambah bagian tersembunyi yang Anda miliki dalam indeks atau ETF (seperti SPY atau QQQ), yang memperingatkan Anda dengan warna merah jika Anda melampaui batas kehati-hatian."
+                },
+                {
+                  "bold": "Peta keterpaparan dan asal kepulangan",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Mereka menunjukkan kepada Anda berapa persentase sebenarnya yang Anda miliki di setiap jenis aset dan mata uang, dan berapa banyak keuntungan Anda yang berasal dari memilih sektor yang bagus dibandingkan memilih aset yang bagus."
+                },
+                {
+                  "bold": "Proyeksi pendapatan dan keamanan tahunan",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Mereka menghitung berapa banyak dolar yang akan Anda kumpulkan pada tahun tersebut untuk dividen, kupon dan bunga, dan mengaudit solvabilitas kustodian di mana modal Anda berada."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Bagaimana eksposur tidak langsung dihitung dalam ETF dan rincian atribusi Brinson."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Kalender",
+              "summary": "Grafik bulanan dari Januari hingga Desember untuk melihat keteraturan keuntungan dan kerugian Anda.",
+              "paragraphs": [
+                "Imbal hasil tahunan yang baik dapat menyembunyikan penurunan tajam selama berbulan-bulan yang dalam praktiknya sulit untuk ditoleransi. Seberapa konsisten portofolio yang baru saja Anda buat dari bulan ke bulan?",
+                "Tepat di bawah sinar-X, kalender menguraikan riwayat bulanan:"
+              ],
+              "lead": "Tepat di bawah sinar-X, kalender menguraikan riwayat bulanan:",
+              "bullets": [
+                {
+                  "bold": "Bulan hijau dan bulan merah",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Setiap sel langsung dihitung ulang sesuai dengan bobot di tabel Anda dan dicat hijau atau merah tergantung pada hasil bulan itu, ditutup di sebelah kanan dengan hasil kumulatif untuk tahun tersebut."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Grafik layar penuh di bawah ini untuk membandingkan portofolio Anda dengan empat strategi klasik.",
+              "paragraphs": [
+                "Sebelum Anda menganggap portofolio Anda bagus, ujian fundamentalnya tetap ada: apakah ini benar-benar lebih baik daripada meninggalkan uang di S&P 500 atau dalam portofolio tradisional 60/40?",
+                "Panel bawah menempati seluruh lebar layar agar desain Anda memenuhi standar pasar:"
+              ],
+              "lead": "Panel bawah menempatkan desain Anda sesuai dengan standar pasar:",
+              "bullets": [
+                {
+                  "bold": "Lima cakrawala pengujian",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Hal ini memungkinkan Anda mengevaluasi kinerja campuran Anda baik dalam kuartal terakhir maupun dalam siklus multi-tahun penuh."
+                },
+                {
+                  "bold": "Empat referensi tatap muka",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Hamparkan kurva hijau portofolio aktif Anda dengan salah satu dari empat model klasik sehingga Anda dapat melihat dengan jelas kapan portofolio tersebut berada di depan dan bagaimana portofolio tersebut bertahan pada sisi negatifnya."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Resiko",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Pada saat pasar naik dengan tenang, hampir semua portofolio tampak aman. Masalah sebenarnya muncul ketika krisis terjadi, suku bunga tiba-tiba naik dan aset-aset yang tampaknya independen mulai turun pada saat yang bersamaan.",
+            "Risiko & Stres Kuantitatif (tampilan kedua Portfolio) menempatkan portofolio Anda melalui pengujian ekstrem sebelum terjadi di kehidupan nyata. Melalui empat kuadran simetris dan simulator skenario masa depan di bawah ini, ini menunjukkan dengan tepat di mana titik rentan Anda berada."
+          ],
+          "intro": "Risiko & Stres Kuantitatif menguji portofolio Anda untuk mengetahui krisis historis, penularan korelasi, dan proyeksi Monte Carlo.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Peta risiko dan keuntungan interaktif untuk melihat seberapa dekat Anda dengan portofolio paling efisien.",
+              "paragraphs": [
+                "Dengan aset yang sama dengan yang Anda miliki di portofolio Anda, ada ribuan cara untuk mendistribusikan persentasenya. Apakah kombinasi yang Anda pilih memberikan hasil terbaik untuk risiko yang Anda ambil, atau bisakah Anda memenangkan kombinasi yang sama dengan kejutan yang lebih sedikit?",
+                "Kuadran pertama di kiri atas menggambarkan peta kemungkinan secara langsung:"
+              ],
+              "lead": "Kuadran pertama di kiri atas menggambarkan peta kemungkinan secara langsung:",
+              "bullets": [
+                {
+                  "bold": "Posisi Anda terhadap portofolio optimal",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Ini menunjukkan di mana portofolio Anda saat ini berada dalam kaitannya dengan titik volatilitas serendah mungkin dan titik efisiensi pengembalian risiko maksimum."
+                },
+                {
+                  "bold": "Lapisan visual dan inspeksi berdasarkan aset",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Anda dapat mengaktifkan atau menonaktifkan lapisan model dan mengklik node mana pun untuk membaca kontribusi pasti dari aset tersebut di bawah."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Frontier efisien Markowitz dan perhitungan varian minimum dan maksimum portofolio Sharpe."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado & VaR",
+              "summary": "Simulator krisis historis, perincian kerugian harian berdasarkan aset dan asimetri pasar.",
+              "paragraphs": [
+                "Jika kehancuran seperti yang terjadi pada tahun 2008, perlambatan ekonomi pada tahun 2020, atau kenaikan suku bunga pada tahun 2022 terulang besok, berapa kerugian portofolio Anda saat ini dan aset apa yang menjadi penyebab utamanya?",
+                "Kuadran kiri bawah menjawab ketiga pertanyaan tersebut dalam tiga tab khusus:"
+              ],
+              "lead": "Kuadran kiri bawah menjawab pertanyaan-pertanyaan tersebut dalam tiga tab khusus:",
+              "bullets": [
+                {
+                  "bold": "Uji terhadap lima krisis nyata",
+                  "code": "1. Tornado Stress",
+                  "text": "Bandingkan batang demi batang seberapa besar penurunan portofolio Anda terhadap S&P 500 dalam menghadapi lima guncangan besar dalam sejarah."
+                },
+                {
+                  "bold": "Peringkat risiko berdasarkan posisi",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Urutkan kepemilikan Anda berdasarkan berapa dolar potensi kerugian harian yang dikontribusikan masing-masing kepemilikan terhadap total portofolio."
+                },
+                {
+                  "bold": "Perilaku naik turun",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Ini menunjukkan kepada Anda berapa persentase pergerakan bullish pasar yang dimanfaatkan oleh setiap aset dan seberapa besar aset tersebut mampu bertahan ketika pasar jatuh."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Metodologi skenario tekanan historis, kontribusi marjinal terhadap VaR dan rasio penangkapan."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Korelasi",
+              "summary": "Matriks silang untuk memeriksa apakah aset Anda benar-benar terdiversifikasi atau terinfeksi saat panik.",
+              "paragraphs": [
+                "Memiliki beberapa aset dalam portofolio Anda hanya mengurangi risiko jika aset tersebut tidak bergerak ke arah yang sama pada waktu yang bersamaan. Namun pada saat terjadi kepanikan finansial, banyak korelasi yang tampaknya rendah melonjak tajam.",
+                "Kuadran kanan atas memungkinkan Anda mengaudit hubungan tersebut dalam dua skenario:"
+              ],
+              "lead": "Kuadran kanan atas memungkinkan Anda mengaudit hubungan tersebut dalam dua skenario:",
+              "bullets": [
+                {
+                  "bold": "Persilangan antara aset dan sensitivitas",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Ini menunjukkan seberapa mirip pergerakan setiap pasangan aset (berwarna hijau atau biru muda jika terdiversifikasi dengan baik, dan berwarna merah jika bergerak terlalu berdekatan) dan seberapa sensitifnya terhadap pasar."
+                },
+                {
+                  "bold": "Simulator penularan dalam krisis",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Dengan satu klik Anda mengubah korelasi tahun normal dengan momen panik untuk mengetahui posisi mana yang tidak lagi melindungi Anda."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Perhitungan koefisien korelasi Pearson dalam kondisi normal dan dalam tekanan pasar."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Bentrok & Markov",
+              "summary": "Tabel dampak gabungan antara suku bunga dan pasar saham, ditambah kemungkinan perubahan dalam siklus ekonomi.",
+              "paragraphs": [
+                "Dalam perekonomian riil, masalah jarang muncul satu per satu: sering kali kenaikan suku bunga terjadi bersamaan dengan jatuhnya saham. Apa yang terjadi pada portofolio Anda jika kedua faktor tersebut digabungkan secara bersamaan?",
+                "Kuadran kanan bawah melintasi kedua variabel dan mengukur kemungkinan perubahan rezim:"
+              ],
+              "lead": "Kuadran kanan bawah melintasi kedua variabel dan mengukur siklus pasar:",
+              "bullets": [
+                {
+                  "bold": "Papan dampak ganda",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Pergerakan nilai tukar silang (-100 hingga +200 basis poin) dengan penurunan atau kenaikan S&P 500 (-20% hingga +10%), memungkinkan Anda memfilter berdasarkan keseluruhan portofolio atau aset individual."
+                },
+                {
+                  "bold": "Probabilitas transisi siklus",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Hitung seberapa besar kemungkinan pasar akan tetap tenang atau memasuki fase yang bergejolak, inflasi, atau krisis."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sensitivitas gabungan terhadap tarif dan variabel, dan matriks transisi keadaan Markov."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Panel bawah adalah layar penuh dengan proyeksi probabilistik di masa depan dan penurunan historis.",
+              "paragraphs": [
+                "Melihat ke masa lalu memang berguna, tetapi ketika berinvestasi ke depan, yang perlu Anda ketahui adalah seberapa besar hasil yang dapat diperoleh modal Anda dalam enam bulan, satu tahun, atau dua tahun ke depan.",
+                "Panel bawah dengan lebar penuh menyatukan tiga alat sementara untuk memproyeksikan dan mengontrol jalur tersebut:"
+              ],
+              "lead": "Panel bawah menyatukan tiga alat sementara untuk memproyeksikan jalur tersebut:",
+              "bullets": [
+                {
+                  "bold": "Sepuluh ribu skenario masa depan",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Gambarkan kerucut kemungkinan evolusi portofolio Anda, dengan membedakan skenario optimis (P95 berwarna hijau), jalur sentral yang diharapkan (P50) dan skenario buruk (P05 berwarna merah)."
+                },
+                {
+                  "bold": "Kedalaman jatuh dan stabilitas dari waktu ke waktu",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Mereka memungkinkan Anda untuk mengubah grafik untuk melihat berapa lama portofolio bertahan di bawah titik tertinggi sepanjang masa atau seberapa stabil efisiensi dan risikonya selama jangka waktu 60 hari."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Simulasi stokastik Monte Carlo dari 10.000 jalan dan metrik rolling 60 hari."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulator",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Sebelum membeli aset baru, mengurangi posisi, atau membayar lindung nilai dengan opsi, pertanyaan yang sama selalu muncul: apakah operasi ini benar-benar meningkatkan portofolio saya atau justru menambah risiko yang tidak perlu? Dan berapa modal yang harus saya keluarkan?",
+            "Lab Strategi Ad-Hoc (tampilan ketiga Portfolio) adalah simulator pra-operasi Anda. Ini memungkinkan Anda memuat permainan taktis, menghitung ukuran posisi ideal Anda, menguji asuransi penurunan, dan melihat dampak sebelum dan sesudah yang tepat tanpa menyentuh portofolio dasar Anda."
+          ],
+          "intro": "Laboratorium Strategi Ad-Hoc adalah simulator pra-perdagangan Anda untuk menguji pesanan, mengukur posisi, dan mengukur cakupan.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Dampak",
+              "summary": "Enam kartu teratas yang membandingkan portofolio Anda saat ini dengan hasil setelah simulasi permainan.",
+              "paragraphs": [
+                "Untuk mengetahui apakah sebuah ide taktis layak dilakukan, aset tersebut tidak cukup hanya terlihat menarik saja: aset tersebut harus meningkatkan jumlah keseluruhan portofolionya.",
+                "Baris atas secara permanen menunjukkan perbandingan antara portofolio Anda saat ini dan portofolio dengan simulasi yang diterapkan:"
+              ],
+              "lead": "Baris atas membandingkan portofolio Anda saat ini dengan portofolio yang simulasinya diterapkan:",
+              "bullets": [
+                {
+                  "bold": "Pengaruhnya terhadap keuntungan dan efisiensi",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Mereka menunjukkan angka dasar di sebelah angka yang diproyeksikan, menyoroti perbedaannya dengan warna hijau jika permainan menambah efisiensi atau dengan warna merah jika memperburuknya."
+                },
+                {
+                  "bold": "Pengaruh terhadap risiko, modal dan aturan",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Mereka memberi tahu Anda seberapa besar perubahan kerugian maksimum yang diharapkan, berapa persentase portofolio yang Anda ikuti dalam pengujian dan apakah semua batas keamanan dipatuhi."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If & Kelly",
+              "summary": "Simulator tiket pembelian/penjualan dan kalkulator untuk menentukan berapa banyak uang yang harus dipertaruhkan.",
+              "paragraphs": [
+                "Banyak ide investasi bagus yang akhirnya menimbulkan kerugian karena kesalahan dalam ukuran taruhan: memasang terlalu sedikit tidak akan berpengaruh, namun memasang terlalu banyak dapat merusak portofolio jika langkahnya salah.",
+                "Kuadran pertama di kiri atas menghubungkan lembar bukti dengan perhitungan ukuran matematis:"
+              ],
+              "lead": "Kuadran pertama menyatukan laporan pengujian dengan perhitungan ukuran matematis:",
+              "bullets": [
+                {
+                  "bold": "Uji pemuatan pesanan",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Anda memilih aset apa pun, menunjukkan apakah Anda ingin membeli, menjual atau menutup dan memasukkan jumlahnya dalam dolar. Dalam daftar di bawah ini Anda dapat mengaktifkan atau menonaktifkan setiap pesanan simulasi untuk membandingkan efeknya."
+                },
+                {
+                  "bold": "Ukuran posisi optimal",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Berdasarkan perkiraan kemungkinan keberhasilan Anda dan hubungan antara untung dan rugi, ini menghitung persentase modal maksimum yang harus dialokasikan untuk tumbuh tanpa mengekspos diri Anda secara berlebihan."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Perhitungan matematis dari Kriteria Kelly dan versi konservatifnya Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Pasang OTM & Margin",
+              "summary": "Simulator asuransi dengan opsi untuk penurunan pasar yang kuat dan monitor margin call.",
+              "paragraphs": [
+                "Ketika Anda takut akan koreksi pasar yang kuat, menjual semua posisi Anda biasanya memakan biaya dan tidak efisien. Alternatif profesionalnya adalah mengambil asuransi dengan pilihan perlindungan, namun berapa biaya asuransi tersebut per tahun dan seberapa besar perlindungan yang sebenarnya bagi Anda?",
+                "Kuadran kiri bawah memungkinkan Anda mengukur cakupan dan tingkat utang:"
+              ],
+              "lead": "Kuadran kiri bawah mengukur cakupan dan tingkat jaminan:",
+              "bullets": [
+                {
+                  "bold": "Pembanding perisai pelindung",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Hal ini memungkinkan Anda untuk bergantian antara beroperasi tanpa perlindungan atau menerapkan tiga jenis asuransi dengan opsi (pada volatilitas SPY, QQQ atau VIX), membandingkan biaya premi tahunan dengan dolar yang akan Anda hemat jika terjadi kecelakaan sebesar 20%."
+                },
+                {
+                  "bold": "Kontrol leverage dan jaminan",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Pantau berapa persentase margin pemeliharaan yang telah Anda gunakan dan berapa persentase penurunan yang akan dialami portofolio sebelum memasuki zona margin call."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pengoperasian lindung nilai dengan opsi Put out-of-the-money dan perhitungan jaminan Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Panitia & Buku",
+              "summary": "Dua panel kanan dengan peninjauan otomatis batas risiko, riwayat pesanan, dan Co-pilot.",
+              "paragraphs": [
+                "Dalam antusiasme mencoba perdagangan, mudah untuk mengabaikan bahwa suatu aset terkonsentrasi lebih dari 20% dari seluruh portofolio Anda atau aset tersebut beroperasi di tengah anomali statistik yang parah.",
+                "Dua kuadran di sebelah kanan berfungsi sebagai pengendalian risiko otomatis dan jejak audit Anda:"
+              ],
+              "lead": "Dua kuadran di sebelah kanan berfungsi sebagai pengendalian dan registrasi risiko:",
+              "bullets": [
+                {
+                  "bold": "Tinjau dalam tiga dimensi",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Mereka mengevaluasi pesanan simulasi Anda dari batas teknis, fundamental, dan keamanan keras (memperingatkan jika ada posisi yang melebihi batas modal 20% atau jika memiliki anomali tinggi)."
+                },
+                {
+                  "bold": "Log pesanan dan asisten portofolio",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Panel bawah mencatat setiap simulasi beserta dampaknya terhadap risiko, sedangkan tombol dialog di kanan atas membuka obrolan untuk mengajukan pertanyaan langsung tentang portofolio Anda."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Aturan pengendalian risiko pra-operasi dan batas konsentrasi per aset."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Grafik di bawah ini dalam layar penuh untuk memeriksa apakah strategi Anda berhasil di luar masa uji coba.",
+              "paragraphs": [
+                "Strategi apa pun dapat disesuaikan dengan melihat masa lalu hingga terlihat sangat mudah di grafik historis. Tantangan sebenarnya adalah mengetahui apakah hal ini terus berhasil ketika dihadapkan dengan data pasar baru.",
+                "Panel bawah dengan lebar penuh menempatkan strategi melalui validasi paling ketat sebelum mulai diproduksi:"
+              ],
+              "lead": "Panel bawah mengarahkan strategi ke validasi dalam sampel dan di luar sampel:",
+              "bullets": [
+                {
+                  "bold": "Pemisahan antara desain dan pengujian sebenarnya",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Ini membagi grafik historis menjadi tahap pertama di mana strategi dikalibrasi dan tahap kedua dengan data yang tidak terlihat untuk memeriksa apakah strategi tersebut mempertahankan keunggulannya dibandingkan portofolio dasar."
+                },
+                {
+                  "bold": "Catatan ketahanan statistik",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Jika indikator efisiensi melebihi 70%, hal ini menegaskan bahwa hasilnya konsisten dan bukan hasil pemaksaan angka di masa lalu."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Apa yang diukur oleh Indeks Efisiensi Walk-Forward (WFE) dan bagaimana indeks ini mendeteksi strategi yang terlalu optimal."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Filter Likuiditas (ADV)",
+        "intro": "Agar suatu aset dapat diperdagangkan tanpa satu pesanan pun yang mendistorsi harganya, platform memerlukan ambang batas minimum volume harian rata-rata dalam dolar selama 20 hari kerja terakhir.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Harga Penutupanᵢ × Volume Perdaganganᵢ)",
+          "denominator": "20 roda terampil",
+          "vars": [
+            "Harga Penutupan: harga penutupan resmi hari yang saya nyatakan dalam USD.",
+            "Volume yang Diperdagangkanᵢ: jumlah total unit yang diperdagangkan pada hari itu."
+          ]
+        },
+        "lead": "Berdasarkan volume harian rata-rata, katalog mengklasifikasikan kedalaman setiap instrumen:",
+        "bullets": [
+          {
+            "bold": "Likuiditas institusional yang tinggi",
+            "code": "> $500M diarios",
+            "text": "Memungkinkan Anda untuk masuk dan keluar dari posisi besar dengan segera tanpa menggerakkan harga pasar."
+          },
+          {
+            "bold": "Likuiditas Katalog Standar",
+            "code": "$50M a $500M diarios",
+            "text": "Cocok untuk portofolio yang terdiversifikasi dengan biaya pembelian/penjualan yang sangat rendah."
+          },
+          {
+            "bold": "Pemantauan penyebaran",
+            "code": "< $50M diarios",
+            "text": "Pada saat terjadi volatilitas, disarankan untuk memeriksa pembukaan tip sebelum mengeksekusi order dalam jumlah besar."
+          }
+        ],
+        "example": "Jika sebuah saham diperdagangkan pada harga $200 dan memperdagangkan rata-rata 5 juta lembar saham per roda selama sebulan terakhir, volume harian rata-rata (ADV) adalah $1 miliar ($1,0 miliar)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalisasi ke USD",
+        "intro": "Karena katalog ini menggabungkan obligasi Eropa, indeks Asia, komoditas, dan mata uang kripto, semua aliran volume dikonversi ke dolar AS secara real-time sehingga dapat dibandingkan pada skala yang sama.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Volume Mata Uang Lokal: jumlah yang diperdagangkan dalam mata uang pasar asli (EUR, JPY, GBP, BRL, dll.).",
+            "Nilai Tukar Spot: kutipan saat ini di mesin 61 mata uang."
+          ]
+        },
+        "lead": "Konversi ini berdampak langsung pada dua tempat di layar:",
+        "bullets": [
+          {
+            "bold": "Tampilan Keseluruhan Peringkat Semua",
+            "code": "213 activos",
+            "text": "Urutkan instrumen pergerakan uang dari yang terbesar hingga yang paling kecil di seluruh dunia."
+          },
+          {
+            "bold": "Menambahkan Kartu Volume",
+            "code": "Volumen 24h en $B",
+            "text": "Hal ini memungkinkan volume aset yang terdaftar di berbagai negara ditambahkan tanpa distorsi."
+          }
+        ],
+        "example": "Jika obligasi Jerman diperdagangkan €4 miliar per hari dan pasangan EUR/USD diperdagangkan pada 1,08, sistem menghitung denyut global sebesar $4,32 miliar."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Bagaimana Anda mengukur apakah pasar telah meningkat dengan kekuatan yang nyata atau telah meningkat terlalu cepat dan sudah habis? Relative Strength Index (RSI) membandingkan kenaikan rata-rata dengan rata-rata penurunan dalam 14 putaran terakhir dalam skala 0 hingga 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Rata-rata Naik₁₄ / Rata-rata Turun₁₄)",
+          "vars": [
+            "Kenaikan Rata-rata₁₄: rata-rata poin yang diperoleh pada hari bullish dari 14 roda terakhir.",
+            "Kerugian Rata-Rata₁₄: rata-rata poin yang hilang pada hari-hari bearish pada periode yang sama."
+          ]
+        },
+        "lead": "Ini adalah bagaimana tiga bagian skala diinterpretasikan dalam lingkaran melingkar:",
+        "bullets": [
+          {
+            "bold": "Kekuatan beli dan jenuh beli",
+            "code": "70 a 100",
+            "text": "Peningkatan tersebut jauh melebihi penurunan yang terjadi saat ini. Ini menunjukkan momentum bullish yang besar, meskipun di atas 70 hal ini memperingatkan bahwa harga mungkin perlu jeda."
+          },
+          {
+            "bold": "zona keseimbangan",
+            "code": "30 a 70",
+            "text": "Pasar bergerak dengan kecepatan yang berkelanjutan. Melewati level menengah (> 50 dalam warna hijau) menegaskan dominasi pembeli, sementara penurunan di bawah (< 50 dalam warna merah) menunjukkan dominasi penjual."
+          },
+          {
+            "bold": "Hukuman dan penjualan berlebihan",
+            "code": "0 a 30",
+            "text": "Penurunannya begitu sering dan nyata sehingga aset tersebut mulai terlihat murah secara statistik dan rentan terhadap rebound."
+          }
+        ],
+        "example": "Jika dalam 14 roda terakhir sekelompok saham naik rata-rata $2 per hari bullish dan hanya turun $1 per hari bearish, rasio kekuatannya adalah 2 dan RSI-nya terbaca 66.7 (dorongan bullish berwarna hijau)."
+      },
+      {
+        "id": "p06",
+        "label": "Rezim Normal (P-06)",
+        "intro": "Suatu aset mungkin tampak tenang jika Anda hanya melihat harganya, namun pada saat yang sama mengalami lonjakan volume yang aneh dan pembukaan yang tidak normal pada puncak pembelian dan penjualannya. Mesin Isolation Forest (P-06) melintasi variabel-variabel ini secara bersamaan untuk mendeteksi perilaku yang tidak lazim.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): jumlah rata-rata pemotongan acak yang diperlukan untuk mengisolasi perilaku saat ini dari sisa sejarah.",
+            "x: vektor dari 4 variabel (Return 24h, Vol Z-Score 20d, Realized Volatility 30d dan Spread dalam bps)."
+          ]
+        },
+        "lead": "Semakin jarang pergerakan hari ini, semakin cepat pergerakan tersebut diisolasi dan semakin mendekati skor 1,00:",
+        "bullets": [
+          {
+            "bold": "Rezim normal",
+            "code": "0.00 a 0.49",
+            "text": "Harga, volume, dan likuiditas bergerak sejalan dengan rata-rata historis aset."
+          },
+          {
+            "bold": "Aktivitas tinggi",
+            "code": "0.50 a 0.64",
+            "text": "Setidaknya salah satu variabel mulai menyimpang dari perilaku biasanya; Dianjurkan untuk memantau dengan cermat aliran pesanan."
+          },
+          {
+            "bold": "Dislokasi atau anomali kritis",
+            "code": "0.65 a 1.00",
+            "text": "Aset tersebut mencatat perilaku ekstrem secara statistik. Dalam modul portofolio, melebihi ambang batas ini akan mengaktifkan rem pengaman."
+          }
+        ],
+        "example": "Jika harga obligasi negara hampir tidak bergerak sebesar 0,1% namun volumenya berlipat empat dan spreadnya tiga kali lipat dalam hitungan menit, detektor akan melintasi tiga titik data dan menaikkan skornya menjadi 0,74 (Dislokasi berwarna merah)."
+      },
+      {
+        "id": "zscore",
+        "label": "Pemintas Volume (Z-Score)",
+        "intro": "Mengatakan bahwa 500 juta dolar dioperasikan saat ini adalah jumlah yang besar bagi perusahaan menengah, tetapi sangat sedikit untuk S&P 500. Volume Z-Score membawa semua aset ke satuan universal yang sama: berapa banyak standar deviasi (σ) yang merupakan volume saat ini dari rata-rata 20 rodanya.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Volume Hari Ini (24 jam) - Volume Rata-rata (20 hari)",
+          "denominator": "Deviasi Standar Volume (20d)",
+          "vars": [
+            "Volume Rata-Rata (20 hari): volume biasa aset selama bulan kerja terakhir.",
+            "Deviasi Standar (20 hari): seberapa besar volume ini biasanya bervariasi dari satu hari ke hari berikutnya."
+          ]
+        },
+        "lead": "Dengan cara ini Anda dapat membandingkan aset apa pun pada skala satuan sigma (σ) yang sama:",
+        "bullets": [
+          {
+            "bold": "Aktivitas biasa",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Volume hari ini sepenuhnya sesuai dengan rutinitas empat minggu terakhir."
+          },
+          {
+            "bold": "Partisipasi tinggi",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Ada minat yang lebih tinggi dari rata-rata yang mulai memvalidasi tren hari ini."
+          },
+          {
+            "bold": "Bentrokan institusi",
+            "code": "> +2.0σ",
+            "text": "Hal ini terjadi kurang dari 5% sepanjang tahun dan biasanya mencerminkan masuk atau keluarnya dana besar secara besar-besaran."
+          }
+        ],
+        "example": "Jika suatu saham biasanya diperdagangkan $100 juta setiap hari dengan variasi rata-rata ±$20 juta dan hari ini diperdagangkan $160 juta, maka itu adalah $60 juta di atas rata-ratanya, yang setara dengan +3,0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Pendapatan Tetap (2s10s dan DV01)",
+        "intro": "Saat Anda memfilter Obligasi atau Suku Bunga dalam tabel, dua metrik utama untuk mengevaluasi utang negara akan muncul: kemiringan kurva (2s10s) dan nilai moneter dari basis poin (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 basis poin (1 bp): setara dengan kinerja 0,01%.",
+            "DV01 ($/$1M): Berapa dolar yang dimenangkan atau dirugikan oleh posisi senilai $1 juta jika kurs bergerak 1 basis poin."
+          ]
+        },
+        "lead": "Cara membaca dua angka ini pada grid:",
+        "bullets": [
+          {
+            "bold": "Kurva normal atau positif",
+            "code": "2s10s > 0 bps",
+            "text": "Obligasi bertenor 10 tahun memiliki tingkat bunga yang lebih tinggi dibandingkan obligasi bertenor 2 tahun, yang mencerminkan ekspektasi pertumbuhan ekonomi yang sehat."
+          },
+          {
+            "bold": "kurva terbalik",
+            "code": "2s10s < 0 bps",
+            "text": "Suku bunga pendek melebihi suku bunga panjang; secara historis hal ini memperingatkan pendinginan ekonomi atau pembatasan moneter."
+          }
+        ],
+        "example": "Jika Treasury 10-tahun menghasilkan 4,20% dan Treasury 2-tahun menghasilkan 4,55%, kolom 2s10s menandai -35 bps (kurva terbalik berwarna merah)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Saham (P/E dan Margin)",
+        "intro": "Saat memfilter Saham S&P/NDX, tabel menampilkan kelipatan pendapatan yang diproyeksikan (P/E Forward) dan Margin Operasi Kotor sehingga Anda dapat membandingkan penilaian versus profitabilitas.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Harga Saham Saat Ini",
+          "denominator": "Estimasi Laba Per Saham (12 Bulan Berikutnya)",
+          "vars": [
+            "P/E Forward: Berapa tahun penghasilan masa depan yang Anda bayarkan dengan harga saat ini.",
+            "Margin Kotor (%): persentase penjualan yang tersisa sebagai laba kotor setelah dikurangi biaya langsung."
+          ]
+        },
+        "lead": "Apa yang harus diperhatikan saat melintasi kedua kolom:",
+        "bullets": [
+          {
+            "bold": "Penilaian yang menuntut vs sedang",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Angka kelipatan yang tinggi menunjukkan bahwa pasar memperkirakan pertumbuhan yang kuat di masa depan; yang rendah biasanya mencerminkan perusahaan yang matang atau bernilai."
+          },
+          {
+            "bold": "Kekuatan Penetapan Harga",
+            "code": "Margen Bruto > 50%",
+            "text": "Margin yang tinggi menunjukkan perusahaan dengan keunggulan kompetitif yang kuat mampu mempertahankan keuntungannya dari inflasi."
+          }
+        ],
+        "example": "Jika suatu saham diperdagangkan pada harga $150 dan diperkirakan menghasilkan $6 per saham selama 12 bulan ke depan, P/E Forward-nya adalah 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Derivatif, FX dan Komoditas",
+        "intro": "Untuk pasar opsi, valas, dan berjangka fisik, dua kolom dinamis menunjukkan biaya risiko atau imbalan yang tersirat untuk mempertahankan posisi seiring waktu.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Derivatif): volatilitas tahunan yang didiskon oleh pasar opsi selama 30 hari ke depan.",
+            "Carry 10Y (FX) dan Roll Yield (Komoditas): keuntungan atau biaya tahunan dari perbedaan suku bunga atau rollover berjangka."
+          ]
+        },
+        "lead": "Cara memanfaatkan kolom ini bergantung pada asetnya:",
+        "bullets": [
+          {
+            "bold": "Dalam Derivatif",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Indikator ini memberi tahu Anda berapa persentase pergerakan yang diharapkan pasar dan apakah opsi untuk menutupi penurunan (Put) itu mahal."
+          },
+          {
+            "bold": "Dalam Mata Uang dan Bahan Baku",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Mereka ditampilkan dalam warna hijau jika memelihara aset memberi Anda penghasilan tambahan atau berwarna merah jika memiliki biaya tercatat."
+          }
+        ],
+        "example": "Jika suatu opsi menunjukkan volatilitas tersirat (ATM IV) sebesar 35% per tahun, pasar akan mendiskon pergerakan mendekati ±10% untuk 30 hari ke depan."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Pemetaan Radial Radar",
+        "intro": "Untuk menempatkan hingga 45 aset di tiga cincin radar tanpa tumpang tindih, tampilan Orbital mengubah nilai indikator yang dipilih menjadi jarak ke pusat (radius r) yang dinormalisasi antara minimum dan maksimum grup.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Asset Value - Nilai Minimum Grup",
+          "denominator": "Nilai Maksimum Grup - Nilai Minimum Grup",
+          "vars": [
+            "r → 0 (Lingkaran Dalam): memusatkan aset dengan intensitas lebih besar atau deviasi positif.",
+            "r → 1 (Lingkar Luar): menempatkan aset periferal atau aset dengan pembacaan relatif terendah."
+          ]
+        },
+        "lead": "Cara membaca posisi dan warna tiap planet di radar:",
+        "bullets": [
+          {
+            "bold": "Fokuskan cincin bagian dalam",
+            "code": "Centro del radar",
+            "text": "Kumpulkan aset-aset terdepan dari indikator yang Anda pilih di atas sehingga pandangan Anda tertuju pada hal yang paling penting terlebih dahulu."
+          },
+          {
+            "bold": "Semantik warna historis",
+            "code": "Verde vs Rojo",
+            "text": "Node tersebut menyala dengan warna hijau ketika melebihi rata-rata historisnya dan berwarna merah ketika mencerminkan penurunan atau tekanan."
+          }
+        ],
+        "example": "Jika Anda mengurutkan radar berdasarkan Volume Deviasi (Z-Score), radar aktif dengan +3,4σ terletak di cincin pusat terang, sedangkan radar dengan 0,1σ berada di orbit luar."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) dan Bollinger Bands",
+        "intro": "Simple Moving Average 20 periode (SMA 20) menandai tren dasar aset, sedangkan Bollinger Bands menggambar saluran dinamis dengan menambahkan dan mengurangi dua standar deviasi (2σ) di sekitar rata-rata tersebut.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): rata-rata aritmatika dari 20 penutupan terakhir.",
+            "Bandwidth (Lebar BB): persentase jarak antara pita atas dan bawah."
+          ]
+        },
+        "lead": "Secara statistik, sekitar 95% kutipan terjadi dalam dua kelompok:",
+        "bullets": [
+          {
+            "bold": "Harga di atas rata-rata",
+            "code": "Precio > SMA 20",
+            "text": "Ini menunjukkan bahwa tren jangka pendek adalah bullish dan rata-rata biasanya bertindak sebagai titik support."
+          },
+          {
+            "bold": "Sentuhan pita atas atau bawah",
+            "code": "±2σ",
+            "text": "Ini memperingatkan bahwa harga meregang terlalu cepat dari rata-rata baru-baru ini dan dapat mengambil jeda."
+          },
+          {
+            "bold": "kompresi pita",
+            "code": "BB Width bajo",
+            "text": "Ketika garis menjadi sangat sempit, pasar mengumpulkan energi sebelum bergerak kuat."
+          }
+        ],
+        "example": "Jika SMA(20) suatu saham adalah $100 dan standar deviasi 20 rodanya adalah $4, maka pita atas berada pada $108 dan pita bawah berada pada $92."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Kelembagaan",
+        "intro": "Tidak seperti rata-rata umum yang memberikan bobot yang sama pada semua jam dalam sehari, VWAP memberi bobot pada setiap harga dengan jumlah uang yang sebenarnya diperdagangkan pada level tersebut. Ini adalah referensi utama yang digunakan oleh tabel institusi.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Harga Khasᵢ × Volume yang Diperdagangkanᵢ)",
+          "denominator": "∑ Volume yang Diperdagangkanᵢ",
+          "vars": [
+            "Harga Khasᵢ: rata-rata antara maksimum, minimum dan penutupan setiap candle.",
+            "Volume yang Diperdagangkanᵢ: volume yang diperdagangkan secara khusus di bagian tersebut."
+          ]
+        },
+        "lead": "Bagaimana trader profesional menggunakan jalur VWAP:",
+        "bullets": [
+          {
+            "bold": "Kontrol eksekusi",
+            "code": "Comprar bajo el VWAP",
+            "text": "Jika dana institusional membeli di bawah VWAP untuk periode tersebut, maka dana tersebut mendapat harga yang lebih baik daripada rata-rata tertimbang pasar."
+          },
+          {
+            "bold": "Tingkat Pertahanan Tren",
+            "code": "Soporte / Resistencia",
+            "text": "Selama asetnya tetap di atas VWAP, mereka yang membeli pada periode tersebut berada dalam keuntungan rata-rata."
+          }
+        ],
+        "example": "Jika 1 juta lembar saham diperdagangkan dengan harga $100 dan hanya 100 ribu lembar saham yang diperdagangkan dengan harga $110, maka rata-rata sederhananya adalah $105, namun VWAP menunjukkan $100,91 karena hampir semua uang diperdagangkan dengan harga $100."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Perpindahan Sebaran (bps)",
+        "intro": "Spread adalah selisih antara harga permintaan terbaik dan harga penawaran terbaik dalam buku pesanan. Ketika para pembuat pasar melihat adanya risiko atau kurangnya likuiditas, mereka membuka celah tersebut untuk melindungi diri mereka sendiri.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "(Harga Permintaan – Harga Penawaran)",
+          "denominator": "Harga Rata-Rata (Harga Menengah)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Harga Ask / Bid : titik jual dan titik beli yang ada dalam buku.",
+            "10.000: Faktor konversi untuk menyatakan selisih basis poin (bps)."
+          ]
+        },
+        "lead": "Apa yang ditunjukkan oleh pembacaan Dislokasi Penyebaran di rel kiri:",
+        "bullets": [
+          {
+            "bold": "Buku yang dalam dan mengalir",
+            "code": "Spread estable en verde",
+            "text": "Ada banyak likuiditas di kedua sisi dan biaya masuk atau keluarnya minimal."
+          },
+          {
+            "bold": "Gesekan atau penarikan likuiditas",
+            "code": "Salto en bps",
+            "text": "Hal ini biasanya terjadi beberapa detik sebelum pengumuman ekonomi makro atau selama penjualan panik, sehingga membuat eksekusi menjadi lebih mahal."
+          }
+        ],
+        "example": "Jika suatu aset memiliki tip pembelian sebesar $99,95 dan tip penjualan sebesar $100,05, selisih $0,10 terhadap $100 setara dengan 10 basis poin (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Pilihan (Black-Scholes dan Yunani)",
+        "intro": "Di mesin opsi, platform membuat grafik dua kurva untung dan rugi (P&L): bagaimana strategi akan berakhir pada hari kedaluwarsa dan berapa nilainya hari ini (T+0) dengan menerapkan model Black-Scholes.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S dan K: harga aset dasar saat ini (Spot) dan harga kesepakatan opsi (Strike).",
+            "Net Yunani: Δ Delta (sensitivitas harga), Γ Gamma (akselerasi Delta), Θ Theta (keausan harian) dan ν Vega (sensitivitas volatilitas)."
+          ]
+        },
+        "lead": "Cara membaca strategi Yunani Anda di pil rel kiri:",
+        "bullets": [
+          {
+            "bold": "Kemudi dan akselerasi",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Delta yang positif menang ketika aset naik; Gamma positif membuat Anda memperoleh keuntungan lebih cepat dan lebih cepat jika gerakannya semakin cepat."
+          },
+          {
+            "bold": "Berlalunya waktu dan ketidakpastian",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta memberi tahu Anda berapa banyak dolar yang hilang atau diperoleh posisi tersebut setiap harinya; Vega seberapa besar perubahannya jika volatilitas tersirat meningkat sebesar 1%."
+          }
+        ],
+        "example": "Long Straddle (beli Call dan Put pada strike yang sama) memiliki Delta mendekati 0 (tidak masalah apakah naik atau turun), namun Vega positif dan membutuhkan harga untuk bergerak melampaui dua titik keseimbangannya (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Kurva Sovereign (Kupu-Kupu dan DV01)",
+        "intro": "Mesin pendapatan tetap membandingkan imbal hasil dari 3 bulan hingga 30 tahun untuk 42 negara dan menghitung kemiringan (2s10s) dan kelengkungan tahap menengah (Butterfly 2s5s10s) dan sensitivitas moneter (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "Tingkat bunga 2 tahun, 5 tahun, 10 tahun: imbal hasil kedaulatan negara yang dipilih dengan jangka waktu 2, 5, dan 10 tahun.",
+            "Suku Bunga Riil 10 Tahun: imbal hasil nominal 10 tahun dikurangi suku bunga referensi atau inflasi implisit."
+          ]
+        },
+        "lead": "Kegunaan setiap indikator dalam analisis obligasi:",
+        "bullets": [
+          {
+            "bold": "Kelengkungan bagian tengah",
+            "code": "Butterfly 2s5s10s",
+            "text": "Hal ini mengukur apakah tahap 5 tahun itu mahal atau murah dibandingkan dengan tahap ekstrim 2 tahun dan 10 tahun."
+          },
+          {
+            "bold": "Risiko Durasi Dolar",
+            "code": "DV01 por $1M",
+            "text": "Ini memberi tahu Anda dengan tepat berapa banyak dolar dalam portofolio satu juta dolar yang bervariasi dengan pergerakan nilai tukar 0,01%."
+          }
+        ],
+        "example": "Obligasi 10 tahun dengan DV01 sebesar $820 per juta akan kehilangan sekitar $82.000 jika harga pasar naik 100 basis poin (+1,00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Mata Uang (Carry) dan Kontrak Berjangka (Roll Yield)",
+        "intro": "Dalam mata uang, ketika suatu pasangan tidak dikutip secara langsung, maka dihitung dengan triangulasi terhadap dolar dan perbedaan kursnya (Carry) diukur. Dalam bahan baku, kinerja pembaruan diukur antara kontrak langsung dan kontrak 12 bulan (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Harga Spot (M1 Depan) - Harga Masa Depan (M12)",
+          "denominator": "Harga Masa Depan (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Mundur (Spot > Masa Depan): Kelangkaan fisik saat ini menyebabkan masa depan yang bergulir menghasilkan keuntungan positif (Roll Yield > 0).",
+            "Contango (Spot < Masa Depan): Biaya penyimpanan membuat masa depan lebih mahal dan memperbaruinya memiliki biaya negatif."
+          ]
+        },
+        "lead": "Bagaimana hal ini berdampak pada dompet Anda saat memegang suatu posisi:",
+        "bullets": [
+          {
+            "bold": "Carry Trade Positif dalam mata uang",
+            "code": "Carry Spread > 0 bps",
+            "text": "Jika Anda membeli mata uang dengan suku bunga tinggi dengan membiayai diri Anda sendiri dalam mata uang dengan suku bunga rendah, Anda akan mengumpulkan selisih tersebut untuk keuntungan Anda."
+          },
+          {
+            "bold": "Angin yang menguntungkan dalam bahan mentah",
+            "code": "Backwardation en verde",
+            "text": "Ketika persediaan fisik rendah, kontrak terdekat bernilai lebih dari kontrak jauh dan investor memperoleh keuntungan ekstra dengan menggulirkan kontrak tersebut."
+          }
+        ],
+        "example": "Jika minyak 1 bulan diperdagangkan pada $72 dan kontrak 12 bulan diperdagangkan pada $68, pasar berada dalam kondisi Mundur dengan Roll Yield positif sebesar +5,88% per tahun."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Nilai Tertimbang Total",
+        "intro": "Tidak semua aset berpindah melalui sumber yang sama: dalam sebuah perusahaan, laporan keuangan yang diaudit (SEC 10-K/10-Q) memiliki bobot yang lebih besar, sedangkan di pasar atau mata uang kripto, arus dan komunikasi harian memiliki bobot yang lebih besar.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: pembobotan otomatis berdasarkan kategori (misalnya 80% / 20% pada Saham; 85% / 15% pada Biaya).",
+            "Skala Akhir: berkisar dari −100 (pessimisme maksimum) hingga +100 (keyakinan bullish maksimum)."
+          ]
+        },
+        "lead": "Beginilah cara skor gabungan diterjemahkan ke dalam opini superior:",
+        "bullets": [
+          {
+            "bold": "Sikap bullish",
+            "code": "BULLISH / Nota > +15",
+            "text": "Katalis dokumenter dan arus berita jelas lebih besar daripada faktor risiko."
+          },
+          {
+            "bold": "Postur netral atau campuran",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Bahkan kekuatan antara fundamental dan berita; Dianjurkan untuk meninjau akordeon 10 faktor sebelum memutuskan."
+          },
+          {
+            "bold": "Sikap defensif atau bearish",
+            "code": "BEARISH / Nota < -15",
+            "text": "Peringatan pada neraca, penurunan margin, atau berita utama yang merugikan mendominasi."
+          }
+        ],
+        "example": "Dalam sebuah saham (80% fundamental / 20% berita), jika saldo menunjukkan +50 poin dan berita hari ini menunjukkan +20, Total Skor Tertimbang adalah (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Pencarian Terverifikasi (RAG)",
+        "intro": "Untuk mencegah kecerdasan buatan menciptakan angka, Obrolan Dokumen menggunakan Generation Augmented Recovery (RAG): pertama-tama ia mencari paragraf yang relevan dalam laporan resmi aset dan baru kemudian menulis respons yang mengutip sumbernya.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Konsultasi Vektor (Q) · Dokumen Resmi Vektor (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vektor Q dan D: representasi numerik dari pertanyaan Anda dan fragmen resmi (10-K, berita acara FOMC, laporan EIA).",
+            "Pagar Pembatas 3 Lapis: filter yang memblokir pertanyaan yang tidak terkait dengan keuangan atau tanpa dukungan dokumenter."
+          ]
+        },
+        "lead": "Apa yang dijamin oleh mekanisme ini ketika Anda mengajukan pertanyaan dalam obrolan:",
+        "bullets": [
+          {
+            "bold": "Berlabuh pada sumber primer",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Setiap data pendapatan, hutang, persediaan atau tarif berasal dari dokumen peraturan yang sesuai dengan aset tersebut."
+          },
+          {
+            "bold": "Hentikan pertanyaan di luar topik",
+            "code": "Guardrail activo",
+            "text": "Jika seseorang mencoba berkonsultasi dengan topik non-keuangan, asisten akan menolak pertanyaan tersebut dan tetap fokus pada analisis instrumen."
+          }
+        ],
+        "example": "Saat Anda mengetuk chip faktor risiko pada suatu saham, mesin mengambil bagian Item 1A (Faktor Risiko) dari formulir 10-K terbaru dan merangkum poin-poin penting."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "Skor Neuronal FinBERT",
+        "intro": "Kamus pada umumnya sering mengacaukan kata-kata keuangan (misalnya, \"penurunan biaya\" atau \"pengurangan utang\" adalah berita bagus meskipun mereka menggunakan kata penurunan atau pengurangan). FinBERT adalah jaringan saraf yang dilatih khusus dengan teks keuangan.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(Positif) dan P(Negatif): probabilitas yang ditetapkan oleh model terhadap judul menjadi bullish atau bearish untuk suatu aset.",
+            "Kurva 24 jam: rata-rata pergerakan eksponensial dari berita utama dalam 24 jam terakhir."
+          ]
+        },
+        "lead": "Bagaimana setiap node menilai pada garis waktu di sebelah kanan:",
+        "bullets": [
+          {
+            "bold": "Pemegang katalis",
+            "code": "+20 a +100 en verde",
+            "text": "Mengalahkan perkiraan pendapatan, peningkatan peringkat kredit, atau penurunan suku bunga yang menguntungkan."
+          },
+          {
+            "bold": "Kabel informasi netral",
+            "code": "-19 a +19 en ámbar",
+            "text": "Pengumuman operasional rutin yang tidak mengubah penilaian struktural instrumen."
+          },
+          {
+            "bold": "Pemegang risiko",
+            "code": "-20 a -100 en rojo",
+            "text": "Peringatan peraturan, penurunan margin, pemogokan, atau data inflasi yang lebih buruk dari perkiraan."
+          }
+        ],
+        "example": "Jika model menetapkan 82% probabilitas positif, 12% netral, dan 6% probabilitas negatif pada sebuah judul, node tersebut menunjukkan dampak bersih sebesar +76 dalam warna hijau."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe dan Sortino",
+        "intro": "Dua kartu teratas pertama mengukur seberapa besar pertumbuhan modal Anda per tahun (CAGR) dan seberapa efisien pertumbuhan tersebut dalam kaitannya dengan guncangan yang harus Anda tanggung (Sharpe dan Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Imbal Hasil Tahunan Portfolio (Rp) − Tingkat Bebas Risiko (Rf)",
+          "denominator": "Volatilitas Portfolio Tahunan (σp)",
+          "vars": [
+            "Rf (4,30%): hasil dasar yang dapat Anda peroleh tanpa risiko dalam surat utang negara.",
+            "Rasio Sortino: menggunakan rumus yang sama tetapi pada penyebutnya hanya memberikan penalti pada volatilitas hari negatif (turun)."
+          ]
+        },
+        "lead": "Cara mengevaluasi kualitas portofolio Anda dengan angka-angka berikut:",
+        "bullets": [
+          {
+            "bold": "Portofolio yang efisien",
+            "code": "Sharpe > 1.00",
+            "text": "Kelebihan pengembalian yang Anda peroleh di atas tingkat bebas risiko jauh melebihi volatilitas yang diasumsikan."
+          },
+          {
+            "bold": "Performa luar biasa",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Hal ini menunjukkan kombinasi yang sangat terdiversifikasi dengan baik dimana kenaikan terjadi secara konsisten dan penurunan dapat dikendalikan."
+          }
+        ],
+        "example": "Jika portofolio Anda menghasilkan pengembalian 15,3% per tahun, tingkat bebas risiko adalah 4,3% dan volatilitas tahunan Anda adalah 10%, kelebihan pengembalian Anda adalah 11% dan Rasio Sharpe Anda adalah 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% dan Penarikan",
+        "intro": "Kartu ketiga dan keempat menjawab seberapa banyak Anda bisa kehilangan pada hari yang buruk tetapi secara statistik normal (VaR 95%), berapa banyak pada hari yang sangat panik (CVaR 99%), dan apa kemunduran terbesar dari puncak sebelumnya (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1.645: faktor statistik yang mencakup 95% roda normal tahun ini (19 dari setiap 20 hari).",
+            "CVaR 99% (Kekurangan yang Diharapkan): Kerugian rata-rata ketika pasar menembus ambang batas tersebut dan memasuki 1% teratas dari hari-hari terburuk."
+          ]
+        },
+        "lead": "Apa perbedaan praktis antara melihat VaR dan melihat Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Risiko satu hari",
+            "code": "VaR 95% 1D en USD",
+            "text": "Ini mempersiapkan Anda secara psikologis dan finansial untuk menghadapi kemungkinan akun Anda mengarah ke arah yang buruk tanpa berarti strateginya gagal."
+          },
+          {
+            "bold": "Perlawanan dalam kondisi yang merugikan",
+            "code": "Max Drawdown 12M",
+            "text": "Ini mengukur akumulasi penurunan dari ujung ke ujung dari titik tertinggi ke lantai sebelum pulih kembali."
+          }
+        ],
+        "example": "Dalam portofolio $100,000 dengan VaR harian 95% dari 1,45% ($1,450), di 19 dari 20 roda perdagangan, kerugian harian Anda tidak akan melebihi $1,450."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Tumpang Tindih Sinar-X (#12)",
+        "intro": "Saat Anda membeli ETF seperti SPY atau QQQ, Anda membeli lusinan saham di dalamnya. Jika Anda juga telah membeli beberapa saham yang sama secara langsung, eksposur Anda yang sebenarnya adalah gabungan dari kedua hal tersebut.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Bobot Langsungᵢ: persentase portofolio Anda yang dialokasikan langsung ke saham i.",
+            "Persentase dalam ETFₖ: bobot resmi yang dimiliki perusahaan tersebut dalam indeks atau dana k."
+          ]
+        },
+        "lead": "Mengapa penting untuk meninjau tab pertama ini sebelum menutup portofolio:",
+        "bullets": [
+          {
+            "bold": "Visibilitas Konsentrasi Tersembunyi",
+            "code": "Directo + Indirecto",
+            "text": "Ini secara otomatis membongkar setiap ETF dalam portofolio Anda dan menunjukkan kepada Anda satu batang dengan persentase sebenarnya yang Anda miliki di setiap perusahaan."
+          },
+          {
+            "bold": "Peringatan berlebihan",
+            "code": "> 20% en rojo",
+            "text": "Jika jumlah total melebihi ambang batas konsentrasi pada satu nama, baris akan menyala sehingga Anda dapat menyeimbangkan kembali."
+          }
+        ],
+        "example": "Jika Anda menempatkan 15% portofolio Anda di NVDA langsung dan juga memiliki 30% di ETF SPY (dengan NVDA berbobot sekitar 7%), X-Ray menunjukkan bahwa eksposur Anda yang sebenarnya terhadap NVDA adalah 15% + (30% × 7%) = 17,1%."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Dekomposisi Alpha Brinson (#2)",
+        "intro": "Ketika portofolio Anda mengalahkan (atau kalah terhadap) tolok ukurnya, model Brinson-Fachler memisahkan dengan tepat dari mana perbedaan tersebut berasal: apakah Anda benar dalam menentukan sektor mana yang harus kelebihan berat badan atau apakah Anda benar dalam memilih aset terbaik di setiap sektor?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Efek Alokasi: (Bobot Portfolio - Bobot Tolok Ukur) × Pengembalian Sektor dalam Tolok Ukur.",
+            "Efek Seleksi: Bobot dalam Tolok Ukur × (Pengembalian Aset Anda - Pengembalian Sektor)."
+          ]
+        },
+        "lead": "Cara membaca tiga bilah atribusi di tab ketiga:",
+        "bullets": [
+          {
+            "bold": "Keberhasilan makro atau sektoral",
+            "code": "Asignación Sectorial",
+            "text": "Nilainya positif dalam warna hijau ketika Anda memberi bobot lebih besar dibandingkan pasar pada kelas aset yang mengalami kenaikan paling besar."
+          },
+          {
+            "bold": "Penargetan aset yang berhasil",
+            "code": "Selección de Activos",
+            "text": "Hal ini positif bila instrumen tertentu yang Anda pilih memiliki kinerja lebih dari rata-rata untuk sektornya."
+          }
+        ],
+        "example": "Jika portofolio Anda mengalahkan S&P 500 sebesar +3,20%, tab ini memungkinkan Anda melihat bahwa +2,10% berasal dari pemilihan saham yang lebih baik (Seleksi) dan +1,10% karena bobot lebih dalam teknologi (Alokasi)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Frontier dan CML yang Efisien",
+        "intro": "Dalam bidang Markowitz, pengembalian yang diharapkan dari suatu portofolio adalah rata-rata tertimbang dari pengembalian asetnya, namun volatilitasnya lebih rendah dari rata-rata karena fakta bahwa aset tidak bergerak 100% sama.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: persentase modal yang dialokasikan ke aset i dan j.",
+            "ρᵢⱼ (Korelasi): sejauh mana kedua aset bergerak bersama (−1 hingga +1). Semakin rendah ρᵢⱼ, maka total risiko semakin berkurang."
+          ]
+        },
+        "lead": "Apa yang diwakili oleh tiga referensi dalam grafik:",
+        "bullets": [
+          {
+            "bold": "Varians Minimum",
+            "code": "Min-Var",
+            "text": "Ini adalah titik paling kiri pada kurva: kombinasi bobot yang tepat untuk mencapai volatilitas serendah mungkin."
+          },
+          {
+            "bold": "Máximo Sharpe dan Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Ini adalah titik di mana garis yang dimulai dari tingkat bebas risiko menyentuh batas efisien, yang menawarkan keuntungan terbesar per unit risiko."
+          }
+        ],
+        "example": "Jika Anda menggabungkan dua aset dalam jumlah yang sama yang masing-masing memiliki volatilitas 20% tetapi korelasi nol (ρ = 0), volatilitas portofolio bukan 20%, tetapi turun menjadi 14,1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR dengan Aktif dan Tangkap",
+        "intro": "Untuk mengetahui posisi mana yang menambah risiko lebih besar pada portofolio, kontribusi marjinal setiap aset diukur berdasarkan bobotnya dan korelasinya dengan aset lainnya. Selain itu, rasio penangkapan mengukur asimetri terhadap naik turunnya S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Pengembalian Aset Anda atau Portfolio dalam roda Bullish (atau Bearish).",
+          "denominator": "Kembalinya S&P 500 dengan roda yang sama",
+          "rhs": "× 100",
+          "vars": [
+            "Tangkapan Terbalik (> 100%) – Dapatkan lebih banyak daripada indeks saat pasar naik.",
+            "Downside Capture (< 100%): turun kurang dari indeks ketika pasar turun (defensive buffer)."
+          ]
+        },
+        "lead": "Profil ideal yang Anda cari saat meninjau tab ketiga kuadran:",
+        "bullets": [
+          {
+            "bold": "asimetri positif",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Berpartisipasi penuh dalam pasar bullish tetapi lindungi modal ketika pasar saham terkoreksi."
+          },
+          {
+            "bold": "Perlindungan atau aset yang tidak berkorelasi",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Instrumen seperti obligasi pendek atau emas yang cenderung tetap kuat atau naik saat pasar saham melemah."
+          }
+        ],
+        "example": "Jika pada bulan-bulan ketika S&P 500 naik 10%, portofolio Anda naik 11% (Naik 110%), dan ketika indeks turun 10%, portofolio Anda hanya turun 6% (Downside 60%), Anda memiliki asimetri yang kuat yang menguntungkan Anda."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Korelasi Normal vs Krisis",
+        "intro": "Koefisien Pearson (r) mengukur dari -1,00 hingga +1,00 bagaimana dua aset bergerak relatif satu sama lain. Bahaya dalam manajemen portofolio adalah ketika pasar ambruk, korelasi antar aset berisiko biasanya melonjak hingga +1,00 (penularan).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kovarian (Pengembalian Aset i, Pengembalian Aset j)",
+          "denominator": "Volatilitas Aset i (σᵢ) × Volatilitas Aset j (σⱼ)",
+          "vars": [
+            "r mendekati 0 atau negatif: diversifikasi yang sangat baik (ketika salah satu turun, yang lain tidak mengikuti).",
+            "r dalam Antrean Krisis: menghitung ulang matriks dengan hanya mengambil 5% dari roda terburuk di pasar."
+          ]
+        },
+        "lead": "Cara membaca warna matriks 6x6 di kedua rezim:",
+        "bullets": [
+          {
+            "bold": "Diversifikasi nyata",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Kedua aset tersebut merespons penggerak ekonomi yang berbeda dan saling memberikan kompensasi."
+          },
+          {
+            "bold": "Konsentrasi atau penularan",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Mereka bergerak secara praktis sebagai satu blok; Memiliki keduanya tidak mengurangi kejatuhan Anda di hari yang buruk."
+          }
+        ],
+        "example": "Dua saham dari sektor yang berbeda mungkin memiliki korelasi moderat sebesar 0,42 pada tahun normal, namun ketika Anda mengaktifkan tombol Antrean Krisis, Anda akan melihat bahwa korelasinya naik menjadi 0,81 karena panik mereka menjualnya bersamaan."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "Guncangan 2D (Harga × Pasar Saham)",
+        "intro": "Matriks 2D secara bersamaan menggabungkan dampak pergerakan suku bunga (melalui Durasi Pendapatan Tetap dan Sensitivitas Suku Bunga) dengan penurunan atau kenaikan indeks S&P 500 (melalui Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: skenario variasi pasar saham pada sumbu horizontal (−20% hingga +10%).",
+            "Δ Tarif: skenario perubahan suku bunga dalam basis poin pada sumbu vertikal (−100 hingga +200 bps)."
+          ]
+        },
+        "lead": "Apa tujuan perpotongan kedua sumbu pada tabel :",
+        "bullets": [
+          {
+            "bold": "Stagflasi atau skenario kenaikan suku bunga",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Seperti yang terjadi pada tahun 2022, di mana saham dan obligasi jangka panjang menderita secara bersamaan."
+          },
+          {
+            "bold": "Skenario tempat berlindung klasik",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Di mana suku bunga yang lebih rendah akan menaikkan harga obligasi Treasury dan meredam jatuhnya saham."
+          }
+        ],
+        "example": "Memfilter obligasi jangka panjang seperti US10Y atau TLT, Anda dapat melihat di tabel bagaimana obligasi tersebut memperoleh nilai ketika suku bunga turun (-100 bps), bertindak sebagai parasut jika S&P 500 jatuh pada hari yang sama."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Rezim Markov (#11)",
+        "intro": "Rantai Markov memodelkan perekonomian sebagai suatu sistem yang melompat di antara empat kemungkinan kondisi (Calm Bullish, Volatile Bullish, Inflasi/Tingkat, dan Krisis) dan menghitung kemungkinan pergerakan dari satu kondisi ke kondisi lainnya.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Diagonal utama (i = j): probabilitas bahwa rezim saat ini tetap tidak berubah.",
+            "Off-diagonal (i ≠ j): kemungkinan rotasi ke iklim pasar baru."
+          ]
+        },
+        "lead": "Cara memanfaatkan matriks transisi di tab kedua:",
+        "bullets": [
+          {
+            "bold": "Kegigihan siklus saat ini",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Rezim yang tenang biasanya memiliki persistensi yang tinggi (>75%), sehingga memungkinkan posisi tren tetap dipertahankan."
+          },
+          {
+            "bold": "Peringatan Dini Rotasi",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Ketika kemungkinan transisi ke keadaan bergejolak meningkat, disarankan untuk mengurangi leverage atau mengaktifkan lindung nilai."
+          }
+        ],
+        "example": "Jika pasar saat ini berada dalam rezim Volatile Bull dan garis tersebut menandai 62% permanensi, 20% kembali ke Bull Calm dan 18% menuju Stres/Krisis, Anda tahu bahwa hampir 1 dari 5 skenario menghasilkan koreksi."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Proyeksi Monte Carlo (10.000 Jalur)",
+        "intro": "Berdasarkan pengembalian yang diharapkan dan volatilitas portofolio Anda saat ini, simulator ini menghasilkan 10.000 kemungkinan lintasan masa depan hari demi hari dengan menerapkan model Gerakan Brownian Geometris stokastik.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ dan σ: ekspektasi imbal hasil tahunan dan volatilitas tahunan dari portofolio Anda saat ini.",
+            "Z: variabel acak normal standar yang diambil 10.000 kali sepanjang cakrawala (6M, 12M, atau 24M)."
+          ]
+        },
+        "lead": "Dari 10.000 simulasi ini, tiga kurva utama grafik diekstraksi:",
+        "bullets": [
+          {
+            "bold": "Skenario yang menguntungkan",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Tingkat yang hanya terlampaui sebesar 5% dari skenario paling optimis."
+          },
+          {
+            "bold": "Lintasan pusat yang diharapkan",
+            "code": "Mediana P50",
+            "text": "Hasil tipikal dimana separuh simulasi berada di atas dan separuh lainnya di bawah."
+          },
+          {
+            "bold": "Skenario stres jangka",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Dasar yang merugikan: di 95% jalur simulasi, portofolio Anda berakhir di atas garis ini."
+          }
+        ],
+        "example": "Dalam jangka waktu 12 bulan dengan basis 100, jika P50 terbaca 116 dan P05 terbaca 94, ekspektasi utama Anda adalah memperoleh penghasilan +16% dan pada tahun yang sangat buruk, Anda berisiko mendekati -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kriteria Kelly (#14)",
+        "intro": "Kriteria Kelly secara ilmiah menjawab berapa persentase modal yang harus Anda alokasikan untuk suatu operasi ketika Anda mengetahui probabilitas keberhasilan Anda (Win-Rate) dan berapa banyak Anda menang ketika Anda berhasil versus jumlah kerugian Anda ketika Anda gagal (Payoff Ratio).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p dan q: peluang menang (p) dan peluang kalah (q = 1 − p).",
+            "b (Rasio Pembayaran): keuntungan rata-rata dibagi dengan kerugian rata-rata (misalnya, penghasilan $2 untuk setiap $1 risiko berarti b = 2)."
+          ]
+        },
+        "lead": "Mengapa manajer profesional menggunakan varian Half-Kelly (0,5×):",
+        "bullets": [
+          {
+            "bold": "Kelly Lengkap",
+            "code": "Full Kelly 1.0×",
+            "text": "Ini memaksimalkan pertumbuhan matematika jangka panjang, tetapi menghasilkan perubahan yang sangat tajam jika ada serangkaian kesalahan berturut-turut."
+          },
+          {
+            "bold": "Direkomendasikan Setengah Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Dengan menggunakan setengah persentase yang disarankan, Anda memperoleh 75% potensi pertumbuhan namun mengurangi separuh volatilitas."
+          }
+        ],
+        "example": "Jika suatu strategi mencapai 55% dari waktu (p = 0,55, q = 0,45) dan membayar 2 banding 1 (b = 2), Kelly penuh memberikan (0,55×2 − 0,45) / 2 = 32,5%, dan Half-Kelly yang bijaksana merekomendasikan untuk mengalokasikan 16,25%."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Pasang Perisai OTM (#6)",
+        "intro": "Opsi jual out-of-the-money (misalnya, 5% di bawah harga S&P 500 saat ini) berfungsi seperti pengurangan asuransi: ia memiliki biaya tetap (premi) yang kecil, tetapi jika pasar turun 20% atau 30%, nilainya dikalikan secara cembung dan mengimbangi kerugian portofolio Anda.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Biaya Tahunan (Carry Drag): persentase tahunan biaya untuk memperbarui asuransi jika pasar tidak jatuh.",
+            "Crash Protection (-20%): dolar yang diperoleh kembali oleh kontrak Put ketika terjadi keruntuhan parah."
+          ]
+        },
+        "lead": "Cara membandingkan opsi simulator di tab pertama:",
+        "bullets": [
+          {
+            "bold": "Asuransi indeks langsung",
+            "code": "SPY Put 5% OTM",
+            "text": "Ini membatasi kerugian maksimum dari penurunan 5% sebagai imbalan atas biaya tahunan yang moderat."
+          },
+          {
+            "bold": "Cakupan yang didanai atau volatilitas",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Collar mengurangi biaya dengan menjual Call up; Call on VIX meledak ketika kepanikan terjadi di pasar."
+          }
+        ],
+        "example": "Jika melindungi portofolio senilai $100.000 dengan SPY Put 5% OTM dikenakan biaya 1,1% per tahun ($1.100), namun jika terjadi kerusakan -20%, penurunan portofolio Anda akan berkurang menjadi kurang dari setengahnya, sehingga penghematan bersih melebihi $7.000."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Margin dan Jarak ke Margin Call (#13)",
+        "intro": "Saat Anda beroperasi dengan derivatif atau leverage, broker mengharuskan mempertahankan persentase minimum modal ekuitas atas total nilai posisi (Maintenance Margin). Jika penurunan mengurangi modal Anda di bawah batas bawah tersebut, Margin Call akan terpicu.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Hutang atau Saldo yang Dibiayai",
+          "denominator": "1 − % Margin Pemeliharaan (Reg-T)",
+          "vars": [
+            "Eksposur Kotor: jumlah total posisi terbuka dibagi ekuitas (misalnya 1,18×).",
+            "Jarak ke Margin Call (%): persentase penurunan yang masih didukung oleh portofolio sebelum mencapai ambang batas."
+          ]
+        },
+        "lead": "Tingkat keamanan di bilah pemantauan:",
+        "bullets": [
+          {
+            "bold": "Zona izin besar",
+            "code": "Distancia > 30% en verde",
+            "text": "Leverage rendah dan portofolio dapat menyerap krisis yang parah sekalipun tanpa penjualan yang dipaksakan."
+          },
+          {
+            "bold": "zona hati-hati",
+            "code": "Distancia < 15% en rojo",
+            "text": "Koreksi pasar yang moderat akan menghabiskan jaminan bebas dan memaksa posisi dilikuidasi pada saat terburuk."
+          }
+        ],
+        "example": "Dengan leverage moderat sebesar 1,18× dan margin pemeliharaan terpakai sebesar 22%, portofolio Anda memiliki bantalan pengaman lebih dari 38% terhadap penurunan sebelum klaim agunan apa pun."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Tata Tertib Komite 3 Pilar",
+        "intro": "Agar tidak ada keputusan impulsif yang membahayakan kelangsungan portofolio, Komite mengevaluasi setiap pesanan dengan menggabungkan catatan teknis, catatan fundamental, dan dua aturan pengendalian risiko yang tegas dan tidak dapat dinegosiasikan.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: tidak ada aset individual yang dapat mengkonsentrasikan lebih dari seperlima total aset.",
+            "Anomali Berhenti (P-06 ≥ 0,65): jika aset memasuki dislokasi statistik, sistem memotong eksposur maksimum hingga 5%."
+          ]
+        },
+        "lead": "Yang dimaksud masing-masing negara bagian dalam putusan dan dalam Buku Eksekusi:",
+        "bullets": [
+          {
+            "bold": "Pesanan disetujui tanpa batasan",
+            "code": "APROBADO en verde",
+            "text": "Ketiga pilar tersebut memiliki kesamaan yang baik dan ukuran posisi menghormati semua batas konsentrasi dan likuiditas."
+          },
+          {
+            "bold": "Urutan disesuaikan dengan pagar pembatas",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Ketika tiket melebihi batas 20% atau mencoba membeli dalam jumlah besar di tengah anomali, pagar pembatas memperingatkan kelebihan tersebut."
+          }
+        ],
+        "example": "Jika Anda mencoba melakukan simulasi pembelian yang akan menjadikan satu saham menjadi 26% dari portofolio Anda, Pilar 3 (Pagar Pembatas Risiko & Ukuran) menandai peringatan konsentrasi sehingga Anda menyesuaikannya di bawah 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Efisiensi Walk-Forward (WFE)",
+        "intro": "Untuk memeriksa bahwa suatu strategi tidak dibuat sedemikian rupa agar terlihat bagus di masa lalu (overfitting), pengujian Walk-Forward membandingkan kinerjanya dalam periode desain (In-Sample) dengan kinerjanya pada data yang belum pernah dilihat sebelumnya (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Pengembalian Tahunan Out-of-Sample (Validasi Murni)",
+          "denominator": "Pengembalian Tahunan In-Sample (Pelatihan)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): bagian historis yang digunakan untuk mengkalibrasi bobot dan aturan strategi.",
+            "Out-of-Sample (OOS): bagian berikutnya dimana strategi diuji dalam kondisi nyata tanpa menyentuh parameternya."
+          ]
+        },
+        "lead": "Bagaimana industri kuantitatif menilai persentase WFE:",
+        "bullets": [
+          {
+            "bold": "Strategi yang kuat dan konsisten",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Ia mempertahankan sebagian besar kemampuannya untuk menghasilkan keuntungan ketika dihadapkan dengan kondisi pasar baru."
+          },
+          {
+            "bold": "Strategi yang rapuh atau berlebihan",
+            "code": "WFE < 50% en rojo",
+            "text": "Hal ini berhasil dengan baik dalam teori di masa lalu namun kehilangan efektivitasnya dalam kenyataan; Tidak disarankan untuk mengeksekusinya dengan uang sungguhan."
+          }
+        ],
+        "example": "Jika suatu strategi menghasilkan 20% hasil tahunan selama tahap desainnya (In-Sample) dan pada tahap pengujian aktual berikutnya (Out-of-Sample) strategi tersebut menghasilkan 18,8% hasil tahunan, efisiensi WFE-nya adalah (18,8 / 20) = 94,0%."
+      }
+    ]
+  }
+}

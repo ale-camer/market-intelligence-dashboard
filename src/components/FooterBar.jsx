@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Palette, Info, X, Check, Search, ChevronDown, ChevronUp } from 'lucide-react';
 import HoverTooltip from './HoverTooltip';
-import { LANGUAGES } from '../data/i18n';
+import { LANGUAGES, PALETTES } from '../data/i18n';
 
 /**
  * Universal crisp inline SVG Flag Badge supporting all 56 languages/countries
@@ -102,12 +102,40 @@ export default function FooterBar({
   onCycleLang,
   onSelectLang,
   onCycleTheme,
+  onSelectTheme,
 }) {
   const [langModalOpen, setLangModalOpen] = useState(false);
+  const [palettePopoverOpen, setPalettePopoverOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(true);
   const [langSearchQuery, setLangSearchQuery] = useState('');
   const [kbIdx, setKbIdx] = useState(0);
   const searchInputRef = useRef(null);
+  const palettePopoverRef = useRef(null);
+  const paletteBtnRef = useRef(null);
+  const isES = currentLang?.code === 'ES';
+
+  useEffect(() => {
+    if (!palettePopoverOpen) return undefined;
+    const handleOutsideClick = (e) => {
+      if (
+        palettePopoverRef.current &&
+        !palettePopoverRef.current.contains(e.target) &&
+        paletteBtnRef.current &&
+        !paletteBtnRef.current.contains(e.target)
+      ) {
+        setPalettePopoverOpen(false);
+      }
+    };
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') setPalettePopoverOpen(false);
+    };
+    document.addEventListener('mousedown', handleOutsideClick);
+    document.addEventListener('keydown', handleEsc);
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+      document.removeEventListener('keydown', handleEsc);
+    };
+  }, [palettePopoverOpen]);
 
   // Filter the 56 languages by original/native name, English name, region, or ISO code
   const filteredLanguages = useMemo(() => {
@@ -579,34 +607,136 @@ export default function FooterBar({
             }}
           </HoverTooltip>
 
-          {/* THEME COLOR PALETTE BUTTON */}
-          <HoverTooltip
-            title="Choose Palette"
-            placement="top-right"
-          >
-            {(isHovered) => (
-              <button
-                onClick={onCycleTheme}
+          {/* THEME COLOR PALETTE BUTTON + POPOVER SELECTOR */}
+          <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+            {palettePopoverOpen && (
+              <div
+                ref={palettePopoverRef}
                 style={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  color: isHovered ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.85)',
-                  height: '28px',
-                  padding: '0 0.25rem',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: 'pointer',
-                  filter: isHovered
-                    ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
-                    : 'drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9))',
-                  transition: 'all 0.18s ease',
+                  position: 'absolute',
+                  right: 0,
+                  bottom: '38px',
+                  zIndex: 260,
+                  width: '285px',
+                  padding: '11px 13px',
+                  borderRadius: '11px',
+                  background: 'rgba(2, 6, 23, 0.96)',
+                  border: '1px solid rgba(var(--ui-accent-rgb), 0.55)',
+                  boxShadow: '0 14px 36px rgba(0, 0, 0, 0.88), 0 0 24px rgba(var(--ui-accent-rgb), 0.16)',
+                  backdropFilter: 'blur(10px)',
+                  pointerEvents: 'auto',
                 }}
               >
-                <Palette size={16} strokeWidth={isHovered ? 2.4 : 2.1} style={{ color: 'var(--ui-accent)' }} />
-              </button>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginBottom: '8px',
+                  }}
+                >
+                  <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#ffffff' }}>
+                    {isES ? '5 Ambientes de Lectura (Palette)' : '5 Visual Reading Themes (Palette)'}
+                  </span>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
+                  {PALETTES.map((pt, idx) => {
+                    const isSelected = currentTheme?.id === pt.id;
+                    return (
+                      <button
+                        key={pt.id}
+                        type="button"
+                        onClick={() => {
+                          if (onSelectTheme) {
+                            onSelectTheme(idx);
+                          } else if (onCycleTheme) {
+                            onCycleTheme();
+                          }
+                        }}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          padding: '5px 9px',
+                          borderRadius: '6px',
+                          background: isSelected
+                            ? 'rgba(var(--ui-accent-rgb), 0.22)'
+                            : 'rgba(15, 23, 42, 0.72)',
+                          border: isSelected
+                            ? '1px solid var(--ui-accent)'
+                            : '1px solid rgba(148, 163, 184, 0.14)',
+                          fontSize: '11px',
+                          fontWeight: isSelected ? 700 : 500,
+                          color: isSelected ? '#ffffff' : '#94a3b8',
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                          transition: 'all 0.14s ease',
+                        }}
+                      >
+                        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '7px' }}>
+                          <span
+                            style={{
+                              width: '8px',
+                              height: '8px',
+                              borderRadius: '999px',
+                              backgroundColor: pt.color,
+                              boxShadow: `0 0 6px ${pt.color}`,
+                            }}
+                          />
+                          <span>{pt.name}</span>
+                        </span>
+                        <span
+                          style={{
+                            fontFamily: 'var(--font-mono)',
+                            fontSize: '10px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '5px',
+                          }}
+                        >
+                          <span style={{ color: '#10b981' }}>▲#10b981</span>
+                          <span style={{ color: '#f43f5e' }}>▼#f43f5e</span>
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             )}
-          </HoverTooltip>
+
+            <HoverTooltip
+              disabled={palettePopoverOpen}
+              title={isES ? 'Elegir Paleta' : 'Choose Palette'}
+              placement="top-right"
+            >
+              {(isHovered) => {
+                const isHighlighted = palettePopoverOpen || isHovered;
+                return (
+                  <button
+                    ref={paletteBtnRef}
+                    onClick={() => setPalettePopoverOpen((prev) => !prev)}
+                    style={{
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                      color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.85)',
+                      height: '28px',
+                      padding: '0 0.25rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                      filter: isHighlighted
+                        ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
+                        : 'drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9))',
+                      transition: 'all 0.18s ease',
+                    }}
+                  >
+                    <Palette size={16} strokeWidth={isHighlighted ? 2.4 : 2.1} style={{ color: 'var(--ui-accent)' }} />
+                  </button>
+                );
+              }}
+            </HoverTooltip>
+          </div>
         </div>
       </footer>
     </>

@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Sakļauts skats",
+    "mainView": "Galvenais skats",
+    "expandedView": "Izvērsts skats",
+    "inThisSection": "Šajā sadaļā jūs atradīsiet:",
+    "deepDive": "Dziļā niršana",
+    "previous": "Iepriekšējais",
+    "next": "Tālāk",
+    "mathFormula": "Matemātiskā formula",
+    "practicalExample": "Praktisks piemērs:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Atverot tradicionālo finanšu platformu, pirmais, kas parasti parādās, ir desmitiem diagrammu, mirgojošu tabulu un izvēlņu visur. Ar ko jūs sākat, ja vēlaties vienkārši pārbaudīt tirgu vai pārbaudīt, kā klājas jūsu portfelim?",
+        "Home ekrāns ir izstrādāts tieši tā, lai izvairītos no sākotnējā trokšņa. Tas sagaida jūs ar tīru un skaidru telpu, kur visa vadība ir koncentrēta divās fiksētās joslās: viena augšā, lai dotos uz darbu, un otra zemāk, lai konfigurētu platformu atbilstoši jums."
+      ],
+      "intro": "Home ekrāns sagaida jūs ar tīru un skaidru telpu, kur visa vadība ir koncentrēta divās fiksētās joslās: viena augšā, lai dotos uz darbu, un otra zemāk, lai konfigurētu platformu atbilstoši jums.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Skaidrs sākuma punkts, kas sadala jūsu darbu tirgus analīzē un portfeļa pārvaldībā.",
+          "paragraphs": [
+            "Iedomājieties, ka jūs sākat tirgoties vispirms no rīta. Dažkārt vēlēsities noskaidrot, kuras akcijas, obligācijas vai valūtas mainās visvairāk; Citreiz jūs nekavējoties pārskatīsit sava portfeļa risku vai simulēsit pirkumu pirms tā veikšanas.",
+            "Kā izvairīties no abu lietu sajaukšanas vienā pārslogotajā ekrānā? Vāks skaidri atdala šo ceļu no pirmās sekundes:"
+          ],
+          "lead": "Kā izvairīties no abu lietu sajaukšanas vienā pārslogotajā ekrānā? Vāks skaidri atdala šo ceļu no pirmās sekundes:",
+          "bullets": [
+            {
+              "bold": "Telpa bez traucēkļiem",
+              "code": "Donde se decodifican los mercados",
+              "text": "Ieejot, nav atvērtu tabulu vai brīdinājumu, kas liek aizvērt logus pirms palaišanas; Jūs izvēlaties, kuru moduli atvērt."
+            },
+            {
+              "bold": "Divi skaidri ceļi",
+              "code": "Markets / Portfolio",
+              "text": "Visa lietojumprogrammas plūsma ir sadalīta divos galvenajos posmos: vispirms izpētiet iespējas tirgos un pēc tam izveidojiet vai pārbaudiet savu portfeli."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Augšējā josla, lai ar vienu klikšķi pārietu starp māju, tirgiem un jūsu portfolio.",
+          "paragraphs": [
+            "Iedziļinoties detaļās par aktīvu vai pārbaudot izmaiņas savā portfelī, ir ļoti viegli pazaudēt savu atrašanās vietu. Kā no akciju diagrammas skatīšanās pāriet uz sava portfeļa pārskatīšanu, neizejot cauri apakšizvēlnēm?",
+            "Augšējā josla vienmēr paliek fiksēta uz ekrāna un nodrošina tiešu piekļuvi trim galvenajiem punktiem:"
+          ],
+          "lead": "Augšējā josla vienmēr paliek fiksēta uz ekrāna un nodrošina tiešu piekļuvi trim galvenajiem punktiem:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Lai kur jūs atrastos, noklikšķinot uz simbola kreisajā pusē, jūs nekavējoties atgriezīsities galvenajā lapā."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Tā ir jūsu pētniecības telpa. Šeit jūs filtrējat 213 pieejamos aktīvus, sekojat reāllaika kotācijām, analizējat tehniskās diagrammas un skatiet bilances kopsavilkumus vai jaunumus."
+            },
+            {
+              "bold": "Maks",
+              "code": "Portfolio",
+              "text": "Tā ir jūsu lēmumu tabula. Šeit jūs definējat, cik procenti no jūsu kapitāla tiek novirzīti katram aktīvam, izmēra, cik daudz jūs varētu zaudēt krīzes laikā, un simulējiet jaunas operācijas, pirms riskējat ar naudu."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Kājene, lai pārbaudītu sistēmas statusu, atgrieztos šajā rokasgrāmatā vai pielāgotu izkārtojumu.",
+          "paragraphs": [
+            "Analizējot datus reāllaikā, jebkurā brīdī var rasties darbības jautājumi: vai citāti tiek saņemti pareizi? Ko nozīmēja punktu rādītājs? Vai es varu samazināt ekrāna spilgtumu?",
+            "Kājene sagrupē visus atbalsta un konfigurācijas rīkus, lai tie vienmēr būtu pa rokai, netraucējot ekrāna centram:"
+          ],
+          "lead": "Kājene sagrupē visus atbalsta un konfigurācijas rīkus, lai tie vienmēr būtu pa rokai, netraucējot ekrāna centram:",
+          "bullets": [
+            {
+              "bold": "System statuss",
+              "code": "System",
+              "text": "Zaļais punkts vienā mirklī apliecina, ka viss ir kārtībā. Atverot to, jūs varat detalizēti redzēt serveru statusu, datu bāzes un atbildes ātrumu."
+            },
+            {
+              "bold": "Lietotājs Guide",
+              "code": "Guide",
+              "text": "Jebkurā laikā atveriet šo interaktīvo rokasgrāmatu, lai uzzinātu, kā lietot ekrānu vai iedziļināties tā aprēķinos."
+            },
+            {
+              "bold": "Vizuālās preferences",
+              "code": "Idioma / Palette",
+              "text": "Labajā pusē ir vadības pogas, lai mainītu visas lietojumprogrammas valodu vai pielāgotu fona apgaismojumu."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Valodas",
+          "summary": "Meklētājprogramma, lai uz vietas tulkotu visu platformu jūsu valodā.",
+          "paragraphs": [
+            "Finanšu noteikumiem un tirgus pārskatiem jau ir sava sarežģītība, nepalielinot valodas barjeru. Ja vēlaties lasīt skaidrojumus spāņu, angļu vai jebkurā citā valodā, varat tos nekavējoties mainīt.",
+            "Lūk, kā atlasītājs darbojas no apakšējā labā stūra:"
+          ],
+          "lead": "Lūk, kā atlasītājs darbojas no apakšējā labā stūra:",
+          "bullets": [
+            {
+              "bold": "tūlītēja meklēšana",
+              "code": "Select Language",
+              "text": "Noklikšķinot uz pašreizējā karoga, tiek atvērts logs, kurā varat izvēlēties starp 56 valodām, ierakstot tā nosaukumu vai kodu (piemēram, ES, EN, PT, FR vai DE)."
+            },
+            {
+              "bold": "Automātiskā atmiņa",
+              "code": "mid_lang_v1",
+              "text": "Viss ekrāns tiek tulkots uzreiz, nepārlādējot lapu, un jūsu izvēle tiek saglabāta nākamajai ievadīšanas reizei."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Vizuālie motīvi, lai pielāgotu ekrāna kontrastu, nemainot finanšu krāsas.",
+          "paragraphs": [
+            "Pavadot vairākas stundas grafikas priekšā ar kontrastu, kas nepielāgojas gaismai jūsu vidē, nogurdina acis. Tomēr finanšu platformas krāsu maiņai ir klasisks apdraudējums: zaudēt atsauci uz to, kas iet uz augšu un kas iet uz leju.",
+            "Lai to atrisinātu, motīva atlasītājs atdala vides krāsu no datu krāsas:"
+          ],
+          "lead": "Lai to atrisinātu, motīva atlasītājs atdala vides krāsu no datu krāsas:",
+          "bullets": [
+            {
+              "bold": "Piecas lasīšanas vides",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Ar katru klikšķi jūs grozāties starp tīri melnu, zilganu vai siltu fonu, līdz atrodat to, kas ir visērtākais jūsu acīm."
+            },
+            {
+              "bold": "Neskarta finanšu semantika",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Neatkarīgi no tā, kādu tēmu jūs mainītu, universālais tirgus likums nekad netiek mainīts: zaļš vienmēr nozīmē pieaugumu vai pieaugumu, un sarkans vienmēr nozīmē kritumu, zaudējumu vai brīdinājumu par risku."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Iedomājieties, ka vēlaties noteikt, kur starp vairāk nekā divsimt obligācijām, akcijām, indeksiem, valūtām un izejvielām ir šīs dienas labākās iespējas. Ja jūs atvērtu diagrammas pa vienam, tirgus aizvērtos, pirms jūs pabeigsit tos aplūkot.",
+            "Screener apvieno visus 213 platformas līdzekļus vienā tiešā informācijas panelī. Tas ļauj sekundē filtrēt pēc tirgus, novērtēt kopējo dienas pulsu un izvēlēties kādu no četriem dažādiem veidiem, kā skatīt, kuri līdzekļi darbojas."
+          ],
+          "intro": "Screener apvieno visus 213 platformas līdzekļus vienā reāllaika informācijas panelī, lai jūs varētu filtrēt pēc tirgus un vienā mirklī pamanīt iespējas.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategorijas",
+              "summary": "Labākie filtri, lai koncentrētos uz vienu līdzekļu klasi vai jūsu skatīšanās sarakstu.",
+              "paragraphs": [
+                "Nav jēgas analizēt Valsts kases obligāciju ar tādiem pašiem rādītājiem kā tehnoloģiju akciju vai naftas produktu. Sajaucot visu vienā sarakstā, jūs salīdzināt bumbierus ar āboliem.",
+                "Kā sašaurināt ekrānu tieši tam tirgum, kas jūs šodien interesē? Augšējā josla ļauj atdalīt Visumu ar vienu klikšķi:"
+              ],
+              "lead": "Augšējā josla ļauj atdalīt Visumu ar vienu klikšķi:",
+              "bullets": [
+                {
+                  "bold": "Pilns attēls",
+                  "code": "Todos",
+                  "text": "Tas parāda 213 instrumentus kopā un sakārtoti pēc tirdzniecības apjoma, lai jūs varētu redzēt, kur pasaulē plūst visvairāk naudas."
+                },
+                {
+                  "bold": "Personīgā izsekošana",
+                  "code": "★ Watchlist",
+                  "text": "Izolējiet tikai tos īpašumus, kurus esat atzīmējis kā izlasi, lai tos rūpīgi pārraudzītu, netraucējot."
+                },
+                {
+                  "bold": "Desmit specializēti tirgi",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Izvēloties kādu no šīm kategorijām, viss ekrāns pielāgo savus rādītājus un tabulas kolonnas attiecīgā sektora noteikumiem."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sīkāka informācija par to, kā katalogā iekļautie 213 aktīvi ir klasificēti un kādiem apjoma un likviditātes kritērijiem tie atbilst."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24h pulss",
+              "summary": "Četras labākās kārtis, kas norāda, vai tirgus ir mierīgs, eiforisks vai stresa stāvoklī.",
+              "paragraphs": [
+                "Pirms konkrēta īpašuma pirkšanas vai pārdošanas vēlams uzzināt, kādā klimatā kustas kopums. Vai šī ir parasta apjoma diena vai arī institucionālā nauda ienāk uzreiz? Vai visi aktīvi pieaug vai ir spriedzes pazīmes?",
+                "Četras kartītes zem filtriem sniedz vispārīgu nolasījumu dažu sekunžu laikā:"
+              ],
+              "lead": "Četras kartītes zem filtriem sniedz vispārīgu nolasījumu dažu sekunžu laikā:",
+              "bullets": [
+                {
+                  "bold": "Kopējā aktivitāte dienā",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Tas kopā veido miljardus dolāru, kas tiek tirgoti aktīvajā kategorijā, un parāda, vai šodien ir vairāk vai mazāk dalības nekā vakar."
+                },
+                {
+                  "bold": "Vidējais grupas spēks",
+                  "code": "AVG RSI 14",
+                  "text": "Tas apļveida skaitītājā apkopo, vai nozares cenas nāk ar pirkšanas spiedienu (zaļa, virs 50) vai ar pārdošanas spiedienu (sarkans, zem 50)."
+                },
+                {
+                  "bold": "Normāls termometrs",
+                  "code": "Régimen Normal P-06",
+                  "text": "Tas aprēķina, cik procentu aktīvu pārvietojas to parastajos parametros un pēc vārda un uzvārda norāda, kurš instruments ir ar lielāko dienas anomāliju."
+                },
+                {
+                  "bold": "Neparasti naudas pieplūdumi",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Izceļas triju aktīvu pjedestāls, kas šodien darbojas ārkārtīgi lielā apjomā, salīdzinot ar to vidējo rādītāju pagājušajā mēnesī."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detalizēts skaidrojums par to, kā tiek aprēķināts vidējais RSI, tilpums Z-Score un anomālijas detektors P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tabula",
+              "summary": "Interaktīvais saraksts ar ātru meklēšanu, izlasi un kolonnām, kas pielāgojas katram tirgum.",
+              "paragraphs": [
+                "Ja jūs jau zināt, kuru sektoru vēlaties apskatīt, un jums ir jāsalīdzina konkrēti skaitļi pēc rindas, tabulas skats ir jūsu galvenais rīks.",
+                "Tā vietā, lai parādītu jums stingru izklājlapu, kas ir vienāda visiem, tabula tiek pielāgota jūsu meklētajam:"
+              ],
+              "lead": "Tā vietā, lai parādītu jums stingru izklājlapu, kas ir vienāda visiem, tabula tiek pielāgota jūsu meklētajam:",
+              "bullets": [
+                {
+                  "bold": "Meklētājprogrammas un izlases zvaigzne",
+                  "code": "Buscar activo / ★",
+                  "text": "Pirmās kolonnas galvenē varat ierakstīt jebkuru simbolu vai nosaukumu, lai pārietu tieši uz šo līdzekli, vai pieskarieties zvaigznītei pa kreisi, lai saglabātu to savā Watchlist."
+                },
+                {
+                  "bold": "Viedās kolonnas atbilstoši kategorijai",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Ja filtrējat Akcijas, tiek parādīti vērtēšanas reizinātāji un maržas; Ja izvēlaties Obligācijas vai Likmes, jūs redzat līknes slīpumu un jutību pret likmēm; Ja skatāties uz atvasinātajiem instrumentiem, jūs redzat netiešo nepastāvību."
+                },
+                {
+                  "bold": "Pārejiet tieši uz dziļu analīzi",
+                  "code": "Click en cualquier fila",
+                  "text": "Vienkārši noklikšķiniet uz jebkura īpašuma sarakstā, lai atvērtu pilnu tehnisko diagrammu un pamata pārskatu staciju."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Konkrēto metrikas saraksts, kas tabulā tiek rādīts katrai no 10 līdzekļu kategorijām."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Vizuālais radars, lai vienā mirklī noteiktu, kuri aktīvi attālinās no to vēsturiskā vidējā līmeņa.",
+              "paragraphs": [
+                "Divsimt skaitļu rindu lasīšana var likt jums palaist garām līdzekli, kas sāk sprādzienbīstami pārvietoties. Kā uzreiz noteikt, kurš instruments novirzās no normas?",
+                "Orbital skats pārveido galdu par radaru ar trim koncentriskiem gredzeniem:"
+              ],
+              "lead": "Orbital skats pārveido galdu par radaru ar trim koncentriskiem gredzeniem:",
+              "bullets": [
+                {
+                  "bold": "Kritēriju izvēle",
+                  "code": "INDICADOR",
+                  "text": "Jūs izlemjat, ko radara mēra: statistikas anomālijas, apjoma lēcienus, cenu stiprumu (RSI), nepastāvību vai pieaugumu pēdējo 24 stundu laikā."
+                },
+                {
+                  "bold": "Lasīšana pēc attāluma un krāsas",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Jo tuvāk vai tālāk kāds punkts pēc indikatora atrodas un jo intensīvāka ir tā zaļā vai sarkanā krāsa, jo atbilstošāka tā kustība ir salīdzinājumā ar tā vēsturi."
+                },
+                {
+                  "bold": "Pārbaude bez ekrāna maiņas",
+                  "code": "Panel lateral en vivo",
+                  "text": "Novietojot kursoru uz jebkura radara mezgla, labajā pusē tiek parādīta tā cena, tīrā dienas diagramma un trīs riska rādītāji."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kā tiek aprēķināta katra aktīva pozīcija radara gredzenos atbilstoši tā vēsturiskajai novirzei."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Siltuma karte",
+              "summary": "Proporcionālu bloku mozaīka, lai vienā sekundē identificētu uzvarētājus un zaudētājus.",
+              "paragraphs": [
+                "Ir reizes, kad jūs vienkārši vēlaties atbildēt uz ātru jautājumu: kurš šodien vada kāpumu un kurš velk tirgu uz leju?",
+                "Siltuma karte sakārto aktīvā filtra desmit galvenos līdzekļus proporcionālos blokos, lai jums nebūtu jālasa viena tabula:"
+              ],
+              "lead": "Siltuma karte sakārto aktīvā filtra desmit galvenos līdzekļus proporcionālos blokos:",
+              "bullets": [
+                {
+                  "bold": "Izmērs pēc svarīguma",
+                  "code": "Puestos #1 a #10",
+                  "text": "Instrumenti ar vislielāko svaru izvēlētajā metrikas ietvaros aizņem kolonnas kreisajā pusē ar lielākajiem lodziņiem."
+                },
+                {
+                  "bold": "Krāsas intensitāte",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Bloka tonis nekavējoties parāda kustības apjomu, sākot no mērenām variācijām līdz pēkšņiem kāpumiem vai kritumiem."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Trīspakāpju saīsne uz papildu likmēm, opcijām, forex un nākotnes darījumu kalkulatoriem.",
+              "paragraphs": [
+                "Papildus tradicionālajām cenu diagrammām platforma ietver četrus īpašus dzinējus fiksētiem ienākumiem, opcijām, valūtu krustojumiem un preču līknēm. Kā tos sasniegt, nemeklējot īpašumu pēc īpašuma?",
+                "Šis skats sniedz norādījumus no kreisās puses uz labo trīs ļoti vienkāršās kolonnās:"
+              ],
+              "lead": "Šis skats sniedz norādījumus no kreisās puses uz labo trīs ļoti vienkāršās kolonnās:",
+              "bullets": [
+                {
+                  "bold": "Vispirms izvēlaties ģimeni",
+                  "code": "1. Clases de Activo",
+                  "text": "Jūs izvēlaties, vai vēlaties strādāt ar likmēm un obligācijām, ar akciju/indeksu/kriptogrāfijas opcijām, ar valūtām vai ar izejvielām."
+                },
+                {
+                  "bold": "Pēc tam pārbaudiet dzinēja darbību",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Centrā jūs lasāt skaidru kopsavilkumu par to, ko šis rīks parāda un kā orientēties pa tā asīm."
+                },
+                {
+                  "bold": "Visbeidzot izvēlieties aktīvo un atveriet",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Jūs skatāties tiešraides diagrammas priekšskatījumu, meklējat saderīgus līdzekļus šajā saimē un atverat pilnu staciju ar vienu klikšķi."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Kad esat atradis interesantu priekšrocību Screener, ir pienācis laiks to aplūkot tuvāk. Vai tai ir augšupejoša tendence vai tas ir izsīkuši? Vai jūs pārspējāt savus konkurentus? Ko saka apjoms un atvasināto instrumentu tirgus?",
+            "Analytics stacija koncentrē visu šī līdzekļa tehnisko, salīdzinošo un kvantitatīvo analīzi vienā ekrānā. Virs jums ir vispārīgs kopsavilkums un kreisajā pusē ir četri objektīvi, lai mainītu analīzes leņķi, neaizmirstot grafiku."
+          ],
+          "intro": "Analytics stacija koncentrē tehnisko, salīdzinošo, plūsmas analīzi un atsevišķa līdzekļa 3D/2D dzinējus vienā ekrānā.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Augšējais informācijas panelis, lai pārslēgtu līdzekļus, izvēlētos laika periodu un skatītu piecus galvenos rādītājus.",
+              "paragraphs": [
+                "Pētot kādu īpašumu, jūs parasti maināt šodienas īstermiņa laiku un pēdējo mēnešu filmu vai pat pārslēdzaties uz citu līdzīgu simbolu. Kā to visu izdarīt, neatgriežoties?",
+                "Augšējā galvenē ir apvienotas navigācijas vadīklas un instrumenta ātrā cilne:"
+              ],
+              "lead": "Augšējā galvenē ir apvienotas navigācijas vadīklas un instrumenta ātrā cilne:",
+              "bullets": [
+                {
+                  "bold": "Līdzekļa maiņa vai atgriešanās sarakstā",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Augšējā kreisajā stūrī varat atgriezties pie Screener vai ierakstīt jebkura cita instrumenta nosaukumu, lai mainītu diagrammas uz vietas."
+                },
+                {
+                  "bold": "Deviņi laika logi",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Labajā malā varat mainīt diagrammas skalu no kustībām pa minūti uz visu vēsturi."
+                },
+                {
+                  "bold": "Pieci vadošie rādītāji",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Blakus cenai vienmēr ir redzams tirdzniecības apjoms, divi galvenie tās kategorijas dati, tendences stiprums un statistiskās normalitātes līmenis."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Tehniski",
+              "summary": "Cenu diagramma ar mainīgajiem vidējiem rādītājiem, svārstīguma diapazoniem un apjomu, lai sekotu tendencei.",
+              "paragraphs": [
+                "Aplūkojot tikai pēdējo cenu, nav skaidrs, vai aktīvs paātrinās, vai tas atkāpjas no vidējā līmeņa vai arī dažu dienu laikā tas jau ir palielinājies pārāk ātri.",
+                "Pirmais objektīvs uz kreisās sliedes ļauj grafikā pārklāt tirgū visbiežāk izmantotās tehniskās atsauces:"
+              ],
+              "lead": "Pirmais objektīvs uz kreisās sliedes ļauj pārklāt visbiežāk izmantotās tehniskās atsauces:",
+              "bullets": [
+                {
+                  "bold": "Adrese un faktiskā vidējā cena",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Varat ieslēgt 20 periodu mainīgo vidējo un apjoma svērto vidējo cenu, lai nekavējoties redzētu, vai aktīvs tirgojas virs vai zem tā līdzsvara līmeņa."
+                },
+                {
+                  "bold": "Pārmērīgu zonu un skaļuma apstiprinājums",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Joslas iezīmē cenas statistiskos griestus un grīdu, savukārt apakšējās joslas apstiprina, vai kustību atbalsta apjoms."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Slīdošā vidējā (SMA 20), Bollingera joslu un VWAP formulas un interpretācijas kritēriji."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Salīdzināt %",
+              "summary": "Procentuālais salīdzinājums no 0%, lai noteiktu, vai jūsu līdzeklis darbojas labāk vai mazāk nekā cits tajā pašā kategorijā.",
+              "paragraphs": [
+                "Akcija pieaug par 5%, šķiet lieliskas ziņas, taču, ja tās etalons vai galvenais konkurents tajā pašā periodā ir palielinājies par 12%, jūs faktiski atpaliekat.",
+                "Otrais objektīvs atrisina šīs šaubas, novietojot abus līdzekļus uz vienas sākuma līnijas:"
+              ],
+              "lead": "Otrais objektīvs atrisina šīs šaubas, novietojot abus līdzekļus uz vienas sākuma līnijas:",
+              "bullets": [
+                {
+                  "bold": "Meklējiet saskaņotus pārus",
+                  "code": "Buscar par compatible",
+                  "text": "Meklētājprogramma automātiski filtrē vienas grupas aktīvus (piemēram, akcijas pret akcijām, ETF vai indeksi), lai salīdzināšanai būtu finansiāla nozīme."
+                },
+                {
+                  "bold": "Neto priekšrocība procentos",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Abas līknes sākas ar 0%, un kreisā sliede aprēķina, cik procentu punktu priekšrocības (zaļā krāsā) vai neizdevīguma (sarkanā krāsā) ir jūsu īpašumam."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Mikro un plūsma",
+              "summary": "Institucionālo ārpusmodeli pirkumu, likviditātes un starpības izmaksu detektors.",
+              "paragraphs": [
+                "Daudzas reizes lieli fondi uzkrāj vai izkrauj pozīcijas, pirms cena pēkšņi sāk kustēties. Kā noteikt šo slēpto pēdu pasūtījumu grāmatas apjomā un likviditātē?",
+                "Trešais objektīvs koncentrējas uz to, kas notiek zem citāta:"
+              ],
+              "lead": "Trešais objektīvs koncentrējas uz to, kas notiek zem citāta:",
+              "bullets": [
+                {
+                  "bold": "Statistiskā apjoma maksimumi",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Maina apakšējo paneli, lai parādītu, cik reižu pašreizējais apjoms novirzās no parastā, atklājot neparastu iestāžu darbību."
+                },
+                {
+                  "bold": "Likviditātes stress un anomālijas",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Tas mēra bāzes punktos, vai plaisa starp pircējiem un pārdevējiem palielinās un vai statistikas dzinējs atklāj netipisku uzvedību."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kā tiek mērītas atvēršanas starpības un statistikas kāpumi pasūtījumu plūsmā."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D dzinēji",
+              "summary": "Ceturtais objektīvs, kas izvieto dinamisku ad-hoc rīku, kas atšķiras atkarībā no līdzekļu klases.",
+              "paragraphs": [
+                "Atšķirībā no pirmajiem trim objektīviem (kas ir kopīgi visiem instrumentiem), ceturtais objektīvs uz kreisās sliedes ir ad-hoc rīks, kas dinamiski mainās atkarībā no analizējamā līdzekļa: piemēram, tiešraides tūrē, jo tā ir akcija (NVDA), tā nodrošina 3D implicit volatility un Options dzinēju, savukārt citos īpašumos tas tiek izmantots.",
+                "Ceturtā poga nosaka atvērto līdzekļu klasi un automātiski aktivizē atbilstošo ad-hoc rīku:"
+              ],
+              "lead": "Ceturtā poga nosaka, kurš līdzeklis ir atvērts, un aktivizē tam atbilstošo ad-hoc rīku:",
+              "bullets": [
+                {
+                  "bold": "Akcijās, indeksos, atvasinātajos instrumentos un kriptovalūtās",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Parādiet 3D paredzēto nepastāvības virsmu, opciju smaidu pēc derīguma termiņa beigām un 6 stratēģiju simulatoru, lai redzētu, cik daudz jūs iegūtu vai zaudētu šodien un termiņa beigās."
+                },
+                {
+                  "bold": "Likmēs, obligācijās un likviditātē",
+                  "code": "Curva 3D/2D",
+                  "text": "Tas ļauj salīdzināt 42 valstu ienesīguma līknes ar ASV un Vāciju, mērot, vai līkne ir normāla vai apgriezta (2s10s) un cik lielā mērā cena mainās atkarībā no likmju izmaiņām (DV01)."
+                },
+                {
+                  "bold": "Valūtās",
+                  "code": "FX & Carry",
+                  "text": "Tas piedāvā konvertētāju un triangulatoru starp 61 valūtu, kas arī aprēķina 10 gadu procentu likmju starpību par labu vai pret šī pāra saglabāšanu."
+                },
+                {
+                  "bold": "Izejvielās",
+                  "code": "Forward 3D/2D",
+                  "text": "Diagrammās fjūčeru līgumu cenas katru mēnesi, lai parādītu, vai tirgus maksā vairāk par nestandartizētu nākotnes līgumu (Contango) vai tūlītēju piegādi (Backwardation), kā arī fizisko krājumu statusu."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Matemātiskas detaļas par svārstīguma virsmām, valsts ienesīguma līknēm, valūtas pārneses un nākotnes līgumu līknēm."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Diagramma parāda cenas ietekmi, taču tajā nav norādīts, kāpēc. Lai uzzinātu, kas ir aiz kustības, jums būtu jāizlasa desmitiem lappušu ceturkšņa bilances, centrālās bankas izraksti, inventarizācijas atskaites un ziņu kabeļi.",
+            "Research stacija paveic šo smago celšanu jūsu vietā. Tas apvieno dokumentālo mākslīgo intelektu, kas pārbaudīts, salīdzinot ar oficiālajiem ziņojumiem, ar reāllaika ziņu lasīšanu, sakārtojot visus pierādījumus par un pret trīs skaidrās kolonnās."
+          ],
+          "intro": "Stacija Research apkopo oficiālās bilances, makroekonomikas pārskatus un reāllaika ziņas trīs skaidrās kolonnās.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Piezīme un poza",
+              "summary": "Trīs labākās kartītes, kas apkopo ziņu fundamentālo spriedumu un humoru.",
+              "paragraphs": [
+                "Vai aktīva pamatprincipi pavada cenu pieaugumu, vai ziņas pasliktina perspektīvu? Pirms detaļu lasīšanas jums ir nepieciešams ātrs izpildvaras secinājums.",
+                "Augšējā labajā stūrī ir trīs indikatori, kas apkopo īpašuma vispārējo statusu:"
+              ],
+              "lead": "Augšējā labajā stūrī ir trīs indikatori, kas apkopo vispārējo statusu:",
+              "bullets": [
+                {
+                  "bold": "Katra avota poza un svars",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Tas nosaka vispārējo spriedumu un precizē, kādu nozīmi tas piešķir oficiālajiem dokumentiem salīdzinājumā ar ziņām atkarībā no aktīva veida (piemēram, 80% bilances un 20% jaunumi akcijā)."
+                },
+                {
+                  "bold": "Kombinētais vērtējums",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Tas sintezē vienā rezultātos pamatu neto rezultātu un dienas informācijas plūsmu."
+                },
+                {
+                  "bold": "Termometru turētāji",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Novietojiet uz stieņa no -100 līdz +100, ja pēdējās stundās preses tonis ir pesimistisks (sarkans), neitrāls vai entuziasma pilns (zaļš)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kā oficiālie ziņojumi tiek salīdzināti ar ziņām atkarībā no īpašuma veida."
+            },
+            {
+              "id": "res-rag",
+              "label": "Tērzēšana RAG",
+              "summary": "Kreisais dokumentālais palīgs, lai uzdotu konkrētus jautājumus par bilancēm un oficiālajiem pārskatiem.",
+              "paragraphs": [
+                "Pieņemsim, ka vēlaties uzzināt, ko tieši uzņēmums ir teicis par savām peļņas normām savā jaunākajā gada bilancē 10-K vai ko Federālo rezervju sistēma teica savā jaunākajā protokolā. Tā meklēšana ar roku prasa laiku; Uzdodot vispārīgu tērzēšanu bez avotiem, varat iegūt izdomātus datus.",
+                "Kreisajā kolonnā tas tiek atrisināts, izmantojot vedni, kas ir savienots tikai ar pārbaudītu oficiālo dokumentāciju:"
+              ],
+              "lead": "Kreisajā kolonnā tiek piedāvāts vednis, kas savienots ar oficiālu pārbaudītu dokumentāciju:",
+              "bullets": [
+                {
+                  "bold": "Sākotnējais darbs un vadītie jautājumi",
+                  "code": "Chat Documental RAG",
+                  "text": "Tas sākas ar kopsavilkumu ar pārbaudītiem citātiem un četrām ātrās uzziņas pogām, kas pielāgotas līdzekļu kategorijai, kā arī lauku, kurā varat uzrakstīt savus jautājumus."
+                },
+                {
+                  "bold": "Tiešs solis uz savu portfolio",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Ja pēc pamatprincipu izpētes nolemjat, ka aktīvs ir tā vērts, šī poga tērzēšanas augšpusē novirza jūs tieši uz portfeļa simulatoru."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pārbaudītās dokumentālās meklēšanas (RAG) un tā drošības filtru darbība."
+            },
+            {
+              "id": "res-factors",
+              "label": "Faktori",
+              "summary": "Centrālais akordeons ar pieciem bullish dzinējiem un pieciem lāču riskiem, ko nosaka trieciens.",
+              "paragraphs": [
+                "Neviens ieguldījums nav simtprocentīgi ideāls vai simtprocentīgi slikts: vienmēr ir argumenti par labu un latenti riski. Noslēpums ir zināt, kuri šodien sver vairāk.",
+                "Centrālā kolonna ir novietota abas puses aci pret aci, lai jūs varētu pieņemt līdzsvarotu lēmumu:"
+              ],
+              "lead": "Centrālā kolonna ir novietota abas puses aci pret aci, lai jūs varētu pieņemt līdzsvarotu lēmumu:",
+              "bullets": [
+                {
+                  "bold": "Spēka līdzsvars un filtri",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Augšpusē ir redzama solīšanas josla starp pircējiem un pārdevējiem, un zemāk varat filtrēt piecus pozitīvos katalizatorus (zaļā krāsā) vai piecus galvenos riskus (sarkanā krāsā)."
+                },
+                {
+                  "bold": "Detalizēta informācija un detalizēta informācija ar vienu klikšķi",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Pieskaroties kādam faktoram sarakstā, tiek parādīts pilns tā skaidrojums kopā ar pogu, lai lūgtu Chat RAG vairāk informācijas par konkrēto punktu."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT impulss",
+              "summary": "Pareizā laika skala ar jaunākajiem virsrakstiem, kas novērtēti ar mākslīgo intelektu, un 24 stundu garastāvokļa līkni.",
+              "paragraphs": [
+                "Viens pēdējā brīža virsraksts par ienākumiem, inflāciju vai noteikumiem var pilnībā mainīt dienas noskaņojumu. Kā zināt, kādi jaunumi tikko iznākuši un kādu ietekmi tās atstāj?",
+                "Labajā kolonnā tiek pārraudzīta informācijas plūsma minūti pa minūtei:"
+              ],
+              "lead": "Labajā kolonnā tiek pārraudzīta informācijas plūsma minūti pa minūtei:",
+              "bullets": [
+                {
+                  "bold": "Kvalificēta laika skala",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Uzskaita piecus jaunākos virsrakstus, norādot laiku un rīcības brīvību, atzīmējot tos ar zaļu, ja tie ir labvēlīgi, vai sarkanu, ja tie rada draudus."
+                },
+                {
+                  "bold": "Ietekmes un ikdienas līkņu simulators",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Varat aktivizēt strāvas vadu, nospiežot augšējo pogu, lai redzētu, kā tas pārrēķina visu ekrānu, un sekot diagrammā, kā noskaņojums mainījies pēdējo 24 stundu laikā."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kā FinBERT modelis analizē katra turētāja finanšu valodu."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Celtnieks",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Lai iegūtu labu portfeli, nepietiek ar labu aktīvu izvēli atsevišķi. Ja jūs ieguldāt pārāk daudz kapitāla aktīvos, kas pārvietojas vienādi, vai ja jūs nenovērtējat, kā tie būtu bijuši kopā agrāk, jūs ieguldāt akli.",
+            "Constructor & Performance (pirmais Portfolio skats) ir darbnīca, kurā veidojat savu portfolio. Tas ļauj jums pievienot jebkuru no 213 līdzekļiem, pielāgot katram no tiem piešķirto procentuālo daļu, neizmantojot neprecīzas kontroles, un nekavējoties pārbaudīt gan tā iekšējo sastāvu, gan vēsturi."
+          ],
+          "intro": "Constructor & Performance ir darbnīca, kurā veidojat savu portfeli, pielāgojat katra līdzekļa svaru un pārbaudāt tā vēsturisko veiktspēju.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Kopsavilkums",
+              "summary": "Sešas labākās kārtis, kas tiek pārrēķinātas reāllaikā katru reizi, kad modificējat savu portfeli.",
+              "paragraphs": [
+                "Katru reizi, kad savā portfelī pievienojat aktīvu vai maināt procentuālo daļu, jums nekavējoties jāzina, vai šī korekcija uzlaboja jūsu paredzamo atdevi vai pasliktināja negatīvo ietekmi.",
+                "Augšējā rindā vienmēr ir redzami portfeļa seši galvenie rādītāji:"
+              ],
+              "lead": "Augšējā rindā vienmēr ir redzami portfeļa seši galvenie rādītāji:",
+              "bullets": [
+                {
+                  "bold": "Veiktspēja un efektivitāte",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Tie norāda, kādu salikto gada peļņu portfelis paredz jūsu kapitālam un cik lielu atdevi jūs saņemat par katru uzņemtā riska vienību."
+                },
+                {
+                  "bold": "Paredzamie ikdienas zaudējumi un vēsturiskais kritums",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Viņi aprēķina, cik dolāru jūs varētu zaudēt sliktā dienā statistiski paredzamās robežās un kāda bija pēdējā gada dziļākā neveiksme."
+                },
+                {
+                  "bold": "Pievienotā vērtība un dažādošana",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Tie mēra, cik punktu jūsu portfelis pārspēj etalonindeksu un cik lielu risku jūs samazināt, apvienojot dažādus aktīvus."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Saliktās atdeves formulas (CAGR), Sharpe un Sortino koeficienti un riska vērtība (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Svēršana",
+              "summary": "Kreisā tabula, lai pievienotu līdzekļus, ieslēgtu vai izslēgtu tos un noteiktu precīzu katras pozīcijas procentuālo daudzumu.",
+              "paragraphs": [
+                "Kas notiktu ar jūsu portfeļa skaitļiem, ja jūs šodien uz laiku slēgtu tehnoloģiju akciju vai sadalītu naudu vienādi starp visām jūsu pozīcijām?",
+                "Kreisajā panelī varat veikt visas šīs pārbaudes tīrā un tiešā veidā."
+              ],
+              "lead": "Kreisajā panelī varat veikt visas šīs pārbaudes tīrā un tiešā veidā.",
+              "bullets": [
+                {
+                  "bold": "Meklētājprogramma 213 līdzekļiem",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Platformā varat meklēt jebkuru instrumentu vai filtrēt savus iecienītākos, lai pievienotu to tabulai ar vienu klikšķi."
+                },
+                {
+                  "bold": "Ātra palaišana un precīza rediģēšana",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Katrā rindā ir izvēles rūtiņa, lai iekļautu vai izslēgtu līdzekli reāllaikā, un skaitļu lodziņš, lai ievadītu precīzu procentuālo daļu, neizmantojot neprecīzus slīdņus."
+                },
+                {
+                  "bold": "Trīs līdzsvarošanas saīsnes",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Tabulas augšdaļā ir pogas, lai sadalītu vienādus svarus starp visiem aktīvajiem aktīviem, automātiski palielinātu summu līdz 100% vai atgrieztos pie sākotnējā portfeļa."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "Rentgens",
+              "summary": "Augšējais labais panelis ar piecām cilnēm, lai atklātu slēptās koncentrācijas, naudas plūsmu un aizbildnību.",
+              "paragraphs": [
+                "Viena no visizplatītākajām kļūdām, veicot ieguldījumus, ir uzskats, ka esat diversificēts, jo jums ir pieci dažādi aktīvi, lai gan patiesībā iegādājāties atsevišķas akcijas un arī divus ETF, kuros ir tās pašas akcijas.",
+                "Rentgenstaru panelis analizē jūsu portfeli no iekšpuses, izmantojot piecas cilnes:"
+              ],
+              "lead": "Rentgenstaru panelis analizē jūsu portfeli no iekšpuses, izmantojot piecas cilnes:",
+              "bullets": [
+                {
+                  "bold": "Atkārtotas pozīcijas detektors",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Saskaitiet to, ko esat ieguldījis tieši katrā uzņēmumā, kā arī slēpto daļu, kas jums ir indeksos vai ETF (piemēram, SPY vai QQQ), brīdinot sarkanā krāsā, ja pārsniedzat piesardzīgos ierobežojumus."
+                },
+                {
+                  "bold": "Ekspozīcijas karte un atgriešanās izcelsme",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Tie parāda, cik procentus jums faktiski ir katram aktīva veidam un valūtai, un cik liela daļa jūsu peļņas tika iegūta, izvēloties labus sektorus, salīdzinot ar labu aktīvu izvēli."
+                },
+                {
+                  "bold": "Plānotie gada ienākumi un drošība",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Viņi aprēķina, cik dolāru jūs gatavojaties gadā iekasēt dividendēm, kuponiem un procentiem, un pārbauda turētājbanku maksātspēju, kur atrodas jūsu kapitāls."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kā tiek aprēķināta netiešā iedarbība ETF un Brinsona attiecinājuma sadalījumā."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Kalendārs",
+              "summary": "Mēneša diagramma no janvāra līdz decembrim, lai redzētu peļņas un zaudējumu regularitāti.",
+              "paragraphs": [
+                "Laba gada peļņa var slēpt vairākus mēnešus ilgus ļoti straujus kritumus, kurus praksē ir grūti panest. Cik konsekvents katru mēnesi ir jūsu tikko apkopotais portfelis?",
+                "Tieši zem rentgena attēla kalendārā ir sadalīta ikmēneša vēsture:"
+              ],
+              "lead": "Tieši zem rentgena attēla kalendārā ir sadalīta ikmēneša vēsture:",
+              "bullets": [
+                {
+                  "bold": "Zaļie mēneši un sarkanie mēneši",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Katra šūna tiek nekavējoties pārrēķināta atbilstoši jūsu tabulas svariem un tiek nokrāsota zaļā vai sarkanā krāsā atkarībā no šī mēneša rezultāta, aizverot labajā pusē ar gada kumulatīvo rezultātu."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Tālāk redzamā pilnekrāna diagramma, lai salīdzinātu savu portfeli ar četrām klasiskajām stratēģijām.",
+              "paragraphs": [
+                "Pirms uzskatāt, ka jūsu portfelis ir labs, galvenais pārbaudījums ir: vai tas tiešām ir labāk nekā atstāt naudu S&P 500 vai tradicionālajā 60/40 portfelī?",
+                "Apakšējais panelis aizņem visu ekrāna platumu, lai jūsu dizains atbilstu tirgus standartiem:"
+              ],
+              "lead": "Apakšējais panelis atbilst jūsu dizainam tirgus standartiem:",
+              "bullets": [
+                {
+                  "bold": "Pieci pārbaudes horizonti",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Tas ļauj novērtēt jūsu kombinācijas veiktspēju gan pēdējos ceturkšņos, gan visos vairāku gadu ciklos."
+                },
+                {
+                  "bold": "Četras aci pret aci atsauces",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Pārklājiet sava aktīvā portfeļa zaļo līkni pret jebkuru no četriem klasiskajiem modeļiem, lai jūs skaidri redzētu, kad tas ir priekšā un kā tas izturas pret negatīvajām pusēm."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Risks",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Laikā, kad tirgus kāpj mierīgi, gandrīz jebkurš portfelis šķiet drošs. Īstā problēma parādās, kad sākas krīze, pēkšņi pieaug procentu likmes un aktīvi, kas šķita neatkarīgi, sāk kristies vienlaicīgi.",
+            "Kvantitatīvs risks un stress (otrais Portfolio skats) izliek jūsu portfeli ārkārtējiem pārbaudījumiem, pirms tie notiek reālajā dzīvē. Izmantojot četrus simetriskus kvadrantus un tālāk redzamo nākotnes scenāriju simulatoru, tas precīzi parāda, kur atrodas jūsu neaizsargātie punkti."
+          ],
+          "intro": "Kvantitatīvā riska un stresa pārbaude pārbauda jūsu portfeli attiecībā uz vēsturiskām krīzēm, korelācijas izplatību un Monte Carlo prognozēm.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Interaktīvā riska un atdeves karte, lai redzētu, cik tuvu esat iespējami efektīvākajam portfelim.",
+              "paragraphs": [
+                "Ar tiem pašiem aktīviem, kas jau ir jūsu portfelī, ir tūkstošiem veidu, kā sadalīt procentus. Vai jūsu izvēlētā kombinācija ir tā, kas vislabāk maksā par uzņemto risku, vai arī jūs varētu uzvarēt to pašu ar mazāku pārsteigumu skaitu?",
+                "Pirmajā kvadrantā augšējā kreisajā stūrī ir parādīta šī reāllaika iespēju karte:"
+              ],
+              "lead": "Pirmais kvadrants augšējā kreisajā stūrī zīmē šo iespēju reālo karti:",
+              "bullets": [
+                {
+                  "bold": "Jūsu pozīcija pret optimālajiem portfeļiem",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Tas parāda, kur atrodas jūsu pašreizējais portfelis attiecībā pret zemākās iespējamās nepastāvības un maksimālās riska un atdeves efektivitātes punktu."
+                },
+                {
+                  "bold": "Vizuālie slāņi un pārbaude pēc līdzekļa",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Varat ieslēgt vai izslēgt modeļa slāņus un noklikšķināt uz jebkura mezgla, lai tālāk izlasītu precīzu šī līdzekļa devumu."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Efektīva Markowitz robeža un minimālās dispersijas un maksimālās Sharpe portfeļu aprēķināšana."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado un VaR",
+              "summary": "Vēsturiskais krīzes simulators, ikdienas zaudējumu sadalījums pa aktīviem un tirgus asimetrija.",
+              "paragraphs": [
+                "Ja rīt atkārtotos tāda kraha kā 2008. gadā, ekonomikas lejupslīde 2020. gadā vai likmju paaugstināšana 2022. gadā, cik daudz zaudētu jūsu pašreizējais portfelis un kādi aktīvi būtu galvenais vaininieks?",
+                "Apakšējais kreisais kvadrants atbild uz šiem trim jautājumiem trīs īpašās cilnēs:"
+              ],
+              "lead": "Apakšējais kreisais kvadrants atbild uz šiem jautājumiem trīs īpašās cilnēs:",
+              "bullets": [
+                {
+                  "bold": "Pārbaude pret piecām reālām krīzēm",
+                  "code": "1. Tornado Stress",
+                  "text": "Salīdziniet joslu pa stabiņam, cik ļoti jūsu portfelis kristos pret S&P 500 piecu lielu vēsturisku satricinājumu gadījumā."
+                },
+                {
+                  "bold": "Riska klasifikācija pēc pozīcijas",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Kārtojiet savus turējumus atkarībā no tā, cik dolāru iespējamo ikdienas zaudējumu katrs iegulda kopējā portfelī."
+                },
+                {
+                  "bold": "Uzvedība kāpumos un kritumos",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Tas parāda, kādu procentuālo daļu no tirgus pieaugošajiem riteņiem katrs īpašums izmanto un cik daudz tam izdodas mīkstināt tirgus krituma gadījumā."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Vēsturisko stresa scenāriju metodoloģija, minimālais ieguldījums VaR un uztveršanas koeficienti."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Korelācija",
+              "summary": "Krusta matrica, lai pārbaudītu, vai jūsu līdzekļi patiešām dažādojas vai arī tie ir inficēti panikas laikā.",
+              "paragraphs": [
+                "Ja jūsu portfelī ir vairāki aktīvi, tas samazina risku tikai tad, ja tie visi nepārvietojas vienā virzienā vienlaikus. Taču finanšu panikas laikā daudzas korelācijas, kas šķita zemas, strauji lec uz augšu.",
+                "Augšējais labais kvadrants ļauj pārbaudīt šīs attiecības divos scenārijos."
+              ],
+              "lead": "Augšējais labais kvadrants ļauj pārbaudīt šīs attiecības divos scenārijos.",
+              "bullets": [
+                {
+                  "bold": "Pāreja starp aktīviem un jutīgumu",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Tas parāda, cik līdzīgi katrs aktīvu pāris pārvietojas (zaļā vai gaiši zilā krāsā, ja tie labi diversificējas, un sarkanā krāsā, kad tie pārvietojas pārāk tuvu viens otram) un kāda ir to jutība pret tirgu."
+                },
+                {
+                  "bold": "Infekcijas simulators krīzē",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Ar vienu klikšķi jūs mainiet parastā gada korelācijas pret panikas brīža korelācijām, lai atklātu, kuras pozīcijas jūs vairs neaizsargā."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pīrsona korelācijas koeficientu aprēķināšana normālos apstākļos un tirgus stresa apstākļos."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash & Markovs",
+              "summary": "Kopīgā ietekmes tabula starp likmēm un akciju tirgu, kā arī ekonomiskā cikla izmaiņu varbūtības.",
+              "paragraphs": [
+                "Reālajā ekonomikā problēmas reti rodas pa vienai: daudzkārt procentu likmju kāpums sakrīt ar akciju kritumu. Kas notiek ar jūsu portfeli, ja abi faktori tiek apvienoti vienlaikus?",
+                "Apakšējais labais kvadrants šķērso abus mainīgos un mēra režīma maiņas varbūtības:"
+              ],
+              "lead": "Apakšējais labais kvadrants šķērso abus mainīgos un mēra tirgus ciklu:",
+              "bullets": [
+                {
+                  "bold": "Dubultā trieciena dēlis",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Krusteniskās likmes izmaiņas (-100 līdz +200 bāzes punkti) ar S&P 500 kritumiem vai kāpumiem (-20% līdz +10%), kas ļauj filtrēt pēc visa portfeļa vai pēc atsevišķa aktīva."
+                },
+                {
+                  "bold": "Cikla pārejas varbūtības",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Aprēķiniet, cik liela ir iespēja, ka tirgus saglabāsies mierīgs vai nonāks nestabilā, inflācijas vai krīzes fāzē."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Locītavu jutība pret ātrumiem un mainīgajiem, un Markova stāvokļa pārejas matrica."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Apakšējais panelis ir pilnekrāna režīmā ar nākotnes varbūtības prognozēm un vēsturiskiem kritumiem.",
+              "paragraphs": [
+                "Skatīšanās pagātnē ir noderīga, taču, ieguldot uz priekšu, jums jāzina, kādā rezultātu diapazonā jūsu kapitāls var pārvietoties nākamo sešu mēnešu, gada vai divu gadu laikā.",
+                "Pilna platuma apakšējais panelis apvieno trīs pagaidu rīkus, lai projektētu un kontrolētu šo ceļu:"
+              ],
+              "lead": "Apakšējā panelī ir apkopoti trīs pagaidu rīki, lai projektētu šo ceļu:",
+              "bullets": [
+                {
+                  "bold": "Desmit tūkstoši nākotnes scenāriju",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Uzzīmējiet sava portfeļa iespējamās attīstības konusu, nošķirot optimistisko scenāriju (P95 zaļā krāsā), paredzamo centrālo ceļu (P50) un nelabvēlīgo scenāriju (P05 sarkanā krāsā)."
+                },
+                {
+                  "bold": "Kritienu dziļums un stabilitāte laika gaitā",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Tie ļauj pārslēgt diagrammu, lai redzētu, cik ilgi portfelis saglabājās zem visu laiku augstākajām vērtībām vai cik stabils bija tā efektivitāte un risks, salīdzinot ar 60 dienu logiem."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo 10 000 ceļu stohastiskā simulācija un 60 dienu ritošā metrika."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulators",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Pirms iegādāties jaunu aktīvu, samazināt pozīciju vai maksāt par riska ierobežošanu ar opcijām, vienmēr rodas viens un tas pats jautājums: vai šī operācija patiešām uzlabo manu portfeli, vai arī tā palielina nevajadzīgu risku? Un cik daudz kapitāla man tajā jāiegulda?",
+            "Ad-Hoc stratēģijas laboratorija (trešais Portfolio skats) ir simulators pirms darbības. Tas ļauj ielādēt taktiskās spēles, aprēķināt savu ideālo pozīcijas izmēru, pārbaudīt negatīvo apdrošināšanu un redzēt precīzu triecienu pirms un pēc, vēl nepieskaroties savam pamata portfelim."
+          ],
+          "intro": "Ad-Hoc stratēģijas laboratorija ir jūsu pirmstirdzniecības simulators, lai pārbaudītu pasūtījumus, lieluma pozīcijas un izmērītu pārklājumu.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Ietekme",
+              "summary": "Sešas labākās kārtis, kas salīdzina jūsu pašreizējo portfolio ar rezultātu pēc simulētajām izspēlēm.",
+              "paragraphs": [
+                "Lai zinātu, vai taktiskā ideja ir tā vērta, nepietiek ar to, ka aktīvs pats par sevi izskatās pievilcīgs: tam ir jāuzlabo visa portfeļa rādītāji.",
+                "Augšējā rindā pastāvīgi tiek rādīts jūsu pašreizējā portfeļa un portfeļa salīdzinājums ar izmantoto simulāciju:"
+              ],
+              "lead": "Augšējā rindā jūsu pašreizējais portfelis ir salīdzināts ar portfeli ar izmantoto simulāciju:",
+              "bullets": [
+                {
+                  "bold": "Ietekme uz peļņu un efektivitāti",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Tie parāda bāzes numuru blakus prognozētajam skaitlim, izgaismojot atšķirību zaļā krāsā, ja spēle palielina efektivitāti, vai sarkanā krāsā, ja tā to pasliktina."
+                },
+                {
+                  "bold": "Ietekme uz risku, kapitālu un noteikumiem",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Tie norāda, cik lielā mērā mainās jūsu maksimālie paredzamie zaudējumi, cik procentu no portfeļa esat apņēmies veikt testus un vai tiek ievēroti visi drošības ierobežojumi."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If un Kellija",
+              "summary": "Biļešu pirkšanas/pārdošanas simulators un kalkulators, lai noteiktu, cik daudz naudas riskēt.",
+              "paragraphs": [
+                "Daudzas labas investīciju idejas galu galā rada zaudējumus likmes lieluma kļūdas dēļ: pārāk maz ieliekot adatu nekustina, bet liekot pārāk daudz, tas var sabojāt portfeli, ja gājiens noiet greizi.",
+                "Pirmais kvadrants augšējā kreisajā stūrī saista pierādījumu lapu ar matemātisko lieluma aprēķinu:"
+              ],
+              "lead": "Pirmais kvadrants apvieno testa ziņojumu ar matemātisko lieluma aprēķinu:",
+              "bullets": [
+                {
+                  "bold": "Testa pasūtījuma ielāde",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Jūs izvēlaties jebkuru aktīvu, norādiet, vai vēlaties pirkt, pārdot vai segt, un ielādējat summu dolāros. Tālāk esošajā sarakstā varat ieslēgt vai izslēgt katru simulēto pasūtījumu, lai salīdzinātu tā efektu."
+                },
+                {
+                  "bold": "Optimālais pozīcijas izmērs",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Pamatojoties uz jūsu aplēsto veiksmes iespējamību un peļņas un zaudējumu attiecību, tā aprēķina, kāds maksimālais kapitāla procents būtu jāpiešķir izaugsmei, nepārliekot sevi eksponējot."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kelly kritērija un tā konservatīvās versijas Half-Kelly matemātiskais aprēķins."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Ielieciet OTM & Margin",
+              "summary": "Apdrošināšanas simulators ar iespējām spēcīgam tirgus kritumam un maržas pieprasījuma monitoru.",
+              "paragraphs": [
+                "Ja baidāties no spēcīgas tirgus korekcijas, visu savu pozīciju pārdošana parasti ir dārga un neefektīva. Profesionālā alternatīva ir apdrošināties ar aizsardzības iespējām, bet cik šī apdrošināšana maksā gadā un cik tā jūs patiešām aizsargā?",
+                "Apakšējais kreisais kvadrants ļauj izmērīt gan segumu, gan parāda līmeni:"
+              ],
+              "lead": "Apakšējais kreisais kvadrants mēra gan segumu, gan garantiju līmeni:",
+              "bullets": [
+                {
+                  "bold": "Aizsargvairogu salīdzinājums",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Tas ļauj pārmaiņus darboties bez seguma vai izmantot trīs apdrošināšanas veidus ar opcijām (uz SPY, QQQ vai VIX nepastāvības), salīdzinot ikgadējās prēmijas izmaksas ar dolāriem, ko jūs ietaupītu 20% avārijas gadījumā."
+                },
+                {
+                  "bold": "Sviras kontrole un nodrošinājums",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Uzraugiet, cik procentus no uzturēšanas rezerves esat izmantojis un kādu procentuālo kritumu portfelis izturētu pirms ieiešanas maržas pieprasījuma zonā."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Riska ierobežošanas darbība ar beznaudas pārdošanas opcijām un garantiju aprēķins Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Komiteja un grāmata",
+              "summary": "Divi labie paneļi ar automātisku riska limitu, pasūtījumu vēstures un otrā pilota pārskatīšanu.",
+              "paragraphs": [
+                "Entuziasmā izmēģinot darījumus, ir viegli nepamanīt, ka aktīvs koncentrējas vairāk nekā 20% no visa jūsu portfeļa vai ka tas darbojas nopietnas statistikas anomālijas vidū.",
+                "Divi labajā pusē esošie kvadranti kalpo kā jūsu automātiskā riska kontrole un audita pēdas:"
+              ],
+              "lead": "Divi labajā pusē esošie kvadranti darbojas kā riska kontrole un reģistrācija:",
+              "bullets": [
+                {
+                  "bold": "Pārskats trīs dimensijās",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Viņi novērtē jūsu simulētos pasūtījumus no tehniskajiem, fundamentālajiem un stingriem drošības ierobežojumiem (brīdinājums, ja kāda pozīcija pārsniedz 20% kapitāla limitu vai tai ir lielas anomālijas)."
+                },
+                {
+                  "bold": "Pasūtījumu žurnāla un portfeļa palīgs",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Apakšējā panelī tiek ierakstīta katra simulācija ar tās ietekmi uz risku, savukārt dialoga poga augšējā labajā stūrī atver tērzēšanu, lai uzdotu tiešus jautājumus par jūsu portfolio."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pirmsoperācijas riska kontroles noteikumi un koncentrācijas ierobežojumi vienam aktīvam."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Tālāk redzamā diagramma pilnekrāna režīmā, lai pārbaudītu, vai jūsu stratēģija darbojas ārpus izmēģinājuma perioda.",
+              "paragraphs": [
+                "Jebkuru stratēģiju var pielāgot, skatoties pagātnē, līdz tā vēsturiskajā diagrammā šķiet nepārprotama. Patiesais izaicinājums ir zināt, vai tas turpina darboties, saskaroties ar jauniem tirgus datiem.",
+                "Pilna platuma apakšējais panelis pirms ražošanas uzsākšanas veic stratēģijas visstingrāko validāciju:"
+              ],
+              "lead": "Apakšējā panelī stratēģija tiek pārbaudīta izlasē un ārpus izlases:",
+              "bullets": [
+                {
+                  "bold": "Projektēšanas un faktiskās testēšanas atdalīšana",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Tas sadala vēsturisko grafiku pirmajā posmā, kurā tiek kalibrēta stratēģija, un otrajā posmā ar neredzamiem datiem, lai pārbaudītu, vai tā saglabā savas priekšrocības salīdzinājumā ar bāzes portfeli."
+                },
+                {
+                  "bold": "Statistiskā robustuma piezīme",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Ja efektivitātes rādītājs pārsniedz 70%, tas apstiprina, ka rezultāti ir konsekventi, nevis skaitļu piespiedu rezultāts pagātnei."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ko mēra Walk-Forward efektivitātes indekss (WFE) un kā tas atklāj pārāk optimizētas stratēģijas."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Likviditātes filtrs (ADV)",
+        "intro": "Lai aktīvu varētu tirgot, neizkropļojot tā cenu, platformai ir nepieciešams minimālais vidējā dienas apjoma slieksnis dolāros pēdējo 20 darbadienu laikā.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (slēgšanas cena × tirdzniecības apjoms)",
+          "denominator": "20 prasmīgi riteņi",
+          "vars": [
+            "Noslēguma cena: oficiālā dienas i slēgšanas cena, kas izteikta USD.",
+            "Tirgotais apjomsᵢ: kopējais tajā dienā tirgoto vienību skaits."
+          ]
+        },
+        "lead": "Pamatojoties uz vidējo dienas apjomu, katalogā ir klasificēts katra instrumenta dziļums:",
+        "bullets": [
+          {
+            "bold": "Augsta institucionālā likviditāte",
+            "code": "> $500M diarios",
+            "text": "Ļauj nekavējoties ieiet un iziet no lielām pozīcijām, nepārvietojot tirgus cenu."
+          },
+          {
+            "bold": "Standarta kataloga likviditāte",
+            "code": "$50M a $500M diarios",
+            "text": "Piemērots diversificētiem portfeļiem ar ļoti zemām pirkšanas/pārdošanas izmaksām."
+          },
+          {
+            "bold": "Izplatības uzraudzība",
+            "code": "< $50M diarios",
+            "text": "Nepastāvības laikā pirms lielu pasūtījumu izpildes ieteicams pārbaudīt dzeramnaudu atvēršanu."
+          }
+        ],
+        "example": "Ja akcijas tirgo par USD 200 un pēdējā mēneša laikā tirgo vidēji 5 miljonus akciju uz vienu riteni, to vidējais dienas apjoms (ADV) ir 1 miljards USD (1,0 miljards USD)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalizācija uz USD",
+        "intro": "Tā kā katalogā ir apvienotas Eiropas obligācijas, Āzijas indeksi, preces un kriptovalūtas, visas apjoma plūsmas tiek konvertētas ASV dolāros reāllaikā, lai tās varētu salīdzināt vienā mērogā.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Vietējās valūtas apjoms: summa, kas tiek tirgota sākotnējā tirgus valūtā (EUR, JPY, GBP, BRL utt.).",
+            "Spot valūtas maiņas kurss: pašreizējā kotācija 61 valūtas sistēmā."
+          ]
+        },
+        "lead": "Šis reklāmguvums tieši ietekmē divas vietas ekrānā:",
+        "bullets": [
+          {
+            "bold": "Kopējais skats Ranking All",
+            "code": "213 activos",
+            "text": "Pasūtiet instrumentus no lielākās līdz vismazāk reālajai naudas kustībai visā pasaulē."
+          },
+          {
+            "bold": "Pievienota apjoma karte",
+            "code": "Volumen 24h en $B",
+            "text": "Tas ļauj bez kropļojumiem pievienot dažādās valstīs uzskaitīto aktīvu apjomu."
+          }
+        ],
+        "example": "Ja Vācijas obligācijas tirgo 4 miljardus eiro dienā un EUR/USD savstarpējā tirdzniecība ir 1,08, sistēma globālajā impulsā aprēķina 4,32 miljardus ASV dolāru."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Kā noteikt, vai tirgus ir cēlies ar patiesu spēku vai arī tas jau ir cēlies pārāk ātri un ir izsmelts? Relatīvais spēka indekss (RSI) salīdzina vidējo pieaugumu ar vidējo kritumu pēdējo 14 kārtu skalā no 0 līdz 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (vidēji pieaugumi₁₄ / vidēji kritumi₁₄)",
+          "vars": [
+            "Vidējais pieaugums₁₄: izlīdzināts vidējais punktu skaits, kas nopelnīts pēdējo 14 riteņu kāpuma dienās.",
+            "Vidējie zaudējumi₁₄: tā paša perioda lāču dienās zaudēto punktu izlīdzinātais vidējais rādītājs."
+          ]
+        },
+        "lead": "Šādi tiek interpretētas trīs skalas sadaļas apļveida gredzenā:",
+        "bullets": [
+          {
+            "bold": "Pirkšanas spēks un pārpirkts",
+            "code": "70 a 100",
+            "text": "Pieaugums ievērojami pārsniedz neseno samazinājumu. Tas parāda lielu bullish impulsu, lai gan virs 70 brīdina, ka cenai var būt nepieciešama pauze."
+          },
+          {
+            "bold": "līdzsvara zona",
+            "code": "30 a 70",
+            "text": "Tirgus virzās ilgtspējīgā tempā. Vidējā līmeņa šķērsošana (> 50 zaļā krāsā) apstiprina pircēja dominējošo stāvokli, savukārt kritums zem (< 50 sarkanā krāsā) norāda uz pārdevēja dominējošo stāvokli."
+          },
+          {
+            "bold": "Sods un pārpārdošana",
+            "code": "0 a 30",
+            "text": "Kritieni bija tik bieži un izteikti, ka aktīvs sāk izskatīties statistiski lēts un pakļauts atsitienam."
+          }
+        ],
+        "example": "Ja pēdējos 14 riteņos akciju grupa pieauga vidēji par USD 2 vienā kāpuma dienā un kritās tikai par USD 1 par lācīgu dienu, tās stiprības koeficients ir 2 un RSI ir 66,7 (bullish push zaļā krāsā)."
+      },
+      {
+        "id": "p06",
+        "label": "Parastais režīms (P-06)",
+        "intro": "Aktīvs var šķist mierīgs, ja skatāties tikai uz tā cenu, bet tajā pašā laikā jūs ciešat no dīvaina apjoma lēciena un neparastas pirkšanas un pārdošanas maksimumu atvēršanas. Isolation Forest dzinējs (P-06) šķērso šos mainīgos lielumus vienlaikus, lai noteiktu netipisku uzvedību.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): vidējais nejaušo izcirtņu skaits, kas nepieciešams, lai izolētu mūsdienu uzvedību no pārējās vēstures.",
+            "x: 4 mainīgo vektors (atgriešanās 24 h, tilpums Z-Score 20 d, realizētais svārstīgums 30 d un izkliede bps)."
+          ]
+        },
+        "lead": "Jo retāks šodienas gājiens, jo ātrāk tas tiek izolēts un jo tuvāk rezultāts ir 1,00:",
+        "bullets": [
+          {
+            "bold": "Normāls režīms",
+            "code": "0.00 a 0.49",
+            "text": "Cena, apjoms un likviditāte mainās atbilstoši aktīva vēsturiskajam vidējam rādītājam."
+          },
+          {
+            "bold": "Augsta aktivitāte",
+            "code": "0.50 a 0.64",
+            "text": "Vismaz viens no mainīgajiem sāka novirzīties no ierastās uzvedības; Vēlams rūpīgi uzraudzīt pasūtījumu plūsmu."
+          },
+          {
+            "bold": "Dislokācija vai kritiska anomālija",
+            "code": "0.65 a 1.00",
+            "text": "Aktīvs reģistrē statistiski ekstrēmu uzvedību. Portfeļa modulī, pārsniedzot šo slieksni, tiek aktivizēta drošības bremze."
+          }
+        ],
+        "example": "Ja valsts obligācijas cena tik tikko mainās par 0,1%, bet tās apjoms reizina ar četriem un tās izplatība trīskāršojas minūtēs, detektors šķērso trīs datu punktus un paaugstina rezultātu līdz 0,74 (dislokācija sarkanā krāsā)."
+      },
+      {
+        "id": "zscore",
+        "label": "Skaļuma apvads (Z-Score)",
+        "intro": "Sakot, ka šodien tika ekspluatēti 500 miljoni dolāru, tas ir daudz vidējam uzņēmumam, bet ļoti maz S&P 500. Volume Z-Score apvieno visus līdzekļus vienā un tajā pašā universālajā vienībā: cik standarta novirzes (σ) ir šodienas tilpums no paša 20 riteņu vidējā rādītāja.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Skaļums šodien (24 h) — vidējais skaļums (20 d)",
+          "denominator": "Skaļuma standarta novirze (20 d)",
+          "vars": [
+            "Vidējais apjoms (20 d): parastais aktīva apjoms pēdējā darba mēneša laikā.",
+            "Standarta novirze (20 d): cik daudz šis apjoms parasti mainās no vienas dienas uz otru."
+          ]
+        },
+        "lead": "Tādā veidā jūs varat salīdzināt jebkuru līdzekli tajā pašā sigma (σ) mērvienību skalā:",
+        "bullets": [
+          {
+            "bold": "Parasta darbība",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Dienas apjoms pilnībā iekļaujas pēdējo četru nedēļu rutīnā."
+          },
+          {
+            "bold": "Augsta līdzdalība",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Interese ir augstāka par vidējo, kas sāk apstiprināt šīs dienas tendenci."
+          },
+          {
+            "bold": "Institucionālā sadursme",
+            "code": "> +2.0σ",
+            "text": "Tas notiek mazāk nekā 5% gada kārtu un parasti atspoguļo lielu līdzekļu masveida ienākšanu vai iziešanu no tiem."
+          }
+        ],
+        "example": "Ja akcijas parasti katru dienu tirgo 100 miljonus USD ar tipisku svārstību ± 20 miljonu USD apmērā un šodien tirgojas USD 160 miljonu apmērā, tas ir par 60 miljoniem USD virs vidējā līmeņa, kas ir tieši līdzvērtīgs +3,0 σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Fiksētie ienākumi (2s10s un DV01)",
+        "intro": "Filtrējot tabulā obligācijas vai likmes, tiek parādīti divi galvenie rādītāji valsts parāda novērtēšanai: līknes slīpums (2s10s) un bāzes punkta naudas vērtība (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 bāzes punkts (1 bp): līdzvērtīgs 0,01% veiktspējai.",
+            "DV01 ($/$1M): cik dolāru 1 miljona dolāru pozīcija uzvar vai zaudē, ja likme mainās par 1 bāzes punktu."
+          ]
+        },
+        "lead": "Kā nolasīt šos divus skaitļus režģī:",
+        "bullets": [
+          {
+            "bold": "Normāla vai pozitīva līkne",
+            "code": "2s10s > 0 bps",
+            "text": "10 gadu obligācijas maksā augstāku likmi nekā 2 gadu obligācijas, atspoguļojot cerības uz veselīgu ekonomikas izaugsmi."
+          },
+          {
+            "bold": "apgriezta līkne",
+            "code": "2s10s < 0 bps",
+            "text": "Īsās likmes pārsniedz garās likmes; vēsturiski tas brīdina par ekonomikas atdzišanu vai monetāriem ierobežojumiem."
+          }
+        ],
+        "example": "Ja 10 gadu Valsts kases ienesīgums ir 4,20% un 2 gadu Valsts kases ienesīgums ir 4,55%, kolonna 2s10s atzīmē -35 bps (apgriezta līkne sarkanā krāsā)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Akcijas (P/E un peļņa)",
+        "intro": "Filtrējot S&P/NDX akcijas, tabulā tiek parādīti prognozētie peļņas skaitļi (P/E Forward) un bruto darbības peļņa, lai jūs varētu salīdzināt vērtējumu ar rentabilitāti.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Pašreizējā akcijas cena",
+          "denominator": "Paredzamie ieņēmumi uz akciju (nākamajos 12 mēnešos)",
+          "vars": [
+            "P/E Forward: cik gadu nākotnes ienākumus jūs maksājat par šodienas cenu.",
+            "Bruto peļņa (%): procentuālā daļa no pārdošanas apjoma, kas paliek kā bruto peļņa pēc tiešo izmaksu atskaitīšanas."
+          ]
+        },
+        "lead": "Kas jāņem vērā, šķērsojot abas kolonnas:",
+        "bullets": [
+          {
+            "bold": "Prasīgs vai mērens novērtējums",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Liels reizinājums norāda, ka tirgus cenas nosaka spēcīgu turpmāko izaugsmi; zemais parasti atspoguļo nobriedušus vai vērtīgus uzņēmumus."
+          },
+          {
+            "bold": "Cenas jauda",
+            "code": "Margen Bruto > 50%",
+            "text": "Augstās peļņas normas parāda uzņēmumus ar spēcīgām konkurences priekšrocībām, kas spēj aizsargāt savu peļņu pret inflāciju."
+          }
+        ],
+        "example": "Ja akciju tirdzniecība ir USD 150 un tiek lēsts, ka nākamajos 12 mēnešos tās nopelnīs USD 6 par akciju, tās nākotnes P/E ir 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Atvasinātie instrumenti, FX un preces",
+        "intro": "Opciju, forex un fizisko fjūčeru tirgu gadījumā abas dinamiskās kolonnas parāda paredzamās riska izmaksas vai atlīdzību par pozīcijas turēšanu laika gaitā.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (atvasinātie instrumenti): gada svārstīgums, ko opciju tirgus atlaiž nākamajām 30 dienām.",
+            "Carry 10Y (FX) un Roll Yield (Preces): gada peļņa vai izmaksas no likmju starpības vai fjūčeru maiņas."
+          ]
+        },
+        "lead": "Kā izmantot šīs slejas atkarībā no līdzekļa:",
+        "bullets": [
+          {
+            "bold": "Atvasinātajos instrumentos",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Tie norāda, cik lielu kustību procentuālo daļu tirgus sagaida un vai kritienu segšanas iespējas (Puts) ir dārgas."
+          },
+          {
+            "bold": "Valūtās un izejvielās",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Tie tiek rādīti zaļā krāsā, ja aktīva uzturēšana sniedz jums papildu ienākumus, vai sarkanā krāsā, ja tam ir uzskaites izmaksas."
+          }
+        ],
+        "example": "Ja opcija uzrāda implicēto svārstīgumu (ATM IV) 35% apmērā gadā, tirgus diskontē kustību tuvu ±10% nākamajās 30 dienās."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radara radiālā kartēšana",
+        "intro": "Lai trīs radara gredzenos novietotu līdz 45 līdzekļiem bez pārklāšanās, Orbital skats pārveido izvēlētā indikatora vērtību attālumā līdz centram (rādiuss r), kas normalizēts starp grupas minimālo un maksimumu.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Aktīvu vērtība – Grupas minimālā vērtība",
+          "denominator": "Grupas maksimālā vērtība – Grupas minimālā vērtība",
+          "vars": [
+            "r → 0 (iekšējais gredzens): koncentrē līdzekļus ar lielāku intensitāti vai pozitīvu novirzi.",
+            "r → 1 (ārējais gredzens): atrod perifērijas līdzekļus vai tos, kuriem ir viszemākais relatīvais rādījums."
+          ]
+        },
+        "lead": "Kā nolasīt katras planētas atrašanās vietu un krāsu radarā:",
+        "bullets": [
+          {
+            "bold": "Fokusa iekšējais gredzens",
+            "code": "Centro del radar",
+            "text": "Apkopojiet vadošos līdzekļus no iepriekš atlasītā rādītāja, lai jūsu skatījumā vispirms būtu redzams vissvarīgākais."
+          },
+          {
+            "bold": "Vēsturiskā krāsu semantika",
+            "code": "Verde vs Rojo",
+            "text": "Mezgls iedegas zaļā krāsā, ja tas labvēlīgi pārsniedz vēsturisko vidējo rādītāju, un sarkanā krāsā, ja tas atspoguļo lejupslīdi vai stresu."
+          }
+        ],
+        "example": "Ja kārtojat radaru pēc skaļuma novirzes (Z-Score), aktīvais ar +3,4σ atrodas spilgtajā centrālajā gredzenā, bet viens ar 0,1σ atrodas ārējā orbītā."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) un Bollingera joslas",
+        "intro": "20 periodu vienkāršais mainīgais vidējais (SMA 20) iezīmē aktīva bāzes tendenci, savukārt Bollingera joslas veido dinamisku kanālu, saskaitot un atņemot divas standarta novirzes (2σ) ap šo vidējo rādītāju.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): pēdējo 20 noslēgumu vidējais aritmētiskais.",
+            "Joslas platums (BB platums): procentuālais attālums starp augšējo un apakšējo joslu."
+          ]
+        },
+        "lead": "Statistiski aptuveni 95% citātu atrodas divās joslās:",
+        "bullets": [
+          {
+            "bold": "Cena virs vidējās",
+            "code": "Precio > SMA 20",
+            "text": "Tas norāda, ka īstermiņa tendence ir strauja un vidējais rādītājs parasti darbojas kā atbalsta grīda."
+          },
+          {
+            "bold": "Augšējās vai apakšējās joslas pieskāriens",
+            "code": "±2σ",
+            "text": "Tas brīdina, ka cena pārāk ātri izstiepās no nesenā vidējā līmeņa un var atvilkt elpu."
+          },
+          {
+            "bold": "joslas saspiešana",
+            "code": "BB Width bajo",
+            "text": "Kad joslas kļūst ļoti šauras, tirgus uzkrāj enerģiju pirms spēcīgas kustības."
+          }
+        ],
+        "example": "Ja akcijas SMA(20) ir 100 USD un tā 20 riteņu standarta novirze ir 4 USD, augšējā josla ir USD 108 un apakšējā josla ir USD 92."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Iestādes",
+        "intro": "Atšķirībā no parastā vidējā, kas piešķir vienādu nozīmi visām diennakts stundām, VWAP katru cenu sver pēc naudas summas, kas faktiski tika tirgota šajā līmenī. Tā ir galvenā atsauce, ko izmanto iestāžu tabulās.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (parastā cena × tirdzniecības apjoms)",
+          "denominator": "∑ Tirdzniecības apjomsᵢ",
+          "vars": [
+            "Tipiskā cena: vidējā starp katras sveces maksimālo, minimālo un tuvumu.",
+            "Tirgotais apjoms: īpaši šajā sadaļā tirgotais apjoms."
+          ]
+        },
+        "lead": "Kā profesionāli tirgotāji izmanto VWAP līniju:",
+        "bullets": [
+          {
+            "bold": "Izpildes kontrole",
+            "code": "Comprar bajo el VWAP",
+            "text": "Ja institucionālais fonds pērk zem VWAP par periodu, tas ieguva labāku cenu nekā tirgus vidējā svērtā cena."
+          },
+          {
+            "bold": "Tendences aizsardzības līmenis",
+            "code": "Soporte / Resistencia",
+            "text": "Kamēr aktīvs paliek virs VWAP, tie, kas iegādājās attiecīgajā periodā, gūst vidējo peļņu."
+          }
+        ],
+        "example": "Ja 1 miljons akciju tiktu tirgotas par USD 100 un tikai 100 tūkstoši akciju tiktu tirgotas par USD 110, vienkāršais vidējais rādītājs būtu USD 105, bet VWAP rāda 100,91 USD, jo gandrīz visa nauda tika tirgota par USD 100."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Izkliedes nobīde (bps)",
+        "intro": "Starpība ir starpība starp labāko pieprasījuma cenu un labāko piedāvāto cenu pasūtījumu grāmatā. Kad tirgus veidotāji uztver risku vai likviditātes trūkumu, viņi atver šo plaisu, lai aizsargātu sevi.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "(Prasītā cena — piedāvājuma cena)",
+          "denominator": "Vidējā cena (vidējā cena)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Jautāt / Piedāvāt Cena: pārdošanas punkts un pirkšanas punkts grāmatā.",
+            "10 000: konversijas koeficients, lai izteiktu starpību bāzes punktos (bps)."
+          ]
+        },
+        "lead": "Ko parāda izkliedes dislokācijas rādījums uz kreisās sliedes:",
+        "bullets": [
+          {
+            "bold": "Dziļa un plūstoša grāmata",
+            "code": "Spread estable en verde",
+            "text": "Abos galos ir daudz likviditātes, un netiešās izmaksas par ienākšanu vai iziešanu no tās ir minimālas."
+          },
+          {
+            "bold": "Likviditātes berze vai izņemšana",
+            "code": "Salto en bps",
+            "text": "Parasti tas notiek dažas sekundes pirms makroekonomikas paziņojumiem vai panikas pārdošanas laikā, padarot izpildi dārgāku."
+          }
+        ],
+        "example": "Ja aktīva pirkšanas padoms ir USD 99,95 un pārdošanas padoms USD 100,05, starpība USD 0,10 apmērā no USD 100 ir līdzvērtīga 10 bāzes punktiem (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Iespējas (melnskoli un grieķi)",
+        "intro": "Opciju dzinējā platforma attēlo divas peļņas un zaudējumu (P&L) līknes: kā stratēģija beigtos derīguma termiņa dienā un cik tā ir vērta šodien (T+0), izmantojot Black-Scholes modeli.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S un K: bāzes aktīva pašreizējā cena (Spot) un iespējas līguma izpildes cena (Strike).",
+            "Neto grieķi: Δ Delta (cenas jutīgums), Γ Gamma (Delta paātrinājums), Θ Theta (ikdienas laika nodilums) un ν Vega (nepastāvības jutīgums)."
+          ]
+        },
+        "lead": "Kā lasīt grieķus par jūsu stratēģiju kreisajā pusē:",
+        "bullets": [
+          {
+            "bold": "Stūrēšana un paātrinājums",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Pozitīva Delta uzvar, kad aktīvs palielinās; pozitīva Gamma liek jums iegūt ātrāk un ātrāk, ja kustība paātrinās."
+          },
+          {
+            "bold": "Laika ritējums un nenoteiktība",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta norāda, cik dolāru pozīcija zaudē vai iegūst par katru dienu; Vega, cik daudz tas mainās, ja implicētais svārstīgums palielinās par 1%."
+          }
+        ],
+        "example": "Long Straddle (pērciet Call un Put on to pašu streiku) Delta ir tuvu 0 (nav svarīgi, vai tas iet uz augšu vai uz leju), bet pozitīvs Vega, un cenai ir nepieciešams, lai tā pārsniegtu divus līdzsvara punktus (pārkāpumus)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Suverēnās līknes (Butterfly un DV01)",
+        "intro": "Fiksēta ienākuma dzinējs salīdzina ienesīgumu no 3 mēnešiem līdz 30 gadiem 42 valstīs un aprēķina gan vidējās daļas slīpumu (2s10s), gan izliekumu (Butterfly 2s5s10s), gan monetāro jutīgumu (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y likme: atlasītās valsts 2, 5 un 10 gadu suverēnās peļņas likmes.",
+            "Reālā 10 gadu likme: 10 gadu nominālā peļņa mīnus atsauces likme vai netiešā inflācija."
+          ]
+        },
+        "lead": "Kam katrs rādītājs ir paredzēts obligāciju analīzē:",
+        "bullets": [
+          {
+            "bold": "Vidējās sekcijas izliekums",
+            "code": "Butterfly 2s5s10s",
+            "text": "Tas mēra, vai 5 gadu daļa ir dārga vai lēta salīdzinājumā ar 2 un 10 gadu galējībām."
+          },
+          {
+            "bold": "Dolāra ilguma risks",
+            "code": "DV01 por $1M",
+            "text": "Tas precīzi norāda, cik dolāru mainās miljonu dolāru portfelis, mainoties kursam par 0,01%."
+          }
+        ],
+        "example": "10 gadu obligācija ar DV01 USD 820 par miljonu zaudēs aptuveni USD 82 000, ja tirgus likmes pieaugs par 100 bāzes punktiem (+1,00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Valūtas (pārnēsāšana) un nākotnes līgumi (ritēšanas ienesīgums)",
+        "intro": "Valūtās, ja pāris netiek tieši kotēts, to aprēķina ar triangulāciju pret dolāru un mēra tā kursa starpību (Carry). Izejmateriālos atjaunošanas veiktspēju mēra starp tūlītēju līgumu un 12 mēnešu līgumu (rullīšu ienesīgumu).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Aktuālā cena (priekšējā M1) — nākotnes cena (M12)",
+          "denominator": "Nākotnes cena (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Atpakaļgaitas (Spot > Future): fiziskais trūkums šodien liek mainīgiem nākotnes līgumiem radīt pozitīvu peļņu (Roll Yield > 0).",
+            "Contango (Spot < Future): uzglabāšanas izmaksas sadārdzina nākotnes līgumus, un to atjaunošana rada negatīvas izmaksas."
+          ]
+        },
+        "lead": "Kā tas ietekmē jūsu kabatas grāmatiņu, ieņemot pozīciju:",
+        "bullets": [
+          {
+            "bold": "Pozitīva Carry Trade valūtās",
+            "code": "Carry Spread > 0 bps",
+            "text": "Ja jūs pērkat valūtu ar augstu procentu likmi, finansējot sevi valūtā ar zemu likmi, jūs iekasēsit šo starpību savā labā."
+          },
+          {
+            "bold": "Izejvielās labvēlīgs vējš",
+            "code": "Backwardation en verde",
+            "text": "Ja fiziskie krājumi ir mazi, blakus esošais līgums ir vērtīgāks nekā tālākais, un investors gūst papildu peļņu, izpildot līgumu."
+          }
+        ],
+        "example": "Ja 1 mēneša naftas cena ir USD 72 un 12 mēnešu kontrakta cena ir USD 68, tirgus ir atpakaļgaitas stāvoklī ar pozitīvu ienesīgumu +5,88% gadā."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Kopējā svērtā atzīme",
+        "intro": "Ne visi aktīvi pārvietojas pa vieniem un tiem pašiem avotiem: uzņēmumā liels svars ir revidētiem finanšu pārskatiem (SEC 10-K/10-Q), savukārt kriptovalūtu tirgū vai valūtās lielāka nozīme ir ikdienas plūsmām un sakariem.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: automātiska svēršana atbilstoši kategorijai (piemēram, 80% / 20% akcijās; 85% / 15% maksājumos).",
+            "Galīgā skala: svārstās no –100 (maksimālais pesimisms) līdz +100 (maksimālā bullish pārliecība)."
+          ]
+        },
+        "lead": "Lūk, kā saliktais rezultāts tiek tulkots augstākajā viedoklī:",
+        "bullets": [
+          {
+            "bold": "Bullish nostāja",
+            "code": "BULLISH / Nota > +15",
+            "text": "Dokumentālie katalizatori un ziņu plūsma nepārprotami atsver riska faktorus."
+          },
+          {
+            "bold": "Neitrāla vai jaukta poza",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Pat spēki starp pamatiem un ziņām; Pirms lēmuma pieņemšanas ieteicams pārskatīt 10 faktoru akordeonu."
+          },
+          {
+            "bold": "Aizsardzības vai lāču nostāja",
+            "code": "BEARISH / Nota < -15",
+            "text": "Pārsvarā ir brīdinājumi par bilancēm, maržu pasliktināšanās vai nelabvēlīgi virsraksti."
+          }
+        ],
+        "example": "Akcijā (80% pamatrādītāji / 20% jaunumi), ja atlikumi uzrāda +50 punktus un dienas ziņas rāda +20, kopējais svērtais rādītājs ir (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Verificētā meklēšana (RAG)",
+        "intro": "Lai mākslīgais intelekts neizgudrotu skaitļus, Document Chat izmanto paaudzes paplašināto atkopšanu (RAG): vispirms tā meklē attiecīgās rindkopas aktīva oficiālajos pārskatos un tikai pēc tam raksta atbildi, atsaucoties uz avotu.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vektora konsultācija (Q) · Vektora oficiālais dokuments (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Q un D vektors: jūsu jautājuma un oficiālo fragmentu skaitliski attēlojumi (10-K, FOMC protokoli, IVN ziņojumi).",
+            "3 slāņu aizsargslānis: filtrs, kas bloķē vaicājumus, kas nav saistīti ar finansēm vai bez dokumentāla atbalsta."
+          ]
+        },
+        "lead": "Ko šis mehānisms garantē, kad tērzēšanā uzdodat jautājumu:",
+        "bullets": [
+          {
+            "bold": "Noenkurošanās primārajos avotos",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Visi dati par ienākumiem, parādiem, krājumiem vai likmēm tiek iegūti no normatīvā dokumenta, kas atbilst šim aktīvam."
+          },
+          {
+            "bold": "Pārtrauciet jautājumus, kas nav saistīti ar tēmu",
+            "code": "Guardrail activo",
+            "text": "Ja kāds mēģina apspriest ar finansēm nesaistītas tēmas, asistents noraida vaicājumu un koncentrējas uz instrumenta analīzi."
+          }
+        ],
+        "example": "Pieskaroties riska faktoru mikroshēmai akcijai, dzinējs izgūst jaunākās 10-K veidlapas sadaļu 1A (riska faktori) un apkopo kritiskos punktus."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT neironu rādītājs",
+        "intro": "Tipiskā vārdnīcā bieži tiek sajaukti finanšu vārdi (piemēram, \"izmaksu samazināšanās\" vai \"parāda samazināšana\" ir lieliska ziņa, pat ja tiek lietots vārds kritums vai samazināšana). FinBERT ir neironu tīkls, kas īpaši apmācīts finanšu tekstiem.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(pozitīvs) un P(negatīvs): varbūtības, ko modelis piešķir virsrakstam, kas aktīvam ir lācīgs vai lācīgs.",
+            "24h līkne: pēdējo 24 stundu virsrakstu eksponenciāli mainīgais vidējais rādītājs."
+          ]
+        },
+        "lead": "Katra mezgla novērtējums laika skalā labajā pusē:",
+        "bullets": [
+          {
+            "bold": "Katalizatora turētājs",
+            "code": "+20 a +100 en verde",
+            "text": "Pārspējot aptuvenās peļņas, kredītreitingu paaugstināšanu vai labvēlīgu likmju samazinājumu."
+          },
+          {
+            "bold": "Neitrāls informācijas kabelis",
+            "code": "-19 a +19 en ámbar",
+            "text": "Regulāri darbības paziņojumi, kas nemaina instrumenta strukturālo novērtējumu."
+          },
+          {
+            "bold": "Riska turētājs",
+            "code": "-20 a -100 en rojo",
+            "text": "Normatīvie brīdinājumi, maržas samazināšanās, streiki vai sliktāki, nekā gaidīts, inflācijas dati."
+          }
+        ],
+        "example": "Ja modelis virsrakstam piešķir 82% pozitīvu varbūtību, 12% neitrālu un 6% negatīvu varbūtību, mezgls parāda neto ietekmi +76 zaļā krāsā."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe un Sortino",
+        "intro": "Pirmās divas galvenās kartītes parāda, cik daudz pieaug jūsu kapitāls gadā (CAGR) un cik efektīva ir šī izaugsme attiecībā pret satricinājumiem, kas jums jāpārdzīvo (Sharpe un Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Gada Portfolio atdeve (Rp) — bezriska likme (Rf)",
+          "denominator": "Gada Portfolio nepastāvība (σp)",
+          "vars": [
+            "Rf (4,30%): bāzes ienesīgums, ko jūs varētu iegūt bez riska valsts iekšējā aizņēmuma parādzīmēs.",
+            "Sortino Ratio: izmanto to pašu formulu, bet saucējā tas tikai soda negatīvo dienu (kritumu) nepastāvību."
+          ]
+        },
+        "lead": "Kā novērtēt portfeļa kvalitāti ar šiem skaitļiem:",
+        "bullets": [
+          {
+            "bold": "Efektīvs portfelis",
+            "code": "Sharpe > 1.00",
+            "text": "Pārsniegtā peļņa, ko jūs sasniedzat virs bezriska likmes, ievērojami pārsniedz pieņemto nepastāvību."
+          },
+          {
+            "bold": "Izcils sniegums",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Tas norāda uz ļoti daudzveidīgu kombināciju, kurā pieaugums ir konsekvents un kritumi ir ierobežoti."
+          }
+        ],
+        "example": "Ja jūsu portfeļa atdeve ir 15,3% gadā, bezriska likme ir 4,3% un jūsu gada svārstīgums ir 10%, jūsu pārpalikuma ienesīgums ir 11% un jūsu Sharpe koeficients ir 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% un Drawdown",
+        "intro": "Trešā un ceturtā kārts atbild, cik daudz jūs varat zaudēt sliktā, bet statistiski parastā dienā (VaR 95%), cik daudz ekstremālās panikas dienā (CVaR 99%) un kāds bija lielākais atkāpšanās no iepriekšējā maksimuma (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1645: statistikas faktors, kas aptver 95% no parastajiem gada riteņiem (19 no katrām 20 dienām).",
+            "CVaR 99% (paredzamais iztrūkums): vidējie zaudējumi, kad tirgus pārkāpj šo slieksni un iekļūst sliktāko dienu pirmajā 1% vietā."
+          ]
+        },
+        "lead": "Kāda ir praktiska atšķirība starp VaR un Max Drawdown skatīšanos?",
+        "bullets": [
+          {
+            "bold": "Vienas dienas risks",
+            "code": "VaR 95% 1D en USD",
+            "text": "Tas sagatavo jūs psiholoģiski un finansiāli tam, ka jūsu konts var mainīties sliktā virzienā, taču tas nenozīmē, ka stratēģija neizdevās."
+          },
+          {
+            "bold": "Izturība nelabvēlīgā sērijā",
+            "code": "Max Drawdown 12M",
+            "text": "Tas mēra uzkrāto kritumu no gala līdz galam no augstākā punkta līdz grīdai, pirms tas atkal atjaunojas."
+          }
+        ],
+        "example": "100 000 $ portfelī ar ikdienas VaR 95% no 1,45% (1450 $), 19 no 20 tirdzniecības riteņiem jūsu ikdienas zaudējumi nepārsniegs 1450 $."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Rentgenstaru pārklāšanās (#12)",
+        "intro": "Pērkot ETF, piemēram, SPY vai QQQ, jūs pērkat desmitiem akciju. Ja jūs arī esat iegādājies dažas no tām pašām akcijām tieši, jūsu patiesā ekspozīcija ir abu lietu summa.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Tiešais svars: jūsu portfeļa procentuālā daļa, kas piešķirta tieši akcijām i.",
+            "Procentuālā daļa ETFₖ: oficiālais svars, kas šim uzņēmumam ir indeksā vai fondā k."
+          ]
+        },
+        "lead": "Kāpēc pirms portfeļa aizvēršanas ir svarīgi pārskatīt šo pirmo cilni:",
+        "bullets": [
+          {
+            "bold": "Slēptās koncentrācijas redzamība",
+            "code": "Directo + Indirecto",
+            "text": "Tas automātiski izjauc katru ETF jūsu portfelī un parāda vienu joslu ar patieso procentuālo daudzumu, kas jums ir katrā uzņēmumā."
+          },
+          {
+            "bold": "Pārmērīgs brīdinājums",
+            "code": "> 20% en rojo",
+            "text": "Ja kopējā summa pārsniedz piesardzīgo koncentrēšanās slieksni uz vienu nosaukumu, rinda iedegas, lai jūs varētu atjaunot līdzsvaru."
+          }
+        ],
+        "example": "Ja jūs ievietojat 15% no sava portfeļa tiešajā NVDA un 30% ir arī SPY ETF (kur NVDA sver aptuveni 7%), rentgena starojums atklāj, ka jūsu patiesā iedarbība uz NVDA ir 15% + (30% × 7%) = 17."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alfa Brinsona sadalīšanās (#2)",
+        "intro": "Kad jūsu portfelis pārspēj (vai zaudē pret) savu etalonu, Brinsona-Faklera modelis precīzi atdala, no kurienes radās šī atšķirība: vai jums bija taisnība, kurās nozarēs bija liekais svars, vai arī jūs pareizi izvēlējāties labākos aktīvus katrā sektorā?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Piešķīruma efekts: (Portfolio svars – etalona svars) × sektora atdeve etalonā.",
+            "Atlases efekts: Svars etalonā × (Jūsu aktīvu atdeve — sektora atdeve)."
+          ]
+        },
+        "lead": "Kā lasīt trīs attiecinājuma joslas trešajā cilnē:",
+        "bullets": [
+          {
+            "bold": "Makro vai sektora panākumi",
+            "code": "Asignación Sectorial",
+            "text": "Tas ir pozitīvs zaļā krāsā, ja jūs piešķirat lielāku nozīmi nekā tirgum tām aktīvu klasēm, kuras pieauga visvairāk."
+          },
+          {
+            "bold": "Veiksmīga līdzekļu mērķēšana",
+            "code": "Selección de Activos",
+            "text": "Pozitīvi ir tas, ka konkrētie jūsu izvēlētie instrumenti darbojās vairāk nekā vidēji savā nozarē."
+          }
+        ],
+        "example": "Ja jūsu portfelis pārspēj S&P 500 par +3,20%, šī cilne ļauj redzēt, ka +2,10% radīja labāku akciju izvēle (Atlase) un +1,10% no lielākas nozīmes tehnoloģijā (Piešķiršana)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Efektīva robeža un CML",
+        "intro": "Markowitz plaknē portfeļa sagaidāmā atdeve ir tā aktīvu atdeves vidējā svērtā vērtība, taču tā svārstīgums ir zemāks par vidējo, pateicoties tam, ka aktīvi nepārvietojas 100% vienādi.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: aktīviem i un j piešķirtā kapitāla procentuālā daļa.",
+            "ρᵢⱼ (korelācija): pakāpe, kādā abi aktīvi pārvietojas kopā (–1 līdz +1). Jo mazāks ir ρᵢⱼ, jo vairāk tiek samazināts kopējais risks."
+          ]
+        },
+        "lead": "Ko attēlo trīs atsauces diagrammā:",
+        "bullets": [
+          {
+            "bold": "Minimālā atšķirība",
+            "code": "Min-Var",
+            "text": "Tas ir galējais kreisais punkts līknē: precīza svaru kombinācija, kas nodrošina zemāko iespējamo nepastāvību."
+          },
+          {
+            "bold": "Máximo Sharpe un Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Tas ir punkts, kur līnija, kas sākas no bezriska likmes, pieskaras efektīvai robežai, piedāvājot vislielāko peļņu uz riska vienību."
+          }
+        ],
+        "example": "Ja vienādās daļās apvienojat divus aktīvus, kuriem katram ir 20% svārstīgums, bet nulle korelācija (ρ = 0), portfeļa nepastāvība nav 20%, bet samazinās līdz 14,1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR, ko nodrošina Active un Capture",
+        "intro": "Lai uzzinātu, kura pozīcija portfelim palielina risku, katra aktīva minimālais ieguldījums tiek mērīts atbilstoši tā svaram un korelācijai ar pārējiem. Turklāt uztveršanas koeficienti mēra asimetriju pret S&P 500 kāpumiem un kritumiem.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Asset vai Portfolio atgriešana Bullish (vai Bearish) riteņos",
+          "denominator": "S&P 500 atgriešana uz tiem pašiem riteņiem",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100%) — nopelniet vairāk nekā indekss, kad tirgus iet uz augšu.",
+            "Downside Capture (< 100%): samazinās mazāk nekā indekss, kad tirgus krītas (aizsardzības buferis)."
+          ]
+        },
+        "lead": "Ideālais profils, ko meklējat, pārskatot kvadranta trešo cilni:",
+        "bullets": [
+          {
+            "bold": "pozitīva asimetrija",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Pilnībā piedalieties buļļu tirgos, bet aizsargājiet kapitālu, kad akciju tirgus koriģēs."
+          },
+          {
+            "bold": "Patvērums vai nesaistīti aktīvi",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Tādi instrumenti kā īsās obligācijas vai zelts, kam ir tendence palikt nemainīgiem vai pieaugt akciju tirgus krituma laikā."
+          }
+        ],
+        "example": "Ja mēnešos, kad S&P 500 pieauga par 10%, jūsu portfelis palielinājās par 11% (augšupvērtība 110%), bet, kad indekss nokritās par 10%, jūsu portfelis nokritās tikai par 6% (60%), jums ir spēcīga asimetrija jūsu labā."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normāla vs krīzes korelācija",
+        "intro": "Pīrsona koeficients (r) mēra no -1,00 līdz +1,00, kā divi aktīvi pārvietojas viens pret otru. Portfeļa pārvaldīšanas briesmas ir tādas, ka tirgus sabrukuma laikā korelācija starp riska aktīviem parasti sasniedz +1.00 (izplatība).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kovariance (atgriež aktīvu i, atgriež aktīvu j)",
+          "denominator": "Aktīvu svārstīgums i (σᵢ) × Aktīvu nepastāvība j (σⱼ)",
+          "vars": [
+            "r tuvu 0 vai negatīvs: lieliska diversifikācija (kad viens nokrīt, otrs neseko).",
+            "r in Crisis Queue: pārrēķina matricu, ņemot tikai 5% no sliktākajiem riteņiem tirgū."
+          ]
+        },
+        "lead": "Kā nolasīt 6x6 matricas krāsas abos režīmos:",
+        "bullets": [
+          {
+            "bold": "Īsta dažādošana",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Abi aktīvi reaģē uz dažādiem ekonomikas virzītājspēkiem un kompensē viens otru."
+          },
+          {
+            "bold": "Koncentrācija vai inficēšanās",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Tie pārvietojas praktiski kā bloks; Abu lietošana nesamazina jūsu kritienus sliktā dienā."
+          }
+        ],
+        "example": "Divām dažādu nozaru akcijām parastā gadā var būt mērena korelācija — 0,42, taču, aktivizējot pogu Krīzes rinda, jūs redzēsit, ka tā palielinās līdz 0,81, jo panikā tās pārdod kopā."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D trieciens (kursi × akciju tirgus)",
+        "intro": "2D matrica vienlaikus apvieno procentu likmju kustības ietekmi (izmantojot fiksētā ienākuma ilgumu un likmes jutību) ar indeksa S&P 500 kritumu vai pieaugumu (izmantojot akciju beta versiju).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: akciju tirgus izmaiņu scenārijs uz horizontālās ass (-20% līdz +10%).",
+            "Δ Likmes: procentu likmju izmaiņu scenārijs bāzes punktos uz vertikālās ass (-100 līdz +200 bps)."
+          ]
+        },
+        "lead": "Kāds ir tabulas divu asis šķērsošanas mērķis:",
+        "bullets": [
+          {
+            "bold": "Stagflācijas vai likmju paaugstināšanas scenārijs",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Tāpat kā tas, kas notika 2022. gadā, kad akcijas un garās obligācijas cieš vienlaikus."
+          },
+          {
+            "bold": "Klasisks patversmes scenārijs",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Kur zemākas likmes paaugstina valsts obligāciju cenu un mazina akciju kritumu."
+          }
+        ],
+        "example": "Filtrējot garas obligācijas, piemēram, US10Y vai TLT, tabulā varat redzēt, kā tā iegūst vērtību, krītoties likmēm (-100 bps), kas darbojas kā izpletnis, ja S&P 500 tajā pašā dienā nokrīt."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markova režīmi (#11)",
+        "intro": "Markova ķēde modelē ekonomiku kā sistēmu, kas lēkā starp četriem iespējamiem stāvokļiem (mierīgs bullish, nepastāvīgs bullis, inflācija/likmes un krīze) un aprēķina varbūtību pāriet no viena uz otru.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Galvenā diagonāle (i = j): varbūtība, ka pašreizējais režīms paliek nemainīgs.",
+            "Ārpus diagonāles (i ≠ j): varbūtība, ka rotēsies uz jaunu tirgus klimatu."
+          ]
+        },
+        "lead": "Kā izmantot pārejas matricas priekšrocības otrajā cilnē:",
+        "bullets": [
+          {
+            "bold": "Pašreizējā cikla noturība",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Mierīgiem režīmiem parasti ir augsta noturība (> 75%), kas ļauj saglabāt tendences pozīcijas."
+          },
+          {
+            "bold": "Rotācijas agrīnais brīdinājums",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Kad palielinās iespējamība pāriet uz nestabiliem stāvokļiem, ir ieteicams samazināt kredītplecu vai aktivizēt riska ierobežošanu."
+          }
+        ],
+        "example": "Ja tirgus šodien ir nestabilā buļļa režīmā un rinda iezīmē 62% no pastāvības, 20% no atgriešanās pie Bull Calm un 18% no pāriešanas uz stresu/krīzi, jūs zināt, ka gandrīz 1 no 5 scenārijiem rada korekciju."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo projekcija (10 000 ceļu)",
+        "intro": "Pamatojoties uz jūsu portfeļa paredzamo atdevi un pašreizējo nepastāvību, simulators katru dienu ģenerē 10 000 iespējamās nākotnes trajektorijas, izmantojot stohastisko Brauna ģeometriskās kustības modeli.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ un σ: jūsu pašreizējā portfeļa paredzamā gada peļņa un gada svārstīgums.",
+            "Z: standarta parastais gadījuma lielums, kas novilkts 10 000 reižu gar horizontu (6M, 12M vai 24M)."
+          ]
+        },
+        "lead": "No šīm 10 000 simulācijām tiek iegūtas trīs galvenās diagrammas līknes:",
+        "bullets": [
+          {
+            "bold": "Labvēlīgs scenārijs",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Līmenis, kas tiek pārsniegts tikai par 5% no optimistiskākajiem scenārijiem."
+          },
+          {
+            "bold": "Paredzamā centrālā trajektorija",
+            "code": "Mediana P50",
+            "text": "Tipisks rezultāts, kurā puse simulāciju ir augstāk, bet otra puse ir zemāka."
+          },
+          {
+            "bold": "Termiņa stresa scenārijs",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Nelabvēlīgā zemākā robeža: 95% simulēto ceļu jūsu portfelis nonāk virs šīs līnijas."
+          }
+        ],
+        "example": "12 mēnešu periodā, pamatojoties uz 100, ja P50 rāda 116 un P05 rāda 94, jūsu galvenā cerība ir nopelnīt +16%, un ļoti nelabvēlīgā gadā jūs riskējat tuvu -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kellijas kritērijs (#14)",
+        "intro": "Kellija kritērijs zinātniski atbild, cik procentu no sava kapitāla jums vajadzētu piešķirt darbībai, ja zināt savu veiksmes varbūtību (win-rate) un cik daudz jūs laimēsiet, ja jums izdodas, salīdzinot ar to, ko jūs zaudējat, ja jums neizdodas (izmaksas koeficients).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p un q: laimesta iespējamība (p) un varbūtība zaudēt (q = 1 − p).",
+            "b (Izmaksas koeficients): vidējā peļņa, kas dalīta ar vidējiem zaudējumiem (piemēram, nopelnot 2 ASV dolārus par katru riskēto 1 dolāru, nozīmē b = 2)."
+          ]
+        },
+        "lead": "Kāpēc profesionāli vadītāji izmanto Half-Kelly (0,5×) variantu:",
+        "bullets": [
+          {
+            "bold": "Kellija Pabeigta",
+            "code": "Full Kelly 1.0×",
+            "text": "Tas maksimāli palielina ilgtermiņa matemātisko izaugsmi, bet rada ļoti straujas svārstības, ja pēc kārtas ir kļūdu sērija."
+          },
+          {
+            "bold": "Ieteicams Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Izmantojot pusi no ieteiktās procentuālās daļas, jūs iegūstat 75% no potenciālā pieauguma, bet samaziniet nepastāvību uz pusi."
+          }
+        ],
+        "example": "Ja stratēģija sasniedz 55% laika (p = 0,55, q = 0,45) un maksā 2 līdz 1 (b = 2), Kellija sniedz pilnu vērtību (0,55 × 2 - 0,45) / 2 = 32,5%, bet apdomīgais Half-Kelly iesaka piešķirt 16,25%."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Ievietojiet OTM vairogu (#6)",
+        "intro": "Pārdošanas iespēja bez naudas (piemēram, par 5% zem S&P 500 pašreizējās cenas) darbojas tāpat kā apdrošināšanas pašrisks: tai ir nelielas fiksētas izmaksas (prēmija), bet, ja tirgus krītas par 20% vai 30%, tās vērtība tiek reizināta izliekti un kompensē jūsu portfeļa zaudējumus.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Gada izmaksas (Carry Drag): gada procentuālā daļa, ko izmaksā apdrošināšanas atjaunošana, ja tirgus nekrīt.",
+            "Aizsardzība pret avārijām (-20%): dolāri, kas atgūti pēc Put līguma smagas avārijas laikā."
+          ]
+        },
+        "lead": "Kā salīdzināt simulatora iespējas pirmajā cilnē:",
+        "bullets": [
+          {
+            "bold": "Tiešā indeksa apdrošināšana",
+            "code": "SPY Put 5% OTM",
+            "text": "Tas ierobežo maksimālos zaudējumus no 5% krituma apmaiņā pret mērenām gada izmaksām."
+          },
+          {
+            "bold": "Finansēts vai svārstīguma segums",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Apkakle samazina izmaksas, pārdodot Call up; Call on VIX eksplodē par labu, kad tirgū sākas panika."
+          }
+        ],
+        "example": "Ja 100 000 USD portfeļa aizsardzība ar SPY Put 5% OTM maksā 1,1% gadā (1100 USD), bet -20% avārijas gadījumā tas samazina jūsu portfeļa kritumu uz mazāk nekā pusi, neto ietaupījumi pārsniedz USD 7000."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Robeža un attālums līdz rezervei (#13)",
+        "intro": "Ja strādājat ar atvasinātajiem instrumentiem vai kredītplecu, brokeris pieprasa saglabāt minimālo pamatkapitāla procentuālo daļu no pozīcijas kopējās vērtības (uzturēšanas rezerve). Ja kritums samazina jūsu kapitālu zem šī līmeņa, tiek aktivizēts Margin Call.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Parāds vai finansētais atlikums",
+          "denominator": "1 – % uzturēšanas rezerve (Reg-T)",
+          "vars": [
+            "Bruto riska darījums: atvērto pozīciju kopējā summa, dalīta ar pašu kapitālu (piemēram, 1,18×).",
+            "Distance to Margin Call (%): procentuālais kritums, ko portfelis joprojām atbalsta pirms sliekšņa sasniegšanas."
+          ]
+        },
+        "lead": "Drošības līmeņi uzraudzības joslā:",
+        "bullets": [
+          {
+            "bold": "Liela klīrensa zona",
+            "code": "Distancia > 30% en verde",
+            "text": "Sviras ir zemas, un portfelis var absorbēt pat smagu krīzi bez piespiedu pārdošanas."
+          },
+          {
+            "bold": "piesardzības zona",
+            "code": "Distancia < 15% en rojo",
+            "text": "Mērena tirgus korekcija izsmeltu brīvos nodrošinājumus un liktu pozīcijas likvidēt sliktākajā brīdī."
+          }
+        ],
+        "example": "Ar mērenu kredītplecu 1,18 × un izmantoto uzturēšanas rezervi 22%, jūsu portfeļa drošības spilvens ir vairāk nekā 38% negatīvs pirms jebkādām nodrošinājuma prasībām."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "3 pīlāru komitejas noteikumi",
+        "intro": "Lai neviens impulsīvs lēmums neapdraudētu portfeļa izdzīvošanu, Komiteja izvērtē katru pasūtījumu, apvienojot tehnisko piezīmi, pamata piezīmi un divus stingrus, neapspriežamus riska kontroles noteikumus.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: neviens atsevišķs aktīvs nevar koncentrēt vairāk par vienu piektdaļu no kopējiem aktīviem.",
+            "Anomālijas apturēšana (P-06 ≥ 0,65): ja līdzeklis nonāk statistiskā dislokācijā, sistēma samazina maksimālo ekspozīciju līdz 5%."
+          ]
+        },
+        "lead": "Ko katra valsts nozīmē spriedumā un izpildes grāmatā:",
+        "bullets": [
+          {
+            "bold": "Pasūtījums apstiprināts bez ierobežojumiem",
+            "code": "APROBADO en verde",
+            "text": "Trīs pīlāri labvēlīgi sakrīt, un pozīcijas lielums ievēro visus koncentrācijas un likviditātes ierobežojumus."
+          },
+          {
+            "bold": "Pasūtījums koriģēts ar aizsargmargām",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Kad biļete pārsniedz 20% robežu vai mēģina smagi iegādāties anomālijas vidū, aizsargmargas brīdina par pārsniegumu."
+          }
+        ],
+        "example": "Ja mēģināt simulēt pirkumu, kas aizņemtu vienu akciju līdz 26% no jūsu portfeļa, 3. pīlārs (riska un lieluma aizsargbarjera) atzīmē koncentrācijas brīdinājumu, lai jūs to pielāgotu zem 20%."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Efektivitāte Walk-Forward (WFE)",
+        "intro": "Lai pārbaudītu, vai stratēģija nav vienkārši izstrādāta, lai tā izskatītos labi pagātnē (pārmērīga uzstādīšana), Walk-Forward testā tiek salīdzināts tās veiktspēja projektēšanas periodā (In-Sample) ar tās veiktspēju turpmākajos nekad iepriekš neredzētajos datos (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Gada atdeve Out-of-Sample (tīra validācija)",
+          "denominator": "Gada atdeve In-Sample (apmācība)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): vēsturiskā sadaļa, ko izmanto, lai kalibrētu stratēģijas svarus un noteikumus.",
+            "Out-of-Sample (OOS): nākamā sadaļa, kurā stratēģija tiek pārbaudīta reālos apstākļos, nepieskaroties tās parametriem."
+          ]
+        },
+        "lead": "Kā kvantitatīvā nozare novērtē WFE procentuālo daļu:",
+        "bullets": [
+          {
+            "bold": "Stingra un konsekventa stratēģija",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Tā saglabā lielāko daļu savas spējas gūt peļņu, saskaroties ar jauniem tirgus apstākļiem."
+          },
+          {
+            "bold": "Trausla vai pārāk piemērota stratēģija",
+            "code": "WFE < 50% en rojo",
+            "text": "Tas labi darbojās pagātnes teorijā, bet zaudē efektivitāti patiesībā; Nav vēlams to izpildīt ar īstu naudu."
+          }
+        ],
+        "example": "Ja stratēģijas izstrādes posmā (In-Sample) un nākamajā faktiskajā testēšanas posmā (Out-of-Sample) tā atdeva 18,8% gadā, tās efektivitāte WFE ir (18,8/20) = 94,0%."
+      }
+    ]
+  }
+}

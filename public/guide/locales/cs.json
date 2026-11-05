@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Sbalený pohled",
+    "mainView": "Hlavní pohled",
+    "expandedView": "Rozšířené zobrazení",
+    "inThisSection": "V této sekci najdete:",
+    "deepDive": "Hluboký ponor",
+    "previous": "Předchozí",
+    "next": "Další",
+    "mathFormula": "Matematický vzorec",
+    "practicalExample": "Praktický příklad:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Když otevřete tradiční finanční platformu, první věc, která se obvykle objeví, jsou desítky grafů, blikajících tabulek a nabídek. Kde začít, když chcete jen zkontrolovat trh nebo zkontrolovat, jak si vede vaše portfolio?",
+        "Obrazovka Home je navržena přesně tak, aby zabránila tomuto počátečnímu šumu. Přivítá vás čistým a přehledným prostorem, kde je veškeré ovládání soustředěno do dvou pevných pruhů: jeden nahoře pro přechod do práce a druhý dole pro konfiguraci platformy tak, aby vám vyhovovala."
+      ],
+      "intro": "Obrazovka Home vás přivítá čistým a přehledným prostorem, kde je veškeré ovládání soustředěno do dvou pevných pruhů: jeden nahoře pro přechod do práce a druhý dole pro konfiguraci platformy tak, aby vám vyhovovala.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Jasný výchozí bod, který rozděluje vaši práci na analýzu trhu a správu portfolia.",
+          "paragraphs": [
+            "Představte si, že začnete obchodovat hned po ránu. Někdy se budete chtít podívat, které akcie, dluhopisy nebo měny se pohybují nejvíce; Jindy půjdete rovnou zkontrolovat riziko svého portfolia nebo simulovat nákup před jeho provedením.",
+            "Jak se vyhnete smíchání dvou věcí na stejné přetížené obrazovce? Obálka jasně odděluje tuto cestu od první sekundy:"
+          ],
+          "lead": "Jak se vyhnete smíchání dvou věcí na stejné přetížené obrazovce? Obálka jasně odděluje tuto cestu od první sekundy:",
+          "bullets": [
+            {
+              "bold": "Prostor bez rušivých vlivů",
+              "code": "Donde se decodifican los mercados",
+              "text": "Když vstoupíte, nejsou zde žádné otevřené tabulky ani upozornění, které vás nutí zavřít okna před spuštěním; Vy si vyberete, který modul otevřete."
+            },
+            {
+              "bold": "Dvě jasné cesty",
+              "code": "Markets / Portfolio",
+              "text": "Celý tok aplikace je rozdělen do dvou hlavních fází: nejprve prozkoumejte příležitosti na trzích a poté vytvořte nebo otestujte své portfolio."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Horní lišta pro přeskakování jedním kliknutím mezi domovem, trhy a vaším portfoliem.",
+          "paragraphs": [
+            "Když se ponoříte do detailů aktiva nebo testujete změny ve svém portfoliu, je velmi snadné ztratit přehled o tom, kde jste byli. Jak se dostanete od pohledu na akciový graf k revizi svého portfolia, aniž byste museli procházet podnabídkami?",
+            "Horní lišta zůstává na obrazovce vždy nehybná a poskytuje přímý přístup ke třem hlavním bodům:"
+          ],
+          "lead": "Horní lišta zůstává na obrazovce vždy nehybná a poskytuje přímý přístup ke třem hlavním bodům:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Ať jste kdekoli, kliknutím na symbol vlevo se okamžitě vrátíte na hlavní stránku."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Je to váš výzkumný prostor. Zde můžete filtrovat 213 dostupných aktiv, sledovat aktuální nabídky, analyzovat technické grafy a konzultovat souhrny rozvah nebo zprávy."
+            },
+            {
+              "bold": "Peněženka",
+              "code": "Portfolio",
+              "text": "Je to vaše rozhodovací tabulka. Zde definujete, jaké procento vašeho kapitálu jde do každého aktiva, změříte, kolik byste mohli ztratit v krizi, a před riskováním peněz simulujte nové operace."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Zápatí pro kontrolu stavu systému, návrat k této příručce nebo úpravu rozvržení.",
+          "paragraphs": [
+            "Při analýze dat v reálném čase mohou kdykoli vyvstat provozní otázky: Přicházejí nabídky správně? Co znamenal bodový ukazatel? Mohu snížit jas obrazovky?",
+            "Zápatí seskupuje všechny tyto podpůrné a konfigurační nástroje tak, aby byly vždy po ruce, aniž by překážely ve středu obrazovky:"
+          ],
+          "lead": "Zápatí seskupuje všechny tyto podpůrné a konfigurační nástroje tak, aby byly vždy po ruce, aniž by překážely ve středu obrazovky:",
+          "bullets": [
+            {
+              "bold": "Stav System",
+              "code": "System",
+              "text": "Zelená tečka na první pohled potvrzuje, že je vše v pořádku. Když jej otevřete, můžete podrobně vidět stav serverů, databází a rychlost odezvy."
+            },
+            {
+              "bold": "Uživatel Guide",
+              "code": "Guide",
+              "text": "Kdykoli otevřete tuto interaktivní příručku, abyste viděli, jak používat obrazovku nebo se ponořit hlouběji do jejích výpočtů."
+            },
+            {
+              "bold": "Vizuální preference",
+              "code": "Idioma / Palette",
+              "text": "Na pravé straně máte ovládací prvky pro změnu jazyka celé aplikace nebo úpravu podsvícení pozadí."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Jazyky",
+          "summary": "Vyhledávač pro překlad celé platformy do vašeho jazyka na místě.",
+          "paragraphs": [
+            "Finanční podmínky a zprávy o trhu již mají svou vlastní složitost bez přidání jazykové bariéry. Pokud dáváte přednost čtení vysvětlení ve španělštině, angličtině nebo jiném jazyce, můžete to okamžitě změnit.",
+            "Takto funguje volič z pravého dolního rohu:"
+          ],
+          "lead": "Takto funguje volič z pravého dolního rohu:",
+          "bullets": [
+            {
+              "bold": "okamžité vyhledávání",
+              "code": "Select Language",
+              "text": "Kliknutím na aktuální vlaječku se otevře okno, kde si můžete vybrat mezi 56 jazyky napsáním jejího názvu nebo kódu (například ES, EN, PT, FR nebo DE)."
+            },
+            {
+              "bold": "Automatická paměť",
+              "code": "mid_lang_v1",
+              "text": "Celá obrazovka je okamžitě přeložena bez opětovného načítání stránky a vaše volba je uložena pro příští vstup."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Vizuální motivy pro přizpůsobení kontrastu obrazovky beze změny finančních barev.",
+          "paragraphs": [
+            "Strávit několik hodin před grafikou s kontrastem, který se nepřizpůsobuje světlu ve vašem prostředí, unavuje vaše oči. Změna barev finanční platformy má však klasické nebezpečí: ztrátu odkazu na to, co stoupá a co klesá.",
+            "Chcete-li to vyřešit, selektor motivu odděluje barvu prostředí od barvy dat:"
+          ],
+          "lead": "Chcete-li to vyřešit, selektor motivu odděluje barvu prostředí od barvy dat:",
+          "bullets": [
+            {
+              "bold": "Pět čtecích prostředí",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "S každým kliknutím rotujete mezi čistě černým, namodralým nebo teplým pozadím, dokud nenajdete to, které je pro vaše oči nejpohodlnější."
+            },
+            {
+              "bold": "Neporušená finanční sémantika",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Bez ohledu na to, jaké téma změníte, univerzální pravidlo trhu se nikdy nezmění: zelená vždy znamená vzestup nebo zisk a červená vždy znamená pokles, ztrátu nebo varování před rizikem."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Představte si, že chcete zjistit, kde jsou nejlepší příležitosti dne mezi více než dvěma stovkami dluhopisů, akcií, indexů, měn a surovin. Pokud byste měli otevřít grafy jeden po druhém, trh by se uzavřel dříve, než byste se na ně podívali.",
+            "Screener spojuje všech 213 aktiv na platformě do jediného živého dashboardu. Umožňuje vám během sekundy filtrovat podle trhu, měřit celkový puls dne a vybrat si ze čtyř různých způsobů, jak zobrazit, která aktiva si vedou."
+          ],
+          "intro": "Screener přináší všech 213 aktiv na platformě do jediného živého řídicího panelu, takže můžete na první pohled filtrovat podle příležitostí na trhu a místě.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategorie",
+              "summary": "Nejlepší filtry pro zaměření na jednu třídu aktiv nebo váš seznam sledovaných.",
+              "paragraphs": [
+                "Nemá smysl analyzovat státní dluhopisy se stejnými metrikami jako technologické akcie nebo ropu. Když smícháte vše ve stejném seznamu, skončíte srovnáváním hrušek s jablky.",
+                "Jak zúžit obrazovku přesně na trh, který vás dnes zajímá? Horní lišta vám umožňuje oddělit vesmír jedním kliknutím:"
+              ],
+              "lead": "Horní lišta vám umožňuje oddělit vesmír jedním kliknutím:",
+              "bullets": [
+                {
+                  "bold": "Úplný obrázek",
+                  "code": "Todos",
+                  "text": "Zobrazuje 213 nástrojů dohromady a seřazených podle zobchodovaného objemu, takže můžete vidět, kam globálně proudí nejvíce peněz."
+                },
+                {
+                  "bold": "Osobní sledování",
+                  "code": "★ Watchlist",
+                  "text": "Izolujte pouze položky, které jste označili jako oblíbené, abyste je mohli pečlivě a bez rušivých vlivů sledovat."
+                },
+                {
+                  "bold": "Deset specializovaných trhů",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Výběrem kterékoli z těchto kategorií přizpůsobí celá obrazovka své ukazatele a sloupce tabulky pravidlům daného sektoru."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detail toho, jak jsou 213 aktiva v katalogu klasifikována a jaká kritéria objemu a likvidity splňují."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24h puls",
+              "summary": "První čtyři karty, které vám řeknou, zda je trh klidný, euforický nebo ve stresu.",
+              "paragraphs": [
+                "Před nákupem nebo prodejem konkrétního aktiva je vhodné vědět, v jakém klimatu se celek pohybuje. Je to běžný objemový den nebo přicházejí institucionální peníze najednou? Rostou všechna aktiva, nebo se objevují známky napětí?",
+                "Čtyři karty pod filtry vám během několika sekund poskytnou obecný přehled:"
+              ],
+              "lead": "Čtyři karty pod filtry vám během několika sekund poskytnou obecný přehled:",
+              "bullets": [
+                {
+                  "bold": "Celková aktivita za den",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Sčítá až miliardy dolarů zobchodovaných v aktivní kategorii a ukáže vám, zda je dnes větší či menší účast než včera."
+                },
+                {
+                  "bold": "Průměrná síla skupiny",
+                  "code": "AVG RSI 14",
+                  "text": "V kruhovém měřiči shrnuje, zda ceny v sektoru přicházejí s nákupním tlakem (zelená, nad 50) nebo s prodejním tlakem (červená, pod 50)."
+                },
+                {
+                  "bold": "Normální teploměr",
+                  "code": "Régimen Normal P-06",
+                  "text": "Vypočítá, jaké procento aktiv se pohybuje v rámci svých obvyklých parametrů, a podle jména a příjmení vám sdělí, který nástroj má v daný den největší anomálii."
+                },
+                {
+                  "bold": "Neobvyklé přílivy peněz",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Pódium tří aktiv, která dnes provozují mimořádně vysoký objem ve srovnání s jejich průměrem za poslední měsíc, vyniká."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Podrobné vysvětlení, jak se počítá průměrný RSI, objem Z-Score a detektor anomálií P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tabulka",
+              "summary": "Interaktivní seznam s rychlým vyhledáváním, oblíbenými položkami a sloupci, které se přizpůsobí každému trhu.",
+              "paragraphs": [
+                "Když už víte, na který sektor se chcete podívat, a potřebujete porovnat konkrétní čísla řádek po řádku, je vaším hlavním nástrojem zobrazení tabulky.",
+                "Namísto zobrazení pevné tabulky, která je pro všechny stejná, se tabulka přizpůsobí tomu, co hledáte:"
+              ],
+              "lead": "Namísto zobrazení pevné tabulky, která je pro všechny stejná, se tabulka přizpůsobí tomu, co hledáte:",
+              "bullets": [
+                {
+                  "bold": "Vyhledávač a oblíbená hvězda",
+                  "code": "Buscar activo / ★",
+                  "text": "V záhlaví prvního sloupce můžete zadat jakýkoli symbol nebo název a přejít přímo k danému aktivu, nebo klepnutím na hvězdičku vlevo jej uložit do svého Watchlist."
+                },
+                {
+                  "bold": "Chytré sloupy podle kategorie",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Pokud filtrujete Akcie, zobrazí se násobky ocenění a marže; Pokud zvolíte Dluhopisy nebo Sazby, uvidíte sklon křivky a citlivost na sazby; Pokud se podíváte na deriváty, uvidíte implikovanou volatilitu."
+                },
+                {
+                  "bold": "Přejděte přímo na hloubkovou analýzu",
+                  "code": "Click en cualquier fila",
+                  "text": "Jednoduše klikněte na jakékoli aktivum v seznamu a otevřete si celou stanici technických tabulek a základních zpráv."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Seznam konkrétních metrik, které tabulka zobrazuje pro každou z 10 kategorií aktiv."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Vizuální radar, který na první pohled odhalí, která aktiva se vzdalují svému historickému průměru.",
+              "paragraphs": [
+                "Přečtení dvou set řádků čísel může způsobit, že zmeškáte aktivum, které se začíná výbušně pohybovat. Jak okamžitě zjistíte, který nástroj se odchyluje od normy?",
+                "Pohled Orbital transformuje stůl na radar se třemi soustřednými prstenci:"
+              ],
+              "lead": "Pohled Orbital transformuje stůl na radar se třemi soustřednými prstenci:",
+              "bullets": [
+                {
+                  "bold": "Výběr kritérií",
+                  "code": "INDICADOR",
+                  "text": "Vy rozhodujete, co radar měří: statistické anomálie, objemové skoky, cenová síla (RSI), volatilita nebo zisk za posledních 24 hodin."
+                },
+                {
+                  "bold": "Čtení podle vzdálenosti a barvy",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Čím blíže nebo dále je bod podle indikátoru a čím intenzivnější je jeho zelená nebo červená barva, tím relevantnější je jeho pohyb ve srovnání s jeho vlastní historií."
+                },
+                {
+                  "bold": "Kontrola bez výměny obrazovky",
+                  "code": "Panel lateral en vivo",
+                  "text": "Umístěním kurzoru na libovolný radarový uzel se vpravo zobrazí jeho cena, čistý vnitrodenní graf a jeho tři rizikové metriky."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Jak se vypočítá pozice každého aktiva v radarových kruzích podle jeho historické odchylky."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Tepelná mapa",
+              "summary": "Mozaika proporcionálních bloků k identifikaci vítězů a poražených během vteřiny.",
+              "paragraphs": [
+                "Jsou chvíle, kdy chcete odpovědět na rychlou otázku: kdo dnes vede vzestup a kdo táhne trh dolů?",
+                "Tepelná mapa uspořádá deset nejlepších aktiv aktivního filtru do proporcionálních bloků, takže nemusíte číst jedinou tabulku:"
+              ],
+              "lead": "Tepelná mapa seřadí prvních deset aktiv aktivního filtru do proporcionálních bloků:",
+              "bullets": [
+                {
+                  "bold": "Velikost podle důležitosti",
+                  "code": "Puestos #1 a #10",
+                  "text": "Přístroje s největší váhou v rámci zvolené metriky zaujímají sloupce nalevo s největšími rámečky."
+                },
+                {
+                  "bold": "Intenzita barvy",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Tón bloku vám okamžitě řekne velikost pohybu, od mírných změn až po náhlé vzestupy nebo poklesy."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Tříkroková zkratka pro pokročilé sazby, opce, forex a futures kalkulačky.",
+              "paragraphs": [
+                "Kromě tradičních cenových grafů platforma obsahuje čtyři speciální motory pro fixní příjem, opce, měnové kříže a komoditní křivky. Jak se k nim dostanete, aniž byste museli hledat aktivum po aktivu?",
+                "Toto zobrazení vás provede zleva doprava ve třech velmi jednoduchých sloupcích:"
+              ],
+              "lead": "Toto zobrazení vás provede zleva doprava ve třech velmi jednoduchých sloupcích:",
+              "bullets": [
+                {
+                  "bold": "Nejprve si vyberete rodinu",
+                  "code": "1. Clases de Activo",
+                  "text": "Můžete si vybrat, zda chcete pracovat se sazbami a dluhopisy, s opcemi na akcie/indexy/krypto, s měnami nebo se surovinami."
+                },
+                {
+                  "bold": "Poté zkontrolujete, co motor dělá",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Uprostřed se dočtete přehledné shrnutí toho, co daný nástroj ukazuje a jak se orientovat v jeho osách."
+                },
+                {
+                  "bold": "Nakonec vyberte aktivní a otevřete",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Můžete sledovat živý náhled grafu, hledat jakékoli kompatibilní prostředky v této rodině a otevřít celou stanici jediným kliknutím."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Jakmile najdete zajímavé aktivum v Screener, je čas se na něj podívat blíže. Je v uptrendu nebo mu došel dech? Porážíte své konkurenty? Co říká objem a trh s deriváty?",
+            "Stanice Analytics soustřeďuje veškerou technickou, srovnávací a kvantitativní analýzu tohoto majetku na jediné obrazovce. Nahoře máte obecné shrnutí a vlevo čtyři čočky pro změnu úhlu analýzy, aniž byste ztratili ze zřetele graf."
+          ],
+          "intro": "Stanice Analytics soustřeďuje technické, srovnávací, průtokové analýzy a 3D/2D motory jednotlivých aktiv na jediné obrazovce.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Horní panel pro přepínání aktiv, výběr časového rámce a zobrazení pěti klíčových metrik.",
+              "paragraphs": [
+                "Když studujete nějaké aktivum, obvykle střídáte dnešní krátkou dobu s filmem posledních měsíců, nebo dokonce přejdete k pohledu na jiný podobný symbol. Jak to všechno děláte, aniž byste se vrátili?",
+                "Horní záhlaví sdružuje ovládací prvky navigace a rychlou kartu přístroje:"
+              ],
+              "lead": "Horní záhlaví sdružuje ovládací prvky navigace a rychlou kartu přístroje:",
+              "bullets": [
+                {
+                  "bold": "Změna majetku nebo návrat do seznamu",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Vlevo nahoře se můžete vrátit na Screener nebo zadat název jakéhokoli jiného nástroje a změnit grafy na místě."
+                },
+                {
+                  "bold": "Devět oken času",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Na pravém okraji měníte měřítko grafu z minutových pohybů na celou historii."
+                },
+                {
+                  "bold": "Pět předstihových ukazatelů",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Vedle ceny máte vždy na očích zobchodovaný objem, dva klíčové údaje jeho kategorie, sílu trendu a úroveň statistické normality."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Technický",
+              "summary": "Cenový graf s klouzavými průměry, pásmy volatility a objemem pro sledování trendu.",
+              "paragraphs": [
+                "Pohled pouze na poslední cenu vám neřekne, zda aktivum zrychluje, zda se odráží od svého průměru nebo zda již za pár dní vzrostlo příliš rychle.",
+                "První čočka na levé kolejnici umožňuje překrýt do grafu nejpoužívanější technické reference na trhu:"
+              ],
+              "lead": "První čočka na levé kolejnici umožňuje překrýt nejpoužívanější technické reference:",
+              "bullets": [
+                {
+                  "bold": "Adresa a skutečná průměrná cena",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Můžete zapnout klouzavý průměr a objemově váženou průměrnou cenu za 20 období, abyste okamžitě viděli, zda se aktivum obchoduje nad nebo pod svou rovnovážnou úrovní."
+                },
+                {
+                  "bold": "Přebytečné zóny a potvrzení hlasitosti",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Pásma vykreslují statistický strop a dno ceny, zatímco spodní sloupce potvrzují, zda je pohyb podporován objemem."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Vzorce a interpretační kritéria klouzavého průměru (SMA 20), Bollingerových pásem a VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Porovnat %",
+              "summary": "Procentuální srovnávač od 0 % k měření toho, zda má vaše aktivum vyšší nebo nižší výkon než jiné aktivum ve stejné kategorii.",
+              "paragraphs": [
+                "Akcie stoupající o 5 % se zdá jako skvělá zpráva, ale pokud její benchmark nebo hlavní konkurent ve stejném období poroste o 12 %, ve skutečnosti zaostáváte.",
+                "Druhá čočka řeší tuto pochybnost tím, že staví tyto dvě aktiva na stejnou startovní čáru:"
+              ],
+              "lead": "Druhá čočka řeší tuto pochybnost tím, že staví tyto dvě aktiva na stejnou startovní čáru:",
+              "bullets": [
+                {
+                  "bold": "Hledejte koherentní dvojice",
+                  "code": "Buscar par compatible",
+                  "text": "Vyhledávač automaticky filtruje aktiva ze stejné rodiny (např. akcie vs. akcie, ETF nebo indexy), takže srovnání dává finanční smysl."
+                },
+                {
+                  "bold": "Čistá výhoda v procentech",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Obě křivky začínají od 0 % a levá lišta vypočítá, kolik procentních bodů výhody (zeleně) nebo nevýhody (červeně) má vaše aktivum."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Flow",
+              "summary": "Detektor institucionálních nestandardních nákupů, likvidity a nákladů na spread.",
+              "paragraphs": [
+                "Mnohokrát velké finanční prostředky akumulují nebo uvolňují pozice dříve, než cena udělá náhlý pohyb. Jak odhalíte tuto skrytou stopu v objemu a likviditě knihy objednávek?",
+                "Třetí objektiv se zaměřuje na to, co se děje pod citací:"
+              ],
+              "lead": "Třetí objektiv se zaměřuje na to, co se děje pod citací:",
+              "bullets": [
+                {
+                  "bold": "Statistické objemové vrcholy",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Změní spodní panel, aby vám ukázal, kolikrát se aktuální hlasitost odchyluje od normálu, a odhaluje tak neobvyklou institucionální aktivitu."
+                },
+                {
+                  "bold": "Likvidní stres a anomálie",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "V bazických bodech měří, zda se propast mezi kupujícími a prodávajícími zvětšuje a zda statistický engine detekuje atypické chování."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Jak se měří otevírací spready a statistické špičky v toku objednávek."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D motory",
+              "summary": "Čtvrtý objektiv, který využívá dynamický ad-hoc nástroj, který se liší podle třídy aktiv.",
+              "paragraphs": [
+                "Na rozdíl od prvních tří čoček (které jsou společné pro všechny nástroje), čtvrtá čočka na levé kolejnici je ad-hoc nástroj, který se dynamicky mění v závislosti na aktivu, které analyzujete: například v živé prohlídce, protože se jedná o akcie (NVDA), umožňuje 3D Implicitní volatilitu a opce Payoff Surface, zatímco na jiných trzích nasazuje svůj vlastní specializovaný engine.",
+                "Čtvrté tlačítko detekuje otevřenou třídu aktiv a automaticky aktivuje odpovídající ad-hoc nástroj:"
+              ],
+              "lead": "Čtvrté tlačítko detekuje, které aktivum máte otevřené, a aktivuje ad-hoc nástroj, který mu odpovídá:",
+              "bullets": [
+                {
+                  "bold": "V akciích, indexech, derivátech a kryptoměnách",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Zobrazte 3D povrch implikované volatility, úsměv opcí podle expirace a simulátor 6 strategií, abyste viděli, kolik byste dnes a při vypršení získali nebo ztratili."
+                },
+                {
+                  "bold": "V sazbách, dluhopisech a likviditě",
+                  "code": "Curva 3D/2D",
+                  "text": "Umožňuje porovnat výnosové křivky 42 zemí s USA a Německem a měřit, zda je křivka normální nebo převrácená (2s10s) a jak moc se cena mění se změnami sazeb (DV01)."
+                },
+                {
+                  "bold": "V měnách",
+                  "code": "FX & Carry",
+                  "text": "Nabízí konvertor a triangulátor mezi 61 měnami, který také vypočítává 10letý úrokový diferenciál ve prospěch nebo proti zachování tohoto páru."
+                },
+                {
+                  "bold": "V surovinách",
+                  "code": "Forward 3D/2D",
+                  "text": "Grafy cen futures kontraktů měsíc po měsíci ukazují, zda trh platí více za forward (Contango) nebo za okamžité dodání (Backwardation), spolu se stavem fyzických zásob."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Matematický detail ploch volatility, výnosových křivek státních dluhopisů, křivek přenosu měn a futures."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Graf ukazuje, co cena dělá, ale neříká proč. Abyste věděli, co je za pohybem, museli byste si přečíst desítky stran čtvrtletních rozvah, výpisů centrální banky, inventurních zpráv a zpravodajských telegramů.",
+            "Stanice Research to těžké zvedne za vás. Kombinuje dokumentární umělou inteligenci ověřenou podle oficiálních zpráv se čtením zpráv v reálném čase, přičemž všechny důkazy pro a proti organizuje do tří přehledných sloupců."
+          ],
+          "intro": "Stanice Research shrnuje oficiální bilance, makroekonomické zprávy a zprávy v reálném čase ve třech přehledných sloupcích.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Poznámka a držení těla",
+              "summary": "Tři nejlepší karty, které shrnují zásadní verdikt a humor novinky.",
+              "paragraphs": [
+                "Doprovázejí růst ceny fundamenty aktiva nebo zprávy zhoršují výhled? Než si přečtete podrobnosti, potřebujete rychlý výkonný závěr.",
+                "V pravém horním rohu máte tři indikátory, které shrnují obecný stav aktiva:"
+              ],
+              "lead": "V pravém horním rohu máte tři indikátory, které shrnují obecný stav:",
+              "bullets": [
+                {
+                  "bold": "Držení těla a hmotnost každého zdroje",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Definuje obecný verdikt a objasňuje, jakou váhu přikládá oficiálním dokumentům oproti zprávám v závislosti na typu aktiva (například 80 % rozvahy a 20 % zprávy na akcii)."
+                },
+                {
+                  "bold": "Kombinované hodnocení",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Syntetizuje do jediného skóre čistý výsledek základů plus tok informací dne."
+                },
+                {
+                  "bold": "Držáky teploměrů",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Umístěte na lištu od -100 do +100, pokud je tón tisku v posledních hodinách pesimistický (červená), neutrální nebo nadšený (zelená)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Jak jsou oficiální zprávy váženy vůči zprávám v závislosti na typu aktiva."
+            },
+            {
+              "id": "res-rag",
+              "label": "Chat RAG",
+              "summary": "Levý dokumentární asistent klást konkrétní otázky týkající se rozvah a oficiálních zpráv.",
+              "paragraphs": [
+                "Předpokládejme, že chcete vědět, co přesně společnost uvedla o svých maržích ve své poslední roční rozvaze 10-K nebo co řekl Federální rezervní systém ve svém posledním zápisu. Ruční hledání vyžaduje čas; Zeptání se na obecný chat bez zdrojů vám může poskytnout vymyšlená data.",
+                "Levý sloupec to řeší průvodcem napojeným výhradně na ověřenou oficiální dokumentaci:"
+              ],
+              "lead": "Levý sloupec vám nabízí průvodce připojeného k oficiální ověřené dokumentaci:",
+              "bullets": [
+                {
+                  "bold": "Úvodní práce a řízené otázky",
+                  "code": "Chat Documental RAG",
+                  "text": "Začíná shrnutím s ověřenými citacemi a čtyřmi tlačítky pro rychlou referenci přizpůsobenou kategorii aktiv a také polem, do kterého můžete napsat své vlastní otázky."
+                },
+                {
+                  "bold": "Přímý krok k vašemu portfoliu",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Pokud se po prozkoumání základů rozhodnete, že aktivum stojí za to, toto tlačítko v horní části chatu vás pošle přímo do simulátoru portfolia."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Provoz ověřené rešerše dokumentů (RAG) a jejích bezpečnostních filtrů."
+            },
+            {
+              "id": "res-factors",
+              "label": "Faktory",
+              "summary": "Centrální akordeon s pěti býčími řidiči a pěti medvědími riziky seřazenými podle nárazu.",
+              "paragraphs": [
+                "Žádná investice není stoprocentně dokonalá nebo stoprocentně špatná: vždy existují argumenty ve prospěch a latentní rizika. Tajemství je vědět, které z nich dnes váží více.",
+                "Středový sloupek staví obě strany tváří v tvář, takže můžete učinit vyvážené rozhodnutí:"
+              ],
+              "lead": "Středový sloupek staví obě strany tváří v tvář, takže můžete učinit vyvážené rozhodnutí:",
+              "bullets": [
+                {
+                  "bold": "Vyvážení síly a filtry",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Nahoře vidíte pruh nabídky mezi kupujícími a prodávajícími a níže můžete filtrovat pět pozitivních katalyzátorů (zeleně) nebo pět hlavních rizik (červeně)."
+                },
+                {
+                  "bold": "Detail a rozbalení jediným kliknutím",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Když se dotknete jakéhokoli faktoru v seznamu, zobrazí se jeho úplné vysvětlení spolu s tlačítkem pro dotaz na Chat RAG o další informace o tomto konkrétním bodu."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Pulzní",
+              "summary": "Správná časová osa s nejnovějšími titulky s hodnocením AI a 24hodinovou křivkou nálady.",
+              "paragraphs": [
+                "Jediný titulek o výdělcích, inflaci nebo regulacích na poslední chvíli může zcela změnit náladu dne. Jak víte, jaké novinky právě vyšly a jaký to má účinek?",
+                "Pravý sloupec sleduje tok informací minutu po minutě:"
+              ],
+              "lead": "Pravý sloupec sleduje tok informací minutu po minutě:",
+              "bullets": [
+                {
+                  "bold": "Kvalifikovaná časová osa",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Uvádí pět nejnovějších titulků s jejich časem a agenturou, přičemž je hodnotí zeleně, pokud jsou příznivé, nebo červeně, pokud představují hrozbu."
+                },
+                {
+                  "bold": "Simulátor nárazu a denní křivky",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Horním tlačítkem můžete spustit živý drát, abyste viděli, jak přepočítává celou obrazovku, a v níže uvedeném grafu můžete sledovat, jak se nálada vyvíjela za posledních 24 hodin."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Jak model FinBERT analyzuje finanční jazyk každého držitele."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Stavitel",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Výběr dobrých aktiv samostatně k dobrému portfoliu nestačí. Pokud vložíte příliš mnoho kapitálu do aktiv, která se pohybují stejně, nebo pokud neměříte, jak by si společně vedly v minulosti, investujete naslepo.",
+            "Constructor & Performance (první pohled na Portfolio) je dílna, kde budujete své portfolio. Umožňuje vám přidat kterýkoli z 213 aktiv, upravit, jaké procento každému z nich přiřadíte, aniž byste se museli zabývat nepřesnými kontrolami, a okamžitě zkontrolovat jeho vnitřní složení i historii."
+          ],
+          "intro": "Constructor & Performance je workshop, kde sestavujete své portfolio, upravujete váhu každého aktiva a kontrolujete jeho historickou výkonnost.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Shrnutí",
+              "summary": "Prvních šest karet, které se přepočítávají naživo pokaždé, když upravíte své portfolio.",
+              "paragraphs": [
+                "Pokaždé, když přidáte aktivum nebo změníte procento ve svém portfoliu, musíte okamžitě vědět, zda tato úprava zlepšila váš očekávaný výnos nebo zhoršila vaši expozici směrem dolů.",
+                "V horním řádku je vždy zobrazeno šest hlavních metrik portfolia:"
+              ],
+              "lead": "V horním řádku je vždy zobrazeno šest hlavních metrik portfolia:",
+              "bullets": [
+                {
+                  "bold": "Výkon a účinnost",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Řeknou vám, jaký složený roční zisk portfolio projektuje na váš kapitál a jakou návratnost získáváte za každou předpokládanou jednotku rizika."
+                },
+                {
+                  "bold": "Očekávaná denní ztráta a historický pokles",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Vypočítají, kolik dolarů byste mohli ztratit ve špatný den v rámci toho, co bylo statisticky předvídatelné a co bylo nejhlubší propadák za poslední rok."
+                },
+                {
+                  "bold": "Přidaná hodnota a diverzifikace",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Měří, o kolik bodů vaše portfolio překonává benchmarkový index a jak velké riziko snižujete díky kombinaci různých aktiv."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Složené vzorce návratnosti (CAGR), poměry Sharpe a Sortino a Value at Risk (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Vážení",
+              "summary": "V levé tabulce můžete přidat aktiva, zapnout je nebo vypnout a definovat přesné procento každé pozice.",
+              "paragraphs": [
+                "Co by se stalo s čísly vašeho portfolia, kdybyste dnes dočasně ukončili činnost technologické akcie nebo rozdělili peníze rovným dílem mezi všechny své pozice?",
+                "Levý panel vám umožňuje provádět všechny tyto testy čistým a přímým způsobem:"
+              ],
+              "lead": "Levý panel vám umožňuje provádět všechny tyto testy čistým a přímým způsobem:",
+              "bullets": [
+                {
+                  "bold": "Vyhledávač pro aktiva 213",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Můžete vyhledávat jakýkoli nástroj na platformě nebo filtrovat své oblíbené a přidat je do tabulky jedním kliknutím."
+                },
+                {
+                  "bold": "Rychlé spuštění a přesné úpravy",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Každý řádek má zaškrtávací políčko pro zahrnutí nebo vyloučení aktiva v reálném čase a číselné pole pro zadání přesného procenta bez použití nepřesných posuvníků."
+                },
+                {
+                  "bold": "Tři zkratky pro opětovné vyvážení",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "V horní části tabulky máte tlačítka pro rozdělení stejných vah mezi všechna aktivní aktiva, automatické zvýšení součtu na 100 % nebo návrat k původnímu portfoliu."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "rentgenový snímek",
+              "summary": "Pravý horní panel s pěti kartami pro objevování skrytých koncentrací, peněžního toku a úschovy.",
+              "paragraphs": [
+                "Jednou z nejčastějších chyb při investování je přesvědčení, že jste diverzifikovaní, protože máte pět různých aktiv, zatímco ve skutečnosti jste koupili jednotlivou akcii a také dvě ETF, které mají uvnitř stejnou akcii.",
+                "Rentgenový panel analyzuje vaše portfolio zevnitř prostřednictvím pěti karet:"
+              ],
+              "lead": "Rentgenový panel analyzuje vaše portfolio zevnitř prostřednictvím pěti karet:",
+              "bullets": [
+                {
+                  "bold": "Opakovaný detektor polohy",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Sečtěte, co jste investovali přímo do každé společnosti, plus skrytou část, kterou máte v rámci indexů nebo ETF (jako je SPY nebo QQQ), přičemž budete upozorněni červenou barvou, pokud překročíte obezřetné limity."
+                },
+                {
+                  "bold": "Mapa expozice a původ návratu",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Ukazují vám, jaké procento skutečně máte v každém typu aktiv a měně a kolik z vašeho zisku pochází z výběru dobrých sektorů oproti výběru dobrých aktiv."
+                },
+                {
+                  "bold": "Předpokládaný roční příjem a bezpečnost",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Vypočítají, kolik dolarů za rok inkasujete za dividendy, kupony a úroky, a auditují solventnost depozitářů, kde spočívá váš kapitál."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Jak se počítá nepřímá expozice v rámci ETF a členění atribuce Brinson."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Kalendář",
+              "summary": "Měsíční graf od ledna do prosince, abyste viděli pravidelnost vašich zisků a ztrát.",
+              "paragraphs": [
+                "Dobrý roční výnos může skrývat měsíce velmi prudkých propadů, které jsou v praxi těžko tolerovatelné. Jak konzistentní měsíc od měsíce je portfolio, které jste právě sestavili?",
+                "Těsně pod rentgenem kalendář rozebírá měsíční historii:"
+              ],
+              "lead": "Těsně pod rentgenem kalendář rozebírá měsíční historii:",
+              "bullets": [
+                {
+                  "bold": "Zelené měsíce a červené měsíce",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Každá buňka je okamžitě přepočítána podle vah ve vaší tabulce a je vybarvena zeleně nebo červeně v závislosti na výsledku daného měsíce, přičemž vpravo se uzavírá kumulativní výsledek za rok."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Celoobrazovkový graf níže pro porovnání vašeho portfolia se čtyřmi klasickými strategiemi.",
+              "paragraphs": [
+                "Než budete považovat své portfolio za dobré, zůstává základní test: je to opravdu lepší než nechat peníze v S&P 500 nebo v tradičním portfoliu 60/40?",
+                "Spodní panel zabírá celou šířku obrazovky, aby váš design odpovídal tržním standardům:"
+              ],
+              "lead": "Spodní panel staví váš design proti tržním standardům:",
+              "bullets": [
+                {
+                  "bold": "Pět horizontů testování",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Umožňuje vám vyhodnotit, jak si váš mix vedl v posledních čtvrtletích i v celých víceletých cyklech."
+                },
+                {
+                  "bold": "Čtyři osobní reference",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Překryjte zelenou křivku svého aktivního portfolia proti kterémukoli ze čtyř klasických modelů, abyste jasně viděli, kdy je vpředu a jak se drží při poklesu."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Riziko",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "V dobách, kdy trh klidně roste, se téměř každé portfolio jeví jako bezpečné. Skutečný problém se objeví, když vypukne krize, úrokové sazby náhle stoupnou a aktiva, která se zdála nezávislá, začnou klesat ve stejnou dobu.",
+            "Kvantitativní riziko a stres (druhý pohled na Portfolio) podrobuje vaše portfolio extrémním testům, než k nim dojde v reálném životě. Prostřednictvím čtyř symetrických kvadrantů a simulátoru budoucích scénářů níže vám přesně ukáže, kde jsou vaše zranitelná místa."
+          ],
+          "intro": "Kvantitativní Risk & Stres testuje vaše portfolio na historické krize, korelační nákazu a projekce Monte Carlo.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Interaktivní mapa rizik a výnosů, abyste viděli, jak blízko jste k nejúčinnějšímu možnému portfoliu.",
+              "paragraphs": [
+                "Se stejným majetkem, který již máte ve svém portfoliu, existují tisíce způsobů, jak procenta rozdělit. Je kombinace, kterou jste si vybrali, ta, která nejlépe platí za riziko, které podstupujete, nebo byste mohli vyhrát totéž s menším počtem překvapení?",
+                "První kvadrant vlevo nahoře kreslí živou mapu možností:"
+              ],
+              "lead": "První kvadrant vlevo nahoře kreslí živou mapu možností:",
+              "bullets": [
+                {
+                  "bold": "Vaše pozice vůči optimálním portfoliím",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Ukazuje, kde se vaše aktuální portfolio nachází ve vztahu k bodu nejnižší možné volatility a bodu maximální efektivity rizika a výnosu."
+                },
+                {
+                  "bold": "Vizuální vrstvy a kontrola podle majetku",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Vrstvy modelu můžete zapnout nebo vypnout a kliknutím na libovolný uzel si níže přečíst přesný příspěvek daného aktiva."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Efektivní hranice Markowitz a výpočet minimálního rozptylu a maximálního portfolia Sharpe."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornádo a VaR",
+              "summary": "Historický krizový simulátor, denní rozpis ztrát podle aktiv a asymetrie trhu.",
+              "paragraphs": [
+                "Pokud by se zítra měl opakovat krach jako v roce 2008, ekonomické zpomalení v roce 2020 nebo zvýšení sazeb v roce 2022, jak moc by vaše současné portfolio ztratilo a jaké aktivum by bylo hlavním viníkem?",
+                "Levý dolní kvadrant odpovídá na tyto tři otázky na třech konkrétních kartách:"
+              ],
+              "lead": "Levý dolní kvadrant odpovídá na tyto otázky na třech konkrétních kartách:",
+              "bullets": [
+                {
+                  "bold": "Otestujte se proti pěti skutečným krizím",
+                  "code": "1. Tornado Stress",
+                  "text": "Porovnejte sloupec po sloupci, jak moc by vaše portfolio kleslo proti S&P 500 tváří v tvář pěti velkým historickým šokům."
+                },
+                {
+                  "bold": "Pořadí rizika podle pozice",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Seřaďte své podíly podle toho, kolik dolarů potenciální denní ztráty každý z nich přispívá k celkovému portfoliu."
+                },
+                {
+                  "bold": "Chování ve vzestupech a pádech",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Ukazuje vám, jaké procento býčích kol na trhu využívá každé aktivum a jak moc se mu daří tlumit, když trh klesá."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Metodika historických stresových scénářů, mezní příspěvek k VaR a záchytné poměry."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Korelace",
+              "summary": "Křížová matice pro kontrolu, zda se vaše aktiva skutečně diverzifikují nebo zda nejsou infikována během paniky.",
+              "paragraphs": [
+                "Mít několik aktiv ve svém portfoliu snižuje riziko pouze tehdy, pokud se všechna nepohybují stejným směrem ve stejnou dobu. Ale v dobách finanční paniky mnoho korelací, které se zdály nízké, prudce vyskočilo nahoru.",
+                "Pravý horní kvadrant vám umožňuje auditovat tento vztah ve dvou scénářích:"
+              ],
+              "lead": "Pravý horní kvadrant vám umožňuje auditovat tento vztah ve dvou scénářích:",
+              "bullets": [
+                {
+                  "bold": "Křížení mezi aktivy a citlivostí",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Ukazuje, jak podobně se každý pár aktiv pohybuje (zelená nebo světle modrá, když se dobře diverzifikují, a červená, když se pohybují příliš blízko u sebe) a jaká je jejich citlivost na trh."
+                },
+                {
+                  "bold": "Simulátor nákazy v krizi",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Jedním kliknutím změníte korelace normálního roku na korelace okamžiku paniky, abyste zjistili, které pozice by vás již nechránily."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Výpočet Pearsonových korelačních koeficientů za normálních podmínek a při tržním napětí."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash & Markov",
+              "summary": "Společná tabulka dopadů sazeb a akciového trhu plus pravděpodobnosti změny ekonomického cyklu.",
+              "paragraphs": [
+                "V reálné ekonomice se problémy zřídka objevují jeden po druhém: nárůst úrokových sazeb se mnohokrát shoduje s poklesem akcií. Co se stane s vaším portfoliem, pokud se tyto dva faktory zkombinují současně?",
+                "Pravý dolní kvadrant protíná obě proměnné a měří pravděpodobnost změny režimu:"
+              ],
+              "lead": "Pravý dolní kvadrant protíná obě proměnné a měří tržní cyklus:",
+              "bullets": [
+                {
+                  "bold": "Dvojitá nárazová deska",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Pohyby křížových sazeb (-100 až +200 bazických bodů) s poklesy nebo vzestupy S&P 500 (-20 % až +10 %), což vám umožňuje filtrovat podle celého portfolia nebo podle jednotlivých aktiv."
+                },
+                {
+                  "bold": "Pravděpodobnosti přechodu cyklů",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Vypočítejte, jak je pravděpodobné, že trh zůstane klidný nebo vstoupí do volatilní, inflační nebo krizové fáze."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Společná citlivost na rychlosti a proměnné a Markovova přechodová matice stavu."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Spodní panel je přes celou obrazovku s budoucími pravděpodobnostními projekcemi a historickými poklesy.",
+              "paragraphs": [
+                "Pohled do minulosti je užitečný, ale při investování vpřed potřebujete vědět, v jakém rozmezí výsledků se může váš kapitál posunout v příštích šesti měsících, roce nebo dvou letech.",
+                "Spodní panel s plnou šířkou spojuje tři dočasné nástroje pro projektování a ovládání této cesty:"
+              ],
+              "lead": "Spodní panel sdružuje tři dočasné nástroje k projekci této cesty:",
+              "bullets": [
+                {
+                  "bold": "Deset tisíc scénářů budoucnosti",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Nakreslete kužel pravděpodobného vývoje vašeho portfolia, rozlište optimistický scénář (P95 zeleně), očekávanou centrální cestu (P50) a nepříznivý scénář (P05 červeně)."
+                },
+                {
+                  "bold": "Hloubka pádů a stabilita v čase",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Umožňují vám přepínat graf, abyste viděli, jak dlouho portfolio zůstalo pod svými historickými maximy nebo jak stabilní byla jeho efektivita a riziko v průběhu 60denních oken."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo stochastická simulace 10 000 silnic a 60denní pohyblivé metriky."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulátor",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Před nákupem nového aktiva, snížením pozice nebo zaplacením za zajištění opcemi vždy vyvstává stejná otázka: skutečně tato operace zlepšuje mé portfolio nebo přidává zbytečné riziko? A kolik kapitálu do toho mám vložit?",
+            "Ad-Hoc Strategy Lab (třetí pohled na Portfolio) je váš předprovozní simulátor. Umožňuje vám načíst taktické hry, vypočítat velikost vaší ideální pozice, otestovat pojištění proti poklesu a vidět přesné před a po dopadu, aniž byste se dotkli svého základního portfolia."
+          ],
+          "intro": "Ad-Hoc Strategy Laboratory je váš předobchodní simulátor pro testování objednávek, velikostních pozic a měření pokrytí.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Dopad",
+              "summary": "Šest nejlepších karet, které porovnávají vaše aktuální portfolio s výsledkem po simulovaných hrách.",
+              "paragraphs": [
+                "Abychom věděli, zda taktický nápad stojí za to, nestačí, aby aktivum vypadalo atraktivně samo o sobě: musí vylepšit čísla pro celé portfolio.",
+                "V horním řádku se trvale zobrazuje srovnání mezi vaším aktuálním portfoliem a portfoliem s použitou simulací:"
+              ],
+              "lead": "Horní řádek porovnává vaše aktuální portfolio s portfoliem s použitou simulací:",
+              "bullets": [
+                {
+                  "bold": "Vliv na zisk a efektivitu",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Zobrazují základní číslo vedle projektovaného čísla a svítí rozdíl zeleně, pokud hra zvyšuje účinnost, nebo červeně, pokud ji zhoršuje."
+                },
+                {
+                  "bold": "Vliv na riziko, kapitál a pravidla",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Řeknou vám, jak moc se změní vaše maximální očekávaná ztráta, jaké procento portfolia se testům zavazujete a zda jsou dodrženy všechny bezpečnostní limity."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If & Kelly",
+              "summary": "Simulátor nákupu/prodeje vstupenek a kalkulačka pro definování, kolik peněz riskovat.",
+              "paragraphs": [
+                "Mnoho dobrých investičních nápadů nakonec vede ke ztrátám kvůli chybě ve velikosti sázky: příliš málo vložení nehýbe jehlou, ale příliš velké vložení může zničit portfolio, pokud se tah nepovede.",
+                "První kvadrant vlevo nahoře spojuje evidenční list s matematickým výpočtem velikosti:"
+              ],
+              "lead": "První kvadrant spojuje zkušební protokol s matematickým výpočtem velikosti:",
+              "bullets": [
+                {
+                  "bold": "Načítání zkušební objednávky",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Vyberete si jakékoli aktivum, uvedete, zda chcete koupit, prodat nebo pokrýt, a vložíte částku v dolarech. V níže uvedeném seznamu můžete každou simulovanou objednávku zapnout nebo vypnout a porovnat její účinek."
+                },
+                {
+                  "bold": "Optimální velikost pozice",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Na základě vaší odhadované pravděpodobnosti úspěchu a vztahu mezi ziskem a ztrátou vypočítá, jaké maximální procento kapitálu by mělo být přiděleno k růstu, aniž byste se přeexponovali."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Matematický výpočet Kellyho kritéria a jeho konzervativní verze Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Vložte OTM & Margin",
+              "summary": "Simulátor pojištění s opcemi pro silný pokles trhu a monitorem margin call.",
+              "paragraphs": [
+                "Když se bojíte silné korekce trhu, prodej všech vašich pozic je obvykle nákladný a neefektivní. Profesionální alternativou je uzavřít pojištění s ochrannými možnostmi, ale kolik to pojištění stojí ročně a kolik vás skutečně ochrání?",
+                "Levý dolní kvadrant umožňuje měřit krytí i úroveň dluhu:"
+              ],
+              "lead": "Levý dolní kvadrant měří krytí i úroveň záruk:",
+              "bullets": [
+                {
+                  "bold": "Komparátor ochranných štítů",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Umožňuje vám střídat mezi provozem bez krytí nebo uplatněním tří typů pojištění s opcemi (na volatilitu SPY, QQQ nebo VIX), což kontrastuje mezi ročními náklady na pojistné a dolary, které byste ušetřili při 20% krachu."
+                },
+                {
+                  "bold": "Pákový efekt a zajištění",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Před vstupem do zóny margin call sledujte, jaké procento udržovací marže jste použili a jaký procentní pokles by portfolio vydrželo."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Provoz zajištění s out-of-the-money Put opcemi a výpočet garancí Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Výbor a kniha",
+              "summary": "Dva pravé panely s automatickým přehledem rizikových limitů, historií objednávek a Co-pilotem.",
+              "paragraphs": [
+                "V nadšení z vyzkoušení obchodu je snadné přehlédnout, že aktivum soustřeďuje více než 20 % celého vašeho portfolia nebo že funguje uprostřed vážné statistické anomálie.",
+                "Dva kvadranty napravo slouží jako automatická kontrola rizik a auditní záznam:"
+              ],
+              "lead": "Dva kvadranty na pravé straně fungují jako kontrola rizik a registrace:",
+              "bullets": [
+                {
+                  "bold": "Recenze ve třech rozměrech",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Vyhodnocují vaše simulované příkazy z technických, základních a tvrdých bezpečnostních limitů (upozornění, pokud některá pozice překročí 20% kapitálový limit nebo pokud má vysoké anomálie)."
+                },
+                {
+                  "bold": "Protokol objednávek a asistent portfolia",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Spodní panel zaznamenává každou simulaci s jejím dopadem na riziko, zatímco dialogové tlačítko v pravém horním rohu otevírá chat pro přímé dotazy na vaše portfolio."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Předprovozní pravidla řízení rizik a koncentrační limity na aktiva."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Níže uvedený graf na celé obrazovce pro kontrolu, zda vaše strategie funguje mimo zkušební období.",
+              "paragraphs": [
+                "Jakoukoli strategii lze upravit pohledem do minulosti, dokud se na historickém grafu neobjeví jako spolehlivá. Skutečnou výzvou je vědět, zda bude fungovat i nadále, když čelíme novým údajům o trhu.",
+                "Spodní panel s plnou šířkou podrobuje strategii nejpřísnějšímu ověření před uvedením do výroby:"
+              ],
+              "lead": "Spodní panel podrobuje strategii ověření ve vzorku a mimo vzorek:",
+              "bullets": [
+                {
+                  "bold": "Oddělení mezi návrhem a skutečným testováním",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Rozděluje historický graf na první fázi, kde je strategie kalibrována, a na druhou fázi s neviditelnými daty, aby se zjistilo, zda si zachovává svou výhodu oproti základnímu portfoliu."
+                },
+                {
+                  "bold": "Poznámka ke statistické robustnosti",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Pokud ukazatel účinnosti překročí 70 %, potvrzuje to, že výsledky jsou konzistentní a nejsou výsledkem toho, že jsme si čísla vynutili v minulosti."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Co měří index účinnosti Walk-Forward (WFE) a jak detekuje přeoptimalizované strategie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Filtr likvidity (ADV)",
+        "intro": "Aby bylo možné s aktivem obchodovat, aniž by jediný pokyn narušil jeho cenu, platforma vyžaduje minimální práh průměrného denního objemu v dolarech za posledních 20 pracovních dnů.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (konečná cenaᵢ × zobchodovaný objemᵢ)",
+          "denominator": "20 šikovných koleček",
+          "vars": [
+            "Závěrečná cena: oficiální zavírací cena dne i vyjádřená v USD.",
+            "Zobchodovaný objemᵢ: celkový počet zobchodovaných jednotek v daný den."
+          ]
+        },
+        "lead": "Na základě průměrného denního objemu klasifikuje katalog hloubku každého nástroje:",
+        "bullets": [
+          {
+            "bold": "Vysoká institucionální likvidita",
+            "code": "> $500M diarios",
+            "text": "Umožňuje okamžitě vstupovat a vystupovat z velkých pozic bez pohybu tržní ceny."
+          },
+          {
+            "bold": "Standardní katalogová likvidita",
+            "code": "$50M a $500M diarios",
+            "text": "Vhodné pro diverzifikovaná portfolia s velmi nízkými náklady na nákup/prodej."
+          },
+          {
+            "bold": "Sledování šíření",
+            "code": "< $50M diarios",
+            "text": "V době volatility je vhodné zkontrolovat otevření tipů před provedením velkých příkazů."
+          }
+        ],
+        "example": "Pokud se akcie obchoduje za 200 USD a průměrně se zobchoduje 5 milionů akcií na kolo za poslední měsíc, její průměrný denní objem (ADV) je 1 miliarda USD (1,0 miliardy USD)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalizace na USD",
+        "intro": "Jelikož katalog kombinuje evropské dluhopisy, asijské indexy, komodity a kryptoměny, všechny objemové toky jsou v reálném čase převáděny na americké dolary, aby bylo možné je porovnávat ve stejném měřítku.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Objem v místní měně: částka obchodovaná v původní tržní měně (EUR, JPY, GBP, BRL atd.).",
+            "Spotový směnný kurz: aktuální kotace v měnovém motoru 61."
+          ]
+        },
+        "lead": "Tato konverze přímo ovlivňuje dvě místa na obrazovce:",
+        "bullets": [
+          {
+            "bold": "Celkový pohled na hodnocení všech",
+            "code": "213 activos",
+            "text": "Seřaďte nástroje od největšího k nejméně reálnému pohybu peněz po celém světě."
+          },
+          {
+            "bold": "Přidána objemová karta",
+            "code": "Volumen 24h en $B",
+            "text": "Umožňuje bez zkreslení sčítat objem aktiv uvedených v různých zemích."
+          }
+        ],
+        "example": "Pokud se s německým dluhopisem obchoduje 4 miliardy EUR denně a křížový obchod EUR/USD se obchoduje na 1,08, systém vypočítá 4,32 miliardy USD v globálním pulsu."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Jak změříte, zda trh roste se skutečnou silou nebo zda již vzrostl příliš rychle a je vyčerpaný? Index relativní síly (RSI) porovnává průměrné nárůsty s průměrnými poklesy za posledních 14 kol na stupnici od 0 do 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (průměrné zvýšení₁₄ / průměrné snížení₁₄)",
+          "vars": [
+            "Průměrný nárůst₁₄: vyhlazený průměr bodů získaných v býčích dnech za posledních 14 kol.",
+            "Průměrné ztráty₁₄: vyhlazený průměr bodů ztracených v medvědích dnech stejného období."
+          ]
+        },
+        "lead": "Takto jsou interpretovány tři části stupnice v kruhovém prstenci:",
+        "bullets": [
+          {
+            "bold": "Kupování síly a překoupení",
+            "code": "70 a 100",
+            "text": "Růst daleko převyšuje nedávný pokles. Ukazuje velkou býčí dynamiku, i když nad 70 varuje, že cena může potřebovat pauzu."
+          },
+          {
+            "bold": "balanční zóna",
+            "code": "30 a 70",
+            "text": "Trh se pohybuje udržitelným tempem. Překročení střední úrovně (> 50 zeleně) potvrzuje dominanci kupujícího, zatímco pokles pod (< 50 červeně) značí dominanci prodávajícího."
+          },
+          {
+            "bold": "Trest a přeprodání",
+            "code": "0 a 30",
+            "text": "Pády byly tak časté a výrazné, že aktivum začíná vypadat statisticky levně a náchylné k odrazu."
+          }
+        ],
+        "example": "Pokud za posledních 14 kol skupina akcií vzrostla v průměru o 2 dolary za býčí den a klesla pouze o 1 dolar za medvědí den, její poměr síly je 2 a její RSI je 66,7 (býčí tlak v zelené barvě)."
+      },
+      {
+        "id": "p06",
+        "label": "Normální režim (P-06)",
+        "intro": "Aktivum se může zdát klidné, pokud se podíváte pouze na jeho cenu, ale zároveň trpí podivným skokem v objemu a abnormálním otevřením svých nákupních a prodejních vrcholů. Motor Isolation Forest (P-06) tyto proměnné současně kříží, aby detekoval atypické chování.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): průměrný počet náhodných řezů nutných k izolaci dnešního chování od zbytku historie.",
+            "x: vektor 4 proměnných (Návrat 24h, Vol Z-Score 20d, Realizovaná volatilita 30d a Spread v bps)."
+          ]
+        },
+        "lead": "Čím vzácnější je dnešní tah, tím rychleji je izolovaný a tím blíže je skóre 1,00:",
+        "bullets": [
+          {
+            "bold": "Normální režim",
+            "code": "0.00 a 0.49",
+            "text": "Cena, objem a likvidita se pohybují v souladu s historickým průměrem aktiva."
+          },
+          {
+            "bold": "Vysoká aktivita",
+            "code": "0.50 a 0.64",
+            "text": "Alespoň jedna z proměnných se začala odchylovat od svého obvyklého chování; Je vhodné bedlivě sledovat tok objednávek."
+          },
+          {
+            "bold": "Dislokace nebo kritická anomálie",
+            "code": "0.65 a 1.00",
+            "text": "Aktivum zaznamenává statisticky extrémní chování. V modulu portfolia překročení tohoto prahu aktivuje bezpečnostní brzdu."
+          }
+        ],
+        "example": "Pokud se suverénní dluhopis pohne sotva o 0,1 % v ceně, ale jeho objem se vynásobí čtyřmi a jeho rozpětí se během minut ztrojnásobí, detektor protne tři datové body a zvýší své skóre na 0,74 (dislokace červeně)."
+      },
+      {
+        "id": "zscore",
+        "label": "Vynechání hlasitosti (Z-Score)",
+        "intro": "Říct, že dnes bylo provozováno 500 milionů dolarů, je hodně pro středně velkou společnost, ale velmi málo pro S&P 500. Volume Z-Score přináší všechna aktiva do stejné univerzální jednotky: kolik standardních odchylek (σ) je dnešní objem od vlastního průměru na 20 kolech.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Dnešní objem (24 h) – Průměrný objem (20 d)",
+          "denominator": "Směrodatná odchylka objemu (20 d)",
+          "vars": [
+            "Průměrný objem (20d): obvyklý objem aktiva během posledního obchodního měsíce.",
+            "Směrodatná odchylka (20 d): jak moc se tento objem obvykle mění ze dne na den."
+          ]
+        },
+        "lead": "Tímto způsobem můžete porovnat jakékoli aktivum na stejné stupnici jednotek sigma (σ):",
+        "bullets": [
+          {
+            "bold": "Obvyklá činnost",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Objem dne je zcela v rámci rutiny posledních čtyř týdnů."
+          },
+          {
+            "bold": "Vysoká účast",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Existuje vyšší než průměrný zájem, který začíná potvrzovat trend dne."
+          },
+          {
+            "bold": "Institucionální střet",
+            "code": "> +2.0σ",
+            "text": "Vyskytuje se v méně než 5 % kol roku a obvykle odráží masivní vstupy nebo výstupy velkých fondů."
+          }
+        ],
+        "example": "Pokud se akcie obvykle obchodují za 100 milionů USD denně s typickou odchylkou ± 20 milionů USD a dnes se obchoduje za 160 milionů USD, je to 60 milionů USD nad svým průměrem, což je přesně ekvivalentní +3,0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Pevný příjem (2s10s a DV01)",
+        "intro": "Když v tabulce vyfiltrujete dluhopisy nebo sazby, zobrazí se dvě klíčové metriky pro hodnocení státního dluhu: sklon křivky (2s10s) a peněžní hodnota základního bodu (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 bazický bod (1 bp): odpovídá 0,01 % výkonnosti.",
+            "DV01 ($/$1M): Kolik dolarů vyhraje nebo prohraje pozice 1 milion dolarů, pokud se kurz posune o 1 bazický bod."
+          ]
+        },
+        "lead": "Jak číst tato dvě čísla na mřížce:",
+        "bullets": [
+          {
+            "bold": "Normální nebo kladná křivka",
+            "code": "2s10s > 0 bps",
+            "text": "10leté dluhopisy platí vyšší sazbu než dvouleté, což odráží očekávání zdravého ekonomického růstu."
+          },
+          {
+            "bold": "obrácená křivka",
+            "code": "2s10s < 0 bps",
+            "text": "Krátké sazby převyšují dlouhé sazby; historicky varuje před ekonomickým ochlazením nebo měnovou restrikcí."
+          }
+        ],
+        "example": "Pokud 10letá státní pokladna vynáší 4,20 % a 2letá státní pokladna 4,55 %, sloupec 2s10s značí -35 bps (obrácená křivka červeně)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Akcie (P/E a marže)",
+        "intro": "Při filtrování akcií S&P/NDX tabulka zobrazuje předpokládaný násobek zisku (P/E Forward) a hrubou provozní marži, takže můžete porovnat ocenění se ziskovostí.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Aktuální cena akcií",
+          "denominator": "Odhadovaný zisk na akcii (příštích 12 měsíců)",
+          "vars": [
+            "P/E Forward: Kolik let budoucích příjmů platíte při dnešní ceně.",
+            "Hrubá marže (%): procento tržeb, které zůstane jako hrubý zisk po odečtení přímých nákladů."
+          ]
+        },
+        "lead": "Na co si dát pozor při přejezdu obou kolon:",
+        "bullets": [
+          {
+            "bold": "Náročné vs průměrné hodnocení",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Vysoký násobek znamená, že trh má silný budoucí růst; nízká obvykle odráží vyspělé nebo hodnotné společnosti."
+          },
+          {
+            "bold": "Cenová síla",
+            "code": "Margen Bruto > 50%",
+            "text": "Vysoké marže ukazují společnosti se silnými konkurenčními výhodami, které jsou schopny bránit své zisky před inflací."
+          }
+        ],
+        "example": "Pokud se akcie obchodují za 150 USD a odhaduje se, že vydělají 6 USD na akcii během příštích 12 měsíců, její Forward P/E je 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Deriváty, FX a komodity",
+        "intro": "U opcí, forexových a fyzických termínových trhů dva dynamické sloupce ukazují implikované náklady na riziko nebo odměnu za držení pozice v průběhu času.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (deriváty): anualizovaná volatilita, kterou opční trh diskontuje na dalších 30 dní.",
+            "Carry 10Y (FX) a Roll Yield (komodity): roční zisk nebo náklady plynoucí z rozdílu v sazbě nebo z rolování futures."
+          ]
+        },
+        "lead": "Jak využít výhody těchto sloupců v závislosti na aktivu:",
+        "bullets": [
+          {
+            "bold": "In Deriváty",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Řeknou vám, jaké procento pohybu trh očekává a zda jsou opce na pokrytí pádů (Puts) drahé."
+          },
+          {
+            "bold": "V měnách a surovinách",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Zobrazují se zeleně, pokud vám údržba aktiva přináší dodatečný příjem, nebo červeně, pokud má účetní náklady."
+          }
+        ],
+        "example": "Pokud opce vykazuje implikovanou volatilitu (ATM IV) ve výši 35 % ročně, trh diskontuje pohyb v blízkosti ±10 % po dobu následujících 30 dnů."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radiální radiální mapování",
+        "intro": "Chcete-li umístit až 45 aktiv do tří radarových prstenců bez překrývání, pohled Orbital transformuje hodnotu zvoleného indikátoru na vzdálenost ke středu (poloměr r) normalizovanou mezi minimem a maximem skupiny.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Hodnota aktiv − Minimální hodnota skupiny",
+          "denominator": "Maximální hodnota skupiny − Minimální hodnota skupiny",
+          "vars": [
+            "r → 0 (Vnitřní prstenec): koncentruje aktiva s větší intenzitou nebo kladnou odchylkou.",
+            "r → 1 (Outer Ring): lokalizuje periferní aktiva nebo aktiva s nejnižší relativní hodnotou."
+          ]
+        },
+        "lead": "Jak číst polohu a barvu každé planety na radaru:",
+        "bullets": [
+          {
+            "bold": "Focus vnitřní kroužek",
+            "code": "Centro del radar",
+            "text": "Shromážděte hlavní aktiva z ukazatele, který jste vybrali výše, aby váš pohled směřoval k tomu, co je nejdůležitější."
+          },
+          {
+            "bold": "Historická barevná sémantika",
+            "code": "Verde vs Rojo",
+            "text": "Uzel se rozsvítí zeleně, když příznivě překročí svůj historický průměr, a červeně, když odráží pokles nebo stres."
+          }
+        ],
+        "example": "Pokud seřadíte radar podle objemové odchylky (Z-Score), aktivní s +3,4σ se nachází ve světlém centrálním prstenci, zatímco radar s 0,1σ je na vnější oběžné dráze."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) a Bollingerova pásma",
+        "intro": "Jednoduchý klouzavý průměr za 20 období (SMA 20) označuje základní trend aktiva, zatímco Bollingerova pásma kreslí dynamický kanál přičtením a odečtením dvou směrodatných odchylek (2σ) kolem tohoto průměru.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): aritmetický průměr posledních 20 uzavření.",
+            "Šířka pásma (BB Width): procentní vzdálenost mezi horním a dolním pásmem."
+          ]
+        },
+        "lead": "Statisticky se asi 95 % kotací vyskytuje v těchto dvou pásmech:",
+        "bullets": [
+          {
+            "bold": "Cena nadprůměrná",
+            "code": "Precio > SMA 20",
+            "text": "To naznačuje, že krátkodobý trend je býčí a průměr obvykle funguje jako spodní hranice."
+          },
+          {
+            "bold": "Dotyk horního nebo spodního pásma",
+            "code": "±2σ",
+            "text": "Varuje, že cena se příliš rychle natáhla ze svého nedávného průměru a může si oddechnout."
+          },
+          {
+            "bold": "pásmová komprese",
+            "code": "BB Width bajo",
+            "text": "Když se pásma velmi zúží, trh nabudí energii před silným pohybem."
+          }
+        ],
+        "example": "Pokud je SMA(20) akcie 100 USD a její 20kolová standardní odchylka je 4 USD, horní pásmo je 108 USD a spodní pásmo je 92 USD."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Institucionální",
+        "intro": "Na rozdíl od běžného průměru, který dává stejnou váhu všem hodinám dne, VWAP váží každou cenu množstvím peněz, které byly na dané úrovni skutečně zobchodovány. Je to hlavní reference používaná institucionálními tabulkami.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (typická cenaᵢ × zobchodovaný objemᵢ)",
+          "denominator": "∑ Zobchodovaný objemᵢ",
+          "vars": [
+            "Typická cena: průměr mezi maximem, minimem a uzavřením každé svíčky.",
+            "Obchodovaný objemᵢ: objem obchodovaný konkrétně v této sekci."
+          ]
+        },
+        "lead": "Jak profesionální obchodníci používají řadu VWAP:",
+        "bullets": [
+          {
+            "bold": "Kontrola provedení",
+            "code": "Comprar bajo el VWAP",
+            "text": "Pokud institucionální fond nakoupí za dané období pod VWAP, dostal lepší cenu, než je tržní vážený průměr."
+          },
+          {
+            "bold": "Trendová úroveň obrany",
+            "code": "Soporte / Resistencia",
+            "text": "Dokud aktiva zůstanou nad VWAP, ti, kteří v daném období nakoupili, mají průměrný zisk."
+          }
+        ],
+        "example": "Pokud by se 1 milion akcií obchodovalo za 100 USD a pouze 100 tisíc akcií se obchodovalo za 110 USD, prostý průměr by řekl 105 USD, ale VWAP má hodnotu 100,91 USD, protože téměř všechny peníze byly obchodovány za 100 USD."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Spread Displacement (bps)",
+        "intro": "Spread je rozdíl mezi nejlepší poptávkovou cenou a nejlepší nabídkovou cenou v knize objednávek. Když tvůrci trhu vnímají riziko nebo nedostatek likvidity, otevírají tuto mezeru, aby se ochránili.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "(Požádat o cenu – Nabídkovou cenu)",
+          "denominator": "Průměrná cena (střední cena)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Ask / Bid Price: prodejní místo a nákupní místo aktuální v knize.",
+            "10 000: Konverzní faktor k vyjádření rozdílu v bazických bodech (bps)."
+          ]
+        },
+        "lead": "Co vám říká údaj Spread Dislocation na levé kolejnici:",
+        "bullets": [
+          {
+            "bold": "Hluboká a plynulá kniha",
+            "code": "Spread estable en verde",
+            "text": "Na obou koncích je hojná likvidita a implicitní náklady na vstup nebo výstup jsou minimální."
+          },
+          {
+            "bold": "Tření nebo stahování likvidity",
+            "code": "Salto en bps",
+            "text": "Obvykle k němu dochází několik sekund před makroekonomickými oznámeními nebo během panického prodeje, takže provedení je dražší."
+          }
+        ],
+        "example": "Pokud má aktivum nákupní spropitné 99,95 USD a prodejní spropitné 100,05 USD, rozdíl 0,10 USD oproti 100 USD odpovídá 10 bazickým bodům (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Opce (Black-Scholes a Řekové)",
+        "intro": "V opčním enginu platforma zobrazuje dvě křivky zisků a ztrát (P&L): jak by strategie skončila v den expirace a kolik stojí dnes (T+0) při použití Black-Scholesova modelu.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S a K: aktuální cena podkladového aktiva (Spot) a realizační cena opce (Strike).",
+            "Čistá Řekové: Δ Delta (cenová citlivost), Γ Gamma (Delta zrychlení), Θ Theta (denní opotřebení) a ν Vega (citlivost na volatilitu)."
+          ]
+        },
+        "lead": "Jak číst Řeky vaší strategie na prášcích na levé koleji:",
+        "bullets": [
+          {
+            "bold": "Řízení a zrychlení",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Kladná delta vyhrává, když aktivum roste; Pozitivní gama vám umožní získat rychleji a rychleji, pokud se pohyb zrychlí."
+          },
+          {
+            "bold": "Plynutí času a nejistoty",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta vám říká, kolik dolarů pozice ztrácí nebo získává za každý další den; Vega, jak moc se změní, pokud implikovaná volatilita vzroste o 1%."
+          }
+        ],
+        "example": "Long Straddle (koupit Call a Put na stejný strike) má Delta blízko 0 (nezáleží na tom, jestli jde nahoru nebo dolů), ale pozitivní Vega a potřebuje, aby se cena posunula za své dva body rovnováhy (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Sovereign Curves (Butterfly a DV01)",
+        "intro": "Nástroj s pevným výnosem porovnává výnosy od 3 měsíců do 30 let pro 42 zemí a vypočítává jak sklon (2s10s), tak zakřivení střední tranše (Butterfly 2s5s10s) a monetární citlivost (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y sazba: 2, 5 a 10 let suverénní výnosy vybrané země.",
+            "Reálná 10letá sazba: 10letý nominální výnos minus referenční sazba nebo implicitní inflace."
+          ]
+        },
+        "lead": "K čemu je každý indikátor v analýze dluhopisů:",
+        "bullets": [
+          {
+            "bold": "Zakřivení střední části",
+            "code": "Butterfly 2s5s10s",
+            "text": "Měří, zda je 5letá tranše drahá nebo levná v porovnání s 2letým a 10letým extrémem."
+          },
+          {
+            "bold": "Riziko trvání dolaru",
+            "code": "DV01 por $1M",
+            "text": "Řekne vám přesně, o kolik dolarů se milionové portfolio mění s pohybem kurzu o 0,01 %."
+          }
+        ],
+        "example": "10letý dluhopis s DV01 ve výši 820 USD za milion ztratí přibližně 82 000 USD, pokud tržní sazby vzrostou o 100 bazických bodů (+1,00 %)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Měny (Carry) a futures (roll Yield)",
+        "intro": "U měn, kdy pár není přímo kotován, se vypočítává triangulací vůči dolaru a měří se jeho kurzový diferenciál (Carry). U surovin se výkon obnovy měří mezi okamžitou smlouvou a smlouvou na 12 měsíců (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Spotová cena (přední M1) – budoucí cena (M12)",
+          "denominator": "Budoucí cena (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Backwardation (Spot > Future): Fyzický nedostatek dnes způsobuje, že rolující futures generují kladný zisk (Roll Yield > 0).",
+            "Contango (Spot < Future): Náklady na skladování futures prodražují a jejich obnova má negativní náklady."
+          ]
+        },
+        "lead": "Jak to ovlivní vaši peněženku při držení pozice:",
+        "bullets": [
+          {
+            "bold": "Positive Carry Trade v měnách",
+            "code": "Carry Spread > 0 bps",
+            "text": "Pokud si koupíte měnu s vysokou úrokovou sazbou tím, že se budete financovat v měně s nízkou sazbou, získáte tento rozdíl ve svůj prospěch."
+          },
+          {
+            "bold": "Příznivý vítr v surovinách",
+            "code": "Backwardation en verde",
+            "text": "Když jsou fyzické zásoby nízké, blízký kontrakt má větší hodnotu než ten vzdálený a investor získá extra výnos rolováním kontraktu."
+          }
+        ],
+        "example": "Pokud se 1-měsíční ropa obchoduje za 72 USD a 12měsíční kontrakt se obchoduje za 68 USD, je trh v Backwardation s kladným Roll Yield +5,88 % ročně."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Celková vážená známka",
+        "intro": "Ne všechna aktiva se pohybují přes stejné zdroje: ve společnosti mají auditované finanční výkazy (SEC 10-K/10-Q) velkou váhu, zatímco na kryptotrhu nebo v měnách mají větší váhu denní toky a komunikace.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: automatické vážení podle kategorie (např. 80 % / 20 % v akciích; 85 % / 15 % v poplatcích).",
+            "Konečné měřítko: sahá od -100 (maximální pesimismus) do +100 (maximální býčí přesvědčení)."
+          ]
+        },
+        "lead": "Takto je složené skóre přeloženo v nadřazeném názoru:",
+        "bullets": [
+          {
+            "bold": "Býčí postoj",
+            "code": "BULLISH / Nota > +15",
+            "text": "Dokumentární katalyzátory a tok zpráv jasně převažují nad rizikovými faktory."
+          },
+          {
+            "bold": "Neutrální nebo smíšené držení těla",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Rovnoměrné síly mezi základy a novinkami; Před rozhodnutím je vhodné zkontrolovat akordeon 10 faktorů."
+          },
+          {
+            "bold": "Obranný nebo medvědí postoj",
+            "code": "BEARISH / Nota < -15",
+            "text": "Převládají upozornění na rozvahy, zhoršení marží nebo nepříznivé titulky."
+          }
+        ],
+        "example": "Pokud u akcie (80 % fundamenty / 20 % zprávy), pokud zůstatky ukazují +50 bodů a zprávy dne ukazují +20, je celkové vážené skóre (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Ověřené vyhledávání (RAG)",
+        "intro": "Aby umělá inteligence nemohla vymýšlet figurky, používá Document Chat Generation Augmented Recovery (RAG): nejprve vyhledá příslušné odstavce v oficiálních zprávách o aktivu a teprve poté napíše odpověď s uvedením zdroje.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Konzultace s vektory (Q) · Oficiální dokument vektoru (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vektor Q a D: číselné vyjádření vaší otázky a oficiálních fragmentů (10-K, FOMC minuty, zprávy EIA).",
+            "3-Layer Guardrail: filtr, který blokuje dotazy nesouvisející s financemi nebo bez dokumentární podpory."
+          ]
+        },
+        "lead": "Co tento mechanismus zaručuje, když položíte otázku v chatu:",
+        "bullets": [
+          {
+            "bold": "Ukotvení v primárních zdrojích",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Každý údaj o příjmu, zadlužení, zásobách nebo sazbách pochází z regulačního dokumentu odpovídajícího danému aktivu."
+          },
+          {
+            "bold": "Zastavte otázky mimo téma",
+            "code": "Guardrail activo",
+            "text": "Pokud se někdo pokusí konzultovat nefinanční témata, asistent dotaz odmítne a zaměří se na analýzu nástroje."
+          }
+        ],
+        "example": "Když klepnete na čip rizikových faktorů na akciích, motor načte část položky 1A (Risk Factors) svého nejnovějšího formuláře 10-K a shrnuje kritické body."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Neuronální skóre",
+        "intro": "Typický slovník často zaměňuje finanční slova (například „pokles nákladů“ nebo „snížení dluhu“ je vynikající zpráva, i když používají slovo pokles nebo snížení). FinBERT je neuronová síť trénovaná speciálně s finančními texty.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(pozitivní) a P(negativní): pravděpodobnosti přiřazené modelem k titulku jsou býčí nebo medvědí pro aktivum.",
+            "24h křivka: exponenciální klouzavý průměr titulků za posledních 24 hodin."
+          ]
+        },
+        "lead": "Jak každý uzel hodnotí na časové ose vpravo:",
+        "bullets": [
+          {
+            "bold": "Držák katalyzátoru",
+            "code": "+20 a +100 en verde",
+            "text": "Překonání odhadovaných příjmů, zvýšení úvěrového hodnocení nebo příznivé snížení sazeb."
+          },
+          {
+            "bold": "Neutrální informační kabel",
+            "code": "-19 a +19 en ámbar",
+            "text": "Rutinní provozní oznámení, která nemění strukturální hodnocení nástroje."
+          },
+          {
+            "bold": "Držitel rizika",
+            "code": "-20 a -100 en rojo",
+            "text": "Regulační varování, pokles marže, stávky nebo horší než očekávaná data o inflaci."
+          }
+        ],
+        "example": "Pokud model přiřadí nadpisu 82% pozitivní pravděpodobnost, 12% neutrální a 6% negativní pravděpodobnost, uzel ukazuje čistý dopad +76 zeleně."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe a Sortino",
+        "intro": "První dvě horní karty měří, jak moc váš kapitál roste za rok (CAGR) a jak efektivní je tento růst ve vztahu k otřesům, které musíte vydržet (Sharpe a Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Roční výnos Portfolio (Rp) – sazba bez rizika (Rf)",
+          "denominator": "Roční volatilita Portfolio (σp)",
+          "vars": [
+            "Rf (4,30 %): základní výnos, který byste mohli bez rizika získat u státních pokladničních poukázek.",
+            "Sortino Ratio: používá stejný vzorec, ale ve jmenovateli penalizuje pouze volatilitu záporných dnů (pády)."
+          ]
+        },
+        "lead": "Jak ohodnotit kvalitu svého portfolia pomocí těchto čísel:",
+        "bullets": [
+          {
+            "bold": "Efektivní portfolio",
+            "code": "Sharpe > 1.00",
+            "text": "Nadměrný výnos, kterého dosáhnete nad bezrizikovou sazbou, daleko převyšuje předpokládanou volatilitu."
+          },
+          {
+            "bold": "Vynikající výkon",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Označuje velmi dobře diverzifikovanou kombinaci, kde jsou nárůsty konzistentní a poklesy jsou omezené."
+          }
+        ],
+        "example": "Pokud vaše portfolio vrací 15,3 % ročně, bezriziková sazba je 4,3 % a vaše roční volatilita je 10 %, váš nadměrný výnos je 11 % a váš poměr Sharpe je 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95 %, CVaR 99 % a čerpání",
+        "intro": "Třetí a čtvrtá karta odpovídá, kolik můžete ztratit ve špatný, ale statisticky normální den (VaR 95 %), kolik v den extrémní paniky (CVaR 99 %) a jaký byl největší pokles z předchozího vrcholu (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1 645: statistický faktor, který pokrývá 95 % běžných kol v roce (19 z každých 20 dnů).",
+            "CVaR 99 % (očekávaný nedostatek): Průměrná ztráta, když trh překročí tuto hranici a vstoupí do horního 1 % nejhorších dnů."
+          ]
+        },
+        "lead": "Jaký praktický rozdíl je mezi pohledem na VaR a pohledem na Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Riziko jednoho dne",
+            "code": "VaR 95% 1D en USD",
+            "text": "Psychicky i finančně vás připraví na to, co se váš účet může vychýlit špatným směrem, aniž by to znamenalo, že strategie selhala."
+          },
+          {
+            "bold": "Odolnost v nepříznivém pruhu",
+            "code": "Max Drawdown 12M",
+            "text": "Měří nahromaděnou kapku od špičky ke špičce od nejvyššího bodu k podlaze, než se znovu zotaví."
+          }
+        ],
+        "example": "V portfoliu 100 000 USD s denním VaR 95 % z 1,45 % (1 450 USD) v 19 z 20 obchodních kol vaše denní ztráty nepřekročí 1 450 USD."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Překrytí rentgenového záření (#12)",
+        "intro": "Když si koupíte ETF jako SPY nebo QQQ, kupujete uvnitř desítky akcií. Pokud jste také zakoupili některé ze stejných akcií přímo, vaše skutečná expozice je součtem těchto dvou věcí.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Přímá váhaᵢ: procento vašeho portfolia přidělené přímo akciím i.",
+            "Procento v rámci ETFₖ: oficiální váha, kterou má daná společnost v rámci indexu nebo fondu k."
+          ]
+        },
+        "lead": "Proč je klíčové zkontrolovat tuto první kartu před uzavřením portfolia:",
+        "bullets": [
+          {
+            "bold": "Viditelnost skryté koncentrace",
+            "code": "Directo + Indirecto",
+            "text": "Automaticky rozebere každý ETF ve vašem portfoliu a zobrazí vám jeden sloupec se skutečným procentem, které máte v každé společnosti."
+          },
+          {
+            "bold": "Nadměrná výstraha",
+            "code": "> 20% en rojo",
+            "text": "Pokud celkový součet překročí obezřetný práh koncentrace na jedno jméno, řádek se rozsvítí, abyste mohli znovu vyvážit."
+          }
+        ],
+        "example": "Pokud vložíte 15 % svého portfolia do přímého NVDA a také máte 30 % v SPY ETF (kde NVDA váží asi 7 %), rentgen odhalí, že vaše skutečná expozice vůči NVDA je 15 % + (30 % × 7 %) = 17."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alfa Brinsonův rozklad (#2)",
+        "intro": "Když vaše portfolio překoná (nebo ztratí) svůj benchmark, Brinson-Fachlerův model přesně oddělí, odkud tento rozdíl pochází: měli jste pravdu, ve kterých sektorech jste převážili, nebo jste měli pravdu při výběru nejlepších aktiv v každém sektoru?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Alokační efekt: (Hmotnost Portfolio − Srovnávací váha) × Sektorová návratnost v benchmarku.",
+            "Efekt výběru: Váha v benchmarku × (Návratnost vašich aktiv – Návratnost sektoru)."
+          ]
+        },
+        "lead": "Jak číst tři pruhy přiřazení na třetí kartě:",
+        "bullets": [
+          {
+            "bold": "Makro nebo sektorový úspěch",
+            "code": "Asignación Sectorial",
+            "text": "Je pozitivní v zelené, když přikládáte větší váhu než trh třídám aktiv, které vzrostly nejvíce."
+          },
+          {
+            "bold": "Úspěšné cílení aktiv",
+            "code": "Selección de Activos",
+            "text": "Je pozitivní, když konkrétní nástroje, které jste si vybrali, měly vyšší výkon, než je průměr pro jejich vlastní sektor."
+          }
+        ],
+        "example": "Pokud vaše portfolio porazilo S&P 500 o +3,20 %, tato karta vám umožní vidět, že +2,10 % pochází z výběru lepších akcií (výběr) a +1,10 % z větší váhy v technologii (alokace)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Efektivní Frontier a CML",
+        "intro": "V rovině Markowitz je očekávaný výnos portfolia váženým průměrem výnosu jeho aktiv, ale jeho volatilita je nižší než průměr díky tomu, že se aktiva nepohybují 100% stejně.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: procento kapitálu přiděleného aktivům iaj.",
+            "ρᵢⱼ (Korelace): stupeň, do kterého se obě aktiva pohybují společně (−1 až +1). Čím nižší je ρᵢⱼ, tím více je sníženo celkové riziko."
+          ]
+        },
+        "lead": "Co představují tři odkazy v grafu:",
+        "bullets": [
+          {
+            "bold": "Minimální rozptyl",
+            "code": "Min-Var",
+            "text": "Je to bod zcela vlevo na křivce: přesná kombinace vah, která dosahuje nejnižší možné volatility."
+          },
+          {
+            "bold": "Máximo Sharpe a Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Je to bod, kde se linie, která začíná od bezrizikové sazby, dotýká efektivní hranice a nabízí největší zisk na jednotku rizika."
+          }
+        ],
+        "example": "Pokud spojíte stejným dílem dvě aktiva, z nichž každé má 20% volatilitu, ale nulovou korelaci (ρ = 0), volatilita portfolia není 20 %, ale klesne na 14,1 %."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR od Active a Capture",
+        "intro": "Abychom věděli, která pozice zvyšuje riziko portfolia, mezní příspěvek každého aktiva se měří podle jeho váhy a jeho korelace se zbytkem. Poměry zachycení navíc měří asymetrii proti vzestupům a pádům S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Vrácení vašeho Assetu nebo Portfolio na Bullish (nebo Bearish) kolech",
+          "denominator": "Návrat S&P 500 na stejná kola",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100 %) – vydělávejte více než index, když trh roste.",
+            "Downside Capture (< 100 %): klesá méně než index, když trh klesá (defenzivní nárazník)."
+          ]
+        },
+        "lead": "Ideální profil, který hledáte při kontrole třetí záložky kvadrantu:",
+        "bullets": [
+          {
+            "bold": "pozitivní asymetrie",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Účastněte se plně býčích trhů, ale chraňte kapitál, když akciový trh koriguje."
+          },
+          {
+            "bold": "Útočiště nebo nesouvisející aktiva",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Nástroje, jako jsou krátké dluhopisy nebo zlato, které mají tendenci zůstat pevné nebo růst během poklesu akciového trhu."
+          }
+        ],
+        "example": "Pokud v měsících, kdy S&P 500 vzrostl o 10 % vaše portfolio získalo 11 % (Upside 110 %), a když index klesl o 10 %, vaše portfolio kleslo pouze o 6 % (Downside 60 %), máte silnou asymetrii ve svůj prospěch."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Korelace normální vs. krize",
+        "intro": "Pearsonův koeficient (r) měří od -1,00 do +1,00, jak se dvě aktiva vůči sobě pohybují. Nebezpečí při správě portfolia spočívá v tom, že při krachu trhu korelace mezi rizikovými aktivy obvykle vystřelí k +1,00 (nákaza).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kovariance (vrátí aktivum i, vrátí aktivum j)",
+          "denominator": "Volatilita aktiv i (σᵢ) × Volatilita aktiv j (σⱼ)",
+          "vars": [
+            "r blízko 0 nebo záporné: vynikající diverzifikace (když jedna klesá, druhá nenásleduje).",
+            "r v Crisis Queue: přepočítá matici a vezme pouze 5 % nejhorších kol na trhu."
+          ]
+        },
+        "lead": "Jak číst barvy matice 6x6 v obou režimech:",
+        "bullets": [
+          {
+            "bold": "Skutečná diverzifikace",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Obě aktiva reagují na různé ekonomické faktory a vzájemně se kompenzují."
+          },
+          {
+            "bold": "Koncentrace nebo nákaza",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Pohybují se prakticky jako blok; Mít obojí nesnižuje počet pádů ve špatný den."
+          }
+        ],
+        "example": "Dvě akcie z různých sektorů mohou mít v běžném roce mírnou korelaci 0,42, ale když aktivujete tlačítko Crisis Queue, uvidíte, že stoupne na 0,81, protože se v panice prodávají společně."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D šok (kurzy × burza)",
+        "intro": "2D matice současně kombinuje dopad pohybu úrokových sazeb (prostřednictvím doby trvání fixního příjmu a citlivosti sazeb) s poklesem nebo růstem indexu S&P 500 (prostřednictvím Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: scénář variace akciového trhu na horizontální ose (−20 % až +10 %).",
+            "Δ Sazby: scénář změny úrokových sazeb v bazických bodech na vertikální ose (−100 až +200 bps)."
+          ]
+        },
+        "lead": "Jaký je účel křížení dvou os v tabulce:",
+        "bullets": [
+          {
+            "bold": "Scénář stagflace nebo zvýšení sazeb",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Stejně jako to, co se stalo v roce 2022, kdy akcie a dlouhé dluhopisy trpí současně."
+          },
+          {
+            "bold": "Klasický scénář úkrytu",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Kde nižší sazby zvyšují cenu státních dluhopisů a tlumí pád akcií."
+          }
+        ],
+        "example": "Filtrováním pro dlouhý dluhopis, jako je US10Y nebo TLT, můžete v tabulce vidět, jak získává hodnotu, když sazby klesnou (-100 bps), a funguje jako padák, pokud S&P 500 padne tentýž den."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markovovy režimy (č. 11)",
+        "intro": "Markovův řetězec modeluje ekonomiku jako systém, který skáče mezi čtyřmi možnými stavy (Calm Bullish, Volatile Bullish, Inflace/Rates a Crisis) a vypočítává pravděpodobnost přechodu z jednoho do druhého.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Hlavní diagonála (i = j): pravděpodobnost, že současný režim zůstane nezměněn.",
+            "Mimodiagonální (i ≠ j): pravděpodobnost rotace k novému tržnímu klimatu."
+          ]
+        },
+        "lead": "Jak využít přechodovou matici na druhé záložce:",
+        "bullets": [
+          {
+            "bold": "Přetrvávání aktuálního cyklu",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Klidné režimy mají obvykle vysokou perzistenci (> 75 %), což umožňuje udržení trendových pozic."
+          },
+          {
+            "bold": "Rotace Včasné varování",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Když se zvyšuje pravděpodobnost přechodu do volatilních stavů, je vhodné snížit páku nebo aktivovat zajištění."
+          }
+        ],
+        "example": "Pokud je dnešní trh v režimu Volatile Bull a řada představuje 62 % stálosti, 20 % návrat k Bull Calm a 18 % přechodu ke stresu/krizi, víte, že téměř 1 z 5 scénářů vede ke korekci."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Projekce Monte Carlo (10 000 cest)",
+        "intro": "Na základě očekávaného výnosu a aktuální volatility vašeho portfolia generuje simulátor 10 000 možných budoucích trajektorií den za dnem pomocí stochastického modelu Geometric Brownian Movement.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ a σ: očekávaný roční výnos a anualizovaná volatilita vašeho současného portfolia.",
+            "Z: standardní normální náhodná veličina vykreslená 10 000krát podél horizontu (6M, 12M nebo 24M)."
+          ]
+        },
+        "lead": "Z těchto 10 000 simulací jsou extrahovány tři hlavní křivky grafu:",
+        "bullets": [
+          {
+            "bold": "Příznivý scénář",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Úroveň, kterou překročí pouze 5 % nejoptimističtějších scénářů."
+          },
+          {
+            "bold": "Očekávaná centrální trajektorie",
+            "code": "Mediana P50",
+            "text": "Typický výsledek, kdy polovina simulací je nahoře a druhá polovina dole."
+          },
+          {
+            "bold": "Termínový stresový scénář",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Nepříznivé dno: v 95 % simulovaných cest vaše portfolio skončí nad touto hranicí."
+          }
+        ],
+        "example": "Ve 12měsíčním horizontu na bázi 100, pokud P50 bude 116 a P05 bude 94, je vaším hlavním očekáváním zisk +16 % a ve velmi nepříznivém roce riskujete blízko -6 %."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly Criterion (#14)",
+        "intro": "Kelly Criterion vědecky odpovídá, jaké procento svého kapitálu byste měli přidělit na operaci, když znáte svou pravděpodobnost úspěchu (výhra) a kolik vyhrajete, když uspějete, oproti tomu, co ztratíte, když neuspějete (poměr výplaty).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p a q: pravděpodobnost výhry (p) a pravděpodobnost prohry (q = 1 − p).",
+            "b (Výplatní poměr): průměrný zisk dělený průměrnou ztrátou (například výdělek 2 USD za každý riskovaný 1 USD znamená b = 2)."
+          ]
+        },
+        "lead": "Proč profesionální manažeři používají variantu Half-Kelly (0,5×):",
+        "bullets": [
+          {
+            "bold": "Kelly Kompletní",
+            "code": "Full Kelly 1.0×",
+            "text": "Maximalizuje dlouhodobý matematický růst, ale generuje velmi ostré výkyvy, pokud dojde k řadě chyb v řadě."
+          },
+          {
+            "bold": "Doporučená Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Použitím poloviny navrhovaného procenta získáte 75 % potenciálního růstu, ale snížíte volatilitu na polovinu."
+          }
+        ],
+        "example": "Pokud strategie zasáhne 55 % času (p = 0,55, q = 0,45) a platí 2 ku 1 (b = 2), dává Kelly naplno (0,55×2 − 0,45) / 2 = 32,5 % a obezřetný Half-Kelly doporučuje alokovat 5 %.16,2"
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Dejte OTM Shield (#6)",
+        "intro": "Out-of-the-money put opce (například 5 % pod současnou cenou S&P 500) funguje stejně jako pojistná spoluúčast: má malé fixní náklady (pojistné), ale pokud trh klesne o 20 % nebo 30 %, její hodnota se konvexně násobí a kompenzuje ztráty vašeho portfolia.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Roční náklady (Carry Drag): roční procento, které stojí obnovení pojištění, pokud trh neklesne.",
+            "Crash Protection (-20 %): dolary získané díky Put kontraktu během vážného pádu."
+          ]
+        },
+        "lead": "Jak porovnat možnosti simulátoru na první kartě:",
+        "bullets": [
+          {
+            "bold": "Pojištění přímého indexu",
+            "code": "SPY Put 5% OTM",
+            "text": "Omezuje maximální ztrátu z 5% poklesu výměnou za mírné roční náklady."
+          },
+          {
+            "bold": "Financované nebo volatilní krytí",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Obojek snižuje náklady prodejem Call up; Call on VIX exploduje ve prospěch, když se na trhu spustí panika."
+          }
+        ],
+        "example": "Pokud ochrana portfolia v hodnotě 100 000 USD pomocí SPY Put 5 % OTM stojí 1,1 % ročně (1 100 USD), ale v případě krachu -20 % zkrátí pokles vašeho portfolia na méně než polovinu, čisté úspory překročí 7 000 USD."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Margin and Distance to Margin Call (#13)",
+        "intro": "Když pracujete s deriváty nebo pákovým efektem, broker vyžaduje udržování minimálního procenta vlastního kapitálu nad celkovou hodnotou pozice (Maintenance Margin). Pokud pokles sníží váš kapitál pod tuto spodní hranici, spustí se Margin Call.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Dluh nebo financovaný zůstatek",
+          "denominator": "1 − % udržovací marže (Reg-T)",
+          "vars": [
+            "Hrubá expozice: celkový součet otevřených pozic vydělený vlastním kapitálem (např. 1,18×).",
+            "Distance to Margin Call (%): procentní pokles, který portfolio stále podporuje, než dosáhne prahové hodnoty."
+          ]
+        },
+        "lead": "Úrovně zabezpečení na monitorovací liště:",
+        "bullets": [
+          {
+            "bold": "Velká světlá zóna",
+            "code": "Distancia > 30% en verde",
+            "text": "Pákový efekt je nízký a portfolio dokáže absorbovat i těžkou krizi bez nucených výprodejů."
+          },
+          {
+            "bold": "varovná zóna",
+            "code": "Distancia < 15% en rojo",
+            "text": "Mírná korekce trhu by vyčerpala volné zajištění a přinutila pozice k likvidaci v nejhorší chvíli."
+          }
+        ],
+        "example": "S mírným pákovým efektem 1,18× a využitou udržovací marží 22 % má vaše portfolio bezpečnostní polštář o více než 38 % dolů před jakýmkoliv nárokem na zajištění."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Pravidla výboru 3 pilířů",
+        "intro": "Aby žádné impulzivní rozhodnutí neohrozilo přežití portfolia, hodnotí výbor každou objednávku kombinací technické poznámky, základní poznámky a dvou tvrdých, nesmlouvavých pravidel kontroly rizik.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20 % NAV: žádné jednotlivé aktivum nemůže soustředit více než jednu pětinu celkových aktiv.",
+            "Zastavení anomálie (P-06 ≥ 0,65): pokud aktivum vstoupí do statistické dislokace, systém sníží maximální expozici na 5 %."
+          ]
+        },
+        "lead": "Co každý stát znamená ve verdiktu a v Knize popravy:",
+        "bullets": [
+          {
+            "bold": "Objednávka schválena bez omezení",
+            "code": "APROBADO en verde",
+            "text": "Tyto tři pilíře se příznivě shodují a velikost pozice respektuje všechny limity koncentrace a likvidity."
+          },
+          {
+            "bold": "Pořadí upraveno zábradlím",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Když lístek překročí 20% limit nebo se pokusí nakoupit uprostřed anomálie, zábradlí upozorní na překročení."
+          }
+        ],
+        "example": "Pokud se snažíte simulovat nákup, který by zabral jednu akcii na 26 % vašeho portfolia, Pilíř 3 (Risk & Sizing Guardrail) označí výstrahu koncentrace, takže ji upravíte pod 20 %."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Účinnost Walk-Forward (WFE)",
+        "intro": "Aby se ověřilo, že strategie nebyla jednoduše vytvořena tak, aby v minulosti vypadala dobře (přepastování), test Walk-Forward porovnává její výkon v období návrhu (In-Sample) s výkonem v následných dosud neviděných datech (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Roční výnos Out-of-Sample (čisté ověření)",
+          "denominator": "Roční výnos In-Sample (školení)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): historická část používaná ke kalibraci vah a pravidel strategie.",
+            "Out-of-Sample (OOS): další sekce, kde je strategie testována v reálných podmínkách bez zásahu do jejích parametrů."
+          ]
+        },
+        "lead": "Jak kvantitativní průmysl hodnotí procento WFE:",
+        "bullets": [
+          {
+            "bold": "Robustní a konzistentní strategie",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Zachovává si drtivou většinu své schopnosti generovat zisky, když čelí novým tržním podmínkám."
+          },
+          {
+            "bold": "Strategie křehké nebo přetížené",
+            "code": "WFE < 50% en rojo",
+            "text": "Fungovalo to dobře v teorii minulosti, ale ve skutečnosti ztrácí účinnost; Nedoporučuje se to provádět se skutečnými penězi."
+          }
+        ],
+        "example": "Pokud se strategie vrátila anualizovaně 20 % během fáze návrhu (In-Sample) a v následné fázi skutečného testování (Out-of-Sample) se vrátila anualizovaně 18,8 %, její účinnost WFE je (18,8 / 20) = 94,0 %."
+      }
+    ]
+  }
+}

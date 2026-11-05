@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Tiivistetty näkymä",
+    "mainView": "Päänäkymä",
+    "expandedView": "Laajennettu näkymä",
+    "inThisSection": "Tästä osiosta löydät:",
+    "deepDive": "Syväsukellus",
+    "previous": "Edellinen",
+    "next": "Seuraavaksi",
+    "mathFormula": "Matemaattinen kaava",
+    "practicalExample": "Käytännön esimerkki:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Kun avaat perinteisen rahoitusalustan, ensimmäinen asia, joka yleensä tulee näkyviin, ovat kymmeniä kaavioita, vilkkuvia taulukoita ja valikoita kaikkialla. Mistä aloitat, kun haluat vain tarkistaa markkinoita tai tarkistaa, kuinka portfoliosi menee?",
+        "Home-näyttö on suunniteltu juuri välttämään alkumelu. Se toivottaa sinut tervetulleeksi puhtaaseen ja selkeään tilaan, jossa kaikki hallinta on keskittynyt kahteen kiinteään palkkiin: yksi yläpuolelle töihin siirtymistä varten ja toinen alla, jotta alusta voidaan määrittää sinulle sopivaksi."
+      ],
+      "intro": "Home-näyttö toivottaa sinut tervetulleeksi puhtaaseen ja selkeään tilaan, jossa kaikki hallinta on keskittynyt kahteen kiinteään palkkiin: yksi yläpuolelle töihin ja toinen alapuolelle, jotta voit määrittää alustan sinulle sopivaksi.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Selkeä lähtökohta, joka jakaa työsi markkina-analyysiin ja salkunhoitoon.",
+          "paragraphs": [
+            "Kuvittele, että aloitat kaupankäynnin ensimmäisenä aamulla. Joskus kannattaa katsoa, ​​mitkä osakkeet, joukkovelkakirjat tai valuutat liikkuvat eniten. Muina aikoina käyt suoraan läpi salkkusi riskit tai simuloit ostoa ennen sen toteuttamista.",
+            "Kuinka vältät kahden asian sekoittamisen samalla ylikuormitetulla näytöllä? Kansi erottaa selvästi tämän polun ensimmäisestä sekunnista:"
+          ],
+          "lead": "Kuinka vältät kahden asian sekoittamisen samalla ylikuormitetulla näytöllä? Kansi erottaa selvästi tämän polun ensimmäisestä sekunnista:",
+          "bullets": [
+            {
+              "bold": "Tilaa ilman häiriötekijöitä",
+              "code": "Donde se decodifican los mercados",
+              "text": "Kun astut sisään, ei ole avoimia pöytiä tai hälytyksiä, jotka pakottavat sinut sulkemaan ikkunat ennen aloittamista. Voit valita avattavan moduulin."
+            },
+            {
+              "bold": "Kaksi selkeää polkua",
+              "code": "Markets / Portfolio",
+              "text": "Koko sovelluskulku on jaettu kahteen päävaiheeseen: ensin tutkitaan markkinoiden mahdollisuuksia ja sitten rakennetaan tai testataan portfoliota."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Yläpalkki hyppäämään yhdellä napsautuksella kodin, markkinoiden ja portfoliosi välillä.",
+          "paragraphs": [
+            "Kun perehdyt omaisuuden yksityiskohtiin tai testaat salkkusi muutoksia, on erittäin helppo menettää käsitys siitä, missä olit. Kuinka siirryt osakekaavion tarkastelusta portfoliosi tarkistamiseen ilman alivalikoiden läpikäyntiä?",
+            "Yläpalkki pysyy aina kiinteänä näytöllä ja antaa sinulle suoran pääsyn kolmeen pääkohtaan:"
+          ],
+          "lead": "Yläpalkki pysyy aina kiinteänä näytöllä ja antaa sinulle suoran pääsyn kolmeen pääkohtaan:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Missä tahansa oletkin, vasemmalla olevaa symbolia napsauttamalla palaat välittömästi pääsivulle."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Se on tutkimusalueesi. Täällä voit suodattaa 213 käytettävissä olevaa omaisuutta, seurata reaaliaikaisia ​​tarjouksia, analysoida teknisiä kaavioita ja tarkastella taseyhteenvetoja tai uutisia."
+            },
+            {
+              "bold": "Lompakko",
+              "code": "Portfolio",
+              "text": "Se on sinun päätöspöytäsi. Täällä voit määrittää, kuinka suuri prosenttiosuus pääomastasi menee kuhunkin omaisuuteen, mitata kuinka paljon voit menettää kriisissä ja simuloida uusia toimintoja ennen rahan riskiä."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Alatunniste, jolla voit tarkistaa järjestelmän tilan, palata tähän oppaaseen tai säätää asettelua.",
+          "paragraphs": [
+            "Reaaliajassa dataa analysoitaessa voi milloin tahansa herätä toiminnallisia kysymyksiä: tulevatko tarjoukset oikein? Mitä pisteindikaattori tarkoitti? Voinko vähentää näytön kirkkautta?",
+            "Alatunniste ryhmittelee kaikki tuki- ja konfigurointityökalut siten, että ne ovat aina käsillä ilman, että ne estävät näytön keskikohdan:"
+          ],
+          "lead": "Alatunniste ryhmittelee kaikki tuki- ja konfigurointityökalut siten, että ne ovat aina käsillä ilman, että ne estävät näytön keskikohdan:",
+          "bullets": [
+            {
+              "bold": "System tila",
+              "code": "System",
+              "text": "Vihreä piste vahvistaa yhdellä silmäyksellä, että kaikki on kunnossa. Kun avaat sen, näet yksityiskohtaisesti palvelimien tilan, tietokannat ja vastausnopeuden."
+            },
+            {
+              "bold": "Käyttäjä Guide",
+              "code": "Guide",
+              "text": "Avaa tämä interaktiivinen opas milloin tahansa nähdäksesi, kuinka näyttöä käytetään tai syventyäksesi sen laskelmiin."
+            },
+            {
+              "bold": "Visuaaliset asetukset",
+              "code": "Idioma / Palette",
+              "text": "Oikealla puolella on säätimet koko sovelluksen kielen vaihtamiseen tai taustavalon säätämiseen."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Kielet",
+          "summary": "Hakukone kääntää koko alustan kielellesi paikan päällä.",
+          "paragraphs": [
+            "Taloudellisilla termeillä ja markkinaraporteilla on jo oma monimutkaisuutensa lisäämättä kielimuuria. Jos haluat lukea selitykset espanjaksi, englanniksi tai millä tahansa muulla kielellä, voit vaihtaa sen välittömästi.",
+            "Näin valitsin toimii oikeasta alakulmasta:"
+          ],
+          "lead": "Näin valitsin toimii oikeasta alakulmasta:",
+          "bullets": [
+            {
+              "bold": "välitön haku",
+              "code": "Select Language",
+              "text": "Napsauttamalla nykyistä lippua avautuu ikkuna, jossa voit valita 56 kielen välillä kirjoittamalla sen nimen tai koodin (esimerkiksi ES, EN, PT, FR tai DE)."
+            },
+            {
+              "bold": "Automaattinen muisti",
+              "code": "mid_lang_v1",
+              "text": "Koko näyttö käännetään välittömästi lataamatta sivua uudelleen ja valintasi tallennetaan seuraavaa kertaa varten."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Visuaaliset teemat säätämään näytön kontrastia muuttamatta taloudellisia värejä.",
+          "paragraphs": [
+            "Useiden tuntien viettäminen grafiikan edessä, jonka kontrasti ei mukaudu ympäristösi valoon, väsyttää silmiäsi. Talousalustan värien muuttamisessa on kuitenkin klassinen vaara: menettää viittaus siihen, mikä nousee ja mikä laskee.",
+            "Tämän ratkaisemiseksi teemavalitsin erottaa ympäristön värin tietojen väristä:"
+          ],
+          "lead": "Tämän ratkaisemiseksi teemavalitsin erottaa ympäristön värin tietojen väristä:",
+          "bullets": [
+            {
+              "bold": "Viisi lukuympäristöä",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Kierrät jokaisella napsautuksella puhtaan mustan, sinertävän tai lämpimän taustan välillä, kunnes löydät silmillesi sopivimman."
+            },
+            {
+              "bold": "Ehjä taloussemantiikka",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Riippumatta siitä, mitä aihetta vaihdat, markkinoiden yleinen sääntö ei muutu koskaan: vihreä tarkoittaa aina nousua tai voittoa ja punainen aina pudotusta, menetystä tai riskivaroitusta."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Kuvittele, että haluat havaita, missä päivän parhaat mahdollisuudet ovat yli kahdensadan joukkovelkakirjalainan, osakkeen, indeksin, valuutan ja raaka-aineen joukossa. Jos avaisit listat yksitellen, markkinat sulkeutuisivat ennen kuin lopetat niiden katsomisen.",
+            "Screener yhdistää kaikki alustan 213 omaisuutta yhdeksi reaaliaikaiseksi kojelautaksi. Sen avulla voit suodattaa markkinoiden mukaan sekunnissa, mitata päivän yleistä sykettä ja valita neljästä eri tavasta nähdä, mitkä omaisuuserät toimivat."
+          ],
+          "intro": "Screener kokoaa kaikki alustan 213 kohdetta yhteen live-kojelautaan, joten voit suodattaa markkinoiden mukaan ja havaita mahdollisuudet yhdellä silmäyksellä.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Luokat",
+              "summary": "Suosituimmat suodattimet keskittyäksesi yhteen omaisuusluokkaan tai tarkkailuluetteloosi.",
+              "paragraphs": [
+                "Ei ole mitään järkeä analysoida valtion joukkovelkakirjalainaa samoilla mittareilla kuin teknologiaosakkeita tai öljyä. Kun sekoitat kaiken samassa luettelossa, päärynöitä verrataan omenoihin.",
+                "Miten rajaat ruudun juuri sinua kiinnostaviin markkinoihin? Yläpalkin avulla voit erottaa maailmankaikkeuden yhdellä napsautuksella:"
+              ],
+              "lead": "Yläpalkin avulla voit erottaa maailmankaikkeuden yhdellä napsautuksella:",
+              "bullets": [
+                {
+                  "bold": "Koko kuva",
+                  "code": "Todos",
+                  "text": "Se näyttää 213 instrumenttia yhdessä ja kaupankäynnin volyymin mukaan järjestettyinä, jotta näet, missä eniten rahaa virtaa maailmanlaajuisesti."
+                },
+                {
+                  "bold": "Henkilökohtainen seuranta",
+                  "code": "★ Watchlist",
+                  "text": "Eristä vain suosikeiksi merkitsemäsi resurssit, jotta voit seurata niitä tarkasti ilman häiriötekijöitä."
+                },
+                {
+                  "bold": "Kymmenen erikoistunutta markkinaa",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Valitsemalla minkä tahansa näistä luokista koko näyttö mukauttaa indikaattorinsa ja taulukon sarakkeet kyseisen sektorin sääntöihin."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Yksityiskohtaiset tiedot siitä, miten luettelon 213 omaisuuserät luokitellaan ja mitkä määrä- ja likviditeettikriteerit ne täyttävät."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24h pulssi",
+              "summary": "Neljä parasta korttia, jotka kertovat, ovatko markkinat rauhalliset, euforiset vai stressissä.",
+              "paragraphs": [
+                "Ennen tietyn omaisuuden ostamista tai myyntiä on suositeltavaa tietää, missä ilmastossa kokonaisuus liikkuu. Onko tämä normaali volyymipäivä vai tuleeko instituutiorahaa kerralla? Nousevatko kaikki omaisuuserät vai onko merkkejä jännityksestä?",
+                "Suodattimien alla olevat neljä korttia antavat sinulle yleisen lukeman muutamassa sekunnissa:"
+              ],
+              "lead": "Suodattimien alla olevat neljä korttia antavat sinulle yleisen lukeman muutamassa sekunnissa:",
+              "bullets": [
+                {
+                  "bold": "Päivän kokonaistoiminta",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Se laskee yhteen miljardeja dollareita, joilla vaihdetaan aktiivisessa kategoriassa, ja näyttää, onko tänään enemmän tai vähemmän osallistujia kuin eilen."
+                },
+                {
+                  "bold": "Ryhmän keskimääräinen vahvuus",
+                  "code": "AVG RSI 14",
+                  "text": "Se tiivistää pyöreällä mittarilla, tulevatko alan hinnat ostopaineella (vihreä, yli 50) vai myyntipaineella (punainen, alle 50)."
+                },
+                {
+                  "bold": "Normaali lämpömittari",
+                  "code": "Régimen Normal P-06",
+                  "text": "Se laskee, kuinka suuri prosenttiosuus omaisuudesta liikkuu tavanomaisten parametrien sisällä ja kertoo sinulle nimen ja sukunimen perusteella, mikä instrumentti on päivän suurin poikkeama."
+                },
+                {
+                  "bold": "Epätavalliset rahavirrat",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Kolmen tällä hetkellä poikkeuksellisen suurella volyymilla toimivan omaisuuden palkintokorokkeelle verrattuna viime kuukauden keskiarvoon erottuu."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Yksityiskohtainen selvitys siitä, kuinka keskimääräinen RSI, tilavuus Z-Score ja poikkeavuusilmaisin P-06 lasketaan."
+            },
+            {
+              "id": "scr-table",
+              "label": "Taulukko",
+              "summary": "Interaktiivinen luettelo nopealla haulla, suosikeilla ja sarakkeilla, jotka mukautuvat kullekin markkinoille.",
+              "paragraphs": [
+                "Kun tiedät jo, mitä sektoria haluat tarkastella ja haluat vertailla tiettyjä numeroita rivi riviltä, ​​taulukkonäkymä on tärkein työkalusi.",
+                "Sen sijaan, että taulukko näyttäisi jäykän laskentataulukon, joka on sama kaikille, taulukko mukautuu etsimäsi mukaan:"
+              ],
+              "lead": "Sen sijaan, että taulukko näyttäisi jäykän laskentataulukon, joka on sama kaikille, taulukko mukautuu etsimäsi mukaan:",
+              "bullets": [
+                {
+                  "bold": "Hakukoneen ja suosikkien tähti",
+                  "code": "Buscar activo / ★",
+                  "text": "Ensimmäisen sarakkeen otsikkoon voit kirjoittaa minkä tahansa symbolin tai nimen siirtyäksesi suoraan kyseiseen omaisuuteen tai napauttamalla tähteä vasemmalla tallentaaksesi sen Watchlist-laitteeseen."
+                },
+                {
+                  "bold": "Älykkäät sarakkeet luokan mukaan",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Jos suodatat Osakkeet, arvostuskerrat ja marginaalit tulevat näkyviin; Jos valitset joukkovelkakirjat tai korot, näet käyrän kaltevuuden ja herkkyyden korkoihin. Jos katsot johdannaisia, näet implisiittisen volatiliteetin."
+                },
+                {
+                  "bold": "Siirry suoraan syvään analyysiin",
+                  "code": "Click en cualquier fila",
+                  "text": "Napsauta mitä tahansa luettelossa olevaa kohdetta avataksesi täyden asemasi teknisistä kaavioista ja perusraporteista."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Luettelo tiedoista, jotka taulukko näyttää kunkin 10 omaisuusluokan osalta."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Visuaalinen tutka, joka havaitsee yhdellä silmäyksellä, mitkä omaisuuserät ovat siirtymässä pois historiallisesta keskiarvostaan.",
+              "paragraphs": [
+                "Kahdensadan numerorivin lukeminen voi aiheuttaa sen, että menetät resurssin, joka alkaa liikkua räjähdysmäisesti. Kuinka huomaat välittömästi, mikä instrumentti poikkeaa normista?",
+                "Orbital-näkymä muuttaa pöydän tutkaksi, jossa on kolme samankeskistä rengasta:"
+              ],
+              "lead": "Orbital-näkymä muuttaa pöydän tutkaksi, jossa on kolme samankeskistä rengasta:",
+              "bullets": [
+                {
+                  "bold": "Kriteerien valinta",
+                  "code": "INDICADOR",
+                  "text": "Päätät itse, mitä tutka mittaa: tilastollisia poikkeavuuksia, volyymihyppyjä, hinnan voimakkuutta (RSI), volatiliteettia tai nousua viimeisen 24 tunnin aikana."
+                },
+                {
+                  "bold": "Lukeminen etäisyyden ja värien mukaan",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Mitä lähempänä tai kauempana piste on indikaattorin mukaan ja mitä voimakkaampi sen vihreä tai punainen väri on, sitä merkityksellisempi sen liike on verrattuna sen omaan historiaan."
+                },
+                {
+                  "bold": "Tarkastus vaihtamatta näyttöä",
+                  "code": "Panel lateral en vivo",
+                  "text": "Kun kursori pidetään minkä tahansa tutkasolmun päällä, oikealla näkyy sen hinta, sen puhdas päivänsisäinen kaavio ja kolme riskimittaria."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kuinka kunkin omaisuuden sijainti tutkarenkaissa lasketaan sen historiallisen poikkeaman mukaan."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Lämpö kartta",
+              "summary": "Suhteellisten lohkojen mosaiikki tunnistaa voittajat ja häviäjät sekunnissa.",
+              "paragraphs": [
+                "Joskus haluat vain vastata nopeaan kysymykseen: kuka johtaa nousua tänään ja kuka vetää markkinoita alas?",
+                "Lämpökartta järjestää aktiivisen suodattimen kymmenen parasta resurssia suhteellisiin lohkoihin, jotta sinun ei tarvitse lukea yhtä taulukkoa:"
+              ],
+              "lead": "Lämpökartta järjestää aktiivisen suodattimen kymmenen parasta kohdetta suhteellisiin lohkoihin:",
+              "bullets": [
+                {
+                  "bold": "Koko tärkeyden mukaan",
+                  "code": "Puestos #1 a #10",
+                  "text": "Mittarit, joilla on suurin paino valitussa metriikassa, ovat vasemmalla olevissa sarakkeissa, joissa on suurimmat laatikot."
+                },
+                {
+                  "bold": "Värin intensiteetti",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Lohkon sävy kertoo välittömästi liikkeen suuruuden kohtalaisista vaihteluista äkillisiin nousuihin tai laskuihin."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Kolmivaiheinen pikakuvake edistyneisiin korkoihin, optioihin, forex- ja futuurilaskuriin.",
+              "paragraphs": [
+                "Perinteisten hintakaavioiden lisäksi alusta sisältää neljä erikoismoottoria korkotuloille, optioille, valuuttaristeille ja hyödykekäyrille. Kuinka pääset niihin etsimättä sisältökohdetta?",
+                "Tämä näkymä opastaa sinua vasemmalta oikealle kolmessa hyvin yksinkertaisessa sarakkeessa:"
+              ],
+              "lead": "Tämä näkymä opastaa sinua vasemmalta oikealle kolmessa hyvin yksinkertaisessa sarakkeessa:",
+              "bullets": [
+                {
+                  "bold": "Ensin valitset perheen",
+                  "code": "1. Clases de Activo",
+                  "text": "Voit valita, haluatko työskennellä korkojen ja joukkovelkakirjojen, osakkeiden/indeksien/salausoptioiden, valuuttojen vai raaka-aineiden kanssa."
+                },
+                {
+                  "bold": "Sitten tarkistat mitä moottori tekee",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Keskellä luet selkeän yhteenvedon siitä, mitä työkalu näyttää ja kuinka suuntautua sen akseleita pitkin."
+                },
+                {
+                  "bold": "Valitse lopuksi aktiivinen ja avaa",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Katsot kaavion live-esikatselun, etsit yhteensopivia resursseja kyseisestä perheestä ja avaat täyden aseman yhdellä napsautuksella."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Kun olet löytänyt mielenkiintoisen hyödykkeen Screener:stä, on aika katsoa asiaa tarkemmin. Onko se nousutrendissä vai onko se loppunut? Voitatko kilpailijasi? Mitä volyymi ja johdannaismarkkinat sanovat?",
+            "Analytics-asema keskittää kaikki kyseisen omaisuuden tekniset, vertailevat ja määrälliset analyysit yhdelle näytölle. Yllä on yleinen yhteenveto ja vasemmalla neljä linssiä, joilla voit muuttaa analyysikulmaa kaaviota unohtamatta."
+          ],
+          "intro": "Analytics-asema keskittää yksittäisen omaisuuden tekniset, vertailevat, virtausanalyysit ja 3D/2D-moottorit yhdelle näytölle.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Ylin hallintapaneeli, jossa voit vaihtaa sisältöä, valita ajanjakson ja tarkastella viittä keskeistä mittaasi.",
+              "paragraphs": [
+                "Kun tutkit jotakin hyödykettä, vaihdat yleensä tämän päivän lyhyen aikavälin ja viime kuukausien elokuvan välillä tai vaihdat jopa katsomaan toista samanlaista symbolia. Kuinka voit tehdä tämän kaiken palaamatta takaisin?",
+                "Yläotsikko yhdistää navigointiohjaimet ja instrumentin pikavälilehden:"
+              ],
+              "lead": "Yläotsikko yhdistää navigointiohjaimet ja instrumentin pikavälilehden:",
+              "bullets": [
+                {
+                  "bold": "Omaisuuden muutos tai paluu luetteloon",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Vasemmassa yläkulmassa voit palata kohtaan Screener tai kirjoittaa minkä tahansa muun instrumentin nimen vaihtaaksesi kaavioita paikan päällä."
+                },
+                {
+                  "bold": "Yhdeksän ajan ikkunaa",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Oikealla marginaalilla muutat kaavion mittakaavaa minuutti minuuttiliikkeistä koko historiaan."
+                },
+                {
+                  "bold": "Viisi johtavaa indikaattoria",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Hinnan vieressä näet aina kaupankäynnin volyymin, sen kategorian kaksi avaintietoa, trendin vahvuuden ja tilastollisen normaalin tason."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Tekninen",
+              "summary": "Hintakaavio, jossa liikkuvat keskiarvot, volatiliteettikaistat ja volyymi seuraamaan trendiä.",
+              "paragraphs": [
+                "Pelkästään viimeisen hinnan katsominen ei kerro, kiihtyykö omaisuus, pomppiiko se keskiarvostaan ​​vai onko se noussut jo liian nopeasti muutamassa päivässä.",
+                "Vasemman kiskon ensimmäinen linssi mahdollistaa markkinoiden eniten käytetyt tekniset referenssit kaavion päälle:"
+              ],
+              "lead": "Vasemman kiskon ensimmäinen linssi antaa sinun peittää eniten käytetyt tekniset referenssit:",
+              "bullets": [
+                {
+                  "bold": "Osoite ja todellinen keskihinta",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Voit ottaa käyttöön 20 jakson liukuvan keskiarvon ja volyymilla painotetun keskihinnan nähdäksesi välittömästi, käykö omaisuus kauppaa tasapainotasonsa ylä- vai alapuolella."
+                },
+                {
+                  "bold": "Ylimääräiset vyöhykkeet ja äänenvoimakkuuden vahvistus",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Nauhat piirtävät hinnan tilastollisen katon ja lattian, kun taas alapalkit vahvistavat, tukeeko liikettä volyymi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Liukuvan keskiarvon (SMA 20), Bollingerin vyöhykkeiden ja VWAP:n kaavat ja tulkintakriteerit."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Vertaa %",
+              "summary": "Prosenttivertailija 0 %:sta, jolla mitataan, toimiiko sisältösi paremmin vai vähemmän kuin toinen samaan kategoriaan kuuluva.",
+              "paragraphs": [
+                "Osake, joka nousee 5 %, vaikuttaa hyvältä uutiselta, mutta jos sen vertailuindeksi tai pääkilpailija on noussut 12 % samalla ajanjaksolla, olet itse asiassa jäljessä.",
+                "Toinen linssi ratkaisee tämän epäilyn asettamalla kaksi kohdetta samalle lähtöviivalle:"
+              ],
+              "lead": "Toinen linssi ratkaisee tämän epäilyn asettamalla kaksi kohdetta samalle lähtöviivalle:",
+              "bullets": [
+                {
+                  "bold": "Etsi yhtenäisiä pareja",
+                  "code": "Buscar par compatible",
+                  "text": "Hakukone suodattaa automaattisesti pois samasta perheestä olevat varat (esim. osakkeet vs. osakkeet, ETF:t tai indeksit), joten vertailu on taloudellisesti järkevää."
+                },
+                {
+                  "bold": "Nettoetu prosentteina",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Molemmat käyrät alkavat 0 %:sta ja vasen kisko laskee, kuinka monta prosenttiyksikköä etua (vihreänä) tai haittaa (punaisella) omaisuudellasi on."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Flow",
+              "summary": "Instituutioiden poikkeavien ostojen, likviditeetin ja hajautuskustannusten ilmaisin.",
+              "paragraphs": [
+                "Usein suuret varat kerääntyvät tai purkavat positioita ennen kuin hinta tekee äkillisen liikkeen. Kuinka havaitset piilotetun jäljen tilauskannan volyymista ja likviditeetistä?",
+                "Kolmas linssi keskittyy siihen, mitä lainauksen alla tapahtuu:"
+              ],
+              "lead": "Kolmas linssi keskittyy siihen, mitä lainauksen alla tapahtuu:",
+              "bullets": [
+                {
+                  "bold": "Tilastolliset tilavuushuiput",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Muuttaa alapaneelin näyttämään, kuinka monta kertaa nykyinen äänenvoimakkuus poikkeaa normaalista, paljastaen epätavallisen laitoksen toiminnan."
+                },
+                {
+                  "bold": "Likviditeettistressi ja anomaliat",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Se mittaa peruspisteinä, onko ostajien ja myyjien välinen kuilu levenemässä ja havaitseeko tilastokone epätyypillisen käyttäytymisen."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kuinka avauseroja ja tilastollisia piikkejä tilausvirrassa mitataan."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D moottorit",
+              "summary": "Neljäs objektiivi, joka käyttää dynaamista ad-hoc-työkalua, joka vaihtelee omaisuusluokittain.",
+              "paragraphs": [
+                "Toisin kuin kolme ensimmäistä linssiä (jotka ovat yhteisiä kaikille instrumenteille), vasemman kiskon neljäs linssi on ad-hoc-työkalu, joka muuttuu dynaamisesti analysoitavan kohteen mukaan: esimerkiksi live-kiertueella, koska se on osake (NVDA), se mahdollistaa 3D Implicit Volatiliteetti- ja Options-moottorin, joka omistaa sen.",
+                "Neljäs painike tunnistaa avoimen omaisuusluokan ja aktivoi automaattisesti vastaavan ad-hoc-työkalun:"
+              ],
+              "lead": "Neljäs painike tunnistaa avoinna olevan resurssin ja aktivoi sitä vastaavan ad-hoc-työkalun:",
+              "bullets": [
+                {
+                  "bold": "Osakkeissa, indekseissä, johdannaisissa ja kryptoissa",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Näytä 3D-implisiittinen volatiliteettipinta, vaihtoehdot hymyilevät vanhenemisen mukaan ja 6-strategiasimulaattori nähdäksesi kuinka paljon voitaisit tai menetät tänään ja erääntyessäsi."
+                },
+                {
+                  "bold": "Koroissa, joukkovelkakirjoissa ja likviditeetissä",
+                  "code": "Curva 3D/2D",
+                  "text": "Sen avulla voit verrata 42 maan tuottokäyriä Yhdysvaltoihin ja Saksaan mittaamalla, onko käyrä normaali vai käänteinen (2s10s) ja kuinka paljon hinta vaihtelee koron muutosten mukaan (DV01)."
+                },
+                {
+                  "bold": "Valuutoissa",
+                  "code": "FX & Carry",
+                  "text": "Se tarjoaa muuntimen ja triangulaattorin 61 valuutan välillä, joka laskee myös 10 vuoden korkoeron kyseisen parin säilyttämisen puolesta tai sitä vastaan."
+                },
+                {
+                  "bold": "Raaka-aineissa",
+                  "code": "Forward 3D/2D",
+                  "text": "Kaavioi futuurisopimusten hinnat kuukausittain näyttääkseen, maksavatko markkinat enemmän termiinisopimuksista (Contango) vai välittömästä toimituksesta (backwardation), sekä fyysisten varastojen tilan."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Matemaattiset yksityiskohdat volatiliteettipinnoista, valtion tuottokäyristä, valuutan siirto- ja futuurikäyristä."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Kaavio näyttää, mitä hinta tekee, mutta se ei kerro miksi. Tietääkseen, mikä on liikkeen takana, sinun on luettava kymmeniä sivuja neljännesvuosittaisia ​​taseita, keskuspankkiotteita, inventaarioraportteja ja uutiskaapeleita.",
+            "Research-asema tekee tuon raskaan noston puolestasi. Se yhdistää virallisiin raportteihin verratun dokumentaarisen tekoälyn reaaliaikaiseen uutisten lukemiseen ja järjestää kaikki todisteet puolesta ja vastaan ​​kolmeen selkeään sarakkeeseen."
+          ],
+          "intro": "Station Research tiivistää viralliset taseet, makrotaloudelliset raportit ja reaaliaikaiset uutiset kolmeen selkeään sarakkeeseen.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Huomautus ja asento",
+              "summary": "Kolme parasta korttia, jotka tiivistävät uutisten perustavanlaatuisen tuomion ja huumorin.",
+              "paragraphs": [
+                "Seuraavatko omaisuuden perustekijät hinnan nousua vai heikentävätkö uutiset näkymiä? Ennen kuin luet yksityiskohdat, tarvitset nopean johtopäätöksen.",
+                "Oikeassa yläkulmassa on kolme indikaattoria, jotka kuvaavat sisällön yleistä tilaa:"
+              ],
+              "lead": "Oikeassa yläkulmassa on kolme indikaattoria, jotka kuvaavat yleisen tilan:",
+              "bullets": [
+                {
+                  "bold": "Jokaisen lähteen asento ja paino",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Se määrittelee yleisen tuomion ja selventää, minkä painon se antaa virallisille asiakirjoille verrattuna uutisiin omaisuuserän tyypistä riippuen (esimerkiksi 80 % taseet ja 20 % uutiset osakkeessa)."
+                },
+                {
+                  "bold": "Yhdistetty luokitus",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Se syntetisoi yhdeksi pisteeksi perusasioiden nettotuloksen sekä päivän tiedonkulun."
+                },
+                {
+                  "bold": "Lämpömittarin pidikkeet",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Aseta tangolle -100 - +100, jos painon sävy on viime tuntien aikana ollut pessimistinen (punainen), neutraali tai innostunut (vihreä)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Virallisten raporttien painotus uutisiin verrattuna omaisuuden tyypistä riippuen."
+            },
+            {
+              "id": "res-rag",
+              "label": "Chat RAG",
+              "summary": "Vasen dokumenttiassistentti, joka esittää erityisiä kysymyksiä taseista ja virallisista raporteista.",
+              "paragraphs": [
+                "Oletetaan, että haluat tietää, mitä yritys tarkalleen sanoi marginaaleistaan ​​viimeisimmässä vuositaseessaan 10-K tai mitä Federal Reserve sanoi viimeisimmässä pöytäkirjassaan. Sen etsiminen käsin vie aikaa; Yleisen chatin kysyminen ilman lähteitä voi antaa sinulle keksittyjä tietoja.",
+                "Vasen sarake ratkaisee tämän ohjatulla toiminnolla, joka on liitetty yksinomaan vahvistettuun viralliseen dokumentaatioon:"
+              ],
+              "lead": "Vasemmassa sarakkeessa on ohjattu toiminto, joka on yhdistetty virallisiin vahvistettuihin asiakirjoihin:",
+              "bullets": [
+                {
+                  "bold": "Alkutyö ja ohjatut kysymykset",
+                  "code": "Chat Documental RAG",
+                  "text": "Se alkaa yhteenvedolla, jossa on tarkistetut lainaukset ja neljä omaisuusluokkaan mukautettua pikaopaspainiketta sekä kenttä, johon voit kirjoittaa omia kysymyksiäsi."
+                },
+                {
+                  "bold": "Suora askel portfolioosi",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Jos perusteiden tutkimisen jälkeen päätät, että omaisuus on sen arvoinen, tämä chatin yläosassa oleva painike lähettää sinut suoraan portfoliosimulaattoriin."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Varmennetun dokumenttihaun (RAG) ja sen suojaussuodattimien toiminta."
+            },
+            {
+              "id": "res-factors",
+              "label": "tekijät",
+              "summary": "Keskiharmonika viidellä nousevalla ohjaimella ja viidellä iskun mukaan järjestetyllä laskevalla riskillä.",
+              "paragraphs": [
+                "Mikään sijoitus ei ole sataprosenttisesti täydellinen tai sataprosenttisesti huono: aina löytyy argumentteja puolesta ja piileviä riskejä. Salaisuus on tietää, mitkä painavat enemmän tänään.",
+                "Keskipylväs asettaa molemmat puolet vastakkain, jotta voit tehdä tasapainoisen päätöksen:"
+              ],
+              "lead": "Keskipylväs asettaa molemmat puolet vastakkain, jotta voit tehdä tasapainoisen päätöksen:",
+              "bullets": [
+                {
+                  "bold": "Voiman tasapaino ja suodattimet",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Yllä näet ostajien ja myyjien välisen tarjouspalkin, ja alla voit suodattaa viisi positiivista katalysaattoria (vihreänä) tai viisi pääriskiä (punainen)."
+                },
+                {
+                  "bold": "Yksityiskohdat ja yksityiskohdat yhdellä napsautuksella",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Kun kosketat mitä tahansa luettelon tekijää, sen täydellinen selitys tulee näkyviin ja painike, jolla voit pyytää Chat RAG:ltä lisätietoja kyseisestä kohdasta."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT pulssi",
+              "summary": "Oikea aikajana uusimmilla tekoälyluokitelluilla otsikoilla ja 24 tunnin mielialakäyrällä.",
+              "paragraphs": [
+                "Yksi viime hetken otsikko tuloista, inflaatiosta tai säännöksistä voi muuttaa päivän tunnelman täysin. Mistä tiedät, mitä uutisia on juuri ilmestynyt ja mitä vaikutuksia sillä on?",
+                "Oikea sarake seuraa tiedonkulkua minuutti minuutilta:"
+              ],
+              "lead": "Oikea sarake seuraa tiedonkulkua minuutti minuutilta:",
+              "bullets": [
+                {
+                  "bold": "Hyväksytty aikajana",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Luetteloi viisi viimeisintä otsikkoa ajan ja toimivuuden mukaan ja pisteyttää ne vihreillä, jos ne ovat suotuisia, tai punaisiksi, jos ne muodostavat uhan."
+                },
+                {
+                  "bold": "Vaikutus- ja päiväkäyräsimulaattori",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Voit laukaista jännitteellisen johdon yläpainikkeella nähdäksesi, kuinka se laskee uudelleen koko näytön, ja seurata alla olevasta kaaviosta, miten mieliala on kehittynyt viimeisen 24 tunnin aikana."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kuinka FinBERT-malli analysoi kunkin haltijan talouskieltä."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Rakentaja",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Hyvän omaisuuden valitseminen erikseen ei riitä hyvään portfolioon. Jos sijoitat liikaa pääomaa omaisuuteen, joka liikkuu samalla tavalla, tai jos et mittaa, kuinka ne olisivat toimineet yhdessä aiemmin, sijoitat sokeasti.",
+            "Constructor & Performance (ensimmäinen näkymä Portfolio:stä) on työpaja, jossa rakennat portfoliosi. Sen avulla voit lisätä minkä tahansa 213 omaisuudesta, säätää prosenttiosuuksia, jotka määrität kullekin ilman epätarkkoja valvontatoimia, ja tarkastaa välittömästi sekä sen sisäisen koostumuksen että historian."
+          ],
+          "intro": "Constructor & Performance on työpaja, jossa rakennat portfoliosi, säädät kunkin omaisuuden painoa ja tarkastat sen historiallisen suorituskyvyn.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Yhteenveto",
+              "summary": "Kuusi parasta korttia, jotka lasketaan uudelleen livenä aina, kun muutat portfoliotasi.",
+              "paragraphs": [
+                "Joka kerta kun lisäät omaisuuserän tai muutat prosenttiosuutta salkkuusi, sinun on tiedettävä välittömästi, paransiko tämä oikaisu odotettua tuottoa vai pahensi riskiäsi.",
+                "Ylärivi pitää aina salkun kuusi päämittaria näkyvissä:"
+              ],
+              "lead": "Ylärivi pitää aina salkun kuusi päämittaria näkyvissä:",
+              "bullets": [
+                {
+                  "bold": "Suorituskykyä ja tehokkuutta",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Ne kertovat sinulle, minkä vuosituoton salkku ennustaa pääomallesi ja kuinka paljon tuottoa saat jokaisesta otetusta riskiyksiköstä."
+                },
+                {
+                  "bold": "Odotettu päivittäinen tappio ja historiallinen pudotus",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "He laskevat, kuinka monta dollaria saatat menettää huonona päivänä sen sisällä, mikä oli tilastollisesti ennakoitavissa ja mikä oli viime vuoden syvin takaisku."
+                },
+                {
+                  "bold": "Lisäarvoa ja monipuolisuutta",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Ne mittaavat, kuinka monta pistettä salkkusi ylittää vertailuindeksin ja kuinka paljon riskiä vähennät eri omaisuuserien yhdistämisen ansiosta."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Yhdistetyt tuottokaavat (CAGR), Sharpe- ja Sortino-suhteet sekä Value at Risk (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Painotus",
+              "summary": "Vasemmanpuoleinen taulukko, jossa voit lisätä resursseja, ottaa ne käyttöön tai poistaa ne käytöstä ja määrittää kunkin sijainnin tarkan prosenttiosuuden.",
+              "paragraphs": [
+                "Mitä tapahtuisi salkkunumeroillesi, jos suljet väliaikaisesti teknologiaosakkeen tänään tai jaat rahat tasaisesti kaikkien positioiden kesken?",
+                "Vasemman paneelin avulla voit tehdä kaikki testit puhtaalla ja suoralla tavalla:"
+              ],
+              "lead": "Vasemman paneelin avulla voit tehdä kaikki testit puhtaalla ja suoralla tavalla:",
+              "bullets": [
+                {
+                  "bold": "Hakukone 213 omaisuudelle",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Voit etsiä mitä tahansa instrumenttia alustalla tai suodattaa suosikkisi lisätäksesi sen taulukkoon yhdellä napsautuksella."
+                },
+                {
+                  "bold": "Nopea käynnistys ja tarkka editointi",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Jokaisella rivillä on valintaruutu sisällön sisällyttämiseksi tai poissulkemiseksi reaaliajassa ja numeroruutu, jolla voit syöttää tarkan prosenttiosuuden ilman epätarkkoja liukusäätimiä."
+                },
+                {
+                  "bold": "Kolme tasapainotusta pikakuvaketta",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Taulukon yläosassa on painikkeita, joilla voit jakaa tasapainot kaikkien aktiivisten omaisuuserien kesken, nostaa summan automaattisesti 100 prosenttiin tai palata alkuperäiseen salkkuun."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "röntgenkuvaus",
+              "summary": "Oikean yläkulman paneeli, jossa on viisi välilehteä piilotettujen keskittymien, kassavirran ja säilytyksen löytämiseksi.",
+              "paragraphs": [
+                "Yksi yleisimmistä virheistä sijoittamisessa on uskoa, että olet hajautettu, koska sinulla on viisi eri omaisuutta, vaikka todellisuudessa ostit yksittäisen osakkeen ja myös kaksi ETF:ää, joissa on sama osake.",
+                "Röntgenpaneeli analysoi portfoliosi sisältäpäin viiden välilehden kautta:"
+              ],
+              "lead": "Röntgenpaneeli analysoi portfoliosi sisältäpäin viiden välilehden kautta:",
+              "bullets": [
+                {
+                  "bold": "Toistuva asennon tunnistin",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Laske yhteen se, mitä olet sijoittanut suoraan kuhunkin yritykseen, sekä indekseissä tai ETF:issä (kuten SPY tai QQQ) oleva piilotettu osuus, mikä varoittaa punaisella, jos ylität varovaiset rajat."
+                },
+                {
+                  "bold": "Altistuskartta ja palautuksen alkuperä",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Ne osoittavat, kuinka suuri prosenttiosuus sinulla on kussakin omaisuuslajissa ja valuutassa, ja kuinka suuri osa voitosta tuli hyvien sektoreiden valinnasta verrattuna hyvien omaisuuserien valitsemiseen."
+                },
+                {
+                  "bold": "Ennustetut vuositulot ja turvallisuus",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "He laskevat, kuinka monta dollaria aiot kerätä vuoden aikana osinkoja, kuponkeja ja korkoja varten, ja tarkastavat niiden säilytysyhteisöjen vakavaraisuuden, joissa pääomasi on."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kuinka epäsuora altistuminen lasketaan ETF:issä ja Brinson-attribuutioerittelyssä."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Kalenteri",
+              "summary": "Kuukausikaavio tammi-joulukuusta nähdäksesi voittojen ja tappioiden säännöllisyyden.",
+              "paragraphs": [
+                "Hyvä vuosituotto voi kätkeä kuukausia erittäin jyrkkiä laskuja, joita käytännössä on vaikea sietää. Kuinka johdonmukainen kuukausittain juuri kokoamasi portfolio on?",
+                "Röntgenkuvan alapuolella kalenteri erittelee kuukausihistorian:"
+              ],
+              "lead": "Röntgenkuvan alapuolella kalenteri erittelee kuukausihistorian:",
+              "bullets": [
+                {
+                  "bold": "Vihreät kuukaudet ja punaiset kuukaudet",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Jokainen solu lasketaan välittömästi uudelleen taulukossasi olevien painojen mukaan ja on maalattu vihreäksi tai punaiseksi kyseisen kuukauden tuloksen mukaan. Oikealla päättyy vuoden kumulatiivinen tulos."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Alla oleva koko näytön kaavio vertaa portfoliotasi neljään klassiseen strategiaan.",
+              "paragraphs": [
+                "Ennen kuin pidät salkkuasi hyvänä, perustesti on jäljellä: onko se todella parempi kuin jättää rahat S&P 500:hen tai perinteiseen 60/40-salkkuun?",
+                "Alapaneeli kattaa koko näytön leveyden, jotta muotoilusi vastaa markkinoiden standardeja:"
+              ],
+              "lead": "Alapaneeli asettaa suunnittelusi markkinoiden standardien mukaiseksi:",
+              "bullets": [
+                {
+                  "bold": "Viisi testaushorisonttia",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Sen avulla voit arvioida, kuinka yhdistelmäsi menestyi sekä viimeisten vuosineljännesten että kokonaisten monivuotisten jaksojen aikana."
+                },
+                {
+                  "bold": "Neljä henkilökohtaista referenssiä",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Peitä aktiivisen portfoliosi vihreä käyrä mitä tahansa neljää klassista mallia vasten, jotta näet selkeästi, milloin se on edessä ja kuinka se pysyy huipussaan."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Riski",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Kun markkinat nousevat rauhallisesti, melkein mikä tahansa salkku näyttää turvalliselta. Todellinen ongelma ilmenee, kun kriisi puhkeaa, korot nousevat äkillisesti ja itsenäiseltä tuntuneet varat alkavat laskea samaan aikaan.",
+            "Kvantitatiivinen riski ja stressi (toinen näkymä Portfolio:stä) asettaa portfoliosi äärimmäisten testien läpi ennen kuin ne tapahtuvat tosielämässä. Neljän symmetrisen kvadrantin ja alla olevan tulevaisuuden skenaariosimulaattorin avulla se näyttää tarkalleen, missä haavoittuvat pisteesi ovat."
+          ],
+          "intro": "Kvantitatiivinen riski ja stressi testaa portfoliosi historiallisten kriisien, korrelaatioiden leviämisen ja Monte Carlo-ennusteiden varalta.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Interaktiivinen riski- ja tuottokartta nähdäksesi kuinka lähellä olet tehokkain mahdollinen salkku.",
+              "paragraphs": [
+                "Samoilla varoilla, jotka sinulla jo on salkussasi, on tuhansia tapoja jakaa prosenttiosuudet. Onko valitsemasi yhdistelmä se, joka maksaa parhaiten ottamasi riskin, vai voisitko voittaa saman vähemmällä yllätyksellä?",
+                "Ensimmäinen kvadrantti vasemmassa yläkulmassa piirtää elävän mahdollisuuksien kartan:"
+              ],
+              "lead": "Ensimmäinen kvadrantti ylävasemmalla piirtää elävän mahdollisuuksien kartan:",
+              "bullets": [
+                {
+                  "bold": "Oma asema optimaalisia salkkuja vastaan",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Se näyttää, missä nykyinen salkkusi sijaitsee suhteessa pienimmän mahdollisen volatiliteetin pisteeseen ja suurimman riski-tuottotehokkuuden pisteeseen."
+                },
+                {
+                  "bold": "Visuaaliset tasot ja tarkastus kohteittain",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Voit ottaa mallin tasot käyttöön tai poistaa ne käytöstä ja napsauttaa mitä tahansa solmua lukeaksesi kyseisen omaisuuden tarkan panoksen alla."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Tehokas Markowitz:n raja ja Sharpe-salkkujen vähimmäisvarianssin ja maksimitason laskeminen."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado ja VaR",
+              "summary": "Historiallinen kriisisimulaattori, päivittäinen tappioiden erittely omaisuuserittain ja markkinoiden epäsymmetria.",
+              "paragraphs": [
+                "Jos vuoden 2008 kaltainen romahdus, talouden hidastuminen vuonna 2020 tai koronnosto vuonna 2022 toistuisi huomenna, kuinka paljon nykyinen salkkusi menettäisi ja mikä omaisuus olisi pääsyyllinen?",
+                "Vasen alempi neljännes vastaa näihin kolmeen kysymykseen kolmella erityisellä välilehdellä:"
+              ],
+              "lead": "Vasen alempi neljännes vastaa näihin kysymyksiin kolmessa välilehdessä:",
+              "bullets": [
+                {
+                  "bold": "Testaa viittä todellista kriisiä",
+                  "code": "1. Tornado Stress",
+                  "text": "Vertaile pylväs pisteeltä, kuinka paljon portfoliosi putoaisi S&P 500-malliin verrattuna viiden suuren historiallisen shokin edessä."
+                },
+                {
+                  "bold": "Riskiluokitus aseman mukaan",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Lajittele omistusi sen mukaan, kuinka monta dollaria mahdollista päivittäistä tappiota kukin muodostaa koko salkkuun."
+                },
+                {
+                  "bold": "Käyttäytyminen ylä- ja alamäissä",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Se näyttää, minkä prosenttiosuuden markkinoiden nousevista pyöristä kukin omaisuus hyödyntää ja kuinka paljon se onnistuu vaimentamaan markkinoiden putoamisen."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Historiallisten stressiskenaarioiden metodologia, marginaalinen vaikutus VaR:hen ja sieppaussuhteet."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Korrelaatio",
+              "summary": "Ristimatriisi tarkistaaksesi, monipuolistuvatko omaisuutesi todella vai ovatko ne saastuneet paniikin aikana.",
+              "paragraphs": [
+                "Useiden omaisuuserien omistaminen salkussasi vähentää riskiä vain, jos ne eivät kaikki liiku samaan suuntaan samaan aikaan. Mutta taloudellisen paniikin aikana monet matalalta vaikuttaneet korrelaatiot hyppäävät jyrkästi ylöspäin.",
+                "Oikean yläkvadrantin avulla voit tarkastaa tämän suhteen kahdessa skenaariossa:"
+              ],
+              "lead": "Oikean yläkvadrantin avulla voit tarkastaa tämän suhteen kahdessa skenaariossa:",
+              "bullets": [
+                {
+                  "bold": "Risteys omaisuuden ja herkkyyden välillä",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Se osoittaa, kuinka samankaltaisesti kukin omaisuuspari liikkuu (vihreänä tai vaaleansinisenä, kun ne monipuolistuvat hyvin, ja punaisena, kun ne liikkuvat liian lähellä toisiaan) ja mikä on niiden herkkyys markkinoille."
+                },
+                {
+                  "bold": "Tartuntasimulaattori kriisissä",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Yhdellä napsautuksella muutat normaalin vuoden korrelaatiot paniikkihetken korrelaatioiksi selvittääksesi mitkä asemat eivät enää suojaa sinua."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pearson-korrelaatiokertoimien laskenta normaaleissa olosuhteissa ja markkinastressissä."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash & Markov",
+              "summary": "Korkojen ja osakemarkkinoiden yhteinen vaikutustaulukko sekä suhdannekierron muutoksen todennäköisyydet.",
+              "paragraphs": [
+                "Reaalitaloudessa ongelmat tulevat harvoin yksi kerrallaan: monesti korkojen nousu osuu samaan aikaan osakkeiden laskun kanssa. Mitä portfoliollesi tapahtuu, jos nämä kaksi tekijää yhdistetään samanaikaisesti?",
+                "Oikea alempi neljännes ylittää molemmat muuttujat ja mittaa järjestelmän muutoksen todennäköisyyksiä:"
+              ],
+              "lead": "Oikea alempi neljännes ylittää molemmat muuttujat ja mittaa markkinasykliä:",
+              "bullets": [
+                {
+                  "bold": "Kaksoisiskulevy",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Ristikorkoliikkeet (-100 - +200 peruspistettä) S&P 500:n laskujen tai nousujen kanssa (-20 % - +10 %), jolloin voit suodattaa koko salkun tai yksittäisen omaisuuden mukaan."
+                },
+                {
+                  "bold": "Jakson siirtymän todennäköisyydet",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Laske kuinka todennäköisesti markkinat pysyvät rauhallisena tai siirtyvät epävakaaseen, inflaatio- tai kriisivaiheeseen."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Nivelen herkkyys nopeuksille ja muuttujille sekä Markovin tilasiirtymämatriisi."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Alapaneeli on koko näytön kokoinen, jossa on tulevaisuuden todennäköisyysennusteita ja historiallisia laskuja.",
+              "paragraphs": [
+                "Menneisyyteen katsominen on hyödyllistä, mutta eteenpäin investoitaessa sinun on tiedettävä, millä tulosalueella pääomasi voi liikkua seuraavan kuuden kuukauden, vuoden tai kahden vuoden aikana.",
+                "Täysleveä alapaneeli yhdistää kolme väliaikaista työkalua polun projisoimiseen ja ohjaamiseen:"
+              ],
+              "lead": "Alapaneelissa on kolme väliaikaista työkalua polun projisoimiseksi:",
+              "bullets": [
+                {
+                  "bold": "Kymmenentuhatta tulevaisuuden skenaariota",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Piirrä salkkusi todennäköisen kehityksen kartio ja erottele optimistinen skenaario (P95 vihreällä), odotettu keskuspolku (P50) ja haitallinen skenaario (P05 punaisella)."
+                },
+                {
+                  "bold": "Putoamisen syvyys ja vakaus ajan myötä",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Niiden avulla voit vaihtaa kaaviota nähdäksesi kuinka kauan salkku pysyi kaikkien aikojen ennätysten alapuolella tai kuinka vakaana sen tehokkuus ja riski olivat 60 päivän ikkunat."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo stokastinen simulaatio 10 000 tiestä ja 60 päivän vierintämittareista."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulaattori",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Ennen uuden omaisuuden ostamista, positioiden alentamista tai optioiden suojauksesta maksamista herää aina sama kysymys: parantaako tämä operaatio todella portfoliotani vai lisääkö se turhaa riskiä? Ja kuinka paljon pääomaa minun pitäisi laittaa siihen?",
+            "Ad-Hoc Strategy Lab (Portfolio:n kolmas näkymä) on ennen käyttöä simulaattorisi. Sen avulla voit ladata taktisia pelejä, laskea ihanteellisen sijaintisi kokosi, testata miinusvakuutusta ja nähdä tarkan vaikutuksen ennen ja jälkeen koskematta vielä perussalkkuusi."
+          ],
+          "intro": "Ad-Hoc Strategy Laboratory on kauppaa edeltävä simulaattorisi tilausten, kokopositioiden ja kattavuuden mittaamiseen.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Vaikutus",
+              "summary": "Kuusi parasta korttia, jotka vertaavat nykyistä portfoliotasi simuloitujen pelien jälkeiseen tulokseen.",
+              "paragraphs": [
+                "Tietääkseen, onko taktinen idea sen arvoinen, ei riitä, että omaisuus näyttää houkuttelevalta: sen on parannettava koko salkun lukuja.",
+                "Ylärivi näyttää pysyvästi vertailun nykyisen portfoliosi ja salkun välillä, jossa on käytetty simulaatiota:"
+              ],
+              "lead": "Ylärivillä verrataan nykyistä portfoliotasi portfolioon, jossa on käytetty simulaatiota:",
+              "bullets": [
+                {
+                  "bold": "Vaikutus tulokseen ja tehokkuuteen",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Ne näyttävät perusnumeron ennustetun numeron vieressä valaisemalla eron vihreänä, jos leikki lisää tehokkuutta, tai punaisena, jos se heikentää sitä."
+                },
+                {
+                  "bold": "Vaikutus riskiin, pääomaan ja sääntöihin",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Ne kertovat kuinka paljon odotettu enimmäistappiosi muuttuu, kuinka monta prosenttia salkusta sitoudut testeihin ja noudatetaanko kaikkia turvarajoja."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If & Kelly",
+              "summary": "Osto-/myyntilippusimulaattori ja laskin määrittääksesi kuinka paljon rahaa riskiä.",
+              "paragraphs": [
+                "Monet hyvät sijoitusideat johtavat tappioihin vedon kokovirheen takia: liian vähän laittaminen ei liikuta neulaa, mutta liian suuren laittaminen voi pilata salkun, jos siirto menee pieleen.",
+                "Ensimmäinen neljännes vasemmassa yläkulmassa yhdistää todistuslomakkeen koon matemaattiseen laskelmaan:"
+              ],
+              "lead": "Ensimmäinen kvadrantti yhdistää testiraportin koon matemaattiseen laskelmaan:",
+              "bullets": [
+                {
+                  "bold": "Testitilauksen lataus",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Valitset minkä tahansa omaisuuden, ilmoitat, haluatko ostaa, myydä vai kattaa ja ladata summan dollareina. Alla olevassa luettelossa voit ottaa jokaisen simuloidun tilauksen käyttöön tai poistaa sen käytöstä vertaillaksesi sen vaikutusta."
+                },
+                {
+                  "bold": "Optimaalinen asennon koko",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Arvioidun onnistumistodennäköisyytesi ja voiton ja tappion välisen suhteen perusteella se laskee, kuinka suuri prosenttiosuus pääomasta tulisi varata kasvuun ylialtistamatta itseäsi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kelly-kriteerin ja sen konservatiivisen version Half-Kelly matemaattinen laskenta."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Laita OTM & Marginaali",
+              "summary": "Vakuutussimulaattori, jossa on vaihtoehdot voimakkaisiin markkinoiden laskuihin ja marginaalivaatimuksen valvonta.",
+              "paragraphs": [
+                "Kun pelkäät voimakasta markkinakorjausta, kaikkien positioiden myyminen on yleensä kallista ja tehotonta. Ammattimainen vaihtoehto on ottaa vakuutus suojaavilla vaihtoehdoilla, mutta kuinka paljon se vakuutus maksaa vuodessa ja kuinka paljon se todella suojaa sinua?",
+                "Vasemman alareunan kvadrantin avulla voit mitata sekä kattavuuden että velkatason:"
+              ],
+              "lead": "Vasen alempi neljännes mittaa sekä kattavuuden että takuutason:",
+              "bullets": [
+                {
+                  "bold": "Suojasuojien vertailu",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Sen avulla voit vuorotellen toimia ilman vakuutusta tai ottaa käyttöön kolmen tyyppisiä vakuutusvaihtoehtoja (SPY, QQQ tai VIX volatiliteetti), mikä vertaa vakuutusmaksun vuosikustannuksia dollareihin, joita säästäisit 20 prosentin romahduksessa."
+                },
+                {
+                  "bold": "Vipuhallinta ja vakuudet",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Tarkkaile, minkä prosenttiosuuden ylläpitomarginaalista olet käyttänyt ja minkä prosentin pudotuksen salkku kestäisi ennen kuin astut marginaalivyöhykkeelle."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Suojauksen operointi lopputuloksilla Myyntioptiot ja takuiden laskeminen Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Komitea ja kirja",
+              "summary": "Kaksi oikeaa paneelia, joissa on automaattinen riskirajojen, tilaushistorian ja Co-pilotin tarkistus.",
+              "paragraphs": [
+                "Kaupan kokeilemisen innostuksessa on helppo unohtaa, että omaisuus keskittyy yli 20 % koko salkustasi tai että se toimii keskellä vakavaa tilastollista poikkeavaa.",
+                "Oikealla olevat kaksi kvadranttia toimivat automaattisena riskinhallinta- ja kirjausketjuna:"
+              ],
+              "lead": "Oikealla olevat kaksi kvadranttia toimivat riskinhallinta- ja rekisteröintitoimintoina:",
+              "bullets": [
+                {
+                  "bold": "Katsaus kolmessa ulottuvuudessa",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "He arvioivat simuloidut tilauksesi teknisistä, perus- ja kovista turvarajoista (varoitus, jos jokin positio ylittää 20 %:n pääomarajan tai jos siinä on suuria poikkeamia)."
+                },
+                {
+                  "bold": "Tilausloki ja portfolio-avustaja",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Alapaneeli tallentaa jokaisen simulaation ja sen vaikutuksen riskeihin, kun taas oikeassa yläkulmassa oleva dialogipainike avaa chatin, jossa voit esittää suoria kysymyksiä portfoliostasi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Käyttöä edeltävät riskienhallintasäännöt ja omaisuuseräkohtaiset keskittymisrajat."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Alla oleva kaavio koko näytössä varmistaaksesi, että strategiasi toimii kokeilujakson ulkopuolella.",
+              "paragraphs": [
+                "Mitä tahansa strategiaa voidaan säätää katsomalla menneisyyttä, kunnes se näyttää idioottivarmalta historiallisessa kaaviossa. Todellinen haaste on tietää, toimiiko se edelleen uusien markkinatietojen tullessa.",
+                "Täysleveä alapaneeli asettaa strategian tiukimman validoinnin läpi ennen tuotantoon siirtymistä:"
+              ],
+              "lead": "Alapaneelissa strategia testataan otoksen sisällä ja otoksen ulkopuolelta:",
+              "bullets": [
+                {
+                  "bold": "Suunnittelun ja todellisen testauksen välinen ero",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Se jakaa historiallisen kaavion ensimmäiseen vaiheeseen, jossa strategia kalibroidaan, ja toiseen vaiheeseen näkymättömillä tiedoilla tarkistaakseen, säilyttääkö se etunsa perussalkkuun nähden."
+                },
+                {
+                  "bold": "Tilastollinen kestävyyshuomautus",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Jos tehokkuusindikaattori ylittää 70 %, se vahvistaa, että tulokset ovat johdonmukaisia, eikä tulos ole siitä, että numerot on pakotettu menneisyyteen."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mitä Walk-Forward-tehokkuusindeksi (WFE) mittaa ja miten se havaitsee ylioptimoidut strategiat."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Likviditeettisuodatin (ADV)",
+        "intro": "Jotta omaisuuserällä voitaisiin käydä kauppaa ilman, että yksikään toimeksianto vääristää sen hintaa, alusta vaatii vähimmäiskynnyksen keskimääräiselle päivittäiselle määrälle dollareissa viimeisen 20 arkipäivän ajalta.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Päätöskurssiᵢ × Vaihtomääräᵢ)",
+          "denominator": "20 taitavaa pyörää",
+          "vars": [
+            "Päätöshinta: päivän i virallinen päätöskurssi ilmaistuna dollareina.",
+            "Vaihdettu volyymiᵢ: kyseisenä päivänä vaihdettujen osuuksien kokonaismäärä."
+          ]
+        },
+        "lead": "Keskimääräisen päivittäisen äänenvoimakkuuden perusteella luettelo luokittelee kunkin instrumentin syvyyden:",
+        "bullets": [
+          {
+            "bold": "Korkea institutionaalinen likviditeetti",
+            "code": "> $500M diarios",
+            "text": "Mahdollistaa suurien positioiden sisäänpääsyn ja poistumisen välittömästi ilman markkinahintaa."
+          },
+          {
+            "bold": "Vakioluettelon likviditeetti",
+            "code": "$50M a $500M diarios",
+            "text": "Soveltuu hajautettuihin salkkuihin, joilla on erittäin alhaiset osto-/myyntikustannukset."
+          },
+          {
+            "bold": "Levityksen seuranta",
+            "code": "< $50M diarios",
+            "text": "Epävakauden aikoina on suositeltavaa tarkistaa vihjeiden avautuminen ennen suurten tilausten toteuttamista."
+          }
+        ],
+        "example": "Jos osakkeen kauppahinta on 200 dollaria ja keskimäärin 5 miljoonaa osaketta per pyörä viimeisen kuukauden aikana, sen keskimääräinen päivittäinen volyymi (ADV) on 1 miljardi dollaria (1,0 miljardia dollaria)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalisointi USD:ksi",
+        "intro": "Koska luettelo yhdistää eurooppalaiset joukkovelkakirjat, Aasian indeksit, hyödykkeet ja kryptovaluutat, kaikki volyymivirrat muunnetaan Yhdysvaltain dollareiksi reaaliajassa, jotta niitä voidaan verrata samassa mittakaavassa.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Paikallisen valuutan volyymi: alkuperäisessä markkinavaluutassa vaihdettu määrä (EUR, JPY, GBP, BRL jne.).",
+            "Spot-vaihtokurssi: nykyinen noteeraus 61 valuutan moottorissa."
+          ]
+        },
+        "lead": "Tämä muunnos vaikuttaa suoraan kahteen kohtaan näytöllä:",
+        "bullets": [
+          {
+            "bold": "Kokonaisnäkymä Ranking All",
+            "code": "213 activos",
+            "text": "Tilaa instrumentit suurimmasta todellisesta rahanliikkeestä vähiten."
+          },
+          {
+            "bold": "Lisätty volyymikortti",
+            "code": "Volumen 24h en $B",
+            "text": "Se mahdollistaa eri maissa listattujen omaisuuserien määrän lisäämisen ilman vääristymiä."
+          }
+        ],
+        "example": "Jos Saksan joukkovelkakirjalla käydään kauppaa 4 miljardia euroa päivässä ja EUR/USD ristiin 1,08, järjestelmä laskee globaalissa pulssissa 4,32 miljardia dollaria."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Miten mitataan, ovatko markkinat nousseet aidosti vai ovatko ne jo nousseet liian nopeasti ja loppuneet? Relative Strength Index (RSI) vertaa keskimääräisiä nousuja viimeisten 14 kierroksen keskimääräisiin pudotuksiin asteikolla 0-100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (keskimääräiset nousut₁4 / keskimääräiset laskut₁₄)",
+          "vars": [
+            "Keskimääräinen nousu₁₄: tasoitettu keskiarvo pisteistä, jotka on ansaittu 14 viimeisen pyörän nousupäivinä.",
+            "Keskimääräiset tappiot₁4: tasoitettu keskiarvo menetetyistä pisteistä saman jakson laskupäivinä."
+          ]
+        },
+        "lead": "Näin asteikon kolme osaa tulkitaan pyöreässä renkaassa:",
+        "bullets": [
+          {
+            "bold": "Ostovoimaa ja yliostettu",
+            "code": "70 a 100",
+            "text": "Lisäykset ylittävät selvästi viimeaikaiset laskut. Se osoittaa suurta nousuvauhtia, vaikka yli 70:n se varoittaa, että hinta saattaa vaatia tauon."
+          },
+          {
+            "bold": "tasapainoalue",
+            "code": "30 a 70",
+            "text": "Markkinat liikkuvat kestävää tahtia. Keskitason ylittäminen (> 50 vihreällä) vahvistaa ostajan määräävän aseman, kun taas putoaminen alle (< 50 punaisella) tarkoittaa myyjän määräävää asemaa."
+          },
+          {
+            "bold": "Rangaistus ja ylimyynti",
+            "code": "0 a 30",
+            "text": "Pudotukset olivat niin toistuvia ja voimakkaita, että omaisuus alkaa näyttää tilastollisesti halvalta ja alttiina palautumiselle."
+          }
+        ],
+        "example": "Jos viimeisten 14 pyörän aikana osakeryhmä nousi keskimäärin 2 dollaria per nouseva päivä ja laski vain 1 dollaria laskupäivää kohti, sen vahvuussuhde on 2 ja sen suhteellinen voimaindeksi on 66,7 (nouseva push vihreällä)."
+      },
+      {
+        "id": "p06",
+        "label": "Normaali järjestelmä (P-06)",
+        "intro": "Omaisuus voi näyttää rauhalliselta, jos vain katsoo sen hintaa, mutta samalla kärsiä oudosta volyymihypystä ja epänormaalista avautumisesta sen osto- ja myyntihuippuissa. Isolation Forest-moottori (P-06) ylittää nämä muuttujat samanaikaisesti havaitakseen epätyypillisen käyttäytymisen.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): keskimääräinen satunnaisten leikkausten määrä, joka tarvitaan nykypäivän käyttäytymisen eristämiseen muusta historiasta.",
+            "x: 4 muuttujan vektori (tuotto 24h, tilavuus Z-Score 20d, realisoitu volatiliteetti 30d ja levitys bps)."
+          ]
+        },
+        "lead": "Mitä harvinaisempi tämän päivän liike on, sitä nopeammin se eristetään ja sitä lähempänä pistemäärä on 1,00:",
+        "bullets": [
+          {
+            "bold": "Normaali järjestelmä",
+            "code": "0.00 a 0.49",
+            "text": "Hinta, volyymi ja likviditeetti liikkuvat omaisuuden historiallisen keskiarvon mukaisesti."
+          },
+          {
+            "bold": "Korkea aktiivisuus",
+            "code": "0.50 a 0.64",
+            "text": "Ainakin yksi muuttujista alkoi poiketa tavanomaisesta käyttäytymisestään; Tilausvirtaa kannattaa seurata tarkasti."
+          },
+          {
+            "bold": "Dislokaatio tai kriittinen poikkeama",
+            "code": "0.65 a 1.00",
+            "text": "Omaisuus rekisteröi tilastollisesti äärimmäistä käyttäytymistä. Portfoliomoduulissa tämän kynnyksen ylittäminen aktivoi turvajarrun."
+          }
+        ],
+        "example": "Jos valtiolainan hinta liikkuu tuskin 0,1 %, mutta sen volyymi nelinkertaistuu ja sen hajoaminen kolminkertaistuu minuuteissa, ilmaisin ylittää kolme datapistettä ja nostaa pistemääränsä 0,74:ään (dislokaatio punaisella)."
+      },
+      {
+        "id": "zscore",
+        "label": "Äänenvoimakkuuden ohitus (Z-Score)",
+        "intro": "Sanotaan, että 500 miljoonaa dollaria käytettiin tänään, on paljon keskikokoiselle yritykselle, mutta hyvin vähän S&P 500:lle. Volume Z-Score tuo kaikki hyödykkeet samaan yleisyksikköön: kuinka monta keskihajontaa (σ) on tämän päivän tilavuus sen omasta 20 pyörän keskiarvosta.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Äänenvoimakkuus tänään (24h) − Keskimääräinen äänenvoimakkuus (20p)",
+          "denominator": "Äänenvoimakkuuden keskihajonta (20 d)",
+          "vars": [
+            "Keskimääräinen volyymi (20p): omaisuuden tavanomainen volyymi viimeisen pankkikuukauden aikana.",
+            "Keskihajonta (20d): kuinka paljon tämä tilavuus normaalisti vaihtelee päivästä toiseen."
+          ]
+        },
+        "lead": "Tällä tavalla voit verrata mitä tahansa omaisuutta samalla sigma-yksiköiden (σ) asteikolla:",
+        "bullets": [
+          {
+            "bold": "Tavallista toimintaa",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Päivän volyymi on täysin viimeisen neljän viikon rutiinin sisällä."
+          },
+          {
+            "bold": "Korkea osallistuminen",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Keskimääräistä korkeampi kiinnostus alkaa vahvistaa päivän trendiä."
+          },
+          {
+            "bold": "Institutionaalinen yhteenotto",
+            "code": "> +2.0σ",
+            "text": "Sitä esiintyy alle 5 prosentissa vuoden kierroksista ja yleensä se kuvastaa suurten rahastojen massiivista tuloa tai poistumista."
+          }
+        ],
+        "example": "Jos osakkeella käydään yleensä kauppaa 100 miljoonaa dollaria päivittäin tyypillisellä vaihtelulla ±20 miljoonaa dollaria ja nykyään 160 miljoonaa dollaria, se on 60 miljoonaa dollaria keskiarvon yläpuolella, mikä vastaa täsmälleen +3,0σ:a."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Korkotulot (2s10s ja DV01)",
+        "intro": "Kun suodatat taulukossa joukkovelkakirjoja tai korkoja, näkyviin tulee kaksi keskeistä valtion velan arvioinnin mittaria: käyrän kaltevuus (2s10s) ja peruspisteen rahallinen arvo (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 peruspiste (1 bp): vastaa 0,01 prosentin tuottoa.",
+            "DV01 ($/$1M): Kuinka monta dollaria miljoonan dollarin sijoitus voittaa tai häviää, jos korko liikkuu 1 peruspisteen."
+          ]
+        },
+        "lead": "Kuinka lukea nämä kaksi numeroa ruudukosta:",
+        "bullets": [
+          {
+            "bold": "Normaali tai positiivinen käyrä",
+            "code": "2s10s > 0 bps",
+            "text": "10 vuoden obligaatiot maksavat korkeampaa korkoa kuin 2 vuoden joukkovelkakirjalainat, mikä kuvastaa tervettä talouskasvua."
+          },
+          {
+            "bold": "käänteinen käyrä",
+            "code": "2s10s < 0 bps",
+            "text": "Lyhyet korot ylittävät pitkät korot; historiallisesti se varoittaa talouden jäähtymisestä tai rahapolitiikan rajoituksista."
+          }
+        ],
+        "example": "Jos 10 vuoden Treasury tuo 4,20 % ja 2 vuoden Treasury 4,55 %, sarakkeessa 2s10s on -35 bps (käänteinen käyrä punaisella)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Osakkeet (P/E ja marginaali)",
+        "intro": "Kun suodatat S&P/NDX-osakkeita, taulukossa näkyy ennustettu tuloskerroin (P/E Forward) ja bruttoliikevoittomarginaali, jotta voit verrata arvostusta kannattavuuteen.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Osakkeen nykyinen hinta",
+          "denominator": "Arvioitu osakekohtainen tulos (seuraavat 12 kuukautta)",
+          "vars": [
+            "P/E Eteenpäin: Kuinka monen vuoden tulevista tuloista maksat tämän päivän hinnalla.",
+            "Bruttokate (%): osuus myynnistä, joka jää bruttovoitoksi välittömien kustannusten vähentämisen jälkeen."
+          ]
+        },
+        "lead": "Mitä pitää ottaa huomioon, kun ylität molemmat sarakkeet:",
+        "bullets": [
+          {
+            "bold": "Vaativa vs kohtalainen arviointi",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Suuri kerroin osoittaa, että markkinat hinnoittelevat vahvaa tulevaa kasvua; alhainen heijastaa yleensä kypsiä tai arvokkaita yrityksiä."
+          },
+          {
+            "bold": "Hinnoitteluteho",
+            "code": "Margen Bruto > 50%",
+            "text": "Korkeat marginaalit osoittavat, että yritykset, joilla on vahvat kilpailuedut, pystyvät puolustamaan voittojaan inflaatiota vastaan."
+          }
+        ],
+        "example": "Jos osakkeella käydään kauppaa 150 dollarilla ja sen arvioidaan ansaitsevan 6 dollaria osakkeelta seuraavien 12 kuukauden aikana, sen forward P/E on 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Johdannaiset, valuuttakurssit ja hyödykkeet",
+        "intro": "Optioiden, forex- ja fyysisten futuurimarkkinoiden osalta kaksi dynaamista saraketta osoittavat positioiden säilyttämisen riskin tai tuoton ajan kuluessa.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (johdannaiset): vuotuinen volatiliteetti, jota optiomarkkinat alentavat seuraavan 30 päivän ajan.",
+            "Carry 10Y (FX) ja Roll Yield (hyödykkeet): vuotuinen voitto tai kustannukset korkoerosta tai futuurien kierrätyksestä."
+          ]
+        },
+        "lead": "Miten hyödynnät näitä sarakkeita sisällöstä riippuen:",
+        "bullets": [
+          {
+            "bold": "Johdannaisissa",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Ne kertovat, minkä prosenttiosuuden liikkeestä markkinat odottavat ja ovatko putoamisvaihtoehdot (Puts) kalliita."
+          },
+          {
+            "bold": "Valuutoissa ja raaka-aineissa",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Ne näkyvät vihreänä, jos omaisuuden ylläpito tuo sinulle lisätuloja, tai punaisella, jos sillä on kantokustannuksia."
+          }
+        ],
+        "example": "Jos optio osoittaa implisiittistä volatiliteettia (ATM IV) 35 % vuodessa, markkinat alentavat liikettä lähelle ±10 % seuraavien 30 päivän aikana."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radar Radial Mapping",
+        "intro": "Jopa 45 kohdetta sijoittaakseen kolmeen tutkarenkaaseen ilman päällekkäisyyttä Orbital-näkymä muuntaa valitun indikaattorin arvon etäisyydeksi keskustasta (säde r), joka on normalisoitu ryhmän minimin ja maksimin välille.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Omaisuusarvo − konsernin vähimmäisarvo",
+          "denominator": "Ryhmän enimmäisarvo − Ryhmän vähimmäisarvo",
+          "vars": [
+            "r → 0 (Inner Ring): keskittää resurssit suuremmalla intensiteetillä tai positiivisella poikkeamalla.",
+            "r → 1 (Ulkorengas): paikantaa oheislaitteet tai ne, joilla on alhaisin suhteellinen lukema."
+          ]
+        },
+        "lead": "Kuinka lukea kunkin planeetan sijainti ja väri tutkasta:",
+        "bullets": [
+          {
+            "bold": "Tarkennus sisärengas",
+            "code": "Centro del radar",
+            "text": "Kerää tärkeimmät resurssit yllä valitsemastasi indikaattorista, jotta näkemyksesi siirtyy ensin tärkeimpään."
+          },
+          {
+            "bold": "Historiallinen värisemantiikka",
+            "code": "Verde vs Rojo",
+            "text": "Solmu palaa vihreänä, kun se ylittää historiallisen keskiarvon suotuisasti, ja punaisena, kun se heijastaa laskua tai stressiä."
+          }
+        ],
+        "example": "Jos lajittelet tutkan tilavuuspoikkeaman (Z-Score) mukaan, aktiivinen, jonka arvo on +3,4σ, sijaitsee kirkkaassa keskirenkaassa, kun taas tutka, jonka arvo on 0,1σ, on ulkoradalla."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) ja Bollinger Bands",
+        "intro": "20 jakson yksinkertainen liukuva keskiarvo (SMA 20) merkitsee omaisuuden perustrendiä, kun taas Bollingerin nauhat piirtävät dynaamisen kanavan lisäämällä ja vähentämällä kaksi keskihajontaa (2σ) tämän keskiarvon ympärillä.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): 20 viimeisen sulkemisen aritmeettinen keskiarvo.",
+            "Kaistanleveys (BB Width): prosentuaalinen etäisyys ylä- ja alakaistan välillä."
+          ]
+        },
+        "lead": "Tilastollisesti noin 95 % lainauksista löytyy kahdesta kaistasta:",
+        "bullets": [
+          {
+            "bold": "Hinta keskimääräistä korkeampi",
+            "code": "Precio > SMA 20",
+            "text": "Se osoittaa, että lyhyen aikavälin trendi on nouseva ja keskiarvo toimii yleensä tukilattiana."
+          },
+          {
+            "bold": "Ylä- tai alanauha kosketus",
+            "code": "±2σ",
+            "text": "Se varoittaa, että hinta venyi liian nopeasti viimeaikaisesta keskiarvostaan ja voi vetää henkeä."
+          },
+          {
+            "bold": "nauhan pakkaus",
+            "code": "BB Width bajo",
+            "text": "Kun kaistat ovat hyvin kapeita, markkinat keräävät energiaa ennen voimakasta liikettä."
+          }
+        ],
+        "example": "Jos osakkeen SMA(20) on 100 dollaria ja sen 20 pyörän standardipoikkeama on 4 dollaria, yläkaista on 108 dollaria ja alempi 92 dollaria."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Institutionaalinen",
+        "intro": "Toisin kuin yleinen keskiarvo, joka antaa saman painon kaikille vuorokauden tunteille, VWAP painottaa jokaista hintaa rahamäärällä, jolla todellisuudessa vaihdettiin tällä tasolla. Se on institutionaalisten taulukoiden pääasiallinen viite.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Tyypillinen hintaᵢ × Vaihtomääräᵢ)",
+          "denominator": "∑ Vaihdettu volyymiᵢ",
+          "vars": [
+            "Tyypillinen hintaᵢ: keskiarvo kunkin kynttilän maksimi-, minimi- ja läheisarvon välillä.",
+            "Vaihdettu volyymiᵢ: erityisesti kyseisessä osiossa vaihdettu määrä."
+          ]
+        },
+        "lead": "Kuinka ammattikauppiaat käyttävät VWAP-linjaa:",
+        "bullets": [
+          {
+            "bold": "Toteutuksen valvonta",
+            "code": "Comprar bajo el VWAP",
+            "text": "Jos institutionaalinen rahasto ostaa alle VWAP:n kauden aikana, se sai markkinoiden painotettua keskiarvoa paremman hinnan."
+          },
+          {
+            "bold": "Trendi puolustustaso",
+            "code": "Soporte / Resistencia",
+            "text": "Niin kauan kuin omaisuus pysyy VWAP:n yläpuolella, kauden aikana ostaneet ovat keskimääräisessä voitossa."
+          }
+        ],
+        "example": "Jos miljoonalla osakkeella vaihdettiin 100 dollaria ja vain 100 000 osaketta 110 dollarilla, yksinkertainen keskiarvo olisi 105 dollaria, mutta VWAP lukee 100,91 dollaria, koska melkein kaikki raha vaihdettiin 100 dollariin."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Leveyden siirtymä (bps)",
+        "intro": "Spread on tilauskirjan parhaan tarjoushinnan ja parhaan tarjoushinnan välinen erotus. Kun markkinatakaajat havaitsevat riskin tai likviditeetin puutteen, he avaavat aukon suojatakseen itseään.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "(Pysy hinta - Tarjoushinta)",
+          "denominator": "Keskihinta (keskihinta)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Kysy / Tarjoa Hinta: myynti- ja ostokohta voimassa kirjassa.",
+            "10 000: Muuntokerroin, joka ilmaisee eron peruspisteinä (bps)."
+          ]
+        },
+        "lead": "Mitä vasemman kiskon Spread Dislocation -lukema kertoo:",
+        "bullets": [
+          {
+            "bold": "Syvä ja sujuva kirja",
+            "code": "Spread estable en verde",
+            "text": "Likviditeettiä on runsaasti molemmissa päissä, ja implisiittiset kustannukset tulosta tai poistumisesta ovat minimaaliset."
+          },
+          {
+            "bold": "Kitka tai likviditeetin poistaminen",
+            "code": "Salto en bps",
+            "text": "Se tapahtuu yleensä sekunteja ennen makrotaloudellisia ilmoituksia tai paniikkimyynnin aikana, mikä tekee toteutuksesta kalliimpaa."
+          }
+        ],
+        "example": "Jos omaisuuserän ostovihje on 99,95 dollaria ja myyntivihje 100,05 dollaria, 0,10 dollarin ero 100 dollariin vastaa 10 peruspistettä (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Vaihtoehdot (Black-Scholes ja kreikkalaiset)",
+        "intro": "Optiomoottorissa alusta piirtää kaksi voitto- ja tappiokäyrää (P&L): miten strategia päättyisi vanhenemispäivänä ja kuinka paljon se kannattaa tänään (T+0) Black-Scholes-mallia soveltaen.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S ja K: kohde-etuuden nykyinen hinta (Spot) ja option toteutushinta (Strike).",
+            "Netkreikkalaiset: Δ Delta (hintaherkkyys), Γ Gamma (deltakiihtyvyys), Θ Theta (päivittäinen kuluminen) ja ν Vega (volatiliteettiherkkyys)."
+          ]
+        },
+        "lead": "Kuinka lukea kreikkalaisia ​​strategiasi vasemmanpuoleisista pillereistä:",
+        "bullets": [
+          {
+            "bold": "Ohjaus ja kiihdytys",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Positiivinen Delta voittaa, kun omaisuus nousee; positiivinen Gamma saa sinut kasvamaan nopeammin ja nopeammin, jos liike kiihtyy."
+          },
+          {
+            "bold": "Ajan kuluminen ja epävarmuus",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta kertoo, kuinka monta dollaria positio menettää tai voittaa joka päivä; Vega kuinka paljon se muuttuu, jos implisiittinen volatiliteetti nousee 1 %."
+          }
+        ],
+        "example": "Long Straddlen (osta Call ja Put on sama lakko) Delta on lähellä nollaa (ei väliä nouseeko vai laskee), mutta Vega on positiivinen ja tarvitsee hinnan siirtyäkseen kahden tasapainopisteensä (Breakevens) yli."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Suvereign Curves (Butterfly ja DV01)",
+        "intro": "Korkomoottori vertailee 42 maan tuottoa 3 kuukaudesta 30 vuoteen ja laskee sekä keskierän kaltevuuden (2s10s) että kaarevuuden (Butterfly 2s5s10s) ja rahan herkkyyden (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y: valitun maan 2, 5 ja 10 vuoden valtiontuotto.",
+            "Reaalinen 10 vuoden korko: 10 vuoden nimellinen tuotto vähennettynä viitekorolla tai implisiittisellä inflaatiolla."
+          ]
+        },
+        "lead": "Mitä kukin indikaattori on tarkoitettu joukkovelkakirja-analyysissä:",
+        "bullets": [
+          {
+            "bold": "Keskiosan kaarevuus",
+            "code": "Butterfly 2s5s10s",
+            "text": "Se mittaa, onko 5 vuoden erä kallis vai halpa verrattuna 2 vuoden ja 10 vuoden ääripäihin."
+          },
+          {
+            "bold": "Dollarin keston riski",
+            "code": "DV01 por $1M",
+            "text": "Se kertoo tarkalleen kuinka monta dollaria miljoonan dollarin salkku vaihtelee 0,01 %:n liikkeellä kurssissa."
+          }
+        ],
+        "example": "10 vuoden joukkovelkakirjalaina, jonka DV01 on 820 dollaria miljoonalta, menettää noin 82 000 dollaria, jos markkinakorot nousevat 100 peruspistettä (+1,00 %)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Valuutat (siirto) ja futuurit (Roll Yield)",
+        "intro": "Valuutoissa, kun paria ei noteerata suoraan, se lasketaan kolmiomittauksella dollaria vastaan ja sen kurssiero (Carry) mitataan. Raaka-aineissa uusimissuorituskykyä mitataan välittömän sopimuksen ja 12 kuukauden sopimuksen (Roll Yield) välillä.",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Spot-hinta (etu M1) − tuleva hinta (M12)",
+          "denominator": "Tuleva hinta (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Taaksepäin kääntyminen (Spot > Future): Nykypäivän fyysinen niukkuus saa rullaavat futuurit tuottamaan positiivista voittoa (Roll Yield > 0).",
+            "Contango (Spot < Future): Varastointikustannukset tekevät futuurit kalliimpia ja niiden uusimisella on negatiivinen hinta."
+          ]
+        },
+        "lead": "Kuinka tämä vaikuttaa taskukirjaasi, kun pidät asentoa:",
+        "bullets": [
+          {
+            "bold": "Positiivinen siirtokauppa valuutoissa",
+            "code": "Carry Spread > 0 bps",
+            "text": "Jos ostat korkeakorkoisen valuutan rahoittamalla itsesi alhaisen koron valuutalla, keräät tuon erotuksen eduksesi."
+          },
+          {
+            "bold": "Raaka-aineissa suotuisa tuuli",
+            "code": "Backwardation en verde",
+            "text": "Kun varastot ovat vähissä, lähellä oleva sopimus on arvokkaampi kuin kaukainen ja sijoittaja ansaitsee lisätuottoa rullaamalla sopimusta."
+          }
+        ],
+        "example": "Jos 1 kuukauden öljyn hinta on 72 dollaria ja 12 kuukauden sopimuksella 68 dollaria, markkinat ovat taaksepäin ja positiivinen Roll Yield on +5,88 % vuodessa."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Kokonaispainotettu arvosana",
+        "intro": "Kaikki varat eivät kulje samojen lähteiden kautta: yrityksessä tarkastetuilla tilinpäätöksillä (SEC 10-K/10-Q) on paljon painoarvoa, kun taas kryptomarkkinoilla tai valuutoissa päivittäisillä virroilla ja viestinnällä on suurempi painoarvo.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: automaattinen painotus luokan mukaan (esim. 80 % / 20 % osakkeissa; 85 % / 15 % palkkioissa).",
+            "Lopullinen asteikko: vaihtelee välillä −100 (maksimaalinen pessimismi) - +100 (maksimaalinen nouseva vakaumus)."
+          ]
+        },
+        "lead": "Yhdistelmäpistemäärä käännetään näin:",
+        "bullets": [
+          {
+            "bold": "Nouseva asenne",
+            "code": "BULLISH / Nota > +15",
+            "text": "Dokumentaariset katalysaattorit ja uutisvirta ylittävät selvästi riskitekijät."
+          },
+          {
+            "bold": "Neutraali tai sekoitettu asento",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Jopa voimat perusasioiden ja uutisten välillä; On suositeltavaa käydä läpi 10 tekijän harmonikka ennen päätöksen tekemistä."
+          },
+          {
+            "bold": "Puolustava tai karhumainen asenne",
+            "code": "BEARISH / Nota < -15",
+            "text": "Hälytykset taseista, marginaalien heikkeneminen tai kielteiset otsikot ovat vallitsevia."
+          }
+        ],
+        "example": "Osakkeessa (80 % perustekijät / 20 % uutiset), jos saldot näyttävät +50 pistettä ja päivän uutiset +20, painotettu kokonaispistemäärä on (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Vahvistettu haku (RAG)",
+        "intro": "Estääkseen tekoälyä keksimästä lukuja, Document Chat käyttää Generation Augmented Recovery -toimintoa (RAG): se etsii ensin asiaankuuluvat kappaleet omaisuuden virallisista raporteista ja vasta sitten kirjoittaa vastauksen lähteeseen viittaamalla.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vector-neuvonta (Q) · Vector virallinen asiakirja (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vektori Q ja D: numeeriset esitykset kysymyksestäsi ja virallisista fragmenteista (10-K, FOMC-pöytäkirjat, YVA-raportit).",
+            "3-Layer Guardrail: suodatin, joka estää kyselyt, jotka eivät liity talouteen tai ilman dokumentaarista tukea."
+          ]
+        },
+        "lead": "Mitä tämä mekanismi takaa, kun esität kysymyksen chatissa:",
+        "bullets": [
+          {
+            "bold": "Ankkurointi primaarilähteisiin",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Jokainen tuloa, velkaa, varastoja tai korkoja koskevat tiedot tulevat kyseistä omaisuutta vastaavasta säädösasiakirjasta."
+          },
+          {
+            "bold": "Lopeta aiheen ulkopuoliset kysymykset",
+            "code": "Guardrail activo",
+            "text": "Jos joku yrittää neuvotella ei-taloudellisista aiheista, assistentti hylkää kyselyn ja keskittyy instrumentin analysointiin."
+          }
+        ],
+        "example": "Kun napautat osakkeen riskitekijöiden sirua, moottori hakee uusimman 10-K-lomakkeen Item 1A (Riskitekijät) -osion ja tekee yhteenvedon kriittisistä kohdista."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Neuronaalinen pistemäärä",
+        "intro": "Tyypillinen sanakirja sekoittaa usein taloussanoja (esimerkiksi \"kustannusten lasku\" tai \"velkavähennys\" on erinomainen uutinen, vaikka he käyttävät sanaa lasku tai vähennys). FinBERT on hermoverkko, joka on koulutettu erityisesti talousteksteihin.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(positiivinen) ja P(negatiivinen): mallin määrittämät todennäköisyydet, että otsikko on nouseva tai laskeva omaisuuden osalta.",
+            "24 tunnin käyrä: eksponentiaalinen liukuva keskiarvo otsikoista viimeisen 24 tunnin ajalta."
+          ]
+        },
+        "lead": "Kuinka kukin solmu laskee oikealla aikajanalla:",
+        "bullets": [
+          {
+            "bold": "Katalysaattorin pidike",
+            "code": "+20 a +100 en verde",
+            "text": "Arvioitujen tulojen lyöminen, luottoluokitusten korotukset tai edulliset koronleikkaukset."
+          },
+          {
+            "bold": "Neutraali tietokaapeli",
+            "code": "-19 a +19 en ámbar",
+            "text": "Rutiininomaiset operatiiviset ilmoitukset, jotka eivät muuta laitteen rakennearviointia."
+          },
+          {
+            "bold": "Riskin haltija",
+            "code": "-20 a -100 en rojo",
+            "text": "Viranomaisvaroitukset, marginaalien laskut, lakot tai odotettua huonommat inflaatiotiedot."
+          }
+        ],
+        "example": "Jos malli määrittää otsikkoon 82 % positiivisen todennäköisyyden, 12 % neutraalin ja 6 % negatiivisen todennäköisyyden, solmun nettovaikutus on +76 vihreänä."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe ja Sortino",
+        "intro": "Kaksi ensimmäistä huippukorttia mittaavat, kuinka paljon pääomasi kasvaa vuodessa (CAGR) ja kuinka tehokas kasvu on suhteessa kestämiin häiriöihin (Sharpe ja Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Vuotuinen Portfolio-tuotto (Rp) − Riskitön korko (Rf)",
+          "denominator": "Vuotuinen Portfolio-volatiliteetti (σp)",
+          "vars": [
+            "Rf (4,30 %): perustuotto, jonka voit saada ilman riskiä valtion velkasitoumuksissa.",
+            "Sortino Ratio: käyttää samaa kaavaa, mutta nimittäjässä se rankaisee vain negatiivisten päivien volatiliteettia (laskua)."
+          ]
+        },
+        "lead": "Kuinka arvioida salkkusi laatua näillä numeroilla:",
+        "bullets": [
+          {
+            "bold": "Tehokas portfolio",
+            "code": "Sharpe > 1.00",
+            "text": "Riskittömän koron yläpuolella saavuttamasi ylituotto ylittää huomattavasti oletetun volatiliteetin."
+          },
+          {
+            "bold": "Erinomainen suorituskyky",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Se osoittaa erittäin hyvin hajautetun yhdistelmän, jossa nousut ovat johdonmukaisia ja laskut hillitty."
+          }
+        ],
+        "example": "Jos salkkusi tuotto on 15,3 % vuodessa, riskitön korko on 4,3 % ja vuotuinen volatiliteetti 10 %, ylituotto on 11 % ja Sharpe-suhde on 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% ja nosto",
+        "intro": "Kolmas ja neljäs kortti vastaavat, kuinka paljon voit menettää huonona, mutta tilastollisesti normaalina päivänä (VaR 95 %), kuinka paljon äärimmäisenä paniikkipäivänä (CVaR 99 %) ja mikä oli suurin takaisku edellisestä huipusta (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1 645: tilastollinen tekijä, joka kattaa 95 % vuoden normaaleista pyöristä (19/20 päivää).",
+            "CVaR 99 % (odotettu vaje): Keskimääräinen tappio, kun markkinat rikkovat kynnyksen ja pääsevät pahimpien päivien 1 prosenttiin."
+          ]
+        },
+        "lead": "Mitä käytännön eroa on VaR:n ja Max Drawdown:n katsomisen välillä:",
+        "bullets": [
+          {
+            "bold": "Yhden päivän riski",
+            "code": "VaR 95% 1D en USD",
+            "text": "Se valmistaa sinua psykologisesti ja taloudellisesti siihen, mihin tilisi voi kääntyä huonoon suuntaan ilman, että se tarkoittaisi strategian epäonnistumista."
+          },
+          {
+            "bold": "Vastustus haitallisessa sarjassa",
+            "code": "Max Drawdown 12M",
+            "text": "Se mittaa kertyneen pudotuksen kärjestä kärkeen korkeimmasta kohdasta lattiaan ennen palautumista uudelleen."
+          }
+        ],
+        "example": "100 000 dollarin salkussa, jossa päivittäinen VaR 95 % 1,45 %:sta (1 450 dollaria), 19:ssä 20 kaupankäyntipyörästä päivittäiset tappiot eivät ylitä 1 450 dollaria."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Röntgenkuvan päällekkäisyys (nro 12)",
+        "intro": "Kun ostat ETF:n, kuten SPY tai QQQ, ostat kymmeniä osakkeita sisällä. Jos olet myös ostanut osan samoista osakkeista suoraan, todellinen altistuksesi on näiden kahden asian summa.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Suora paino: prosenttiosuus salkustasi, joka on kohdistettu suoraan osakkeisiin i.",
+            "Prosenttiosuus ETFₖ:ssä: virallinen paino, joka kyseisellä yrityksellä on indeksissä tai rahastossa k."
+          ]
+        },
+        "lead": "Miksi on tärkeää tarkistaa tämä ensimmäinen välilehti ennen portfolion sulkemista:",
+        "bullets": [
+          {
+            "bold": "Piilotettu keskittymisen näkyvyys",
+            "code": "Directo + Indirecto",
+            "text": "Se purkaa automaattisesti jokaisen salkkusi ETF:n ja näyttää sinulle yhden palkin, jossa näkyy kunkin yrityksen todellinen prosenttiosuus."
+          },
+          {
+            "bold": "Liiallinen hälytys",
+            "code": "> 20% en rojo",
+            "text": "Jos kokonaissumma ylittää varovaisen kynnyksen keskittyä yhteen nimeen, rivi syttyy, jotta voit tasapainottaa."
+          }
+        ],
+        "example": "Jos sijoitat 15 % salkustasi suoraan NVDA:hen ja sinulla on myös 30 % SPY ETF:ään (jossa NVDA painaa noin 7 %), röntgenkuvaus paljastaa, että todellinen altistuksesi NVDA:lle on 15 % + (30 % × 7 %) = 17.1."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alfa Brinsonin hajoaminen (#2)",
+        "intro": "Kun salkkusi voittaa (tai häviää) vertailuindeksinsä, Brinson-Fachler-malli erottaa tarkalleen, mistä ero tuli: olitko oikeassa millä sektoreilla ylipainotit vai olitko oikeassa valitessasi kunkin sektorin parhaat omaisuuserät?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Kohdistusvaikutus: (Portfolio-paino − vertailupainotus) × sektorin tuotto vertailuarvossa.",
+            "Valintavaikutus: Paino vertailuindeksinä × (omaisuutesi tuotto − sektorin tuotto)."
+          ]
+        },
+        "lead": "Kolmannen välilehden kolmen attribuutiopalkin lukeminen:",
+        "bullets": [
+          {
+            "bold": "Makro- tai sektorimenestys",
+            "code": "Asignación Sectorial",
+            "text": "Vihreässä on positiivista, kun painottaa markkinoita enemmän niitä omaisuusluokkia, jotka nousivat eniten."
+          },
+          {
+            "bold": "Onnistunut varojen kohdistaminen",
+            "code": "Selección de Activos",
+            "text": "On positiivista, kun valitsemasi instrumentit toimivat enemmän kuin oman alansa keskiarvo."
+          }
+        ],
+        "example": "Jos salkkusi päihitti S&P 500:n +3,20 %, tämän välilehden avulla voit nähdä, että +2,10 % tuli parempien osakkeiden valinnasta (Valinta) ja +1,10 % suuremmasta painoarvosta teknologiassa (Alokaatio)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Tehokas Frontier ja CML",
+        "intro": "Markowitz-tasolla salkun tuotto-odotus on sen omaisuuserien tuoton painotettu keskiarvo, mutta sen volatiliteetti on keskimääräistä alhaisempi johtuen siitä, että varat eivät liiku 100 % samoin.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: prosenttiosuus varoihin i ja j kohdistetusta pääomasta.",
+            "ρᵢⱼ (korrelaatio): aste, jossa molemmat omaisuuserät liikkuvat yhdessä (−1 - +1). Mitä pienempi ρᵢⱼ on, sitä enemmän kokonaisriski pienenee."
+          ]
+        },
+        "lead": "Mitä kaavion kolme viittausta edustavat:",
+        "bullets": [
+          {
+            "bold": "Minimi varianssi",
+            "code": "Min-Var",
+            "text": "Se on käyrän vasemmanpuoleisin piste: tarkka painojen yhdistelmä, jolla saavutetaan pienin mahdollinen volatiliteetti."
+          },
+          {
+            "bold": "Máximo Sharpe ja Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Se on kohta, jossa riskittömästä korosta alkava viiva koskettaa tehokkaan rajan ja tarjoaa suurimman voiton riskiyksikköä kohden."
+          }
+        ],
+        "example": "Jos yhdistät yhtä suuriin osiin kaksi omaisuutta, joilla kummallakin on 20 % volatiliteetti mutta nollakorrelaatio (ρ = 0), salkun volatiliteetti ei ole 20 %, vaan putoaa 14,1 %:iin."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "Active and Capture VaR",
+        "intro": "Jotta saadaan selville, mikä asema lisää salkun riskiä, kunkin omaisuuden marginaalista panosta mitataan sen painon ja sen korrelaation mukaan. Lisäksi sieppaussuhteet mittaavat epäsymmetriaa S&P 500:n nousuja ja laskuja vastaan.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Omaisuuden tai Portfolio:n palautus nousevissa (tai laskevissa) pyörissä",
+          "denominator": "S&P 500:n palautus samoilla pyörillä",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100 %) – Ansaitse indeksiä enemmän, kun markkinat nousevat.",
+            "Downside Capture (< 100 %): putoaa vähemmän kuin indeksi, kun markkinat laskevat (puolustuspuskuri)."
+          ]
+        },
+        "lead": "Ihanteellinen profiili, jota etsit tarkastellessasi neljänneksen kolmatta välilehteä:",
+        "bullets": [
+          {
+            "bold": "positiivinen epäsymmetria",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Osallistu täysimääräisesti härkämarkkinoihin, mutta suojaa pääomaa, kun osakemarkkinat korjaantuvat."
+          },
+          {
+            "bold": "Turvapaikka tai korreloimaton omaisuus",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Instrumentit, kuten lyhyet joukkovelkakirjat tai kulta, jotka yleensä pysyvät kiinteinä tai nousevat osakemarkkinoiden laskun aikana."
+          }
+        ],
+        "example": "Jos kuukausina, jolloin S&P 500 nousi 10 %, salkkusi nousi 11 % (nousu 110 %) ja kun indeksi laski 10 %, salkkusi laski vain 6 % (60 %), sinulla on vahva epäsymmetria eduksesi."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normaali vs kriisi korrelaatio",
+        "intro": "Pearson-kerroin (r) mittaa -1,00 - +1,00, kuinka kaksi omaisuutta liikkuvat suhteessa toisiinsa. Salkunhoidossa vaarana on se, että markkinaromahtaessa riskivarojen välinen korrelaatio yleensä ampuu kohti +1.00 (tartunta).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kovarianssi (palauttaa omaisuuden i, palauttaa omaisuuden j)",
+          "denominator": "Omaisuuden volatiliteetti i (σᵢ) × Omaisuuden volatiliteetti j (σⱼ)",
+          "vars": [
+            "r lähellä 0:ta tai negatiivinen: erinomainen hajautus (kun yksi laskee, toinen ei seuraa).",
+            "r Crisis Queue:ssa: laskee matriisin uudelleen ottaen vain 5 % markkinoiden huonoimmista pyöristä."
+          ]
+        },
+        "lead": "Kuinka lukea 6x6-matriisin värit molemmissa järjestelmissä:",
+        "bullets": [
+          {
+            "bold": "Todellinen monipuolisuus",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Molemmat varat vastaavat erilaisiin taloudellisiin tekijöihin ja kompensoivat toisiaan."
+          },
+          {
+            "bold": "Keskittyminen tai tartunta",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Ne liikkuvat käytännössä lohkona; Molemmat eivät vähennä kaatumisiasi huonona päivänä."
+          }
+        ],
+        "example": "Kahden eri sektorin osakkeen korrelaatio voi olla maltillinen 0,42 normaalina vuonna, mutta kun aktivoit Crisis Queue -painikkeen, näet sen nousevan 0,81:een, koska ne myyvät paniikissa yhdessä."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D Shock (hinnat × pörssi)",
+        "intro": "2D-matriisi yhdistää samanaikaisesti korkojen liikkeen vaikutuksen (korkotuottoduraation ja korkoherkkyyden kautta) S&P 500-indeksin laskuun tai nousuun (osakkeen betan kautta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: osakemarkkinoiden vaihtelu skenaario vaaka-akselilla (−20% - +10%).",
+            "Δ Korot: korkojen muutosskenaario peruspisteinä pystyakselilla (−100 - +200 bps)."
+          ]
+        },
+        "lead": "Mikä on taulukon kahden akselin ylittämisen tarkoitus:",
+        "bullets": [
+          {
+            "bold": "Stagflaatio- tai koronnostoskenaario",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Kuten vuonna 2022, jolloin osakkeet ja pitkät joukkovelkakirjat kärsivät samanaikaisesti."
+          },
+          {
+            "bold": "Klassinen turvakoti skenaario",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Kun alhaisemmat korot nostavat valtion joukkovelkakirjalainojen hintaa ja vaimentavat osakkeiden laskua."
+          }
+        ],
+        "example": "Suodattamalla pitkää joukkovelkakirjalainaa, kuten US10Y tai TLT, näet taulukosta, kuinka se saa arvoa, kun korot laskevat (-100 bps), ja se toimii laskuvarjona, jos S&P 500 putoaa samana päivänä."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markovin järjestelmät (nro 11)",
+        "intro": "Markovin ketju mallintaa taloutta järjestelmänä, joka hyppää neljän mahdollisen tilan välillä (Calm Bullish, Volatile Bullish, Inflation/Rates ja Crisis) ja laskee todennäköisyyden siirtyä yhdestä toiseen.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Päädiagonaali (i = j): todennäköisyys, että nykyinen järjestelmä pysyy muuttumattomana.",
+            "Off-diagonal (i ≠ j): todennäköisyys kääntyä uuteen markkinaympäristöön."
+          ]
+        },
+        "lead": "Kuinka hyödyntää toisen välilehden siirtymämatriisia:",
+        "bullets": [
+          {
+            "bold": "Nykyisen syklin pysyvyys",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Rauhallisilla järjestelmillä on yleensä korkea pysyvyys (> 75 %), mikä mahdollistaa trendiasemien säilyttämisen."
+          },
+          {
+            "bold": "Rotation Early Warning",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Kun todennäköisyys siirtyä volatiileihin tiloihin kasvaa, on suositeltavaa vähentää vipuvaikutusta tai aktivoida suojaus."
+          }
+        ],
+        "example": "Jos markkinat ovat nykyään Volatile Bull -järjestelmässä ja rivi merkitsee 62 % pysyvyydestä, 20 % palaamisesta Bull Calmiin ja 18 % stressiin/kriisiin siirtymisestä, tiedät, että lähes yksi viidestä skenaariosta johtaa korjaukseen."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo-projektio (10 000 polkua)",
+        "intro": "Salkkusi odotetun tuoton ja nykyisen volatiliteetin perusteella simulaattori luo 10 000 mahdollista tulevaisuuden kehityskulkua päivä päivältä käyttämällä stokastista geometrista Brownin liikemallia.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ ja σ: odotettu vuosituotto ja nykyisen salkkusi vuotuinen volatiliteetti.",
+            "Z: tavallinen normaali satunnaismuuttuja piirretty 10 000 kertaa horisonttia pitkin (6M, 12M tai 24M)."
+          ]
+        },
+        "lead": "Näistä 10 000 simulaatiosta poimitaan kaavion kolme pääkäyrää:",
+        "bullets": [
+          {
+            "bold": "Suotuisa skenaario",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Taso, joka ylittää vain 5 % optimistisimmista skenaarioista."
+          },
+          {
+            "bold": "Odotettu keskirata",
+            "code": "Mediana P50",
+            "text": "Tyypillinen tulos, jossa puolet simulaatioista on yläpuolella ja toinen puoli alapuolella."
+          },
+          {
+            "bold": "Termi stressin skenaario",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Haitallinen alin: 95 %:ssa simuloiduista reiteistä salkkusi päätyy tämän viivan yläpuolelle."
+          }
+        ],
+        "example": "12 kuukauden horisontissa 100:n pohjalla, jos P50 on 116 ja P05 94, keskeinen odotuksesi on ansaita +16 % ja erittäin epäsuotuisana vuonna riski on lähellä -6 %."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly-kriteeri (nro 14)",
+        "intro": "Kelly-kriteeri vastaa tieteellisesti, kuinka suuri prosenttiosuus pääomasta sinun tulisi kohdistaa operaatioon, kun tiedät onnistumistodennäköisyytesi (voittoprosentti) ja kuinka paljon voitat onnistuessasi verrattuna siihen, mitä menetät epäonnistuessasi (Payoff Ratio).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p ja q: voiton todennäköisyys (p) ja häviämisen todennäköisyys (q = 1 − p).",
+            "b (Payoff Ratio): keskimääräinen voitto jaettuna keskimääräisellä tappiolla (esimerkiksi 2 dollarin ansaitseminen jokaista riskialtista 1 dollaria kohti tarkoittaa b = 2)."
+          ]
+        },
+        "lead": "Miksi ammattijohtajat käyttävät Half-Kelly (0,5×) -versiota:",
+        "bullets": [
+          {
+            "bold": "Kelly Complete",
+            "code": "Full Kelly 1.0×",
+            "text": "Se maksimoi pitkän aikavälin matemaattisen kasvun, mutta tuottaa erittäin jyrkkiä heilahteluita, jos peräkkäin on virheputki."
+          },
+          {
+            "bold": "Suositeltava Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Käyttämällä puolta ehdotetusta prosenttiosuudesta saat 75 % potentiaalisesta kasvusta, mutta puolitat volatiliteetin."
+          }
+        ],
+        "example": "Jos strategia osuu 55 % ajasta (p = 0,55, q = 0,45) ja maksaa 2:sta 1:een (b = 2), täysi Kelly antaa (0,55 × 2 − 0,45) / 2 = 32,5 % ja varovainen Half-Kelly suosittelee 16,25 %:n jakamista."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Aseta OTM Shield (#6)",
+        "intro": "Loppujen lopuksi tehty myyntioptio (esimerkiksi 5 % alle S&P 500:n nykyhinnan) toimii aivan kuten vakuutusomavastuu: sillä on pieni kiinteä kustannus (maksu), mutta jos markkinat putoavat 20 % tai 30 %, sen arvo kerrotaan kuperasti ja kompensoi portfoliosi tappiot.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Vuosikustannukset (Carry Drag): vuosiprosentti, jonka vakuutuksen uusiminen maksaa, jos markkinat eivät laske.",
+            "Crash Protection (-20%): dollarit, jotka saatiin takaisin Put-sopimuksella vakavan kaatumisen aikana."
+          ]
+        },
+        "lead": "Simulaattorivaihtoehtojen vertailu ensimmäisessä välilehdessä:",
+        "bullets": [
+          {
+            "bold": "Suoraindeksivakuutus",
+            "code": "SPY Put 5% OTM",
+            "text": "Se rajoittaa maksimitappiota 5 prosentin pudotuksesta vastineeksi maltillisiin vuosikustannuksiin."
+          },
+          {
+            "bold": "Rahastettu tai volatiliteettivakuutus",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Kaulus alentaa kustannuksia myymällä Call up; Call on VIX räjähtää suosion, kun paniikki laukaisee markkinoilla."
+          }
+        ],
+        "example": "Jos 100 000 dollarin salkun suojaaminen SPY Put 5 % OTM:llä maksaa 1,1 % vuodessa (1 100 dollaria), mutta -20 % kaatuessa se leikkaa salkkusi laskun alle puoleen, nettosäästöt ylittävät 7 000 dollaria."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Marginaali ja etäisyys marginaaliin (#13)",
+        "intro": "Kun käytät johdannaisia tai vipuvaikutusta, välittäjä vaatii vähintään oman pääoman prosenttiosuuden säilyttämistä positioiden kokonaisarvosta (ylläpitomarginaali). Jos kaatuminen vähentää pääomasi tämän kerroksen alapuolelle, marginaalipyyntö käynnistyy.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Velka tai rahoitussaldo",
+          "denominator": "1 − % ylläpitomarginaali (Reg-T)",
+          "vars": [
+            "Bruttopositio: avoimien positioiden kokonaissumma jaettuna osakkeella (esim. 1,18×).",
+            "Distance to Margin Call (%): prosentuaalinen pudotus, jota salkku tukee vielä ennen kynnyksen saavuttamista."
+          ]
+        },
+        "lead": "Suojaustasot valvontapalkissa:",
+        "bullets": [
+          {
+            "bold": "Suuri välysalue",
+            "code": "Distancia > 30% en verde",
+            "text": "Vipuvaikutus on alhainen ja salkku kestää vakavankin kriisin ilman pakkomyyntiä."
+          },
+          {
+            "bold": "varoitusalue",
+            "code": "Distancia < 15% en rojo",
+            "text": "Maltillinen markkinakorjaus tyhjentäisi vapaat vakuudet ja pakottaisi positiot realisoitumaan pahimmalla hetkellä."
+          }
+        ],
+        "example": "Kohtalaisen 1,18-kertaisen vipuvaikutuksen ja 22 %:n käytetyn ylläpitomarginaalin ansiosta salkkusi turvatyyny on yli 38 % huonompi ennen vakuusvaatimuksia."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "3 pilarin komitean säännöt",
+        "intro": "Jotta mikään impulsiivinen päätös ei vaaranna salkun selviytymistä, valiokunta arvioi jokaisen tilauksen yhdistämällä teknisen huomautuksen, peruslainan ja kaksi kovaa, ei-neuvoteltavaa riskienhallintasääntöä.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20 % NAV: mikään yksittäinen omaisuus ei voi keskittää enempää kuin viidesosa kokonaisvarallisuudesta.",
+            "Poikkeamapysäytys (P-06 ≥ 0,65): jos omaisuus siirtyy tilastolliseen sijoittumiseen, järjestelmä leikkaa enimmäisaltistuksen 5 prosenttiin."
+          ]
+        },
+        "lead": "Mitä kukin valtio tarkoittaa tuomiossa ja teloituskirjassa:",
+        "bullets": [
+          {
+            "bold": "Tilaus hyväksytty ilman rajoituksia",
+            "code": "APROBADO en verde",
+            "text": "Kolme pilaria osuvat suotuisasti yhteen ja positioiden koko noudattaa kaikkia keskittymis- ja likviditeettirajoja."
+          },
+          {
+            "bold": "Järjestys säädetty suojakaiteen avulla",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Kun lippu ylittää 20 % rajan tai yrittää ostaa raskaasti keskellä poikkeavaa, suojakaide varoittaa ylityksestä."
+          }
+        ],
+        "example": "Jos yrität simuloida ostoa, joka vie yhden osakkeen 26 prosenttiin salkustasi, Pillar 3 (Risk & Sizing Guardrail) ilmoittaa keskittymisvaroituksen, joten säädät sen alle 20 %."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Tehokkuus Walk-Forward (WFE)",
+        "intro": "Varmistaakseen, ettei strategiaa ole vain tehty näyttämään hyvältä aiemmin (yliasennus), Walk-Forward-testi vertaa sen suorituskykyä suunnittelujakson aikana (In-Sample) sen suorituskykyyn myöhemmissä ennennäkemättömissä tiedoissa (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Vuosituotto Out-of-Sample (Pure Validation)",
+          "denominator": "Vuosituotto In-Sample (koulutus)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): historiallinen osa, jota käytetään strategian painojen ja sääntöjen kalibrointiin.",
+            "Out-of-Sample (OOS): seuraava osa, jossa strategiaa testataan todellisissa olosuhteissa koskematta sen parametreihin."
+          ]
+        },
+        "lead": "Kuinka määrällinen teollisuus arvioi WFE-prosenttiosuuden:",
+        "bullets": [
+          {
+            "bold": "Vankka ja johdonmukainen strategia",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Se säilyttää suurimman osan kyvystään tuottaa voittoa uusien markkinaolosuhteiden vallitessa."
+          },
+          {
+            "bold": "Hauras tai overfit strategia",
+            "code": "WFE < 50% en rojo",
+            "text": "Se toimi hyvin menneisyyden teoriassa, mutta menettää tehonsa todellisuudessa; Ei ole suositeltavaa toteuttaa sitä oikealla rahalla."
+          }
+        ],
+        "example": "Jos strategia tuotti 20 % vuositasolla suunnitteluvaiheessaan (In-Sample) ja sitä seuranneessa varsinaisessa testausvaiheessa (Out-of-Sample) se tuotti 18,8 % vuositasolla, sen WFE tehokkuus on (18,8 / 20) = 94,0 %."
+      }
+    ]
+  }
+}

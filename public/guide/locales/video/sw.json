@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Matembezi ya Visual ya Moja kwa Moja",
+      "clickPlayPause": "Bofya ili kucheza au kusitisha (Nafasi)",
+      "subtitles": "Manukuu (C)",
+      "fullscreen": "Skrini nzima (F)",
+      "exitFullscreen": "Ondoka kwenye Skrini Kamili (F au Esc)",
+      "portTabs": [
+        "Mjenzi",
+        "Hatari",
+        "Mwimbaji",
+        "Copilot"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Lugha",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • Kategoria",
+      "scr-pulse": "02 • 24h Pulse",
+      "scr-table": "03 • Jedwali",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Ramani ya joto",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • Kiufundi",
+      "ana-compare": "03 • Linganisha %",
+      "ana-micro": "04 • Micro & Mtiririko",
+      "ana-engines": "05 • Injini za 3D/2D",
+      "res-hero": "01 • Alama na Msimamo",
+      "res-rag": "02 • Gumzo la RAG",
+      "res-factors": "03 • Mambo",
+      "res-pulse24h": "04 • Mboga wa FinBERT",
+      "p1-pills": "01 • Muhtasari",
+      "p1-table": "02 • Kupima uzito",
+      "p1-xray": "03 • X-Ray",
+      "p1-calendar": "04 • Kalenda",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Kimbunga na VaR",
+      "p2-corr": "03 • Uwiano",
+      "p2-shock2d": "04 • Mshtuko na Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Athari",
+      "p3-whatif": "02 • What-If na Kelly",
+      "p3-tailhedge": "03 • Weka OTM & Pembezoni",
+      "p3-committee": "04 • Kamati na Kumbukumbu",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Karibu kwenye skrini ya Home: mahali pako pa kuanzia bila kukengeushwa ambapo masoko yanachambuliwa.",
+      "home-header": "Katika kona ya juu kushoto ya Header, kubofya ikoni ya λ hukurudisha kulia kwenye hatua hii kuu.",
+      "home-markets": "Markets iliyo katikati ya Header ni kituo chako cha kazi cha kutafiti mali zote 213 za kimataifa moja kwa moja.",
+      "home-portfolio": "Kando yake kwenye menyu inayozingatia ni Portfolio, kujenga mgao, hatari ya mtihani wa mkazo, na kuiga biashara.",
+      "home-system": "Chini chini kushoto Footer, System inafungua kifuatiliaji cha uangalizi wa moja kwa moja kwa seva na hifadhidata.",
+      "home-guide": "Kando yake, Guide hufungua mwongozo huu shirikishi wa hatua kwa hatua wakati wowote unapouhitaji.",
+      "home-langs": "Katika kona ya chini kulia, kitufe cha lugha hufungua modali iliyo katikati ili kutafsiri mfumo katika lugha 56.",
+      "home-palettes": "Na Palette inafungua mandhari 5 za usomaji zinazoonekana huku ikiweka fedha kuwa kijani na nyekundu kabisa.",
+      "scr-categories": "Katika sehemu ya juu ya Vitengo, chuja kwenye vipengee Vyote 213, Watchlist yako, au masoko 10 maalum.",
+      "scr-pulse": "Kadi 4 za Pulse 24h zinaonyesha sauti iliyojumlishwa, wastani wa RSI, utaratibu wa P-06, na mitengano ya sauti ya juu.",
+      "scr-table": "Jedwali wasilianifu huangazia utafutaji wa papo hapo, vipendwa na safu wima mahiri zilizoundwa kwa kila aina ya vipengee.",
+      "scr-orbital": "Orbital hutazama vipengee vya ramani kwenye pete tatu makini kwa kukengeusha na paneli ya ukaguzi ya moja kwa moja ya upande.",
+      "scr-heatmap": "Heatmap hupanga vipengee 10 bora katika vizuizi sawia kwenye vivuli 8 vya kijani na nyekundu.",
+      "scr-maintools": "Na Main Tools hukuongoza katika hatua tatu za mikondo huru, tete ya 3D, FX cross, na injini za siku zijazo.",
+      "ana-hero": "Header inachanganya kibadilishaji mali, muda 9 kutoka 1m hadi ZOTE, na viashirio 5 vya msingi.",
+      "ana-technical": "Lenzi ya Kiufundi huwekelea SMA 20, VWAP, na Bendi 2 za Bollinger na uthibitishaji wa sauti ya chini.",
+      "ana-compare": "Kwa Linganisha %, pima faida ya asilimia halisi au Alpha Spread kutoka 0% dhidi ya programu rika au faharasa inayolingana.",
+      "ana-micro": "Micro & Flow hutambua ongezeko la sauti kupitia 20d Z-Score, kuenea kwa usambazaji wa ukwasi na alama ya P-06 isiyo ya kawaida.",
+      "ana-engines": "Kichupo cha nne ni zana inayobadilika ya matangazo ambayo hutofautiana kulingana na aina ya mali: kwa sababu NVDA ni usawa hufungua Malipo ya Tete ya 3D na Chaguo, huku dhamana, FX, na bidhaa zikizindua zana zao maalum.",
+      "res-hero": "Hapo juu, Score & Stance ni muhtasari wa uamuzi msingi, ukadiriaji wa uzani na kipimajoto cha kichwa.",
+      "res-rag": "Katika safu ya kushoto, RAG Document Chat hujibu hoja zilizothibitishwa kulingana na faili rasmi za SEC 10-K na 10-Q.",
+      "res-factors": "Katika safu ya katikati, accordion ya Factors inatofautisha viendeshaji 5 vya juu dhidi ya hatari 5 za juu.",
+      "res-pulse24h": "Upande wa kulia, FinBERT Pulse hufunga vichwa vya habari kwa wakati halisi na kupanga mwendo wa masaa 24.",
+      "p1-pills": "Kadi 6 za Muhtasari hulipa CAGR moja kwa moja, Sharpe na Sortino, 95% VaR, Max Drawdown, Alfa, na aina mbalimbali.",
+      "p1-table": "Katika jedwali la Vipimo, ongeza mali yoyote kati ya 213, weka asilimia halisi ya uzani, au sawazisha hadi 100%.",
+      "p1-xray": "Juu kulia, paneli ya X-Ray ya vichupo 5 hukagua mwingiliano wa ETF, udhihirisho, maelezo ya Brinson, mtiririko wa pesa na ulinzi.",
+      "p1-calendar": "Chini ya X-Ray, Kalenda ya Kila Mwezi inaonyesha uthabiti wa kurudi kutoka Januari hadi Desemba na jumla ya YTD.",
+      "p1-backtest": "Na chini ya upana kamili, Backtesting inalinganisha kwingineko yako dhidi ya S&P 500, 60/40, All-Weather, na Min-Variance.",
+      "p2-markowitz": "Roboduara ya kwanza inapanga Mbele ya Ufanisi wa 2D Markowitz na inaweka kwingineko yako dhidi ya Min-Var na Max-Sharpe.",
+      "p2-tornado": "Roboduara ya chini kushoto hujaribu migogoro 5 ya kihistoria, kwa kila kipengee 95% mchango wa VaR, na upigaji wa Juu/Chini.",
+      "p2-corr": "Juu-kulia, Matrix ya 6x6 inalinganisha uunganisho katika hali ya kawaida dhidi ya uambukizaji wa mkia wa shida.",
+      "p2-shock2d": "Chini kulia, Shock & Markov huvuka mabadiliko ya viwango vya riba kwa S&P 500 hatua na kukadiria mabadiliko ya serikali.",
+      "p2-montecarlo": "Na paneli ya chini inatayarisha njia 10,000 za Monte Carlo kwenye P95, P50, na P05, kuteremka chini ya maji, na kukunja Sharpe.",
+      "p3-impact": "Kadi 6 za Athari zinalinganisha jalada lako la sasa dhidi ya hali iliyokadiriwa baada ya biashara yako iliyoigizwa.",
+      "p3-whatif": "Juu kushoto, What-If & Kelly huiga kununua au kuuza tikiti na kukokotoa saizi bora zaidi ya nafasi ya Half-Kelly.",
+      "p3-tailhedge": "Chini-kushoto, OTM Weka & Pembezoni huiga ngao za chaguo za ulinzi na kufuatilia ukingo wa matengenezo wa Reg-T.",
+      "p3-committee": "Katika vidirisha viwili vya kulia, Kamati ya nguzo 3 hukagua vizuizi vya hatari pamoja na Rekodi ya Utekelezaji na Mhudumu.",
+      "p3-walkforward": "Na chini kabisa, chati ya Walk-Forward inathibitisha utendaji wa In-Sample na Out-of-Sample kwa faharasa ya WFE."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 11.2
+      },
+      {
+        "id": "home-header",
+        "startPct": 11.2,
+        "endPct": 21.7
+      },
+      {
+        "id": "home-markets",
+        "startPct": 21.7,
+        "endPct": 34
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 34,
+        "endPct": 47.4
+      },
+      {
+        "id": "home-system",
+        "startPct": 47.4,
+        "endPct": 60.4
+      },
+      {
+        "id": "home-guide",
+        "startPct": 60.4,
+        "endPct": 74.6
+      },
+      {
+        "id": "home-langs",
+        "startPct": 74.6,
+        "endPct": 87.8
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 87.8,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 16.2
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 16.2,
+        "endPct": 41
+      },
+      {
+        "id": "scr-table",
+        "startPct": 41,
+        "endPct": 56.6
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 56.6,
+        "endPct": 71
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 71,
+        "endPct": 83.9
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 83.9,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 16.3
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 16.3,
+        "endPct": 33.2
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 33.2,
+        "endPct": 50.2
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 50.2,
+        "endPct": 68.6
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 68.6,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 23.5
+      },
+      {
+        "id": "res-rag",
+        "startPct": 23.5,
+        "endPct": 50.7
+      },
+      {
+        "id": "res-factors",
+        "startPct": 50.7,
+        "endPct": 75.6
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 75.6,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 22.4
+      },
+      {
+        "id": "p1-table",
+        "startPct": 22.4,
+        "endPct": 41
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 41,
+        "endPct": 61.3
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 61.3,
+        "endPct": 76.1
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 76.1,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 17
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 17,
+        "endPct": 36.7
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 36.7,
+        "endPct": 53.9
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 53.9,
+        "endPct": 71.5
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 71.5,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 20
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 20,
+        "endPct": 39.7
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 39.7,
+        "endPct": 59.1
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 59.1,
+        "endPct": 80.5
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 80.5,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

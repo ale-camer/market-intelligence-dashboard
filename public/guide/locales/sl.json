@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Strnjen pogled",
+    "mainView": "Glavni pogled",
+    "expandedView": "Razširjen pogled",
+    "inThisSection": "V tem razdelku boste našli:",
+    "deepDive": "Globok potop",
+    "previous": "Prejšnja",
+    "next": "Naprej",
+    "mathFormula": "Matematična formula",
+    "practicalExample": "Praktični primer:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Ko odprete tradicionalno finančno platformo, je prva stvar, ki se običajno pojavi, na desetine grafikonov, utripajočih tabel in menijev povsod. Kje začeti, ko želite le preveriti trg ali preveriti, kako gre vašemu portfelju?",
+        "Zaslon Home je zasnovan tako, da se izogne ​​temu začetnemu šumu. Sprejme vas s čistim in jasnim prostorom, kjer je ves nadzor skoncentriran v dveh fiksnih vrsticah: ena zgoraj za odhod v službo in druga spodaj za konfiguracijo platforme, ki vam ustreza."
+      ],
+      "intro": "Zaslon Home vas sprejme s čistim in jasnim prostorom, kjer je ves nadzor skoncentriran v dveh fiksnih vrsticah: ena zgoraj za odhod v službo in druga spodaj za konfiguracijo platforme, ki vam ustreza.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Jasno izhodišče, ki vaše delo razdeli na analizo trga in upravljanje portfelja.",
+          "paragraphs": [
+            "Predstavljajte si, da začnete trgovati zjutraj. Včasih boste želeli pogledati, katere delnice, obveznice ali valute se najbolj gibljejo; Drugič boste takoj pregledali tveganje svojega portfelja ali simulirali nakup, preden ga izvedete.",
+            "Kako se izogniti mešanju obeh stvari na istem preobremenjenem zaslonu? Naslovnica to pot jasno loči od prve sekunde:"
+          ],
+          "lead": "Kako se izogniti mešanju obeh stvari na istem preobremenjenem zaslonu? Naslovnica to pot jasno loči od prve sekunde:",
+          "bullets": [
+            {
+              "bold": "Prostor brez motenj",
+              "code": "Donde se decodifican los mercados",
+              "text": "Ko vstopite, ni odprtih tabel ali opozoril, zaradi katerih morate pred začetkom zapreti okna; Sami izberete, kateri modul želite odpreti."
+            },
+            {
+              "bold": "Dve jasni poti",
+              "code": "Markets / Portfolio",
+              "text": "Celoten tok aplikacije je razdeljen na dve glavni fazi: najprej raziščite priložnosti na trgih in nato zgradite ali preizkusite svoj portfelj."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Zgornja vrstica za skok med domom, trgi in vašim portfeljem z enim klikom.",
+          "paragraphs": [
+            "Ko se poglobite v podrobnosti sredstva ali preizkusite spremembe svojega portfelja, je zelo enostavno izgubiti vest o tem, kje ste bili. Kako preidete od pogleda na borzni grafikon do pregleda svojega portfelja, ne da bi šli skozi podmenije?",
+            "Zgornja vrstica ostane vedno pritrjena na zaslonu in vam omogoča neposreden dostop do treh glavnih točk:"
+          ],
+          "lead": "Zgornja vrstica ostane vedno pritrjena na zaslonu in vam omogoča neposreden dostop do treh glavnih točk:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Kjer koli ste, se s klikom na simbol na levi takoj vrnete na glavno stran."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "To je vaš raziskovalni prostor. Tukaj filtrirate 213 razpoložljivih sredstev, spremljate ponudbe v živo, analizirate tehnične karte in pregledujete povzetke bilance stanja ali novice."
+            },
+            {
+              "bold": "Denarnica",
+              "code": "Portfolio",
+              "text": "To je vaša tabela odločitev. Tukaj določite, kolikšen odstotek vašega kapitala gre za vsako sredstvo, izmerite, koliko bi lahko izgubili v krizi, in simulirate nove operacije, preden tvegate denar."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Noga za preverjanje stanja sistema, vrnitev v ta vodnik ali prilagoditev postavitve.",
+          "paragraphs": [
+            "Pri analiziranju podatkov v realnem času se lahko kadar koli pojavijo operativna vprašanja: ali ponudbe prihajajo pravilno? Kaj je pomenil indikator točke? Ali lahko zmanjšam svetlost zaslona?",
+            "Noga združuje vsa ta podporna in konfiguracijska orodja, tako da so vedno pri roki, ne da bi ovirala sredino zaslona:"
+          ],
+          "lead": "Noga združuje vsa ta podporna in konfiguracijska orodja, tako da so vedno pri roki, ne da bi ovirala sredino zaslona:",
+          "bullets": [
+            {
+              "bold": "Stanje System",
+              "code": "System",
+              "text": "Zelena pika na prvi pogled potrdi, da je vse v redu. Ko ga odprete, si lahko podrobno ogledate stanje strežnikov, baz podatkov in hitrost odziva."
+            },
+            {
+              "bold": "Uporabnik Guide",
+              "code": "Guide",
+              "text": "Kadar koli odprite ta interaktivni priročnik in si oglejte, kako uporabljati zaslon, ali se poglobite v njegove izračune."
+            },
+            {
+              "bold": "Vizualne nastavitve",
+              "code": "Idioma / Palette",
+              "text": "Na desni strani imate kontrolnike za spreminjanje jezika celotne aplikacije ali prilagajanje osvetlitve ozadja."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Jeziki",
+          "summary": "Iskalnik za takojšnje prevajanje celotne platforme v vaš jezik.",
+          "paragraphs": [
+            "Finančni pogoji in tržna poročila so že sami po sebi zapleteni brez dodajanja jezikovne ovire. Če raje berete razlage v španščini, angleščini ali katerem koli drugem jeziku, jo lahko takoj spremenite.",
+            "Tako deluje izbirnik v spodnjem desnem kotu:"
+          ],
+          "lead": "Tako deluje izbirnik v spodnjem desnem kotu:",
+          "bullets": [
+            {
+              "bold": "takojšnje iskanje",
+              "code": "Select Language",
+              "text": "S klikom na trenutno zastavico se odpre okno, v katerem lahko izbirate med 56 jeziki, tako da napišete njeno ime ali kodo (na primer ES, EN, PT, FR ali DE)."
+            },
+            {
+              "bold": "Samodejni pomnilnik",
+              "code": "mid_lang_v1",
+              "text": "Celoten zaslon se prevede v trenutku brez ponovnega nalaganja strani in vaša izbira se shrani za naslednjič, ko vnesete."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Vizualne teme za prilagajanje kontrasta zaslona brez spreminjanja finančnih barv.",
+          "paragraphs": [
+            "Večurno preživljanje pred grafiko s kontrastom, ki se ne prilagaja svetlobi v vašem okolju, vam na koncu utrudi oči. Vendar ima spreminjanje barv finančne platforme klasično nevarnost: izguba reference o tem, kaj raste in kaj pada.",
+            "Za rešitev tega izbirnik teme loči barvo okolja od barve podatkov:"
+          ],
+          "lead": "Za rešitev tega izbirnik teme loči barvo okolja od barve podatkov:",
+          "bullets": [
+            {
+              "bold": "Pet bralnih okolij",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Z vsakim klikom se vrtite med čisto črnimi, modrikastimi ali toplimi ozadji, dokler ne najdete tistega, ki je najbolj udobno za vaše oči."
+            },
+            {
+              "bold": "Neokrnjena finančna semantika",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Ne glede na to, katero temo spremenite, se univerzalno pravilo trga nikoli ne spremeni: zelena vedno pomeni rast ali dobiček, rdeča pa vedno pomeni padec, izgubo ali opozorilo na tveganje."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Predstavljajte si, da želite odkriti, kje so najboljše priložnosti dneva med več kot dvesto obveznicami, delnicami, indeksi, valutami in surovinami. Če bi odpirali grafikone enega za drugim, bi se trg zaprl, še preden bi si jih ogledali.",
+            "Screener združuje vseh 213 sredstev na platformi v eno živo nadzorno ploščo. Omogoča vam filtriranje po trgu v sekundi, merjenje splošnega utripa dneva in izbiro med štirimi različnimi načini za ogled sredstev, ki so uspešna."
+          ],
+          "intro": "Screener združuje vseh 213 sredstev na platformi na eni sami nadzorni plošči v živo, tako da lahko filtrirate po trgu in opazite priložnosti na prvi pogled.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "kategorije",
+              "summary": "Najboljši filtri za osredotočanje na posamezen razred sredstev ali vaš seznam za opazovanje.",
+              "paragraphs": [
+                "Nima smisla analizirati državne obveznice z enakimi meritvami kot tehnološke delnice ali nafto. Ko zmešate vse na istem seznamu, na koncu primerjate hruške z jabolki.",
+                "Kako zožati zaslon točno na trg, ki vas danes zanima? Zgornja vrstica vam omogoča, da z enim klikom ločite vesolje:"
+              ],
+              "lead": "Zgornja vrstica vam omogoča, da z enim klikom ločite vesolje:",
+              "bullets": [
+                {
+                  "bold": "Celotna slika",
+                  "code": "Todos",
+                  "text": "Prikazuje 213 instrumentov skupaj in razvrščenih po obsegu trgovanja, tako da lahko vidite, kam se globalno pretaka največ denarja."
+                },
+                {
+                  "bold": "Osebno sledenje",
+                  "code": "★ Watchlist",
+                  "text": "Izolirajte samo sredstva, ki ste jih označili kot priljubljene, da jih natančno spremljate brez motenj."
+                },
+                {
+                  "bold": "Deset specializiranih trgov",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Z izbiro katere koli od teh kategorij celoten zaslon prilagodi svoje indikatorje in stolpce tabele pravilom tega sektorja."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Podrobnosti o tem, kako je razvrščenih 213 sredstev v katalogu ter kakšna merila obsega in likvidnosti izpolnjujejo."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24-urni utrip",
+              "summary": "Zgornje štiri karte, ki vam povedo, ali je trg miren, evforičen ali pod stresom.",
+              "paragraphs": [
+                "Pred nakupom ali prodajo določenega sredstva je priporočljivo vedeti, v kakšnem ozračju se giblje celota. Je to običajen dan obsega ali institucionalni denar prihaja naenkrat? Ali se celotna sredstva povečujejo ali obstajajo znaki napetosti?",
+                "Štiri kartice pod filtri vam v nekaj sekundah dajo to splošno branje:"
+              ],
+              "lead": "Štiri kartice pod filtri vam v nekaj sekundah dajo to splošno branje:",
+              "bullets": [
+                {
+                  "bold": "Skupna aktivnost za ta dan",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Sešteje milijarde dolarjev, s katerimi se trguje v aktivni kategoriji, in vam pokaže, ali je udeležbe danes več ali manj kot včeraj."
+                },
+                {
+                  "bold": "Povprečna moč skupine",
+                  "code": "AVG RSI 14",
+                  "text": "V krožnem merilniku povzema, ali so cene sektorja posledica nakupnega pritiska (zeleno, nad 50) ali prodajnega pritiska (rdeče, pod 50)."
+                },
+                {
+                  "bold": "Normalni termometer",
+                  "code": "Régimen Normal P-06",
+                  "text": "Izračuna kolikšen odstotek sredstev se giblje znotraj svojih običajnih parametrov in vam z imenom in priimkom pove, kateri instrument ima največjo anomalijo dneva."
+                },
+                {
+                  "bold": "Nenavadni prilivi denarja",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Izstopa stopnička treh sredstev, ki danes poslujejo z izjemno velikim obsegom glede na povprečje zadnjega meseca."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Podrobna razlaga, kako se izračunajo povprečni RSI, prostornina Z-Score in detektor nepravilnosti P-06."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tabela",
+              "summary": "Interaktivni seznam s hitrim iskanjem, priljubljenimi in stolpci, ki se prilagajajo posameznemu trgu.",
+              "paragraphs": [
+                "Ko že veste, kateri sektor želite pogledati in morate primerjati določene številke vrstico za vrstico, je pogled tabele vaše glavno orodje.",
+                "Namesto da bi vam prikazala togo preglednico, ki je enaka za vse, se tabela prilagodi temu, kar iščete:"
+              ],
+              "lead": "Namesto da bi vam prikazala togo preglednico, ki je enaka za vse, se tabela prilagodi temu, kar iščete:",
+              "bullets": [
+                {
+                  "bold": "Zvezda iskalnika in priljubljenih",
+                  "code": "Buscar activo / ★",
+                  "text": "V glavo prvega stolpca lahko vnesete kateri koli simbol ali ime, da greste neposredno na to sredstvo, ali tapnete zvezdico na levi, da ga shranite v svoj Watchlist."
+                },
+                {
+                  "bold": "Pametni stolpci glede na kategorijo",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Če filtrirate deleže, se prikažejo večkratniki vrednotenja in marže; Če izberete Obveznice ali Obrestne mere, vidite naklon krivulje in občutljivost na obrestne mere; Če pogledate izvedene finančne instrumente, vidite implicirano volatilnost."
+                },
+                {
+                  "bold": "Skočite naravnost na globoko analizo",
+                  "code": "Click en cualquier fila",
+                  "text": "Preprosto kliknite katero koli sredstvo na seznamu, da odprete celotno postajo tehničnih grafikonov in temeljnih poročil."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Seznam specifičnih meritev, ki jih tabela prikazuje za vsako od 10 kategorij sredstev."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Vizualni radar, ki na prvi pogled zazna, katera sredstva se odmikajo od svojega zgodovinskega povprečja.",
+              "paragraphs": [
+                "Branje dvesto vrstic številk lahko povzroči, da zgrešite sredstvo, ki se začne eksplozivno premikati. Kako takoj zaznate, kateri instrument odstopa od norme?",
+                "Pogled Orbital spremeni mizo v radar s tremi koncentričnimi obroči:"
+              ],
+              "lead": "Pogled Orbital spremeni mizo v radar s tremi koncentričnimi obroči:",
+              "bullets": [
+                {
+                  "bold": "Izbira kriterijev",
+                  "code": "INDICADOR",
+                  "text": "Vi se odločite, kaj meri radar: statistične anomalije, skoke obsega, moč cene (RSI), volatilnost ali dobiček v zadnjih 24 urah."
+                },
+                {
+                  "bold": "Branje po razdalji in barvi",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Bližje ali dlje ko je točka glede na indikator in bolj intenzivna kot je njena zelena ali rdeča barva, bolj relevantno je njeno gibanje v primerjavi z lastno zgodovino."
+                },
+                {
+                  "bold": "Pregled brez menjave zaslona",
+                  "code": "Panel lateral en vivo",
+                  "text": "Če kazalec postavite na katero koli radarsko vozlišče, se na desni prikažejo njegova cena, čisti grafikon znotraj dneva in tri meritve tveganja."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kako se položaj vsakega sredstva v radarskih obročih izračuna glede na njegovo zgodovinsko odstopanje."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Toplotni zemljevid",
+              "summary": "Mozaik sorazmernih blokov za prepoznavanje zmagovalcev in poražencev v sekundi.",
+              "paragraphs": [
+                "Včasih želite samo odgovoriti na hitro vprašanje: kdo danes vodi v vzpon in kdo vleče trg navzdol?",
+                "Toplotni zemljevid razporedi prvih deset sredstev aktivnega filtra v sorazmerne bloke, tako da vam ni treba brati ene same tabele:"
+              ],
+              "lead": "Toplotni zemljevid razporedi prvih deset sredstev aktivnega filtra v sorazmerne bloke:",
+              "bullets": [
+                {
+                  "bold": "Velikost glede na pomembnost",
+                  "code": "Puestos #1 a #10",
+                  "text": "Instrumenti z največjo težo znotraj izbrane metrike zasedajo stolpce na levi z največjimi polji."
+                },
+                {
+                  "bold": "Intenzivnost barve",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Ton bloka vam takoj pove obseg gibanja, od zmernih variacij do nenadnih dvigov ali padcev."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Bližnjica v treh korakih do naprednih tečajev, opcij, forex in terminskih kalkulatorjev.",
+              "paragraphs": [
+                "Poleg tradicionalnih grafikonov cen platforma vključuje štiri posebne mehanizme za fiksni dohodek, opcije, valutne križe in blagovne krivulje. Kako pridete do njih, ne da bi iskali sredstvo za sredstvom?",
+                "Ta pogled vas vodi od leve proti desni v treh zelo preprostih stolpcih:"
+              ],
+              "lead": "Ta pogled vas vodi od leve proti desni v treh zelo preprostih stolpcih:",
+              "bullets": [
+                {
+                  "bold": "Najprej si izbereš družino",
+                  "code": "1. Clases de Activo",
+                  "text": "Izberete lahko, ali želite delati s tečaji in obveznicami, z opcijami na delnice/indekse/kripto, z valutami ali s surovinami."
+                },
+                {
+                  "bold": "Potem preveriš, kaj dela motor",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "V sredini preberete jasen povzetek, kaj to orodje prikazuje in kako se orientirati po njegovih oseh."
+                },
+                {
+                  "bold": "Na koncu izberite aktivno in odprite",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Ogledate si predogled lestvice v živo, poiščete združljiva sredstva v tej družini in z enim klikom odprete celotno postajo."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Ko ste v Screener našli zanimivo sredstvo, je čas, da si ga podrobneje ogledate. Je v naraščajočem trendu ali mu je zmanjkalo moči? Ali premagujete svoje tekmece? Kaj pravita obseg in trg izvedenih finančnih instrumentov?",
+            "Postaja Analytics združuje vse tehnične, primerjalne in kvantitativne analize tega sredstva na enem samem zaslonu. Zgoraj imate splošni povzetek in na levi štiri leče za spreminjanje kota analize, ne da bi pri tem izgubili graf izpred oči."
+          ],
+          "intro": "Postaja Analytics združuje tehnične, primerjalne, analize toka in 3D/2D motorje posameznega sredstva na enem samem zaslonu.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Zgornja nadzorna plošča za preklop sredstev, izbiro časovnega okvira in ogled petih ključnih meritev.",
+              "paragraphs": [
+                "Ko preučujete sredstvo, običajno preklapljate med današnjim kratkim obdobjem in filmom zadnjih nekaj mesecev ali celo preklopite na ogled drugega podobnega simbola. Kako vam uspe vse to, ne da bi se vrnili?",
+                "Zgornja glava združuje navigacijske gumbe in hitri zavihek instrumenta:"
+              ],
+              "lead": "Zgornja glava združuje navigacijske gumbe in hitri zavihek instrumenta:",
+              "bullets": [
+                {
+                  "bold": "Sprememba sredstva ali vrnitev na seznam",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "V zgornjem levem kotu se lahko vrnete na Screener ali vnesete ime katerega koli drugega instrumenta, da takoj spremenite karte."
+                },
+                {
+                  "bold": "Devet časovnih oken",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Na desnem robu spremenite merilo grafa iz minutnih premikov v celotno zgodovino."
+                },
+                {
+                  "bold": "Pet vodilnih indikatorjev",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Poleg cene imate vedno v mislih obseg trgovanja, dva ključna podatka njegove kategorije, moč trenda in stopnjo statistične normalnosti."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Tehnični",
+              "summary": "Grafikon cen z drsečimi povprečji, pasovi volatilnosti in količino za sledenje trendu.",
+              "paragraphs": [
+                "Pogled samo na zadnjo ceno vam ne pove, ali se sredstvo pospešuje, ali se odbija od svojega povprečja ali če je že prehitro naraslo v nekaj dneh.",
+                "Prva leča na levi tirnici vam omogoča prekrivanje najpogosteje uporabljenih tehničnih referenc na trgu na grafu:"
+              ],
+              "lead": "Prva leča na levi tirnici omogoča prekrivanje najpogosteje uporabljenih tehničnih referenc:",
+              "bullets": [
+                {
+                  "bold": "Naslov in dejanska povprečna cena",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Vklopite lahko 20-obdobno drseče povprečje in količinsko tehtano povprečno ceno, da takoj vidite, ali se sredstvo trguje nad ali pod ravnotežno ravnjo."
+                },
+                {
+                  "bold": "Presežne cone in potrditev volumna",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Pasovi rišejo statistično zgornjo in spodnjo mejo cene, medtem ko spodnje vrstice potrjujejo, ali je gibanje podprto z obsegom."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Formule in kriteriji razlage drsečega povprečja (SMA 20), Bollingerjevih pasov in VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Primerjaj %",
+              "summary": "Primerjalnik odstotkov od 0 % za merjenje, ali je vaše sredstvo bolj ali manj uspešno kot drugo v isti kategoriji.",
+              "paragraphs": [
+                "Delnica, ki se je podražila za 5 %, se zdi odlična novica, toda če je njena referenčna vrednost ali glavni konkurent v istem obdobju zrasel za 12 %, dejansko zaostajate.",
+                "Druga leča razreši ta dvom tako, da oba sredstva postavi na isto začetno črto:"
+              ],
+              "lead": "Druga leča razreši ta dvom tako, da oba sredstva postavi na isto začetno črto:",
+              "bullets": [
+                {
+                  "bold": "Iskanje koherentnih parov",
+                  "code": "Buscar par compatible",
+                  "text": "Iskalnik samodejno izloči sredstva iz iste družine (npr. delnice v primerjavi z delnicami, ETF-ji ali indeksi), tako da je primerjava finančno smiselna."
+                },
+                {
+                  "bold": "Neto prednost v odstotkih",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Obe krivulji se začneta pri 0 %, levi tir pa izračuna, koliko odstotnih točk prednosti (zeleno) ali slabosti (rdeče) ima vaše sredstvo."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Flow",
+              "summary": "Detektor institucionalnih nakupov izven vzorca, likvidnosti in stroškov razmika.",
+              "paragraphs": [
+                "Velikokrat se velika sredstva kopičijo ali razbremenijo pozicij, preden se cena nenadoma premakne. Kako odkriti to skrito sled v obsegu in likvidnosti knjige naročil?",
+                "Tretja leča se osredotoča na dogajanje pod citatom:"
+              ],
+              "lead": "Tretja leča se osredotoča na dogajanje pod citatom:",
+              "bullets": [
+                {
+                  "bold": "Statistični vrhovi obsega",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Spremeni spodnjo ploščo, da vam pokaže, kolikokrat trenutna glasnost odstopa od normalne, kar razkrije nenavadno institucionalno dejavnost."
+                },
+                {
+                  "bold": "Likvidnostni stres in anomalije",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "V bazičnih točkah meri, ali se vrzel med kupci in prodajalci povečuje in ali statistični mehanizem zazna netipično vedenje."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kako se merijo otvoritveni razmiki in statistični skoki v toku naročil."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D motorji",
+              "summary": "Četrta leča, ki uporablja dinamično ad-hoc orodje, ki se razlikuje glede na razred sredstev.",
+              "paragraphs": [
+                "V nasprotju s prvimi tremi lečami (ki so skupne vsem instrumentom) je četrta leča na levem tiru ad-hoc orodje, ki se dinamično spreminja glede na sredstvo, ki ga analizirate: na primer, v ogledu v živo, ker gre za delnico (NVDA), omogoča 3D implicitno volatilnost in površino izplačila možnosti, medtem ko na drugih trgih uporablja svoj lasten specializiran mehanizem.",
+                "Četrti gumb zazna razred odprtih sredstev in samodejno aktivira ustrezno ad-hoc orodje:"
+              ],
+              "lead": "Četrti gumb zazna, katero sredstvo imate odprto, in aktivira ad-hoc orodje, ki ustreza temu:",
+              "bullets": [
+                {
+                  "bold": "V delnicah, indeksih, izvedenih finančnih instrumentih in kripto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Prikažite površino implicitne nestanovitnosti v 3D, nasmeh možnosti po izteku in simulator 6 strategij, da vidite, koliko bi pridobili ali izgubili danes in ob izteku."
+                },
+                {
+                  "bold": "V tečajih, obveznicah in likvidnosti",
+                  "code": "Curva 3D/2D",
+                  "text": "Omogoča vam, da primerjate krivulje donosnosti 42 držav z ZDA in Nemčijo, pri čemer merite, ali je krivulja normalna ali obrnjena (2s10s) in koliko se cena spreminja glede na spremembe stopnje (DV01)."
+                },
+                {
+                  "bold": "V valutah",
+                  "code": "FX & Carry",
+                  "text": "Ponuja pretvornik in triangulator med 61 valutami, ki izračuna tudi 10-letno razliko v obrestnih merah v prid ali proti ohranitvi tega para."
+                },
+                {
+                  "bold": "V surovinah",
+                  "code": "Forward 3D/2D",
+                  "text": "Grafikon cen terminskih pogodb po mesecih, ki prikazuje, ali trg plača več za terminsko (Contango) ali za takojšnjo dobavo (Backwardation), skupaj s stanjem fizičnih zalog."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Matematične podrobnosti o površinah nestanovitnosti, krivuljah donosa državnih vrednostnih papirjev, valutnem prenosu in terminskih krivuljah."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Grafikon prikazuje, kaj počne cena, ne pove pa, zakaj. Da bi vedeli, kaj stoji za gibanjem, bi morali prebrati na desetine strani četrtletnih bilanc stanja, izpiskov centralne banke, poročil o inventarju in novic.",
+            "Postaja Research opravi to težko delo namesto vas. Združuje dokumentarno umetno inteligenco, preverjeno glede na uradna poročila, z branjem novic v realnem času, pri čemer organizira vse dokaze za in proti v treh jasnih stolpcih."
+          ],
+          "intro": "Postaja Research povzema uradne bilance stanja, makroekonomska poročila in novice v realnem času v treh jasnih stolpcih.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Opomba in drža",
+              "summary": "Zgornje tri kartice, ki povzemajo temeljno sodbo in humor novic.",
+              "paragraphs": [
+                "Ali osnove premoženja spremljajo dvig cene ali novice slabšajo obete? Preden preberete podrobnosti, potrebujete hiter izvršni zaključek.",
+                "V zgornjem desnem kotu imate tri indikatorje, ki povzemajo splošno stanje sredstva:"
+              ],
+              "lead": "V zgornjem desnem kotu imate tri indikatorje, ki povzemajo splošno stanje:",
+              "bullets": [
+                {
+                  "bold": "Drža in teža vsakega vira",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Opredeljuje splošno razsodbo in pojasnjuje, kakšno težo daje uradnim dokumentom v primerjavi z novicami glede na vrsto sredstev (na primer 80 % bilance stanja in 20 % novice v delnicah)."
+                },
+                {
+                  "bold": "Kombinirana ocena",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Sintetizira v en rezultat neto rezultat osnov in pretok informacij dneva."
+                },
+                {
+                  "bold": "Nosilci za termometre",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Postavite na stolpec od -100 do +100, če je ton tiska v zadnjih nekaj urah pesimističen (rdeča), nevtralen ali navdušen (zelena)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kako se uradna poročila tehtajo glede na novice glede na vrsto sredstva."
+            },
+            {
+              "id": "res-rag",
+              "label": "Klepetajte RAG",
+              "summary": "Levi asistent za dokumentarce je postavljal posebna vprašanja o bilancah stanja in uradnih poročilih.",
+              "paragraphs": [
+                "Recimo, da želite izvedeti, kaj točno je podjetje povedalo o svojih maržah v svoji zadnji letni bilanci stanja 10-K ali kaj je Federal Reserve povedal v svojem zadnjem zapisniku. Ročno iskanje zahteva čas; Če vprašate za splošni klepet brez virov, lahko dobite izmišljene podatke.",
+                "Levi stolpec to rešuje s čarovnikom, ki je povezan izključno s preverjeno uradno dokumentacijo:"
+              ],
+              "lead": "Levi stolpec vam ponuja čarovnika, povezanega z uradno preverjeno dokumentacijo:",
+              "bullets": [
+                {
+                  "bold": "Začetna teza in vodena vprašanja",
+                  "code": "Chat Documental RAG",
+                  "text": "Začne se s povzetkom s preverjenimi ponudbami in štirimi hitrimi referenčnimi gumbi, prilagojenimi kategoriji sredstev, ter poljem za pisanje lastnih vprašanj."
+                },
+                {
+                  "bold": "Neposreden korak do vašega portfelja",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Če se po raziskovanju osnov odločite, da je sredstvo vredno, vas ta gumb na vrhu klepeta pošlje neposredno v simulator portfelja."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Delovanje preverjenega dokumentarnega iskanja (RAG) in njegovih varnostnih filtrov."
+            },
+            {
+              "id": "res-factors",
+              "label": "Dejavniki",
+              "summary": "Osrednja harmonika s petimi bikovskimi vozniki in petimi medvedjimi tveganji, razvrščenimi po udarcu.",
+              "paragraphs": [
+                "Nobena naložba ni stoodstotno popolna ali stoodstotno slaba: vedno obstajajo argumenti v prid in prikrita tveganja. Skrivnost je vedeti, kateri danes tehtajo več.",
+                "Sredinski stolpec postavlja obe strani soočeni, tako da lahko sprejmete uravnoteženo odločitev:"
+              ],
+              "lead": "Sredinski stolpec postavlja obe strani soočeni, tako da lahko sprejmete uravnoteženo odločitev:",
+              "bullets": [
+                {
+                  "bold": "Ravnovesje sil in filtri",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Zgoraj vidite vrstico ponudb med kupci in prodajalci, spodaj pa lahko filtrirate pet pozitivnih katalizatorjev (zeleno) ali pet glavnih tveganj (rdeče)."
+                },
+                {
+                  "bold": "Podrobnosti in podrobne informacije z enim klikom",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Ko se dotaknete katerega koli dejavnika na seznamu, se prikaže njegova popolna razlaga skupaj z gumbom, s katerim Chat RAG vprašate za več informacij o tej določeni točki."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Pulse",
+              "summary": "Prava časovnica z najnovejšimi naslovi z AI in 24-urno krivuljo razpoloženja.",
+              "paragraphs": [
+                "En sam naslov v zadnjem trenutku o zaslužkih, inflaciji ali predpisih lahko popolnoma spremeni razpoloženje dneva. Kako veste, katera novica je pravkar prišla v javnost in kakšen učinek ima?",
+                "Desni stolpec spremlja pretok informacij iz minute v minuto:"
+              ],
+              "lead": "Desni stolpec spremlja pretok informacij iz minute v minuto:",
+              "bullets": [
+                {
+                  "bold": "Kvalificirana časovnica",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Našteje pet najnovejših naslovov z njihovim časom in agencijo ter jih označi z zeleno, če so ugodni, ali z rdečo, če predstavljajo grožnjo."
+                },
+                {
+                  "bold": "Simulator udarcev in dnevnih krivulj",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Z zgornjim gumbom lahko sprožite žico pod napetostjo, da vidite, kako znova izračuna celoten zaslon, in v spodnjem grafu spremljate, kako se je razpoloženje razvijalo v zadnjih 24 urah."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kako model FinBERT analizira finančni jezik vsakega imetnika."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Gradbenik",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Ločena izbira dobrih sredstev ni dovolj za dober portfelj. Če vložite preveč kapitala v sredstva, ki se gibljejo enako, ali če ne izmerite, kako bi se obnesla skupaj v preteklosti, vlagate na slepo.",
+            "Constructor & Performance (prvi pogled na Portfolio) je delavnica, kjer gradite svoj portfelj. Omogoča vam, da dodate katero koli od 213 sredstev, prilagodite odstotek, ki ga dodelite vsakemu od njih, ne da bi se ukvarjali z nenatančnimi kontrolami, in takoj pregledate njegovo notranjo sestavo in zgodovino."
+          ],
+          "intro": "Constructor & Performance je delavnica, kjer sestavite svoj portfelj, prilagodite težo vsakega sredstva in pregledate njegovo preteklo uspešnost.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Povzetek",
+              "summary": "Prvih šest kart, ki se znova izračunajo v živo vsakič, ko spremenite svoj portfelj.",
+              "paragraphs": [
+                "Vsakič, ko dodate sredstvo ali spremenite odstotek v svojem portfelju, morate takoj vedeti, ali je ta prilagoditev izboljšala vaš pričakovani donos ali poslabšala vašo izpostavljenost negativnim dejavnikom.",
+                "V zgornji vrstici je vedno vidnih šest glavnih meritev portfelja:"
+              ],
+              "lead": "V zgornji vrstici je vedno vidnih šest glavnih meritev portfelja:",
+              "bullets": [
+                {
+                  "bold": "Zmogljivost in učinkovitost",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Povedo vam, kakšen skupni letni dobiček portfelj načrtuje za vaš kapital in koliko donosa dobite za vsako prevzeto enoto tveganja."
+                },
+                {
+                  "bold": "Pričakovana dnevna izguba in zgodovinski padec",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Izračunajo, koliko dolarjev bi lahko izgubili na slab dan v okviru tega, kar je bilo statistično predvideno, in koliko je bil največji nazadovanje v zadnjem letu."
+                },
+                {
+                  "bold": "Dodana vrednost in diverzifikacija",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Merijo, za koliko točk vaš portfelj presega referenčni indeks in koliko tveganja zmanjšate zaradi združevanja različnih sredstev."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sestavljene formule donosa (CAGR), razmerja Sharpe in Sortino ter tvegana vrednost (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Ponderiranje",
+              "summary": "Leva tabela za dodajanje sredstev, njihov vklop in izklop ter določitev točnega odstotka posamezne pozicije.",
+              "paragraphs": [
+                "Kaj bi se zgodilo s številkami vašega portfelja, če bi danes začasno zaprli tehnološko delnico ali denar enakomerno razdelili med vse svoje pozicije?",
+                "Leva plošča vam omogoča, da opravite vse te teste na čist in neposreden način:"
+              ],
+              "lead": "Leva plošča vam omogoča, da opravite vse te teste na čist in neposreden način:",
+              "bullets": [
+                {
+                  "bold": "Iskalnik za sredstva 213",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Iščete lahko kateri koli instrument na platformi ali filtrirate svoje priljubljene in ga dodate v tabelo z enim klikom."
+                },
+                {
+                  "bold": "Hiter zagon in natančno urejanje",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Vsaka vrstica ima potrditveno polje za vključitev ali izključitev sredstva v realnem času in številsko polje za vnos natančnega odstotka brez uporabe nenatančnih drsnikov."
+                },
+                {
+                  "bold": "Tri bližnjice za ponovno uravnoteženje",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Na vrhu tabele imate gumbe za porazdelitev enakih uteži med vsa aktivna sredstva, samodejno povečanje vsote na 100 % ali vrnitev v prvotni portfelj."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "Rentgensko slikanje",
+              "summary": "Zgornja desna plošča s petimi zavihki za odkrivanje skritih koncentracij, denarnega toka in skrbništva.",
+              "paragraphs": [
+                "Ena najpogostejših napak pri vlaganju je prepričanje, da ste razpršeni, ker imate pet različnih sredstev, medtem ko ste v resnici kupili posamezno delnico in tudi dva ETF-ja, ki imata isto delnico v sebi.",
+                "Rentgenska plošča analizira vaš portfelj od znotraj prek petih zavihkov:"
+              ],
+              "lead": "Rentgenska plošča analizira vaš portfelj od znotraj prek petih zavihkov:",
+              "bullets": [
+                {
+                  "bold": "Detektor ponavljajočega se položaja",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Seštejte, kar ste vložili neposredno v posamezno podjetje, in skriti del, ki ga imate znotraj indeksov ali ETF-jev (kot je SPY ali QQQ), pri čemer vas opozori rdeče, če presežete preudarne meje."
+                },
+                {
+                  "bold": "Karta izpostavljenosti in izvor povratka",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Pokažejo vam, kolikšen odstotek dejansko imate v vsaki vrsti sredstev in valuti ter koliko vašega dobička je prišlo z izbiro dobrih sektorjev v primerjavi z izbiro dobrih sredstev."
+                },
+                {
+                  "bold": "Predvideni letni dohodek in varnost",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Izračunajo, koliko dolarjev boste zbrali na leto za dividende, kupone in obresti, ter revidirajo plačilno sposobnost skrbnikov, pri katerih počiva vaš kapital."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kako se izračuna posredna izpostavljenost znotraj ETF-jev in Brinsonova razčlenitev atribucije."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Koledar",
+              "summary": "Mesečni grafikon od januarja do decembra, da vidite pravilnost svojih dobičkov in izgub.",
+              "paragraphs": [
+                "Za dobrim letnim donosom se lahko skrivajo meseci zelo močnih padcev, ki jih je v praksi težko tolerirati. Kako dosleden je portfelj, ki ste ga pravkar sestavili, iz meseca v mesec?",
+                "Tik pod rentgenskim posnetkom koledar razčleni mesečno zgodovino:"
+              ],
+              "lead": "Tik pod rentgenskim posnetkom koledar razčleni mesečno zgodovino:",
+              "bullets": [
+                {
+                  "bold": "Zeleni meseci in rdeči meseci",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Vsaka celica se takoj znova izračuna glede na uteži v vaši tabeli in je pobarvana zeleno ali rdeče, odvisno od rezultata tistega meseca, na desni pa se zapre s kumulativnim rezultatom za leto."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Celozaslonski graf spodaj za primerjavo vašega portfelja s štirimi klasičnimi strategijami.",
+              "paragraphs": [
+                "Preden menite, da je vaš portfelj dober, ostaja temeljni preizkus: ali je res bolje kot pustiti denar v S&P 500 ali v tradicionalnem portfelju 60/40?",
+                "Spodnja plošča zavzema celotno širino zaslona, da vaš dizajn ustreza tržnim standardom:"
+              ],
+              "lead": "Spodnja plošča postavlja vaš dizajn v nasprotje s tržnimi standardi:",
+              "bullets": [
+                {
+                  "bold": "Pet obzorij testiranja",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Omogoča vam, da ocenite, kako je vaša mešanica delovala v zadnjih četrtletjih in v polnih večletnih ciklih."
+                },
+                {
+                  "bold": "Štiri reference iz oči v oči",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Prekrijte zeleno krivuljo svojega aktivnega portfelja s katerim koli od štirih klasičnih modelov, da boste lahko jasno videli, kdaj je v prednosti in kako se obnese na slabši strani."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Tveganje",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "V časih, ko trg umirjeno raste, se skoraj vsak portfelj zdi varen. Pravi problem se pojavi, ko izbruhne kriza, ko obrestne mere nenadoma narastejo in premoženje, ki se je zdelo neodvisno, začne padati hkrati.",
+            "Kvantitativno tveganje in stres (drugi pogled Portfolio) postavi vaš portfelj skozi ekstremne preizkušnje, preden se zgodijo v resničnem življenju. S pomočjo štirih simetričnih kvadrantov in spodnjega simulatorja scenarijev prihodnosti vam natančno pokaže, kje so vaše ranljive točke."
+          ],
+          "intro": "Quantitative Risk & Stress testira vaš portfelj glede zgodovinskih kriz, okužbe korelacije in projekcij Monte Carlo.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Interaktivni zemljevid tveganja in donosa, da vidite, kako blizu ste najučinkovitejšemu možnemu portfelju.",
+              "paragraphs": [
+                "Z istimi sredstvi, ki jih že imate v svojem portfelju, obstaja na tisoče načinov za porazdelitev odstotkov. Je kombinacija, ki ste jo izbrali, tista, ki se najbolje izplača glede na tveganje, ki ga prevzamete, ali bi lahko zmagali enako z manj presenečenji?",
+                "Prvi kvadrant zgoraj levo riše ta živi zemljevid možnosti:"
+              ],
+              "lead": "Prvi kvadrant zgoraj levo riše ta živi zemljevid možnosti:",
+              "bullets": [
+                {
+                  "bold": "Vaš položaj proti optimalnim portfeljem",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Prikazuje, kje se nahaja vaš trenutni portfelj glede na točko najmanjše možne volatilnosti in točko največje učinkovitosti tveganja in donosa."
+                },
+                {
+                  "bold": "Vizualne plasti in pregled po sredstvih",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Plasti modela lahko vklopite ali izklopite in kliknete katero koli vozlišče, da preberete natančen prispevek tega sredstva spodaj."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Učinkovita meja Markowitz in izračun minimalne variance in največjega portfelja Sharpe."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado in VaR",
+              "summary": "Simulator zgodovinske krize, razčlenitev dnevne izgube po sredstvih in tržni asimetriji.",
+              "paragraphs": [
+                "Če bi se jutri ponovil zlom, kot je bil leta 2008, gospodarska upočasnitev leta 2020 ali dvig obrestnih mer leta 2022, koliko bi izgubil vaš trenutni portfelj in katero sredstvo bi bilo glavni krivec?",
+                "Spodnji levi kvadrant odgovarja na ta tri vprašanja v treh posebnih zavihkih:"
+              ],
+              "lead": "Spodnji levi kvadrant odgovarja na ta vprašanja v treh posebnih zavihkih:",
+              "bullets": [
+                {
+                  "bold": "Preizkusite pet resničnih kriz",
+                  "code": "1. Tornado Stress",
+                  "text": "Primerjajte vrstico za vrstico, za koliko bi se vaš portfelj znižal glede na S&P 500 ob petih velikih zgodovinskih šokih."
+                },
+                {
+                  "bold": "Razvrstitev tveganja po pozicijah",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Razvrstite svoje deleže glede na to, koliko dolarjev potencialne dnevne izgube vsak prispeva k skupnemu portfelju."
+                },
+                {
+                  "bold": "Obnašanje v vzponih in padcih",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Pokaže vam, kolikšen odstotek vzponov na trgu izkoristi posamezno sredstvo in koliko mu uspe ublažiti, ko trg pade."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Metodologija preteklih stresnih scenarijev, mejni prispevek k VaR in razmerja zajema."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Korelacija",
+              "summary": "Navzkrižna matrika za preverjanje, ali se vaša sredstva res diverzificirajo ali so med paniko okužena.",
+              "paragraphs": [
+                "Imeti več sredstev v svojem portfelju zmanjša tveganje le, če se vsa ne premikajo v isto smer hkrati. Toda v času finančne panike številne korelacije, ki so se zdele nizke, močno poskočijo navzgor.",
+                "Zgornji desni kvadrant vam omogoča revizijo tega razmerja v dveh scenarijih:"
+              ],
+              "lead": "Zgornji desni kvadrant vam omogoča revizijo tega razmerja v dveh scenarijih:",
+              "bullets": [
+                {
+                  "bold": "Prehod med sredstvi in občutljivostjo",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Prikazuje, kako podobno se giblje vsak par sredstev (v zeleni ali svetlo modri barvi, ko se dobro diverzificirajo, in v rdeči, ko se premikajo preblizu skupaj) in kakšna je njihova občutljivost na trg."
+                },
+                {
+                  "bold": "Simulator okužbe v krizi",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Z enim klikom spremenite korelacije običajnega leta v korelacije trenutka panike, da odkrijete, kateri položaji vas ne bi več ščitili."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Izračun Pearsonovih korelacijskih koeficientov v normalnih pogojih in pod stresom na trgu."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash & Markov",
+              "summary": "Skupna tabela vpliva med tečaji in borzo ter verjetnosti spremembe gospodarskega cikla.",
+              "paragraphs": [
+                "V realnem gospodarstvu težave le redko pridejo ena za drugo: velikokrat dvig obrestnih mer sovpada s padcem delnic. Kaj se zgodi z vašim portfeljem, če se oba dejavnika združita hkrati?",
+                "Spodnji desni kvadrant prečka obe spremenljivki in meri verjetnosti spremembe režima:"
+              ],
+              "lead": "Spodnji desni kvadrant prečka obe spremenljivki in meri tržni cikel:",
+              "bullets": [
+                {
+                  "bold": "Dvojna udarna deska",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Navzkrižna gibanja tečajev (-100 do +200 bazičnih točk) s padci ali dvigi S&P 500 (-20 % do +10 %), kar vam omogoča filtriranje po celotnem portfelju ali po posameznem sredstvu."
+                },
+                {
+                  "bold": "Verjetnosti prehoda cikla",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Izračunajte, kolikšna je verjetnost, da bo trg ostal miren ali vstopil v nestanovitno, inflacijsko ali krizno fazo."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Skupna občutljivost na stopnje in spremenljivke ter Markovljeva prehodna matrika stanja."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Spodnja plošča je na celotnem zaslonu s prihodnjimi verjetnostnimi projekcijami in zgodovinskimi padci.",
+              "paragraphs": [
+                "Pogled v preteklost je koristen, toda ko vlagate naprej, morate vedeti, v kakšnem razponu rezultatov se lahko giblje vaš kapital v naslednjih šestih mesecih, letu ali dveh letih.",
+                "Spodnja plošča polne širine združuje tri začasna orodja za projiciranje in nadzor te poti:"
+              ],
+              "lead": "Spodnja plošča združuje tri začasna orodja za projiciranje te poti:",
+              "bullets": [
+                {
+                  "bold": "Deset tisoč scenarijev prihodnosti",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Narišite stožec verjetnega razvoja vašega portfelja, pri čemer ločite optimistični scenarij (P95 v zeleni barvi), pričakovano osrednjo pot (P50) in neugoden scenarij (P05 v rdeči barvi)."
+                },
+                {
+                  "bold": "Globina padcev in stabilnost skozi čas",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Omogočajo vam preklapljanje grafikona, da vidite, kako dolgo je portfelj ostal pod najvišjimi vrednostmi vseh časov ali kako stabilna sta bila njegova učinkovitost in tveganje v tekočih 60-dnevnih oknih."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo stohastična simulacija 10.000 cest in 60-dnevnih tekočih meritev."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulator",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Pred nakupom novega sredstva, zmanjšanjem pozicije ali plačilom za zavarovanje z opcijami se vedno pojavi isto vprašanje: ali ta operacija res izboljšuje moj portfelj ali dodaja nepotrebno tveganje? In koliko kapitala naj vložim vanj?",
+            "Ad-Hoc Strategy Lab (tretji pogled na Portfolio) je vaš simulator pred delovanjem. Omogoča vam, da naložite taktične igre, izračunate svojo idealno velikost pozicije, preizkusite zavarovanje slabosti in vidite natančen učinek pred in po njem, ne da bi se še dotaknili svojega osnovnega portfelja."
+          ],
+          "intro": "Ad-Hoc Strategy Laboratory je vaš simulator pred trgovanjem za testiranje naročil, velikost pozicij in merjenje pokritosti.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Vpliv",
+              "summary": "Prvih šest kart, ki primerjajo vaš trenutni portfelj z rezultatom po simuliranih igrah.",
+              "paragraphs": [
+                "Da bi vedeli, ali je taktična ideja vredna, ni dovolj, da je sredstvo videti privlačno samo po sebi: izboljšati mora številke za celoten portfelj.",
+                "Zgornja vrstica vam stalno prikazuje primerjavo med vašim trenutnim portfeljem in portfeljem z uporabljeno simulacijo:"
+              ],
+              "lead": "Zgornja vrstica primerja vaš trenutni portfelj s portfeljem z uporabljeno simulacijo:",
+              "bullets": [
+                {
+                  "bold": "Vpliv na dobiček in učinkovitost",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Prikazujejo osnovno številko poleg predvidene številke, pri čemer je razlika osvetljena z zeleno, če igra poveča učinkovitost, ali z rdečo, če jo poslabša."
+                },
+                {
+                  "bold": "Vpliv na tveganje, kapital in pravila",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Povedo vam, koliko se spremeni vaša največja pričakovana izguba, kolikšen odstotek portfelja zavežete testom in ali so upoštevane vse varnostne omejitve."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If & Kelly",
+              "summary": "Simulator nakupa/prodaje vozovnic in kalkulator za določitev, koliko denarja tvegati.",
+              "paragraphs": [
+                "Številne dobre naložbene ideje na koncu povzročijo izgube zaradi napake v višini stave: premalo vložka ne premakne igle, preveč pa lahko uniči portfelj, če je poteza napačna.",
+                "Prvi kvadrant zgoraj levo povezuje dokazni list z matematičnim izračunom velikosti:"
+              ],
+              "lead": "Prvi kvadrant združuje poročilo o preskusu z matematičnim izračunom velikosti:",
+              "bullets": [
+                {
+                  "bold": "Nalaganje preizkusnega naročila",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Izberete katero koli sredstvo, navedete, ali želite kupiti, prodati ali pokriti in naložite znesek v dolarjih. Na spodnjem seznamu lahko vklopite ali izklopite vsako simulirano naročilo in primerjate njegov učinek."
+                },
+                {
+                  "bold": "Optimalna velikost položaja",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Na podlagi vaše ocenjene verjetnosti uspeha in razmerja med dobičkom in izgubo izračuna, kolikšen najvišji odstotek kapitala je treba dodeliti za rast brez pretiranega izpostavljanja."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Matematični izračun Kellyjevega kriterija in njegove konzervativne različice Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Postavite OTM in maržo",
+              "summary": "Zavarovalniški simulator z možnostmi za močne upade trga in nadzorom marže.",
+              "paragraphs": [
+                "Ko se bojite močne korekcije trga, je prodaja vseh vaših pozicij običajno draga in neučinkovita. Profesionalna alternativa je sklenitev zavarovanja z zaščitnimi možnostmi, a koliko to zavarovanje stane na leto in koliko vas resnično ščiti?",
+                "Spodnji levi kvadrant vam omogoča merjenje pokritosti in ravni dolga:"
+              ],
+              "lead": "Spodnji levi kvadrant meri kritje in raven jamstev:",
+              "bullets": [
+                {
+                  "bold": "Primerjalnik zaščitnih ščitov",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Omogoča vam, da preklapljate med delovanjem brez kritja ali uporabo treh vrst zavarovanj z možnostmi (na nestanovitnost SPY, QQQ ali VIX), kar je v primerjavi z letnimi stroški premije glede na dolarje, ki bi jih prihranili ob 20-odstotnem padcu."
+                },
+                {
+                  "bold": "Nadzor finančnega vzvoda in zavarovanje",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Spremljajte, kolikšen odstotek vzdrževalne marže ste uporabili in kolikšen odstotek padca bi portfelj prestal, preden vstopite v območje zahtevanega kritja."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Delovanje varovanja s prodajnimi opcijami zunaj denarja in izračun jamstev Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Odbor in knjiga",
+              "summary": "Dve desni plošči s samodejnim pregledom omejitev tveganja, zgodovino naročil in Co-pilot.",
+              "paragraphs": [
+                "V navdušenju nad preizkušanjem trgovanja je zlahka spregledati, da sredstvo koncentrira več kot 20 % vašega celotnega portfelja ali da deluje sredi resne statistične anomalije.",
+                "Dva kvadranta na desni služita kot vaš samodejni nadzor tveganja in revizijska sled:"
+              ],
+              "lead": "Dva kvadranta na desni delujeta kot nadzor tveganja in registracija:",
+              "bullets": [
+                {
+                  "bold": "Pregled v treh dimenzijah",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Ocenjujejo vaša simulirana naročila glede na tehnične, temeljne in trde varnostne omejitve (opozorilo, če katera koli pozicija presega 20-odstotno omejitev kapitala ali če ima visoke anomalije)."
+                },
+                {
+                  "bold": "Dnevnik naročil in asistent za portfelj",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Spodnja plošča beleži vsako simulacijo z njenim vplivom na tveganje, medtem ko gumb za pogovor v zgornjem desnem kotu odpre klepet za postavljanje neposrednih vprašanj o vašem portfelju."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pravila za nadzor tveganja pred operacijo in omejitve koncentracije na sredstvo."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Spodnji graf na celotnem zaslonu, da preverite, ali vaša strategija deluje zunaj preskusnega obdobja.",
+              "paragraphs": [
+                "Vsako strategijo je mogoče prilagoditi s pogledom na preteklost, dokler se na zgodovinskem grafikonu ne zdi varna. Pravi izziv je vedeti, ali še naprej deluje, ko se soočimo z novimi tržnimi podatki.",
+                "Spodnja plošča polne širine postavi strategijo skozi najstrožje validacije, preden gre v proizvodnjo:"
+              ],
+              "lead": "Spodnja plošča podvrže strategijo validaciji v vzorcu in zunaj vzorca:",
+              "bullets": [
+                {
+                  "bold": "Ločevanje med načrtovanjem in dejanskim testiranjem",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Zgodovinski graf razdeli na prvo stopnjo, kjer se strategija kalibrira, in drugo stopnjo z nevidnimi podatki, da se preveri, ali ohranja svojo prednost pred osnovnim portfeljem."
+                },
+                {
+                  "bold": "Opomba o statistični robustnosti",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Če kazalnik učinkovitosti preseže 70 %, to potrjuje, da so rezultati dosledni in niso produkt vsiljevanja številk v preteklosti."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kaj meri indeks učinkovitosti Walk-Forward (WFE) in kako zazna preveč optimizirane strategije."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Filter likvidnosti (ADV)",
+        "intro": "Da se lahko trguje s sredstvom, ne da bi eno samo naročilo izkrivilo njegovo ceno, platforma zahteva minimalni prag povprečnega dnevnega obsega v dolarjih v zadnjih 20 delovnih dneh.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Zaključna cenaᵢ × Trgovan obsegᵢ)",
+          "denominator": "20 spretnih koles",
+          "vars": [
+            "Zaključna cena: uradna zaključna cena dneva i, izražena v USD.",
+            "Traded Volumeᵢ: skupno število enot, s katerimi se je trgovalo na ta dan."
+          ]
+        },
+        "lead": "Na podlagi povprečne dnevne prostornine katalog razvršča globino vsakega instrumenta:",
+        "bullets": [
+          {
+            "bold": "Visoka institucionalna likvidnost",
+            "code": "> $500M diarios",
+            "text": "Omogoča takojšnji vstop in izstop iz velikih pozicij, ne da bi spremenili tržno ceno."
+          },
+          {
+            "bold": "Standardna kataloška likvidnost",
+            "code": "$50M a $500M diarios",
+            "text": "Primerno za raznolike portfelje z zelo nizkimi stroški nakupa/prodaje."
+          },
+          {
+            "bold": "Spremljanje širjenja",
+            "code": "< $50M diarios",
+            "text": "V času volatilnosti je priporočljivo preveriti odpiranje nasvetov, preden izvršite velika naročila."
+          }
+        ],
+        "example": "Če se z delnico trguje pri 200 USD in se v zadnjem mesecu trguje s povprečno 5 milijoni delnic na kolo, je njen povprečni dnevni obseg (ADV) 1 milijarda USD (1,0 milijarde USD)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalizacija na USD",
+        "intro": "Ker katalog združuje evropske obveznice, azijske indekse, surovine in kriptovalute, se vsi količinski tokovi pretvorijo v ameriške dolarje v realnem času, tako da jih je mogoče primerjati v istem merilu.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Obseg v lokalni valuti: znesek, s katerim se trguje v izvirni tržni valuti (EUR, JPY, GBP, BRL itd.).",
+            "Promptni menjalni tečaj: trenutna ponudba v mehanizmu 61 valut."
+          ]
+        },
+        "lead": "Ta pretvorba neposredno vpliva na dve mesti na zaslonu:",
+        "bullets": [
+          {
+            "bold": "Skupni pogled Razvrstitev Vse",
+            "code": "213 activos",
+            "text": "Razvrstite instrumente od največjega do najmanjšega dejanskega gibanja denarja po vsem svetu."
+          },
+          {
+            "bold": "Dodana volumska kartica",
+            "code": "Volumen 24h en $B",
+            "text": "Omogoča dodajanje obsega sredstev, navedenih v različnih državah, brez izkrivljanj."
+          }
+        ],
+        "example": "Če se z nemško obveznico trguje za 4 milijarde € na dan in navzkrižno trgovanje EUR/USD znaša 1,08, sistem v globalnem impulzu izračuna 4,32 milijarde USD."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Kako merite, ali je trg resnično močno rasel ali pa se je dvignil že prehitro in je izčrpan? Indeks relativne moči (RSI) primerja povprečne dvige s povprečnimi padci zadnjih 14 krogov na lestvici od 0 do 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (povprečni vzponi₁₄ / povprečni padci₁₄)",
+          "vars": [
+            "Dvig povprečja₁₄: izravnano povprečje točk, zasluženih v dnevih rasti zadnjih 14 koles.",
+            "Povprečne izgube₁₄: izravnano povprečje izgubljenih točk v padajočih dneh istega obdobja."
+          ]
+        },
+        "lead": "Tako se razlagajo trije deli lestvice v krožnem obroču:",
+        "bullets": [
+          {
+            "bold": "Nakupna sila in prekupljenost",
+            "code": "70 a 100",
+            "text": "Povečanja močno presegajo nedavna znižanja. Kaže velik bikovski zagon, čeprav nad 70 opozarja, da bo cena morda potrebovala premor."
+          },
+          {
+            "bold": "območje ravnovesja",
+            "code": "30 a 70",
+            "text": "Trg se giblje z vzdržno hitrostjo. Prehod vmesne ravni (> 50 v zeleni) potrjuje prevlado kupca, medtem ko padec pod (< 50 v rdeči) kaže na prevlado prodajalca."
+          },
+          {
+            "bold": "Kazen in preprodaja",
+            "code": "0 a 30",
+            "text": "Padci so bili tako pogosti in izraziti, da je sredstvo začelo izgledati statistično poceni in nagnjeno k odboju."
+          }
+        ],
+        "example": "Če je v zadnjih 14 kolesih skupina delnic zrasla v povprečju za 2 dolarja na dan rasti in padla samo za 1 dolar na dan padanja, je razmerje njene moči 2 in RSI znaša 66,7 (pritisk rasti v zeleni barvi)."
+      },
+      {
+        "id": "p06",
+        "label": "Normalni režim (P-06)",
+        "intro": "Sredstvo se lahko zdi mirno, če gledate le njegovo ceno, hkrati pa trpi zaradi nenavadnega skoka obsega in nenormalnega odpiranja v nakupnih in prodajnih vrhovih. Motor Isolation Forest (P-06) prečka te spremenljivke hkrati, da zazna netipično vedenje.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): povprečno število naključnih rezov, potrebnih za izolacijo današnjega vedenja od preostale zgodovine.",
+            "x: vektor 4 spremenljivk (24-urni donos, obseg Z-Score 20d, realizirana volatilnost 30d in razpon v bps)."
+          ]
+        },
+        "lead": "Bolj redka je današnja poteza, hitreje je izolirana in bližje je rezultat 1,00:",
+        "bullets": [
+          {
+            "bold": "Normalni režim",
+            "code": "0.00 a 0.49",
+            "text": "Cena, obseg in likvidnost se gibljejo v skladu s preteklim povprečjem sredstva."
+          },
+          {
+            "bold": "Visoka aktivnost",
+            "code": "0.50 a 0.64",
+            "text": "Vsaj ena od spremenljivk je začela odstopati od svojega običajnega obnašanja; Priporočljivo je natančno spremljati tok naročil."
+          },
+          {
+            "bold": "Dislokacija ali kritična anomalija",
+            "code": "0.65 a 1.00",
+            "text": "Sredstvo beleži statistično ekstremno obnašanje. V portfeljskem modulu se pri prekoračitvi tega praga aktivira varnostna zavora."
+          }
+        ],
+        "example": "Če se cena državne obveznice premakne komaj za 0,1 %, vendar se njen obseg pomnoži s štiri in se razpon v minutah potroji, detektor preseže tri podatkovne točke in zviša svojo oceno na 0,74 (Dislokacija rdeče)."
+      },
+      {
+        "id": "zscore",
+        "label": "Obvod glasnosti (Z-Score)",
+        "intro": "Reči, da je bilo danes opravljenih 500 milijonov dolarjev, je veliko za srednje veliko podjetje, vendar zelo malo za S&P 500. Volume Z-Score združuje vsa sredstva na isto univerzalno enoto: koliko standardnih odstopanj (σ) je današnja prostornina od lastnega povprečja 20 koles.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Količina danes (24h) − povprečna količina (20d)",
+          "denominator": "Standardni odklon glasnosti (20d)",
+          "vars": [
+            "Povprečni obseg (20d): običajni obseg sredstva v zadnjem poslovnem mesecu.",
+            "Standardni odklon (20d): koliko se ta prostornina običajno spreminja od enega dne do drugega."
+          ]
+        },
+        "lead": "Tako lahko primerjate katero koli sredstvo na isti lestvici sigma (σ) enot:",
+        "bullets": [
+          {
+            "bold": "Običajna dejavnost",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Volumen dneva je povsem v okviru rutine zadnjih štirih tednov."
+          },
+          {
+            "bold": "Visoka udeležba",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Zanimanje je višje od povprečja, kar začenja potrjevati trend dneva."
+          },
+          {
+            "bold": "Institucionalni spopad",
+            "code": "> +2.0σ",
+            "text": "Pojavi se v manj kot 5 % krogov v letu in običajno odraža ogromen vstop ali izstop velikih sredstev."
+          }
+        ],
+        "example": "Če se z delnico običajno trguje za 100 milijonov dolarjev na dan s tipično variacijo ±20 milijonov dolarjev, danes pa se trguje za 160 milijonov dolarjev, je to 60 milijonov dolarjev nad povprečjem, kar je natančno enako +3,0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Fiksni donos (2s10s in DV01)",
+        "intro": "Ko v tabeli filtrirate obveznice ali obrestne mere, se prikažeta dve ključni metriki za vrednotenje državnega dolga: naklon krivulje (2s10s) in denarna vrednost bazične točke (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 bazična točka (1 bp): kar ustreza 0,01 % uspešnosti.",
+            "DV01 ($/$1M): Koliko dolarjev dobi ali izgubi pozicija v višini 1 milijona $, če se tečaj premakne za 1 bazično točko."
+          ]
+        },
+        "lead": "Kako brati ti dve številki na mreži:",
+        "bullets": [
+          {
+            "bold": "Normalna ali pozitivna krivulja",
+            "code": "2s10s > 0 bps",
+            "text": "10-letne obveznice imajo višjo obrestno mero kot 2-letne obveznice, kar odraža pričakovano zdravo gospodarsko rast."
+          },
+          {
+            "bold": "obrnjena krivulja",
+            "code": "2s10s < 0 bps",
+            "text": "Kratke stopnje presegajo dolge; zgodovinsko gledano opozarja na gospodarsko ohlajanje ali monetarno restrikcijo."
+          }
+        ],
+        "example": "Če 10-letna zakladnica prinaša 4,20 % in 2-letna zakladnica 4,55 %, stolpec 2s10s označuje -35 bps (obrnjena krivulja v rdeči barvi)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Delnice (P/E in marža)",
+        "intro": "Pri filtriranju delnic S&P/NDX tabela prikazuje večkratnik predvidenega dobička (P/E Forward) in bruto operativno maržo, tako da lahko primerjate vrednotenje z dobičkonosnostjo.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Trenutna cena delnice",
+          "denominator": "Ocenjeni dobiček na delnico (naslednjih 12 mesecev)",
+          "vars": [
+            "P/E Forward: Koliko let prihodnjih zaslužkov plačujete po današnji ceni.",
+            "Bruto marža (%): odstotek prodaje, ki ostane kot bruto dobiček po odbitku neposrednih stroškov."
+          ]
+        },
+        "lead": "Na kaj morate biti pozorni, ko prečkate oba stolpca:",
+        "bullets": [
+          {
+            "bold": "Zahtevno vs zmerno ocenjevanje",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Visok večkratnik pomeni, da trg določa močno prihodnjo rast; nizka običajno odraža zrela ali dragocena podjetja."
+          },
+          {
+            "bold": "Cenovna moč",
+            "code": "Margen Bruto > 50%",
+            "text": "Visoke marže kažejo, da imajo podjetja močne konkurenčne prednosti, ki so sposobne zaščititi svoj dobiček pred inflacijo."
+          }
+        ],
+        "example": "Če se z delnico trguje pri 150 USD in se ocenjuje, da bo v naslednjih 12 mesecih zaslužila 6 USD na delnico, je njen terminski P/E 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Izvedeni finančni instrumenti, FX in surovine",
+        "intro": "Za opcije, forex in fizične terminske trge dva dinamična stolpca prikazujeta implicitne stroške tveganja ali nagrado za držanje pozicije skozi čas.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (izvedeni finančni instrumenti): letna volatilnost, ki jo opcijski trg zniža za naslednjih 30 dni.",
+            "Carry 10Y (FX) in Roll Yield (blago): letni dobiček ali strošek zaradi razlike v tečaju ali prenosa terminskih pogodb."
+          ]
+        },
+        "lead": "Kako izkoristiti te stolpce glede na sredstvo:",
+        "bullets": [
+          {
+            "bold": "V izvedenih finančnih instrumentih",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Povedo vam, kakšen odstotek gibanja trg pričakuje in ali so možnosti za kritje padcev (Puts) drage."
+          },
+          {
+            "bold": "V valutah in surovinah",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Prikazane so zeleno, če vam vzdrževanje sredstva prinaša dodaten dohodek, ali rdeče, če ima knjigovodske stroške."
+          }
+        ],
+        "example": "Če opcija kaže implicitno nestanovitnost (ATM IV) 35 % letno, trg zniža premik blizu ±10 % za naslednjih 30 dni."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radarsko radialno kartiranje",
+        "intro": "Za umestitev do 45 sredstev v tri radarske obroče brez prekrivanja pogled Orbital pretvori vrednost izbranega indikatorja v razdaljo do središča (polmer r), normalizirano med najmanjšo in največjo vrednostjo skupine.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Vrednost sredstev − najmanjša vrednost skupine",
+          "denominator": "Najvišja vrednost skupine − najmanjša vrednost skupine",
+          "vars": [
+            "r → 0 (notranji obroč): koncentrira sredstva z večjo intenzivnostjo ali pozitivnim odklonom.",
+            "r → 1 (zunanji obroč): poišče periferna sredstva ali tista z najnižjim relativnim odčitkom."
+          ]
+        },
+        "lead": "Kako prebrati položaj in barvo vsakega planeta na radarju:",
+        "bullets": [
+          {
+            "bold": "Fokus notranji obroč",
+            "code": "Centro del radar",
+            "text": "Zberite vodilna sredstva iz indikatorja, ki ste ga izbrali zgoraj, tako da bo vaš pogled najprej usmeril na tisto, kar je najpomembnejše."
+          },
+          {
+            "bold": "Zgodovinska barvna semantika",
+            "code": "Verde vs Rojo",
+            "text": "Vozlišče zasveti zeleno, ko ugodno preseže svoje preteklo povprečje, in rdeče, ko odraža upad ali stres."
+          }
+        ],
+        "example": "Če radar razvrstite po Volume Deviation (Z-Score), se aktivni s +3,4σ nahaja v svetlem osrednjem obroču, medtem ko je tisti z 0,1σ v zunanji orbiti."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) in Bollingerjevi pasovi",
+        "intro": "20-obdobno preprosto drseče povprečje (SMA 20) označuje osnovni trend sredstva, medtem ko Bollingerjevi pasovi narišejo dinamični kanal z dodajanjem in odštevanjem dveh standardnih odstopanj (2σ) okoli tega povprečja.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): aritmetična sredina zadnjih 20 zaprtij.",
+            "Pasovna širina (BB Width): odstotek razdalje med zgornjim in spodnjim pasom."
+          ]
+        },
+        "lead": "Statistično se približno 95 % citatov pojavlja znotraj dveh pasov:",
+        "bullets": [
+          {
+            "bold": "Cena nadpovprečna",
+            "code": "Precio > SMA 20",
+            "text": "Kaže, da je kratkoročni trend bikovski, povprečje pa običajno deluje kot podpora."
+          },
+          {
+            "bold": "Dotik zgornjega ali spodnjega pasu",
+            "code": "±2σ",
+            "text": "Opozarja, da se je cena prehitro raztegnila od nedavnega povprečja in si lahko oddahne."
+          },
+          {
+            "bold": "pasovno stiskanje",
+            "code": "BB Width bajo",
+            "text": "Ko pasovi postanejo zelo ozki, trg nabere energijo pred močnim premikom."
+          }
+        ],
+        "example": "Če je SMA(20) delnice 100 USD in je njen standardni odklon 20 koles 4 USD, je zgornji pas 108 USD, spodnji pas pa 92 USD."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Institucionalni",
+        "intro": "Za razliko od skupnega povprečja, ki daje enako težo vsem uram dneva, VWAP vsako ceno tehta glede na znesek denarja, s katerim se je dejansko trgovalo na tej ravni. Je glavna referenca, ki jo uporabljajo institucionalne tabele.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (običajna cenaᵢ × obseg trgovanjaᵢ)",
+          "denominator": "∑ Trgovani obsegᵢ",
+          "vars": [
+            "Običajna cenaᵢ: povprečje med najvišjo, najnižjo in zaprto vsako svečo.",
+            "Traded Volumeᵢ: obseg trgovanja posebej v tem razdelku."
+          ]
+        },
+        "lead": "Kako profesionalni trgovci uporabljajo linijo VWAP:",
+        "bullets": [
+          {
+            "bold": "Nadzor izvajanja",
+            "code": "Comprar bajo el VWAP",
+            "text": "Če institucionalni sklad kupi pod VWAP za to obdobje, je dobil boljšo ceno od tržno tehtanega povprečja."
+          },
+          {
+            "bold": "Stopnja obrambe Trend",
+            "code": "Soporte / Resistencia",
+            "text": "Dokler je sredstvo nad VWAP, so tisti, ki so kupili v tem obdobju, v povprečnem dobičku."
+          }
+        ],
+        "example": "Če bi se z 1 milijonom delnic trgovalo po 100 USD in samo s 100 tisoč delnicami po 110 USD, bi preprosto povprečje pomenilo 105 USD, VWAP pa znaša 100,91 USD, ker se je s skoraj vsem denarjem trgovalo po 100 USD."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Premik širjenja (bps)",
+        "intro": "Razpon je razlika med najboljšo povpraševano ceno in najboljšo ponudbeno ceno v knjigi naročil. Ko ustvarjalci trga zaznajo tveganje ali pomanjkanje likvidnosti, odprejo to vrzel, da se zaščitijo.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Povpraševalna cena − Ponujena cena )",
+          "denominator": "Povprečna cena (srednja cena)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Cena povpraševanja / ponudbe: prodajna točka in nakupna točka, ki sta trenutno v knjigi.",
+            "10.000: Pretvorbeni faktor za izražanje razlike v bazičnih točkah (bps)."
+          ]
+        },
+        "lead": "Kaj vam pove odčitek dislokacije širjenja na levi tirnici:",
+        "bullets": [
+          {
+            "bold": "Globoka in tekoča knjiga",
+            "code": "Spread estable en verde",
+            "text": "Na obeh koncih je veliko likvidnosti in implicitni stroški vstopa ali izstopa so minimalni."
+          },
+          {
+            "bold": "Trenje ali umik likvidnosti",
+            "code": "Salto en bps",
+            "text": "Običajno se zgodi nekaj sekund pred makroekonomskimi objavami ali med panično prodajo, zaradi česar je izvedba dražja."
+          }
+        ],
+        "example": "Če ima sredstvo nakupni nasvet pri 99,95 USD in prodajni nasvet pri 100,05 USD, je razlika 0,10 USD nad 100 USD enakovredna 10 bazičnim točkam (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Možnosti (Black-Scholes in Grki)",
+        "intro": "V mehanizmu opcij platforma prikazuje dve krivulji dobička in izgube (P&L): kako bi se strategija končala na dan izteka in koliko je vredna danes (T+0) z uporabo modela Black-Scholes.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S in K: trenutna cena osnovnega sredstva (Spot) in izvršilna cena opcije (Strike).",
+            "Neto Grki: Δ Delta (občutljivost na ceno), Γ Gamma (delta pospešek), Θ Theta (dnevna obraba) in ν Vega (občutljivost na nestanovitnost)."
+          ]
+        },
+        "lead": "Kako prebrati Grke svoje strategije na levi tirnici tablete:",
+        "bullets": [
+          {
+            "bold": "Krmiljenje in pospeševanje",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Pozitivna Delta zmaga, ko se sredstvo poveča; pozitivna gama omogoča, da pridobivate hitreje in hitreje, če se gibanje pospeši."
+          },
+          {
+            "bold": "Potek časa in negotovost",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta vam pove, koliko dolarjev izgubi ali pridobi pozicija za vsak naslednji dan; Vega, koliko se spremeni, če implicitna volatilnost naraste za 1 %."
+          }
+        ],
+        "example": "Long Straddle (kupite Call in Put na isti strike) ima Delta blizu 0 (ni pomembno, ali gre navzgor ali navzdol), vendar pozitivno Vega in potrebuje ceno, da se premakne preko svojih dveh ravnovesnih točk (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Suverene krivulje (metulj in DV01)",
+        "intro": "Motor s fiksnim dohodkom primerja donose od 3 mesecev do 30 let za 42 držav in izračuna naklon (2s10s) in ukrivljenost srednje tranše (metulj 2s5s10s) ter denarno občutljivost (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y obrestna mera: 2-, 5- in 10-letni suvereni donosi izbrane države.",
+            "Realna 10-letna obrestna mera: 10-letni nominalni donos minus referenčna obrestna mera ali implicitna inflacija."
+          ]
+        },
+        "lead": "Čemu je vsak kazalnik namenjen pri analizi obveznic:",
+        "bullets": [
+          {
+            "bold": "Ukrivljenost srednjega dela",
+            "code": "Butterfly 2s5s10s",
+            "text": "Meri, ali je 5-letna tranša draga ali poceni glede na 2-letno in 10-letno skrajnost."
+          },
+          {
+            "bold": "Tveganje trajanja dolarja",
+            "code": "DV01 por $1M",
+            "text": "Natančno vam pove, koliko dolarjev se razlikuje milijonski portfelj z 0,01-odstotnim gibanjem tečaja."
+          }
+        ],
+        "example": "10-letna obveznica z DV01 820 USD na milijon bo izgubila približno 82.000 USD, če se tržne obrestne mere dvignejo za 100 bazičnih točk (+1,00 %)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Valute (Carry) in terminske pogodbe (Roll Yield)",
+        "intro": "V valutah, ko par ni kotiran neposredno, se izračuna s triangulacijo glede na dolar in meri se razlika njegovega tečaja (Carry). Pri surovinah se uspešnost obnove meri med takojšnjo pogodbo in 12-mesečno pogodbo (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Promptna cena (spredaj M1) − prihodnja cena (M12)",
+          "denominator": "Prihodnja cena (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Backwardation (Spot > Future): fizično pomanjkanje danes povzroča, da tekoče terminske pogodbe ustvarjajo pozitiven dobiček (Roll Yield > 0).",
+            "Contango (Spot < Future): Stroški shranjevanja podražijo terminske pogodbe, njihova obnova pa ima negativne stroške."
+          ]
+        },
+        "lead": "Kako to vpliva na vašo denarnico, ko imate položaj:",
+        "bullets": [
+          {
+            "bold": "Pozitivno Carry Trade v valutah",
+            "code": "Carry Spread > 0 bps",
+            "text": "Če kupite valuto z visoko obrestno mero s financiranjem v valuti z nizko obrestno mero, boste to razliko pobrali v svojo korist."
+          },
+          {
+            "bold": "Ugoden veter v surovinah",
+            "code": "Backwardation en verde",
+            "text": "Ko so fizične zaloge majhne, je bližnja pogodba vrednejša od tiste v oddaljenosti in vlagatelj si s podaljšanjem pogodbe zasluži dodaten donos."
+          }
+        ],
+        "example": "Če se 1-mesečna nafta trguje pri 72 $, 12-mesečna pogodba pa pri 68 $, je trg v Backwardation s pozitivnim Roll Yield +5,88 % letno."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Skupna ponderirana ocena",
+        "intro": "Vsa sredstva se ne gibljejo prek istih virov: v podjetju imajo veliko težo revidirani računovodski izkazi (SEC 10-K/10-Q), medtem ko imajo na kripto trgu oziroma valutah večjo težo dnevni tokovi in ​​komunikacije.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: samodejno ponderiranje glede na kategorijo (npr. 80 % / 20 % v delnicah; 85 % / 15 % v provizijah).",
+            "Končna lestvica: sega od −100 (največji pesimizem) do +100 (največja bikovska prepričanost)."
+          ]
+        },
+        "lead": "Takole je sestavljena ocena prevedena v mnenju nadrejenega:",
+        "bullets": [
+          {
+            "bold": "Bikovska drža",
+            "code": "BULLISH / Nota > +15",
+            "text": "Dokumentarni katalizatorji in tok novic očitno prevladajo nad dejavniki tveganja."
+          },
+          {
+            "bold": "Nevtralna ali mešana drža",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Tudi sile med osnovami in novicami; Priporočljivo je, da pred odločitvijo pregledate harmoniko 10 dejavnikov."
+          },
+          {
+            "bold": "Obrambna ali medvedja drža",
+            "code": "BEARISH / Nota < -15",
+            "text": "Prevladujejo opozorila o bilancah, poslabšanje marž ali neugodni naslovi."
+          }
+        ],
+        "example": "Pri delnici (80 % temeljnih vrednosti / 20 % novic), če stanja kažejo +50 točk in novice dneva kažejo +20, je skupni ponderirani rezultat (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Preverjeno iskanje (RAG)",
+        "intro": "Da bi preprečil, da bi umetna inteligenca izumila številke, Document Chat uporablja Generation Augmented Recovery (RAG): najprej poišče ustrezne odstavke v uradnih poročilih sredstva in šele nato napiše odgovor z navedbo vira.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vektorsko posvetovanje (Q) · Vektorski uradni dokument (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vektor Q in D: numerične predstavitve vašega vprašanja in uradni fragmenti (10-K, zapisniki FOMC, poročila EIA).",
+            "3-slojna ograja: filter, ki blokira poizvedbe, ki niso povezane s financami ali brez dokumentarne podpore."
+          ]
+        },
+        "lead": "Kaj zagotavlja ta mehanizem, ko postavite vprašanje v klepetu:",
+        "bullets": [
+          {
+            "bold": "Sidranje v primarnih virih",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Vsak podatek o dohodku, dolgu, zalogah ali stopnjah izhaja iz regulativnega dokumenta, ki ustreza temu sredstvu."
+          },
+          {
+            "bold": "Ustavite vprašanja, ki niso povezana s temo",
+            "code": "Guardrail activo",
+            "text": "Če se nekdo poskuša posvetovati o nefinančnih temah, asistent zavrne poizvedbo in se osredotoči na analizo instrumenta."
+          }
+        ],
+        "example": "Ko se dotaknete čipa dejavnikov tveganja na delnici, mehanizem pridobi razdelek postavke 1A (dejavniki tveganja) svojega najnovejšega obrazca 10-K in povzame kritične točke."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Nevronska ocena",
+        "intro": "Tipičen slovar pogosto zamenjuje finančne besede (na primer \"zmanjšanje stroškov\" ali \"zmanjšanje dolga\" je odlična novica, tudi če uporabljajo besedo padec ali zmanjšanje). FinBERT je nevronska mreža, usposobljena posebej za finančna besedila.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(pozitivno) in P(negativno): verjetnosti, ki jih model dodeli naslovu, da je bikovski ali medvedji za sredstvo.",
+            "24-urna krivulja: eksponentno drseče povprečje naslovov zadnjih 24 ur."
+          ]
+        },
+        "lead": "Kako je posamezno vozlišče ocenjeno na časovnici na desni:",
+        "bullets": [
+          {
+            "bold": "Nosilec katalizatorja",
+            "code": "+20 a +100 en verde",
+            "text": "Večji ocenjeni zaslužek, izboljšanje bonitetne ocene ali ugodno znižanje obrestne mere."
+          },
+          {
+            "bold": "Nevtralni informacijski kabel",
+            "code": "-19 a +19 en ámbar",
+            "text": "Rutinska obvestila o delovanju, ki ne spremenijo strukturne ocene instrumenta."
+          },
+          {
+            "bold": "Nosilec tveganja",
+            "code": "-20 a -100 en rojo",
+            "text": "Regulatorna opozorila, padci marž, stavke ali podatki o inflaciji, ki so slabši od pričakovanih."
+          }
+        ],
+        "example": "Če model naslovu dodeli 82 % pozitivno verjetnost, 12 % nevtralno in 6 % negativno verjetnost, vozlišče prikazuje neto vpliv +76 v zeleni barvi."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe in Sortino",
+        "intro": "Prvi dve zgornji karti merita, koliko se vaš kapital poveča na leto (CAGR) in kako učinkovita je ta rast glede na šoke, ki jih morate prestati (Sharpe in Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Letni donos Portfolio (Rp) − netvegana stopnja (Rf)",
+          "denominator": "Letna volatilnost Portfolio (σp)",
+          "vars": [
+            "Rf (4,30%): osnovni donos, ki bi ga lahko dosegli brez tveganja v zakladnih menicah.",
+            "Razmerje Sortino: uporablja isto formulo, vendar v imenovalcu kaznuje samo nestanovitnost negativnih dni (padcev)."
+          ]
+        },
+        "lead": "Kako oceniti kakovost svojega portfelja s temi številkami:",
+        "bullets": [
+          {
+            "bold": "Učinkovit portfelj",
+            "code": "Sharpe > 1.00",
+            "text": "Presežni donos, ki ga dosežete nad netvegano stopnjo, močno presega domnevno volatilnost."
+          },
+          {
+            "bold": "Izjemna zmogljivost",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Kaže na zelo dobro raznoliko kombinacijo, kjer so povečanja dosledna in padci omejeni."
+          }
+        ],
+        "example": "Če vaš portfelj prinaša 15,3 % letno, je netvegana stopnja 4,3 % in vaša letna volatilnost 10 %, vaša presežna donosnost je 11 % in vaše razmerje Sharpe 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95 %, CVaR 99 % in črpanje",
+        "intro": "Tretja in četrta karta odgovarjata, koliko lahko izgubite na slab, a statistično normalen dan (VaR 95 %), koliko na dan skrajne panike (CVaR 99 %) in kakšen je bil največji umik s prejšnjega vrha (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1.645: statistični faktor, ki pokriva 95 % običajnih koles v letu (19 od vsakih 20 dni).",
+            "CVaR 99 % (pričakovani primanjkljaj): povprečna izguba, ko trg preseže ta prag in vstopi v zgornji 1 % najslabših dni."
+          ]
+        },
+        "lead": "Kakšna je praktična razlika med pogledom na VaR in Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Tveganje za en dan",
+            "code": "VaR 95% 1D en USD",
+            "text": "Psihološko in finančno vas pripravi na to, kaj se lahko vaš račun obrne v slabo smer, ne da bi to pomenilo, da strategija ni uspela."
+          },
+          {
+            "bold": "Odpor v neugodnem nizu",
+            "code": "Max Drawdown 12M",
+            "text": "Meri akumulirani padec od konice do konice od najvišje točke do tal, preden se znova obnovi."
+          }
+        ],
+        "example": "V portfelju v vrednosti 100.000 $ z dnevnim VaR 95 % od 1,45 % (1.450 $) v 19 od 20 trgovalnih koles vaše dnevne izgube ne bodo presegle 1.450 $."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Prekrivanje rentgenskih žarkov (#12)",
+        "intro": "Ko kupite ETF, kot je SPY ali QQQ, kupite na desetine delnic znotraj. Če ste nekaj teh istih delnic kupili tudi neposredno, je vaša dejanska izpostavljenost vsota obeh stvari.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Neposredna težaᵢ: odstotek vašega portfelja, dodeljen neposredno delnici i.",
+            "Odstotek znotraj ETFₖ: uradna teža, ki jo ima to podjetje znotraj indeksa ali sklada k."
+          ]
+        },
+        "lead": "Zakaj je ključno, da pregledate ta prvi zavihek, preden zaprete portfelj:",
+        "bullets": [
+          {
+            "bold": "Vidnost skrite koncentracije",
+            "code": "Directo + Indirecto",
+            "text": "Samodejno razčleni vsak ETF v vašem portfelju in vam prikaže eno vrstico z dejanskim odstotkom, ki ga imate v vsakem podjetju."
+          },
+          {
+            "bold": "Presežek opozorila",
+            "code": "> 20% en rojo",
+            "text": "Če skupna vsota preseže razumni prag koncentracije na posamezno ime, vrstica zasveti, da lahko znova uravnotežite."
+          }
+        ],
+        "example": "Če 15 % svojega portfelja vložite v neposredni NVDA in imate tudi 30 % v SPY ETF (kjer NVDA tehta približno 7 %), rentgen razkrije, da je vaša dejanska izpostavljenost NVDA 15 % + (30 % × 7 %) = 17,1 %."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alfa Brinsonova razgradnja (št. 2)",
+        "intro": "Ko vaš portfelj premaga (ali izgubi) svojo referenčno vrednost, Brinson-Fachlerjev model natančno loči, od kod izvira ta razlika: ali ste imeli prav, v katerih sektorjih ste pretežili ali ste pravilno izbrali najboljša sredstva znotraj posameznega sektorja?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Učinek dodelitve: (Portfolio utež − primerjalna utež) × sektorski donos v primerjalni vrednosti.",
+            "Učinek izbire: Teža v merilu uspešnosti × (donosnost vaših sredstev − donosnost sektorja)."
+          ]
+        },
+        "lead": "Kako brati tri vrstice dodeljevanja v tretjem zavihku:",
+        "bullets": [
+          {
+            "bold": "Makro ali sektorski uspeh",
+            "code": "Asignación Sectorial",
+            "text": "Pozitivno je v zeleni barvi, ko razredom sredstev, ki so se najbolj dvignili, pripišete večjo težo kot trg."
+          },
+          {
+            "bold": "Uspešno ciljanje sredstev",
+            "code": "Selección de Activos",
+            "text": "Pozitivno je, če so določeni instrumenti, ki ste jih izbrali, dosegli več kot povprečje za svoj sektor."
+          }
+        ],
+        "example": "Če je vaš portfelj presegel S&P 500 za +3,20 %, vam ta zavihek omogoča, da vidite, da je +2,10 % prišlo zaradi izbire boljših delnic (izbor) in +1,10 % zaradi večje teže v tehnologiji (dodelitev)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Učinkovita meja in CML",
+        "intro": "V ravnini Markowitz je pričakovani donos portfelja tehtano povprečje donosa njegovih sredstev, vendar je njegova volatilnost nižja od povprečja zaradi dejstva, da se sredstva ne gibljejo 100 % enako.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: odstotek kapitala, razporejen na sredstva i in j.",
+            "ρᵢⱼ (korelacija): stopnja, do katere se obe sredstvi premikata skupaj (–1 do +1). Nižji kot je ρᵢⱼ, bolj se zmanjša skupno tveganje."
+          ]
+        },
+        "lead": "Kaj predstavljajo trije sklice v grafu:",
+        "bullets": [
+          {
+            "bold": "Najmanjše odstopanje",
+            "code": "Min-Var",
+            "text": "To je skrajna leva točka na krivulji: natančna kombinacija uteži, ki doseže najnižjo možno volatilnost."
+          },
+          {
+            "bold": "Máximo Sharpe in Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "To je točka, kjer se črta, ki se začne od netvegane obrestne mere, dotakne učinkovite meje, ki ponuja največji dobiček na enoto tveganja."
+          }
+        ],
+        "example": "Če v enakih delih združite dve sredstvi, ki imata vsako 20-odstotno volatilnost, vendar ničelno korelacijo (ρ = 0), volatilnost portfelja ni 20-odstotna, ampak pade na 14,1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR proizvajalca Active in Capture",
+        "intro": "Da bi vedeli, katera pozicija portfelju dodaja večje tveganje, se mejni prispevek vsakega sredstva meri glede na njegovo težo in korelacijo z ostalim. Poleg tega razmerja zajemanja merijo asimetrijo glede na vzpone in padce S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Vrnitev vašega sredstva ali Portfolio v bikovskih (ali medvedjih) kolesih",
+          "denominator": "Vrnitev S&P 500 na istih kolesih",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100 %) – Zaslužite več kot indeks, ko trg raste.",
+            "Downside Capture (< 100 %): pade manj kot indeks, ko trg pade (obrambni blažilnik)."
+          ]
+        },
+        "lead": "Idealen profil, ki ga iščete pri pregledu tretjega zavihka kvadranta:",
+        "bullets": [
+          {
+            "bold": "pozitivna asimetrija",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "V celoti sodelujte na bikovskih trgih, vendar zaščitite kapital, ko se borza popravi."
+          },
+          {
+            "bold": "Zatočišče ali nepovezana sredstva",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Instrumenti, kot so kratke obveznice ali zlato, ki ponavadi ostanejo trdni ali rastejo med padci delniškega trga."
+          }
+        ],
+        "example": "Če je v mesecih, ko je S&P 500 narasel za 10 %, vaš portfelj pridobil 11 % (navzgor 110 %) in ko je indeks padel za 10 %, je vaš portfelj padel le za 6 % (nazad 60 %), imate močno asimetrijo v svojo korist."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normalna proti krizni korelaciji",
+        "intro": "Pearsonov koeficient (r) meri od -1,00 do +1,00, kako se dve sredstvi premikata relativno drug glede na drugega. Nevarnost pri upravljanju portfelja je, da med tržnim zlomom korelacija med tveganimi sredstvi običajno naraste proti +1,00 (okužba).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kovarianca (vrne sredstvo i, vrne sredstvo j)",
+          "denominator": "Volatilnost sredstev i (σᵢ) × Volatilnost sredstev j (σⱼ)",
+          "vars": [
+            "r blizu 0 ali negativen: odlična diverzifikacija (ko eden pade, mu drugi ne sledi).",
+            "r v Crisis Queue: ponovno izračuna matriko, pri čemer vzame samo 5 % najslabših koles na trgu."
+          ]
+        },
+        "lead": "Kako brati barve matrike 6x6 v obeh režimih:",
+        "bullets": [
+          {
+            "bold": "Prava diverzifikacija",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Obe sredstvi se odzivata na različne gospodarske dejavnike in se medsebojno kompenzirata."
+          },
+          {
+            "bold": "Koncentracija ali okužba",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Premikajo se praktično kot blok; Oboje ne zmanjša padcev na slab dan."
+          }
+        ],
+        "example": "Dve delnici iz različnih sektorjev imata lahko v običajnem letu zmerno korelacijo 0,42, ko pa aktivirate gumb Crisis Queue, boste videli, da se dvigne na 0,81, ker v paniki prodajata skupaj."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D šok (tečaji × borza)",
+        "intro": "2D matrika hkrati združuje vpliv gibanja obrestnih mer (prek trajanja fiksnega dohodka in občutljivosti obrestne mere) s padcem ali dvigom indeksa S&P 500 (prek Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: scenarij borzne spremembe na vodoravni osi (–20 % do +10 %).",
+            "Δ Obrestne mere: scenarij spremembe obrestnih mer v bazičnih točkah na navpični osi (–100 do +200 bazičnih točk)."
+          ]
+        },
+        "lead": "Kakšen je namen križanja obeh osi v tabeli:",
+        "bullets": [
+          {
+            "bold": "Scenarij stagflacije ali dviga tečajev",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Kot se je zgodilo leta 2022, ko delnice in dolge obveznice trpijo hkrati."
+          },
+          {
+            "bold": "Klasičen scenarij zavetišča",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Kjer nižje obrestne mere dvignejo ceno državnih obveznic in ublažijo padec delnic."
+          }
+        ],
+        "example": "S filtriranjem dolge obveznice, kot je US10Y ali TLT, lahko v tabeli vidite, kako pridobi vrednost, ko tečaji padejo (-100 bps), in deluje kot padalo, če S&P 500 isti dan pade."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markovljevi režimi (št. 11)",
+        "intro": "Markovljeva veriga modelira gospodarstvo kot sistem, ki skače med štirimi možnimi stanji (mirno bikovsko stanje, nestanovitno bikovsko stanje, inflacija/stopnje in kriza) in izračuna verjetnost prehoda iz enega v drugega.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Glavna diagonala (i = j): verjetnost, da trenutni režim ostane nespremenjen.",
+            "Nediagonalno (i ≠ j): verjetnost rotacije v novo tržno klimo."
+          ]
+        },
+        "lead": "Kako izkoristiti prehodno matriko v drugem zavihku:",
+        "bullets": [
+          {
+            "bold": "Vztrajnost trenutnega cikla",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Mirni režimi imajo običajno visoko obstojnost (> 75 %), kar omogoča ohranjanje trendnih pozicij."
+          },
+          {
+            "bold": "Zgodnje opozorilo o rotaciji",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Ko se poveča verjetnost prehoda v nestanovitna stanja, je priporočljivo zmanjšati finančni vzvod ali aktivirati varovanje pred tveganjem."
+          }
+        ],
+        "example": "Če je trg danes v nestanovitnem bikovskem režimu in vrstica označuje 62 % trajnosti, 20 % vračanja v bikovsko umirjenost in 18 % prehoda v stres/krizo, veste, da skoraj 1 od 5 scenarijev povzroči popravek."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Projekcija Monte Carlo (10.000 poti)",
+        "intro": "Na podlagi pričakovanega donosa in trenutne nestanovitnosti vašega portfelja simulator vsak dan ustvari 10.000 možnih prihodnjih trajektorij z uporabo stohastičnega modela geometrijskega Brownovega gibanja.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ in σ: pričakovani letni donos in letna volatilnost vašega trenutnega portfelja.",
+            "Z: standardna normalna naključna spremenljivka, narisana 10.000-krat vzdolž obzorja (6M, 12M ali 24M)."
+          ]
+        },
+        "lead": "Iz teh 10.000 simulacij so izluščene tri glavne krivulje grafa:",
+        "bullets": [
+          {
+            "bold": "Ugoden scenarij",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Raven, ki jo preseže le 5 % najbolj optimističnih scenarijev."
+          },
+          {
+            "bold": "Pričakovana osrednja trajektorija",
+            "code": "Mediana P50",
+            "text": "Tipičen rezultat, kjer je polovica simulacij zgoraj in druga polovica spodaj."
+          },
+          {
+            "bold": "Terminski stresni scenarij",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Negativno dno: v 95 % simuliranih poti se vaš portfelj konča nad to črto."
+          }
+        ],
+        "example": "V 12-mesečnem obdobju na podlagi 100, če je P50 116 in P05 94, je vaše osrednje pričakovanje, da boste zaslužili +16 %, v zelo neugodnem letu pa tvegate skoraj -6 %."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kellyjev kriterij (št. 14)",
+        "intro": "Kellyjev kriterij znanstveno odgovarja, kolikšen odstotek svojega kapitala bi morali nameniti operaciji, ko poznate svojo verjetnost uspeha (Win-Rate) in koliko dobite ob uspehu v primerjavi s tem, kar izgubite ob neuspehu (Payoff Ratio).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p in q: verjetnost zmage (p) in verjetnost izgube (q = 1 − p).",
+            "b (razmerje izplačila): povprečni dobiček, deljen s povprečno izgubo (na primer, zaslužek 2 USD za vsak tvegan 1 USD pomeni b = 2)."
+          ]
+        },
+        "lead": "Zakaj profesionalni menedžerji uporabljajo različico Half-Kelly (0,5×):",
+        "bullets": [
+          {
+            "bold": "Kelly Popolna",
+            "code": "Full Kelly 1.0×",
+            "text": "Povečuje dolgoročno matematično rast, vendar ustvarja zelo močna nihanja, če je niz napak zaporedoma."
+          },
+          {
+            "bold": "Priporočena Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Če uporabite polovico predlaganega odstotka, zajamete 75 % potencialne rasti, vendar prepolovite volatilnost."
+          }
+        ],
+        "example": "Če strategija doseže 55 % časa (p = 0,55, q = 0,45) in se izplača 2 proti 1 (b = 2), Celotni Kelly daje (0,55 × 2 − 0,45) / 2 = 32,5 %, preudarni Half-Kelly pa priporoča dodelitev 16,25 %."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Namestite OTM Shield (#6)",
+        "intro": "Prodajna opcija brez denarja (na primer 5 % pod trenutno ceno S&P 500) deluje tako kot zavarovalna franšiza: ima majhen, fiksni strošek (premija), a če trg pade za 20 % ali 30 %, se njena vrednost konveksno pomnoži in izravna izgube vašega portfelja.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Letni stroški (Carry Drag): letni odstotek, ki ga stane obnovitev zavarovanja, če trg ne pade.",
+            "Zaščita pred zrušitvijo (-20 %): dolarji, povrnjeni s pogodbo Put med hudim zrušitvijo."
+          ]
+        },
+        "lead": "Kako primerjati možnosti simulatorja na prvem zavihku:",
+        "bullets": [
+          {
+            "bold": "Neposredno indeksno zavarovanje",
+            "code": "SPY Put 5% OTM",
+            "text": "Omejuje največjo izgubo s 5-odstotnim padcem v zameno za zmerne letne stroške."
+          },
+          {
+            "bold": "Finančno ali nestanovitno kritje",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Ovratnica zmanjša stroške s prodajo Call up; Call on VIX eksplodira v korist, ko na trgu sproži panika."
+          }
+        ],
+        "example": "Če zaščita portfelja v vrednosti 100.000 $ z SPY Put 5% OTM stane 1,1 % na leto (1.100 $), vendar v primeru -20-odstotnega padca zmanjša upad vašega portfelja na manj kot polovico, neto prihranek preseže 7.000 $."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Kritje in razdalja do zahtevanega kritja (#13)",
+        "intro": "Ko poslujete z izvedenimi finančnimi instrumenti ali finančnim vzvodom, posrednik zahteva vzdrževanje minimalnega odstotka lastniškega kapitala glede na celotno vrednost pozicije (vzdrževalna marža). Če padec zmanjša vaš kapital pod to spodnjo mejo, se sproži Margin Call.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Dolg ali financirano stanje",
+          "denominator": "1 − % marža vzdrževanja (Reg-T)",
+          "vars": [
+            "Bruto izpostavljenost: skupna vsota odprtih pozicij, deljena z lastniškim kapitalom (npr. 1,18 ×).",
+            "Razdalja do klica kritja (%): odstotek padca, ki ga portfelj še vzdržuje, preden doseže prag."
+          ]
+        },
+        "lead": "Stopnje varnosti v nadzorni vrstici:",
+        "bullets": [
+          {
+            "bold": "Veliko varno območje",
+            "code": "Distancia > 30% en verde",
+            "text": "Vzvod je nizek in portfelj lahko absorbira tudi hudo krizo brez prisilne prodaje."
+          },
+          {
+            "bold": "cona previdnosti",
+            "code": "Distancia < 15% en rojo",
+            "text": "Zmerna korekcija trga bi izčrpala prosta zavarovanja in prisilila v likvidacijo pozicij v najslabšem trenutku."
+          }
+        ],
+        "example": "Z zmernim finančnim vzvodom 1,18× in uporabljeno vzdrževalno maržo 22 % ima vaš portfelj več kot 38-odstotno varnostno mejo pred kakršnimi koli zahtevki zavarovanja."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Pravila odbora treh stebrov",
+        "intro": "Da nobena impulzivna odločitev ne bi ogrozila preživetja portfelja, odbor vsako naročilo oceni tako, da združi tehnično opombo, temeljno opombo in dve strogi pravili za nadzor tveganja, o katerih se ni mogoče pogajati.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20 % NAV: nobeno posamezno sredstvo ne more zbrati več kot ene petine celotnih sredstev.",
+            "Zaustavitev anomalije (P-06 ≥ 0,65): če sredstvo vstopi v statistično dislokacijo, sistem zmanjša največjo izpostavljenost na 5 %."
+          ]
+        },
+        "lead": "Kaj vsaka država pomeni v sodbi in v knjigi usmrtitev:",
+        "bullets": [
+          {
+            "bold": "Naročilo odobreno brez omejitev",
+            "code": "APROBADO en verde",
+            "text": "Trije stebri ugodno sovpadajo in velikost pozicije upošteva vse omejitve koncentracije in likvidnosti."
+          },
+          {
+            "bold": "Vrstni red prilagojen z zaščitno ograjo",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Ko vstopnica preseže mejo 20 % ali poskuša močno kupiti sredi anomalije, zaščitna ograja opozori na presežek."
+          }
+        ],
+        "example": "Če poskušate simulirati nakup, ki bi posamezno delnico dvignil na 26 % vašega portfelja, steber 3 (zaščita tveganja in velikosti) označi opozorilo o koncentraciji, tako da ga prilagodite pod 20 %."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Učinkovitost Walk-Forward (WFE)",
+        "intro": "Da bi preverili, ali strategija v preteklosti ni bila preprosto narejena tako, da je izgledala dobro (prekomerno opremljanje), test Walk-Forward primerja njeno delovanje v obdobju načrtovanja (In-Sample) z njeno uspešnostjo v kasnejših še nikoli videnih podatkih (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Letni donos Out-of-Sample (čista validacija)",
+          "denominator": "Letni donos In-Sample (usposabljanje)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): zgodovinski del, ki se uporablja za umerjanje uteži in pravil strategije.",
+            "Out-of-Sample (OOS): naslednji razdelek, kjer se strategija testira v dejanskih pogojih, ne da bi se dotaknili njenih parametrov."
+          ]
+        },
+        "lead": "Kako kvantitativna industrija ocenjuje odstotek WFE:",
+        "bullets": [
+          {
+            "bold": "Trdna in dosledna strategija",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Ohranja veliko večino svoje sposobnosti ustvarjanja dobička, ko se sooča z novimi tržnimi razmerami."
+          },
+          {
+            "bold": "Krhka ali pretirana strategija",
+            "code": "WFE < 50% en rojo",
+            "text": "V teoriji preteklosti je delovalo dobro, v resnici pa izgublja učinkovitost; Ni priporočljivo, da ga izvršite s pravim denarjem."
+          }
+        ],
+        "example": "Če je strategija v fazi načrtovanja (In-Sample) dosegla 20-odstotni letni donos in v naslednji dejanski fazi testiranja (Out-of-Sample) 18,8-odstotni letni donos, je njena učinkovitost WFE (18,8 / 20) = 94,0 %."
+      }
+    ]
+  }
+}

@@ -5,6 +5,7 @@ import {
     ChevronDown,
     Layers,
     Maximize2,
+    Minimize2,
     ArrowLeft,
     ArrowRight,
     Play,
@@ -13,19 +14,12 @@ import {
     Video,
     X
 } from 'lucide-react';
-import { GUIDE_TREE_PAGES, ALL_GUIDE_PAGES } from './guide/guideTreeData';
-import { GUIDE_MODALS_BY_SECTION } from './guide/guideModalsData';
 import { getSavedGuideTypoPreset } from './guide/guideTypographyPresets';
 import GuideInteractiveVideoStage from './guide/GuideInteractiveVideoStage';
-
-const getLevelLabels = (isES) => ({
-    0: isES ? 'Vista Colapsada' : 'Collapsed View',
-    1: isES ? 'Vista Principal' : 'Main View',
-    2: isES ? 'Vista Expandida' : 'Expanded View'
-});
+import { useGuideLocale } from './guide/i18n/useGuideLocale';
 
 /* ── COMPONENTE DE FÓRMULA MATEMÁTICA ESTRUCTURADA (FRACCIONES REALES + LEYENDA) ── */
-function MathFormulaBox({ math, formula, typo, isES = false }) {
+function MathFormulaBox({ math, formula, typo, formulaTitle = 'Mathematical Formula' }) {
     if (!math && !formula) return null;
 
     return (
@@ -51,7 +45,7 @@ function MathFormulaBox({ math, formula, typo, isES = false }) {
                     fontFamily: typo.headingFontFamily
                 }}
             >
-                {isES ? 'Fórmula Matemática' : 'Mathematical Formula'}
+                {formulaTitle}
             </div>
 
             {math ? (
@@ -423,20 +417,107 @@ function formatMediaTime(sec) {
 }
 
 /* ── RECORRIDO VISUAL EN VIVO + PRESENTADOR 4D + REPRODUCTOR DE AUDIO NEURONAL POR PÁGINA ── */
-function GuideMediaPlaceholder({ page, typo, isES = false }) {
+function GuideMediaPlaceholder({ page, typo, isES = false, langCode = 'EN' }) {
     const [audioPlaying, setAudioPlaying] = useState(false);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
     const [animClock, setAnimClock] = useState(0);
     const [speechEnergy, setSpeechEnergy] = useState(0);
+    const [isFullscreen, setIsFullscreen] = useState(false);
+    const [subtitlesEnabled, setSubtitlesEnabled] = useState(true);
 
+    const containerRef = useRef(null);
     const audioRef = useRef(null);
     const audioCtxRef = useRef(null);
     const analyserRef = useRef(null);
     const sourceNodeRef = useRef(null);
 
     const pageId = page?.id || 'home';
-    const audioSrc = `/guide/audio/${pageId}_${isES ? 'es' : 'en'}.mp3?v=3`;
+    const activeLangCode = (langCode || (isES ? 'ES' : 'EN')).toUpperCase();
+    const audioSrc = `/guide/audio/${pageId}_${activeLangCode.toLowerCase()}.mp3?v=6`;
+
+    const ensureAudioAnalyser = useCallback(() => {
+        if (!audioRef.current || sourceNodeRef.current) return;
+        try {
+            const AudioCtx = window.AudioContext || window.webkitAudioContext;
+            if (!AudioCtx) return;
+            const ctx = new AudioCtx();
+            const analyser = ctx.createAnalyser();
+            analyser.fftSize = 128;
+            analyser.smoothingTimeConstant = 0.65;
+            const src = ctx.createMediaElementSource(audioRef.current);
+            src.connect(analyser);
+            analyser.connect(ctx.destination);
+            audioCtxRef.current = ctx;
+            analyserRef.current = analyser;
+            sourceNodeRef.current = src;
+        } catch {
+            // El generador silábico mantiene el lip-sync activo si Web Audio API está restringido
+        }
+    }, []);
+
+    const handleToggleAudio = useCallback(() => {
+        if (!audioRef.current) return;
+        if (!audioRef.current.paused) {
+            audioRef.current.pause();
+            setAudioPlaying(false);
+        } else {
+            ensureAudioAnalyser();
+            if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+                audioCtxRef.current.resume().catch(() => {});
+            }
+            audioRef.current
+                .play()
+                .then(() => setAudioPlaying(true))
+                .catch(() => setAudioPlaying(false));
+        }
+    }, [ensureAudioAnalyser]);
+
+    const handleToggleFullscreen = useCallback(() => {
+        setIsFullscreen((prev) => {
+            const next = !prev;
+            if (next) {
+                if (containerRef.current && containerRef.current.requestFullscreen) {
+                    containerRef.current.requestFullscreen().catch(() => {});
+                }
+            } else if (document.fullscreenElement && document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
+            }
+            return next;
+        });
+    }, []);
+
+    useEffect(() => {
+        const onFsChange = () => {
+            if (!document.fullscreenElement) {
+                setIsFullscreen(false);
+            }
+        };
+        const onKeyDown = (e) => {
+            const tag = (e.target?.tagName || '').toUpperCase();
+            if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target?.isContentEditable) return;
+            if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+            if (e.key === 'Escape') {
+                setIsFullscreen(false);
+            } else if (e.code === 'Space' || e.key === ' ') {
+                e.preventDefault();
+                handleToggleAudio();
+            } else if (e.key === 'c' || e.key === 'C') {
+                e.preventDefault();
+                setSubtitlesEnabled((prev) => !prev);
+            } else if (e.key === 'f' || e.key === 'F') {
+                e.preventDefault();
+                handleToggleFullscreen();
+            }
+        };
+        document.addEventListener('fullscreenchange', onFsChange);
+        document.addEventListener('keydown', onKeyDown);
+        return () => {
+            document.removeEventListener('fullscreenchange', onFsChange);
+            document.removeEventListener('keydown', onKeyDown);
+        };
+    }, [handleToggleAudio, handleToggleFullscreen]);
 
     useEffect(() => {
         setAudioPlaying(false);
@@ -447,7 +528,7 @@ function GuideMediaPlaceholder({ page, typo, isES = false }) {
             audioRef.current.currentTime = 0;
             audioRef.current.load();
         }
-    }, [pageId, isES]);
+    }, [pageId, activeLangCode]);
 
     // Reloj de animación continua (órbita 3D, levitación, parpadeo y lip-sync con Web Audio API)
     useEffect(() => {
@@ -496,47 +577,11 @@ function GuideMediaPlaceholder({ page, typo, isES = false }) {
         };
     }, [audioPlaying]);
 
-    const ensureAudioAnalyser = () => {
-        if (!audioRef.current || sourceNodeRef.current) return;
-        try {
-            const AudioCtx = window.AudioContext || window.webkitAudioContext;
-            if (!AudioCtx) return;
-            const ctx = new AudioCtx();
-            const analyser = ctx.createAnalyser();
-            analyser.fftSize = 128;
-            analyser.smoothingTimeConstant = 0.65;
-            const src = ctx.createMediaElementSource(audioRef.current);
-            src.connect(analyser);
-            analyser.connect(ctx.destination);
-            audioCtxRef.current = ctx;
-            analyserRef.current = analyser;
-            sourceNodeRef.current = src;
-        } catch {
-            // El generador silábico mantiene el lip-sync activo si Web Audio API está restringido
-        }
-    };
-
-    const handleToggleAudio = () => {
-        if (!audioRef.current) return;
-        if (audioPlaying) {
-            audioRef.current.pause();
-            setAudioPlaying(false);
-        } else {
-            ensureAudioAnalyser();
-            if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
-                audioCtxRef.current.resume().catch(() => {});
-            }
-            audioRef.current
-                .play()
-                .then(() => setAudioPlaying(true))
-                .catch(() => setAudioPlaying(false));
-        }
-    };
-
     const handleJumpToScene = (scene) => {
         if (!audioRef.current) return;
         const targetDur = duration || 38;
-        const targetSec = ((scene.startPct + 0.5) / 100) * targetDur;
+        const startPct = scene.startPct ?? 0;
+        const targetSec = ((startPct + 0.3) / 100) * targetDur;
         audioRef.current.currentTime = targetSec;
         setCurrentTime(targetSec);
         if (!audioPlaying) {
@@ -563,19 +608,34 @@ function GuideMediaPlaceholder({ page, typo, isES = false }) {
 
     return (
         <div
-            style={{
-                margin: '0 0 40px',
-                borderRadius: '10px',
-                border: '1px solid rgba(148, 163, 184, 0.22)',
-                background: 'transparent',
-                overflow: 'hidden'
-            }}
+            ref={containerRef}
+            style={
+                isFullscreen
+                    ? {
+                          position: 'fixed',
+                          inset: 0,
+                          zIndex: 9999,
+                          background: '#020617',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'space-between',
+                          overflow: 'hidden'
+                      }
+                    : {
+                          margin: '0 0 40px',
+                          borderRadius: '10px',
+                          border: '1px solid rgba(148, 163, 184, 0.22)',
+                          background: 'transparent',
+                          overflow: 'hidden'
+                      }
+            }
         >
             {/* 1. ESCENARIO VISUAL INTERACTIVO 16:9 CON LA VISTA REAL DE LA APP + ORBE 4D */}
             <GuideInteractiveVideoStage
                 page={page}
                 typo={typo}
                 isES={isES}
+                langCode={activeLangCode}
                 audioPlaying={audioPlaying}
                 currentTime={currentTime}
                 progressPct={progressPct}
@@ -584,15 +644,23 @@ function GuideMediaPlaceholder({ page, typo, isES = false }) {
                 onToggleAudio={handleToggleAudio}
                 onJumpToScene={handleJumpToScene}
                 OrbCharacterComponent={AnimatedOrb4DCharacter}
+                isFullscreen={isFullscreen}
+                subtitlesEnabled={subtitlesEnabled}
             />
 
-            {/* 2. REPRODUCTOR DE AUDIO NEURONAL MULTILINGÜE (AVA MULTILINGUAL) */}
+            {/* 2. BARRA INFERIOR ESTILO YOUTUBE: LÍNEA DE TIEMPO CENTRADA VERTICALMENTE + DURACIÓN + CC (C) + PANTALLA COMPLETA (F) */}
             <audio
                 ref={audioRef}
                 src={audioSrc}
                 preload="metadata"
                 onLoadedMetadata={e => setDuration(e.currentTarget.duration || 0)}
                 onTimeUpdate={e => setCurrentTime(e.currentTarget.currentTime || 0)}
+                onError={e => {
+                    const fallback = `/guide/audio/${pageId}_en.mp3?v=6`;
+                    if (e.currentTarget.src && !e.currentTarget.src.endsWith(fallback)) {
+                        e.currentTarget.src = fallback;
+                    }
+                }}
                 onEnded={() => {
                     setAudioPlaying(false);
                     setCurrentTime(0);
@@ -600,111 +668,150 @@ function GuideMediaPlaceholder({ page, typo, isES = false }) {
             />
             <div
                 style={{
-                    padding: '11px 16px',
+                    height: '44px',
+                    padding: '0 16px',
                     display: 'flex',
-                    flexDirection: 'column',
-                    gap: '10px',
-                    background: 'rgba(2, 6, 23, 0.55)'
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '14px',
+                    background: 'rgba(2, 6, 23, 0.88)'
                 }}
             >
+                {/* BARRA DE PROGRESO CENTRADA VERTICALMENTE */}
                 <div
+                    onClick={handleSeek}
+                    title={isES ? 'Hacé clic para adelantar o retroceder' : 'Click to seek'}
                     style={{
+                        flex: 1,
+                        height: '18px',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'space-between',
-                        gap: '14px',
-                        flexWrap: 'wrap'
+                        cursor: 'pointer'
                     }}
                 >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', minWidth: 0 }}>
-                        <button
-                            type="button"
-                            onClick={handleToggleAudio}
-                            style={{
-                                width: '32px',
-                                height: '32px',
-                                borderRadius: '999px',
-                                border: '1px solid rgba(var(--ui-accent-rgb, 16, 185, 129), 0.55)',
-                                background: audioPlaying
-                                    ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.28)'
-                                    : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
-                                color: '#ffffff',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                cursor: 'pointer',
-                                flexShrink: 0,
-                                boxShadow: audioPlaying ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.4)' : 'none'
-                            }}
-                        >
-                            {audioPlaying ? <Pause size={13} /> : <Play size={13} style={{ marginLeft: '1px' }} />}
-                        </button>
-
-                        <div style={{ minWidth: 0 }}>
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: '6px',
-                                    fontSize: '12.5px',
-                                    fontWeight: 600,
-                                    color: '#e2e8f0',
-                                    fontFamily: typo.headingFontFamily
-                                }}
-                            >
-                                <Volume2 size={13} color="var(--ui-accent, #10b981)" />
-                                <span>
-                                    {isES
-                                        ? `Recorrido narrado de ${page.label} • Presentador 4D + Voz Neuronal Bilingüe`
-                                        : `Spoken walkthrough of ${page.label} • 4D Presenter + Neural Voice`}
-                                </span>
-                            </div>
-                            <div style={{ fontSize: '11.5px', color: '#94a3b8' }}>
-                                {audioPlaying
-                                    ? isES
-                                        ? `Reproduciendo explicación sincronizada (${formatMediaTime(currentTime)} / ${formatMediaTime(duration || 38)})...`
-                                        : `Playing synchronized walkthrough (${formatMediaTime(currentTime)} / ${formatMediaTime(duration || 35)})...`
-                                    : isES
-                                    ? 'Hacé clic en Play o en cualquier capítulo superior para ver y escuchar el recorrido en vivo.'
-                                    : 'Click Play or any chapter pill above to watch and listen to the live walkthrough.'}
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* BARRA DE PROGRESO DE AUDIO Y DURACIÓN */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexShrink: 0 }}>
+                    <div
+                        style={{
+                            width: '100%',
+                            height: '6px',
+                            borderRadius: '999px',
+                            background: 'rgba(148, 163, 184, 0.24)',
+                            position: 'relative',
+                            overflow: 'visible'
+                        }}
+                    >
                         <div
-                            onClick={handleSeek}
-                            title={isES ? 'Hacé clic para adelantar o retroceder' : 'Click to seek'}
                             style={{
-                                width: '130px',
-                                height: '6px',
+                                width: `${progressPct}%`,
+                                height: '100%',
                                 borderRadius: '999px',
-                                background: 'rgba(148, 163, 184, 0.22)',
-                                overflow: 'hidden',
-                                cursor: 'pointer'
+                                background: 'var(--ui-accent, #10b981)',
+                                transition: 'width 0.1s linear',
+                                position: 'relative'
                             }}
                         >
-                            <div
+                            <span
                                 style={{
-                                    width: `${progressPct}%`,
-                                    height: '100%',
-                                    background: 'var(--ui-accent, #10b981)',
-                                    transition: 'width 0.1s linear'
+                                    position: 'absolute',
+                                    right: '-5px',
+                                    top: '50%',
+                                    transform: 'translateY(-50%)',
+                                    width: '11px',
+                                    height: '11px',
+                                    borderRadius: '999px',
+                                    background: '#ffffff',
+                                    border: '2px solid var(--ui-accent, #10b981)',
+                                    boxShadow: '0 0 8px rgba(16, 185, 129, 0.7)'
                                 }}
                             />
                         </div>
-                        <span
-                            style={{
-                                fontSize: '11px',
-                                color: '#94a3b8',
-                                fontFamily: 'var(--font-mono)'
-                            }}
-                        >
-                            {`${formatMediaTime(currentTime)} / ${formatMediaTime(duration || 38)}`}
-                        </span>
                     </div>
                 </div>
+
+                {/* TIEMPO TRANSCURRIDO / TOTAL CENTRADO VERTICALMENTE */}
+                <span
+                    style={{
+                        fontSize: '11.5px',
+                        color: '#cbd5e1',
+                        fontFamily: 'var(--font-mono)',
+                        fontWeight: 600,
+                        whiteSpace: 'nowrap',
+                        flexShrink: 0
+                    }}
+                >
+                    {`${formatMediaTime(currentTime)} / ${formatMediaTime(duration || 38)}`}
+                </span>
+
+                {/* BOTÓN DE SUBTÍTULOS CC (ATAJO: TECLA C) */}
+                <button
+                    type="button"
+                    onClick={() => setSubtitlesEnabled(prev => !prev)}
+                    title={
+                        isES
+                            ? `Subtítulos (c) • ${subtitlesEnabled ? 'Activados' : 'Desactivados'}`
+                            : `Subtitles/closed captions (c) • ${subtitlesEnabled ? 'On' : 'Off'}`
+                    }
+                    style={{
+                        height: '28px',
+                        padding: '0 9px',
+                        borderRadius: '5px',
+                        border: subtitlesEnabled
+                            ? '1px solid var(--ui-accent, #10b981)'
+                            : '1px solid rgba(148, 163, 184, 0.25)',
+                        borderBottom: subtitlesEnabled
+                            ? '2.5px solid var(--ui-accent, #10b981)'
+                            : '1px solid rgba(148, 163, 184, 0.25)',
+                        background: subtitlesEnabled
+                            ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.18)'
+                            : 'rgba(15, 23, 42, 0.65)',
+                        color: subtitlesEnabled ? '#ffffff' : '#94a3b8',
+                        fontSize: '11px',
+                        fontWeight: 800,
+                        fontFamily: 'var(--font-mono)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        flexShrink: 0,
+                        transition: 'all 0.15s ease'
+                    }}
+                >
+                    CC
+                </button>
+
+                {/* BOTÓN DE PANTALLA COMPLETA (ATAJO: TECLA F) */}
+                <button
+                    type="button"
+                    onClick={handleToggleFullscreen}
+                    title={
+                        isFullscreen
+                            ? isES
+                                ? 'Salir de pantalla completa (f)'
+                                : 'Exit full screen (f)'
+                            : isES
+                            ? 'Pantalla completa (f)'
+                            : 'Full screen (f)'
+                    }
+                    style={{
+                        height: '28px',
+                        width: '30px',
+                        borderRadius: '5px',
+                        border: isFullscreen
+                            ? '1px solid var(--ui-accent, #10b981)'
+                            : '1px solid rgba(148, 163, 184, 0.25)',
+                        background: isFullscreen
+                            ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.18)'
+                            : 'rgba(15, 23, 42, 0.65)',
+                        color: '#ffffff',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        flexShrink: 0,
+                        transition: 'all 0.15s ease'
+                    }}
+                >
+                    {isFullscreen ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
+                </button>
             </div>
         </div>
     );
@@ -712,7 +819,18 @@ function GuideMediaPlaceholder({ page, typo, isES = false }) {
 
 export default function UserGuideView({ langCode = 'EN', typoPresetOverride = null, compactHeight = false }) {
     const isES = langCode === 'ES';
-    const LEVEL_LABELS = getLevelLabels(isES);
+    const {
+        ui: guideUI,
+        treePages: GUIDE_TREE_PAGES,
+        allPages: ALL_GUIDE_PAGES,
+        modalsBySection: GUIDE_MODALS_BY_SECTION
+    } = useGuideLocale(langCode);
+
+    const LEVEL_LABELS = {
+        0: guideUI?.collapsedView || 'Collapsed View',
+        1: guideUI?.mainView || 'Main View',
+        2: guideUI?.expandedView || 'Expanded View'
+    };
     const [activePageId, setActivePageId] = useState('home');
     const [activeSectionId, setActiveSectionId] = useState('home-canvas');
     const [menuLevel, setMenuLevel] = useState(1);
@@ -1004,7 +1122,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                     height: '100%',
                     margin: '0 auto',
                     display: 'grid',
-                    gridTemplateColumns: '235px minmax(0, 1fr) 215px',
+                    gridTemplateColumns: '235px minmax(0, 1fr)',
                     gap: '32px',
                     alignItems: 'stretch',
                     background: 'transparent'
@@ -1133,7 +1251,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                 >
                     <div
                         style={{
-                            maxWidth: '750px',
+                            maxWidth: '100%',
                             letterSpacing: typo.letterSpacing
                         }}
                     >
@@ -1205,7 +1323,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                 fontWeight: 600
                             }}
                         >
-                            {isES ? 'En esta sección vas a encontrar:' : 'In this section you will find:'}
+                            {guideUI?.inThisSection || 'In this section you will find:'}
                         </p>
 
                         <ul
@@ -1235,15 +1353,15 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                             cursor: 'pointer'
                                         }}
                                     >
-                                        {sec.label}
+                                        {sec.label}:
                                     </button>
-                                    <span>. {sec.summary}</span>
+                                    <span> {sec.summary}</span>
                                 </li>
                             ))}
                         </ul>
 
                         {/* PLACEHOLDER DE VIDEO Y AUDIO (ESTILO DOCKER DOCS) */}
-                        <GuideMediaPlaceholder page={activePage} typo={typo} isES={isES} />
+                        <GuideMediaPlaceholder page={activePage} typo={typo} isES={isES} langCode={langCode} />
 
                         {/* SECCIONES DE LECTURA CONTINUA */}
                         {activePage.sections.map(sec => (
@@ -1301,7 +1419,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                             }}
                                         >
                                             <Maximize2 size={12} />
-                                            {isES ? 'Profundizar' : 'Deep Dive'}
+                                            {guideUI?.deepDive || 'Deep Dive'}
                                         </button>
                                     )}
                                 </div>
@@ -1339,8 +1457,8 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                             }}
                                         >
                                             <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
-                                                {b.bold.replace(/\.$/, '')}
-                                                {b.code ? ` (${b.code})` : ''}.
+                                                {b.bold.replace(/[.:]$/, '')}
+                                                {b.code ? ` (${b.code})` : ''}:
                                             </strong>{' '}
                                             <span>{b.text}</span>
                                         </li>
@@ -1380,7 +1498,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                 }}
                             >
                                 <ArrowLeft size={14} />
-                                <span>{isES ? 'Anterior' : 'Previous'}: {prevPage.label}</span>
+                                <span>{guideUI?.previous || 'Previous'}: {prevPage.label}</span>
                             </button>
 
                             <button
@@ -1400,75 +1518,12 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                     cursor: 'pointer'
                                 }}
                             >
-                                <span>{isES ? 'Siguiente' : 'Next'}: {nextPage.label}</span>
+                                <span>{guideUI?.next || 'Next'}: {nextPage.label}</span>
                                 <ArrowRight size={14} />
                             </button>
                         </div>
                     </div>
                 </main>
-
-                {/* ══════════════════════════════════════════════════════════════
-                    3. ÍNDICE DERECHO "EN ESTA PÁGINA"
-                       - Ilumina únicamente el ítem activo (el más bajo en pantalla)
-                   ══════════════════════════════════════════════════════════════ */}
-                <aside
-                    style={{
-                        height: '100%',
-                        overflowY: 'auto',
-                        paddingTop: '4px'
-                    }}
-                >
-                    <div
-                        style={{
-                            fontSize: '13.5px',
-                            fontWeight: 700,
-                            fontFamily: typo.headingFontFamily,
-                            color: '#ffffff',
-                            marginBottom: '10px',
-                            paddingLeft: '12px'
-                        }}
-                    >
-                        {isES ? 'En esta página' : 'On this page'}
-                    </div>
-
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexDirection: 'column',
-                            borderLeft: '1px solid rgba(148, 163, 184, 0.14)'
-                        }}
-                    >
-                        {activePage.sections.map(sec => {
-                            const isCurrent = activeSectionId === sec.id;
-                            return (
-                                <button
-                                    key={sec.id}
-                                    onClick={() => handleSelectSection(activePage.id, sec.id)}
-                                    style={{
-                                        padding: '6px 12px',
-                                        border: 'none',
-                                        borderLeft: isCurrent
-                                            ? '2px solid var(--ui-accent, #10b981)'
-                                            : '2px solid transparent',
-                                        marginLeft: '-1px',
-                                        background: isCurrent
-                                            ? 'rgba(var(--ui-accent-rgb, 16,185,129), 0.12)'
-                                            : 'transparent',
-                                        color: isCurrent ? '#ffffff' : '#94a3b8',
-                                        fontSize: '12.5px',
-                                        fontWeight: isCurrent ? 600 : 400,
-                                        fontFamily: typo.headingFontFamily,
-                                        textAlign: 'left',
-                                        cursor: 'pointer',
-                                        transition: 'all 0.14s ease'
-                                    }}
-                                >
-                                    {sec.label}
-                                </button>
-                            );
-                        })}
-                    </div>
-                </aside>
             </div>
 
             {/* VENTANA EMERGENTE TÉCNICA (PROFUNDIZAR) RENDERIZADA EN PORTAL PARA BLOQUEAR EL RESTO DE LA PANTALLA IGUAL QUE IDIOMA */}
@@ -1476,8 +1531,10 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                 typeof document !== 'undefined' &&
                 createPortal(
                     (() => {
+                        const liveModalSection =
+                            activePage?.sections?.find(s => s.id === modalSection.id) || modalSection;
                         const modalTabs =
-                            modalSection.modalTabs || GUIDE_MODALS_BY_SECTION[modalSection.id] || [];
+                            GUIDE_MODALS_BY_SECTION[liveModalSection.id] || liveModalSection.modalTabs || [];
                         const activeTab = modalTabs[modalTabIdx] || modalTabs[0] || null;
 
                         return (
@@ -1535,7 +1592,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                                     fontFamily: typo.headingFontFamily
                                                 }}
                                             >
-                                                {isES ? 'Profundizar' : 'Deep Dive'} • {activePage.label}
+                                                {guideUI?.deepDive || 'Deep Dive'} • {activePage.label}
                                             </div>
                                             <div
                                                 style={{
@@ -1546,7 +1603,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                                     marginTop: '2px'
                                                 }}
                                             >
-                                                {modalSection.label}
+                                                {liveModalSection.label}
                                             </div>
                                         </div>
                                         <button
@@ -1643,7 +1700,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                                     math={activeTab.math}
                                                     formula={activeTab.formula}
                                                     typo={typo}
-                                                    isES={isES}
+                                                    formulaTitle={guideUI?.mathFormula || 'Mathematical Formula'}
                                                 />
 
                                                 {activeTab.lead && (
@@ -1681,8 +1738,8 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                                                 }}
                                                             >
                                                                 <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
-                                                                    {b.bold.replace(/\.$/, '')}
-                                                                    {b.code ? ` (${b.code})` : ''}.
+                                                                    {b.bold.replace(/[.:]$/, '')}
+                                                                    {b.code ? ` (${b.code})` : ''}:
                                                                 </strong>{' '}
                                                                 <span>{b.text}</span>
                                                             </li>
@@ -1704,7 +1761,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                                         }}
                                                     >
                                                         <strong style={{ color: '#ffffff' }}>
-                                                            {isES ? 'Ejemplo práctico: ' : 'Practical example: '}
+                                                            {guideUI?.practicalExample || 'Practical example: '}
                                                         </strong>
                                                         {activeTab.example}
                                                     </div>
@@ -1723,7 +1780,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                                                 lineHeight: 1.68
                                             }}
                                         >
-                                            {modalSection.modalPreview}
+                                            {liveModalSection.modalPreview}
                                         </div>
                                     )}
                                 </div>

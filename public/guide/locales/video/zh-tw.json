@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "即時視覺演練",
+      "clickPlayPause": "按一下播放或暫停（空白鍵）",
+      "subtitles": "字幕（C）",
+      "fullscreen": "全螢幕 (F)",
+      "exitFullscreen": "退出全螢幕（F 或 Esc）",
+      "portTabs": [
+        "建設者",
+        "風險",
+        "模擬器",
+        "副駕駛"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header(λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • 語言",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • 類別",
+      "scr-pulse": "02 • 24小時脈搏",
+      "scr-table": "03 • 表",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • 熱圖",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • 科技",
+      "ana-compare": "03 • 比較%",
+      "ana-micro": "04 • 微流",
+      "ana-engines": "05 • 3D/2D 引擎",
+      "res-hero": "01 • 分數與立場",
+      "res-rag": "02 • RAG 聊天",
+      "res-factors": "03 • 因素",
+      "res-pulse24h": "04 • FinBERT脈衝",
+      "p1-pills": "01 • 總結",
+      "p1-table": "02 • 加權",
+      "p1-xray": "03 • X射線",
+      "p1-calendar": "04 • 日曆",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • 龍捲風&VaR",
+      "p2-corr": "03 • 相關性",
+      "p2-shock2d": "04 • 休克與馬可夫",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • 影響",
+      "p3-whatif": "02 • What-If & 凱利",
+      "p3-tailhedge": "03 • 價外賣權和保證金",
+      "p3-committee": "04 • 委員會及日誌",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "歡迎來到 Home 螢幕：您可以在不受干擾的情況下解碼市場。",
+      "home-header": "在 Header 的左上角，點擊 λ 圖示總是會帶您回到這個主舞台。",
+      "home-markets": "Markets 位於 Header 頂部的中心，它是您即時研究所有 213 個全球資產的工作站。",
+      "home-portfolio": "在它旁邊的中央選單中是 Portfolio，用於建立分配、壓力測試風險和模擬交易。",
+      "home-system": "在左下角的 Footer 中，System 開啟伺服器和資料庫的即時可觀察性監視器。",
+      "home-guide": "除此之外，Guide 還可以在您需要時開啟此互動式逐步手冊。",
+      "home-langs": "右下角的語言按鈕可開啟居中模式，將平台翻譯成 56 種語言。",
+      "home-palettes": "而Palette則在嚴格保留金融綠、紅的情況下，開啟了5個視覺閱讀主題。",
+      "scr-categories": "在頂部類別欄中，篩選所有 213 種資產、您的 Watchlist 或 10 個專業市場。",
+      "scr-pulse": "4 脈衝 24 小時卡顯示聚合交易量、平均 RSI、P-06 狀態和頂部交易量錯位。",
+      "scr-table": "互動式表格具有即時搜尋、收藏夾和針對每種資產類別量身定制的智慧列。",
+      "scr-orbital": "Orbital 視圖透過即時側面檢查面板的偏差將資產映射到三個同心環。",
+      "scr-heatmap": "熱圖將排名前 10 的資產排列成 8 種綠色和紅色陰影的比例塊。",
+      "scr-maintools": "Main Tools 透過三個步驟引導您使用主權曲線、3D 波動性、外匯交叉和期貨引擎。",
+      "ana-hero": "Header結合了資產切換器、從1m到ALL的9個時間範圍以及5個核心指標。",
+      "ana-technical": "技術鏡頭涵蓋 SMA 20、VWAP 和 2σ 布林通道，並確認底部成交量。",
+      "ana-compare": "使用“比較%”，可衡量相對於相容同業或指數從0%開始的淨百分比優勢或Alpha Spread。",
+      "ana-micro": "Micro & Flow 透過 20d Z 分數、價差流動性錯位和 P-06 異常分數來偵測交易量峰值。",
+      "ana-engines": "第四個選項卡是一個動態臨時工具，因資產類別而異：因為 NVDA 是股票，所以它打開 3D 波動性和選擇權收益，而債券、外匯和大宗商品則推出自己的專用工具。",
+      "res-hero": "頂部的“分數和立場”總結了基本結論、加權評級和標題溫度計。",
+      "res-rag": "在左側欄中，RAG 文件聊天回答了基於官方 SEC 10-K 和 10-Q 文件的經過驗證的查詢。",
+      "res-factors": "在中間一欄中，因素手風琴將前 5 個牛市驅動因素與前 5 個熊市風險進行了對比。",
+      "res-pulse24h": "右側，FinBERT Pulse 即時得分突發頭條新聞並繪製 24 小時情緒曲線。",
+      "p1-pills": "6 張摘要卡重新計算即時 CAGR、Sharpe 和 Sortino、95% VaR、Max Drawdown、Alpha 和多樣化。",
+      "p1-table": "在權重表中，新增 213 項資產中的任一項，設定準確的百分比權重，或重新平衡至 100%。",
+      "p1-xray": "右上角，5 個選項卡的 X 光面板審核 ETF 重疊、風險暴露、布林森歸因、現金流和託管。",
+      "p1-calendar": "在 X-Ray 下方，月曆顯示 1 月至 12 月的回報一致性和年初至今總計。",
+      "p1-backtest": "在全角底部，Backtesting 將您的投資組合與 S&P 500、60/40、All-Weather 和 Min-Variance 進行比較。",
+      "p2-markowitz": "第一象限繪製了二維 Markowitz 有效前沿，並將您的投資組合與 Min-Var 和 Max-Sharpe 進行比較。",
+      "p2-tornado": "左下象限測試 5 次歷史危機、每項資產 95% VaR 貢獻以及上行/下行捕獲。",
+      "p2-corr": "右上方的 6×6 矩陣比較了正常條件下與危機尾部傳染的相關性。",
+      "p2-shock2d": "右下角，Shock & Markov 將利率變動與 S&P 500 變動交叉，並估計制度轉變。",
+      "p2-montecarlo": "底部面板投射 10,000 條 Monte Carlo 路徑，橫跨 P95、P50 和 P05、水下回撤和滾動 Sharpe。",
+      "p3-impact": "6 張影響卡將您目前的投資組合與模擬交易後的預測狀態進行比較。",
+      "p3-whatif": "左上角，What-If 和 Kelly 模擬買入或賣出門票併計算最佳 Half-Kelly 部位大小。",
+      "p3-tailhedge": "左下角，OTM 看跌期權和保證金模擬保護性期權屏蔽並監控 Reg-T 維持保證金。",
+      "p3-committee": "在右側的兩個面板中，三支柱委員會與執行日誌和副駕駛一起審查風險護欄。",
+      "p3-walkforward": "底部的 Walk-Forward 圖表透過 WFE 指數驗證了 In-Sample 和 Out-of-Sample 的效能。"
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 10.3
+      },
+      {
+        "id": "home-header",
+        "startPct": 10.3,
+        "endPct": 21.4
+      },
+      {
+        "id": "home-markets",
+        "startPct": 21.4,
+        "endPct": 35.8
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 35.8,
+        "endPct": 50.7
+      },
+      {
+        "id": "home-system",
+        "startPct": 50.7,
+        "endPct": 63.8
+      },
+      {
+        "id": "home-guide",
+        "startPct": 63.8,
+        "endPct": 74.3
+      },
+      {
+        "id": "home-langs",
+        "startPct": 74.3,
+        "endPct": 86.6
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 86.6,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 17.1
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 17.1,
+        "endPct": 37.1
+      },
+      {
+        "id": "scr-table",
+        "startPct": 37.1,
+        "endPct": 53.9
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 53.9,
+        "endPct": 68.8
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 68.8,
+        "endPct": 82.3
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 82.3,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 15.3
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 15.3,
+        "endPct": 30.9
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 30.9,
+        "endPct": 49.1
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 49.1,
+        "endPct": 67.3
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 67.3,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 20.6
+      },
+      {
+        "id": "res-rag",
+        "startPct": 20.6,
+        "endPct": 49.6
+      },
+      {
+        "id": "res-factors",
+        "startPct": 49.6,
+        "endPct": 75.8
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 75.8,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 21.4
+      },
+      {
+        "id": "p1-table",
+        "startPct": 21.4,
+        "endPct": 44
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 44,
+        "endPct": 64.5
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 64.5,
+        "endPct": 79.2
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 79.2,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 19.9
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 19.9,
+        "endPct": 40.6
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 40.6,
+        "endPct": 57.4
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 57.4,
+        "endPct": 76.9
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 76.9,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 18.4
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 18.4,
+        "endPct": 37.1
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 37.1,
+        "endPct": 60
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 60,
+        "endPct": 82.2
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 82.2,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

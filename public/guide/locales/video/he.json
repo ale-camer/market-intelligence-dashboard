@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "הדרכה חזותית חיה",
+      "clickPlayPause": "לחץ כדי לשחק או להשהות (רווח)",
+      "subtitles": "כתוביות (C)",
+      "fullscreen": "מסך מלא (F)",
+      "exitFullscreen": "צא ממסך מלא (F או Esc)",
+      "portTabs": [
+        "בונה",
+        "סיכון",
+        "סימולטור",
+        "טייס משנה"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • שפות",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • קטגוריות",
+      "scr-pulse": "02 • דופק 24 שעות",
+      "scr-table": "03 • שולחן",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • מפת חום",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • טכני",
+      "ana-compare": "03 • השווה %",
+      "ana-micro": "04 • Micro & Flow",
+      "ana-engines": "05 • מנועי 3D/2D",
+      "res-hero": "01 • ניקוד ועמדה",
+      "res-rag": "02 • צ'אט RAG",
+      "res-factors": "03 • גורמים",
+      "res-pulse24h": "04 • FinBERT דופק",
+      "p1-pills": "01 • סיכום",
+      "p1-table": "02 • שקלול",
+      "p1-xray": "03 • רנטגן",
+      "p1-calendar": "04 • לוח שנה",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • טורנדו ו-VaR",
+      "p2-corr": "03 • מתאם",
+      "p2-shock2d": "04 • הלם ומרקוב",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • השפעה",
+      "p3-whatif": "02 • What-If & Kelly",
+      "p3-tailhedge": "03 • OTM Put & Margin",
+      "p3-committee": "04 • ועדה ויומן",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "ברוכים הבאים למסך Home: נקודת ההתחלה נטולת הסחות דעת שבה השווקים מפוענחים.",
+      "home-header": "בפינה השמאלית העליונה של Header, לחיצה על הסמל λ תמיד מחזירה אותך ישר לשלב הראשי הזה.",
+      "home-markets": "במרכז ה-Header נמצאת Markets, תחנת העבודה שלך לחקור את כל 213 הנכסים העולמיים בזמן אמת.",
+      "home-portfolio": "ממש לידו בתפריט הממורכז נמצא Portfolio, לבניית הקצאות, בדיקת סיכון ומדמיית עסקאות.",
+      "home-system": "למטה בפינה השמאלית התחתונה Footer, System פותח את מוניטור הצפייה החיה עבור שרתים ומסדי נתונים.",
+      "home-guide": "לצדו, Guide פותח את המדריך האינטראקטיבי הזה שלב אחר שלב בכל פעם שתזדקק לו.",
+      "home-langs": "בפינה השמאלית התחתונה, כפתור השפה פותח את המודאל הממורכז כדי לתרגם את הפלטפורמה ל-56 שפות.",
+      "home-palettes": "ו-Palette פותח את 5 ערכות נושא הקריאה החזותיות תוך שמירה על הירוק והאדום הפיננסי ללא פגע.",
+      "scr-categories": "בסרגל הקטגוריות העליון, סנן על פני כל 213 הנכסים, ה-Watchlist שלך או 10 שווקים מיוחדים.",
+      "scr-pulse": "הכרטיסים 4 Pulse 24h מציגים נפח מצטבר, RSI ממוצע, משטר P-06 ונקעים בנפח העליון.",
+      "scr-table": "הטבלה האינטראקטיבית כוללת חיפוש מיידי, מועדפים ועמודות חכמות המותאמות לכל סוג נכס.",
+      "scr-orbital": "התצוגה Orbital ממפה נכסים על פני שלוש טבעות קונצנטריות על ידי סטייה עם לוח בדיקה חי.",
+      "scr-heatmap": "מפת החום מסדרת את 10 הנכסים המובילים בלוקים פרופורציונליים על פני 8 גוונים של ירוק ואדום.",
+      "scr-maintools": "ו-Main Tools מנחה אותך בשלושה שלבים לעקומות ריבוניות, תנודתיות תלת-ממדית, FX Cross ומנועים עתידיים.",
+      "ana-hero": "ה-Header משלב את מחליף הנכסים, 9 מסגרות זמן מ-1m עד ALL, ו-5 מחווני הליבה.",
+      "ana-technical": "העדשה הטכנית מכסה רצועות SMA 20, VWAP ו-2σ בולינגר עם אישור נפח תחתון.",
+      "ana-compare": "עם Compare %, מדוד אחוז יתרון נטו או Alpha Spread מ-0% מול עמית או מדד תואם.",
+      "ana-micro": "Micro & Flow מזהה עליות נפח באמצעות 20d Z-Score, פיזור נזילות וציון אנומליה P-06.",
+      "ana-engines": "הכרטיסייה הרביעית היא כלי אד-הוק דינמי המשתנה לפי דרגת נכסים: מכיוון ש-NVDA היא מניות, היא פותחת תנודתיות ואפשרויות תלת-ממדיות, בעוד שאג\"ח, מטבעות וסחורות משיקים כלים מיוחדים משלהם.",
+      "res-hero": "בחלק העליון, Score & Stance מסכמים את פסק הדין הבסיסי, הדירוג המשוקלל ומדחום הכותרת.",
+      "res-rag": "בעמודה השמאלית, RAG Document Chat עונה על שאילתות מאומתות המבוססות על רישומים רשמיים של SEC 10-K ו-10-Q.",
+      "res-factors": "בעמודה המרכזית, אקורדיון הפקטורים מעמיד את 5 נהגי השוורים המובילים מול 5 הסיכונים המובילים.",
+      "res-pulse24h": "בצד ימין, FinBERT Pulse מבקיע כותרות שוברות בזמן אמת ומשרטט את עקומת הסנטימנט של 24 שעות.",
+      "p1-pills": "6 כרטיסי הסיכום מחשבים מחדש את CAGR, Sharpe ו-Sortino, 95% VaR, Max Drawdown, אלפא וגיוון.",
+      "p1-table": "בטבלת הניפוח, הוסף כל אחד מ-213 הנכסים, הגדר משקלי אחוז מדויקים או איזון מחדש ל-100%.",
+      "p1-xray": "מימין למעלה, פאנל X-Ray בעל 5 כרטיסיות בוחן חפיפה של תעודות סל, חשיפה, ייחוס ברינסון, תזרים מזומנים ומשמורת.",
+      "p1-calendar": "מתחת לרנטגן, לוח השנה החודשי מציג את עקביות ההחזרות בינואר עד דצמבר וסיכומי YTD.",
+      "p1-backtest": "ובחלק התחתון ברוחב המלא, Backtesting משווה את הפורטפוליו שלך מול ה-S&P 500, 60/40, All-Weather ו-Min-Variance.",
+      "p2-markowitz": "הרביע הראשון משרטט את 2D Markowitz Efficient Frontier ומציב את תיק העבודות שלך מול Min-Var ו-Max-Sharpe.",
+      "p2-tornado": "הרביע השמאלי התחתון בודק 5 משברים היסטוריים, 95% תרומה של VaR לכל נכס ולכידת הפוך/למטה.",
+      "p2-corr": "מימין למעלה, מטריקס 6×6 משווה מתאמים בתנאים רגילים מול הדבקה בזנב משבר.",
+      "p2-shock2d": "מימין למטה, Shock & Markov חוצים את שינויי הריבית עם מהלכי S&P 500 ומעריכים מעברי משטר.",
+      "p2-montecarlo": "והפאנל התחתון מקרין 10,000 נתיבים של Monte Carlo על פני P95, P50 ו-P05, Drawdown מתחת למים ו-Sharpe מתגלגל.",
+      "p3-impact": "6 כרטיסי ההשפעה משווים את התיק הנוכחי שלך מול המצב החזוי לאחר העסקאות המדומות שלך.",
+      "p3-whatif": "משמאל למעלה, What-If & Kelly מדמים קנייה או מכירה של כרטיסים ומחשבים את גודל המיקום האופטימלי של Half-Kelly.",
+      "p3-tailhedge": "משמאל למטה, OTM Put & Margin מדמה מגיני אפשרויות הגנה ומנטר את שולי התחזוקה של Reg-T.",
+      "p3-committee": "בשני הפאנלים הימניים, מבקר ועדת 3 העמודים מעקות בטיחות לצד יומן הביצוע וטייס המשנה.",
+      "p3-walkforward": "ובחלק התחתון, תרשים Walk-Forward מאמת את ביצועי In-Sample ו-Out-of-Sample עם אינדקס WFE."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 10.9
+      },
+      {
+        "id": "home-header",
+        "startPct": 10.9,
+        "endPct": 22.3
+      },
+      {
+        "id": "home-markets",
+        "startPct": 22.3,
+        "endPct": 36.9
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 36.9,
+        "endPct": 49.8
+      },
+      {
+        "id": "home-system",
+        "startPct": 49.8,
+        "endPct": 62.4
+      },
+      {
+        "id": "home-guide",
+        "startPct": 62.4,
+        "endPct": 73.6
+      },
+      {
+        "id": "home-langs",
+        "startPct": 73.6,
+        "endPct": 87.6
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 87.6,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 23
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 23,
+        "endPct": 44.4
+      },
+      {
+        "id": "scr-table",
+        "startPct": 44.4,
+        "endPct": 61.1
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 61.1,
+        "endPct": 76.7
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 76.7,
+        "endPct": 92.8
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 92.8,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 18.3
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 18.3,
+        "endPct": 35.8
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 35.8,
+        "endPct": 51.5
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 51.5,
+        "endPct": 64.4
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 64.4,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 22.8
+      },
+      {
+        "id": "res-rag",
+        "startPct": 22.8,
+        "endPct": 51.1
+      },
+      {
+        "id": "res-factors",
+        "startPct": 51.1,
+        "endPct": 75.8
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 75.8,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 23.5
+      },
+      {
+        "id": "p1-table",
+        "startPct": 23.5,
+        "endPct": 44.5
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 44.5,
+        "endPct": 68.9
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 68.9,
+        "endPct": 84.7
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 84.7,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 19
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 19,
+        "endPct": 39.5
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 39.5,
+        "endPct": 54.2
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 54.2,
+        "endPct": 73.5
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 73.5,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 18.4
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 18.4,
+        "endPct": 42.6
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 42.6,
+        "endPct": 61.7
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 61.7,
+        "endPct": 80.3
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 80.3,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

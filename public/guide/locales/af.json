@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Ineengevoude aansig",
+    "mainView": "Hoofaansig",
+    "expandedView": "Uitgebreide aansig",
+    "inThisSection": "In hierdie afdeling sal jy vind:",
+    "deepDive": "Diep duik",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "mathFormula": "Wiskundige Formule",
+    "practicalExample": "Praktiese voorbeeld:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Wanneer jy 'n tradisionele finansiële platform oopmaak, is die eerste ding wat gewoonlik verskyn, dosyne kaarte, flikkerende tabelle en spyskaarte oral. Waar begin jy as jy net die mark wil nagaan of kyk hoe jou portefeulje vaar?",
+        "Die Home-skerm is presies ontwerp om daardie aanvanklike geraas te vermy. Dit verwelkom jou met 'n skoon en duidelike ruimte waar alle beheer in twee vaste stawe gekonsentreer is: een bo om werk toe te gaan en 'n ander onder om die platform te konfigureer om jou te pas."
+      ],
+      "intro": "Die Home-skerm verwelkom jou met 'n skoon en duidelike ruimte waar alle beheer in twee vaste stawe gekonsentreer is: een bo om werk toe te gaan en 'n ander onder om die platform op te stel om by jou te pas.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Die duidelike beginpunt wat jou werk verdeel in markontleding en portefeuljebestuur.",
+          "paragraphs": [
+            "Stel jou voor dat jy die eerste ding in die oggend begin handel dryf. Soms sal jy wil kyk watter aandele, effekte of geldeenhede die meeste beweeg; Ander kere sal jy reguit gaan om die risiko van jou portefeulje te hersien of 'n aankoop te simuleer voordat jy dit uitvoer.",
+            "Hoe vermy jy om die twee dinge op dieselfde oorlaaide skerm te meng? Die omslag skei duidelik daardie pad van die eerste sekonde:"
+          ],
+          "lead": "Hoe vermy jy om die twee dinge op dieselfde oorlaaide skerm te meng? Die omslag skei duidelik daardie pad van die eerste sekonde:",
+          "bullets": [
+            {
+              "bold": "Ruimte sonder afleiding",
+              "code": "Donde se decodifican los mercados",
+              "text": "Wanneer jy ingaan, is daar geen oop tafels of waarskuwings wat jou dwing om vensters toe te maak voordat jy begin nie; Jy kies watter module om oop te maak."
+            },
+            {
+              "bold": "Twee duidelike paadjies",
+              "code": "Markets / Portfolio",
+              "text": "Die hele vloei van die aansoek word in twee hooffases verdeel: eers navorsingsgeleenthede in die markte en bou of toets dan jou portefeulje."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Die boonste balk om met een klik tussen die huis, die markte en jou portefeulje te spring.",
+          "paragraphs": [
+            "Soos jy in die besonderhede van 'n bate delf of veranderinge aan jou portefeulje toets, is dit baie maklik om tred te verloor met waar jy was. Hoe gaan jy van kyk na 'n aandelegrafiek na hersiening van jou portefeulje sonder om deur submenu's te gaan?",
+            "Die boonste balk bly altyd vas op die skerm en gee jou direkte toegang tot die drie hoofpunte:"
+          ],
+          "lead": "Die boonste balk bly altyd vas op die skerm en gee jou direkte toegang tot die drie hoofpunte:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Waar jy ook al is, deur op die simbool aan die linkerkant te klik, keer jy dadelik terug na die hoofblad."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Dit is jou navorsingsruimte. Hier filter jy die 213 beskikbare bates, volg lewendige kwotasies, ontleed tegniese kaarte en raadpleeg balansstaatopsommings of nuus."
+            },
+            {
+              "bold": "Beursie",
+              "code": "Portfolio",
+              "text": "Dit is jou besluittafel. Hier definieer jy watter persentasie van jou kapitaal na elke bate gaan, meet hoeveel jy in 'n krisis kan verloor en simuleer nuwe bedrywighede voordat jy geld waag."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Die voetskrif om die stelselstatus na te gaan, na hierdie gids terug te keer of die uitleg aan te pas.",
+          "paragraphs": [
+            "Terwyl data in reële tyd ontleed word, is daar operasionele vrae wat enige tyd kan ontstaan: kom die aanhalings korrek aan? Wat het 'n puntaanwyser beteken? Kan ek die helderheid van die skerm verlaag?",
+            "Die voetskrif groepeer al daardie ondersteunings- en konfigurasienutsgoed sodat hulle altyd byderhand is sonder om die middel van die skerm in die pad te kom:"
+          ],
+          "lead": "Die voetskrif groepeer al daardie ondersteunings- en konfigurasienutsgoed sodat hulle altyd byderhand is sonder om die middel van die skerm in die pad te kom:",
+          "bullets": [
+            {
+              "bold": "System status",
+              "code": "System",
+              "text": "Die groen kolletjie bevestig met 'n oogopslag dat alles in orde is. As u dit oopmaak, kan u die status van die bedieners, databasisse en reaksiespoed in detail sien."
+            },
+            {
+              "bold": "Gebruiker Guide",
+              "code": "Guide",
+              "text": "Maak hierdie interaktiewe handleiding enige tyd oop om te sien hoe om 'n skerm te gebruik of delf dieper in die berekeninge daarvan."
+            },
+            {
+              "bold": "Visuele voorkeure",
+              "code": "Idioma / Palette",
+              "text": "Aan die regterkant het jy die kontroles om die taal van die hele toepassing te verander of die agtergrondbeligting aan te pas."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Tale",
+          "summary": "Die soekenjin om die hele platform ter plaatse in jou taal te vertaal.",
+          "paragraphs": [
+            "Finansiële terme en markverslae het reeds hul eie kompleksiteit sonder om 'n taalversperring by te voeg. As jy verkies om die verduidelikings in Spaans, Engels of enige ander taal te lees, kan jy dit onmiddellik verander.",
+            "Dit is hoe die kieser in die onderste regterhoek werk:"
+          ],
+          "lead": "Dit is hoe die kieser in die onderste regterhoek werk:",
+          "bullets": [
+            {
+              "bold": "onmiddellike soektog",
+              "code": "Select Language",
+              "text": "As u op die huidige vlag klik, word 'n venster oopgemaak waar u tussen 56 tale kan kies deur die naam of kode daarvan te skryf (byvoorbeeld ES, EN, PT, FR of DE)."
+            },
+            {
+              "bold": "Outomatiese geheue",
+              "code": "mid_lang_v1",
+              "text": "Die hele skerm word onmiddellik vertaal sonder om die bladsy te herlaai en jou keuse word gestoor vir die volgende keer wat jy ingaan."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Visuele temas om die kontras van die skerm aan te pas sonder om die finansiële kleure te verander.",
+          "paragraphs": [
+            "Om 'n paar uur voor grafika te spandeer met 'n kontras wat nie by die lig in jou omgewing aanpas nie, maak jou oë uiteindelik moeg. Die verandering van die kleure van 'n finansiële platform hou egter 'n klassieke gevaar in: verloor die verwysing van wat opgaan en wat afgaan.",
+            "Om dit op te los, skei die temakieser die omgewingskleur van die datakleur:"
+          ],
+          "lead": "Om dit op te los, skei die temakieser die omgewingskleur van die datakleur:",
+          "bullets": [
+            {
+              "bold": "Vyf leesomgewings",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Met elke klik draai jy tussen suiwer swart, blouerige of warm agtergronde totdat jy die een kry wat die gemaklikste vir jou oë is."
+            },
+            {
+              "bold": "Ongeskonde finansiële semantiek",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Maak nie saak watter onderwerp jy verander nie, die universele reël van die mark word nooit verander nie: groen beteken altyd styging of wins, en rooi beteken altyd daling, verlies of risikowaarskuwing."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Stel jou voor dat jy wil opspoor waar die beste geleenthede van die dag is onder meer as tweehonderd effekte, aandele, indekse, geldeenhede en grondstowwe. As jy die kaarte een vir een sou oopmaak, sal die mark sluit voordat jy klaar daarna gekyk het.",
+            "Die Screener bring al 213 bates op die platform saam in 'n enkele lewendige dashboard. Dit laat jou toe om binne 'n sekonde volgens mark te filter, die algehele polsslag van die dag te meet en uit vier verskillende maniere te kies om te sien watter bates presteer."
+          ],
+          "intro": "Die Screener bring al 213 bates op die platform in 'n enkele lewendige dashboard sodat jy volgens mark kan filter en geleenthede in 'n oogopslag kan raaksien.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategorieë",
+              "summary": "Topfilters om op 'n enkele bateklas of jou dophoulys te fokus.",
+              "paragraphs": [
+                "Dit maak geen sin om 'n Tesourie-effekte met dieselfde maatstawwe as 'n tegnologie-aandeel of -olie te ontleed nie. Wanneer jy alles in dieselfde lys meng, vergelyk jy uiteindelik pere met appels.",
+                "Hoe vernou jy die skerm presies tot die mark wat jou vandag interesseer? Die boonste balk laat jou die heelal met een klik skei:"
+              ],
+              "lead": "Die boonste balk laat jou die heelal met een klik skei:",
+              "bullets": [
+                {
+                  "bold": "Volle prentjie",
+                  "code": "Todos",
+                  "text": "Dit wys die 213 instrumente saam en georden volgens verhandelde volume sodat jy kan sien waarheen die meeste geld wêreldwyd vloei."
+                },
+                {
+                  "bold": "Persoonlike dop",
+                  "code": "★ Watchlist",
+                  "text": "Isoleer slegs die bates wat jy as gunstelinge gemerk het om hulle noukeurig te monitor sonder afleiding."
+                },
+                {
+                  "bold": "Tien gespesialiseerde markte",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Deur enige van hierdie kategorieë te kies, pas die hele skerm sy aanwysers en die tabelkolomme aan by die reëls van daardie sektor."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detail van hoe die 213 bates in die katalogus geklassifiseer word en aan watter volume- en likiditeitskriteria hulle voldoen."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24h pols",
+              "summary": "Die top vier kaarte wat jou vertel of die mark kalm, eufories of onder stres is.",
+              "paragraphs": [
+                "Voordat u 'n spesifieke bate koop of verkoop, is dit raadsaam om te weet in watter klimaat die geheel beweeg. Is dit 'n normale volume dag of kom institusionele geld op een slag in? Styg alle bates selfs of is daar tekens van spanning?",
+                "Die vier kaarte onder die filters gee jou daardie algemene lesing binne 'n paar sekondes:"
+              ],
+              "lead": "Die vier kaarte onder die filters gee jou daardie algemene lesing binne 'n paar sekondes:",
+              "bullets": [
+                {
+                  "bold": "Totale aktiwiteit vir die dag",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Dit voeg by tot miljarde dollars wat in die aktiewe kategorie verhandel word en wys jou of daar vandag meer of minder deelname is as gister."
+                },
+                {
+                  "bold": "Gemiddelde groepsterkte",
+                  "code": "AVG RSI 14",
+                  "text": "Dit som in 'n sirkelmeter op of die pryse van die sektor kom met koopdruk (groen, bo 50) of met verkoopsdruk (rooi, onder 50)."
+                },
+                {
+                  "bold": "Normaliteit termometer",
+                  "code": "Régimen Normal P-06",
+                  "text": "Dit bereken watter persentasie van die bates binne hul gewone parameters beweeg en vertel jou by naam en van wat die instrument is met die grootste anomalie van die dag."
+                },
+                {
+                  "bold": "Ongewone invloei van geld",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Die podium van die drie bates wat vandag 'n buitengewoon hoë volume bedryf in vergelyking met hul gemiddelde vir die afgelope maand, staan uit."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Gedetailleerde verduideliking van hoe die gemiddelde RSI, volume Z-Score en anomalie detector P-06 bereken word."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tafel",
+              "summary": "Die interaktiewe lys met vinnige soektogte, gunstelinge en kolomme wat by elke mark aanpas.",
+              "paragraphs": [
+                "As jy reeds weet na watter sektor jy wil kyk en spesifieke getalle ry vir ry moet vergelyk, is die tabelaansig jou hoofhulpmiddel.",
+                "In plaas daarvan om vir jou 'n rigiede sigblad te wys wat vir almal dieselfde is, pas die tabel aan by waarna jy soek:"
+              ],
+              "lead": "In plaas daarvan om vir jou 'n rigiede sigblad te wys wat vir almal dieselfde is, pas die tabel aan by waarna jy soek:",
+              "bullets": [
+                {
+                  "bold": "Soekenjin en gunstelinge ster",
+                  "code": "Buscar activo / ★",
+                  "text": "In die eerste kolomopskrif kan jy enige simbool of naam tik om direk na daardie bate te gaan, of tik die ster aan die linkerkant om dit op jou Watchlist te stoor."
+                },
+                {
+                  "bold": "Slim kolomme volgens die kategorie",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "As jy Aandele filter, verskyn waardasieveelvoude en marges; As jy effekte of koerse kies, sien jy die helling van die kurwe en die sensitiwiteit vir koerse; As jy na Afgeleides kyk, sien jy geïmpliseerde wisselvalligheid."
+                },
+                {
+                  "bold": "Spring reguit na diep analise",
+                  "code": "Click en cualquier fila",
+                  "text": "Klik eenvoudig op enige bate in die lys om jou volledige stasie van tegniese kaarte en fundamentele verslae oop te maak."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Lys van die spesifieke maatstawwe wat die tabel vir elk van die 10 batekategorieë wys."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Die visuele radar om met 'n oogopslag op te spoor watter bates wegbeweeg van hul historiese gemiddelde.",
+              "paragraphs": [
+                "Die lees van tweehonderd rye getalle kan veroorsaak dat jy 'n bate mis wat plofbaar begin beweeg. Hoe bespeur jy onmiddellik watter instrument van die norm afdwaal?",
+                "Die Orbital-aansig verander die tafel in 'n radar met drie konsentriese ringe:"
+              ],
+              "lead": "Die Orbital-aansig verander die tafel in 'n radar met drie konsentriese ringe:",
+              "bullets": [
+                {
+                  "bold": "Keuse van kriteria",
+                  "code": "INDICADOR",
+                  "text": "Jy besluit wat die radar meet: statistiese afwykings, volumespronge, pryssterkte (RSI), wisselvalligheid of wins in die afgelope 24 uur."
+                },
+                {
+                  "bold": "Lees volgens afstand en kleur",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Hoe nader of verder weg 'n punt is volgens die aanwyser en hoe intenser sy groen of rooi kleur is, hoe meer relevant is sy beweging in vergelyking met sy eie geskiedenis."
+                },
+                {
+                  "bold": "Inspeksie sonder om skerm te verander",
+                  "code": "Panel lateral en vivo",
+                  "text": "Deur die wyser op enige radarnodus te rus, word sy prys, sy skoon intradaggrafiek en sy drie risiko-metrieke aan die regterkant vertoon."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hoe die posisie van elke bate in die radarringe volgens sy historiese afwyking bereken word."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Hittekaart",
+              "summary": "Die mosaïek van proporsionele blokke om die wenners en verloorders in 'n sekonde te identifiseer.",
+              "paragraphs": [
+                "Daar is tye wanneer jy net 'n vinnige vraag wil beantwoord: wie lei vandag die styging en wie sleep die mark af?",
+                "Die hittekaart rangskik die top tien bates van die aktiewe filter in proporsionele blokke sodat jy nie 'n enkele tabel hoef te lees nie:"
+              ],
+              "lead": "Die hittekaart orden die top tien bates van die aktiewe filter in proporsionele blokke:",
+              "bullets": [
+                {
+                  "bold": "Grootte volgens belangrikheid",
+                  "code": "Puestos #1 a #10",
+                  "text": "Die instrumente met die grootste gewig binne die gekose metrieke beslaan die kolomme aan die linkerkant met die grootste bokse."
+                },
+                {
+                  "bold": "Kleur intensiteit",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Die toon van die blok vertel jou dadelik die omvang van die beweging, van matige variasies tot skielike stygings of dalings."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Die driestap-kortpad na gevorderde tariewe, opsies, forex en termynrekenaars.",
+              "paragraphs": [
+                "Benewens tradisionele pryskaarte, bevat die platform vier spesiale enjins vir vaste inkomste, opsies, geldeenheidskruisings en kommoditeitskrommes. Hoe kom jy by hulle uit sonder om bate vir bate te soek?",
+                "Hierdie aansig lei jou van links na regs in drie baie eenvoudige kolomme:"
+              ],
+              "lead": "Hierdie aansig lei jou van links na regs in drie baie eenvoudige kolomme:",
+              "bullets": [
+                {
+                  "bold": "Eerstens kies jy die gesin",
+                  "code": "1. Clases de Activo",
+                  "text": "U kies of u met koerse en effekte wil werk, met opsies op aandele/indekse/kripto, met geldeenhede of met grondstowwe."
+                },
+                {
+                  "bold": "Dan kyk jy wat die enjin doen",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "In die middel lees jy 'n duidelike opsomming van wat daardie instrument wys en hoe om jouself langs sy asse te oriënteer."
+                },
+                {
+                  "bold": "Kies uiteindelik die aktiewe een en maak oop",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Jy kyk na 'n regstreekse voorskou van die grafiek, soek enige versoenbare bates in daardie familie, en maak die volledige stasie met een klik oop."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Sodra jy 'n interessante bate in die Screener gevind het, is dit tyd om dit van nader te bekyk. Is dit in 'n opwaartse neiging of het dit sonder stoom opgeraak? Klop jy jou mededingers? Wat sê die volume en die mark vir afgeleide instrumente?",
+            "Die Analytics-stasie konsentreer al die tegniese, vergelykende en kwantitatiewe ontleding van daardie bate op 'n enkele skerm. Hierbo het jy die algemene opsomming en aan die linkerkant vier lense om die analisehoek te verander sonder om die grafiek uit die oog te verloor."
+          ],
+          "intro": "Die Analytics-stasie konsentreer tegniese, vergelykende, vloeianalise en 3D/2D-enjins van 'n individuele bate op 'n enkele skerm.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Die boonste kontroleskerm om bates te wissel, die tydraamwerk te kies en jou vyf sleutelmaatstawwe te sien.",
+              "paragraphs": [
+                "Wanneer jy 'n bate bestudeer, wissel jy gewoonlik af tussen vandag se korttermyn en die film van die laaste paar maande, of skakel selfs oor om na 'n ander soortgelyke simbool te kyk. Hoe doen jy dit alles sonder om terug te gaan?",
+                "Die boonste opskrif bring die navigasiekontroles en die instrument vinnige oortjie saam:"
+              ],
+              "lead": "Die boonste opskrif bring die navigasiekontroles en die instrument vinnige oortjie saam:",
+              "bullets": [
+                {
+                  "bold": "Verandering van bate of terugkeer na die lys",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Links bo kan jy terugkeer na Screener of die naam van enige ander instrument tik om kaarte ter plaatse te verander."
+                },
+                {
+                  "bold": "Nege vensters van tyd",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Op die regterkantlyn verander jy die skaal van die grafiek van minuut-vir-minuut bewegings na die hele geskiedenis."
+                },
+                {
+                  "bold": "Vyf leidende aanwysers",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Naas die prys wat jy altyd in die oog het, het die verhandelde volume, die twee sleuteldata van sy kategorie, die sterkte van die neiging en die vlak van statistiese normaliteit."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Tegnies",
+              "summary": "Die prysgrafiek met bewegende gemiddeldes, wisselvalligheidsbande en volume om die neiging te volg.",
+              "paragraphs": [
+                "Om net na die laaste prys te kyk, sê nie vir jou of 'n bate versnel, of dit van sy gemiddelde weerkaats of as dit reeds oor 'n paar dae te vinnig gestyg het nie.",
+                "Die eerste lens op die linker spoor laat jou toe om die mees gebruikte tegniese verwysings op die mark op die grafiek te bedek:"
+              ],
+              "lead": "Die eerste lens op die linker spoor laat jou toe om die mees gebruikte tegniese verwysings te bedek:",
+              "bullets": [
+                {
+                  "bold": "Adres en werklike gemiddelde prys",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Jy kan die 20-tydperk bewegende gemiddelde en volume-geweegde gemiddelde prys aanskakel om dadelik te sien of die bate bo of onder sy ewewigsvlak verhandel."
+                },
+                {
+                  "bold": "Oortollige sones en volume bevestiging",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Die bande teken die statistiese plafon en vloer van die prys, terwyl die onderste stawe bevestig of die beweging deur volume ondersteun word."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Formules en interpretasiekriteria van die bewegende gemiddelde (SMA 20), Bollinger Bands en VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Vergelyk %",
+              "summary": "Die persentasie vergelyker van 0% om te meet of jou bate meer of minder vaar as 'n ander in dieselfde kategorie.",
+              "paragraphs": [
+                "'n Aandeel wat met 5% styg, lyk na goeie nuus, maar as sy maatstaf of hoofmededinger in dieselfde tydperk met 12% gestyg het, raak jy eintlik agter.",
+                "Die tweede lens los daardie twyfel op deur die twee bates op dieselfde beginlyn te plaas:"
+              ],
+              "lead": "Die tweede lens los daardie twyfel op deur die twee bates op dieselfde beginlyn te plaas:",
+              "bullets": [
+                {
+                  "bold": "Soek vir samehangende pare",
+                  "code": "Buscar par compatible",
+                  "text": "Die soekenjin filter outomaties bates uit dieselfde familie (bv. aandele vs. aandele, ETF's of indekse) sodat die vergelyking finansieel sin maak."
+                },
+                {
+                  "bold": "Netto voordeel in persentasie",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Albei krommes begin vanaf 0% en die linker spoor bereken hoeveel persentasiepunte van voordeel (in groen) of nadeel (in rooi) jou bate het."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Mikro en vloei",
+              "summary": "Die detektor van institusionele buite-patroon aankope, likiditeit en verspreidingskoste.",
+              "paragraphs": [
+                "Baie keer versamel of laai groot fondse posisies op voordat die prys 'n skielike beweging maak. Hoe bespeur jy daardie verborge spoor in die volume en likiditeit van die bestelboek?",
+                "Die derde lens fokus op wat onder die aanhaling gebeur:"
+              ],
+              "lead": "Die derde lens fokus op wat onder die aanhaling gebeur:",
+              "bullets": [
+                {
+                  "bold": "Statistiese volume pieke",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Verander die onderste paneel om jou te wys hoeveel keer die huidige volume van normaal afwyk, wat ongewone institusionele aktiwiteit onthul."
+                },
+                {
+                  "bold": "Likiditeitstres en anomalieë",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Dit meet in basispunte of die gaping tussen kopers en verkopers groter word en of die statistiese enjin atipiese gedrag bespeur."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hoe openingsspreidings en statistiese stygings in ordevloei gemeet word."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D-enjins",
+              "summary": "Die vierde lens wat 'n dinamiese ad-hoc-instrument gebruik wat volgens bateklas verskil.",
+              "paragraphs": [
+                "In teenstelling met die eerste drie lense (wat algemeen is vir alle instrumente), is die vierde lens op die linker spoor 'n ad-hoc instrument wat dinamies verander na gelang van die bate wat jy ontleed: byvoorbeeld, in die lewendige toer, aangesien dit 'n aandeel is (NVDA), stel dit die 3D Implisiete Volatiliteit en Opsies Payoff Surface in staat, terwyl dit in ander markoppervlakte ontplooi word.",
+                "Die vierde knoppie bespeur die oop bateklas en aktiveer outomaties die ooreenstemmende ad-hoc-instrument:"
+              ],
+              "lead": "Die vierde knoppie bespeur watter bate jy oop het en aktiveer die ad-hoc-instrument wat daarmee ooreenstem:",
+              "bullets": [
+                {
+                  "bold": "In aandele, indekse, afgeleide instrumente en kripto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Vertoon die 3D-geïmpliseerde wisselvalligheidsoppervlak, opsies glimlag deur verstryking, en 'n 6-strategie-simulator om te sien hoeveel jy vandag en by verstryking sou wen of verloor."
+                },
+                {
+                  "bold": "In koerse, effekte en likiditeit",
+                  "code": "Curva 3D/2D",
+                  "text": "Dit laat jou toe om die opbrengskrommes van 42 lande met die VSA en Duitsland te vergelyk, om te meet of die kurwe normaal of omgekeerd is (2s10s) en hoeveel die prys verskil met koersveranderings (DV01)."
+                },
+                {
+                  "bold": "In geldeenhede",
+                  "code": "FX & Carry",
+                  "text": "Dit bied 'n omskakelaar en triangulator tussen 61 geldeenhede wat ook die 10-jaar rentekoersverskil bereken ten gunste of teen die handhawing van daardie paar."
+                },
+                {
+                  "bold": "In grondstowwe",
+                  "code": "Forward 3D/2D",
+                  "text": "Grafiek die pryse van termynkontrakte maand vir maand om te wys of die mark meer betaal vir vooruit (Contango) of vir onmiddellike aflewering (terugwaarts), saam met die status van fisiese voorraad."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Wiskundige detail van wisselvalligheidsoppervlaktes, soewereine opbrengskrommes, geldeenheiddra en termynkontrakte."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Die grafiek wys jou wat die prys doen, maar dit vertel jou nie hoekom nie. Om te weet wat agter 'n beweging skuil, sal jy dosyne bladsye van kwartaallikse balansstate, sentrale bankstate, voorraadverslae en nuuskabels moet lees.",
+            "Die Research-stasie doen daardie swaar opheffing vir jou. Dit kombineer dokumentêre kunsmatige intelligensie wat geverifieer is teen amptelike verslae met intydse nuuslees, en organiseer al die bewyse vir en teen in drie duidelike kolomme."
+          ],
+          "intro": "Stasie Research som amptelike balansstate, makro-ekonomiese verslae en intydse nuus in drie duidelike kolomme op.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Nota & Postuur",
+              "summary": "Die top drie kaarte wat die fundamentele uitspraak en humor van die nuus opsom.",
+              "paragraphs": [
+                "Gaan die grondbeginsels van die bate saam met die styging in prys of versleg die nuus die vooruitsigte? Voordat u die detail lees, benodig u 'n vinnige uitvoerende gevolgtrekking.",
+                "In die regter boonste hoek het jy drie aanwysers wat die algemene status van die bate opsom:"
+              ],
+              "lead": "In die regter boonste hoek het jy drie aanwysers wat die algemene status opsom:",
+              "bullets": [
+                {
+                  "bold": "Postuur en gewig van elke bron",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Dit definieer die algemene uitspraak en verduidelik watter gewig dit aan amptelike dokumente teenoor nuus gee, afhangende van die tipe bate (byvoorbeeld 80% balansstate en 20% nuus in 'n aandeel)."
+                },
+                {
+                  "bold": "Gekombineerde gradering",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Dit sintetiseer in 'n enkele telling die netto resultaat van die grondbeginsels plus die inligtingvloei van die dag."
+                },
+                {
+                  "bold": "Termometerhouers",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Plaas op 'n staaf van -100 tot +100 as die toon van die pers die afgelope paar uur pessimisties (rooi), neutraal of entoesiasties (groen) is."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hoe amptelike verslae teen nuus geweeg word, afhangende van die tipe bate."
+            },
+            {
+              "id": "res-rag",
+              "label": "Chat RAG",
+              "summary": "Die linker dokumentêre assistent om spesifieke vrae oor balansstate en amptelike verslae te vra.",
+              "paragraphs": [
+                "Gestel jy wil weet wat presies 'n maatskappy oor sy marges in sy jongste jaarlikse balansstaat 10-K gesê het, of wat die Federale Reserweraad in sy jongste notule gesê het. Om dit met die hand te soek neem tyd; As jy 'n generiese klets sonder bronne vra, kan jy opgemaakte data gee.",
+                "Die linkerkolom los dit op met 'n towenaar wat uitsluitlik aan geverifieerde amptelike dokumentasie gekoppel is:"
+              ],
+              "lead": "Die linkerkolom bied jou 'n towenaar wat gekoppel is aan amptelike geverifieerde dokumentasie:",
+              "bullets": [
+                {
+                  "bold": "Aanvanklike tesis en geleide vrae",
+                  "code": "Chat Documental RAG",
+                  "text": "Dit begin met 'n uitvoerende opsomming met geverifieerde aanhalings en vier vinnige verwysingsknoppies wat by die batekategorie aangepas is, asook 'n veld vir jou om jou eie vrae te skryf."
+                },
+                {
+                  "bold": "Direkte stap na jou portefeulje",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "As jy, nadat jy die grondbeginsels ondersoek het, besluit dat die bate die moeite werd is, stuur hierdie knoppie boaan die klets jou direk na die portefeulje-simulator."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Werking van die geverifieerde dokumentêre soektog (RAG) en sy sekuriteitsfilters."
+            },
+            {
+              "id": "res-factors",
+              "label": "Faktore",
+              "summary": "Die sentrale trekklavier met die vyf bullish drywers en die vyf lomp risiko's gerangskik volgens impak.",
+              "paragraphs": [
+                "Geen belegging is honderd persent perfek of honderd persent sleg nie: daar is altyd argumente ten gunste en latente risiko's. Die geheim is om te weet watter een vandag meer weeg.",
+                "Die middelkolom plaas beide kante van aangesig tot aangesig sodat jy 'n gebalanseerde besluit kan neem:"
+              ],
+              "lead": "Die middelkolom plaas beide kante van aangesig tot aangesig sodat jy 'n gebalanseerde besluit kan neem:",
+              "bullets": [
+                {
+                  "bold": "Dwing balans en filters",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Hierbo sien jy die bodbalk tussen kopers en verkopers, en hieronder kan jy die vyf positiewe katalisators (in groen) of die vyf hoofrisiko's (in rooi) filtreer."
+                },
+                {
+                  "bold": "Besonderhede en afronding in een klik",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Wanneer jy enige faktor op die lys raak, word die volledige verduideliking daarvan vertoon saam met 'n knoppie om Chat RAG vir meer inligting oor daardie spesifieke punt te vra."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Pols",
+              "summary": "Die regte tydlyn met die nuutste KI-gegradeerde opskrifte en die 24-uur-buiskurwe.",
+              "paragraphs": [
+                "’n Enkele laaste-minuut-opskrif oor verdienste, inflasie of regulasies kan die stemming van die dag heeltemal verander. Hoe weet jy watter nuus pas uitgekom het en watter effek dit het?",
+                "Die regterkolom monitor die inligtingvloei minuut vir minuut:"
+              ],
+              "lead": "Die regterkolom monitor die inligtingvloei minuut vir minuut:",
+              "bullets": [
+                {
+                  "bold": "Gekwalifiseerde tydlyn",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Lys die vyf mees onlangse opskrifte met hul tyd en agentskap, en merk hulle groen as hulle gunstig is of rooi as hulle 'n bedreiging inhou."
+                },
+                {
+                  "bold": "Impak en daaglikse kurwesimulator",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Jy kan 'n lewendige draad met die boonste knoppie aktiveer om te sien hoe dit die hele skerm herbereken en in die grafiek hieronder volg hoe die bui oor die afgelope 24 uur ontwikkel het."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hoe die FinBERT-model die finansiële taal van elke houer ontleed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Bouer",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Om goeie bates afsonderlik te kies is nie genoeg om 'n goeie portefeulje te hê nie. As jy te veel kapitaal in bates sit wat dieselfde beweeg, of as jy nie meet hoe hulle in die verlede saam sou gevaar het nie, belê jy blindelings.",
+            "Constructor & Performance (die eerste aansig van Portfolio) is die werkswinkel waar jy jou portefeulje bou. Dit laat jou toe om enige van die 213 bates by te voeg, aan te pas watter persentasie jy aan elkeen toewys sonder om met onakkurate kontroles te handel, en onmiddellik sowel die interne samestelling as sy geskiedenis te oudit."
+          ],
+          "intro": "Constructor & Performance is die werkswinkel waar jy jou portefeulje bou, die gewig van elke bate aanpas en sy historiese prestasie oudit.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Opsomming",
+              "summary": "Die top ses kaarte wat herbereken word, lewendig elke keer as jy jou portefeulje verander.",
+              "paragraphs": [
+                "Elke keer as jy 'n bate byvoeg of 'n persentasie in jou portefeulje verander, moet jy dadelik weet of daardie aanpassing jou verwagte opbrengs verbeter het of jou nadeelblootstelling vererger het.",
+                "Die boonste ry hou altyd die portefeulje se ses meestermaatstawwe sigbaar:"
+              ],
+              "lead": "Die boonste ry hou altyd die portefeulje se ses meestermaatstawwe sigbaar:",
+              "bullets": [
+                {
+                  "bold": "Prestasie en doeltreffendheid",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Hulle vertel jou watter saamgestelde jaarlikse wins die portefeulje op jou kapitaal projekteer en hoeveel opbrengs jy kry vir elke eenheid van risiko wat aangeneem word."
+                },
+                {
+                  "bold": "Verwagte daaglikse verlies en historiese daling",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Hulle bereken hoeveel dollars jy op 'n slegte dag kan verloor binne wat statisties voorsienbaar was en wat die diepste terugslag in die afgelope jaar was."
+                },
+                {
+                  "bold": "Toegevoegde waarde en diversifikasie",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Hulle meet hoeveel punte jou portefeulje die maatstafindeks klop en hoeveel risiko jy verminder danksy die kombinasie van verskillende bates."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Saamgestelde opbrengsformules (CAGR), Sharpe en Sortino verhoudings, en Value at Risk (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Gewig",
+              "summary": "Die linkertabel om bates by te voeg, skakel dit aan of af en definieer die presiese persentasie van elke posisie.",
+              "paragraphs": [
+                "Wat sal met jou portefeuljegetalle gebeur as jy vandag 'n tegnologie-aandeel tydelik sluit of die geld gelykop verdeel tussen al jou posisies?",
+                "Die linkerpaneel laat jou al daardie toetse op 'n skoon en direkte manier doen:"
+              ],
+              "lead": "Die linkerpaneel laat jou al daardie toetse op 'n skoon en direkte manier doen:",
+              "bullets": [
+                {
+                  "bold": "Soekenjin vir die 213 bates",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Jy kan vir enige instrument op die platform soek of jou gunstelinge filter om dit met een klik by die tabel te voeg."
+                },
+                {
+                  "bold": "Vinnige aanvang en akkurate redigering",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Elke ry het 'n merkblokkie om die bate intyds in te sluit of uit te sluit en 'n nommerblokkie om die presiese persentasie in te voer sonder om onakkurate skuifbalke te gebruik."
+                },
+                {
+                  "bold": "Drie kortpaaie wat herbalanseer",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Aan die bokant van die tabel het jy knoppies om gelyke gewigte tussen alle aktiewe bates te verdeel, die som outomaties na 100% te bring of terug te keer na die oorspronklike portefeulje."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "X-straal",
+              "summary": "Die paneel regs bo met vyf oortjies om verborge konsentrasies, kontantvloei en bewaring te ontdek.",
+              "paragraphs": [
+                "Een van die mees algemene foute wanneer jy belê, is om te glo dat jy gediversifiseer is omdat jy vyf verskillende bates het, terwyl jy in werklikheid 'n individuele aandeel gekoop het en ook twee ETF's wat dieselfde voorraad binne het.",
+                "Die X-straalpaneel ontleed jou portefeulje van binne deur vyf oortjies:"
+              ],
+              "lead": "Die X-straalpaneel ontleed jou portefeulje van binne deur vyf oortjies:",
+              "bullets": [
+                {
+                  "bold": "Herhaalde posisie detektor",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Tel by wat jy direk in elke maatskappy belê het plus die versteekte gedeelte wat jy binne indekse of ETF's (soos SPY of QQQ) het, en waarsku jou in rooi as jy verstandige perke oorskry."
+                },
+                {
+                  "bold": "Blootstellingskaart en oorsprong van terugkeer",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Hulle wys jou watter persentasie jy werklik in elke batetipe en geldeenheid het, en hoeveel van jou wins uit die keuse van goeie sektore gekom het teenoor die keuse van goeie bates."
+                },
+                {
+                  "bold": "Geprojekteerde jaarlikse inkomste en sekuriteit",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Hulle bereken hoeveel dollars jy in die jaar gaan insamel vir dividende, koepons en rente, en oudit die solvensie van die bewaarders waar jou kapitaal rus."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hoe indirekte blootstelling binne ETF's bereken word en die Brinson-attribusie-uiteensetting."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Kalender",
+              "summary": "Die maandelikse grafiek van Januarie tot Desember om die reëlmaat van jou winste en verliese te sien.",
+              "paragraphs": [
+                "’n Goeie jaarlikse opbrengs kan maande van baie skerp dalings wegsteek wat in die praktyk moeilik is om te verdra. Hoe konsekwent maand tot maand is die portefeulje wat jy pas saamgestel het?",
+                "Net onder die X-straal, breek die kalender die maandelikse geskiedenis af:"
+              ],
+              "lead": "Net onder die X-straal, breek die kalender die maandelikse geskiedenis af:",
+              "bullets": [
+                {
+                  "bold": "Groen maande en rooi maande",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Elke sel word onmiddellik herbereken volgens die gewigte in jou tabel en word groen of rooi geverf, afhangende van die resultaat van daardie maand, en sluit aan die regterkant met die kumulatiewe resultaat vir die jaar."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Die volskermgrafiek hieronder om jou portefeulje te vergelyk met vier klassieke strategieë.",
+              "paragraphs": [
+                "Voordat jy jou portefeulje as goed beskou, bly die fundamentele toets: is dit regtig beter as om die geld in die S&P 500 of in 'n tradisionele 60/40-portefeulje te laat?",
+                "Die onderste paneel beslaan die hele breedte van die skerm om jou ontwerp aan markstandaarde te stel:"
+              ],
+              "lead": "Die onderste paneel stel jou ontwerp teen markstandaarde:",
+              "bullets": [
+                {
+                  "bold": "Vyf horisonne van toetsing",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Dit laat jou toe om te evalueer hoe jou mengsel in die afgelope kwartale en oor volle meerjarige siklusse gevaar het."
+                },
+                {
+                  "bold": "Vier verwysings van aangesig tot aangesig",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Trek jou aktiewe portefeulje se groen kurwe teen enige van die vier klassieke modelle oor sodat jy duidelik kan sien wanneer dit voor is en hoe dit aan die nadeel hou."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Risiko",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "In tye wanneer die mark rustig styg, lyk byna enige portefeulje veilig. Die werklike probleem kom voor wanneer 'n krisis uitbreek, rentekoerse skielik styg en bates wat onafhanklik gelyk het, begin alles op dieselfde tyd daal.",
+            "Kwantitatiewe risiko en stres (die tweede siening van Portfolio) stel jou portefeulje deur uiterste toetse voordat dit in die werklike lewe gebeur. Deur vier simmetriese kwadrante en 'n toekomstige scenario-simulator hieronder wys dit jou presies waar jou kwesbare punte is."
+          ],
+          "intro": "Kwantitatiewe risiko en stres toets jou portefeulje vir historiese krisisse, korrelasiebesmetting en Monte Carlo-projeksies.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Die interaktiewe risiko- en opbrengskaart om te sien hoe naby jy aan die doeltreffendste moontlike portefeulje is.",
+              "paragraphs": [
+                "Met dieselfde bates wat jy reeds in jou portefeulje het, is daar duisende maniere om die persentasies te versprei. Is die kombinasie wat jy gekies het die een wat die beste betaal vir die risiko wat jy neem, of kan jy dieselfde wen met minder verrassings?",
+                "Die eerste kwadrant links bo teken daardie lewendige kaart van moontlikhede:"
+              ],
+              "lead": "Die eerste kwadrant links bo teken daardie lewendige kaart van moontlikhede:",
+              "bullets": [
+                {
+                  "bold": "Jou posisie teenoor die optimale portefeuljes",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Dit wys waar jou huidige portefeulje geleë is in verhouding tot die punt van die laagste moontlike wisselvalligheid en die punt van maksimum risiko-opbrengsdoeltreffendheid."
+                },
+                {
+                  "bold": "Visuele lae en inspeksie volgens bate",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Jy kan die modellae aan- of afskakel en op enige nodus klik om die presiese bydrae van daardie bate hieronder te lees."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Doeltreffende grens van Markowitz en berekening van die minimum afwyking en maksimum Sharpe portefeuljes."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado en VaR",
+              "summary": "Die historiese krisissimulator, daaglikse verliesverdeling volgens bate- en markasimmetrie.",
+              "paragraphs": [
+                "As 'n ineenstorting soos die een in 2008, die ekonomiese verlangsaming in 2020, of die koersverhoging in 2022 môre herhaal sou word, hoeveel sal jou huidige portefeulje verloor en watter bate sal die vernaamste skuldige wees?",
+                "Die onderste linkerkwadrant beantwoord hierdie drie vrae in drie spesifieke oortjies:"
+              ],
+              "lead": "Die onderste linkerkwadrant beantwoord daardie vrae in drie spesifieke oortjies:",
+              "bullets": [
+                {
+                  "bold": "Toets teen vyf werklike krisisse",
+                  "code": "1. Tornado Stress",
+                  "text": "Vergelyk maat vir maat hoeveel jou portefeulje teen die S&P 500 sou daal in die lig van vyf groot historiese skokke."
+                },
+                {
+                  "bold": "Risiko rangorde volgens posisie",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Sorteer jou besit volgens hoeveel dollar se potensiële daaglikse verlies elkeen tot die totale portefeulje bydra."
+                },
+                {
+                  "bold": "Gedrag in op- en afdraandes",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Dit wys jou uit watter persentasie van die mark se bullish wiele elke bate voordeel trek en hoeveel dit regkry om te demp wanneer die mark val."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Metodologie van historiese stres-scenario's, marginale bydrae tot VaR en vangverhoudings."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Korrelasie",
+              "summary": "Die kruismatriks om te kyk of jou bates werklik diversifiseer of as hulle tydens 'n paniek besmet is.",
+              "paragraphs": [
+                "Om verskeie bates in jou portefeulje te hê, verminder net risiko as hulle nie almal gelyktydig in dieselfde rigting beweeg nie. Maar in tye van finansiële paniek spring baie korrelasies wat laag gelyk het skerp opwaarts.",
+                "Die boonste regterkantste kwadrant laat jou toe om daardie verhouding in twee scenario's te oudit:"
+              ],
+              "lead": "Die boonste regterkantste kwadrant laat jou toe om daardie verhouding in twee scenario's te oudit:",
+              "bullets": [
+                {
+                  "bold": "Oorkruising tussen bates en sensitiwiteit",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Dit wys hoe soortgelyk elke paar bates beweeg (in groen of ligblou wanneer hulle goed diversifiseer, en in rooi wanneer hulle te naby aan mekaar beweeg) en wat hul sensitiwiteit vir die mark is."
+                },
+                {
+                  "bold": "Besmettingsimulator in krisis",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Met een klik verander jy die korrelasies van 'n normale jaar na dié van 'n oomblik van paniek om te ontdek watter posisies jou nie meer sal beskerm nie."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Berekening van Pearson-korrelasiekoëffisiënte onder normale toestande en onder markstres."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash & Markov",
+              "summary": "Die gesamentlike impaktabel tussen koerse en die aandelemark, plus die waarskynlikhede van 'n verandering in die ekonomiese siklus.",
+              "paragraphs": [
+                "In die reële ekonomie kom probleme selde een vir een: baie keer val 'n styging in rentekoerse saam met 'n daling in aandele. Wat gebeur met jou portefeulje as die twee faktore gelyktydig gekombineer word?",
+                "Die onderste regterkantste kwadrant kruis beide veranderlikes en meet die waarskynlikhede van regimeverandering:"
+              ],
+              "lead": "Die onderste regterkantste kwadrant kruis beide veranderlikes en meet die marksiklus:",
+              "bullets": [
+                {
+                  "bold": "Dubbel impak bord",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Kruiskoersbewegings (-100 tot +200 basispunte) met dalings of stygings van die S&P 500 (-20% tot +10%), wat jou toelaat om volgens die hele portefeulje of volgens 'n individuele bate te filter."
+                },
+                {
+                  "bold": "Siklus oorgang waarskynlikhede",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Bereken hoe waarskynlik die mark sal kalm bly of 'n wisselvallige, inflasionêre of krisisfase binnegaan."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Gesamentlike sensitiwiteit vir tempo's en veranderlikes, en Markov toestand oorgang matriks."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Die onderste paneel is volskerm met toekomstige probabilistiese projeksies en historiese dalings.",
+              "paragraphs": [
+                "Dit is nuttig om na die verlede te kyk, maar wanneer jy vorentoe belê, is wat jy moet weet binne watter omvang van resultate jou kapitaal in die volgende ses maande, 'n jaar of twee jaar kan beweeg.",
+                "Die volle breedte onderste paneel bring drie tydelike gereedskap saam om daardie pad te projekteer en te beheer:"
+              ],
+              "lead": "Die onderste paneel bring drie tydelike gereedskap saam om daardie pad te projekteer:",
+              "bullets": [
+                {
+                  "bold": "Tienduisend toekomsscenario's",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Teken die keël van waarskynlike evolusie van jou portefeulje, en onderskei die optimistiese scenario (P95 in groen), die verwagte sentrale pad (P50) en die ongunstige scenario (P05 in rooi)."
+                },
+                {
+                  "bold": "Diepte van val en stabiliteit oor tyd",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Hulle laat jou toe om die grafiek te wissel om te sien hoe lank die portefeulje onder sy hoogtepunte van alle tye gebly het of hoe stabiel sy doeltreffendheid en risiko was oor die rol van 60-dae vensters."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo stogastiese simulasie van 10 000 paaie en 60-dae rollende statistieke."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulator",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Voordat u 'n nuwe bate koop, 'n posisie verminder of vir verskansing met opsies betaal, ontstaan ​​dieselfde vraag altyd: verbeter hierdie operasie werklik my portefeulje of voeg dit onnodige risiko by? En hoeveel kapitaal moet ek daarin sit?",
+            "Die Ad-Hoc Strategie Lab (die derde aansig van Portfolio) is jou pre-operationele simulator. Dit laat jou toe om taktiese toneelstukke te laai, jou ideale posisiegrootte te bereken, nadeelversekering te toets en die presiese voor en na impak te sien sonder om nog aan jou basisportefeulje te raak."
+          ],
+          "intro": "Die Ad-Hoc Strategie Laboratorium is jou voorhandel simulator om bestellings, grootte posisies te toets en dekking te meet.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Impak",
+              "summary": "Die top ses kaarte wat jou huidige portefeulje vergelyk met die resultaat na die gesimuleerde toneelstukke.",
+              "paragraphs": [
+                "Om te weet of 'n taktiese idee die moeite werd is, is dit nie genoeg dat die bate op sy eie aantreklik lyk nie: dit moet die syfers vir die hele portefeulje verbeter.",
+                "Die boonste ry wys jou permanent die vergelyking tussen jou huidige portefeulje en die portefeulje met die simulasie wat toegepas is:"
+              ],
+              "lead": "Die boonste ry vergelyk jou huidige portefeulje met die portefeulje met die simulasie wat toegepas is:",
+              "bullets": [
+                {
+                  "bold": "Effek op wins en doeltreffendheid",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Hulle wys die basisnommer langs die geprojekteerde nommer, wat die verskil in groen verlig as die toneelstuk doeltreffendheid byvoeg of in rooi as dit dit versleg."
+                },
+                {
+                  "bold": "Effek op risiko, kapitaal en reëls",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Hulle vertel jou hoeveel jou maksimum verwagte verlies verander, watter persentasie van die portefeulje jy aan die toetse verbind en of alle sekuriteitsperke gerespekteer word."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If & Kelly",
+              "summary": "Die koop-/verkoopkaartjie-simulator en die sakrekenaar om te definieer hoeveel geld om te waag.",
+              "paragraphs": [
+                "Baie goeie beleggingsidees gee uiteindelik aanleiding tot verliese as gevolg van 'n fout in die grootte van die weddenskap: om te min te sit, beweeg nie die naald nie, maar om te veel in te sit kan die portefeulje verwoes as die skuif verkeerd loop.",
+                "Die eerste kwadrant links bo verbind die bewysblad met die wiskundige berekening van grootte:"
+              ],
+              "lead": "Die eerste kwadrant verenig die toetsverslag met die wiskundige berekening van grootte:",
+              "bullets": [
+                {
+                  "bold": "Toets bestelling laai",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Jy kies enige bate, dui aan of jy wil koop, verkoop of dek en laai die bedrag in dollars. In die lys hieronder kan jy elke gesimuleerde bestelling aan of af skakel om die effek daarvan te vergelyk."
+                },
+                {
+                  "bold": "Optimale posisie grootte",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Gebaseer op jou beraamde waarskynlikheid van sukses en die verhouding tussen wins en verlies, bereken dit watter maksimum persentasie kapitaal toegeken moet word om te groei sonder om jouself te oorbloot."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Wiskundige berekening van die Kelly-kriterium en sy konserwatiewe weergawe Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Plaas OTM & Marge",
+              "summary": "Die versekeringsimulator met opsies vir sterk markdalings en die marge-oproepmonitor.",
+              "paragraphs": [
+                "Wanneer jy 'n sterk markregstelling vrees, is die verkoop van al jou posisies gewoonlik duur en ondoeltreffend. Die professionele alternatief is om versekering uit te neem met beskermende opsies, maar hoeveel kos daardie versekering per jaar en hoeveel beskerm dit jou werklik?",
+                "Die onderste linkerkwadrant laat jou toe om beide dekking en skuldvlak te meet:"
+              ],
+              "lead": "Die onderste linkerkwadrant meet beide dekking en vlak van waarborge:",
+              "bullets": [
+                {
+                  "bold": "Vergelyker van beskermende skilde",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Dit laat jou toe om af te wissel tussen werk sonder dekking of om drie tipes versekering met opsies toe te pas (op SPY, QQQ of VIX wisselvalligheid), om die jaarlikse koste van die premie te kontrasteer met die dollars wat jy sou spaar in 'n 20%-ongeluk."
+                },
+                {
+                  "bold": "Hefboom beheer en kollateraal",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Monitor watter persentasie onderhoudsmarge jy gebruik het en watter persentasie daling die portefeulje sal verduur voordat jy die marge-oproepsone betree."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Bedryf van verskansing met buite-die-geld verkoopopsies en berekening van waarborge Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Komitee & Boek",
+              "summary": "Die twee regte panele met outomatiese hersiening van risikolimiete, bestelgeskiedenis en medevlieënier.",
+              "paragraphs": [
+                "In die entoesiasme om 'n handel uit te probeer, is dit maklik om oor die hoof te sien dat 'n bate meer as 20% van jou hele portefeulje konsentreer of dat dit te midde van 'n ernstige statistiese anomalie funksioneer.",
+                "Die twee kwadrante aan die regterkant dien as jou outomatiese risikobeheer en ouditspoor:"
+              ],
+              "lead": "Die twee kwadrante aan die regterkant funksioneer as risikobeheer en registrasie:",
+              "bullets": [
+                {
+                  "bold": "Hersien in drie dimensies",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Hulle evalueer jou gesimuleerde bestellings vanaf die tegniese, fundamentele en harde sekuriteitslimiete (waarskuwing as enige posisie die 20% kapitaallimiet oorskry of as dit hoë afwykings het)."
+                },
+                {
+                  "bold": "Bestellogboek en portefeulje-assistent",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Die onderste paneel teken elke simulasie aan met die impak daarvan op risiko, terwyl die dialoogknoppie regs bo die klets oopmaak om direkte vrae oor jou portefeulje te vra."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Voor-operasie risikobeheerreëls en konsentrasielimiete per bate."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Die grafiek hieronder in volskerm om seker te maak dat jou strategie buite die proeftydperk werk.",
+              "paragraphs": [
+                "Enige strategie kan aangepas word deur na die verlede te kyk totdat dit onfeilbaar op die historiese grafiek lyk. Die werklike uitdaging is om te weet of dit aanhou werk wanneer dit met nuwe markdata gekonfronteer word.",
+                "Die volle breedte onderste paneel plaas die strategie deur die strengste validering voordat dit in produksie gaan:"
+              ],
+              "lead": "Die onderste paneel onderwerp die strategie aan binne-steekproef en buite-steekproef validering:",
+              "bullets": [
+                {
+                  "bold": "Skeiding tussen ontwerp en werklike toetsing",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Dit verdeel die historiese grafiek in 'n eerste fase waar die strategie gekalibreer word en 'n tweede fase met ongesiene data om te kyk of dit sy voordeel bo die basisportefeulje behou."
+                },
+                {
+                  "bold": "Statistiese robuustheidsnota",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "As die doeltreffendheidsaanwyser 70% oorskry, bevestig dit dat die resultate konsekwent is en nie die produk daarvan dat die syfers op die verlede afgedwing is nie."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Wat die Walk-Forward-doeltreffendheidsindeks (WFE) meet en hoe dit oorgeoptimaliseerde strategieë opspoor."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Likiditeitsfilter (ADV)",
+        "intro": "Ten einde 'n bate te verhandel sonder dat 'n enkele bestelling sy prys verdraai, vereis die platform 'n minimum drempel van gemiddelde daaglikse volume in dollars oor die afgelope 20 werksdae.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Slotprysᵢ × Verhandelde Volumeᵢ)",
+          "denominator": "20 vaardige wiele",
+          "vars": [
+            "Sluitingsprys: amptelike sluitingsprys van dag i uitgedruk in USD.",
+            "Verhandelde Volumeᵢ: totale aantal eenhede wat op daardie dag verhandel is."
+          ]
+        },
+        "lead": "Gebaseer op gemiddelde daaglikse volume, klassifiseer die katalogus die diepte van elke instrument:",
+        "bullets": [
+          {
+            "bold": "Hoë institusionele likiditeit",
+            "code": "> $500M diarios",
+            "text": "Laat jou toe om groot posisies onmiddellik te betree en te verlaat sonder om die markprys te beweeg."
+          },
+          {
+            "bold": "Standaard Katalogus Likiditeit",
+            "code": "$50M a $500M diarios",
+            "text": "Geskik vir gediversifiseerde portefeuljes met baie lae aankoop-/verkoopkoste."
+          },
+          {
+            "bold": "Versprei monitering",
+            "code": "< $50M diarios",
+            "text": "In tye van wisselvalligheid is dit raadsaam om die opening van wenke na te gaan voordat groot bestellings uitgevoer word."
+          }
+        ],
+        "example": "As 'n aandeel teen $200 verhandel en die afgelope maand gemiddeld 5 miljoen aandele per wiel verhandel, is sy gemiddelde daaglikse volume (ADV) $1 miljard ($1,0 miljard)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalisering na USD",
+        "intro": "Aangesien die katalogus Europese effekte, Asiatiese indekse, kommoditeite en kripto-geldeenhede kombineer, word alle volumevloeie intyds na Amerikaanse dollars omgeskakel sodat dit op dieselfde skaal vergelyk kan word.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Plaaslike geldeenheid Volume: bedrag verhandel in die oorspronklike markgeldeenheid (EUR, JPY, GBP, BRL, ens.).",
+            "Spotwisselkoers: huidige kwotasie in die 61 geldeenheid enjin."
+          ]
+        },
+        "lead": "Hierdie omskakeling het 'n direkte impak op twee plekke op die skerm:",
+        "bullets": [
+          {
+            "bold": "Algehele Aansig Ranglys Alle",
+            "code": "213 activos",
+            "text": "Bestel die instrumente van die grootste tot die minste werklike beweging van geld wêreldwyd."
+          },
+          {
+            "bold": "Volumekaart bygevoeg",
+            "code": "Volumen 24h en $B",
+            "text": "Dit laat toe dat die volume bates wat in verskillende lande gelys is bygevoeg word sonder vervormings."
+          }
+        ],
+        "example": "As 'n Duitse verband €4 miljard per dag verhandel en die EUR/USD-kruishandel teen 1.08, bereken die stelsel $4.32B in die globale polsslag."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Hoe meet jy of 'n mark met opregte sterkte gestyg het of as dit reeds te vinnig gestyg het en uitgeput is? Die relatiewe sterkte-indeks (RSI) vergelyk die gemiddelde stygings met die gemiddelde dalings van die laaste 14 rondtes op 'n skaal van 0 tot 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1+ (Gemiddelde stygings₁₄ / gemiddelde dalings₁₄)",
+          "vars": [
+            "Gemiddelde verhoging₁₄: gladde gemiddelde van die punte verdien op die bullish dae van die laaste 14 wiele.",
+            "Gemiddelde verliese₁₄: gladde gemiddelde van die punte wat verloor is op die lomp dae van dieselfde tydperk."
+          ]
+        },
+        "lead": "Dit is hoe die drie afdelings van die skaal in die sirkelring geïnterpreteer word:",
+        "bullets": [
+          {
+            "bold": "Koopkrag en oorgekoop",
+            "code": "70 a 100",
+            "text": "Die stygings oortref die onlangse dalings ver. Dit toon groot bullish momentum, hoewel dit bo 70 waarsku dat die prys dalk 'n pouse benodig."
+          },
+          {
+            "bold": "balanssone",
+            "code": "30 a 70",
+            "text": "Die mark beweeg teen 'n volhoubare pas. Deur die intermediêre vlak (> 50 in groen) oor te steek, bevestig koperdominansie, terwyl 'n daling onder (< 50 in rooi) verkopersoorheersing aandui."
+          },
+          {
+            "bold": "Straf en oorverkope",
+            "code": "0 a 30",
+            "text": "Die dalings was so gereeld en uitgespreek dat die bate statisties goedkoop begin lyk en geneig is tot 'n herstel."
+          }
+        ],
+        "example": "As 'n groep aandele in die laaste 14 wiele gemiddeld $2 per bullish dag gestyg het en slegs $1 per lomp dag gedaal het, is sy sterkteverhouding 2 en sy RSI lees 66.7 (bullish push in green)."
+      },
+      {
+        "id": "p06",
+        "label": "Normale regime (P-06)",
+        "intro": "’n Bate mag dalk kalm lyk as jy net na sy prys kyk, maar terselfdertyd gebuk gaan onder ’n vreemde sprong in volume en ’n abnormale opening in sy koop- en verkooppieke. Die Isolation Forest-enjin (P-06) kruis hierdie veranderlikes terselfdertyd om atipiese gedrag op te spoor.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): gemiddelde aantal ewekansige snitte wat nodig is om vandag se gedrag van die res van die geskiedenis te isoleer.",
+            "x: vektor van 4 veranderlikes (Terugkeer 24h, Vol Z-Score 20d, Realized Volatility 30d en Spread in bps)."
+          ]
+        },
+        "lead": "Hoe skaarser vandag se skuif is, hoe vinniger word dit geïsoleer en hoe nader is die telling aan 1.00:",
+        "bullets": [
+          {
+            "bold": "Normale regime",
+            "code": "0.00 a 0.49",
+            "text": "Prys, volume en likiditeit beweeg in lyn met die bate se historiese gemiddelde."
+          },
+          {
+            "bold": "Hoë aktiwiteit",
+            "code": "0.50 a 0.64",
+            "text": "Ten minste een van die veranderlikes het begin afwyk van sy gewone gedrag; Dit is raadsaam om die vloei van bestellings noukeurig te monitor."
+          },
+          {
+            "bold": "Ontwrigting of kritieke anomalie",
+            "code": "0.65 a 1.00",
+            "text": "Die bate registreer statisties ekstreme gedrag. In die portefeuljemodule aktiveer die oorskryding van hierdie drempel die veiligheidsrem."
+          }
+        ],
+        "example": "As 'n soewereine verband skaars 0.1% in prys beweeg, maar sy volume vermenigvuldig met vier en sy verspreiding verdriedubbel in minute, kruis die detektor die drie datapunte en verhoog sy telling na 0.74 (Ontwrigting in rooi)."
+      },
+      {
+        "id": "zscore",
+        "label": "Volume-omleiding (Z-Score)",
+        "intro": "Om te sê dat 500 miljoen dollar vandag bedryf is, is baie vir 'n mediumgrootte maatskappy, maar baie min vir S&P 500. Die Volume Z-Score bring alle bates na dieselfde universele eenheid: hoeveel standaardafwykings (σ) is vandag se volume vanaf sy eie 20-wielgemiddeld.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Volume Vandag (24h) - Gemiddelde Volume (20d)",
+          "denominator": "Standaardafwyking van volume (20d)",
+          "vars": [
+            "Gemiddelde volume (20d): gewone volume van die bate gedurende die laaste besigheidsmaand.",
+            "Standaardafwyking (20d): hoeveel hierdie volume normaalweg van een dag na die volgende verskil."
+          ]
+        },
+        "lead": "Op hierdie manier kan jy enige bate op dieselfde skaal van sigma (σ) eenhede vergelyk:",
+        "bullets": [
+          {
+            "bold": "Gewone aktiwiteit",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Die volume van die dag is heeltemal binne die roetine van die afgelope vier weke."
+          },
+          {
+            "bold": "Hoë deelname",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Daar is 'n hoër as gemiddelde belangstelling wat die neiging van die dag begin bevestig."
+          },
+          {
+            "bold": "Institusionele botsing",
+            "code": "> +2.0σ",
+            "text": "Dit kom in minder as 5% van die rondtes van die jaar voor en weerspieël gewoonlik die massiewe toetrede of uittrede van groot fondse."
+          }
+        ],
+        "example": "As 'n aandeel gewoonlik $100M daagliks verhandel met 'n tipiese variasie van ±$20M en vandag $160M verhandel, is dit $60M bo sy gemiddelde, wat presies gelykstaande is aan +3.0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Vaste inkomste (2s10s en DV01)",
+        "intro": "Wanneer jy effekte of koerse in die tabel filter, verskyn die twee sleutelmaatstawwe vir die evaluering van soewereine skuld: die helling van die kromme (2s10s) en die geldwaarde van 'n basispunt (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 basispunt (1 bp): gelykstaande aan 0,01% prestasie.",
+            "DV01 ($/$1M): Hoeveel dollars 'n $1 miljoen-posisie wen of verloor as die koers 1 basispunt beweeg."
+          ]
+        },
+        "lead": "Hoe om hierdie twee nommers op die rooster te lees:",
+        "bullets": [
+          {
+            "bold": "Normale of positiewe kromme",
+            "code": "2s10s > 0 bps",
+            "text": "10-jaar-effekte betaal 'n hoër koers as 2-jaar-effekte, wat 'n verwagting van gesonde ekonomiese groei weerspieël."
+          },
+          {
+            "bold": "omgekeerde kromme",
+            "code": "2s10s < 0 bps",
+            "text": "Kort tariewe oorskry lang tariewe; histories waarsku dit teen ekonomiese afkoeling of monetêre beperking."
+          }
+        ],
+        "example": "As die 10-jaar Tesourie opbrengs 4.20% lewer en die 2-jaar Tesourie opbrengs 4.55%, merk die 2s10s kolom -35 bps (omgekeerde kurwe in rooi)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Aandele (p/v en marge)",
+        "intro": "Wanneer S&P/NDX-aandele gefiltreer word, vertoon die tabel die geprojekteerde verdiensteveelvoud (P/V-vooruit) en bruto bedryfsmarge sodat jy waardasie teenoor winsgewendheid kan vergelyk.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Huidige aandeelprys",
+          "denominator": "Geskatte verdienste per aandeel (volgende 12 maande)",
+          "vars": [
+            "P/V Vooruit: Hoeveel jaar se toekomstige verdienste betaal jy teen vandag se prys.",
+            "Bruto Marge (%): persentasie van verkope wat as bruto wins oorbly nadat die direkte koste afgetrek is."
+          ]
+        },
+        "lead": "Waarna om te kyk wanneer jy beide kolomme kruis:",
+        "bullets": [
+          {
+            "bold": "Veeleisende teenoor matige assessering",
+            "code": "P/E > 30x vs < 18x",
+            "text": "’n Hoë veelvoud dui aan dat die mark sterk toekomstige groei inprys; 'n lae een weerspieël gewoonlik volwasse of waardevolle maatskappye."
+          },
+          {
+            "bold": "Pryse Krag",
+            "code": "Margen Bruto > 50%",
+            "text": "Hoë marges toon maatskappye met sterk mededingende voordele wat in staat is om hul winste teen inflasie te verdedig."
+          }
+        ],
+        "example": "As 'n aandeel teen $150 verhandel en na raming $6 per aandeel oor die volgende 12 maande sal verdien, is sy Voorwaartse P/V 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Afgeleide instrumente, FX en kommoditeite",
+        "intro": "Vir opsies, forex en fisiese termynmarkte toon die twee dinamiese kolomme die geïmpliseerde koste van risiko of beloning om die posisie oor tyd te hou.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "OTM IV (Afgeleide instrumente): geannualiseerde wisselvalligheid wat die opsies mark afslag vir die volgende 30 dae.",
+            "Dra 10Y (FX) en Roll Opbrengs (Kommoditeite): jaarlikse wins of koste van koersdifferensiaal of termyn-omskakeling."
+          ]
+        },
+        "lead": "Hoe om voordeel te trek uit hierdie kolomme, afhangende van die bate:",
+        "bullets": [
+          {
+            "bold": "In Afgeleides",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Hulle vertel jou watter persentasie beweging die mark verwag en of die opsies om valle te dek (Puts) duur is."
+          },
+          {
+            "bold": "In geldeenhede en grondstowwe",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Hulle wys in groen as die instandhouding van die bate jou bykomende inkomste betaal of in rooi as dit 'n drakoste het."
+          }
+        ],
+        "example": "As 'n opsie 'n geïmpliseerde wisselvalligheid (ATM IV) van 35% jaarliks ​​toon, verdiskonteer die mark 'n skuif naby aan ±10% vir die volgende 30 dae."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radar radiale kartering",
+        "intro": "Om tot 45 bates in die drie radarringe te plaas sonder om te oorvleuel, verander die Orbital-aansig die waarde van die gekose aanwyser in 'n afstand na die middelpunt (radius r) genormaliseer tussen die minimum en maksimum van die groep.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Batewaarde − Minimumwaarde van die Groep",
+          "denominator": "Maksimum Waarde van die Groep − Minimum Waarde van die Groep",
+          "vars": [
+            "r → 0 (Binne Ring): konsentreer die bates met groter intensiteit of positiewe afwyking.",
+            "r → 1 (buitenste ring): lokaliseer die perifere bates of dié met die laagste relatiewe lesing."
+          ]
+        },
+        "lead": "Hoe om die posisie en kleur van elke planeet op die radar te lees:",
+        "bullets": [
+          {
+            "bold": "Fokus binneste ring",
+            "code": "Centro del radar",
+            "text": "Versamel die voorste bates van die aanwyser wat jy hierbo gekies het sodat jou siening gaan na wat die belangrikste eerste is."
+          },
+          {
+            "bold": "Historiese kleur semantiek",
+            "code": "Verde vs Rojo",
+            "text": "Die nodus verlig in groen wanneer dit sy historiese gemiddelde gunstig oorskry en in rooi wanneer dit afname of spanning weerspieël."
+          }
+        ],
+        "example": "As jy die radar volgens Volume Deviation (Z-Score) sorteer, is die aktiewe een met +3.4σ in die helder sentrale ring geleë, terwyl een met 0.1σ in die buitenste wentelbaan is."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) en Bollinger Bands",
+        "intro": "Die 20-tydperk Simple Moving Average (SMA 20) dui die basisneiging van die bate aan, terwyl die Bollinger Bands 'n dinamiese kanaal teken deur twee standaardafwykings (2σ) rondom daardie gemiddelde op te tel en af te trek.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): rekenkundige gemiddelde van die laaste 20 sluitings.",
+            "Bandwydte (BB Width): persentasie afstand tussen die boonste en onderste bande."
+          ]
+        },
+        "lead": "Statisties gesproke kom ongeveer 95% van aanhalings binne die twee bande voor:",
+        "bullets": [
+          {
+            "bold": "Prys bo die gemiddelde",
+            "code": "Precio > SMA 20",
+            "text": "Dit dui aan dat die korttermyn-tendens bullish is en die gemiddelde dien gewoonlik as 'n ondersteuningsvloer."
+          },
+          {
+            "bold": "Boonste of onderste band raak",
+            "code": "±2σ",
+            "text": "Dit waarsku dat die prys te vinnig van sy onlangse gemiddelde gestrek het en 'n blaaskans kan neem."
+          },
+          {
+            "bold": "band kompressie",
+            "code": "BB Width bajo",
+            "text": "Wanneer die bande baie nou word, bou die mark energie op voor 'n sterk skuif."
+          }
+        ],
+        "example": "As 'n aandeel se SMA(20) $100 is en sy 20-wiel standaardafwyking is $4, is die boonste band op $108 en die onderste band is op $92."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Institusioneel",
+        "intro": "Anders as 'n algemene gemiddelde wat gelyke gewig gee aan alle ure van die dag, weeg die VWAP elke prys volgens die hoeveelheid geld wat werklik op daardie vlak verhandel is. Dit is die hoofverwysing wat deur institusionele tabelle gebruik word.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Tipiese Prysᵢ × Verhandelde Volumeᵢ)",
+          "denominator": "∑ Verhandelde Volumeᵢ",
+          "vars": [
+            "Tipiese prysᵢ: gemiddeld tussen die maksimum, minimum en sluiting van elke kers.",
+            "Verhandelde Volumeᵢ: volume verhandel spesifiek in daardie afdeling."
+          ]
+        },
+        "lead": "Hoe professionele handelaars die VWAP-lyn gebruik:",
+        "bullets": [
+          {
+            "bold": "Uitvoeringsbeheer",
+            "code": "Comprar bajo el VWAP",
+            "text": "As 'n institusionele fonds vir die tydperk onder die VWAP koop, het dit 'n beter prys as die markgeweegde gemiddelde gekry."
+          },
+          {
+            "bold": "Trend Verdedigingsvlak",
+            "code": "Soporte / Resistencia",
+            "text": "Solank die bate bo VWAP bly, is diegene wat in die tydperk gekoop het in gemiddelde wins."
+          }
+        ],
+        "example": "As 1 miljoen aandele teen $100 verhandel is en slegs 100 duisend aandele teen $110 verhandel is, sou die eenvoudige gemiddelde $105 sê, maar die VWAP lees $100,91 omdat byna al die geld teen $100 verhandel is."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Verspreide verplasing (bps)",
+        "intro": "Die verspreiding is die verskil tussen die beste vraprys en die beste bodprys in die bestelboek. Wanneer markmakers risiko of gebrek aan likiditeit waarneem, maak hulle daardie gaping oop om hulself te beskerm.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "(Vra prys − Biedprys)",
+          "denominator": "Gemiddelde prys (middelprys)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Vra / Biedprys: verkoopspunt en kooppunt wat in die boek is.",
+            "10 000: Omskakelingsfaktor om die verskil in basispunte (bps) uit te druk."
+          ]
+        },
+        "lead": "Wat die Spread Dislocation lesing op die linker spoor vir jou sê:",
+        "bullets": [
+          {
+            "bold": "Diep en vloeiende boek",
+            "code": "Spread estable en verde",
+            "text": "Daar is oorvloedige likiditeit aan beide kante en die implisiete koste om in of uit te gaan is minimaal."
+          },
+          {
+            "bold": "Wrywing of onttrekking van likiditeit",
+            "code": "Salto en bps",
+            "text": "Dit vind gewoonlik sekondes voor makro-ekonomiese aankondigings of tydens paniekverkope plaas, wat uitvoering duurder maak."
+          }
+        ],
+        "example": "As 'n bate 'n koopwenk teen $99,95 en 'n verkoopswenk teen $100,05 het, is die verskil van $0,10 bo $100 gelykstaande aan 10 basispunte (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Opsies (Black-Scholes en Grieke)",
+        "intro": "In die opsie-enjin teken die platform twee wins en verlies (P&L) kurwes: hoe die strategie op vervaldag sou eindig en hoeveel dit vandag werd is (T+0) deur die Black-Scholes-model toe te pas.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S en K: huidige prys van die onderliggende bate (Spot) en trefprys van die opsie (Strike).",
+            "Netto Grieke: Δ Delta (prys sensitiwiteit), Γ Gamma (Delta versnelling), Θ Theta (daaglikse tyd dra) en ν Vega (volatiliteit sensitiwiteit)."
+          ]
+        },
+        "lead": "Hoe om die Grieke van jou strategie op die linker spoor pille te lees:",
+        "bullets": [
+          {
+            "bold": "Stuur en versnelling",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "'n Positiewe Delta wen wanneer die bate styg; 'n positiewe Gamma laat jou vinniger en vinniger wen as die beweging versnel."
+          },
+          {
+            "bold": "Tydsverloop en onsekerheid",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta vertel jou hoeveel dollar die posisie verloor of wins vir elke verbygaande dag; Vega hoeveel dit verander as geïmpliseerde wisselvalligheid met 1% styg."
+          }
+        ],
+        "example": "'n Long Straddle (koop Call and Put on the same strike) het Delta naby aan 0 (dit maak nie saak of dit op of af gaan nie), maar positiewe Vega en het die prys nodig om verby sy twee ewewigspunte (Gelykbreekpunte) te beweeg."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Sovereign Curves (Butterfly en DV01)",
+        "intro": "Die vaste-inkomste-enjin vergelyk opbrengste van 3 maande tot 30 jaar vir 42 lande en bereken beide die helling (2s10s) en die kromming van die middelste deel (Butterfly 2s5s10s) en die monetêre sensitiwiteit (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2J, 5J, 10J koers: 2, 5 en 10 jaar soewereine opbrengste van die gekose land.",
+            "Reële 10-jaar-koers: 10-jaar nominale opbrengs minus die verwysingskoers of implisiete inflasie."
+          ]
+        },
+        "lead": "Waarvoor is elke aanwyser in verbandontleding:",
+        "bullets": [
+          {
+            "bold": "Kromming van die middelste gedeelte",
+            "code": "Butterfly 2s5s10s",
+            "text": "Dit meet of die 5-jaar-tranche duur of goedkoop is relatief tot die 2-jaar en 10-jaar uiterstes."
+          },
+          {
+            "bold": "Dollar Duur Risiko",
+            "code": "DV01 por $1M",
+            "text": "Dit vertel jou presies hoeveel dollar 'n miljoen-dollar-portefeulje wissel met 'n 0,01%-beweging in die koers."
+          }
+        ],
+        "example": "'n 10-jaar verband met 'n DV01 van $820 per miljoen sal ongeveer $82 000 verloor as markkoerse met 100 basispunte (+1,00%) styg."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Geldeenhede (dra) en termynkontrakte (rolopbrengs)",
+        "intro": "In geldeenhede, wanneer 'n paar nie direk aangehaal word nie, word dit bereken deur triangulasie teenoor die dollar en sy koersverskil (Carry) word gemeet. By grondstowwe word hernuwingsprestasie gemeet tussen die onmiddellike kontrak en die 12-maande-kontrak (Rolopbrengs).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Lokoprys (Voor M1) − Toekomstige prys (M12)",
+          "denominator": "Toekomstige prys (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Agterwaarts (Spot > Toekoms): Fisiese skaarsheid veroorsaak vandag dat rollende termynkontrakte 'n positiewe wins genereer (Rolopbrengs > 0).",
+            "Contango (Spot < Toekoms): Bergingskoste maak termynkontrakte duurder en om dit te hernu het 'n negatiewe koste."
+          ]
+        },
+        "lead": "Hoe dit jou sakboek beïnvloed wanneer jy 'n posisie beklee:",
+        "bullets": [
+          {
+            "bold": "Positiewe Carry Trade in geldeenhede",
+            "code": "Carry Spread > 0 bps",
+            "text": "As jy 'n geldeenheid met 'n hoë rentekoers koop deur jouself te finansier in 'n geldeenheid met 'n lae koers, sal jy daardie differensiaal in jou guns invorder."
+          },
+          {
+            "bold": "Gunstige wind in grondstowwe",
+            "code": "Backwardation en verde",
+            "text": "Wanneer fisiese voorraad laag is, is die nabygeleë kontrak meer werd as die verre een en die belegger verdien 'n ekstra opbrengs deur die kontrak te rol."
+          }
+        ],
+        "example": "As 1-maand-olie teen $72 verhandel en die 12-maande-kontrak teen $68 verhandel, is die mark in Terugwaartse koers met 'n positiewe rolopbrengs van +5.88% jaarliks."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Totale Geweegde Graad",
+        "intro": "Nie alle bates beweeg deur dieselfde bronne nie: in 'n maatskappy het geouditeerde finansiële state (SEC 10-K/10-Q) baie gewig, terwyl daaglikse vloeie en kommunikasie meer gewig in die kriptomark of geldeenhede het.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fonds / Peso_Not: outomatiese gewig volgens kategorie (bv. 80% / 20% in Aandele; 85% / 15% in Fooie).",
+            "Finale skaal: wissel van -100 (maksimum pessimisme) tot +100 (maksimum bullish oortuiging)."
+          ]
+        },
+        "lead": "Dit is hoe die saamgestelde partituur na die meerderwaardige mening vertaal word:",
+        "bullets": [
+          {
+            "bold": "Bullish houding",
+            "code": "BULLISH / Nota > +15",
+            "text": "Dokumentêre katalisators en nuusvloei weeg duidelik swaarder as risikofaktore."
+          },
+          {
+            "bold": "Neutrale of gemengde postuur",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Selfs kragte tussen grondbeginsels en nuus; Dit is raadsaam om die trekklavier van 10 faktore te hersien voordat jy besluit."
+          },
+          {
+            "bold": "Defensiewe of lomp houding",
+            "code": "BEARISH / Nota < -15",
+            "text": "Waarskuwings op balansstate, agteruitgang van marges of ongunstige opskrifte oorheers."
+          }
+        ],
+        "example": "In 'n aandeel (80% grondbeginsels / 20% nuus), as die saldo's +50 punte toon en die nuus van die dag toon +20, is die Totale Geweegde Telling (0.80 × 50) + (0.20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Geverifieerde soektog (RAG)",
+        "intro": "Om te verhoed dat kunsmatige intelligensie syfers uitvind, gebruik Document Chat Generation Augmented Recovery (RAG): eers soek dit na die relevante paragrawe in die amptelike verslae van die bate en skryf dan eers die antwoord met verwysing na die bron.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vektorkonsultasie (V) · Vektor Amptelike Dokument (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vektor V en D: numeriese voorstellings van jou vraag en die amptelike fragmente (10-K, FOMC-notule, OIB-verslae).",
+            "3-Layer Guardrail: filter wat navrae blokkeer wat nie met finansies verband hou nie of sonder dokumentêre ondersteuning."
+          ]
+        },
+        "lead": "Wat hierdie meganisme waarborg wanneer jy 'n vraag in die klets vra:",
+        "bullets": [
+          {
+            "bold": "Ankering in primêre bronne",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Elke data oor inkomste, skuld, voorraad of tariewe kom uit die regulatoriese dokument wat met daardie bate ooreenstem."
+          },
+          {
+            "bold": "Stop buite-onderwerp vrae",
+            "code": "Guardrail activo",
+            "text": "As iemand probeer om nie-finansiële onderwerpe te raadpleeg, verwerp die assistent die navraag en hou die fokus op die ontleding van die instrument."
+          }
+        ],
+        "example": "Wanneer jy die risikofaktorskyfie op 'n voorraad tik, haal die enjin die Item 1A (Risikofaktore)-afdeling van sy jongste 10-K-vorm op en som die kritieke punte op."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Neuronale telling",
+        "intro": "'n Tipiese woordeboek verwar dikwels finansiële woorde (byvoorbeeld, \"daling in koste\" of \"skuldvermindering\" is uitstekende nuus selfs al gebruik hulle die woord daling of vermindering). FinBERT is 'n neurale netwerk wat spesifiek opgelei is met finansiële tekste.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(positief) en P(negatief): waarskynlikhede wat deur die model aan die opskrif toegeken word, is bullish of lomp vir die bate.",
+            "24h kurwe: eksponensiële bewegende gemiddelde van die nuus van die afgelope 24 uur."
+          ]
+        },
+        "lead": "Hoe elke nodus in die tydlyn aan die regterkant gradeer:",
+        "bullets": [
+          {
+            "bold": "Katalisator houer",
+            "code": "+20 a +100 en verde",
+            "text": "Klop geskatte verdienste, kredietgradering-opgraderings of gunstige koersverlagings."
+          },
+          {
+            "bold": "Neutrale inligtingskabel",
+            "code": "-19 a +19 en ámbar",
+            "text": "Roetine operasionele aankondigings wat nie die strukturele assessering van die instrument verander nie."
+          },
+          {
+            "bold": "Risikohouer",
+            "code": "-20 a -100 en rojo",
+            "text": "Regulatoriese waarskuwings, margedalings, stakings of erger-as-verwagte inflasiedata."
+          }
+        ],
+        "example": "As die model 82% positiewe waarskynlikheid, 12% neutraal en 6% negatiewe waarskynlikheid aan 'n kop toeken, toon die nodus 'n netto impak van +76 in groen."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe en Sortino",
+        "intro": "Die eerste twee topkaarte meet hoeveel jou kapitaal per jaar groei (CAGR) en hoe doeltreffend daardie groei is in verhouding tot die skokke wat jy moet verduur (Sharpe en Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Jaarlikse Portfolio Opbrengs (Rp) − Risikovrye koers (Rf)",
+          "denominator": "Jaarlikse Portfolio Volatiliteit (σp)",
+          "vars": [
+            "Rf (4,30%): basisopbrengs wat jy sonder risiko in skatkiswissels kan kry.",
+            "Sortino Verhouding: gebruik dieselfde formule maar in die noemer penaliseer dit net die wisselvalligheid van negatiewe dae (dalings)."
+          ]
+        },
+        "lead": "Hoe om die kwaliteit van jou portefeulje te evalueer met hierdie syfers:",
+        "bullets": [
+          {
+            "bold": "Doeltreffende portefeulje",
+            "code": "Sharpe > 1.00",
+            "text": "Die oortollige opbrengs wat u bo die risikovrye koers behaal, oorskry die veronderstelde wisselvalligheid ver."
+          },
+          {
+            "bold": "Uitstekende prestasie",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Dit dui op 'n baie goed gediversifiseerde kombinasie waar stygings konsekwent is en dalings beperk word."
+          }
+        ],
+        "example": "As jou portefeulje jaarliks ​​15,3% opbrengste lewer, is die risikovrye koers 4,3% en jou jaarlikse wisselvalligheid 10%, jou bybetaling is 11% en jou Sharpe-verhouding is 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% en onttrekking",
+        "intro": "Die derde en vierde kaarte antwoord hoeveel jy kan verloor op 'n slegte, maar statisties normale dag (VaR 95%), hoeveel op 'n uiterste paniekdag (CVaR 99%), en wat die grootste terugtrekking van 'n vorige hoogtepunt was (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1 645: statistiese faktor wat 95% van die normale wiele van die jaar dek (19 uit elke 20 dae).",
+            "CVaR 99% (verwagte tekort): Gemiddelde verlies wanneer die mark daardie drempel breek en die top 1% van slegste dae binnegaan."
+          ]
+        },
+        "lead": "Watter praktiese verskil is daar tussen kyk na die VaR en kyk na die Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Enkeldag risiko",
+            "code": "VaR 95% 1D en USD",
+            "text": "Dit berei jou sielkundig en finansieel voor vir wat jou rekening in 'n slegte rigting kan swaai sonder dat dit beteken dat die strategie misluk het."
+          },
+          {
+            "bold": "Weerstand in 'n ongunstige streep",
+            "code": "Max Drawdown 12M",
+            "text": "Dit meet die opgehoopte druppel van punt tot punt van die hoogste punt na die vloer voordat dit weer herstel."
+          }
+        ],
+        "example": "In 'n $100,000-portefeulje met 'n daaglikse VaR 95% van 1,45% ($1,450), in 19 uit 20 handelswiele sal jou daaglikse verliese nie $1,450 oorskry nie."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "X-straal-oorvleueling (#12)",
+        "intro": "Wanneer jy 'n ETF soos SPY of QQQ koop, koop jy dosyne aandele binne. As jy ook van daardie selfde aandele direk gekoop het, is jou werklike blootstelling die som van die twee dinge.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Direkte gewigᵢ: persentasie van jou portefeulje wat direk aan die aandeel toegewys word i.",
+            "Persentasie binne die ETFₖ: amptelike gewig wat daardie maatskappy het binne die indeks of fonds k."
+          ]
+        },
+        "lead": "Waarom dit belangrik is om hierdie eerste oortjie te hersien voordat die portefeulje toegemaak word:",
+        "bullets": [
+          {
+            "bold": "Versteekte konsentrasiesigbaarheid",
+            "code": "Directo + Indirecto",
+            "text": "Dit demonteer outomaties elke ETF in jou portefeulje en wys jou 'n enkele balk met die ware persentasie wat jy in elke maatskappy het."
+          },
+          {
+            "bold": "Oormatige waarskuwing",
+            "code": "> 20% en rojo",
+            "text": "As die totale som die omsigtige drumpel van konsentrasie op 'n enkele naam oorskry, verlig die ry sodat jy kan herbalanseer."
+          }
+        ],
+        "example": "As jy 15% van jou portefeulje in direkte NVDA plaas en ook 30% in die SPY ETF het (waar NVDA ongeveer 7%) weeg, onthul die X-Ray dat jou werklike blootstelling aan NVDA 15% + (30% × 7%) = 17.% is."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alpha Brinson ontbinding (#2)",
+        "intro": "Wanneer jou portefeulje sy maatstaf klop (of teen verloor), skei die Brinson-Fachler-model presies waar daardie verskil vandaan kom: was jy reg in watter sektore om te oorgewig of was jy reg met die keuse van die beste bates binne elke sektor?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Toewysingseffek: (Portfolio Gewig − Maatstafgewig) × Sektoropbrengs in die maatstaf.",
+            "Seleksie-effek: Gewig in maatstaf × (Opbrengs op u bates - opbrengs van die sektor)."
+          ]
+        },
+        "lead": "Hoe om die drie toeskrywingstawe in die derde oortjie te lees:",
+        "bullets": [
+          {
+            "bold": "Makro of sektor sukses",
+            "code": "Asignación Sectorial",
+            "text": "Dit is positief in groen wanneer jy meer gewig as die mark sit op die bateklasse wat die meeste gestyg het."
+          },
+          {
+            "bold": "Suksesvolle teiken van bates",
+            "code": "Selección de Activos",
+            "text": "Dit is positief as die spesifieke instrumente wat jy gekies het meer presteer het as die gemiddelde vir hul eie sektor."
+          }
+        ],
+        "example": "As jou portefeulje S&P 500 met +3.20% geklop het, laat hierdie oortjie jou toe om te sien dat +2.10% gekom het van die keuse van beter aandele (Seleksie) en +1.10% van meer gewig in tegnologie (Toewysing)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Doeltreffende Frontier en CML",
+        "intro": "In die Markowitz-vlak is die verwagte opbrengs van 'n portefeulje die geweegde gemiddelde van die opbrengs van sy bates, maar sy wisselvalligheid is laer as die gemiddelde danksy die feit dat die bates nie 100% dieselfde beweeg nie.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: persentasie van kapitaal toegewys aan bates i en j.",
+            "ρᵢⱼ (Korrelasie): mate waarin beide bates saam beweeg (−1 tot +1). Hoe laer ρᵢⱼ is, hoe meer word die totale risiko verminder."
+          ]
+        },
+        "lead": "Wat die drie verwysings in die grafiek verteenwoordig:",
+        "bullets": [
+          {
+            "bold": "Minimum afwyking",
+            "code": "Min-Var",
+            "text": "Dit is die mees linkse punt op die kurwe: die presiese kombinasie van gewigte wat die laagste moontlike wisselvalligheid behaal."
+          },
+          {
+            "bold": "Máximo Sharpe en Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Dit is die punt waar die lyn wat by die risikovrye koers begin, die doeltreffende grens raak, wat die grootste wins per eenheid risiko bied."
+          }
+        ],
+        "example": "As jy in gelyke dele twee bates kombineer wat elk 20% wisselvalligheid het maar geen korrelasie (ρ = 0), is die wisselvalligheid van die portefeulje nie 20% nie, maar daal tot 14,1%."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR deur Active and Capture",
+        "intro": "Om te weet watter posisie meer risiko tot die portefeulje toevoeg, word die marginale bydrae van elke bate gemeet volgens sy gewig en sy korrelasie met die res. Daarbenewens meet die vangverhoudings die asimmetrie teen die stygings en dalings van die S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Terugbetaling van jou bate of Portfolio in Bullish (of Bearish) wiele",
+          "denominator": "Terugkeer van die S&P 500 op dieselfde wiele",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100%) – Verdien meer as die indeks wanneer die mark styg.",
+            "Downside Capture (< 100%): daal minder as die indeks wanneer die mark daal (defensiewe buffer)."
+          ]
+        },
+        "lead": "Die ideale profiel waarna u soek wanneer u die derde oortjie van die kwadrant hersien:",
+        "bullets": [
+          {
+            "bold": "positiewe asimmetrie",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Neem ten volle deel aan bulmarkte, maar beskerm kapitaal wanneer die aandelemark regstel."
+          },
+          {
+            "bold": "Toevlugsoord of ongekorreleerde bates",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Instrumente soos kort effekte of goud wat geneig is om stewig te bly of te styg tydens aandelemarkdalings."
+          }
+        ],
+        "example": "As jou portefeulje in die maande toe die S&P 500 met 10% gestyg het met 11% (opwaartse 110%) gestyg het, en toe die indeks met 10% gedaal het, jou portefeulje net 6% (onderkant 60%) gedaal het, het jy 'n sterk asimmetrie in jou guns."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normale vs Krisis Korrelasie",
+        "intro": "Die Pearson-koëffisiënt (r) meet van -1.00 tot +1.00 hoe twee bates relatief tot mekaar beweeg. Die gevaar in portefeuljebestuur is dat tydens 'n markineenstorting die korrelasie tussen risikobates gewoonlik na +1.00 (besmetting) skiet.",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kovariansie (Lewer Bate i, Opbrengs Bate j)",
+          "denominator": "Batevolatiliteit i (σᵢ) × Batevolatiliteit j (σⱼ)",
+          "vars": [
+            "r naby aan 0 of negatief: uitstekende diversifikasie (wanneer een daal, volg die ander nie).",
+            "r in Crisis Queue: herbereken die matriks wat slegs die 5% van die slegste wiele op die mark neem."
+          ]
+        },
+        "lead": "Hoe om die kleure van die 6x6-matriks in beide regimes te lees:",
+        "bullets": [
+          {
+            "bold": "Werklike diversifikasie",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Albei bates reageer op verskillende ekonomiese dryfvere en vergoed mekaar."
+          },
+          {
+            "bold": "Konsentrasie of besmetting",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Hulle beweeg feitlik as 'n blok; Om albei te hê, verminder nie jou val op 'n slegte dag nie."
+          }
+        ],
+        "example": "Twee aandele uit verskillende sektore het dalk 'n matige korrelasie van 0,42 in 'n normale jaar, maar wanneer jy die Crisis Queue-knoppie aktiveer sal jy sien dat dit styg tot 0,81 want in 'n paniek verkoop hulle saam."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D-skok (koerse × aandelemark)",
+        "intro": "Die 2D-matriks kombineer gelyktydig die impak van 'n beweging in rentekoerse (via vaste-inkomsteduur en koersgevoeligheid) met 'n daling of styging in die S&P 500-indeks (via Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: aandelemarkvariasie scenario op die horisontale as (−20% tot +10%).",
+            "Δ Tariewe: scenario van verandering in rentekoerse in basispunte op die vertikale as (−100 tot +200 bps)."
+          ]
+        },
+        "lead": "Wat is die doel om die twee asse in die tabel te kruis:",
+        "bullets": [
+          {
+            "bold": "Stagflasie of koersverhoging scenario",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Soos wat in 2022 gebeur het, waar aandele en lang effekte terselfdertyd ly."
+          },
+          {
+            "bold": "Klassieke skuiling scenario",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Waar laer koerse die prys van tesourie-effekte verhoog en die daling van aandele temper."
+          }
+        ],
+        "example": "As jy vir 'n lang verband soos US10Y of TLT filter, kan jy in die tabel sien hoe dit waarde kry wanneer koerse daal (-100 bps), wat as 'n valskerm optree as S&P 500 daardie selfde dag val."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markov-regimes (#11)",
+        "intro": "'n Markov-ketting modelleer die ekonomie as 'n stelsel wat tussen vier moontlike toestande spring (Calm Bullish, Volatile Bullish, Inflation/Rates and Crisis) en bereken die waarskynlikheid om van die een na die ander te beweeg.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Hoofdiagonaal (i = j): waarskynlikheid dat die huidige regime onveranderd bly.",
+            "Off-diagonaal (i ≠ j): waarskynlikheid om na 'n nuwe markklimaat te draai."
+          ]
+        },
+        "lead": "Hoe om voordeel te trek uit die oorgangsmatriks in die tweede oortjie:",
+        "bullets": [
+          {
+            "bold": "Volharding van die huidige siklus",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Kalm regimes het gewoonlik hoë volharding (> 75%), wat dit moontlik maak om tendensposisies te behou."
+          },
+          {
+            "bold": "Rotasie Vroeë Waarskuwing",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Wanneer die waarskynlikheid van oorgang na wisselvallige toestande toeneem, is dit raadsaam om hefboomfinansiering te verminder of verskansing te aktiveer."
+          }
+        ],
+        "example": "As die mark vandag in 'n Volatile Bull-regime is en die ry merk 62% van permanensie, 20% van terugkeer na Bull Calm en 18% van gaan na Stres/Krisis, weet jy dat byna 1 uit 5 scenario's 'n regstelling tot gevolg het."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo-projeksie (10 000 paaie)",
+        "intro": "Gebaseer op die verwagte opbrengs en huidige wisselvalligheid van jou portefeulje, genereer die simulator 10 000 moontlike toekomstige bane dag vir dag deur die stogastiese Geometriese Browniese Bewegingsmodel toe te pas.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ en σ: verwagte jaarlikse opbrengs en geannualiseerde wisselvalligheid van jou huidige portefeulje.",
+            "Z: standaard normale ewekansige veranderlike wat 10 000 keer langs die horison getrek word (6M, 12M of 24M)."
+          ]
+        },
+        "lead": "Uit hierdie 10 000 simulasies word die drie hoofkrommes van die grafiek onttrek:",
+        "bullets": [
+          {
+            "bold": "Gunstige scenario",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Die vlak wat slegs met 5% van die mees optimistiese scenario's oorskry word."
+          },
+          {
+            "bold": "Verwagte sentrale trajek",
+            "code": "Mediana P50",
+            "text": "Die tipiese resultaat waar die helfte van die simulasies bo is en die ander helfte onder is."
+          },
+          {
+            "bold": "Termyn stres scenario",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Die ongunstige vloer: in 95% van die gesimuleerde paaie eindig jou portefeulje bo hierdie lyn."
+          }
+        ],
+        "example": "In 'n 12-maande-horison op 'n basis van 100, as P50 116 lees en P05 94, is jou sentrale verwagting om +16% te verdien en in 'n baie ongunstige jaar waag jy naby aan -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly-kriterium (#14)",
+        "intro": "Die Kelly-kriterium beantwoord wetenskaplik watter persentasie van jou kapitaal jy aan 'n operasie moet toewys wanneer jy weet wat jou waarskynlikheid van sukses (Win-Rate) is en hoeveel jy wen wanneer jy slaag teenoor wat jy verloor as jy misluk (Payoff Ratio).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p en q: waarskynlikheid om te wen (p) en waarskynlikheid om te verloor (q = 1 − p).",
+            "b (afbetalingsverhouding): gemiddelde wins gedeel deur gemiddelde verlies (byvoorbeeld, verdien $2 vir elke $1 wat gewaag word, impliseer b = 2)."
+          ]
+        },
+        "lead": "Waarom professionele bestuurders die Half-Kelly (0.5×) variant gebruik:",
+        "bullets": [
+          {
+            "bold": "Kelly voltooi",
+            "code": "Full Kelly 1.0×",
+            "text": "Dit maksimeer langtermyn wiskundige groei, maar genereer baie skerp swaaie as daar 'n streep foute in 'n ry is."
+          },
+          {
+            "bold": "Half Kelly aanbeveel",
+            "code": "Half-Kelly 0.5×",
+            "text": "Deur die helfte van die voorgestelde persentasie te gebruik, vang jy 75% van die potensiële groei vas, maar sny die wisselvalligheid in die helfte."
+          }
+        ],
+        "example": "As 'n strategie 55% van die tyd tref (p = 0.55, q = 0.45) en 2 tot 1 (b = 2) betaal, gee die volle Kelly (0.55×2 − 0.45) / 2 = 32.5%, en die verstandige Half-Kelly beveel aan om 16.25% toe te ken."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Plaas OTM-skild (#6)",
+        "intro": "’n Buite-die-geld-verkoopopsie (byvoorbeeld 5% onder die huidige prys van S&P 500) werk net soos ’n versekeringsaftrekbaar: dit het ’n klein, vaste koste (die premie), maar as die mark met 20% of 30% daal, word die waarde daarvan konveks vermenigvuldig en verreken jou portefeuljeverliese.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Jaarlikse koste (Carry Drag): jaarlikse persentasie wat dit kos om die versekering te hernu as die mark nie daal nie.",
+            "Botsingsbeskerming (-20%): dollars wat deur die Put-kontrak verhaal is tydens 'n ernstige ongeluk."
+          ]
+        },
+        "lead": "Hoe om simulatoropsies in die eerste oortjie te vergelyk:",
+        "bullets": [
+          {
+            "bold": "Direkte indeksversekering",
+            "code": "SPY Put 5% OTM",
+            "text": "Dit beperk die maksimum verlies van 'n daling van 5% in ruil vir 'n matige jaarlikse koste."
+          },
+          {
+            "bold": "Befondsde of wisselvalligheidsdekking",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Die Halsband verminder die koste deur 'n Oproep te verkoop; Die Call on VIX ontplof ten gunste wanneer paniek in die mark ontketen."
+          }
+        ],
+        "example": "As die beskerming van 'n $100 000-portefeulje met SPY Put 5% OTM 1,1% per jaar ($1 100) kos, maar in die geval van 'n -20% ineenstorting verminder dit jou portefeulje se afname tot minder as die helfte, die netto besparing oorskry $7 000."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Marge en afstand tot marge-oproep (#13)",
+        "intro": "Wanneer jy met afgeleide instrumente of hefboomfinansiering werk, vereis die makelaar dat 'n minimum persentasie ekwiteitskapitaal oor die totale waarde van die posisie (Maintenance Marge) gehandhaaf word. As 'n daling jou kapitaal onder daardie vloer verminder, word 'n Marge Call geaktiveer.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Skuld of Gefinansierde Saldo",
+          "denominator": "1 − % Onderhoudsmarge (Reg-T)",
+          "vars": [
+            "Bruto Blootstelling: totale som van oop posisies gedeel deur ekwiteit (bv. 1,18×).",
+            "Afstand tot marge-oproep (%): persentasiedaling wat die portefeulje nog ondersteun voordat dit die drempel bereik."
+          ]
+        },
+        "lead": "Sekuriteitsvlakke in die moniteringsbalk:",
+        "bullets": [
+          {
+            "bold": "Groot opruimingsone",
+            "code": "Distancia > 30% en verde",
+            "text": "Hefboomfinansiering is laag en die portefeulje kan selfs 'n ernstige krisis absorbeer sonder gedwonge verkope."
+          },
+          {
+            "bold": "versigtigheidsone",
+            "code": "Distancia < 15% en rojo",
+            "text": "'n Matige markregstelling sal vrye kollaterale uitput en posisies dwing om op die ergste oomblik gelikwideer te word."
+          }
+        ],
+        "example": "Met 'n matige hefboomwerking van 1,18× en 'n gebruikte onderhoudsmarge van 22%, het jou portefeulje 'n veiligheidskussing van meer as 38% afwaarts voor enige kollaterale eise."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Reëls van die 3 Pilare Komitee",
+        "intro": "Sodat geen impulsiewe besluit die voortbestaan van die portefeulje in gevaar stel nie, evalueer die Komitee elke bestelling deur die tegniese nota, die fundamentele nota en twee harde, ononderhandelbare risikobeheerreëls te kombineer.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NBW: geen individuele bate kan meer as een vyfde van die totale bates konsentreer nie.",
+            "Anomaly Stop (P-06 ≥ 0.65): as die bate statistiese ontwrigting betree, verminder die stelsel die maksimum blootstelling tot 5%."
+          ]
+        },
+        "lead": "Wat elke staat beteken in die uitspraak en in die boek van teregstelling:",
+        "bullets": [
+          {
+            "bold": "Bestelling goedgekeur sonder beperkings",
+            "code": "APROBADO en verde",
+            "text": "Die drie pilare val gunstig saam en die posisiegrootte respekteer alle konsentrasie- en likiditeitsperke."
+          },
+          {
+            "bold": "Orde aangepas deur vantreling",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Wanneer 'n kaartjie die 20%-limiet oorskry of swaar probeer koop in die middel van 'n anomalie, waarsku die vangrail teen die bybetaling."
+          }
+        ],
+        "example": "As jy 'n aankoop probeer simuleer wat 'n enkele aandeel tot 26% van jou portefeulje sal neem, vlag Pillar 3 (Risk & Sizing Guardrail) die konsentrasiewaarskuwing sodat jy dit onder 20% aanpas."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Doeltreffendheid Walk-Forward (WFE)",
+        "intro": "Om seker te maak dat 'n strategie nie bloot opgemaak is om in die verlede goed te lyk nie (oorpassing), vergelyk die Walk-Forward-toets hoe dit in die ontwerptydperk (In-Sample) presteer het met sy prestasie in daaropvolgende nooit-voor-gesiene data (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Annualized Return Out-of-Sample (Suiwer Validasie)",
+          "denominator": "Annualized Return In-Sample (Opleiding)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): historiese afdeling wat gebruik word om die strategie se gewigte en reëls te kalibreer.",
+            "Out-of-Sample (OOS): volgende afdeling waar die strategie in werklike toestande getoets word sonder om sy parameters aan te raak."
+          ]
+        },
+        "lead": "Hoe die kwantitatiewe bedryf die WFE persentasie beoordeel:",
+        "bullets": [
+          {
+            "bold": "Robuuste en konsekwente strategie",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Dit behou die oorgrote meerderheid van sy vermoë om winste te genereer wanneer dit met nuwe marktoestande gekonfronteer word."
+          },
+          {
+            "bold": "Broos of oorfikse strategie",
+            "code": "WFE < 50% en rojo",
+            "text": "Dit het goed gewerk in die teorie van die verlede, maar verloor doeltreffendheid in werklikheid; Dit is nie raadsaam om dit met regte geld uit te voer nie."
+          }
+        ],
+        "example": "As 'n strategie 20% op 'n jaargrondslag gelewer het tydens sy ontwerpfase (In-Sample) en in die daaropvolgende werklike toetsfase (Out-of-Sample) dit 18.8% op 'n jaargrondslag gelewer het, is sy WFE doeltreffendheid (18.8 / 20) = 94.0%."
+      }
+    ]
+  }
+}

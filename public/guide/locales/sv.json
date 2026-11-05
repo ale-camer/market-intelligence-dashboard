@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Komprimerad vy",
+    "mainView": "Huvudvy",
+    "expandedView": "Utökad vy",
+    "inThisSection": "I det här avsnittet hittar du:",
+    "deepDive": "Djupdykning",
+    "previous": "Föregående",
+    "next": "Nästa",
+    "mathFormula": "Matematisk formel",
+    "practicalExample": "Praktiskt exempel:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "När du öppnar en traditionell finansiell plattform är det första som vanligtvis dyker upp dussintals diagram, blinkande tabeller och menyer överallt. Var börjar du när du bara vill kolla marknaden eller kolla hur det går för din portfölj?",
+        "Home-skärmen är designad exakt för att undvika det initiala bruset. Den välkomnar dig med ett rent och tydligt utrymme där all kontroll är koncentrerad i två fasta stänger: en ovan för att gå till jobbet och en annan nedan för att konfigurera plattformen så att den passar dig."
+      ],
+      "intro": "Home-skärmen välkomnar dig med ett rent och tydligt utrymme där all kontroll är koncentrerad i två fasta staplar: en ovan för att gå till jobbet och en annan under för att konfigurera plattformen så att den passar dig.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Den tydliga utgångspunkten som delar upp ditt arbete i marknadsanalys och portföljförvaltning.",
+          "paragraphs": [
+            "Föreställ dig att du börjar handla först på morgonen. Ibland vill du titta för att se vilka aktier, obligationer eller valutor som rör sig mest; Andra gånger går du direkt för att se över risken med din portfölj eller simulera ett köp innan du genomför det.",
+            "Hur undviker du att blanda de två sakerna på samma överbelastade skärm? Omslaget skiljer tydligt den vägen från den första sekunden:"
+          ],
+          "lead": "Hur undviker du att blanda de två sakerna på samma överbelastade skärm? Omslaget skiljer tydligt den vägen från den första sekunden:",
+          "bullets": [
+            {
+              "bold": "Utrymme utan distraktioner",
+              "code": "Donde se decodifican los mercados",
+              "text": "När du går in finns det inga öppna bord eller varningar som tvingar dig att stänga fönster innan du startar; Du väljer vilken modul som ska öppnas."
+            },
+            {
+              "bold": "Två tydliga vägar",
+              "code": "Markets / Portfolio",
+              "text": "Hela flödet av ansökan är uppdelat i två huvudsteg: först undersöka möjligheter på marknaderna och sedan bygga eller testa din portfölj."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Den översta raden för att hoppa med ett klick mellan hemmet, marknaderna och din portfölj.",
+          "paragraphs": [
+            "När du fördjupar dig i detaljerna om en tillgång eller testar ändringar i din portfölj är det väldigt lätt att tappa koll på var du var. Hur går du från att titta på ett aktiediagram till att se över din portfölj utan att gå igenom undermenyer?",
+            "Den översta raden förblir alltid fixerad på skärmen och ger dig direkt tillgång till de tre huvudpunkterna:"
+          ],
+          "lead": "Den översta raden förblir alltid fixerad på skärmen och ger dig direkt tillgång till de tre huvudpunkterna:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Var du än är, klickar du på symbolen till vänster kommer du omedelbart tillbaka till huvudsidan."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Det är ditt forskningsutrymme. Här filtrerar du de 213 tillgängliga tillgångarna, följer livekurser, analyserar tekniska diagram och konsulterar balansräkningssammanfattningar eller nyheter."
+            },
+            {
+              "bold": "Plånbok",
+              "code": "Portfolio",
+              "text": "Det är ditt beslutsbord. Här definierar du hur stor andel av ditt kapital som går till varje tillgång, mäter hur mycket du kan förlora i en kris och simulerar ny verksamhet innan du riskerar pengar."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Sidfoten för att kontrollera systemstatus, återgå till den här guiden eller justera layouten.",
+          "paragraphs": [
+            "Medan man analyserar data i realtid finns det operativa frågor som kan uppstå när som helst: kommer offerterna fram korrekt? Vad betydde en punktindikator? Kan jag sänka skärmens ljusstyrka?",
+            "Sidfoten grupperar alla dessa stöd- och konfigurationsverktyg så att de alltid finns till hands utan att komma i vägen för mitten av skärmen:"
+          ],
+          "lead": "Sidfoten grupperar alla dessa stöd- och konfigurationsverktyg så att de alltid finns till hands utan att komma i vägen för mitten av skärmen:",
+          "bullets": [
+            {
+              "bold": "System status",
+              "code": "System",
+              "text": "Den gröna pricken bekräftar med ett ögonkast att allt är i sin ordning. När du öppnar den kan du se i detalj status för servrarna, databaserna och svarshastigheten."
+            },
+            {
+              "bold": "Användare Guide",
+              "code": "Guide",
+              "text": "Öppna den här interaktiva manualen när som helst för att se hur du använder en skärm eller fördjupa dig i dess beräkningar."
+            },
+            {
+              "bold": "Visuella preferenser",
+              "code": "Idioma / Palette",
+              "text": "På höger sida har du kontrollerna för att ändra språket för hela applikationen eller justera bakgrundsbelysningen."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Språk",
+          "summary": "Sökmotorn för att översätta hela plattformen till ditt språk på plats.",
+          "paragraphs": [
+            "Finansiella termer och marknadsrapporter har redan sin egen komplexitet utan att lägga till en språkbarriär. Om du föredrar att läsa förklaringarna på spanska, engelska eller något annat språk kan du ändra det direkt.",
+            "Så här fungerar väljaren från det nedre högra hörnet:"
+          ],
+          "lead": "Så här fungerar väljaren från det nedre högra hörnet:",
+          "bullets": [
+            {
+              "bold": "omedelbar sökning",
+              "code": "Select Language",
+              "text": "Genom att klicka på den aktuella flaggan öppnas ett fönster där du kan välja mellan 56 språk genom att skriva dess namn eller kod (till exempel ES, EN, PT, FR eller DE)."
+            },
+            {
+              "bold": "Automatiskt minne",
+              "code": "mid_lang_v1",
+              "text": "Hela skärmen översätts direkt utan att sidan laddas om och ditt val sparas till nästa gång du går in."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Visuella teman för att anpassa kontrasten på skärmen utan att ändra de finansiella färgerna.",
+          "paragraphs": [
+            "Att spendera flera timmar framför grafik med en kontrast som inte anpassar sig till ljuset i din miljö slutar med att dina ögon tröttnar. Men att ändra färgerna på en finansiell plattform har en klassisk fara: att förlora referensen för vad som går upp och vad som går ner.",
+            "För att lösa detta separerar temaväljaren miljöfärgen från datafärgen:"
+          ],
+          "lead": "För att lösa detta separerar temaväljaren miljöfärgen från datafärgen:",
+          "bullets": [
+            {
+              "bold": "Fem läsmiljöer",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Med varje klick roterar du mellan rent svarta, blåaktiga eller varma bakgrunder tills du hittar den som är mest bekväm för dina ögon."
+            },
+            {
+              "bold": "Intakt finansiell semantik",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Oavsett vilket ämne du ändrar, ändras aldrig marknadens universella regel: grönt betyder alltid uppgång eller vinst, och rött betyder alltid fall, förlust eller riskvarning."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Föreställ dig att du vill upptäcka var dagens bästa möjligheter finns bland mer än tvåhundra obligationer, aktier, index, valutor och råvaror. Om du skulle öppna listorna en efter en, skulle marknaden stänga innan du var klar med att titta på dem.",
+            "Screener samlar alla 213 tillgångar på plattformen till en enda instrumentpanel. Det låter dig filtrera efter marknad på en sekund, mäta dagens totala puls och välja mellan fyra olika sätt att se vilka tillgångar som presterar."
+          ],
+          "intro": "Screener samlar alla 213 tillgångar på plattformen i en enda live-instrumentpanel så att du kan filtrera efter marknad och upptäcka möjligheter med ett ögonkast.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategorier",
+              "summary": "Toppfilter för att fokusera på en enskild tillgångsklass eller din bevakningslista.",
+              "paragraphs": [
+                "Det är meningslöst att analysera en statsobligation med samma mått som en teknologiaktie eller olja. När du blandar allt i samma lista slutar du med att du jämför päron med äpplen.",
+                "Hur begränsar du skärmen exakt till den marknad som intresserar dig idag? Den övre raden låter dig separera universum med ett klick:"
+              ],
+              "lead": "Den övre raden låter dig separera universum med ett klick:",
+              "bullets": [
+                {
+                  "bold": "Hela bilden",
+                  "code": "Todos",
+                  "text": "Den visar de 213 instrumenten tillsammans och sorterade efter omsatt volym så att du kan se vart de flesta pengar flödar globalt."
+                },
+                {
+                  "bold": "Personlig spårning",
+                  "code": "★ Watchlist",
+                  "text": "Isolera endast de tillgångar du har markerat som favoriter för att övervaka dem noga utan distraktioner."
+                },
+                {
+                  "bold": "Tio specialiserade marknader",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Genom att välja någon av dessa kategorier anpassar hela skärmen sina indikatorer och tabellkolumnerna till reglerna för den sektorn."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detaljer om hur de 213 tillgångarna i katalogen klassificeras och vilka volym- och likviditetskriterier de uppfyller."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24h puls",
+              "summary": "De fyra översta korten som talar om för dig om marknaden är lugn, euforisk eller stressad.",
+              "paragraphs": [
+                "Innan du köper eller säljer en specifik tillgång är det lämpligt att veta i vilket klimat det hela rör sig. Är detta en normal volymdag eller kommer institutionella pengar in på en gång? Ökar alla tillgångar ens eller finns det tecken på spänning?",
+                "De fyra korten under filtren ger dig den allmänna läsningen på några sekunder:"
+              ],
+              "lead": "De fyra korten under filtren ger dig den allmänna läsningen på några sekunder:",
+              "bullets": [
+                {
+                  "bold": "Total aktivitet för dagen",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Det summerar till miljarder dollar som handlas i den aktiva kategorin och visar dig om det finns mer eller mindre deltagande idag än igår."
+                },
+                {
+                  "bold": "Genomsnittlig gruppstyrka",
+                  "code": "AVG RSI 14",
+                  "text": "Den sammanfattar i en cirkulär mätare om priserna i sektorn kommer med köptryck (grön, över 50) eller med säljtryck (röd, under 50)."
+                },
+                {
+                  "bold": "Normalitet termometer",
+                  "code": "Régimen Normal P-06",
+                  "text": "Den beräknar hur stor andel av tillgångarna som rör sig inom sina vanliga parametrar och talar om för dig med namn och efternamn vilket instrument som har störst anomali för dagen."
+                },
+                {
+                  "bold": "Ovanliga inflöden av pengar",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Podiet av de tre tillgångar som idag driver en extraordinärt hög volym jämfört med deras genomsnitt för den senaste månaden sticker ut."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Detaljerad förklaring av hur genomsnittlig RSI, volym Z-Score och anomalidetektor P-06 beräknas."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tabell",
+              "summary": "Den interaktiva listan med snabbsökning, favoriter och kolumner som anpassar sig till varje marknad.",
+              "paragraphs": [
+                "När du redan vet vilken sektor du vill titta på och behöver jämföra specifika siffror rad för rad, är tabellvyn ditt huvudverktyg.",
+                "Istället för att visa dig ett styvt kalkylblad som är lika för alla, anpassas tabellen efter vad du letar efter:"
+              ],
+              "lead": "Istället för att visa dig ett styvt kalkylblad som är lika för alla, anpassas tabellen efter vad du letar efter:",
+              "bullets": [
+                {
+                  "bold": "Sökmotor och favoriter stjärna",
+                  "code": "Buscar activo / ★",
+                  "text": "I den första kolumnrubriken kan du skriva vilken symbol eller namn som helst för att gå direkt till den tillgången, eller trycka på stjärnan till vänster för att spara den på din Watchlist."
+                },
+                {
+                  "bold": "Smarta kolumner enligt kategori",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Om du filtrerar andelar visas värderingsmultiplar och marginaler; Om du väljer Obligationer eller Räntor ser du kurvans lutning och känsligheten för räntor; Om du tittar på derivat ser du implicit volatilitet."
+                },
+                {
+                  "bold": "Gå direkt till djup analys",
+                  "code": "Click en cualquier fila",
+                  "text": "Klicka bara på valfri tillgång i listan för att öppna hela din station med tekniska diagram och grundläggande rapporter."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Lista över de specifika mätvärdena som tabellen visar för var och en av de 10 tillgångskategorierna."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Den visuella radarn för att snabbt upptäcka vilka tillgångar som rör sig bort från deras historiska genomsnitt.",
+              "paragraphs": [
+                "Att läsa tvåhundra rader med siffror kan göra att du missar en tillgång som börjar röra sig explosivt. Hur upptäcker du omedelbart vilket instrument som avviker från normen?",
+                "Vyn Orbital förvandlar bordet till en radar med tre koncentriska ringar:"
+              ],
+              "lead": "Orbital-vyn förvandlar bordet till en radar med tre koncentriska ringar:",
+              "bullets": [
+                {
+                  "bold": "Val av kriterier",
+                  "code": "INDICADOR",
+                  "text": "Du bestämmer vad radarn mäter: statistiska anomalier, volymhopp, prisstyrka (RSI), volatilitet eller vinst under de senaste 24 timmarna."
+                },
+                {
+                  "bold": "Avläsning efter avstånd och färg",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Ju närmare eller längre bort en punkt är enligt indikatorn och ju mer intensiv dess gröna eller röda färg är, desto mer relevant är dess rörelse jämfört med dess egen historia."
+                },
+                {
+                  "bold": "Inspektion utan att byta skärm",
+                  "code": "Panel lateral en vivo",
+                  "text": "Genom att vila markören på valfri radarnod visas dess pris, dess rena intradagsdiagram och dess tre riskmått till höger."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hur positionen för varje tillgång i radarringarna beräknas enligt dess historiska avvikelse."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Värmekarta",
+              "summary": "Mosaiken av proportionella block för att identifiera vinnarna och förlorarna på en sekund.",
+              "paragraphs": [
+                "Det finns tillfällen då du bara vill svara på en snabb fråga: vem leder uppgången idag och vem drar marknaden nedåt?",
+                "Värmekartan arrangerar de tio bästa tillgångarna i det aktiva filtret i proportionella block så att du inte behöver läsa en enda tabell:"
+              ],
+              "lead": "Värmekartan ordnar de tio bästa tillgångarna i det aktiva filtret i proportionella block:",
+              "bullets": [
+                {
+                  "bold": "Storlek efter vikt",
+                  "code": "Puestos #1 a #10",
+                  "text": "Instrumenten med störst vikt inom det valda måttet upptar kolumnerna till vänster med de största rutorna."
+                },
+                {
+                  "bold": "Färgintensitet",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Tonen i blocket berättar omedelbart om storleken på rörelsen, från måttliga variationer till plötsliga stigningar eller fall."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Trestegsgenvägen till avancerade kurser, optioner, valuta- och terminsräknare.",
+              "paragraphs": [
+                "Utöver traditionella prisdiagram innehåller plattformen fyra specialmotorer för ränteintäkter, optioner, valutakorsningar och råvarukurvor. Hur kommer du till dem utan att söka tillgång för tillgång?",
+                "Den här vyn guidar dig från vänster till höger i tre mycket enkla kolumner:"
+              ],
+              "lead": "Den här vyn guidar dig från vänster till höger i tre mycket enkla kolumner:",
+              "bullets": [
+                {
+                  "bold": "Först väljer du familjen",
+                  "code": "1. Clases de Activo",
+                  "text": "Du väljer om du vill arbeta med räntor och obligationer, med optioner på aktier/index/krypto, med valutor eller med råvaror."
+                },
+                {
+                  "bold": "Sedan kollar du vad motorn gör",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "I mitten läser du en tydlig sammanfattning av vad det verktyget visar och hur du orienterar dig längs dess axlar."
+                },
+                {
+                  "bold": "Slutligen, välj den aktiva och öppna",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Du tittar på en liveförhandsvisning av diagrammet, söker efter alla kompatibla tillgångar i den familjen och öppnar hela stationen med ett klick."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "När du väl hittat en intressant tillgång i Screener är det dags att ta en närmare titt. Är det i en uppåtgående trend eller har det tagit slut? Slår du dina konkurrenter? Vad säger volymen och derivatmarknaden?",
+            "Analytics-stationen koncentrerar all teknisk, jämförande och kvantitativ analys av den tillgången på en enda skärm. Ovan har du den allmänna sammanfattningen och till vänster fyra linser för att ändra analysvinkeln utan att tappa grafen ur sikte."
+          ],
+          "intro": "Analytics-stationen koncentrerar tekniska, jämförande, flödesanalys- och 3D/2D-motorer för en enskild tillgång på en enda skärm.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Den översta instrumentpanelen för att byta tillgångar, välja tidsram och se dina fem nyckeltal.",
+              "paragraphs": [
+                "När du studerar en tillgång brukar du växla mellan dagens korta sikt och de senaste månadernas film, eller till och med gå över till att titta på en annan liknande symbol. Hur gör man allt det där utan att gå tillbaka?",
+                "Den övre rubriken sammanför navigeringskontrollerna och instrumentets snabbfliken:"
+              ],
+              "lead": "Den övre rubriken sammanför navigeringskontrollerna och instrumentets snabbfliken:",
+              "bullets": [
+                {
+                  "bold": "Byte av tillgång eller återgå till listan",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Längst upp till vänster kan du gå tillbaka till Screener eller skriva namnet på något annat instrument för att byta sjökort på plats."
+                },
+                {
+                  "bold": "Nio tidsfönster",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "På högermarginalen ändrar du grafens skala från minut-för-minut-rörelser till hela historien."
+                },
+                {
+                  "bold": "Fem ledande indikatorer",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Bredvid priset du alltid har i sikte på den omsatta volymen, de två nyckeluppgifterna i sin kategori, styrkan på trenden och nivån på statistisk normalitet."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Tekniska",
+              "summary": "Prisdiagrammet med glidande medelvärden, volatilitetsband och volym för att följa trenden.",
+              "paragraphs": [
+                "Att bara titta på det senaste priset säger inte om en tillgång accelererar, om den studsar mot sitt genomsnitt eller om den redan har stigit för snabbt på några dagar.",
+                "Den första linsen på den vänstra skenan låter dig lägga över de mest använda tekniska referenserna på marknaden på grafen:"
+              ],
+              "lead": "Den första linsen på den vänstra skenan låter dig lägga över de mest använda tekniska referenserna:",
+              "bullets": [
+                {
+                  "bold": "Adress och faktiskt genomsnittspris",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Du kan slå på 20-periods glidande medelvärde och volymvägt genomsnittspris för att omedelbart se om tillgången handlas över eller under sin jämviktsnivå."
+                },
+                {
+                  "bold": "Överskottszoner och volymbekräftelse",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Banden drar det statistiska taket och golvet för priset, medan de nedre staplarna bekräftar om rörelsen stöds av volym."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Formler och tolkningskriterier för det rörliga medelvärdet (SMA 20), Bollinger Bands och VWAP."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Jämför %",
+              "summary": "Den procentuella jämförelsen från 0% för att mäta om din tillgång presterar mer eller mindre än en annan i samma kategori.",
+              "paragraphs": [
+                "En aktie som går upp 5% verkar vara goda nyheter, men om dess jämförelseindex eller huvudkonkurrent är upp 12% under samma period, hamnar du faktiskt efter.",
+                "Den andra linsen löser detta tvivel genom att placera de två tillgångarna på samma startlinje:"
+              ],
+              "lead": "Den andra linsen löser detta tvivel genom att placera de två tillgångarna på samma startlinje:",
+              "bullets": [
+                {
+                  "bold": "Sök efter sammanhängande par",
+                  "code": "Buscar par compatible",
+                  "text": "Sökmotorn filtrerar automatiskt bort tillgångar från samma familj (t.ex. aktier mot aktier, ETF:er eller index) så jämförelsen är ekonomisk meningsfull."
+                },
+                {
+                  "bold": "Nettofördel i procent",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Båda kurvorna börjar från 0% och den vänstra skenan beräknar hur många procentenheter av fördel (i grönt) eller nackdel (i rött) din tillgång har."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Flow",
+              "summary": "Detektorn av institutionella inköp, likviditet och spridningskostnader.",
+              "paragraphs": [
+                "Många gånger ackumulerar eller lossar stora fonder positioner innan priset gör en plötslig rörelse. Hur upptäcker du det dolda spåret i orderbokens volym och likviditet?",
+                "Den tredje linsen fokuserar på vad som händer under citatet:"
+              ],
+              "lead": "Den tredje linsen fokuserar på vad som händer under citatet:",
+              "bullets": [
+                {
+                  "bold": "Statistiska volymtoppar",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Ändrar den nedre panelen för att visa hur många gånger den aktuella volymen avviker från det normala, vilket avslöjar ovanlig institutionell aktivitet."
+                },
+                {
+                  "bold": "Likviditetsstress och anomalier",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Den mäter i baspunkter om klyftan mellan köpare och säljare ökar och om den statistiska motorn upptäcker atypiskt beteende."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hur öppningsspridningar och statistiska toppar i orderflöde mäts."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D-motorer",
+              "summary": "Det fjärde objektivet som använder ett dynamiskt ad-hoc-verktyg som varierar beroende på tillgångsklass.",
+              "paragraphs": [
+                "Till skillnad från de tre första linserna (som är gemensamma för alla instrument), är den fjärde linsen på den vänstra skenan ett ad-hoc-verktyg som förändras dynamiskt beroende på tillgången du analyserar: till exempel, i live-turnén, eftersom det är en aktie (NVDA), möjliggör den 3D Implicit Volatility och Options sin egen yta, medan den är specialiserad på andra marknader.",
+                "Den fjärde knappen upptäcker den öppna tillgångsklassen och aktiverar automatiskt motsvarande ad-hoc-verktyg:"
+              ],
+              "lead": "Den fjärde knappen upptäcker vilken tillgång du har öppen och aktiverar det ad-hoc-verktyg som motsvarar den:",
+              "bullets": [
+                {
+                  "bold": "I aktier, index, derivat och krypto",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Visa den 3D-implicerade volatilitetsytan, alternativen ler efter utgången och en 6-strategisimulator för att se hur mycket du skulle vinna eller förlora idag och vid utgången."
+                },
+                {
+                  "bold": "I räntor, obligationer och likviditet",
+                  "code": "Curva 3D/2D",
+                  "text": "Det låter dig jämföra avkastningskurvorna för 42 länder mot USA och Tyskland, mäta om kurvan är normal eller inverterad (2s10s) och hur mycket priset varierar med kursändringar (DV01)."
+                },
+                {
+                  "bold": "I valutor",
+                  "code": "FX & Carry",
+                  "text": "Den erbjuder en omvandlare och triangulator mellan 61 valutor som också beräknar den 10-åriga ränteskillnaden till förmån för eller mot att behålla det paret."
+                },
+                {
+                  "bold": "I råvaror",
+                  "code": "Forward 3D/2D",
+                  "text": "Kartlägger priserna på terminskontrakt månad för månad för att visa om marknaden betalar mer för forward (Contango) eller för omedelbar leverans (Backwardation), tillsammans med statusen för fysiska varulager."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Matematiska detaljer av volatilitetsytor, suveräna avkastningskurvor, valutabärande och terminskurvor."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Diagrammet visar vad priset gör, men det berättar inte varför. För att veta vad som ligger bakom en rörelse måste du läsa dussintals sidor med kvartalsbalansräkningar, centralbanksutdrag, lagerrapporter och nyhetskablar.",
+            "Research-stationen gör det tunga lyftet åt dig. Den kombinerar dokumentär artificiell intelligens verifierad mot officiella rapporter med nyhetsläsning i realtid, och organiserar alla bevis för och emot i tre tydliga kolumner."
+          ],
+          "intro": "Station Research sammanfattar officiella balansräkningar, makroekonomiska rapporter och realtidsnyheter i tre tydliga kolumner.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Notering & hållning",
+              "summary": "De tre översta korten som sammanfattar nyheternas grundläggande omdöme och humor.",
+              "paragraphs": [
+                "Följer tillgångens grunder prisuppgången eller försämrar nyheterna utsikterna? Innan du läser detaljerna behöver du en snabb verkställande slutsats.",
+                "I det övre högra hörnet har du tre indikatorer som sammanfattar tillgångens allmänna status:"
+              ],
+              "lead": "I det övre högra hörnet har du tre indikatorer som sammanfattar den allmänna statusen:",
+              "bullets": [
+                {
+                  "bold": "Hållning och vikt för varje källa",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Den definierar den allmänna domen och klargör vilken vikt den ger officiella dokument kontra nyheter beroende på typ av tillgång (till exempel 80 % balansräkningar och 20 % nyheter i en aktie)."
+                },
+                {
+                  "bold": "Kombinerat betyg",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Den syntetiserar nettoresultatet av grunderna plus dagens informationsflöde till en enda poäng."
+                },
+                {
+                  "bold": "Termometerhållare",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Placera på en stapel från -100 till +100 om tonen i pressen under de senaste timmarna är pessimistisk (röd), neutral eller entusiastisk (grön)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hur officiella rapporter viktas mot nyheter beroende på typ av tillgång."
+            },
+            {
+              "id": "res-rag",
+              "label": "Chatta RAG",
+              "summary": "Den vänstra dokumentärassistenten för att ställa specifika frågor om balansräkningar och officiella rapporter.",
+              "paragraphs": [
+                "Anta att du vill veta exakt vad ett företag sa om dess marginaler i sin senaste årsbalansräkning 10-K, eller vad Federal Reserve sa i sina senaste protokoll. Att leta efter det för hand tar tid; Att fråga en generisk chatt utan källor kan ge dig påhittade data.",
+                "Den vänstra kolumnen löser detta med en guide ansluten exklusivt till verifierad officiell dokumentation:"
+              ],
+              "lead": "Den vänstra kolumnen erbjuder dig en guide kopplad till officiell verifierad dokumentation:",
+              "bullets": [
+                {
+                  "bold": "Inledande examensarbete och vägledande frågor",
+                  "code": "Chat Documental RAG",
+                  "text": "Det börjar med en sammanfattning med verifierade offerter och fyra snabbreferensknappar anpassade till tillgångskategorin, samt ett fält där du kan skriva dina egna frågor."
+                },
+                {
+                  "bold": "Direkt steg till din portfölj",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Om du efter att ha undersökt grunderna bestämmer dig för att tillgången är värd det, skickar den här knappen högst upp i chatten dig direkt till portföljsimulatorn."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Användning av den verifierade dokumentsökningen (RAG) och dess säkerhetsfilter."
+            },
+            {
+              "id": "res-factors",
+              "label": "Faktorer",
+              "summary": "Det centrala dragspelet med de fem hausseartade förarna och de fem baisseartade riskerna sorterade efter påverkan.",
+              "paragraphs": [
+                "Ingen investering är hundra procent perfekt eller hundra procent dålig: det finns alltid argument för och latenta risker. Hemligheten är att veta vilka som väger mer idag.",
+                "Mittpelaren sätter båda sidor ansikte mot ansikte så att du kan fatta ett balanserat beslut:"
+              ],
+              "lead": "Mittpelaren sätter båda sidor ansikte mot ansikte så att du kan fatta ett balanserat beslut:",
+              "bullets": [
+                {
+                  "bold": "Forcera balans och filter",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Ovan ser du budfältet mellan köpare och säljare, och nedan kan du filtrera de fem positiva katalysatorerna (i grönt) eller de fem huvudriskerna (i rött)."
+                },
+                {
+                  "bold": "Detalj och drill-down med ett klick",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "När du trycker på någon faktor på listan visas dess fullständiga förklaring tillsammans med en knapp för att fråga Chat RAG om mer information om den specifika punkten."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Puls",
+              "summary": "Rätt tidslinje med de senaste AI-klassade rubrikerna och 24-timmars humörkurvan.",
+              "paragraphs": [
+                "En enda rubrik i sista minuten om inkomster, inflation eller regleringar kan helt förändra dagens stämning. Hur vet du vilka nyheter som precis kommit ut och vilken effekt de har?",
+                "Den högra kolumnen övervakar informationsflödet minut för minut:"
+              ],
+              "lead": "Den högra kolumnen övervakar informationsflödet minut för minut:",
+              "bullets": [
+                {
+                  "bold": "Kvalificerad tidslinje",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Listar de fem senaste rubrikerna med deras tid och byrå, ger dem gröna om de är positiva eller röda om de utgör ett hot."
+                },
+                {
+                  "bold": "Impakt och daglig kurvsimulator",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Du kan trigga en strömkabel med den övre knappen för att se hur den räknar om hela skärmen och följa i grafen nedan hur stämningen har utvecklats under de senaste 24 timmarna."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hur FinBERT-modellen analyserar det finansiella språket för varje innehavare."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Byggare",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Att välja bra tillgångar separat räcker inte för att ha en bra portfölj. Om du lägger för mycket kapital i tillgångar som rör sig likadant, eller om du inte mäter hur de skulle ha presterat tillsammans tidigare, investerar du blint.",
+            "Constructor & Performance (den första visningen av Portfolio) är workshopen där du bygger din portfölj. Det låter dig lägga till någon av de 213 tillgångarna, justera vilken procentandel du tilldelar var och en utan att ta itu med oprecisa kontroller och omedelbart granska både dess interna sammansättning och dess historia."
+          ],
+          "intro": "Constructor & Performance är workshopen där du bygger din portfölj, justerar vikten på varje tillgång och granskar dess historiska prestanda.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Sammanfattning",
+              "summary": "De sex bästa korten som räknas om live varje gång du ändrar din portfölj.",
+              "paragraphs": [
+                "Varje gång du lägger till en tillgång eller ändrar en procentandel i din portfölj måste du omedelbart veta om den justeringen förbättrade din förväntade avkastning eller förvärrade din exponering på nedsidan.",
+                "Den översta raden håller alltid portföljens sex huvudmått synliga:"
+              ],
+              "lead": "Den översta raden håller alltid portföljens sex huvudmått synliga:",
+              "bullets": [
+                {
+                  "bold": "Prestanda och effektivitet",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "De berättar vilken sammansatt årlig vinst portföljen projicerar på ditt kapital och hur mycket avkastning du får för varje antagen riskenhet."
+                },
+                {
+                  "bold": "Förväntad daglig förlust och historisk nedgång",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "De beräknar hur många dollar du kan förlora på en dålig dag inom vad som var statistiskt förutsägbart och vad som var det djupaste bakslaget det senaste året."
+                },
+                {
+                  "bold": "Mervärde och diversifiering",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "De mäter hur många poäng din portfölj slår jämförelseindex och hur mycket risk du minskar tack vare att kombinera olika tillgångar."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Sammansatta avkastningsformler (CAGR), Sharpe och Sortino förhållanden och Value at Risk (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Viktning",
+              "summary": "Den vänstra tabellen för att lägga till tillgångar, slå på eller av dem och definiera den exakta procentandelen av varje position.",
+              "paragraphs": [
+                "Vad skulle hända med dina portföljsiffror om du tillfälligt stänger av en teknisk aktie idag eller delar pengarna lika mellan alla dina positioner?",
+                "Den vänstra panelen låter dig göra alla dessa tester på ett rent och direkt sätt:"
+              ],
+              "lead": "Den vänstra panelen låter dig göra alla dessa tester på ett rent och direkt sätt:",
+              "bullets": [
+                {
+                  "bold": "Sökmotor för 213 tillgångar",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Du kan söka efter valfritt instrument på plattformen eller filtrera dina favoriter för att lägga till det i tabellen med ett klick."
+                },
+                {
+                  "bold": "Snabb uppstart och korrekt redigering",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Varje rad har en kryssruta för att inkludera eller exkludera tillgången i realtid och en sifferruta för att ange den exakta procentsatsen utan att använda oprecisa skjutreglage."
+                },
+                {
+                  "bold": "Tre ombalanseringsgenvägar",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Överst i tabellen har du knappar för att fördela lika vikter mellan alla aktiva tillgångar, automatiskt få summan till 100% eller återgå till den ursprungliga portföljen."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "Röntgen",
+              "summary": "Den övre högra panelen med fem flikar för att upptäcka dolda koncentrationer, kassaflöde och vårdnad.",
+              "paragraphs": [
+                "Ett av de vanligaste misstagen när du investerar är att tro att du är diversifierad eftersom du har fem olika tillgångar, när du i verkligheten köpte en enskild aktie och även två ETF:er som har samma aktie inuti.",
+                "Röntgenpanelen analyserar din portfölj från insidan genom fem flikar:"
+              ],
+              "lead": "Röntgenpanelen analyserar din portfölj från insidan genom fem flikar:",
+              "bullets": [
+                {
+                  "bold": "Upprepad positionsdetektor",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Lägg ihop vad du har investerat direkt i varje företag plus den dolda delen du har inom index eller ETF:er (som SPY eller QQQ), varna dig i rött om du överskrider försiktiga gränser."
+                },
+                {
+                  "bold": "Exponeringskarta och ursprung för retur",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "De visar dig vilken procentandel du faktiskt har i varje tillgångstyp och valuta, och hur mycket av din vinst som kom från att välja bra sektorer kontra att välja bra tillgångar."
+                },
+                {
+                  "bold": "Beräknad årsinkomst och trygghet",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "De beräknar hur många dollar du kommer att samla in under året för utdelningar, kuponger och räntor, och granskar solvensen för de förvaringsinstitut där ditt kapital vilar."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hur indirekt exponering beräknas inom ETF:er och Brinson-attributionsfördelningen."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Kalender",
+              "summary": "Det månatliga diagrammet från januari till december för att se regelbundenhet i dina vinster och förluster.",
+              "paragraphs": [
+                "En bra årlig avkastning kan dölja månader av mycket kraftiga fall som i praktiken är svåra att tolerera. Hur konsekvent månad till månad är portföljen du just satt ihop?",
+                "Strax under röntgenbilden bryter kalendern ner månadshistoriken:"
+              ],
+              "lead": "Strax under röntgenbilden bryter kalendern ner månadshistoriken:",
+              "bullets": [
+                {
+                  "bold": "Gröna månader och röda månader",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Varje cell räknas omedelbart om enligt vikterna i din tabell och målas grönt eller rött beroende på månadens resultat, och stängs till höger med årets kumulativa resultat."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Helskärmsdiagrammet nedan för att jämföra din portfölj med fyra klassiska strategier.",
+              "paragraphs": [
+                "Innan du anser att din portfölj är bra, återstår det grundläggande testet: är det verkligen bättre än att lämna pengarna i S&P 500 eller i en traditionell 60/40-portfölj?",
+                "Den nedre panelen upptar hela skärmens bredd för att anpassa din design till marknadens standarder:"
+              ],
+              "lead": "Den nedre panelen sätter din design mot marknadens standarder:",
+              "bullets": [
+                {
+                  "bold": "Fem horisonter av testning",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Det låter dig utvärdera hur din mix presterat både under de senaste kvartalen och över hela flerårscykler."
+                },
+                {
+                  "bold": "Fyra referenser ansikte mot ansikte",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Lägg över din aktiva portföljs gröna kurva mot någon av de fyra klassiska modellerna så att du tydligt kan se när den ligger före och hur den håller på nedsidan."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Risk",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "I tider när marknaden stiger lugnt verkar nästan vilken portfölj som helst säker. Det verkliga problemet uppstår när en kris bryter ut, räntorna stiger plötsligt och tillgångar som verkade oberoende börjar falla samtidigt.",
+            "Kvantitativ risk och stress (den andra uppfattningen av Portfolio) sätter din portfölj genom extrema tester innan de inträffar i verkligheten. Genom fyra symmetriska kvadranter och en framtidsscenariosimulator nedan visar den dig exakt var dina sårbara punkter finns."
+          ],
+          "intro": "Kvantitativ risk och stress testar din portfölj för historiska kriser, korrelationssmitta och Monte Carlo-prognoser.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Den interaktiva risk- och avkastningskartan för att se hur nära du är en så effektiv portfölj som möjligt.",
+              "paragraphs": [
+                "Med samma tillgångar som du redan har i din portfölj finns det tusentals sätt att fördela procentsatserna. Är kombinationen du valde den som betalar bäst för risken du tar, eller skulle du kunna vinna samma sak med färre överraskningar?",
+                "Den första kvadranten längst upp till vänster ritar den här livekartan över möjligheter:"
+              ],
+              "lead": "Den första kvadranten längst upp till vänster ritar den här livekartan över möjligheter:",
+              "bullets": [
+                {
+                  "bold": "Din position mot de optimala portföljerna",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Den visar var din nuvarande portfölj är placerad i förhållande till punkten för lägsta möjliga volatilitet och punkten för maximal risk-avkastningseffektivitet."
+                },
+                {
+                  "bold": "Visuella lager och inspektion per tillgång",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Du kan aktivera eller inaktivera modelllagren och klicka på valfri nod för att läsa det exakta bidraget från den tillgången nedan."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Effektiv gräns för Markowitz och beräkning av minsta varians och maximala Sharpe-portföljer."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado och VaR",
+              "summary": "Den historiska krissimulatorn, daglig förlustuppdelning efter tillgångs- och marknadsasymmetri.",
+              "paragraphs": [
+                "Om en krasch som den 2008, den ekonomiska nedgången 2020 eller räntehöjningen 2022 skulle upprepas i morgon, hur mycket skulle din nuvarande portfölj förlora och vilken tillgång skulle vara den främsta boven?",
+                "Den nedre vänstra kvadranten svarar på dessa tre frågor i tre specifika flikar:"
+              ],
+              "lead": "Den nedre vänstra kvadranten svarar på dessa frågor i tre specifika flikar:",
+              "bullets": [
+                {
+                  "bold": "Testa mot fem riktiga kriser",
+                  "code": "1. Tornado Stress",
+                  "text": "Jämför stapel för stapel hur mycket din portfölj skulle falla mot S&P 500 inför fem stora historiska chocker."
+                },
+                {
+                  "bold": "Riskrankning efter position",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Sortera dina innehav efter hur många dollar av potentiell daglig förlust var och en bidrar till den totala portföljen."
+                },
+                {
+                  "bold": "Beteende i upp- och nedgångar",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Den visar vilken procentandel av marknadens hausseartade hjul varje tillgång drar nytta av och hur mycket den lyckas dämpa när marknaden faller."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Metodik för historiska stressscenarier, marginellt bidrag till VaR och fångstkvoter."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Korrelation",
+              "summary": "Korsmatrisen för att kontrollera om dina tillgångar verkligen diversifierar sig eller om de är infekterade under en panik.",
+              "paragraphs": [
+                "Att ha flera tillgångar i din portfölj minskar bara risken om de inte alla rör sig åt samma håll samtidigt. Men i tider av finansiell panik hoppade många korrelationer som verkade lågt kraftigt uppåt.",
+                "Den övre högra kvadranten låter dig granska den relationen i två scenarier:"
+              ],
+              "lead": "Den övre högra kvadranten låter dig granska den relationen i två scenarier:",
+              "bullets": [
+                {
+                  "bold": "Korsning mellan tillgångar och känslighet",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Den visar hur lika varje tillgångspar rör sig (i grönt eller ljusblått när de diversifierar sig väl och i rött när de rör sig för nära varandra) och vad deras känslighet är för marknaden."
+                },
+                {
+                  "bold": "Smittningssimulator i kris",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Med ett klick ändrar du korrelationerna för ett normalt år till de för ett ögonblick av panik för att upptäcka vilka positioner som inte längre skulle skydda dig."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Beräkning av Pearson-korrelationskoefficienter under normala förhållanden och under marknadsstress."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash & Markov",
+              "summary": "Den gemensamma effekttabellen mellan kurser och aktiemarknad, plus sannolikheterna för en förändring i konjunkturcykeln.",
+              "paragraphs": [
+                "I den reala ekonomin kommer problemen sällan ett efter ett: många gånger sammanfaller en ränteuppgång med ett fall i aktier. Vad händer med din portfölj om de två faktorerna kombineras samtidigt?",
+                "Den nedre högra kvadranten korsar båda variablerna och mäter sannolikheterna för regimförändring:"
+              ],
+              "lead": "Den nedre högra kvadranten korsar båda variablerna och mäter marknadscykeln:",
+              "bullets": [
+                {
+                  "bold": "Dubbel slagtavla",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Korsränterörelser (-100 till +200 räntepunkter) med fall eller höjningar av S&P 500 (-20% till +10%), vilket gör att du kan filtrera efter hela portföljen eller efter en enskild tillgång."
+                },
+                {
+                  "bold": "Cykelövergångssannolikheter",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Beräkna hur troligt det är att marknaden förblir lugn eller går in i en volatil, inflations- eller krisfas."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Gemensam känslighet för hastigheter och variabler, och Markov tillståndsövergångsmatris."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Den nedre panelen är helskärm med framtida probabilistiska projektioner och historiska nedgångar.",
+              "paragraphs": [
+                "Det är användbart att titta på det förflutna, men när du investerar framåt är det du behöver veta inom vilket resultatintervall ditt kapital kan röra sig under de närmaste sex månaderna, ett år eller två år.",
+                "Den nedre panelen i full bredd samlar tre tillfälliga verktyg för att projicera och kontrollera den banan:"
+              ],
+              "lead": "Den nedre panelen samlar tre tillfälliga verktyg för att projicera den vägen:",
+              "bullets": [
+                {
+                  "bold": "Tiotusen framtidsscenarier",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Rita konen för den troliga utvecklingen av din portfölj, särskilj det optimistiska scenariot (P95 i grönt), den förväntade centrala banan (P50) och det negativa scenariot (P05 i rött)."
+                },
+                {
+                  "bold": "Falldjup och stabilitet över tid",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "De låter dig växla diagrammet för att se hur länge portföljen höll sig under sina rekordnivåer eller hur stabil dess effektivitet och risk var under rullande 60-dagarsfönster."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo stokastisk simulering av 10 000 vägar och 60-dagars rullande mätvärden."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simulator",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Innan du köper en ny tillgång, minskar en position eller betalar för säkring med optioner, uppstår alltid samma fråga: förbättrar denna operation verkligen min portfölj eller tillför den onödig risk? Och hur mycket kapital ska jag lägga i det?",
+            "Ad-Hoc Strategy Lab (den tredje vyn av Portfolio) är din preoperativa simulator. Det låter dig ladda taktiska spel, beräkna din idealiska positionsstorlek, testa försäkringar på nackdelar och se exakt före och efter påverkan utan att ännu röra din basportfölj."
+          ],
+          "intro": "Ad-Hoc Strategy Laboratory är din förhandelssimulator för att testa order, storlekspositioner och mäta täckning.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Inverkan",
+              "summary": "De sex bästa korten som jämför din nuvarande portfölj med resultatet efter de simulerade spelningarna.",
+              "paragraphs": [
+                "För att veta om en taktisk idé är värd det räcker det inte att tillgången ser attraktiv ut på egen hand: den måste förbättra siffrorna för hela portföljen.",
+                "Den översta raden visar permanent jämförelsen mellan din nuvarande portfölj och portföljen med simuleringen tillämpad:"
+              ],
+              "lead": "Den översta raden jämför din nuvarande portfölj med portföljen med simuleringen som tillämpas:",
+              "bullets": [
+                {
+                  "bold": "Effekt på vinst och effektivitet",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "De visar basnumret bredvid det projicerade talet, och lyser upp skillnaden i grönt om spelet ökar effektiviteten eller i rött om det försämrar det."
+                },
+                {
+                  "bold": "Effekt på risk, kapital och regler",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "De berättar hur mycket din maximala förväntade förlust förändras, vilken procentandel av portföljen du förbinder dig till testerna och om alla säkerhetsgränser respekteras."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If & Kelly",
+              "summary": "Köp-/försäljningsbiljettsimulatorn och kalkylatorn för att definiera hur mycket pengar som ska riskeras.",
+              "paragraphs": [
+                "Många bra investeringsidéer ger upphov till förluster på grund av ett fel i storleken på insatsen: att lägga för lite flyttar inte nålen, men att lägga för mycket kan förstöra portföljen om flytten går fel.",
+                "Den första kvadranten längst upp till vänster länkar bevisarket med den matematiska beräkningen av storlek:"
+              ],
+              "lead": "Den första kvadranten förenar testrapporten med den matematiska beräkningen av storlek:",
+              "bullets": [
+                {
+                  "bold": "Testorderladdning",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Du väljer vilken tillgång som helst, anger om du vill köpa, sälja eller täcka och ladda beloppet i dollar. I listan nedan kan du aktivera eller inaktivera varje simulerad ordning för att jämföra dess effekt."
+                },
+                {
+                  "bold": "Optimal positionsstorlek",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Baserat på din uppskattade sannolikhet för framgång och förhållandet mellan vinst och förlust, räknar den ut vilken maximal andel av kapitalet som bör allokeras för att växa utan att överexponera dig själv."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Matematisk beräkning av Kelly Criterion och dess konservativa version Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Sätt OTM & Margin",
+              "summary": "Försäkringssimulatorn med alternativ för kraftiga marknadsnedgångar och marginal call monitor.",
+              "paragraphs": [
+                "När du fruktar en kraftig marknadskorrigering är det vanligtvis dyrt och ineffektivt att sälja alla dina positioner. Det professionella alternativet är att teckna en försäkring med skyddsmöjligheter, men hur mycket kostar den försäkringen per år och hur mycket skyddar den dig egentligen?",
+                "Den nedre vänstra kvadranten låter dig mäta både täckning och skuldnivå:"
+              ],
+              "lead": "Den nedre vänstra kvadranten mäter både täckning och garantinivå:",
+              "bullets": [
+                {
+                  "bold": "Komparator av skyddande sköldar",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Det låter dig växla mellan att arbeta utan täckning eller att tillämpa tre typer av försäkringar med alternativ (på SPY, QQQ eller VIX volatilitet), och jämföra den årliga kostnaden för premien mot de dollar du skulle spara i en 20% krasch."
+                },
+                {
+                  "bold": "Utnyttja kontroll och säkerheter",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Övervaka vilken procentandel av underhållsmarginalen du har använt och vilken procentuell nedgång portföljen skulle utstå innan du går in i margin call-zonen."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Drift av säkring med out-of-the-money Säljoptioner och beräkning av garantier Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Kommitté & Bok",
+              "summary": "De två högra panelerna med automatisk granskning av riskgränser, orderhistorik och Co-pilot.",
+              "paragraphs": [
+                "I entusiasmen av att testa en handel är det lätt att förbise att en tillgång koncentrerar mer än 20 % av hela din portfölj eller att den är verksam mitt i en allvarlig statistisk anomali.",
+                "De två kvadranterna till höger fungerar som din automatiska riskkontroll och revisionsspår:"
+              ],
+              "lead": "De två kvadranterna till höger fungerar som riskkontroll och registrering:",
+              "bullets": [
+                {
+                  "bold": "Recension i tre dimensioner",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "De utvärderar dina simulerade beställningar utifrån de tekniska, grundläggande och hårda säkerhetsgränserna (varning om någon position överskrider kapitalgränsen på 20 % eller om den har stora anomalier)."
+                },
+                {
+                  "bold": "Orderlogg och portföljassistent",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Den nedre panelen registrerar varje simulering med dess påverkan på risk, medan dialogknappen längst upp till höger öppnar chatten för att ställa direkta frågor om din portfölj."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Regler för riskkontroll före drift och koncentrationsgränser per tillgång."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Grafen nedan i helskärm för att kontrollera att din strategi fungerar utanför testperioden.",
+              "paragraphs": [
+                "Vilken strategi som helst kan justeras genom att titta på det förflutna tills det verkar idiotsäkert på det historiska diagrammet. Den verkliga utmaningen är att veta om den fortsätter att fungera när den står inför ny marknadsdata.",
+                "Den nedre panelen i full bredd genomgår den mest rigorösa valideringen av strategin innan den sätts i produktion:"
+              ],
+              "lead": "Den nedre panelen utsätter strategin för validering i urval och utanför urval:",
+              "bullets": [
+                {
+                  "bold": "Separation mellan design och faktisk testning",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Den delar upp den historiska grafen i ett första steg där strategin kalibreras och ett andra steg med osynliga data för att kontrollera om den behåller sin fördel gentemot basportföljen."
+                },
+                {
+                  "bold": "Anmärkning om statistisk robusthet",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Om effektivitetsindikatorn överstiger 70 %, bekräftar den att resultaten är konsekventa och inte produkten av att ha tvingat på siffrorna tidigare."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Vad Walk-Forward Efficiency Index (WFE) mäter och hur det upptäcker överoptimerade strategier."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Likviditetsfilter (ADV)",
+        "intro": "För att en tillgång ska kunna handlas utan att en enda order förvränger dess pris, kräver plattformen ett lägsta tröskelvärde för genomsnittlig daglig volym i dollar under de senaste 20 arbetsdagarna.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Stängkursᵢ × Handlad volymᵢ)",
+          "denominator": "20 skickliga hjul",
+          "vars": [
+            "Slutkurs: officiellt slutkurs för dagen uttryckt i USD.",
+            "Handlad volymᵢ: totalt antal enheter som handlades den dagen."
+          ]
+        },
+        "lead": "Baserat på genomsnittlig daglig volym, klassificerar katalogen djupet för varje instrument:",
+        "bullets": [
+          {
+            "bold": "Hög institutionell likviditet",
+            "code": "> $500M diarios",
+            "text": "Låter dig gå in och lämna stora positioner omedelbart utan att flytta marknadspriset."
+          },
+          {
+            "bold": "Standardkatalog likviditet",
+            "code": "$50M a $500M diarios",
+            "text": "Lämplig för diversifierade portföljer med mycket låga köp-/försäljningskostnader."
+          },
+          {
+            "bold": "Spridningsövervakning",
+            "code": "< $50M diarios",
+            "text": "I tider av volatilitet är det tillrådligt att kontrollera öppnandet av tips innan du utför stora order."
+          }
+        ],
+        "example": "Om en aktie handlas för 200 USD och handlas i genomsnitt 5 miljoner aktier per hjul under den senaste månaden, är dess genomsnittliga dagliga volym (ADV) 1 miljard USD (1,0 miljarder USD)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalisering till USD",
+        "intro": "Eftersom katalogen kombinerar europeiska obligationer, asiatiska index, råvaror och kryptovalutor, omvandlas alla volymflöden till amerikanska dollar i realtid så att de kan jämföras i samma skala.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Lokal valutavolym: belopp som handlas i den ursprungliga marknadsvalutan (EUR, JPY, GBP, BRL, etc.).",
+            "Spot Exchange Rate: aktuell notering i 61 valutamotorn."
+          ]
+        },
+        "lead": "Denna omvandling påverkar direkt två ställen på skärmen:",
+        "bullets": [
+          {
+            "bold": "Totalvy Ranking Alla",
+            "code": "213 activos",
+            "text": "Beställ instrumenten från största till minsta verkliga rörelse av pengar över hela världen."
+          },
+          {
+            "bold": "Lagt till volymkort",
+            "code": "Volumen 24h en $B",
+            "text": "Det gör att volymen av tillgångar listade i olika länder kan läggas till utan förvrängningar."
+          }
+        ],
+        "example": "Om en tysk obligation handlas för 4 miljarder euro per dag och EUR/USD korshandlas till 1,08, beräknar systemet 4,32 miljarder dollar i den globala pulsen."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Hur mäter man om en marknad har stigit med genuin styrka eller om den redan har stigit för snabbt och är uttömd? Relative Strength Index (RSI) jämför de genomsnittliga ökningarna med de genomsnittliga fallen för de senaste 14 omgångarna på en skala från 0 till 100.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (genomsnittliga uppgångar₁₄ / genomsnittliga nedgångar₁₄)",
+          "vars": [
+            "Genomsnittlig höjning₁₄: utjämnat genomsnitt av poäng som tjänats in under de hausseartade dagarna för de senaste 14 hjulen.",
+            "Genomsnittliga förluster₁₄: utjämnat medelvärde av de förlorade poängen på baissedagarna under samma period."
+          ]
+        },
+        "lead": "Så här tolkas de tre delarna av skalan i den cirkulära ringen:",
+        "bullets": [
+          {
+            "bold": "Köpkraft och överköpt",
+            "code": "70 a 100",
+            "text": "Ökningarna överstiger vida de senaste minskningarna. Den visar en bra hausseartad fart, även om den över 70 varnar för att priset kan behöva en paus."
+          },
+          {
+            "bold": "balanszon",
+            "code": "30 a 70",
+            "text": "Marknaden rör sig i en hållbar takt. Att korsa mellannivån (> 50 i grönt) bekräftar köparens dominans, medan ett fall under (< 50 i rött) indikerar säljarens dominans."
+          },
+          {
+            "bold": "Straff och överförsäljning",
+            "code": "0 a 30",
+            "text": "Fallen var så frekventa och uttalade att tillgången börjar se statistiskt billig ut och benägen att återhämta sig."
+          }
+        ],
+        "example": "Om under de senaste 14 hjulen en grupp aktier steg i genomsnitt $2 per hausseartad dag och bara föll $1 per baisseartad dag, är dess styrka 2 och dess RSI 66,7 (bullish push i grönt)."
+      },
+      {
+        "id": "p06",
+        "label": "Normal regim (P-06)",
+        "intro": "En tillgång kan verka lugn om man bara tittar på dess pris, men samtidigt lider av ett märkligt volymhopp och en onormal öppning i sina köp- och säljtoppar. Isolation Forest-motorn (P-06) korsar dessa variabler samtidigt för att upptäcka atypiskt beteende.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): genomsnittligt antal slumpmässiga snitt som krävs för att isolera dagens beteende från resten av historien.",
+            "x: vektor med 4 variabler (Return 24h, Vol Z-Score 20d, Realized Volatility 30d och Spread in bps)."
+          ]
+        },
+        "lead": "Ju sällsyntare dagens drag är, desto snabbare isoleras det och desto närmare 1,00 är poängen:",
+        "bullets": [
+          {
+            "bold": "Normal regim",
+            "code": "0.00 a 0.49",
+            "text": "Pris, volym och likviditet rör sig i linje med tillgångens historiska genomsnitt."
+          },
+          {
+            "bold": "Hög aktivitet",
+            "code": "0.50 a 0.64",
+            "text": "Åtminstone en av variablerna började avvika från sitt vanliga beteende; Det är tillrådligt att noggrant övervaka orderflödet."
+          },
+          {
+            "bold": "Dislokation eller kritisk anomali",
+            "code": "0.65 a 1.00",
+            "text": "Tillgången registrerar statistiskt extremt beteende. I portföljmodulen aktiveras säkerhetsbromsen om denna tröskel överskrids."
+          }
+        ],
+        "example": "Om en statsobligation knappt rör sig 0,1 % i pris men dess volym multipliceras med fyra och dess spridning tredubblas på minuter, korsar detektorn de tre datapunkterna och höjer sin poäng till 0,74 (Dislokation i rött)."
+      },
+      {
+        "id": "zscore",
+        "label": "Volymförbikoppling (Z-Score)",
+        "intro": "Att säga att 500 miljoner dollar drevs idag är mycket för ett medelstort företag, men väldigt lite för S&P 500. Volume Z-Score för alla tillgångar till samma universella enhet: hur många standardavvikelser (σ) är dagens volym från dess eget 20-hjuliga medelvärde.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Volym idag (24h) − Genomsnittlig volym (20d)",
+          "denominator": "Standardavvikelse för volym (20d)",
+          "vars": [
+            "Genomsnittlig volym (20d): normal volym av tillgången under den senaste affärsmånaden.",
+            "Standardavvikelse (20d): hur mycket denna volym normalt varierar från en dag till en annan."
+          ]
+        },
+        "lead": "På så sätt kan du jämföra alla tillgångar på samma skala av sigma (σ) enheter:",
+        "bullets": [
+          {
+            "bold": "Vanlig aktivitet",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Dagens volym ligger helt inom de senaste fyra veckornas rutin."
+          },
+          {
+            "bold": "Högt deltagande",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Det finns ett högre intresse än genomsnittet som börjar bekräfta dagens trend."
+          },
+          {
+            "bold": "Institutionell sammandrabbning",
+            "code": "> +2.0σ",
+            "text": "Det förekommer under mindre än 5 % av årets omgångar och återspeglar vanligtvis det massiva in- eller utträdet av stora fonder."
+          }
+        ],
+        "example": "Om en aktie vanligtvis handlas $100 miljoner dagligen med en typisk variation på ±$20 miljoner och idag handlas $160 miljoner, är det $60 miljoner över sitt genomsnitt, vilket är exakt lika med +3,0σ."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Fast inkomst (2s10s och DV01)",
+        "intro": "När du filtrerar obligationer eller kurser i tabellen visas de två nyckelmåtten för att utvärdera statsskulder: kurvans lutning (2s10s) och det monetära värdet av en baspunkt (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 baspunkt (1 bp): motsvarande 0,01 % prestanda.",
+            "DV01 ($/$1M): Hur många dollar en $1 miljon position vinner eller förlorar om kursen flyttas 1 baspunkt."
+          ]
+        },
+        "lead": "Så här läser du dessa två siffror på rutnätet:",
+        "bullets": [
+          {
+            "bold": "Normal eller positiv kurva",
+            "code": "2s10s > 0 bps",
+            "text": "10-åriga obligationer betalar en högre ränta än 2-åriga obligationer, vilket återspeglar en förväntning om sund ekonomisk tillväxt."
+          },
+          {
+            "bold": "inverterad kurva",
+            "code": "2s10s < 0 bps",
+            "text": "Korta priser överstiger långa priser; historiskt varnar den för ekonomisk nedkylning eller monetära restriktioner."
+          }
+        ],
+        "example": "Om 10-åriga statsobligationer ger 4,20 % och 2-åriga statsobligationer ger 4,55 %, markerar 2s10s-kolumnen -35 bps (inverterad kurva i rött)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Aktier (P/E och Marginal)",
+        "intro": "När du filtrerar S&P/NDX-aktier visar tabellen den beräknade vinstmultipeln (P/E Forward) och Bruttorörelsemarginalen så att du kan jämföra värdering kontra lönsamhet.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Aktuell aktiekurs",
+          "denominator": "Beräknad vinst per aktie (kommande 12 månader)",
+          "vars": [
+            "P/E Forward: Hur många år av framtida intäkter du betalar till dagens pris.",
+            "Bruttomarginal (%): procentandel av försäljningen som kvarstår som bruttovinst efter avdrag för den direkta kostnaden."
+          ]
+        },
+        "lead": "Vad du ska titta efter när du korsar båda kolumnerna:",
+        "bullets": [
+          {
+            "bold": "Krävande kontra måttlig bedömning",
+            "code": "P/E > 30x vs < 18x",
+            "text": "En hög multipel indikerar att marknaden prissätter en stark framtida tillväxt; en låg återspeglar vanligtvis mogna eller värdefulla företag."
+          },
+          {
+            "bold": "Prissättningskraft",
+            "code": "Margen Bruto > 50%",
+            "text": "Höga marginaler visar företag med starka konkurrensfördelar som kan försvara sina vinster mot inflation."
+          }
+        ],
+        "example": "Om en aktie handlas för 150 USD och beräknas tjäna 6 USD per aktie under de kommande 12 månaderna är dess Forward P/E 25,0x."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Derivat, valuta och råvaror",
+        "intro": "För optioner, forex och fysiska terminsmarknader visar de två dynamiska kolumnerna den implicita kostnaden för risk eller belöning för att hålla positionen över tid.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Derivat): årsvis volatilitet som optionerna rabatterar på marknaden under de kommande 30 dagarna.",
+            "Bär 10Y (FX) och Roll Yield (Råvaror): årlig vinst eller kostnad från ränteskillnad eller terminsövergång."
+          ]
+        },
+        "lead": "Så här drar du nytta av dessa kolumner beroende på tillgången:",
+        "bullets": [
+          {
+            "bold": "I derivat",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "De berättar vilken procentandel av rörelsen marknaden förväntar sig och om alternativen för att täcka fall (Puts) är dyra."
+          },
+          {
+            "bold": "I valutor och råvaror",
+            "code": "Carry Spread y Roll Yield",
+            "text": "De visas i grönt om att underhålla tillgången ger dig extra inkomst eller i rött om det har en redovisningskostnad."
+          }
+        ],
+        "example": "Om ett alternativ visar en implicit volatilitet (ATM IV) på 35 % årligen, diskonterar marknaden en rörelse nära ±10 % under de kommande 30 dagarna."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radar radiell kartläggning",
+        "intro": "För att placera upp till 45 tillgångar i de tre radarringarna utan att överlappa, omvandlar vyn Orbital värdet på den valda indikatorn till ett avstånd till mitten (radie r) normaliserat mellan gruppens minimum och maximum.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Tillgångsvärde − Minsta värde för koncernen",
+          "denominator": "Koncernens maximala värde − Koncernens minsta värde",
+          "vars": [
+            "r → 0 (inre ring): koncentrerar tillgångarna med större intensitet eller positiv avvikelse.",
+            "r → 1 (Ytterring): lokaliserar de perifera tillgångarna eller de med den lägsta relativa avläsningen."
+          ]
+        },
+        "lead": "Hur man läser positionen och färgen för varje planet på radarn:",
+        "bullets": [
+          {
+            "bold": "Fokusera inre ring",
+            "code": "Centro del radar",
+            "text": "Samla de ledande tillgångarna från indikatorn du valde ovan så att din syn går till det som är viktigast först."
+          },
+          {
+            "bold": "Historisk färgsemantik",
+            "code": "Verde vs Rojo",
+            "text": "Noden lyser grönt när den överstiger sitt historiska medelvärde positivt och i rött när den reflekterar nedgång eller stress."
+          }
+        ],
+        "example": "Om du sorterar radarn efter volymavvikelse (Z-Score) är den aktiva med +3,4σ placerad i den ljusa centrala ringen, medan en med 0,1σ är i den yttre omloppsbanan."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) och Bollinger Bands",
+        "intro": "20-periods Simple Moving Average (SMA 20) markerar bastrenden för tillgången, medan Bollinger Bands ritar en dynamisk kanal genom att addera och subtrahera två standardavvikelser (2σ) runt det genomsnittet.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): aritmetiskt medelvärde av de senaste 20 stängningarna.",
+            "Bandbredd (BB Width): procentuellt avstånd mellan det övre och nedre bandet."
+          ]
+        },
+        "lead": "Statistiskt sett förekommer cirka 95 % av citat inom de två banden:",
+        "bullets": [
+          {
+            "bold": "Pris över genomsnittet",
+            "code": "Precio > SMA 20",
+            "text": "Det indikerar att den kortsiktiga trenden är hausseartad och att genomsnittet vanligtvis fungerar som ett stödgolv."
+          },
+          {
+            "bold": "Övre eller undre band beröring",
+            "code": "±2σ",
+            "text": "Den varnar för att priset sträckte sig för snabbt från det senaste genomsnittet och kan ta en paus."
+          },
+          {
+            "bold": "bandkompression",
+            "code": "BB Width bajo",
+            "text": "När banden blir väldigt smala bygger marknaden upp energi innan ett starkt drag."
+          }
+        ],
+        "example": "Om en akties SMA(20) är $100 och dess 20-hjuliga standardavvikelse är $4, är det övre bandet på $108 och det nedre bandet på $92."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP institutionell",
+        "intro": "Till skillnad från ett vanligt medelvärde som ger lika vikt åt alla timmar på dygnet, väger VWAP varje pris med den summa pengar som faktiskt handlades på den nivån. Det är den huvudsakliga referensen som används av institutionella tabeller.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Typiskt prisᵢ × Handlad Volymᵢ)",
+          "denominator": "∑ Handlad volymᵢ",
+          "vars": [
+            "Typiskt prisᵢ: genomsnitt mellan max, minimum och stängning av varje ljus.",
+            "Handlad volymᵢ: volym som handlas specifikt i det avsnittet."
+          ]
+        },
+        "lead": "Hur professionella handlare använder VWAP-linjen:",
+        "bullets": [
+          {
+            "bold": "Utförandekontroll",
+            "code": "Comprar bajo el VWAP",
+            "text": "Om en institutionell fond köper under VWAP för perioden fick den ett bättre pris än det marknadsvägda genomsnittet."
+          },
+          {
+            "bold": "Trend försvarsnivå",
+            "code": "Soporte / Resistencia",
+            "text": "Så länge tillgången ligger över VWAP har de som köpt under perioden genomsnittlig vinst."
+          }
+        ],
+        "example": "Om 1 miljon aktier handlades för $100 och endast 100 tusen aktier handlades för $110, skulle det enkla genomsnittet säga $105, men VWAP läser $100,91 eftersom nästan alla pengar handlades till $100."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Spridningsförskjutning (bps)",
+        "intro": "Spreaden är skillnaden mellan bästa säljkurs och bästa köpkurs i orderboken. När marknadsgaranter uppfattar risk eller brist på likviditet öppnar de det gapet för att skydda sig själva.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "(Begärt pris - Budpris)",
+          "denominator": "Genomsnittspris (mellanpris)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Begär/budpris: försäljningsargument och köppunkt aktuella i boken.",
+            "10 000: Omvandlingsfaktor för att uttrycka skillnaden i baspunkter (bps)."
+          ]
+        },
+        "lead": "Vad spridningsdislokationen visar på den vänstra skenan:",
+        "bullets": [
+          {
+            "bold": "Djup och flytande bok",
+            "code": "Spread estable en verde",
+            "text": "Det finns riklig likviditet i båda ändar och den implicita kostnaden för att gå in eller ut är minimal."
+          },
+          {
+            "bold": "Friktion eller uttag av likviditet",
+            "code": "Salto en bps",
+            "text": "Det inträffar vanligtvis sekunder före makroekonomiska meddelanden eller under panikförsäljning, vilket gör genomförandet dyrare."
+          }
+        ],
+        "example": "Om en tillgång har ett köptips på 99,95 USD och ett säljtips på 100,05 USD, motsvarar skillnaden på 0,10 USD över 100 USD 10 baspunkter (10 bps)."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Alternativ (Black-Scholes och Greker)",
+        "intro": "I optionsmotorn visar plattformen två vinst- och förlustkurvor (P&L): hur strategin skulle sluta på förfallodagen och hur mycket den är värd idag (T+0) med Black-Scholes-modellen.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S och K: aktuellt pris på den underliggande tillgången (Spot) och lösenpriset för optionen (Strike).",
+            "Nettgreker: Δ Delta (priskänslighet), Γ Gamma (Deltaacceleration), Θ Theta (dagligt slitage) och ν Vega (volatilitetskänslighet)."
+          ]
+        },
+        "lead": "Så här läser du grekerna om din strategi på piller för vänster järnväg:",
+        "bullets": [
+          {
+            "bold": "Styrning och acceleration",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Ett positivt Delta vinner när tillgången stiger; ett positivt Gamma gör att du vinner snabbare och snabbare om rörelsen går snabbare."
+          },
+          {
+            "bold": "Tidens gång och osäkerhet",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta berättar hur många dollar positionen förlorar eller vinner för varje dag som går; Vega hur mycket det förändras om den implicita volatiliteten stiger med 1%."
+          }
+        ],
+        "example": "En Long Straddle (köp Ring och lägg på samma strejk) har Delta nära 0 (det spelar ingen roll om det går upp eller ner), men positivt Vega och behöver priset för att gå bortom sina två jämviktspunkter (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Sovereign Curves (Butterfly och DV01)",
+        "intro": "Räntemotorn jämför avkastning från 3 månader till 30 år för 42 länder och beräknar både lutningen (2s10s) och krökningen för den mellersta tranchen (Butterfly 2s5s10s) och den monetära känsligheten (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2-, 5-, 10-åriga räntor: 2-, 5- och 10-åriga statsräntor för det valda landet.",
+            "Real 10-årig ränta: 10-årig nominell avkastning minus referensräntan eller implicit inflation."
+          ]
+        },
+        "lead": "Vad varje indikator är till för i obligationsanalys:",
+        "bullets": [
+          {
+            "bold": "Krökning av mittsektionen",
+            "code": "Butterfly 2s5s10s",
+            "text": "Den mäter om den 5-åriga tranchen är dyr eller billig i förhållande till 2- och 10-års extremerna."
+          },
+          {
+            "bold": "Dollar Duration Risk",
+            "code": "DV01 por $1M",
+            "text": "Den talar om exakt hur många dollar en portfölj på en miljon dollar varierar med en 0,01 % rörelse i kursen."
+          }
+        ],
+        "example": "En 10-årig obligation med en DV01 på 820 USD per miljon kommer att förlora cirka 82 000 USD om marknadsräntorna stiger 100 räntepunkter (+1,00%)."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Valuta (Carry) och Futures (Roll Yield)",
+        "intro": "I valutor, när ett par inte noteras direkt, beräknas det genom triangulering mot dollarn och dess kursskillnad (Carry) mäts. Inom råvaror mäts förnyelseprestanda mellan det omedelbara kontraktet och 12-månaderskontraktet (Roll Yield).",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Spotpris (Front M1) − Framtidspris (M12)",
+          "denominator": "Framtida pris (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Backwardation (Spot > Future): Fysisk brist idag gör att rullande terminer genererar en positiv vinst (Roll Yield > 0).",
+            "Contango (Spot < Future): Lagringskostnader gör terminer dyrare och att förnya dem har en negativ kostnad."
+          ]
+        },
+        "lead": "Hur detta påverkar din plånbok när du håller en position:",
+        "bullets": [
+          {
+            "bold": "Positiv Carry Trade i valutor",
+            "code": "Carry Spread > 0 bps",
+            "text": "Om du köper en valuta med hög ränta genom att finansiera dig själv i en valuta med låg ränta kommer du att samla in den skillnaden till din fördel."
+          },
+          {
+            "bold": "Gynnsam vind i råvaror",
+            "code": "Backwardation en verde",
+            "text": "När det fysiska lagret är lågt är det närliggande kontraktet värt mer än det avlägsna och investeraren tjänar en extra avkastning genom att rulla kontraktet."
+          }
+        ],
+        "example": "Om 1-månaders olja handlas till $72 och 12-månaderskontraktet handlas till $68, är marknaden i backwardation med en positiv Roll Yield på +5,88% årligen."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Totalt viktat betyg",
+        "intro": "Alla tillgångar rör sig inte genom samma källor: i ett företag har reviderade bokslut (SEC 10-K/10-Q) mycket tyngd, medan på kryptomarknaden eller -valutor har dagliga flöden och kommunikation större vikt.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: automatisk viktning enligt kategori (t.ex. 80% / 20% i andelar; 85% / 15% i avgifter).",
+            "Slutlig skala: sträcker sig från -100 (maximal pessimism) till +100 (maximal hausseartad övertygelse)."
+          ]
+        },
+        "lead": "Så här översätts det sammansatta partituren i den överlägsna opinionen:",
+        "bullets": [
+          {
+            "bold": "Hausse hållning",
+            "code": "BULLISH / Nota > +15",
+            "text": "Dokumentära katalysatorer och nyhetsflöde uppväger klart riskfaktorer."
+          },
+          {
+            "bold": "Neutral eller blandad hållning",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Även krafter mellan grunder och nyheter; Det är tillrådligt att se över dragspelet av 10 faktorer innan du bestämmer dig."
+          },
+          {
+            "bold": "Defensiv eller baisseartad hållning",
+            "code": "BEARISH / Nota < -15",
+            "text": "Varningar på balansräkningar, försämrade marginaler eller negativa rubriker dominerar."
+          }
+        ],
+        "example": "I en aktie (80 % fundamentals / 20 % nyheter), om saldot visar +50 poäng och dagens nyheter visar +20, är ​​den totala viktade poängen (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Verifierad sökning (RAG)",
+        "intro": "För att förhindra artificiell intelligens från att uppfinna siffror använder Document Chat Generation Augmented Recovery (RAG): först söker den efter relevanta stycken i tillgångens officiella rapporter och skriver först sedan svaret med källan.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vektorkonsultation (Q) · Vector officiellt dokument (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vektor Q och D: numeriska representationer av din fråga och de officiella fragmenten (10-K, FOMC-protokoll, MKB-rapporter).",
+            "3-lagers skyddsräcke: filter som blockerar frågor som inte är relaterade till ekonomi eller utan dokumentärt stöd."
+          ]
+        },
+        "lead": "Vad den här mekanismen garanterar när du ställer en fråga i chatten:",
+        "bullets": [
+          {
+            "bold": "Förankring i primära källor",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Varje data om inkomst, skuld, lager eller räntor kommer från det regulatoriska dokumentet som motsvarar den tillgången."
+          },
+          {
+            "bold": "Sluta frågor utanför ämnet",
+            "code": "Guardrail activo",
+            "text": "Om någon försöker konsultera icke-ekonomiska ämnen, avvisar assistenten frågan och håller fokus på analysen av instrumentet."
+          }
+        ],
+        "example": "När du trycker på riskfaktorchipset på en aktie, hämtar motorn artikel 1A (riskfaktorer)-sektionen i sitt senaste 10-K-formulär och sammanfattar de kritiska punkterna."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Neuronal poäng",
+        "intro": "En typisk ordbok blandar ofta ihop finansiella ord (till exempel \"fall i kostnader\" eller \"skuldminskning\" är utmärkta nyheter även om de använder ordet fall eller minskning). FinBERT är ett neuralt nätverk utbildat specifikt med finansiella texter.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(positiv) och P(negativ): sannolikheter som tilldelas av modellen till rubriken är hausse eller baisse för tillgången.",
+            "24h-kurva: exponentiellt glidande medelvärde av rubrikerna under de senaste 24 timmarna."
+          ]
+        },
+        "lead": "Hur varje nod bedöms i tidslinjen till höger:",
+        "bullets": [
+          {
+            "bold": "Katalysatorhållare",
+            "code": "+20 a +100 en verde",
+            "text": "Slår beräknade intäkter, uppgraderingar av kreditbetyg eller gynnsamma räntesänkningar."
+          },
+          {
+            "bold": "Neutral informationskabel",
+            "code": "-19 a +19 en ámbar",
+            "text": "Rutinmässiga driftsmeddelanden som inte ändrar den strukturella bedömningen av instrumentet."
+          },
+          {
+            "bold": "Riskhållare",
+            "code": "-20 a -100 en rojo",
+            "text": "Regulatoriska varningar, marginalsänkningar, strejker eller sämre inflationsdata än väntat."
+          }
+        ],
+        "example": "Om modellen tilldelar 82 % positiv sannolikhet, 12 % neutral och 6 % negativ sannolikhet till en rubrik, visar noden en nettoeffekt på +76 i grönt."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe och Sortino",
+        "intro": "De två första översta korten mäter hur mycket ditt kapital växer per år (CAGR) och hur effektiv den tillväxten är i förhållande till de stötar du måste utstå (Sharpe och Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Årlig Portfolio avkastning (Rp) − Riskfri ränta (Rf)",
+          "denominator": "Årlig Portfolio volatilitet (σp)",
+          "vars": [
+            "Rf (4,30%): basavkastning som du kan få utan risk i statsskuldväxlar.",
+            "Sortino Ratio: använder samma formel men i nämnaren straffar den bara volatiliteten för negativa dagar (fall)."
+          ]
+        },
+        "lead": "Så här utvärderar du kvaliteten på din portfölj med dessa siffror:",
+        "bullets": [
+          {
+            "bold": "Effektiv portfölj",
+            "code": "Sharpe > 1.00",
+            "text": "Överavkastningen du uppnår över den riskfria räntan överstiger vida den antagna volatiliteten."
+          },
+          {
+            "bold": "Enastående prestanda",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Det indikerar en mycket väl diversifierad kombination där ökningarna är konsekventa och fallen begränsas."
+          }
+        ],
+        "example": "Om din portfölj ger en avkastning på 15,3% årligen, är den riskfria räntan 4,3% och din årliga volatilitet är 10%, din överavkastning är 11% och din Sharpe Ratio är 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% och Drawdown",
+        "intro": "Det tredje och fjärde kortet svarar på hur mycket du kan förlora på en dålig men statistiskt normal dag (VaR 95%), hur mycket på en extrem panikdag (CVaR 99%) och vad som var den största tillbakagången från en tidigare topp (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1 645: statistisk faktor som täcker 95 % av årets normala hjul (19 av var 20:e dag).",
+            "CVaR 99% (Förväntad Underskott): Genomsnittlig förlust när marknaden bryter den tröskeln och går in i den översta 1% av värsta dagar."
+          ]
+        },
+        "lead": "Vilken praktisk skillnad är det mellan att titta på VaR och att titta på Max Drawdown:",
+        "bullets": [
+          {
+            "bold": "Endagsrisk",
+            "code": "VaR 95% 1D en USD",
+            "text": "Det förbereder dig psykologiskt och ekonomiskt för vad ditt konto kan svänga i en dålig riktning utan att det betyder att strategin misslyckades."
+          },
+          {
+            "bold": "Motstånd i en negativ strimma",
+            "code": "Max Drawdown 12M",
+            "text": "Den mäter det ackumulerade fallet från spets till spets från den högsta punkten till golvet innan den återhämtar sig igen."
+          }
+        ],
+        "example": "I en $100 000 portfölj med en daglig VaR 95% av 1,45% ($1 450), i 19 av 20 handelshjul kommer dina dagliga förluster inte att överstiga $1 450."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "Röntgenöverlappning (#12)",
+        "intro": "När du köper en ETF som SPY eller QQQ, köper du dussintals aktier inuti. Om du också har köpt några av samma aktier direkt, är din verkliga exponering summan av de två sakerna.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Direktviktᵢ: procentandel av din portfölj som allokeras direkt till aktien i.",
+            "Andel inom ETFₖ: officiell vikt som företaget har inom indexet eller fonden k."
+          ]
+        },
+        "lead": "Varför det är viktigt att granska denna första flik innan du stänger portföljen:",
+        "bullets": [
+          {
+            "bold": "Dold koncentrationssynlighet",
+            "code": "Directo + Indirecto",
+            "text": "Den tar automatiskt isär varje ETF i din portfölj och visar dig en enda stapel med den verkliga procentandelen du har i varje företag."
+          },
+          {
+            "bold": "Överskottslarm",
+            "code": "> 20% en rojo",
+            "text": "Om den totala summan överstiger den försiktiga tröskeln för koncentration på ett enda namn, lyser raden så att du kan balansera om."
+          }
+        ],
+        "example": "Om du lägger 15 % av din portfölj i direkt NVDA och även har 30 % i SPY ETF (där NVDA väger cirka 7 %), avslöjar röntgenbilden att din verkliga exponering mot NVDA är 15 % + (30 % × 7 %) = 17,1 %."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alpha Brinson-nedbrytning (#2)",
+        "intro": "När din portfölj slår (eller förlorar mot) sitt riktmärke skiljer Brinson-Fachler-modellen exakt var skillnaden kom ifrån: hade du rätt i vilka sektorer du skulle övervikta eller hade du rätt i att välja de bästa tillgångarna inom varje sektor?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Allokeringseffekt: (Portfolio Vikt − Benchmark Vikt) × Sektoravkastning i Benchmark.",
+            "Urvalseffekt: Vikt i Benchmark × (avkastning på dina tillgångar − Sektorns avkastning)."
+          ]
+        },
+        "lead": "Så här läser du de tre tillskrivningsfälten på den tredje fliken:",
+        "bullets": [
+          {
+            "bold": "Makro- eller sektorframgång",
+            "code": "Asignación Sectorial",
+            "text": "Det är positivt i grönt när man lägger mer vikt än marknaden på de tillgångsslag som steg mest."
+          },
+          {
+            "bold": "Framgångsrik inriktning av tillgångar",
+            "code": "Selección de Activos",
+            "text": "Det är positivt när de specifika instrument du valde presterade mer än genomsnittet för sin egen sektor."
+          }
+        ],
+        "example": "Om din portfölj slog S&P 500 med +3,20 %, låter den här fliken dig se att +2,10 % kom från att välja bättre aktier (Urval) och +1,10 % från att ha mer vikt i teknik (Allokering)."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Effektiv Frontier och CML",
+        "intro": "I Markowitz-planet är den förväntade avkastningen för en portfölj det vägda genomsnittet av avkastningen på dess tillgångar, men dess volatilitet är lägre än genomsnittet tack vare det faktum att tillgångarna inte rör sig till 100 % på samma sätt.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: procentandel av kapitalet allokerat till tillgångar i och j.",
+            "ρᵢⱼ (Korrelation): grad till vilken båda tillgångarna rör sig tillsammans (−1 till +1). Ju lägre ρᵢⱼ är, desto mer minskar den totala risken."
+          ]
+        },
+        "lead": "Vad de tre referenserna i grafen representerar:",
+        "bullets": [
+          {
+            "bold": "Minsta avvikelse",
+            "code": "Min-Var",
+            "text": "Det är punkten längst till vänster på kurvan: den exakta kombinationen av vikter som uppnår lägsta möjliga volatilitet."
+          },
+          {
+            "bold": "Máximo Sharpe och Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Det är den punkt där linjen som utgår från den riskfria räntan vidrör den effektiva gränsen och erbjuder den största vinsten per riskenhet."
+          }
+        ],
+        "example": "Om du kombinerar i lika delar två tillgångar som har 20 % volatilitet vardera men noll korrelation (ρ = 0), är volatiliteten i portföljen inte 20 %, utan sjunker till 14,1 %."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR från Active and Capture",
+        "intro": "För att veta vilken position som tillför mer risk till portföljen, mäts det marginella bidraget för varje tillgång enligt dess vikt och dess korrelation med resten. Dessutom mäter infångningsförhållandena asymmetrin mot uppgångar och fall för S&P 500.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Återlämnande av din tillgång eller Portfolio i hausseartade (eller baisseartade) hjul",
+          "denominator": "Återlämning av S&P 500 på samma hjul",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100%) – Tjäna mer än index när marknaden går upp.",
+            "Downside Capture (< 100%): faller mindre än index när marknaden går ner (defensiv buffert)."
+          ]
+        },
+        "lead": "Den idealiska profilen du letar efter när du granskar den tredje fliken i kvadranten:",
+        "bullets": [
+          {
+            "bold": "positiv asymmetri",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Delta fullt ut på tjurmarknader men skydda kapitalet när börsen korrigerar."
+          },
+          {
+            "bold": "Fristad eller okorrelerade tillgångar",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Instrument som korta obligationer eller guld som tenderar att förbli stabila eller stiga under börsnedgångar."
+          }
+        ],
+        "example": "Om under månaderna när S&P 500 steg 10 % din portfölj ökade med 11 % (uppsida 110 %), och när indexet föll 10 % din portfölj bara föll 6 % (nedåt 60 %), har du en stark asymmetri till din fördel."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normal vs kriskorrelation",
+        "intro": "Pearson-koefficienten (r) mäter från -1,00 till +1,00 hur två tillgångar rör sig i förhållande till varandra. Faran i portföljförvaltningen är att korrelationen mellan risktillgångar under en marknadskrasch vanligtvis skjuter mot +1,00 (smitta).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Samvarians (retursätter tillgång i, returnerar tillgång j)",
+          "denominator": "Tillgångsvolatilitet i (σᵢ) × Tillgångsvolatilitet j (σⱼ)",
+          "vars": [
+            "r nära 0 eller negativ: utmärkt diversifiering (när den ena går ner följer den andra inte efter).",
+            "r i kriskö: räknar om matrisen som endast tar de 5 % av de sämsta hjulen på marknaden."
+          ]
+        },
+        "lead": "Så här läser du färgerna på 6x6-matrisen i båda regimerna:",
+        "bullets": [
+          {
+            "bold": "Verklig diversifiering",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Båda tillgångarna svarar på olika ekonomiska drivkrafter och kompenserar varandra."
+          },
+          {
+            "bold": "Koncentration eller smitta",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "De rör sig praktiskt taget som ett block; Att ha båda minskar inte dina fall på en dålig dag."
+          }
+        ],
+        "example": "Två aktier från olika sektorer kan ha en måttlig korrelation på 0,42 ett normalt år, men när du aktiverar Crisis Queue-knappen ser du att den stiger till 0,81 eftersom de i panik säljer tillsammans."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D Shock (kurser × aktiemarknad)",
+        "intro": "2D-matrisen kombinerar samtidigt effekten av en rörelse i räntor (via Fixed Income Duration och Räntekänslighet) med ett fall eller en uppgång i S&P 500-index (via Equity Beta).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: aktiemarknadsvariationsscenario på den horisontella axeln (−20% till +10%).",
+            "Δ Räntor: scenario för förändring av räntor i räntepunkter på den vertikala axeln (−100 till +200 bps)."
+          ]
+        },
+        "lead": "Vad är syftet med att korsa de två axlarna i tabellen:",
+        "bullets": [
+          {
+            "bold": "Stagflations- eller räntehöjningsscenario",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Som det som hände 2022, där aktier och långa obligationer drabbas samtidigt."
+          },
+          {
+            "bold": "Klassiskt skyddsscenario",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Där lägre räntor höjer priset på statsobligationer och dämpar nedgången på aktier."
+          }
+        ],
+        "example": "Filtrering för en lång obligation som US10Y eller TLT kan du se i tabellen hur den får värde när kurserna faller (-100 bps), och fungerar som en fallskärm om S&P 500 faller samma dag."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markov Regimes (#11)",
+        "intro": "En Markov-kedja modellerar ekonomin som ett system som hoppar mellan fyra möjliga tillstånd (Calm Bullish, Volatile Bullish, Inflation/Rates och Crisis) och beräknar sannolikheten att flytta från det ena till det andra.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Huvuddiagonal (i = j): sannolikhet att den nuvarande regimen förblir oförändrad.",
+            "Off-diagonal (i ≠ j): sannolikhet att rotera till ett nytt marknadsklimat."
+          ]
+        },
+        "lead": "Så här drar du nytta av övergångsmatrisen på den andra fliken:",
+        "bullets": [
+          {
+            "bold": "Beständighet av den nuvarande cykeln",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Lugna regimer har vanligtvis hög uthållighet (> 75 %), vilket gör att trendpositioner kan bibehållas."
+          },
+          {
+            "bold": "Rotation tidig varning",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "När sannolikheten för övergång till volatila tillstånd ökar, är det lämpligt att minska hävstångseffekten eller aktivera säkring."
+          }
+        ],
+        "example": "Om marknaden idag är i en Volatile Bull-regim och raden markerar 62% av beständigheten, 20% av återgången till Bull Calm och 18% av att gå till Stress/Kris, vet du att nästan 1 av 5 scenarier resulterar i en korrigering."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo projektion (10 000 vägar)",
+        "intro": "Baserat på den förväntade avkastningen och aktuella volatiliteten i din portfölj, genererar simulatorn 10 000 möjliga framtida banor dag för dag med tillämpning av den stokastiska Geometric Brownian Movement-modellen.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ och σ: förväntad årlig avkastning och årsvis volatilitet för din nuvarande portfölj.",
+            "Z: normal normal slumpvariabel ritad 10 000 gånger längs horisonten (6M, 12M eller 24M)."
+          ]
+        },
+        "lead": "Från dessa 10 000 simuleringar extraheras de tre huvudkurvorna i grafen:",
+        "bullets": [
+          {
+            "bold": "Gynnsamt scenario",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Den nivå som bara överskrids med 5 % av de mest optimistiska scenarierna."
+          },
+          {
+            "bold": "Förväntad central bana",
+            "code": "Mediana P50",
+            "text": "Det typiska resultatet där hälften av simuleringarna är över och den andra hälften är under."
+          },
+          {
+            "bold": "Term stress scenario",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Det negativa golvet: i 95 % av de simulerade banorna hamnar din portfölj över denna linje."
+          }
+        ],
+        "example": "Inom en 12-månaders horisont på en bas av 100, om P50 visar 116 och P05 visar 94, är din centrala förväntan att tjäna +16% och under ett mycket ogynnsamt år riskerar du nära -6%."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly Criterion (#14)",
+        "intro": "Kelly-kriteriet svarar vetenskapligt på vilken procentandel av ditt kapital du bör allokera till en operation när du vet din sannolikhet för framgång (Win-Rate) och hur mycket du vinner när du lyckas kontra vad du förlorar när du misslyckas (Payoff Ratio).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p och q: sannolikhet att vinna (p) och sannolikhet att förlora (q = 1 − p).",
+            "b (Payoff Ratio): genomsnittlig vinst dividerat med genomsnittlig förlust (t.ex. att tjäna 2 USD för varje riskerad USD innebär att b = 2)."
+          ]
+        },
+        "lead": "Varför professionella chefer använder varianten Half-Kelly (0,5×):",
+        "bullets": [
+          {
+            "bold": "Kelly komplett",
+            "code": "Full Kelly 1.0×",
+            "text": "Det maximerar den långsiktiga matematiska tillväxten, men genererar mycket skarpa svängningar om det finns en rad fel i rad."
+          },
+          {
+            "bold": "Rekommenderad Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Genom att använda hälften av den föreslagna procentandelen fångar du 75 % av den potentiella tillväxten men halverar volatiliteten."
+          }
+        ],
+        "example": "Om en strategi träffar 55 % av tiden (p = 0,55, q = 0,45) och betalar 2 till 1 (b = 2), ger hela Kelly (0,55×2 − 0,45) / 2 = 32,5 %, och den försiktiga Half-Kelly rekommenderar att man tilldelar 16.25 %."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Sätt OTM-sköld (#6)",
+        "intro": "En out-of-the-money säljoption (till exempel 5 % under det nuvarande priset på S&P 500) fungerar precis som en försäkringsavdragsgill: den har en liten, fast kostnad (premien), men om marknaden sjunker med 20 % eller 30 % multipliceras dess värde konvext och kompenserar för dina portföljförluster.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Årlig kostnad (Carry Drag): årlig procentsats som det kostar att förnya försäkringen om marknaden inte faller.",
+            "Crash Protection (-20%): dollar som återvinns genom Put-kontraktet under en allvarlig krasch."
+          ]
+        },
+        "lead": "Så här jämför du simulatoralternativ på den första fliken:",
+        "bullets": [
+          {
+            "bold": "Direkt indexförsäkring",
+            "code": "SPY Put 5% OTM",
+            "text": "Den begränsar den maximala förlusten från en minskning på 5 % i utbyte mot en måttlig årlig kostnad."
+          },
+          {
+            "bold": "Fonderad eller volatilitetstäckning",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "The Collar minskar kostnaden genom att sälja en Call up; Call on VIX exploderar till förmån när panik triggar på marknaden."
+          }
+        ],
+        "example": "Om att skydda en portfölj på 100 000 USD med SPY Put 5% OTM kostar 1,1 % per år (1 100 USD), men i händelse av en -20 % krasch minskar det din portföljs nedgång till mindre än hälften, nettobesparingen överstiger 7 000 USD."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Marginal och avstånd till marginalanrop (#13)",
+        "intro": "När du arbetar med derivat eller hävstång kräver mäklaren att ha en minsta procentandel av eget kapital över det totala värdet av positionen (Maintenance Margin). Om ett fall minskar ditt kapital under det golvet utlöses ett Margin Call.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Skuld eller finansierat saldo",
+          "denominator": "1 − % underhållsmarginal (Reg-T)",
+          "vars": [
+            "Bruttoexponering: total summa av öppna positioner dividerat med eget kapital (t.ex. 1,18×).",
+            "Distance to Margin Call (%): procentuell minskning som portföljen fortfarande stöder innan den når tröskeln."
+          ]
+        },
+        "lead": "Säkerhetsnivåer i övervakningsfältet:",
+        "bullets": [
+          {
+            "bold": "Stor frigångszon",
+            "code": "Distancia > 30% en verde",
+            "text": "Hävstången är låg och portföljen kan absorbera även en svår kris utan tvångsförsäljning."
+          },
+          {
+            "bold": "försiktighetszon",
+            "code": "Distancia < 15% en rojo",
+            "text": "En måttlig marknadskorrigering skulle uttömma fria säkerheter och tvinga positioner att avvecklas i värsta ögonblick."
+          }
+        ],
+        "example": "Med en måttlig hävstång på 1,18× och en begagnad underhållsmarginal på 22 % har din portfölj en säkerhetskudde på mer än 38 % nedsida före eventuella säkerheter."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "Regler för 3-pelarkommittén",
+        "intro": "För att inget impulsivt beslut äventyrar portföljens överlevnad, utvärderar kommittén varje order genom att kombinera den tekniska noten, den grundläggande noten och två hårda, icke förhandlingsbara riskkontrollregler.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20 % NAV: ingen enskild tillgång kan koncentrera mer än en femtedel av de totala tillgångarna.",
+            "Anomalistopp (P-06 ≥ 0,65): om tillgången går in i statistisk dislokation, minskar systemet den maximala exponeringen till 5 %."
+          ]
+        },
+        "lead": "Vad varje stat betyder i domen och i avrättningsboken:",
+        "bullets": [
+          {
+            "bold": "Beställning godkänd utan begränsningar",
+            "code": "APROBADO en verde",
+            "text": "De tre pelarna sammanfaller positivt och positionsstorleken respekterar alla koncentrations- och likviditetsgränser."
+          },
+          {
+            "bold": "Beställning justeras med skyddsräcke",
+            "code": "RECORTE PREVENTIVO",
+            "text": "När en biljett överskrider gränsen på 20 % eller försöker köpa tungt mitt i en anomali, varnar skyddsräcket för överskottet."
+          }
+        ],
+        "example": "Om du försöker simulera ett köp som skulle ta en enskild aktie till 26 % av din portfölj, flaggar Pillar 3 (Risk & Sizing Guardrail) koncentrationsvarningen så att du justerar den under 20 %."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Effektivitet Walk-Forward (WFE)",
+        "intro": "För att kontrollera att en strategi inte bara skapades för att se bra ut tidigare (överanpassning), jämför Walk-Forward-testet hur den presterade under designperioden (In-Sample) med dess prestanda i efterföljande aldrig tidigare sett data (Out-of-Sample).",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Annualiserad avkastning Out-of-Sample (ren validering)",
+          "denominator": "Annualiserad avkastning In-Sample (utbildning)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): historiskt avsnitt som används för att kalibrera strategins vikter och regler.",
+            "Out-of-Sample (OOS): nästa avsnitt där strategin testas i verkliga förhållanden utan att röra dess parametrar."
+          ]
+        },
+        "lead": "Hur den kvantitativa industrin betygsätter WFE-procenten:",
+        "bullets": [
+          {
+            "bold": "Robust och konsekvent strategi",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Den behåller den stora majoriteten av sin förmåga att generera vinster när den står inför nya marknadsförhållanden."
+          },
+          {
+            "bold": "Fragil eller överfitstrategi",
+            "code": "WFE < 50% en rojo",
+            "text": "Det fungerade bra i det förflutnas teori men tappar effektivitet i verkligheten; Det är inte tillrådligt att utföra det med riktiga pengar."
+          }
+        ],
+        "example": "Om en strategi gav en avkastning på 20 % på årsbasis under dess designstadium (In-Sample) och i det efterföljande faktiska testskedet (Out-of-Sample) gav den 18,8 % på årsbasis, är dess effektivitet WFE (18,8 / 20) = 94,0 %."
+      }
+    ]
+  }
+}

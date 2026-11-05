@@ -344,6 +344,7 @@ export default function App() {
         onCycleLang={cycleLang}
         onSelectLang={(idx) => setLangIdx(idx)}
         onCycleTheme={cycleTheme}
+        onSelectTheme={(idx) => setThemeIdx(idx)}
       />
     </div>
   );

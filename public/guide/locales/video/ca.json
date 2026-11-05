@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Recorregut visual en directe",
+      "clickPlayPause": "Feu clic per reproduir o posar en pausa (espai)",
+      "subtitles": "Subtítols (C)",
+      "fullscreen": "Pantalla completa (F)",
+      "exitFullscreen": "Sortir de pantalla completa (F o Esc)",
+      "portTabs": [
+        "Constructor",
+        "Risc",
+        "Simulador",
+        "Copilota"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Idiomes",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • Categories",
+      "scr-pulse": "02 • Pols 24h",
+      "scr-table": "03 • Taula",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Mapa de calor",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • Tècnic",
+      "ana-compare": "03 • Comparar %",
+      "ana-micro": "04 • Micro i flux",
+      "ana-engines": "05 • Motors 3D/2D",
+      "res-hero": "01 • Puntuació i postura",
+      "res-rag": "02 • Xat RAG",
+      "res-factors": "03 • Factors",
+      "res-pulse24h": "04 • FinBERT Pols",
+      "p1-pills": "01 • Resum",
+      "p1-table": "02 • Ponderació",
+      "p1-xray": "03 • Raigs X",
+      "p1-calendar": "04 • Calendari",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornado i VaR",
+      "p2-corr": "03 • Correlació",
+      "p2-shock2d": "04 • Xoc i Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Impacte",
+      "p3-whatif": "02 • What-If i Kelly",
+      "p3-tailhedge": "03 • OTM Put & Margin",
+      "p3-committee": "04 • Comitè i Registre",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Benvingut a la pantalla Home: el vostre punt de partida sense distraccions on els mercats es descodifiquen.",
+      "home-header": "A l'extrem superior esquerre de la Header, fent clic a la icona λ sempre us porta directament a aquesta etapa principal.",
+      "home-markets": "Centrat a la part superior del Header hi ha Markets, la vostra estació de treball per investigar els 213 actius globals en directe.",
+      "home-portfolio": "Just al costat, al menú centrat, hi ha Portfolio, per crear assignacions, risc de prova d'estrès i simular operacions.",
+      "home-system": "A la part inferior esquerra Footer, System obre el monitor d'observabilitat en directe per a servidors i bases de dades.",
+      "home-guide": "A més, Guide obre aquest manual interactiu pas a pas sempre que el necessiteu.",
+      "home-langs": "A l'extrem inferior dret, el botó d'idioma obre el modal centrat per traduir la plataforma a 56 idiomes.",
+      "home-palettes": "I Palette obre els 5 temes de lectura visual mentre manté el verd i el vermell financer estrictament intactes.",
+      "scr-categories": "A la barra de Categories superior, filtreu els 213 actius, el vostre Watchlist o 10 mercats especialitzats.",
+      "scr-pulse": "Les targetes 4 Pulse 24h mostren volum agregat, RSI mitjà, règim P-06 i dislocacions de volum superior.",
+      "scr-table": "La taula interactiva inclou cerques instantànies, preferits i columnes intel·ligents adaptades a cada classe d'actius.",
+      "scr-orbital": "La vista Orbital mapeja els actius a través de tres anells concèntrics per desviació amb un panell d'inspecció lateral en directe.",
+      "scr-heatmap": "El mapa de calor organitza els 10 actius principals en blocs proporcionals en 8 tons de verd i vermell.",
+      "scr-maintools": "I Main Tools us guia en tres passos cap a les corbes sobiranes, la volatilitat 3D, l'encreuament de divises i els motors de futurs.",
+      "ana-hero": "El Header combina el commutador d'actius, 9 períodes de temps des d'1 m fins a TOTS i els 5 indicadors bàsics.",
+      "ana-technical": "La lent tècnica superposa les bandes de Bollinger SMA 20, VWAP i 2σ amb confirmació de volum inferior.",
+      "ana-compare": "Amb Comparar %, mesura el percentatge d'avantatge net o Alpha Spread des del 0% en comparació amb un parell o índex compatible.",
+      "ana-micro": "Micro & Flow detecta pics de volum a través de la puntuació Z de 20 d, la dislocació de la liquiditat distribuïda i la puntuació d'anomalia P-06.",
+      "ana-engines": "La quarta pestanya és una eina ad-hoc dinàmica que varia segons la classe d'actius: com que NVDA és una renda variable, obre el pagament de la volatilitat i les opcions 3D, mentre que els bons, els divises i les mercaderies llancen les seves pròpies eines especialitzades.",
+      "res-hero": "A la part superior, Score & Stance resumeix el veredicte fonamental, la qualificació ponderada i el termòmetre de titular.",
+      "res-rag": "A la columna de l'esquerra, RAG Document Chat respon a les consultes verificades basades en els documents oficials de SEC 10-K i 10-Q.",
+      "res-factors": "A la columna central, l'acordió Factors contrasta els 5 millors toros amb els 5 principals riscos de suport.",
+      "res-pulse24h": "A la dreta, FinBERT Pulse puntua els titulars en temps real i dibuixa la corba de sentiment de 24 hores.",
+      "p1-pills": "Les 6 targetes de resum tornen a calcular CAGR, Sharpe i Sortino en directe, 95% VaR, Max Drawdown, Alpha i diversificació.",
+      "p1-table": "A la taula de ponderació, afegiu qualsevol dels 213 actius, establiu ponderacions percentuals exactes o reequilibreu al 100%.",
+      "p1-xray": "A la part superior dreta, el panell de raigs X de 5 pestanyes audita la superposició d'ETF, l'exposició, l'atribució de Brinson, el flux de caixa i la custòdia.",
+      "p1-calendar": "A sota de X-Ray, el calendari mensual mostra la coherència dels retorns de gener a desembre i els totals YTD.",
+      "p1-backtest": "I a la part inferior d'amplada completa, Backtesting compara la vostra cartera amb la S&P 500, 60/40, All-Weather i Min-Variance.",
+      "p2-markowitz": "El primer quadrant representa la frontera eficient Markowitz 2D i posiciona la vostra cartera en comparació amb Min-Var i Max-Sharpe.",
+      "p2-tornado": "El quadrant inferior esquerre posa a prova 5 crisis històriques, la contribució VaR del 95% per actiu i la captura al revés/a la baixa.",
+      "p2-corr": "A la part superior dreta, la matriu 6×6 compara les correlacions en condicions normals amb el contagi de la cua de la crisi.",
+      "p2-shock2d": "A la part inferior dreta, Shock & Markov creua els canvis de tipus d'interès amb els moviments de S&P 500 i estima les transicions del règim.",
+      "p2-montecarlo": "I el panell inferior projecta 10.000 camins Monte Carlo a través de P95, P50 i P05, Drawdown sota l'aigua i Sharpe rodant.",
+      "p3-impact": "Les 6 targetes d'impacte comparen la vostra cartera actual amb l'estat previst després de les vostres operacions simulades.",
+      "p3-whatif": "A la part superior esquerra, What-If i Kelly simulen la compra o venda d'entrades i calcula la mida òptima de la posició Half-Kelly.",
+      "p3-tailhedge": "A la part inferior esquerra, OTM Put & Margin simula escuts d'opcions de protecció i supervisa el marge de manteniment Reg-T.",
+      "p3-committee": "Als dos panells de la dreta, el Comitè de 3 pilars audita les baranes de risc juntament amb el Registre d'execució i el Copilot.",
+      "p3-walkforward": "I a la part inferior, el gràfic Walk-Forward valida el rendiment In-Sample i Out-of-Sample amb l'índex WFE."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 11.7
+      },
+      {
+        "id": "home-header",
+        "startPct": 11.7,
+        "endPct": 24.7
+      },
+      {
+        "id": "home-markets",
+        "startPct": 24.7,
+        "endPct": 39.2
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 39.2,
+        "endPct": 54.6
+      },
+      {
+        "id": "home-system",
+        "startPct": 54.6,
+        "endPct": 67.4
+      },
+      {
+        "id": "home-guide",
+        "startPct": 67.4,
+        "endPct": 76
+      },
+      {
+        "id": "home-langs",
+        "startPct": 76,
+        "endPct": 88.2
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 88.2,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 16.3
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 16.3,
+        "endPct": 36
+      },
+      {
+        "id": "scr-table",
+        "startPct": 36,
+        "endPct": 51.9
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 51.9,
+        "endPct": 68.2
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 68.2,
+        "endPct": 81.5
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 81.5,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 15
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 15,
+        "endPct": 28.7
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 28.7,
+        "endPct": 45.4
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 45.4,
+        "endPct": 64.4
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 64.4,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 24.9
+      },
+      {
+        "id": "res-rag",
+        "startPct": 24.9,
+        "endPct": 53.9
+      },
+      {
+        "id": "res-factors",
+        "startPct": 53.9,
+        "endPct": 76
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 76,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 20.8
+      },
+      {
+        "id": "p1-table",
+        "startPct": 20.8,
+        "endPct": 40.3
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 40.3,
+        "endPct": 63.7
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 63.7,
+        "endPct": 79.2
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 79.2,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 18.2
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 18.2,
+        "endPct": 38.5
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 38.5,
+        "endPct": 57.1
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 57.1,
+        "endPct": 77.9
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 77.9,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 20
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 20,
+        "endPct": 41.5
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 41.5,
+        "endPct": 61.8
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 61.8,
+        "endPct": 82.6
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 82.6,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

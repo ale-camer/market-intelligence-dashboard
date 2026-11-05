@@ -361,6 +361,7 @@ export default function MarketAnomaliesView({
   onLaunchTarget,
   langCode = 'EN',
   t,
+  previewConfig = null,
 }) {
   const [viewMode, setViewModeState] = useState(initialViewMode || 'screener');
   const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
@@ -630,8 +631,37 @@ export default function MarketAnomaliesView({
     setViewMode('detail');
   };
 
+  useEffect(() => {
+    if (!previewConfig) return;
+    if (previewConfig.viewMode) setViewModeState(previewConfig.viewMode);
+    if (previewConfig.visualMode) setVisualMode(previewConfig.visualMode);
+    if (previewConfig.categoryFilter) setCategoryFilter(previewConfig.categoryFilter);
+    if (previewConfig.l2Section) setL2Section(previewConfig.l2Section);
+    if (previewConfig.analysisLens) setAnalysisLens(previewConfig.analysisLens);
+    if (typeof previewConfig.showBollinger === 'boolean') setShowBollinger(previewConfig.showBollinger);
+    if (typeof previewConfig.showVwap === 'boolean') setShowVwap(previewConfig.showVwap);
+    if (previewConfig.compareSymbol !== undefined) setCompareSymbol(previewConfig.compareSymbol);
+    if (previewConfig.optionsSubView) setOptionsSubView(previewConfig.optionsSubView);
+    if (previewConfig.showSubChart) setShowSubChart(previewConfig.showSubChart);
+    if (previewConfig.researchFactorFilter) setResearchFactorFilter(previewConfig.researchFactorFilter);
+  }, [
+    previewConfig,
+    previewConfig?.viewMode,
+    previewConfig?.visualMode,
+    previewConfig?.categoryFilter,
+    previewConfig?.l2Section,
+    previewConfig?.analysisLens,
+    previewConfig?.showBollinger,
+    previewConfig?.showVwap,
+    previewConfig?.compareSymbol,
+    previewConfig?.optionsSubView,
+    previewConfig?.showSubChart,
+    previewConfig?.researchFactorFilter,
+  ]);
+
   // Bidirectional URL Synchronization for Health Checks & Visual Audits
   useEffect(() => {
+    if (previewConfig) return;
     const params = new URLSearchParams();
     params.set('view', 'markets');
     if (viewMode === 'screener') {
@@ -5323,14 +5353,13 @@ export default function MarketAnomaliesView({
                       <>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.24rem' }}>
                           {[
-                            { label: 'SMA (20)', active: showSma20, toggle: () => setShowSma20(!showSma20), color: '#38bdf8' },
-                            { label: 'Bollinger (2σ)', active: showBollinger, toggle: () => setShowBollinger(!showBollinger), color: '#a78bfa' },
-                            { label: 'VWAP', active: showVwap, toggle: () => setShowVwap(!showVwap), color: '#f59e0b' },
+                            { label: 'SMA (20)', active: showSma20, toggle: () => setShowSma20(!showSma20) },
+                            { label: 'Bollinger (2σ)', active: showBollinger, toggle: () => setShowBollinger(!showBollinger) },
+                            { label: 'VWAP', active: showVwap, toggle: () => setShowVwap(!showVwap) },
                             {
                               label: isES ? 'Panel: Volumen' : 'Sub: Volume',
                               active: showSubChart === 'vol',
                               toggle: () => setShowSubChart(showSubChart === 'vol' ? 'none' : 'vol'),
-                              color: '#10b981',
                             },
                           ].map((tool) => (
                             <button
@@ -5343,8 +5372,8 @@ export default function MarketAnomaliesView({
                                 padding: '3px 6px',
                                 border: 'none',
                                 background: 'transparent',
-                                color: tool.active ? tool.color : 'rgba(148, 163, 184, 0.68)',
-                                textShadow: tool.active ? `0 0 10px ${tool.color}` : 'none',
+                                color: tool.active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                textShadow: tool.active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                 cursor: 'pointer',
                                 textAlign: 'left',
                               }}
@@ -6604,8 +6633,8 @@ export default function MarketAnomaliesView({
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? '#38bdf8' : 'rgba(148, 163, 184, 0.68)',
-                                    textShadow: active ? '0 0 10px rgba(56, 189, 248, 0.85)' : 'none',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     cursor: 'pointer',
                                     whiteSpace: 'nowrap',
                                     overflow: 'hidden',

@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Živý vizuálny návod",
+      "clickPlayPause": "Kliknutím spustíte prehrávanie alebo pozastavenie (medzerník)",
+      "subtitles": "Titulky (C)",
+      "fullscreen": "Celá obrazovka (F)",
+      "exitFullscreen": "Ukončiť celú obrazovku (F alebo Esc)",
+      "portTabs": [
+        "Staviteľ",
+        "Riziko",
+        "Simulátor",
+        "Druhý pilot"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Jazyky",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • kategórie",
+      "scr-pulse": "02 • 24h pulz",
+      "scr-table": "03 • Tabuľka",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • teplotná mapa",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • Technická",
+      "ana-compare": "03 • Porovnať %",
+      "ana-micro": "04 • Micro & Flow",
+      "ana-engines": "05 • 3D/2D motory",
+      "res-hero": "01 • Skóre a postoj",
+      "res-rag": "02 • RAG Chat",
+      "res-factors": "03 • Faktory",
+      "res-pulse24h": "04 • FinBERT Pulz",
+      "p1-pills": "01 • Zhrnutie",
+      "p1-table": "02 • Váženie",
+      "p1-xray": "03 • X-ray",
+      "p1-calendar": "04 • Kalendár",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornádo a VaR",
+      "p2-corr": "03 • Korelácia",
+      "p2-shock2d": "04 • Shock & Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Vplyv",
+      "p3-whatif": "02 • What-If a Kelly",
+      "p3-tailhedge": "03 • OTM Put & Margin",
+      "p3-committee": "04 • Výbor a denník",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Vitajte na obrazovke Home: váš východiskový bod bez rozptyľovania, kde sa dekódujú trhy.",
+      "home-header": "Kliknutím na ikonu λ v ľavom hornom rohu Header sa vždy vrátite späť na túto hlavnú scénu.",
+      "home-markets": "V strede hornej časti Header je Markets, vaša pracovná stanica na skúmanie všetkých 213 globálnych aktív naživo.",
+      "home-portfolio": "Hneď vedľa v centrovanej ponuke je Portfolio na vytváranie alokácií, stresové testovanie rizika a simuláciu obchodov.",
+      "home-system": "Dole v Footer vľavo dole otvára System živý monitor pozorovateľnosti pre servery a databázy.",
+      "home-guide": "Okrem toho Guide otvorí túto interaktívnu príručku krok za krokom, kedykoľvek ju budete potrebovať.",
+      "home-langs": "Tlačidlo jazyka v pravom dolnom rohu otvára vycentrovaný modál na preklad platformy do 56 jazykov.",
+      "home-palettes": "A Palette otvára 5 vizuálnych tém čítania, pričom zachováva finančnú zelenú a červenú striktne nedotknutú.",
+      "scr-categories": "V hornom paneli Kategórie môžete filtrovať cez Všetkých 213 aktív, Watchlist alebo 10 špecializovaných trhov.",
+      "scr-pulse": "Karty 4 Pulse 24h zobrazujú agregovaný objem, priemerný RSI, režim P-06 a dislokácie najvyššieho objemu.",
+      "scr-table": "Interaktívna tabuľka obsahuje okamžité vyhľadávanie, obľúbené položky a inteligentné stĺpce prispôsobené každej triede aktív.",
+      "scr-orbital": "Pohľad Orbital mapuje aktíva cez tri sústredné krúžky podľa odchýlky so živým bočným kontrolným panelom.",
+      "scr-heatmap": "Tepelná mapa usporiada 10 najlepších aktív do proporcionálnych blokov v 8 odtieňoch zelenej a červenej.",
+      "scr-maintools": "A Main Tools vás v troch krokoch prevedie k suverénnym krivkám, 3D volatilite, FX cross a futures motorom.",
+      "ana-hero": "Header kombinuje prepínač aktív, 9 časových rámcov od 1 m po VŠETKY a 5 základných indikátorov.",
+      "ana-technical": "Technická šošovka prekrýva SMA 20, VWAP a 2σ Bollinger Band s potvrdením spodnej hlasitosti.",
+      "ana-compare": "Pomocou funkcie Porovnať % zmerajte čistú percentuálnu výhodu alebo Alpha Spread od 0 % oproti kompatibilnému obdobnému produktu alebo indexu.",
+      "ana-micro": "Micro & Flow zisťuje objemové špičky prostredníctvom 20d Z-score, dislokácie likvidity spreadu a skóre anomálií P-06.",
+      "ana-engines": "Štvrtá karta je dynamický ad-hoc nástroj, ktorý sa líši podľa triedy aktív: keďže NVDA je akciová akcia, otvára 3D volatilitu a výplatu opcií, zatiaľ čo dlhopisy, devízy a komodity spúšťajú svoje vlastné špecializované nástroje.",
+      "res-hero": "V hornej časti Score & Stance sumarizuje základný verdikt, vážené hodnotenie a titulkový teplomer.",
+      "res-rag": "V ľavom stĺpci RAG Document Chat odpovedá na overené otázky založené na oficiálnych podaniach SEC 10-K a 10-Q.",
+      "res-factors": "V stredovom stĺpci akordeón Factors kontrastuje 5 najlepších býčích vodičov s 5 najlepšími medveďmi.",
+      "res-pulse24h": "Vpravo, FinBERT Pulse zaznamenáva prelomové titulky v reálnom čase a zobrazuje 24-hodinovú krivku sentimentu.",
+      "p1-pills": "6 súhrnných kariet prepočítava živé CAGR, Sharpe a Sortino, 95 % VaR, Max Drawdown, Alpha a diverzifikáciu.",
+      "p1-table": "V tabuľke váženia pridajte ľubovoľné z 213 aktív, nastavte presné percentuálne váhy alebo vyrovnajte na 100 %.",
+      "p1-xray": "Vpravo hore 5-kartový röntgenový panel audituje prekrytie ETF, expozíciu, Brinsonovu atribúciu, peňažný tok a úschovu.",
+      "p1-calendar": "Pod röntgenom zobrazuje mesačný kalendár konzistenciu návratnosti od januára do decembra a súčty YTD.",
+      "p1-backtest": "A v spodnej časti plnej šírky Backtesting porovnáva vaše portfólio s modelmi S&P 500, 60/40, All-Weather a Min-Variance.",
+      "p2-markowitz": "Prvý kvadrant zobrazuje 2D efektívnu hranicu Markowitz a umiestňuje vaše portfólio oproti Min-Var a Max-Sharpe.",
+      "p2-tornado": "Ľavý dolný kvadrant testuje 5 historických kríz, 95 % príspevok VaR na aktívum a zachytávanie smerom hore/dole.",
+      "p2-corr": "Vpravo hore matica 6×6 porovnáva korelácie za normálnych podmienok s krízovou nákazou chvosta.",
+      "p2-shock2d": "Vpravo dole, Shock & Markov kríži posuny úrokových sadzieb s pohybmi S&P 500 a odhaduje prechody režimov.",
+      "p2-montecarlo": "A spodný panel premieta 10 000 dráh Monte Carlo cez P95, P50 a P05, podvodný ťah a rolovanie Sharpe.",
+      "p3-impact": "6 kariet Impact porovnáva vaše súčasné portfólio s predpokladaným stavom po vašich simulovaných obchodoch.",
+      "p3-whatif": "Vľavo hore, What-If & Kelly simuluje nákup alebo predaj lístkov a vypočíta optimálnu veľkosť pozície Half-Kelly.",
+      "p3-tailhedge": "Vľavo dole, OTM Put & Margin simuluje ochranné voliteľné štíty a monitoruje rezervu údržby Reg-T.",
+      "p3-committee": "Na dvoch pravých paneloch 3-pilierový výbor kontroluje ochranné zábradlia spolu so záznamom vykonávania a druhým pilotom.",
+      "p3-walkforward": "A v spodnej časti graf Walk-Forward potvrdzuje výkonnosť In-Sample a Out-of-Sample pomocou indexu WFE."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 12
+      },
+      {
+        "id": "home-header",
+        "startPct": 12,
+        "endPct": 22.2
+      },
+      {
+        "id": "home-markets",
+        "startPct": 22.2,
+        "endPct": 36.6
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 36.6,
+        "endPct": 51.5
+      },
+      {
+        "id": "home-system",
+        "startPct": 51.5,
+        "endPct": 62.3
+      },
+      {
+        "id": "home-guide",
+        "startPct": 62.3,
+        "endPct": 74.3
+      },
+      {
+        "id": "home-langs",
+        "startPct": 74.3,
+        "endPct": 86.2
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 86.2,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 17.1
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 17.1,
+        "endPct": 36.8
+      },
+      {
+        "id": "scr-table",
+        "startPct": 36.8,
+        "endPct": 55.4
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 55.4,
+        "endPct": 69.8
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 69.8,
+        "endPct": 84
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 84,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 13.9
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 13.9,
+        "endPct": 30.8
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 30.8,
+        "endPct": 49.7
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 49.7,
+        "endPct": 67
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 67,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 22.2
+      },
+      {
+        "id": "res-rag",
+        "startPct": 22.2,
+        "endPct": 49.1
+      },
+      {
+        "id": "res-factors",
+        "startPct": 49.1,
+        "endPct": 72.1
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 72.1,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 22
+      },
+      {
+        "id": "p1-table",
+        "startPct": 22,
+        "endPct": 40.6
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 40.6,
+        "endPct": 62.9
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 62.9,
+        "endPct": 78.9
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 78.9,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 18.2
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 18.2,
+        "endPct": 39.3
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 39.3,
+        "endPct": 55
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 55,
+        "endPct": 77.7
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 77.7,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 18.3
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 18.3,
+        "endPct": 41.1
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 41.1,
+        "endPct": 59.5
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 59.5,
+        "endPct": 79.3
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 79.3,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

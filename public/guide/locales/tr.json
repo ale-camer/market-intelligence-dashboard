@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Daraltılmış Görünüm",
+    "mainView": "Ana Görünüm",
+    "expandedView": "Genişletilmiş Görünüm",
+    "inThisSection": "Bu bölümde şunları bulacaksınız:",
+    "deepDive": "Derin Dalış",
+    "previous": "Önceki",
+    "next": "Sonraki",
+    "mathFormula": "Matematiksel Formül",
+    "practicalExample": "Pratik örnek:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Geleneksel bir finansal platformu açtığınızda genellikle karşınıza çıkan ilk şey her yerde düzinelerce grafik, yanıp sönen tablolar ve menülerdir. Sadece piyasayı kontrol etmek veya portföyünüzün nasıl gittiğini kontrol etmek istediğinizde nereden başlarsınız?",
+        "Home ekranı, başlangıçtaki gürültüyü tam olarak önleyecek şekilde tasarlanmıştır. Sizi, tüm kontrolün iki sabit çubukta yoğunlaştığı temiz ve net bir alanla karşılıyor: biri üstte işe gitmek için, diğeri altta platformu size uygun şekilde yapılandırmak için."
+      ],
+      "intro": "Home ekranı, tüm kontrolün iki sabit çubukta yoğunlaştığı temiz ve net bir alanla sizi karşılıyor: biri yukarıda işe gitmek için, diğeri altta platformu size uyacak şekilde yapılandırmak için.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Çalışmanızı pazar analizi ve portföy yönetimine ayıran net başlangıç noktası.",
+          "paragraphs": [
+            "Sabah ilk iş olarak ticarete başladığınızı hayal edin. Bazen hangi hisse senetlerinin, tahvillerin veya para birimlerinin en çok hareket ettiğini görmek isteyebilirsiniz; Diğer zamanlarda doğrudan portföyünüzün riskini gözden geçirecek veya bir satın alma işlemini gerçekleştirmeden önce simüle edeceksiniz.",
+            "Aynı aşırı yüklenmiş ekranda iki şeyin karıştırılmasını nasıl önlersiniz? Kapak bu yolu ilk saniyeden açıkça ayırıyor:"
+          ],
+          "lead": "Aynı aşırı yüklenmiş ekranda iki şeyin karıştırılmasını nasıl önlersiniz? Kapak bu yolu ilk saniyeden açıkça ayırıyor:",
+          "bullets": [
+            {
+              "bold": "Dikkat dağıtıcı olmayan alan",
+              "code": "Donde se decodifican los mercados",
+              "text": "Girdiğinizde, başlamadan önce sizi pencereleri kapatmaya zorlayan açık masalar veya uyarılar yoktur; Hangi modülün açılacağını siz seçersiniz."
+            },
+            {
+              "bold": "İki açık yol",
+              "code": "Markets / Portfolio",
+              "text": "Başvurunun tüm akışı iki ana aşamaya ayrılmıştır: önce pazarlardaki fırsatları araştırın, ardından portföyünüzü oluşturun veya test edin."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "Ana sayfa, piyasalar ve portföyünüz arasında tek tıklamayla geçiş yapabileceğiniz üst çubuk.",
+          "paragraphs": [
+            "Bir varlığın ayrıntılarını araştırırken veya portföyünüzdeki değişiklikleri test ederken, nerede olduğunuzun izini kaybetmeniz çok kolaydır. Alt menülere girmeden hisse senedi grafiğine bakmaktan portföyünüzü incelemeye nasıl geçersiniz?",
+            "Üst çubuk her zaman ekranda sabit kalır ve üç ana noktaya doğrudan erişmenizi sağlar:"
+          ],
+          "lead": "Üst çubuk her zaman ekranda sabit kalır ve üç ana noktaya doğrudan erişmenizi sağlar:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Nerede olursanız olun, soldaki sembole tıkladığınızda anında ana sayfaya dönersiniz."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Bu sizin araştırma alanınızdır. Burada 213 mevcut varlığı filtreleyebilir, canlı fiyatları takip edebilir, teknik tabloları analiz edebilir ve bilanço özetlerine veya haberlere başvurabilirsiniz."
+            },
+            {
+              "bold": "Cüzdan",
+              "code": "Portfolio",
+              "text": "Bu sizin karar tablonuz. Burada her varlığa sermayenizin yüzde kaçının gideceğini tanımlar, bir krizde ne kadar kaybedebileceğinizi ölçer ve parayı riske atmadan önce yeni operasyonların simülasyonunu yaparsınız."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "Sistem durumunu kontrol etmek, bu kılavuza dönmek veya düzeni ayarlamak için kullanılan alt bilgi.",
+          "paragraphs": [
+            "Verileri gerçek zamanlı olarak analiz ederken her an ortaya çıkabilecek operasyonel sorular vardır: Fiyat teklifleri doğru şekilde ulaşıyor mu? Puan göstergesi ne anlama geliyordu? Ekran parlaklığını azaltabilir miyim?",
+            "Alt bilgi, tüm bu destek ve yapılandırma araçlarını, ekranın merkezini engellemeden her zaman elinizin altında olacak şekilde gruplandırır:"
+          ],
+          "lead": "Alt bilgi, tüm bu destek ve yapılandırma araçlarını, ekranın merkezini engellemeden her zaman elinizin altında olacak şekilde gruplandırır:",
+          "bullets": [
+            {
+              "bold": "System durumu",
+              "code": "System",
+              "text": "Yeşil nokta bir bakışta her şeyin yolunda olduğunu doğruluyor. Açtığınızda sunucuların, veritabanlarının durumunu ve yanıt hızını detaylı olarak görebilirsiniz."
+            },
+            {
+              "bold": "Kullanıcı Guide",
+              "code": "Guide",
+              "text": "Bir ekranın nasıl kullanılacağını görmek veya hesaplamalarını daha derinlemesine incelemek için istediğiniz zaman bu etkileşimli kılavuzu açın."
+            },
+            {
+              "bold": "Görsel tercihler",
+              "code": "Idioma / Palette",
+              "text": "Sağ tarafta tüm uygulamanın dilini değiştirebileceğiniz veya arka plan aydınlatmasını ayarlayabileceğiniz kontroller bulunur."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Diller",
+          "summary": "Tüm platformu anında kendi dilinize çevirecek arama motoru.",
+          "paragraphs": [
+            "Finansal şartlar ve piyasa raporları, bir dil engeli eklemeden zaten kendi karmaşıklıklarına sahiptir. Açıklamaları İspanyolca, İngilizce veya başka bir dilde okumayı tercih ederseniz anında değiştirebilirsiniz.",
+            "Seçici sağ alt köşeden şu şekilde çalışır:"
+          ],
+          "lead": "Seçici sağ alt köşeden şu şekilde çalışır:",
+          "bullets": [
+            {
+              "bold": "anında arama",
+              "code": "Select Language",
+              "text": "Mevcut bayrağa tıkladığınızda, adını veya kodunu yazarak 56 dil arasından seçim yapabileceğiniz bir pencere açılır (örneğin, ES, EN, PT, FR veya DE)."
+            },
+            {
+              "bold": "Otomatik hafıza",
+              "code": "mid_lang_v1",
+              "text": "Sayfayı yeniden yüklemeye gerek kalmadan ekranın tamamı anında çevrilir ve seçiminiz bir sonraki girişinizde kullanılmak üzere kaydedilir."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Finansal renkleri değiştirmeden ekranın kontrastını uyarlamak için görsel temalar.",
+          "paragraphs": [
+            "Bulunduğunuz ortamdaki ışığa uyum sağlamayan kontrasta sahip grafiklerin önünde saatlerce vakit geçirmek gözlerinizi yorar. Ancak bir finansal platformun rengini değiştirmenin klasik bir tehlikesi vardır: Neyin yükselip neyin düştüğüne dair referansı kaybetmek.",
+            "Bunu çözmek için tema seçici ortam rengini veri renginden ayırır:"
+          ],
+          "lead": "Bunu çözmek için tema seçici ortam rengini veri renginden ayırır:",
+          "bullets": [
+            {
+              "bold": "Beş okuma ortamı",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Her tıklamada, gözleriniz için en rahat olanı bulana kadar saf siyah, mavimsi veya sıcak arka planlar arasında geçiş yaparsınız."
+            },
+            {
+              "bold": "Kusursuz finansal anlambilim",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Hangi konuyu değiştirirseniz değiştirin, piyasanın evrensel kuralı asla değişmez: Yeşil her zaman yükseliş veya kazanç anlamına gelir, kırmızı ise her zaman düşüş, kayıp veya risk uyarısı anlamına gelir."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "İki yüzden fazla tahvil, hisse senedi, endeks, döviz ve hammadde arasında günün en iyi fırsatlarının nerede olduğunu tespit etmek istediğinizi düşünün. Grafikleri tek tek açarsanız, siz bakmayı bitirmeden piyasa kapanır.",
+            "Screener, platformdaki 213 varlığın tamamını tek bir canlı kontrol panelinde bir araya getiriyor. Bir saniyede piyasaya göre filtrelemenize, günün genel nabzını ölçmenize ve hangi varlıkların performans gösterdiğini görmek için dört farklı yoldan seçim yapmanıza olanak tanır."
+          ],
+          "intro": "Screener, platformdaki 213 varlığın tamamını tek bir canlı kontrol paneline getirir, böylece pazara göre filtreleyebilir ve fırsatları bir bakışta tespit edebilirsiniz.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategoriler",
+              "summary": "Tek bir varlık sınıfına veya izleme listenize odaklanmak için en iyi filtreler.",
+              "paragraphs": [
+                "Hazine bonosunu teknoloji hissesi veya petrol ile aynı metriklerle analiz etmenin hiçbir anlamı yok. Her şeyi aynı listede karıştırdığınızda armutları elmalarla karşılaştırırsınız.",
+                "Ekranı tam olarak bugün ilginizi çeken pazara nasıl daraltırsınız? Üst çubuk, evreni tek tıklamayla ayırmanıza olanak tanır:"
+              ],
+              "lead": "Üst çubuk, evreni tek tıklamayla ayırmanıza olanak tanır:",
+              "bullets": [
+                {
+                  "bold": "Tam resim",
+                  "code": "Todos",
+                  "text": "213 enstrümanı bir arada gösterir ve işlem hacmine göre sıralanır, böylece dünya çapında en fazla paranın nereye aktığını görebilirsiniz."
+                },
+                {
+                  "bold": "Kişisel takip",
+                  "code": "★ Watchlist",
+                  "text": "Dikkatinizi dağıtmadan yakından izlemek için yalnızca favori olarak işaretlediğiniz varlıkları ayırın."
+                },
+                {
+                  "bold": "On özel pazar",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Bu kategorilerden herhangi birinin seçilmesiyle ekranın tamamı göstergelerini ve tablo sütunlarını o sektörün kurallarına göre uyarlar."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Katalogda yer alan 213 varlığın nasıl sınıflandırıldığına ve hangi hacim ve likidite kriterlerini karşıladığına dair detay."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24 saatlik nabız",
+              "summary": "Piyasanın sakin mi, coşkulu mu yoksa stres altında mı olduğunu gösteren ilk dört kart.",
+              "paragraphs": [
+                "Belirli bir varlığı satın almadan veya satmadan önce, bütünün hangi iklimde hareket ettiğini bilmek tavsiye edilir. Bu normal bir hacim günü mü yoksa kurumsal para bir anda mı geliyor? Tüm varlıklar bile artıyor mu yoksa gerginlik işaretleri mi var?",
+                "Filtrelerin altındaki dört kart size birkaç saniye içinde bu genel okumayı verir:"
+              ],
+              "lead": "Filtrelerin altındaki dört kart size birkaç saniye içinde bu genel okumayı verir:",
+              "bullets": [
+                {
+                  "bold": "Günün toplam etkinliği",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Aktif kategoride işlem gören milyarlarca dolara tekabül eder ve bugün düne göre daha fazla veya daha az katılım olup olmadığını size gösterir."
+                },
+                {
+                  "bold": "Ortalama Grup Gücü",
+                  "code": "AVG RSI 14",
+                  "text": "Sektör fiyatlarının alım baskısıyla mı (yeşil, 50'nin üzerinde) yoksa satış baskısıyla mı (kırmızı, 50'nin altında) geldiğini dairesel bir sayaçla özetliyor."
+                },
+                {
+                  "bold": "Normallik termometresi",
+                  "code": "Régimen Normal P-06",
+                  "text": "Varlıkların yüzde kaçının normal parametrelerinde hareket ettiğini hesaplayarak size günün en büyük anomalisine sahip enstrümanın hangisi olduğunu ad soyad bazında söyler."
+                },
+                {
+                  "bold": "Olağandışı para girişi",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Geçtiğimiz ay ortalamalarına kıyasla bugün olağanüstü yüksek hacimde işlem gören üç varlığın podyumu öne çıkıyor."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Ortalama RSI, hacim Z-Score ve anormallik dedektörü P-06'nin nasıl hesaplandığına ilişkin ayrıntılı açıklama."
+            },
+            {
+              "id": "scr-table",
+              "label": "Tablo",
+              "summary": "Hızlı arama, favoriler ve her pazara uyum sağlayan sütunlar içeren etkileşimli liste.",
+              "paragraphs": [
+                "Hangi sektöre bakmak istediğinizi zaten bildiğinizde ve belirli sayıları satır satır karşılaştırmanız gerektiğinde, tablo görünümü ana aracınızdır.",
+                "Size herkes için aynı olan katı bir e-tablo göstermek yerine, tablo aradığınız şeye göre ayarlanır:"
+              ],
+              "lead": "Size herkes için aynı olan katı bir e-tablo göstermek yerine, tablo aradığınız şeye göre ayarlanır:",
+              "bullets": [
+                {
+                  "bold": "Arama motoru ve favoriler yıldızı",
+                  "code": "Buscar activo / ★",
+                  "text": "İlk sütun başlığına doğrudan o varlığa gitmek için herhangi bir sembol veya adı yazabilir veya onu Watchlist'nize kaydetmek için soldaki yıldıza dokunabilirsiniz."
+                },
+                {
+                  "bold": "Kategoriye göre akıllı sütunlar",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Hisseleri filtrelerseniz değerleme katları ve marjları görünür; Tahvil veya Oranlar'ı seçerseniz eğrinin eğimini ve oranlara olan duyarlılığını görürsünüz; Türevlere baktığınızda ima edilen volatiliteyi görürsünüz."
+                },
+                {
+                  "bold": "Doğrudan derin analize geçin",
+                  "code": "Click en cualquier fila",
+                  "text": "Teknik tablolarınızın ve temel raporlarınızın tam istasyonunu açmak için listedeki herhangi bir varlığa tıklamanız yeterlidir."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Tablonun 10 varlık kategorisinin her biri için gösterdiği belirli metriklerin listesi."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Hangi varlıkların tarihsel ortalamalarından uzaklaştığını bir bakışta tespit eden görsel radar.",
+              "paragraphs": [
+                "İki yüz satırlık rakamları okumak, hızla hareket etmeye başlayan bir varlığı gözden kaçırmanıza neden olabilir. Hangi enstrümanın normdan saptığını anında nasıl tespit edersiniz?",
+                "Orbital görünümü, masayı üç eşmerkezli halkaya sahip bir radara dönüştürür:"
+              ],
+              "lead": "Orbital görünümü, masayı üç eşmerkezli halkaya sahip bir radara dönüştürür:",
+              "bullets": [
+                {
+                  "bold": "Kriter seçimi",
+                  "code": "INDICADOR",
+                  "text": "Radarın neyi ölçeceğine siz karar verirsiniz: istatistiksel anormallikler, hacim sıçramaları, fiyat gücü (RSI), oynaklık veya son 24 saatteki kazanç."
+                },
+                {
+                  "bold": "Mesafeye ve renge göre okuma",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Göstergeye göre bir nokta ne kadar yakın veya uzaksa ve yeşil veya kırmızı rengi ne kadar yoğunsa, hareketi kendi geçmişiyle o kadar alakalı olur."
+                },
+                {
+                  "bold": "Ekranı değiştirmeden inceleme",
+                  "code": "Panel lateral en vivo",
+                  "text": "İmleci herhangi bir radar düğümünün üzerine getirdiğinizde fiyatı, temiz gün içi grafiği ve üç risk metriği sağda görüntülenir."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Her bir varlığın radar halkalarındaki konumu, tarihsel sapmasına göre nasıl hesaplanır."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Isı Haritası",
+              "summary": "Kazananları ve kaybedenleri bir saniyede belirlemek için orantılı bloklardan oluşan mozaik.",
+              "paragraphs": [
+                "Kısa bir soruyu yanıtlamak isteyeceğiniz zamanlar vardır: Bugün yükselişe kim liderlik ediyor ve piyasayı kim aşağıya çekiyor?",
+                "Isı Haritası, aktif filtrenin ilk on varlığını orantılı bloklar halinde düzenler, böylece tek bir tablo okumanıza gerek kalmaz:"
+              ],
+              "lead": "Isı Haritası, aktif filtrenin ilk on varlığını orantılı bloklar halinde sıralar:",
+              "bullets": [
+                {
+                  "bold": "Öneme göre boyut",
+                  "code": "Puestos #1 a #10",
+                  "text": "Seçilen metrik içinde en büyük ağırlığa sahip araçlar, en büyük kutuların bulunduğu soldaki sütunları işgal eder."
+                },
+                {
+                  "bold": "Renk yoğunluğu",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "Bloğun tonu, orta dereceli değişikliklerden ani yükseliş veya düşüşlere kadar hareketin büyüklüğünü size anında bildirir."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Gelişmiş oranlar, opsiyonlar, forex ve vadeli işlem hesaplayıcılarına giden üç adımlı kısayol.",
+              "paragraphs": [
+                "Geleneksel fiyat grafiklerine ek olarak platformda sabit gelir, opsiyonlar, döviz çaprazları ve emtia eğrileri için dört özel motor bulunmaktadır. Varlık bazında arama yapmadan onlara nasıl ulaşacaksınız?",
+                "Bu görünüm sizi üç basit sütunda soldan sağa doğru yönlendirir:"
+              ],
+              "lead": "Bu görünüm sizi üç basit sütunda soldan sağa doğru yönlendirir:",
+              "bullets": [
+                {
+                  "bold": "Önce aileyi seçiyorsun",
+                  "code": "1. Clases de Activo",
+                  "text": "Oranlar ve Tahvillerle, Hisse Senetleri/Endeksler/Kripto Seçenekleriyle, Para Birimleriyle veya Hammaddelerle çalışmak isteyip istemediğinizi seçersiniz."
+                },
+                {
+                  "bold": "Daha sonra motorun ne yaptığını kontrol edersiniz",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Ortada bu aracın neyi gösterdiğine ve kendinizi onun eksenleri doğrultusunda nasıl yönlendireceğinize dair net bir özet okursunuz."
+                },
+                {
+                  "bold": "Son olarak aktif olanı seçin ve açın",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Grafiğin canlı önizlemesini izler, o ailedeki uyumlu varlıkları arar ve tek tıklamayla tüm istasyonu açarsınız."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Screener'de ilginç bir varlık bulduğunuzda, daha yakından bakmanın zamanı geldi. Yükseliş trendinde mi yoksa gücü tükendi mi? Rakiplerinizi yeniyor musunuz? Hacim ve türev piyasası ne diyor?",
+            "Analytics istasyonu, söz konusu varlığın tüm teknik, karşılaştırmalı ve niceliksel analizini tek bir ekranda toplar. Yukarıda genel bir özet var ve sol tarafta grafiğin gözden kaybolmadan analiz açısını değiştirmek için dört mercek var."
+          ],
+          "intro": "Analytics istasyonu, tek bir varlığın teknik, karşılaştırmalı, akış analizini ve 3D/2D motorlarını tek bir ekranda yoğunlaştırır.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "Varlıkları değiştirmek, zaman dilimini seçmek ve beş temel ölçümü görüntülemek için üstteki kontrol paneli.",
+              "paragraphs": [
+                "Bir varlığı incelerken, genellikle bugünün kısa vadesi ile son birkaç ayın filmi arasında geçiş yaparsınız, hatta benzer başka bir sembole bakmaya bile geçersiniz. Bütün bunları geri dönmeden nasıl yapıyorsun?",
+                "Üst başlık, gezinme kontrollerini ve cihazın hızlı sekmesini bir araya getirir:"
+              ],
+              "lead": "Üst başlık, gezinme kontrollerini ve cihazın hızlı sekmesini bir araya getirir:",
+              "bullets": [
+                {
+                  "bold": "Varlık değişikliği veya listeye dönüş",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "Sol üstte Screener'ye dönebilir veya grafikleri anında değiştirmek için başka bir enstrümanın adını yazabilirsiniz."
+                },
+                {
+                  "bold": "Dokuz zaman penceresi",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "Sağ kenarda grafiğin ölçeğini dakika dakika hareketlerden tüm geçmişe doğru değiştirebilirsiniz."
+                },
+                {
+                  "bold": "Beş öncü gösterge",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Fiyatının yanında her zaman işlem hacmini, kategorisine ait iki önemli veriyi, trendin gücünü ve istatistiksel normallik seviyesini göz önünde bulundurursunuz."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Teknik",
+              "summary": "Trendi takip etmek için hareketli ortalamalar, oynaklık bantları ve hacim içeren fiyat tablosu.",
+              "paragraphs": [
+                "Yalnızca son fiyata bakmak, bir varlığın hızlanıp hızlanmadığını, ortalamasının üstünden sıçrayıp sıçramadığını veya birkaç gün içinde çok hızlı yükselip yükselmediğini size söylemez.",
+                "Sol raydaki ilk mercek, piyasada en çok kullanılan teknik referansları grafiğe yerleştirmenize olanak tanır:"
+              ],
+              "lead": "Sol raydaki ilk mercek, en çok kullanılan teknik referansları üst üste koymanıza olanak tanır:",
+              "bullets": [
+                {
+                  "bold": "Adres ve gerçek ortalama fiyat",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Varlığın denge seviyesinin üstünde mi yoksa altında mı işlem gördüğünü anında görmek için 20 dönemlik hareketli ortalamayı ve hacim ağırlıklı ortalama fiyatını açabilirsiniz."
+                },
+                {
+                  "bold": "Fazla bölgeler ve hacim onayı",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "Bantlar fiyatın istatistiksel tavanını ve tabanını çizerken, alt çubuklar hareketin hacim tarafından desteklenip desteklenmediğini teyit ediyor."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hareketli Ortalama (SMA 20), Bollinger Bantları ve VWAP'nin formülleri ve yorumlanma kriterleri."
+            },
+            {
+              "id": "ana-compare",
+              "label": "%'yi karşılaştır",
+              "summary": "Öğenizin aynı kategorideki başka bir öğeden daha fazla mı yoksa daha az mı performans gösterdiğini ölçmek için %0'dan başlayan yüzde karşılaştırıcı.",
+              "paragraphs": [
+                "Bir hisse senedinin %5 artması harika bir haber gibi görünebilir, ancak gösterge veya ana rakibi aynı dönemde %12 artış gösteriyorsa aslında geride kalıyorsunuz demektir.",
+                "İkinci bakış açısı, iki varlığı aynı başlangıç ​​çizgisine koyarak bu şüpheyi ortadan kaldırır:"
+              ],
+              "lead": "İkinci bakış açısı, iki varlığı aynı başlangıç çizgisine koyarak bu şüpheyi ortadan kaldırır:",
+              "bullets": [
+                {
+                  "bold": "Tutarlı çiftleri arayın",
+                  "code": "Buscar par compatible",
+                  "text": "Arama motoru, aynı ailedeki varlıkları (örneğin hisse senetlerine karşı hisse senetleri, ETF'ler veya endeksler) otomatik olarak filtreleyerek karşılaştırmanın finansal açıdan anlamlı olmasını sağlar."
+                },
+                {
+                  "bold": "Yüzde olarak net avantaj",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Her iki eğri de %0'dan başlar ve soldaki ray, varlığınızın yüzde kaç puanlık avantaja (yeşil) veya dezavantaja (kırmızı) sahip olduğunu hesaplar."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Mikro ve Akış",
+              "summary": "Kurumsal kalıp dışı alımların, likiditenin ve spread maliyetlerinin dedektörü.",
+              "paragraphs": [
+                "Çoğu zaman büyük fonlar, fiyat ani bir hareket yapmadan önce pozisyonları biriktirir veya boşaltır. Emir defterinin hacim ve likiditesindeki gizli izi nasıl tespit edersiniz?",
+                "Üçüncü mercek, alıntının altında olup bitenlere odaklanıyor:"
+              ],
+              "lead": "Üçüncü mercek, alıntının altında olup bitenlere odaklanıyor:",
+              "bullets": [
+                {
+                  "bold": "İstatistiksel hacim zirveleri",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Mevcut hacmin normalden kaç kez saptığını size gösterecek şekilde alt paneli değiştirerek olağandışı kurumsal faaliyetleri ortaya çıkarır."
+                },
+                {
+                  "bold": "Likidite stresi ve anormallikler",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Alıcılar ve satıcılar arasındaki uçurumun genişleyip genişlemediğini ve istatistik motorunun alışılmadık davranışları tespit edip etmediğini temel puanlarla ölçer."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Açılış spreadleri ve emir akışındaki istatistiksel ani yükselişler nasıl ölçülür?"
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D motorlar",
+              "summary": "Varlık sınıfına göre değişen dinamik, geçici bir araç kullanan dördüncü mercek.",
+              "paragraphs": [
+                "İlk üç merceğin (tüm enstrümanlar için ortak olan) aksine, sol raydaki dördüncü mercek, analiz ettiğiniz varlığa bağlı olarak dinamik olarak değişen geçici bir araçtır: örneğin, canlı turda, bir hisse senedi olduğu için (NVDA), 3D Örtülü Volatilite ve Seçenekler Kazanç Yüzeyini etkinleştirirken, diğer pazarlarda kendi özel motorunu kullanır.",
+                "Dördüncü düğme açık varlık sınıfını algılar ve ilgili geçici aracı otomatik olarak etkinleştirir:"
+              ],
+              "lead": "Dördüncü düğme hangi varlığı açtığınızı algılar ve ona karşılık gelen geçici aracı etkinleştirir:",
+              "bullets": [
+                {
+                  "bold": "Hisse senetleri, endeksler, türevler ve kriptoda",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Bugün ve vade sonunda ne kadar kazanacağınızı veya kaybedeceğinizi görmek için 3 boyutlu ima edilen volatilite yüzeyini, vade sonuna göre gülümseme seçeneklerini ve 6 stratejili simülatörü görüntüleyin."
+                },
+                {
+                  "bold": "Oranlar, tahviller ve likidite açısından",
+                  "code": "Curva 3D/2D",
+                  "text": "42 ülkenin getiri eğrilerini ABD ve Almanya ile karşılaştırmanıza, eğrinin normal mi yoksa ters mi olduğunu (2s10s) ve fiyatın kur değişimleriyle ne kadar değiştiğini (DV01) ölçmenize olanak tanır."
+                },
+                {
+                  "bold": "Para birimlerinde",
+                  "code": "FX & Carry",
+                  "text": "61 para birimi arasında bir dönüştürücü ve üçgenleyici sunuyor; bu aynı zamanda 10 yıllık faiz oranı farkını da bu çiftin lehine veya aleyhine hesaplıyor."
+                },
+                {
+                  "bold": "Hammaddelerde",
+                  "code": "Forward 3D/2D",
+                  "text": "Fiziksel stokların durumuyla birlikte, piyasanın ileri (Contango) için mi yoksa anında teslimat için mi (Geriye doğru) daha fazla ödeme yaptığını göstermek üzere vadeli işlem sözleşmelerinin fiyatlarını ay ay grafikler halinde gösterir."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Volatilite yüzeylerinin, egemen getiri eğrilerinin, döviz taşıma ve vadeli işlem eğrilerinin matematiksel ayrıntıları."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Grafik size fiyatın ne yaptığını gösterir, ancak nedenini söylemez. Bir hareketin arkasında ne olduğunu bilmek için düzinelerce sayfalık üç aylık bilançoları, merkez bankası ekstrelerini, envanter raporlarını ve haber yazışmalarını okumanız gerekir.",
+            "Research istasyonu bu ağır yükü sizin için kaldırır. Resmi raporlarla doğrulanan belgesel yapay zekayı gerçek zamanlı haber okumayla birleştirerek lehte ve aleyhte olan tüm kanıtları üç net sütunda düzenler."
+          ],
+          "intro": "İstasyon Research resmi bilançoları, makroekonomik raporları ve gerçek zamanlı haberleri üç net sütunda özetlemektedir.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Not ve Duruş",
+              "summary": "Haberin temel hükmünü ve mizahını özetleyen ilk üç kart.",
+              "paragraphs": [
+                "Varlığın temelleri fiyat artışına mı eşlik ediyor yoksa haberler görünümü kötüleştiriyor mu? Detayı okumadan önce hızlı bir idari sonuca ihtiyacınız var.",
+                "Sağ üst köşede varlığın genel durumunu özetleyen üç gösterge bulunur:"
+              ],
+              "lead": "Sağ üst köşede genel durumu özetleyen üç gösterge bulunur:",
+              "bullets": [
+                {
+                  "bold": "Her kaynağın duruşu ve ağırlığı",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Genel hükmü tanımlar ve varlık türüne bağlı olarak resmi belgelere karşı haberlere ne kadar ağırlık verdiğini açıklar (örneğin, %80 bilanço ve %20 hisse senedi haberleri)."
+                },
+                {
+                  "bold": "Birleşik derecelendirme",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Temel bilgilerin net sonucunu ve günün bilgi akışını tek bir puan halinde sentezler."
+                },
+                {
+                  "bold": "Termometre tutucular",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Son birkaç saatteki basının tonu karamsar (kırmızı), nötr veya coşkulu (yeşil) ise -100'den +100'e kadar bir çubuk yerleştirin."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Varlık türüne bağlı olarak resmi raporların haberlere göre nasıl ağırlıklandırıldığı."
+            },
+            {
+              "id": "res-rag",
+              "label": "Sohbet RAG",
+              "summary": "Soldaki belgesel asistanı bilançolar ve resmi raporlar hakkında özel sorular soracak.",
+              "paragraphs": [
+                "Bir şirketin en son yıllık bilançosu 10-K'de marjları hakkında tam olarak ne söylediğini veya Federal Reserve'ün son dakikalarında ne söylediğini bilmek istediğinizi varsayalım. Elle aramak zaman alır; Kaynak olmadan genel bir sohbet istemek size uydurma veriler verebilir.",
+                "Sol sütun bu sorunu yalnızca doğrulanmış resmi belgelere bağlanan bir sihirbazla çözer:"
+              ],
+              "lead": "Sol sütun size resmi olarak doğrulanmış belgelere bağlı bir sihirbaz sunar:",
+              "bullets": [
+                {
+                  "bold": "Başlangıç tezi ve rehberli sorular",
+                  "code": "Chat Documental RAG",
+                  "text": "Doğrulanmış alıntılar ve varlık kategorisine uyarlanmış dört hızlı referans düğmesinin yanı sıra kendi sorularınızı yazabileceğiniz bir alan içeren bir yönetici özetiyle başlar."
+                },
+                {
+                  "bold": "Portföyünüze doğrudan adım",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Temelleri araştırdıktan sonra varlığın buna değer olduğuna karar verirseniz, sohbetin üst kısmındaki bu buton sizi doğrudan portföy simülatörüne yönlendirir."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Doğrulanmış belgesel aramanın (RAG) ve güvenlik filtrelerinin çalışması."
+            },
+            {
+              "id": "res-factors",
+              "label": "Faktörler",
+              "summary": "Beş yükseliş sürücüsünün ve darbeye göre sıralanan beş düşüş riskinin yer aldığı merkezi akordeon.",
+              "paragraphs": [
+                "Hiçbir yatırım yüzde yüz mükemmel ya da yüzde yüz kötü değildir: her zaman lehine ve gizli risklere yönelik tartışmalar vardır. İşin sırrı bugün hangisinin daha ağır olduğunu bilmektir.",
+                "Ortadaki sütun her iki tarafı da karşı karşıya getirir, böylece dengeli bir karar verebilirsiniz:"
+              ],
+              "lead": "Ortadaki sütun her iki tarafı da karşı karşıya getirir, böylece dengeli bir karar verebilirsiniz:",
+              "bullets": [
+                {
+                  "bold": "Kuvvet dengesi ve filtreler",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Yukarıda alıcılar ve satıcılar arasındaki teklif çubuğunu görüyorsunuz ve aşağıda beş pozitif katalizörü (yeşil) veya beş ana riski (kırmızı) filtreleyebilirsiniz."
+                },
+                {
+                  "bold": "Tek tıklamayla ayrıntı ve detaya inme",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Listedeki herhangi bir faktöre dokunduğunuzda, Chat RAG'den o belirli nokta hakkında daha fazla bilgi istemenizi sağlayan bir düğmeyle birlikte tam açıklaması görüntülenir."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT Darbe",
+              "summary": "Yapay zeka tarafından derecelendirilen en son manşetlere ve 24 saatlik ruh hali eğrisine sahip doğru zaman çizelgesi.",
+              "paragraphs": [
+                "Kazançlar, enflasyon veya düzenlemelerle ilgili tek bir son dakika manşeti günün havasını tamamen değiştirebilir. Hangi haberin çıktığını ve nasıl bir etki yarattığını nereden biliyorsunuz?",
+                "Sağ sütun bilgi akışını dakika dakika izler:"
+              ],
+              "lead": "Sağ sütun bilgi akışını dakika dakika izler:",
+              "bullets": [
+                {
+                  "bold": "Nitelikli zaman çizelgesi",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "En yeni beş manşeti zamanları ve kuruluşlarıyla birlikte listeler; olumluysa yeşil, tehdit oluşturuyorsa kırmızı puan verir."
+                },
+                {
+                  "bold": "Etki ve günlük eğri simülatörü",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "Tüm ekranı nasıl yeniden hesapladığını görmek için üstteki düğmeyle canlı bir kabloyu tetikleyebilir ve aşağıdaki grafikte ruh halinin son 24 saat içinde nasıl geliştiğini takip edebilirsiniz."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "FinBERT modeli her bir malikin mali dilini nasıl analiz eder?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "İnşaatçı",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "İyi varlıkları ayrı ayrı seçmek iyi bir portföye sahip olmak için yeterli değildir. Aynı şekilde hareket eden varlıklara çok fazla sermaye koyarsanız veya geçmişte birlikte nasıl performans göstereceklerini ölçmezseniz körü körüne yatırım yapmış olursunuz.",
+            "Yapıcı ve Performans (Portfolio'nin ilk görünümü), portföyünüzü oluşturduğunuz atölyedir. 213 varlıktan herhangi birini eklemenize, kesin olmayan kontrollerle uğraşmadan her birine atadığınız yüzdeyi ayarlamanıza ve hem dahili bileşimini hem de geçmişini anında denetlemenize olanak tanır."
+          ],
+          "intro": "Constructor & Performance, portföyünüzü oluşturduğunuz, her bir varlığın ağırlığını ayarladığınız ve geçmiş performansını denetlediğiniz atölyedir.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Özet",
+              "summary": "Portföyünüzü her değiştirdiğinizde canlı olarak yeniden hesaplanan ilk altı kart.",
+              "paragraphs": [
+                "Portföyünüze her varlık eklediğinizde veya bir yüzdeyi değiştirdiğinizde, bu ayarlamanın beklenen getirinizi iyileştirip iyileştirmediğini veya olumsuz riskinizi kötüleştirip kötüleştirmediğini hemen bilmeniz gerekir.",
+                "En üst sıra, portföyün altı ana metriğini her zaman görünür tutar:"
+              ],
+              "lead": "En üst sıra, portföyün altı ana metriğini her zaman görünür tutar:",
+              "bullets": [
+                {
+                  "bold": "Performans ve verimlilik",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Portföyün sermayenize hangi bileşik yıllık kârı yansıttığını ve üstlenilen her birim risk için ne kadar getiri elde ettiğinizi size söylerler."
+                },
+                {
+                  "bold": "Beklenen günlük kayıp ve tarihi düşüş",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Kötü bir günde istatistiksel olarak öngörülebilir düzeyde ve geçen yılın en derin gerilemesi dahilinde ne kadar dolar kaybedebileceğinizi hesaplıyorlar."
+                },
+                {
+                  "bold": "Katma değer ve çeşitlendirme",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Portföyünüzün karşılaştırma endeksini kaç puan aştığını ve farklı varlıkları birleştirerek riski ne kadar azalttığınızı ölçerler."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Bileşik getiri formülleri (CAGR), Sharpe ve Sortino oranları ve Riske Maruz Değer (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Ağırlıklandırma",
+              "summary": "Varlık eklemek, bunları açmak veya kapatmak ve her konumun tam yüzdesini tanımlamak için soldaki tablo.",
+              "paragraphs": [
+                "Bugün bir teknoloji hissesini geçici olarak kapatırsanız veya parayı tüm pozisyonlarınız arasında eşit olarak bölüştürürseniz portföy numaralarınıza ne olur?",
+                "Sol panel tüm bu testleri temiz ve doğrudan bir şekilde yapmanızı sağlar:"
+              ],
+              "lead": "Sol panel tüm bu testleri temiz ve doğrudan bir şekilde yapmanızı sağlar:",
+              "bullets": [
+                {
+                  "bold": "213 varlık için arama motoru",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Platformda herhangi bir enstrümanı arayabilir veya favorilerinizi filtreleyerek tek tıklamayla tabloya ekleyebilirsiniz."
+                },
+                {
+                  "bold": "Hızlı başlatma ve doğru düzenleme",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Her satırda, varlığı gerçek zamanlı olarak dahil etmek veya hariç tutmak için bir onay kutusu ve kesin olmayan kaydırıcılar kullanmadan tam yüzdeyi girmek için bir sayı kutusu bulunur."
+                },
+                {
+                  "bold": "Üç yeniden dengeleme kısayolu",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "Tablonun üst kısmında, tüm aktif varlıklar arasında eşit ağırlıklar dağıtmak, toplamı otomatik olarak %100'e getirmek veya orijinal portföye dönmek için düğmeler bulunur."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "röntgen",
+              "summary": "Gizli konsantrasyonları, nakit akışını ve saklamayı keşfetmek için beş sekmeli sağ üst panel.",
+              "paragraphs": [
+                "Yatırım yaparken en yaygın hatalardan biri, gerçekte bireysel bir hisse senedi ve aynı hisse senedine sahip iki ETF satın alırken, beş farklı varlığınız olduğu için çeşitlendirildiğinize inanmaktır.",
+                "X-ray paneli portföyünüzü içeriden beş sekme aracılığıyla analiz eder:"
+              ],
+              "lead": "X-ray paneli portföyünüzü içeriden beş sekme aracılığıyla analiz eder:",
+              "bullets": [
+                {
+                  "bold": "Tekrarlanan konum dedektörü",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Her bir şirkete doğrudan yatırdığınız tutarı ve endeksler veya ETF'ler (SPY veya QQQ gibi) içindeki gizli kısmınızı toplayın ve ihtiyatlı limitleri aşarsanız sizi kırmızı renkle uyarın."
+                },
+                {
+                  "bold": "Maruz kalma haritası ve dönüşün kökeni",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Size her bir varlık türü ve para biriminde gerçekte yüzde kaça sahip olduğunuzu ve kârınızın ne kadarının iyi varlıkları seçmekten ziyade iyi sektörleri seçmekten geldiğini gösterirler."
+                },
+                {
+                  "bold": "Tahmini yıllık gelir ve güvenlik",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Temettü, kupon ve faiz için yıl içinde kaç dolar toplayacağınızı hesaplıyor, sermayenizin bulunduğu saklama kuruluşlarının borç ödeme gücünü denetliyorlar."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "ETF'ler ve Brinson ilişkilendirme dökümü kapsamında dolaylı riskin nasıl hesaplandığı."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Takvim",
+              "summary": "Kârınızın ve zararınızın düzenliliğini görmek için Ocak'tan Aralık'a kadar olan aylık grafik.",
+              "paragraphs": [
+                "İyi bir yıllık getiri, pratikte tolere edilmesi zor olan aylarca süren çok keskin düşüşleri gizleyebilir. Az önce bir araya getirdiğiniz portföy aydan aya ne kadar tutarlı?",
+                "Röntgen görüntüsünün hemen altında takvim aylık geçmişi gösterir:"
+              ],
+              "lead": "Röntgen görüntüsünün hemen altında takvim aylık geçmişi gösterir:",
+              "bullets": [
+                {
+                  "bold": "Yeşil aylar ve kırmızı aylar",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Her hücre, tablonuzdaki ağırlıklara göre anında yeniden hesaplanır ve o ayın sonucuna göre yeşil veya kırmızıya boyanır ve yılın kümülatif sonucuyla sağ tarafta kapatılır."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Portföyünüzü dört klasik stratejiyle karşılaştırmak için aşağıdaki tam ekran grafik.",
+              "paragraphs": [
+                "Portföyünüzün iyi olduğunu düşünmeden önce temel test devam ediyor: Parayı S&P 500'de mi yoksa geleneksel 60/40 portföyünde mi bırakmak gerçekten daha iyi?",
+                "Alt panel, tasarımınızı pazar standartlarına uygun hale getirmek için ekranın tüm genişliğini kaplar:"
+              ],
+              "lead": "Alt panel tasarımınızı pazar standartlarıyla karşılaştırır:",
+              "bullets": [
+                {
+                  "bold": "Beş test ufku",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Karışımınızın hem son çeyreklerde hem de çok yıllık döngülerin tamamında nasıl performans gösterdiğini değerlendirmenize olanak tanır."
+                },
+                {
+                  "bold": "Dört yüz yüze referans",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Aktif portföyünüzün yeşil eğrisini dört klasik modelden herhangi birinin üzerine yerleştirin, böylece ne zaman önde olduğunu ve olumsuz yönde nasıl ayakta kaldığını açıkça görebilirsiniz."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Risk",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Piyasanın sakin bir şekilde yükseldiği zamanlarda neredeyse her portföy güvenli görünüyor. Asıl sorun, kriz çıktığında, faiz oranları aniden yükseldiğinde ve bağımsız görünen varlıklar aynı anda düşmeye başladığında ortaya çıkıyor.",
+            "Niceliksel Risk ve Stres (Portfolio'nin ikinci görünümü), portföyünüzü gerçek hayatta gerçekleşmeden önce zorlu testlere tabi tutar. Dört simetrik çeyrek ve aşağıdaki gelecek senaryo simülatörü aracılığıyla size hassas noktalarınızın tam olarak nerede olduğunu gösterir."
+          ],
+          "intro": "Niceliksel Risk ve Stres, portföyünüzü tarihsel krizler, korelasyon bulaşıcılığı ve Monte Carlo tahminleri açısından test eder.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Mümkün olan en verimli portföye ne kadar yakın olduğunuzu görmek için etkileşimli risk ve getiri haritası.",
+              "paragraphs": [
+                "Halihazırda portföyünüzde bulunan varlıklarla yüzdeleri dağıtmanın binlerce yolu vardır. Seçtiğiniz kombinasyon, aldığınız riske karşılık en iyi getiriyi sağlayan kombinasyon mu, yoksa aynısını daha az sürprizle kazanabilir misiniz?",
+                "Sol üstteki ilk çeyrek, olasılıkların canlı haritasını çiziyor:"
+              ],
+              "lead": "Sol üstteki ilk çeyrek, olasılıkların canlı haritasını çiziyor:",
+              "bullets": [
+                {
+                  "bold": "Optimum portföylere göre konumunuz",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Mümkün olan en düşük volatilite noktası ve maksimum risk-getiri verimliliği noktasına göre mevcut portföyünüzün nerede bulunduğunu gösterir."
+                },
+                {
+                  "bold": "Görsel katmanlar ve varlığa göre inceleme",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "Aşağıda söz konusu varlığın tam katkısını okumak için model katmanlarını açabilir veya kapatabilir ve herhangi bir düğüme tıklayabilirsiniz."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Markowitz'nin etkin sınırı ve minimum varyans ile maksimum Sharpe portföylerinin hesaplanması."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Kasırga ve VaR",
+              "summary": "Tarihsel kriz simülatörü, varlık ve piyasa asimetrisine göre günlük zarar dökümü.",
+              "paragraphs": [
+                "2008'dekine benzer bir çöküş, 2020'deki ekonomik yavaşlama ya da 2022'deki faiz artışı yarın tekrarlanırsa, mevcut portföyünüz ne kadar kaybeder ve asıl suçlu hangi varlık olur?",
+                "Sol alt kadran bu üç soruyu üç spesifik sekmede yanıtlıyor:"
+              ],
+              "lead": "Sol alt kadran bu soruları üç spesifik sekmede yanıtlıyor:",
+              "bullets": [
+                {
+                  "bold": "Beş gerçek krize karşı test",
+                  "code": "1. Tornado Stress",
+                  "text": "Beş büyük tarihsel şok karşısında portföyünüzün S&P 500 karşısında ne kadar düşeceğini bar bar karşılaştırın."
+                },
+                {
+                  "bold": "Pozisyona göre risk sıralaması",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Varlıklarınızı, her birinin toplam portföye ne kadar potansiyel günlük zarar kattığına göre sıralayın."
+                },
+                {
+                  "bold": "İniş ve çıkışlardaki davranışlar",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Her bir varlığın piyasadaki yükseliş çarklarının yüzde kaçından yararlandığını ve piyasa düştüğünde ne kadar tamponlanmayı başardığını gösterir."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Geçmiş stres senaryolarının metodolojisi, VaR'ye marjinal katkı ve yakalama oranları."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Korelasyon",
+              "summary": "Varlıklarınızın gerçekten çeşitlenip çeşitlenmediğini veya panik sırasında virüse yakalanıp yakalanmadığını kontrol etmek için çapraz matris.",
+              "paragraphs": [
+                "Portföyünüzde birden fazla varlığa sahip olmak, yalnızca hepsinin aynı anda aynı yönde hareket etmemesi durumunda riski azaltır. Ancak finansal panik zamanlarında, düşük görünen birçok korelasyon aniden yukarı doğru sıçrar.",
+                "Sağ üst çeyrek, bu ilişkiyi iki senaryoda denetlemenize olanak tanır:"
+              ],
+              "lead": "Sağ üst çeyrek, bu ilişkiyi iki senaryoda denetlemenize olanak tanır:",
+              "bullets": [
+                {
+                  "bold": "Varlıklar ve duyarlılık arasındaki geçiş",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Her varlık çiftinin ne kadar benzer hareket ettiğini (iyi çeşitlendiklerinde yeşil veya açık mavi renkte, birbirine çok yakın hareket ettiklerinde kırmızı renkte) ve piyasaya karşı hassasiyetlerinin ne olduğunu gösterir."
+                },
+                {
+                  "bold": "Krizde bulaşma simülatörü",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Hangi pozisyonların artık sizi korumayacağını keşfetmek için tek bir tıklamayla normal bir yılın korelasyonlarını bir panik anının korelasyonlarına dönüştürebilirsiniz."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Normal koşullar altında ve piyasa stresi altında Pearson korelasyon katsayılarının hesaplanması."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Çatışma ve Markov",
+              "summary": "Oranlar ve borsa arasındaki ortak etki tablosu artı ekonomik döngüdeki değişiklik olasılıkları.",
+              "paragraphs": [
+                "Reel ekonomide sorunlar nadiren tek tek ortaya çıkar: Çoğu zaman faiz oranlarındaki artış hisse senetlerindeki düşüşle aynı zamana denk gelir. İki faktör aynı anda birleştirilirse portföyünüze ne olur?",
+                "Sağ alt kadran her iki değişkeni de kesiyor ve rejim değişikliği olasılıklarını ölçüyor:"
+              ],
+              "lead": "Sağ alt kadran her iki değişkeni de keser ve piyasa döngüsünü ölçer:",
+              "bullets": [
+                {
+                  "bold": "Çift darbe tahtası",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "S&P 500'nin düşüşleri veya yükselişleriyle (-%20 ila +%10) çapraz kur hareketleri (-100 ila +200 baz puan), portföyün tamamına veya tek bir varlığa göre filtrelemenize olanak tanır."
+                },
+                {
+                  "bold": "Döngü geçiş olasılıkları",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Piyasanın sakin kalma veya değişken, enflasyonist veya kriz aşamasına girme ihtimalinin ne kadar olduğunu hesaplayın."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Oranlara ve değişkenlere ortak duyarlılık ve Markov durumu geçiş matrisi."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Alt panel, geleceğe yönelik olasılık tahminleri ve geçmiş düşüşleri içeren tam ekrandır.",
+              "paragraphs": [
+                "Geçmişe bakmak faydalıdır ancak geleceğe yatırım yaparken bilmeniz gereken şey, sermayenizin önümüzdeki altı ay, bir yıl veya iki yıl içinde hangi sonuçlar aralığında hareket edebileceğidir.",
+                "Tam genişlikteki alt panel, bu yolu projelendirmek ve kontrol etmek için üç geçici aracı bir araya getirir:"
+              ],
+              "lead": "Alt panel, bu yolu yansıtmak için üç geçici aracı bir araya getirir:",
+              "bullets": [
+                {
+                  "bold": "On bin gelecek senaryosu",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "İyimser senaryoyu (P95 yeşil), beklenen merkezi yolu (P50) ve olumsuz senaryoyu (P05 kırmızı) birbirinden ayırarak portföyünüzün olası gelişiminin konisini çizin."
+                },
+                {
+                  "bold": "Düşme derinliği ve zaman içindeki stabilite",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Portföyün tüm zamanların en yüksek seviyelerinin altında ne kadar süreyle kaldığını veya 60 günlük pencerelerde verimliliğinin ve riskinin ne kadar istikrarlı olduğunu görmek için grafiği değiştirmenize olanak tanır."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo 10.000 yolun stokastik simülasyonu ve 60 günlük hareketli ölçümler."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Simülatör",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Yeni bir varlık satın almadan, bir pozisyonu azaltmadan veya opsiyonlarla riskten korunma için ödeme yapmadan önce her zaman aynı soru ortaya çıkar: Bu operasyon gerçekten portföyümü geliştiriyor mu yoksa gereksiz risk mi ekliyor? Ve ne kadar sermaye koymalıyım?",
+            "Ad-Hoc Strateji Laboratuvarı (Portfolio'nin üçüncü görünümü) çalışma öncesi simülatörünüzdür. Taktiksel oyunları yüklemenize, ideal pozisyon boyutunuzu hesaplamanıza, olumsuz sigortayı test etmenize ve henüz temel portföyünüze dokunmadan darbeden önce ve sonra tam olarak görmenize olanak tanır."
+          ],
+          "intro": "Ad-Hoc Strateji Laboratuvarı, siparişleri test etmek, pozisyonları boyutlandırmak ve kapsamı ölçmek için işlem öncesi simülatörünüzdür.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Etki",
+              "summary": "Mevcut portföyünüzü simüle edilmiş oyunlardan sonraki sonuçla karşılaştıran ilk altı kart.",
+              "paragraphs": [
+                "Taktiksel bir fikrin buna değip değmeyeceğini bilmek için varlığın tek başına çekici görünmesi yeterli değildir: tüm portföyün rakamlarını iyileştirmesi gerekir.",
+                "Üst satırda, mevcut portföyünüz ile simülasyonun uygulandığı portföy arasındaki karşılaştırma kalıcı olarak gösterilir:"
+              ],
+              "lead": "Üst satırda mevcut portföyünüz uygulanan simülasyonla portföyle karşılaştırılır:",
+              "bullets": [
+                {
+                  "bold": "Kâr ve verimliliğe etkisi",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "Tahmin edilen sayının yanında temel sayıyı gösterirler; oyun verimliliği artırıyorsa farkı yeşil renkte, verimliliği düşürüyorsa kırmızı renkte aydınlatırlar."
+                },
+                {
+                  "bold": "Risk, sermaye ve kurallara etkisi",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Size maksimum beklenen zararınızın ne kadar değiştiğini, portföyün yüzde kaçını testlere ayırdığınızı ve tüm güvenlik limitlerine uyulup uyulmadığını söylerler."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If ve Kelly",
+              "summary": "Alım/satım bileti simülatörü ve ne kadar paranın riske atılacağını tanımlayan hesap makinesi.",
+              "paragraphs": [
+                "Pek çok iyi yatırım fikri, bahsin büyüklüğündeki bir hata nedeniyle kayıplara yol açar: çok az koymak ibreyi hareket ettirmez, ancak çok fazla koymak, hamle yanlış giderse portföyü mahvedebilir.",
+                "Sol üstteki ilk çeyrek, kanıt sayfasını boyutun matematiksel hesaplamasına bağlar:"
+              ],
+              "lead": "İlk çeyrek, test raporunu boyutun matematiksel hesaplamasıyla birleştirir:",
+              "bullets": [
+                {
+                  "bold": "Test siparişi yükleme",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Herhangi bir varlığı seçersiniz, satın almak mı, satmak mı yoksa karşılamak mı istediğinizi belirtirsiniz ve tutarı dolar cinsinden yüklersiniz. Aşağıdaki listede, etkisini karşılaştırmak için her bir simüle edilmiş siparişi açabilir veya kapatabilirsiniz."
+                },
+                {
+                  "bold": "Optimum konum boyutu",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "Tahmini başarı olasılığınıza ve kâr ile zarar arasındaki ilişkiye dayanarak, kendinizi aşırı riske sokmadan büyümek için sermayenin maksimum yüzdesinin tahsis edilmesi gerektiğini hesaplar."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Kelly Kriterinin matematiksel hesaplaması ve onun muhafazakar versiyonu Half-Kelly."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "OTM ve Marjı Koy",
+              "summary": "Güçlü piyasa düşüşlerine yönelik seçenekler ve teminat tamamlama çağrısı monitörü içeren sigorta simülatörü.",
+              "paragraphs": [
+                "Güçlü bir piyasa düzeltmesinden korktuğunuzda, tüm pozisyonlarınızı satmak genellikle maliyetli ve verimsizdir. Profesyonel alternatif, koruyucu seçenekleri olan sigorta yaptırmak ama bu sigortanın yıllık maliyeti ne kadar ve sizi gerçekten ne kadar koruyor?",
+                "Sol alt kadran hem kapsamı hem de borç seviyesini ölçmenize olanak tanır:"
+              ],
+              "lead": "Sol alt kadran hem kapsamı hem de garanti düzeyini ölçer:",
+              "bullets": [
+                {
+                  "bold": "Koruyucu kalkanların karşılaştırıcısı",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Sigorta kapsamı olmadan çalışma veya seçeneklerle (SPY, QQQ veya VIX oynaklığında) üç tür sigorta uygulama arasında geçiş yapmanıza olanak tanır ve primin yıllık maliyetini %20'lik bir kazada tasarruf edeceğiniz dolar ile karşılaştırır."
+                },
+                {
+                  "bold": "Kaldıraç kontrolü ve teminat",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Teminat tamamlama bölgesine girmeden önce, sürdürme marjının yüzde kaçını kullandığınızı ve portföyün yüzde ne kadar düşüşe dayanacağını izleyin."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Nakit dışı Satış opsiyonları ile riskten korunma işlemi ve garantilerin hesaplanması Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Komite ve Kitap",
+              "summary": "Risk limitlerinin, sipariş geçmişinin ve Yardımcı pilotun otomatik olarak gözden geçirildiği iki sağ panel.",
+              "paragraphs": [
+                "Bir işlemi deneme heyecanı içinde, bir varlığın tüm portföyünüzün %20'sinden fazlasını yoğunlaştırdığını veya ciddi bir istatistiksel anormalliğin ortasında çalıştığını gözden kaçırmak kolaydır.",
+                "Sağdaki iki çeyrek daire, otomatik risk kontrolünüz ve denetim takibiniz olarak hizmet eder:"
+              ],
+              "lead": "Sağdaki iki kadran risk kontrolü ve kaydı olarak işlev görür:",
+              "bullets": [
+                {
+                  "bold": "Üç boyutlu inceleme",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "Simüle edilmiş emirlerinizi teknik, temel ve sert güvenlik limitlerinden değerlendirirler (herhangi bir pozisyonun %20 sermaye limitini aşması veya yüksek anormalliklere sahip olması durumunda uyarı verirler)."
+                },
+                {
+                  "bold": "Sipariş günlüğü ve portföy asistanı",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Alt panel, her simülasyonu risk üzerindeki etkisi ile birlikte kaydederken, sağ üstteki diyalog düğmesi, portföyünüz hakkında doğrudan sorular sorabileceğiniz sohbeti açar."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Operasyon öncesi risk kontrol kuralları ve varlık başına konsantrasyon limitleri."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Stratejinizin deneme süresi dışında işe yarayıp yaramadığını kontrol etmek için aşağıdaki tam ekran grafik.",
+              "paragraphs": [
+                "Herhangi bir strateji, tarihsel grafikte kusursuz görünene kadar geçmişe bakarak ayarlanabilir. Asıl zorluk, yeni piyasa verileriyle karşılaşıldığında çalışmaya devam edip etmeyeceğini bilmektir.",
+                "Tam genişlikteki alt panel, stratejiyi üretime geçmeden önce en sıkı doğrulamadan geçirir:"
+              ],
+              "lead": "Alt panel, stratejiyi örnek içi ve örnek dışı doğrulamaya tabi tutar:",
+              "bullets": [
+                {
+                  "bold": "Tasarım ve fiili test arasındaki ayrım",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "Tarihsel grafiği, stratejinin kalibre edildiği bir ilk aşamaya ve temel portföy üzerindeki avantajını sürdürüp sürdürmediğini kontrol etmek için görünmeyen verilerin bulunduğu ikinci bir aşamaya böler."
+                },
+                {
+                  "bold": "İstatistiksel sağlamlık notu",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Verimlilik göstergesinin %70'i aşması, sonuçların tutarlı olduğunu ve geçmişteki rakamları zorlamanın ürünü olmadığını doğruluyor."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Walk-Forward Verimlilik Endeksi'nin (WFE) neyi ölçtüğü ve aşırı optimize edilmiş stratejileri nasıl tespit ettiği."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Likidite Filtresi (ADV)",
+        "intro": "Bir varlığın fiyatını bozan tek bir emir olmadan alınıp satılabilmesi için platform, son 20 iş günü boyunca dolar cinsinden ortalama günlük hacmin minimum eşiğini gerektiriyor.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Kapanış Fiyatıᵢ × İşlem Hacmiᵢ)",
+          "denominator": "20 yetenekli tekerlek",
+          "vars": [
+            "Kapanış Fiyatı: USD cinsinden ifade edilen günün resmi kapanış fiyatı.",
+            "İşlem Hacmiᵢ: o gün işlem gören toplam birim sayısı."
+          ]
+        },
+        "lead": "Katalog, ortalama günlük hacme dayalı olarak her enstrümanın derinliğini sınıflandırır:",
+        "bullets": [
+          {
+            "bold": "Yüksek kurumsal likidite",
+            "code": "> $500M diarios",
+            "text": "Piyasa fiyatını değiştirmeden büyük pozisyonlara hemen girip çıkmanıza olanak tanır."
+          },
+          {
+            "bold": "Standart Katalog Likidite",
+            "code": "$50M a $500M diarios",
+            "text": "Çok düşük alım/satım maliyetleriyle çeşitlendirilmiş portföyler için uygundur."
+          },
+          {
+            "bold": "Yayılma izleme",
+            "code": "< $50M diarios",
+            "text": "Volatilite zamanlarında, büyük emirleri gerçekleştirmeden önce bahşişlerin açıklığının kontrol edilmesi tavsiye edilir."
+          }
+        ],
+        "example": "Bir hisse senedi 200 dolardan işlem görüyorsa ve geçen ay çark başına ortalama 5 milyon hisseyle işlem görüyorsa, ortalama günlük hacmi (ADV) 1 milyar dolardır (1,0 milyar dolar)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "USD'ye normalleşme",
+        "intro": "Katalog Avrupa tahvillerini, Asya endekslerini, emtiaları ve kripto para birimlerini birleştirdiğinden, tüm hacim akışları aynı ölçekte karşılaştırılabilmeleri için gerçek zamanlı olarak ABD dolarına dönüştürülür.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Yerel Para Birimi Hacmi: Orijinal piyasa para biriminde (EUR, JPY, GBP, BRL, vb.) işlem gören tutar.",
+            "Spot Döviz Kuru: 61 para birimi motorundaki güncel fiyat teklifi."
+          ]
+        },
+        "lead": "Bu dönüşüm ekrandaki iki yeri doğrudan etkiler:",
+        "bullets": [
+          {
+            "bold": "Genel Görünüm Sıralaması Tümü",
+            "code": "213 activos",
+            "text": "Enstrümanları dünya çapında paranın en büyük hareketinden en az gerçek hareketine doğru sıralayın."
+          },
+          {
+            "bold": "Hacim Kartı Eklendi",
+            "code": "Volumen 24h en $B",
+            "text": "Farklı ülkelerde listelenen varlıkların hacminin bozulma olmadan eklenmesine olanak tanır."
+          }
+        ],
+        "example": "Bir Alman tahvili günde 4 milyar Euro işlem görüyorsa ve EUR/USD paritesi 1,08 seviyesinde çapraz işlem görüyorsa, sistem küresel nabızda 4,32 milyar dolar hesaplıyor."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Bir pazarın gerçekten güçlü bir şekilde yükselip yükselmediğini veya zaten çok hızlı yükselip tükenip tükenmediğini nasıl ölçersiniz? Göreceli Güç Endeksi (RSI), ortalama yükselişleri son 14 turun ortalama düşüşleriyle 0 ila 100 arasında karşılaştırır.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1 + (Ortalama Artışlar₁₄ / Ortalama Düşüşler₁₄)",
+          "vars": [
+            "Ortalama Artış₁₄: son 14 çarkın yükseliş günlerinde kazanılan puanların ortalaması düzeltildi.",
+            "Ortalama Kayıplar₁₄: aynı dönemin düşüş günlerinde kaybedilen puanların ortalaması düzeltildi."
+          ]
+        },
+        "lead": "Dairesel halkada ölçeğin üç bölümü bu şekilde yorumlanır:",
+        "bullets": [
+          {
+            "bold": "Alış gücü ve aşırı alım",
+            "code": "70 a 100",
+            "text": "Artışlar son düşüşlerin çok üzerinde. Büyük bir yükseliş momentumu gösteriyor, ancak 70'in üzerinde fiyatın duraklamaya ihtiyaç duyabileceği konusunda uyarıda bulunuyor."
+          },
+          {
+            "bold": "denge bölgesi",
+            "code": "30 a 70",
+            "text": "Piyasa sürdürülebilir bir hızla hareket ediyor. Orta seviyenin aşılması (yeşil renkte > 50) alıcı hakimiyetini teyit ederken, bunun altına düşmek (kırmızı renkte < 50) satıcı hakimiyetini gösterir."
+          },
+          {
+            "bold": "Cezalandırma ve aşırı satış",
+            "code": "0 a 30",
+            "text": "Düşüşler o kadar sık ve belirgindi ki varlık istatistiksel olarak ucuz görünmeye ve toparlanmaya eğilimli görünmeye başladı."
+          }
+        ],
+        "example": "Son 14 tekerlekte bir grup hisse senedi yükseliş gününde ortalama 2$ yükselip düşüş gününde yalnızca 1$ düştüyse, güç oranı 2'dir ve RSI'sı 66,7'dir (yeşil yükseliş eğilimi)."
+      },
+      {
+        "id": "p06",
+        "label": "Normal Rejim (P-06)",
+        "intro": "Bir varlık yalnızca fiyatına baktığınızda sakin görünebilir, ancak aynı zamanda hacminde garip bir sıçrama ve alım satım zirvelerinde anormal bir açılış yaşıyorsanız. Isolation Forest motoru (P-06), atipik davranışları tespit etmek için bu değişkenleri aynı anda geçer.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)) : bugünkü davranışı tarihin geri kalanından ayırmak için gerekli olan rastgele kesmelerin ortalama sayısı.",
+            "x: 4 değişkenin vektörü (Dönüş 24h, Cilt Z-Score 20d, Gerçekleşen Volatilite 30d ve bps cinsinden Yayılım)."
+          ]
+        },
+        "lead": "Bugünkü hamle ne kadar nadirse, o kadar hızlı izole edilir ve skor 1,00'a o kadar yakındır:",
+        "bullets": [
+          {
+            "bold": "Normal rejim",
+            "code": "0.00 a 0.49",
+            "text": "Fiyat, hacim ve likidite, varlığın tarihsel ortalamasına paralel olarak hareket eder."
+          },
+          {
+            "bold": "Yüksek aktivite",
+            "code": "0.50 a 0.64",
+            "text": "Değişkenlerden en az biri olağan davranışından sapmaya başladı; Sipariş akışının yakından izlenmesi tavsiye edilir."
+          },
+          {
+            "bold": "Dislokasyon veya kritik anomali",
+            "code": "0.65 a 1.00",
+            "text": "Varlık istatistiksel olarak aşırı davranışlar sergiliyor. Portföy modülünde bu eşiğin aşılması güvenlik frenini etkinleştirir."
+          }
+        ],
+        "example": "Bir devlet tahvilinin fiyatı ancak %0,1 oranında hareket ediyor ancak hacmi dört kat artıyorsa ve spreadi dakikalar içinde üç katına çıkıyorsa, dedektör üç veri noktasını geçer ve puanını 0,74'e yükseltir (Kırmızı dislokasyon)."
+      },
+      {
+        "id": "zscore",
+        "label": "Hacim Baypası (Z-Score)",
+        "intro": "Bugün 500 milyon doların işletildiğini söylemek orta ölçekli bir firma için çok olsa da S&P 500 için çok az. Volume Z-Score, tüm varlıkları aynı evrensel birime getirir: kendi 20 tekerlek ortalamasından bugünün hacminin kaç standart sapma (σ) olduğu.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Bugünkü Hacim (24s) − Ortalama Hacim (20g)",
+          "denominator": "Hacmin Standart Sapması (20d)",
+          "vars": [
+            "Ortalama Hacim (20d): varlığın son iş ayı boyunca olağan hacmi.",
+            "Standart Sapma (20d): Bu hacmin normalde bir günden diğerine ne kadar değiştiği."
+          ]
+        },
+        "lead": "Bu şekilde herhangi bir varlığı aynı sigma (σ) birimi ölçeğinde karşılaştırabilirsiniz:",
+        "bullets": [
+          {
+            "bold": "Olağan aktivite",
+            "code": "-1.0σ a +1.0σ",
+            "text": "Günün hacmi tamamen son dört haftanın rutini içerisinde."
+          },
+          {
+            "bold": "Yüksek katılım",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Günün trendini doğrulamaya başlayan ortalamanın üzerinde bir ilgi var."
+          },
+          {
+            "bold": "Kurumsal çatışma",
+            "code": "> +2.0σ",
+            "text": "Yılın %5'inden azında meydana gelir ve genellikle büyük fonların kitlesel giriş veya çıkışını yansıtır."
+          }
+        ],
+        "example": "Bir hisse senedi genellikle ±20 milyon dolarlık tipik bir değişimle günde 100 milyon dolar işlem görüyorsa ve bugün 160 milyon dolar işlem görüyorsa, bu ortalamanın 60 milyon dolar üzerindedir, bu da tam olarak +3,0σ'ya eşdeğerdir."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Sabit Gelir (2s10s ve DV01)",
+        "intro": "Tabloda Tahvilleri veya Oranları filtrelediğinizde, devlet borcunu değerlendirmeye yönelik iki temel ölçüm görünür: eğrinin eğimi (2s10s) ve bir temel noktanın parasal değeri (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 baz puan (1 baz puan): %0,01 performansa eşdeğerdir.",
+            "DV01 ($/$1M): Kur 1 baz puan hareket ederse 1 milyon dolarlık bir pozisyonun kaç dolar kazanacağı veya kaybedeceği."
+          ]
+        },
+        "lead": "Izgaradaki bu iki sayı nasıl okunur:",
+        "bullets": [
+          {
+            "bold": "Normal veya pozitif eğri",
+            "code": "2s10s > 0 bps",
+            "text": "10 yıllık tahviller, 2 yıllık tahvillerden daha yüksek getiri sağlıyor ve bu da sağlıklı bir ekonomik büyüme beklentisini yansıtıyor."
+          },
+          {
+            "bold": "ters eğri",
+            "code": "2s10s < 0 bps",
+            "text": "Kısa oranlar uzun oranları aşıyor; tarihsel olarak ekonomik soğumaya veya parasal kısıtlamalara karşı uyarıda bulunur."
+          }
+        ],
+        "example": "10 yıllık Hazine tahvili %4,20 ve 2 yıllık Hazine tahvili %4,55 getiri sağlarsa, 2s10s sütunu -35 baz puan (tersine çevrilmiş eğri kırmızı) işaret eder."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Hisseler (F/K ve Marj)",
+        "intro": "S&P/NDX Hisse Senetlerini filtrelerken tablo, tahmini kazanç çarpanını (F/K İleri) ve Brüt Faaliyet Marjını görüntüler; böylece değerleme ile kârlılığı karşılaştırabilirsiniz.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Güncel Hisse Fiyatı",
+          "denominator": "Tahmini Hisse Başına Kazanç (Gelecek 12 Ay)",
+          "vars": [
+            "F/K Forward: Bugünün fiyatı üzerinden kaç yıllık gelecekteki kazancınızı ödediğinizdir.",
+            "Brüt Marj (%): Doğrudan maliyet düşüldükten sonra brüt kar olarak kalan satışların yüzdesi."
+          ]
+        },
+        "lead": "Her iki sütunu geçerken nelere dikkat edilmelidir:",
+        "bullets": [
+          {
+            "bold": "Zorlu ve orta düzeyde değerlendirme",
+            "code": "P/E > 30x vs < 18x",
+            "text": "Yüksek çarpan, piyasanın gelecekteki güçlü büyümeyi fiyatladığını gösterir; düşük olan genellikle olgun veya değerli şirketleri yansıtır."
+          },
+          {
+            "bold": "Fiyatlandırma Gücü",
+            "code": "Margen Bruto > 50%",
+            "text": "Yüksek marjlar, güçlü rekabet avantajına sahip şirketlerin kârlarını enflasyona karşı koruyabildiğini gösteriyor."
+          }
+        ],
+        "example": "Bir hisse senedi 150$'dan işlem görüyorsa ve önümüzdeki 12 ay içinde hisse başına 6$ kazanacağı tahmin ediliyorsa, Forward F/K'si 25,0x'tir."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Türevler, Döviz ve Emtialar",
+        "intro": "Opsiyonlar, forex ve fiziksel vadeli işlem piyasaları için iki dinamik sütun, pozisyonu zaman içinde tutmanın ima edilen risk veya ödül maliyetini gösterir.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (Türevler): Opsiyon piyasasının önümüzdeki 30 gün için iskonto ettiği yıllık volatilite.",
+            "10Y (FX) Taşıma ve Döndürme Getirisi (Emtia): oran farkından veya vadeli işlemlerden ötelemeden kaynaklanan yıllık kazanç veya maliyet."
+          ]
+        },
+        "lead": "Varlığa bağlı olarak bu sütunlardan nasıl yararlanılır:",
+        "bullets": [
+          {
+            "bold": "Türevlerde",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Size piyasanın yüzde kaç hareket beklediğini ve düşüşleri (Put) karşılama seçeneklerinin pahalı olup olmadığını söylerler."
+          },
+          {
+            "bold": "Para Birimleri ve Hammaddelerde",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Varlığın bakımı size ek gelir sağlıyorsa yeşil renkte, taşıma maliyeti varsa kırmızı renkte gösterilir."
+          }
+        ],
+        "example": "Bir opsiyon yıllık %35'lik bir zımni oynaklık (ATM IV) gösteriyorsa, piyasa önümüzdeki 30 gün için ±%10'a yakın bir hareketi iskonto eder."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radar Radyal Haritalama",
+        "intro": "Orbital görünümü, üç radar halkasına üst üste binmeden 45'e kadar varlık yerleştirmek için seçilen göstergenin değerini, grubun minimum ve maksimumu arasında normalleştirilmiş merkeze olan mesafeye (yarıçap r) dönüştürür.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Varlık Değeri – Grubun Minimum Değeri",
+          "denominator": "Grubun Maksimum Değeri − Grubun Minimum Değeri",
+          "vars": [
+            "r → 0 (İç Halka): Varlıkları daha yoğun veya pozitif sapmayla yoğunlaştırır.",
+            "r → 1 (Dış Halka): çevresel varlıkları veya göreceli değeri en düşük olanları konumlandırır."
+          ]
+        },
+        "lead": "Radardaki her gezegenin konumu ve rengi nasıl okunur:",
+        "bullets": [
+          {
+            "bold": "İç halkaya odaklan",
+            "code": "Centro del radar",
+            "text": "Görüşünüzün ilk önce en önemli olana gitmesi için yukarıda seçtiğiniz göstergeden önde gelen varlıkları toplayın."
+          },
+          {
+            "bold": "Tarihsel renk anlambilimi",
+            "code": "Verde vs Rojo",
+            "text": "Düğüm, tarihsel ortalamasını olumlu bir şekilde aştığında yeşil renkte, düşüş veya stresi yansıttığında ise kırmızı renkte yanar."
+          }
+        ],
+        "example": "Radarı Hacim Sapmasına (Z-Score) göre sıralarsanız, +3,4σ ile aktif olan parlak merkez halkada yer alırken, 0,1σ ile aktif olanı dış yörüngededir."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) ve Bollinger Bantları",
+        "intro": "20 dönemlik Basit Hareketli Ortalama (SMA 20) varlığın temel eğilimini işaret ederken Bollinger Bantları bu ortalamanın etrafına iki standart sapma (2σ) ekleyip çıkararak dinamik bir kanal çizer.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): son 20 kapanışın aritmetik ortalaması.",
+            "Bant Genişliği (BB Genişliği): Üst ve alt bantlar arasındaki mesafenin yüzdesi."
+          ]
+        },
+        "lead": "İstatistiksel olarak alıntıların yaklaşık %95'i iki bant içinde gerçekleşir:",
+        "bullets": [
+          {
+            "bold": "Fiyat ortalamanın üzerinde",
+            "code": "Precio > SMA 20",
+            "text": "Bu, kısa vadeli eğilimin yükseliş yönlü olduğunu ve ortalamanın genellikle bir destek tabanı görevi gördüğünü gösterir."
+          },
+          {
+            "bold": "Üst veya alt bant dokunuşu",
+            "code": "±2σ",
+            "text": "Fiyatın son ortalamasından çok hızlı bir şekilde gerilediği ve biraz nefes alabileceği konusunda uyarıyor."
+          },
+          {
+            "bold": "bant sıkıştırma",
+            "code": "BB Width bajo",
+            "text": "Bantlar çok daraldığında piyasa güçlü bir hamle öncesinde enerji biriktirir."
+          }
+        ],
+        "example": "Bir hisse senedinin SMA(20)'si 100$ ve 20-tekerlek standart sapması 4$ ise üst bant 108$, alt bant ise 92$'dır."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Kurumsal",
+        "intro": "Günün tüm saatlerine eşit ağırlık veren ortak ortalamanın aksine VWAP, her fiyatı o seviyede gerçekte işlem gören para miktarına göre ağırlıklandırır. Kurumsal tabloların kullandığı ana referanstır.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (Genel Fiyatᵢ × İşlem Hacmiᵢ)",
+          "denominator": "∑ İşlem Hacmiᵢ",
+          "vars": [
+            "Tipik Fiyatᵢ: her bir mumun maksimum, minimum ve kapanış değerleri arasındaki ortalama.",
+            "İşlem Hacmiᵢ: özellikle o bölümde işlem gören hacim."
+          ]
+        },
+        "lead": "Profesyonel yatırımcılar VWAP hattını nasıl kullanıyor:",
+        "bullets": [
+          {
+            "bold": "Yürütme kontrolü",
+            "code": "Comprar bajo el VWAP",
+            "text": "Bir kurumsal fon, dönem için VWAP seviyesinin altında alım yaparsa piyasa ağırlıklı ortalamadan daha iyi bir fiyat elde etmiş olur."
+          },
+          {
+            "bold": "Trend Savunma Düzeyi",
+            "code": "Soporte / Resistencia",
+            "text": "Varlık VWAP'nin üzerinde kaldığı sürece dönem içerisinde alım yapanlar ortalama kârdadır."
+          }
+        ],
+        "example": "Eğer 1 milyon hisse 100 dolardan işlem görseydi ve yalnızca 100 bin hisse 110 dolardan işlem görseydi, basit ortalama 105 dolar derdi ama VWAP 100,91 dolar okur çünkü paranın neredeyse tamamı 100 dolardan işlem görüyordu."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Yayılma Yer Değiştirmesi (bps)",
+        "intro": "Spread, emir defterindeki en iyi satış fiyatı ile en iyi alış fiyatı arasındaki farktır. Piyasa yapıcılar risk veya likidite eksikliği algıladıklarında kendilerini korumak için bu açığı açarlar.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "( Fiyat Sor – Teklif Fiyatı )",
+          "denominator": "Ortalama Fiyat (Orta Fiyat)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Satış / Teklif Fiyatı: Kitapta mevcut satış noktası ve satın alma noktası.",
+            "10.000: Baz puan farkını (bps) ifade eden dönüşüm faktörü."
+          ]
+        },
+        "lead": "Sol raydaki Yayılma Dislokasyonunun size ne söylediği:",
+        "bullets": [
+          {
+            "bold": "Derin ve akıcı bir kitap",
+            "code": "Spread estable en verde",
+            "text": "Her iki uçta da bol miktarda likidite vardır ve giriş veya çıkışın örtülü maliyeti minimum düzeydedir."
+          },
+          {
+            "bold": "Likiditenin sürtünmesi veya çekilmesi",
+            "code": "Salto en bps",
+            "text": "Genellikle makroekonomik duyurulardan birkaç saniye önce veya panik satışı sırasında meydana gelir ve bu da uygulamayı daha pahalı hale getirir."
+          }
+        ],
+        "example": "Bir varlığın alış ipucu 99,95 ABD Doları ve satış ipucu 100,05 ABD Doları ise, 100 ABD Doları ile 0,10 ABD Doları arasındaki fark 10 baz puana (10 baz puan) eşdeğerdir."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Seçenekler (Black-Scholes ve Yunanlılar)",
+        "intro": "Opsiyon motorunda platform, iki kar ve zarar (K&Z) eğrisinin grafiğini çizer: Black-Scholes modeli uygulandığında stratejinin vadenin dolduğu günde nasıl biteceği ve bugünkü değerinin ne kadar olduğu (T+0).",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S ve K: Dayanak varlığın cari fiyatı (Spot) ve opsiyonun kullanım fiyatı (Strike).",
+            "Net Yunanlılar: Δ Delta (fiyat duyarlılığı), Γ Gamma (Delta ivmesi), Θ Theta (günlük aşınma) ve ν Vega (volatilite duyarlılığı)."
+          ]
+        },
+        "lead": "Sol raydaki haplarda stratejinizin Yunanlılarını nasıl okuyacaksınız:",
+        "bullets": [
+          {
+            "bold": "Direksiyon ve hızlanma",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "Varlık yükseldiğinde pozitif bir Delta kazanır; Pozitif bir Gama, hareket hızlandıkça daha hızlı kazanç elde etmenizi sağlar."
+          },
+          {
+            "bold": "Zamanın geçişi ve belirsizlik",
+            "code": "Θ Theta / ν Vega",
+            "text": "Theta size pozisyonun her geçen gün kaç dolar kaybettiğini veya kazandığını söyler; Vega, ima edilen oynaklığın %1 artması durumunda ne kadar değişeceğini gösteriyor."
+          }
+        ],
+        "example": "Uzun Straddle (aynı vuruşta Alım ve Satım satın al) Delta'sı 0'a yakındır (yukarı ya da aşağı gitmesi önemli değildir), ancak pozitif Vega'dır ve fiyatın iki denge noktasının (Başabaşlar) ötesine geçmesi gerekir."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Egemen Eğriler (Kelebek ve DV01)",
+        "intro": "Sabit gelir motoru, 42 ülke için 3 aydan 30 yıla kadar getirileri karşılaştırıyor ve hem orta dilimin eğimini (2s10s) hem de eğriliğini (Butterfly 2s5s10s) ve parasal duyarlılığı (DV01) hesaplıyor.",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y oranı: Seçilen ülkenin 2, 5 ve 10 yıllık devlet getirileri.",
+            "Reel 10 Yıllık Oran: 10 yıllık nominal getiri eksi referans oranı veya örtülü enflasyon."
+          ]
+        },
+        "lead": "Tahvil analizinde her gösterge ne işe yarar:",
+        "bullets": [
+          {
+            "bold": "Orta bölümün eğriliği",
+            "code": "Butterfly 2s5s10s",
+            "text": "5 yıllık dilimin 2 yıllık ve 10 yıllık uç noktalara göre pahalı mı yoksa ucuz mu olduğunu ölçer."
+          },
+          {
+            "bold": "Dolar Süre Riski",
+            "code": "DV01 por $1M",
+            "text": "Orandaki %0,01'lik bir hareketle bir milyon dolarlık portföyün tam olarak kaç dolar değiştiğini gösterir."
+          }
+        ],
+        "example": "DV01'i milyon başına 820 $ olan 10 yıllık bir tahvil, piyasa oranlarının 100 baz puan (+%1,00) artması durumunda yaklaşık 82.000 $ kaybedecektir."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Dövizler (Carry) ve Vadeli İşlemler (Roll Getirisi)",
+        "intro": "Para birimlerinde bir parite doğrudan kote edilmediğinde dolar karşısında üçgenleme yapılarak hesaplanır ve kur farkı (Carry) ölçülür. Hammaddelerde yenileme performansı, anlık sözleşme ile 12 aylık sözleşme (Döner Verim) arasında ölçülür.",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Spot Fiyat (Ön M1) – Vadeli Fiyat (M12)",
+          "denominator": "Gelecek Fiyat (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Geriye Dönme (Spot > Gelecek): Günümüzün fiziksel kıtlığı, değişen vadeli işlemlerin pozitif kar yaratmasına neden olur (Dönüş Getirisi > 0).",
+            "Contango (Spot < Future): Depolama maliyetleri vadeli işlemleri daha pahalı hale getirir ve yenilemenin olumsuz bir maliyeti vardır."
+          ]
+        },
+        "lead": "Bir pozisyonu korurken bu durum cüzdanınızı nasıl etkiler:",
+        "bullets": [
+          {
+            "bold": "Para birimlerinde Pozitif Taşıma Ticareti",
+            "code": "Carry Spread > 0 bps",
+            "text": "Kendinizi düşük faizli bir dövizle finanse ederek faizi yüksek bir döviz alırsanız aradaki farkı lehinize tahsil edersiniz."
+          },
+          {
+            "bold": "Hammaddelerde olumlu rüzgar",
+            "code": "Backwardation en verde",
+            "text": "Fiziksel stoklar düşük olduğunda yakındaki sözleşme uzaktaki sözleşmeden daha değerli olur ve yatırımcı sözleşmeyi iptal ederek ekstra getiri elde eder."
+          }
+        ],
+        "example": "1 aylık petrol 72 dolardan ve 12 aylık sözleşme 68 dolardan işlem görüyorsa, piyasa yıllık +%5,88'lik pozitif bir Döndürme Getirisi ile Geriye Dönme sürecindedir."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Toplam Ağırlıklı Not",
+        "intro": "Tüm varlıklar aynı kaynaklardan hareket etmez: Bir şirkette denetlenen mali tablolar (SEC 10-K/10-Q) çok fazla ağırlığa sahipken, kripto pazarında veya para birimlerinde günlük akışlar ve iletişimler daha fazla ağırlığa sahiptir.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: kategoriye göre otomatik ağırlıklandırma (örn. Hisselerde %80 / %20; Ücretlerde %85 / %15).",
+            "Nihai Ölçek: −100 (maksimum kötümserlik) ila +100 (maksimum yükseliş inancı) arasında değişir."
+          ]
+        },
+        "lead": "Üstün görüşte bileşik puan şu şekilde çevrilir:",
+        "bullets": [
+          {
+            "bold": "Boğa duruşu",
+            "code": "BULLISH / Nota > +15",
+            "text": "Belgesel katalizörler ve haber akışı, risk faktörlerinden açıkça daha ağır basmaktadır."
+          },
+          {
+            "bold": "Nötr veya karışık duruş",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Temel bilgiler ile haberler arasındaki güçler bile; Karar vermeden önce 10 faktörün akordeonunu gözden geçirmeniz tavsiye edilir."
+          },
+          {
+            "bold": "Savunmacı veya düşüş eğilimi",
+            "code": "BEARISH / Nota < -15",
+            "text": "Bilançolara ilişkin uyarılar, marjların bozulması veya olumsuz manşetler ağırlıkta."
+          }
+        ],
+        "example": "Bir hisse senedinde (%80 temel / %20 haber) bakiyeler +50 puan ve günün haberleri +20 gösteriyorsa Toplam Ağırlıklı Skor (0,80 × 50) + (0,20 × 20) = +44 olur."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Doğrulanmış Arama (RAG)",
+        "intro": "Yapay zekanın rakamlar icat etmesini önlemek için Document Chat, Generation Augmented Recovery'yi (RAG) kullanır: önce varlığın resmi raporlarındaki ilgili paragrafları arar ve ancak daha sonra kaynağı belirterek yanıtı yazar.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vektör Danışmanlığı (Q) · Vektör Resmi Belgesi (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Vektör Soru ve D: sorunuzun sayısal temsilleri ve resmi parçalar (10-K, FOMC tutanakları, EIA raporları).",
+            "3 Katmanlı Korkuluk: Finansla ilgisi olmayan veya belgesel desteği olmayan sorguları engelleyen filtre."
+          ]
+        },
+        "lead": "Sohbette bir soru sorduğunuzda bu mekanizma neyi garanti eder:",
+        "bullets": [
+          {
+            "bold": "Birincil kaynaklara bağlanma",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Gelir, borç, stoklar veya oranlara ilişkin her veri, o varlığa karşılık gelen düzenleyici belgeden gelir."
+          },
+          {
+            "bold": "Konu dışı soruları durdurun",
+            "code": "Guardrail activo",
+            "text": "Birisi finansal olmayan konulara başvurmaya çalışırsa asistan soruyu reddeder ve enstrümanın analizine odaklanmayı sürdürür."
+          }
+        ],
+        "example": "Bir hisse senedinin risk faktörleri çipine dokunduğunuzda motor, en son 10-K formunun Madde 1A (Risk Faktörleri) bölümünü alır ve kritik noktaları özetler."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Nöronal Skor",
+        "intro": "Tipik bir sözlük genellikle finansal kelimeleri karıştırır (örneğin, \"maliyetlerde düşüş\" veya \"borç azalması\", düşme veya azalma kelimesini kullansalar bile mükemmel bir haberdir). FinBERT, özellikle finansal metinlerle eğitilmiş bir sinir ağıdır.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(Pozitif) ve P(Negatif): model tarafından başlığa atanan varlık için yükseliş veya düşüş eğilimi gösteren olasılıklar.",
+            "24 saatlik eğri: son 24 saatin manşetlerinin üstel hareketli ortalaması."
+          ]
+        },
+        "lead": "Sağdaki zaman çizelgesinde her düğümün oranları nasıl:",
+        "bullets": [
+          {
+            "bold": "Katalizör tutucu",
+            "code": "+20 a +100 en verde",
+            "text": "Tahmini kazançların aşılması, kredi notunun yükseltilmesi veya olumlu faiz indirimleri."
+          },
+          {
+            "bold": "Nötr bilgi kablosu",
+            "code": "-19 a +19 en ámbar",
+            "text": "Aracın yapısal değerlendirmesini değiştirmeyen rutin operasyonel duyurular."
+          },
+          {
+            "bold": "Risk sahibi",
+            "code": "-20 a -100 en rojo",
+            "text": "Düzenleyici uyarılar, marj düşüşleri, grevler veya beklenenden kötü enflasyon verileri."
+          }
+        ],
+        "example": "Model bir başlığa %82 pozitif olasılık, %12 nötr ve %6 negatif olasılık atarsa ​​düğüm yeşil renkte +76 net etki gösterir."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe ve Sortino",
+        "intro": "İlk iki üst kart, sermayenizin her yıl ne kadar büyüdüğünü (CAGR) ve bu büyümenin, katlanmak zorunda olduğunuz şoklara (Sharpe ve Sortino) göre ne kadar verimli olduğunu ölçer.",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Yıllık Portfolio Getirisi (Rp) − Risksiz Oran (Rf)",
+          "denominator": "Yıllık Portfolio Oynaklığı (σp)",
+          "vars": [
+            "Rf (%4,30): Hazine bonosunda risksiz olarak elde edebileceğiniz baz getiri.",
+            "Sortino Oranı: aynı formülü kullanır ancak paydada yalnızca negatif günlerin (düşüşlerin) oynaklığını cezalandırır."
+          ]
+        },
+        "lead": "Portföyünüzün kalitesini bu rakamlarla nasıl değerlendirebilirsiniz:",
+        "bullets": [
+          {
+            "bold": "Verimli portföy",
+            "code": "Sharpe > 1.00",
+            "text": "Risksiz oranın üzerinde elde ettiğiniz aşırı getiri, varsayılan oynaklığın çok üzerindedir."
+          },
+          {
+            "bold": "Olağanüstü performans",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Bu, artışların tutarlı olduğu ve düşüşlerin kontrol altına alındığı, çok iyi çeşitlendirilmiş bir kombinasyonu gösterir."
+          }
+        ],
+        "example": "Portföyünüz yıllık %15,3 getiri sağlıyorsa, risksiz faiz oranı %4,3 ve yıllık oynaklığınız %10, fazla getiriniz %11 ve Sharpe Oranınız 1,10 ise."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR %95, CVaR %99 ve Düşüş",
+        "intro": "Üçüncü ve dördüncü kartlar, kötü ama istatistiksel olarak normal bir günde ne kadar kaybedebileceğinizi (VaR %95), aşırı panik gününde ne kadar kaybedebileceğinizi (CVaR %99) ve bir önceki zirveden en büyük gerilemenin ne olduğunu (Max Drawdown) yanıtlıyor.",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1.645: yılın normal tekerleklerinin %95'ini kapsayan istatistiksel faktör (her 20 günün 19'u).",
+            "CVaR %99 (Beklenen Açık): Piyasa bu eşiği aştığında ve en kötü günlerin ilk %1'ine girdiğinde ortalama kayıp."
+          ]
+        },
+        "lead": "VaR'ye bakmakla Max Drawdown'ye bakmak arasında ne gibi pratik farklar var:",
+        "bullets": [
+          {
+            "bold": "Tek günlük risk",
+            "code": "VaR 95% 1D en USD",
+            "text": "Stratejinizin başarısız olduğu anlamına gelmeden, hesabınızın kötü yöne gidebileceği durumlara karşı sizi psikolojik ve finansal olarak hazırlar."
+          },
+          {
+            "bold": "Olumsuz bir seride direnç",
+            "code": "Max Drawdown 12M",
+            "text": "Tekrar toparlanmadan önce en yüksek noktadan zemine kadar uçtan uca biriken düşüşü ölçer."
+          }
+        ],
+        "example": "Günlük VaR %95'i %1,45 (1.450 $) olan 100.000 $'lık bir portföyde, 20 işlem çarkından 19'unda günlük kayıplarınız 1.450 $'ı aşmayacaktır."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "X-Ray Örtüşmesi (#12)",
+        "intro": "SPY veya QQQ gibi bir ETF satın aldığınızda içerisinde onlarca hisse satın almış oluyorsunuz. Aynı hisselerden bazılarını doğrudan satın aldıysanız, gerçek riskiniz bu iki şeyin toplamıdır.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Doğrudan Ağırlıkᵢ: portföyünüzün doğrudan hisse senedine tahsis edilen yüzdesi i.",
+            "ETF içindeki yüzdeₖ: o şirketin endeks veya fon içindeki resmi ağırlığı k."
+          ]
+        },
+        "lead": "Portföyü kapatmadan önce bu ilk sekmeyi gözden geçirmek neden önemlidir:",
+        "bullets": [
+          {
+            "bold": "Gizli Konsantrasyon Görünürlüğü",
+            "code": "Directo + Indirecto",
+            "text": "Portföyünüzdeki her bir ETF'yi otomatik olarak parçalara ayırır ve size her şirketteki gerçek yüzdeyi gösteren tek bir çubuk gösterir."
+          },
+          {
+            "bold": "Aşırı uyarı",
+            "code": "> 20% en rojo",
+            "text": "Toplam toplam, tek bir isme odaklanmanın ihtiyatlı eşiğini aşarsa, yeniden dengeleyebilmeniz için satır yanar."
+          }
+        ],
+        "example": "Portföyünüzün %15'ini doğrudan NVDA'ye koyarsanız ve ayrıca %30'unu SPY ETF'de tutarsanız (burada NVDA'nin ağırlığı yaklaşık %7'dir), X-Ray, NVDA'ye olan gerçek riskinizin %15 + (%30 × %7) = %17,1 olduğunu ortaya koyar."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alfa Brinson ayrışımı (#2)",
+        "intro": "Portföyünüz referans noktasını geçtiğinde (veya kaybettiğinde), Brinson-Fachler modeli bu farkın tam olarak nereden geldiğini ayırır: Hangi sektörlerde fazla ağırlık vermekte haklı mıydınız yoksa her sektördeki en iyi varlıkları seçerken haklı mıydınız?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Tahsis Etkisi: (Portfolio Ağırlık − Gösterge Ağırlık) × Göstergedeki Sektör Getirisi.",
+            "Seçim Etkisi: Karşılaştırmalı Ağırlık × (Varlıklarınızın Getirisi – Sektörün Getirisi)."
+          ]
+        },
+        "lead": "Üçüncü sekmedeki üç ilişkilendirme çubuğu nasıl okunur:",
+        "bullets": [
+          {
+            "bold": "Makro veya sektör başarısı",
+            "code": "Asignación Sectorial",
+            "text": "En çok yükselen varlık sınıflarına piyasadan daha fazla ağırlık verdiğinizde yeşil pozitiftir."
+          },
+          {
+            "bold": "Varlıkların başarılı bir şekilde hedeflenmesi",
+            "code": "Selección de Activos",
+            "text": "Seçtiğiniz belirli enstrümanların kendi sektör ortalamalarının üzerinde performans göstermesi olumlu bir durumdur."
+          }
+        ],
+        "example": "Portföyünüz S&P 500'yi +%3,20 oranında geçtiyse, bu sekme +%2,10'un daha iyi hisse senetleri seçmekten (Seçim) ve +%1,10'un teknolojiye daha fazla ağırlık vermekten (Tahsis) geldiğini görmenizi sağlar."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Verimli Sınır ve CML",
+        "intro": "Markowitz düzleminde bir portföyün beklenen getirisi, varlık getirisinin ağırlıklı ortalamasıdır ancak varlıkların %100 aynı şekilde hareket etmemesi nedeniyle oynaklığı ortalamanın altındadır.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: i ve j varlıklarına tahsis edilen sermayenin yüzdesi.",
+            "ρᵢⱼ (Korelasyon): her iki varlığın birlikte hareket etme derecesi (−1 ila +1). ρᵢⱼ ne kadar düşük olursa, toplam risk o kadar azalır."
+          ]
+        },
+        "lead": "Grafikteki üç referans neyi temsil ediyor:",
+        "bullets": [
+          {
+            "bold": "Minimum Fark",
+            "code": "Min-Var",
+            "text": "Eğrinin en sol noktasıdır: mümkün olan en düşük oynaklığı sağlayan ağırlıkların tam kombinasyonu."
+          },
+          {
+            "bold": "Máximo Sharpe ve Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Risksiz orandan başlayan çizginin etkin sınıra dokunduğu ve birim risk başına en yüksek karı sunduğu noktadır."
+          }
+        ],
+        "example": "Her biri %20 volatiliteye sahip ancak korelasyonu sıfır (ρ = 0) olan iki varlığı eşit parçalar halinde birleştirirseniz, portföyün volatilitesi %20 değil %14,1'e düşer."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "Active ve Capture'dan VaR",
+        "intro": "Hangi pozisyonun portföye daha fazla risk kattığını bilmek için her bir varlığın marjinal katkısı, ağırlığına ve geri kalanıyla olan korelasyonuna göre ölçülür. Ayrıca yakalama oranları, S&P 500'nin yükseliş ve düşüşlerine karşı asimetriyi ölçer.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Varlığınızın veya Portfolio'nin Boğa (veya Ayı) çarklarında iadesi",
+          "denominator": "S&P 500'nin aynı tekerleklerle dönüşü",
+          "rhs": "× 100",
+          "vars": [
+            "Olumlu Yakalama (> %100) – Piyasa yükseldiğinde endeksten daha fazlasını kazanın.",
+            "Olumsuz Yakalama (<%100): piyasa düştüğünde endeksten daha az düşer (savunma tamponu)."
+          ]
+        },
+        "lead": "Çeyreğin üçüncü sekmesini incelerken aradığınız ideal profil:",
+        "bullets": [
+          {
+            "bold": "pozitif asimetri",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Boğa piyasalarına tam olarak katılın ancak borsa düzeldiğinde sermayeyi koruyun."
+          },
+          {
+            "bold": "Sığınma veya ilişkisiz varlıklar",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Borsadaki düşüşler sırasında sağlam kalma veya yükselme eğilimi gösteren kısa tahviller veya altın gibi araçlar."
+          }
+        ],
+        "example": "S&P 500'nin %10 yükseldiği aylarda portföyünüz %11 (%110 Artış) kazandıysa ve endeks %10 düştüğünde portföyünüz yalnızca %6 düştü (%60 Düşüş), lehinize güçlü bir asimetri var demektir."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normal ve Kriz Korelasyonu",
+        "intro": "Pearson katsayısı (r), iki varlığın birbirine göre nasıl hareket ettiğini -1,00 ile +1,00 arasında ölçer. Portföy yönetimindeki tehlike, bir piyasa çöküşü sırasında riskli varlıklar arasındaki korelasyonun genellikle +1,00'e (bulaşma) doğru fırlamasıdır.",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kovaryans (Varlık i'yi döndürür, Varlık j'yi döndürür)",
+          "denominator": "Varlık Oynaklığı i (σᵢ) × Varlık Oynaklığı j (σⱼ)",
+          "vars": [
+            "r 0'a yakın veya negatif: mükemmel çeşitlendirme (biri düştüğünde diğeri takip etmez).",
+            "Kriz Kuyruğunda r: piyasadaki en kötü çarkların yalnızca %5'ini alarak matrisi yeniden hesaplar."
+          ]
+        },
+        "lead": "Her iki rejimde de 6x6 matrisin renkleri nasıl okunur:",
+        "bullets": [
+          {
+            "bold": "Gerçek çeşitlilik",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Her iki varlık da farklı ekonomik etkenlere yanıt verir ve birbirini telafi eder."
+          },
+          {
+            "bold": "Konsantrasyon veya bulaşma",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Pratik olarak blok halinde hareket ederler; Her ikisine de sahip olmak kötü bir günde düşmelerinizi azaltmaz."
+          }
+        ],
+        "example": "Farklı sektörlerden iki hisse senedi normal bir yılda 0,42 gibi orta düzeyde bir korelasyona sahip olabilir ama Kriz Kuyruğu butonunu aktif ettiğinizde panik halinde birlikte satıldığı için 0,81'e yükseldiğini göreceksiniz."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D Şok (Kurlar × Hisse Senedi Piyasası)",
+        "intro": "2D matris, faiz oranlarındaki bir hareketin etkisini (Sabit Gelir Süresi ve Oran Duyarlılığı aracılığıyla) S&P 500 endeksindeki düşüş veya artışla (Özsermaye Beta yoluyla) eşzamanlı olarak birleştirir.",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: yatay eksende borsa değişim senaryosu (−%20 ila +%10).",
+            "Δ Oranlar: dikey eksendeki baz noktalarda faiz oranlarındaki değişim senaryosu (−100 ila +200 baz puan)."
+          ]
+        },
+        "lead": "Tablodaki iki eksenin kesişmesinin amacı nedir:",
+        "bullets": [
+          {
+            "bold": "Stagflasyon veya faiz artırımı senaryosu",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Hisse senetlerinin ve uzun tahvillerin aynı anda zarar gördüğü 2022'de olduğu gibi."
+          },
+          {
+            "bold": "Klasik barınak senaryosu",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Düşük oranların Hazine tahvillerinin fiyatlarını yükselttiği ve hisse senetlerinin düşüşünü hafiflettiği yerler."
+          }
+        ],
+        "example": "US10Y veya TLT gibi uzun bir tahvili filtreleyerek, tabloda oranlar düştüğünde (-100 baz puan) nasıl değer kazandığını, S&P 500'nin aynı gün düşmesi durumunda paraşüt görevi gördüğünü görebilirsiniz."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markov Rejimleri (#11)",
+        "intro": "Markov zinciri, ekonomiyi dört olası durum (Sakin Boğa, Dalgalı Boğa, Enflasyon/Oranlar ve Kriz) arasında atlayan bir sistem olarak modeller ve birinden diğerine geçme olasılığını hesaplar.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Ana köşegen (i = j): Mevcut rejimin değişmeden kalma olasılığı.",
+            "Köşegen dışı (i ≠ j): yeni bir pazar ortamına dönme olasılığı."
+          ]
+        },
+        "lead": "İkinci sekmedeki geçiş matrisinden nasıl yararlanılır:",
+        "bullets": [
+          {
+            "bold": "Mevcut döngünün kalıcılığı",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "Sakin rejimler genellikle yüksek kalıcılığa (>%75) sahiptir ve trend pozisyonlarının korunmasına olanak tanır."
+          },
+          {
+            "bold": "Rotasyon Erken Uyarısı",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Değişken durumlara geçiş olasılığı arttığında kaldıracın azaltılması veya riskten korunmanın etkinleştirilmesi tavsiye edilir."
+          }
+        ],
+        "example": "Bugün piyasa Dalgalı Boğa rejimindeyse ve satır %62 kalıcılığı, %20 Boğa Sakinliğine dönüşü ve %18 Stres/Kriz durumuna gidişi işaret ediyorsa, neredeyse 5 senaryodan 1'inin düzeltmeyle sonuçlandığını biliyorsunuz."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo Projeksiyon (10.000 Yol)",
+        "intro": "Simülatör, portföyünüzün beklenen getirisine ve mevcut oynaklığına bağlı olarak stokastik Geometrik Brownian Hareketi modelini uygulayarak her gün 10.000 olası gelecek yörünge oluşturur.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ ve σ: mevcut portföyünüzün beklenen yıllık getirisi ve yıllık değişkenliği.",
+            "Z: ufuk boyunca 10.000 kez çizilmiş standart normal rastgele değişken (6M, 12M veya 24M)."
+          ]
+        },
+        "lead": "Bu 10.000 simülasyondan grafiğin üç ana eğrisi çıkarıldı:",
+        "bullets": [
+          {
+            "bold": "Olumlu senaryo",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "En iyimser senaryoların yalnızca yüzde 5'inin aştığı seviye."
+          },
+          {
+            "bold": "Beklenen merkezi yörünge",
+            "code": "Mediana P50",
+            "text": "Simülasyonların yarısının yukarıda, diğer yarısının aşağıda olduğu tipik sonuç."
+          },
+          {
+            "bold": "Dönem stresi senaryosu",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "Olumsuz kat: Simüle edilen yolların %95'inde portföyünüz bu çizginin üzerinde biter."
+          }
+        ],
+        "example": "100 bazında 12 aylık bir ufukta, P50 116 ve P05 94 okursa, temel beklentiniz +%16 kazanmaktır ve çok olumsuz bir yılda -%6'ya yakın bir riske girersiniz."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly Kriteri (#14)",
+        "intro": "Kelly Kriteri, başarı olasılığınızı (Kazanma Oranı) bildiğinizde sermayenizin yüzde kaçını bir operasyona ayırmanız gerektiğini ve başarılı olduğunuzda ne kadar kazandığınıza karşı başarısız olduğunuzda ne kadar kaybettiğinizi (Getiri Oranı) bilimsel olarak yanıtlar.",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) - q",
+          "denominator": "b",
+          "vars": [
+            "p ve q: kazanma olasılığı (p) ve kaybetme olasılığı (q = 1 − p).",
+            "b (Getiri Oranı): ortalama kârın ortalama zarara bölünmesi (örneğin, riske atılan her 1 ABD doları için 2 ABD doları kazanç, b = 2 anlamına gelir)."
+          ]
+        },
+        "lead": "Profesyonel yöneticiler neden Half-Kelly (0,5×) varyantını kullanıyor:",
+        "bullets": [
+          {
+            "bold": "Kelly Tamamlandı",
+            "code": "Full Kelly 1.0×",
+            "text": "Uzun vadeli matematiksel büyümeyi en üst düzeye çıkarır, ancak art arda bir hata dizisi varsa çok keskin dalgalanmalar yaratır."
+          },
+          {
+            "bold": "Önerilen Yarım Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "Önerilen yüzdenin yarısını kullanarak potansiyel büyümenin %75'ini yakalarsınız ancak oynaklığı yarı yarıya azaltırsınız."
+          }
+        ],
+        "example": "Bir strateji zamanın %55'ini tutturursa (p = 0,55, q = 0,45) ve 2'ye 1 öderse (b = 2), tam Kelly (0,55×2 − 0,45) / 2 = %32,5 verir ve ihtiyatlı Half-Kelly %16,25 tahsis edilmesini önerir."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "OTM Kalkanını (#6) koyun",
+        "intro": "Nakit dışı satış seçeneği (örneğin, S&P 500'nin mevcut fiyatının %5 altında) tıpkı sigortadan düşülebilir bir şey gibi çalışır: küçük, sabit bir maliyeti (primi) vardır, ancak piyasa %20 veya %30 düşerse değeri dışbükey olarak çarpılır ve portföy zararlarınızı dengeler.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Yıllık Maliyet (Carry Drag): Piyasanın düşmemesi durumunda sigortayı yenilemenin maliyetinin yıllık yüzdesi.",
+            "Çarpma Koruması (-%20): Ciddi bir çökme sırasında Put sözleşmesiyle geri kazanılan dolar."
+          ]
+        },
+        "lead": "İlk sekmedeki simülatör seçenekleri nasıl karşılaştırılır:",
+        "bullets": [
+          {
+            "bold": "Doğrudan endeks sigortası",
+            "code": "SPY Put 5% OTM",
+            "text": "Makul bir yıllık maliyet karşılığında maksimum zararı %5'lik bir düşüşle sınırlar."
+          },
+          {
+            "bold": "Finanse edilen veya oynaklık kapsamı",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "Yaka, bir Çağrı satarak maliyeti düşürür; Piyasada panik tetiklendiğinde VIX Çağrısı lehine patlıyor."
+          }
+        ],
+        "example": "100.000 $'lık bir portföyü SPY Put 5% OTM ile korumanın maliyeti yıllık %1,1 (1.100 $) ise, ancak -%20'lik bir çöküş durumunda portföyünüzün düşüşünü yarıdan daha aza indirir, net tasarruf 7.000 $'ı aşar."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Marj ve Marj Çağrısına Uzaklık (#13)",
+        "intro": "Türev ürünler veya kaldıraçla işlem yaptığınızda, komisyoncu, pozisyonun toplam değeri (Bakım Marjı) üzerinden minimum bir özsermaye yüzdesinin korunmasını talep eder. Eğer bir düşüş sermayenizi bu tabanın altına düşürürse, bir Teminat Çağrısı tetiklenir.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Borç veya Finansman Bakiyesi",
+          "denominator": "1 − % Sürdürme Marjı (Reg-T)",
+          "vars": [
+            "Brüt Risk: açık pozisyonların toplam toplamı özsermayeye bölünür (örneğin 1,18×).",
+            "Marj Çağrısına Uzaklık (%): eşiğe ulaşmadan önce portföyün hala desteklediği düşüş yüzdesi."
+          ]
+        },
+        "lead": "İzleme çubuğundaki güvenlik düzeyleri:",
+        "bullets": [
+          {
+            "bold": "Geniş açıklık bölgesi",
+            "code": "Distancia > 30% en verde",
+            "text": "Kaldıraç düşüktür ve portföy ciddi bir krizi bile zorunlu satışlar olmadan karşılayabilir."
+          },
+          {
+            "bold": "dikkat bölgesi",
+            "code": "Distancia < 15% en rojo",
+            "text": "Orta düzeyde bir piyasa düzeltmesi, serbest teminatları tüketecek ve pozisyonları en kötü anda tasfiye edilmeye zorlayacaktır."
+          }
+        ],
+        "example": "1,18x orta düzeyde kaldıraç ve %22'lik kullanılmış sürdürme marjı ile portföyünüz, herhangi bir teminat talebinden önce %38'den fazla olumsuzluk güvenlik yastığına sahiptir."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "3 Sütun Komitesinin Kuralları",
+        "intro": "Hiçbir ani kararın portföyün hayatta kalmasını tehlikeye atmaması için Komite, her emri teknik notu, temel notu ve iki katı, tartışılamaz risk kontrol kuralını birleştirerek değerlendirir.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap %20 NAV: hiçbir bireysel varlık, toplam varlıkların beşte birinden fazlasına yoğunlaşamaz.",
+            "Anormallik Duruşu (P-06 ≥ 0,65): Varlık istatistiksel bozulmaya girerse sistem maksimum riski %5'e düşürür."
+          ]
+        },
+        "lead": "Kararda ve İcra Kitabında her eyalet ne anlama geliyor:",
+        "bullets": [
+          {
+            "bold": "Sipariş kısıtlama olmadan onaylandı",
+            "code": "APROBADO en verde",
+            "text": "Üç sütun olumlu bir şekilde örtüşüyor ve pozisyon büyüklüğü tüm konsantrasyon ve likidite limitlerine uyuyor."
+          },
+          {
+            "bold": "Korkuluk tarafından ayarlanan sıra",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Bir bilet %20 sınırını aştığında veya bir anormalliğin ortasında yoğun bir şekilde satın alınmaya çalışıldığında, korkuluk aşırılık konusunda uyarıda bulunuyor."
+          }
+        ],
+        "example": "Tek bir hisse senedini portföyünüzün %26'sına çıkaracak bir satın alma simülasyonu yapmaya çalışıyorsanız, Sütun 3 (Risk ve Boyutlandırma Korkuluğu), konsantrasyon uyarısını işaretler, böylece bunu %20'nin altına ayarlarsınız."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Verimlilik Walk-Forward (WFE)",
+        "intro": "Bir stratejinin geçmişte iyi görünmek için uydurulmadığını (fazla uyum) kontrol etmek için Walk-Forward testi, stratejinin tasarım dönemindeki performansını (In-Sample) daha önce hiç görülmemiş verilerdeki (Out-of-Sample) performansıyla karşılaştırır.",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Yıllık Getiri Out-of-Sample (Saf Doğrulama)",
+          "denominator": "Yıllık Getiri In-Sample (Eğitim)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): stratejinin ağırlıklarını ve kurallarını kalibre etmek için kullanılan tarihsel bölüm.",
+            "Out-of-Sample (OOS): stratejinin gerçek koşullarda parametrelerine dokunmadan test edildiği sonraki bölüm."
+          ]
+        },
+        "lead": "Kantitatif endüstri WFE yüzdesini nasıl değerlendiriyor:",
+        "bullets": [
+          {
+            "bold": "Sağlam ve tutarlı strateji",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Yeni piyasa koşullarıyla karşı karşıya kaldığında kar elde etme yeteneğinin büyük çoğunluğunu koruyor."
+          },
+          {
+            "bold": "Kırılgan veya aşırı uyum stratejisi",
+            "code": "WFE < 50% en rojo",
+            "text": "Geçmişteki teoride işe yaradı ama gerçekte etkinliğini yitirdi; Gerçek parayla yapılması tavsiye edilmez."
+          }
+        ],
+        "example": "Bir strateji, tasarım aşamasında (In-Sample) yıllık bazda %20 getiri sağladıysa ve sonraki fiili test aşamasında (Out-of-Sample) yıllık bazda %18,8 getiri sağladıysa, WFE verimliliği (18,8 / 20) = %94,0 olur."
+      }
+    ]
+  }
+}

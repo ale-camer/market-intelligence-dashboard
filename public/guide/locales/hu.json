@@ -1,0 +1,2015 @@
+{
+  "ui": {
+    "collapsedView": "Összecsukott nézet",
+    "mainView": "Fő nézet",
+    "expandedView": "Kibontott nézet",
+    "inThisSection": "Ebben a részben a következőket találja:",
+    "deepDive": "Mély merülés",
+    "previous": "Előző",
+    "next": "Következő",
+    "mathFormula": "Matematikai képlet",
+    "practicalExample": "Gyakorlati példa:"
+  },
+  "treePages": [
+    {
+      "id": "home",
+      "label": "Home",
+      "groupLabel": null,
+      "isPage": true,
+      "introParagraphs": [
+        "Ha megnyit egy hagyományos pénzügyi platformot, az első dolog, ami általában megjelenik, az mindenhol diagramok, villogó táblázatok és menük tucatja. Hol kezdje, ha csak a piacot szeretné ellenőrizni vagy portfóliója állapotát?",
+        "A Home képernyőt pontosan úgy tervezték, hogy elkerülje ezt a kezdeti zajt. Tiszta és tiszta térrel fogadja Önt, ahol minden vezérlés két rögzített sávban összpontosul: az egyik fent a munkába lépéshez, a másik pedig lent, hogy az Ön számára megfelelő platformot konfigurálja."
+      ],
+      "intro": "A Home képernyő tiszta és tiszta térrel fogadja Önt, ahol minden vezérlés két rögzített sávban összpontosul: az egyik fent a munkába lépéshez, a másik pedig lent, hogy az Ön számára megfelelő platformot konfigurálja.",
+      "sections": [
+        {
+          "id": "home-canvas",
+          "label": "Home",
+          "summary": "Egyértelmű kiindulópont, amely piacelemzésre és portfóliókezelésre osztja munkáját.",
+          "paragraphs": [
+            "Képzelje el, hogy reggel először kezdi el a kereskedést. Néha érdemes megnézni, hogy mely részvények, kötvények vagy valuták mozognak leginkább; Más esetekben azonnal áttekintheti portfóliójának kockázatát, vagy szimulálhat egy vásárlást, mielőtt végrehajtaná azt.",
+            "Hogyan lehet elkerülni, hogy a két dolog keveredjen ugyanazon a túlterhelt képernyőn? A borító egyértelműen elválasztja ezt az utat az első másodperctől:"
+          ],
+          "lead": "Hogyan lehet elkerülni, hogy a két dolog keveredjen ugyanazon a túlterhelt képernyőn? A borító egyértelműen elválasztja ezt az utat az első másodperctől:",
+          "bullets": [
+            {
+              "bold": "Tér zavaró tényezők nélkül",
+              "code": "Donde se decodifican los mercados",
+              "text": "Amikor belép, nincsenek megnyitott táblázatok vagy riasztások, amelyek arra kényszerítenék, hogy bezárja az ablakokat az indulás előtt; Kiválaszthatja, hogy melyik modult szeretné megnyitni."
+            },
+            {
+              "bold": "Két tiszta út",
+              "code": "Markets / Portfolio",
+              "text": "Az alkalmazás teljes folyamata két fő szakaszra oszlik: először a piaci lehetőségek felkutatása, majd a portfólió felépítése vagy tesztelése."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-header",
+          "label": "Header",
+          "summary": "A felső sáv, amellyel egyetlen kattintással ugorhat az otthon, a piacok és a portfóliója között.",
+          "paragraphs": [
+            "Miközben elmélyül egy eszköz részleteiben vagy teszteli a portfólió változásait, nagyon könnyen elveszíti a nyomát, hogy hol volt. Hogyan juthat el a tőzsdei diagram megtekintésétől a portfólió áttekintéséig anélkül, hogy almenükön menne keresztül?",
+            "A felső sáv mindig a képernyőn marad, és közvetlen hozzáférést biztosít a három fő ponthoz:"
+          ],
+          "lead": "A felső sáv mindig a képernyőn marad, és közvetlen hozzáférést biztosít a három fő ponthoz:",
+          "bullets": [
+            {
+              "bold": "Home",
+              "code": "λ",
+              "text": "Bárhol is van, a bal oldali szimbólumra kattintva azonnal visszatér a főoldalra."
+            },
+            {
+              "bold": "Markets",
+              "code": "Markets",
+              "text": "Ez az Ön kutatási területe. Itt szűrheti a 213 elérhető eszközt, követheti az élő árajánlatokat, elemezheti a technikai diagramokat, és megtekintheti a mérleg-összefoglalókat vagy híreket."
+            },
+            {
+              "bold": "Pénztárca",
+              "code": "Portfolio",
+              "text": "Ez a te döntési táblázatod. Itt meghatározhatja, hogy tőkéjének hány százaléka kerüljön az egyes eszközökre, mérje meg, mennyit veszíthet egy válsághelyzetben, és új műveleteket szimulálhat, mielőtt pénzt kockáztatna."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-footer",
+          "label": "Footer",
+          "summary": "A lábléc a rendszer állapotának ellenőrzéséhez, visszatéréshez ehhez az útmutatóhoz vagy az elrendezés módosításához.",
+          "paragraphs": [
+            "Az adatok valós idejű elemzése során bármikor felmerülhetnek működési kérdések: helyesen érkeznek-e az árajánlatok? Mit jelentett a pontjelző? Csökkenthetem a képernyő fényerejét?",
+            "A lábléc az összes támogatási és konfigurációs eszközt csoportosítja, hogy mindig kéznél legyenek anélkül, hogy a képernyő közepét akadályoznák:"
+          ],
+          "lead": "A lábléc az összes támogatási és konfigurációs eszközt csoportosítja, hogy mindig kéznél legyenek anélkül, hogy a képernyő közepét akadályoznák:",
+          "bullets": [
+            {
+              "bold": "System állapot",
+              "code": "System",
+              "text": "A zöld pont egy pillantással megerősíti, hogy minden rendben van. Megnyitásakor részletesen láthatja a szerverek állapotát, az adatbázisokat és a válaszsebességet."
+            },
+            {
+              "bold": "Felhasználó Guide",
+              "code": "Guide",
+              "text": "Nyissa meg ezt az interaktív kézikönyvet bármikor, hogy megtudja, hogyan kell használni a képernyőt, vagy mélyebbre áshat a számításaiban."
+            },
+            {
+              "bold": "Vizuális beállítások",
+              "code": "Idioma / Palette",
+              "text": "A jobb oldalon található kezelőszervek az egész alkalmazás nyelvének megváltoztatásához vagy a háttérvilágítás beállításához."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-langs",
+          "label": "Nyelvek",
+          "summary": "A keresőmotor, amely a teljes platformot a helyszínen lefordítja az Ön nyelvére.",
+          "paragraphs": [
+            "A pénzügyi feltételeknek és a piaci jelentéseknek már megvan a maguk összetettsége anélkül, hogy nyelvi akadályt hoznának létre. Ha inkább spanyolul, angolul vagy bármely más nyelven szeretné elolvasni a magyarázatokat, azonnal módosíthatja.",
+            "Így működik a választó a jobb alsó sarokban:"
+          ],
+          "lead": "Így működik a választó a jobb alsó sarokban:",
+          "bullets": [
+            {
+              "bold": "azonnali keresés",
+              "code": "Select Language",
+              "text": "Az aktuális zászlóra kattintva megnyílik egy ablak, ahol 56 nyelv közül választhat a nevének vagy kódjának beírásával (például ES, EN, PT, FR vagy DE)."
+            },
+            {
+              "bold": "Automatikus memória",
+              "code": "mid_lang_v1",
+              "text": "A teljes képernyőt azonnal lefordítja az oldal újratöltése nélkül, és a választása mentésre kerül a következő alkalommal, amikor belép."
+            }
+          ],
+          "hasTechnicalModal": false
+        },
+        {
+          "id": "home-palettes",
+          "label": "Palette",
+          "summary": "Vizuális témák a képernyő kontrasztjának módosításához a pénzügyi színek megváltoztatása nélkül.",
+          "paragraphs": [
+            "Ha több órát tölt a grafikák előtt olyan kontraszttal, amely nem alkalmazkodik a környezet fényéhez, az elfárasztja a szemét. A pénzügyi platform színeinek megváltoztatása azonban klasszikus veszélyt rejt magában: elveszíti a referenciát, hogy mi megy fel és mi csökken.",
+            "Ennek megoldására a témaválasztó elválasztja a környezet színét az adatszíntől:"
+          ],
+          "lead": "Ennek megoldására a témaválasztó elválasztja a környezet színét az adatszíntől:",
+          "bullets": [
+            {
+              "bold": "Öt olvasási környezet",
+              "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
+              "text": "Minden kattintással válthat a tiszta fekete, kékes vagy meleg háttér között, amíg meg nem találja a szemének legkényelmesebbet."
+            },
+            {
+              "bold": "Érintett pénzügyi szemantika",
+              "code": "Verde #10b981 / Rojo #f43f5e",
+              "text": "Nem számít, milyen témát váltasz, a piac univerzális szabálya soha nem változik: a zöld mindig emelkedést vagy nyereséget jelent, a piros pedig mindig zuhanást, veszteséget vagy kockázati figyelmeztetést."
+            }
+          ],
+          "hasTechnicalModal": false
+        }
+      ]
+    },
+    {
+      "id": "markets",
+      "label": "Markets",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "mkt-screener",
+          "label": "Screener",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Képzelje el, hogy több mint kétszáz kötvény, részvény, index, deviza és nyersanyag között szeretné felismerni, hol vannak a nap legjobb lehetőségei. Ha egyenként nyitnád meg a grafikonokat, a piac bezárna, mielőtt befejeznéd a nézegetést.",
+            "A Screener a platform mind a 213 eszközét egyetlen élő műszerfalba egyesíti. Lehetővé teszi, hogy pillanatok alatt szűrjön piac szerint, felmérje a nap általános pulzusát, és négy különböző mód közül választhat, hogy megtekinthesse, mely eszközök teljesítenek."
+          ],
+          "intro": "A Screener a platform mind a 213 eszközét egyetlen élő műszerfalba helyezi, így a piac alapján szűrhet, és egy pillantással felismerheti a lehetőségeket.",
+          "sections": [
+            {
+              "id": "scr-categories",
+              "label": "Kategóriák",
+              "summary": "A legjobb szűrők egyetlen eszközosztályra vagy a figyelőlistára összpontosítva.",
+              "paragraphs": [
+                "Nincs értelme a kincstári kötvényeket ugyanazokkal a mérőszámokkal elemezni, mint egy technológiai részvényt vagy olajat. Ha mindent összekever ugyanazon a listán, akkor a körtét az almával hasonlítja össze.",
+                "Hogyan szűkítheti le a képernyőt pontosan arra a piacra, amely ma érdekli? A felső sáv lehetővé teszi az univerzumot egyetlen kattintással szétválasztani:"
+              ],
+              "lead": "A felső sáv lehetővé teszi az univerzumot egyetlen kattintással szétválasztani:",
+              "bullets": [
+                {
+                  "bold": "Teljes kép",
+                  "code": "Todos",
+                  "text": "Ez a 213 eszközt együtt mutatja és kereskedési mennyiség szerint rendezve, így láthatja, hol folyik a legtöbb pénz világszerte."
+                },
+                {
+                  "bold": "Személyes nyomon követés",
+                  "code": "★ Watchlist",
+                  "text": "Csak azokat az elemeket különítse el, amelyeket kedvencként jelölt meg, hogy figyelmesen, zavaró tényezők nélkül figyelhesse őket."
+                },
+                {
+                  "bold": "Tíz speciális piac",
+                  "code": "Bonos, Cash, Crypto, Derivados, FX, Acciones, ETFs, Índices, Materias Primas y Tasas",
+                  "text": "Ezen kategóriák bármelyikének kiválasztásával a teljes képernyő a mutatóit és a táblázat oszlopait az adott szektor szabályaihoz igazítja."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Részlet a katalógusban szereplő 213 eszköz osztályozásáról, és milyen mennyiségi és likviditási kritériumoknak felelnek meg."
+            },
+            {
+              "id": "scr-pulse",
+              "label": "24 órás pulzus",
+              "summary": "Az első négy kártya, amely megmondja, hogy a piac nyugodt, eufórikus vagy stressz alatt van.",
+              "paragraphs": [
+                "Konkrét eszköz vásárlása vagy eladása előtt célszerű tudni, hogy milyen éghajlaton mozog az egész. Ez egy normális volumennap, vagy egyszerre jön be az intézményi pénz? Minden eszköz növekszik, vagy vannak feszültség jelei?",
+                "A szűrők alatti négy kártya néhány másodperc alatt megadja az általános olvasatot:"
+              ],
+              "lead": "A szűrők alatti négy kártya néhány másodperc alatt megadja az általános olvasatot:",
+              "bullets": [
+                {
+                  "bold": "A nap összes tevékenysége",
+                  "code": "Volumen Agregado 24h",
+                  "text": "Összeadja az aktív kategóriában kereskedett dollármilliárdokat, és megmutatja, hogy ma több vagy kevesebb a részvétel, mint tegnap."
+                },
+                {
+                  "bold": "Átlagos csoporterő",
+                  "code": "AVG RSI 14",
+                  "text": "Egy körmérőben összegzi, hogy a szektor árai vételi nyomással (zöld, 50 felett) vagy eladási nyomással (piros, 50 alatt) jönnek-e."
+                },
+                {
+                  "bold": "Normál hőmérő",
+                  "code": "Régimen Normal P-06",
+                  "text": "Kiszámolja, hogy az eszközök hány százaléka mozog a megszokott paramétereken belül, és vezeték- és név szerint megmondja, hogy melyik a nap legnagyobb anomáliájával rendelkező eszköz."
+                },
+                {
+                  "bold": "Szokatlan pénzbeáramlás",
+                  "code": "Top Desvío Volumen 20d",
+                  "text": "Kiemelkedik annak a három eszköznek a dobogója, amelyek az elmúlt havi átlaghoz képest ma kiugróan nagy volumenben működnek."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Részletes magyarázat az átlagos RSI, a Z-Score térfogat és a P-06 anomáliadetektor kiszámításának módjáról."
+            },
+            {
+              "id": "scr-table",
+              "label": "táblázat",
+              "summary": "Az interaktív lista gyors kereséssel, kedvencekkel és az egyes piacokhoz igazodó oszlopokkal.",
+              "paragraphs": [
+                "Ha már tudja, melyik szektort szeretné megnézni, és soronként össze kell hasonlítania bizonyos számokat, a táblázat nézet a fő eszköze.",
+                "Ahelyett, hogy egy merev táblázatot mutatna meg, amely mindenki számára azonos, a táblázat igazodik ahhoz, amit keres:"
+              ],
+              "lead": "Ahelyett, hogy egy merev táblázatot mutatna meg, amely mindenki számára azonos, a táblázat igazodik ahhoz, amit keres:",
+              "bullets": [
+                {
+                  "bold": "Keresőmotor és kedvencek csillaga",
+                  "code": "Buscar activo / ★",
+                  "text": "Az első oszlopfejlécbe beírhat bármilyen szimbólumot vagy nevet, hogy közvetlenül az adott elemre ugorjon, vagy koppintson a bal oldalon lévő csillagra, hogy elmentse a Watchlist készülékére."
+                },
+                {
+                  "bold": "Intelligens oszlopok kategória szerint",
+                  "code": "2 métricas exclusivas por categoría",
+                  "text": "Ha a Részvényeket szűri, akkor az értékelési többszörösek és árrések jelennek meg; Ha a Kötvények vagy Kamatláb lehetőséget választja, akkor láthatja a görbe meredekségét és a kamatláb érzékenységét; Ha megnézi a származékokat, implikált volatilitást lát."
+                },
+                {
+                  "bold": "Ugorjon közvetlenül a mély elemzéshez",
+                  "code": "Click en cualquier fila",
+                  "text": "Egyszerűen kattintson a lista bármely elemére a műszaki diagramok és alapvető jelentések teljes állomásának megnyitásához."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Azon mutatók listája, amelyeket a táblázat a 10 eszközkategória mindegyikéhez megjelenít."
+            },
+            {
+              "id": "scr-orbital",
+              "label": "Orbital",
+              "summary": "Vizuális radar, amely egy pillantással érzékeli, hogy mely eszközök távolodnak el történelmi átlaguktól.",
+              "paragraphs": [
+                "Kétszáz sornyi szám elolvasása azt okozhatja, hogy kihagy egy olyan eszközt, amely robbanásszerűen mozogni kezd. Hogyan lehet azonnal felismerni, hogy melyik műszer tér el a normától?",
+                "A Orbital nézet az asztalt radarrá alakítja, három koncentrikus gyűrűvel:"
+              ],
+              "lead": "A Orbital nézet az asztalt radarrá alakítja, három koncentrikus gyűrűvel:",
+              "bullets": [
+                {
+                  "bold": "A kritériumok megválasztása",
+                  "code": "INDICADOR",
+                  "text": "Ön dönti el, hogy mit mér a radar: statisztikai anomáliákat, mennyiségi ugrásokat, árerősséget (RSI), volatilitást vagy nyereséget az elmúlt 24 órában."
+                },
+                {
+                  "bold": "Távolság és szín szerinti olvasás",
+                  "code": "Nodos verdes y rojos",
+                  "text": "Minél közelebb vagy távolabb van egy pont a mutató szerint, és minél intenzívebb a zöld vagy piros színe, annál relevánsabb a mozgása a saját történetéhez képest."
+                },
+                {
+                  "bold": "Ellenőrzés képernyőcsere nélkül",
+                  "code": "Panel lateral en vivo",
+                  "text": "Ha a kurzort bármely radarcsomóponton nyugtatja, a jobb oldalon megjelenik annak ára, tiszta napközbeni diagramja és három kockázati mutatója."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hogyan történik az egyes eszközök helyzetének kiszámítása a radargyűrűkben a történelmi eltérések alapján."
+            },
+            {
+              "id": "scr-heatmap",
+              "label": "Hőtérkép",
+              "summary": "Az arányos blokkok mozaikja a győztesek és a vesztesek azonosításához egy másodperc alatt.",
+              "paragraphs": [
+                "Van, amikor csak egy gyors kérdésre szeretne válaszolni: ki vezeti ma az emelkedést, és ki húzza le a piacot?",
+                "A Heat Map az aktív szűrő tíz legfontosabb elemét arányos blokkokba rendezi, így nem kell egyetlen táblázatot sem olvasnia:"
+              ],
+              "lead": "A Heat Map az aktív szűrő tíz legfelső elemét arányos blokkokba rendezi:",
+              "bullets": [
+                {
+                  "bold": "Méret fontosság szerint",
+                  "code": "Puestos #1 a #10",
+                  "text": "A kiválasztott mérőszámon belül a legnagyobb súlyú műszerek a bal oldali oszlopokat foglalják el a legnagyobb dobozokkal."
+                },
+                {
+                  "bold": "Színintenzitás",
+                  "code": "8 tonos de verde y rojo",
+                  "text": "A blokk hangja azonnal megmondja a mozgás nagyságát, a mérsékelt változatoktól a hirtelen emelkedésekig vagy esésekig."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "scr-maintools",
+              "label": "Main Tools",
+              "summary": "Három lépésből álló parancsikon a haladó árfolyamokhoz, opciókhoz, forex- és határidős kalkulátorokhoz.",
+              "paragraphs": [
+                "A hagyományos árgrafikonokon kívül a platform négy speciális motort tartalmaz fix kamatozáshoz, opciókhoz, devizakeresztekhez és árugörbékhez. Hogyan juthat el hozzájuk anélkül, hogy elemenként keresne?",
+                "Ez a nézet balról jobbra vezet, három nagyon egyszerű oszlopban:"
+              ],
+              "lead": "Ez a nézet balról jobbra vezet, három nagyon egyszerű oszlopban:",
+              "bullets": [
+                {
+                  "bold": "Először a családot választod",
+                  "code": "1. Clases de Activo",
+                  "text": "Kiválaszthatja, hogy kamatokkal és kötvényekkel, részvények/indexek/kriptoopciókkal, valutákkal vagy nyersanyagokkal kíván-e dolgozni."
+                },
+                {
+                  "bold": "Utána nézd meg mit csinál a motor",
+                  "code": "2. Instrumento Principal & Explicación",
+                  "text": "Középen világos összefoglalót olvashat arról, hogy mit mutat az eszköz, és hogyan tájékozódjon a tengelyei mentén."
+                },
+                {
+                  "bold": "Végül válassza ki az aktívat, és nyissa meg",
+                  "code": "3. Vista Previa & Lanzador",
+                  "text": "Megnézheti a diagram élő előnézetét, megkeresheti az adott család kompatibilis eszközeit, és egyetlen kattintással megnyithatja a teljes állomást."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "mkt-analytics",
+          "label": "Analytics",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "Ha talált egy érdekes elemet a Screener-ben, ideje közelebbről is megnézni. Emelkedő trendben van, vagy kifogyott? Megvered a versenytársakat? Mit mond a volumen és a származékos piac?",
+            "A Analytics állomás az adott eszköz összes műszaki, összehasonlító és mennyiségi elemzését egyetlen képernyőn koncentrálja. Fent található az általános összefoglaló, a bal oldalon pedig négy lencse az elemzési szög megváltoztatásához anélkül, hogy a grafikont szem elől tévesztené."
+          ],
+          "intro": "A Analytics állomás egyetlen képernyőn koncentrálja az egyes eszközök műszaki, összehasonlító, áramláselemzését és 3D/2D motorjait.",
+          "sections": [
+            {
+              "id": "ana-hero",
+              "label": "Header",
+              "summary": "A felső irányítópult az eszközök közötti váltáshoz, az időkeret kiválasztásához és az öt legfontosabb mutató megtekintéséhez.",
+              "paragraphs": [
+                "Amikor egy vagyontárgyat tanulmányoz, általában váltogatja a mai rövid távú és az elmúlt hónapok filmjét, vagy akár egy másik hasonló szimbólumra is áttér. Hogyan teheti meg mindezt anélkül, hogy visszamenne?",
+                "A felső fejléc a navigációs vezérlőket és a műszer gyorsfülét tartalmazza:"
+              ],
+              "lead": "A felső fejléc a navigációs vezérlőket és a műszer gyorsfülét tartalmazza:",
+              "bullets": [
+                {
+                  "bold": "Eszköz módosítása vagy visszatérés a listához",
+                  "code": "← Todos los Mercados / Cambiar activo",
+                  "text": "A bal felső sarokban visszatérhet a Screener-hez, vagy beírhatja bármely más hangszer nevét, hogy a helyszínen váltson grafikonokat."
+                },
+                {
+                  "bold": "Kilenc időablak",
+                  "code": "1m, 5m, 1H, 1D, 1W, 1M, 3M, 1Y y ALL",
+                  "text": "A jobb margón módosíthatja a grafikon léptékét a percenkénti mozgásokról a teljes történelemre."
+                },
+                {
+                  "bold": "Öt vezető mutató",
+                  "code": "Volumen 24h, 2 métricas del sector, RSI/MACD y P-06",
+                  "text": "Az ár mellett mindig szem előtt van a kereskedés volumene, kategóriájának két kulcsadata, a trend erőssége és a statisztikai normalitás szintje."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-technical",
+              "label": "Műszaki",
+              "summary": "Az árdiagram mozgóátlagokkal, volatilitási sávokkal és volumennel a trend követéséhez.",
+              "paragraphs": [
+                "Ha csak az utolsó árat nézzük, akkor nem derül ki, hogy egy eszköz felgyorsul-e, visszapattan-e az átlagtól, vagy néhány nap alatt már túl gyorsan emelkedett.",
+                "A bal oldali sínen lévő első lencse lehetővé teszi a piacon leggyakrabban használt műszaki referenciák megjelenítését a grafikonon:"
+              ],
+              "lead": "A bal oldali sínen lévő első lencse lehetővé teszi a leggyakrabban használt műszaki hivatkozások átfedését:",
+              "bullets": [
+                {
+                  "bold": "Cím és tényleges átlagár",
+                  "code": "SMA 20 / VWAP",
+                  "text": "Bekapcsolhatja a 20 periódusos mozgóátlagot és a mennyiséggel súlyozott átlagárat, hogy azonnal lássa, az eszközzel az egyensúlyi szint felett vagy alatt kereskednek-e."
+                },
+                {
+                  "bold": "Túlzónák és hangerő megerősítése",
+                  "code": "Bollinger 2σ / Panel: Volumen",
+                  "text": "A sávok megrajzolják az ár statisztikai plafonját és padlószintjét, míg az alsó sávok azt igazolják, hogy a mozgást a hangerő támogatja-e."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "A mozgóátlag (SMA 20), Bollinger sávok és VWAP képletei és értelmezési kritériumai."
+            },
+            {
+              "id": "ana-compare",
+              "label": "Összehasonlítás %",
+              "summary": "A százalékos összehasonlító 0%-tól annak mérésére, hogy az eszköz jobban vagy gyengébb teljesítményt nyújt-e, mint egy másik ugyanabban a kategóriában.",
+              "paragraphs": [
+                "Egy 5%-ot erősödő részvény remek hírnek tűnik, de ha benchmarkja vagy fő versenytársa 12%-ot emelkedik ugyanebben az időszakban, akkor valójában lemaradsz.",
+                "A második lencse feloldja ezt a kétséget azáltal, hogy a két eszközt ugyanarra a kezdővonalra helyezi:"
+              ],
+              "lead": "A második lencse feloldja ezt a kétséget azáltal, hogy a két eszközt ugyanarra a kezdővonalra helyezi:",
+              "bullets": [
+                {
+                  "bold": "Keressen koherens párokat",
+                  "code": "Buscar par compatible",
+                  "text": "A kereső automatikusan kiszűri az ugyanabból a családból származó eszközöket (pl. részvények vs. részvények, ETF-ek vagy indexek), így az összehasonlításnak pénzügyi értelme van."
+                },
+                {
+                  "bold": "Nettó előny százalékban",
+                  "code": "ALPHA SPREAD 24H",
+                  "text": "Mindkét görbe 0%-ról indul, és a bal oldali sín kiszámítja, hogy hány százalékpontnyi előnye (zöld színnel) vagy hátránya (piros színnel) van az eszköznek."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "ana-micro",
+              "label": "Micro & Flow",
+              "summary": "Intézményi rendellenes vásárlások, likviditási és spread költségek detektora.",
+              "paragraphs": [
+                "Sokszor nagy alapok halmoznak fel vagy raknak ki pozíciókat, mielőtt az árfolyam hirtelen elmozdul. Hogyan lehet felismerni ezt a rejtett nyomot az ajánlati könyv volumenében és likviditásában?",
+                "A harmadik lencse arra fókuszál, ami az idézet alatt történik:"
+              ],
+              "lead": "A harmadik lencse arra fókuszál, ami az idézet alatt történik:",
+              "bullets": [
+                {
+                  "bold": "Statisztikai térfogatcsúcsok",
+                  "code": "VOL Z-SCORE 20D",
+                  "text": "Megváltoztatja az alsó panelt, hogy megmutassa, hányszor tér el az aktuális mennyiség a normáltól, felfedi a szokatlan intézményi tevékenységet."
+                },
+                {
+                  "bold": "Likviditási stressz és anomáliák",
+                  "code": "SPREAD DISLOCATION / P-06 ANOMALY SCORE",
+                  "text": "Bázispontokban méri, hogy nő-e a szakadék a vevők és az eladók között, és hogy a statisztikai motor észlel-e atipikus viselkedést."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hogyan mérjük a nyitó spreadeket és a statisztikai kiugrásokat a megbízásfolyamban."
+            },
+            {
+              "id": "ana-engines",
+              "label": "3D/2D motorok",
+              "summary": "A negyedik objektív, amely egy dinamikus ad-hoc eszközt alkalmaz, amely eszközosztályonként változik.",
+              "paragraphs": [
+                "Ellentétben az első három objektívvel (amelyek minden műszerre jellemzőek), a bal sínen lévő negyedik lencse egy ad-hoc eszköz, amely dinamikusan változik az elemzett eszköztől függően: például az élő túra során, mivel részvényről van szó (NVDA), lehetővé teszi a 3D Implicit Volatilitást és az Options Engine-t, míg a többi speciális Surface-t és az opciókat saját piacán kibontja.",
+                "A negyedik gomb érzékeli a nyitott eszközosztályt, és automatikusan aktiválja a megfelelő ad-hoc eszközt:"
+              ],
+              "lead": "A negyedik gomb érzékeli, hogy melyik eszközt nyitotta meg, és aktiválja a hozzá tartozó ad-hoc eszközt:",
+              "bullets": [
+                {
+                  "bold": "Részvényekben, indexekben, származékos termékekben és kriptoban",
+                  "code": "Vol 3D & Payoff",
+                  "text": "Jelenítse meg a 3D-s implikált volatilitási felületet, az opciók mosolyogását lejáratonként, és egy 6 stratégiából álló szimulátort, hogy megtudja, mennyit nyerne vagy veszítene ma és a lejáratkor."
+                },
+                {
+                  "bold": "Kamatokban, kötvényekben és likviditásban",
+                  "code": "Curva 3D/2D",
+                  "text": "Lehetővé teszi 42 ország hozamgörbéinek összehasonlítását az Egyesült Államokkal és Németországgal, megmérve, hogy a görbe normál vagy fordított (2s10s), és hogy az árfolyam mennyire változik a kamatláb változásaival (DV01)."
+                },
+                {
+                  "bold": "Pénznemekben",
+                  "code": "FX & Carry",
+                  "text": "Átalakítót és háromszögmérőt kínál 61 valuta között, amely a 10 éves kamatkülönbözetet is kiszámítja a pár fenntartása mellett vagy ellen."
+                },
+                {
+                  "bold": "Nyersanyagokban",
+                  "code": "Forward 3D/2D",
+                  "text": "A határidős ügyletek árait hónapról hónapra ábrázolja, és megmutatja, hogy a piac a határidős (Contango) vagy az azonnali szállításért (Backwardation) fizet-e többet, valamint a tényleges készletek állapotát."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "A volatilitási felületek, szuverén hozamgörbék, devizahordozó és határidős görbék matematikai részletezése."
+            }
+          ]
+        },
+        {
+          "id": "mkt-research",
+          "label": "Research",
+          "groupLabel": "Markets",
+          "isPage": true,
+          "introParagraphs": [
+            "A diagram megmutatja, hogy mit csinál az ár, de nem mondja meg, hogy miért. Ahhoz, hogy megtudja, mi áll egy mozgalom mögött, több tucat oldalnyi negyedéves mérleget, jegybanki kivonatot, leltárjelentést és hírkábelt kellene elolvasnia.",
+            "A Research állomás elvégzi Ön helyett ezt a nehéz emelést. A hivatalos jelentések alapján ellenőrzött dokumentarista mesterséges intelligenciát a valós idejű hírolvasással egyesíti, három jól látható oszlopba rendezve az összes pro és kontra bizonyítékot."
+          ],
+          "intro": "A Station Research három jól látható oszlopban foglalja össze a hivatalos mérlegeket, makrogazdasági jelentéseket és valós idejű híreket.",
+          "sections": [
+            {
+              "id": "res-hero",
+              "label": "Megjegyzés és testtartás",
+              "summary": "Az első három lap, amely összefoglalja a hírek alapvető ítéletét és humorát.",
+              "paragraphs": [
+                "Az eszköz fundamentumai kísérik az árfolyam emelkedését, vagy a hír rontja a kilátásokat? Mielőtt elolvasná a részleteket, egy gyors végrehajtó következtetésre van szüksége.",
+                "A jobb felső sarokban három mutató található, amelyek összefoglalják az eszköz általános állapotát:"
+              ],
+              "lead": "A jobb felső sarokban három mutató található, amelyek összefoglalják az általános állapotot:",
+              "bullets": [
+                {
+                  "bold": "Az egyes források testtartása és súlya",
+                  "code": "ALCISTA / BAJISTA",
+                  "text": "Meghatározza az általános ítéletet, és tisztázza, hogy az eszköz típusától függően milyen súlyt tulajdonít a hivatalos dokumentumoknak a hírekkel szemben (például 80% mérleg és 20% hír egy részvényben)."
+                },
+                {
+                  "bold": "Kombinált minősítés",
+                  "code": "NOTA PONDERADA TOTAL",
+                  "text": "Egyetlen pontszámmá szintetizálja a fundamentumok nettó eredményét és a napi információáramlást."
+                },
+                {
+                  "bold": "Hőmérő tartók",
+                  "code": "SENTIMIENTO NOTICIAS",
+                  "text": "Helyezzen egy -100 és +100 közötti rúdra, ha a sajtó hangja az elmúlt néhány órában pesszimista (piros), semleges vagy lelkes (zöld)."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "A hivatalos jelentések súlyozása a hírekhez képest az eszköz típusától függően."
+            },
+            {
+              "id": "res-rag",
+              "label": "Chat RAG",
+              "summary": "A bal oldali dokumentumfilm-asszisztens, aki konkrét kérdéseket tehet fel a mérlegekkel és a hivatalos jelentésekkel kapcsolatban.",
+              "paragraphs": [
+                "Tegyük fel, hogy tudni szeretné, hogy egy vállalat pontosan mit mondott a legfrissebb éves mérlegében, 10-K, vagy mit mondott a Federal Reserve a legutóbbi jegyzőkönyvében. A kézi keresés időbe telik; Ha általános csevegést kér források nélkül, kitalált adatokat kaphat.",
+                "A bal oldali oszlop ezt egy kizárólag ellenőrzött hivatalos dokumentációhoz kapcsolódó varázsló segítségével oldja meg:"
+              ],
+              "lead": "A bal oldali oszlop egy varázslót kínál a hivatalos ellenőrzött dokumentációhoz:",
+              "bullets": [
+                {
+                  "bold": "Kezdő szakdolgozat és irányított kérdések",
+                  "code": "Chat Documental RAG",
+                  "text": "Vezetői összefoglalóval kezdődik, ellenőrzött árajánlatokkal és négy, az eszközkategóriához igazított gyorstájékoztató gombbal, valamint egy mezővel, ahol megírhatja saját kérdéseit."
+                },
+                {
+                  "bold": "Közvetlen lépés a portfóliójához",
+                  "code": "★ Simular en Portfolio & Riesgo",
+                  "text": "Ha az alapok vizsgálata után úgy dönt, hogy az eszköz megéri, ez a csevegés tetején található gomb közvetlenül a portfóliószimulátorba küldi."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Az ellenőrzött dokumentumkereső (RAG) és biztonsági szűrőinek működése."
+            },
+            {
+              "id": "res-factors",
+              "label": "Tényezők",
+              "summary": "A központi harmonika az öt bullish hajtóművel és az öt bearish kockázattal, amelyet becsapódás követ.",
+              "paragraphs": [
+                "Egyetlen befektetés sem száz százalékig tökéletes vagy száz százalékig rossz: mindig vannak mellette érvek és rejtett kockázatok. A titok abban rejlik, hogy tudjuk, melyik a nagyobb ma.",
+                "A középső oszlop mindkét oldalt szembehelyezi, így kiegyensúlyozott döntést hozhat:"
+              ],
+              "lead": "A középső oszlop mindkét oldalt szembehelyezi, így kiegyensúlyozott döntést hozhat:",
+              "bullets": [
+                {
+                  "bold": "Erőegyensúly és szűrők",
+                  "code": "Todos 10 / ▲ 5 Bull / ▼ 5 Bear / 5 vs 5",
+                  "text": "Fent látható a vevők és eladók közötti ajánlattételi sáv, alatta pedig az öt pozitív katalizátort (zöld színnel) vagy az öt fő kockázatot (pirossal) szűrheti."
+                },
+                {
+                  "bold": "Részletek és részletezés egyetlen kattintással",
+                  "code": "Profundizar en Chat RAG →",
+                  "text": "Ha megérinti a lista bármely tényezőjét, megjelenik a teljes magyarázata, valamint egy gomb, amellyel további információkat kérhet a Chat RAG-től az adott pontról."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "res-pulse24h",
+              "label": "FinBERT impulzus",
+              "summary": "A megfelelő idővonal a legújabb AI-besorolású főcímekkel és a 24 órás hangulatgörbével.",
+              "paragraphs": [
+                "Egyetlen utolsó pillanatban megjelenő cím a bevételekről, az inflációról vagy a szabályozásról teljesen megváltoztathatja a nap hangulatát. Honnan tudod, hogy milyen hírek jelentek meg mostanában, és milyen hatásai vannak?",
+                "A jobb oldali oszlop percről percre figyeli az információáramlást:"
+              ],
+              "lead": "A jobb oldali oszlop percről percre figyeli az információáramlást:",
+              "bullets": [
+                {
+                  "bold": "Minősített idővonal",
+                  "code": "2. PULSO 24H • TIMELINE FINBERT",
+                  "text": "Felsorolja az öt legfrissebb címet az idejükkel és hatókörükkel, zöldre értékelve, ha kedvezőek, vagy pirosra, ha veszélyt jelentenek."
+                },
+                {
+                  "bold": "Hatás és napi görbe szimulátor",
+                  "code": "+ Simular Noticia / Gráfico 24h",
+                  "text": "A felső gombbal aktiválhat egy éles vezetéket, hogy megnézze, hogyan számítja újra a teljes képernyőt, és követheti az alábbi grafikonon, hogyan alakult a hangulat az elmúlt 24 órában."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Hogyan elemzi a FinBERT modell az egyes birtokosok pénzügyi nyelvezetét."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "isGroup": true,
+      "children": [
+        {
+          "id": "port-v1",
+          "label": "Építő",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "A jó eszközök külön kiválasztása nem elég egy jó portfólióhoz. Ha túl sok tőkét fektet be egyformán mozgó eszközökbe, vagy ha nem méri fel, hogyan teljesítettek volna együtt a múltban, akkor vakon fektet be.",
+            "A Constructor & Performance (a Portfolio első képe) az a műhely, ahol portfólióját építheti. Lehetővé teszi, hogy hozzáadja a 213 eszköz bármelyikét, beállítsa, hogy hány százalékot rendeljen mindegyikhez anélkül, hogy pontatlan ellenőrzésekkel kellene foglalkoznia, és azonnal ellenőrizheti mind belső összetételét, mind történetét."
+          ],
+          "intro": "A Constructor & Performance az a műhely, ahol felállíthatja portfólióját, beállíthatja az egyes eszközök súlyát, és ellenőrizheti a múltbeli teljesítményét.",
+          "sections": [
+            {
+              "id": "p1-pills",
+              "label": "Összegzés",
+              "summary": "A legjobb hat kártya, amelyet a rendszer minden alkalommal újraszámol, amikor módosítja portfólióját.",
+              "paragraphs": [
+                "Minden alkalommal, amikor hozzáad egy eszközt vagy módosít egy százalékot a portfóliójában, azonnal tudnia kell, hogy ez a módosítás javította-e a várható hozamot, vagy rontotta-e a lefelé irányuló kitettséget.",
+                "A felső sor mindig láthatóvá teszi a portfólió hat fő mérőszámát:"
+              ],
+              "lead": "A felső sor mindig láthatóvá teszi a portfólió hat fő mérőszámát:",
+              "bullets": [
+                {
+                  "bold": "Teljesítmény és hatékonyság",
+                  "code": "RETORNO ANUAL CAGR / SHARPE & SORTINO",
+                  "text": "Megmondják, hogy a portfólió mekkora összetett éves nyereséget vetít előre a tőkére, és mennyi hozamot kap minden egyes vállalt kockázati egység után."
+                },
+                {
+                  "bold": "Várható napi veszteség és történelmi csökkenés",
+                  "code": "VaR 95% 1D / MAX DRAWDOWN 12M",
+                  "text": "Kiszámolják, hogy hány dollárt veszíthetsz egy rossz napon a statisztikailag előrelátható kereteken belül, és mi volt a legmélyebb visszaesés az elmúlt évben."
+                },
+                {
+                  "bold": "Hozzáadott érték és diverzifikáció",
+                  "code": "ALPHA BRINSON 12M / ACTIVOS SELECCIONADOS",
+                  "text": "Azt mérik, hogy portfóliója hány ponttal veri meg a benchmark indexet, és mennyi kockázatot csökkent a különböző eszközök kombinálásának köszönhetően."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Összetett hozamképletek (CAGR), Sharpe és Sortino arányok, valamint kockáztatott érték (VaR)."
+            },
+            {
+              "id": "p1-table",
+              "label": "Súlyszámítás",
+              "summary": "A bal oldali táblázat az eszközök hozzáadásához, be- és kikapcsolásához, valamint az egyes pozíciók pontos százalékos arányának meghatározásához.",
+              "paragraphs": [
+                "Mi történne a portfóliószámaival, ha ma ideiglenesen leállítanál egy technológiai részvényt, vagy a pénzt egyenlő arányban osztaná fel az összes pozíció között?",
+                "A bal oldali panelen tiszta és közvetlen módon végezheti el ezeket a teszteket:"
+              ],
+              "lead": "A bal oldali panelen tiszta és közvetlen módon végezheti el ezeket a teszteket:",
+              "bullets": [
+                {
+                  "bold": "A 213-as eszközök keresője",
+                  "code": "Buscar entre los 213 activos / ★ Watchlist / + Agregar",
+                  "text": "Bármelyik hangszerre rákereshet a platformon, vagy szűrheti kedvenceit, hogy egyetlen kattintással hozzáadhassa a táblázathoz."
+                },
+                {
+                  "bold": "Gyors indítás és pontos szerkesztés",
+                  "code": "ON / PESO % / CAPITAL $",
+                  "text": "Minden sorban van egy jelölőnégyzet az eszköz valós idejű felvételéhez vagy kizárásához, valamint egy számdoboz a pontos százalékos arány megadásához pontatlan csúszkák használata nélkül."
+                },
+                {
+                  "bold": "Három kiegyensúlyozó parancsikon",
+                  "code": "1/N Equal, Ajustar 100% y Restaurar Base",
+                  "text": "A táblázat tetején található gombokkal egyenlő súlyokat oszthat el az összes aktív eszköz között, automatikusan 100%-ra növelheti az összeget, vagy visszatérhet az eredeti portfólióhoz."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-xray",
+              "label": "röntgen",
+              "summary": "A jobb felső panel öt füllel a rejtett koncentrációk, a pénzforgalom és a felügyeleti jogok felfedezéséhez.",
+              "paragraphs": [
+                "Az egyik leggyakoribb hiba a befektetések során, ha azt hiszi, hogy diverzifikált, mert öt különböző eszközzel rendelkezik, miközben a valóságban vásárolt egy egyedi részvényt és két ETF-et, amelyekben ugyanaz a részvény van.",
+                "A röntgenpanel belülről elemzi portfólióját öt lapon keresztül:"
+              ],
+              "lead": "A röntgenpanel belülről elemzi portfólióját öt lapon keresztül:",
+              "bullets": [
+                {
+                  "bold": "Ismételt helyzetérzékelő",
+                  "code": "1. Solapamiento X-Ray #12",
+                  "text": "Adja össze, hogy mit fektetett be közvetlenül az egyes vállalatokba, plusz az indexeken vagy ETF-eken belüli rejtett részt (például SPY vagy QQQ), pirossal figyelmeztetve, ha túllépi a körültekintő határokat."
+                },
+                {
+                  "bold": "Expozíciós térkép és a visszatérés eredete",
+                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "text": "Megmutatják, hogy ténylegesen hány százaléka van az egyes eszköztípusokban és pénznemekben, és mennyi nyeresége származott a jó szektorok és a jó eszközök kiválasztásából."
+                },
+                {
+                  "bold": "Tervezett éves bevétel és biztonság",
+                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "text": "Kiszámolják, hány dollárt fogsz beszedni az évben osztalékra, kuponra és kamatra, és ellenőrzik a letétkezelők fizetőképességét, ahol a tőkéje nyugszik."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "A közvetett kitettség kiszámítása az ETF-eken belül és a Brinson-hozzárendelés bontásban."
+            },
+            {
+              "id": "p1-calendar",
+              "label": "Naptár",
+              "summary": "A januártól decemberig tartó havi diagram a nyereségek és veszteségek szabályszerűségének megtekintéséhez.",
+              "paragraphs": [
+                "A jó éves hozam hónapokig olyan meredek eséseket rejthet, amelyeket a gyakorlatban nehéz elviselni. Mennyire konzisztens hónapról hónapra az imént összeállított portfólió?",
+                "Közvetlenül a röntgen alatt a naptár lebontja a havi előzményeket:"
+              ],
+              "lead": "Közvetlenül a röntgen alatt a naptár lebontja a havi előzményeket:",
+              "bullets": [
+                {
+                  "bold": "Zöld hónapok és piros hónapok",
+                  "code": "AÑO / ENE..DIC / YTD",
+                  "text": "Minden egyes cella azonnal újraszámításra kerül a táblázatban szereplő súlyoknak megfelelően, és az adott hónap eredményétől függően zöldre vagy pirosra festve, jobb oldalon az év összesített eredményével zárva."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p1-backtest",
+              "label": "Backtesting",
+              "summary": "Az alábbi teljes képernyős grafikonon összehasonlíthatja portfólióját négy klasszikus stratégiával.",
+              "paragraphs": [
+                "Mielőtt jónak tartaná portfólióját, marad az alapvető teszt: valóban jobb, mint a S&P 500-ben vagy egy hagyományos 60/40-es portfólióban hagyni a pénzt?",
+                "Az alsó panel a képernyő teljes szélességét elfoglalja, hogy a design megfeleljen a piaci szabványoknak:"
+              ],
+              "lead": "Az alsó panel megfelel a piaci szabványoknak:",
+              "bullets": [
+                {
+                  "bold": "A tesztelés öt horizontja",
+                  "code": "3M, 6M, 1Y, 3Y y MAX",
+                  "text": "Lehetővé teszi, hogy értékelje, hogyan teljesített a mix mind az elmúlt negyedévekben, mind a teljes többéves ciklusokban."
+                },
+                {
+                  "bold": "Négy személyes hivatkozás",
+                  "code": "vs S&P 500, vs 60/40 Classic, vs All-Weather y vs Min-Variance",
+                  "text": "Fedje le aktív portfóliójának zöld görbéjét a négy klasszikus modell bármelyikével szemben, így világosan láthatja, mikor van előrébb, és hogyan tartja magát a negatív oldalon."
+                }
+              ],
+              "hasTechnicalModal": false
+            }
+          ]
+        },
+        {
+          "id": "port-v2",
+          "label": "Kockázat",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Azokban az időkben, amikor a piac nyugodtan emelkedik, szinte minden portfólió biztonságosnak tűnik. Az igazi probléma akkor jelentkezik, amikor kitör a válság, a kamatok hirtelen emelkednek, és a függetlennek tűnő eszközök egyszerre kezdenek esni.",
+            "A kvantitatív kockázat és stressz (a Portfolio második nézete) extrém tesztek elé állítja portfólióját, mielőtt azok a való életben megtörténnének. Négy szimmetrikus kvadránson és az alábbi jövőbeli forgatókönyv-szimulátoron keresztül pontosan megmutatja, hol vannak a sebezhető pontok."
+          ],
+          "intro": "A kvantitatív kockázat és stressz teszteli portfólióját a történelmi válságok, a korrelációs fertőzések és a Monte Carlo előrejelzések szempontjából.",
+          "sections": [
+            {
+              "id": "p2-markowitz",
+              "label": "Markowitz 2D",
+              "summary": "Az interaktív kockázat- és hozamtérkép, amely megmutatja, milyen közel van a lehető leghatékonyabb portfólióhoz.",
+              "paragraphs": [
+                "Ugyanazokkal az eszközökkel, amelyek már a portfóliójában vannak, több ezer módja van a százalékok elosztására. Az Ön által választott kombináció az, amelyik a legjobban fizeti a vállalt kockázatot, vagy megnyerheti ugyanezt kevesebb meglepetéssel?",
+                "A bal felső sarokban lévő első kvadráns a lehetőségek élő térképét rajzolja meg:"
+              ],
+              "lead": "A bal felső sarokban lévő első kvadráns a lehetőségek élő térképét rajzolja meg:",
+              "bullets": [
+                {
+                  "bold": "Az Ön pozíciója az optimális portfóliókkal szemben",
+                  "code": "★ Mi Cartera / Min-Var / Max-Sharpe",
+                  "text": "Megmutatja, hol helyezkedik el jelenlegi portfóliója a lehető legalacsonyabb volatilitás és a maximális kockázat-hozam hatékonyság pontjához képest."
+                },
+                {
+                  "bold": "Vizuális rétegek és eszközök szerinti ellenőrzés",
+                  "code": "Activos / Nube Monte Carlo / Tangente CML",
+                  "text": "A modellrétegeket be- vagy kikapcsolhatja, és bármelyik csomópontra kattintva elolvashatja az adott elem pontos hozzájárulását alább."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "A Markowitz hatékony határa, valamint a minimális szórás és a maximális Sharpe portfóliók kiszámítása."
+            },
+            {
+              "id": "p2-tornado",
+              "label": "Tornado és VaR",
+              "summary": "A történelmi válságszimulátor, napi veszteség bontás eszközönként és piaci aszimmetria szerint.",
+              "paragraphs": [
+                "Ha holnap megismétlődne a 2008-ashoz hasonló összeomlás, a 2020-as gazdasági lassulás vagy a 2022-es kamatemelés, mennyit veszítene jelenlegi portfóliója, és melyik eszköz lenne a fő hibás?",
+                "A bal alsó negyed három konkrét lapon válaszol erre a három kérdésre:"
+              ],
+              "lead": "A bal alsó kvadráns három konkrét lapon válaszol ezekre a kérdésekre:",
+              "bullets": [
+                {
+                  "bold": "Teszteljen öt valódi válsággal szemben",
+                  "code": "1. Tornado Stress",
+                  "text": "Hasonlítsa össze sávról sávra, hogy portfóliója mennyit esne a S&P 500-hez képest öt jelentős történelmi sokkhatás esetén."
+                },
+                {
+                  "bold": "Kockázati rangsor pozíciók szerint",
+                  "code": "2. VaR 95% por Activo",
+                  "text": "Rendezze állományait aszerint, hogy egyenként hány dollárnyi potenciális napi veszteség járul hozzá a teljes portfólióhoz."
+                },
+                {
+                  "bold": "Viselkedés hullámvölgyekben",
+                  "code": "3. Captura Upside/Downside",
+                  "text": "Megmutatja, hogy az egyes eszközök a piac emelkedő kerekeinek hány százalékát használják ki, és mennyit tudnak tompítani a piac esése esetén."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "A történelmi stresszforgatókönyvek módszertana, a VaR-hez való marginális hozzájárulás és a befogási arányok."
+            },
+            {
+              "id": "p2-corr",
+              "label": "Összefüggés",
+              "summary": "A keresztmátrix annak ellenőrzésére, hogy eszközei valóban diverzifikálódnak-e, vagy megfertőződtek-e egy pánik során.",
+              "paragraphs": [
+                "Ha több eszköz van a portfóliójában, az csak akkor csökkenti a kockázatot, ha nem egy időben mozog mind ugyanabba az irányba. De pénzügyi pánik idején sok alacsonynak tűnő összefüggés élesen felfelé ugrik.",
+                "A jobb felső kvadráns lehetővé teszi a kapcsolat ellenőrzését két forgatókönyv szerint:"
+              ],
+              "lead": "A jobb felső kvadráns lehetővé teszi a kapcsolat ellenőrzését két forgatókönyv szerint:",
+              "bullets": [
+                {
+                  "bold": "Keresztezés az eszközök és az érzékenység között",
+                  "code": "1. Matriz 6×6 / 2. Beta & Descorrelación",
+                  "text": "Megmutatja, hogy az egyes eszközpárok mennyire hasonlóak (zöld vagy világoskék színben, ha jól diverzifikálódnak, és pirosban, ha túl közel állnak egymáshoz), és milyen érzékenységük van a piacra."
+                },
+                {
+                  "bold": "Fertőzés szimulátor válságban",
+                  "code": "Mercado Normal 1Y / Cola de Crisis Contagio",
+                  "text": "Egyetlen kattintással megváltoztathatja egy normál év korrelációit egy pillanatnyi pánik korrelációira, hogy megtudja, mely pozíciók nem védenek többé."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Pearson-korrelációs együtthatók kiszámítása normál körülmények között és piaci stressz mellett."
+            },
+            {
+              "id": "p2-shock2d",
+              "label": "Clash & Markov",
+              "summary": "Az árfolyamok és a tőzsde közös hatástáblázata, plusz a gazdasági ciklus változásának valószínűsége.",
+              "paragraphs": [
+                "A reálgazdaságban ritkán jönnek sorra a problémák: sokszor a kamatemelés egybeesik a részvények esésével. Mi történik a portfólióval, ha a két tényezőt egyszerre kombináljuk?",
+                "A jobb alsó kvadráns mindkét változót keresztezi, és a rendszerváltás valószínűségét méri:"
+              ],
+              "lead": "A jobb alsó kvadráns mindkét változót keresztezi, és a piaci ciklust méri:",
+              "bullets": [
+                {
+                  "bold": "Dupla ütőtábla",
+                  "code": "1. Matriz 2D Tasas × SPX",
+                  "text": "Keresztkamatláb mozgások (-100 és +200 bázispont között) a S&P 500 esésével vagy emelkedésével (-20% és +10%), lehetővé téve a teljes portfólió vagy az egyes eszközök szerinti szűrést."
+                },
+                {
+                  "bold": "Ciklusátmeneti valószínűségek",
+                  "code": "2. Regímenes Markov #11",
+                  "text": "Számítsa ki, mennyire valószínű, hogy a piac nyugodt marad, vagy ingadozó, inflációs vagy válságos szakaszba lép."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Az ízületi érzékenység a sebességekre és a változókra, valamint a Markov-állapot-átmeneti mátrixra."
+            },
+            {
+              "id": "p2-montecarlo",
+              "label": "Monte Carlo",
+              "summary": "Az alsó panel teljes képernyős, jövőbeli valószínűségi előrejelzésekkel és történelmi csökkenésekkel.",
+              "paragraphs": [
+                "Hasznos a múltba tekinteni, de ha előre fektet, azt tudnia kell, hogy a tőkéje milyen eredménytartományon belül mozoghat a következő hat hónapban, egy évben vagy két évben.",
+                "A teljes szélességű alsó panel három ideiglenes eszközt tartalmaz az útvonal kivetítésére és vezérlésére:"
+              ],
+              "lead": "Az alsó panel három ideiglenes eszközt tartalmaz az útvonal kivetítéséhez:",
+              "bullets": [
+                {
+                  "bold": "Tízezer jövőbeli forgatókönyv",
+                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "text": "Rajzolja meg portfóliója valószínű alakulásának kúpját, megkülönböztetve az optimista forgatókönyvet (P95 zölddel), a várható központi utat (P50) és a kedvezőtlen forgatókönyvet (P05 pirossal)."
+                },
+                {
+                  "bold": "Az esések mélysége és az időbeli stabilitás",
+                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "text": "Lehetővé teszik a diagram átváltását, hogy megtekinthesse, mennyi ideig maradt a portfólió minden idők csúcsa alatt, vagy mennyire stabil a hatékonysága és a kockázata a 60 napos ablakok gördülésével."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Monte Carlo 10 000 út és 60 napos gördülési mutatók sztochasztikus szimulációja."
+            }
+          ]
+        },
+        {
+          "id": "port-v3",
+          "label": "Szimulátor",
+          "groupLabel": "Portfolio",
+          "isPage": true,
+          "introParagraphs": [
+            "Új eszköz vásárlása, pozíció csökkentése vagy opciós fedezeti fizetés előtt mindig ugyanaz a kérdés merül fel: ez a művelet valóban javítja a portfóliómat, vagy felesleges kockázatot jelent? És mennyi tőkét tegyek bele?",
+            "Az Ad-Hoc Strategy Lab (a Portfolio harmadik képe) a működés előtti szimulátor. Lehetővé teszi, hogy taktikai játékokat töltsön be, kiszámítsa az ideális pozícióméretet, tesztelje a hátrányos biztosítást, és pontosan megtekinthesse a becsapódás előtti és utáni hatást anélkül, hogy még hozzányúlna az alapportfóliójához."
+          ],
+          "intro": "Az Ad-Hoc Strategy Laboratory az Ön kereskedés előtti szimulátora a megbízások, a méretpozíciók és a lefedettség mérésére.",
+          "sections": [
+            {
+              "id": "p3-impact",
+              "label": "Hatás",
+              "summary": "Az első hat lap, amely összehasonlítja jelenlegi portfólióját a szimulált játék után elért eredménnyel.",
+              "paragraphs": [
+                "Ahhoz, hogy megtudjuk, megéri-e egy taktikai ötlet, nem elég, ha az eszköz önmagában vonzónak tűnik: javítania kell a teljes portfólió számain.",
+                "A felső sor állandóan az aktuális portfóliója és az alkalmazott szimulációval rendelkező portfólió összehasonlítását mutatja:"
+              ],
+              "lead": "A felső sor összehasonlítja jelenlegi portfólióját a portfólióval az alkalmazott szimulációval:",
+              "bullets": [
+                {
+                  "bold": "Hatás a profitra és a hatékonyságra",
+                  "code": "IMPACTO EN RETORNO TOTAL / IMPACTO EN SHARPE",
+                  "text": "A kivetített szám mellett az alapszámot mutatják, zölddel világítva meg a különbséget, ha a játék növeli a hatékonyságot, vagy pirossal, ha rontja azt."
+                },
+                {
+                  "bold": "Hatás a kockázatra, a tőkére és a szabályokra",
+                  "code": "IMPACTO EN VaR 95% / MAX DRAWDOWN / CAPITAL TÁCTICO / VEREDICTO COMITÉ",
+                  "text": "Megmondják, hogy mennyiben változik a maximális várható veszteség, a portfólió hány százalékát kötelezi el a tesztekre, és betartja-e az összes biztonsági korlátot."
+                }
+              ],
+              "hasTechnicalModal": false
+            },
+            {
+              "id": "p3-whatif",
+              "label": "What-If és Kelly",
+              "summary": "A vásárlási/eladási jegyszimulátor és a számológép, amely meghatározza, mennyi pénzt kockáztat.",
+              "paragraphs": [
+                "Sok jó befektetési ötlet a tét nagyságának hibája miatt veszteséget okoz: a túl keveset nem mozdítja el a tűt, de a túl sok befektetés tönkreteheti a portfóliót, ha a lépés rosszul sikerül.",
+                "A bal felső sarokban lévő első kvadráns összekapcsolja a bizonyítéklapot a méret matematikai számításával:"
+              ],
+              "lead": "Az első kvadráns egyesíti a vizsgálati jegyzőkönyvet a méret matematikai számításával:",
+              "bullets": [
+                {
+                  "bold": "Tesztrendelés betöltése",
+                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "text": "Kiválaszt bármilyen eszközt, jelezheti, hogy vásárolni, eladni vagy fedezetet szeretne-e, és az összeget dollárban tölti be. Az alábbi listában be- vagy kikapcsolhatja az egyes szimulált rendeléseket a hatásuk összehasonlításához."
+                },
+                {
+                  "bold": "Optimális pozícióméret",
+                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "text": "A siker becsült valószínűsége, valamint a nyereség és veszteség kapcsolata alapján kiszámítja, hogy a tőke legfeljebb hány százalékát kell a növekedésre fordítani anélkül, hogy túlzottan kiszolgáltatná magát."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "A Kelly-kritérium és a Half-Kelly konzervatív változatának matematikai számítása."
+            },
+            {
+              "id": "p3-tailhedge",
+              "label": "Tedd OTM & Margin",
+              "summary": "A biztosítási szimulátor az erős piaci visszaesések lehetőségeivel és a fedezetfelhívás monitorával.",
+              "paragraphs": [
+                "Ha erős piaci korrekciótól tart, az összes pozíció eladása általában költséges és nem hatékony. A professzionális alternatíva a biztosítás megkötése védelmi lehetőségekkel, de mennyibe kerül az a biztosítás évente, és mennyit véd valójában?",
+                "A bal alsó kvadráns lehetővé teszi a fedezet és az adósságszint mérését:"
+              ],
+              "lead": "A bal alsó kvadráns a fedezetet és a garanciák szintjét egyaránt méri:",
+              "bullets": [
+                {
+                  "bold": "Védőpajzsok összehasonlítója",
+                  "code": "1. Escudo Put OTM #6",
+                  "text": "Lehetővé teszi, hogy felváltva működjön fedezet nélkül, vagy háromféle biztosítást alkalmazzon opciókkal (SPY, QQQ vagy VIX volatilitás esetén), szembeállítva a díj éves költségét a 20%-os összeomlás esetén megtakarított dollárral."
+                },
+                {
+                  "bold": "Tőkeáttétel-szabályozás és biztosíték",
+                  "code": "2. Margen & Margin Call #13",
+                  "text": "Figyelje meg, hogy a fenntartási letét hány százalékát használta fel, és mekkora százalékos esést szenvedne el a portfólió, mielőtt belépne a fedezetfelhívási zónába."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "A fedezeti ügylet működése pénzen kívüli eladási opciókkal és garanciák számítása Reg-T."
+            },
+            {
+              "id": "p3-committee",
+              "label": "Bizottság és könyv",
+              "summary": "A két jobb oldali panel a kockázati limitek, a rendelési előzmények és a másodpilóta automatikus áttekintésével.",
+              "paragraphs": [
+                "A kereskedés kipróbálásának lelkesedésében könnyen figyelmen kívül hagyhatjuk, hogy egy eszköz a teljes portfóliójának több mint 20%-át koncentrálja, vagy súlyos statisztikai anomália közepette működik.",
+                "A jobb oldali két kvadráns az automatikus kockázatkezelési és ellenőrzési nyomvonalként szolgál:"
+              ],
+              "lead": "A jobb oldali két kvadráns kockázatkezelésként és regisztrációként működik:",
+              "bullets": [
+                {
+                  "bold": "Áttekintés három dimenzióban",
+                  "code": "1. Quantitative Analytics, 2. Fundamental & News RAG y 3. Risk & Sizing Guardrail",
+                  "text": "A szimulált megbízásait a technikai, alapvető és kemény biztonsági korlátoktól értékelik (figyelmeztetés, ha valamelyik pozíció meghaladja a 20%-os tőkekorlátot, vagy ha magas anomáliákkal rendelkezik)."
+                },
+                {
+                  "bold": "Rendelési napló és portfólió asszisztens",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "text": "Az alsó panel minden szimulációt rögzít a kockázatra gyakorolt hatásával, míg a jobb felső sarokban lévő párbeszédgomb megnyitja a csevegést, ahol közvetlen kérdéseket tehet fel portfóliójával kapcsolatban."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Működés előtti kockázatkezelési szabályok és eszközenkénti koncentrációs limitek."
+            },
+            {
+              "id": "p3-walkforward",
+              "label": "Walk-Forward",
+              "summary": "Az alábbi grafikon teljes képernyőn, hogy ellenőrizze, hogy stratégiája a próbaidőszakon kívül is működik-e.",
+              "paragraphs": [
+                "Bármely stratégia módosítható úgy, hogy a múltra tekintünk, amíg az bolondbiztosnak nem tűnik a történeti diagramon. Az igazi kihívás az, hogy tudjuk, továbbra is működik-e, ha új piaci adatokkal szembesülünk.",
+                "A teljes szélességű alsó panel a stratégiát a legszigorúbb érvényesítésnek veti alá a gyártás megkezdése előtt:"
+              ],
+              "lead": "Az alsó panel a stratégiát mintán belüli és mintán kívüli érvényesítésnek veti alá:",
+              "bullets": [
+                {
+                  "bold": "A tervezés és a tényleges tesztelés elkülönítése",
+                  "code": "In-Sample Entrenamiento / Out-of-Sample Validación Pura",
+                  "text": "A történeti grafikont egy első szakaszra osztja fel, ahol a stratégia kalibrálódik, és egy második szakaszra, amely nem látott adatokat tartalmaz, hogy ellenőrizze, megőrzi-e előnyét az alapportfólióval szemben."
+                },
+                {
+                  "bold": "Statisztikai robusztussági megjegyzés",
+                  "code": "EFICIENCIA WALK-FORWARD WFE",
+                  "text": "Ha a hatékonysági mutató meghaladja a 70%-ot, az megerősíti, hogy az eredmények konzisztensek, és nem a múltra kényszerített számok szorzata."
+                }
+              ],
+              "hasTechnicalModal": true,
+              "modalPreview": "Mit mér a Walk-Forward hatékonysági index (WFE), és hogyan észleli a túloptimalizált stratégiákat."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "modalsBySection": {
+    "scr-categories": [
+      {
+        "id": "cat-liquidity",
+        "label": "Likviditásszűrő (ADV)",
+        "intro": "Annak érdekében, hogy egy eszközzel anélkül lehessen kereskedni, hogy egyetlen megbízás is torzítaná az árát, a platform megköveteli az átlagos napi forgalom dollárban kifejezett minimális küszöbét az elmúlt 20 munkanapban.",
+        "math": {
+          "lhs": "ADV (20d)",
+          "numerator": "∑ (Záróár × Kereskedési mennyiség)",
+          "denominator": "20 ügyes kerék",
+          "vars": [
+            "Záróár: az i. napi hivatalos záróár USD-ben kifejezve.",
+            "Kereskedési volumenᵢ: az adott napon forgalmazott egységek teljes száma."
+          ]
+        },
+        "lead": "A katalógus az átlagos napi mennyiség alapján osztályozza az egyes műszerek mélységét:",
+        "bullets": [
+          {
+            "bold": "Magas intézményi likviditás",
+            "code": "> $500M diarios",
+            "text": "Lehetővé teszi a nagy pozíciók azonnali belépését és kilépését anélkül, hogy a piaci árat elmozdítaná."
+          },
+          {
+            "bold": "Standard katalógus likviditás",
+            "code": "$50M a $500M diarios",
+            "text": "Alkalmas diverzifikált portfóliókhoz, nagyon alacsony vételi/eladási költségekkel."
+          },
+          {
+            "bold": "Spread monitoring",
+            "code": "< $50M diarios",
+            "text": "Ingadozások idején tanácsos ellenőrizni a borravalók nyitását a nagyobb megbízások végrehajtása előtt."
+          }
+        ],
+        "example": "Ha egy részvény 200 dolláron forog, és az elmúlt hónapban kerekenként átlagosan 5 millió részvényt forgalmaz, az átlagos napi volumene (ADV) 1 milliárd dollár (1,0 milliárd dollár)."
+      },
+      {
+        "id": "cat-fx-norm",
+        "label": "Normalizálás USD-re",
+        "intro": "Mivel a katalógus európai kötvényeket, ázsiai indexeket, nyersanyagokat és kriptovalutákat egyesít, az összes volumenfolyamot valós időben átváltják USA-dollárra, hogy azonos skálán összehasonlíthatók legyenek.",
+        "math": {
+          "lhs": "Volumen USD",
+          "inline": "Volumen Moneda Local × Tipo de Cambio Spot (CCY / USD)",
+          "vars": [
+            "Helyi valuta mennyisége: az eredeti piaci pénznemben (EUR, JPY, GBP, BRL stb.) kereskedett összeg.",
+            "Azonnali árfolyam: aktuális árfolyam a 61-es devizamotorban."
+          ]
+        },
+        "lead": "Ez a konverzió közvetlenül két helyet érint a képernyőn:",
+        "bullets": [
+          {
+            "bold": "Összesített nézet Rangsor Összes",
+            "code": "213 activos",
+            "text": "Rendelje meg az eszközöket a legnagyobbtól a legkisebb valódi pénzmozgásig világszerte."
+          },
+          {
+            "bold": "Hozzáadott kötetkártya",
+            "code": "Volumen 24h en $B",
+            "text": "Lehetővé teszi a különböző országokban felsorolt eszközök mennyiségének torzulások nélküli hozzáadását."
+          }
+        ],
+        "example": "Ha egy német kötvény napi 4 milliárd euróval kereskedik, az EUR/USD pedig 1,08-on kereskedik, a rendszer 4,32 milliárd dollárral számol a globális impulzusban."
+      }
+    ],
+    "scr-pulse": [
+      {
+        "id": "rsi",
+        "label": "AVG RSI (14)",
+        "intro": "Hogyan mérhető, hogy egy piac valóban erősen emelkedett-e, vagy már túl gyorsan emelkedett és kimerült? A Relative Strength Index (RSI) az átlagos emelkedést az elmúlt 14 forduló átlagos eséseihez hasonlítja egy 0-tól 100-ig terjedő skálán.",
+        "math": {
+          "lhs": "RSI (14) = 100 −",
+          "numerator": "100",
+          "denominator": "1+ (átlagos emelkedés₁4 / átlagos csökkenés₁₄)",
+          "vars": [
+            "Átlagemelkedés₁₄: az utolsó 14 kerék emelkedő napjain szerzett pontok simított átlaga.",
+            "Átlagos veszteség₁4: az azonos időszak bearish napjain elvesztett pontok simított átlaga."
+          ]
+        },
+        "lead": "Így értelmezhető a skála három szakasza a körgyűrűben:",
+        "bullets": [
+          {
+            "bold": "Vásárlóerő és túlvásárolt",
+            "code": "70 a 100",
+            "text": "A növekedés jóval meghaladja a legutóbbi csökkenéseket. Nagy bullish lendületet mutat, bár 70 felett figyelmeztet, hogy az árfolyam szünetet igényelhet."
+          },
+          {
+            "bold": "egyensúlyi zóna",
+            "code": "30 a 70",
+            "text": "A piac fenntartható ütemben mozog. A középszint átlépése (> 50 zöld) a vevő dominanciáját erősíti meg, míg az alá esés (< 50 pirossal) az eladó dominanciáját jelzi."
+          },
+          {
+            "bold": "Büntetés és túlértékesítés",
+            "code": "0 a 30",
+            "text": "Az esések olyan gyakoriak és erőteljesek voltak, hogy az eszköz statisztikailag olcsónak tűnik, és hajlamos a visszapattanásra."
+          }
+        ],
+        "example": "Ha az elmúlt 14 keréken a részvények egy csoportja átlagosan 2 dollárral emelkedett bullish napon, és csak 1 dollárt esett bearish naponként, akkor erősségi mutatója 2, RSI-je pedig 66,7 (bullish push zöldben)."
+      },
+      {
+        "id": "p06",
+        "label": "Normál üzemmód (P-06)",
+        "intro": "Egy eszköz nyugodtnak tűnhet, ha csak az árát nézzük, ugyanakkor furcsa volumenugrástól és abnormálisan megnyílik a vételi és eladási csúcsok. A Isolation Forest motor (P-06) egyszerre keresztezi ezeket a változókat, hogy észlelje az atipikus viselkedést.",
+        "math": {
+          "lhs": "Score P-06 =",
+          "inline": "2 ^ [ − E(h(x)) / c(n) ]   (Escala de 0.00 a 1.00)",
+          "vars": [
+            "E(h(x)): a véletlenszerű vágások átlagos száma, amelyek szükségesek ahhoz, hogy a mai viselkedést elkülönítsük a történelem többi részétől.",
+            "x: 4 változóból álló vektor (Return 24h, Vol Z-Score 20d, Realized Volatility 30d és Spread bps)."
+          ]
+        },
+        "lead": "Minél ritkább a mai lépés, annál gyorsabban izolálódik, és annál közelebb van az 1,00-hoz:",
+        "bullets": [
+          {
+            "bold": "Normál rezsim",
+            "code": "0.00 a 0.49",
+            "text": "Az árfolyam, a mennyiség és a likviditás az eszköz történelmi átlagával összhangban mozog."
+          },
+          {
+            "bold": "Magas aktivitás",
+            "code": "0.50 a 0.64",
+            "text": "A változók közül legalább az egyik elkezdett eltérni a megszokott viselkedésétől; Célszerű szorosan figyelemmel kísérni a rendelések áramlását."
+          },
+          {
+            "bold": "Elmozdulás vagy kritikus anomália",
+            "code": "0.65 a 1.00",
+            "text": "Az eszköz statisztikailag szélsőséges viselkedést regisztrál. A portfólió modulban ennek a küszöbértéknek a túllépése aktiválja a biztonsági féket."
+          }
+        ],
+        "example": "Ha egy államkötvény árfolyama alig mozog 0,1%-kal, de volumene néggyel megszorozódik, a spread pedig megháromszorozódik percek alatt, akkor a detektor átlépi a három adatpontot, és 0,74-re emeli a pontszámát (Diszlokáció pirossal)."
+      },
+      {
+        "id": "zscore",
+        "label": "Hangerő bypass (Z-Score)",
+        "intro": "Ha azt mondjuk, hogy ma 500 millió dollárt üzemeltettek, az sok egy közepes méretű cégnek, de nagyon kevés a S&P 500-nek. A Volume Z-Score minden eszközt ugyanabba az univerzális egységbe helyez: hány szórással (σ) van a mai térfogat a saját 20 kerék átlagához képest.",
+        "math": {
+          "lhs": "Vol Z-Score (20d) =",
+          "numerator": "Mai hangerő (24 óra) − Átlagos hangerő (20 nap)",
+          "denominator": "A hangerő szórása (20 nap)",
+          "vars": [
+            "Átlagos mennyiség (20 nap): az eszköz szokásos mennyisége az utolsó üzleti hónapban.",
+            "Szórás (20d): ez a mennyiség általában mennyivel változik egyik napról a másikra."
+          ]
+        },
+        "lead": "Így összehasonlíthat bármely eszközt ugyanazon a szigma (σ) mértékegység-skálán:",
+        "bullets": [
+          {
+            "bold": "Szokásos tevékenység",
+            "code": "-1.0σ a +1.0σ",
+            "text": "A nap hangereje teljesen az elmúlt négy hét rutinján belül van."
+          },
+          {
+            "bold": "Magas részvétel",
+            "code": "+1.0σ a +2.0σ",
+            "text": "Az átlagosnál magasabb érdeklődés kezdi érvényesíteni a napi trendet."
+          },
+          {
+            "bold": "Intézményi összecsapás",
+            "code": "> +2.0σ",
+            "text": "Az év fordulóinak kevesebb mint 5%-ában fordul elő, és általában nagy alapok tömeges belépését vagy kilépését tükrözi."
+          }
+        ],
+        "example": "Ha egy részvény általában napi 100 millió dollárral kereskedik ±20 millió dolláros tipikus ingadozással, ma pedig 160 millió dollárral kereskedik, akkor ez 60 millió dollárral meghaladja az átlagot, ami pontosan +3,0σ-nak felel meg."
+      }
+    ],
+    "scr-table": [
+      {
+        "id": "tbl-rates",
+        "label": "Fix jövedelmű (2s10s és DV01)",
+        "intro": "Ha kiszűri a Kötvényeket vagy a Kamatlábokat a táblázatban, megjelenik az államadósság értékelésének két kulcsfontosságú mutatója: a görbe meredeksége (2s10s) és egy bázispont pénzbeli értéke (DV01).",
+        "math": {
+          "lhs": "Spread 2s10s =",
+          "inline": "( Tasa Bono 10 Años − Tasa Bono 2 Años ) × 100 bps",
+          "vars": [
+            "1 bázispont (1 bp): 0,01%-os teljesítménynek felel meg.",
+            "DV01 ($/$1M): Hány dollárt nyer vagy veszít egy 1 millió dolláros pozíció, ha az árfolyam 1 bázisponttal elmozdul."
+          ]
+        },
+        "lead": "Hogyan kell kiolvasni ezt a két számot a rácson:",
+        "bullets": [
+          {
+            "bold": "Normál vagy pozitív görbe",
+            "code": "2s10s > 0 bps",
+            "text": "A 10 éves kötvények magasabb kamatlábat fizetnek, mint a 2 éves kötvények, ami az egészséges gazdasági növekedésre való várakozást tükrözi."
+          },
+          {
+            "bold": "fordított görbe",
+            "code": "2s10s < 0 bps",
+            "text": "A rövid kamatlábak meghaladják a hosszú kamatokat; történelmileg a gazdasági lehűlésre vagy a monetáris korlátozásokra figyelmeztet."
+          }
+        ],
+        "example": "Ha a 10 éves Treasury 4,20%-ot, a 2 éves Treasury pedig 4,55%-ot, akkor a 2s10s oszlop -35 bp-ot jelöl (fordított görbe pirossal)."
+      },
+      {
+        "id": "tbl-equity",
+        "label": "Részvények (P/E és árrés)",
+        "intro": "Az S&P/NDX részvények szűrésekor a táblázat a tervezett nyereség többszörösét (P/E Forward) és a bruttó működési fedezetet jeleníti meg, így összehasonlíthatja az értékelést a jövedelmezőséggel.",
+        "math": {
+          "lhs": "P/E Forward =",
+          "numerator": "Aktuális részvényárfolyam",
+          "denominator": "Becsült részvényenkénti nyereség (következő 12 hónap)",
+          "vars": [
+            "P/E Forward: Hány év jövőbeli bevételét fizeti a mai áron.",
+            "Bruttó fedezet (%): az árbevétel azon százaléka, amely a közvetlen költség levonása után bruttó nyereségként marad."
+          ]
+        },
+        "lead": "Mire kell figyelni mindkét oszlop áthaladásakor:",
+        "bullets": [
+          {
+            "bold": "Igényes vs mérsékelt értékelés",
+            "code": "P/E > 30x vs < 18x",
+            "text": "A magas többszörös azt jelzi, hogy a piac erős jövőbeli növekedést áraz; az alacsony általában érett vagy értékes vállalatokat tükröz."
+          },
+          {
+            "bold": "Árképzési teljesítmény",
+            "code": "Margen Bruto > 50%",
+            "text": "A magas árrések azt mutatják, hogy az erős versenyelőnyökkel rendelkező vállalatok képesek megvédeni nyereségüket az inflációval szemben."
+          }
+        ],
+        "example": "Ha egy részvény 150 dolláron forog, és a becslések szerint részvényenként 6 dollárt fog keresni a következő 12 hónapban, akkor a Forward P/E 25,0-szerese."
+      },
+      {
+        "id": "tbl-deriv",
+        "label": "Származékos ügyletek, deviza és áruk",
+        "intro": "Opciók, deviza és fizikai határidős piacok esetében a két dinamikus oszlop a pozíció megtartásával járó kockázat vagy hozam implikált költségét mutatja az idő függvényében.",
+        "math": {
+          "lhs": "Breakeven Straddle (%) ≈",
+          "inline": "Volatilidad Implícita ATM (30d) × √( 30 / 365 )",
+          "vars": [
+            "ATM IV (származékos): évesített volatilitás, amelyet az opciós piac diszkontál a következő 30 napra.",
+            "Carry 10Y (FX) és Roll Yield (Commodities): éves nyereség vagy költség a kamatkülönbözetből vagy a határidős ügyletek meghosszabbításából."
+          ]
+        },
+        "lead": "Hogyan használhatja ki ezeket az oszlopokat az eszköztől függően:",
+        "bullets": [
+          {
+            "bold": "In Származékok",
+            "code": "ATM IV y Skew 25Δ",
+            "text": "Megmondják, hogy a piac hány százalékos mozgásra számít, és hogy drágák-e az esések fedezésére szolgáló lehetőségek (Puts)."
+          },
+          {
+            "bold": "Pénznemekben és nyersanyagokban",
+            "code": "Carry Spread y Roll Yield",
+            "text": "Zöld színnel jelzik, ha az eszköz karbantartása többletbevételt jelent, vagy pirosan, ha könyvelési költsége van."
+          }
+        ],
+        "example": "Ha egy opció évi 35%-os implikált volatilitást (ATM IV) mutat, a piac a következő 30 napban ±10% közeli mozgást diszkontál."
+      }
+    ],
+    "scr-orbital": [
+      {
+        "id": "orb-polar",
+        "label": "Radar Radial Mapping",
+        "intro": "A három radargyűrűben akár 45 eszköz átfedés nélküli elhelyezéséhez a Orbital nézet a kiválasztott indikátor értékét a középponttól mért távolságra (r sugár) alakítja, normalizálva a csoport minimuma és maximuma között.",
+        "math": {
+          "lhs": "Radio Normalizado (r) =",
+          "numerator": "Eszközérték − A Csoport minimális értéke",
+          "denominator": "A csoport maximális értéke − a csoport minimális értéke",
+          "vars": [
+            "r → 0 (Belső gyűrű): nagyobb intenzitással vagy pozitív eltéréssel koncentrálja az eszközöket.",
+            "r → 1 (Külső gyűrű): megkeresi a perifériás eszközöket vagy a legalacsonyabb relatív olvasással rendelkezőket."
+          ]
+        },
+        "lead": "Az egyes bolygók helyzetének és színének leolvasása a radaron:",
+        "bullets": [
+          {
+            "bold": "Fókusz a belső gyűrű",
+            "code": "Centro del radar",
+            "text": "Gyűjtsd össze a vezető eszközöket a fent kiválasztott mutatóból, hogy a nézeted a legfontosabbra kerüljön először."
+          },
+          {
+            "bold": "Történelmi színszemantika",
+            "code": "Verde vs Rojo",
+            "text": "A csomópont zölden világít, ha kedvezően meghaladja történelmi átlagát, és pirosan, ha hanyatlást vagy stresszt tükröz."
+          }
+        ],
+        "example": "Ha a radart térfogati eltérés (Z-Score) szerint rendezi, akkor a +3,4σ-vel rendelkező aktív a fényes középső gyűrűben, míg a 0,1σ-vel rendelkező a külső pályán található."
+      }
+    ],
+    "ana-technical": [
+      {
+        "id": "tech-sma-bb",
+        "label": "SMA (20) és Bollinger sávok",
+        "intro": "A 20 periódusos egyszerű mozgóátlag (SMA 20) jelöli az eszköz alaptrendjét, míg a Bollinger sávok dinamikus csatornát rajzolnak az átlag körüli két szórás (2σ) hozzáadásával és kivonásával.",
+        "math": {
+          "lhs": "Bandas (20, 2σ) =",
+          "inline": "SMA(20) ± [ 2 × Desvío Estándar de Precios (20 períodos) ]",
+          "vars": [
+            "SMA(20): az utolsó 20 zárás számtani átlaga.",
+            "Sávszélesség (BB Width): százalékos távolság a felső és az alsó sáv között."
+          ]
+        },
+        "lead": "Statisztikailag az idézetek körülbelül 95%-a a két sávon belül található:",
+        "bullets": [
+          {
+            "bold": "Átlag feletti ár",
+            "code": "Precio > SMA 20",
+            "text": "Azt jelzi, hogy a rövid távú trend bullish, és az átlag általában támasztó padlóként működik."
+          },
+          {
+            "bold": "Felső vagy alsó sáv érintése",
+            "code": "±2σ",
+            "text": "Figyelmeztet arra, hogy az ár túl gyorsan nyúlt a legutóbbi átlaghoz képest, és levegőhöz juthat."
+          },
+          {
+            "bold": "sávos tömörítés",
+            "code": "BB Width bajo",
+            "text": "Amikor a sávok nagyon beszűkülnek, a piac energiát halmoz fel, mielőtt egy erős mozgást hajtanak végre."
+          }
+        ],
+        "example": "Ha egy részvény SMA(20) értéke 100 dollár, és a 20 kerék szórása 4 dollár, akkor a felső sáv 108 dollár, az alsó sáv pedig 92 dollár."
+      },
+      {
+        "id": "tech-vwap",
+        "label": "VWAP Intézményi",
+        "intro": "Ellentétben egy általános átlaggal, amely a nap minden óráját egyenlő súllyal adja meg, a VWAP minden egyes árat az adott szinten ténylegesen kereskedett pénzmennyiséggel súlyoz. Ez az intézményi táblák által használt fő hivatkozás.",
+        "math": {
+          "lhs": "VWAP =",
+          "numerator": "∑ (tipikus ár × kereskedési mennyiség)",
+          "denominator": "∑ Kereskedési mennyiségᵢ",
+          "vars": [
+            "Tipikus árᵢ: az egyes gyertyák maximuma, minimuma és közeli értéke közötti átlag.",
+            "Kereskedett mennyiség: kifejezetten az adott szekcióban forgalmazott mennyiség."
+          ]
+        },
+        "lead": "Hogyan használják a professzionális kereskedők a VWAP vonalat:",
+        "bullets": [
+          {
+            "bold": "Végrehajtás ellenőrzése",
+            "code": "Comprar bajo el VWAP",
+            "text": "Ha egy intézményi alap a VWAP alatt vásárol az adott időszakra, akkor a piaci súlyozott átlagnál jobb árat kapott."
+          },
+          {
+            "bold": "Trend védelmi szint",
+            "code": "Soporte / Resistencia",
+            "text": "Amíg az eszköz VWAP felett marad, átlagosan profitálnak azok, akik ebben az időszakban vásároltak."
+          }
+        ],
+        "example": "Ha 1 millió részvényt 100 dollárért kereskednek, és csak 100 ezer részvényt 110 dolláron, akkor az egyszerű átlag 105 dollárt mondana, de a VWAP 100,91 dollárt mutat, mert szinte az összes pénzt 100 dolláron forgalmazták."
+      }
+    ],
+    "ana-micro": [
+      {
+        "id": "micro-spread",
+        "label": "Spread elmozdulás (bps)",
+        "intro": "A spread az ajánlati könyvben szereplő legjobb eladási ár és a legjobb ajánlati ár közötti különbség. Amikor az árjegyzők kockázatot vagy likviditáshiányt észlelnek, felnyitják ezt a rést, hogy megvédjék magukat.",
+        "math": {
+          "lhs": "Spread (bps) =",
+          "numerator": "(Kivételi ár − Ajánlati ár)",
+          "denominator": "Átlagár (közepes ár)",
+          "rhs": "× 10,000",
+          "vars": [
+            "Kérjen / Licit Ár: eladási pont és vételi pont aktuális a könyvben.",
+            "10 000: Átváltási tényező a különbség bázispontokban (bps) kifejezéséhez."
+          ]
+        },
+        "lead": "Amit a bal oldali sínen lévő Spread Dislocation mutató mutatja:",
+        "bullets": [
+          {
+            "bold": "Mély és gördülékeny könyv",
+            "code": "Spread estable en verde",
+            "text": "Mindkét oldalon bőséges a likviditás, és a belépés vagy a kilépés implicit költsége minimális."
+          },
+          {
+            "bold": "Súrlódás vagy likviditáskivonás",
+            "code": "Salto en bps",
+            "text": "Ez általában másodpercekkel a makrogazdasági bejelentések előtt vagy pánikértékesítés során történik, ami megdrágítja a végrehajtást."
+          }
+        ],
+        "example": "Ha egy eszköz vételi tippje 99,95 USD, eladási tippje pedig 100,05 USD, a 100 USD feletti 0,10 USD különbség 10 bázispontnak (10 bázispontnak) felel meg."
+      }
+    ],
+    "ana-engines": [
+      {
+        "id": "eng-options",
+        "label": "Opciók (fekete-scholes és görögök)",
+        "intro": "Az opciós motorban a platform két profit és veszteség (P&L) görbét ábrázol: hogyan végződne a stratégia a lejárati napon és mennyit ér ma (T+0) a Black-Scholes modellt alkalmazva.",
+        "math": {
+          "lhs": "Call (T+0) =",
+          "inline": "S · N(d₁) − K · e^(−r·T) · N(d₂)",
+          "vars": [
+            "S és K: a mögöttes eszköz aktuális ára (Spot) és az opció kötési ára (Strike).",
+            "Nettó görögök: Δ Delta (árérzékenység), Γ Gamma (Delta gyorsulás), Θ Theta (napi kopás) és ν Vega (volatilitásérzékenység)."
+          ]
+        },
+        "lead": "Hogyan olvassa el a görögök stratégiáját a bal oldali sínre vonatkozó tablettákról:",
+        "bullets": [
+          {
+            "bold": "Kormányzás és gyorsítás",
+            "code": "Δ Delta / Γ Gamma",
+            "text": "A pozitív Delta nyer, amikor az eszköz emelkedik; a pozitív Gamma egyre gyorsabban gyarapít, ha a mozgás felgyorsul."
+          },
+          {
+            "bold": "Az idő múlása és a bizonytalanság",
+            "code": "Θ Theta / ν Vega",
+            "text": "A théta megmutatja, hány dollárt veszít vagy nyer a pozíció minden egyes napon; Vega mennyit változik, ha az implikált volatilitás 1%-kal nő."
+          }
+        ],
+        "example": "A Long Straddle (vásárlás Call és Put on ugyanazon strike) Delta értéke közel 0 (nem számít, hogy felfelé vagy lefelé megy), de pozitív Vega, és szüksége van az árra, hogy túllépjen a két egyensúlyi ponton (Breakevens)."
+      },
+      {
+        "id": "eng-rates",
+        "label": "Sovereign Curves (Butterfly és DV01)",
+        "intro": "A fix kamatozású motor 42 ország 3 hónap és 30 év közötti hozamát hasonlítja össze, és kiszámítja a középső részlet meredekségét (2s10s) és görbületét (Butterfly 2s5s10s), valamint a monetáris érzékenységet (DV01).",
+        "math": {
+          "lhs": "Butterfly (2s5s10s) =",
+          "inline": "( 2 × Tasa 5Y ) − ( Tasa 2Y + Tasa 10Y )",
+          "vars": [
+            "2Y, 5Y, 10Y kamatláb: a kiválasztott ország 2, 5 és 10 éves szuverén hozama.",
+            "Reál 10 éves kamatláb: 10 éves nominális hozam mínusz a referenciakamat vagy az implicit infláció."
+          ]
+        },
+        "lead": "Mire szolgálnak az egyes mutatók a kötvényelemzésben:",
+        "bullets": [
+          {
+            "bold": "A középső szakasz görbülete",
+            "code": "Butterfly 2s5s10s",
+            "text": "Azt méri, hogy az 5 éves részlet drága vagy olcsó a 2 és 10 éves szélsőségekhez képest."
+          },
+          {
+            "bold": "Dollár időtartamú kockázat",
+            "code": "DV01 por $1M",
+            "text": "Pontosan megmondja, hogy egy millió dolláros portfólió hány dollárral változik az árfolyam 0,01%-os elmozdulásával."
+          }
+        ],
+        "example": "Egy 10 éves lejáratú kötvény 820 dollár/millió dolláros DV01-vel körülbelül 82 000 dollárt veszít, ha a piaci kamatok 100 bázisponttal (+1,00%) emelkednek."
+      },
+      {
+        "id": "eng-fx-comm",
+        "label": "Devizák (carry) és határidős ügyletek (roll hozam)",
+        "intro": "A pénznemekben, ha egy párt nem jegyzik közvetlenül, a dollárral szembeni háromszögelés alapján számítják ki, és mérik a kamatkülönbözetét (Carry). Az alapanyagoknál a megújítási teljesítményt az azonnali szerződés és a 12 hónapos szerződés (Roll Yield) között mérik.",
+        "math": {
+          "lhs": "Roll Yield Anual (%) =",
+          "numerator": "Azonnali ár (elülső M1) − Jövőbeli ár (M12)",
+          "denominator": "Jövőbeli ár (M12)",
+          "rhs": "× 100",
+          "vars": [
+            "Visszalépés (Spot > Future): A mai fizikai hiány miatt a gördülő határidős ügyletek pozitív profitot generálnak (Roll Yield > 0).",
+            "Contango (Spot < Future): A tárolási költségek drágítják a határidős ügyleteket, megújításuk pedig negatív költséggel jár."
+          ]
+        },
+        "lead": "Hogyan hat ez a zsebkönyvére, amikor pozíciót tart:",
+        "bullets": [
+          {
+            "bold": "Pozitív Carry Trade valutákkal",
+            "code": "Carry Spread > 0 bps",
+            "text": "Ha magas kamatozású devizát vásárol úgy, hogy alacsony kamatozású pénznemből finanszírozza magát, akkor ezt a különbözetet az Ön javára szedi be."
+          },
+          {
+            "bold": "Kedvező szél a nyersanyagokban",
+            "code": "Backwardation en verde",
+            "text": "Ha a fizikai készletek alacsonyak, a közeli szerződés többet ér, mint a távoli, és a befektető extra hozamot keres a szerződés görgetésével."
+          }
+        ],
+        "example": "Ha az 1 hónapos olajat 72 dolláron, a 12 hónapos kontraktust pedig 68 dolláron kereskednek, akkor a piac elmaradásban van, éves szinten +5,88%-os pozitív Roll Yield mellett."
+      }
+    ],
+    "res-hero": [
+      {
+        "id": "res-score",
+        "label": "Teljes súlyozott osztályzat",
+        "intro": "Nem minden eszköz ugyanazokon a forrásokon keresztül mozog: egy vállalatnál az auditált pénzügyi kimutatásoknak (SEC 10-K/10-Q) nagy a súlya, míg a kriptopiacon vagy a devizákban a napi áramlásoknak és a kommunikációnak van nagyobb súlya.",
+        "math": {
+          "lhs": "Nota Compuesta =",
+          "inline": "( Peso_Fund × Puntaje Documental ) + ( Peso_Not × Sentimiento FinBERT )",
+          "vars": [
+            "Peso_Fund / Peso_Not: automatikus súlyozás kategória szerint (pl. 80% / 20% a részvényeknél; 85% / 15% a díjaknál).",
+            "Végső skála: –100 (maximális pesszimizmus) és +100 (maximális bullish meggyőződés) között mozog."
+          ]
+        },
+        "lead": "Így fordítják le az összetett pontszámot a felsőbbrendű véleményben:",
+        "bullets": [
+          {
+            "bold": "Bullish álláspont",
+            "code": "BULLISH / Nota > +15",
+            "text": "A dokumentumfilm katalizátorai és a hírfolyamok egyértelműen felülmúlják a kockázati tényezőket."
+          },
+          {
+            "bold": "Semleges vagy vegyes testtartás",
+            "code": "NEUTRAL / -15 a +15",
+            "text": "Még az alapok és a hírek közötti erők is; Döntés előtt célszerű áttekinteni a 10 tényező harmonikáját."
+          },
+          {
+            "bold": "Védekező vagy bearish álláspont",
+            "code": "BEARISH / Nota < -15",
+            "text": "A mérleggel kapcsolatos figyelmeztetések, az árrés romlása vagy a kedvezőtlen hírek dominálnak."
+          }
+        ],
+        "example": "Részvényen (80% fundamentumok / 20% hírek), ha az egyenlegek +50 pontot mutatnak, a nap híre pedig +20, akkor a súlyozott összpontszám (0,80 × 50) + (0,20 × 20) = +44."
+      }
+    ],
+    "res-rag": [
+      {
+        "id": "rag-pipeline",
+        "label": "Ellenőrzött keresés (RAG)",
+        "intro": "Annak érdekében, hogy a mesterséges intelligencia ne találjon ki számokat, a Document Chat Generation Augmented Recovery (RAG) módszert alkalmaz: először megkeresi a megfelelő bekezdéseket az eszköz hivatalos jelentéseiben, és csak ezután írja meg a választ a forrásra hivatkozva.",
+        "math": {
+          "lhs": "Similitud Coseno =",
+          "numerator": "Vektor konzultáció (Q) · Vector hivatalos dokumentum (D)",
+          "denominator": "‖Q‖ × ‖D‖",
+          "vars": [
+            "Q és D vektor: kérdésének és hivatalos töredékeinek numerikus ábrázolása (10-K, FOMC jegyzőkönyv, EIA jelentések).",
+            "3-rétegű védőkorlát: olyan szűrő, amely blokkolja a pénzügyekkel nem kapcsolatos vagy dokumentumokkal nem kapcsolatos lekérdezéseket."
+          ]
+        },
+        "lead": "Mit garantál ez a mechanizmus, amikor kérdést tesz fel a chatben:",
+        "bullets": [
+          {
+            "bold": "Elsődleges forrásokban való lehorgonyzás",
+            "code": "SEC 10-K / FOMC / EIA",
+            "text": "Minden bevételre, adósságra, készletekre vagy kamatlábra vonatkozó adat az adott eszközhöz tartozó szabályozó dokumentumból származik."
+          },
+          {
+            "bold": "Hagyd abba a témán kívüli kérdéseket",
+            "code": "Guardrail activo",
+            "text": "Ha valaki nem pénzügyi témában próbál konzultálni, az asszisztens elutasítja a lekérdezést, és továbbra is az eszköz elemzésére összpontosít."
+          }
+        ],
+        "example": "Amikor megérinti a kockázati tényezők chipet egy részvényen, a motor lekéri a legújabb 10-K űrlap 1A tétel (Risk Factors) szakaszát, és összefoglalja a kritikus pontokat."
+      }
+    ],
+    "res-pulse24h": [
+      {
+        "id": "finbert-nlp",
+        "label": "FinBERT Neuronális pontszám",
+        "intro": "Egy tipikus szótár gyakran összekeveri a pénzügyi szavakat (például a „költségcsökkenés” vagy az „adósságcsökkentés” kiváló hír még akkor is, ha a bukás vagy csökkentés szót használják). A FinBERT egy speciálisan pénzügyi szövegekre kiképzett neurális hálózat.",
+        "math": {
+          "lhs": "Polaridad FinBERT =",
+          "inline": "[ P(Positivo) − P(Negativo) ] × 100   (Escala de −100 a +100)",
+          "vars": [
+            "P(pozitív) és P(negatív): a modell által a címsorhoz rendelt valószínűségek, hogy az eszköz bullish vagy bearish.",
+            "24 órás görbe: az elmúlt 24 óra főcímeinek exponenciális mozgóátlaga."
+          ]
+        },
+        "lead": "Az egyes csomópontok aránya a jobb oldali idővonalon:",
+        "bullets": [
+          {
+            "bold": "Katalizátor tartó",
+            "code": "+20 a +100 en verde",
+            "text": "A becsült bevételek felülmúlása, a hitelminősítés felminősítése vagy a kedvező kamatcsökkentések."
+          },
+          {
+            "bold": "Semleges információs kábel",
+            "code": "-19 a +19 en ámbar",
+            "text": "Rutinszerű működési bejelentések, amelyek nem változtatják meg a műszer szerkezeti értékelését."
+          },
+          {
+            "bold": "Kockázattartó",
+            "code": "-20 a -100 en rojo",
+            "text": "Szabályozási figyelmeztetések, árréscsökkenés, sztrájkok vagy a vártnál rosszabb inflációs adatok."
+          }
+        ],
+        "example": "Ha a modell 82% pozitív, 12% semleges és 6% negatív valószínűséget rendel egy címsorhoz, akkor a csomópont zöld színnel +76 nettó hatást mutat."
+      }
+    ],
+    "p1-pills": [
+      {
+        "id": "p1-cagr-sharpe",
+        "label": "CAGR, Sharpe és Sortino",
+        "intro": "Az első két felső kártya azt méri, hogy mennyivel nő a tőkéje évente (CAGR), és hogy ez a növekedés mennyire hatékony az elviselendő sokkokhoz képest (Sharpe és Sortino).",
+        "math": {
+          "lhs": "Sharpe Ratio =",
+          "numerator": "Éves Portfolio hozam (Rp) – Kockázatmentes ráta (Rf)",
+          "denominator": "Éves Portfolio volatilitás (σp)",
+          "vars": [
+            "Rf (4,30%): kincstárjegyben kockázat nélkül megszerezhető alaphozam.",
+            "Sortino Ratio: ugyanazt a képletet használja, de a nevezőben csak a negatív napok (esések) volatilitását bünteti."
+          ]
+        },
+        "lead": "Hogyan értékelheti portfóliója minőségét a következő számokkal:",
+        "bullets": [
+          {
+            "bold": "Hatékony portfólió",
+            "code": "Sharpe > 1.00",
+            "text": "A kockázatmentes ráta felett elért többlethozam messze meghaladja a feltételezett volatilitást."
+          },
+          {
+            "bold": "Kiemelkedő teljesítmény",
+            "code": "Sharpe > 1.80 / Sortino > 2.20",
+            "text": "Ez egy nagyon jól diverzifikált kombinációt jelez, ahol a növekedések konzisztensek és a visszaesések visszafogottak."
+          }
+        ],
+        "example": "Ha portfóliója 15,3%-os éves hozamot hoz, akkor a kockázatmentes ráta 4,3%, az éves volatilitás pedig 10%, a többlethozam 11%, a Sharpe arány pedig 1,10."
+      },
+      {
+        "id": "p1-var-dd",
+        "label": "VaR 95%, CVaR 99% és lehívás",
+        "intro": "A harmadik és negyedik lap arra ad választ, hogy mennyit veszíthetsz egy rossz, de statisztikailag normális napon (VaR 95%), mennyit egy extrém pániknapon (CVaR 99%), és mi volt a legnagyobb visszahúzás egy korábbi csúcshoz képest (Max Drawdown).",
+        "math": {
+          "lhs": "VaR 95% (1 Día) =",
+          "inline": "Capital Total × [ −μ_diario + ( 1.645 × σ_diaria ) ]",
+          "vars": [
+            "1,645: statisztikai tényező, amely lefedi az éves normál kerekek 95%-át (minden 20 napból 19-et).",
+            "CVaR 99% (várható hiány): Átlagos veszteség, amikor a piac átlépi ezt a küszöböt, és belép a legrosszabb napok felső 1%-ába."
+          ]
+        },
+        "lead": "Milyen gyakorlati különbség van a VaR és a Max Drawdown nézése között:",
+        "bullets": [
+          {
+            "bold": "Egynapos kockázat",
+            "code": "VaR 95% 1D en USD",
+            "text": "Pszichológiailag és pénzügyileg felkészít arra, hogy fiókja rossz irányba billenhet anélkül, hogy a stratégia meghiúsult volna."
+          },
+          {
+            "bold": "Ellenállás kedvezőtlen sorozatban",
+            "code": "Max Drawdown 12M",
+            "text": "Méri a csúcstól a hegyig felgyülemlett cseppet a legmagasabb ponttól a padlóig, mielőtt ismét helyreállna."
+          }
+        ],
+        "example": "Egy 100 000 dolláros portfólióban napi VaR 95%-os 1,45%-os (1450 dollár) 20 kereskedési kerékből 19 napi vesztesége nem haladja meg az 1450 dollárt."
+      }
+    ],
+    "p1-xray": [
+      {
+        "id": "xray-lookthrough",
+        "label": "X-ray átfedés (#12)",
+        "intro": "Ha olyan ETF-et vásárol, mint a SPY vagy a QQQ, több tucat részvényt vásárol benne. Ha közvetlenül is vásárolt néhányat ugyanazokból a részvényekből, akkor a valódi kitettség a két dolog összege.",
+        "math": {
+          "lhs": "Peso Real del Activo i =",
+          "inline": "Peso Directoᵢ + ∑ ( Peso del ETFₖ × Porcentaje de i dentro del ETFₖ )",
+          "vars": [
+            "Közvetlen súly: portfóliójának százalékos aránya közvetlenül a részvényhez i.",
+            "Százalék az ETFₖ-n belül: az adott társaság hivatalos súlya a k indexen vagy alapon belül."
+          ]
+        },
+        "lead": "Miért fontos áttekinteni ezt az első lapot a portfólió bezárása előtt:",
+        "bullets": [
+          {
+            "bold": "Rejtett koncentráció láthatósága",
+            "code": "Directo + Indirecto",
+            "text": "Automatikusan szétszedi a portfóliójában lévő minden egyes ETF-et, és egyetlen sávot jelenít meg az egyes vállalatok valódi százalékos arányával."
+          },
+          {
+            "bold": "Túlzott riasztás",
+            "code": "> 20% en rojo",
+            "text": "Ha a teljes összeg meghaladja az egyetlen névre való koncentrálás körültekintő küszöbét, a sor világít, így újra egyensúlyba hozható."
+          }
+        ],
+        "example": "Ha portfóliójának 15%-át a közvetlen NVDA-be helyezi, és 30%-a van a SPY ETF-be is (ahol a NVDA súlya körülbelül 7%), a röntgenfelvétel megmutatja, hogy a NVDA-vel szembeni valós kitettsége 15% + (30% × 7%) = 17."
+      },
+      {
+        "id": "xray-brinson",
+        "label": "Alpha Brinson-bontás (#2)",
+        "intro": "Amikor a portfóliója megveri (vagy veszít) a benchmarknál, a Brinson-Fachler-modell pontosan elkülöníti, honnan ered ez a különbség: igaza volt-e, mely szektorokban súlyozott felül, vagy igaza volt, amikor az egyes szektorokon belül a legjobb eszközöket választotta?",
+        "math": {
+          "lhs": "Alpha Total (Rp − Rb) =",
+          "inline": "Efecto Asignación + Efecto Selección + Efecto Interacción",
+          "vars": [
+            "Allokációs hatás: (Portfolio súly − benchmark súly) × ágazati hozam a benchmarkban.",
+            "Kiválasztási hatás: Súly referenciaértékben × (Eszközeinek megtérülése − Szektor megtérülése)."
+          ]
+        },
+        "lead": "A három hozzárendelési sáv olvasása a harmadik lapon:",
+        "bullets": [
+          {
+            "bold": "Makro vagy szektor sikere",
+            "code": "Asignación Sectorial",
+            "text": "Zöldben pozitív, ha a piacnál nagyobb súlyt helyez a legtöbbet emelkedő eszközosztályra."
+          },
+          {
+            "bold": "Az eszközök sikeres megcélzása",
+            "code": "Selección de Activos",
+            "text": "Pozitív, ha az Ön által választott konkrét hangszerek a saját szektoruk átlagánál jobban teljesítettek."
+          }
+        ],
+        "example": "Ha a portfóliója +3,20%-kal verte a S&P 500-t, ezen a lapon láthatja, hogy +2,10% a jobb részvények választása (kiválasztás) és +1,10% a technológiai súly (allokáció) eredménye."
+      }
+    ],
+    "p2-markowitz": [
+      {
+        "id": "mkw-frontier",
+        "label": "Hatékony Frontier és CML",
+        "intro": "A Markowitz síkon egy portfólió várható hozama az eszközei hozamának súlyozott átlaga, de volatilitása alacsonyabb az átlagosnál, köszönhetően annak, hogy az eszközök nem mozognak 100%-ban egyformán.",
+        "math": {
+          "lhs": "Volatilidad de Cartera (σp) =",
+          "inline": "√ [ ∑ᵢ ∑ⱼ ( wᵢ · wⱼ · σᵢ · σⱼ · ρᵢⱼ ) ]",
+          "vars": [
+            "wᵢ, wⱼ: az i és j eszközökre allokált tőke százalékos aránya.",
+            "ρᵢⱼ (korreláció): a két eszköz együttmozgási foka (-1-től +1-ig). Minél alacsonyabb a ρᵢⱼ, annál jobban csökken a teljes kockázat."
+          ]
+        },
+        "lead": "Mit jelent a grafikonon szereplő három hivatkozás:",
+        "bullets": [
+          {
+            "bold": "Minimális szórás",
+            "code": "Min-Var",
+            "text": "Ez a görbe bal szélső pontja: a súlyok pontos kombinációja, amely a lehető legalacsonyabb volatilitást éri el."
+          },
+          {
+            "bold": "Máximo Sharpe és Recta CML Portfolio",
+            "code": "Max-Sharpe / Tangente CML",
+            "text": "Ez az a pont, ahol a kockázatmentes kamatról induló vonal érinti a hatékony határt, és a kockázati egységenkénti legnagyobb nyereséget kínálja."
+          }
+        ],
+        "example": "Ha egyenlő részben összevonunk két olyan eszközt, amelyek egyenként 20%-os volatilitásúak, de nulla korrelációval (ρ = 0), akkor a portfólió volatilitása nem 20%, hanem 14,1%-ra csökken."
+      }
+    ],
+    "p2-tornado": [
+      {
+        "id": "tor-cvar",
+        "label": "VaR az Active and Capture által",
+        "intro": "Annak érdekében, hogy megtudjuk, melyik pozíció növeli a portfólió kockázatát, az egyes eszközök marginális hozzájárulását a súlyuk és a többivel való korrelációja alapján mérjük. Ezenkívül a rögzítési arányok mérik az aszimmetriát a S&P 500 emelkedésével és süllyedésével szemben.",
+        "math": {
+          "lhs": "Ratio de Captura =",
+          "numerator": "Az Asset vagy a Portfolio visszaküldése Bullish (vagy Bearish) kerekekben",
+          "denominator": "A S&P 500 visszaküldése ugyanazokon a kerekeken",
+          "rhs": "× 100",
+          "vars": [
+            "Upside Capture (> 100%) – Keressen többet, mint az index, ha a piac emelkedik.",
+            "Downside Capture (< 100%): kevésbé esik, mint az index, amikor a piac csökken (védelmi puffer)."
+          ]
+        },
+        "lead": "Az ideális profil, amelyet a kvadráns harmadik lapjának áttekintésekor keres:",
+        "bullets": [
+          {
+            "bold": "pozitív aszimmetria",
+            "code": "Upside > 100% y Downside < 80%",
+            "text": "Teljes mértékben vegyen részt a bikapiacokon, de védje meg a tőkét, amikor a tőzsde korrigálja."
+          },
+          {
+            "bold": "Menedék vagy nem korrelált eszközök",
+            "code": "Downside negativo o cercano a 0%",
+            "text": "Olyan eszközök, mint a rövid kötvények vagy az arany, amelyek általában szilárdak maradnak vagy emelkednek a tőzsdei esések során."
+          }
+        ],
+        "example": "Ha azokban a hónapokban, amikor a S&P 500 10%-ot emelkedett, a portfóliója 11%-ot erősödött (110%-os emelkedés), és amikor az index 10%-ot esett, a portfóliója csak 6%-ot esett (60%), akkor erős aszimmetria van az Ön javára."
+      }
+    ],
+    "p2-corr": [
+      {
+        "id": "corr-pearson",
+        "label": "Normál vs válság korreláció",
+        "intro": "A Pearson-együttható (r) -1,00 és +1,00 között azt méri, hogy két eszköz hogyan mozog egymáshoz képest. A portfóliókezelésben az a veszély, hogy egy piaci összeomlás során a kockázati eszközök közötti korreláció általában +1,00 felé száguld (fertőzés).",
+        "math": {
+          "lhs": "Correlación (rᵢⱼ) =",
+          "numerator": "Kovariancia (i. eszköz, j. eszköz)",
+          "denominator": "Eszköz volatilitása i (σᵢ) × Eszköz volatilitása j (σⱼ)",
+          "vars": [
+            "r közel 0 vagy negatív: kiváló diverzifikáció (amikor az egyik lemegy, a másik nem követi).",
+            "r in Crisis Queue: újraszámolja a mátrixot, amely csak a piacon lévő legrosszabb kerekek 5%-át veszi figyelembe."
+          ]
+        },
+        "lead": "A 6x6-os mátrix színeinek leolvasása mindkét rendszerben:",
+        "bullets": [
+          {
+            "bold": "Valódi diverzifikáció",
+            "code": "r < 0.30 en verde o cian",
+            "text": "Mindkét eszköz különböző gazdasági tényezőkre reagál, és kompenzálja egymást."
+          },
+          {
+            "bold": "Koncentráció vagy fertőzés",
+            "code": "r ≥ 0.65 en rojo",
+            "text": "Gyakorlatilag blokkként mozognak; Mindkettő megléte nem csökkenti az eséseket egy rossz napon."
+          }
+        ],
+        "example": "Két különböző szektorból származó részvény mérsékelt, 0,42-es korrelációt mutathat egy normál évben, de ha aktiválja a Válságsor gombot, látni fogja, hogy 0,81-re emelkedik, mert pánikszerűen együtt adnak el."
+      }
+    ],
+    "p2-shock2d": [
+      {
+        "id": "shock-bivar",
+        "label": "2D sokk (árfolyamok × tőzsde)",
+        "intro": "A 2D mátrix egyidejűleg egyesíti a kamatlábak mozgásának hatását (a fix kamatozási időtartamon és a kamatláb érzékenységen keresztül) a S&P 500 index esésével vagy emelkedésével (a részvény béta segítségével).",
+        "math": {
+          "lhs": "Impacto Estimado (%) ≈",
+          "inline": "( Beta_Cartera × Δ% S&P 500 ) − ( Duración_Efectiva × Δ Tasas )",
+          "vars": [
+            "Δ% S&P 500: tőzsdei változási forgatókönyv a vízszintes tengelyen (-20% és +10%).",
+            "Δ Kamatláb: a kamatlábak változásának forgatókönyve bázispontban a függőleges tengelyen (-100 és +200 bps között)."
+          ]
+        },
+        "lead": "Mi a célja a táblázatban a két tengely keresztezésének:",
+        "bullets": [
+          {
+            "bold": "Stagflációs vagy kamatemelési forgatókönyv",
+            "code": "Tasas +100 bps y SPX -10%",
+            "text": "Mint ami 2022-ben történt, amikor a részvények és a hosszú kötvények egyszerre szenvednek."
+          },
+          {
+            "bold": "Klasszikus menhely forgatókönyv",
+            "code": "Tasas -100 bps y SPX -15%",
+            "text": "Ahol az alacsonyabb kamatlábak emelik a kincstári kötvények árát és tompítják a részvények esését."
+          }
+        ],
+        "example": "A hosszú kötvényekre, például az US10Y-ra vagy a TLT-re szűrve láthatja a táblázatban, hogyan nyer értéket, ha kamatláb esik (-100 bps), és ejtőernyőként működik, ha a S&P 500 ugyanazon a napon esik."
+      },
+      {
+        "id": "shock-markov",
+        "label": "Markov-rezsim (#11)",
+        "intro": "Egy Markov-lánc a gazdaságot olyan rendszerként modellezi, amely négy lehetséges állapot között ugrik (Calm Bullish, Volatile Bullish, Inflation/Rates and Crisis), és kiszámítja az egyikből a másikba való átállás valószínűségét.",
+        "math": {
+          "lhs": "Probabilidad de Transición (Pᵢⱼ) =",
+          "inline": "P ( Estado Mañana = j  |  Estado Hoy = i )   donde ∑ⱼ Pᵢⱼ = 100%",
+          "vars": [
+            "Főátló (i = j): annak valószínűsége, hogy a jelenlegi rendszer változatlan marad.",
+            "Átlón kívüli (i ≠ j): az új piaci klímába való elfordulás valószínűsége."
+          ]
+        },
+        "lead": "Hogyan lehet kihasználni az átmeneti mátrix előnyeit a második lapon:",
+        "bullets": [
+          {
+            "bold": "A jelenlegi ciklus fennmaradása",
+            "code": "Porcentaje alto en la diagonal",
+            "text": "A nyugodt rezsimek általában nagy perzisztenciával rendelkeznek (> 75%), ami lehetővé teszi a trendpozíciók fenntartását."
+          },
+          {
+            "bold": "Forgatás korai figyelmeztetés",
+            "code": "Suba hacia Volátil o Stress",
+            "text": "Amikor a volatilis állapotba való átmenet valószínűsége nő, tanácsos csökkenteni a tőkeáttételt vagy aktiválni a fedezeti ügyletet."
+          }
+        ],
+        "example": "Ha a piac ma Volatile Bull rezsimben van, és a sor az állandóság 62%-át, a Bull Calm-hez való visszatérés 20%-át és a stressz/válság 18%-át jelzi, akkor tudja, hogy 5 forgatókönyvből majdnem egy korrekciót eredményez."
+      }
+    ],
+    "p2-montecarlo": [
+      {
+        "id": "mc-gbm",
+        "label": "Monte Carlo vetítés (10 000 út)",
+        "intro": "Az Ön portfóliójának várható hozama és jelenlegi volatilitása alapján a szimulátor 10 000 lehetséges jövőbeli pályát generál nap mint nap a sztochasztikus geometriai Brown-mozgás modell alkalmazásával.",
+        "math": {
+          "lhs": "Valor Cartera (S_t) =",
+          "inline": "S₀ × exp [ ( μ − ½σ² )·t + σ·√t · Z ]",
+          "vars": [
+            "μ és σ: jelenlegi portfóliójának várható éves hozama és évesített volatilitása.",
+            "Z: a horizont mentén 10 000-szer megrajzolt normál normál valószínűségi változó (6M, 12M vagy 24M)."
+          ]
+        },
+        "lead": "Ebből a 10 000 szimulációból kivonjuk a grafikon három fő görbéjét:",
+        "bullets": [
+          {
+            "bold": "Kedvező forgatókönyv",
+            "code": "Percentil 95 / P95 en verde",
+            "text": "Azt a szintet, amelyet a legoptimistább forgatókönyveknél csak 5%-kal léptek túl."
+          },
+          {
+            "bold": "Várható központi pálya",
+            "code": "Mediana P50",
+            "text": "A tipikus eredmény, ahol a szimulációk fele fent van, a másik fele pedig alatta."
+          },
+          {
+            "bold": "Termstressz forgatókönyv",
+            "code": "Percentil 5 / P05 en rojo",
+            "text": "A kedvezőtlen küszöb: a szimulált utak 95%-ában portfóliója e vonal fölé kerül."
+          }
+        ],
+        "example": "12 hónapos távon 100-as alapon, ha P50 116-ot és P05 94-et mutat, akkor a központi elvárás a +16% bevétel, egy nagyon kedvezőtlen évben pedig közel -6%-ot kockáztat."
+      }
+    ],
+    "p3-whatif": [
+      {
+        "id": "kelly-formula",
+        "label": "Kelly-kritérium (#14)",
+        "intro": "A Kelly-kritérium tudományosan megválaszolja, hogy tőkéjének hány százalékát kell egy műveletre fordítania, ha ismeri a siker valószínűségét (Win-Rate), és mennyit nyer, ha sikerrel jár, szemben azzal, amit kudarc esetén veszít (kifizetési arány).",
+        "math": {
+          "lhs": "Fracción Óptima de Kelly (f*) =",
+          "numerator": "(p × b) − q",
+          "denominator": "b",
+          "vars": [
+            "p és q: a nyerés valószínűsége (p) és a veszteség valószínűsége (q = 1 − p).",
+            "b (Payoff Ratio): az átlagos nyereség osztva az átlagos veszteséggel (például ha minden kockáztatott 1 dollár után 2 dollárt keres, az b = 2-t jelent)."
+          ]
+        },
+        "lead": "Miért használják a professzionális vezetők a Half-Kelly (0,5×) változatot:",
+        "bullets": [
+          {
+            "bold": "Kelly Complete",
+            "code": "Full Kelly 1.0×",
+            "text": "Maximalizálja a hosszú távú matematikai növekedést, de nagyon éles kilengéseket generál, ha egymás után hibasorozat van."
+          },
+          {
+            "bold": "Ajánlott Half Kelly",
+            "code": "Half-Kelly 0.5×",
+            "text": "A javasolt százalék felének felhasználásával megragadja a potenciális növekedés 75%-át, de felére csökkenti a volatilitást."
+          }
+        ],
+        "example": "Ha egy stratégia az esetek 55%-át eléri (p = 0,55, q = 0,45) és 2-1-et fizet (b = 2), akkor a teljes Kelly (0,55 × 2 - 0,45) / 2 = 32,5%, a körültekintő Half-Kelly pedig 16,25%-ot javasol."
+      }
+    ],
+    "p3-tailhedge": [
+      {
+        "id": "hedge-put",
+        "label": "Tedd fel az OTM pajzsot (#6)",
+        "intro": "A pénzen kívüli eladási opció (például 5%-kal a S&P 500 jelenlegi ára alatt) ugyanúgy működik, mint a biztosítási önrész: kicsi, fix költsége (a díja) van, de ha a piac 20%-ot vagy 30%-ot esik, annak értéke konvexen megszorozódik, és ellensúlyozza a portfólió veszteségeit.",
+        "math": {
+          "lhs": "Resultado Neto en Crash =",
+          "inline": "Pérdida de Cartera Base + Ganancia Convexa del Put − Costo de la Prima",
+          "vars": [
+            "Éves költség (Carry Drag): éves százalék, amelybe a biztosítás megújítása kerül, ha a piac nem esik.",
+            "Összeomlás elleni védelem (-20%): a Put-szerződés által egy súlyos összeomlás során visszaszerzett dollárok."
+          ]
+        },
+        "lead": "A szimulátor opcióinak összehasonlítása az első lapon:",
+        "bullets": [
+          {
+            "bold": "Közvetlen indexbiztosítás",
+            "code": "SPY Put 5% OTM",
+            "text": "Mérsékelt éves költségért cserébe 5%-os csökkenés esetén korlátozza a maximális veszteséget."
+          },
+          {
+            "bold": "Finanszírozott vagy volatilitási fedezet",
+            "code": "QQQ Put Collar / VIX Call Tail",
+            "text": "A nyakörv csökkenti a költségeket egy Call up eladásával; A Call on VIX robbanásszerűen javul, ha pánik tör ki a piacon."
+          }
+        ],
+        "example": "Ha egy 100 000 dolláros portfólió védelme SPY Put 5% OTM-mel évente 1,1%-ba kerül (1100 dollár), de -20%-os összeomlás esetén kevesebb mint felére csökkenti a portfólió csökkenését, a nettó megtakarítás meghaladja a 7000 dollárt."
+      },
+      {
+        "id": "hedge-margin",
+        "label": "Árrés és távolság a határréstől (#13)",
+        "intro": "Amikor származékos ügyletekkel vagy tőkeáttétellel működik, a bróker megköveteli, hogy a saját tőke minimális százalékát fenntartsa a pozíció teljes értékéhez képest (fenntartási fedezet). Ha egy esés az adott szint alá csökkenti a tőkéjét, akkor egy Margin Call indul.",
+        "math": {
+          "lhs": "Precio de Margin Call =",
+          "numerator": "Adósság vagy finanszírozott egyenleg",
+          "denominator": "1 − % karbantartási ráhagyás (Reg-T)",
+          "vars": [
+            "Bruttó kitettség: a nyitott pozíciók teljes összege osztva a részvényekkel (pl. 1,18×).",
+            "Távolság a fedezeti kéréstől (%): százalékos csökkenés, amelyet a portfólió még a küszöb elérése előtt támogat."
+          ]
+        },
+        "lead": "Biztonsági szintek a figyelősávban:",
+        "bullets": [
+          {
+            "bold": "Nagy szabad tér",
+            "code": "Distancia > 30% en verde",
+            "text": "A tőkeáttétel alacsony, és a portfólió még egy súlyos válságot is képes elviselni kényszerértékesítés nélkül."
+          },
+          {
+            "bold": "figyelmeztető zóna",
+            "code": "Distancia < 15% en rojo",
+            "text": "Egy mérsékelt piaci korrekció kimerítené a szabad fedezeteket, és a pozíciók legrosszabb pillanatban történő likvidálására kényszerítené."
+          }
+        ],
+        "example": "Mérsékelt, 1,18-szoros tőkeáttétellel és 22%-os használt fenntartási fedezettel az Ön portfóliója több mint 38%-os biztonsági résszel rendelkezik a biztosítéki követelések előtt."
+      }
+    ],
+    "p3-committee": [
+      {
+        "id": "comm-guardrails",
+        "label": "A 3 Pilléres Bizottság szabályzata",
+        "intro": "Annak érdekében, hogy az impulzív döntés ne veszélyeztesse a portfólió fennmaradását, a Bizottság minden megbízást a technikai megjegyzés, az alapjegy és két kemény, nem átruházható kockázatkezelési szabály kombinálásával értékel.",
+        "math": {
+          "lhs": "Peso Máximo Permitido (wᵢ) =",
+          "inline": "20% del NAV   (se reduce automáticamente al 5% si Score P-06 ≥ 0.65)",
+          "vars": [
+            "Hard Cap 20% NAV: egyetlen eszköz sem koncentrálhatja többet a teljes vagyon egyötödénél.",
+            "Anomália leállítása (P-06 ≥ 0,65): ha az eszköz statisztikai diszlokációba kerül, a rendszer 5%-ra csökkenti a maximális kitettséget."
+          ]
+        },
+        "lead": "Mit jelentenek az egyes államok az ítéletben és a Végrehajtási Könyvben:",
+        "bullets": [
+          {
+            "bold": "Megrendelés korlátozás nélkül jóváhagyva",
+            "code": "APROBADO en verde",
+            "text": "A három pillér kedvezően esik egybe, és a pozíció mérete minden koncentrációs és likviditási korlátot figyelembe vesz."
+          },
+          {
+            "bold": "A sorrend védőkorláttal módosítva",
+            "code": "RECORTE PREVENTIVO",
+            "text": "Ha egy jegy túllépi a 20%-os határt, vagy egy anomália közepette erősen próbál vásárolni, a korlát figyelmeztet a túllépésre."
+          }
+        ],
+        "example": "Ha olyan vásárlást próbál szimulálni, amely a portfóliója 26%-ára egyetlen részvényt is elérne, a 3. pillér (Risk & Sizing Guardrail) megjelöli a koncentrációs figyelmeztetést, így állítsa be 20% alá."
+      }
+    ],
+    "p3-walkforward": [
+      {
+        "id": "wf-wfe",
+        "label": "Hatékonyság Walk-Forward (WFE)",
+        "intro": "Annak ellenőrzésére, hogy egy stratégiát nem egyszerűen úgy alakítottak ki, hogy jól nézzen ki a múltban (túlillesztés), a Walk-Forward teszt összehasonlítja a tervezési időszakban (In-Sample) teljesített teljesítményét a későbbi, soha nem látott adatok (Out-of-Sample) teljesítményével.",
+        "math": {
+          "lhs": "Walk-Forward Efficiency (WFE) =",
+          "numerator": "Éves hozam Out-of-Sample (tiszta ellenőrzés)",
+          "denominator": "Éves hozam In-Sample (képzés)",
+          "rhs": "× 100",
+          "vars": [
+            "In-Sample (IS): történeti szakasz, amely a stratégia súlyainak és szabályainak kalibrálására szolgál.",
+            "Out-of-Sample (OOS): következő rész, ahol a stratégiát valós körülmények között tesztelik anélkül, hogy a paramétereit érintené."
+          ]
+        },
+        "lead": "Hogyan értékeli a mennyiségi iparág a WFE százalékos arányát:",
+        "bullets": [
+          {
+            "bold": "Robusztus és következetes stratégia",
+            "code": "WFE ≥ 70% en verde",
+            "text": "Az új piaci feltételekkel szembeni nyereségtermelési képességének túlnyomó többsége megmarad."
+          },
+          {
+            "bold": "Törékeny vagy túlméretezett stratégia",
+            "code": "WFE < 50% en rojo",
+            "text": "A múlt elméletében jól működött, de a valóságban elveszti hatékonyságát; Nem tanácsos valódi pénzzel végrehajtani."
+          }
+        ],
+        "example": "Ha egy stratégia a tervezési szakaszban (In-Sample) évesítve 20%-ot, az azt követő tényleges tesztelési szakaszban (Out-of-Sample) pedig 18,8%-ot hozott éves szinten, akkor a WFE hatékonysága (18,8 / 20) = 94,0%."
+      }
+    ]
+  }
+}

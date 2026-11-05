@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Panduan Visual Langsung",
+      "clickPlayPause": "Klik untuk bermain atau jeda (Ruang)",
+      "subtitles": "Sari kata (C)",
+      "fullscreen": "Skrin penuh (F)",
+      "exitFullscreen": "Keluar dari Skrin Penuh (F atau Esc)",
+      "portTabs": [
+        "pembina",
+        "risiko",
+        "Simulator",
+        "Copilot"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Bahasa",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • Kategori",
+      "scr-pulse": "02 • Nadi 24j",
+      "scr-table": "03 • Jadual",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Peta haba",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • Teknikal",
+      "ana-compare": "03 • Bandingkan %",
+      "ana-micro": "04 • Mikro & Aliran",
+      "ana-engines": "05 • Enjin 3D/2D",
+      "res-hero": "01 • Skor & Pendirian",
+      "res-rag": "02 • Sembang RAG",
+      "res-factors": "03 • Faktor",
+      "res-pulse24h": "04 • Nadi FinBERT",
+      "p1-pills": "01 • Ringkasan",
+      "p1-table": "02 • Pemberatan",
+      "p1-xray": "03 • X-Ray",
+      "p1-calendar": "04 • Kalendar",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornado & VaR",
+      "p2-corr": "03 • Korelasi",
+      "p2-shock2d": "04 • Kejutan & Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Kesan",
+      "p3-whatif": "02 • What-If & Kelly",
+      "p3-tailhedge": "03 • OTM Put & Margin",
+      "p3-committee": "04 • AJK & Log",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Selamat datang ke skrin Home: titik permulaan bebas gangguan anda di mana pasaran dinyahkod.",
+      "home-header": "Di penjuru kiri sebelah atas Header, mengklik ikon λ sentiasa membawa anda kembali ke peringkat utama ini.",
+      "home-markets": "Berpusat di bahagian atas Header ialah Markets, stesen kerja anda untuk menyelidik semua 213 aset global secara langsung.",
+      "home-portfolio": "Di sebelahnya dalam menu berpusat ialah Portfolio, untuk membina peruntukan, risiko ujian tekanan dan mensimulasikan dagangan.",
+      "home-system": "Di bahagian bawah sebelah kiri Footer, System membuka monitor kebolehmerhatian langsung untuk pelayan dan pangkalan data.",
+      "home-guide": "Di sebelahnya, Guide membuka manual langkah demi langkah interaktif ini apabila anda memerlukannya.",
+      "home-langs": "Di penjuru kanan sebelah bawah, butang bahasa membuka modal berpusat untuk menterjemah platform kepada 56 bahasa.",
+      "home-palettes": "Dan Palette membuka 5 tema bacaan visual sambil memastikan kewangan hijau dan merah sentiasa utuh.",
+      "scr-categories": "Dalam bar Kategori teratas, tapis merentas Semua 213 aset, Watchlist anda atau 10 pasaran khusus.",
+      "scr-pulse": "Kad 4 Pulse 24j menunjukkan volum agregat, RSI purata, rejim P-06 dan kehelan volum teratas.",
+      "scr-table": "Jadual interaktif menampilkan carian segera, kegemaran dan lajur pintar yang disesuaikan dengan setiap kelas aset.",
+      "scr-orbital": "Paparan Orbital memetakan aset merentasi tiga cincin sepusat dengan sisihan dengan panel pemeriksaan sisi langsung.",
+      "scr-heatmap": "Peta Haba menyusun 10 aset teratas ke dalam blok berkadar merentas 8 warna hijau dan merah.",
+      "scr-maintools": "Dan Main Tools membimbing anda dalam tiga langkah ke lengkung berdaulat, turun naik 3D, silang FX dan enjin hadapan.",
+      "ana-hero": "Header menggabungkan penukar aset, 9 rangka masa dari 1m kepada SEMUA dan 5 penunjuk teras.",
+      "ana-technical": "Lensa Teknikal menindih SMA 20, VWAP dan 2σ Bollinger Bands dengan pengesahan volum bawah.",
+      "ana-compare": "Dengan Bandingkan %, ukur kelebihan peratusan bersih atau Alpha Spread daripada 0% berbanding rakan setara atau indeks.",
+      "ana-micro": "Micro & Flow mengesan lonjakan volum melalui 20d Z-Score, penyebaran kehelan kecairan dan skor anomali P-06.",
+      "ana-engines": "Tab keempat ialah alat ad-hoc dinamik yang berbeza mengikut kelas aset: kerana NVDA ialah ekuiti, ia membuka Kemeruapan 3D & Pembayaran Pilihan, manakala bon, FX dan komoditi melancarkan alat khusus mereka sendiri.",
+      "res-hero": "Di bahagian atas, Score & Stance meringkaskan keputusan asas, penilaian wajaran dan termometer tajuk.",
+      "res-rag": "Di lajur kiri, RAG Document Chat menjawab pertanyaan yang disahkan berdasarkan pemfailan SEC 10-K dan 10-Q rasmi.",
+      "res-factors": "Di lajur tengah, akordion Faktor membezakan 5 pemandu lembu terbaik berbanding 5 risiko beruang teratas.",
+      "res-pulse24h": "Di sebelah kanan, FinBERT Pulse mencatatkan berita utama dalam masa nyata dan memplot keluk sentimen 24 jam.",
+      "p1-pills": "6 kad Summary mengira semula CAGR secara langsung, Sharpe dan Sortino, 95% VaR, Max Drawdown, Alpha dan kepelbagaian.",
+      "p1-table": "Dalam jadual Pemberat, tambahkan mana-mana daripada 213 aset, tetapkan peratusan wajaran tepat atau imbangan semula kepada 100%.",
+      "p1-xray": "Di kanan atas, panel X-Ray 5 tab mengaudit pertindihan, pendedahan, atribusi Brinson, aliran tunai dan jagaan ETF.",
+      "p1-calendar": "Di bawah X-Ray, Kalendar Bulanan memaparkan konsistensi pemulangan Januari-hingga-Disember dan jumlah YTD.",
+      "p1-backtest": "Dan pada bahagian bawah lebar penuh, Backtesting membandingkan portfolio anda dengan S&P 500, 60/40, All-Weather dan Min-Variance.",
+      "p2-markowitz": "Kuadran pertama memplotkan 2D Markowitz Efficient Frontier dan meletakkan portfolio anda berbanding Min-Var dan Max-Sharpe.",
+      "p2-tornado": "Kuadran kiri bawah menguji 5 krisis sejarah, sumbangan 95% VaR setiap aset dan tangkapan Upside/Downside.",
+      "p2-corr": "Atas kanan, Matriks 6×6 membandingkan korelasi dalam keadaan biasa dengan penularan ekor krisis.",
+      "p2-shock2d": "Bawah kanan, Shock & Markov melintasi peralihan kadar faedah dengan pergerakan S&P 500 dan menganggarkan peralihan rejim.",
+      "p2-montecarlo": "Dan panel bawah menayangkan 10,000 laluan Monte Carlo merentasi P95, P50, dan P05, Drawdown dalam air dan Sharpe rolling.",
+      "p3-impact": "6 Kad Impak membandingkan portfolio semasa anda dengan keadaan yang diunjurkan selepas dagangan simulasi anda.",
+      "p3-whatif": "Kiri atas, What-If & Kelly mensimulasikan pembelian atau penjualan tiket dan mengira saiz kedudukan Half-Kelly yang optimum.",
+      "p3-tailhedge": "Bahagian kiri bawah, OTM Put & Margin mensimulasikan perisai pilihan perlindungan dan memantau margin penyelenggaraan Reg-T.",
+      "p3-committee": "Dalam dua panel kanan, Jawatankuasa 3 tiang mengaudit pagar pengadang risiko bersama Log Perlaksanaan dan Copilot.",
+      "p3-walkforward": "Dan di bahagian bawah, carta Walk-Forward mengesahkan prestasi In-Sample dan Out-of-Sample dengan indeks WFE."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 10.3
+      },
+      {
+        "id": "home-header",
+        "startPct": 10.3,
+        "endPct": 21.9
+      },
+      {
+        "id": "home-markets",
+        "startPct": 21.9,
+        "endPct": 37.3
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 37.3,
+        "endPct": 51.6
+      },
+      {
+        "id": "home-system",
+        "startPct": 51.6,
+        "endPct": 64.3
+      },
+      {
+        "id": "home-guide",
+        "startPct": 64.3,
+        "endPct": 75.5
+      },
+      {
+        "id": "home-langs",
+        "startPct": 75.5,
+        "endPct": 89.1
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 89.1,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 18.2
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 18.2,
+        "endPct": 36.3
+      },
+      {
+        "id": "scr-table",
+        "startPct": 36.3,
+        "endPct": 52.3
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 52.3,
+        "endPct": 68.4
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 68.4,
+        "endPct": 82
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 82,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 15.6
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 15.6,
+        "endPct": 30.1
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 30.1,
+        "endPct": 48.7
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 48.7,
+        "endPct": 66.8
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 66.8,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 24.4
+      },
+      {
+        "id": "res-rag",
+        "startPct": 24.4,
+        "endPct": 52.2
+      },
+      {
+        "id": "res-factors",
+        "startPct": 52.2,
+        "endPct": 75.3
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 75.3,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 21.3
+      },
+      {
+        "id": "p1-table",
+        "startPct": 21.3,
+        "endPct": 43.2
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 43.2,
+        "endPct": 63.5
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 63.5,
+        "endPct": 78.5
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 78.5,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 18
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 18,
+        "endPct": 37.9
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 37.9,
+        "endPct": 54.8
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 54.8,
+        "endPct": 74.3
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 74.3,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 19.3
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 19.3,
+        "endPct": 40.2
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 40.2,
+        "endPct": 61
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 61,
+        "endPct": 80.7
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 80.7,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

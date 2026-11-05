@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Tour Visivo dal Vivo",
+      "clickPlayPause": "Clicca per riprodurre o mettere in pausa (Spazio)",
+      "subtitles": "Sottotitoli (C)",
+      "fullscreen": "Schermo intero (F)",
+      "exitFullscreen": "Esci da schermo intero (F o Esc)",
+      "portTabs": [
+        "Costruttore",
+        "Rischio",
+        "Simulatore",
+        "Copilota"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Lingue",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • Categorie",
+      "scr-pulse": "02 • Impulso 24h",
+      "scr-table": "03 • Tabella",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Mappa Calore",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Intestazione",
+      "ana-technical": "02 • Tecnico",
+      "ana-compare": "03 • Confronta %",
+      "ana-micro": "04 • Micro & Flusso",
+      "ana-engines": "05 • Motori 3D/2D",
+      "res-hero": "01 • Voto & Posizione",
+      "res-rag": "02 • Chat RAG",
+      "res-factors": "03 • Fattori",
+      "res-pulse24h": "04 • Impulso FinBERT",
+      "p1-pills": "01 • Riepilogo",
+      "p1-table": "02 • Ponderazione",
+      "p1-xray": "03 • Radiografia",
+      "p1-calendar": "04 • Calendario",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornado & VaR",
+      "p2-corr": "03 • Correlazione",
+      "p2-shock2d": "04 • Shock & Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Impatto",
+      "p3-whatif": "02 • What-If & Kelly",
+      "p3-tailhedge": "03 • Put OTM & Margine",
+      "p3-committee": "04 • Comitato & Libro",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Benvenuto nella schermata Home: il tuo punto di partenza privo di distrazioni dove i mercati vengono decodificati.",
+      "home-header": "Nell’angolo superiore sinistro dell’Header, un clic sull’icona λ ti riporta sempre a questa schermata principale.",
+      "home-markets": "Al centro superiore dell’Header trovi Markets, la tua postazione per analizzare dal vivo i 213 asset globali.",
+      "home-portfolio": "E accanto nel menu centrale c’è Portfolio, per costruire portafogli, misurare il rischio e simulare ordini.",
+      "home-system": "In basso a sinistra nel Footer, System apre il monitor di stato di server e database in tempo reale.",
+      "home-guide": "Accanto, Guide apre questo manuale interattivo passo dopo passo in qualsiasi momento.",
+      "home-langs": "Nell’angolo inferiore destro, il pulsante della lingua apre la finestra centrale per tradurre la piattaforma in 56 lingue.",
+      "home-palettes": "E Palette apre i 5 temi visivi di lettura mantenendo intatti il verde e il rosso finanziari.",
+      "scr-categories": "Nella barra superiore delle Categorie filtri tra tutti i 213 asset, la tua Watchlist o 10 mercati specializzati.",
+      "scr-pulse": "Le 4 schede Impulso 24h mostrano il volume aggregato, l’RSI medio, il regime P-06 e i picchi di volume.",
+      "scr-table": "La Tabella interattiva include ricerca istantanea, preferiti e colonne intelligenti adattate a ogni classe di attivo.",
+      "scr-orbital": "La vista Orbital dispone gli asset su tre anelli concentrici in base allo scostamento con ispezione laterale dal vivo.",
+      "scr-heatmap": "La Mappa di Calore ordina i 10 asset principali in blocchi proporzionali con 8 tonalità di verde e rosso.",
+      "scr-maintools": "E Main Tools ti guida in tre passi verso i motori di curve sovrane, volatilità 3D, cambi FX e future.",
+      "ana-hero": "L’Intestazione riunisce il selettore di asset, i 9 orizzonti temporali da 1m a ALL e i 5 indicatori chiave.",
+      "ana-technical": "La lente Tecnico sovrappone SMA 20, VWAP e Bande di Bollinger 2σ con conferma dei volumi in basso.",
+      "ana-compare": "Con Confronta % misuri da 0% il vantaggio netto o Alpha Spread rispetto a un altro asset o indice compatibile.",
+      "ana-micro": "Micro & Flusso rileva i picchi di volume Z-Score 20g, la tensione di liquidità negli spread e il punteggio P-06.",
+      "ana-engines": "La quarta scheda è uno strumento ad-hoc che varia per classe di attivo: poiché NVDA è un’azione apre Volatilità 3D e Payoff, mentre obbligazioni, valute e materie prime attivano i propri motori.",
+      "res-hero": "In alto, Voto & Posizione riassume il verdetto fondamentale, il punteggio ponderato e il termometro dei titoli.",
+      "res-rag": "Nella colonna di sinistra, la Chat Documentale RAG risponde a domande verificate sui bilanci SEC 10-K e 10-Q.",
+      "res-factors": "Nella colonna centrale, la fisarmonica dei Fattori confronta i 5 driver rialzisti con i 5 rischi ribassisti.",
+      "res-pulse24h": "A destra, l’Impulso FinBERT valuta ogni notizia in tempo reale e traccia la curva del sentiment a 24 ore.",
+      "p1-pills": "Le 6 schede di Riepilogo ricalcolano dal vivo CAGR, Sharpe e Sortino, VaR 95%, Max Drawdown, Alpha e diversificazione.",
+      "p1-table": "Nella tabella di Ponderazione aggiungi uno qualsiasi dei 213 asset, imposti il peso esatto o ribilanci al 100%.",
+      "p1-xray": "In alto a destra, Radiografia verifica in 5 schede la sovrapposizione ETF, l’esposizione, l’attribuzione, i flussi e la custodia.",
+      "p1-calendar": "Sotto la Radiografia, il Calendario mensile mostra da gennaio a dicembre la coerenza storica dei rendimenti.",
+      "p1-backtest": "E alla base a tutta larghezza, Backtesting confronta il tuo portafoglio con S&P 500, 60/40 Classic, All-Weather e Min-Variance.",
+      "p2-markowitz": "Il primo quadrante traccia la Frontiera Efficiente di Markowitz 2D e posiziona il portafoglio rispetto a Min-Var e Max-Sharpe.",
+      "p2-tornado": "Il quadrante inferiore sinistro valuta 5 crisi storiche reali, il VaR 95% per asset e la cattura Upside/Downside.",
+      "p2-corr": "In alto a destra, la Matrice 6×6 confronta le correlazioni in condizioni normali con il contagio di coda in crisi.",
+      "p2-shock2d": "In basso a destra, Shock & Markov incrocia le variazioni dei tassi con l’S&P 500 e stima i cambi di regime.",
+      "p2-montecarlo": "E il pannello inferiore proietta 10,000 percorsi Monte Carlo su P95, P50 e P05, Drawdown subacqueo e Sharpe mobile.",
+      "p3-impact": "Le 6 schede di Impatto confrontano il portafoglio attuale con il risultato previsto dopo le operazioni simulate.",
+      "p3-whatif": "In alto a sinistra, What-If & Kelly simula ordini di acquisto o vendita e calcola la dimensione ottimale Half-Kelly.",
+      "p3-tailhedge": "In basso a sinistra, Put OTM & Margine simula coperture con opzioni protettive e monitora i margini Reg-T.",
+      "p3-committee": "Nei due pannelli di destra, il Comitato a 3 pilastri controlla i limiti di rischio insieme al Libro di Esecuzione e al Copilota.",
+      "p3-walkforward": "E alla base, il grafico Walk-Forward convalida il rendimento In-Sample e Out-of-Sample con l’indice di efficienza WFE."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 13.5
+      },
+      {
+        "id": "home-header",
+        "startPct": 13.5,
+        "endPct": 26.2
+      },
+      {
+        "id": "home-markets",
+        "startPct": 26.2,
+        "endPct": 40.1
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 40.1,
+        "endPct": 53.5
+      },
+      {
+        "id": "home-system",
+        "startPct": 53.5,
+        "endPct": 65
+      },
+      {
+        "id": "home-guide",
+        "startPct": 65,
+        "endPct": 75
+      },
+      {
+        "id": "home-langs",
+        "startPct": 75,
+        "endPct": 89.4
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 89.4,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 17.5
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 17.5,
+        "endPct": 36.9
+      },
+      {
+        "id": "scr-table",
+        "startPct": 36.9,
+        "endPct": 53.3
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 53.3,
+        "endPct": 68.9
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 68.9,
+        "endPct": 83.6
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 83.6,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 17.4
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 17.4,
+        "endPct": 34
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 34,
+        "endPct": 52.1
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 52.1,
+        "endPct": 70.3
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 70.3,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 24.5
+      },
+      {
+        "id": "res-rag",
+        "startPct": 24.5,
+        "endPct": 50.6
+      },
+      {
+        "id": "res-factors",
+        "startPct": 50.6,
+        "endPct": 74.7
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 74.7,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 22.5
+      },
+      {
+        "id": "p1-table",
+        "startPct": 22.5,
+        "endPct": 40.9
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 40.9,
+        "endPct": 62.8
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 62.8,
+        "endPct": 77.6
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 77.6,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 18.2
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 18.2,
+        "endPct": 38.5
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 38.5,
+        "endPct": 56.3
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 56.3,
+        "endPct": 74.3
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 74.3,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 17.7
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 17.7,
+        "endPct": 37.5
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 37.5,
+        "endPct": 57
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 57,
+        "endPct": 78.1
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 78.1,
+        "endPct": 100.1
+      }
+    ]
+  }
+}

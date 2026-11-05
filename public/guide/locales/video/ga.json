@@ -1,0 +1,303 @@
+{
+  "i18n": {
+    "ui": {
+      "walkthrough": "Siúlóid Amharc Beo",
+      "clickPlayPause": "Cliceáil chun imirt nó sos (Space)",
+      "subtitles": "Fotheidil (C)",
+      "fullscreen": "Lánscáileán (F)",
+      "exitFullscreen": "Scoir Lánscáileán (F nó Esc)",
+      "portTabs": [
+        "Tógálaí",
+        "Riosca",
+        "Insamhlóir",
+        "Cóipchirt"
+      ]
+    },
+    "short": {
+      "home-canvas": "01 • Home",
+      "home-header": "02 • Header (λ)",
+      "home-markets": "03 • Markets",
+      "home-portfolio": "04 • Portfolio",
+      "home-system": "05 • System",
+      "home-guide": "06 • Guide",
+      "home-langs": "07 • Teangacha",
+      "home-palettes": "08 • Palette",
+      "scr-categories": "01 • Catagóirí",
+      "scr-pulse": "02 • 24h Pulse",
+      "scr-table": "03 • Tábla",
+      "scr-orbital": "04 • Orbital",
+      "scr-heatmap": "05 • Léarscáil teasa",
+      "scr-maintools": "06 • Main Tools",
+      "ana-hero": "01 • Header",
+      "ana-technical": "02 • Teicniúil",
+      "ana-compare": "03 • Déan comparáid idir %",
+      "ana-micro": "04 • Micrea & Sreabhadh",
+      "ana-engines": "05 • Innill 3D/2D",
+      "res-hero": "01 • Scór & Seasamh",
+      "res-rag": "02 • Comhrá RAG",
+      "res-factors": "03 • Fachtóirí",
+      "res-pulse24h": "04 • FinBERT Pulse",
+      "p1-pills": "01 • Achoimre",
+      "p1-table": "02 • ualú",
+      "p1-xray": "03 • X-gha",
+      "p1-calendar": "04 • Féilire",
+      "p1-backtest": "05 • Backtesting",
+      "p2-markowitz": "01 • Markowitz 2D",
+      "p2-tornado": "02 • Tornado & VaR",
+      "p2-corr": "03 • Comhghaol",
+      "p2-shock2d": "04 • Turraing & Markov",
+      "p2-montecarlo": "05 • Monte Carlo",
+      "p3-impact": "01 • Tionchar",
+      "p3-whatif": "02 • What-If & Kelly",
+      "p3-tailhedge": "03 • OTM Put & Imeall",
+      "p3-committee": "04 • Coiste & Loga",
+      "p3-walkforward": "05 • Walk-Forward"
+    },
+    "captions": {
+      "home-canvas": "Fáilte chuig an scáileán Home: do phointe tosaigh gan aon seachrán ina ndéantar margaí a dhíchódú.",
+      "home-header": "Ag an gcúinne uachtarach ar chlé den Header, ach cliceáil ar an deilbhín λ beidh tú i gcónaí ar ais go dtí an phríomhchéim seo.",
+      "home-markets": "Ag barr an Header tá Markets, do stáisiún oibre chun taighde a dhéanamh ar na 213 sócmhainn dhomhanda go léir beo.",
+      "home-portfolio": "In aice leis sa roghchlár lárnaithe tá Portfolio, chun leithdháiltí a thógáil, riosca tástála struis, agus insamhail ceirdeanna.",
+      "home-system": "Síos sa Footer ar chlé ag bun, osclaíonn System an monatóir inbhraite beo le haghaidh freastalaithe agus bunachair shonraí.",
+      "home-guide": "In aice leis, osclaíonn Guide an lámhleabhar idirghníomhach céim ar chéim seo aon uair is gá duit é.",
+      "home-langs": "Ag an gcúinne ag bun ar dheis, osclaíonn an cnaipe teanga an modh lárnaithe chun an t-ardán a aistriú go 56 teanga.",
+      "home-palettes": "Agus osclaíonn Palette na 5 théama léitheoireachta amhairc agus é ag coinneáil glas agus dearg airgeadais go docht slán.",
+      "scr-categories": "Sa bharra Catagóirí barr, scag trasna na 213 sócmhainn go léir, do Watchlist, nó 10 margadh speisialaithe.",
+      "scr-pulse": "Léiríonn na 4 chárta Pulse 24h toirt comhiomlán, meán-RSI, réimeas P-06, agus díláithrithe toirte barr.",
+      "scr-table": "Sa Tábla idirghníomhach tá cuardach meandarach, ceanáin, agus colúin chliste atá oiriúnaithe do gach aicme sócmhainne.",
+      "scr-orbital": "Léarscáilíonn an radharc Orbital sócmhainní thar thrí fháinne comhlárnacha trí imeacht le painéal iniúchta taobh beo.",
+      "scr-heatmap": "Socraíonn an Heatmap na 10 sócmhainn is fearr ina mbloic chomhréireacha thar 8 scáth glas agus dearg.",
+      "scr-maintools": "Agus treoraíonn Main Tools tú i dtrí chéim chun cuair cheannasacha, luaineacht 3D, tras FX, agus innill todhchaíochtaí.",
+      "ana-hero": "Comhcheanglaíonn an Header an lascóir sócmhainne, 9 bhfráma ama ó 1m go GACH, agus na 5 chroítháscairí.",
+      "ana-technical": "Déanann an lionsa Teicniúil forleagan ar SMA 20, VWAP, agus 2σ Bandaí Bollinger le deimhniú toirte bun.",
+      "ana-compare": "Le Déan comparáid idir %, tomhais buntáiste céatadáin glan nó Alpha Spread ó 0% i gcoinne piaraí nó innéacs comhoiriúnach.",
+      "ana-micro": "Aimsíonn Micro & Flow spící toirte trí Scór 20d Z, díláithriú leachtachta scaipthe, agus scór aimhrialtacht P-06.",
+      "ana-engines": "Is uirlis dinimiciúil ad-hoc é an ceathrú cluaisín a athraíonn de réir aicme sócmhainní: toisc gur cothromas é NVDA osclaíonn sé 3D Volatility & Options Payoff, agus seolann bannaí, FX, agus tráchtearraí a n-uirlisí speisialaithe féin.",
+      "res-hero": "Ag an mbarr, déanann Score & Stance achoimre ar an bhfíorasc bunúsach, ar an rátáil ualaithe, agus ar an teirmiméadar ceannlíne.",
+      "res-rag": "Sa cholún ar chlé, freagraíonn Comhrá Doiciméad RAG ceisteanna fíoraithe bunaithe ar chomhduithe oifigiúla CSS 10-K agus 10-Q.",
+      "res-factors": "Sa cholún láir, cuireann an bosca ceoil Factors na 5 thiománaí tarbh is fearr i gcodarsnacht i gcoinne na 5 rioscaí is fearr iompróidh.",
+      "res-pulse24h": "Ar dheis, scórálann FinBERT Pulse ceannlínte sáraithe i bhfíor-am agus ceapann sé an cuar meon 24 uair an chloig.",
+      "p1-pills": "Ríomhann na 6 chárta Achoimre beo CAGR, Sharpe agus Sortino, 95% VaR, Max Drawdown, Alpha, agus éagsúlú.",
+      "p1-table": "Sa tábla ualaithe, cuir aon cheann de na 213 sócmhainn, socraigh meáchain chéatadáin bheachta, nó athchothromaigh go 100%.",
+      "p1-xray": "Ar dheis ón mbarr ar dheis, déanann an painéal X-Ray 5-cluaisín iniúchadh ar fhorluí an ETF, ar nochtadh, ar shannadh Brinson, ar shreabhadh airgid agus ar choimeád.",
+      "p1-calendar": "Thíos X-Ray, taispeánann an Féilire Míosúil comhsheasmhacht tuairisceáin Eanáir go Nollaig agus iomláin YTD.",
+      "p1-backtest": "Agus ag bun an lán-leithead, déanann Backtesting do phunann i gcomparáid leis an S&P 500, 60/40, All-Weather, agus Min-Variance.",
+      "p2-markowitz": "Ceapann an chéad cheathrú an Teorainn Éifeachtúil 2D Markowitz agus suiteálann sé do phunann i gcoinne Min-Var agus Max-Sharpe.",
+      "p2-tornado": "Déanann an ceathrú bun ar chlé tástáil ar 5 ghéarchéim stairiúla, ranníocaíocht VaR de 95% in aghaidh na sócmhainne, agus gabháil Buntáiste/Bun Taobh.",
+      "p2-corr": "Ar dheis ar bharr, déanann an Maitrís 6×6 comparáid idir comhghaolta i ngnáthchoinníollacha agus gabháltas eireaball géarchéime.",
+      "p2-shock2d": "Ag bun ar dheis, trasnaíonn Shock & Markov aistrithe ráta úis le bogann S&P 500 agus déanann sé meastachán ar aistrithe réimis.",
+      "p2-montecarlo": "Agus tionscadail an phainéil bun 10,000 cosán Monte Carlo trasna P95, P50, agus P05, Tarraingt anuas faoi uisce, agus Sharpe rollta.",
+      "p3-impact": "Déanann na 6 chárta Tionchair do phunann reatha a chur i gcomparáid leis an staid réamh-mheasta tar éis do cheirdeanna ionsamhlaithe.",
+      "p3-whatif": "Insamhladh ar chlé, What-If & Kelly ticéid a cheannach nó a dhíol agus a ríomhann an méid suímh Half-Kelly is fearr.",
+      "p3-tailhedge": "Ag bun ar chlé, samhlaíonn OTM Put & Margin sciatha roghanna cosanta agus déanann sé monatóireacht ar chorrlach cothabhála Reg-T.",
+      "p3-committee": "Sa dá phainéal ar dheis, déanann an Coiste trí cholún iniúchadh ar ráillí cosanta riosca taobh leis an Loga Forghníomhaithe agus an Cóipióta.",
+      "p3-walkforward": "Agus ag bun an leathanaigh, bailíochtaíonn an chairt Walk-Forward feidhmíocht In-Sample agus Out-of-Sample leis an innéacs WFE."
+    }
+  },
+  "timings": {
+    "home": [
+      {
+        "id": "home-canvas",
+        "startPct": 0,
+        "endPct": 10.6
+      },
+      {
+        "id": "home-header",
+        "startPct": 10.6,
+        "endPct": 24.3
+      },
+      {
+        "id": "home-markets",
+        "startPct": 24.3,
+        "endPct": 36.6
+      },
+      {
+        "id": "home-portfolio",
+        "startPct": 36.6,
+        "endPct": 50.5
+      },
+      {
+        "id": "home-system",
+        "startPct": 50.5,
+        "endPct": 63.8
+      },
+      {
+        "id": "home-guide",
+        "startPct": 63.8,
+        "endPct": 74.6
+      },
+      {
+        "id": "home-langs",
+        "startPct": 74.6,
+        "endPct": 87
+      },
+      {
+        "id": "home-palettes",
+        "startPct": 87,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-screener": [
+      {
+        "id": "scr-categories",
+        "startPct": 0,
+        "endPct": 17.1
+      },
+      {
+        "id": "scr-pulse",
+        "startPct": 17.1,
+        "endPct": 36.7
+      },
+      {
+        "id": "scr-table",
+        "startPct": 36.7,
+        "endPct": 54.4
+      },
+      {
+        "id": "scr-orbital",
+        "startPct": 54.4,
+        "endPct": 66.2
+      },
+      {
+        "id": "scr-heatmap",
+        "startPct": 66.2,
+        "endPct": 81.2
+      },
+      {
+        "id": "scr-maintools",
+        "startPct": 81.2,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-analytics": [
+      {
+        "id": "ana-hero",
+        "startPct": 0,
+        "endPct": 18.4
+      },
+      {
+        "id": "ana-technical",
+        "startPct": 18.4,
+        "endPct": 33.1
+      },
+      {
+        "id": "ana-compare",
+        "startPct": 33.1,
+        "endPct": 49.1
+      },
+      {
+        "id": "ana-micro",
+        "startPct": 49.1,
+        "endPct": 69.7
+      },
+      {
+        "id": "ana-engines",
+        "startPct": 69.7,
+        "endPct": 100.1
+      }
+    ],
+    "mkt-research": [
+      {
+        "id": "res-hero",
+        "startPct": 0,
+        "endPct": 25.5
+      },
+      {
+        "id": "res-rag",
+        "startPct": 25.5,
+        "endPct": 50.6
+      },
+      {
+        "id": "res-factors",
+        "startPct": 50.6,
+        "endPct": 77.5
+      },
+      {
+        "id": "res-pulse24h",
+        "startPct": 77.5,
+        "endPct": 100.1
+      }
+    ],
+    "port-v1": [
+      {
+        "id": "p1-pills",
+        "startPct": 0,
+        "endPct": 21.5
+      },
+      {
+        "id": "p1-table",
+        "startPct": 21.5,
+        "endPct": 37.7
+      },
+      {
+        "id": "p1-xray",
+        "startPct": 37.7,
+        "endPct": 59.6
+      },
+      {
+        "id": "p1-calendar",
+        "startPct": 59.6,
+        "endPct": 76.3
+      },
+      {
+        "id": "p1-backtest",
+        "startPct": 76.3,
+        "endPct": 100.1
+      }
+    ],
+    "port-v2": [
+      {
+        "id": "p2-markowitz",
+        "startPct": 0,
+        "endPct": 19.7
+      },
+      {
+        "id": "p2-tornado",
+        "startPct": 19.7,
+        "endPct": 40.6
+      },
+      {
+        "id": "p2-corr",
+        "startPct": 40.6,
+        "endPct": 57.5
+      },
+      {
+        "id": "p2-shock2d",
+        "startPct": 57.5,
+        "endPct": 73.8
+      },
+      {
+        "id": "p2-montecarlo",
+        "startPct": 73.8,
+        "endPct": 100.1
+      }
+    ],
+    "port-v3": [
+      {
+        "id": "p3-impact",
+        "startPct": 0,
+        "endPct": 20.6
+      },
+      {
+        "id": "p3-whatif",
+        "startPct": 20.6,
+        "endPct": 38.5
+      },
+      {
+        "id": "p3-tailhedge",
+        "startPct": 38.5,
+        "endPct": 58.5
+      },
+      {
+        "id": "p3-committee",
+        "startPct": 58.5,
+        "endPct": 80.3
+      },
+      {
+        "id": "p3-walkforward",
+        "startPct": 80.3,
+        "endPct": 100.1
+      }
+    ]
+  }
+}
