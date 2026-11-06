@@ -179,14 +179,20 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 
 ### Micro-Pasos de la Fase 3
 
-- [ ] **Paso 3.1 — Estudio y Selección de Outputs Prioritarios:**
-  - **Objetivo:** Evaluar vista por vista (`Markets`, `Portfolio`, `System`, `Guide` y `Agente Global`) cuáles de estos outputs aportan valor real y cuáles descartar para mantener la simplicidad de la interfaz.
-- [ ] **Paso 3.2 — Diseño de UX/UI para Exportación Minimalista (`V010 Ghost`):**
-  - **Objetivo:** Definir dónde y cómo aparece la opción de exportar/descargar (ej. un ícono discreto de descarga/captura en la cabecera de las tablas o gráficos clave, o acción de copiar/exportar respuesta en el Agente) sin recargar la pantalla.
-- [ ] **Paso 3.3 — Implementación de Exportación de Tablas y Datos (`CSV` / `JSON` / `Markdown`):**
-  - **Objetivo:** Construir el generador modular para descargar tablas limpias (Screener/Watchlist, Holdings de Cartera, Matrices de Riesgo/Kelly, FinOps/Logs de Sistema y respuestas tabulares del Agente).
-- [ ] **Paso 3.4 — Implementación de Capturas Visuales (`PNG` / Snapshots de Gráficos y Tarjetas):**
-  - **Objetivo:** Permitir que el usuario descargue una imagen limpia y bien formateada del gráfico o resumen de cartera que está analizando.
+- [x] **Paso 3.1 — Estudio y Selección de los 6 Outputs Prioritarios *(Definido)*:**
+  - **Objetivo:** Concentrar las exportaciones en 6 puntos exactos de alto valor sin saturar la interfaz:
+    1. **`Markets > Screener`** *(barra de filtros de la tabla)*: Tabla de activos filtrados o `★ Watchlist` con precio, variación, volumen, `RSI` y régimen `P-06` (`CSV`).
+    2. **`Markets > Analytics`** *(cabezal del gráfico principal)*: Imagen limpia del gráfico con sus bandas/regresión y diagnóstico al pie (`PNG`) + serie histórica de precios y retornos de la ventana elegida (`CSV`).
+    3. **`Portfolio > Builder`** *(cabezal de `Portfolio Holdings`)*: Tabla de la cartera armada con tickers, pesos `%`, monto `$` y KPIs (`CSV`) + snapshot visual del resumen de cartera (`PNG`).
+    4. **`Portfolio > Risk`** *(cabezal superior de `Risk`)*: Reporte cuantitativo con matriz de correlaciones Normal vs. Estrés, atribución de Brinson y escenarios de estrés histórico (`CSV` / `JSON`).
+    5. **`System` (`Performance` & `FinOps`)** *(cabezal derecho)*: Ficha técnica de arquitectura de los 13 módulos (`P-01`..`P-13`), SLAs (`p50/p95`), contratos de datos y desglose de costos cloud `~$0.95/mes` (`MD` / `JSON`).
+    6. **`Agente Guía Global`** *(cabezal del chat)*: Acción de copiar o descargar la conversación (`MD` / Copiar) para guardar análisis o explicaciones.
+- [x] **Paso 3.2 — Diseño de UX/UI para Exportación Minimalista (`V010 Ghost`) *(Definido)*:**
+  - **Objetivo:** Integrar las acciones sin ruido visual mediante botones de texto monoespaciado discreto (`9px`, gris tenue que se ilumina en hover: `↓ CSV`, `↓ PNG`, `↓ MD`, `↓ JSON`) ubicados únicamente al final de los encabezados existentes, generando nombres de archivo automáticos con contexto y fecha (ej. `portfolio-holdings-2026-11-06.csv` o `analytics-NVDA-1Y.png`).
+- [x] **Paso 3.3 — Especificación del Generador de Tablas y Datos (`CSV` / `JSON` / `Markdown`) *(Definido)*:**
+  - **Objetivo:** Construir un módulo liviano del lado del cliente (`src/utils/exportService.js`) que formatee y descargue instantáneamente las tablas y fichas técnicas de los puntos 1, 2, 3, 4, 5 y 6 sin depender de servidores externos.
+- [x] **Paso 3.4 — Especificación de Capturas Visuales (`PNG` / Snapshots) *(Definido)*:**
+  - **Objetivo:** Generar snapshots limpios en alta resolución (`PNG` con fondo oscuro `#000000` institucional) del gráfico de `Analytics` y del resumen de cartera en `Portfolio > Builder`.
 
 ---
 
@@ -235,5 +241,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Paso 2.1 (Agente)** | `[x] Definido` | Se definió ubicar el botón en la esquina superior derecha, con saludo mínimo de 1 línea, 4 opciones predefinidas con respuestas cortas centradas 100% en el producto (dónde ver cada cosa) y *guardrails* estrictos de alcance (*Scope Lock*). |
 | 2026-11-06 | **Paso 2.2 (Agente)** | `[x] Definido` | Se definió la Base de Conocimiento en 3 bloques (Funcional, Financiero en 2 niveles y Técnico `P-01`..`P-13`/FinOps) operando como contexto dinámico con memoria multi-turno para garantizar versatilidad conversacional real (sin respuestas cerradas/enlatadas). |
 | 2026-11-06 | **Paso 2.3 y 2.4 (Agente)** | `[x] Definido` | Se definió el `liveSnapshot` en modo lectura para todas las vistas (`Markets`, `Portfolio`, `System`) y la interfaz global única desde la esquina superior derecha con persistencia entre pestañas y soporte fluido en 56 idiomas. **Fase 2 100% definida.** |
-| — | **Fase 3 (Outputs)** | `[~] En definición` | Definir qué outputs concretos (tablas `CSV`/`JSON`, capturas `PNG` y resúmenes `Markdown`) vamos a incluir en cada vista y cómo presentarlos sin ensuciar la UI. |
+| 2026-11-06 | **Fase 3 (Outputs)** | `[x] Definido` | Se definieron los 6 puntos exactos de exportación (`Screener CSV`, `Analytics PNG/CSV`, `Portfolio Builder CSV/PNG`, `Portfolio Risk CSV/JSON`, `System MD/JSON` y `Agente MD/Copiar`) con botones de texto fantasma (`9px` `↓ CSV` / `↓ PNG`) integrados en los encabezados existentes. **Fase 3 100% definida.** |
+| — | **Fase 4 (Watchlist Bulk)** | `[~] En definición` | Definir el segundo menú de filtros por características (generales + específicas de cada clase de activo) y el botón de 1 clic para marcar/desmarcar la estrella (`★`) en bloque. |
 
