@@ -146,11 +146,20 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
        - *Memoria Multi-turno:* El agente mantiene el hilo de la charla (si el usuario pregunta por un concepto y luego repregunta *"¿y cómo afecta eso a mi cartera si sumo BTC?"*, cruza el concepto previo con su cartera real).
        - *Motor Híbrido Dinámico:* Conexión a LLM con *system prompt* estricto + sintetizador local dinámico que ensambla respuestas a medida cruzando intención, historial de charla y métricas en tiempo real.
 
-- [ ] **Paso 2.3 — Conciencia de Datos en Vivo (`Live Context Reader`):**
-  - **Objetivo:** Conectar al agente (en modo lectura) con el estado real de la sesión: vista actual, activo seleccionado (entre los 213 activos), ventana temporal (`1m` a `ALL`), cartera armada por el usuario y estado de los módulos de `System`, para que dé diagnósticos reales y personalizados.
+- [x] **Paso 2.3 — Conciencia de Datos en Vivo (`Live Context Reader`) *(Definido)*:**
+  - **Objetivo:** Conectar al agente (en modo 100% lectura, sin operar la UI) con una foto instantánea (`liveSnapshot`) de lo que el usuario está viendo en pantalla en cualquier sección de la app.
+  - **Decisiones aprobadas:**
+    1. **Ubicación activa:** Vista principal (`Home`, `Markets`, `Portfolio`, `System`, `Guide`) y sub-pestaña activa.
+    2. **Estado en `Markets`:** Filtro activo del Screener (clase de activo o `★ Watchlist`), resumen de las 4 tarjetas KPI, lista de favoritos marcados con `★`, y métricas completas del activo abierto en `Analytics` / `Research` (ticker, precio, cambio 24h, ventana `1m`..`ALL`, `RSI`, score `P-06`, regresión `OLS` y `Nota Compuesta`).
+    3. **Estado en `Portfolio`:** Activos y pesos `%` de la cartera activa, `CAGR`, `Sharpe`, `VaR 95% / CVaR 99%`, `Max Drawdown`, `ENB` y activo en prueba dentro del simulador *What-If*.
+    4. **Estado en `System`:** Módulo seleccionado (`P-01`..`P-13`), estado de salud (`11/11 PASS`), latencia `p50/p95` y costo mensual `FinOps` (`~$0.95/mes`).
 
-- [ ] **Paso 2.4 — Interfaz Global Unificada y Motor Multilingüe:**
-  - **Objetivo:** Llevar el componente del agente a nivel global ([`src/App.jsx`](../src/App.jsx)) reemplazando el cajón aislado de `Portfolio`, asegurando que sea discreto, accesible desde cualquier vista y fluido en todos los idiomas.
+- [x] **Paso 2.4 — Interfaz Global Unificada y Motor Multilingüe *(Definido)*:**
+  - **Objetivo:** Llevar el componente del agente a nivel global ([`src/App.jsx`](../src/App.jsx)) reemplazando el cajón aislado de `Portfolio`, asegurando persistencia de charla entre vistas y fluidez en los 56 idiomas.
+  - **Decisiones aprobadas:**
+    1. **Agente Único Global:** Se abre desde el botón de la esquina superior derecha en [`src/App.jsx`](../src/App.jsx); se retira el botón duplicado de `Portfolio` y la conversación se mantiene viva al navegar entre pestañas.
+    2. **Estética Limpia (`V010`):** Panel lateral derecho discreto con las 4 opciones iniciales arriba, el hilo de conversación en el centro y el input abajo, sin botones de acción que alteren la interfaz.
+    3. **Multilingüe Real (56 Idiomas):** Responde en el idioma seleccionado en la app (`currentLang`) o en el idioma en que le escriba el usuario, manteniendo versatilidad y datos en vivo en todos los idiomas.
 
 ---
 
@@ -225,5 +234,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Paso 1.7 (Portfolio)** | `[x] Definido` | Se definieron los textos del 3er renglón de las 6 tarjetas KPI de `Builder`, los 3 Presets de cartera (*Conservadora, Balanceada, Quant*), las traducciones en `Risk` (*Stress 2008* y *Régimen Markov*) y las etiquetas guía del Criterio de Kelly en `Simulator`. **Fase 1 100% definida.** |
 | 2026-11-06 | **Paso 2.1 (Agente)** | `[x] Definido` | Se definió ubicar el botón en la esquina superior derecha, con saludo mínimo de 1 línea, 4 opciones predefinidas con respuestas cortas centradas 100% en el producto (dónde ver cada cosa) y *guardrails* estrictos de alcance (*Scope Lock*). |
 | 2026-11-06 | **Paso 2.2 (Agente)** | `[x] Definido` | Se definió la Base de Conocimiento en 3 bloques (Funcional, Financiero en 2 niveles y Técnico `P-01`..`P-13`/FinOps) operando como contexto dinámico con memoria multi-turno para garantizar versatilidad conversacional real (sin respuestas cerradas/enlatadas). |
-| — | **Paso 2.3 (Agente)** | `[~] En definición` | Definir qué datos en vivo de toda la app lee el Agente (`Live Context Reader`) para responder con los números reales que el usuario tiene en pantalla. |
+| 2026-11-06 | **Paso 2.3 y 2.4 (Agente)** | `[x] Definido` | Se definió el `liveSnapshot` en modo lectura para todas las vistas (`Markets`, `Portfolio`, `System`) y la interfaz global única desde la esquina superior derecha con persistencia entre pestañas y soporte fluido en 56 idiomas. **Fase 2 100% definida.** |
+| — | **Fase 3 (Outputs)** | `[~] En definición` | Definir qué outputs concretos (tablas `CSV`/`JSON`, capturas `PNG` y resúmenes `Markdown`) vamos a incluir en cada vista y cómo presentarlos sin ensuciar la UI. |
 
