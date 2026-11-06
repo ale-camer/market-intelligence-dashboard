@@ -4259,7 +4259,7 @@ export default function MarketAnomaliesView({
         }}
       >
         {/* Left: Boxless Neon Back Button + Sleek Ticker Search Switcher */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', flex: 1 }}>
           <HoverTooltip
             title={tx('Volver al Screener Global', 'Back to Global Screener')}
             badge="LEVEL 1"
@@ -4470,7 +4470,7 @@ export default function MarketAnomaliesView({
         </div>
 
         {/* Right: V010 Ghost P-06 Trigger + Boxless Neon Timeframes (Analytics) OR Live Wire Trigger (Research) */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.68rem', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.68rem', flexWrap: 'wrap', flex: 1 }}>
           {l2Section === 'analytics' ? (
             <>
               <HoverTooltip
@@ -4750,7 +4750,7 @@ export default function MarketAnomaliesView({
               {
                 label: 'P-06 ANOMALY',
                 val: `${displayedScore}`,
-                sub: isDislocated ? 'DISLOCATION' : isElevated ? 'ELEVATED' : 'NORMAL',
+                sub: isDislocated ? 'ATYPICAL' : isElevated ? 'ELEVATED' : 'NORMAL',
                 color: scoreColor,
                 subColor: scoreColor,
                 isClassSpecific: false,
@@ -4796,12 +4796,12 @@ export default function MarketAnomaliesView({
             );
           })()
         ) : (
-          <div style={{ display: 'flex', gap: '0.6rem', alignItems: 'stretch', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'stretch', flexWrap: 'wrap' }}>
             {/* 1. Research Stance + Asset-Class News Sensitivity Pill */}
             <div
               className="mono-metric"
               style={{
-                padding: '8px 12px',
+                padding: '0.42rem 0.82rem',
                 borderRadius: '10px',
                 backgroundColor: 'transparent',
                 border: '1px solid rgba(148, 163, 184, 0.22)',
@@ -4809,15 +4809,15 @@ export default function MarketAnomaliesView({
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                gap: '2px',
+                gap: '0.12rem',
               }}
             >
-              <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8' }}>
+              <span style={{ fontSize: '0.48rem', fontWeight: 700, color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
                 {assetSensitivity.shortLabel[langCode] || assetSensitivity.shortLabel.EN}
               </span>
               <span
                 style={{
-                  fontSize: '15px',
+                  fontSize: '0.76rem',
                   fontWeight: 800,
                   color: researchBrief.stance === 'BULLISH' ? '#10b981' : '#f43f5e',
                 }}
@@ -4830,7 +4830,7 @@ export default function MarketAnomaliesView({
             <div
               className="mono-metric"
               style={{
-                padding: '8px 12px',
+                padding: '0.42rem 0.82rem',
                 borderRadius: '10px',
                 backgroundColor: 'transparent',
                 border: '1px solid rgba(148, 163, 184, 0.22)',
@@ -4838,23 +4838,23 @@ export default function MarketAnomaliesView({
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                gap: '2px',
+                gap: '0.12rem',
               }}
             >
-              <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8' }}>
+              <span style={{ fontSize: '0.48rem', fontWeight: 700, color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
                 {tx('NOTA PONDERADA TOTAL', 'WEIGHTED COMPOSITE')}
               </span>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.35rem' }}>
                 <span
                   style={{
-                    fontSize: '16px',
+                    fontSize: '0.76rem',
                     fontWeight: 800,
                     color: researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e',
                   }}
                 >
                   {researchBrief.compositeFormatted}
                 </span>
-                <span style={{ fontSize: '11.5px', color: '#64748b' }}>
+                <span style={{ fontSize: '0.54rem', color: 'var(--text-dim)', fontWeight: 600 }}>
                   ({tx('Fund.', 'Filings')} {researchBrief.filingNetFormatted} • {tx('Not.', 'News')} {assetFinbertPolarity.formattedInt})
                 </span>
               </div>
@@ -4864,27 +4864,27 @@ export default function MarketAnomaliesView({
             <div
               className="mono-metric"
               style={{
-                padding: '8px 12px',
+                padding: '0.42rem 0.82rem',
                 borderRadius: '10px',
                 backgroundColor: 'transparent',
                 border: '1px solid rgba(148, 163, 184, 0.22)',
                 borderLeft: `3px solid ${assetFinbertPolarity.color}`,
-                minWidth: '205px',
+                minWidth: '185px',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                gap: '4px',
+                gap: '0.22rem',
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8' }}>
+                <span style={{ fontSize: '0.48rem', fontWeight: 700, color: 'var(--text-dim)', letterSpacing: '0.04em' }}>
                   {tx('SENTIMIENTO NOTICIAS', 'NEWS SENTIMENT')}
                 </span>
-                <span style={{ fontSize: '15px', fontWeight: 800, color: assetFinbertPolarity.color }}>
+                <span style={{ fontSize: '0.76rem', fontWeight: 800, color: assetFinbertPolarity.color }}>
                   {assetFinbertPolarity.formattedInt}
                 </span>
               </div>
-              <div style={{ position: 'relative', height: '6px', borderRadius: '999px', background: 'linear-gradient(90deg, #f43f5e 0%, rgba(255,255,255,0.16) 50%, #10b981 100%)' }}>
+              <div style={{ position: 'relative', height: '5px', borderRadius: '999px', background: 'linear-gradient(90deg, #f43f5e 0%, rgba(255,255,255,0.16) 50%, #10b981 100%)' }}>
                 <div
                   style={{
                     position: 'absolute',
@@ -4902,8 +4902,8 @@ export default function MarketAnomaliesView({
                     left: `${assetFinbertPolarity.linePct}%`,
                     top: '50%',
                     transform: 'translate(-50%, -50%)',
-                    width: '10px',
-                    height: '10px',
+                    width: '9px',
+                    height: '9px',
                     borderRadius: '50%',
                     backgroundColor: '#ffffff',
                     border: `2px solid ${assetFinbertPolarity.color}`,
