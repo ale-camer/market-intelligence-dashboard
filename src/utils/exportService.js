@@ -14,16 +14,24 @@ export function getExportDateStamp() {
   return `${y}-${m}-${d}`;
 }
 
-function triggerBlobDownload(blob, filename) {
+function sanitizeFilename(name) {
+  return String(name || 'export').replace(/[/\\?%*:|"<>]/g, '-');
+}
+
+function triggerBlobDownload(blob, rawFilename) {
   if (typeof window === 'undefined' || typeof document === 'undefined') return;
+  const filename = sanitizeFilename(rawFilename);
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
+  a.style.display = 'none';
   a.href = url;
   a.download = filename;
   document.body.appendChild(a);
   a.click();
-  document.body.removeChild(a);
-  setTimeout(() => URL.revokeObjectURL(url), 1500);
+  setTimeout(() => {
+    if (a.parentNode) a.parentNode.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 2000);
 }
 
 /**
@@ -235,11 +243,17 @@ export function exportSnapshotToPng({
     height - 24
   );
 
-  canvas.toBlob((blob) => {
-    if (blob) {
-      triggerBlobDownload(blob, filename.endsWith('.png') ? filename : `${filename}.png`);
-    }
-  }, 'image/png');
+  // Synchronous DataURL -> Blob conversion so browser download happens within the synchronous user click gesture
+  const dataUrl = canvas.toDataURL('image/png');
+  const byteString = atob(dataUrl.split(',')[1]);
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i += 1) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  const blob = new Blob([ab], { type: 'image/png' });
+  const targetName = filename.endsWith('.png') ? filename : `${filename}.png`;
+  triggerBlobDownload(blob, targetName);
 }
 
 /**
@@ -260,3 +274,4 @@ export const GHOST_EXPORT_BTN_STYLE = {
   transition: 'all 0.15s ease',
   whiteSpace: 'nowrap',
 };
+

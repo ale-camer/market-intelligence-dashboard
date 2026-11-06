@@ -273,6 +273,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
     }, [logScope, selectedItem, allModules, lastProbeTime, langKey, isES, refreshTick]);
 
     const handleExportSystemMd = () => {
+        const liveAudit = getAgentAuditTelemetry();
         const mdLines = [
             `# System Architecture & FinOps Audit (${getExportDateStamp()})`,
             '',
@@ -280,7 +281,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
             `- **Architecture Profile:** Scale-to-Zero (\`min-instances=0, max-instances=2\`) + Free-Tier Arbitrage`,
             `- **Estimated Monthly Cloud Run / Infra Spend:** \`~$0.95 USD/month\``,
             `- **Guide Agent Model:** \`${AGENT_GUARDRAIL_LIMITS.model}\` (\`${AGENT_GUARDRAIL_LIMITS.keyName}\` on \`${AGENT_GUARDRAIL_LIMITS.gcpProjectName}\`)`,
-            `- **Agent Daily Quota Used:** \`${agentAudit.dailyRequestsUsed}/${agentAudit.dailyRequestCap} RPD\` • \`${agentAudit.dailyTokensUsed}/${agentAudit.dailyTokenCap} tokens\` • \`${agentAudit.scopeLockBlocks} Scope-Lock blocks\``,
+            `- **Agent Daily Quota Used:** \`${liveAudit.dailyRequestsUsed}/${liveAudit.dailyRequestCap} RPD\` • \`${liveAudit.dailyTokensUsed}/${liveAudit.dailyTokenCap} tokens\` • \`${liveAudit.scopeLockBlocks} Scope-Lock blocks\``,
             '',
             `## 2. Pipeline Contract & Telemetry Matrix (P-01 to P-13)`,
             `| ID | Module | Repo | HTTP | p50 | p95 | Guardrail Spec |`,
@@ -295,13 +296,14 @@ export default function ObservabilityView({ langCode = 'EN' }) {
     };
 
     const handleExportSystemJson = () => {
+        const liveAudit = getAgentAuditTelemetry();
         exportToJson(`system-architecture-audit-${getExportDateStamp()}.json`, {
             generatedAt: new Date().toISOString(),
             finopsProfile: {
                 monthlyEstimatedUsd: 0.95,
                 computeMode: 'Scale-to-Zero (min-instances=0, max-instances=2)',
                 agentGuardrails: AGENT_GUARDRAIL_LIMITS,
-                agentLiveTelemetry: agentAudit,
+                agentLiveTelemetry: liveAudit,
             },
             modules: allModules.map(m => ({
                 id: m.id,

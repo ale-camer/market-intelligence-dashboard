@@ -79,27 +79,31 @@ export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', 
             <div
                 style={{
                     display: 'flex',
-                    alignItems: 'baseline',
+                    alignItems: 'center',
                     justifyContent: 'space-between',
-                    gap: '10px',
+                    gap: '8px',
                     flexWrap: 'wrap',
                     flexShrink: 0,
                     paddingBottom: '8px',
                     borderBottom: '1px solid rgba(148, 163, 184, 0.14)'
                 }}
             >
-                <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
-                    {formatCleanBlockTitle(title)}
-                </span>
-
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
+                        {formatCleanBlockTitle(title)}
+                    </span>
                     {subtitle && (
-                        <span style={{ fontSize: '12px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
+                        <span style={{ fontSize: '11.5px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
                             {subtitle}
                         </span>
                     )}
-                    {rightSlot}
                 </div>
+
+                {rightSlot && (
+                    <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px', flexWrap: 'wrap' }}>
+                        {rightSlot}
+                    </div>
+                )}
             </div>
 
             {subBar && (

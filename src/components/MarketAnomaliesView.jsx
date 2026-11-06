@@ -1073,6 +1073,31 @@ export default function MarketAnomaliesView({
     { id: 'ALL', label: 'ALL' },
   ];
 
+  // Merge primary series with comparison asset series if `compareSymbol` is active
+  // (Placed before the Level 1 early return so React Hook order is identical across renders)
+  const compareSeries = useMemo(() => {
+    if (!compareSymbol) return null;
+    return getAssetSeries(compareSymbol, timeframe);
+  }, [compareSymbol, timeframe, liveSeriesVersion]);
+
+  const chartData = useMemo(() => {
+    return series.map((pt, i) => {
+      const cmpIdx =
+        compareSeries && compareSeries.length > 0
+          ? Math.min(
+              compareSeries.length - 1,
+              Math.round((i / Math.max(1, series.length - 1)) * (compareSeries.length - 1))
+            )
+          : 0;
+      const cmpPt = compareSeries ? compareSeries[cmpIdx] : null;
+      return {
+        ...pt,
+        cmpReturn: cmpPt ? cmpPt.pctReturn : null,
+        zBar: Number(((pt.vol / 220 - 1) * 2.1).toFixed(2)),
+      };
+    });
+  }, [series, compareSeries]);
+
   const handleExportScreenerCsv = () => {
     exportToCsv(
       `markets-screener-${categoryFilter.toLowerCase()}-${getExportDateStamp()}.csv`,
@@ -1110,47 +1135,23 @@ export default function MarketAnomaliesView({
   };
 
   const handleExportAnalyticsPng = () => {
+    const chgPositive = !String(currentAsset?.chg || '').startsWith('-');
     exportSnapshotToPng({
       filename: `analytics-${selectedAsset}-${timeframe}-${getExportDateStamp()}.png`,
       title: `${currentAsset.sym} — ${currentAsset.name} (${timeframe})`,
       subtitle: `${currentAsset.cat} • Price ${currentAsset.priceFormatted} (${currentAsset.chg}) • P-06 Score ${Number(displayedScore || 0).toFixed(2)} (${anomalyProfile.regime})`,
       metrics: [
-        { label: 'PRICE (SPOT)', value: currentAsset.priceFormatted, sub: `24h: ${currentAsset.chg}`, color: currentAsset.chgNum >= 0 ? '#10b981' : '#f43f5e' },
+        { label: 'PRICE (SPOT)', value: currentAsset.priceFormatted, sub: `24h: ${currentAsset.chg}`, color: chgPositive ? '#10b981' : '#f43f5e' },
         { label: 'P-06 ANOMALY', value: Number(displayedScore || 0).toFixed(2), sub: anomalyProfile.regime, color: scoreColor },
         { label: 'VOLUME (24H)', value: currentAsset.vol24h || '—', sub: `Z-Score ${anomalyProfile.volumeZScore || '+0.4σ'}`, color: '#38bdf8' },
         { label: 'RSI (14)', value: String(currentAsset.indicators?.rsi14 ?? 54), sub: currentAsset.indicators?.macdSignal || 'NEUTRAL', color: '#a855f7' },
         { label: 'RESEARCH SCORE', value: dynamicResearch.compositeFormatted, sub: `Bull ${dynamicResearch.avgBull} / Bear ${dynamicResearch.avgBear}`, color: '#10b981' },
       ],
-      seriesPoints: chartData.map((d) => d.price),
+      seriesPoints: chartData.map((d) => Number(d.price ?? d.close ?? d.value ?? 0)),
       footerNote: `Markets > Analytics (${selectedAsset} • ${timeframe}) • ${getExportDateStamp()}`,
-      accentColor: currentAsset.chgNum >= 0 ? '#10b981' : '#f43f5e',
+      accentColor: chgPositive ? '#10b981' : '#f43f5e',
     });
   };
-
-  // Merge primary series with comparison asset series if `compareSymbol` is active
-  // (Placed before the Level 1 early return so React Hook order is identical across renders)
-  const compareSeries = useMemo(() => {
-    if (!compareSymbol) return null;
-    return getAssetSeries(compareSymbol, timeframe);
-  }, [compareSymbol, timeframe, liveSeriesVersion]);
-
-  const chartData = useMemo(() => {
-    return series.map((pt, i) => {
-      const cmpIdx =
-        compareSeries && compareSeries.length > 0
-          ? Math.min(
-              compareSeries.length - 1,
-              Math.round((i / Math.max(1, series.length - 1)) * (compareSeries.length - 1))
-            )
-          : 0;
-      const cmpPt = compareSeries ? compareSeries[cmpIdx] : null;
-      return {
-        ...pt,
-        cmpReturn: cmpPt ? cmpPt.pctReturn : null,
-        zBar: Number(((pt.vol / 220 - 1) * 2.1).toFixed(2)),
-      };
-    });
-  }, [series, compareSeries]);
 
   // Filtered dropdown results for Level 2 ticker search
   const l2SearchResults = useMemo(() => {
@@ -2433,6 +2434,23 @@ export default function MarketAnomaliesView({
                 )}
               </div>
             )}
+
+            <button
+              type="button"
+              onClick={handleExportScreenerCsv}
+              title={tx('Exportar tabla filtrada a CSV', 'Export filtered table to CSV')}
+              style={{
+                ...GHOST_EXPORT_BTN_STYLE,
+                marginLeft:
+                  marketsToolsMode === 'v2-right-bar' ||
+                  (marketsToolsMode === 'v2-contextual' && contextualTools.length > 0) ||
+                  marketsToolsMode === 'v3-dropdown'
+                    ? '4px'
+                    : 'auto',
+              }}
+            >
+              ↓ CSV
+            </button>
           </div>
 
           {/* Row 2: Indicator Driver Selector + Integrated Asset Search Combobox (Appears BELOW when Orbital or Heatmap is selected) */}
@@ -3608,20 +3626,7 @@ export default function MarketAnomaliesView({
                     onClick={() => handleSort('anomaly')}
                     style={{ padding: '6px 10px 10px', cursor: 'pointer' }}
                   >
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                      <span>Anomaly Score (P-06)</span>
-                      <button
-                        type="button"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleExportScreenerCsv();
-                        }}
-                        title={tx('Exportar tabla filtrada a CSV', 'Export filtered table to CSV')}
-                        style={GHOST_EXPORT_BTN_STYLE}
-                      >
-                        ↓ CSV
-                      </button>
-                    </div>
+                    Anomaly Score (P-06)
                   </th>
                 </tr>
               </thead>
