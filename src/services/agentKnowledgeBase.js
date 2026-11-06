@@ -870,17 +870,17 @@ const CONCEPT_KNOWLEDGE = [
       ),
   },
   {
-    keys: ['idioma', 'language', 'ingles', 'inglés', 'español', 'english', 'spanish', 'tema', 'theme', 'paleta', 'palette', 'color'],
+    keys: ['idioma', 'language', 'ingles', 'inglés', 'español', 'english', 'spanish', 'tema', 'theme', 'paleta', 'palette', 'color', 'claro', 'oscuro', 'light', 'dark', 'sol', 'luna'],
     simple: (_snap, lang) =>
       tx(
-        '• **Idioma (`🇺🇸 EN` / `🇪🇸 ES`):** Hacé clic en el botón de idioma abajo a la derecha en el pie de página (**Footer**) para alternar toda la app entre español e inglés.\n• **Tema / Color (`🎨`):** Al lado del botón de idioma (abajo a la derecha) tenés el icono de paleta para cambiar el color de acento de la interfaz.',
-        '• **Language (`🇺🇸 EN` / `🇪🇸 ES`):** Click the language button in the bottom-right corner of the **Footer** to switch the entire app between English and Spanish.\n• **Theme / Color (`🎨`):** Right next to the language button (bottom-right corner), click the palette icon to change the UI accent color.',
+        '• **Idioma (`🇺🇸 EN` / `🇪🇸 ES`):** Hacé clic en el botón de idioma abajo a la derecha en el **Footer** para elegir entre los 56 idiomas.\n• **Paleta (`🎨`) y Modo Claro/Oscuro (`☀` / `☾`):** Al lado del botón de idioma tenés el icono de paleta para elegir los 5 colores de acento, y justo a su derecha el icono de **Sol / Luna** para alternar el escenario entre **Modo Oscuro (Cosmos JWST)** y **Modo Claro (Primavera & Tierra)**.',
+        '• **Language (`🇺🇸 EN` / `🇪🇸 ES`):** Click the language button in the bottom-right corner of the **Footer** to choose among 56 languages.\n• **Palette (`🎨`) & Light/Dark Mode (`☀` / `☾`):** Next to the language button is the palette icon for the 5 accent themes, and right beside it the **Sun / Moon** icon to toggle the stage between **Dark Mode (JWST Cosmos)** and **Light Mode (Spring & Earth)**.',
         lang
       ),
     advanced: (_snap, lang) =>
       tx(
-        '• **Controles del Footer (Abajo a la derecha):** El selector bilingüe (`EN`/`ES`) y el selector de paleta (`🎨`) persisten tu preferencia en `localStorage` y actualizan todas las vistas en tiempo real.',
-        '• **Footer Controls (Bottom-Right):** The bilingual toggle (`EN`/`ES`) and palette selector (`🎨`) persist your preference in `localStorage` and update all views in real time.',
+        '• **Controles del Footer (Abajo a la derecha):** El selector multilingüe (56 idiomas), el selector de paleta (`🎨`) y el conmutador `☀ / ☾` actualizan la interfaz y los shaders WebGL en tiempo real.',
+        '• **Footer Controls (Bottom-Right):** The 56-language selector, palette selector (`🎨`), and `☀ / ☾` toggle update the UI and WebGL shaders in real time.',
         lang
       ),
   },

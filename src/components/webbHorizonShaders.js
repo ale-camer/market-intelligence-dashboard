@@ -601,10 +601,10 @@ export const LIGHT_BG_FRAGMENT_SHADER = `
     stageCol = mix(stageCol, clamp(activePigment + stageCol * 0.32, 0.0, 1.0), clamp(activeDensity * 0.42, 0.0, 0.48));
 
     // 4. Dynamic 6-Spike Focal Singularity (Travels to the exact key point of each pair, matching Dark Mode!)
-    vec2 focal0 = mix(vec2(0.0, yCenter), vec2(0.0, yCenter), m);
-    vec2 focal1 = mix(vec2(0.0, yCenter - 0.04), vec2(0.0, yCenter + 0.08), m);
-    vec2 focal2 = mix(vec2(0.0, yCenter), vec2(0.0, yCenter), m);
-    vec2 focal3 = mix(vec2(0.0, yCenter), vec2(0.0, yCenter), m);
+    vec2 focal0 = mix(vec2(0.0, yCenter), vec2(0.11, yCenter + 0.08), m);
+    vec2 focal1 = mix(vec2(0.08, yCenter + 0.11), vec2(0.0, yCenter + 0.08), m);
+    vec2 focal2 = mix(vec2(0.0, yCenter + 0.02), vec2(-0.08, yCenter - 0.02), m);
+    vec2 focal3 = mix(vec2(-0.18, yCenter), vec2(-0.28, yCenter + 0.04), m);
 
     vec2 sunPos = focal0 * wFib + focal1 * wRidge + focal2 * wLotus + focal3 * wHelix;
     vec2 dSun = p - sunPos;
