@@ -456,184 +456,153 @@ export const LIGHT_BG_FRAGMENT_SHADER = `
     return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
   }
 
+  float phaseWeight(float phase, float target) {
+    float d = abs(mod(phase - target + 2.0, 4.0) - 2.0);
+    return smootherstep(0.95, 0.05, d);
+  }
+
   void main() {
     vec2 uv = vUv;
     float aspect = uResolution.x / max(uResolution.y, 1.0);
     vec2 p = vec2((uv.x - 0.5) * aspect, uv.y - 0.5);
 
+    // Smooth continuous 4-phase weights (identical transition smoothness to Dark Mode)
+    float phase = mod(uPair, 4.0);
+    float w0 = phaseWeight(phase, 0.0);
+    float w1 = phaseWeight(phase, 1.0);
+    float w2 = phaseWeight(phase, 2.0);
+    float w3 = phaseWeight(phase, 3.0);
+    float wSum = max(w0 + w1 + w2 + w3, 0.001);
+    w0 /= wSum; w1 /= wSum; w2 /= wSum; w3 /= wSum;
+
     float m = smootherstep(0.0, 1.0, clamp(uMorph, 0.0, 1.0));
-    float yCenter = -0.17;
+    float yCenter = -0.19;
     vec2 q = vec2(p.x, p.y - yCenter);
-    int scene = int(floor(mod(uPair, 8.0)));
 
-    // 1. Warm botanical parchment / spring morning sky base
-    vec3 skyTop = vec3(0.968, 0.960, 0.932);
-    vec3 meadowBot = vec3(0.935, 0.922, 0.875);
-    vec3 col = mix(meadowBot, skyTop, smoothstep(0.0, 1.0, uv.y));
+    // 1. Authentic Spring Day Sky Gradient:
+    // Clear morning azure zenith -> warm sunlit blossom ivory -> soft meadow mist at base
+    vec3 skyZenith  = vec3(0.835, 0.922, 0.980); // Crisp spring sky blue
+    vec3 skyMid     = vec3(0.968, 0.962, 0.925); // Warm sunlit cream
+    vec3 meadowMist = vec3(0.885, 0.945, 0.895); // Fresh botanical meadow horizon
+    vec3 col = mix(meadowMist, skyMid, smoothstep(0.0, 0.48, uv.y));
+    col = mix(col, skyZenith, smoothstep(0.42, 1.0, uv.y));
 
-    // 2. Domain-Warped "Botanical Pollen & Watercolor Nebula" (Equivalent to Cosmic Dust!)
-    vec2 flowUv = q * 3.6 + vec2(uTime * 0.032, -uTime * 0.020);
+    // 2. Diagonal Morning Sunbeams (Crepuscular Rays streaming through spring air)
+    float rayCoord = (uv.x - 0.35) * 3.8 + (1.0 - uv.y) * 1.65;
+    float rayWave = 0.5 + 0.5 * sin(rayCoord * 4.2 - uTime * 0.22)
+                  + 0.35 * sin(rayCoord * 7.5 + uTime * 0.15);
+    float sunShafts = pow(clamp(rayWave * 0.55, 0.0, 1.0), 2.4) * smoothstep(0.05, 0.95, uv.y);
+    col = mix(col, vec3(1.0, 0.985, 0.91), sunShafts * 0.28);
+
+    // 3. Domain-Warped Volumetric Botanical Watercolor & Pollen Clouds (Spring equivalent of Cosmic Dust)
+    vec2 flowUv = q * 3.6 + vec2(uTime * 0.032, -uTime * 0.018);
     vec2 warp1 = vec2(fbm(flowUv + vec2(1.7, 9.2)), fbm(flowUv + vec2(8.3, 2.8)));
-    vec2 warp2 = vec2(fbm(flowUv * 1.8 + warp1 * 1.65 + vec2(4.1, 1.3)), fbm(flowUv * 1.8 + warp1 * 1.65));
-    float dustBillow = fbm(flowUv * 1.45 + warp2 * 1.45);
+    vec2 warp2 = vec2(fbm(flowUv * 1.8 + warp1 * 1.6 + vec2(4.1, 1.3)), fbm(flowUv * 1.8 + warp1 * 1.6));
+    float dustBillow = fbm(flowUv * 1.4 + warp2 * 1.4);
     float dustRidge  = clamp(1.0 - abs(dustBillow * 2.0 - 1.0), 0.0, 1.0);
     dustRidge = pow(dustRidge, 1.75);
 
-    // Ambient drifting clouds across the whole lower stage
-    float stageMask = smoothstep(0.36, -0.05, p.y) * smoothstep(-0.54, -0.34, p.y);
-    float ambientMist = dustBillow * stageMask;
+    // PAIR I (w0): FIBONACCI SUNFLOWER (0%) <-> GOLDEN LOGARITHMIC SPIRAL & ARCS (100%)
+    float r0 = length(vec2(q.x * 0.86, q.y * 1.08));
+    float ang0 = atan(q.y, q.x);
+    float spiral0 = 0.5 + 0.5 * sin(ang0 * 8.0 - r0 * 26.0 + uTime * 0.8);
+    float volN0 = exp(-r0 * 4.4) * (0.65 + 0.35 * spiral0);
+    float volQ0 = exp(-abs(r0 - 0.17 * exp(ang0 * 0.22)) * 11.0) + exp(-r0 * 4.8) * 0.55;
+    float dens0 = mix(volN0, volQ0, m) * (0.45 + 0.75 * dustBillow);
+    vec3 col0 = mix(vec3(0.95, 0.65, 0.06), vec3(0.18, 0.64, 0.36), dustRidge) * dens0
+              + vec3(0.82, 0.36, 0.04) * pow(dens0 * dustRidge, 1.3);
 
-    // Scene-specific palette for the volumetric botanical dust & ridges
-    vec3 primaryDust = vec3(0.92, 0.62, 0.08);   // Golden sunflower pollen
-    vec3 secondaryDust = vec3(0.14, 0.62, 0.38); // Botanical emerald
-    vec3 ridgeInk = vec3(0.78, 0.34, 0.04);      // Warm terracotta/amber rim
-    vec2 focalNat = vec2(0.0, yCenter);
-    vec2 focalQuant = vec2(0.08, yCenter + 0.02);
+    // PAIR II (w1): SAKURA CHERRY BLOSSOM (0%) <-> FOURIER HARMONIC WAVE SPECTRUM (100%)
+    float r1 = length(vec2(q.x * 0.88, q.y * 1.05));
+    float ang1 = atan(q.y, q.x) + uTime * 0.08;
+    float rose5 = 0.19 + 0.11 * cos(ang1 * 5.0);
+    float volN1 = smoothstep(rose5 + 0.09, rose5 - 0.07, r1);
+    float waveY1 = 0.07 * sin(q.x * 8.5 - uTime * 1.3) + 0.04 * cos(q.x * 14.0 + uTime);
+    float volQ1 = exp(-abs(q.y - waveY1) * 10.5) * smoothstep(0.62, 0.32, abs(q.x));
+    float dens1 = mix(volN1, volQ1, m) * (0.50 + 0.70 * dustBillow);
+    vec3 col1 = mix(vec3(0.94, 0.38, 0.58), vec3(0.56, 0.26, 0.78), dustRidge) * dens1
+              + vec3(0.84, 0.14, 0.38) * pow(dens1 * dustRidge, 1.35);
 
-    float shapeDensity = exp(-length(q * vec2(0.85, 1.25)) * 4.2);
+    // PAIR III (w2): MONARCH BUTTERFLY (0%) <-> LORENZ STRANGE ATTRACTOR (100%)
+    float rL2 = length(q - vec2(-0.17, 0.0));
+    float rR2 = length(q - vec2(0.17, 0.0));
+    float volN2 = clamp(exp(-rL2 * 6.2) + exp(-rR2 * 6.2), 0.0, 1.0);
+    float ringL = exp(-abs(rL2 - 0.11) * 20.0);
+    float ringR = exp(-abs(rR2 - 0.11) * 20.0);
+    float volQ2 = clamp(ringL + ringR + (volN2 * 0.45), 0.0, 1.0);
+    float dens2 = mix(volN2, volQ2, m) * (0.48 + 0.72 * dustBillow);
+    vec3 col2 = mix(vec3(0.94, 0.44, 0.08), vec3(0.14, 0.54, 0.86), smoothstep(-0.25, 0.25, q.x)) * dens2
+              + vec3(0.86, 0.26, 0.06) * pow(dens2 * dustRidge, 1.35);
 
-    if (scene == 0) {
-      // Fibonacci Sunflower <-> Golden Spiral
-      float r = length(vec2(q.x * 0.88, q.y * 1.08));
-      float ang = atan(q.y, q.x);
-      float spiralArms = 0.5 + 0.5 * sin(ang * 8.0 - r * 28.0 + uTime * 0.8);
-      float natCloud = exp(-r * 4.2) * (0.65 + 0.35 * spiralArms);
-      float quantCloud = exp(-abs(r - 0.18 * exp(ang * 0.25)) * 12.0) + exp(-r * 4.5) * 0.6;
-      shapeDensity = mix(natCloud, quantCloud, m);
-      primaryDust = vec3(0.94, 0.64, 0.06);
-      secondaryDust = vec3(0.22, 0.62, 0.32);
-      ridgeInk = vec3(0.72, 0.28, 0.04);
-      focalNat = vec2(0.0, yCenter);
-      focalQuant = vec2(0.06, yCenter);
-    } else if (scene == 1) {
-      // Sakura Blossom <-> Harmonic Fourier Waves
-      float r = length(vec2(q.x * 0.88, q.y * 1.05));
-      float ang = atan(q.y, q.x) + uTime * 0.1;
-      float rose5 = 0.18 + 0.12 * cos(ang * 5.0);
-      float natCloud = smoothstep(rose5 + 0.08, rose5 - 0.08, r);
-      float waveY = 0.08 * sin(q.x * 9.0 - uTime * 1.4) + 0.04 * cos(q.x * 15.0 + uTime);
-      float quantCloud = exp(-abs(q.y - waveY) * 11.0) * smoothstep(0.62, 0.35, abs(q.x));
-      shapeDensity = mix(natCloud, quantCloud, m);
-      primaryDust = vec3(0.94, 0.42, 0.60);
-      secondaryDust = vec3(0.58, 0.26, 0.72);
-      ridgeInk = vec3(0.82, 0.14, 0.38);
-      focalNat = vec2(0.0, yCenter);
-      focalQuant = vec2(0.0, yCenter + 0.02);
-    } else if (scene == 2) {
-      // Fractal Fern <-> Isolation Forest Tree (P-06)
-      float canopy = exp(-pow(q.x * 2.2, 2.0)) * smoothstep(0.26, -0.22, q.y) * smoothstep(-0.28, -0.12, q.y);
-      shapeDensity = canopy * (0.6 + 0.6 * dustBillow);
-      primaryDust = vec3(0.10, 0.64, 0.38);
-      secondaryDust = vec3(0.42, 0.76, 0.22);
-      ridgeInk = vec3(0.04, 0.44, 0.28);
-      focalNat = vec2(0.0, yCenter + 0.04);
-      focalQuant = vec2(0.0, yCenter + 0.14);
-    } else if (scene == 3) {
-      // Dandelion Breeze <-> Kelly Growth Cone
-      float puffHead = exp(-length(q - vec2(-0.30, 0.0)) * 7.5);
-      float windTrail = exp(-abs(q.y - 0.04 * sin(q.x * 6.0 - uTime)) * 7.5) * smoothstep(-0.35, 0.45, q.x);
-      shapeDensity = clamp(puffHead + windTrail * 0.85, 0.0, 1.0);
-      primaryDust = vec3(0.22, 0.60, 0.86);
-      secondaryDust = vec3(0.92, 0.64, 0.12);
-      ridgeInk = vec3(0.12, 0.46, 0.72);
-      focalNat = vec2(-0.30, yCenter);
-      focalQuant = vec2(0.05, yCenter + 0.08);
-    } else if (scene == 4) {
-      // Monarch Butterfly <-> Lorenz Strange Attractor
-      float rL = length(q - vec2(-0.18, 0.0));
-      float rR = length(q - vec2(0.18, 0.0));
-      shapeDensity = clamp(exp(-rL * 6.5) + exp(-rR * 6.5), 0.0, 1.0);
-      primaryDust = vec3(0.94, 0.46, 0.10);
-      secondaryDust = vec3(0.16, 0.52, 0.86);
-      ridgeInk = vec3(0.82, 0.24, 0.06);
-      focalNat = vec2(0.0, yCenter - 0.02);
-      focalQuant = vec2(0.18, yCenter);
-    } else if (scene == 5) {
-      // Spring Flock Murmuration <-> Markov Regime Orbitals
-      float wave = exp(-abs(q.y - 0.10 * sin(q.x * 4.5 + uTime)) * 8.0) * smoothstep(0.62, 0.35, abs(q.x));
-      shapeDensity = wave;
-      primaryDust = vec3(0.18, 0.56, 0.78);
-      secondaryDust = vec3(0.88, 0.42, 0.20);
-      ridgeInk = vec3(0.08, 0.44, 0.64);
-      focalNat = vec2(0.08 * sin(uTime), yCenter);
-      focalQuant = vec2(0.0, yCenter + 0.09);
-    } else if (scene == 6) {
-      // Alpine Ridges & Rivers <-> Brinson Attribution Waterfall
-      float mtn = smoothstep(0.16, -0.18, q.y - 0.12 * exp(-q.x * q.x * 8.0)) * smoothstep(-0.28, -0.14, q.y);
-      shapeDensity = mtn;
-      primaryDust = vec3(0.12, 0.62, 0.52);
-      secondaryDust = vec3(0.82, 0.56, 0.20);
-      ridgeInk = vec3(0.06, 0.48, 0.58);
-      focalNat = vec2(-0.14, yCenter + 0.06);
-      focalQuant = vec2(0.0, yCenter + 0.04);
-    } else {
-      // Honeycomb Hive <-> Multi-Asset Correlation Network
-      float hexCloud = exp(-length(q * vec2(0.75, 1.15)) * 4.0);
-      shapeDensity = hexCloud;
-      primaryDust = vec3(0.92, 0.62, 0.08);
-      secondaryDust = vec3(0.56, 0.30, 0.82);
-      ridgeInk = vec3(0.78, 0.42, 0.04);
-      focalNat = vec2(0.0, yCenter);
-      focalQuant = vec2(0.0, yCenter);
-    }
+    // PAIR IV (w3): BOTANICAL FERN & DANDELION BREEZE (0%) <-> ISOLATION FOREST & KELLY (100%)
+    float canopy3 = exp(-pow(q.x * 2.1, 2.0)) * smoothstep(0.25, -0.22, q.y) * smoothstep(-0.28, -0.12, q.y);
+    float breeze3 = exp(-abs(q.y - 0.05 * sin(q.x * 6.0 - uTime)) * 8.0) * smoothstep(-0.42, 0.48, q.x);
+    float volN3 = clamp(canopy3 * 0.85 + breeze3 * 0.55, 0.0, 1.0);
+    float kellyArc = exp(-abs(q.y - (-0.12 + 0.22 * (1.0 - pow(q.x * 2.1, 2.0)))) * 12.0) * smoothstep(0.55, 0.30, abs(q.x));
+    float volQ3 = clamp(canopy3 * 0.65 + kellyArc * 0.9, 0.0, 1.0);
+    float dens3 = mix(volN3, volQ3, m) * (0.48 + 0.72 * dustBillow);
+    vec3 col3 = mix(vec3(0.08, 0.62, 0.36), vec3(0.14, 0.58, 0.78), dustRidge) * dens3
+              + vec3(0.88, 0.56, 0.08) * pow(dens3 * dustRidge, 1.4);
 
-    // Paint the volumetric botanical dust & watercolor ridges onto the warm canvas
-    float cloudStrength = clamp(shapeDensity * (0.45 + 0.75 * dustBillow) + ambientMist * 0.32, 0.0, 1.0);
-    float rimStrength = pow(clamp(shapeDensity * (1.25 - shapeDensity) * 3.0, 0.0, 1.0), 1.35) * dustRidge;
+    // Blend the 4 volumetric botanical watercolor clouds seamlessly
+    vec3 cloudPigment = col0 * w0 + col1 * w1 + col2 * w2 + col3 * w3;
+    float totalDens = clamp(length(cloudPigment), 0.0, 1.0);
+    col = mix(col, clamp(cloudPigment / max(totalDens, 0.001), 0.0, 1.0), totalDens * 0.36);
 
-    col = mix(col, primaryDust, cloudStrength * 0.34);
-    col = mix(col, secondaryDust, (1.0 - dustBillow) * cloudStrength * 0.28);
-    col = mix(col, ridgeInk, rimStrength * 0.42);
-
-    // 3. Multi-Layer Drifting & Twinkling Background Pollen / Dew / Petals (Like the background stars!)
+    // 4. Multi-Layer Drifting & Twinkling Spring Pollen, Sakura Petals & Dew Glints
+    float stageMask = smoothstep(0.38, -0.05, p.y) * smoothstep(-0.54, -0.34, p.y);
     for (int layer = 0; layer < 2; layer++) {
       float fl = float(layer);
-      float scale = layer == 0 ? 28.0 : 42.0;
-      vec2 windVel = layer == 0 ? vec2(-0.045, 0.018) : vec2(-0.028, -0.014);
+      float scale = layer == 0 ? 26.0 : 40.0;
+      vec2 windVel = layer == 0 ? vec2(-0.048, 0.016) : vec2(-0.030, -0.012);
       vec2 grid = p * scale + uTime * windVel * scale * 0.12 + vec2(fl * 19.3, fl * 7.7);
       vec2 gId = floor(grid);
       vec2 gUv = fract(grid) - 0.5;
       float seed = hash21(gId);
 
-      if (seed > 0.76) {
-        // Each mote turns on and off smoothly (twinkle) and drifts inside its cell
-        float twinkle = pow(0.5 + 0.5 * sin(uTime * (1.6 + fract(seed * 11.0) * 2.2) + seed * 62.8), 1.8);
+      if (seed > 0.74) {
+        float twinkle = pow(0.5 + 0.5 * sin(uTime * (1.7 + fract(seed * 11.0) * 2.3) + seed * 62.8), 1.7);
         vec2 offset = vec2(
-          sin(uTime * 0.9 + seed * 29.0) * 0.28,
-          cos(uTime * 1.1 + seed * 43.0) * 0.28
+          sin(uTime * 0.95 + seed * 29.0) * 0.28,
+          cos(uTime * 1.15 + seed * 43.0) * 0.28
         );
-        vec2 dMote = gUv - offset;
-        float dist = length(dMote);
-
-        // Soft glowing halo + crisp pigment center
+        float dist = length(gUv - offset);
         float spark = smoothstep(0.22, 0.0, dist) * twinkle * stageMask;
-        float glint = smoothstep(0.07, 0.0, dist) * twinkle * stageMask;
+        float glint = smoothstep(0.075, 0.0, dist) * twinkle * stageMask;
 
-        vec3 moteColor = fract(seed * 7.3) > 0.65
-          ? ridgeInk
-          : (fract(seed * 13.1) > 0.35 ? primaryDust * 0.85 : secondaryDust * 0.85);
+        vec3 moteCol = fract(seed * 7.3) > 0.66
+          ? vec3(0.88, 0.28, 0.50) // Sakura pink petal
+          : (fract(seed * 13.1) > 0.33
+            ? vec3(0.90, 0.56, 0.04) // Golden pollen
+            : vec3(0.10, 0.58, 0.36)); // Emerald leaf spore
 
-        col = mix(col, moteColor, spark * 0.55);
-        col += vec3(0.18, 0.14, 0.04) * glint;
+        col = mix(col, moteCol, spark * 0.58);
+        col += vec3(0.22, 0.18, 0.06) * glint;
       }
     }
 
-    // 4. Travelling Spring Sunbeam Singularity (Moves between Nature & Quant focal points)
-    vec2 sunPos = mix(focalNat, focalQuant, m);
+    // 5. Travelling Spring Sun Singularity (Smoothly glides between the 4 pairs!)
+    vec2 focal0 = mix(vec2(0.0, yCenter), vec2(0.05, yCenter + 0.02), m);
+    vec2 focal1 = mix(vec2(0.0, yCenter), vec2(0.0, yCenter + 0.02), m);
+    vec2 focal2 = mix(vec2(0.0, yCenter - 0.02), vec2(0.18, yCenter), m);
+    vec2 focal3 = mix(vec2(-0.18, yCenter + 0.02), vec2(0.0, yCenter + 0.10), m);
+
+    vec2 sunPos = focal0 * w0 + focal1 * w1 + focal2 * w2 + focal3 * w3;
     vec2 dSun = p - sunPos;
     float rSun = length(dSun);
-    float pulse = 1.0 + 0.06 * sin(uTime * 1.9);
+    float pulse = 1.0 + 0.05 * sin(uTime * 1.8);
 
-    float sunBloom = exp(-rSun * 7.5 / pulse);
-    float sunRing  = exp(-pow((rSun - 0.065 * pulse) * 32.0, 2.0));
-    float angle = atan(dSun.y, dSun.x) + uTime * 0.15;
+    float sunCore  = exp(-rSun * 22.0 / pulse);
+    float sunBloom = exp(-rSun * 7.0 / pulse);
+    float irisRing = exp(-pow((rSun - 0.075 * pulse) * 28.0, 2.0));
+    float angle = atan(dSun.y, dSun.x) + uTime * 0.12;
     float sunRays = pow(max(0.0, cos(angle * 4.0)), 14.0) * exp(-rSun * 6.5);
 
-    col = mix(col, primaryDust, sunBloom * 0.28 + sunRing * 0.35);
-    col += vec3(0.22, 0.18, 0.06) * (sunBloom * 0.45 + sunRays * 0.35);
+    col = mix(col, vec3(0.96, 0.64, 0.08), sunBloom * 0.26 + irisRing * 0.32);
+    col += vec3(0.26, 0.20, 0.06) * (sunCore * 0.65 + sunRays * 0.38);
 
-    // Subtle fine paper grain
-    float grain = (hash21(uv * uResolution.xy) - 0.5) * 0.010;
+    // Fine botanical paper texture
+    float grain = (hash21(uv * uResolution.xy) - 0.5) * 0.009;
     col = clamp(col + grain, 0.0, 1.0);
 
     gl_FragColor = vec4(col, 1.0);
@@ -658,339 +627,229 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
   }
 
+  float phaseWeight(float phase, float target) {
+    float d = abs(mod(phase - target + 2.0, 4.0) - 2.0);
+    return smootherstep(0.95, 0.05, d);
+  }
+
   void main() {
     float aspect = uResolution.x / max(uResolution.y, 1.0);
     float u = aSeed.x; // [-1, 1]
     float v = aSeed.y; // [0, 1]
     float rnd = aSeed.z; // [0, 1]
 
-    float m = smootherstep(0.0, 1.0, clamp(uMorph, 0.0, 1.0));
-    float yCenter = -0.17;
-    int scene = int(floor(mod(uPair, 8.0)));
+    // Continuous 4-pair transition weights (identical smoothness to Dark Mode)
+    float phase = mod(uPair, 4.0);
+    float w0 = phaseWeight(phase, 0.0);
+    float w1 = phaseWeight(phase, 1.0);
+    float w2 = phaseWeight(phase, 2.0);
+    float w3 = phaseWeight(phase, 3.0);
+    float wSum = max(w0 + w1 + w2 + w3, 0.001);
+    w0 /= wSum; w1 /= wSum; w2 /= wSum; w3 /= wSum;
 
-    // 14% of particles are free-floating ambient Spring Pollen, Petals & Dew Spores
-    // that drift across the stage and pulse on/off like living stars!
+    float m = smootherstep(0.0, 1.0, clamp(uMorph, 0.0, 1.0));
+    float yCenter = -0.19;
+
+    // 14% of particles are free-floating Spring Pollen, Sakura Petals & Sunlit Dew Spores
+    // drifting across the whole stage and pulsing on/off like daytime stars!
     if (rnd > 0.86) {
-      float driftX = mod(u * 0.85 + uTime * (0.025 + 0.035 * fract(rnd * 19.0)) + 1.0, 2.0) - 1.0;
-      float driftY = yCenter + (v - 0.5) * 0.58 + 0.035 * sin(uTime * 1.4 + u * 7.0 + rnd * 30.0);
+      float driftX = mod(u * 0.90 + uTime * (0.024 + 0.032 * fract(rnd * 19.0)) + 1.0, 2.0) - 1.0;
+      float driftY = yCenter + (v - 0.45) * 0.62 + 0.035 * sin(uTime * 1.4 + u * 7.0 + rnd * 30.0);
       vec2 ambPos = vec2(driftX * aspect * 0.52, driftY);
       vec2 ndcAmb = vec2(ambPos.x / (aspect * 0.5), ambPos.y * 2.0);
       gl_Position = vec4(ndcAmb, 0.0, 1.0);
 
-      float pulse = pow(0.5 + 0.5 * sin(uTime * (1.8 + fract(rnd * 31.0) * 2.5) + rnd * 90.0), 1.6);
-      vAlpha = pulse * 0.82;
+      float pulse = pow(0.5 + 0.5 * sin(uTime * (1.8 + fract(rnd * 31.0) * 2.4) + rnd * 90.0), 1.6);
+      vAlpha = pulse * 0.84;
       vAngle = uTime * (0.8 + fract(rnd * 13.0)) + rnd * 6.283;
 
-      // Rich seasonal colors for the drifting pollen/petals
       float huePick = fract(rnd * 43.0);
-      if (huePick < 0.28) vColor = vec3(0.86, 0.30, 0.52);      // Sakura rose petal
-      else if (huePick < 0.56) vColor = vec3(0.88, 0.54, 0.04); // Golden pollen
-      else if (huePick < 0.80) vColor = vec3(0.08, 0.56, 0.34); // Emerald leaf spore
-      else vColor = vec3(0.16, 0.50, 0.78);                     // Dew drop blue
+      if (huePick < 0.30) vColor = vec3(0.88, 0.28, 0.52);      // Sakura rose petal
+      else if (huePick < 0.60) vColor = vec3(0.90, 0.54, 0.04); // Golden sun pollen
+      else if (huePick < 0.82) vColor = vec3(0.08, 0.58, 0.34); // Fresh emerald leaf
+      else vColor = vec3(0.14, 0.52, 0.80);                     // Morning dew drop
 
-      gl_PointSize = (4.5 + fract(rnd * 23.0) * 5.5) * uDpr;
-      vStarType = 0.96; // Render as rotating blossom/leaf/sparkle glyph
+      gl_PointSize = (4.6 + fract(rnd * 23.0) * 5.4) * uDpr;
+      vStarType = 0.82 + 0.16 * fract(rnd * 17.0);
       return;
     }
 
-    vec2 posNat = vec2(0.0);
-    vec3 colNat = vec3(0.2);
-    vec2 posQuant = vec2(0.0);
-    vec3 colQuant = vec3(0.2);
-
     // =========================================================================
-    // SCENE 0: FIBONACCI SUNFLOWER <-> GOLDEN LOGARITHMIC SPIRAL & FIBONACCI ARCS
+    // PAIR 1 (w0): FIBONACCI SUNFLOWER (0%) <-> GOLDEN LOGARITHMIC SPIRAL & ARCS (100%)
     // =========================================================================
-    if (scene == 0) {
-      float idx = floor(((u * 0.5 + 0.5) * 0.7 + v * 0.3) * 3200.0);
-      float goldenAngle = 2.39996323; // 137.508 deg
-      float theta = idx * goldenAngle + uTime * 0.12;
-      float rNorm = sqrt(idx / 3200.0);
-      if (v < 0.74) {
-        float r = rNorm * 0.24;
-        posNat = vec2(cos(theta) * r * 1.15 * aspect * 0.52, yCenter + sin(theta) * r * 0.92);
-        colNat = mix(vec3(0.45, 0.18, 0.04), vec3(0.88, 0.52, 0.04), smoothstep(0.15, 0.95, rNorm));
-      } else {
-        float petalCount = 21.0;
-        float ang = u * 3.14159 + uTime * 0.06;
-        float petalWave = abs(cos(ang * petalCount * 0.5));
-        float rPetal = 0.23 + (0.04 + 0.11 * petalWave) * ((v - 0.74) / 0.26);
-        posNat = vec2(cos(ang) * rPetal * 1.15 * aspect * 0.52, yCenter + sin(ang) * rPetal * 0.92);
-        colNat = mix(vec3(0.92, 0.56, 0.04), vec3(0.12, 0.58, 0.34), smoothstep(0.30, 0.36, rPetal));
-      }
+    vec2 posN0;
+    vec3 colN0;
+    float idx0 = floor(((u * 0.5 + 0.5) * 0.7 + v * 0.3) * 3200.0);
+    float theta0 = idx0 * 2.39996323 + uTime * 0.12;
+    float rNorm0 = sqrt(idx0 / 3200.0);
+    if (v < 0.74) {
+      float r = rNorm0 * 0.24;
+      posN0 = vec2(cos(theta0) * r * 1.15 * aspect * 0.52, yCenter + sin(theta0) * r * 0.92);
+      colN0 = mix(vec3(0.45, 0.18, 0.04), vec3(0.90, 0.54, 0.04), smoothstep(0.15, 0.95, rNorm0));
+    } else {
+      float ang = u * 3.14159 + uTime * 0.06;
+      float petalWave = abs(cos(ang * 10.5));
+      float rPetal = 0.23 + (0.04 + 0.11 * petalWave) * ((v - 0.74) / 0.26);
+      posN0 = vec2(cos(ang) * rPetal * 1.15 * aspect * 0.52, yCenter + sin(ang) * rPetal * 0.92);
+      colN0 = mix(vec3(0.94, 0.58, 0.04), vec3(0.10, 0.58, 0.34), smoothstep(0.30, 0.36, rPetal));
+    }
 
-      // UNIQUE QUANT 0: Golden Logarithmic Spiral + Fibonacci Retracement Fan (23.6%, 38.2%, 61.8%)
-      if (v < 0.68) {
-        float tSp = (u * 0.5 + 0.5) * 4.2 * 3.14159;
-        float rSp = 0.012 * exp(0.24 * tSp);
-        float spread = (fract(v * 19.0) - 0.5) * 0.018;
-        float angSp = tSp - uTime * 0.25;
-        posQuant = vec2((cos(angSp) * (rSp + spread)) * 1.15 * aspect * 0.52, yCenter + sin(angSp) * (rSp + spread) * 0.92);
-        colQuant = mix(vec3(0.84, 0.42, 0.04), vec3(0.10, 0.58, 0.36), clamp(rSp / 0.32, 0.0, 1.0));
-      } else {
-        // Fibonacci ratio concentric harmonic rings & golden crosshairs (0.236, 0.382, 0.618, 1.0)
-        float ringPick = floor((v - 0.68) / 0.32 * 4.0);
-        float fibRad = (ringPick == 0.0 ? 0.08 : ringPick == 1.0 ? 0.13 : ringPick == 2.0 ? 0.21 : 0.34);
-        float ang = u * 3.14159;
-        posQuant = vec2(cos(ang) * fibRad * 1.15 * aspect * 0.52, yCenter + sin(ang) * fibRad * 0.92);
-        colQuant = ringPick == 2.0 ? vec3(0.82, 0.18, 0.36) : vec3(0.68, 0.44, 0.08);
-      }
+    vec2 posQ0;
+    vec3 colQ0;
+    if (v < 0.68) {
+      float tSp = (u * 0.5 + 0.5) * 4.2 * 3.14159;
+      float rSp = 0.012 * exp(0.24 * tSp);
+      float spread = (fract(v * 19.0) - 0.5) * 0.018;
+      float angSp = tSp - uTime * 0.25;
+      posQ0 = vec2((cos(angSp) * (rSp + spread)) * 1.15 * aspect * 0.52, yCenter + sin(angSp) * (rSp + spread) * 0.92);
+      colQ0 = mix(vec3(0.86, 0.42, 0.04), vec3(0.08, 0.58, 0.36), clamp(rSp / 0.32, 0.0, 1.0));
+    } else {
+      float ringPick = floor((v - 0.68) / 0.32 * 4.0);
+      float fibRad = (ringPick == 0.0 ? 0.08 : ringPick == 1.0 ? 0.13 : ringPick == 2.0 ? 0.21 : 0.34);
+      float ang = u * 3.14159;
+      posQ0 = vec2(cos(ang) * fibRad * 1.15 * aspect * 0.52, yCenter + sin(ang) * fibRad * 0.92);
+      colQ0 = ringPick == 2.0 ? vec3(0.84, 0.18, 0.38) : vec3(0.72, 0.44, 0.06);
     }
 
     // =========================================================================
-    // SCENE 1: SAKURA CHERRY BLOSSOM <-> HARMONIC FOURIER WAVE SPECTRUM
+    // PAIR 2 (w1): SAKURA CHERRY BLOSSOM (0%) <-> FOURIER HARMONIC WAVE SPECTRUM (100%)
     // =========================================================================
-    else if (scene == 1) {
-      float ang = u * 3.14159 + uTime * 0.08;
-      float cos5 = cos(5.0 * ang);
-      float notch = 0.045 * pow(max(0.0, cos(5.0 * ang)), 8.0);
-      float maxR = 0.07 + 0.24 * pow(0.5 + 0.5 * cos5, 0.65) - notch;
-      if (v < 0.18) {
-        float rStam = (v / 0.18) * 0.095;
-        posNat = vec2(cos(ang) * rStam * 1.15 * aspect * 0.52, yCenter + sin(ang) * rStam);
-        colNat = mix(vec3(0.76, 0.12, 0.28), vec3(0.88, 0.58, 0.06), smoothstep(0.05, 0.09, rStam));
-      } else {
-        float rFill = pow((v - 0.18) / 0.82, 0.75) * maxR;
-        posNat = vec2(cos(ang) * rFill * 1.18 * aspect * 0.52, yCenter + sin(ang) * rFill * 0.96);
-        colNat = mix(vec3(0.84, 0.18, 0.42), vec3(0.95, 0.48, 0.64), smoothstep(0.06, 0.28, rFill));
-      }
-
-      // UNIQUE QUANT 1: Multi-Frequency Fourier Harmonic Spectral Ribbons
-      float modeIdx = floor(v * 6.0); // 6 harmonic frequencies
-      float freq = 1.0 + modeIdx * 1.5;
-      float amp = 0.15 / (1.0 + modeIdx * 0.45);
-      float xWave = u * 0.56;
-      float phaseShift = uTime * (0.9 + modeIdx * 0.25) + modeIdx * 1.047;
-      float yWave = yCenter + (modeIdx - 2.5) * 0.032
-                  + amp * sin(xWave * freq * 5.5 - phaseShift)
-                  + 0.025 * cos(xWave * 3.0 + uTime);
-      posQuant = vec2(xWave * aspect * 0.52, yWave + (fract(v * 6.0) - 0.5) * 0.012);
-      colQuant = mix(
-        vec3(0.84, 0.18, 0.44),
-        mix(vec3(0.52, 0.22, 0.76), vec3(0.10, 0.58, 0.44), modeIdx / 5.0),
-        0.5 + 0.5 * sin(xWave * 4.0 + modeIdx)
-      );
+    vec2 posN1;
+    vec3 colN1;
+    float ang1 = u * 3.14159 + uTime * 0.08;
+    float cos5 = cos(5.0 * ang1);
+    float notch = 0.045 * pow(max(0.0, cos5), 8.0);
+    float maxR1 = 0.07 + 0.24 * pow(0.5 + 0.5 * cos5, 0.65) - notch;
+    if (v < 0.18) {
+      float rStam = (v / 0.18) * 0.095;
+      posN1 = vec2(cos(ang1) * rStam * 1.15 * aspect * 0.52, yCenter + sin(ang1) * rStam);
+      colN1 = mix(vec3(0.78, 0.12, 0.28), vec3(0.90, 0.58, 0.06), smoothstep(0.05, 0.09, rStam));
+    } else {
+      float rFill = pow((v - 0.18) / 0.82, 0.75) * maxR1;
+      posN1 = vec2(cos(ang1) * rFill * 1.18 * aspect * 0.52, yCenter + sin(ang1) * rFill * 0.96);
+      colN1 = mix(vec3(0.84, 0.16, 0.42), vec3(0.95, 0.46, 0.64), smoothstep(0.06, 0.28, rFill));
     }
 
+    float modeIdx = floor(v * 6.0);
+    float freq = 1.0 + modeIdx * 1.5;
+    float amp = 0.15 / (1.0 + modeIdx * 0.45);
+    float xWave = u * 0.56;
+    float phaseShift = uTime * (0.9 + modeIdx * 0.25) + modeIdx * 1.047;
+    float yWave = yCenter + (modeIdx - 2.5) * 0.032
+                + amp * sin(xWave * freq * 5.5 - phaseShift)
+                + 0.025 * cos(xWave * 3.0 + uTime);
+    vec2 posQ1 = vec2(xWave * aspect * 0.52, yWave + (fract(v * 6.0) - 0.5) * 0.012);
+    vec3 colQ1 = mix(
+      vec3(0.86, 0.18, 0.44),
+      mix(vec3(0.52, 0.22, 0.78), vec3(0.08, 0.58, 0.44), modeIdx / 5.0),
+      0.5 + 0.5 * sin(xWave * 4.0 + modeIdx)
+    );
+
     // =========================================================================
-    // SCENE 2: FRACTAL FERN & CANOPY <-> ISOLATION FOREST (P-06) DECISION TREE
+    // PAIR 3 (w2): MONARCH BUTTERFLY (0%) <-> LORENZ STRANGE ATTRACTOR (100%)
     // =========================================================================
-    else if (scene == 2) {
+    float theta2 = u * 3.14159;
+    float rButt = exp(sin(theta2)) - 2.0 * cos(4.0 * theta2) + pow(sin((2.0 * theta2 - 3.14159) / 24.0), 5.0);
+    float wingFlap = 0.86 + 0.14 * sin(uTime * 3.2);
+    float scaleR = 0.068 * sqrt(0.15 + 0.85 * v) * rButt;
+    vec2 posN2 = vec2(cos(theta2) * scaleR * wingFlap * 1.25 * aspect * 0.52, (yCenter - 0.03) + sin(theta2) * scaleR * 0.92);
+    vec3 colN2 = mix(vec3(0.92, 0.36, 0.04), vec3(0.12, 0.48, 0.84), smoothstep(0.65, 0.98, v));
+    if (v > 0.92) colN2 = vec3(0.20, 0.12, 0.08);
+
+    float lobe2 = u >= 0.0 ? 1.0 : -1.0;
+    float tLoop = v * 6.28318 * 3.0 + uTime * 0.9;
+    float rLoop = 0.04 + 0.16 * fract(abs(u) * 7.0 + v * 0.5);
+    float lx = lobe2 * (0.19 + cos(tLoop) * rLoop);
+    float ly = yCenter + sin(tLoop) * rLoop * 0.82 + lobe2 * cos(tLoop) * 0.04;
+    vec2 posQ2 = vec2(lx * 1.25 * aspect * 0.52, ly);
+    vec3 colQ2 = lobe2 > 0.0
+      ? mix(vec3(0.90, 0.38, 0.06), vec3(0.78, 0.18, 0.42), rLoop / 0.20)
+      : mix(vec3(0.12, 0.50, 0.82), vec3(0.08, 0.62, 0.48), rLoop / 0.20);
+
+    // =========================================================================
+    // PAIR 4 (w3): BOTANICAL FERN & DANDELION BREEZE (0%) <-> ISOLATION FOREST & KELLY (100%)
+    // =========================================================================
+    vec2 posN3;
+    vec3 colN3;
+    if (v < 0.62) {
+      float stemT = v / 0.62;
       float frondIdx = floor((u * 0.5 + 0.5) * 7.0) - 3.0;
-      float stemT = v;
       float sway = 0.018 * sin(uTime * 1.4 + frondIdx + stemT * 4.0);
       float angle = frondIdx * 0.36;
       float frondLen = 0.34 - abs(frondIdx) * 0.032;
       float spineX = sin(angle) * stemT * frondLen + sway;
-      float spineY = -0.38 + cos(angle) * stemT * frondLen;
+      float spineY = -0.39 + cos(angle) * stemT * frondLen;
       float leafletSide = mod(floor(rnd * 20.0), 2.0) * 2.0 - 1.0;
       float leafletSpan = (1.0 - stemT * 0.72) * 0.095 * fract(u * 13.0);
       vec2 normalDir = vec2(cos(angle), -sin(angle));
-      posNat = vec2(
+      posN3 = vec2(
         (spineX + normalDir.x * leafletSide * leafletSpan) * aspect * 0.52,
         spineY + normalDir.y * leafletSide * leafletSpan * 0.65
       );
-      colNat = mix(vec3(0.05, 0.48, 0.28), vec3(0.32, 0.72, 0.20), stemT);
-      if (rnd > 0.80) colNat = vec3(0.88, 0.30, 0.48);
+      colN3 = mix(vec3(0.05, 0.50, 0.28), vec3(0.32, 0.74, 0.20), stemT);
+    } else {
+      // Dandelion pappus seeds carried by the spring breeze above the fern canopy
+      float tWind = (v - 0.62) / 0.38;
+      float seedId = floor((u * 0.5 + 0.5) * 22.0) / 22.0 * 2.0 - 1.0;
+      float xSeed = -0.36 + tWind * 0.76;
+      float ySeed = yCenter + 0.04 + seedId * 0.16 * sqrt(tWind + 0.08)
+                  + 0.03 * sin(tWind * 9.0 - uTime * 1.5 + seedId * 11.0);
+      posN3 = vec2(xSeed * aspect * 0.52, ySeed);
+      colN3 = mix(vec3(0.88, 0.56, 0.06), vec3(0.86, 0.28, 0.50), tWind);
+    }
 
-      // UNIQUE QUANT 2: Isolation Forest (P-06) Recursive Binary Tree
-      float level = floor(v * 5.0);
+    vec2 posQ3;
+    vec3 colQ3;
+    if (v < 0.72) {
+      float vTree = v / 0.72;
+      float level = floor(vTree * 5.0);
       float nodesInLevel = exp2(level);
       float nodeIdx = floor((u * 0.5 + 0.5) * nodesInLevel);
       float xNode = ((nodeIdx + 0.5) / nodesInLevel) * 2.0 - 1.0;
       float parentIdx = floor(nodeIdx * 0.5);
       float xParent = ((parentIdx + 0.5) / max(1.0, nodesInLevel * 0.5)) * 2.0 - 1.0;
-      float branchFrac = fract(v * 5.0);
+      float branchFrac = fract(vTree * 5.0);
       float treeX = mix(xParent, xNode, branchFrac) * 0.52;
       float treeY = 0.02 - (level + branchFrac) * 0.075;
-      posQuant = vec2(treeX * aspect * 0.52, treeY);
+      posQ3 = vec2(treeX * aspect * 0.52, treeY);
       bool isAnomalyNode = (level >= 2.0 && nodeIdx == nodesInLevel - 1.0);
-      colQuant = isAnomalyNode
-        ? vec3(0.88, 0.26, 0.14)
-        : mix(vec3(0.06, 0.52, 0.32), vec3(0.14, 0.60, 0.62), level / 4.0);
+      colQ3 = isAnomalyNode
+        ? vec3(0.88, 0.24, 0.14)
+        : mix(vec3(0.06, 0.54, 0.32), vec3(0.14, 0.60, 0.64), level / 4.0);
+    } else {
+      // Kelly Optimal Growth Envelope Arc crowning the tree
+      float fLev = (u * 0.5 + 0.5);
+      float fOpt = 0.48;
+      float kellyG = 0.24 * (1.0 - pow((fLev - fOpt) / fOpt, 2.0));
+      posQ3 = vec2((-0.48 + fLev * 0.96) * aspect * 0.52, -0.32 + kellyG);
+      colQ3 = mix(vec3(0.88, 0.54, 0.04), vec3(0.84, 0.18, 0.34), smoothstep(0.45, 0.95, fLev));
     }
 
-    // =========================================================================
-    // SCENE 3: DANDELION SEEDS IN BREEZE <-> KELLY CRITERION OPTIMAL GROWTH CONE
-    // =========================================================================
-    else if (scene == 3) {
-      if (v < 0.42) {
-        float ang = u * 3.14159;
-        float rPuff = sqrt(v / 0.42) * 0.16 * (0.88 + 0.12 * cos(ang * 14.0));
-        posNat = vec2((-0.34 + cos(ang) * rPuff * 1.15) * aspect * 0.52, yCenter + sin(ang) * rPuff);
-        colNat = mix(vec3(0.36, 0.48, 0.22), vec3(0.84, 0.58, 0.08), smoothstep(0.04, 0.16, rPuff));
-      } else {
-        float tWind = (v - 0.42) / 0.58;
-        float seedId = floor((u * 0.5 + 0.5) * 26.0) / 26.0 * 2.0 - 1.0;
-        float xSeed = -0.22 + tWind * 0.78;
-        float ySeed = yCenter + seedId * 0.22 * sqrt(tWind + 0.05)
-                    + 0.035 * sin(tWind * 10.0 - uTime * 1.6 + seedId * 12.0);
-        posNat = vec2(xSeed * aspect * 0.52, ySeed);
-        colNat = mix(vec3(0.86, 0.56, 0.06), vec3(0.16, 0.54, 0.78), tWind);
-      }
+    vec2 p0 = mix(posN0, posQ0, m);
+    vec2 p1 = mix(posN1, posQ1, m);
+    vec2 p2 = mix(posN2, posQ2, m);
+    vec2 p3 = mix(posN3, posQ3, m);
 
-      // UNIQUE QUANT 3: Kelly Criterion Concave Growth Curves g(f) = r + f*mu - 0.5*f^2*sigma^2
-      float curveIdx = floor(v * 8.0) / 8.0; // 8 Sharpe ratios
-      float fLev = (u * 0.5 + 0.5); // Leverage f in [0, 1]
-      float fOpt = 0.46; // Optimal Kelly peak
-      float kellyG = 0.26 * (1.0 - pow((fLev - fOpt) / fOpt, 2.0)) * (0.45 + 0.55 * curveIdx);
-      float xKelly = -0.50 + fLev * 1.0;
-      float yKelly = -0.28 + kellyG + (fract(v * 8.0) - 0.5) * 0.010;
-      posQuant = vec2(xKelly * aspect * 0.52, yKelly);
-      // Highlight Half-Kelly / Full-Kelly green zone vs Over-leveraged red cliff
-      colQuant = fLev <= fOpt
-        ? mix(vec3(0.14, 0.54, 0.76), vec3(0.08, 0.62, 0.36), fLev / fOpt)
-        : mix(vec3(0.86, 0.54, 0.06), vec3(0.84, 0.18, 0.28), (fLev - fOpt) / (1.0 - fOpt));
-    }
+    vec3 c0 = mix(colN0, colQ0, m);
+    vec3 c1 = mix(colN1, colQ1, m);
+    vec3 c2 = mix(colN2, colQ2, m);
+    vec3 c3 = mix(colN3, colQ3, m);
 
-    // =========================================================================
-    // SCENE 4: MONARCH BUTTERFLY <-> LORENZ CHAOS ATTRACTOR
-    // =========================================================================
-    else if (scene == 4) {
-      float theta = u * 3.14159;
-      float rButt = exp(sin(theta)) - 2.0 * cos(4.0 * theta) + pow(sin((2.0 * theta - 3.14159) / 24.0), 5.0);
-      float wingFlap = 0.86 + 0.14 * sin(uTime * 3.2);
-      float scaleR = 0.068 * sqrt(0.15 + 0.85 * v) * rButt;
-      posNat = vec2(cos(theta) * scaleR * wingFlap * 1.25 * aspect * 0.52, (yCenter - 0.03) + sin(theta) * scaleR * 0.92);
-      colNat = mix(vec3(0.90, 0.36, 0.04), vec3(0.12, 0.46, 0.82), smoothstep(0.65, 0.98, v));
-      if (v > 0.92) colNat = vec3(0.20, 0.12, 0.08);
-
-      // UNIQUE QUANT 4: Lorenz Strange Attractor Figure-8 Phase Portrait
-      float lobe = u >= 0.0 ? 1.0 : -1.0;
-      float tLoop = v * 6.28318 * 3.0 + uTime * 0.9;
-      float rLoop = 0.04 + 0.16 * fract(abs(u) * 7.0 + v * 0.5);
-      float lx = lobe * (0.19 + cos(tLoop) * rLoop);
-      float ly = yCenter + sin(tLoop) * rLoop * 0.82 + lobe * cos(tLoop) * 0.04;
-      posQuant = vec2(lx * 1.25 * aspect * 0.52, ly);
-      colQuant = lobe > 0.0
-        ? mix(vec3(0.88, 0.38, 0.06), vec3(0.76, 0.18, 0.42), rLoop / 0.20)
-        : mix(vec3(0.12, 0.48, 0.80), vec3(0.08, 0.62, 0.48), rLoop / 0.20);
-    }
-
-    // =========================================================================
-    // SCENE 5: SPRING FLOCK MURMURATION <-> 3-STATE MARKOV REGIME ORBITALS
-    // =========================================================================
-    else if (scene == 5) {
-      float s = u;
-      float ribbonX = s * 0.54 + 0.08 * sin(s * 4.5 - uTime * 1.2);
-      float ribbonY = yCenter + 0.14 * sin(s * 3.2 + uTime * 0.9) * cos(s * 2.1 - uTime * 0.5);
-      float spread = (v - 0.5) * (0.06 + 0.09 * sin(s * 5.0 + uTime));
-      posNat = vec2((ribbonX + spread * 0.5) * aspect * 0.52, ribbonY + spread);
-      colNat = mix(vec3(0.14, 0.48, 0.74), vec3(0.82, 0.36, 0.16), 0.5 + 0.5 * sin(s * 3.0 + uTime));
-
-      // UNIQUE QUANT 5: 3-State Markov Regime Switching Orbitals (Bull/Calm, Transition, Stress)
-      float stateId = floor((u * 0.5 + 0.5) * 3.0); // 0, 1, 2
-      vec2 center0 = vec2(-0.30, yCenter - 0.06);
-      vec2 center1 = vec2(0.0,   yCenter + 0.11);
-      vec2 center2 = vec2(0.30,  yCenter - 0.06);
-      vec2 hub = stateId == 0.0 ? center0 : (stateId == 1.0 ? center1 : center2);
-      vec2 nextHub = stateId == 0.0 ? center1 : (stateId == 1.0 ? center2 : center0);
-
-      if (v < 0.62) {
-        // Swirling probability vortex around each Markov state
-        float ang = fract(u * 17.0) * 6.28318 + uTime * 1.4;
-        float rOrb = sqrt(v / 0.62) * 0.105;
-        posQuant = vec2((hub.x + cos(ang) * rOrb * 1.15) * aspect * 0.52, hub.y + sin(ang) * rOrb);
-      } else {
-        // Curved Markov transition probability stream P_ij between states
-        float tStream = (v - 0.62) / 0.38;
-        vec2 mid = (hub + nextHub) * 0.5 + vec2(0.0, stateId == 2.0 ? -0.07 : 0.05);
-        vec2 pA = mix(hub, mid, tStream);
-        vec2 pB = mix(mid, nextHub, tStream);
-        vec2 arcPt = mix(pA, pB, tStream);
-        posQuant = vec2(arcPt.x * aspect * 0.52, arcPt.y);
-      }
-      colQuant = stateId == 0.0
-        ? vec3(0.08, 0.60, 0.36) // Calm / Bull Regime
-        : (stateId == 1.0 ? vec3(0.86, 0.52, 0.06) : vec3(0.82, 0.20, 0.36)); // Transition / Stress
-    }
-
-    // =========================================================================
-    // SCENE 6: ALPINE RIDGES & MELTWATER RIVERS <-> TOPOGRAPHIC ISO-SHARPE MANIFOLD
-    // =========================================================================
-    else if (scene == 6) {
-      float ridgeLayer = floor(v * 14.0) / 14.0;
-      float xMtn = u * 0.58;
-      float peak1 = 0.22 * exp(-pow((xMtn + 0.18) * 4.2, 2.0));
-      float peak2 = 0.26 * exp(-pow((xMtn - 0.16) * 3.8, 2.0));
-      float valleyRiver = -0.05 * exp(-pow(xMtn * 9.0, 2.0));
-      float elev = peak1 + peak2 + valleyRiver + 0.025 * sin(xMtn * 18.0 + ridgeLayer * 9.0);
-      float yMtn = -0.34 + (ridgeLayer - 0.5) * 0.16 + elev * (1.1 - ridgeLayer * 0.45);
-      posNat = vec2((xMtn + (ridgeLayer - 0.5) * 0.14) * aspect * 0.52, yMtn);
-      if (abs(xMtn) < 0.09 && elev < 0.12) {
-        colNat = vec3(0.08, 0.56, 0.78);
-      } else if (elev > 0.19) {
-        colNat = vec3(0.42, 0.34, 0.26);
-      } else {
-        colNat = mix(vec3(0.10, 0.52, 0.28), vec3(0.68, 0.48, 0.16), smoothstep(0.05, 0.18, elev));
-      }
-
-      // UNIQUE QUANT 6: Topographic Iso-Sharpe & Brinson Alpha Contour Manifold
-      float ringIdx = floor(v * 9.0) / 9.0;
-      float ang = u * 3.14159 + uTime * 0.08;
-      float rx = (0.06 + ringIdx * 0.44) * (1.0 + 0.12 * cos(ang * 3.0));
-      float ry = (0.04 + ringIdx * 0.20) * (1.0 + 0.12 * sin(ang * 2.0));
-      float elevZ = (1.0 - ringIdx) * 0.12;
-      posQuant = vec2(cos(ang) * rx * aspect * 0.52, (yCenter - 0.06) + sin(ang) * ry + elevZ);
-      colQuant = mix(vec3(0.84, 0.38, 0.08), vec3(0.08, 0.56, 0.42), ringIdx);
-    }
-
-    // =========================================================================
-    // SCENE 7: HONEYCOMB HIVE & POLLEN <-> CORRELATION NETWORK GRAPH
-    // =========================================================================
-    else {
-      float cellId = floor((u * 0.5 + 0.5) * 19.0);
-      float row = floor(cellId / 5.0) - 1.5;
-      float colIdx = mod(cellId, 5.0) - 2.0 + mod(abs(row), 2.0) * 0.5;
-      vec2 hexCenter = vec2(colIdx * 0.19, yCenter + row * 0.11);
-      float side = floor(v * 6.0);
-      float edgeT = fract(v * 6.0);
-      float a1 = side * 1.04719755;
-      float a2 = (side + 1.0) * 1.04719755;
-      float rHex = 0.082;
-      vec2 hexPt = hexCenter + mix(vec2(cos(a1), sin(a1)), vec2(cos(a2), sin(a2)), edgeT) * rHex;
-      posNat = vec2(hexPt.x * aspect * 0.52, hexPt.y);
-      colNat = mix(vec3(0.84, 0.52, 0.04), vec3(0.68, 0.34, 0.06), fract(cellId * 0.37));
-
-      // UNIQUE QUANT 7: Multi-Asset Correlation Cluster Network (Nodes + Spanning Edges)
-      float nClusters = 7.0;
-      float cIdx = floor((u * 0.5 + 0.5) * nClusters);
-      float cAng = cIdx * (6.28318 / nClusters) + uTime * 0.10;
-      vec2 hubPos = vec2(cos(cAng) * 0.34, yCenter + sin(cAng) * 0.18);
-      if (v < 0.55) {
-        float subAng = rnd * 6.28318;
-        float subR = sqrt(v / 0.55) * 0.065;
-        posQuant = vec2((hubPos.x + cos(subAng) * subR) * aspect * 0.52, hubPos.y + sin(subAng) * subR);
-        colQuant = mix(vec3(0.52, 0.22, 0.76), vec3(0.08, 0.56, 0.44), cIdx / nClusters);
-      } else {
-        float nextAng = mod(cIdx + 2.0, nClusters) * (6.28318 / nClusters) + uTime * 0.10;
-        vec2 nextHub = vec2(cos(nextAng) * 0.34, yCenter + sin(nextAng) * 0.18);
-        float tEdge = (v - 0.55) / 0.45;
-        vec2 edgePt = mix(hubPos, nextHub, tEdge);
-        posQuant = vec2(edgePt.x * aspect * 0.52, edgePt.y);
-        colQuant = vec3(0.82, 0.48, 0.08);
-      }
-    }
-
-    vec2 worldPos = mix(posNat, posQuant, m);
-    vColor = mix(colNat, colQuant, m);
+    vec2 worldPos = p0 * w0 + p1 * w1 + p2 * w2 + p3 * w3;
+    vColor = c0 * w0 + c1 * w1 + c2 * w2 + c3 * w3;
 
     vec2 ndc = vec2(worldPos.x / (aspect * 0.5), worldPos.y * 2.0);
     gl_Position = vec4(ndc, 0.0, 1.0);
 
-    // Stronger living twinkle/pulse so every particle breathes and shimmers
-    float breeze = 0.58 + 0.42 * sin(uTime * (2.4 + fract(rnd * 19.0) * 1.8) + rnd * 50.0);
+    float breeze = 0.60 + 0.40 * sin(uTime * (2.4 + fract(rnd * 19.0) * 1.8) + rnd * 50.0);
     vAngle = uTime * 0.7 + rnd * 6.28318;
     if (rnd < 0.40) {
-      // Volumetric botanical watercolor & pollen dust cloud
       vAlpha = 0.095 * (0.75 + 0.25 * sin(uTime * 1.5 + rnd * 20.0));
       gl_PointSize = (14.0 + rnd * 15.0) * uDpr;
     } else if (rnd < 0.74) {
-      // Organic leaf / seed / pollen grain
       vAlpha = breeze * 0.78;
       gl_PointSize = (3.4 + fract(rnd * 17.0) * 2.8) * uDpr;
     } else {
-      // Rotating 5-petal blossom or 4-ray dew sparkle
       vAlpha = breeze * 0.94;
       gl_PointSize = (7.2 + fract(rnd * 11.0) * 3.0) * uDpr;
     }

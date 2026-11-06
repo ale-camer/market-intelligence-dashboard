@@ -3,7 +3,7 @@ import WebbDeepFieldCanvas, { LIGHT_ARTWORKS } from './WebbDeepFieldCanvas';
 
 export default function HomeStage({ isHome, langCode, t }) {
   const [lightMode, setLightMode] = useState(true);
-  const [selectedScene, setSelectedScene] = useState(0); // 0..7 or null for auto-rotate
+  const [selectedScene, setSelectedScene] = useState(null); // null = continuous auto transition across the 4 pairs
   const [morphMode, setMorphMode] = useState('auto'); // 'nature' (0) | 'auto' (null) | 'quant' (1)
 
   const morphOverride =

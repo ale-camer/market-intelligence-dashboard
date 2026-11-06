@@ -79,101 +79,53 @@ export const LIGHT_ARTWORKS = {
   EN: [
     {
       id: 0,
-      short: '01. Girasol Fibonacci',
+      short: 'I. Girasol Fibonacci',
       title: 'Fibonacci Sunflower Phyllotaxis (φ = 1.618)  ⟷  Golden Logarithmic Spiral & Fibonacci Arcs',
-      medium: 'Golden-Angle Seed Spiral (137.5°) • Harmonic Retracement & Extension Manifold',
+      medium: 'Spring Daylight Botanical Spiral (137.5°) • Harmonic Retracement & Extension Manifold',
     },
     {
       id: 1,
-      short: '02. Flor Sakura',
+      short: 'II. Flor Sakura',
       title: 'Sakura Cherry Blossom (Polar Rose r = cos 5θ)  ⟷  Fourier Harmonic Wave Spectrum',
-      medium: 'Spring Botanical Symmetry • Multi-Frequency Cyclical Spectral Decomposition',
+      medium: 'Spring Blossom Symmetry • Multi-Frequency Cyclical Spectral Decomposition',
     },
     {
       id: 2,
-      short: '03. Helecho Fractal',
-      title: 'Barnsley Botanical Canopy & Fern  ⟷  Isolation Forest (P-06) Decision Tree',
-      medium: 'Self-Similar Fractal Fronds • Recursive Anomaly Partitioning',
-    },
-    {
-      id: 3,
-      short: '04. Diente de León',
-      title: 'Dandelion Pappus Seeds in Breeze  ⟷  Kelly Criterion Optimal Growth Curves g(f*)',
-      medium: 'Wind-Borne Botanical Dispersion • Geometric Compounding & Leverage Frontier',
-    },
-    {
-      id: 4,
-      short: '05. Mariposa Monarca',
+      short: 'III. Mariposa Monarca',
       title: 'Monarch Butterfly (Temple Fay Curve)  ⟷  Lorenz Strange Attractor',
       medium: 'Lepidoptera Bilateral Symmetry • Nonlinear Chaos & Regime Dynamics',
     },
     {
-      id: 5,
-      short: '06. Bandada en Vuelo',
-      title: 'Spring Starling Murmuration  ⟷  3-State Markov Regime Switching Orbitals',
-      medium: 'Collective Swarm Fluidity • Probabilistic Transition Matrix P(S_t | S_t-1)',
-    },
-    {
-      id: 6,
-      short: '07. Cordillera & Ríos',
-      title: 'Alpine Spring Ridges & Meltwater Rivers  ⟷  Topographic Iso-Sharpe & Alpha Manifold',
-      medium: 'Terrestrial Elevation Contours • Brinson-Fachler Multi-Factor Attribution',
-    },
-    {
-      id: 7,
-      short: '08. Panal & Polen',
-      title: 'Hexagonal Honeycomb & Lavender Pollen  ⟷  Multi-Asset Correlation Network',
-      medium: 'Optimal Voronoi Tessellation • Effective Number of Bets (ENB) Clustering',
+      id: 3,
+      short: 'IV. Helecho & Diente de León',
+      title: 'Barnsley Fern & Dandelion Breeze  ⟷  Isolation Forest (P-06) & Kelly Growth Arc',
+      medium: 'Wind-Borne Botanical Canopy • Recursive Anomaly Partitioning & Geometric Compounding',
     },
   ],
   ES: [
     {
       id: 0,
-      short: '01. Girasol Fibonacci',
+      short: 'I. Girasol Fibonacci',
       title: 'Girasol de Fibonacci (Filotaxis Áurea φ = 1.618)  ⟷  Espiral Logarítmica & Arcos de Fibonacci',
       medium: 'Espiral botánica de ángulo áureo (137.5°) • Proporción áurea y anillos armónicos (23.6% • 38.2% • 61.8%)',
     },
     {
       id: 1,
-      short: '02. Flor Sakura',
+      short: 'II. Flor Sakura',
       title: 'Flor de Cerezo Sakura (Rosa Polar r = cos 5θ)  ⟷  Espectro de Ondas Armónicas de Fourier',
       medium: 'Simetría floral de primavera • Descomposición espectral de ciclos y frecuencias',
     },
     {
       id: 2,
-      short: '03. Helecho Fractal',
-      title: 'Helecho & Dosel Botánico de Barnsley  ⟷  Árbol Isolation Forest (P-06)',
-      medium: 'Frondas fractales autosimilares • Partición recursiva de anomalías',
-    },
-    {
-      id: 3,
-      short: '04. Diente de León',
-      title: 'Semillas de Diente de León en la Brisa  ⟷  Curvas de Crecimiento Óptimo de Kelly g(f*)',
-      medium: 'Dispersión botánica al viento • Capitalización geométrica y cresta de Kelly',
-    },
-    {
-      id: 4,
-      short: '05. Mariposa Monarca',
+      short: 'III. Mariposa Monarca',
       title: 'Mariposa Monarca (Curva de Temple Fay)  ⟷  Atractor Caótico de Lorenz',
       medium: 'Simetría lepidóptera primaveral • Efecto Mariposa y dinámica no lineal',
     },
     {
-      id: 5,
-      short: '06. Bandada en Vuelo',
-      title: 'Bandada de Primavera (Murmuración)  ⟷  Órbitas de 3 Regímenes de Markov',
-      medium: 'Sincronía colectiva en vuelo • Transición de estados (Calma • Transición • Estrés)',
-    },
-    {
-      id: 6,
-      short: '07. Cordillera & Ríos',
-      title: 'Cordillera en Deshielo & Ríos Glaciares  ⟷  Topografía Iso-Sharpe & Alfa de Brinson',
-      medium: 'Curvas de nivel terrestres • Superficie de optimización riesgo-retorno',
-    },
-    {
-      id: 7,
-      short: '08. Panal & Polen',
-      title: 'Panal Hexagonal & Polen de Lavanda  ⟷  Red de Correlación Multi-Activo',
-      medium: 'Teselación orgánica de Voronoi • Clusters de diversificación real (ENB)',
+      id: 3,
+      short: 'IV. Helecho & Diente de León',
+      title: 'Helecho de Barnsley & Diente de León al Viento  ⟷  Isolation Forest (P-06) & Arco de Kelly',
+      medium: 'Dosel botánico en la brisa • Partición recursiva de anomalías y crecimiento geométrico',
     },
   ],
 };
@@ -296,6 +248,7 @@ export default function WebbDeepFieldCanvas({
     let animId;
     let lastTime = performance.now();
     let elapsed = 0;
+    let smoothLightPair = 0;
 
     const render = (now) => {
       const dt = Math.min(0.1, Math.max(0, (now - lastTime) * 0.001));
@@ -312,11 +265,15 @@ export default function WebbDeepFieldCanvas({
             : 0.5 - 0.5 * Math.cos(elapsed * 0.65);
 
         if (isLight) {
-          const activePair =
-            selectedSceneRef.current !== null
-              ? Number(selectedSceneRef.current)
-              : (elapsed * 0.14) % 8.0;
-          const pairIdx = Math.floor(activePair) % 8;
+          if (selectedSceneRef.current !== null) {
+            const target = Number(selectedSceneRef.current) % 4.0;
+            let diff = ((target - smoothLightPair + 2.0) % 4.0 + 4.0) % 4.0 - 2.0;
+            smoothLightPair = (smoothLightPair + diff * Math.min(1.0, dt * 3.2) + 4.0) % 4.0;
+          } else {
+            smoothLightPair = (elapsed * 0.12) % 4.0;
+          }
+          const activePair = smoothLightPair;
+          const pairIdx = Math.round(activePair) % 4;
           const list = LIGHT_ARTWORKS[langRef.current] || LIGHT_ARTWORKS.EN;
           const piece = list[pairIdx] || list[0];
           if (artworkTitleRef.current && artworkTitleRef.current.textContent !== piece.title) {
