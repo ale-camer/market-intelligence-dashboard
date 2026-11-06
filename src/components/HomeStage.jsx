@@ -3,7 +3,7 @@ import WebbDeepFieldCanvas, { LIGHT_ARTWORKS } from './WebbDeepFieldCanvas';
 
 export default function HomeStage({ isHome, langCode, t }) {
   const [lightMode, setLightMode] = useState(true);
-  const [selectedScene, setSelectedScene] = useState(null); // null = continuous auto transition across the 4 pairs
+  const [selectedScene, setSelectedScene] = useState(1); // Start on 02. Flor de Loto so user can explore 01..10
   const [morphMode, setMorphMode] = useState('auto'); // 'nature' (0) | 'auto' (null) | 'quant' (1)
 
   const morphOverride =
@@ -262,7 +262,7 @@ export default function HomeStage({ isHome, langCode, t }) {
                 color: selectedScene === null ? '#ffffff' : '#be185d',
               }}
             >
-              ↻ Rotar las 8
+              ↻ Rotar las 10
             </button>
           </div>
         )}

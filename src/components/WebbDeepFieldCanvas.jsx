@@ -79,53 +79,125 @@ export const LIGHT_ARTWORKS = {
   EN: [
     {
       id: 0,
-      short: 'I. Girasol Fibonacci',
+      short: '01. Girasol Fibonacci ★',
       title: 'Fibonacci Sunflower Phyllotaxis (φ = 1.618)  ⟷  Golden Logarithmic Spiral & Fibonacci Arcs',
-      medium: 'Spring Daylight Botanical Spiral (137.5°) • Harmonic Retracement & Extension Manifold',
+      medium: 'Golden-Angle Seed Spiral (137.5°) • Harmonic Retracement & Extension Manifold',
     },
     {
       id: 1,
-      short: 'II. Flor Sakura',
-      title: 'Sakura Cherry Blossom (Polar Rose r = cos 5θ)  ⟷  Fourier Harmonic Wave Spectrum',
-      medium: 'Spring Blossom Symmetry • Multi-Frequency Cyclical Spectral Decomposition',
+      short: '02. Flor de Loto & Estanque',
+      title: 'Sacred Lotus Mandala & Pond Ripples  ⟷  Two-Source Wave Interference & Contagion Field',
+      medium: 'Concentric Water Harmonics • Volatility Propagation & Resonance Surface',
     },
     {
       id: 2,
-      short: 'III. Mariposa Monarca',
-      title: 'Monarch Butterfly (Temple Fay Curve)  ⟷  Lorenz Strange Attractor',
-      medium: 'Lepidoptera Bilateral Symmetry • Nonlinear Chaos & Regime Dynamics',
+      short: '03. Caracola Nautilus & Olas',
+      title: 'Chambered Nautilus Shell & Ocean Waves  ⟷  Elliott Wave Cycles & OLS Regression Channel',
+      medium: 'Logarithmic Septa Chambers • Linear Trend & ±2σ Confidence Rails',
     },
     {
       id: 3,
-      short: 'IV. Helecho & Diente de León',
-      title: 'Barnsley Fern & Dandelion Breeze  ⟷  Isolation Forest (P-06) & Kelly Growth Arc',
-      medium: 'Wind-Borne Botanical Canopy • Recursive Anomaly Partitioning & Geometric Compounding',
+      short: '04. Bandada de Golondrinas',
+      title: 'Spring Swallow Murmuration  ⟷  3-State Markov Regime Switching Orbitals',
+      medium: 'Synchronized Aerial Streams • Probabilistic Transition Matrix (Calm • Transition • Stress)',
+    },
+    {
+      id: 4,
+      short: '05. Cordillera & Ríos',
+      title: 'Alpine Spring Ridges & Meltwater Rivers  ⟷  Topographic Iso-Sharpe & Alpha Manifold',
+      medium: 'Terrestrial Elevation Contours • Multi-Factor Brinson Attribution Contours',
+    },
+    {
+      id: 5,
+      short: '06. Panal & Lavanda',
+      title: 'Hexagonal Honeycomb & Lavender Pollen  ⟷  Multi-Asset Correlation Network (ENB)',
+      medium: 'Optimal Voronoi Tessellation • 7-Cluster Diversification Graph',
+    },
+    {
+      id: 6,
+      short: '07. Árbol Copa & Raíces',
+      title: 'Spring Tree of Life (Canopy & Roots)  ⟷  Directed Acyclic Pipeline Graph (DAG P-01..P-13)',
+      medium: 'Botanical Branching Architecture • 4-Stage Institutional Data-Contract Topology',
+    },
+    {
+      id: 7,
+      short: '08. Rosa de los Vientos',
+      title: '8-Point Wind Rose & Spring Breeze  ⟷  6-Axis Multi-Factor Quant Radar',
+      medium: 'Directional Wind Harmonics • Momentum • Value • Quality • Low-Vol • Liquidity • Carry',
+    },
+    {
+      id: 8,
+      short: '09. ADN Botánico (Doble Hélice)',
+      title: 'Living Botanical Double Helix  ⟷  Cointegration & Mean-Reverting Pairs Spread',
+      medium: 'Interwoven Vine Strands • Statistical Equilibrium & ±2σ Z-Score Convergence',
+    },
+    {
+      id: 9,
+      short: '10. Diente de León Esférico',
+      title: 'Geodesic Dandelion Pappus Sphere  ⟷  Kelly Criterion Compounding Growth Fan g(f*)',
+      medium: '32-Spoke Radial Seed Crown • Optimal Leverage Peak & Geometric Growth Frontier',
     },
   ],
   ES: [
     {
       id: 0,
-      short: 'I. Girasol Fibonacci',
+      short: '01. Girasol Fibonacci ★',
       title: 'Girasol de Fibonacci (Filotaxis Áurea φ = 1.618)  ⟷  Espiral Logarítmica & Arcos de Fibonacci',
       medium: 'Espiral botánica de ángulo áureo (137.5°) • Proporción áurea y anillos armónicos (23.6% • 38.2% • 61.8%)',
     },
     {
       id: 1,
-      short: 'II. Flor Sakura',
-      title: 'Flor de Cerezo Sakura (Rosa Polar r = cos 5θ)  ⟷  Espectro de Ondas Armónicas de Fourier',
-      medium: 'Simetría floral de primavera • Descomposición espectral de ciclos y frecuencias',
+      short: '02. Flor de Loto & Estanque',
+      title: 'Flor de Loto & Ondas en Estanque  ⟷  Interferencia de Ondas & Contagio de Volatilidad',
+      medium: 'Mandala acuático y anillos concéntricos • Propagación armónica y resonancia de mercado',
     },
     {
       id: 2,
-      short: 'III. Mariposa Monarca',
-      title: 'Mariposa Monarca (Curva de Temple Fay)  ⟷  Atractor Caótico de Lorenz',
-      medium: 'Simetría lepidóptera primaveral • Efecto Mariposa y dinámica no lineal',
+      short: '03. Caracola Nautilus & Olas',
+      title: 'Caracola Marina Nautilus & Olas  ⟷  Ciclos de Elliott & Canal de Regresión OLS (±2σ)',
+      medium: 'Cámaras septales en espiral áurea • Tendencia lineal y bandas de desviación estándar',
     },
     {
       id: 3,
-      short: 'IV. Helecho & Diente de León',
-      title: 'Helecho de Barnsley & Diente de León al Viento  ⟷  Isolation Forest (P-06) & Arco de Kelly',
-      medium: 'Dosel botánico en la brisa • Partición recursiva de anomalías y crecimiento geométrico',
+      short: '04. Bandada de Golondrinas',
+      title: 'Bandada de Golondrinas (Murmuración)  ⟷  Órbitas de 3 Regímenes de Markov',
+      medium: 'Vuelo colectivo en el cielo celeste • Matriz de transición (Calma • Transición • Estrés)',
+    },
+    {
+      id: 4,
+      short: '05. Cordillera & Ríos',
+      title: 'Cordillera en Deshielo & Ríos Glaciares  ⟷  Topografía Iso-Sharpe & Alfa de Brinson',
+      medium: 'Valle verde y río celeste • Curvas de nivel de máxima eficiencia riesgo-retorno',
+    },
+    {
+      id: 5,
+      short: '06. Panal & Lavanda',
+      title: 'Panal Hexagonal & Polen de Lavanda  ⟷  Red de Clusters de Correlación (ENB)',
+      medium: 'Teselación orgánica de Voronoi • Constelación de 7 clusters de diversificación real',
+    },
+    {
+      id: 6,
+      short: '07. Árbol Copa & Raíces',
+      title: 'Árbol de Primavera (Copa Frondosa & Raíces)  ⟷  Grafo Acíclico Dirigido (DAG P-01..P-13)',
+      medium: 'Arquitectura arbórea viva • Topología de 4 etapas y contratos de datos cuantitativos',
+    },
+    {
+      id: 7,
+      short: '08. Rosa de los Vientos',
+      title: 'Rosa de los Vientos de 8 Puntas  ⟷  Radar Polar Multi-Factor de 6 Ejes',
+      medium: 'Rosa náutica primaveral • Polígono de factores (Momentum • Value • Quality • Low-Vol • Liquidez)',
+    },
+    {
+      id: 8,
+      short: '09. ADN Botánico (Doble Hélice)',
+      title: 'Doble Hélice Botánica Entrelazada  ⟷  Cointegración & Arbitraje Estadístico (Pairs Trading)',
+      medium: 'Hebras vivas de esmeralda y agua • Equilibrio estadístico y reversión a la media',
+    },
+    {
+      id: 9,
+      short: '10. Diente de León Esférico',
+      title: 'Esfera Radial de Diente de León (Pappus)  ⟷  Abanico de Crecimiento Compuesto de Kelly g(f*)',
+      medium: 'Corona geodésica de 32 rayos y brisa • Cresta óptima Half/Full-Kelly y capitalización',
     },
   ],
 };
@@ -224,7 +296,9 @@ export default function WebbDeepFieldCanvas({
     const lPtTimeLoc = gl.getUniformLocation(lightPtProgram, 'uTime');
     const lPtResLoc = gl.getUniformLocation(lightPtProgram, 'uResolution');
     const lPtDprLoc = gl.getUniformLocation(lightPtProgram, 'uDpr');
-    const lPtPairLoc = gl.getUniformLocation(lightPtProgram, 'uPair');
+    const lPtSceneALoc = gl.getUniformLocation(lightPtProgram, 'uSceneA');
+    const lPtSceneBLoc = gl.getUniformLocation(lightPtProgram, 'uSceneB');
+    const lPtSceneMixLoc = gl.getUniformLocation(lightPtProgram, 'uSceneMix');
     const lPtMorphLoc = gl.getUniformLocation(lightPtProgram, 'uMorph');
 
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -248,7 +322,10 @@ export default function WebbDeepFieldCanvas({
     let animId;
     let lastTime = performance.now();
     let elapsed = 0;
-    let smoothLightPair = 0;
+    let sceneA = 0;
+    let sceneB = 0;
+    let sceneMix = 0;
+    let lastTargetScene = selectedSceneRef.current;
 
     const render = (now) => {
       const dt = Math.min(0.1, Math.max(0, (now - lastTime) * 0.001));
@@ -265,17 +342,31 @@ export default function WebbDeepFieldCanvas({
             : 0.5 - 0.5 * Math.cos(elapsed * (isLight ? 0.36 : 0.65));
 
         if (isLight) {
+          let activePairIdx = 0;
           if (selectedSceneRef.current !== null) {
-            const target = Number(selectedSceneRef.current) % 4.0;
-            let diff = ((target - smoothLightPair + 2.0) % 4.0 + 4.0) % 4.0 - 2.0;
-            smoothLightPair = (smoothLightPair + diff * Math.min(1.0, dt * 1.35) + 4.0) % 4.0;
+            const target = Number(selectedSceneRef.current) % 10;
+            if (lastTargetScene !== target) {
+              // Start a smooth direct particle transition from current visible scene to the clicked scene
+              sceneA = sceneMix > 0.5 ? sceneB : sceneA;
+              sceneB = target;
+              sceneMix = 0.0;
+              lastTargetScene = target;
+            }
+            sceneMix = Math.min(1.0, sceneMix + dt * 0.85);
+            activePairIdx = sceneB;
           } else {
-            smoothLightPair = (elapsed * 0.065) % 4.0;
+            lastTargetScene = null;
+            const autoPhase = (elapsed * 0.075) % 10.0;
+            sceneA = Math.floor(autoPhase) % 10;
+            sceneB = (sceneA + 1) % 10;
+            // Hold each scene clearly for 70% of the slot, then smoothly glide to the next over 30%
+            const slotFrac = autoPhase - Math.floor(autoPhase);
+            sceneMix = Math.max(0.0, Math.min(1.0, (slotFrac - 0.68) / 0.32));
+            activePairIdx = sceneMix > 0.5 ? sceneB : sceneA;
           }
-          const activePair = smoothLightPair;
-          const pairIdx = Math.floor(activePair) % 4;
+
           const list = LIGHT_ARTWORKS[langRef.current] || LIGHT_ARTWORKS.EN;
-          const piece = list[pairIdx] || list[0];
+          const piece = list[activePairIdx] || list[0];
           if (artworkTitleRef.current && artworkTitleRef.current.textContent !== piece.title) {
             artworkTitleRef.current.textContent = piece.title;
           }
@@ -290,7 +381,7 @@ export default function WebbDeepFieldCanvas({
           gl.vertexAttribPointer(lBgPosLoc, 2, gl.FLOAT, false, 0, 0);
           gl.uniform2f(lBgResLoc, canvas.width, canvas.height);
           gl.uniform1f(lBgTimeLoc, elapsed);
-          gl.uniform1f(lBgPairLoc, activePair);
+          gl.uniform1f(lBgPairLoc, activePairIdx);
           gl.uniform1f(lBgMorphLoc, activeMorph);
           gl.drawArrays(gl.TRIANGLES, 0, 6);
 
@@ -303,7 +394,9 @@ export default function WebbDeepFieldCanvas({
           gl.uniform1f(lPtTimeLoc, elapsed);
           gl.uniform2f(lPtResLoc, canvas.width, canvas.height);
           gl.uniform1f(lPtDprLoc, dpr);
-          gl.uniform1f(lPtPairLoc, activePair);
+          gl.uniform1f(lPtSceneALoc, sceneA);
+          gl.uniform1f(lPtSceneBLoc, sceneB);
+          gl.uniform1f(lPtSceneMixLoc, sceneMix);
           gl.uniform1f(lPtMorphLoc, activeMorph);
           gl.drawArrays(gl.POINTS, 0, PARTICLE_COUNT);
         } else {
