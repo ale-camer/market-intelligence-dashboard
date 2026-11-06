@@ -404,20 +404,27 @@ export default function WebbDeepFieldCanvas({
         <div
           className="serif-heading"
           style={{
-            fontSize: '0.84rem',
+            fontSize: '0.88rem',
             fontStyle: 'italic',
-            color: lightMode ? 'rgba(16, 36, 28, 0.86)' : 'rgba(255, 255, 255, 0.78)',
-            fontWeight: 400,
+            color: lightMode ? 'rgba(11, 29, 22, 0.96)' : 'rgba(255, 255, 255, 0.92)',
+            fontWeight: 500,
             letterSpacing: '0.01em',
+            textShadow: lightMode
+              ? '0 1px 8px rgba(255, 255, 255, 0.88)'
+              : '0 1px 6px rgba(0, 0, 0, 0.85)',
           }}
         >
           {currentPiece.title}
         </div>
         <div
           style={{
-            fontSize: '0.68rem',
-            color: lightMode ? 'rgba(32, 58, 46, 0.56)' : 'rgba(255, 255, 255, 0.38)',
+            fontSize: '0.72rem',
+            fontWeight: 500,
+            color: lightMode ? 'rgba(18, 44, 34, 0.78)' : 'rgba(255, 255, 255, 0.62)',
             letterSpacing: '0.03em',
+            textShadow: lightMode
+              ? '0 1px 6px rgba(255, 255, 255, 0.78)'
+              : '0 1px 4px rgba(0, 0, 0, 0.75)',
           }}
         >
           {currentPiece.medium}

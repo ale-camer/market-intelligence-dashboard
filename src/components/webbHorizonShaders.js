@@ -74,8 +74,8 @@ export const BG_FRAGMENT_SHADER = `
 
     vec3 col = vec3(0.0);
 
-    // 1. Subtle JWST Deep-Field Background Galaxies & Faint Stars in the lower stage
-    float stageMask = smoothstep(0.22, -0.05, p.y) * smoothstep(-0.52, -0.35, p.y);
+    // 1. Subtle JWST Deep-Field Background Galaxies & Faint Stars in the lower stage (kept clear of bottom footer)
+    float stageMask = smoothstep(0.22, -0.05, p.y) * smoothstep(-0.41, -0.28, p.y);
     vec2 starGrid = p * 34.0 + vec2(uTime * 0.015, 0.0);
     vec2 sgId = floor(starGrid);
     vec2 sgUv = fract(starGrid) - 0.5;
@@ -196,8 +196,8 @@ export const BG_FRAGMENT_SHADER = `
                 + vec3(0.75, 0.34, 0.14) * (sunCorona * 0.28);
     col += sunCol;
 
-    // 5. Upper Viewport Pure #000000 Guarantee & ACES Filmic Tone Mapping
-    float topBlackout = smoothstep(0.68, 0.45, uv.y);
+    // 5. Upper & Lower Viewport Pure #000000 Guarantee (keeps Header & Footer 100% free of dust) & ACES Filmic Tone Mapping
+    float topBlackout = smoothstep(0.68, 0.45, uv.y) * smoothstep(0.04, 0.15, uv.y);
     col *= topBlackout;
 
     col = (col * (2.51 * col + 0.03)) / (col * (2.43 * col + 0.59) + 0.14);
@@ -497,8 +497,8 @@ export const LIGHT_BG_FRAGMENT_SHADER = `
     stageCol = mix(stageCol, vec3(0.64, 0.89, 0.76), hillMask1 * 0.34);
     stageCol = mix(stageCol, vec3(0.56, 0.85, 0.70), hillMask2 * 0.30);
 
-    // 1. Subtle Deep-Field Spring Pollen & Dew Stars in the lower stage (exact counterpart to JWST background stars)
-    float stageMask = smoothstep(0.22, -0.05, p.y) * smoothstep(-0.52, -0.35, p.y);
+    // 1. Subtle Deep-Field Spring Pollen & Dew Stars in the lower stage (kept clear of bottom footer)
+    float stageMask = smoothstep(0.22, -0.05, p.y) * smoothstep(-0.40, -0.27, p.y);
     for (int layer = 0; layer < 2; layer++) {
       float fl = float(layer);
       float scale = layer == 0 ? 34.0 : 24.0;
@@ -623,8 +623,8 @@ export const LIGHT_BG_FRAGMENT_SHADER = `
     stageCol = mix(stageCol, vec3(0.92, 0.62, 0.06), (sunInner * 0.38 + rays6 * 0.35 + horizStreak * 0.28));
     stageCol = mix(stageCol, vec3(1.0, 0.98, 0.90), clamp(sunCore * 0.85, 0.0, 1.0));
 
-    // 5. Upper Viewport Pure Daylight Guarantee (exact mirror of Dark Mode's topBlackout)
-    float topStageMask = smoothstep(0.68, 0.45, uv.y);
+    // 5. Upper & Lower Viewport Pure Daylight Guarantee (keeps Header & Footer 100% free of dust)
+    float topStageMask = smoothstep(0.68, 0.45, uv.y) * smoothstep(0.05, 0.16, uv.y);
     vec3 col = mix(baseCanvas, stageCol, topStageMask);
 
     gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
@@ -681,13 +681,13 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     if (v < 0.74) {
       float r = rNorm0 * 0.24;
       posN0 = vec2(cos(theta0) * r * 1.15 * aspect * 0.52, yCenter + sin(theta0) * r * 0.92);
-      colN0 = mix(vec3(0.04, 0.48, 0.28), vec3(0.86, 0.52, 0.02), smoothstep(0.15, 0.95, rNorm0));
+      colN0 = mix(vec3(0.04, 0.62, 0.38), vec3(0.88, 0.64, 0.04), smoothstep(0.18, 0.92, rNorm0));
     } else {
       float ang = u * 3.14159 + uTime * 0.03;
       float petalWave = abs(cos(ang * 10.5));
       float rPetal = 0.23 + (0.04 + 0.11 * petalWave) * ((v - 0.74) / 0.26);
       posN0 = vec2(cos(ang) * rPetal * 1.15 * aspect * 0.52, yCenter + sin(ang) * rPetal * 0.92);
-      colN0 = mix(vec3(0.90, 0.56, 0.02), vec3(0.05, 0.58, 0.34), smoothstep(0.28, 0.36, rPetal));
+      colN0 = mix(vec3(0.92, 0.66, 0.04), vec3(0.06, 0.68, 0.44), smoothstep(0.28, 0.36, rPetal));
     }
 
     vec2 posQ0;
@@ -698,13 +698,13 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
       float spread = (fract(v * 19.0) - 0.5) * 0.018;
       float angSp = tSp - uTime * 0.09;
       posQ0 = vec2((cos(angSp) * (rSp + spread)) * 1.15 * aspect * 0.52, yCenter + sin(angSp) * (rSp + spread) * 0.92);
-      colQ0 = mix(vec3(0.05, 0.56, 0.36), vec3(0.06, 0.50, 0.82), clamp(rSp / 0.32, 0.0, 1.0));
+      colQ0 = mix(vec3(0.04, 0.64, 0.42), vec3(0.06, 0.56, 0.86), clamp(rSp / 0.32, 0.0, 1.0));
     } else {
       float ringPick = floor((v - 0.68) / 0.32 * 4.0);
       float fibRad = (ringPick == 0.0 ? 0.08 : ringPick == 1.0 ? 0.13 : ringPick == 2.0 ? 0.21 : 0.34);
       float ang = u * 3.14159;
       posQ0 = vec2(cos(ang) * fibRad * 1.15 * aspect * 0.52, yCenter + sin(ang) * fibRad * 0.92);
-      colQ0 = ringPick == 2.0 ? vec3(0.86, 0.48, 0.02) : vec3(0.06, 0.54, 0.70);
+      colQ0 = ringPick == 2.0 ? vec3(0.88, 0.62, 0.04) : vec3(0.05, 0.62, 0.76);
     }
 
     // =========================================================================
@@ -719,8 +719,8 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     float yMtn = -0.34 + (ridgeLayer - 0.5) * 0.16 + elev * (1.1 - ridgeLayer * 0.45);
     vec2 posN1 = vec2((xMtn + (ridgeLayer - 0.5) * 0.14) * aspect * 0.52, yMtn);
     vec3 colN1 = (abs(xMtn) < 0.095 && elev < 0.13)
-      ? vec3(0.05, 0.54, 0.84)
-      : mix(vec3(0.04, 0.56, 0.32), vec3(0.10, 0.62, 0.68), smoothstep(0.04, 0.22, elev));
+      ? vec3(0.05, 0.58, 0.88)
+      : mix(vec3(0.04, 0.62, 0.36), vec3(0.08, 0.66, 0.72), smoothstep(0.04, 0.22, elev));
 
     float ringIdx = floor(v * 10.0) / 10.0;
     float ang1 = u * 3.14159 + uTime * 0.05;
@@ -728,7 +728,9 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     float ry1 = (0.035 + ringIdx * 0.20) * (1.0 + 0.12 * sin(ang1 * 2.0));
     float elevZ = (1.0 - ringIdx) * 0.14;
     vec2 posQ1 = vec2(cos(ang1) * rx1 * aspect * 0.52, (yCenter - 0.06) + sin(ang1) * ry1 + elevZ);
-    vec3 colQ1 = mix(vec3(0.86, 0.52, 0.02), vec3(0.05, 0.56, 0.40), ringIdx);
+    vec3 colQ1 = ringIdx < 0.25
+      ? vec3(0.88, 0.62, 0.04)
+      : mix(vec3(0.04, 0.64, 0.42), vec3(0.06, 0.58, 0.84), ringIdx);
 
     // =========================================================================
     // PAIR 3 (Elegida #9): FLOR DE LOTO & ESTANQUE (0%) <-> INTERFERENCIA DE ONDAS (100%)
@@ -744,13 +746,13 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
       float rLotus = rBase + (0.045 + 0.045 * lotusWave) * fract((v / 0.58) * 3.0);
       posN2 = vec2(cos(ang2) * rLotus * 1.15 * aspect * 0.52, yCenter + sin(ang2) * rLotus * 0.90);
       colN2 = tier == 0.0
-        ? vec3(0.86, 0.54, 0.02)
-        : mix(vec3(0.84, 0.22, 0.46), vec3(0.05, 0.58, 0.38), tier / 2.0);
+        ? vec3(0.88, 0.64, 0.04)
+        : (tier == 1.0 ? vec3(0.04, 0.64, 0.44) : vec3(0.06, 0.60, 0.78));
     } else {
       float rippleIdx = floor(((v - 0.58) / 0.42) * 5.0);
       float rRipple = 0.21 + rippleIdx * 0.045 + mod(uTime * 0.028, 0.045);
       posN2 = vec2(cos(ang2) * rRipple * 1.35 * aspect * 0.52, yCenter + sin(ang2) * rRipple * 0.72);
-      colN2 = mix(vec3(0.05, 0.54, 0.82), vec3(0.06, 0.60, 0.42), rippleIdx / 4.0);
+      colN2 = mix(vec3(0.06, 0.58, 0.86), vec3(0.05, 0.64, 0.46), rippleIdx / 4.0);
     }
 
     float gridX = u * 0.48;
@@ -759,7 +761,7 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     float d2 = length(vec2(gridX - 0.16, gridY));
     float waveZ = 0.055 * (cos(d1 * 28.0 - uTime * 0.75) + cos(d2 * 28.0 - uTime * 0.75)) * exp(-length(vec2(gridX, gridY)) * 2.2);
     vec2 posQ2 = vec2((gridX + gridY * 0.25) * aspect * 0.52, yCenter + gridY * 0.75 + waveZ);
-    vec3 colQ2 = mix(vec3(0.05, 0.52, 0.84), vec3(0.05, 0.60, 0.34), 0.5 + 0.5 * (waveZ / 0.08));
+    vec3 colQ2 = mix(vec3(0.06, 0.56, 0.86), vec3(0.04, 0.64, 0.38), 0.5 + 0.5 * (waveZ / 0.08));
 
     // =========================================================================
     // PAIR 4 (Elegida #12): ADN BOTÁNICO (0%) <-> COINTEGRACIÓN PAIRS (100%)
@@ -772,10 +774,10 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     float yStrand2 = yCenter - 0.14 * sin(phaseH);
     if (v < 0.36) {
       posN3 = vec2(xHelix * aspect * 0.52, yStrand1 + (v - 0.18) * 0.04);
-      colN3 = vec3(0.04, 0.58, 0.34);
+      colN3 = vec3(0.04, 0.62, 0.38);
     } else if (v < 0.72) {
       posN3 = vec2(xHelix * aspect * 0.52, yStrand2 + (v - 0.54) * 0.04);
-      colN3 = vec3(0.06, 0.52, 0.84);
+      colN3 = vec3(0.06, 0.56, 0.86);
     } else {
       float rungX = (floor((u * 0.5 + 0.5) * 18.0) / 17.0 * 2.0 - 1.0) * 0.52;
       float rPhase = rungX * 8.5 - uTime * 0.48;
@@ -783,7 +785,7 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
       float yB = yCenter - 0.14 * sin(rPhase);
       float tRung = (v - 0.72) / 0.28;
       posN3 = vec2(rungX * aspect * 0.52, mix(yA, yB, tRung));
-      colN3 = mix(vec3(0.86, 0.52, 0.02), vec3(0.84, 0.24, 0.48), tRung);
+      colN3 = mix(vec3(0.88, 0.62, 0.04), vec3(0.05, 0.64, 0.54), tRung);
     }
 
     vec2 posQ3;
@@ -793,13 +795,13 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     float spreadZ = 0.095 * cos(xTime * 10.0 - uTime * 0.48);
     if (v < 0.40) {
       posQ3 = vec2(xTime * aspect * 0.52, yCenter + commonTrend + spreadZ * 0.5);
-      colQ3 = vec3(0.04, 0.58, 0.34);
+      colQ3 = vec3(0.04, 0.62, 0.38);
     } else if (v < 0.80) {
       posQ3 = vec2(xTime * aspect * 0.52, yCenter + commonTrend - spreadZ * 0.5);
-      colQ3 = vec3(0.06, 0.52, 0.84);
+      colQ3 = vec3(0.06, 0.56, 0.86);
     } else {
       posQ3 = vec2(xTime * aspect * 0.52, yCenter + commonTrend);
-      colQ3 = vec3(0.86, 0.52, 0.02);
+      colQ3 = vec3(0.88, 0.62, 0.04);
     }
 
     vec2 p0 = mix(posN0, posQ0, m);
@@ -813,7 +815,10 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     vec3 c3 = mix(colN3, colQ3, m);
 
     vec2 worldPos = p0 * w0 + p1 * w1 + p2 * w2 + p3 * w3;
-    vColor = c0 * w0 + c1 * w1 + c2 * w2 + c3 * w3;
+    vec3 rawCol = c0 * w0 + c1 * w1 + c2 * w2 + c3 * w3;
+    // Preserve high chromatic saturation during transitions so blended colors never turn grey
+    float luma = dot(rawCol, vec3(0.299, 0.587, 0.114));
+    vColor = clamp(mix(vec3(luma), rawCol, 1.38), 0.0, 1.0);
 
     vec2 ndc = vec2(worldPos.x / (aspect * 0.5), worldPos.y * 2.0);
     gl_Position = vec4(ndc, 0.0, 1.0);
@@ -821,10 +826,11 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     // Exact same 3-tier particle hierarchy and twinkle cadence as Dark Mode
     float twinkle = 0.72 + 0.28 * sin(uTime * 2.6 + rnd * 50.0);
     if (rnd < 0.55) {
-      vAlpha = 0.065;
+      vColor = mix(vColor, vec3(0.08, 0.76, 0.58), 0.28);
+      vAlpha = 0.052;
       gl_PointSize = (15.0 + rnd * 16.0) * uDpr;
     } else if (rnd < 0.95) {
-      vAlpha = twinkle * 0.58;
+      vAlpha = twinkle * 0.62;
       gl_PointSize = (2.4 + fract(rnd * 17.0) * 2.2) * uDpr;
     } else {
       vAlpha = twinkle * 0.95;

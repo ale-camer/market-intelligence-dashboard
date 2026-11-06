@@ -172,7 +172,7 @@ export function renderNavShellStyle(navShell) {
   }
 }
 
-export function renderTabItem({ item, idx, isActive, isHovered, tabStyle, onClick, compact = false }) {
+export function renderTabItem({ item, idx, isActive, isHovered, tabStyle, onClick, compact = false, isLightHome = false }) {
   const IconComp = item.icon;
   const pad = compact ? '0.22rem 0.62rem' : '0.38rem 0.98rem';
   const fontSz = compact ? '0.64rem' : '0.82rem';
@@ -352,22 +352,31 @@ export function renderTabItem({ item, idx, isActive, isHovered, tabStyle, onClic
           onMouseEnter={(e) => {
             e.currentTarget.style.color = 'var(--ui-accent)';
             e.currentTarget.style.fontWeight = '700';
-            e.currentTarget.style.textShadow =
-              '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)';
+            e.currentTarget.style.textShadow = isLightHome
+              ? '0 0 10px rgba(var(--ui-accent-rgb), 0.5), 0 1px 6px rgba(255, 255, 255, 0.95)'
+              : '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.color = isActive ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)';
+            e.currentTarget.style.color = isActive ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.92)';
             e.currentTarget.style.fontWeight = isActive ? '700' : '600';
             e.currentTarget.style.textShadow = isActive
-              ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
-              : '0 1px 4px rgba(0, 0, 0, 0.9)';
+              ? isLightHome
+                ? '0 0 10px rgba(var(--ui-accent-rgb), 0.5), 0 1px 6px rgba(255, 255, 255, 0.95)'
+                : '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+              : isLightHome
+                ? '0 1px 8px rgba(255, 255, 255, 0.92), 0 0 2px rgba(255, 255, 255, 0.95)'
+                : '0 1px 3px rgba(0, 0, 0, 0.75)';
           }}
           style={{
             ...baseBtn,
-            color: isActive ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+            color: isActive ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.92)',
             textShadow: isActive
-              ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
-              : '0 1px 4px rgba(0, 0, 0, 0.9)',
+              ? isLightHome
+                ? '0 0 10px rgba(var(--ui-accent-rgb), 0.5), 0 1px 6px rgba(255, 255, 255, 0.95)'
+                : '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+              : isLightHome
+                ? '0 1px 8px rgba(255, 255, 255, 0.92), 0 0 2px rgba(255, 255, 255, 0.95)'
+                : '0 1px 3px rgba(0, 0, 0, 0.75)',
           }}
         >
           <span>{item.label}</span>
@@ -1303,10 +1312,12 @@ export default function HeaderBar({
   onGoBack,
   agentOpen = false,
   onToggleAgent,
+  lightMode = false,
   devIconId = 'lambda08-h-chiseled-nib',
   devBoxStyleId = 'free-green',
   headerVariantId = 'v001',
 }) {
+  const isLightHome = activeTab === 'presentation' && lightMode;
   const variant = resolveHeaderVariant(headerVariantId);
   const activeIconObj = DEV_ICON_CATALOG.find((i) => i.id === devIconId) || DEV_ICON_CATALOG[0];
   const activeBoxObj = DEV_BOX_STYLES.find((b) => b.id === devBoxStyleId) || DEV_BOX_STYLES[0];
@@ -1444,7 +1455,9 @@ export default function HeaderBar({
               ...wrapStyle,
               filter: isBorderless
                 ? activeTab === 'presentation' || isHovered
-                  ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.9)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.45))'
+                  ? isLightHome
+                    ? 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb), 0.6)) drop-shadow(0 1px 4px rgba(255, 255, 255, 0.95))'
+                    : 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.9)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.45))'
                   : 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.75))'
                 : 'none',
               transition: 'filter 0.2s ease, transform 0.2s ease',
@@ -1535,6 +1548,7 @@ export default function HeaderBar({
             isHovered,
             tabStyle: variant.tabStyle,
             onClick: () => onNavigate(item.id),
+            isLightHome,
           })
         }
       </HoverTooltip>
@@ -1755,7 +1769,7 @@ export default function HeaderBar({
                   style={{
                     backgroundColor: 'transparent',
                     border: 'none',
-                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.85)',
+                    color: 'var(--ui-accent)',
                     height: '28px',
                     padding: '0 0.25rem',
                     display: 'inline-flex',
@@ -1764,12 +1778,16 @@ export default function HeaderBar({
                     cursor: 'pointer',
                     pointerEvents: 'auto',
                     filter: isHighlighted
-                      ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
-                      : 'drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9))',
+                      ? isLightHome
+                        ? 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb), 0.65)) drop-shadow(0 1px 4px rgba(255, 255, 255, 0.95))'
+                        : 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
+                      : isLightHome
+                        ? 'drop-shadow(0 1px 6px rgba(255, 255, 255, 0.92))'
+                        : 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.75))',
                     transition: 'all 0.18s ease',
                   }}
                 >
-                  <Sparkles size={16} strokeWidth={isHighlighted ? 2.4 : 2.1} style={{ color: 'var(--ui-accent)' }} />
+                  <Sparkles size={17} strokeWidth={isHighlighted ? 2.5 : 2.25} style={{ color: 'var(--ui-accent)' }} />
                 </button>
               );
             }}

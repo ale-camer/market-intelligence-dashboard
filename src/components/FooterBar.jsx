@@ -495,42 +495,47 @@ export default function FooterBar({
           right: 0,
           backgroundColor: 'transparent',
           borderTop: 'none',
-          padding: '0.65rem 1.5rem',
+          padding: '0.68rem 1.5rem',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          fontSize: '0.76rem',
+          fontSize: '0.78rem',
           color: 'var(--ui-accent)',
           zIndex: 50,
           pointerEvents: 'none',
         }}
       >
-        {/* BOTTOM-LEFT: HOMOGENEOUS V010 SINGLE-WORD ITEMS (SYSTEM • GUIDE • DEV) */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', pointerEvents: 'auto' }}>
-          {/* 1. SYSTEM (ONE WORD, HOMOGENEOUS WITH GUIDE & DEV) */}
+        {/* BOTTOM-LEFT: HOMOGENEOUS V010 SINGLE-WORD ITEMS (SYSTEM • GUIDE) */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.35rem', pointerEvents: 'auto' }}>
+          {/* 1. SYSTEM (ONE WORD, HOMOGENEOUS WITH GUIDE) */}
           <HoverTooltip
             title={tx('Monitorear pipelines y FinOps', 'Monitor pipelines & FinOps')}
             placement="top-left"
           >
             {(isHovered) => {
               const isHighlighted = activeTab === 'observability' || isHovered;
+              const isLightHome = activeTab === 'presentation' && lightMode;
               return (
                 <button
                   onClick={onOpenObservability}
                   style={{
                     backgroundColor: 'transparent',
                     border: 'none',
-                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.94)',
                     height: '28px',
                     padding: '0 0.25rem',
-                    fontSize: '0.76rem',
+                    fontSize: '0.78rem',
                     fontWeight: isHighlighted ? 700 : 600,
                     display: 'inline-flex',
                     alignItems: 'center',
                     cursor: 'pointer',
                     textShadow: isHighlighted
-                      ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
-                      : '0 1px 4px rgba(0, 0, 0, 0.9)',
+                      ? isLightHome
+                        ? '0 0 10px rgba(var(--ui-accent-rgb), 0.5), 0 1px 6px rgba(255, 255, 255, 0.95)'
+                        : '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+                      : isLightHome
+                        ? '0 1px 8px rgba(255, 255, 255, 0.92), 0 0 2px rgba(255, 255, 255, 0.95)'
+                        : '0 1px 3px rgba(0, 0, 0, 0.75)',
                     transition: 'all 0.18s ease',
                   }}
                 >
@@ -547,23 +552,28 @@ export default function FooterBar({
           >
             {(isHovered) => {
               const isHighlighted = activeTab === 'guide' || isHovered;
+              const isLightHome = activeTab === 'presentation' && lightMode;
               return (
                 <button
                   onClick={onToggleGuide}
                   style={{
                     backgroundColor: 'transparent',
                     border: 'none',
-                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.94)',
                     height: '28px',
                     padding: '0 0.25rem',
-                    fontSize: '0.76rem',
+                    fontSize: '0.78rem',
                     fontWeight: isHighlighted ? 700 : 600,
                     display: 'inline-flex',
                     alignItems: 'center',
                     cursor: 'pointer',
                     textShadow: isHighlighted
-                      ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
-                      : '0 1px 4px rgba(0, 0, 0, 0.9)',
+                      ? isLightHome
+                        ? '0 0 10px rgba(var(--ui-accent-rgb), 0.5), 0 1px 6px rgba(255, 255, 255, 0.95)'
+                        : '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+                      : isLightHome
+                        ? '0 1px 8px rgba(255, 255, 255, 0.92), 0 0 2px rgba(255, 255, 255, 0.95)'
+                        : '0 1px 3px rgba(0, 0, 0, 0.75)',
                     transition: 'all 0.18s ease',
                   }}
                 >
@@ -574,8 +584,8 @@ export default function FooterBar({
           </HoverTooltip>
         </div>
 
-        {/* BOTTOM-RIGHT: HOMOGENEOUS V010 LANGUAGE & PALETTE CONTROLS */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', pointerEvents: 'auto' }}>
+        {/* BOTTOM-RIGHT: HOMOGENEOUS V010 LANGUAGE, PALETTE & LIGHT/DARK CONTROLS */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1.35rem', pointerEvents: 'auto' }}>
           {/* LANGUAGE SELECTOR BUTTON WITH FLAG ON THE LEFT */}
           <HoverTooltip
             disabled={langModalOpen}
@@ -584,20 +594,21 @@ export default function FooterBar({
           >
             {(isHovered) => {
               const isHighlighted = langModalOpen || isHovered;
+              const isLightHome = activeTab === 'presentation' && lightMode;
               return (
                 <button
                   onClick={() => setLangModalOpen((prev) => !prev)}
                   style={{
                     backgroundColor: 'transparent',
                     border: 'none',
-                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.94)',
                     height: '28px',
                     padding: '0 0.25rem',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.42rem',
                     cursor: 'pointer',
-                    fontSize: '0.76rem',
+                    fontSize: '0.78rem',
                     fontWeight: isHighlighted ? 700 : 600,
                     filter: isHighlighted ? 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb), 0.65))' : 'none',
                     transition: 'all 0.18s ease',
@@ -606,11 +617,15 @@ export default function FooterBar({
                   <FlagBadge lang={currentLang} width={17} height={12} />
                   <span
                     style={{
-                      color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+                      color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.94)',
                       fontWeight: isHighlighted ? 700 : 600,
                       textShadow: isHighlighted
-                        ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
-                        : '0 1px 4px rgba(0, 0, 0, 0.9)',
+                        ? isLightHome
+                          ? '0 0 10px rgba(var(--ui-accent-rgb), 0.5), 0 1px 6px rgba(255, 255, 255, 0.95)'
+                          : '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+                        : isLightHome
+                          ? '0 1px 8px rgba(255, 255, 255, 0.92), 0 0 2px rgba(255, 255, 255, 0.95)'
+                          : '0 1px 3px rgba(0, 0, 0, 0.75)',
                     }}
                   >
                     {currentLang.code}
@@ -724,6 +739,7 @@ export default function FooterBar({
             >
               {(isHovered) => {
                 const isHighlighted = palettePopoverOpen || isHovered;
+                const isLightHome = activeTab === 'presentation' && lightMode;
                 return (
                   <button
                     ref={paletteBtnRef}
@@ -731,7 +747,7 @@ export default function FooterBar({
                     style={{
                       backgroundColor: 'transparent',
                       border: 'none',
-                      color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.85)',
+                      color: 'var(--ui-accent)',
                       height: '28px',
                       padding: '0 0.25rem',
                       display: 'inline-flex',
@@ -739,34 +755,42 @@ export default function FooterBar({
                       justifyContent: 'center',
                       cursor: 'pointer',
                       filter: isHighlighted
-                        ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
-                        : 'drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9))',
+                        ? isLightHome
+                          ? 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb), 0.65)) drop-shadow(0 1px 4px rgba(255, 255, 255, 0.95))'
+                          : 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
+                        : isLightHome
+                          ? 'drop-shadow(0 1px 6px rgba(255, 255, 255, 0.92))'
+                          : 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.75))',
                       transition: 'all 0.18s ease',
                     }}
                   >
-                    <Palette size={16} strokeWidth={isHighlighted ? 2.4 : 2.1} style={{ color: 'var(--ui-accent)' }} />
+                    <Palette size={17} strokeWidth={isHighlighted ? 2.5 : 2.25} style={{ color: 'var(--ui-accent)' }} />
                   </button>
                 );
               }}
             </HoverTooltip>
+          </div>
 
-            {onToggleLightMode && (
-              <HoverTooltip
-                title={
-                  lightMode
-                    ? tx('Cambiar a modo oscuro', 'Switch to dark mode')
-                    : tx('Cambiar a modo claro', 'Switch to light mode')
-                }
-                placement="top-right"
-              >
-                {(isHovered) => (
+          {/* LIGHT / DARK STAGE MODE TOGGLE (SIBLING WITH CLEAR SEPARATION FROM PALETTE) */}
+          {onToggleLightMode && (
+            <HoverTooltip
+              title={
+                lightMode
+                  ? tx('Cambiar a modo oscuro', 'Switch to dark mode')
+                  : tx('Cambiar a modo claro', 'Switch to light mode')
+              }
+              placement="top-right"
+            >
+              {(isHovered) => {
+                const isLightHome = activeTab === 'presentation' && lightMode;
+                return (
                   <button
                     type="button"
                     onClick={onToggleLightMode}
                     style={{
                       backgroundColor: 'transparent',
                       border: 'none',
-                      color: isHovered ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.85)',
+                      color: 'var(--ui-accent)',
                       height: '28px',
                       padding: '0 0.25rem',
                       display: 'inline-flex',
@@ -774,21 +798,25 @@ export default function FooterBar({
                       justifyContent: 'center',
                       cursor: 'pointer',
                       filter: isHovered
-                        ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
-                        : 'drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9))',
+                        ? isLightHome
+                          ? 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb), 0.65)) drop-shadow(0 1px 4px rgba(255, 255, 255, 0.95))'
+                          : 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
+                        : isLightHome
+                          ? 'drop-shadow(0 1px 6px rgba(255, 255, 255, 0.92))'
+                          : 'drop-shadow(0 1px 3px rgba(0, 0, 0, 0.75))',
                       transition: 'all 0.18s ease',
                     }}
                   >
                     {lightMode ? (
-                      <Moon size={16} strokeWidth={isHovered ? 2.4 : 2.1} style={{ color: 'var(--ui-accent)' }} />
+                      <Moon size={17} strokeWidth={isHovered ? 2.5 : 2.25} style={{ color: 'var(--ui-accent)' }} />
                     ) : (
-                      <Sun size={16} strokeWidth={isHovered ? 2.4 : 2.1} style={{ color: 'var(--ui-accent)' }} />
+                      <Sun size={17} strokeWidth={isHovered ? 2.5 : 2.25} style={{ color: 'var(--ui-accent)' }} />
                     )}
                   </button>
-                )}
-              </HoverTooltip>
-            )}
-          </div>
+                );
+              }}
+            </HoverTooltip>
+          )}
         </div>
       </footer>
     </>

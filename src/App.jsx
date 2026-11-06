@@ -274,6 +274,7 @@ export default function App() {
         onGoBack={goBack}
         agentOpen={agentOpen}
         onToggleAgent={() => setAgentOpen((prev) => !prev)}
+        lightMode={lightMode}
         devIconId={devIconId}
         devBoxStyleId={devBoxStyleId}
         headerVariantId={headerVariantId}
