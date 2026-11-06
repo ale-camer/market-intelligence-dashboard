@@ -211,6 +211,142 @@ export const AGENT_QUICK_PROMPTS = [
   },
 ];
 
+export function getContextualQuickPrompts({
+  activeTab = 'presentation',
+  marketsViewMode = 'screener',
+  selectedAsset = 'BTC',
+} = {}) {
+  const sym = selectedAsset || 'BTC';
+  if (activeTab === 'workstation') {
+    if (marketsViewMode === 'screener') {
+      return [
+        {
+          id: 'scr_explain',
+          label: () => tx('Explicame qué estoy viendo en el Screener', 'Explain what I am seeing in the Screener'),
+          prompt: () => tx('Explicame qué estoy viendo en esta pantalla', 'Explain what I am seeing on this screen'),
+        },
+        {
+          id: 'scr_asset',
+          label: () => txTpl('Resumime cómo está {0} hoy', [sym], 'Summarize how {0} looks today', [sym]),
+          prompt: () => txTpl('Resumime cómo está {0} hoy', [sym], 'Summarize how {0} looks today', [sym]),
+        },
+        {
+          id: 'scr_p06',
+          label: () => tx('¿Qué mide el score de anomalía P-06?', 'What does the P-06 anomaly score measure?'),
+          prompt: () => tx('¿Qué mide el score de anomalía P-06?', 'What does the P-06 anomaly score measure?'),
+        },
+        {
+          id: 'scr_tour',
+          label: () => tx('¿Cómo paso activos del Screener a mi cartera?', 'How do I send Screener assets to my portfolio?'),
+          prompt: () => tx('¿Cómo paso activos del Screener a mi cartera?', 'How do I send Screener assets to my portfolio?'),
+        },
+      ];
+    }
+    return [
+      {
+        id: 'det_screen',
+        label: () => txTpl('Explicame qué estoy viendo en {0}', [sym], 'Explain what I am seeing on {0}', [sym]),
+        prompt: () => tx('Explicame qué estoy viendo en esta pantalla', 'Explain what I am seeing on this screen'),
+      },
+      {
+        id: 'det_thesis',
+        label: () => txTpl('Resumime el estado técnico y tesis de {0}', [sym], 'Summarize the technical & research thesis for {0}', [sym]),
+        prompt: () => txTpl('Resumime cómo está {0} hoy', [sym], 'Summarize how {0} looks today', [sym]),
+      },
+      {
+        id: 'det_p06',
+        label: () => tx('¿Qué significa el régimen P-06 y el Z-Score?', 'What do the P-06 regime and Volume Z-Score mean?'),
+        prompt: () => tx('¿Qué mide el detector P-06?', 'What does the P-06 detector measure?'),
+      },
+      {
+        id: 'det_sim',
+        label: () => txTpl('¿Cómo simulo {0} dentro de mi cartera?', [sym], 'How do I simulate {0} inside my portfolio?', [sym]),
+        prompt: () => txTpl('¿Cómo simulo {0} dentro de mi cartera en Portfolio?', [sym], 'How do I simulate {0} inside my portfolio in Portfolio?', [sym]),
+      },
+    ];
+  }
+
+  if (activeTab === 'consensus') {
+    return [
+      {
+        id: 'port_screen',
+        label: () => tx('Explicame las métricas de mi cartera actual', 'Explain my active portfolio metrics'),
+        prompt: () => tx('Explicame cómo está mi cartera actual', 'Explain how my active portfolio looks'),
+      },
+      {
+        id: 'port_var',
+        label: () => tx('¿Qué significan mi VaR 95%, CVaR 99% y Sharpe?', 'What do my 95% VaR, 99% CVaR, and Sharpe mean?'),
+        prompt: () => tx('¿Qué significan el VaR 95%, CVaR 99% y el Sharpe de mi cartera?', 'What do the 95% VaR, 99% CVaR, and Sharpe of my portfolio mean?'),
+      },
+      {
+        id: 'port_enb',
+        label: () => tx('¿Qué son las apuestas efectivas (ENB) y Brinson?', 'What are Effective Bets (ENB) and Brinson Alpha?'),
+        prompt: () => tx('¿Qué significan las apuestas reales ENB y el Alpha Brinson?', 'What do Effective Bets (ENB) and Brinson Alpha mean?'),
+      },
+      {
+        id: 'port_kelly',
+        label: () => tx('¿Cómo funciona el simulador Kelly y el Comité?', 'How do the Kelly simulator and Risk Committee work?'),
+        prompt: () => tx('¿Cómo funciona el criterio de Kelly en Simulator?', 'How does the Kelly Criterion work in Simulator?'),
+      },
+    ];
+  }
+
+  if (activeTab === 'observability') {
+    return [
+      {
+        id: 'sys_arch',
+        label: () => tx('¿Cómo se conectan los 13 módulos (P-01 a P-13)?', 'How do the 13 modules (P-01 to P-13) connect?'),
+        prompt: () => tx('¿Cómo funciona la arquitectura y el sistema P-01 a P-13?', 'How do the architecture and P-01 to P-13 system work?'),
+      },
+      {
+        id: 'sys_finops',
+        label: () => tx('¿Cómo logran que toda la nube cueste ~$0.95/mes?', 'How does the entire cloud stack cost ~$0.95/mo?'),
+        prompt: () => tx('¿Cómo funciona la arquitectura FinOps de ~$0.95/mes y Scale-to-Zero?', 'How does the ~$0.95/mo FinOps and Scale-to-Zero architecture work?'),
+      },
+      {
+        id: 'sys_guard',
+        label: () => tx('¿Qué guardrails y contratos audita el sistema?', 'What guardrails and contracts does the system audit?'),
+        prompt: () => tx('¿Qué guardrails, contratos de datos y telemetría audita System?', 'What guardrails, data contracts, and telemetry does System audit?'),
+      },
+      {
+        id: 'sys_screen',
+        label: () => tx('Explicame qué estoy viendo en esta pantalla', 'Explain what I am seeing on this screen'),
+        prompt: () => tx('Explicame qué estoy viendo en esta pantalla', 'Explain what I am seeing on this screen'),
+      },
+    ];
+  }
+
+  return AGENT_QUICK_PROMPTS;
+}
+
+export function getLiveContextPillLabel({
+  activeTab = 'presentation',
+  marketsViewMode = 'screener',
+  selectedAsset = 'BTC',
+} = {}) {
+  const sym = selectedAsset || 'BTC';
+  const params = new URLSearchParams(window.location.search);
+  const section = params.get('section') || 'analytics';
+
+  if (activeTab === 'workstation') {
+    if (marketsViewMode === 'screener') {
+      return tx('Viendo: Markets > Screener', 'Viewing: Markets > Screener');
+    }
+    const secName = section === 'research' ? 'Research' : 'Analytics';
+    return txTpl('Viendo: Markets > {0} • {1}', [secName, sym], 'Viewing: Markets > {0} • {1}', [secName, sym]);
+  }
+  if (activeTab === 'consensus') {
+    return tx('Viendo: Portfolio (Builder / Risk / Simulator)', 'Viewing: Portfolio (Builder / Risk / Simulator)');
+  }
+  if (activeTab === 'observability') {
+    return tx('Viendo: System (P-01..P-13 & FinOps)', 'Viewing: System (P-01..P-13 & FinOps)');
+  }
+  if (activeTab === 'guide') {
+    return tx('Viendo: Guide (Manual Interactivo)', 'Viewing: Guide (Interactive Manual)');
+  }
+  return txTpl('Viendo: Home • Activo: {0}', [sym], 'Viewing: Home • Asset: {0}', [sym]);
+}
+
 export function getAgentGreeting() {
   return tx(
     'Hola, soy el guía de la plataforma. ¿Qué te gustaría explorar o consultar?',

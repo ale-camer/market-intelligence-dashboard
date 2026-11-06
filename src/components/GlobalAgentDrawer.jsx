@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Send } from 'lucide-react';
+import { X, Send, RotateCcw, Copy, Check } from 'lucide-react';
 import { tx, useViewLocale } from '../data/i18n/viewLocaleService';
 import {
-  AGENT_QUICK_PROMPTS,
+  getContextualQuickPrompts,
+  getLiveContextPillLabel,
   getAgentGreeting,
   buildLiveAppSnapshot,
   generateGlobalAgentResponse,
@@ -11,12 +12,15 @@ import {
 /**
  * Global Guide Agent Drawer (`GlobalAgentDrawer.jsx`)
  *
- * Implements Phase 2 (Steps 2.1 to 2.4):
- * - Full-height vertical side drawer spanning between HeaderBar and FooterBar.
- * - Minimal 1-line greeting + 4 unified quick prompts centered 100% on the product.
- * - Powered by Gemini Flash-Lite (`gemini-3.5-flash-lite` via `p12-guide-agent-flash-lite`)
- *   with strict Scope-Lock, RPM/RPD/Token guardrails, and live audit telemetry.
- * - Preserves conversation history across tabs (`Home`, `Markets`, `Portfolio`, `System`, `Guide`).
+ * Implements Phase 2 + Enhanced Conversational UX:
+ * 1. Top-Anchored Turn View (Variant 2): scrolls the latest question + answer to the TOP of the
+ *    reading area (eye level) with bottom breathing room so you never stare at the bottom edge.
+ * 2. Auto-expanding multiline `<textarea>` (1 to 5 lines; `Enter` sends, `Shift+Enter` newline).
+ * 3. Explicit `↺ New chat` / `Nuevo chat` button (ephemeral in-memory session, no chat storage needed).
+ * 4. Quick prompts auto-hide as soon as the conversation starts (reappear on `New chat`).
+ * 5. Live Context Pill in the header showing which view/asset the agent is reading in real time.
+ * 6. Context-aware Quick Prompts tailored to the active tab (`Home`, `Markets`, `Portfolio`, `System`).
+ * 7. 1-click Copy button on AI responses + `Esc` key to close the drawer.
  */
 export default function GlobalAgentDrawer({
   isOpen,
@@ -31,17 +35,86 @@ export default function GlobalAgentDrawer({
   const [inputMsg, setInputMsg] = useState('');
   const [thread, setThread] = useState([]);
   const [isThinking, setIsThinking] = useState(false);
+  const [copiedIdx, setCopiedIdx] = useState(null);
+
   const scrollRef = useRef(null);
+  const latestUserTurnRef = useRef(null);
+  const textareaRef = useRef(null);
 
   const greetingText = getAgentGreeting();
+  const quickPrompts = getContextualQuickPrompts({
+    activeTab,
+    marketsViewMode,
+    selectedAsset,
+  });
+  const contextPillText = getLiveContextPillLabel({
+    activeTab,
+    marketsViewMode,
+    selectedAsset,
+  });
 
+  // Close drawer on Escape key
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    if (!isOpen) return undefined;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
+  // Anchor the latest user turn at the TOP of the scroll container (eye level)
+  useEffect(() => {
+    if (!isOpen) return;
+    if (thread.length === 0) {
+      if (scrollRef.current) {
+        scrollRef.current.scrollTop = 0;
+      }
+      return;
     }
-  }, [thread, isOpen, isThinking]);
+    if (latestUserTurnRef.current && scrollRef.current) {
+      const container = scrollRef.current;
+      const target = latestUserTurnRef.current;
+      const offsetTop = target.offsetTop - container.offsetTop;
+      container.scrollTo({
+        top: Math.max(0, offsetTop - 4),
+        behavior: 'smooth',
+      });
+    }
+  }, [thread, isThinking, isOpen]);
+
+  // Auto-resize multiline textarea height (1 to 5 lines)
+  const syncTextareaHeight = (el) => {
+    if (!el) return;
+    el.style.height = 'auto';
+    el.style.height = `${Math.min(el.scrollHeight, 116)}px`;
+  };
 
   if (!isOpen) return null;
+
+  const handleResetChat = () => {
+    setThread([]);
+    setInputMsg('');
+    setCopiedIdx(null);
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+    }
+  };
+
+  const handleCopyMessage = (text, idx) => {
+    const clean = String(text || '')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .replace(/`([^`]+)`/g, '$1');
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(clean).catch(() => {});
+    }
+    setCopiedIdx(idx);
+    setTimeout(() => {
+      setCopiedIdx((prev) => (prev === idx ? null : prev));
+    }, 1600);
+  };
 
   const handleSend = async (rawText) => {
     const clean = String(rawText || '').trim();
@@ -50,6 +123,9 @@ export default function GlobalAgentDrawer({
     const nextHistory = [...thread, { role: 'user', txt: clean }];
     setThread(nextHistory);
     setInputMsg('');
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+    }
     setIsThinking(true);
 
     try {
@@ -117,6 +193,15 @@ export default function GlobalAgentDrawer({
     });
   };
 
+  // Find index of the last user message so we can anchor it at the top of the viewport
+  let lastUserIdx = -1;
+  for (let i = thread.length - 1; i >= 0; i -= 1) {
+    if (thread[i].role === 'user') {
+      lastUserIdx = i;
+      break;
+    }
+  }
+
   return (
     <aside
       aria-label={tx('Guía de la Plataforma', 'Platform Guide')}
@@ -125,13 +210,13 @@ export default function GlobalAgentDrawer({
         top: '44px',
         bottom: '36px',
         right: '12px',
-        width: 'min(400px, calc(100vw - 24px))',
+        width: 'min(410px, calc(100vw - 24px))',
         zIndex: 95,
-        backgroundColor: 'rgba(7, 11, 20, 0.95)',
+        backgroundColor: 'rgba(7, 11, 20, 0.96)',
         backdropFilter: 'blur(20px)',
         border: '1px solid rgba(148, 163, 184, 0.24)',
         borderRadius: '12px',
-        boxShadow: '0 20px 48px rgba(0, 0, 0, 0.8)',
+        boxShadow: '0 20px 48px rgba(0, 0, 0, 0.82)',
         padding: '14px 16px',
         display: 'flex',
         flexDirection: 'column',
@@ -139,87 +224,67 @@ export default function GlobalAgentDrawer({
         color: '#f8fafc',
       }}
     >
-      {/* Header */}
+      {/* Header + Live Context Pill + New Chat / Close */}
       <div
         style={{
           display: 'flex',
-          alignItems: 'center',
+          alignItems: 'flex-start',
           justifyContent: 'space-between',
-          paddingBottom: '8px',
+          gap: '8px',
+          paddingBottom: '9px',
           borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
           flexShrink: 0,
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', minWidth: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <span
+              style={{
+                width: '7px',
+                height: '7px',
+                borderRadius: '999px',
+                backgroundColor: 'var(--ui-accent, #10b981)',
+                boxShadow: '0 0 10px var(--ui-accent, #10b981)',
+                flexShrink: 0,
+              }}
+            />
+            <span style={{ fontSize: '14px', fontWeight: 700, color: '#ffffff' }}>
+              {tx('Agente Guía', 'Guide Agent')}
+            </span>
+          </div>
+          <div
             style={{
-              width: '7px',
-              height: '7px',
-              borderRadius: '999px',
-              backgroundColor: 'var(--ui-accent, #10b981)',
-              boxShadow: '0 0 10px var(--ui-accent, #10b981)',
+              fontSize: '11px',
+              color: '#94a3b8',
+              fontFamily: 'var(--font-mono)',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              paddingLeft: '15px',
             }}
-          />
-          <span style={{ fontSize: '14px', fontWeight: 700, color: '#ffffff' }}>
-            {tx('Agente Guía', 'Guide Agent')}
-          </span>
+          >
+            {contextPillText}
+          </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
           {thread.length > 0 && (
             <button
               type="button"
-              onClick={() => setThread([])}
+              onClick={handleResetChat}
+              title={tx('Empezar un chat nuevo de cero', 'Start a fresh chat from scratch')}
               style={{
-                background: 'transparent',
-                border: 'none',
-                color: '#64748b',
-                fontSize: '11px',
-                fontWeight: 600,
-                cursor: 'pointer',
-                padding: '2px 4px',
-              }}
-            >
-              {tx('Limpiar', 'Clear')}
-            </button>
-          )}
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label={tx('Cerrar agente', 'Close agent')}
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: '#94a3b8',
-              cursor: 'pointer',
-              display: 'flex',
-              padding: '2px',
-            }}
-          >
-            <X size={15} />
-          </button>
-        </div>
-      </div>
-
-      {/* 4 Quick Product-Focused Prompts */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', flexShrink: 0 }}>
-        {AGENT_QUICK_PROMPTS.map((qItem) => {
-          const lbl = qItem.label();
-          return (
-            <button
-              key={qItem.id}
-              type="button"
-              onClick={() => handleSend(qItem.prompt())}
-              style={{
-                padding: '4px 8px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '5px',
+                background: 'rgba(15, 23, 42, 0.7)',
+                border: '1px solid rgba(148, 163, 184, 0.24)',
                 borderRadius: '6px',
-                border: '1px solid rgba(148, 163, 184, 0.22)',
-                background: 'rgba(15, 23, 42, 0.55)',
-                color: '#e2e8f0',
+                color: '#cbd5e1',
                 fontSize: '11px',
                 fontWeight: 600,
                 cursor: 'pointer',
-                textAlign: 'left',
+                padding: '4px 8px',
                 transition: 'all 0.15s ease',
               }}
               onMouseEnter={(e) => {
@@ -227,17 +292,34 @@ export default function GlobalAgentDrawer({
                 e.currentTarget.style.color = 'var(--ui-accent, #10b981)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.22)';
-                e.currentTarget.style.color = '#e2e8f0';
+                e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.24)';
+                e.currentTarget.style.color = '#cbd5e1';
               }}
             >
-              {lbl}
+              <RotateCcw size={11} />
+              <span>{tx('Nuevo chat', 'New chat')}</span>
             </button>
-          );
-        })}
+          )}
+          <button
+            type="button"
+            onClick={onClose}
+            title={tx('Cerrar (Esc)', 'Close (Esc)')}
+            aria-label={tx('Cerrar agente', 'Close agent')}
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#94a3b8',
+              cursor: 'pointer',
+              display: 'flex',
+              padding: '4px',
+            }}
+          >
+            <X size={15} />
+          </button>
+        </div>
       </div>
 
-      {/* Conversation Thread — Full Remaining Vertical Height */}
+      {/* Conversation Thread — Top-Anchored Latest Turn */}
       <div
         ref={scrollRef}
         style={{
@@ -248,67 +330,151 @@ export default function GlobalAgentDrawer({
           flexDirection: 'column',
           gap: '9px',
           paddingRight: '3px',
+          position: 'relative',
         }}
       >
-        {/* Minimal 1-line greeting */}
-        <div
-          style={{
-            padding: '9px 11px',
-            borderRadius: '8px',
-            background: 'rgba(15, 23, 42, 0.45)',
-            border: '1px solid rgba(148, 163, 184, 0.16)',
-            fontSize: '12.5px',
-            color: '#e2e8f0',
-            lineHeight: 1.48,
-          }}
-        >
-          {greetingText}
-        </div>
+        {/* Minimal 1-line greeting + Contextual Quick Prompts (shown at start before chatting) */}
+        {thread.length === 0 && (
+          <>
+            <div
+              style={{
+                padding: '10px 12px',
+                borderRadius: '8px',
+                background: 'rgba(15, 23, 42, 0.45)',
+                border: '1px solid rgba(148, 163, 184, 0.16)',
+                fontSize: '12.6px',
+                color: '#e2e8f0',
+                lineHeight: 1.5,
+              }}
+            >
+              {greetingText}
+            </div>
 
-        {thread.map((m, idx) => (
-          <div
-            key={idx}
-            style={{
-              padding: '9px 11px',
-              borderRadius: '8px',
-              background:
-                m.role === 'ai'
-                  ? 'rgba(15, 23, 42, 0.5)'
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '2px' }}>
+              <span
+                style={{
+                  fontSize: '10.5px',
+                  fontWeight: 600,
+                  color: '#64748b',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em',
+                  paddingLeft: '2px',
+                }}
+              >
+                {tx('Sugerencias para esta pantalla', 'Suggestions for this screen')}
+              </span>
+              {quickPrompts.map((qItem) => {
+                const lbl = qItem.label();
+                return (
+                  <button
+                    key={qItem.id}
+                    type="button"
+                    onClick={() => handleSend(qItem.prompt())}
+                    style={{
+                      padding: '7px 10px',
+                      borderRadius: '7px',
+                      border: '1px solid rgba(148, 163, 184, 0.22)',
+                      background: 'rgba(15, 23, 42, 0.55)',
+                      color: '#e2e8f0',
+                      fontSize: '11.8px',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      textAlign: 'left',
+                      transition: 'all 0.15s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--ui-accent, #10b981)';
+                      e.currentTarget.style.color = 'var(--ui-accent, #10b981)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.22)';
+                      e.currentTarget.style.color = '#e2e8f0';
+                    }}
+                  >
+                    {lbl}
+                  </button>
+                );
+              })}
+            </div>
+          </>
+        )}
+
+        {thread.map((m, idx) => {
+          const isLatestUser = idx === lastUserIdx;
+          const isAi = m.role === 'ai';
+          return (
+            <div
+              key={idx}
+              ref={isLatestUser ? latestUserTurnRef : null}
+              style={{
+                position: 'relative',
+                padding: isAi ? '10px 30px 10px 12px' : '8px 11px',
+                borderRadius: '8px',
+                background: isAi
+                  ? 'rgba(15, 23, 42, 0.52)'
                   : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
-              border: `1px solid ${
-                m.role === 'ai'
-                  ? 'rgba(148, 163, 184, 0.18)'
-                  : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.55)'
-              }`,
-              fontSize: '12.4px',
-              color: '#e2e8f0',
-              lineHeight: 1.52,
-              alignSelf: m.role === 'user' ? 'flex-end' : 'stretch',
-              maxWidth: m.role === 'user' ? '92%' : '100%',
-            }}
-          >
-            {renderFormattedMessage(m.txt)}
-          </div>
-        ))}
+                border: `1px solid ${
+                  isAi
+                    ? 'rgba(148, 163, 184, 0.18)'
+                    : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.55)'
+                }`,
+                fontSize: '12.5px',
+                color: '#e2e8f0',
+                lineHeight: 1.54,
+                alignSelf: m.role === 'user' ? 'flex-end' : 'stretch',
+                maxWidth: m.role === 'user' ? '92%' : '100%',
+              }}
+            >
+              {isAi && (
+                <button
+                  type="button"
+                  onClick={() => handleCopyMessage(m.txt, idx)}
+                  title={tx('Copiar respuesta', 'Copy response')}
+                  aria-label={tx('Copiar respuesta', 'Copy response')}
+                  style={{
+                    position: 'absolute',
+                    top: '7px',
+                    right: '7px',
+                    background: 'transparent',
+                    border: 'none',
+                    color: copiedIdx === idx ? 'var(--ui-accent, #10b981)' : '#64748b',
+                    cursor: 'pointer',
+                    padding: '3px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    borderRadius: '4px',
+                  }}
+                >
+                  {copiedIdx === idx ? <Check size={12} /> : <Copy size={12} />}
+                </button>
+              )}
+              {renderFormattedMessage(m.txt)}
+            </div>
+          );
+        })}
 
         {isThinking && (
           <div
             style={{
-              padding: '8px 11px',
+              padding: '9px 12px',
               borderRadius: '8px',
               background: 'rgba(15, 23, 42, 0.35)',
               border: '1px solid rgba(148, 163, 184, 0.14)',
-              fontSize: '11.5px',
+              fontSize: '11.8px',
               color: '#94a3b8',
               fontStyle: 'italic',
             }}
           >
-            {tx('Analizando contexto en pantalla...', 'Analyzing live screen context...')}
+            {tx('Pensando...', 'Thinking...')}
           </div>
         )}
+
+        {/* Bottom runway spacer so the latest turn can scroll to the very TOP of the panel at eye level */}
+        {thread.length > 0 && <div style={{ minHeight: '62%', flexShrink: 0 }} />}
       </div>
 
-      {/* Input Box */}
+      {/* Multiline Auto-Expanding Input Box */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -316,28 +482,45 @@ export default function GlobalAgentDrawer({
         }}
         style={{
           display: 'flex',
+          alignItems: 'flex-end',
           gap: '6px',
           paddingTop: '4px',
           flexShrink: 0,
         }}
       >
-        <input
-          type="text"
+        <textarea
+          ref={textareaRef}
+          rows={1}
           value={inputMsg}
-          onChange={(e) => setInputMsg(e.target.value)}
+          onChange={(e) => {
+            setInputMsg(e.target.value);
+            syncTextareaHeight(e.target);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              handleSend(inputMsg);
+            }
+          }}
           maxLength={500}
           placeholder={tx(
-            'Preguntá sobre esta vista, activos o métricas...',
-            'Ask about this view, assets, or metrics...'
+            'Escribí tu consulta (Enter envía, Shift+Enter renglón)...',
+            'Ask anything (Enter to send, Shift+Enter for newline)...'
           )}
           style={{
             flex: 1,
-            background: 'rgba(15, 23, 42, 0.65)',
-            border: '1px solid rgba(148, 163, 184, 0.26)',
-            borderRadius: '7px',
+            resize: 'none',
+            overflowY: 'auto',
+            minHeight: '36px',
+            maxHeight: '116px',
+            lineHeight: 1.42,
+            background: 'rgba(15, 23, 42, 0.68)',
+            border: '1px solid rgba(148, 163, 184, 0.28)',
+            borderRadius: '8px',
             padding: '8px 11px',
             color: '#f8fafc',
-            fontSize: '12.2px',
+            fontSize: '12.3px',
+            fontFamily: 'inherit',
             outline: 'none',
           }}
         />
@@ -345,8 +528,9 @@ export default function GlobalAgentDrawer({
           type="submit"
           aria-label={tx('Enviar consulta', 'Send query')}
           style={{
-            padding: '8px 12px',
-            borderRadius: '7px',
+            height: '36px',
+            padding: '0 12px',
+            borderRadius: '8px',
             border: '1px solid var(--ui-accent, #10b981)',
             background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.16)',
             color: 'var(--ui-accent, #10b981)',
@@ -356,6 +540,7 @@ export default function GlobalAgentDrawer({
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
+            flexShrink: 0,
           }}
         >
           <Send size={13} />
