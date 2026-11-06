@@ -27,42 +27,72 @@ import {
    ─────────────────────────────────────────────────────────────────────────── */
 function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
     const activeList = holdings.filter(h => h.enabled !== false);
+    const varDollar = Math.round(Math.abs(Number(liveMetrics.var95Pct || 0)) * 1000).toLocaleString();
+    const cvarDollar = Math.round(Math.abs(Number(liveMetrics.cvar99Pct || 0)) * 1000).toLocaleString();
+    const sharpeNum = Number(liveMetrics.sharpeRatio || 0);
+    const enbNum = Number(liveMetrics.enb || 0);
 
     const pills = [
         {
             lbl: tx('RETORNO ANUAL (CAGR)', 'ANNUAL RETURN (CAGR)'),
             val: `${liveMetrics.cagrPct >= 0 ? '+' : ''}${liveMetrics.cagrPct}%`,
-            sub: 'vs +16.5% Benchmark SPX',
+            sub: tx('vs +16.5% S&P 500 • Ganancia anual est.', 'vs +16.5% S&P 500 • Est. annual gain'),
             col: liveMetrics.cagrPct >= 0 ? '#10b981' : '#f43f5e'
         },
         {
             lbl: 'SHARPE / SORTINO',
             val: `${liveMetrics.sharpeRatio} / ${liveMetrics.sortinoRatio}`,
-            sub: txTpl("Volatilidad Anual σ: {0}%", [liveMetrics.portfolioVolPct], "Annual Volatility σ: {0}%", [liveMetrics.portfolioVolPct]),
+            sub: txTpl(
+                'Volatilidad σ: {0}% • {1}',
+                [
+                    liveMetrics.portfolioVolPct,
+                    sharpeNum >= 1.5 ? 'Excelente (>1.5)' : sharpeNum >= 1.0 ? 'Sólido (>1.0)' : 'Moderado (<1.0)'
+                ],
+                'Volatility σ: {0}% • {1}',
+                [
+                    liveMetrics.portfolioVolPct,
+                    sharpeNum >= 1.5 ? 'Strong (>1.5)' : sharpeNum >= 1.0 ? 'Solid (>1.0)' : 'Moderate (<1.0)'
+                ]
+            ),
             col: '#10b981'
         },
         {
             lbl: 'VaR 95% / CVaR 99% (1D)',
             val: `${liveMetrics.var95Pct}% / ${liveMetrics.cvar99Pct}%`,
-            sub: tx('Pérdida diaria esperada cola', 'Expected daily tail loss'),
+            sub: txTpl(
+                'Riesgo diario: -${0} • Extremo: -${1}',
+                [varDollar, cvarDollar],
+                'Normal day risk: -${0} • Tail: -${1}',
+                [varDollar, cvarDollar]
+            ),
             col: '#f43f5e'
         },
         {
             lbl: 'MAX DRAWDOWN (12M)',
             val: `${liveMetrics.maxDrawdownPct}%`,
-            sub: tx('Recuperación media: 14 días', 'Avg recovery: 14 days'),
+            sub: tx('Caída máx. histórica • Recup.: ~14d', 'Max historical drop • Recovery: ~14d'),
             col: '#f43f5e'
         },
         {
             lbl: 'ALPHA BRINSON (12M)',
             val: `${liveMetrics.brinsonAlphaPct >= 0 ? '+' : ''}${liveMetrics.brinsonAlphaPct}%`,
-            sub: txTpl("Beta Cartera: {0} vs SPX", [liveMetrics.portfolioBeta], "Portfolio Beta: {0} vs SPX", [liveMetrics.portfolioBeta]),
+            sub: txTpl(
+                'Ventaja vs mercado • Beta: {0}',
+                [liveMetrics.portfolioBeta],
+                'Edge vs market • Beta: {0}',
+                [liveMetrics.portfolioBeta]
+            ),
             col: liveMetrics.brinsonAlphaPct >= 0 ? '#10b981' : '#f43f5e'
         },
         {
             lbl: tx('ACTIVOS SELECCIONADOS', 'SELECTED ASSETS'),
             val: `${activeList.length} / ${holdings.length}`,
-            sub: txTpl("ENB: {0} apuestas efectivas", [liveMetrics.enb], "ENB: {0} effective bets", [liveMetrics.enb]),
+            sub: txTpl(
+                '{0} apuestas reales (ENB) • {1}',
+                [liveMetrics.enb, enbNum >= 3.5 ? 'Bien diversificada' : 'Concentrada'],
+                '{0} effective bets (ENB) • {1}',
+                [liveMetrics.enb, enbNum >= 3.5 ? 'Well diversified' : 'Concentrated']
+            ),
             col: '#10b981'
         }
     ];
@@ -77,14 +107,18 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
                         border: '1px solid rgba(148, 163, 184, 0.22)',
                         borderLeft: `3px solid ${p.col}`,
                         borderRadius: '10px',
-                        padding: '10px 13px'
+                        padding: '10px 13px',
+                        minWidth: 0,
+                        overflow: 'hidden'
                     }}
                 >
                     <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>{p.lbl}</div>
                     <div style={{ fontSize: '19px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '3px' }}>
                         {p.val}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>{p.sub}</div>
+                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {p.sub}
+                    </div>
                 </div>
             ))}
         </div>
@@ -154,6 +188,28 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
         );
     };
 
+    const applyPreset = (presetId) => {
+        if (presetId === 'CONSERVATIVE') {
+            setHoldings([
+                { sym: 'TLT', name: 'iShares 20+ Yr Treasury', cat: 'Fixed Income', weight: 30, enabled: true },
+                { sym: 'GLD', name: 'SPDR Gold Trust', cat: 'Commodities', weight: 25, enabled: true },
+                { sym: 'SPY', name: 'SPDR S&P 500 ETF', cat: 'Equities', weight: 25, enabled: true },
+                { sym: 'MSFT', name: 'Microsoft Corp.', cat: 'Equities', weight: 12, enabled: true },
+                { sym: 'AAPL', name: 'Apple Inc.', cat: 'Equities', weight: 8, enabled: true }
+            ]);
+        } else if (presetId === 'QUANT') {
+            setHoldings([
+                { sym: 'NVDA', name: 'NVIDIA Corp.', cat: 'Equities', weight: 28, enabled: true },
+                { sym: 'BTC-USD', name: 'Bitcoin Spot', cat: 'Crypto', weight: 22, enabled: true },
+                { sym: 'QQQ', name: 'Invesco QQQ Trust', cat: 'Equities', weight: 20, enabled: true },
+                { sym: 'MSFT', name: 'Microsoft Corp.', cat: 'Equities', weight: 15, enabled: true },
+                { sym: 'SOL-USD', name: 'Solana Spot', cat: 'Crypto', weight: 15, enabled: true }
+            ]);
+        } else {
+            setHoldings(INITIAL_HOLDINGS);
+        }
+    };
+
     const tableHeaders = txList(['ON', 'ACTIVO', 'CLASE', 'PESO (%)', 'CAPITAL ($)', 'ACCIÓN'], ['ON', 'ASSET', 'CLASS', 'WEIGHT (%)', 'CAPITAL ($)', 'ACTION']);
 
     return (
@@ -165,7 +221,50 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
             }
             color="#10b981"
             rightSlot={
-                <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+                    <button
+                        onClick={() => applyPreset('CONSERVATIVE')}
+                        style={{
+                            padding: '2px 4px',
+                            border: 'none',
+                            background: 'transparent',
+                            color: 'rgba(148, 163, 184, 0.78)',
+                            fontSize: '11.5px',
+                            fontWeight: 700,
+                            cursor: 'pointer'
+                        }}
+                    >
+                        {tx('Conservadora', 'Conservative')}
+                    </button>
+                    <button
+                        onClick={() => applyPreset('BALANCED')}
+                        style={{
+                            padding: '2px 4px',
+                            border: 'none',
+                            background: 'transparent',
+                            color: 'rgba(148, 163, 184, 0.78)',
+                            fontSize: '11.5px',
+                            fontWeight: 700,
+                            cursor: 'pointer'
+                        }}
+                    >
+                        {tx('Balanceada', 'Balanced')}
+                    </button>
+                    <button
+                        onClick={() => applyPreset('QUANT')}
+                        style={{
+                            padding: '2px 4px',
+                            border: 'none',
+                            background: 'transparent',
+                            color: 'rgba(148, 163, 184, 0.78)',
+                            fontSize: '11.5px',
+                            fontWeight: 700,
+                            cursor: 'pointer'
+                        }}
+                    >
+                        {tx('Quant', 'Quant')}
+                    </button>
+                    <span style={{ color: 'rgba(148, 163, 184, 0.25)', userSelect: 'none' }}>|</span>
                     <button
                         onClick={equalize}
                         style={{
@@ -173,12 +272,12 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             border: 'none',
                             background: 'transparent',
                             color: 'rgba(148, 163, 184, 0.78)',
-                            fontSize: '12px',
+                            fontSize: '11.5px',
                             fontWeight: 700,
                             cursor: 'pointer'
                         }}
                     >
-                        {tx('Pesos Iguales', 'Equal Weight')}
+                        {tx('1/N', '1/N')}
                     </button>
                     <button
                         onClick={normalize100}
@@ -188,26 +287,12 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             background: 'transparent',
                             color: 'var(--ui-accent, #10b981)',
                             textShadow: '0 0 10px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.65)',
-                            fontSize: '12px',
+                            fontSize: '11.5px',
                             fontWeight: 800,
                             cursor: 'pointer'
                         }}
                     >
-                        {tx('Ajustar 100%', 'Normalize 100%')}
-                    </button>
-                    <button
-                        onClick={() => setHoldings(INITIAL_HOLDINGS)}
-                        style={{
-                            padding: '2px 4px',
-                            border: 'none',
-                            background: 'transparent',
-                            color: 'rgba(148, 163, 184, 0.78)',
-                            fontSize: '12px',
-                            fontWeight: 700,
-                            cursor: 'pointer'
-                        }}
-                    >
-                        {tx('Restaurar Base', 'Reset Base')}
+                        100%
                     </button>
                 </div>
             }

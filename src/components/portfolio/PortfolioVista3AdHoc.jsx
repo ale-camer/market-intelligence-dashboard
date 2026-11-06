@@ -162,11 +162,11 @@ function Quad1WhatIfAndKelly({
         ]
     ];
 
-    const kellyHeaders = txList(['MODO KELLY', 'FÓRMULA', 'TAMAÑO SUGERIDO', 'RIESGO DE RUINA'], ['KELLY MODE', 'FORMULA', 'SUGGESTED SIZE', 'RISK OF RUIN']);
+    const kellyHeaders = txList(['MODO KELLY', 'FÓRMULA', 'TAMAÑO SUGERIDO', 'GUÍA / RIESGO'], ['KELLY MODE', 'FORMULA', 'SUGGESTED SIZE', 'GUIDE / RISK']);
     const kellyRows = [
-        ['Full Kelly (1.0x)', 'W - (1-W)/R', `${c.fullKelly}% NAV`, tx('Alto (Volátil)', 'High (Volatile)'), -4],
-        ['Half Kelly (0.5x)', '0.5 × Full Kelly', `${c.halfKelly}% NAV`, tx('Óptimo Institucional', 'Institutional Optimal'), +8],
-        ['Quarter Kelly (0.25x)', '0.25 × Full Kelly', `${c.quarterKelly}% NAV`, tx('Ultra Conservador', 'Ultra Conservative'), +5]
+        [tx('Quarter-Kelly (0.25x — Conservador)', 'Quarter-Kelly (0.25x — Conservative)'), '0.25 × Full Kelly', `${c.quarterKelly}% NAV`, tx('Recomendado / Seguro', 'Recommended / Safe'), +5],
+        [tx('Half-Kelly (0.50x — Equilibrado)', 'Half-Kelly (0.50x — Balanced)'), '0.50 × Full Kelly', `${c.halfKelly}% NAV`, tx('Óptimo Institucional', 'Institutional Optimal'), +8],
+        [tx('Full-Kelly (1.00x — Límite agresivo)', 'Full-Kelly (1.00x — Aggressive limit)'), 'W - (1-W)/R', `${c.fullKelly}% NAV`, tx('Alto (Volátil)', 'High (Volatile)'), -4]
     ];
 
     return (
