@@ -1511,9 +1511,9 @@ export default function HeaderBar({
   };
 
   const shellStyle = renderNavShellStyle(variant.navShell);
+  const isES = t.navWorkstation === 'Mercados';
 
   const renderTabWithTooltip = (item, idx, placement = 'bottom') => {
-    const isES = t.navWorkstation === 'Mercados';
     const tooltipTitle =
       item.id === 'workstation'
         ? isES
