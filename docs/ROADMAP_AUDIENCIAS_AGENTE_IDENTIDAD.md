@@ -70,8 +70,17 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
     3. **En `FinOps` (Bajada del encabezado de cuotas):**
        - Sumar 1 oración concisa explicando el diseño *Scale-to-Zero & Free-Tier Arbitrage* (por qué el cómputo en reposo cuesta `$0.00` y el gasto total queda acotado a `~$0.95/mes`).
 
-- [ ] **Paso 1.6 — Vista `Markets` ([`src/components/MarketAnomaliesView.jsx`](../src/components/MarketAnomaliesView.jsx)):**
-  - **Objetivo:** Lograr que `Screener` (`Table`, `Orbital`, `Heatmap`, `Main Tools`) y el Nivel 2 (`Analytics` y `Research`) sirvan tanto al **Profesional Quant** (datos duros) como al **Inversor Principiante / Curioso** (interpretación clara de qué significa el régimen o los factores).
+- [x] **Paso 1.6 — Vista `Markets` ([`src/components/MarketAnomaliesView.jsx`](../src/components/MarketAnomaliesView.jsx)):**
+  - **Objetivo:** Hacer convivir las métricas puras del **Profesional Quant** con lecturas interpretativas claras para el **Inversor Principiante** y el **Curioso/Aprendiz**, reutilizando los renglones existentes:
+    1. **En `Markets > Screener` (3er renglón gris de las 4 tarjetas KPI):**
+       - *Tarjeta 1 (`24H AGGREGATE VOLUME`):* `{N} activos • Mayor entrada de dinero hoy` (o `Menor actividad que ayer`).
+       - *Tarjeta 2 (`AVERAGE RSI 14D`):* en 3 tramos intuitivos (`>60` *"Predominio comprador fuerte"*, `45–60` *"Mercado equilibrado • Empuje moderado"*, `<45` *"Predominio vendedor"*).
+       - *Tarjeta 3 (`NORMAL REGIME P-06`):* `Mayoría sin sobresaltos • Atípico hoy: {SYM} ({SCORE})`.
+       - *Tarjeta 4 (`TOP VOLUME Z-SCORE 20D`):* `Volumen inusual: {SYM1} ({Z1}) • {SYM2}`.
+    2. **En `Markets > Analytics` (Línea de diagnóstico al pie del gráfico):**
+       - Poner primero la traducción humana y al final entre paréntesis el respaldo técnico para el Quant (ej. *"MOVIMIENTO NORMAL • Precio y volumen dentro de su rango habitual, sin presión inusual de compra o venta (P-06: 0.196 • Vol 20d: -0.15σ)"*).
+    3. **En `Markets > Research` (Subtítulo de `Nota Compuesta`):**
+       - Sumar conclusión de 4 palabras: *"Fundamentos y noticias a favor"* (positivo) o *"Predominan factores de riesgo"* (negativo).
 
 - [ ] **Paso 1.7 — Vista `Portfolio` ([`src/components/AgentCommitteeView.jsx`](../src/components/AgentCommitteeView.jsx) y Vistas 1, 2, 3):**
   - **Objetivo:** Afinar los mensajes de `Builder`, `Risk` y `Simulator` para que un **Inversor Principiante** entienda de un vistazo si su cartera está sana o concentrada, mientras el **Profesional Quant** conserva todo el instrumental de Brinson, VaR/CVaR, estrés histórico y Kelly.
@@ -172,5 +181,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Fase 4 (Watchlist Bulk)** | `[x] Incorporado al Plan` | Se anotó para el tramo final el segundo menú de filtros por características (generales y propias de cada clase de activo) con botón de 1 clic para agregar/quitar la estrella (`★`) a múltiples activos a la vez. |
 | 2026-11-06 | **Paso 1.4 (Guide)** | `[x] Definido` | Se definieron los 5 textos en primera persona y los links directos (a la Guía y a la app en vivo) del bloque *"¿Qué buscás hoy?"* en `Guide > Home`. |
 | 2026-11-06 | **Paso 1.5 (System)** | `[x] Definido` | Se definieron los 3 ajustes en `System` (Topología DAG + Scaling en el bloque de contrato, `11/11 Pipelines PASS • 0 Schema Drift` en logs y explicación de 1 línea de *Scale-to-Zero* en `FinOps`). |
-| — | **Paso 1.6 (Markets)** | `[~] En definición` | Definir las lecturas claras en las tarjetas KPI del Screener y en la línea inferior de diagnóstico de `Analytics`. |
+| 2026-11-06 | **Paso 1.6 (Markets)** | `[x] Definido` | Se definieron los textos del 3er renglón de las 4 tarjetas KPI del Screener, la línea inferior bilingüe (humano + Quant) en `Analytics` y el subtítulo de `Research`. |
+| — | **Paso 1.7 (Portfolio)** | `[~] En definición` | Definir los textos claros de las tarjetas KPI de `Portfolio` (`Builder`, `Risk`, `Simulator`) y la composición de los 3 Presets de cartera (*Conservadora, Balanceada, Quant*). |
 
