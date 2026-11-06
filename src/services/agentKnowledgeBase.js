@@ -542,13 +542,13 @@ function detectAppTopicLabel(txt = '', msgLang = 'ES') {
   }
 
   if (
-    /\b(app|aplicaci[oó]n|plataforma|platform|secci[oó]n|secciones|section|sections|home|portada|guide|gu[ií]a|manual|tour|video|empiezo|empezar|explorar|recorrer|funcionalidades|en que me podes ayudar|en qué me podés ayudar|que podes hacer|qué podés hacer|what can you help|what can you do|where do i start|on this screen|en esta pantalla|grafico|gráfico|chart|metrica|métrica|metric|metrics|inversion|inversi[oó]n|invertir|invest|exportar|export|csv|png|json|markdown)\b/i.test(
+    /\b(app|aplicaci[oó]n|plataforma|platform|secci[oó]n|secciones|section|sections|home|portada|guide|gu[ií]a|manual|tour|video|empiezo|empezar|explorar|recorrer|funcionalidades|en que me podes ayudar|en qué me podés ayudar|que podes hacer|qué podés hacer|what can you help|what can you do|where do i start|on this screen|en esta pantalla|grafico|gráfico|chart|metrica|métrica|metric|metrics|inversion|inversi[oó]n|invertir|invest|exportar|export|csv|png|json|markdown|idioma|language|ingles|inglés|español|english|spanish|tema|theme|color|paleta|palette|boton|botón|button|menu|menú|header|footer|barra|navegar|navigate|cambiar|change|configurar|settings)\b/i.test(
       s
     )
   ) {
     return msgLang === 'ES'
-      ? 'el recorrido general de la aplicación'
-      : 'the general overview of the app';
+      ? 'el recorrido general y controles de la aplicación'
+      : 'the general overview and controls of the app';
   }
 
   return null;
@@ -624,9 +624,29 @@ LIVE SCREEN CONTEXT (use ONLY when relevant to what the user asks):
   const systemInstruction = `You are the interactive guide inside a market intelligence and portfolio platform.
 CONVERSATIONAL STYLE & STRICT SCOPE LOCK (CRITICAL):
 1. Reply ALWAYS in the exact same language as the user's latest message (detected language: ${msgLang}).
-2. STRICT SCOPE LOCK: You are ONLY allowed to talk about this application — guiding the user across its 5 sections (**Home**, **Markets** > **Screener** / **Analytics** / **Research**, **Portfolio** > **Builder** / **Risk** / **Simulator**, **System** \`P-01\`..\`P-13\`, and **Guide**), explaining the financial assets and risk metrics on screen, or detailing its technical architecture.
-3. NEVER answer questions, facts, or opinions about anything outside the application (politics, presidents, history, music, sports, food, general trivia). If a query is unrelated to the app, DO NOT answer the question at all: state directly that it is outside the context of this chat and that you can only talk about the application for its specific purposes, then ask what they would like to see or understand about the app${lastAppTopicLabel ? ` (or whether to continue with ${lastAppTopicLabel})` : ''}.
-4. When answering an app-related question, be concise and clear (2–3 short bullets max, under 80 words total). Use **bold** sparingly for section names or key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
+2. STRICT SCOPE LOCK: You are ONLY allowed to talk about this application — guiding the user across its views and controls, explaining the financial assets and risk metrics on screen, or detailing its technical architecture.
+3. NEVER invent UI features or controls that are not in the PLATFORM UI & FUNCTIONAL BLUEPRINT below, and NEVER answer questions about anything outside the application (politics, presidents, history, music, sports, food, general trivia). If a query is unrelated to the app, state directly that it is outside the context of this chat and that you can only talk about the application for its specific purposes, then ask what they would like to see or understand about the app${lastAppTopicLabel ? ` (or whether to continue with ${lastAppTopicLabel})` : ''}.
+4. When answering an app-related question, be direct, accurate, and concise (1–3 short sentences or bullets, under 75 words total). Use **bold** sparingly for UI controls/section names or key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
+
+EXACT PLATFORM UI & FUNCTIONAL BLUEPRINT (ground truth — never guess or invent UI mechanics):
+- **Top Bar (HeaderBar)**:
+  - **Top-Left (\`λ\` logo)**: Click to return to **Home** (Portada / Overview with interactive 3D market physics particles).
+  - **Top-Center Tabs**:
+    1. **Markets**: Has two sub-modes in the top sub-bar:
+       - **Screener** (\`Table\`, \`Heatmap\`, or \`Cards\` views): Filter the 16 global assets by category (\`ALL\`, \`CRYPTO\`, \`EQUITIES\`, \`RATES\`, \`FX\`, \`COMMODITIES\`), search by ticker/name, sort columns, and click the **\`★\` star** on any asset to add/remove it from your Watchlist & Portfolio.
+       - **Asset Detail (\`Analytics\` & \`Research\`)**: Click any asset in Screener to open **Analytics** (live price, Candlestick/Line/Volume/Bollinger 2σ/VWAP/OLS Regression/RSI/MACD charts, and \`P-06\` Isolation Forest anomaly score) or **Research** (SEC 10-K filings, Bull vs. Bear drivers, FinBERT sentiment, news).
+    2. **Portfolio**: Automatically syncs with your \`★\` Watchlist assets and has 3 sub-views in the sub-bar:
+       - **Builder**: Adjust asset weights (\`%\`) or apply 1-click optimization presets (\`Max Sharpe\`, \`Min Variance\`, \`Risk Parity\`, \`Equal Weight\`), compare the historical Equity Curve vs. benchmarks (\`S&P 500\`, \`NASDAQ 100\`, \`BTC\`), and use the compounding horizon calculator.
+       - **Risk**: Inspect \`95% VaR\`, \`99% CVaR\`, historical crash Stress Tests (\`2008\`, \`2020\`, \`2022\`), Brinson Alpha attribution, Meucci Effective Number of Bets (\`ENB\`), and correlation matrix.
+       - **Simulator**: Interactive Kelly Criterion sizing (\`f*\`), Markov regime-switching / Monte Carlo simulations, and custom shock testing.
+  - **Top-Right (\`✨\` Sparkles icon)**: Opens/closes this **Guide Agent** drawer (\`Esc\` to close, \`↺ New chat\` to reset, \`Copy\` icon on replies).
+- **Bottom Bar (FooterBar)**:
+  - **Bottom-Left Links**:
+    1. **System**: Engineering & audit workspace with 2 sub-views: **Performance** (live telemetry and guardrails for all 13 pipelines \`P-01\` to \`P-13\` across 6 repos) and **FinOps** (*Scale-to-Zero* \`~$0.95/mo\` cloud cost breakdown across GitHub Actions, Cloud Run \`min-instances=0\`, BigQuery, Supabase, and Gemini Flash-Lite quotas).
+    2. **Guide**: Step-by-step interactive manual and video tour (**Home**, **Tour**, **Architecture**, **Catalog**).
+  - **Bottom-Right Controls**:
+    - **Language Toggle (\`🇺🇸 EN\` / \`🇪🇸 ES\` button)**: Located in the **bottom-right corner of the footer**. Click it at any time to switch the entire application language between English (\`EN\`) and Spanish (\`ES\`).
+    - **Theme / Palette Selector (\`🎨\` icon)**: Located in the **bottom-right corner of the footer** right next to the language button. Click it to change the UI accent color palette.
 ${liveContextSection}`;
 
   const filteredHistory = !currentIsAppRelated ? [] : history.slice(-6);
@@ -846,6 +866,21 @@ const CONCEPT_KNOWLEDGE = [
       tx(
         '• **Ingeniería de Costos (System > FinOps):** Arbitraje de capas gratuitas entre **GitHub Actions** (cron DAGs), **BigQuery** (1 TB query/mes + 10 GB storage free), **Supabase PostgreSQL + pgvector** y **GCP Cloud Run** (`min=0, max=2`), acotando el gasto real a `~$0.95 USD/mes`.',
         '• **Cost Engineering (System > FinOps):** Free-tier arbitrage across **GitHub Actions** (cron DAGs), **BigQuery** (1 TB query/mo + 10 GB storage free), **Supabase PostgreSQL + pgvector**, and **GCP Cloud Run** (`min=0, max=2`), bounding total cloud spend to `~$0.95 USD/mo`.',
+        lang
+      ),
+  },
+  {
+    keys: ['idioma', 'language', 'ingles', 'inglés', 'español', 'english', 'spanish', 'tema', 'theme', 'paleta', 'palette', 'color'],
+    simple: (_snap, lang) =>
+      tx(
+        '• **Idioma (`🇺🇸 EN` / `🇪🇸 ES`):** Hacé clic en el botón de idioma abajo a la derecha en el pie de página (**Footer**) para alternar toda la app entre español e inglés.\n• **Tema / Color (`🎨`):** Al lado del botón de idioma (abajo a la derecha) tenés el icono de paleta para cambiar el color de acento de la interfaz.',
+        '• **Language (`🇺🇸 EN` / `🇪🇸 ES`):** Click the language button in the bottom-right corner of the **Footer** to switch the entire app between English and Spanish.\n• **Theme / Color (`🎨`):** Right next to the language button (bottom-right corner), click the palette icon to change the UI accent color.',
+        lang
+      ),
+    advanced: (_snap, lang) =>
+      tx(
+        '• **Controles del Footer (Abajo a la derecha):** El selector bilingüe (`EN`/`ES`) y el selector de paleta (`🎨`) persisten tu preferencia en `localStorage` y actualizan todas las vistas en tiempo real.',
+        '• **Footer Controls (Bottom-Right):** The bilingual toggle (`EN`/`ES`) and palette selector (`🎨`) persist your preference in `localStorage` and update all views in real time.',
         lang
       ),
   },
