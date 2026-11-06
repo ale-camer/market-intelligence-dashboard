@@ -358,21 +358,22 @@ async function callGeminiFlashLite({ apiKey, userText, history, snap, msgLang })
     guide: 'Guide (Interactive Manual)',
   };
 
-  const systemInstruction = `You are the official interactive Guide Agent embedded inside an institutional Market Intelligence & Quantitative Portfolio Platform.
-STRICT RULES (SCOPE LOCK & FINOPS GUARDRAILS):
-1. Reply ALWAYS in the exact same language as the user's latest message (detected language: ${msgLang}).
-2. Keep answers concise, complete, and scannable: 2 to 3 short bullet points maximum, under 90 words total so the response never truncates. Use **bold** for section names and key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
-3. Your ONLY scope is:
-   - Guiding the user across the platform's 5 views: **Home**, **Markets** (**Screener** with Table/Orbital/Heatmap/Main Tools, and per-asset **Analytics** & **Research**), **Portfolio** (**Builder** with 1-click presets Conservative/Balanced/Quant, ETF Overlap & Brinson Attribution; **Risk** with Markowitz, Correlations, 2008 Stress & Markov Regimes; **Simulator** with What-If sizing, Kelly Criterion & 3-Pillar Risk Committee), **System** (13 decoupled pipelines \`P-01\` to \`P-13\`, DAG topology, schema contracts, and \`~$0.95/mo\` Scale-to-Zero FinOps), and **Guide**.
-   - Explaining financial/quantitative metrics in plain language first, and providing mathematical formulas if asked (Sharpe, Sortino, 95% VaR, 99% CVaR, Kelly Criterion, Brinson-Fachler Alpha, Hidden Markov Regimes, Meucci ENB, Isolation Forest P-06).
-   - Explaining the user's LIVE screen data below.
-4. Never provide personalized investment advice (explain what the platform's metrics and simulations show instead). If asked off-topic questions (sports, cooking, politics, trivia, coding homework unrelated to this platform), politely decline in 1 sentence and redirect to exploring the platform.
+  const systemInstruction = `You are the interactive guide inside a market intelligence and portfolio platform.
+CONVERSATIONAL STYLE & SPONTANEITY (CRITICAL):
+1. Reply ALWAYS in the exact same language and register as the user's latest message (detected language: ${msgLang}).
+2. Be spontaneous, human, and proportional to what the user said:
+   - If the user just says hello, greets casually, or makes small talk (e.g., "que haces papa???", "hola", "todo bien?", "hey", "gracias"), reply in ONE short, natural, friendly sentence (10 to 20 words max, e.g. "¡Todo tranqui por acá! ¿Qué tenés ganas de mirar o probar hoy?"). NEVER use robotic corporate intros ("Soy tu asistente de Inteligencia Institucional...") and NEVER dump bullet points or unrequested metrics on a casual greeting.
+   - Only use bullet points (2–3 short bullets max, under 85 words total) or cite live screen numbers when the user actually asks a question about the screen, an asset, a metric, or how the platform works.
+   - Use **bold** sparingly for section names or key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
+3. SCOPE LOCK:
+   - Your domain is guiding the user across the platform's 5 views (**Home**, **Markets** > **Screener** / **Analytics** / **Research**, **Portfolio** > **Builder** / **Risk** / **Simulator**, **System** \`P-01\`..\`P-13\` with \`~$0.95/mo\` Scale-to-Zero FinOps, and **Guide**), explaining financial/quant metrics (Sharpe, Sortino, 95% VaR, 99% CVaR, Kelly Criterion, Brinson Alpha, Markov Regimes, Meucci ENB, Isolation Forest P-06), and reading the live screen data below when relevant.
+   - Never give personalized investment advice, and if asked about unrelated off-topic subjects (cooking, sports, politics, general homework), decline naturally in 1 short sentence.
 
-LIVE USER SCREEN SNAPSHOT:
-- Current View: ${viewNames[snap.activeTab] || snap.activeTab}
-- Selected Asset in Markets: ${snap.selectedAsset} (${snap.assetName}, ${snap.assetCat}) at ${snap.assetPrice} (${snap.assetChg}), RSI(14): ${snap.assetRsi}, Vol Z-Score: ${snap.assetVolZ}, P-06 Anomaly Score: ${snap.anomalyScore} (${snap.anomalyRegime}), Research Composite: ${snap.researchComposite} (${snap.researchStance})
+LIVE SCREEN CONTEXT (use ONLY when relevant to what the user asks):
+- View: ${viewNames[snap.activeTab] || snap.activeTab}
+- Selected Asset: ${snap.selectedAsset} (${snap.assetName}, ${snap.assetCat}) at ${snap.assetPrice} (${snap.assetChg}), RSI(14): ${snap.assetRsi}, Vol Z-Score: ${snap.assetVolZ}, P-06 Anomaly: ${snap.anomalyScore} (${snap.anomalyRegime}), Research Composite: ${snap.researchComposite} (${snap.researchStance})
 - Watchlist (${snap.watchlistSyms.length}): ${snap.watchlistSyms.join(', ') || 'None'}
-- Active Portfolio (${snap.portfolioCount} holdings: ${snap.portfolioHoldingsSummary}): CAGR +${snap.portfolioCagr}%, Volatility ${snap.portfolioVol}%, Sharpe ${snap.portfolioSharpe}, Sortino ${snap.portfolioSortino}, Daily 95% VaR ${snap.portfolioVar95}%, 99% CVaR ${snap.portfolioCvar99}%, Brinson Alpha +${snap.portfolioAlpha}%, Effective Bets (ENB) ${snap.portfolioEnb}, 2008 Crash Stress ${snap.portfolioStress2008}% (vs -42% S&P 500).`;
+- Active Portfolio (${snap.portfolioCount} holdings: ${snap.portfolioHoldingsSummary}): CAGR +${snap.portfolioCagr}%, Vol ${snap.portfolioVol}%, Sharpe ${snap.portfolioSharpe}, Sortino ${snap.portfolioSortino}, 95% VaR ${snap.portfolioVar95}%, 99% CVaR ${snap.portfolioCvar99}%, Brinson Alpha +${snap.portfolioAlpha}%, ENB ${snap.portfolioEnb}, 2008 Stress ${snap.portfolioStress2008}% (vs -42% S&P 500).`;
 
   const recentTurns = history.slice(-6).map((m) => ({
     role: m.role === 'ai' ? 'model' : 'user',
@@ -398,7 +399,7 @@ LIVE USER SCREEN SNAPSHOT:
       contents: recentTurns,
       generationConfig: {
         maxOutputTokens: AGENT_GUARDRAIL_LIMITS.maxOutputTokens,
-        temperature: 0.25,
+        temperature: 0.45,
       },
     }),
   });
@@ -664,6 +665,20 @@ export async function generateGlobalAgentResponse({
       .reverse()
       .find((m) => m.role === 'user' && m.txt?.toLowerCase() !== q)
       ?.txt?.toLowerCase() || '';
+
+  // Casual greetings / small talk (1 spontaneous short line)
+  if (
+    /^(hola|buenas|hey|hi|hello|que haces|qué hacés|que tal|qué tal|todo bien|como va|cómo va|como andas|cómo andás|gracias|thanks)\b/i.test(
+      q
+    ) &&
+    q.length < 40
+  ) {
+    return tx(
+      '¡Todo tranqui por acá! Decime qué tenés ganas de mirar o probar en la app y vamos directo.',
+      'All good here! Tell me what you feel like exploring or testing in the app and we can jump right in.',
+      msgLang
+    );
+  }
 
   if (
     q.includes('por dónde empiezo') ||
