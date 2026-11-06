@@ -80,7 +80,7 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
     3. **En `Markets > Research`:**
        - Mantener las 3 tarjetas superiores limpias en 1 sola fila con el precio y el sparkline (`WEIGHTED COMPOSITE: +36 (Filings +32 • News +40)`), sin agregar texto extra que fuerce un salto de línea ni duplique la lectura que ya muestra la tarjeta vecina (`Strong Institutional Accumulation`).
 
-- [x] **Paso 1.7 — Vista `Portfolio` ([`src/components/AgentCommitteeView.jsx`](../src/components/AgentCommitteeView.jsx) y Vistas 1, 2, 3) *(Aplicado)*:**
+- [x] **Paso 1.7 — Vista `Portfolio` ([`src/components/AgentCommitteeView.jsx`](../src/components/AgentCommitteeView.jsx) y Vistas 1, 2, 3) *(Completado)*:**
   - **Objetivo:** Afinar los mensajes de `Builder`, `Risk` y `Simulator` para que un **Inversor Principiante** entienda de un vistazo si su cartera está sana o concentrada, mientras el **Profesional Quant** conserva todo el instrumental de Brinson, VaR/CVaR, estrés histórico y Kelly.
   - **Decisiones aprobadas:**
     1. **En `Portfolio > Builder` (3er renglón gris de las 6 tarjetas KPI):**
@@ -111,7 +111,7 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
 
 ### Micro-Pasos de la Fase 2
 
-- [x] **Paso 2.1 — Diseño del Flujo de Bienvenida, "¿Por dónde empiezo?" y Guardrails *(Definido)*:**
+- [x] **Paso 2.1 — Diseño del Flujo de Bienvenida, "¿Por dónde empiezo?" y Guardrails *(Aplicado)*:**
   - **Objetivo:** Definir la ubicación del agente, su saludo inicial mínimo con opciones predefinidas orientadas 100% al producto (sin autopromoción personal) y los *guardrails* estrictos de alcance.
   - **Decisiones aprobadas:**
     1. **Ubicación (Esquina Superior Derecha):** Botón fijo en la esquina superior derecha del header global ([`src/App.jsx`](../src/App.jsx)), que hoy está libre e invita a interactuar de forma inmediata desde cualquier vista.
@@ -132,7 +132,7 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
        - *Complejidad Progresiva a Demanda:* Responde corto y simple por defecto; sólo profundiza en matemática Quant o ingeniería IT si el usuario lo pide.
        - *Foco en el Producto (0% autobombo) y Sin Asesoramiento Financiero:* El valor profesional se demuestra por la solidez del producto; explica indicadores y simulaciones sin dar recomendaciones personalizadas de compra/venta.
 
-- [x] **Paso 2.2 — Mapa de Conocimiento de la App (`Knowledge Base` Funcional, Financiera y Técnica) *(Definido)*:**
+- [x] **Paso 2.2 — Mapa de Conocimiento de la App (`Knowledge Base` Funcional, Financiera y Técnica) *(Aplicado)*:**
   - **Objetivo:** Documentar y estructurar todo el conocimiento interno del agente (`src/services/agentKnowledgeBase.js`) como **insumo contextual dinámico** (nunca como respuestas rígidas o enlatadas) para mantener conversaciones versátiles, fluidas y multi-turno.
   - **Decisiones aprobadas:**
     1. **Estructura en 3 Bloques con 2 Niveles de Profundidad (*Simple por defecto → Quant/IT a pedido*):**
@@ -144,7 +144,7 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
        - *Memoria Multi-turno:* El agente mantiene el hilo de la charla (si el usuario pregunta por un concepto y luego repregunta *"¿y cómo afecta eso a mi cartera si sumo BTC?"*, cruza el concepto previo con su cartera real).
        - *Motor Híbrido Dinámico:* Conexión a LLM con *system prompt* estricto + sintetizador local dinámico que ensambla respuestas a medida cruzando intención, historial de charla y métricas en tiempo real.
 
-- [x] **Paso 2.3 — Conciencia de Datos en Vivo (`Live Context Reader`) *(Definido)*:**
+- [x] **Paso 2.3 — Conciencia de Datos en Vivo (`Live Context Reader`) *(Aplicado)*:**
   - **Objetivo:** Conectar al agente (en modo 100% lectura, sin operar la UI) con una foto instantánea (`liveSnapshot`) de lo que el usuario está viendo en pantalla en cualquier sección de la app.
   - **Decisiones aprobadas:**
     1. **Ubicación activa:** Vista principal (`Home`, `Markets`, `Portfolio`, `System`, `Guide`) y sub-pestaña activa.
@@ -152,7 +152,7 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
     3. **Estado en `Portfolio`:** Activos y pesos `%` de la cartera activa, `CAGR`, `Sharpe`, `VaR 95% / CVaR 99%`, `Max Drawdown`, `ENB` y activo en prueba dentro del simulador *What-If*.
     4. **Estado en `System`:** Módulo seleccionado (`P-01`..`P-13`), estado de salud (`11/11 PASS`), latencia `p50/p95` y costo mensual `FinOps` (`~$0.95/mes`).
 
-- [x] **Paso 2.4 — Interfaz Global Unificada y Motor Multilingüe *(Definido)*:**
+- [x] **Paso 2.4 — Interfaz Global Unificada y Motor Multilingüe *(Aplicado)*:**
   - **Objetivo:** Llevar el componente del agente a nivel global ([`src/App.jsx`](../src/App.jsx)) reemplazando el cajón aislado de `Portfolio`, asegurando persistencia de charla entre vistas y fluidez en los 56 idiomas.
   - **Decisiones aprobadas:**
     1. **Agente Único Global:** Se abre desde el botón de la esquina superior derecha en [`src/App.jsx`](../src/App.jsx); se retira el botón duplicado de `Portfolio` y la conversación se mantiene viva al navegar entre pestañas.
@@ -250,5 +250,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Ejecución Paso 1.5** | `[x] Completado` | Aplicados y aprobados en [`ObservabilityView.jsx`](../src/components/ObservabilityView.jsx) (`System`) los 3 puntos: `// Pipeline Topology (DAG):` y `// Scaling & Resilience:` en el bloque de contrato, `11/11 Pipelines PASS • 0 Schema Drift` en la cabecera de logs, y la bajada de 1 línea de *Scale-to-Zero & Free-Tier Arbitrage* en `FinOps`. |
 | 2026-11-06 | **Jerarquía de Navegación** | `[x] Completado` | Eliminado de [`HeaderBar.jsx`](../src/components/HeaderBar.jsx) el botón redundante `← Back to Dashboard` en las vistas principales (`System` y `Guide`), homogeneizando la regla en toda la app: las vistas de nivel 1 se navegan desde las barras fijas superior/inferior y sólo los subniveles reales (como `Markets` Nivel 2 `Analytics`/`Research` → Nivel 1 `Screener`) muestran botón de retorno (`← Todos los Mercados`). |
 | 2026-11-06 | **Ejecución Paso 1.6** | `[x] Completado` | Aplicados y aprobados en [`MarketAnomaliesView.jsx`](../src/components/MarketAnomaliesView.jsx) (`Markets`): (1) lecturas interpretativas en el 3er renglón de las 4 tarjetas KPI del `Screener`, (2) línea de diagnóstico al pie de `Analytics` con lectura clara primero y respaldo técnico `(P-06 • Vol 20d • Volatilidad/Spread)` entre paréntesis + sincronización en vivo de la etiqueta `(NORMAL/ELEVATED/ATYPICAL)` en la tarjeta `P-06 ANOMALY`, y (3) fijada la posición central de `Analytics | Research` y homologadas las medidas de las 3 tarjetas de `Research` con las de `Analytics`. |
-| 2026-11-06 | **Ejecución Paso 1.7** | `[x] Aplicado` | Aplicados en [`PortfolioVista1Builder.jsx`](../src/components/portfolio/PortfolioVista1Builder.jsx), [`PortfolioVista2Risk.jsx`](../src/components/portfolio/PortfolioVista2Risk.jsx) y [`PortfolioVista3AdHoc.jsx`](../src/components/portfolio/PortfolioVista3AdHoc.jsx): (1) 3er renglón interpretativo en las 6 tarjetas KPI de `Builder` (incluyendo cálculo en dólares sobre base \$100k en VaR/CVaR y estado de diversificación según ENB), (2) 3 Presets de 1 clic (`Conservadora`, `Balanceada`, `Quant`) + `1/N` y `100%` en la cabecera de `Portfolio Holdings`, (3) lecturas claras en `STRESS CRASH 2008` y `RÉGIMEN MARKOV ACTUAL` en `Risk`, y (4) etiquetas guía en `Tamaño Kelly` dentro de `Simulator`. Pendiente de supervisión para cerrar la Fase 1. |
+| 2026-11-06 | **Ejecución Paso 1.7** | `[x] Completado` | Aplicados y aprobados en [`PortfolioVista1Builder.jsx`](../src/components/portfolio/PortfolioVista1Builder.jsx), [`PortfolioVista2Risk.jsx`](../src/components/portfolio/PortfolioVista2Risk.jsx) y [`PortfolioVista3AdHoc.jsx`](../src/components/portfolio/PortfolioVista3AdHoc.jsx): (1) 3er renglón interpretativo en las 6 tarjetas KPI de `Builder`, (2) 3 Presets de 1 clic (`Conservadora`, `Balanceada`, `Quant`) + `1/N` y `100%`, (3) lecturas claras en `STRESS CRASH 2008` y `RÉGIMEN MARKOV ACTUAL` en `Risk`, (4) etiquetas guía en `Tamaño Kelly` dentro de `Simulator`, y (5) altura unificada (`84px`) de las 6 tarjetas KPI entre `Builder`, `Risk` y `Simulator`. **Fase 1 100% completada.** |
+| 2026-11-06 | **Ejecución Fase 2 (Agente)** | `[x] Aplicado` | Implementado el Agente Guía Global en [`src/services/agentKnowledgeBase.js`](../src/services/agentKnowledgeBase.js), [`src/components/GlobalAgentDrawer.jsx`](../src/components/GlobalAgentDrawer.jsx), [`src/components/HeaderBar.jsx`](../src/components/HeaderBar.jsx) y [`src/App.jsx`](../src/App.jsx) (y retirado el botón local `Copilot` de [`AgentCommitteeView.jsx`](../src/components/AgentCommitteeView.jsx)): botón `Agent` en esquina superior derecha con saludo mínimo de 1 línea, 4 preguntas rápidas orientadas al producto, base de conocimiento en 2 niveles (llano por defecto + matemático/técnico a pedido con memoria multi-turno), lectura en vivo (`liveSnapshot`) de la pantalla activa y `Scope Lock`. Pendiente de supervisión antes de pasar a la Fase 3 (Outputs). |
 

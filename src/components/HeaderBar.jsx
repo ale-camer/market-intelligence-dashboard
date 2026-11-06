@@ -1301,6 +1301,8 @@ export default function HeaderBar({
   t,
   onNavigate,
   onGoBack,
+  agentOpen = false,
+  onToggleAgent,
   devIconId = 'lambda08-h-chiseled-nib',
   devBoxStyleId = 'free-green',
   headerVariantId = 'v001',
@@ -1738,6 +1740,52 @@ export default function HeaderBar({
           )}
 
         {activeTab !== 'observability' && activeTab !== 'guide' && renderRightHudModule(variant.rightHud, utcTime)}
+
+        {onToggleAgent && (
+          <HoverTooltip
+            title={isES ? 'Consultar al agente guía' : 'Ask the platform guide'}
+            placement="bottom-right"
+          >
+            <button
+              type="button"
+              onClick={onToggleAgent}
+              aria-label={isES ? 'Agente Guía' : 'Guide Agent'}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.35rem',
+                padding: '0.35rem 0.72rem',
+                border: 'none',
+                background: 'transparent',
+                color: agentOpen ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
+                textShadow: agentOpen
+                  ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+                  : '0 1px 4px rgba(0, 0, 0, 0.9)',
+                fontSize: '0.96rem',
+                fontWeight: agentOpen ? 700 : 600,
+                fontFamily: 'var(--font-sans)',
+                cursor: 'pointer',
+                pointerEvents: 'auto',
+                transition: 'all 0.16s ease',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'var(--ui-accent)';
+                e.currentTarget.style.fontWeight = '700';
+                e.currentTarget.style.textShadow =
+                  '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = agentOpen ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)';
+                e.currentTarget.style.fontWeight = agentOpen ? '700' : '600';
+                e.currentTarget.style.textShadow = agentOpen
+                  ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
+                  : '0 1px 4px rgba(0, 0, 0, 0.9)';
+              }}
+            >
+              <span>Agent</span>
+            </button>
+          </HoverTooltip>
+        )}
       </div>
     </header>
   );

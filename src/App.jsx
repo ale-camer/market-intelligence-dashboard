@@ -11,6 +11,7 @@ import AgentCommitteeView from './components/AgentCommitteeView';
 import ObservabilityView from './components/ObservabilityView';
 import DevLabView from './components/DevLabView';
 import UserGuideView from './components/UserGuideView';
+import GlobalAgentDrawer from './components/GlobalAgentDrawer';
 import { DEFAULT_WATCHLIST_SYMS } from './services/committeeService';
 
 export default function App() {
@@ -142,6 +143,7 @@ export default function App() {
   const [mainToolsStyleId, setMainToolsStyleId] = useState('hb-05');
 
   const [isSystemHealthy] = useState(true);
+  const [agentOpen, setAgentOpen] = useState(false);
 
   const currentTheme = PALETTES[themeIdx];
   const currentLang = LANGUAGES[langIdx] || LANGUAGES[0];
@@ -251,9 +253,21 @@ export default function App() {
         t={t}
         onNavigate={handleNavigate}
         onGoBack={goBack}
+        agentOpen={agentOpen}
+        onToggleAgent={() => setAgentOpen((prev) => !prev)}
         devIconId={devIconId}
         devBoxStyleId={devBoxStyleId}
         headerVariantId={headerVariantId}
+      />
+
+      <GlobalAgentDrawer
+        isOpen={agentOpen}
+        onClose={() => setAgentOpen(false)}
+        activeTab={activeTab}
+        marketsViewMode={marketsViewMode}
+        selectedAsset={selectedAsset}
+        watchlistSyms={watchlistSyms}
+        langCode={currentLang.code}
       />
 
       <div style={{ flex: 1, display: 'flex', minHeight: 0, position: 'relative', zIndex: 5 }}>
