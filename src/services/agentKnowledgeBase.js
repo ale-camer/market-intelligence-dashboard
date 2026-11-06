@@ -344,7 +344,7 @@ export function getLiveContextPillLabel({
   if (activeTab === 'guide') {
     return tx('Viendo: Guide (Manual Interactivo)', 'Viewing: Guide (Interactive Manual)');
   }
-  return txTpl('Viendo: Home • Activo: {0}', [sym], 'Viewing: Home • Asset: {0}', [sym]);
+  return tx('Viendo: Home (Portada)', 'Viewing: Home (Overview)');
 }
 
 export function getAgentGreeting() {
@@ -462,20 +462,35 @@ export function buildLiveAppSnapshot({
 }
 
 /**
- * Scope Lock Guardrail: detects gibberish, prompt injection, or off-topic non-platform/non-financial queries.
+ * Scope Lock Guardrail: blocks prompt injection or adversarial jailbreak queries before calling the LLM.
  */
 function isOutOfScopeQuery(qClean) {
   if (!qClean || qClean.length < 2) return false;
 
-  const offTopicPatterns = [
-    /\b(receta|cocinar|pizza|pasta|empanada|asado|comida|restaurante|recipe|cooking|bake)\b/i,
-    /\b(futbol|fútbol|messi|mundial|champions|nba|tenis|partido de|soccer|football|basketball)\b/i,
-    /\b(clima en|llueve|pronostico del tiempo|weather in|temperature tomorrow)\b/i,
-    /\b(pelicula|película|netflix|serie de tv|actor|cine|horoscopo|horóscopo|zodiac)\b/i,
-    /\b(chiste|poema|cancion|canción|tell me a joke|write a poem|write a song)\b/i,
+  const injectionPatterns = [
     /\b(ignore previous|ignora las instrucciones|olvida tus instrucciones|system prompt|jailbreak|dan mode|bypass)\b/i,
   ];
-  return offTopicPatterns.some((re) => re.test(qClean));
+  return injectionPatterns.some((re) => re.test(qClean));
+}
+
+/**
+ * Determines whether a user message is actually about the app, navigation, markets, portfolio, metrics, or system
+ * (as opposed to casual greetings, keyboard mashing like "ssssss", or playful off-topic banter like "river o boca?").
+ */
+function isAppRelatedUserMessage(txt = '') {
+  const s = String(txt || '').trim().toLowerCase();
+  if (!s || s.length < 3) return false;
+  if (/^([^\s])\1{2,}$/.test(s) || (/\S{18,}/.test(s) && !s.includes(' '))) return false;
+  if (
+    /^(hola|buenas|hey|hi|hello|que haces|qué hacés|que tal|qué tal|todo bien|como va|cómo va|como andas|cómo andás|gracias|thanks)[?!.\s]*$/i.test(
+      s
+    )
+  ) {
+    return false;
+  }
+  return /\b(app|aplicaci[oó]n|plataforma|platform|empiezo|empezar|start|explorar|explore|recorrer|secci[oó]n|secciones|section|sections|home|portada|market|markets|mercado|mercados|screener|analytics|research|portfolio|portafolio|cartera|builder|risk|riesgo|simulator|simulador|system|sistema|guide|gu[ií]a|manual|finops|pipeline|pipelines|arquitectura|architecture|activo|activos|asset|assets|ticker|watchlist|favoritos|btc|eth|sol|nvda|aapl|msft|amzn|googl|spy|qqq|tlt|gld|sharpe|sortino|var|cvar|kelly|brinson|markov|enb|meucci|rsi|macd|volatilidad|volatility|drawdown|alpha|beta|anomal[ií]a|anomaly|p-0|p-1|pantalla|screen|viendo|seeing|funciona|work|hacer|help|ayuda|ayudar|entender|understand|mostrar|ver|explica|explain|inversion|inversi[oó]n|invertir|invest)\b/i.test(
+    s
+  );
 }
 
 /**
@@ -483,6 +498,17 @@ function isOutOfScopeQuery(qClean) {
  */
 async function callGeminiFlashLite({ apiKey, userText, history, snap, msgLang }) {
   const sanitizedInput = String(userText || '').slice(0, AGENT_GUARDRAIL_LIMITS.maxInputChars);
+  const currentIsAppRelated = isAppRelatedUserMessage(sanitizedInput);
+  const lastAppTopicEntry = [...history]
+    .reverse()
+    .find(
+      (m) =>
+        m.role === 'user' &&
+        String(m.txt || '').trim().toLowerCase() !== sanitizedInput.trim().toLowerCase() &&
+        isAppRelatedUserMessage(m.txt)
+    );
+  const lastAppTopicUserMsg = lastAppTopicEntry ? String(lastAppTopicEntry.txt).trim() : null;
+
   const viewNames = {
     presentation: 'Home (Portada)',
     workstation:
@@ -494,24 +520,42 @@ async function callGeminiFlashLite({ apiKey, userText, history, snap, msgLang })
     guide: 'Guide (Interactive Manual)',
   };
 
+  const continuityBlock = !currentIsAppRelated
+    ? lastAppTopicUserMsg
+      ? `CONVERSATION CONTINUITY (CRITICAL):
+- The user's latest message ("${sanitizedInput}") is casual, playful/off-topic banter, or keyboard mashing.
+- Earlier in this conversation, the last app-related topic the user was exploring was: "${lastAppTopicUserMsg}".
+- Reply in 1 short, natural sentence to their remark and THEN ask if they want to continue with that last app topic ("${lastAppTopicUserMsg}") or if they would like to see/understand another part of the app.
+- STRICT FORBIDDEN RULE: NEVER jump to or mention a specific ticker (like BTC or SPY), "un activo", "un asset", "tu watchlist", or "una métrica" unless that was the exact topic they were already discussing!`
+      : `CONVERSATION CONTINUITY (CRITICAL):
+- The user's latest message ("${sanitizedInput}") is casual, playful/off-topic banter, or keyboard mashing, and NO app-related topic has been discussed yet in this chat.
+- Reply in 1 short, natural sentence (10 to 22 words max) and THEN start the conversation from scratch with a broad, open question asking what they would like to see or understand about the app (e.g., "¿Qué te gustaría ver o entender de la app?" / "What would you like to see or understand about the app?").
+- STRICT FORBIDDEN RULE: NEVER mention or suggest any specific ticker (like BTC or SPY), "un activo", "un asset", "tu watchlist", "tu portfolio", or "una métrica"! Keep the invitation 100% open about the app as a whole.`
+    : `CONVERSATION CONTINUITY:
+- Answer the user's question about the app clearly and concisely (2–3 short bullets max if explaining sections/metrics, under 80 words total).`;
+
+  const liveContextSection = currentIsAppRelated
+    ? `
+LIVE SCREEN CONTEXT (use ONLY when relevant to what the user asks):
+- Current View: ${viewNames[snap.activeTab] || snap.activeTab}
+- Selected Asset in Markets: ${snap.selectedAsset} (${snap.assetName}, ${snap.assetCat}) at ${snap.assetPrice} (${snap.assetChg}), RSI(14): ${snap.assetRsi}, Vol Z-Score: ${snap.assetVolZ}, P-06 Anomaly: ${snap.anomalyScore} (${snap.anomalyRegime}), Research Composite: ${snap.researchComposite} (${snap.researchStance})
+- Watchlist (${snap.watchlistSyms.length}): ${snap.watchlistSyms.join(', ') || 'None'}
+- Active Portfolio (${snap.portfolioCount} holdings: ${snap.portfolioHoldingsSummary}): CAGR +${snap.portfolioCagr}%, Vol ${snap.portfolioVol}%, Sharpe ${snap.portfolioSharpe}, Sortino ${snap.portfolioSortino}, 95% VaR ${snap.portfolioVar95}%, 99% CVaR ${snap.portfolioCvar99}%, Brinson Alpha +${snap.portfolioAlpha}%, ENB ${snap.portfolioEnb}, 2008 Stress ${snap.portfolioStress2008}% (vs -42% S&P 500).`
+    : '';
+
   const systemInstruction = `You are the interactive guide inside a market intelligence and portfolio platform.
 CONVERSATIONAL STYLE & SPONTANEITY (CRITICAL):
 1. Reply ALWAYS in the exact same language and register as the user's latest message (detected language: ${msgLang}).
-2. Be spontaneous, human, and proportional to what the user said:
-   - If the user just says hello, greets casually, or makes small talk (e.g., "que haces papa???", "hola", "todo bien?", "hey", "gracias"), reply in ONE short, natural, friendly sentence (10 to 20 words max, e.g. "¡Todo tranqui por acá! ¿Qué tenés ganas de mirar o probar hoy?"). NEVER use robotic corporate intros ("Soy tu asistente de Inteligencia Institucional...") and NEVER dump bullet points or unrequested metrics on a casual greeting.
-   - Only use bullet points (2–3 short bullets max, under 85 words total) or cite live screen numbers when the user actually asks a question about the screen, an asset, a metric, or how the platform works.
-   - Use **bold** sparingly for section names or key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
-3. SCOPE LOCK:
-   - Your domain is guiding the user across the platform's 5 views (**Home**, **Markets** > **Screener** / **Analytics** / **Research**, **Portfolio** > **Builder** / **Risk** / **Simulator**, **System** \`P-01\`..\`P-13\` with \`~$0.95/mo\` Scale-to-Zero FinOps, and **Guide**), explaining financial/quant metrics (Sharpe, Sortino, 95% VaR, 99% CVaR, Kelly Criterion, Brinson Alpha, Markov Regimes, Meucci ENB, Isolation Forest P-06), and reading the live screen data below when relevant.
-   - Never give personalized investment advice, and if asked about unrelated off-topic subjects (cooking, sports, politics, general homework), decline naturally in 1 short sentence.
+2. Be spontaneous, human, and proportional to what the user said. NEVER use robotic corporate intros.
+3. Use **bold** sparingly for section names or key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
+4. SCOPE: The platform has 5 main views (**Home**, **Markets** > **Screener** / **Analytics** / **Research**, **Portfolio** > **Builder** / **Risk** / **Simulator**, **System** \`P-01\`..\`P-13\`, and **Guide**). Never give personalized investment advice.
 
-LIVE SCREEN CONTEXT (use ONLY when relevant to what the user asks):
-- View: ${viewNames[snap.activeTab] || snap.activeTab}
-- Selected Asset: ${snap.selectedAsset} (${snap.assetName}, ${snap.assetCat}) at ${snap.assetPrice} (${snap.assetChg}), RSI(14): ${snap.assetRsi}, Vol Z-Score: ${snap.assetVolZ}, P-06 Anomaly: ${snap.anomalyScore} (${snap.anomalyRegime}), Research Composite: ${snap.researchComposite} (${snap.researchStance})
-- Watchlist (${snap.watchlistSyms.length}): ${snap.watchlistSyms.join(', ') || 'None'}
-- Active Portfolio (${snap.portfolioCount} holdings: ${snap.portfolioHoldingsSummary}): CAGR +${snap.portfolioCagr}%, Vol ${snap.portfolioVol}%, Sharpe ${snap.portfolioSharpe}, Sortino ${snap.portfolioSortino}, 95% VaR ${snap.portfolioVar95}%, 99% CVaR ${snap.portfolioCvar99}%, Brinson Alpha +${snap.portfolioAlpha}%, ENB ${snap.portfolioEnb}, 2008 Stress ${snap.portfolioStress2008}% (vs -42% S&P 500).`;
+${continuityBlock}${liveContextSection}`;
 
-  const recentTurns = history.slice(-6).map((m) => ({
+  // When no app topic has been discussed yet and the user is just bantering, only send the latest user message
+  // so old AI turns don't bias the model toward repeating narrow phrases.
+  const filteredHistory = !currentIsAppRelated && !lastAppTopicUserMsg ? [] : history.slice(-6);
+  const recentTurns = filteredHistory.map((m) => ({
     role: m.role === 'ai' ? 'model' : 'user',
     parts: [{ text: String(m.txt || '').slice(0, AGENT_GUARDRAIL_LIMITS.maxInputChars) }],
   }));

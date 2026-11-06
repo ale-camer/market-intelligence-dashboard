@@ -36,6 +36,7 @@ export default function GlobalAgentDrawer({
   const [thread, setThread] = useState([]);
   const [isThinking, setIsThinking] = useState(false);
   const [copiedIdx, setCopiedIdx] = useState(null);
+  const [scrollAreaHeight, setScrollAreaHeight] = useState(520);
 
   const scrollRef = useRef(null);
   const latestUserTurnRef = useRef(null);
@@ -65,6 +66,24 @@ export default function GlobalAgentDrawer({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
+  // Track exact pixel height of scrollRef so the latest turn always occupies 100% of the visible window
+  useEffect(() => {
+    if (!isOpen || !scrollRef.current) return undefined;
+    const updateHeight = () => {
+      if (scrollRef.current && scrollRef.current.clientHeight > 100) {
+        setScrollAreaHeight(scrollRef.current.clientHeight);
+      }
+    };
+    updateHeight();
+    if (typeof window.ResizeObserver !== 'undefined') {
+      const ro = new window.ResizeObserver(updateHeight);
+      ro.observe(scrollRef.current);
+      return () => ro.disconnect();
+    }
+    window.addEventListener('resize', updateHeight);
+    return () => window.removeEventListener('resize', updateHeight);
+  }, [isOpen]);
+
   // Anchor the latest turn at the very top of the scroll container so only the latest turn is visible (scroll UP for older turns)
   useEffect(() => {
     if (!isOpen) return;
@@ -83,7 +102,7 @@ export default function GlobalAgentDrawer({
       }
     });
     return () => window.cancelAnimationFrame(rafId);
-  }, [thread, isThinking, isOpen]);
+  }, [thread, isThinking, isOpen, scrollAreaHeight]);
 
   // Auto-resize multiline textarea height (1 to 5 lines)
   const syncTextareaHeight = (el) => {
@@ -426,7 +445,7 @@ export default function GlobalAgentDrawer({
                 justifyContent: 'flex-start',
                 gap: '8px',
                 flexShrink: 0,
-                minHeight: isLatestTurn ? '100%' : 'auto',
+                minHeight: isLatestTurn ? `${Math.max(scrollAreaHeight - 2, 340)}px` : 'auto',
                 paddingBottom: !isLatestTurn ? '10px' : '4px',
                 borderBottom: !isLatestTurn ? '1px dashed rgba(148, 163, 184, 0.14)' : 'none',
               }}
