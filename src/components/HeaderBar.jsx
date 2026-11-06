@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Activity } from 'lucide-react';
+import { Activity, Sparkles } from 'lucide-react';
 import HoverTooltip from './HoverTooltip';
 import { DEV_ICON_CATALOG, DEV_BOX_STYLES } from './DevLabView';
 import { HEADER_VARIANTS } from '../data/headerVariantsCatalog';
@@ -1743,47 +1743,38 @@ export default function HeaderBar({
 
         {onToggleAgent && (
           <HoverTooltip
+            disabled={agentOpen}
             title={isES ? 'Consultar al agente guía' : 'Ask the platform guide'}
             placement="bottom-right"
           >
-            <button
-              type="button"
-              onClick={onToggleAgent}
-              aria-label={isES ? 'Agente Guía' : 'Guide Agent'}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.35rem',
-                padding: '0.35rem 0.72rem',
-                border: 'none',
-                background: 'transparent',
-                color: agentOpen ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)',
-                textShadow: agentOpen
-                  ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
-                  : '0 1px 4px rgba(0, 0, 0, 0.9)',
-                fontSize: '0.96rem',
-                fontWeight: agentOpen ? 700 : 600,
-                fontFamily: 'var(--font-sans)',
-                cursor: 'pointer',
-                pointerEvents: 'auto',
-                transition: 'all 0.16s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = 'var(--ui-accent)';
-                e.currentTarget.style.fontWeight = '700';
-                e.currentTarget.style.textShadow =
-                  '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = agentOpen ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.78)';
-                e.currentTarget.style.fontWeight = agentOpen ? '700' : '600';
-                e.currentTarget.style.textShadow = agentOpen
-                  ? '0 0 12px rgba(var(--ui-accent-rgb), 0.95), 0 0 22px rgba(var(--ui-accent-rgb), 0.55)'
-                  : '0 1px 4px rgba(0, 0, 0, 0.9)';
-              }}
-            >
-              <span>Agent</span>
-            </button>
+            {(isHovered) => {
+              const isHighlighted = agentOpen || isHovered;
+              return (
+                <button
+                  type="button"
+                  onClick={onToggleAgent}
+                  aria-label={isES ? 'Agente Guía' : 'Guide Agent'}
+                  style={{
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                    color: isHighlighted ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.85)',
+                    height: '28px',
+                    padding: '0 0.25rem',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    pointerEvents: 'auto',
+                    filter: isHighlighted
+                      ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
+                      : 'drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9))',
+                    transition: 'all 0.18s ease',
+                  }}
+                >
+                  <Sparkles size={16} strokeWidth={isHighlighted ? 2.4 : 2.1} style={{ color: 'var(--ui-accent)' }} />
+                </button>
+              );
+            }}
           </HoverTooltip>
         )}
       </div>
