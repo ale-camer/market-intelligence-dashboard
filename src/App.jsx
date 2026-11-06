@@ -162,6 +162,7 @@ export default function App() {
 
   const [isSystemHealthy] = useState(true);
   const [agentOpen, setAgentOpen] = useState(false);
+  const [lightMode, setLightMode] = useState(false); // Default: Dark Mode (Oscuro)
 
   const currentTheme = PALETTES[themeIdx];
   const currentLang = LANGUAGES[langIdx] || LANGUAGES[0];
@@ -309,6 +310,7 @@ export default function App() {
             langCode={currentLang.code}
             navItems={navItems}
             t={t}
+            lightMode={lightMode}
             homeLayoutId={homeLayoutId}
             onSelectHomeLayout={setHomeLayoutId}
             onLaunchTarget={handleLaunchTarget}
@@ -375,6 +377,8 @@ export default function App() {
         currentLang={currentLang}
         currentTheme={currentTheme}
         activeTab={activeTab}
+        lightMode={lightMode}
+        onToggleLightMode={() => setLightMode((prev) => !prev)}
         onOpenObservability={() => handleNavigate('observability')}
         onToggleGuide={() => handleNavigate('guide')}
         onCycleLang={cycleLang}

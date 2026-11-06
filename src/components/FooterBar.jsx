@@ -1,6 +1,6 @@
 import { tx, useViewLocale } from '../data/i18n/viewLocaleService';
 import React, { useState, useEffect, useRef, useMemo } from 'react';
-import { Palette, Info, X, Check, Search, ChevronDown, ChevronUp } from 'lucide-react';
+import { Palette, Sun, Moon, Info, X, Check, Search, ChevronDown, ChevronUp } from 'lucide-react';
 import HoverTooltip from './HoverTooltip';
 import { LANGUAGES, PALETTES } from '../data/i18n';
 
@@ -97,6 +97,8 @@ export default function FooterBar({
   currentLang,
   currentTheme,
   activeTab,
+  lightMode = false,
+  onToggleLightMode,
   onOpenObservability,
   onToggleGuide,
   onToggleDevLab,
@@ -747,6 +749,45 @@ export default function FooterBar({
                 );
               }}
             </HoverTooltip>
+
+            {onToggleLightMode && (
+              <HoverTooltip
+                title={
+                  lightMode
+                    ? tx('Cambiar a modo oscuro', 'Switch to dark mode')
+                    : tx('Cambiar a modo claro', 'Switch to light mode')
+                }
+                placement="top-right"
+              >
+                {(isHovered) => (
+                  <button
+                    type="button"
+                    onClick={onToggleLightMode}
+                    style={{
+                      backgroundColor: 'transparent',
+                      border: 'none',
+                      color: isHovered ? 'var(--ui-accent)' : 'rgba(var(--ui-accent-rgb), 0.85)',
+                      height: '28px',
+                      padding: '0 0.25rem',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                      filter: isHovered
+                        ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.95)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.55))'
+                        : 'drop-shadow(0 1px 4px rgba(0, 0, 0, 0.9))',
+                      transition: 'all 0.18s ease',
+                    }}
+                  >
+                    {lightMode ? (
+                      <Moon size={16} strokeWidth={isHovered ? 2.4 : 2.1} style={{ color: 'var(--ui-accent)' }} />
+                    ) : (
+                      <Sun size={16} strokeWidth={isHovered ? 2.4 : 2.1} style={{ color: 'var(--ui-accent)' }} />
+                    )}
+                  </button>
+                )}
+              </HoverTooltip>
+            )}
           </div>
         </div>
       </footer>
