@@ -1511,10 +1511,18 @@ export default function HeaderBar({
   const shellStyle = renderNavShellStyle(variant.navShell);
 
   const renderTabWithTooltip = (item, idx, placement = 'bottom') => {
+    const tooltipTitle =
+      item.id === 'workstation'
+        ? t.navMarketsTooltip ||
+          (t.navWorkstation === 'Mercados' ? 'Screener, gráficos y señales' : 'Screener, charts & signals')
+        : item.id === 'consensus'
+        ? t.navPortfolioTooltip ||
+          (t.navConsensus === 'Portafolio' ? 'Simulador de cartera y riesgo' : 'Portfolio & risk simulator')
+        : item.label;
     return (
       <HoverTooltip
         key={item.id}
-        disabled={true}
+        title={tooltipTitle}
         placement={placement}
       >
         {(isHovered) =>

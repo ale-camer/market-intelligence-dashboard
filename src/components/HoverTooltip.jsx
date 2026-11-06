@@ -83,8 +83,7 @@ export default function HoverTooltip({
     }
   };
 
-  const isAllowedTooltip = title === 'Home' || title === 'Choose Palette';
-  const labelText = isAllowedTooltip ? title : null;
+  const labelText = title ? String(title).trim() : null;
 
   const popoverNode =
     hovered && !disabled && labelText ? (
@@ -97,11 +96,11 @@ export default function HoverTooltip({
           boxShadow: '0 6px 16px rgba(0, 0, 0, 0.65)',
           borderRadius: '6px',
           padding: '4px 9px',
-          maxWidth: '240px',
+          maxWidth: '280px',
           whiteSpace: 'nowrap',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
-          fontSize: '12px',
+          fontSize: '11.5px',
           fontWeight: 600,
           color: '#f8fafc',
           letterSpacing: '0.01em',

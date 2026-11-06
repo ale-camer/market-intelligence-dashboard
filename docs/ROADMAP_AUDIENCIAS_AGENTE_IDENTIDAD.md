@@ -49,8 +49,11 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
     - *Dónde:* En la fila de *Quick Chips* arriba del historial del chat del Agente (donde hoy están los 3 botones `Check ETF overlap | Simulate Put hedge | Optimize Sharpe`).
     - *Cómo:* Esos mismos chips cambian dinámicamente según la pantalla en la que estés parado (ej. en `Home` o `Guide`: *"¿Por dónde empiezo?"*, *"Resumen para RRHH / IT"*; en `Markets`: *"Explicame este gráfico en simple"*, *"¿Por qué se mueve este activo?"*; en `System`: *"Explicame la arquitectura y el costo de $0.95/m"*).
 
-- [ ] **Paso 1.3 — Vista `Home` ([`src/components/HomeStage.jsx`](../src/components/HomeStage.jsx)) y Navegación (`HeaderBar`/`FooterBar`):**
+- [x] **Paso 1.3 — Vista `Home` ([`src/components/HomeStage.jsx`](../src/components/HomeStage.jsx)) y Navegación (`HeaderBar`/`FooterBar`) *(Aplicado)*:**
   - **Objetivo:** Aplicar el nuevo subtítulo acordado y validar la estética ultra-simple de los tooltips de navegación.
+  - **Cambios aplicados:**
+    1. Subtítulo en `Home` actualizado en [`src/data/i18n/uiStrings56.js`](../src/data/i18n/uiStrings56.js) (*"Analizá activos globales en tiempo real, simulá el riesgo de tu cartera y explorá una arquitectura cuantitativa y agéntica de punta a punta."* / *"Analyze global assets in real time, simulate your portfolio risk, and explore an end-to-end quantitative and agentic architecture."*).
+    2. Tooltips minimalistas de 1 línea habilitados en [`src/components/HoverTooltip.jsx`](../src/components/HoverTooltip.jsx), [`src/components/HeaderBar.jsx`](../src/components/HeaderBar.jsx) (`Markets`, `Portfolio`) y [`src/components/FooterBar.jsx`](../src/components/FooterBar.jsx) (`System`, `Guide`, `Idioma`, `Paleta`).
 
 - [x] **Paso 1.4 — Vista `Guide` ([`src/components/UserGuideView.jsx`](../src/components/UserGuideView.jsx)):**
   - **Objetivo:** Incorporar el bloque **"¿Qué buscás hoy? Elegí tu punto de partida:"** justo debajo de los 2 párrafos introductorios de `Guide > Home`, con tono en primera persona y doble link directo (al capítulo de la Guía y a la pantalla en vivo de la app):
@@ -200,17 +203,21 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 
 > Reservado para las etapas finales (previo al cierre de identidad), para potenciar la experiencia de descubrimiento y armado rápido de seguimiento en `Markets`.
 
-- [ ] **Paso 4.1 — Definición de Características del Segundo Menú de Filtros:**
-  - **Características Transversales / Generales (aplicables a todos los activos):** Ej. *Régimen Normal vs. Anomalía (`P-06`)*, *Momentum (`RSI` alcista / sobreventa)*, *Volumen elevado (`Z-Score`)*, *Variación 24h positiva/negativa*.
-  - **Características Específicas según la Clase de Activo seleccionada:**
-    - *Equities:* Mega-Cap / Tech / Semiconductores / Alto Dividendo / ADR.
-    - *FX Currencies:* G10 Majors / Emergentes (LatAm/Asia) / Carry Spread Positivo.
-    - *Rates & US Treasuries:* Tramo Corto (`≤2Y`) / Tramo Medio (`5Y-10Y`) / Tramo Largo (`20Y-30Y`).
-    - *Crypto:* Layer 1 / DeFi & Infraestructura / Alta Liquidez.
-    - *Commodities:* Metales Preciosos / Energía / Industriales & Agro.
-    - *ETFs & Indices / Derivatives:* Índices Amplios / Sectoriales / Volatilidad & Opciones.
-- [ ] **Paso 4.2 — Acción de 1 Solo Clic (`★ Marcar / Desmarcar todos los filtrados`):**
-  - Permitir que el usuario agregue (o quite) la estrella de favoritos (`Watchlist`) a **todos los activos resultantes del filtro activo con un único clic**, facilitando pasar ese grupo directo a `Watchlist` o a `Portfolio`.
+- [x] **Paso 4.1 — Definición de Características del Segundo Menú de Filtros *(Definido)*:**
+  - **Ubicación:** Segunda fila de filtros justo debajo de la barra principal de clases de activo en `Markets > Screener`.
+  - **A. Características Generales (disponibles siempre, incluso en `ALL`):**
+    - `Todos` *(por defecto)* | `Suben Hoy (>0%)` | `Bajan Hoy (<0%)` | `Impulso Comprador (RSI > 60)` | `Sobreventa (RSI < 40)` | `Volumen Inusual (Z > 1.5σ)` | `Movimiento Normal (P-06)` | `Atípico / Anomalía (P-06)`.
+  - **B. Características Específicas según la Clase de Activo seleccionada arriba:**
+    - *`EQUITIES`:* `Mega-Cap & Tech` | `Finanzas & Industria` | `Consumo & Salud` | `ADRs & Global`.
+    - *`FX CURRENCIES`:* `G10 Majors` | `Emergentes & LatAm` | `Divisas Asiáticas`.
+    - *`RATES & US TREASURIES`:* `Corto Plazo (≤2Y)` | `Tramo Medio (5Y–10Y)` | `Largo Plazo (20Y–30Y)`.
+    - *`CRYPTO`:* `Layer 1 Majors (BTC/ETH/SOL)` | `DeFi & Infraestructura` | `Alta Volatilidad`.
+    - *`COMMODITIES`:* `Metales Preciosos` | `Energía (Petróleo/Gas)` | `Industriales & Agro`.
+    - *`ETFs & INDICES` / `DERIVATIVES`:* `Índices Amplios (SPX/NDX)` | `Sectoriales & Temáticos` | `Renta Fija & Volatilidad`.
+- [x] **Paso 4.2 — Acción de 1 Solo Clic (`★ Marcar / Desmarcar todos los filtrados`) *(Definido)*:**
+  - **Ubicación y comportamiento:** En el extremo derecho del segundo menú de filtros, un botón dinámico que actúa sobre los `{N}` activos resultantes del filtro actual:
+    - Si aún no están todos marcados: `[ ★ Sumar los {N} filtrados a Watchlist ]` (marca todos de 1 clic).
+    - Si ya están todos marcados (o dentro de `★ WATCHLIST`): `[ ☆ Quitar estrella a los {N} filtrados ]` (desmarca todos de 1 clic).
 
 ---
 
@@ -242,5 +249,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Paso 2.2 (Agente)** | `[x] Definido` | Se definió la Base de Conocimiento en 3 bloques (Funcional, Financiero en 2 niveles y Técnico `P-01`..`P-13`/FinOps) operando como contexto dinámico con memoria multi-turno para garantizar versatilidad conversacional real (sin respuestas cerradas/enlatadas). |
 | 2026-11-06 | **Paso 2.3 y 2.4 (Agente)** | `[x] Definido` | Se definió el `liveSnapshot` en modo lectura para todas las vistas (`Markets`, `Portfolio`, `System`) y la interfaz global única desde la esquina superior derecha con persistencia entre pestañas y soporte fluido en 56 idiomas. **Fase 2 100% definida.** |
 | 2026-11-06 | **Fase 3 (Outputs)** | `[x] Definido` | Se definieron los 6 puntos exactos de exportación (`Screener CSV`, `Analytics PNG/CSV`, `Portfolio Builder CSV/PNG`, `Portfolio Risk CSV/JSON`, `System MD/JSON` y `Agente MD/Copiar`) con botones de texto fantasma (`9px` `↓ CSV` / `↓ PNG`) integrados en los encabezados existentes. **Fase 3 100% definida.** |
-| — | **Fase 4 (Watchlist Bulk)** | `[~] En definición` | Definir el segundo menú de filtros por características (generales + específicas de cada clase de activo) y el botón de 1 clic para marcar/desmarcar la estrella (`★`) en bloque. |
+| 2026-11-06 | **Fase 4 (Watchlist Bulk)** | `[x] Definido` | Se definió el segundo menú de filtros en `Markets > Screener` (características generales + específicas por clase de activo) y el botón dinámico de 1 clic (`★ Sumar / ☆ Quitar los {N} filtrados`). **Fases 1 a 4 100% definidas.** |
+| 2026-11-06 | **Ejecución Paso 1.3** | `[x] Aplicado` | Aplicado el subtítulo conceptual en `Home` ([`uiStrings56.js`](../src/data/i18n/uiStrings56.js)) y los tooltips ultra-sencillos de 1 línea en [`HoverTooltip.jsx`](../src/components/HoverTooltip.jsx), [`HeaderBar.jsx`](../src/components/HeaderBar.jsx) y [`FooterBar.jsx`](../src/components/FooterBar.jsx). Pendiente de visto bueno del usuario antes de pasar al Paso 1.4 (`Guide > Home`). |
 
