@@ -134,11 +134,17 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
        - *Complejidad Progresiva a Demanda:* Responde corto y simple por defecto; sólo profundiza en matemática Quant o ingeniería IT si el usuario lo pide.
        - *Foco en el Producto (0% autobombo) y Sin Asesoramiento Financiero:* El valor profesional se demuestra por la solidez del producto; explica indicadores y simulaciones sin dar recomendaciones personalizadas de compra/venta.
 
-- [ ] **Paso 2.2 — Mapa de Conocimiento de la App (`Knowledge Base` Funcional, Financiera y Técnica):**
-  - **Objetivo:** Documentar y estructurar todo el conocimiento interno del agente sobre:
-    1. **Mapa de la App:** Qué hay en `Home`, `Markets` (`Screener`, `Orbital`, `Heatmap`, `Main Tools`, `Analytics`, `Research`), `Portfolio` (`Builder`, `Risk`, `Simulator`), `System` (`Performance`, `FinOps`) y `Guide`, y cómo usar cada herramienta.
-    2. **Conocimiento Financiero en 2 Niveles:** Cómo explicar cualquier métrica o gráfico de la app tanto a un **Curioso / Inversor Principiante** como a un **Profesional Quant**.
-    3. **Conocimiento de Ingeniería (IT & RRHH):** Cómo explicar la arquitectura de los 13 módulos (`P-01` a `P-13`), el stack tecnológico, el diseño FinOps (`~$0.95/mes`) y el valor profesional del proyecto.
+- [x] **Paso 2.2 — Mapa de Conocimiento de la App (`Knowledge Base` Funcional, Financiera y Técnica) *(Definido)*:**
+  - **Objetivo:** Documentar y estructurar todo el conocimiento interno del agente (`src/services/agentKnowledgeBase.js`) como **insumo contextual dinámico** (nunca como respuestas rígidas o enlatadas) para mantener conversaciones versátiles, fluidas y multi-turno.
+  - **Decisiones aprobadas:**
+    1. **Estructura en 3 Bloques con 2 Niveles de Profundidad (*Simple por defecto → Quant/IT a pedido*):**
+       - *Bloque A (Mapa Funcional):* Inventario completo y modo de uso de `Home`, `Markets` (`Screener`, `Orbital`, `Heatmap`, `Main Tools`, `Analytics`, `Research`), `Portfolio` (`Builder`, `Risk`, `Simulator`), `System` (`Performance`, `FinOps`) y `Guide`.
+       - *Bloque B (Diccionario Financiero en 2 Niveles):* Nivel 1 llano y práctico (1–2 oraciones por defecto) y Nivel 2 matemático/cuantitativo a demanda (`CVaR 99%`, `Sharpe/Sortino`, `OLS`, `Brinson-Fachler`, `Markov`, `Kelly`, `Isolation Forest P-06`, `ENB`).
+       - *Bloque C (Ficha Técnica `P-01`..`P-13` y `FinOps`):* Rol de cada uno de los 13 módulos, topología DAG (GitHub Actions + GCP Cloud Run + BigQuery + Supabase) y arquitectura *Scale-to-Zero* (`~$0.95/mes`).
+    2. **Versatilidad Conversacional Real (Cero Respuestas Enlatadas):**
+       - *Contexto, no plantillas fijas:* Los 3 bloques alimentan al motor como hechos verificados que se combinan con la pregunta puntual del usuario y los datos en vivo.
+       - *Memoria Multi-turno:* El agente mantiene el hilo de la charla (si el usuario pregunta por un concepto y luego repregunta *"¿y cómo afecta eso a mi cartera si sumo BTC?"*, cruza el concepto previo con su cartera real).
+       - *Motor Híbrido Dinámico:* Conexión a LLM con *system prompt* estricto + sintetizador local dinámico que ensambla respuestas a medida cruzando intención, historial de charla y métricas en tiempo real.
 
 - [ ] **Paso 2.3 — Conciencia de Datos en Vivo (`Live Context Reader`):**
   - **Objetivo:** Conectar al agente (en modo lectura) con el estado real de la sesión: vista actual, activo seleccionado (entre los 213 activos), ventana temporal (`1m` a `ALL`), cartera armada por el usuario y estado de los módulos de `System`, para que dé diagnósticos reales y personalizados.
@@ -218,5 +224,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Paso 1.6 (Markets)** | `[x] Definido` | Se definieron los textos del 3er renglón de las 4 tarjetas KPI del Screener, la línea inferior bilingüe (humano + Quant) en `Analytics` y el subtítulo de `Research`. |
 | 2026-11-06 | **Paso 1.7 (Portfolio)** | `[x] Definido` | Se definieron los textos del 3er renglón de las 6 tarjetas KPI de `Builder`, los 3 Presets de cartera (*Conservadora, Balanceada, Quant*), las traducciones en `Risk` (*Stress 2008* y *Régimen Markov*) y las etiquetas guía del Criterio de Kelly en `Simulator`. **Fase 1 100% definida.** |
 | 2026-11-06 | **Paso 2.1 (Agente)** | `[x] Definido` | Se definió ubicar el botón en la esquina superior derecha, con saludo mínimo de 1 línea, 4 opciones predefinidas con respuestas cortas centradas 100% en el producto (dónde ver cada cosa) y *guardrails* estrictos de alcance (*Scope Lock*). |
-| — | **Paso 2.2 (Agente)** | `[~] En definición` | Definir el Mapa de Conocimiento estructurado del Agente (Mapa Funcional de Vistas, Diccionario Financiero en 2 niveles y Ficha Técnica de Arquitectura/FinOps). |
+| 2026-11-06 | **Paso 2.2 (Agente)** | `[x] Definido` | Se definió la Base de Conocimiento en 3 bloques (Funcional, Financiero en 2 niveles y Técnico `P-01`..`P-13`/FinOps) operando como contexto dinámico con memoria multi-turno para garantizar versatilidad conversacional real (sin respuestas cerradas/enlatadas). |
+| — | **Paso 2.3 (Agente)** | `[~] En definición` | Definir qué datos en vivo de toda la app lee el Agente (`Live Context Reader`) para responder con los números reales que el usuario tiene en pantalla. |
 
