@@ -98,7 +98,7 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
     ];
 
     return (
-        <div className="resp-kpi-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px' }}>
+        <div className="resp-kpi-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px', alignItems: 'stretch' }}>
             {pills.map(p => (
                 <div
                     key={p.lbl}
@@ -108,14 +108,21 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
                         borderLeft: `3px solid ${p.col}`,
                         borderRadius: '10px',
                         padding: '10px 13px',
-                        minWidth: 0
+                        minWidth: 0,
+                        minHeight: '84px',
+                        boxSizing: 'border-box',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between'
                     }}
                 >
-                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>{p.lbl}</div>
-                    <div style={{ fontSize: '19px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '3px' }}>
+                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {p.lbl}
+                    </div>
+                    <div style={{ fontSize: '18.5px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '2px', whiteSpace: 'nowrap' }}>
                         {p.val}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
+                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {p.sub}
                     </div>
                 </div>

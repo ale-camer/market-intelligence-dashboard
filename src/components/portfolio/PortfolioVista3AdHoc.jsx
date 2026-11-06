@@ -71,10 +71,10 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
             col: deltaDD >= 0 ? '#10b981' : '#f43f5e'
         },
         {
-            lbl: tx('CAPITAL TÁCTICO / CARTERA TOTAL', 'TACTICAL CAPITAL / TOTAL NAV'),
-            val: `${effAlloc.toFixed(1)}% NAV ($${(effAlloc * 1000).toLocaleString()})`,
+            lbl: tx('CAPITAL TÁCTICO (NAV)', 'TACTICAL CAPITAL (NAV)'),
+            val: `${effAlloc.toFixed(1)}% ($${(effAlloc * 1000).toLocaleString()})`,
             sub: isCapped
-                ? tx('⚠ Tope Guardrail 20% NAV Aplicado', '⚠ 20% NAV Guardrail Cap Applied')
+                ? tx('⚠ Tope Guardrail 20% NAV', '⚠ 20% NAV Guardrail Cap')
                 : txTpl("{0}% Cartera Core Intacta", [Math.max(0, 100 - effAlloc).toFixed(0)], "{0}% Core Portfolio Intact", [Math.max(0, 100 - effAlloc).toFixed(0)]),
             col: isCapped ? '#f43f5e' : '#10b981'
         },
@@ -84,13 +84,13 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
                 c.p06 < 0.65 && !isCapped
                     ? tx('APROBADO (3/3)', 'APPROVED (3/3)')
                     : tx('RECORTE GUARDRAIL', 'GUARDRAIL TRIM'),
-            sub: `P-06 = ${c.p06} (${tx('Umbral', 'Limit')} < 0.65) • Cap ≤ 20%`,
+            sub: `P-06 = ${c.p06} (< 0.65) • Cap ≤ 20%`,
             col: c.p06 < 0.65 && !isCapped ? '#10b981' : '#f43f5e'
         }
     ];
 
     return (
-        <div className="resp-kpi-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px' }}>
+        <div className="resp-kpi-grid-6" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: '8px', alignItems: 'stretch' }}>
             {pills.map(p => (
                 <div
                     key={p.lbl}
@@ -99,14 +99,24 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
                         border: '1px solid rgba(148, 163, 184, 0.22)',
                         borderLeft: `3px solid ${p.col}`,
                         borderRadius: '10px',
-                        padding: '10px 13px'
+                        padding: '10px 13px',
+                        minWidth: 0,
+                        minHeight: '84px',
+                        boxSizing: 'border-box',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between'
                     }}
                 >
-                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>{p.lbl}</div>
-                    <div style={{ fontSize: '19px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '3px' }}>
+                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {p.lbl}
+                    </div>
+                    <div style={{ fontSize: '18.5px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '2px', whiteSpace: 'nowrap' }}>
                         {p.val}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>{p.sub}</div>
+                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {p.sub}
+                    </div>
                 </div>
             ))}
         </div>
