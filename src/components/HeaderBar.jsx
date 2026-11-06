@@ -1437,54 +1437,28 @@ export default function HeaderBar({
         title="Home"
         placement="bottom-left"
       >
-        {(isHovered) => {
-          const isHomeActive = activeTab === 'presentation' || isHovered;
-          return (
-            <div
-              onClick={() => onNavigate('presentation')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '0.42rem',
-                cursor: 'pointer',
-                pointerEvents: 'auto',
-              }}
-            >
-              <div
-                style={{
-                  ...wrapStyle,
-                  filter: isBorderless
-                    ? isHomeActive
-                      ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.9)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.45))'
-                      : 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.75))'
-                    : 'none',
-                  transition: 'filter 0.2s ease, transform 0.2s ease',
-                }}
-              >
-                <div style={{ transform: emblemMode === 'diamond' ? 'rotate(-45deg)' : 'none', display: 'flex' }}>
-                  {activeIconObj ? (
-                    activeIconObj.renderSvg(glyphColor, emblemMode === 'default' ? size : 20)
-                  ) : (
-                    <Activity size={17} strokeWidth={2.5} style={{ color: glyphColor }} />
-                  )}
-                </div>
-              </div>
-              <span
-                style={{
-                  fontSize: '0.96rem',
-                  fontWeight: 800,
-                  letterSpacing: '-0.01em',
-                  color: isHomeActive ? 'var(--ui-accent)' : 'rgba(248, 250, 252, 0.92)',
-                  textShadow: isHomeActive ? '0 0 14px rgba(var(--ui-accent-rgb), 0.75)' : 'none',
-                  transition: 'color 0.16s ease, text-shadow 0.16s ease',
-                  userSelect: 'none',
-                }}
-              >
-                Quant
-              </span>
+        {(isHovered) => (
+          <div
+            onClick={() => onNavigate('presentation')}
+            style={{
+              ...wrapStyle,
+              filter: isBorderless
+                ? activeTab === 'presentation' || isHovered
+                  ? 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.9)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.45))'
+                  : 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.75))'
+                : 'none',
+              transition: 'filter 0.2s ease, transform 0.2s ease',
+            }}
+          >
+            <div style={{ transform: emblemMode === 'diamond' ? 'rotate(-45deg)' : 'none', display: 'flex' }}>
+              {activeIconObj ? (
+                activeIconObj.renderSvg(glyphColor, emblemMode === 'default' ? size : 20)
+              ) : (
+                <Activity size={17} strokeWidth={2.5} style={{ color: glyphColor }} />
+              )}
             </div>
-          );
-        }}
+          </div>
+        )}
       </HoverTooltip>
     );
   };
