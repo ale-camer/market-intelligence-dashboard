@@ -44,7 +44,7 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
             lbl: tx('RETORNO ANUAL (CAGR)', 'ANNUAL RETURN (CAGR)'),
             val: isEmpty ? '0.0%' : `${liveMetrics.cagrPct >= 0 ? '+' : ''}${liveMetrics.cagrPct}%`,
             sub: tx('vs +16.5% SPX • Ganancia est.', 'vs +16.5% SPX • Est. gain'),
-            col: isEmpty ? '#64748b' : liveMetrics.cagrPct >= 0 ? '#10b981' : '#f43f5e'
+            col: isEmpty ? 'var(--text-dim, #64748b)' : liveMetrics.cagrPct >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'
         },
         {
             lbl: 'SHARPE / SORTINO',
@@ -61,7 +61,7 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
                     isEmpty ? 'No holdings' : sharpeNum >= 1.5 ? 'Strong (>1.5)' : sharpeNum >= 1.0 ? 'Solid (>1.0)' : 'Moderate (<1.0)'
                 ]
             ),
-            col: isEmpty ? '#64748b' : '#10b981'
+            col: isEmpty ? 'var(--text-dim, #64748b)' : 'var(--accent, #10b981)'
         },
         {
             lbl: 'VaR 95% / CVaR 99% (1D)',
@@ -72,13 +72,13 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
                 'Day: -${0} • Tail: -${1}',
                 [varDollar, cvarDollar]
             ),
-            col: isEmpty ? '#64748b' : '#f43f5e'
+            col: isEmpty ? 'var(--text-dim, #64748b)' : 'var(--danger, #f43f5e)'
         },
         {
             lbl: 'MAX DRAWDOWN (12M)',
             val: isEmpty ? '0.0%' : `${liveMetrics.maxDrawdownPct}%`,
             sub: tx('Caída máx. • Recup.: ~14 días', 'Max drop • Recovery: ~14d'),
-            col: isEmpty ? '#64748b' : '#f43f5e'
+            col: isEmpty ? 'var(--text-dim, #64748b)' : 'var(--danger, #f43f5e)'
         },
         {
             lbl: 'ALPHA BRINSON (12M)',
@@ -89,7 +89,7 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
                 'Edge vs SPX • Beta: {0}',
                 [isEmpty ? '0.00' : liveMetrics.portfolioBeta]
             ),
-            col: isEmpty ? '#64748b' : liveMetrics.brinsonAlphaPct >= 0 ? '#10b981' : '#f43f5e'
+            col: isEmpty ? 'var(--text-dim, #64748b)' : liveMetrics.brinsonAlphaPct >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'
         },
         {
             lbl: tx('ACTIVOS SELECCIONADOS', 'SELECTED ASSETS'),
@@ -100,7 +100,7 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
                 'ENB: {0} • {1}',
                 [isEmpty ? '0.0' : liveMetrics.enb, isEmpty ? 'Empty' : enbNum >= 3.5 ? 'Diversified' : 'Concentrated']
             ),
-            col: isEmpty ? '#64748b' : '#10b981'
+            col: isEmpty ? 'var(--text-dim, #64748b)' : 'var(--accent, #10b981)'
         }
     ];
 
@@ -111,7 +111,7 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
                     key={p.lbl}
                     style={{
                         background: 'transparent',
-                        border: '1px solid rgba(148, 163, 184, 0.22)',
+                        border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                         borderLeft: `3px solid ${p.col}`,
                         borderRadius: '10px',
                         padding: '10px 13px',
@@ -123,13 +123,13 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
                         justifyContent: 'space-between'
                     }}
                 >
-                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-muted, #94a3b8)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {p.lbl}
                     </div>
                     <div style={{ fontSize: '18.5px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '2px', whiteSpace: 'nowrap' }}>
                         {p.val}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {p.sub}
                     </div>
                 </div>
@@ -273,12 +273,12 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
             title: tx('Resumen de Cartera Activa (Portfolio Builder)', 'Active Portfolio Summary (Portfolio Builder)'),
             subtitle: `${activeHoldings.length} ${tx('activos activos', 'active holdings')} • ${tx('Suma', 'Total')}: ${totalWeight.toFixed(1)}% • ${getExportDateStamp()}`,
             metrics: [
-                { label: 'CAGR (ANUAL)', value: `+${live.cagrPct}%`, sub: `Vol ${live.portfolioVolPct}%`, color: '#10b981' },
-                { label: 'SHARPE / SORTINO', value: `${live.sharpeRatio} / ${live.sortinoRatio}`, sub: `Beta ${live.portfolioBeta}`, color: '#38bdf8' },
-                { label: 'VAR 95% / CVAR 99%', value: `${live.var95Pct}% / ${live.cvar99Pct}%`, sub: '1D Tail Risk', color: '#f59e0b' },
-                { label: 'MAX DRAWDOWN', value: `${live.maxDrawdownPct}%`, sub: 'Historical Peak-to-Trough', color: '#f43f5e' },
-                { label: 'ALPHA BRINSON', value: `+${live.brinsonAlphaPct}%`, sub: 'vs S&P 500', color: '#a855f7' },
-                { label: 'MEUCCI ENB', value: `${live.enb}`, sub: `${activeHoldings.length} holdings`, color: '#10b981' },
+                { label: 'CAGR (ANUAL)', value: `+${live.cagrPct}%`, sub: `Vol ${live.portfolioVolPct}%`, color: 'var(--accent, #10b981)' },
+                { label: 'SHARPE / SORTINO', value: `${live.sharpeRatio} / ${live.sortinoRatio}`, sub: `Beta ${live.portfolioBeta}`, color: 'var(--info-text, #38bdf8)' },
+                { label: 'VAR 95% / CVAR 99%', value: `${live.var95Pct}% / ${live.cvar99Pct}%`, sub: '1D Tail Risk', color: 'var(--warn-text, #f59e0b)' },
+                { label: 'MAX DRAWDOWN', value: `${live.maxDrawdownPct}%`, sub: 'Historical Peak-to-Trough', color: 'var(--danger, #f43f5e)' },
+                { label: 'ALPHA BRINSON', value: `+${live.brinsonAlphaPct}%`, sub: 'vs S&P 500', color: 'var(--purple-text, #a855f7)' },
+                { label: 'MEUCCI ENB', value: `${live.enb}`, sub: `${activeHoldings.length} holdings`, color: 'var(--accent, #10b981)' },
             ],
             tableHeaders: ['TICKER', 'ASSET NAME', 'CLASS', 'WEIGHT (%)', 'CAPITAL ($)'],
             tableRows: activeHoldings.map(h => [
@@ -298,7 +298,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
             subtitle={
                 txTpl("{0} activos • Suma: {1}%", [activeHoldings.length, totalWeight.toFixed(1)], "{0} assets • Total: {1}%", [activeHoldings.length, totalWeight.toFixed(1)])
             }
-            color="#10b981"
+            color="var(--accent, #10b981)"
             rightSlot={
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
                     <button
@@ -307,7 +307,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             padding: '2px 4px',
                             border: 'none',
                             background: 'transparent',
-                            color: 'rgba(148, 163, 184, 0.78)',
+                            color: 'var(--text-muted, rgba(148, 163, 184, 0.78))',
                             fontSize: '11.5px',
                             fontWeight: 700,
                             cursor: 'pointer'
@@ -321,7 +321,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             padding: '2px 4px',
                             border: 'none',
                             background: 'transparent',
-                            color: 'rgba(148, 163, 184, 0.78)',
+                            color: 'var(--text-muted, rgba(148, 163, 184, 0.78))',
                             fontSize: '11.5px',
                             fontWeight: 700,
                             cursor: 'pointer'
@@ -335,7 +335,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             padding: '2px 4px',
                             border: 'none',
                             background: 'transparent',
-                            color: 'rgba(148, 163, 184, 0.78)',
+                            color: 'var(--text-muted, rgba(148, 163, 184, 0.78))',
                             fontSize: '11.5px',
                             fontWeight: 700,
                             cursor: 'pointer'
@@ -350,7 +350,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             padding: '2px 4px',
                             border: 'none',
                             background: 'transparent',
-                            color: 'rgba(148, 163, 184, 0.78)',
+                            color: 'var(--text-muted, rgba(148, 163, 184, 0.78))',
                             fontSize: '11.5px',
                             fontWeight: 700,
                             cursor: 'pointer'
@@ -390,7 +390,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                 <>
                     <div style={{ position: 'relative', flex: 1 }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                            <Search size={12} color="#10b981" />
+                            <Search size={12} color="var(--accent, #10b981)" />
                             <input
                                 value={query}
                                 onFocus={() => setOpenDrop(true)}
@@ -406,7 +406,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     background: 'transparent',
                                     border: 'none',
                                     outline: 'none',
-                                    color: '#f8fafc',
+                                    color: 'var(--text-main, #f8fafc)',
                                     fontSize: '13px'
                                 }}
                             />
@@ -419,7 +419,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: filterMode === 'WATCHLIST' ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: filterMode === 'WATCHLIST' ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: filterMode === 'WATCHLIST' ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: filterMode === 'WATCHLIST' ? 800 : 600,
@@ -431,7 +431,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             {openDrop && (
                                 <button
                                     onClick={() => setOpenDrop(false)}
-                                    style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', fontSize: '11.5px' }}
+                                    style={{ background: 'transparent', border: 'none', color: 'var(--text-dim, #64748b)', cursor: 'pointer', fontSize: '11.5px' }}
                                 >
                                     {tx('Cerrar', 'Close')}
                                 </button>
@@ -445,7 +445,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     left: 0,
                                     right: 0,
                                     zIndex: 45,
-                                    background: '#090d16',
+                                    background: 'var(--bg-glass-strong, #090d16)',
                                     border: '1px solid rgba(16,185,129,0.45)',
                                     borderRadius: '7px',
                                     padding: '5px',
@@ -466,19 +466,19 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                             padding: '5px 8px',
                                             borderRadius: '5px',
                                             background: 'transparent',
-                                            border: '1px solid rgba(148,163,184,0.14)',
-                                            color: '#f8fafc',
+                                            border: '1px solid var(--border-slate, rgba(148,163,184,0.14))',
+                                            color: 'var(--text-main, #f8fafc)',
                                             cursor: 'pointer',
                                             textAlign: 'left'
                                         }}
                                     >
                                         <div>
-                                            <div style={{ fontSize: '13px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: '#6ee7b7' }}>
+                                            <div style={{ fontSize: '13px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: 'var(--pos-text, #6ee7b7)' }}>
                                                 + {item.sym}
                                             </div>
-                                            <div style={{ fontSize: '11.5px', color: '#94a3b8' }}>{item.cat}</div>
+                                            <div style={{ fontSize: '11.5px', color: 'var(--text-muted, #94a3b8)' }}>{item.cat}</div>
                                         </div>
-                                        <Plus size={12} color="#10b981" />
+                                        <Plus size={12} color="var(--accent, #10b981)" />
                                     </button>
                                 ))}
                             </div>
@@ -497,8 +497,8 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             padding: '2px 6px',
                             fontSize: '11.5px',
                             fontWeight: 800,
-                            color: '#64748b',
-                            borderBottom: '1px solid rgba(148,163,184,0.12)'
+                            color: 'var(--text-dim, #64748b)',
+                            borderBottom: '1px solid var(--border-slate, rgba(148,163,184,0.12))'
                         }}
                     >
                         {tableHeaders.map((h, i) => {
@@ -525,14 +525,14 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                             background: 'transparent',
                                             border: 'none',
                                             padding: 0,
-                                            color: allEnabled ? '#10b981' : '#64748b',
+                                            color: allEnabled ? 'var(--accent, #10b981)' : 'var(--text-dim, #64748b)',
                                             fontSize: '11.5px',
                                             fontWeight: 800,
                                             cursor: 'pointer',
                                             textAlign: 'left'
                                         }}
                                     >
-                                        {allEnabled ? <CheckSquare size={12} color="#10b981" /> : <Square size={12} color="#64748b" />}
+                                        {allEnabled ? <CheckSquare size={12} color="var(--accent, #10b981)" /> : <Square size={12} color="var(--text-dim, #64748b)" />}
                                     </button>
                                 );
                             }
@@ -551,8 +551,8 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     padding: '28px 14px',
                                     textAlign: 'center',
                                     fontSize: '12.5px',
-                                    color: '#94a3b8',
-                                    borderBottom: '1px solid rgba(148, 163, 184, 0.10)'
+                                    color: 'var(--text-muted, #94a3b8)',
+                                    borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.10))'
                                 }}
                             >
                                 {tx(
@@ -573,7 +573,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                         alignItems: 'center',
                                         padding: '6px 6px',
                                         background: 'transparent',
-                                        borderBottom: '1px solid rgba(148, 163, 184, 0.10)',
+                                        borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.10))',
                                         opacity: isOn ? 1 : 0.48
                                     }}
                                 >
@@ -583,7 +583,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                             onClick={() => toggleEnable(h.sym)}
                                             style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: 0, display: 'flex' }}
                                         >
-                                            {isOn ? <CheckSquare size={13} color="#10b981" /> : <Square size={13} color="#64748b" />}
+                                            {isOn ? <CheckSquare size={13} color="var(--accent, #10b981)" /> : <Square size={13} color="var(--text-dim, #64748b)" />}
                                         </button>
                                     </div>
 
@@ -600,25 +600,25 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                                             fontSize: '13px',
                                                             fontWeight: 900,
                                                             fontFamily: 'var(--font-mono)',
-                                                            color: '#f8fafc',
+                                                            color: 'var(--text-main, #f8fafc)',
                                                             cursor: onOpenAssetInMarkets ? 'pointer' : 'default'
                                                         }}
                                                     >
                                                         {h.sym}{' '}
                                                         {liveAsset?.priceFormatted ? (
-                                                            <span style={{ fontSize: '11px', fontWeight: 700, color: (liveAsset.chg ?? 0) >= 0 ? '#6ee7b7' : '#fda4af' }}>
+                                                            <span style={{ fontSize: '11px', fontWeight: 700, color: (liveAsset.chg ?? 0) >= 0 ? 'var(--pos-text, #6ee7b7)' : 'var(--neg-text, #fda4af)' }}>
                                                                 {liveAsset.priceFormatted}
                                                             </span>
                                                         ) : null}
                                                     </div>
-                                                    <div style={{ fontSize: '11.5px', color: '#64748b' }}>{liveAsset?.name || h.name}</div>
+                                                    <div style={{ fontSize: '11.5px', color: 'var(--text-dim, #64748b)' }}>{liveAsset?.name || h.name}</div>
                                                 </>
                                             );
                                         })()}
                                     </div>
 
                                     {/* Intermedia 2: Centrada */}
-                                    <span style={{ fontSize: '11.5px', color: '#94a3b8', textAlign: 'center' }}>{h.cat}</span>
+                                    <span style={{ fontSize: '11.5px', color: 'var(--text-muted, #94a3b8)', textAlign: 'center' }}>{h.cat}</span>
 
                                     {/* Intermedia 3: Centrada */}
                                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
@@ -628,9 +628,9 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                                 width: '20px',
                                                 height: '20px',
                                                 borderRadius: '4px',
-                                                border: '1px solid rgba(148,163,184,0.22)',
+                                                border: '1px solid var(--border-slate, rgba(148,163,184,0.22))',
                                                 background: 'transparent',
-                                                color: '#cbd5e1',
+                                                color: 'var(--text-body, #cbd5e1)',
                                                 fontSize: '11px',
                                                 fontWeight: 900,
                                                 cursor: 'pointer'
@@ -648,7 +648,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                                 background: 'transparent',
                                                 border: '1px solid rgba(16,185,129,0.38)',
                                                 borderRadius: '4px',
-                                                color: '#10b981',
+                                                color: 'var(--accent, #10b981)',
                                                 fontSize: '13px',
                                                 fontWeight: 900,
                                                 fontFamily: 'var(--font-mono)',
@@ -661,9 +661,9 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                                 width: '20px',
                                                 height: '20px',
                                                 borderRadius: '4px',
-                                                border: '1px solid rgba(148,163,184,0.22)',
+                                                border: '1px solid var(--border-slate, rgba(148,163,184,0.22))',
                                                 background: 'transparent',
-                                                color: '#cbd5e1',
+                                                color: 'var(--text-body, #cbd5e1)',
                                                 fontSize: '11px',
                                                 fontWeight: 900,
                                                 cursor: 'pointer'
@@ -674,7 +674,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                     </div>
 
                                     {/* Intermedia 4: Centrada */}
-                                    <span style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', color: '#cbd5e1', textAlign: 'center' }}>
+                                    <span style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', color: 'var(--text-body, #cbd5e1)', textAlign: 'center' }}>
                                         ${isOn ? ((h.weight || 0) * 1000).toLocaleString() : '0'}
                                     </span>
 
@@ -686,12 +686,12 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                                                 style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: 0 }}
                                                 title={tx('Seguir en Watchlist ★', 'Track in Watchlist ★')}
                                             >
-                                                <Star size={11} color={inWatch ? '#10b981' : '#64748b'} fill={inWatch ? '#10b981' : 'none'} />
+                                                <Star size={11} color={inWatch ? 'var(--accent, #10b981)' : 'var(--text-dim, #64748b)'} fill={inWatch ? 'var(--accent, #10b981)' : 'none'} />
                                             </button>
                                         )}
                                         <button
                                             onClick={() => removeAsset(h.sym)}
-                                            style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', padding: 0 }}
+                                            style={{ background: 'transparent', border: 'none', color: 'var(--text-dim, #64748b)', cursor: 'pointer', padding: 0 }}
                                             title={tx('Quitar activo', 'Remove asset')}
                                         >
                                             <Trash2 size={11} />
@@ -752,7 +752,7 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
         <PortfolioCardShell
             badge="FILA 2 • DERECHA ARRIBA"
             title={tx('Exposición y Atribución', 'Exposure & Attribution')}
-            color="#10b981"
+            color="var(--accent, #10b981)"
             style={{ flex: 1 }}
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
@@ -772,7 +772,7 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: active ? 800 : 600,
@@ -790,7 +790,7 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
             {tab === 'XRAY' && (
                 <div className="resp-portfolio-table-scroll">
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '6px', fontSize: '11.5px', fontFamily: 'var(--font-mono)', minWidth: '410px' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.1fr 1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1.1fr 1fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {xrayHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, xrayHeaders.length) }}>{h}</span>
                         ))}
@@ -804,13 +804,13 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
                                 padding: '6px 6px',
                                 borderRadius: '5px',
                                 background: 'transparent',
-                                borderBottom: '1px solid rgba(148, 163, 184, 0.08)',
+                                borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.08))',
                                 alignItems: 'center'
                             }}
                         >
-                            <span style={{ textAlign: 'left', fontWeight: 900, color: '#f8fafc' }}>{it[0]}</span>
-                            <span style={{ textAlign: 'center', color: '#cbd5e1' }}>{it[1]}</span>
-                            <span style={{ textAlign: 'center', color: '#6ee7b7' }}>{it[2]}</span>
+                            <span style={{ textAlign: 'left', fontWeight: 900, color: 'var(--text-main, #f8fafc)' }}>{it[0]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-body, #cbd5e1)' }}>{it[1]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--pos-text, #6ee7b7)' }}>{it[2]}</span>
                             <span style={{ textAlign: 'right', padding: '1.5px 6px', borderRadius: '4px', fontWeight: 900, justifySelf: 'end', ...getSemanticReturnStyle(it[4], 10) }}>
                                 {it[3]}
                             </span>
@@ -823,38 +823,38 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
             {tab === 'EXP' && (
                 <div className="resp-portfolio-3col-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', fontSize: '11.5px' }}>
                     <div style={{ background: 'transparent', padding: '7px', borderRadius: '6px' }}>
-                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>
+                        <div style={{ fontWeight: 800, color: 'var(--text-muted, #94a3b8)', marginBottom: '3px', fontSize: '11.5px' }}>
                             {tx('CLASE DE ACTIVO', 'ASSET CLASS')}
                         </div>
                         {byCat.map(([c, w]) => (
                             <div key={c} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
-                                <span style={{ color: '#e2e8f0' }}>{c}</span>
-                                <span style={{ fontFamily: 'var(--font-mono)', color: '#10b981', fontWeight: 800 }}>{w.toFixed(0)}%</span>
+                                <span style={{ color: 'var(--text-secondary, #e2e8f0)' }}>{c}</span>
+                                <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent, #10b981)', fontWeight: 800 }}>{w.toFixed(0)}%</span>
                             </div>
                         ))}
                     </div>
                     <div style={{ background: 'transparent', padding: '7px', borderRadius: '6px' }}>
-                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>
+                        <div style={{ fontWeight: 800, color: 'var(--text-muted, #94a3b8)', marginBottom: '3px', fontSize: '11.5px' }}>
                             {tx('MONEDA SUBYACENTE', 'UNDERLYING CURRENCY')}
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>{tx('USD Duro', 'Hard USD')}</span><span style={{ fontFamily: 'var(--font-mono)', color: '#10b981', fontWeight: 800 }}>68%</span></div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>{tx('Oro Físico', 'Physical Gold')}</span><span style={{ fontFamily: 'var(--font-mono)', color: '#6ee7b7', fontWeight: 800 }}>18%</span></div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>{tx('Crypto Descentr.', 'Decentr. Crypto')}</span><span style={{ fontFamily: 'var(--font-mono)', color: '#a7f3d0', fontWeight: 800 }}>14%</span></div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>{tx('USD Duro', 'Hard USD')}</span><span style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent, #10b981)', fontWeight: 800 }}>68%</span></div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>{tx('Oro Físico', 'Physical Gold')}</span><span style={{ fontFamily: 'var(--font-mono)', color: 'var(--pos-text, #6ee7b7)', fontWeight: 800 }}>18%</span></div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>{tx('Crypto Descentr.', 'Decentr. Crypto')}</span><span style={{ fontFamily: 'var(--font-mono)', color: 'var(--pos-text-soft, #a7f3d0)', fontWeight: 800 }}>14%</span></div>
                     </div>
                     <div style={{ background: 'transparent', padding: '7px', borderRadius: '6px' }}>
-                        <div style={{ fontWeight: 800, color: '#94a3b8', marginBottom: '3px', fontSize: '11.5px' }}>
+                        <div style={{ fontWeight: 800, color: 'var(--text-muted, #94a3b8)', marginBottom: '3px', fontSize: '11.5px' }}>
                             {tx('LIQUIDEZ DE SALIDA', 'EXIT LIQUIDITY')}
                         </div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>{tx('Inmediata T+0', 'Immediate T+0')}</span><span style={{ fontFamily: 'var(--font-mono)', color: '#10b981', fontWeight: 800 }}>86%</span></div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>Spot 24/7</span><span style={{ fontFamily: 'var(--font-mono)', color: '#6ee7b7', fontWeight: 800 }}>14%</span></div>
-                        <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>{tx('Ilíquido (>3d)', 'Illiquid (>3d)')}</span><span style={{ fontFamily: 'var(--font-mono)', color: '#64748b', fontWeight: 800 }}>0%</span></div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>{tx('Inmediata T+0', 'Immediate T+0')}</span><span style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent, #10b981)', fontWeight: 800 }}>86%</span></div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}><span>Spot 24/7</span><span style={{ fontFamily: 'var(--font-mono)', color: 'var(--pos-text, #6ee7b7)', fontWeight: 800 }}>14%</span></div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between' }}><span>{tx('Ilíquido (>3d)', 'Illiquid (>3d)')}</span><span style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-dim, #64748b)', fontWeight: 800 }}>0%</span></div>
                     </div>
                 </div>
             )}
 
             {tab === 'ALPHA' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 0.8fr 0.8fr 0.8fr 0.9fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 0.8fr 0.8fr 0.8fr 0.9fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {brinsonHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, brinsonHeaders.length) }}>{h}</span>
                         ))}
@@ -871,10 +871,10 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
                                 alignItems: 'center'
                             }}
                         >
-                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 700, color: '#e2e8f0' }}>{it[0]}</span>
-                            <span style={{ textAlign: 'center', color: it[1].startsWith('-') ? '#fda4af' : '#6ee7b7' }}>{it[1]}</span>
-                            <span style={{ textAlign: 'center', color: '#10b981' }}>{it[2]}</span>
-                            <span style={{ textAlign: 'center', color: '#94a3b8' }}>{it[3]}</span>
+                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 700, color: 'var(--text-secondary, #e2e8f0)' }}>{it[0]}</span>
+                            <span style={{ textAlign: 'center', color: it[1].startsWith('-') ? 'var(--neg-text, #fda4af)' : 'var(--pos-text, #6ee7b7)' }}>{it[1]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--accent, #10b981)' }}>{it[2]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-muted, #94a3b8)' }}>{it[3]}</span>
                             <span style={{ textAlign: 'right', padding: '1.5px 6px', borderRadius: '4px', fontWeight: 900, justifySelf: 'end', ...getSemanticReturnStyle(it[5], 6) }}>
                                 {it[4]}
                             </span>
@@ -886,20 +886,20 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
             {tab === 'YIELD' && (
                 <div className="resp-portfolio-3col-inner" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
                     <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
-                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{tx('CUPONES TLT (4.4%)', 'TLT COUPONS (4.4%)')}</div>
-                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>
+                        <div style={{ color: 'var(--text-dim, #64748b)', fontSize: '11.5px', fontWeight: 800 }}>{tx('CUPONES TLT (4.4%)', 'TLT COUPONS (4.4%)')}</div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: 'var(--accent, #10b981)', fontSize: '13px', marginTop: '2px' }}>
                             +${m.couponsAnnualUsd.toLocaleString()} {tx('/ año', '/ yr')}
                         </div>
                     </div>
                     <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
-                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{tx('DIVIDENDOS ACCIONES / ETF', 'EQUITY / ETF DIVIDENDS')}</div>
-                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#6ee7b7', fontSize: '13px', marginTop: '2px' }}>
+                        <div style={{ color: 'var(--text-dim, #64748b)', fontSize: '11.5px', fontWeight: 800 }}>{tx('DIVIDENDOS ACCIONES / ETF', 'EQUITY / ETF DIVIDENDS')}</div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: 'var(--pos-text, #6ee7b7)', fontSize: '13px', marginTop: '2px' }}>
                             +${m.dividendsAnnualUsd.toLocaleString()} {tx('/ año', '/ yr')}
                         </div>
                     </div>
                     <div style={{ background: 'transparent', padding: '8px', borderRadius: '6px' }}>
-                        <div style={{ color: '#64748b', fontSize: '11.5px', fontWeight: 800 }}>{tx('TOTAL RENTA PASIVA', 'TOTAL PASSIVE YIELD')}</div>
-                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: '#10b981', fontSize: '13px', marginTop: '2px' }}>
+                        <div style={{ color: 'var(--text-dim, #64748b)', fontSize: '11.5px', fontWeight: 800 }}>{tx('TOTAL RENTA PASIVA', 'TOTAL PASSIVE YIELD')}</div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontWeight: 900, color: 'var(--accent, #10b981)', fontSize: '13px', marginTop: '2px' }}>
                             +${m.totalYieldUsd.toLocaleString()} ({m.totalYieldPct}%)
                         </div>
                     </div>
@@ -908,7 +908,7 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
 
             {tab === 'CUST' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 0.8fr 0.8fr 1.1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 0.8fr 0.8fr 1.1fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {custHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, custHeaders.length) }}>{h}</span>
                         ))}
@@ -925,9 +925,9 @@ function Row2RightAnatomyAndAlpha({ holdings, liveMetrics, isES = false }) {
                                 alignItems: 'center'
                             }}
                         >
-                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: '#e2e8f0' }}>{c[0]}</span>
-                            <span style={{ textAlign: 'center', color: '#6ee7b7', fontWeight: 900 }}>{c[1]}</span>
-                            <span style={{ textAlign: 'center', color: '#94a3b8' }}>{c[2]}</span>
+                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: 'var(--text-secondary, #e2e8f0)' }}>{c[0]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--pos-text, #6ee7b7)', fontWeight: 900 }}>{c[1]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-muted, #94a3b8)' }}>{c[2]}</span>
                             <span style={{ textAlign: 'right', padding: '1.5px 6px', borderRadius: '4px', fontWeight: 800, justifySelf: 'end', ...getSemanticReturnStyle(c[4], 10) }}>
                                 {c[3]}
                             </span>
@@ -949,19 +949,19 @@ function Row2RightMonthlyCalendar({ isES = false }) {
             badge="FILA 2 • DERECHA ABAJO"
             title={tx('Retornos Mensuales', 'Monthly Returns')}
             subtitle={tx('Ene – Dic', 'Jan – Dec')}
-            color="#10b981"
+            color="var(--accent, #10b981)"
             style={{ flex: 1 }}
         >
             <div className="resp-portfolio-table-scroll">
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '6px', minWidth: '510px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '42px repeat(12, 1fr) 54px', gap: '3px', fontSize: '11.5px', color: '#64748b', fontWeight: 800 }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '42px repeat(12, 1fr) 54px', gap: '3px', fontSize: '11.5px', color: 'var(--text-dim, #64748b)', fontWeight: 800 }}>
                     {headers.map((h, i) => (
                         <span key={h} style={{ textAlign: colAlign(i, headers.length) }}>{h}</span>
                     ))}
                 </div>
                 {MONTHLY_HEATMAP.map(row => (
                     <div key={row.yr} style={{ display: 'grid', gridTemplateColumns: '42px repeat(12, 1fr) 54px', gap: '3px', alignItems: 'center' }}>
-                        <span style={{ textAlign: 'left', fontSize: '11.5px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: '#cbd5e1' }}>
+                        <span style={{ textAlign: 'left', fontSize: '11.5px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: 'var(--text-body, #cbd5e1)' }}>
                             {row.yr}
                         </span>
                         {row.m.map((v, idx) => (
@@ -986,7 +986,7 @@ function Row2RightMonthlyCalendar({ isES = false }) {
                                 fontSize: '11.5px',
                                 fontWeight: 900,
                                 fontFamily: 'var(--font-mono)',
-                                color: '#6ee7b7'
+                                color: 'var(--pos-text, #6ee7b7)'
                             }}
                         >
                             +{row.ytd}%
@@ -1026,7 +1026,7 @@ function Row3FullWidthBacktest({ holdings, isES = false }) {
             badge="FILA 3 • ANCHO COMPLETO (100%)"
             title={tx('Rendimiento Histórico', 'Historical Performance')}
             subtitle={txTpl("Ventana {0} • Cartera vs {1}", [timeframe, meta.label], "{0} Window • Portfolio vs {1}", [timeframe, meta.label])}
-            color="#10b981"
+            color="var(--accent, #10b981)"
             rightSlot={
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -1040,7 +1040,7 @@ function Row3FullWidthBacktest({ holdings, isES = false }) {
                                         padding: '2px 5px',
                                         border: 'none',
                                         background: 'transparent',
-                                        color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                        color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                         textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                         fontSize: '12px',
                                         fontWeight: active ? 800 : 600,
@@ -1065,7 +1065,7 @@ function Row3FullWidthBacktest({ holdings, isES = false }) {
                                         padding: '2px 5px',
                                         border: 'none',
                                         background: 'transparent',
-                                        color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                        color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                         textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                         fontSize: '12px',
                                         fontWeight: active ? 800 : 600,
@@ -1085,21 +1085,21 @@ function Row3FullWidthBacktest({ holdings, isES = false }) {
                     <AreaChart data={chartData} margin={{ top: 6, right: 14, left: -16, bottom: 0 }}>
                         <defs>
                             <linearGradient id="prodV1PortGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#10b981" stopOpacity={0.45} />
-                                <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
+                                <stop offset="5%" stopColor="var(--accent, #10b981)" stopOpacity={0.45} />
+                                <stop offset="95%" stopColor="var(--accent, #10b981)" stopOpacity={0.0} />
                             </linearGradient>
                         </defs>
                         <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.08)" />
-                        <XAxis dataKey="date" tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
-                        <YAxis domain={['auto', 'auto']} tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
+                        <XAxis dataKey="date" tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9.5 }} axisLine={false} tickLine={false} />
+                        <YAxis domain={['auto', 'auto']} tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9.5 }} axisLine={false} tickLine={false} />
                         <RechartsTooltip
-                            contentStyle={{ background: '#090d16', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }}
+                            contentStyle={{ background: 'var(--bg-glass-strong, #090d16)', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }}
                         />
                         <Area
                             type="monotone"
                             dataKey={activeBench}
                             name={meta.label}
-                            stroke="#94a3b8"
+                            stroke="var(--text-muted, #94a3b8)"
                             strokeWidth={1.6}
                             strokeDasharray="4 3"
                             fill="none"
@@ -1108,7 +1108,7 @@ function Row3FullWidthBacktest({ holdings, isES = false }) {
                             type="monotone"
                             dataKey="port"
                             name={tx('Tu Cartera Activa', 'Active Portfolio')}
-                            stroke="#10b981"
+                            stroke="var(--accent, #10b981)"
                             strokeWidth={2.3}
                             fill="url(#prodV1PortGrad)"
                         />

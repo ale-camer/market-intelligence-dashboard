@@ -1317,7 +1317,7 @@ export default function HeaderBar({
   devBoxStyleId = 'free-green',
   headerVariantId = 'v001',
 }) {
-  const isLightHome = activeTab === 'presentation' && lightMode;
+  const isLightHome = Boolean(lightMode);
   const variant = resolveHeaderVariant(headerVariantId);
   const activeIconObj = DEV_ICON_CATALOG.find((i) => i.id === devIconId) || DEV_ICON_CATALOG[0];
   const activeBoxObj = DEV_BOX_STYLES.find((b) => b.id === devBoxStyleId) || DEV_BOX_STYLES[0];
@@ -1458,7 +1458,9 @@ export default function HeaderBar({
                   ? isLightHome
                     ? 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb), 0.6)) drop-shadow(0 1px 4px rgba(255, 255, 255, 0.95))'
                     : 'drop-shadow(0 0 10px rgba(var(--ui-accent-rgb), 0.9)) drop-shadow(0 0 20px rgba(var(--ui-accent-rgb), 0.45))'
-                  : 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.75))'
+                  : isLightHome
+                    ? 'drop-shadow(0 1px 6px rgba(255, 255, 255, 0.92))'
+                    : 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.75))'
                 : 'none',
               transition: 'filter 0.2s ease, transform 0.2s ease',
             }}

@@ -230,7 +230,7 @@ export default function GlobalAgentDrawer({
             if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
               const inner = part.slice(2, -2);
               return (
-                <strong key={pIdx} style={{ color: '#ffffff', fontWeight: 700 }}>
+                <strong key={pIdx} style={{ color: 'var(--text-main, #ffffff)', fontWeight: 700 }}>
                   {renderInlineCode(inner, `${lIdx}-${pIdx}`)}
                 </strong>
               );
@@ -270,16 +270,16 @@ export default function GlobalAgentDrawer({
         right: '12px',
         width: 'min(410px, calc(100vw - 24px))',
         zIndex: 95,
-        backgroundColor: 'rgba(7, 11, 20, 0.96)',
+        backgroundColor: 'var(--bg-glass-strong, rgba(7, 11, 20, 0.96))',
         backdropFilter: 'blur(20px)',
-        border: '1px solid rgba(148, 163, 184, 0.24)',
+        border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.24))',
         borderRadius: '12px',
         boxShadow: '0 20px 48px rgba(0, 0, 0, 0.82)',
         padding: '14px 16px',
         display: 'flex',
         flexDirection: 'column',
         gap: '10px',
-        color: '#f8fafc',
+        color: 'var(--text-main, #f8fafc)',
       }}
     >
       {/* Header + Live Context Pill + New Chat / Close */}
@@ -290,7 +290,7 @@ export default function GlobalAgentDrawer({
           justifyContent: 'space-between',
           gap: '8px',
           paddingBottom: '9px',
-          borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
+          borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
           flexShrink: 0,
         }}
       >
@@ -306,14 +306,14 @@ export default function GlobalAgentDrawer({
                 flexShrink: 0,
               }}
             />
-            <span style={{ fontSize: '14px', fontWeight: 700, color: '#ffffff' }}>
+            <span style={{ fontSize: '14px', fontWeight: 700, color: 'var(--text-main, #ffffff)' }}>
               {tx('Agente Guía', 'Guide Agent')}
             </span>
           </div>
           <div
             style={{
               fontSize: '11px',
-              color: '#94a3b8',
+              color: 'var(--text-muted, #94a3b8)',
               fontFamily: 'var(--font-mono)',
               whiteSpace: 'nowrap',
               overflow: 'hidden',
@@ -341,10 +341,10 @@ export default function GlobalAgentDrawer({
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '5px',
-                  background: 'rgba(15, 23, 42, 0.7)',
-                  border: '1px solid rgba(148, 163, 184, 0.24)',
+                  background: 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.7))',
+                  border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.24))',
                   borderRadius: '6px',
-                  color: '#cbd5e1',
+                  color: 'var(--text-body, #cbd5e1)',
                   fontSize: '11px',
                   fontWeight: 600,
                   cursor: 'pointer',
@@ -357,7 +357,7 @@ export default function GlobalAgentDrawer({
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.24)';
-                  e.currentTarget.style.color = '#cbd5e1';
+                  e.currentTarget.style.color = 'var(--text-body, #cbd5e1)';
                 }}
               >
                 <RotateCcw size={11} />
@@ -373,7 +373,7 @@ export default function GlobalAgentDrawer({
             style={{
               background: 'transparent',
               border: 'none',
-              color: '#94a3b8',
+              color: 'var(--text-muted, #94a3b8)',
               cursor: 'pointer',
               display: 'flex',
               padding: '4px',
@@ -404,10 +404,10 @@ export default function GlobalAgentDrawer({
               style={{
                 padding: '10px 12px',
                 borderRadius: '8px',
-                background: 'rgba(15, 23, 42, 0.45)',
-                border: '1px solid rgba(148, 163, 184, 0.16)',
+                background: 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.45))',
+                border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.16))',
                 fontSize: '12.6px',
-                color: '#e2e8f0',
+                color: 'var(--text-secondary, #e2e8f0)',
                 lineHeight: 1.5,
               }}
             >
@@ -419,7 +419,7 @@ export default function GlobalAgentDrawer({
                 style={{
                   fontSize: '10.5px',
                   fontWeight: 600,
-                  color: '#64748b',
+                  color: 'var(--text-dim, #64748b)',
                   textTransform: 'uppercase',
                   letterSpacing: '0.04em',
                   paddingLeft: '2px',
@@ -437,9 +437,9 @@ export default function GlobalAgentDrawer({
                     style={{
                       padding: '7px 10px',
                       borderRadius: '7px',
-                      border: '1px solid rgba(148, 163, 184, 0.22)',
-                      background: 'rgba(15, 23, 42, 0.55)',
-                      color: '#e2e8f0',
+                      border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
+                      background: 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.55))',
+                      color: 'var(--text-secondary, #e2e8f0)',
                       fontSize: '11.8px',
                       fontWeight: 600,
                       cursor: 'pointer',
@@ -452,7 +452,7 @@ export default function GlobalAgentDrawer({
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.22)';
-                      e.currentTarget.style.color = '#e2e8f0';
+                      e.currentTarget.style.color = 'var(--text-secondary, #e2e8f0)';
                     }}
                   >
                     {lbl}
@@ -491,7 +491,7 @@ export default function GlobalAgentDrawer({
                     background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
                     border: '1px solid rgba(var(--ui-accent-rgb, 16, 185, 129), 0.55)',
                     fontSize: '12.5px',
-                    color: '#e2e8f0',
+                    color: 'var(--text-secondary, #e2e8f0)',
                     lineHeight: 1.5,
                     alignSelf: 'flex-end',
                     maxWidth: '92%',
@@ -519,10 +519,10 @@ export default function GlobalAgentDrawer({
                     flexShrink: 0,
                     padding: '10px 30px 10px 12px',
                     borderRadius: '8px',
-                    background: 'rgba(15, 23, 42, 0.52)',
-                    border: '1px solid rgba(148, 163, 184, 0.18)',
+                    background: 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.52))',
+                    border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.18))',
                     fontSize: '12.5px',
-                    color: '#e2e8f0',
+                    color: 'var(--text-secondary, #e2e8f0)',
                     lineHeight: 1.54,
                     alignSelf: 'stretch',
                     maxWidth: '100%',
@@ -542,7 +542,7 @@ export default function GlobalAgentDrawer({
                       right: '7px',
                       background: 'transparent',
                       border: 'none',
-                      color: copiedIdx === turn.aiIdx ? 'var(--ui-accent, #10b981)' : '#64748b',
+                      color: copiedIdx === turn.aiIdx ? 'var(--ui-accent, #10b981)' : 'var(--text-dim, #64748b)',
                       cursor: 'pointer',
                       padding: '3px',
                       display: 'inline-flex',
@@ -563,10 +563,10 @@ export default function GlobalAgentDrawer({
                     flexShrink: 0,
                     padding: '9px 12px',
                     borderRadius: '8px',
-                    background: 'rgba(15, 23, 42, 0.35)',
-                    border: '1px solid rgba(148, 163, 184, 0.14)',
+                    background: 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.35))',
+                    border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                     fontSize: '11.8px',
-                    color: '#94a3b8',
+                    color: 'var(--text-muted, #94a3b8)',
                     fontStyle: 'italic',
                   }}
                 >
@@ -617,11 +617,11 @@ export default function GlobalAgentDrawer({
             minHeight: '36px',
             maxHeight: '116px',
             lineHeight: '20px',
-            background: 'rgba(15, 23, 42, 0.68)',
-            border: '1px solid rgba(148, 163, 184, 0.28)',
+            background: 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.68))',
+            border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.28))',
             borderRadius: '8px',
             padding: '7px 11px',
-            color: '#f8fafc',
+            color: 'var(--text-main, #f8fafc)',
             fontSize: '12.3px',
             fontFamily: 'inherit',
             outline: 'none',

@@ -75,16 +75,16 @@ import { getCommitteeDeliberation } from '../services/committeeService';
  * Intensity (1..4) scales with how strong the positive or negative deviation is against historical limits.
  */
 const GREEN_SHADES = {
-  1: { stroke: '#6ee7b7', text: '#a7f3d0', bg: 'linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(11, 22, 24, 0.85) 100%)', glow: 'rgba(16, 185, 129, 0.25)' },
-  2: { stroke: '#34d399', text: '#6ee7b7', bg: 'linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(9, 28, 26, 0.88) 100%)', glow: 'rgba(16, 185, 129, 0.38)' },
-  3: { stroke: '#10b981', text: '#34d399', bg: 'linear-gradient(135deg, rgba(16, 185, 129, 0.44) 0%, rgba(6, 36, 30, 0.90) 100%)', glow: 'rgba(16, 185, 129, 0.54)' },
+  1: { stroke: 'var(--pos-text, #6ee7b7)', text: 'var(--pos-text-soft, #a7f3d0)', bg: 'linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(11, 22, 24, 0.85) 100%)', glow: 'rgba(16, 185, 129, 0.25)' },
+  2: { stroke: 'var(--pos-text, #34d399)', text: 'var(--pos-text, #6ee7b7)', bg: 'linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(9, 28, 26, 0.88) 100%)', glow: 'rgba(16, 185, 129, 0.38)' },
+  3: { stroke: 'var(--accent, #10b981)', text: 'var(--pos-text, #34d399)', bg: 'linear-gradient(135deg, rgba(16, 185, 129, 0.44) 0%, rgba(6, 36, 30, 0.90) 100%)', glow: 'rgba(16, 185, 129, 0.54)' },
   4: { stroke: '#059669', text: '#ecfdf5', bg: 'linear-gradient(135deg, rgba(5, 150, 105, 0.65) 0%, rgba(6, 48, 38, 0.94) 100%)', glow: 'rgba(16, 185, 129, 0.72)' },
 };
 
 const RED_SHADES = {
-  1: { stroke: '#fda4af', text: '#fecdd3', bg: 'linear-gradient(135deg, rgba(244, 63, 94, 0.16) 0%, rgba(26, 13, 20, 0.85) 100%)', glow: 'rgba(244, 63, 94, 0.25)' },
-  2: { stroke: '#fb7185', text: '#fda4af', bg: 'linear-gradient(135deg, rgba(244, 63, 94, 0.28) 0%, rgba(34, 12, 22, 0.88) 100%)', glow: 'rgba(244, 63, 94, 0.38)' },
-  3: { stroke: '#f43f5e', text: '#fb7185', bg: 'linear-gradient(135deg, rgba(225, 29, 72, 0.44) 0%, rgba(45, 10, 22, 0.90) 100%)', glow: 'rgba(244, 63, 94, 0.54)' },
+  1: { stroke: 'var(--neg-text, #fda4af)', text: 'var(--neg-text-soft, #fecdd3)', bg: 'linear-gradient(135deg, rgba(244, 63, 94, 0.16) 0%, rgba(26, 13, 20, 0.85) 100%)', glow: 'rgba(244, 63, 94, 0.25)' },
+  2: { stroke: 'var(--neg-text, #fb7185)', text: 'var(--neg-text, #fda4af)', bg: 'linear-gradient(135deg, rgba(244, 63, 94, 0.28) 0%, rgba(34, 12, 22, 0.88) 100%)', glow: 'rgba(244, 63, 94, 0.38)' },
+  3: { stroke: 'var(--danger, #f43f5e)', text: 'var(--neg-text, #fb7185)', bg: 'linear-gradient(135deg, rgba(225, 29, 72, 0.44) 0%, rgba(45, 10, 22, 0.90) 100%)', glow: 'rgba(244, 63, 94, 0.54)' },
   4: { stroke: '#e11d48', text: '#ffe4e6', bg: 'linear-gradient(135deg, rgba(190, 18, 60, 0.65) 0%, rgba(58, 8, 22, 0.94) 100%)', glow: 'rgba(244, 63, 94, 0.72)' },
 };
 
@@ -243,13 +243,13 @@ function evaluateHistoricalMetric(row, metricKey, isES = false) {
 }
 
 // Radial SVG Gauge for Top Aggregated Pulse Cards (Unclipped Directional Shadow)
-function RadialRingGauge({ pct = 50, color = '#10b981', label = '', sub = '', detail = null, size = 54 }) {
+function RadialRingGauge({ pct = 50, color = 'var(--accent, #10b981)', label = '', sub = '', detail = null, size = 54 }) {
   const r = (size - 12) / 2;
   const c = 2 * Math.PI * r;
   const clamped = Math.max(0, Math.min(100, pct));
   const offset = c - (clamped / 100) * c;
   const center = size / 2;
-  const filterId = `ringShadow-${String(label).replace(/[^a-zA-Z0-9]/g, '')}-${color.replace('#', '')}`;
+  const filterId = `ringShadow-${String(label).replace(/[^a-zA-Z0-9]/g, '')}-${String(color).replace(/[^a-zA-Z0-9]/g, '')}`;
 
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
@@ -329,7 +329,7 @@ function RadialRingGauge({ pct = 50, color = '#10b981', label = '', sub = '', de
 // Standardized Standalone Trajectory AreaChart (identical format to Level 1 '24h Aggregate Volume')
 function MiniSparkline({ sym, timeframe = '5M', isPos, color, width = 94, height = 36, version = 0 }) {
   const series = useMemo(() => getAssetSeries(sym, timeframe), [sym, timeframe, version]);
-  const strokeColor = color || (isPos ? '#10b981' : '#f43f5e');
+  const strokeColor = color || (isPos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)');
   const gradId = `sparkGrad-${sym.replace(/[^a-zA-Z0-9_-]/g, '')}-${timeframe}-${width}x${height}`;
 
   return (
@@ -1331,7 +1331,7 @@ export default function MarketAnomaliesView({
       formattedInt: `${isPos ? '+' : ''}${score100}`,
       linePct,
       label: isPos ? (tx('Alcista', 'Bullish')) : tx('Bajista', 'Bearish'),
-      color: isPos ? '#10b981' : '#f43f5e',
+      color: isPos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
       posCount,
       negCount,
     };
@@ -1387,7 +1387,7 @@ export default function MarketAnomaliesView({
   const displayedScore = liveInference ? liveInference.liveScore : anomalyProfile.score;
   const isDislocated = displayedScore >= 0.65 || anomalyProfile.regime === 'DISLOCATION';
   const isElevated = !isDislocated && (displayedScore >= 0.35 || anomalyProfile.regime === 'ELEVATED');
-  const scoreColor = isDislocated ? '#f43f5e' : isElevated ? '#fb7185' : '#10b981';
+  const scoreColor = isDislocated ? 'var(--danger, #f43f5e)' : isElevated ? 'var(--neg-text, #fb7185)' : 'var(--accent, #10b981)';
   const scorePct = Math.min(100, Math.max(5, Math.round(displayedScore * 100)));
 
   const TIMEFRAMES = [
@@ -1470,15 +1470,15 @@ export default function MarketAnomaliesView({
       title: `${currentAsset.sym} — ${currentAsset.name} (${timeframe})`,
       subtitle: `${currentAsset.cat} • Price ${currentAsset.priceFormatted} (${currentAsset.chg}) • P-06 Score ${Number(displayedScore || 0).toFixed(2)} (${anomalyProfile.regime})`,
       metrics: [
-        { label: 'PRICE (SPOT)', value: currentAsset.priceFormatted, sub: `24h: ${currentAsset.chg}`, color: chgPositive ? '#10b981' : '#f43f5e' },
+        { label: 'PRICE (SPOT)', value: currentAsset.priceFormatted, sub: `24h: ${currentAsset.chg}`, color: chgPositive ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)' },
         { label: 'P-06 ANOMALY', value: Number(displayedScore || 0).toFixed(2), sub: anomalyProfile.regime, color: scoreColor },
-        { label: 'VOLUME (24H)', value: currentAsset.vol24h || '—', sub: `Z-Score ${anomalyProfile.volumeZScore || '+0.4σ'}`, color: '#38bdf8' },
-        { label: 'RSI (14)', value: String(currentAsset.indicators?.rsi14 ?? 54), sub: currentAsset.indicators?.macdSignal || 'NEUTRAL', color: '#a855f7' },
-        { label: 'RESEARCH SCORE', value: dynamicResearch.compositeFormatted, sub: `Bull ${dynamicResearch.avgBull} / Bear ${dynamicResearch.avgBear}`, color: '#10b981' },
+        { label: 'VOLUME (24H)', value: currentAsset.vol24h || '—', sub: `Z-Score ${anomalyProfile.volumeZScore || '+0.4σ'}`, color: 'var(--info-text, #38bdf8)' },
+        { label: 'RSI (14)', value: String(currentAsset.indicators?.rsi14 ?? 54), sub: currentAsset.indicators?.macdSignal || 'NEUTRAL', color: 'var(--purple-text, #a855f7)' },
+        { label: 'RESEARCH SCORE', value: dynamicResearch.compositeFormatted, sub: `Bull ${dynamicResearch.avgBull} / Bear ${dynamicResearch.avgBear}`, color: 'var(--accent, #10b981)' },
       ],
       seriesPoints: chartData.map((d) => Number(d.price ?? d.close ?? d.value ?? 0)),
       footerNote: `Markets > Analytics (${selectedAsset} • ${timeframe}) • ${getExportDateStamp()}`,
-      accentColor: chgPositive ? '#10b981' : '#f43f5e',
+      accentColor: chgPositive ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
     });
   };
 
@@ -1563,7 +1563,7 @@ export default function MarketAnomaliesView({
       padding: '0.75rem 1.1rem',
       borderRadius: '10px',
       backgroundColor: 'transparent',
-      border: '1px solid rgba(148, 163, 184, 0.22)',
+      border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
     };
 
     const MAIN_TOOLS_ITEMS = [
@@ -1583,31 +1583,31 @@ export default function MarketAnomaliesView({
         dimension: '3D Mesh / 2D',
         liveStat: 'US 10Y • 2s10s Spread',
         liveValue: '4.86% (+24 bps)',
-        liveColor: '#10b981',
+        liveColor: 'var(--accent, #10b981)',
         svgType: 'mesh-rates',
         quickPresets: [
           {
             label: tx('🇺🇸 US10Y • Tesoro EE.UU.', '🇺🇸 US10Y • US Treasury'),
             statLabel: tx('US10Y • Spread 2s10s', 'US10Y • 2s10s Spread'),
             statValue: '4.86% (+24 bps)',
-            statColor: '#10b981',
+            statColor: 'var(--accent, #10b981)',
             variant: 0,
             seriesLegend: [
               {
                 label: tx('US10Y Curva Hoy', 'US10Y Spot Curve'),
-                color: '#10b981',
+                color: 'var(--accent, #10b981)',
                 dashed: false,
                 desc: tx('Estructura temporal soberana actual de EE.UU. desde 1M hasta 30Y.', 'Current US Treasury yield curve across tenors from 1M to 30Y.'),
               },
               {
                 label: tx('Hace 1 Mes (-1M)', '1M Historical (-1M)'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
                 desc: tx('Curva soberana hace 30 días para visualizar el desplazamiento paralelo o empinamiento.', 'Sovereign yield curve 30 days ago to track parallel shifts or steepening.'),
               },
               {
                 label: tx('Media 1 Año (1Y Avg)', '1Y Average Curve'),
-                color: 'rgba(255,255,255,0.55)',
+                color: 'var(--text-muted, rgba(255,255,255,0.55))',
                 dashed: false,
                 desc: tx('Nivel promedio histórico de los últimos 12 meses por plazo.', 'Trailing 12-month historical average yield across tenors.'),
               },
@@ -1623,24 +1623,24 @@ export default function MarketAnomaliesView({
             label: tx('🌍 Comparador G10 / EM', '🌍 G10 / EM Peer Matrix'),
             statLabel: tx('Dispersión 10Y G10/EM', 'G10/EM 10Y Dispersion'),
             statValue: 'US 4.86% • DE 3.28% • BR 13.15%',
-            statColor: '#38bdf8',
+            statColor: 'var(--info-text, #38bdf8)',
             variant: 1,
             seriesLegend: [
               {
                 label: 'US10Y (4.86%)',
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: false,
                 desc: tx('Curva de referencia del Tesoro de EE.UU. (Benchmark global).', 'US Treasury benchmark curve across all maturities.'),
               },
               {
                 label: 'DE10Y Bund (3.28%)',
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
                 desc: tx('Curva soberana alemana (referencia libre de riesgo en la Eurozona).', 'German Bund sovereign curve (Eurozone risk-free benchmark).'),
               },
               {
                 label: 'JP10Y JGB (2.76%)',
-                color: 'rgba(255,255,255,0.55)',
+                color: 'var(--text-muted, rgba(255,255,255,0.55))',
                 dashed: false,
                 desc: tx('Curva soberana de Japón (ancla de tasas bajas del G10).', 'Japanese Government Bond curve (G10 low-yield anchor).'),
               },
@@ -1656,24 +1656,24 @@ export default function MarketAnomaliesView({
             label: tx('🇩🇪 DE10Y • Bund Alemán', '🇩🇪 DE10Y • German Bund'),
             statLabel: 'DE10Y Bund • 2s10s',
             statValue: '3.28% (+34 bps)',
-            statColor: '#a855f7',
+            statColor: 'var(--purple-text, #a855f7)',
             variant: 2,
             seriesLegend: [
               {
                 label: tx('DE10Y Curva Hoy', 'DE10Y Spot Curve'),
-                color: '#a855f7',
+                color: 'var(--purple-text, #a855f7)',
                 dashed: false,
                 desc: tx('Curva actual del Bund alemán desde 3M hasta 30Y.', 'Current German Bund yield curve from 3M to 30Y.'),
               },
               {
                 label: tx('US10Y Benchmark', 'US10Y Benchmark'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
                 desc: tx('Curva del Tesoro de EE.UU. superpuesta para medir el spread transatlántico.', 'Overlaid US Treasury curve to measure the transatlantic yield spread.'),
               },
               {
                 label: tx('DE10Y Hace 6M', 'DE10Y 6M Ago'),
-                color: 'rgba(255,255,255,0.55)',
+                color: 'var(--text-muted, rgba(255,255,255,0.55))',
                 dashed: false,
                 desc: tx('Estructura temporal alemana hace 6 meses.', 'German sovereign term structure 6 months ago.'),
               },
@@ -1689,24 +1689,24 @@ export default function MarketAnomaliesView({
             label: tx('🇧🇷 BR10Y • Soberano Brasil', '🇧🇷 BR10Y • Brazil Sovereign'),
             statLabel: 'BR10Y DI • 2s10s',
             statValue: '13.15% (+7 bps)',
-            statColor: '#f59e0b',
+            statColor: 'var(--warn-text, #f59e0b)',
             variant: 3,
             seriesLegend: [
               {
                 label: tx('BR10Y Curva Hoy', 'BR10Y Spot Curve'),
-                color: '#f59e0b',
+                color: 'var(--warn-text, #f59e0b)',
                 dashed: false,
                 desc: tx('Curva soberana actual de Brasil (DI Futuro / NTN-F) en moneda local.', 'Current Brazil sovereign yield curve (DI Futures / Local Treasury).'),
               },
               {
                 label: tx('US10Y Benchmark', 'US10Y Benchmark'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
                 desc: tx('Curva del Tesoro de EE.UU. para visualizar el premio por riesgo emergente.', 'US Treasury benchmark curve showing the EM sovereign risk premium.'),
               },
               {
                 label: tx('DE10Y Benchmark', 'DE10Y Benchmark'),
-                color: 'rgba(255,255,255,0.55)',
+                color: 'var(--text-muted, rgba(255,255,255,0.55))',
                 dashed: false,
                 desc: tx('Curva base europea como segundo nivel de referencia internacional.', 'European Bund base curve as secondary international benchmark.'),
               },
@@ -1742,25 +1742,25 @@ export default function MarketAnomaliesView({
         dimension: 'Strike × Exp × IV',
         liveStat: 'NVDA ATM IV (30d)',
         liveValue: '46.8% (Skew -2.8%)',
-        liveColor: '#a855f7',
+        liveColor: 'var(--purple-text, #a855f7)',
         svgType: 'vol-smile',
         quickPresets: [
           {
             label: 'NVDA',
             statLabel: 'NVDA • ATM IV (30D)',
             statValue: '46.8% (Skew -2.8%)',
-            statColor: '#a855f7',
+            statColor: 'var(--purple-text, #a855f7)',
             variant: 0,
             seriesLegend: [
               {
                 label: tx('NVDA Sonrisa 30D IV', 'NVDA 30D IV Smile'),
-                color: '#a855f7',
+                color: 'var(--purple-text, #a855f7)',
                 dashed: false,
                 desc: tx('Volatilidad implícita a 30 días entre strikes 85% y 115% Moneyness.', '30-day implied volatility smile across 85% to 115% moneyness strikes.'),
               },
               {
                 label: tx('NVDA Plazo 90D IV', 'NVDA 90D Term IV'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
                 desc: tx('Sonrisa de volatilidad trimestral (90 días) para comparar estructura de plazos.', 'Quarterly (90-day) volatility smile comparing term structure flattening.'),
               },
@@ -1776,18 +1776,18 @@ export default function MarketAnomaliesView({
             label: 'SPY',
             statLabel: 'SPY • ATM IV (30D)',
             statValue: '15.4% (Skew -3.4%)',
-            statColor: '#10b981',
+            statColor: 'var(--accent, #10b981)',
             variant: 1,
             seriesLegend: [
               {
                 label: tx('SPY Sonrisa 30D IV', 'SPY 30D IV Smile'),
-                color: '#10b981',
+                color: 'var(--accent, #10b981)',
                 dashed: false,
                 desc: tx('Curva de volatilidad implícita a 30 días del S&P 500 con fuerte Put Skew.', 'S&P 500 30-day implied volatility curve displaying institutional Put Skew.'),
               },
               {
                 label: tx('SPY Plazo 90D IV', 'SPY 90D Term IV'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
                 desc: tx('Curva de volatilidad implícita a 90 días del S&P 500.', 'S&P 500 90-day implied volatility curve.'),
               },
@@ -1803,18 +1803,18 @@ export default function MarketAnomaliesView({
             label: 'TSLA',
             statLabel: 'TSLA • ATM IV (30D)',
             statValue: '54.2% (Skew -2.1%)',
-            statColor: '#38bdf8',
+            statColor: 'var(--info-text, #38bdf8)',
             variant: 2,
             seriesLegend: [
               {
                 label: tx('TSLA Sonrisa 30D IV', 'TSLA 30D IV Smile'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: false,
                 desc: tx('Sonrisa de volatilidad a 30 días en TSLA con convexidad en ambos extremos.', 'TSLA 30-day volatility smile with elevated wings on both OTM puts and calls.'),
               },
               {
                 label: tx('TSLA Plazo 90D IV', 'TSLA 90D Term IV'),
-                color: '#a855f7',
+                color: 'var(--purple-text, #a855f7)',
                 dashed: true,
                 desc: tx('Estructura de volatilidad a 90 días en TSLA.', 'TSLA 90-day implied volatility term structure.'),
               },
@@ -1830,18 +1830,18 @@ export default function MarketAnomaliesView({
             label: 'BTC',
             statLabel: 'BTC • ATM IV (30D)',
             statValue: '58.4% (Call Wing)',
-            statColor: '#f59e0b',
+            statColor: 'var(--warn-text, #f59e0b)',
             variant: 3,
             seriesLegend: [
               {
                 label: tx('BTC Sonrisa 30D IV', 'BTC 30D IV Smile'),
-                color: '#f59e0b',
+                color: 'var(--warn-text, #f59e0b)',
                 dashed: false,
                 desc: tx('Volatilidad implícita de opciones de Bitcoin a 30 días con sesgo alcista (Call Wing).', 'Bitcoin 30-day options implied volatility showing upside Call Wing skew.'),
               },
               {
                 label: tx('BTC Plazo 90D IV', 'BTC 90D Term IV'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
                 desc: tx('Volatilidad implícita de Bitcoin a 90 días.', 'Bitcoin 90-day quarterly implied volatility curve.'),
               },
@@ -1877,31 +1877,31 @@ export default function MarketAnomaliesView({
         dimension: '4-Leg + Greeks',
         liveStat: 'NVDA Long Straddle',
         liveValue: 'Γ +0.121 • ν +$0.73',
-        liveColor: '#10b981',
+        liveColor: 'var(--accent, #10b981)',
         svgType: 'payoff',
         quickPresets: [
           {
             label: 'NVDA • Long Straddle',
             statLabel: 'NVDA • Long Straddle (ATM)',
             statValue: 'BE $178.4 / $218.5 • Γ +0.085',
-            statColor: '#10b981',
+            statColor: 'var(--accent, #10b981)',
             variant: 0,
             seriesLegend: [
               {
                 label: tx('P&L al Vencimiento ($)', 'Expiration P&L ($)'),
-                color: '#10b981',
+                color: 'var(--accent, #10b981)',
                 dashed: false,
                 desc: tx('Resultado neto exacto al día de expiración según el precio final del subyacente.', 'Exact net profit/loss at expiration across underlying spot prices.'),
               },
               {
                 label: tx('P&L Hoy (T+0 BS)', 'Today P&L (T+0 BS)'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
                 desc: tx('Valuación teórica Black-Scholes hoy (T+0) antes del desgaste por Theta.', 'Theoretical Black-Scholes mark-to-market curve today (T+0).'),
               },
               {
                 label: tx('Equilibrio ($0 BE)', 'Breakeven ($0 BE)'),
-                color: 'rgba(255,255,255,0.5)',
+                color: 'var(--text-muted, rgba(255,255,255,0.5))',
                 dashed: true,
                 desc: tx('Línea horizontal de beneficio cero ($0).', 'Zero profit/loss breakeven threshold ($0).'),
               },
@@ -1918,24 +1918,24 @@ export default function MarketAnomaliesView({
             label: 'SPY • Iron Condor',
             statLabel: 'SPY • Iron Condor (±5%)',
             statValue: tx('Crédito +$4.15 • Θ +$0.28/d', 'Credit +$4.15 • Θ +$0.28/d'),
-            statColor: '#38bdf8',
+            statColor: 'var(--info-text, #38bdf8)',
             variant: 1,
             seriesLegend: [
               {
                 label: tx('P&L al Vencimiento ($)', 'Expiration P&L ($)'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: false,
                 desc: tx('Meseta de ganancia máxima entre los strikes vendidos con riesgo acotado en los extremos.', 'Defined-risk profit plateau between short strikes with capped wing losses.'),
               },
               {
                 label: tx('P&L Hoy (T+0 BS)', 'Today P&L (T+0 BS)'),
-                color: '#a855f7',
+                color: 'var(--purple-text, #a855f7)',
                 dashed: true,
                 desc: tx('Curva suave de valuación actual (T+0) que converge hacia la meseta por Theta positivo.', 'Smooth T+0 mark-to-market curve converging toward max profit via positive Theta.'),
               },
               {
                 label: tx('Equilibrio ($0 BE)', 'Breakeven ($0 BE)'),
-                color: 'rgba(255,255,255,0.5)',
+                color: 'var(--text-muted, rgba(255,255,255,0.5))',
                 dashed: true,
                 desc: tx('Línea horizontal de beneficio cero ($0).', 'Zero profit/loss breakeven threshold ($0).'),
               },
@@ -1952,24 +1952,24 @@ export default function MarketAnomaliesView({
             label: 'TSLA • Bull Call Spread',
             statLabel: 'TSLA • Bull Call Spread',
             statValue: 'Δ +0.28 • Max +$14.80',
-            statColor: '#a855f7',
+            statColor: 'var(--purple-text, #a855f7)',
             variant: 2,
             seriesLegend: [
               {
                 label: tx('P&L al Vencimiento ($)', 'Expiration P&L ($)'),
-                color: '#a855f7',
+                color: 'var(--purple-text, #a855f7)',
                 dashed: false,
                 desc: tx('Perfil alcista con pérdida máxima limitada al débito pagado y ganancia acotada en el Call vendido.', 'Bullish vertical spread with loss capped at net debit and upside capped at short Call strike.'),
               },
               {
                 label: tx('P&L Hoy (T+0 BS)', 'Today P&L (T+0 BS)'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
                 desc: tx('Curva actual (T+0) con sensibilidad direccional positiva (Delta +0.28).', 'Current T+0 valuation curve with positive directional Delta (+0.28).'),
               },
               {
                 label: tx('Equilibrio ($0 BE)', 'Breakeven ($0 BE)'),
-                color: 'rgba(255,255,255,0.5)',
+                color: 'var(--text-muted, rgba(255,255,255,0.5))',
                 dashed: true,
                 desc: tx('Línea horizontal de beneficio cero ($0).', 'Zero profit/loss breakeven threshold ($0).'),
               },
@@ -2006,24 +2006,24 @@ export default function MarketAnomaliesView({
         dimension: '61×61 Matrix',
         liveStat: 'EUR / USD Spot & Carry',
         liveValue: '1.1240 (+113 bps)',
-        liveColor: '#10b981',
+        liveColor: 'var(--accent, #10b981)',
         svgType: 'fx-matrix',
         quickPresets: [
           {
             label: 'EUR / USD',
             statLabel: 'EUR / USD • Carry 10Y',
             statValue: '1.1240 (+113 bps)',
-            statColor: '#10b981',
+            statColor: 'var(--accent, #10b981)',
             variant: 0,
             seriesLegend: [
               {
                 label: 'EUR/USD Spot',
-                color: '#10b981',
+                color: 'var(--accent, #10b981)',
                 dashed: false,
               },
               {
                 label: 'SMA (20)',
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
               },
             ],
@@ -2037,17 +2037,17 @@ export default function MarketAnomaliesView({
             label: 'USD / JPY',
             statLabel: 'USD / JPY • Carry 10Y',
             statValue: '158.46 (-338 bps)',
-            statColor: '#38bdf8',
+            statColor: 'var(--info-text, #38bdf8)',
             variant: 1,
             seriesLegend: [
               {
                 label: 'USD/JPY Spot',
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: false,
               },
               {
                 label: 'SMA (20)',
-                color: '#10b981',
+                color: 'var(--accent, #10b981)',
                 dashed: true,
               },
             ],
@@ -2061,17 +2061,17 @@ export default function MarketAnomaliesView({
             label: 'EUR / BRL',
             statLabel: 'EUR / BRL • Carry 10Y',
             statValue: '6.1391 (+950 bps)',
-            statColor: '#f59e0b',
+            statColor: 'var(--warn-text, #f59e0b)',
             variant: 2,
             seriesLegend: [
               {
                 label: 'EUR/BRL Spot',
-                color: '#f59e0b',
+                color: 'var(--warn-text, #f59e0b)',
                 dashed: false,
               },
               {
                 label: 'SMA (20)',
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
               },
             ],
@@ -2104,25 +2104,25 @@ export default function MarketAnomaliesView({
         dimension: 'Spot → +24M 3D',
         liveStat: 'WTI (CL) • Roll Yield',
         liveValue: '$88.49 (+4.8% Backw.)',
-        liveColor: '#38bdf8',
+        liveColor: 'var(--info-text, #38bdf8)',
         svgType: 'commodity-curve',
         quickPresets: [
           {
             label: '🛢️ CL • WTI Crude',
             statLabel: 'CL (WTI) • Roll Yield',
             statValue: '$88.49 (+4.8% Backw.)',
-            statColor: '#38bdf8',
+            statColor: 'var(--info-text, #38bdf8)',
             variant: 0,
             seriesLegend: [
               {
                 label: tx('CL Curva Forward (M1→M24)', 'CL Forward Curve (M1→M24)'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: false,
                 desc: tx('Estructura temporal actual de futuros de petróleo WTI en Backwardation (pendiente descendente).', 'Current WTI crude futures curve in Backwardation (downward-sloping term structure).'),
               },
               {
                 label: tx('Curva hace 3M (-3M)', '3M Historical Curve'),
-                color: '#10b981',
+                color: 'var(--accent, #10b981)',
                 dashed: true,
                 desc: tx('Estructura temporal de futuros hace 3 meses para comparar el Roll Yield.', 'Futures term structure 3 months ago to compare Roll Yield evolution.'),
               },
@@ -2138,18 +2138,18 @@ export default function MarketAnomaliesView({
             label: '🥇 GC • Gold',
             statLabel: 'GC (Gold) • Term Carry',
             statValue: '$4,119.10 (-3.6% Contango)',
-            statColor: '#f59e0b',
+            statColor: 'var(--warn-text, #f59e0b)',
             variant: 1,
             seriesLegend: [
               {
                 label: tx('GC Curva Forward (M1→M24)', 'GC Forward Curve (M1→M24)'),
-                color: '#f59e0b',
+                color: 'var(--warn-text, #f59e0b)',
                 dashed: false,
                 desc: tx('Curva de futuros de Oro en Contango reflejando tasas de financiamiento y costo de custodia.', 'Gold futures curve in Contango reflecting interest-rate carry and storage costs.'),
               },
               {
                 label: tx('Curva hace 3M (-3M)', '3M Historical Curve'),
-                color: '#10b981',
+                color: 'var(--accent, #10b981)',
                 dashed: true,
                 desc: tx('Curva histórica de futuros de Oro hace 3 meses.', 'Historical Gold futures curve 3 months ago.'),
               },
@@ -2165,18 +2165,18 @@ export default function MarketAnomaliesView({
             label: '🔥 NG • NatGas',
             statLabel: 'NG (NatGas) • Term Carry',
             statValue: '$2.94 (-8.6% Contango)',
-            statColor: '#10b981',
+            statColor: 'var(--accent, #10b981)',
             variant: 2,
             seriesLegend: [
               {
                 label: tx('NG Curva Forward (M1→M24)', 'NG Forward Curve (M1→M24)'),
-                color: '#10b981',
+                color: 'var(--accent, #10b981)',
                 dashed: false,
                 desc: tx('Estructura estacional de futuros de Gas Natural desde Spot hasta +24 meses.', 'Seasonal Natural Gas futures term structure from Spot out to +24 months.'),
               },
               {
                 label: tx('Curva hace 3M (-3M)', '3M Historical Curve'),
-                color: '#38bdf8',
+                color: 'var(--info-text, #38bdf8)',
                 dashed: true,
                 desc: tx('Curva de futuros de Gas Natural hace 3 meses.', 'Natural Gas futures term structure 3 months ago.'),
               },
@@ -2199,7 +2199,7 @@ export default function MarketAnomaliesView({
     ];
 
     const contextualTools = MAIN_TOOLS_ITEMS.filter((item) => item.cats.includes(categoryFilter));
-    const pulseVolColor = pulseMetrics.isVolPos ? '#10b981' : '#f43f5e';
+    const pulseVolColor = pulseMetrics.isVolPos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)';
 
     return (
       <div
@@ -2317,7 +2317,7 @@ export default function MarketAnomaliesView({
                       padding: '0.18rem 0.25rem',
                       border: 'none',
                       background: 'transparent',
-                      color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.62)',
+                      color: active ? 'var(--ui-accent)' : 'var(--text-muted, rgba(148, 163, 184, 0.62))',
                       textShadow: active ? '0 0 15px rgba(var(--ui-accent-rgb), 0.88)' : 'none',
                       cursor: 'pointer',
                       transition: 'all 0.16s ease',
@@ -2359,7 +2359,7 @@ export default function MarketAnomaliesView({
                     ? '1px solid rgba(var(--ui-accent-rgb), 0.55)'
                     : '1px solid transparent',
                   background: active ? 'rgba(var(--ui-accent-rgb), 0.14)' : 'transparent',
-                  color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.72)',
+                  color: active ? 'var(--ui-accent)' : 'var(--text-muted, rgba(148, 163, 184, 0.72))',
                   textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb), 0.75)' : 'none',
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
@@ -2401,7 +2401,7 @@ export default function MarketAnomaliesView({
                       background: active
                         ? 'rgba(56, 189, 248, 0.18)'
                         : 'rgba(56, 189, 248, 0.05)',
-                      color: active ? '#38bdf8' : '#BAE6FD',
+                      color: active ? 'var(--info-text, #38bdf8)' : '#BAE6FD',
                       textShadow: active ? '0 0 10px rgba(56, 189, 248, 0.55)' : 'none',
                       cursor: 'pointer',
                       transition: 'all 0.15s ease',
@@ -2432,12 +2432,12 @@ export default function MarketAnomaliesView({
                   border:
                     selectedIndustries.length > 0 || industryMenuOpen
                       ? '1px solid rgba(var(--ui-accent-rgb), 0.7)'
-                      : '1px solid rgba(148, 163, 184, 0.35)',
+                      : '1px solid var(--border-slate, rgba(148, 163, 184, 0.35))',
                   background:
                     selectedIndustries.length > 0 || industryMenuOpen
                       ? 'rgba(var(--ui-accent-rgb), 0.18)'
-                      : 'rgba(15, 23, 42, 0.55)',
-                  color: selectedIndustries.length > 0 ? 'var(--ui-accent)' : '#e2e8f0',
+                      : 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.55))',
+                  color: selectedIndustries.length > 0 ? 'var(--ui-accent)' : 'var(--text-secondary, #e2e8f0)',
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
                   whiteSpace: 'nowrap',
@@ -2461,7 +2461,7 @@ export default function MarketAnomaliesView({
                     minWidth: '255px',
                     padding: '0.45rem',
                     borderRadius: '12px',
-                    backgroundColor: 'rgba(8, 12, 22, 0.96)',
+                    backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.96))',
                     backdropFilter: 'blur(14px)',
                     border: '1px solid rgba(var(--ui-accent-rgb), 0.42)',
                     boxShadow: '0 16px 38px rgba(0, 0, 0, 0.75)',
@@ -2476,7 +2476,7 @@ export default function MarketAnomaliesView({
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       padding: '0.18rem 0.4rem 0.32rem',
-                      borderBottom: '1px solid rgba(148, 163, 184, 0.16)',
+                      borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.16))',
                       marginBottom: '0.1rem',
                     }}
                   >
@@ -2484,7 +2484,7 @@ export default function MarketAnomaliesView({
                       style={{
                         fontSize: '0.64rem',
                         fontWeight: 800,
-                        color: '#94a3b8',
+                        color: 'var(--text-muted, #94a3b8)',
                         letterSpacing: '0.04em',
                         textTransform: 'uppercase',
                       }}
@@ -2528,7 +2528,7 @@ export default function MarketAnomaliesView({
                             ? '1px solid rgba(var(--ui-accent-rgb), 0.45)'
                             : '1px solid transparent',
                           backgroundColor: checked ? 'rgba(var(--ui-accent-rgb), 0.14)' : 'transparent',
-                          color: checked ? '#ffffff' : '#cbd5e1',
+                          color: checked ? 'var(--text-main, #ffffff)' : 'var(--text-body, #cbd5e1)',
                           fontSize: '0.7rem',
                           fontWeight: checked ? 700 : 500,
                           cursor: 'pointer',
@@ -2561,7 +2561,7 @@ export default function MarketAnomaliesView({
                         </div>
                         <span
                           className="mono-metric"
-                          style={{ fontSize: '0.62rem', color: '#64748b', fontWeight: 700 }}
+                          style={{ fontSize: '0.62rem', color: 'var(--text-dim, #64748b)', fontWeight: 700 }}
                         >
                           {ind.syms.length}
                         </span>
@@ -2638,7 +2638,7 @@ export default function MarketAnomaliesView({
           <div
             style={{
               background: 'transparent',
-              border: '1px solid rgba(148, 163, 184, 0.22)',
+              border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
               borderLeft: `3px solid ${pulseVolColor}`,
               borderRadius: '10px',
               padding: '10px 14px',
@@ -2646,18 +2646,18 @@ export default function MarketAnomaliesView({
               overflow: 'hidden',
             }}
           >
-            <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
+            <div style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-muted, #94a3b8)' }}>
               {tx('VOLUMEN AGREGADO (24H)', '24H AGGREGATE VOLUME')}
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '4px 8px', marginTop: '3px' }}>
-              <span className="mono-metric" style={{ fontSize: '19px', fontWeight: 900, color: '#f8fafc' }}>
+              <span className="mono-metric" style={{ fontSize: '19px', fontWeight: 900, color: 'var(--text-main, #f8fafc)' }}>
                 {pulseMetrics.totalVolFormatted}
               </span>
               <span className="mono-metric" style={{ fontSize: '12.5px', fontWeight: 800, color: pulseVolColor }}>
                 {pulseMetrics.volChgFormatted}
               </span>
             </div>
-            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {pulseMetrics.totalCount} {tx('activos', 'assets')} •{' '}
               {parseFloat(pulseMetrics.volChgFormatted) >= 0
                 ? tx('Mayor entrada de dinero hoy', 'Higher money inflow today')
@@ -2669,15 +2669,15 @@ export default function MarketAnomaliesView({
           <div
             style={{
               background: 'transparent',
-              border: '1px solid rgba(148, 163, 184, 0.22)',
-              borderLeft: `3px solid ${pulseMetrics.avgRsiNum >= 50 ? '#10b981' : '#f43f5e'}`,
+              border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
+              borderLeft: `3px solid ${pulseMetrics.avgRsiNum >= 50 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'}`,
               borderRadius: '10px',
               padding: '10px 14px',
               minWidth: 0,
               overflow: 'hidden',
             }}
           >
-            <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
+            <div style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-muted, #94a3b8)' }}>
               {tx('RSI PROMEDIO (14D)', 'AVERAGE RSI (14D)')}
             </div>
             <div
@@ -2685,13 +2685,13 @@ export default function MarketAnomaliesView({
               style={{
                 fontSize: '19px',
                 fontWeight: 900,
-                color: pulseMetrics.avgRsiNum >= 50 ? '#10b981' : '#f43f5e',
+                color: pulseMetrics.avgRsiNum >= 50 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                 marginTop: '3px',
               }}
             >
               {pulseMetrics.avgRsi}
             </div>
-            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {pulseMetrics.avgRsiNum > 60
                 ? tx('Predominio comprador fuerte (>60)', 'Strong buyer dominance (>60)')
                 : pulseMetrics.avgRsiNum >= 45
@@ -2704,7 +2704,7 @@ export default function MarketAnomaliesView({
           <div
             style={{
               background: 'transparent',
-              border: '1px solid rgba(148, 163, 184, 0.22)',
+              border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
               borderLeft: '3px solid #10b981',
               borderRadius: '10px',
               padding: '10px 14px',
@@ -2712,18 +2712,18 @@ export default function MarketAnomaliesView({
               overflow: 'hidden',
             }}
           >
-            <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
+            <div style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-muted, #94a3b8)' }}>
               {tx('RÉGIMEN NORMAL (P-06)', 'NORMAL REGIME (P-06)')}
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '4px 8px', marginTop: '3px' }}>
-              <span className="mono-metric" style={{ fontSize: '19px', fontWeight: 900, color: '#10b981' }}>
+              <span className="mono-metric" style={{ fontSize: '19px', fontWeight: 900, color: 'var(--accent, #10b981)' }}>
                 {pulseMetrics.normalPct}%
               </span>
-              <span className="mono-metric" style={{ fontSize: '12px', fontWeight: 700, color: '#94a3b8' }}>
+              <span className="mono-metric" style={{ fontSize: '12px', fontWeight: 700, color: 'var(--text-muted, #94a3b8)' }}>
                 ({pulseMetrics.normalCount}/{pulseMetrics.totalCount})
               </span>
             </div>
-            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {pulseMetrics.topAnomaly
                 ? txTpl(
                     'Mayoría sin sobresaltos • Atípico hoy: {0} ({1})',
@@ -2739,15 +2739,15 @@ export default function MarketAnomaliesView({
           <div
             style={{
               background: 'transparent',
-              border: '1px solid rgba(148, 163, 184, 0.22)',
-              borderLeft: `3px solid ${(pulseMetrics.topDislocations[0]?.volumeZNum ?? 1) >= 0 ? '#10b981' : '#f43f5e'}`,
+              border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
+              borderLeft: `3px solid ${(pulseMetrics.topDislocations[0]?.volumeZNum ?? 1) >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'}`,
               borderRadius: '10px',
               padding: '10px 14px',
               minWidth: 0,
               overflow: 'hidden',
             }}
           >
-            <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>
+            <div style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-muted, #94a3b8)' }}>
               {tx('MAYOR DESVÍO VOLUMEN (20D)', 'TOP VOLUME Z-SCORE (20D)')}
             </div>
             <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', gap: '4px 8px', marginTop: '3px' }}>
@@ -2756,18 +2756,18 @@ export default function MarketAnomaliesView({
                 style={{
                   fontSize: '19px',
                   fontWeight: 900,
-                  color: (pulseMetrics.topDislocations[0]?.volumeZNum ?? 1) >= 0 ? '#10b981' : '#f43f5e',
+                  color: (pulseMetrics.topDislocations[0]?.volumeZNum ?? 1) >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                 }}
               >
                 {pulseMetrics.topDislocations[0] ? pulseMetrics.topDislocations[0].volumeZScore : '—'}
               </span>
               {pulseMetrics.topDislocations[0] && (
-                <span className="mono-metric" style={{ fontSize: '12.5px', fontWeight: 800, color: '#f8fafc' }}>
+                <span className="mono-metric" style={{ fontSize: '12.5px', fontWeight: 800, color: 'var(--text-main, #f8fafc)' }}>
                   {pulseMetrics.topDislocations[0].sym}
                 </span>
               )}
             </div>
-            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {tx('Volumen inusual:', 'Unusual volume:')}{' '}
               {pulseMetrics.topDislocations
                 .slice(1, 3)
@@ -2788,7 +2788,7 @@ export default function MarketAnomaliesView({
                     width: '100%',
                     padding: '0.55rem 0.9rem',
                     borderRadius: '14px',
-                    backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                    backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.24))',
                     backdropFilter: 'blur(2px)',
                     border: '1px solid rgba(var(--ui-accent-rgb), 0.32)',
                     cursor: 'pointer',
@@ -2797,7 +2797,7 @@ export default function MarketAnomaliesView({
                     gap: '0.15rem',
                   }}
                 >
-                  <span style={{ fontSize: '0.73rem', fontWeight: 800, color: '#ffffff' }}>{tool.label}</span>
+                  <span style={{ fontSize: '0.73rem', fontWeight: 800, color: 'var(--text-main, #ffffff)' }}>{tool.label}</span>
                   <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--ui-accent)' }}>{tool.badge} ↗</span>
                 </div>
               </HoverTooltip>
@@ -2870,7 +2870,7 @@ export default function MarketAnomaliesView({
                         padding: '0.18rem 0.25rem',
                         border: 'none',
                         backgroundColor: 'transparent',
-                        color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.65)',
+                        color: active ? 'var(--ui-accent)' : 'var(--text-muted, rgba(148, 163, 184, 0.65))',
                         textShadow: active ? '0 0 15px rgba(var(--ui-accent-rgb), 0.88)' : 'none',
                         cursor: 'pointer',
                         transition: 'all 0.15s ease',
@@ -2908,7 +2908,7 @@ export default function MarketAnomaliesView({
                         padding: '0.18rem 0.25rem',
                         border: 'none',
                         backgroundColor: 'transparent',
-                        color: 'rgba(148, 163, 184, 0.78)',
+                        color: 'var(--text-muted, rgba(148, 163, 184, 0.78))',
                         cursor: 'pointer',
                         whiteSpace: 'nowrap',
                         transition: 'all 0.15s ease',
@@ -2944,10 +2944,10 @@ export default function MarketAnomaliesView({
                       fontWeight: 700,
                       padding: '0.34rem 0.95rem',
                       borderRadius: '999px',
-                      backgroundColor: toolsDropdownOpen ? 'rgba(var(--ui-accent-rgb), 0.22)' : 'rgba(8, 12, 22, 0.24)',
+                      backgroundColor: toolsDropdownOpen ? 'rgba(var(--ui-accent-rgb), 0.22)' : 'var(--bg-glass-strong, rgba(8, 12, 22, 0.24))',
                       backdropFilter: 'blur(2px)',
                       border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
-                      color: '#ffffff',
+                      color: 'var(--text-main, #ffffff)',
                       cursor: 'pointer',
                       transition: 'all 0.15s ease',
                     }}
@@ -2968,7 +2968,7 @@ export default function MarketAnomaliesView({
                       minWidth: '290px',
                       padding: '0.55rem',
                       borderRadius: '16px',
-                      backgroundColor: 'rgba(8, 12, 22, 0.92)',
+                      backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.92))',
                       backdropFilter: 'blur(14px)',
                       border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
                       boxShadow: '0 16px 40px rgba(0, 0, 0, 0.65)',
@@ -2989,7 +2989,7 @@ export default function MarketAnomaliesView({
                           textAlign: 'left',
                           padding: '0.5rem 0.7rem',
                           borderRadius: '11px',
-                          border: '1px solid rgba(255, 255, 255, 0.08)',
+                          border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))',
                           backgroundColor: 'rgba(255, 255, 255, 0.03)',
                           color: 'var(--text-main)',
                           fontSize: '0.71rem',
@@ -3049,7 +3049,7 @@ export default function MarketAnomaliesView({
                   style={{
                     fontSize: '12px',
                     fontWeight: 800,
-                    color: '#64748b',
+                    color: 'var(--text-dim, #64748b)',
                   }}
                 >
                   {tx('INDICADOR:', 'INDICATOR:')}
@@ -3067,7 +3067,7 @@ export default function MarketAnomaliesView({
                         padding: '2px 4px',
                         border: 'none',
                         backgroundColor: 'transparent',
-                        color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.68)',
+                        color: active ? 'var(--ui-accent)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                         textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb), 0.85)' : 'none',
                         cursor: 'pointer',
                         transition: 'all 0.15s ease',
@@ -3114,7 +3114,7 @@ export default function MarketAnomaliesView({
                         lineHeight: 1,
                         color: allFilteredStarred
                           ? 'var(--ui-accent, #10b981)'
-                          : 'rgba(148, 163, 184, 0.55)',
+                          : 'var(--text-muted, rgba(148, 163, 184, 0.55))',
                         flexShrink: 0,
                       }}
                     >
@@ -3127,7 +3127,7 @@ export default function MarketAnomaliesView({
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.42rem',
-                    backgroundColor: 'rgba(8, 12, 22, 0.48)',
+                    backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.48))',
                     backdropFilter: 'blur(4px)',
                     padding: '0.28rem 0.75rem',
                     borderRadius: '999px',
@@ -3201,7 +3201,7 @@ export default function MarketAnomaliesView({
                       maxHeight: '240px',
                       overflowY: 'auto',
                       borderRadius: '14px',
-                      backgroundColor: 'rgba(8, 12, 22, 0.96)',
+                      backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.96))',
                       backdropFilter: 'blur(14px)',
                       border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
                       boxShadow: '0 16px 38px rgba(0,0,0,0.75)',
@@ -3241,14 +3241,14 @@ export default function MarketAnomaliesView({
                           }}
                         >
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', minWidth: 0 }}>
-                            <span className="mono-metric" style={{ fontSize: '0.68rem', fontWeight: 800, color: '#ffffff', minWidth: '48px' }}>
+                            <span className="mono-metric" style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-main, #ffffff)', minWidth: '48px' }}>
                               {item.sym}
                             </span>
                             <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                               {item.name}
                             </span>
                           </div>
-                          <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 700, color: item.chgNum >= 0 ? '#10b981' : '#f43f5e', flexShrink: 0 }}>
+                          <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 700, color: item.chgNum >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)', flexShrink: 0 }}>
                             {item.chg}
                           </span>
                         </button>
@@ -3362,11 +3362,11 @@ export default function MarketAnomaliesView({
             const curveObj = computeSovereignCurveMetrics(ctry);
             dynStatLabel = `${ctry} 10Y (${effectivePreviewAsset.sym}) • 2s10s`;
             dynStatValue = `${curveObj.y10}% (${curveObj.spread2s10sBps >= 0 ? '+' : ''}${curveObj.spread2s10sBps} bps)`;
-            dynStatColor = curveObj.spread2s10sBps >= 0 ? '#10b981' : '#f43f5e';
+            dynStatColor = curveObj.spread2s10sBps >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)';
             dynSeriesLegend = [
               { label: `${ctry} Spot Curve`, color: dynStatColor, dashed: false },
-              { label: ctry === 'US' ? '1M Historical (-1M)' : 'US10Y Benchmark', color: '#38bdf8', dashed: true },
-              { label: 'DE10Y Bund', color: '#a78bfa', dashed: false },
+              { label: ctry === 'US' ? '1M Historical (-1M)' : 'US10Y Benchmark', color: 'var(--info-text, #38bdf8)', dashed: true },
+              { label: 'DE10Y Bund', color: 'var(--purple-text, #a78bfa)', dashed: false },
             ];
             dynPreviewData = curveObj.curveSeries.map((pt) => ({
               time: pt.tenor,
@@ -3382,10 +3382,10 @@ export default function MarketAnomaliesView({
             const chain = getHighVolumeOptionsChain(undSym, spot);
             dynStatLabel = `${effectivePreviewAsset.sym} • ATM IV (30D)`;
             dynStatValue = `${chain.atmIvPct}% (Skew ${chain.skew25d})`;
-            dynStatColor = '#a855f7';
+            dynStatColor = 'var(--purple-text, #a855f7)';
             dynSeriesLegend = [
-              { label: `${undSym} 30D IV Smile`, color: '#a855f7', dashed: false },
-              { label: `${undSym} 90D Term IV`, color: '#38bdf8', dashed: true },
+              { label: `${undSym} 30D IV Smile`, color: 'var(--purple-text, #a855f7)', dashed: false },
+              { label: `${undSym} 90D Term IV`, color: 'var(--info-text, #38bdf8)', dashed: true },
             ];
             dynPreviewData = chain.strikes.map((st) => ({
               time: st.moneyness,
@@ -3400,11 +3400,11 @@ export default function MarketAnomaliesView({
             const pData = computeOptionsStrategyPayoff(undSym, spot, 'LONG_STRADDLE');
             dynStatLabel = `${effectivePreviewAsset.sym} • Long Straddle`;
             dynStatValue = `BE ${pData.breakevenText} • Γ ${pData.greeks.gamma}`;
-            dynStatColor = '#10b981';
+            dynStatColor = 'var(--accent, #10b981)';
             dynSeriesLegend = [
-              { label: tx('P&L al Vencimiento ($)', 'Expiration P&L ($)'), color: '#10b981', dashed: false },
-              { label: tx('P&L Hoy (T+0 BS)', 'Today P&L (T+0 BS)'), color: '#38bdf8', dashed: true },
-              { label: tx('Equilibrio ($0)', 'Breakeven ($0)'), color: 'rgba(255,255,255,0.5)', dashed: true },
+              { label: tx('P&L al Vencimiento ($)', 'Expiration P&L ($)'), color: 'var(--accent, #10b981)', dashed: false },
+              { label: tx('P&L Hoy (T+0 BS)', 'Today P&L (T+0 BS)'), color: 'var(--info-text, #38bdf8)', dashed: true },
+              { label: tx('Equilibrio ($0)', 'Breakeven ($0)'), color: 'var(--text-muted, rgba(255,255,255,0.5))', dashed: true },
             ];
             dynPreviewData = pData.payoffSeries.map((pt) => ({
               time: pt.time,
@@ -3420,10 +3420,10 @@ export default function MarketAnomaliesView({
             const crossObj = computeCrossCurrencyRate(b, q, 1000);
             dynStatLabel = `${b} / ${q} • Carry 10Y`;
             dynStatValue = `${crossObj.rateFormatted} (${crossObj.carryFormatted})`;
-            dynStatColor = crossObj.carryDiffBps >= 0 ? '#10b981' : '#38bdf8';
+            dynStatColor = crossObj.carryDiffBps >= 0 ? 'var(--accent, #10b981)' : 'var(--info-text, #38bdf8)';
             dynSeriesLegend = [
               { label: `${b}/${q} Spot`, color: dynStatColor, dashed: false },
-              { label: 'SMA (20)', color: '#38bdf8', dashed: true },
+              { label: 'SMA (20)', color: 'var(--info-text, #38bdf8)', dashed: true },
             ];
             dynPreviewData = crossObj.crossSeries.slice(-20).map((pt) => ({
               time: pt.time,
@@ -3437,10 +3437,10 @@ export default function MarketAnomaliesView({
             const fwdObj = getCommodityForwardCurve(sym, spot);
             dynStatLabel = `${sym} • Roll Yield (1Y)`;
             dynStatValue = `${effectivePreviewAsset.priceFormatted} (${fwdObj.rollYieldAnnual} ${fwdObj.regime})`;
-            dynStatColor = fwdObj.isBackwardation ? '#10b981' : '#f59e0b';
+            dynStatColor = fwdObj.isBackwardation ? 'var(--accent, #10b981)' : 'var(--warn-text, #f59e0b)';
             dynSeriesLegend = [
               { label: `${sym} Forward Curve (M1→M24)`, color: dynStatColor, dashed: false },
-              { label: tx('Referencia Spot', 'Spot Reference'), color: '#38bdf8', dashed: true },
+              { label: tx('Referencia Spot', 'Spot Reference'), color: 'var(--info-text, #38bdf8)', dashed: true },
             ];
             dynPreviewData = fwdObj.curveSeries.map((pt) => ({
               time: pt.time,
@@ -3452,8 +3452,8 @@ export default function MarketAnomaliesView({
 
           const hasS2 = dynPreviewData.some((d) => d.s2 !== undefined);
           const c0 = dynSeriesLegend[0]?.color || dynStatColor;
-          const c1 = dynSeriesLegend[1]?.color || '#38bdf8';
-          const c2 = dynSeriesLegend[2]?.color || '#a78bfa';
+          const c1 = dynSeriesLegend[1]?.color || 'var(--info-text, #38bdf8)';
+          const c2 = dynSeriesLegend[2]?.color || 'var(--purple-text, #a78bfa)';
 
           const handleLaunchPreviewedTool = () => {
             setL2Section('analytics');
@@ -3499,7 +3499,7 @@ export default function MarketAnomaliesView({
                 style={{
                   padding: '1.15rem 1.2rem',
                   borderRadius: '22px',
-                  backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                  backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.24))',
                   backdropFilter: 'blur(2px)',
                   border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
                   display: 'flex',
@@ -3507,7 +3507,7 @@ export default function MarketAnomaliesView({
                   gap: '0.65rem',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-subtle, rgba(255,255,255,0.08))', paddingBottom: '0.5rem' }}>
                   <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--ui-accent)', letterSpacing: '0.06em' }}>
                     {tx('1. CLASES DE ACTIVO', '1. ASSET CLASSES')}
                   </span>
@@ -3542,10 +3542,10 @@ export default function MarketAnomaliesView({
                         style={{
                           padding: '0.78rem 0.9rem',
                           borderRadius: '15px',
-                          backgroundColor: isSelectedLane ? 'rgba(var(--ui-accent-rgb), 0.16)' : 'rgba(10, 15, 26, 0.42)',
+                          backgroundColor: isSelectedLane ? 'rgba(var(--ui-accent-rgb), 0.16)' : 'var(--bg-elevated-soft, rgba(10, 15, 26, 0.42))',
                           border: isSelectedLane
                             ? '1.5px solid var(--ui-accent)'
-                            : '1px solid rgba(255, 255, 255, 0.08)',
+                            : '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))',
                           cursor: 'pointer',
                           transition: 'all 0.16s ease',
                           display: 'flex',
@@ -3554,7 +3554,7 @@ export default function MarketAnomaliesView({
                         }}
                       >
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.4rem' }}>
-                          <span style={{ fontSize: '0.84rem', fontWeight: 800, color: isSelectedLane ? '#ffffff' : 'var(--text-main)' }}>
+                          <span style={{ fontSize: '0.84rem', fontWeight: 800, color: isSelectedLane ? 'var(--text-main, #ffffff)' : 'var(--text-main)' }}>
                             {lane.title}
                           </span>
                           <span
@@ -3581,7 +3581,7 @@ export default function MarketAnomaliesView({
                                 padding: '0.08rem 0.4rem',
                                 borderRadius: '999px',
                                 backgroundColor: 'rgba(255,255,255,0.05)',
-                                border: '1px solid rgba(255,255,255,0.1)',
+                                border: '1px solid var(--border-subtle, rgba(255,255,255,0.1))',
                                 color: 'var(--text-dim)',
                               }}
                             >
@@ -3600,7 +3600,7 @@ export default function MarketAnomaliesView({
                 style={{
                   padding: '1.25rem 1.45rem',
                   borderRadius: '22px',
-                  backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                  backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.24))',
                   backdropFilter: 'blur(2px)',
                   border: '1px solid rgba(var(--ui-accent-rgb), 0.32)',
                   display: 'flex',
@@ -3610,14 +3610,14 @@ export default function MarketAnomaliesView({
                 }}
               >
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', borderBottom: '1px solid var(--border-subtle, rgba(255,255,255,0.08))', paddingBottom: '0.5rem' }}>
                     <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--ui-accent)', letterSpacing: '0.06em' }}>
                       {tx('2. INSTRUMENTO PRINCIPAL & EXPLICACIÓN', '2. PRINCIPAL INSTRUMENT & GUIDE')}
                     </span>
 
                     {/* If the lane has 2 shared instruments (Derivatives/Equities: 3D Vol Surface vs Payoff), let user switch */}
                     {siblingToolsInLane.length > 1 && (
-                      <div style={{ display: 'inline-flex', gap: '0.25rem', padding: '0.16rem', borderRadius: '999px', backgroundColor: 'rgba(10,15,26,0.65)', border: '1px solid rgba(var(--ui-accent-rgb), 0.3)' }}>
+                      <div style={{ display: 'inline-flex', gap: '0.25rem', padding: '0.16rem', borderRadius: '999px', backgroundColor: 'var(--bg-elevated-soft, rgba(10,15,26,0.65))', border: '1px solid rgba(var(--ui-accent-rgb), 0.3)' }}>
                         {siblingToolsInLane.map((sib) => {
                           const activeSib = sib.id === focusedTool.id;
                           return (
@@ -3663,7 +3663,7 @@ export default function MarketAnomaliesView({
                     >
                       {focusedTool.badge}
                     </span>
-                    <h3 style={{ margin: '0.55rem 0 0.3rem 0', fontSize: '1.22rem', fontWeight: 800, color: '#ffffff', lineHeight: 1.25 }}>
+                    <h3 style={{ margin: '0.55rem 0 0.3rem 0', fontSize: '1.22rem', fontWeight: 800, color: 'var(--text-main, #ffffff)', lineHeight: 1.25 }}>
                       {focusedTool.label}
                     </h3>
                     <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-main)', lineHeight: 1.48 }}>
@@ -3675,8 +3675,8 @@ export default function MarketAnomaliesView({
                     style={{
                       padding: '0.8rem 0.95rem',
                       borderRadius: '14px',
-                      backgroundColor: 'rgba(10, 15, 26, 0.52)',
-                      border: '1px solid rgba(255, 255, 255, 0.08)',
+                      backgroundColor: 'var(--bg-elevated-soft, rgba(10, 15, 26, 0.52))',
+                      border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))',
                       fontSize: '0.75rem',
                       color: 'var(--text-muted)',
                       lineHeight: 1.5,
@@ -3690,7 +3690,7 @@ export default function MarketAnomaliesView({
                 </div>
 
                 {/* Bottom of Col 2: Axes & Shared Asset Classes */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.07)' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', paddingTop: '0.5rem', borderTop: '1px solid var(--border-subtle, rgba(255,255,255,0.07))' }}>
                   <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
                     {focusedTool.keyAxes.map((ax) => (
                       <span
@@ -3701,7 +3701,7 @@ export default function MarketAnomaliesView({
                           padding: '0.18rem 0.52rem',
                           borderRadius: '8px',
                           backgroundColor: 'rgba(255,255,255,0.04)',
-                          border: '1px solid rgba(255,255,255,0.1)',
+                          border: '1px solid var(--border-subtle, rgba(255,255,255,0.1))',
                           color: 'var(--text-dim)',
                         }}
                       >
@@ -3739,7 +3739,7 @@ export default function MarketAnomaliesView({
                 style={{
                   padding: '1.25rem 1.35rem',
                   borderRadius: '22px',
-                  backgroundColor: 'rgba(8, 12, 22, 0.26)',
+                  backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.26))',
                   backdropFilter: 'blur(2px)',
                   border: '1px solid rgba(var(--ui-accent-rgb), 0.35)',
                   display: 'flex',
@@ -3748,7 +3748,7 @@ export default function MarketAnomaliesView({
                   gap: '0.85rem',
                 }}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '0.5rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid var(--border-subtle, rgba(255,255,255,0.08))', paddingBottom: '0.5rem' }}>
                   <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--ui-accent)', letterSpacing: '0.06em' }}>
                     {tx('3. VISTA PREVIA & LANZADOR', '3. PREVIEW & LAUNCHER')}
                   </span>
@@ -3762,8 +3762,8 @@ export default function MarketAnomaliesView({
                   style={{
                     padding: '0.85rem 1rem',
                     borderRadius: '16px',
-                    backgroundColor: 'rgba(10, 15, 26, 0.58)',
-                    border: '1px solid rgba(255, 255, 255, 0.08)',
+                    backgroundColor: 'var(--bg-elevated-soft, rgba(10, 15, 26, 0.58))',
+                    border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '0.45rem',
@@ -3807,14 +3807,14 @@ export default function MarketAnomaliesView({
                         />
                         <Tooltip
                           contentStyle={{
-                            backgroundColor: 'rgba(10, 15, 28, 0.94)',
+                            backgroundColor: 'var(--bg-glass-strong, rgba(10, 15, 28, 0.94))',
                             borderColor: 'rgba(255, 255, 255, 0.14)',
                             borderRadius: '10px',
                             fontSize: '0.68rem',
                             padding: '0.4rem 0.6rem',
                           }}
                           itemStyle={{ padding: '1px 0', fontWeight: 700 }}
-                          labelStyle={{ color: '#ffffff', fontWeight: 800, marginBottom: '2px' }}
+                          labelStyle={{ color: 'var(--text-main, #ffffff)', fontWeight: 800, marginBottom: '2px' }}
                         />
                         <Area
                           type="monotone"
@@ -3858,7 +3858,7 @@ export default function MarketAnomaliesView({
                         flexWrap: 'wrap',
                         gap: '0.45rem 0.75rem',
                         paddingTop: '0.35rem',
-                        borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+                        borderTop: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))',
                       }}
                     >
                       {dynSeriesLegend.map((s) => (
@@ -3924,7 +3924,7 @@ export default function MarketAnomaliesView({
                       display: 'flex',
                       alignItems: 'center',
                       gap: '0.45rem',
-                      backgroundColor: 'rgba(10, 15, 26, 0.85)',
+                      backgroundColor: 'var(--bg-elevated, rgba(10, 15, 26, 0.85))',
                       border: '1px solid rgba(var(--ui-accent-rgb), 0.42)',
                       borderRadius: '999px',
                       padding: '0.36rem 0.8rem',
@@ -3971,7 +3971,7 @@ export default function MarketAnomaliesView({
                         background: 'transparent',
                         border: 'none',
                         outline: 'none',
-                        color: '#ffffff',
+                        color: 'var(--text-main, #ffffff)',
                         fontSize: '0.68rem',
                         width: '100%',
                       }}
@@ -3997,7 +3997,7 @@ export default function MarketAnomaliesView({
                         maxHeight: '220px',
                         overflowY: 'auto',
                         borderRadius: '14px',
-                        backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                        backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.98))',
                         backdropFilter: 'blur(16px)',
                         border: '1px solid rgba(var(--ui-accent-rgb), 0.45)',
                         boxShadow: '0 16px 40px rgba(0, 0, 0, 0.8)',
@@ -4041,7 +4041,7 @@ export default function MarketAnomaliesView({
                               }}
                             >
                               <div style={{ display: 'flex', alignItems: 'center', gap: '0.42rem', minWidth: 0 }}>
-                                <span className="mono-metric" style={{ fontSize: '0.68rem', fontWeight: 800, color: '#ffffff', minWidth: '54px' }}>
+                                <span className="mono-metric" style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--text-main, #ffffff)', minWidth: '54px' }}>
                                   {item.sym}
                                 </span>
                                 <span style={{ fontSize: '0.62rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -4052,7 +4052,7 @@ export default function MarketAnomaliesView({
                                 <span style={{ fontSize: '0.5rem', padding: '0.06rem 0.35rem', borderRadius: '999px', backgroundColor: 'rgba(255,255,255,0.07)', color: 'var(--text-dim)' }}>
                                   {item.cat}
                                 </span>
-                                <span style={{ fontSize: '0.62rem', fontWeight: 700, color: item.chgNum >= 0 ? '#10b981' : '#f43f5e' }}>
+                                <span style={{ fontSize: '0.62rem', fontWeight: 700, color: item.chgNum >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)' }}>
                                   {item.priceFormatted}
                                 </span>
                               </div>
@@ -4101,7 +4101,7 @@ export default function MarketAnomaliesView({
             style={{
               width: '100%',
               borderRadius: '10px',
-              border: '1px solid rgba(148, 163, 184, 0.22)',
+              border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
               backgroundColor: 'transparent',
               padding: '8px 14px 12px',
             }}
@@ -4118,11 +4118,11 @@ export default function MarketAnomaliesView({
               <thead>
                 <tr
                   style={{
-                    color: '#64748b',
+                    color: 'var(--text-dim, #64748b)',
                     fontSize: '12px',
                     fontWeight: 700,
                     backgroundColor: 'transparent',
-                    borderBottom: '1px solid rgba(148, 163, 184, 0.16)',
+                    borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.16))',
                   }}
                 >
                   {/* INTEGRATED MASTER WATCHLIST STAR + SEARCH INSIDE THE ASSET / TICKER COLUMN HEADER */}
@@ -4161,7 +4161,7 @@ export default function MarketAnomaliesView({
                               lineHeight: 1,
                               color: allFilteredStarred
                                 ? 'var(--ui-accent, #10b981)'
-                                : 'rgba(148, 163, 184, 0.55)',
+                                : 'var(--text-muted, rgba(148, 163, 184, 0.55))',
                               flexShrink: 0,
                               transition: 'color 0.15s ease, transform 0.15s ease',
                             }}
@@ -4178,7 +4178,7 @@ export default function MarketAnomaliesView({
                           backgroundColor: 'transparent',
                           border: assetSearch
                             ? '1px solid var(--ui-accent)'
-                            : '1px solid rgba(148, 163, 184, 0.24)',
+                            : '1px solid var(--border-slate, rgba(148, 163, 184, 0.24))',
                           borderRadius: '7px',
                           padding: '4px 10px',
                           width: '215px',
@@ -4266,8 +4266,8 @@ export default function MarketAnomaliesView({
                       const sampleSpec = getAssetClassSpecificMetrics(screenerRows[0] || { cat: categoryFilter }, isES);
                       return (
                         <>
-                          <th style={{ padding: '6px 10px 10px', color: '#10b981' }}>{sampleSpec.col1Label}</th>
-                          <th style={{ padding: '6px 10px 10px', color: '#38bdf8' }}>{sampleSpec.col2Label}</th>
+                          <th style={{ padding: '6px 10px 10px', color: 'var(--accent, #10b981)' }}>{sampleSpec.col1Label}</th>
+                          <th style={{ padding: '6px 10px 10px', color: 'var(--info-text, #38bdf8)' }}>{sampleSpec.col2Label}</th>
                         </>
                       );
                     })()
@@ -4295,7 +4295,7 @@ export default function MarketAnomaliesView({
                   const cellBase = {
                     backgroundColor: isKeyHighlighted ? 'rgba(var(--ui-accent-rgb), 0.14)' : 'transparent',
                     borderTop: isKeyHighlighted ? '1px solid var(--ui-accent)' : 'none',
-                    borderBottom: isKeyHighlighted ? '1px solid var(--ui-accent)' : '1px solid rgba(148, 163, 184, 0.12)',
+                    borderBottom: isKeyHighlighted ? '1px solid var(--ui-accent)' : '1px solid var(--border-slate, rgba(148, 163, 184, 0.12))',
                   };
 
                   return (
@@ -4340,17 +4340,17 @@ export default function MarketAnomaliesView({
                           </button>
                           <div>
                             <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
-                              <span className="mono-metric" style={{ fontWeight: 800, color: '#ffffff', fontSize: '13.5px' }}>
+                              <span className="mono-metric" style={{ fontWeight: 800, color: 'var(--text-main, #ffffff)', fontSize: '13.5px' }}>
                                 {row.sym}
                               </span>
-                              <span style={{ fontSize: '12px', color: '#94a3b8' }}>{row.name}</span>
+                              <span style={{ fontSize: '12px', color: 'var(--text-muted, #94a3b8)' }}>{row.name}</span>
                             </div>
                           </div>
                         </div>
                       </td>
 
                       {/* PRICE */}
-                      <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', fontWeight: 700, color: '#f8fafc', fontSize: '13.5px' }}>
+                      <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', fontWeight: 700, color: 'var(--text-main, #f8fafc)', fontSize: '13.5px' }}>
                         {row.priceFormatted}
                       </td>
 
@@ -4375,12 +4375,12 @@ export default function MarketAnomaliesView({
                       </td>
 
                       {/* VOLUME (24H) */}
-                      <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: '#e2e8f0', fontSize: '13px' }}>
+                      <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: 'var(--text-secondary, #e2e8f0)', fontSize: '13px' }}>
                         <div>{row.vol24h}</div>
                         <div
                           style={{
                             fontSize: '11px',
-                            color: row.volChg24h.startsWith('+') ? '#10b981' : '#f43f5e',
+                            color: row.volChg24h.startsWith('+') ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                           }}
                         >
                           {row.volChg24h}
@@ -4393,7 +4393,7 @@ export default function MarketAnomaliesView({
                           <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', fontWeight: 800, fontSize: '13px', color: zEval.color }}>
                             {row.volumeZScore}
                           </td>
-                          <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: '#cbd5e1', fontSize: '13px' }}>
+                          <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: 'var(--text-body, #cbd5e1)', fontSize: '13px' }}>
                             {row.realizedVol}
                           </td>
                         </>
@@ -4404,11 +4404,11 @@ export default function MarketAnomaliesView({
                             <>
                               <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: '#fff', fontWeight: 700, fontSize: '13px' }}>
                                 <div>{spec.col1Val}</div>
-                                <div style={{ fontSize: '11px', color: '#64748b', fontWeight: 500 }}>{spec.col1Sub}</div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', fontWeight: 500 }}>{spec.col1Sub}</div>
                               </td>
-                              <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: '#cbd5e1', fontWeight: 700, fontSize: '13px' }}>
+                              <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: 'var(--text-body, #cbd5e1)', fontWeight: 700, fontSize: '13px' }}>
                                 <div style={{ color: '#fff' }}>{spec.col2Val}</div>
-                                <div style={{ fontSize: '11px', color: '#64748b', fontWeight: 500 }}>{spec.col2Sub}</div>
+                                <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', fontWeight: 500 }}>{spec.col2Sub}</div>
                               </td>
                             </>
                           );
@@ -4445,7 +4445,7 @@ export default function MarketAnomaliesView({
                           style={{
                             fontSize: '11px',
                             fontWeight: 700,
-                            color: '#94a3b8',
+                            color: 'var(--text-muted, #94a3b8)',
                           }}
                         >
                           {row.regime}
@@ -4477,7 +4477,7 @@ export default function MarketAnomaliesView({
               style={{
                 position: 'relative',
                 borderRadius: '22px',
-                backgroundColor: 'rgba(8, 12, 22, 0.22)',
+                backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.22))',
                 backdropFilter: 'blur(2px)',
                 border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
                 overflow: 'hidden',
@@ -4509,7 +4509,7 @@ export default function MarketAnomaliesView({
                     color: 'var(--text-main)',
                     padding: '0.28rem 0.68rem',
                     borderRadius: '999px',
-                    backgroundColor: 'rgba(10, 15, 26, 0.78)',
+                    backgroundColor: 'var(--bg-elevated-soft, rgba(10, 15, 26, 0.78))',
                     border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
                     letterSpacing: '0.04em',
                   }}
@@ -4527,7 +4527,7 @@ export default function MarketAnomaliesView({
                       gap: '0.25rem',
                       padding: '0.2rem',
                       borderRadius: '999px',
-                      backgroundColor: 'rgba(10, 15, 26, 0.78)',
+                      backgroundColor: 'var(--bg-elevated-soft, rgba(10, 15, 26, 0.78))',
                       border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
                     }}
                   >
@@ -4599,8 +4599,8 @@ export default function MarketAnomaliesView({
                   transform: 'translate(-50%, -50%)',
                   padding: '0.42rem 0.8rem',
                   borderRadius: '999px',
-                  backgroundColor: 'rgba(10, 15, 26, 0.92)',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
+                  backgroundColor: 'var(--bg-elevated, rgba(10, 15, 26, 0.92))',
+                  border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.15))',
                   fontSize: '0.6rem',
                   fontWeight: 800,
                   color: '#fff',
@@ -4713,7 +4713,7 @@ export default function MarketAnomaliesView({
               onClick={() => handleOpenAssetDetail(spotlightItem.sym)}
               style={{
                 borderRadius: '22px',
-                backgroundColor: 'rgba(8, 12, 22, 0.24)',
+                backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.24))',
                 backdropFilter: 'blur(2px)',
                 border: '1px solid rgba(var(--ui-accent-rgb), 0.28)',
                 padding: '1.2rem',
@@ -4877,7 +4877,7 @@ export default function MarketAnomaliesView({
                                 className="mono-metric"
                                 style={{
                                   fontSize: '0.66rem',
-                                  color: 'rgba(255,255,255,0.65)',
+                                  color: 'var(--text-muted, rgba(255,255,255,0.65))',
                                   fontWeight: 800,
                                 }}
                               >
@@ -4888,13 +4888,13 @@ export default function MarketAnomaliesView({
                                 style={{
                                   fontSize: globalIdx === 0 ? '1.4rem' : globalIdx < 4 ? '1.2rem' : '1.0rem',
                                   fontWeight: 800,
-                                  color: '#ffffff',
+                                  color: 'var(--text-main, #ffffff)',
                                 }}
                               >
                                 {row.sym}
                               </span>
                             </div>
-                            <div style={{ fontSize: '0.66rem', color: 'rgba(255,255,255,0.72)', marginTop: '0.08rem' }}>
+                            <div style={{ fontSize: '0.66rem', color: 'var(--text-muted, rgba(255,255,255,0.72))', marginTop: '0.08rem' }}>
                               {row.name}
                             </div>
                           </div>
@@ -4913,7 +4913,7 @@ export default function MarketAnomaliesView({
 
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: '0.4rem' }}>
                           <div>
-                            <div className="mono-metric" style={{ fontSize: '0.88rem', fontWeight: 700, color: '#ffffff' }}>
+                            <div className="mono-metric" style={{ fontSize: '0.88rem', fontWeight: 700, color: 'var(--text-main, #ffffff)' }}>
                               {row.priceFormatted}
                             </div>
                             <div className="mono-metric" style={{ fontSize: '0.6rem', color: m.textColor, marginTop: '0.1rem', fontWeight: 600 }}>
@@ -4955,7 +4955,7 @@ export default function MarketAnomaliesView({
   // LEVEL 2: HORIZON EDITORIAL (FEY STYLE) WITH ORGANIZED WORKBENCH & SEARCH
   // ==========================================================================
   const isAssetPos = currentAsset.chgNum >= 0;
-  const assetMainColor = isAssetPos ? '#10b981' : '#f43f5e';
+  const assetMainColor = isAssetPos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)';
   const currentEnriched = enrichedCatalog.find((a) => a.sym === selectedAsset) || enrichedCatalog[0];
   const isCompareMode = analysisLens === 'compare' && Boolean(compareSymbol);
 
@@ -4985,7 +4985,7 @@ export default function MarketAnomaliesView({
           justifyContent: 'space-between',
           gap: '0.5rem 0.85rem',
           paddingBottom: '0.5rem',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+          borderBottom: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.06))',
           flexShrink: 0,
         }}
       >
@@ -5032,7 +5032,7 @@ export default function MarketAnomaliesView({
                 gap: '0.42rem',
                 backgroundColor: 'rgba(255, 255, 255, 0.03)',
                 backdropFilter: 'blur(10px)',
-                border: l2SearchOpen ? '1px solid var(--ui-accent)' : '1px solid rgba(255, 255, 255, 0.09)',
+                border: l2SearchOpen ? '1px solid var(--ui-accent)' : '1px solid var(--border-subtle, rgba(255, 255, 255, 0.09))',
                 borderRadius: '999px',
                 padding: '0.22rem 0.75rem',
                 width: '230px',
@@ -5079,7 +5079,7 @@ export default function MarketAnomaliesView({
                 style={{
                   background: 'transparent',
                   border: 'none',
-                  color: '#ffffff',
+                  color: 'var(--text-main, #ffffff)',
                   fontSize: '0.7rem',
                   fontWeight: 600,
                   outline: 'none',
@@ -5110,9 +5110,9 @@ export default function MarketAnomaliesView({
                   maxHeight: '260px',
                   overflowY: 'auto',
                   borderRadius: '18px',
-                  backgroundColor: 'rgba(10, 15, 28, 0.96)',
+                  backgroundColor: 'var(--bg-glass-strong, rgba(10, 15, 28, 0.96))',
                   backdropFilter: 'blur(16px)',
-                  border: '1px solid rgba(255, 255, 255, 0.14)',
+                  border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.14))',
                   boxShadow: '0 14px 36px rgba(0, 0, 0, 0.6)',
                   padding: '0.35rem',
                   zIndex: 9999,
@@ -5152,7 +5152,7 @@ export default function MarketAnomaliesView({
                       </div>
                       <div className="mono-metric" style={{ display: 'flex', gap: '0.5rem' }}>
                         <span style={{ color: '#fff' }}>{item.priceFormatted}</span>
-                        <span style={{ color: pos ? '#10b981' : '#f43f5e', fontWeight: 700 }}>{item.chg}</span>
+                        <span style={{ color: pos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)', fontWeight: 700 }}>{item.chg}</span>
                       </div>
                     </div>
                   );
@@ -5186,7 +5186,7 @@ export default function MarketAnomaliesView({
                     border: 'none',
                     fontSize: '0.85rem',
                     fontWeight: active ? 800 : 600,
-                    color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.62)',
+                    color: active ? 'var(--ui-accent)' : 'var(--text-muted, rgba(148, 163, 184, 0.62))',
                     textShadow: active ? '0 0 15px rgba(var(--ui-accent-rgb), 0.88)' : 'none',
                     cursor: 'pointer',
                     padding: '0.18rem 0.25rem',
@@ -5225,7 +5225,7 @@ export default function MarketAnomaliesView({
                     padding: '0.15rem 0.25rem',
                     border: 'none',
                     background: 'transparent',
-                    color: liveInference ? '#10b981' : 'var(--text-dim)',
+                    color: liveInference ? 'var(--accent, #10b981)' : 'var(--text-dim)',
                     textShadow: liveInference ? '0 0 10px rgba(16, 185, 129, 0.7)' : 'none',
                     cursor: 'pointer',
                   }}
@@ -5302,7 +5302,7 @@ export default function MarketAnomaliesView({
           justifyContent: 'space-between',
           gap: '0.65rem 1.25rem',
           paddingBottom: '0.6rem',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
+          borderBottom: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.07))',
           flexShrink: 0,
         }}
       >
@@ -5330,8 +5330,8 @@ export default function MarketAnomaliesView({
           const tfReturnColor =
             l2Section === 'analytics' && timeframe !== '1D'
               ? tfPeriodReturn >= 0
-                ? '#10b981'
-                : '#f43f5e'
+                ? 'var(--accent, #10b981)'
+                : 'var(--danger, #f43f5e)'
               : assetMainColor;
 
           const heroBadgeCat = isHeroRatesTool
@@ -5359,9 +5359,9 @@ export default function MarketAnomaliesView({
               : tfReturnFormatted;
 
           const heroChgColor = isHeroRatesTool
-            ? heroCurve.spread2s10sBps >= 0 ? '#10b981' : '#f43f5e'
+            ? heroCurve.spread2s10sBps >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'
             : isHeroFxTool
-              ? heroFxCross.chg24h >= 0 ? '#10b981' : '#f43f5e'
+              ? heroFxCross.chg24h >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'
               : tfReturnColor;
 
           const isWatchedHero = watchlistSyms.includes(currentAsset.sym);
@@ -5392,7 +5392,7 @@ export default function MarketAnomaliesView({
                     style={{
                       background: 'transparent',
                       border: 'none',
-                      color: isWatchedHero ? '#fbbf24' : 'var(--text-dim)',
+                      color: isWatchedHero ? 'var(--warn-text, #fbbf24)' : 'var(--text-dim)',
                       textShadow: isWatchedHero ? '0 0 12px rgba(251, 191, 36, 0.75)' : 'none',
                       fontSize: '0.64rem',
                       fontWeight: 800,
@@ -5407,7 +5407,7 @@ export default function MarketAnomaliesView({
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.68rem', marginTop: '0.08rem' }}>
-                  <span className="mono-metric" style={{ fontSize: '2.2rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.03em' }}>
+                  <span className="mono-metric" style={{ fontSize: '2.2rem', fontWeight: 800, color: 'var(--text-main, #ffffff)', letterSpacing: '-0.03em' }}>
                     {heroPriceText}
                   </span>
                   <span
@@ -5422,7 +5422,7 @@ export default function MarketAnomaliesView({
                     {heroChgText}
                   </span>
                   {l2Section === 'analytics' && compareSymbol && (
-                    <span className="mono-metric" style={{ fontSize: '0.72rem', color: '#38bdf8', fontWeight: 700 }}>
+                    <span className="mono-metric" style={{ fontSize: '0.72rem', color: 'var(--info-text, #38bdf8)', fontWeight: 700 }}>
                       vs {compareSymbol} ({getAssetBySymbol(compareSymbol).chg})
                     </span>
                   )}
@@ -5461,8 +5461,8 @@ export default function MarketAnomaliesView({
                 label: '24H VOLUME',
                 val: currentAsset.vol24h,
                 sub: currentAsset.volChg24h,
-                color: '#ffffff',
-                subColor: currentAsset.volChg24h.startsWith('+') ? '#10b981' : '#f43f5e',
+                color: 'var(--text-main, #ffffff)',
+                subColor: currentAsset.volChg24h.startsWith('+') ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                 isClassSpecific: false,
                 desc: tx('Volumen institucional operado en las últimas 24 horas y variación porcentual.', '24-hour institutional trading volume and daily percentage change.'),
               },
@@ -5470,7 +5470,7 @@ export default function MarketAnomaliesView({
                 label: catSpec.col1Label,
                 val: catSpec.col1Val,
                 sub: catSpec.col1Sub,
-                color: catSpec.col1Color || '#10b981',
+                color: catSpec.col1Color || 'var(--accent, #10b981)',
                 subColor: 'var(--text-dim)',
                 isClassSpecific: true,
                 desc: txTpl("Métrica #1 exclusiva de la clase {0}.", [effectiveAssetForSpec.cat], "Primary metric exclusive to the {0} asset class.", [effectiveAssetForSpec.cat]),
@@ -5479,7 +5479,7 @@ export default function MarketAnomaliesView({
                 label: catSpec.col2Label,
                 val: catSpec.col2Val,
                 sub: catSpec.col2Sub,
-                color: catSpec.col2Color || '#38bdf8',
+                color: catSpec.col2Color || 'var(--info-text, #38bdf8)',
                 subColor: 'var(--text-dim)',
                 isClassSpecific: true,
                 desc: txTpl("Métrica #2 exclusiva de la clase {0}.", [effectiveAssetForSpec.cat], "Secondary metric exclusive to the {0} asset class.", [effectiveAssetForSpec.cat]),
@@ -5488,7 +5488,7 @@ export default function MarketAnomaliesView({
                 label: 'RSI (14) / MACD',
                 val: `${currentAsset.indicators.rsi14}`,
                 sub: currentAsset.indicators.macdSignal,
-                color: currentAsset.indicators.rsi14 >= 50 ? '#10b981' : '#f43f5e',
+                color: currentAsset.indicators.rsi14 >= 50 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                 subColor: 'var(--text-dim)',
                 isClassSpecific: false,
                 desc: tx('Índice de Fuerza Relativa (14 períodos) y régimen de momentum MACD.', '14-period Relative Strength Index and MACD momentum signal.'),
@@ -5514,7 +5514,7 @@ export default function MarketAnomaliesView({
                         padding: '0.42rem 0.82rem',
                         borderRadius: '10px',
                         backgroundColor: 'transparent',
-                        border: '1px solid rgba(148, 163, 184, 0.22)',
+                        border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                         borderLeft: `3px solid ${k.color || 'var(--ui-accent, #10b981)'}`,
                         display: 'flex',
                         flexDirection: 'column',
@@ -5550,8 +5550,8 @@ export default function MarketAnomaliesView({
                 padding: '0.42rem 0.82rem',
                 borderRadius: '10px',
                 backgroundColor: 'transparent',
-                border: '1px solid rgba(148, 163, 184, 0.22)',
-                borderLeft: `3px solid ${researchBrief.stance === 'BULLISH' ? '#10b981' : '#f43f5e'}`,
+                border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
+                borderLeft: `3px solid ${researchBrief.stance === 'BULLISH' ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'}`,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
@@ -5565,7 +5565,7 @@ export default function MarketAnomaliesView({
                 style={{
                   fontSize: '0.76rem',
                   fontWeight: 800,
-                  color: researchBrief.stance === 'BULLISH' ? '#10b981' : '#f43f5e',
+                  color: researchBrief.stance === 'BULLISH' ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                 }}
               >
                 {researchBrief.stanceLabel[langCode] || researchBrief.stanceLabel.EN}
@@ -5579,8 +5579,8 @@ export default function MarketAnomaliesView({
                 padding: '0.42rem 0.82rem',
                 borderRadius: '10px',
                 backgroundColor: 'transparent',
-                border: '1px solid rgba(148, 163, 184, 0.22)',
-                borderLeft: `3px solid ${researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e'}`,
+                border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
+                borderLeft: `3px solid ${researchBrief.compositeScore >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'}`,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
@@ -5595,7 +5595,7 @@ export default function MarketAnomaliesView({
                   style={{
                     fontSize: '0.76rem',
                     fontWeight: 800,
-                    color: researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e',
+                    color: researchBrief.compositeScore >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                   }}
                 >
                   {researchBrief.compositeFormatted}
@@ -5613,7 +5613,7 @@ export default function MarketAnomaliesView({
                 padding: '0.42rem 0.82rem',
                 borderRadius: '10px',
                 backgroundColor: 'transparent',
-                border: '1px solid rgba(148, 163, 184, 0.22)',
+                border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                 borderLeft: `3px solid ${assetFinbertPolarity.color}`,
                 minWidth: '185px',
                 display: 'flex',
@@ -5638,7 +5638,7 @@ export default function MarketAnomaliesView({
                     top: '-2px',
                     bottom: '-2px',
                     width: '2px',
-                    backgroundColor: 'rgba(255,255,255,0.5)',
+                    backgroundColor: 'var(--text-muted, rgba(255,255,255,0.5))',
                     transform: 'translateX(-50%)',
                   }}
                 />
@@ -5753,119 +5753,119 @@ export default function MarketAnomaliesView({
                 const smaVal = latestChartPt.sma20 ? `$${Number(latestChartPt.sma20).toFixed(2)}` : currentAsset.priceFormatted;
                 const vwapVal = latestChartPt.vwap ? `$${Number(latestChartPt.vwap).toFixed(2)}` : currentAsset.priceFormatted;
                 return [
-                  { label: 'SMA (20) LEVEL', val: smaVal, sub: showSma20 ? 'ACTIVE OVERLAY' : 'HIDDEN', color: '#38bdf8', accent: showSma20 },
-                  { label: 'INSTITUTIONAL VWAP', val: vwapVal, sub: showVwap ? 'ACTIVE OVERLAY' : 'HIDDEN', color: '#f59e0b', accent: showVwap },
-                  { label: 'BOLLINGER (20, 2σ)', val: currentAsset.indicators.bbWidth, sub: showBollinger ? 'BANDS ACTIVE' : 'BAND WIDTH', color: '#a78bfa', accent: showBollinger },
-                  { label: 'RSI (14) MOMENTUM', val: `${currentAsset.indicators.rsi14}`, sub: currentAsset.indicators.macdStatus, color: '#10b981', accent: false },
-                  { label: '24H VOLUME FLOW', val: currentAsset.vol24h, sub: `${anomalyProfile.volumeZScore} vs 20d`, color: '#ffffff', accent: false },
-                  { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: anomalyProfile.realizedVol + ' RVol', color: '#10b981', accent: false },
+                  { label: 'SMA (20) LEVEL', val: smaVal, sub: showSma20 ? 'ACTIVE OVERLAY' : 'HIDDEN', color: 'var(--info-text, #38bdf8)', accent: showSma20 },
+                  { label: 'INSTITUTIONAL VWAP', val: vwapVal, sub: showVwap ? 'ACTIVE OVERLAY' : 'HIDDEN', color: 'var(--warn-text, #f59e0b)', accent: showVwap },
+                  { label: 'BOLLINGER (20, 2σ)', val: currentAsset.indicators.bbWidth, sub: showBollinger ? 'BANDS ACTIVE' : 'BAND WIDTH', color: 'var(--purple-text, #a78bfa)', accent: showBollinger },
+                  { label: 'RSI (14) MOMENTUM', val: `${currentAsset.indicators.rsi14}`, sub: currentAsset.indicators.macdStatus, color: 'var(--accent, #10b981)', accent: false },
+                  { label: '24H VOLUME FLOW', val: currentAsset.vol24h, sub: `${anomalyProfile.volumeZScore} vs 20d`, color: 'var(--text-main, #ffffff)', accent: false },
+                  { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: anomalyProfile.realizedVol + ' RVol', color: 'var(--accent, #10b981)', accent: false },
                 ];
               }
               if (analysisLens === 'compare') {
                 return [
-                  { label: `${currentAsset.sym} 24H (%)`, val: currentAsset.chg, sub: currentAsset.cat, color: currentAsset.isPositive ? '#10b981' : '#f43f5e', accent: true },
+                  { label: `${currentAsset.sym} 24H (%)`, val: currentAsset.chg, sub: currentAsset.cat, color: currentAsset.isPositive ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)', accent: true },
                   {
                     label: peerAssetObj ? `VS ${peerAssetObj.sym} (%)` : tx('PAR COMPARADO', 'PEER RETURN'),
                     val: peerAssetObj ? peerAssetObj.chg : tx('Usar buscador ↑', 'Use search ↑'),
                     sub: peerAssetObj ? peerAssetObj.cat : tx('Sin seleccionar', 'None selected'),
-                    color: '#38bdf8',
+                    color: 'var(--info-text, #38bdf8)',
                     accent: Boolean(peerAssetObj),
                   },
                   {
                     label: 'ALPHA SPREAD (24H)',
                     val: peerAssetObj ? `${Number(alphaSpread) >= 0 ? '+' : ''}${alphaSpread}%` : '—',
                     sub: peerAssetObj ? `${currentAsset.sym} - ${peerAssetObj.sym}` : 'Select peer',
-                    color: Number(alphaSpread) >= 0 ? '#10b981' : '#f43f5e',
+                    color: Number(alphaSpread) >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                     accent: false,
                   },
-                  { label: 'PRIMARY RSI (14)', val: `${currentAsset.indicators.rsi14}`, sub: peerAssetObj ? `Peer RSI ${peerAssetObj.indicators.rsi14}` : currentAsset.indicators.macdStatus, color: '#ffffff', accent: false },
-                  { label: 'REALIZED VOL (30D)', val: anomalyProfile.realizedVol, sub: peerAssetObj ? `Peer ${getAnomalyProfile(peerAssetObj.sym).realizedVol}` : 'ANNUALIZED', color: '#a78bfa', accent: false },
-                  { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: peerAssetObj ? `Peer ${getAnomalyProfile(peerAssetObj.sym).volumeZScore}` : 'FLOW PULSE', color: '#10b981', accent: false },
+                  { label: 'PRIMARY RSI (14)', val: `${currentAsset.indicators.rsi14}`, sub: peerAssetObj ? `Peer RSI ${peerAssetObj.indicators.rsi14}` : currentAsset.indicators.macdStatus, color: 'var(--text-main, #ffffff)', accent: false },
+                  { label: 'REALIZED VOL (30D)', val: anomalyProfile.realizedVol, sub: peerAssetObj ? `Peer ${getAnomalyProfile(peerAssetObj.sym).realizedVol}` : 'ANNUALIZED', color: 'var(--purple-text, #a78bfa)', accent: false },
+                  { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: peerAssetObj ? `Peer ${getAnomalyProfile(peerAssetObj.sym).volumeZScore}` : 'FLOW PULSE', color: 'var(--accent, #10b981)', accent: false },
                 ];
               }
               if (analysisLens === 'microstructure') {
                 return [
-                  { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: showSubChart === 'zscore' ? 'SUB-PANE ACTIVE' : '20D SIGMA', color: '#10b981', accent: showSubChart === 'zscore' },
-                  { label: '24H VOLUME FLOW', val: currentAsset.vol24h, sub: showSubChart === 'vol' ? 'SUB-PANE ACTIVE' : anomalyProfile.volumeZScore, color: '#38bdf8', accent: showSubChart === 'vol' },
-                  { label: 'SPREAD DISLOCATION', val: anomalyProfile.spreadDislocation, sub: 'ORDERBOOK DEPTH', color: '#10b981', accent: false },
-                  { label: 'BOLLINGER WIDTH', val: currentAsset.indicators.bbWidth, sub: 'VOLATILITY REGIME', color: '#a78bfa', accent: false },
-                  { label: 'REALIZED VOL', val: anomalyProfile.realizedVol, sub: '30D ANNUALIZED', color: '#ffffff', accent: false },
+                  { label: 'VOL Z-SCORE (20D)', val: anomalyProfile.volumeZScore, sub: showSubChart === 'zscore' ? 'SUB-PANE ACTIVE' : '20D SIGMA', color: 'var(--accent, #10b981)', accent: showSubChart === 'zscore' },
+                  { label: '24H VOLUME FLOW', val: currentAsset.vol24h, sub: showSubChart === 'vol' ? 'SUB-PANE ACTIVE' : anomalyProfile.volumeZScore, color: 'var(--info-text, #38bdf8)', accent: showSubChart === 'vol' },
+                  { label: 'SPREAD DISLOCATION', val: anomalyProfile.spreadDislocation, sub: 'ORDERBOOK DEPTH', color: 'var(--accent, #10b981)', accent: false },
+                  { label: 'BOLLINGER WIDTH', val: currentAsset.indicators.bbWidth, sub: 'VOLATILITY REGIME', color: 'var(--purple-text, #a78bfa)', accent: false },
+                  { label: 'REALIZED VOL', val: anomalyProfile.realizedVol, sub: '30D ANNUALIZED', color: 'var(--text-main, #ffffff)', accent: false },
                   { label: 'P-06 ANOMALY SCORE', val: displayedScore.toFixed(3), sub: anomalyProfile.regime, color: scoreColor, accent: false },
                 ];
               }
               if (isRatesCurveMode && curveMetrics) {
                 const cObj = SOVEREIGN_YIELD_CURVES[selectedCurveCountry] || SOVEREIGN_YIELD_CURVES.US;
                 return [
-                  { label: `${selectedCurveCountry} 10Y BENCHMARK`, val: `${curveMetrics.y10}%`, sub: `Rating ${cObj.rating}`, color: '#10b981', accent: true },
+                  { label: `${selectedCurveCountry} 10Y BENCHMARK`, val: `${curveMetrics.y10}%`, sub: `Rating ${cObj.rating}`, color: 'var(--accent, #10b981)', accent: true },
                   {
                     label: '2s10s SLOPE SPREAD',
                     val: `${curveMetrics.spread2s10sBps >= 0 ? '+' : ''}${curveMetrics.spread2s10sBps} bps`,
                     sub: curveMetrics.spread2s10sBps < 0 ? 'INVERTED' : 'NORMAL',
-                    color: curveMetrics.spread2s10sBps >= 0 ? '#10b981' : '#f43f5e',
+                    color: curveMetrics.spread2s10sBps >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                     accent: true,
                   },
                   {
                     label: '3m10y TERM SPREAD',
                     val: `${curveMetrics.spread3m10yBps >= 0 ? '+' : ''}${curveMetrics.spread3m10yBps} bps`,
                     sub: 'SHORT-LONG',
-                    color: curveMetrics.spread3m10yBps >= 0 ? '#10b981' : '#f43f5e',
+                    color: curveMetrics.spread3m10yBps >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                     accent: false,
                   },
                   {
                     label: 'BUTTERFLY 2s5s10s',
                     val: `${curveMetrics.butterfly2s5s10sBps >= 0 ? '+' : ''}${curveMetrics.butterfly2s5s10sBps} bps`,
                     sub: 'BELLY CURVATURE',
-                    color: '#38bdf8',
+                    color: 'var(--info-text, #38bdf8)',
                     accent: false,
                   },
                   {
                     label: 'REAL 10Y YIELD',
                     val: `${curveMetrics.realYield10Y >= 0 ? '+' : ''}${curveMetrics.realYield10Y}%`,
                     sub: `Policy ${cObj.policyRate}%`,
-                    color: curveMetrics.realYield10Y >= 0 ? '#10b981' : '#f43f5e',
+                    color: curveMetrics.realYield10Y >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                     accent: false,
                   },
-                  { label: 'DV01 ($1M NOTIONAL)', val: curveMetrics.dv01PerMillion10Y, sub: 'RATE SENSITIVITY', color: '#ffffff', accent: false },
+                  { label: 'DV01 ($1M NOTIONAL)', val: curveMetrics.dv01PerMillion10Y, sub: 'RATE SENSITIVITY', color: 'var(--text-main, #ffffff)', accent: false },
                 ];
               }
               if (isFxCrossMode && fxCrossMetrics) {
                 return [
-                  { label: `${fxCrossMetrics.pair} SPOT`, val: fxCrossMetrics.rateFormatted, sub: fxCrossMetrics.chgFormatted, color: '#10b981', accent: true },
-                  { label: 'CONVERTED TOTAL', val: `${fxCrossMetrics.convertedFormatted} ${fxQuoteCcy}`, sub: `From ${fxAmount.toLocaleString()} ${fxBaseCcy}`, color: '#38bdf8', accent: true },
-                  { label: '10Y CARRY SPREAD', val: fxCrossMetrics.carryFormatted, sub: fxCrossMetrics.carryDiffBps >= 0 ? 'POSITIVE CARRY' : 'NEGATIVE CARRY', color: fxCrossMetrics.carryDiffBps >= 0 ? '#10b981' : '#f43f5e', accent: false },
-                  { label: `INVERSE (${fxQuoteCcy}/${fxBaseCcy})`, val: fxCrossMetrics.inverseFormatted, sub: 'RECIPROCAL', color: '#ffffff', accent: false },
-                  { label: `${fxBaseCcy} POLICY RATE`, val: `${WORLD_USD_RATES[fxBaseCcy]?.policyRate ?? WORLD_USD_RATES[fxBaseCcy]?.rate10Y ?? 3.88}%`, sub: WORLD_USD_RATES[fxBaseCcy]?.name || fxBaseCcy, color: '#a78bfa', accent: false },
-                  { label: `${fxQuoteCcy} POLICY RATE`, val: `${WORLD_USD_RATES[fxQuoteCcy]?.policyRate ?? WORLD_USD_RATES[fxQuoteCcy]?.rate10Y ?? 0.5}%`, sub: WORLD_USD_RATES[fxQuoteCcy]?.name || fxQuoteCcy, color: '#f59e0b', accent: false },
+                  { label: `${fxCrossMetrics.pair} SPOT`, val: fxCrossMetrics.rateFormatted, sub: fxCrossMetrics.chgFormatted, color: 'var(--accent, #10b981)', accent: true },
+                  { label: 'CONVERTED TOTAL', val: `${fxCrossMetrics.convertedFormatted} ${fxQuoteCcy}`, sub: `From ${fxAmount.toLocaleString()} ${fxBaseCcy}`, color: 'var(--info-text, #38bdf8)', accent: true },
+                  { label: '10Y CARRY SPREAD', val: fxCrossMetrics.carryFormatted, sub: fxCrossMetrics.carryDiffBps >= 0 ? 'POSITIVE CARRY' : 'NEGATIVE CARRY', color: fxCrossMetrics.carryDiffBps >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)', accent: false },
+                  { label: `INVERSE (${fxQuoteCcy}/${fxBaseCcy})`, val: fxCrossMetrics.inverseFormatted, sub: 'RECIPROCAL', color: 'var(--text-main, #ffffff)', accent: false },
+                  { label: `${fxBaseCcy} POLICY RATE`, val: `${WORLD_USD_RATES[fxBaseCcy]?.policyRate ?? WORLD_USD_RATES[fxBaseCcy]?.rate10Y ?? 3.88}%`, sub: WORLD_USD_RATES[fxBaseCcy]?.name || fxBaseCcy, color: 'var(--purple-text, #a78bfa)', accent: false },
+                  { label: `${fxQuoteCcy} POLICY RATE`, val: `${WORLD_USD_RATES[fxQuoteCcy]?.policyRate ?? WORLD_USD_RATES[fxQuoteCcy]?.rate10Y ?? 0.5}%`, sub: WORLD_USD_RATES[fxQuoteCcy]?.name || fxQuoteCcy, color: 'var(--warn-text, #f59e0b)', accent: false },
                 ];
               }
               if (isCommodityCurveMode && commForwardMetrics) {
                 return [
-                  { label: 'TERM STRUCTURE', val: commForwardMetrics.regime, sub: currentAsset.sym, color: commForwardMetrics.isBackwardation ? '#10b981' : '#f59e0b', accent: true },
-                  { label: 'ROLL YIELD (1Y ANN)', val: commForwardMetrics.rollYieldAnnual, sub: 'FRONT vs M12', color: commForwardMetrics.isBackwardation ? '#10b981' : '#f43f5e', accent: true },
-                  { label: 'INVENTORY vs 5Y AVG', val: commForwardMetrics.inventoryVs5Y, sub: 'PHYSICAL STOCK', color: '#ffffff', accent: false },
-                  { label: 'COT NET SPECULATIVE', val: commForwardMetrics.cotNetSpec, sub: 'CFTC POSITIONING', color: '#38bdf8', accent: false },
-                  { label: 'FRONT SPOT PRICE', val: currentAsset.priceFormatted, sub: currentAsset.chg, color: '#10b981', accent: false },
-                  { label: 'REALIZED VOL (30D)', val: anomalyProfile.realizedVol, sub: anomalyProfile.volumeZScore, color: '#a78bfa', accent: false },
+                  { label: 'TERM STRUCTURE', val: commForwardMetrics.regime, sub: currentAsset.sym, color: commForwardMetrics.isBackwardation ? 'var(--accent, #10b981)' : 'var(--warn-text, #f59e0b)', accent: true },
+                  { label: 'ROLL YIELD (1Y ANN)', val: commForwardMetrics.rollYieldAnnual, sub: 'FRONT vs M12', color: commForwardMetrics.isBackwardation ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)', accent: true },
+                  { label: 'INVENTORY vs 5Y AVG', val: commForwardMetrics.inventoryVs5Y, sub: 'PHYSICAL STOCK', color: 'var(--text-main, #ffffff)', accent: false },
+                  { label: 'COT NET SPECULATIVE', val: commForwardMetrics.cotNetSpec, sub: 'CFTC POSITIONING', color: 'var(--info-text, #38bdf8)', accent: false },
+                  { label: 'FRONT SPOT PRICE', val: currentAsset.priceFormatted, sub: currentAsset.chg, color: 'var(--accent, #10b981)', accent: false },
+                  { label: 'REALIZED VOL (30D)', val: anomalyProfile.realizedVol, sub: anomalyProfile.volumeZScore, color: 'var(--purple-text, #a78bfa)', accent: false },
                 ];
               }
               if (isOptionsPayoffMode && optPayoffMetrics) {
                 return [
-                  { label: tx('PRIMA NETA', 'NET PREMIUM'), val: optPayoffMetrics.netCostFormatted, sub: cleanUndSym, color: '#ffffff', accent: true },
-                  { label: 'BREAKEVEN THRESHOLD', val: optPayoffMetrics.breakevenText, sub: 'AT EXPIRATION', color: '#38bdf8', accent: true },
-                  { label: 'MAX PROFIT TARGET', val: optPayoffMetrics.maxProfitText, sub: 'EXPIRY CAP', color: '#10b981', accent: false },
-                  { label: 'MAX LOSS FLOOR', val: optPayoffMetrics.maxLossText, sub: 'DEFINED RISK', color: '#f43f5e', accent: false },
-                  { label: 'DELTA (Δ) / GAMMA (Γ)', val: `Δ ${optPayoffMetrics.greeks.delta}`, sub: `Γ ${optPayoffMetrics.greeks.gamma}`, color: '#10b981', accent: false },
-                  { label: 'THETA (Θ) / VEGA (ν)', val: `Θ ${optPayoffMetrics.greeks.theta}`, sub: `ν ${optPayoffMetrics.greeks.vega}`, color: '#a78bfa', accent: false },
+                  { label: tx('PRIMA NETA', 'NET PREMIUM'), val: optPayoffMetrics.netCostFormatted, sub: cleanUndSym, color: 'var(--text-main, #ffffff)', accent: true },
+                  { label: 'BREAKEVEN THRESHOLD', val: optPayoffMetrics.breakevenText, sub: 'AT EXPIRATION', color: 'var(--info-text, #38bdf8)', accent: true },
+                  { label: 'MAX PROFIT TARGET', val: optPayoffMetrics.maxProfitText, sub: 'EXPIRY CAP', color: 'var(--accent, #10b981)', accent: false },
+                  { label: 'MAX LOSS FLOOR', val: optPayoffMetrics.maxLossText, sub: 'DEFINED RISK', color: 'var(--danger, #f43f5e)', accent: false },
+                  { label: 'DELTA (Δ) / GAMMA (Γ)', val: `Δ ${optPayoffMetrics.greeks.delta}`, sub: `Γ ${optPayoffMetrics.greeks.gamma}`, color: 'var(--accent, #10b981)', accent: false },
+                  { label: 'THETA (Θ) / VEGA (ν)', val: `Θ ${optPayoffMetrics.greeks.theta}`, sub: `ν ${optPayoffMetrics.greeks.vega}`, color: 'var(--purple-text, #a78bfa)', accent: false },
                 ];
               }
               if (optChainMetrics) {
                 return [
-                  { label: 'ATM IMPLIED VOL (30D)', val: `${optChainMetrics.atmIvPct}%`, sub: `IV Rank ${optChainMetrics.ivRank}`, color: '#10b981', accent: true },
-                  { label: '25Δ PUT-CALL SKEW', val: `${optChainMetrics.skew25d}`, sub: 'DOWNSIDE TAIL', color: '#38bdf8', accent: true },
-                  { label: 'STRADDLE BREAKEVEN', val: optChainMetrics.straddleBreakevenPct, sub: 'IMPLIED MOVE', color: '#ffffff', accent: false },
-                  { label: 'NET GAMMA (GEX)', val: optChainMetrics.netGammaExposure, sub: 'DEALER POSITION', color: '#10b981', accent: false },
-                  { label: 'MAX PAIN STRIKE', val: `$${optChainMetrics.maxPain}`, sub: `Spot $${effectiveOptSpot}`, color: '#a78bfa', accent: false },
-                  { label: 'PUT/CALL OI RATIO', val: `${optChainMetrics.putCallRatio || '0.78'}`, sub: 'OPEN INTEREST', color: '#f59e0b', accent: false },
+                  { label: 'ATM IMPLIED VOL (30D)', val: `${optChainMetrics.atmIvPct}%`, sub: `IV Rank ${optChainMetrics.ivRank}`, color: 'var(--accent, #10b981)', accent: true },
+                  { label: '25Δ PUT-CALL SKEW', val: `${optChainMetrics.skew25d}`, sub: 'DOWNSIDE TAIL', color: 'var(--info-text, #38bdf8)', accent: true },
+                  { label: 'STRADDLE BREAKEVEN', val: optChainMetrics.straddleBreakevenPct, sub: 'IMPLIED MOVE', color: 'var(--text-main, #ffffff)', accent: false },
+                  { label: 'NET GAMMA (GEX)', val: optChainMetrics.netGammaExposure, sub: 'DEALER POSITION', color: 'var(--accent, #10b981)', accent: false },
+                  { label: 'MAX PAIN STRIKE', val: `$${optChainMetrics.maxPain}`, sub: `Spot $${effectiveOptSpot}`, color: 'var(--purple-text, #a78bfa)', accent: false },
+                  { label: 'PUT/CALL OI RATIO', val: `${optChainMetrics.putCallRatio || '0.78'}`, sub: 'OPEN INTEREST', color: 'var(--warn-text, #f59e0b)', accent: false },
                 ];
               }
               return [];
@@ -5961,7 +5961,7 @@ export default function MarketAnomaliesView({
                     padding: '14px 16px',
                     borderRadius: '10px',
                     backgroundColor: 'transparent',
-                    border: '1px solid rgba(148, 163, 184, 0.22)',
+                    border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'flex-start',
@@ -5976,7 +5976,7 @@ export default function MarketAnomaliesView({
                       className="mono-metric"
                       style={{
                         fontSize: '12px',
-                        color: '#ffffff',
+                        color: 'var(--text-main, #ffffff)',
                         fontWeight: 700,
                         marginBottom: '0.35rem',
                       }}
@@ -6016,7 +6016,7 @@ export default function MarketAnomaliesView({
                               padding: '4px 6px',
                               border: 'none',
                               background: 'transparent',
-                              color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                              color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                               textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                               cursor: 'pointer',
                               whiteSpace: 'nowrap',
@@ -6035,7 +6035,7 @@ export default function MarketAnomaliesView({
                   {/* BLOCK 2: SUB-MODES, OVERLAYS & SEARCHABLE ASSET/COUNTRY/CCY COMBOBOX */}
                   <div
                     style={{
-                      borderTop: '1px solid rgba(255, 255, 255, 0.07)',
+                      borderTop: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.07))',
                       paddingTop: '0.42rem',
                       display: 'flex',
                       flexDirection: 'column',
@@ -6049,12 +6049,12 @@ export default function MarketAnomaliesView({
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         fontSize: '12px',
-                        color: '#ffffff',
+                        color: 'var(--text-main, #ffffff)',
                         fontWeight: 700,
                       }}
                     >
                       <span>{tx('Configuración', 'Sub-Mode & Search')}</span>
-                      <span style={{ color: '#94a3b8', fontSize: '11.5px' }}>
+                      <span style={{ color: 'var(--text-muted, #94a3b8)', fontSize: '11.5px' }}>
                         {isRatesCurveMode
                           ? `${selectedCurveCountry} • 42 PAÍSES`
                           : isFxCrossMode
@@ -6087,7 +6087,7 @@ export default function MarketAnomaliesView({
                                 padding: '3px 6px',
                                 border: 'none',
                                 background: 'transparent',
-                                color: tool.active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                color: tool.active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                 textShadow: tool.active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                 cursor: 'pointer',
                                 textAlign: 'left',
@@ -6105,7 +6105,7 @@ export default function MarketAnomaliesView({
                               display: 'flex',
                               alignItems: 'center',
                               gap: '0.38rem',
-                              backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                              backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.88))',
                               border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
                               borderRadius: '999px',
                               padding: '0.24rem 0.65rem',
@@ -6152,7 +6152,7 @@ export default function MarketAnomaliesView({
                                 background: 'transparent',
                                 border: 'none',
                                 outline: 'none',
-                                color: '#ffffff',
+                                color: 'var(--text-main, #ffffff)',
                                 fontSize: '0.62rem',
                                 width: '100%',
                               }}
@@ -6169,7 +6169,7 @@ export default function MarketAnomaliesView({
                                 maxHeight: '210px',
                                 overflowY: 'auto',
                                 borderRadius: '12px',
-                                backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.98))',
                                 border: '1px solid rgba(var(--ui-accent-rgb), 0.42)',
                                 boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
                                 padding: '0.28rem',
@@ -6200,7 +6200,7 @@ export default function MarketAnomaliesView({
                                       idx === railSearchIdx || item.sym === currentAsset.sym
                                         ? 'rgba(var(--ui-accent-rgb), 0.18)'
                                         : 'transparent',
-                                    color: '#ffffff',
+                                    color: 'var(--text-main, #ffffff)',
                                     cursor: 'pointer',
                                     textAlign: 'left',
                                   }}
@@ -6211,7 +6211,7 @@ export default function MarketAnomaliesView({
                                       • {item.name.slice(0, 18)}
                                     </span>
                                   </span>
-                                  <span className="mono-metric" style={{ fontSize: '0.56rem', color: item.chgNum >= 0 ? '#10b981' : '#f43f5e', fontWeight: 700 }}>
+                                  <span className="mono-metric" style={{ fontSize: '0.56rem', color: item.chgNum >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)', fontWeight: 700 }}>
                                     {item.chg}
                                   </span>
                                 </button>
@@ -6239,7 +6239,7 @@ export default function MarketAnomaliesView({
                               borderRadius: '9px',
                               border: '1px solid #38bdf8',
                               backgroundColor: 'rgba(56, 189, 248, 0.16)',
-                              color: '#38bdf8',
+                              color: 'var(--info-text, #38bdf8)',
                             }}
                           >
                             <span>
@@ -6251,7 +6251,7 @@ export default function MarketAnomaliesView({
                                 setCompareSymbol(null);
                                 setCompareQuery('');
                               }}
-                              style={{ background: 'transparent', border: 'none', color: '#38bdf8', cursor: 'pointer', padding: 0, display: 'flex' }}
+                              style={{ background: 'transparent', border: 'none', color: 'var(--info-text, #38bdf8)', cursor: 'pointer', padding: 0, display: 'flex' }}
                             >
                               <X size={11} />
                             </button>
@@ -6263,13 +6263,13 @@ export default function MarketAnomaliesView({
                             display: 'flex',
                             alignItems: 'center',
                             gap: '0.38rem',
-                            backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                            backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.88))',
                             border: '1px solid rgba(56, 189, 248, 0.42)',
                             borderRadius: '999px',
                             padding: '0.24rem 0.65rem',
                           }}
                         >
-                          <Search size={11} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                          <Search size={11} style={{ color: 'var(--info-text, #38bdf8)', flexShrink: 0 }} />
                           <input
                             type="text"
                             value={compareQuery}
@@ -6307,7 +6307,7 @@ export default function MarketAnomaliesView({
                               background: 'transparent',
                               border: 'none',
                               outline: 'none',
-                              color: '#ffffff',
+                              color: 'var(--text-main, #ffffff)',
                               fontSize: '0.62rem',
                               width: '100%',
                             }}
@@ -6324,7 +6324,7 @@ export default function MarketAnomaliesView({
                               maxHeight: '215px',
                               overflowY: 'auto',
                               borderRadius: '12px',
-                              backgroundColor: 'rgba(10, 15, 26, 0.98)',
+                              backgroundColor: 'var(--bg-elevated, rgba(10, 15, 26, 0.98))',
                               border: '1px solid rgba(56, 189, 248, 0.42)',
                               boxShadow: '0 16px 36px rgba(0, 0, 0, 0.8)',
                               padding: '0.28rem',
@@ -6360,13 +6360,13 @@ export default function MarketAnomaliesView({
                                     textAlign: 'left',
                                   }}
                                 >
-                                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: '#ffffff' }}>
+                                  <span className="mono-metric" style={{ fontSize: '0.62rem', fontWeight: 800, color: 'var(--text-main, #ffffff)' }}>
                                     {peer.sym}{' '}
                                     <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>
                                       • {peer.name.slice(0, 16)}
                                     </span>
                                   </span>
-                                  <span className="mono-metric" style={{ fontSize: '0.58rem', fontWeight: 700, color: peer.chgNum >= 0 ? '#10b981' : '#f43f5e' }}>
+                                  <span className="mono-metric" style={{ fontSize: '0.58rem', fontWeight: 700, color: peer.chgNum >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)' }}>
                                     {peer.chg}
                                   </span>
                                 </button>
@@ -6397,7 +6397,7 @@ export default function MarketAnomaliesView({
                                   padding: '3px 6px',
                                   border: 'none',
                                   background: 'transparent',
-                                  color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                  color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                   textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                   cursor: 'pointer',
                                   textAlign: 'left',
@@ -6415,7 +6415,7 @@ export default function MarketAnomaliesView({
                               display: 'flex',
                               alignItems: 'center',
                               gap: '0.38rem',
-                              backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                              backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.88))',
                               border: '1px solid rgba(var(--ui-accent-rgb), 0.38)',
                               borderRadius: '999px',
                               padding: '0.24rem 0.65rem',
@@ -6462,7 +6462,7 @@ export default function MarketAnomaliesView({
                                 background: 'transparent',
                                 border: 'none',
                                 outline: 'none',
-                                color: '#ffffff',
+                                color: 'var(--text-main, #ffffff)',
                                 fontSize: '0.62rem',
                                 width: '100%',
                               }}
@@ -6479,7 +6479,7 @@ export default function MarketAnomaliesView({
                                 maxHeight: '210px',
                                 overflowY: 'auto',
                                 borderRadius: '12px',
-                                backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.98))',
                                 border: '1px solid rgba(var(--ui-accent-rgb), 0.42)',
                                 boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
                                 padding: '0.28rem',
@@ -6510,7 +6510,7 @@ export default function MarketAnomaliesView({
                                       idx === railSearchIdx || item.sym === currentAsset.sym
                                         ? 'rgba(var(--ui-accent-rgb), 0.18)'
                                         : 'transparent',
-                                    color: '#ffffff',
+                                    color: 'var(--text-main, #ffffff)',
                                     cursor: 'pointer',
                                     textAlign: 'left',
                                   }}
@@ -6521,7 +6521,7 @@ export default function MarketAnomaliesView({
                                       • {item.name.slice(0, 18)}
                                     </span>
                                   </span>
-                                  <span className="mono-metric" style={{ fontSize: '0.56rem', color: '#10b981', fontWeight: 700 }}>
+                                  <span className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--accent, #10b981)', fontWeight: 700 }}>
                                     {item.volumeZScore}
                                   </span>
                                 </button>
@@ -6553,7 +6553,7 @@ export default function MarketAnomaliesView({
                                   padding: '3px 4px',
                                   border: 'none',
                                   background: 'transparent',
-                                  color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                  color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                   textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                   cursor: 'pointer',
                                 }}
@@ -6571,13 +6571,13 @@ export default function MarketAnomaliesView({
                               display: 'flex',
                               alignItems: 'center',
                               gap: '0.38rem',
-                              backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                              backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.88))',
                               border: '1px solid rgba(16, 185, 129, 0.45)',
                               borderRadius: '999px',
                               padding: '0.24rem 0.65rem',
                             }}
                           >
-                            <Search size={11} style={{ color: '#10b981', flexShrink: 0 }} />
+                            <Search size={11} style={{ color: 'var(--accent, #10b981)', flexShrink: 0 }} />
                             <input
                               type="text"
                               value={railSearchQuery}
@@ -6622,7 +6622,7 @@ export default function MarketAnomaliesView({
                                 background: 'transparent',
                                 border: 'none',
                                 outline: 'none',
-                                color: '#ffffff',
+                                color: 'var(--text-main, #ffffff)',
                                 fontSize: '0.62rem',
                                 width: '100%',
                               }}
@@ -6639,7 +6639,7 @@ export default function MarketAnomaliesView({
                                 maxHeight: '220px',
                                 overflowY: 'auto',
                                 borderRadius: '12px',
-                                backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.98))',
                                 border: '1px solid rgba(16, 185, 129, 0.45)',
                                 boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
                                 padding: '0.28rem',
@@ -6674,7 +6674,7 @@ export default function MarketAnomaliesView({
                                       idx === railSearchIdx || item.code === selectedCurveCountry
                                         ? 'rgba(16, 185, 129, 0.18)'
                                         : 'transparent',
-                                    color: '#ffffff',
+                                    color: 'var(--text-main, #ffffff)',
                                     cursor: 'pointer',
                                     textAlign: 'left',
                                   }}
@@ -6685,7 +6685,7 @@ export default function MarketAnomaliesView({
                                       • {item.name} ({item.rating})
                                     </span>
                                   </span>
-                                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: '#10b981', fontWeight: 800 }}>
+                                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--accent, #10b981)', fontWeight: 800 }}>
                                     10Y {item.y10}%
                                   </span>
                                 </button>
@@ -6708,9 +6708,9 @@ export default function MarketAnomaliesView({
                             className="mono-metric"
                             style={{
                               width: '76px',
-                              backgroundColor: 'rgba(13, 19, 33, 0.92)',
-                              color: '#ffffff',
-                              border: '1px solid rgba(255, 255, 255, 0.18)',
+                              backgroundColor: 'var(--bg-elevated, rgba(13, 19, 33, 0.92))',
+                              color: 'var(--text-main, #ffffff)',
+                              border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.18))',
                               borderRadius: '8px',
                               padding: '0.2rem 0.42rem',
                               fontSize: '0.6rem',
@@ -6732,7 +6732,7 @@ export default function MarketAnomaliesView({
                                 padding: '2px 4px',
                                 border: 'none',
                                 background: 'transparent',
-                                color: fxAmount === amt ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                color: fxAmount === amt ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                 textShadow: fxAmount === amt ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                 cursor: 'pointer',
                               }}
@@ -6774,13 +6774,13 @@ export default function MarketAnomaliesView({
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '0.28rem',
-                                backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                                backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.88))',
                                 border: '1px solid rgba(16, 185, 129, 0.45)',
                                 borderRadius: '999px',
                                 padding: '0.22rem 0.5rem',
                               }}
                             >
-                              <Search size={10} style={{ color: '#10b981', flexShrink: 0 }} />
+                              <Search size={10} style={{ color: 'var(--accent, #10b981)', flexShrink: 0 }} />
                               <input
                                 type="text"
                                 value={railSearchQuery}
@@ -6820,7 +6820,7 @@ export default function MarketAnomaliesView({
                                   background: 'transparent',
                                   border: 'none',
                                   outline: 'none',
-                                  color: '#10b981',
+                                  color: 'var(--accent, #10b981)',
                                   fontWeight: 700,
                                   fontSize: '0.58rem',
                                   width: '100%',
@@ -6838,7 +6838,7 @@ export default function MarketAnomaliesView({
                                   maxHeight: '210px',
                                   overflowY: 'auto',
                                   borderRadius: '12px',
-                                  backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                  backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.98))',
                                   border: '1px solid rgba(16, 185, 129, 0.45)',
                                   boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
                                   padding: '0.28rem',
@@ -6870,7 +6870,7 @@ export default function MarketAnomaliesView({
                                         idx === railSearchIdx || item.code === fxBaseCcy
                                           ? 'rgba(16, 185, 129, 0.18)'
                                           : 'transparent',
-                                      color: '#ffffff',
+                                      color: 'var(--text-main, #ffffff)',
                                       cursor: 'pointer',
                                       textAlign: 'left',
                                     }}
@@ -6878,7 +6878,7 @@ export default function MarketAnomaliesView({
                                     <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800 }}>
                                       {item.code} <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>• {item.name.slice(0, 15)}</span>
                                     </span>
-                                    <span className="mono-metric" style={{ fontSize: '0.54rem', color: '#10b981' }}>
+                                    <span className="mono-metric" style={{ fontSize: '0.54rem', color: 'var(--accent, #10b981)' }}>
                                       {item.rate10Y}%
                                     </span>
                                   </button>
@@ -6894,13 +6894,13 @@ export default function MarketAnomaliesView({
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '0.28rem',
-                                backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                                backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.88))',
                                 border: '1px solid rgba(56, 189, 248, 0.45)',
                                 borderRadius: '999px',
                                 padding: '0.22rem 0.5rem',
                               }}
                             >
-                              <Search size={10} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                              <Search size={10} style={{ color: 'var(--info-text, #38bdf8)', flexShrink: 0 }} />
                               <input
                                 type="text"
                                 value={fxQuoteQuery}
@@ -6940,7 +6940,7 @@ export default function MarketAnomaliesView({
                                   background: 'transparent',
                                   border: 'none',
                                   outline: 'none',
-                                  color: '#38bdf8',
+                                  color: 'var(--info-text, #38bdf8)',
                                   fontWeight: 700,
                                   fontSize: '0.58rem',
                                   width: '100%',
@@ -6958,7 +6958,7 @@ export default function MarketAnomaliesView({
                                   maxHeight: '210px',
                                   overflowY: 'auto',
                                   borderRadius: '12px',
-                                  backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                  backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.98))',
                                   border: '1px solid rgba(56, 189, 248, 0.45)',
                                   boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
                                   padding: '0.28rem',
@@ -6990,7 +6990,7 @@ export default function MarketAnomaliesView({
                                         idx === fxQuoteIdx || item.code === fxQuoteCcy
                                           ? 'rgba(56, 189, 248, 0.18)'
                                           : 'transparent',
-                                      color: '#ffffff',
+                                      color: 'var(--text-main, #ffffff)',
                                       cursor: 'pointer',
                                       textAlign: 'left',
                                     }}
@@ -6998,7 +6998,7 @@ export default function MarketAnomaliesView({
                                     <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800 }}>
                                       {item.code} <span style={{ fontWeight: 500, color: 'var(--text-muted)' }}>• {item.name.slice(0, 15)}</span>
                                     </span>
-                                    <span className="mono-metric" style={{ fontSize: '0.54rem', color: '#38bdf8' }}>
+                                    <span className="mono-metric" style={{ fontSize: '0.54rem', color: 'var(--info-text, #38bdf8)' }}>
                                       {item.rate10Y}%
                                     </span>
                                   </button>
@@ -7030,7 +7030,7 @@ export default function MarketAnomaliesView({
                                   padding: '3px 6px',
                                   border: 'none',
                                   background: 'transparent',
-                                  color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                  color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                   textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                   cursor: 'pointer',
                                   textAlign: 'left',
@@ -7049,13 +7049,13 @@ export default function MarketAnomaliesView({
                               display: 'flex',
                               alignItems: 'center',
                               gap: '0.38rem',
-                              backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                              backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.88))',
                               border: '1px solid rgba(16, 185, 129, 0.45)',
                               borderRadius: '999px',
                               padding: '0.24rem 0.65rem',
                             }}
                           >
-                            <Search size={11} style={{ color: '#10b981', flexShrink: 0 }} />
+                            <Search size={11} style={{ color: 'var(--accent, #10b981)', flexShrink: 0 }} />
                             <input
                               type="text"
                               value={railSearchQuery}
@@ -7096,7 +7096,7 @@ export default function MarketAnomaliesView({
                                 background: 'transparent',
                                 border: 'none',
                                 outline: 'none',
-                                color: '#ffffff',
+                                color: 'var(--text-main, #ffffff)',
                                 fontSize: '0.62rem',
                                 width: '100%',
                               }}
@@ -7113,7 +7113,7 @@ export default function MarketAnomaliesView({
                                 maxHeight: '215px',
                                 overflowY: 'auto',
                                 borderRadius: '12px',
-                                backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.98))',
                                 border: '1px solid rgba(16, 185, 129, 0.45)',
                                 boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
                                 padding: '0.28rem',
@@ -7144,7 +7144,7 @@ export default function MarketAnomaliesView({
                                       idx === railSearchIdx || cm.sym === currentAsset.sym
                                         ? 'rgba(16, 185, 129, 0.18)'
                                         : 'transparent',
-                                    color: '#ffffff',
+                                    color: 'var(--text-main, #ffffff)',
                                     cursor: 'pointer',
                                     textAlign: 'left',
                                   }}
@@ -7155,7 +7155,7 @@ export default function MarketAnomaliesView({
                                       • {cm.name.slice(0, 18)}
                                     </span>
                                   </span>
-                                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: '#10b981', fontWeight: 700 }}>
+                                  <span className="mono-metric" style={{ fontSize: '0.58rem', color: 'var(--accent, #10b981)', fontWeight: 700 }}>
                                     {cm.priceFormatted}
                                   </span>
                                 </button>
@@ -7187,7 +7187,7 @@ export default function MarketAnomaliesView({
                                   padding: '3px 4px',
                                   border: 'none',
                                   background: 'transparent',
-                                  color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                  color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                   textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                   cursor: 'pointer',
                                 }}
@@ -7205,13 +7205,13 @@ export default function MarketAnomaliesView({
                               display: 'flex',
                               alignItems: 'center',
                               gap: '0.38rem',
-                              backgroundColor: 'rgba(8, 12, 22, 0.88)',
+                              backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.88))',
                               border: '1px solid rgba(56, 189, 248, 0.45)',
                               borderRadius: '999px',
                               padding: '0.24rem 0.65rem',
                             }}
                           >
-                            <Search size={11} style={{ color: '#38bdf8', flexShrink: 0 }} />
+                            <Search size={11} style={{ color: 'var(--info-text, #38bdf8)', flexShrink: 0 }} />
                             <input
                               type="text"
                               value={railSearchQuery}
@@ -7252,7 +7252,7 @@ export default function MarketAnomaliesView({
                                 background: 'transparent',
                                 border: 'none',
                                 outline: 'none',
-                                color: '#ffffff',
+                                color: 'var(--text-main, #ffffff)',
                                 fontSize: '0.62rem',
                                 width: '100%',
                               }}
@@ -7269,7 +7269,7 @@ export default function MarketAnomaliesView({
                                 maxHeight: '215px',
                                 overflowY: 'auto',
                                 borderRadius: '12px',
-                                backgroundColor: 'rgba(8, 12, 22, 0.98)',
+                                backgroundColor: 'var(--bg-glass-strong, rgba(8, 12, 22, 0.98))',
                                 border: '1px solid rgba(56, 189, 248, 0.45)',
                                 boxShadow: '0 16px 36px rgba(0,0,0,0.8)',
                                 padding: '0.28rem',
@@ -7300,7 +7300,7 @@ export default function MarketAnomaliesView({
                                       idx === railSearchIdx || item.sym === currentAsset.sym
                                         ? 'rgba(56, 189, 248, 0.18)'
                                         : 'transparent',
-                                    color: '#ffffff',
+                                    color: 'var(--text-main, #ffffff)',
                                     cursor: 'pointer',
                                     textAlign: 'left',
                                   }}
@@ -7311,7 +7311,7 @@ export default function MarketAnomaliesView({
                                       • {item.name.slice(0, 17)}
                                     </span>
                                   </span>
-                                  <span className="mono-metric" style={{ fontSize: '0.56rem', color: '#38bdf8', fontWeight: 700 }}>
+                                  <span className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--info-text, #38bdf8)', fontWeight: 700 }}>
                                     {item.priceFormatted}
                                   </span>
                                 </button>
@@ -7336,7 +7336,7 @@ export default function MarketAnomaliesView({
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     cursor: 'pointer',
                                     whiteSpace: 'nowrap',
@@ -7358,7 +7358,7 @@ export default function MarketAnomaliesView({
                   {/* BLOCK 3: 2x3 DUAL-TIER QUANTITATIVE TELEMETRY PILLS */}
                   <div
                     style={{
-                      borderTop: '1px solid rgba(255, 255, 255, 0.07)',
+                      borderTop: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.07))',
                       paddingTop: '0.42rem',
                       display: 'flex',
                       flexDirection: 'column',
@@ -7369,7 +7369,7 @@ export default function MarketAnomaliesView({
                       className="mono-metric"
                       style={{
                         fontSize: '12px',
-                        color: '#ffffff',
+                        color: 'var(--text-main, #ffffff)',
                         fontWeight: 700,
                       }}
                     >
@@ -7390,8 +7390,8 @@ export default function MarketAnomaliesView({
                             padding: '8px 10px',
                             borderRadius: '8px',
                             backgroundColor: 'transparent',
-                            border: '1px solid rgba(148, 163, 184, 0.22)',
-                            borderLeft: `3px solid ${k.color === '#ffffff' ? '#10b981' : k.color}`,
+                            border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
+                            borderLeft: `3px solid ${k.color === '#ffffff' || String(k.color).includes('--text-main') ? 'var(--accent, #10b981)' : k.color}`,
                             display: 'flex',
                             flexDirection: 'column',
                             justifyContent: 'space-between',
@@ -7403,7 +7403,7 @@ export default function MarketAnomaliesView({
                             style={{
                               fontSize: '10.5px',
                               fontWeight: 700,
-                              color: '#94a3b8',
+                              color: 'var(--text-muted, #94a3b8)',
                               whiteSpace: 'nowrap',
                               overflow: 'hidden',
                               textOverflow: 'ellipsis',
@@ -7416,7 +7416,7 @@ export default function MarketAnomaliesView({
                               {k.val}
                             </span>
                           </div>
-                          <span style={{ fontSize: '10px', color: '#64748b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          <span style={{ fontSize: '10px', color: 'var(--text-dim, #64748b)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                             {k.sub}
                           </span>
                         </div>
@@ -7469,9 +7469,9 @@ export default function MarketAnomaliesView({
                               justifyContent: 'space-between',
                               gap: '4px 10px',
                               padding: '2px 8px 4px',
-                              borderBottom: '1px solid rgba(148, 163, 184, 0.12)',
+                              borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.12))',
                               fontSize: '11px',
-                              color: '#94a3b8',
+                              color: 'var(--text-muted, #94a3b8)',
                               flexShrink: 0,
                             }}
                           >
@@ -7491,21 +7491,21 @@ export default function MarketAnomaliesView({
                                   ? 'CURVE'
                                   : tfObj.label}
                               </span>
-                              <span style={{ color: '#e2e8f0', fontWeight: 700 }}>{granLabel}</span>
-                              {rangeLabel && <span style={{ color: '#64748b' }}>({rangeLabel})</span>}
+                              <span style={{ color: 'var(--text-secondary, #e2e8f0)', fontWeight: 700 }}>{granLabel}</span>
+                              {rangeLabel && <span style={{ color: 'var(--text-dim, #64748b)' }}>({rangeLabel})</span>}
                             </div>
                             {!isRatesCurveMode && !isCommodityCurveMode && !isOptionsPayoffMode && !isOptionsSmileMode && (
                               <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
                                 {typeof firstPt.price === 'number' && typeof lastPt.price === 'number' && (
-                                  <span style={{ color: '#94a3b8' }}>
-                                    Open: <strong style={{ color: '#cbd5e1' }}>{firstPt.price}</strong> • Last:{' '}
-                                    <strong style={{ color: '#ffffff' }}>{lastPt.price}</strong>
+                                  <span style={{ color: 'var(--text-muted, #94a3b8)' }}>
+                                    Open: <strong style={{ color: 'var(--text-body, #cbd5e1)' }}>{firstPt.price}</strong> • Last:{' '}
+                                    <strong style={{ color: 'var(--text-main, #ffffff)' }}>{lastPt.price}</strong>
                                   </span>
                                 )}
                                 <span
                                   style={{
                                     fontWeight: 800,
-                                    color: (lastPt.pctReturn ?? currentAsset.chgNum) >= 0 ? '#10b981' : '#f43f5e',
+                                    color: (lastPt.pctReturn ?? currentAsset.chgNum) >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                                   }}
                                 >
                                   {periodRet}
@@ -7551,7 +7551,7 @@ export default function MarketAnomaliesView({
                             />
                             <Tooltip
                               contentStyle={{
-                                backgroundColor: 'rgba(10, 15, 28, 0.92)',
+                                backgroundColor: 'var(--bg-glass-strong, rgba(10, 15, 28, 0.92))',
                                 borderColor: 'rgba(255, 255, 255, 0.12)',
                                 borderRadius: '12px',
                                 fontSize: '0.73rem',
@@ -7591,7 +7591,7 @@ export default function MarketAnomaliesView({
                                   type="monotone"
                                   dataKey="t0Pnl"
                                   name={tx('P&L Hoy T+0 Black-Scholes ($)', 'Today T+0 Black-Scholes P&L ($)')}
-                                  stroke="#38bdf8"
+                                  stroke="var(--info-text, #38bdf8)"
                                   strokeWidth={2.0}
                                   strokeDasharray="4 3"
                                   dot={false}
@@ -7615,7 +7615,7 @@ export default function MarketAnomaliesView({
                                   type="monotone"
                                   dataKey="iv7d"
                                   name="7D Weekly IV (%)"
-                                  stroke="#f43f5e"
+                                  stroke="var(--danger, #f43f5e)"
                                   strokeWidth={1.9}
                                   strokeDasharray="3 3"
                                   dot={false}
@@ -7624,7 +7624,7 @@ export default function MarketAnomaliesView({
                                   type="monotone"
                                   dataKey="iv90d"
                                   name="90D Quarterly IV (%)"
-                                  stroke="#38bdf8"
+                                  stroke="var(--info-text, #38bdf8)"
                                   strokeWidth={2.0}
                                   dot={false}
                                 />
@@ -7632,7 +7632,7 @@ export default function MarketAnomaliesView({
                                   type="monotone"
                                   dataKey="iv180d"
                                   name="180D LEAPS IV (%)"
-                                  stroke="#a78bfa"
+                                  stroke="var(--purple-text, #a78bfa)"
                                   strokeWidth={1.8}
                                   strokeDasharray="5 3"
                                   dot={false}
@@ -7646,7 +7646,7 @@ export default function MarketAnomaliesView({
                                 type="monotone"
                                 dataKey="cmpReturn"
                                 name="US Treasury Benchmark (%)"
-                                stroke="#38bdf8"
+                                stroke="var(--info-text, #38bdf8)"
                                 strokeWidth={1.9}
                                 strokeDasharray="4 4"
                                 dot={false}
@@ -7657,7 +7657,7 @@ export default function MarketAnomaliesView({
                                 type="monotone"
                                 dataKey="bundYield"
                                 name="German Bund Benchmark (%)"
-                                stroke="#a78bfa"
+                                stroke="var(--purple-text, #a78bfa)"
                                 strokeWidth={1.6}
                                 strokeDasharray="2 3"
                                 dot={false}
@@ -7670,7 +7670,7 @@ export default function MarketAnomaliesView({
                                 type="monotone"
                                 dataKey="sma20"
                                 name={isCommodityCurveMode ? 'Spot Price Reference' : `${fxBaseCcy}/${fxQuoteCcy} SMA (20)`}
-                                stroke="#38bdf8"
+                                stroke="var(--info-text, #38bdf8)"
                                 strokeWidth={1.7}
                                 strokeDasharray="4 4"
                                 dot={false}
@@ -7683,7 +7683,7 @@ export default function MarketAnomaliesView({
                                 type="monotone"
                                 dataKey="cmpReturn"
                                 name={`${compareSymbol} (%)`}
-                                stroke="#38bdf8"
+                                stroke="var(--info-text, #38bdf8)"
                                 strokeWidth={2.2}
                                 dot={false}
                               />
@@ -7691,15 +7691,15 @@ export default function MarketAnomaliesView({
 
                             {/* Technical Overlays (when in Technical mode and not normalized %) */}
                             {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showSma20 && (
-                              <Line type="monotone" dataKey="sma20" name="SMA (20)" stroke="#38bdf8" strokeWidth={1.6} strokeDasharray="4 4" dot={false} />
+                              <Line type="monotone" dataKey="sma20" name="SMA (20)" stroke="var(--info-text, #38bdf8)" strokeWidth={1.6} strokeDasharray="4 4" dot={false} />
                             )}
                             {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showVwap && (
-                              <Line type="monotone" dataKey="vwap" name="VWAP" stroke="#f59e0b" strokeWidth={1.6} dot={false} />
+                              <Line type="monotone" dataKey="vwap" name="VWAP" stroke="var(--warn-text, #f59e0b)" strokeWidth={1.6} dot={false} />
                             )}
                             {!isCompareMode && !isRatesCurveMode && !isOptionsSmileMode && !isOptionsPayoffMode && !isFxCrossMode && !isCommodityCurveMode && showBollinger && (
                               <>
-                                <Line type="monotone" dataKey="bbUpper" name="BB Upper" stroke="#a78bfa" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
-                                <Line type="monotone" dataKey="bbLower" name="BB Lower" stroke="#a78bfa" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
+                                <Line type="monotone" dataKey="bbUpper" name="BB Upper" stroke="var(--purple-text, #a78bfa)" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
+                                <Line type="monotone" dataKey="bbLower" name="BB Lower" stroke="var(--purple-text, #a78bfa)" strokeWidth={1.2} strokeDasharray="3 3" dot={false} />
                               </>
                             )}
                           </AreaChart>
@@ -7708,7 +7708,7 @@ export default function MarketAnomaliesView({
 
                       {/* Synchronized Sub-Pane (Volume Histogram or Intraday Z-Score) */}
                       {showSubChart !== 'none' && (
-                        <div style={{ flex: 0.26, minHeight: 0, borderTop: '1px solid rgba(255, 255, 255, 0.06)', paddingTop: '0.35rem' }}>
+                        <div style={{ flex: 0.26, minHeight: 0, borderTop: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.06))', paddingTop: '0.35rem' }}>
                           <ResponsiveContainer width="100%" height="100%">
                             <BarChart data={activeChartData}>
                               <XAxis
@@ -7723,7 +7723,7 @@ export default function MarketAnomaliesView({
                               <YAxis stroke="var(--text-dim)" fontSize={10} orientation="right" tickLine={false} axisLine={false} />
                               <Tooltip
                                 contentStyle={{
-                                  backgroundColor: 'rgba(10, 15, 28, 0.92)',
+                                  backgroundColor: 'var(--bg-glass-strong, rgba(10, 15, 28, 0.92))',
                                   borderColor: 'rgba(255, 255, 255, 0.12)',
                                   borderRadius: '10px',
                                   fontSize: '0.7rem',
@@ -7768,7 +7768,7 @@ export default function MarketAnomaliesView({
               flexWrap: 'wrap',
               gap: '0.75rem',
               paddingTop: '0.6rem',
-              borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+              borderTop: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))',
               fontSize: '0.73rem',
               flexShrink: 0,
             }}
@@ -7798,7 +7798,7 @@ export default function MarketAnomaliesView({
                         'Price and volume within their normal range, with no unusual buying or selling pressure'
                       )}
               </span>
-              <span className="mono-metric" style={{ color: '#64748b', marginLeft: '0.45rem', fontSize: '0.68rem' }}>
+              <span className="mono-metric" style={{ color: 'var(--text-dim, #64748b)', marginLeft: '0.45rem', fontSize: '0.68rem' }}>
                 (P-06: {displayedScore}
                 {isDislocated ? ' > 0.65' : ''} • Vol 20d: {currentAsset.volumeZScore || anomalyProfile.volumeZScore} •{' '}
                 {isDislocated || isElevated
@@ -7862,12 +7862,12 @@ export default function MarketAnomaliesView({
             ];
           })();
 
-          const strokeHex24h = researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e';
+          const strokeHex24h = researchBrief.compositeScore >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)';
           const gradId24h = `l2-research-sent-24h-${currentAsset.sym}`;
 
           const renderAccordionRow = (item, isCompact = false) => {
             const isBull = item.side === 'BULL';
-            const accentHex = isBull ? '#34d399' : '#fb7185';
+            const accentHex = isBull ? 'var(--pos-text, #34d399)' : 'var(--neg-text, #fb7185)';
             const fillRgba = isBull ? 'rgba(16, 185, 129, 0.18)' : 'rgba(244, 63, 94, 0.18)';
             const isOpen = researchExpandedKey === item.key;
             const titleText = item.title[langCode] || item.title.EN;
@@ -7880,7 +7880,7 @@ export default function MarketAnomaliesView({
                 style={{
                   borderRadius: isOpen ? '7px' : '0px',
                   border: isOpen ? `1px solid ${accentHex}` : '1px solid transparent',
-                  borderBottom: isOpen ? `1px solid ${accentHex}` : '1px solid rgba(148, 163, 184, 0.12)',
+                  borderBottom: isOpen ? `1px solid ${accentHex}` : '1px solid var(--border-slate, rgba(148, 163, 184, 0.12))',
                   backgroundColor: isOpen ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.10)' : 'transparent',
                   overflow: 'hidden',
                   minWidth: 0,
@@ -7946,7 +7946,7 @@ export default function MarketAnomaliesView({
                     )}
                     <span
                       style={{
-                        color: '#f8fafc',
+                        color: 'var(--text-main, #f8fafc)',
                         fontSize: isCompact ? '0.68rem' : '0.75rem',
                         fontWeight: isOpen ? 700 : 500,
                         whiteSpace: 'nowrap',
@@ -7968,14 +7968,14 @@ export default function MarketAnomaliesView({
                           padding: '0.06rem 0.32rem',
                           borderRadius: '4px',
                           backgroundColor: 'transparent',
-                          border: '1px solid rgba(148, 163, 184, 0.22)',
-                          color: item.importance === 'HIGH' ? '#f8fafc' : '#94a3b8',
+                          border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
+                          color: item.importance === 'HIGH' ? 'var(--text-main, #f8fafc)' : 'var(--text-muted, #94a3b8)',
                         }}
                       >
                         {item.importance || 'HIGH'}
                       </span>
                     )}
-                    <span className="mono-metric" style={{ fontSize: isCompact ? '0.58rem' : '0.64rem', color: '#94a3b8' }}>
+                    <span className="mono-metric" style={{ fontSize: isCompact ? '0.58rem' : '0.64rem', color: 'var(--text-muted, #94a3b8)' }}>
                       {item.pctContribution}% {isOpen ? '▾' : '▸'}
                     </span>
                   </div>
@@ -7985,7 +7985,7 @@ export default function MarketAnomaliesView({
                   <div
                     style={{
                       padding: '0.52rem 0.72rem 0.6rem',
-                      borderTop: '1px solid rgba(148, 163, 184, 0.14)',
+                      borderTop: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                       backgroundColor: 'transparent',
                       display: 'flex',
                       flexDirection: 'column',
@@ -7998,7 +7998,7 @@ export default function MarketAnomaliesView({
                         display: 'flex',
                         justifyContent: 'space-between',
                         fontSize: '0.6rem',
-                        color: '#94a3b8',
+                        color: 'var(--text-muted, #94a3b8)',
                       }}
                     >
                       <span>
@@ -8009,7 +8009,7 @@ export default function MarketAnomaliesView({
                         {isBull ? (tx('CATALIZADOR ALCISTA', 'BULL DRIVER')) : tx('FACTOR DE RIESGO', 'BEAR RISK')} ({item.impactTag})
                       </span>
                     </div>
-                    <p style={{ fontSize: '0.72rem', color: '#cbd5e1', lineHeight: 1.46, margin: 0 }}>{detailText}</p>
+                    <p style={{ fontSize: '0.72rem', color: 'var(--text-body, #cbd5e1)', lineHeight: 1.46, margin: 0 }}>{detailText}</p>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                       <button
                         type="button"
@@ -8056,7 +8056,7 @@ export default function MarketAnomaliesView({
               <div
                 style={{
                   borderRadius: '10px',
-                  border: '1px solid rgba(148, 163, 184, 0.22)',
+                  border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                   background: 'transparent',
                   display: 'flex',
                   flexDirection: 'column',
@@ -8068,7 +8068,7 @@ export default function MarketAnomaliesView({
                 <div
                   style={{
                     padding: '12px 14px 8px',
-                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
+                    borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                     backgroundColor: 'transparent',
                     display: 'flex',
                     alignItems: 'baseline',
@@ -8077,10 +8077,10 @@ export default function MarketAnomaliesView({
                     flexShrink: 0,
                   }}
                 >
-                  <span style={{ color: '#ffffff', fontSize: '15.5px', fontWeight: 700 }}>
+                  <span style={{ color: 'var(--text-main, #ffffff)', fontSize: '15.5px', fontWeight: 700 }}>
                     {tx('Chat Documental', 'Document Chat')}
                   </span>
-                  <span className="mono-metric" style={{ color: '#94a3b8', fontSize: '12px' }}>
+                  <span className="mono-metric" style={{ color: 'var(--text-muted, #94a3b8)', fontSize: '12px' }}>
                     {currentAsset.sym}
                   </span>
 
@@ -8095,7 +8095,7 @@ export default function MarketAnomaliesView({
                       style={{
                         background: 'transparent',
                         border: 'none',
-                        color: 'rgba(148, 163, 184, 0.68)',
+                        color: 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                         padding: '2px 4px',
                         fontSize: '12px',
                         fontWeight: 600,
@@ -8126,7 +8126,7 @@ export default function MarketAnomaliesView({
                       padding: '0.65rem 0.76rem',
                       borderRadius: '8px',
                       backgroundColor: 'transparent',
-                      border: '1px solid rgba(148, 163, 184, 0.22)',
+                      border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                       borderLeft: '3px solid var(--ui-accent, #10b981)',
                       display: 'flex',
                       flexDirection: 'column',
@@ -8137,20 +8137,20 @@ export default function MarketAnomaliesView({
                       <span className="mono-metric" style={{ fontSize: '0.6rem', fontWeight: 800, color: 'var(--ui-accent, #10b981)' }}>
                         {tx('TESIS EJECUTIVA', 'EXECUTIVE THESIS')} • {currentAsset.sym}
                       </span>
-                      <span className="mono-metric" style={{ fontSize: '0.56rem', color: '#34d399', fontWeight: 700 }}>
+                      <span className="mono-metric" style={{ fontSize: '0.56rem', color: 'var(--pos-text, #34d399)', fontWeight: 700 }}>
                         GUARDRAIL OK
                       </span>
                     </div>
-                    <div style={{ color: '#e2e8f0', fontSize: '0.73rem', lineHeight: 1.46 }}>
+                    <div style={{ color: 'var(--text-secondary, #e2e8f0)', fontSize: '0.73rem', lineHeight: 1.46 }}>
                       {researchBrief.executiveSummary[langCode] || researchBrief.executiveSummary.EN}
                     </div>
                     <div
                       className="mono-metric"
                       style={{
                         fontSize: '0.57rem',
-                        color: '#94a3b8',
+                        color: 'var(--text-muted, #94a3b8)',
                         paddingTop: '0.22rem',
-                        borderTop: '1px solid rgba(148, 163, 184, 0.14)',
+                        borderTop: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                       }}
                     >
                       {assetSensitivity.shortLabel[langCode] || assetSensitivity.shortLabel.EN}
@@ -8177,7 +8177,7 @@ export default function MarketAnomaliesView({
                             ? '1px solid var(--ui-accent, #10b981)'
                             : msg.blocked
                             ? '1px solid rgba(244, 63, 94, 0.45)'
-                            : '1px solid rgba(148, 163, 184, 0.22)',
+                            : '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                       }}
                     >
                       {msg.role === 'assistant' && (
@@ -8189,7 +8189,7 @@ export default function MarketAnomaliesView({
                             justifyContent: 'space-between',
                             marginBottom: '0.24rem',
                             fontSize: '0.58rem',
-                            color: msg.blocked ? '#fb7185' : 'var(--ui-accent, #10b981)',
+                            color: msg.blocked ? 'var(--neg-text, #fb7185)' : 'var(--ui-accent, #10b981)',
                             fontWeight: 700,
                           }}
                         >
@@ -8197,7 +8197,7 @@ export default function MarketAnomaliesView({
                           <span>{msg.latency}</span>
                         </div>
                       )}
-                      <div style={{ color: msg.role === 'user' ? '#f8fafc' : '#e2e8f0', fontSize: '0.72rem', lineHeight: 1.44 }}>
+                      <div style={{ color: msg.role === 'user' ? 'var(--text-main, #f8fafc)' : 'var(--text-secondary, #e2e8f0)', fontSize: '0.72rem', lineHeight: 1.44 }}>
                         {msg.text}
                       </div>
                     </div>
@@ -8208,7 +8208,7 @@ export default function MarketAnomaliesView({
                 <div
                   style={{
                     padding: '0.52rem 0.65rem 0.62rem',
-                    borderTop: '1px solid rgba(148, 163, 184, 0.14)',
+                    borderTop: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                     backgroundColor: 'transparent',
                     display: 'flex',
                     flexDirection: 'column',
@@ -8231,7 +8231,7 @@ export default function MarketAnomaliesView({
                           padding: '2px 4px',
                           border: 'none',
                           background: 'transparent',
-                          color: 'rgba(148, 163, 184, 0.68)',
+                          color: 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                           cursor: 'pointer',
                         }}
                       >
@@ -8261,10 +8261,10 @@ export default function MarketAnomaliesView({
                       style={{
                         flex: 1,
                         backgroundColor: 'transparent',
-                        border: '1px solid rgba(148, 163, 184, 0.24)',
+                        border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.24))',
                         borderRadius: '8px',
                         padding: '0.42rem 0.6rem',
-                        color: '#f8fafc',
+                        color: 'var(--text-main, #f8fafc)',
                         fontSize: '0.72rem',
                         outline: 'none',
                       }}
@@ -8329,7 +8329,7 @@ export default function MarketAnomaliesView({
                 style={{
                   padding: '12px 16px',
                   borderRadius: '10px',
-                  border: '1px solid rgba(148, 163, 184, 0.22)',
+                  border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                   background: 'transparent',
                   display: 'flex',
                   flexDirection: 'column',
@@ -8346,19 +8346,19 @@ export default function MarketAnomaliesView({
                     flexDirection: 'column',
                     gap: '8px',
                     paddingBottom: '8px',
-                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
+                    borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                     flexShrink: 0,
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '0.5rem', flexWrap: 'wrap' }}>
-                    <span style={{ color: '#ffffff', fontSize: '15.5px', fontWeight: 700 }}>
+                    <span style={{ color: 'var(--text-main, #ffffff)', fontSize: '15.5px', fontWeight: 700 }}>
                       {tx('Factores Ponderados', 'Weighted Factors')}
                     </span>
 
                     <span
                       className="mono-metric"
                       style={{
-                        color: researchBrief.compositeScore >= 0 ? '#10b981' : '#f43f5e',
+                        color: researchBrief.compositeScore >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)',
                         fontSize: '12px',
                         fontWeight: 700,
                       }}
@@ -8370,7 +8370,7 @@ export default function MarketAnomaliesView({
                   {/* Tug-of-War Proportional Bar + View Filter Pills */}
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.65rem', flexWrap: 'wrap' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', flex: 1, minWidth: '175px' }}>
-                      <span className="mono-metric" style={{ color: '#34d399', fontSize: '11.5px', fontWeight: 800 }}>
+                      <span className="mono-metric" style={{ color: 'var(--pos-text, #34d399)', fontSize: '11.5px', fontWeight: 800 }}>
                         BULL {bullPct}% (+{researchBrief.avgBull})
                       </span>
                       <div
@@ -8380,14 +8380,14 @@ export default function MarketAnomaliesView({
                           borderRadius: '999px',
                           overflow: 'hidden',
                           display: 'flex',
-                          backgroundColor: 'rgba(15, 23, 42, 0.9)',
-                          border: '1px solid rgba(148, 163, 184, 0.2)',
+                          backgroundColor: 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.9))',
+                          border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.2))',
                         }}
                       >
                         <div style={{ width: `${bullPct}%`, background: 'linear-gradient(90deg, #10b981, #34d399)' }} />
                         <div style={{ width: `${bearPct}%`, background: 'linear-gradient(90deg, #fb7185, #e11d48)' }} />
                       </div>
-                      <span className="mono-metric" style={{ color: '#fb7185', fontSize: '11.5px', fontWeight: 800 }}>
+                      <span className="mono-metric" style={{ color: 'var(--neg-text, #fb7185)', fontSize: '11.5px', fontWeight: 800 }}>
                         (-{researchBrief.avgBear}) {bearPct}% BEAR
                       </span>
                     </div>
@@ -8412,7 +8412,7 @@ export default function MarketAnomaliesView({
                               fontSize: '12px',
                               fontWeight: active ? 800 : 600,
                               cursor: 'pointer',
-                              color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                              color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                               textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                             }}
                           >
@@ -8429,7 +8429,7 @@ export default function MarketAnomaliesView({
                   {researchFactorFilter === 'twin' ? (
                     <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '0.5rem', minWidth: 0 }}>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', minWidth: 0 }}>
-                        <div className="mono-metric" style={{ color: '#34d399', fontSize: '0.64rem', fontWeight: 800, marginBottom: '2px' }}>
+                        <div className="mono-metric" style={{ color: 'var(--pos-text, #34d399)', fontSize: '0.64rem', fontWeight: 800, marginBottom: '2px' }}>
                           {tx('CATALIZADORES', 'BULL DRIVERS')}
                         </div>
                         {allFactors
@@ -8437,7 +8437,7 @@ export default function MarketAnomaliesView({
                           .map((item) => renderAccordionRow(item, true))}
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem', minWidth: 0 }}>
-                        <div className="mono-metric" style={{ color: '#fb7185', fontSize: '0.64rem', fontWeight: 800, marginBottom: '2px' }}>
+                        <div className="mono-metric" style={{ color: 'var(--neg-text, #fb7185)', fontSize: '0.64rem', fontWeight: 800, marginBottom: '2px' }}>
                           {tx('RIESGOS', 'BEAR RISKS')}
                         </div>
                         {allFactors
@@ -8460,7 +8460,7 @@ export default function MarketAnomaliesView({
                 style={{
                   padding: '12px 16px',
                   borderRadius: '10px',
-                  border: '1px solid rgba(148, 163, 184, 0.22)',
+                  border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                   background: 'transparent',
                   display: 'flex',
                   flexDirection: 'column',
@@ -8480,10 +8480,10 @@ export default function MarketAnomaliesView({
                     gap: '0.4rem',
                     flexShrink: 0,
                     paddingBottom: '8px',
-                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
+                    borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                   }}
                 >
-                  <span style={{ color: '#ffffff', fontSize: '15.5px', fontWeight: 700 }}>
+                  <span style={{ color: 'var(--text-main, #ffffff)', fontSize: '15.5px', fontWeight: 700 }}>
                     {tx('Noticias y Sentimiento', 'News & Sentiment')}
                   </span>
 
@@ -8552,7 +8552,7 @@ export default function MarketAnomaliesView({
 
                     {assetFinbertNews.map((news) => {
                       const isPos = news.scoreNum >= 0;
-                      const dotColor = isPos ? '#10b981' : '#f43f5e';
+                      const dotColor = isPos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)';
                       const headlineText = news.title[langCode] || news.title.EN;
 
                       return (
@@ -8580,7 +8580,7 @@ export default function MarketAnomaliesView({
                                 : '1px solid transparent',
                               borderBottom: news.isNew
                                 ? `1px solid ${dotColor}`
-                                : '1px solid rgba(148, 163, 184, 0.12)',
+                                : '1px solid var(--border-slate, rgba(148, 163, 184, 0.12))',
                               display: 'flex',
                               flexDirection: 'column',
                               gap: '0.22rem',
@@ -8602,8 +8602,8 @@ export default function MarketAnomaliesView({
                                     {tx('NUEVO', 'LIVE')}
                                   </span>
                                 )}
-                                <span style={{ color: '#38bdf8', fontSize: '0.58rem', fontWeight: 700 }}>{news.time}</span>
-                                <span style={{ color: '#94a3b8', fontSize: '0.57rem' }}>• {news.source}</span>
+                                <span style={{ color: 'var(--info-text, #38bdf8)', fontSize: '0.58rem', fontWeight: 700 }}>{news.time}</span>
+                                <span style={{ color: 'var(--text-muted, #94a3b8)', fontSize: '0.57rem' }}>• {news.source}</span>
                               </div>
 
                               <div style={{ display: 'flex', alignItems: 'center', gap: '0.32rem' }}>
@@ -8612,7 +8612,7 @@ export default function MarketAnomaliesView({
                                   style={{
                                     fontSize: '0.6rem',
                                     fontWeight: 800,
-                                    color: isPos ? '#34d399' : '#fb7185',
+                                    color: isPos ? 'var(--pos-text, #34d399)' : 'var(--neg-text, #fb7185)',
                                   }}
                                 >
                                   {news.score}
@@ -8640,7 +8640,7 @@ export default function MarketAnomaliesView({
                               </div>
                             </div>
 
-                            <div style={{ color: '#e2e8f0', fontSize: '0.7rem', lineHeight: 1.36 }}>{headlineText}</div>
+                            <div style={{ color: 'var(--text-secondary, #e2e8f0)', fontSize: '0.7rem', lineHeight: 1.36 }}>{headlineText}</div>
                           </div>
                         </div>
                       );
@@ -8654,7 +8654,7 @@ export default function MarketAnomaliesView({
                     padding: '0.5rem 0.65rem',
                     borderRadius: '8px',
                     backgroundColor: 'transparent',
-                    border: '1px solid rgba(148, 163, 184, 0.22)',
+                    border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '0.22rem',
@@ -8665,14 +8665,14 @@ export default function MarketAnomaliesView({
                   }}
                 >
                   <div className="mono-metric" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '0.58rem', color: '#94a3b8', fontWeight: 700 }}>
+                    <span style={{ fontSize: '0.58rem', color: 'var(--text-muted, #94a3b8)', fontWeight: 700 }}>
                       {tx('RECORRIDO SENTIMIENTO FINBERT (24H)', 'FINBERT SENTIMENT TRAJECTORY (24H)')}
                     </span>
                     <span
                       style={{
                         fontSize: '0.66rem',
                         fontWeight: 800,
-                        color: researchBrief.compositeScore >= 0 ? '#34d399' : '#fb7185',
+                        color: researchBrief.compositeScore >= 0 ? 'var(--pos-text, #34d399)' : 'var(--neg-text, #fb7185)',
                       }}
                     >
                       {researchBrief.compositeFormatted} pts
@@ -8688,11 +8688,11 @@ export default function MarketAnomaliesView({
                             <stop offset="95%" stopColor={strokeHex24h} stopOpacity={0.0} />
                           </linearGradient>
                         </defs>
-                        <XAxis dataKey="time" tick={{ fill: '#64748b', fontSize: 9 }} axisLine={false} tickLine={false} />
-                        <YAxis tick={{ fill: '#64748b', fontSize: 9 }} axisLine={false} tickLine={false} />
+                        <XAxis dataKey="time" tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9 }} axisLine={false} tickLine={false} />
+                        <YAxis tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9 }} axisLine={false} tickLine={false} />
                         <Tooltip
                           contentStyle={{
-                            backgroundColor: 'rgba(7, 11, 22, 0.95)',
+                            backgroundColor: 'var(--bg-elevated, rgba(7, 11, 22, 0.95))',
                             border: '1px solid rgba(129, 140, 248, 0.35)',
                             borderRadius: '8px',
                             fontSize: '0.68rem',

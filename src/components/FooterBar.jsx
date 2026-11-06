@@ -196,7 +196,7 @@ export default function FooterBar({
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(4, 7, 14, 0.78)',
+            backgroundColor: 'var(--bg-elevated-soft, rgba(4, 7, 14, 0.78))',
             backdropFilter: 'blur(9px)',
             display: 'flex',
             alignItems: 'center',
@@ -211,7 +211,7 @@ export default function FooterBar({
               width: 'min(480px, 94vw)',
               maxHeight: 'min(82vh, 520px)',
               borderRadius: '18px',
-              backgroundColor: 'rgba(10, 15, 26, 0.98)',
+              backgroundColor: 'var(--bg-elevated, rgba(10, 15, 26, 0.98))',
               border: '1px solid rgba(var(--ui-accent-rgb), 0.45)',
               boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85), 0 0 28px rgba(var(--ui-accent-rgb), 0.18)',
               padding: 'clamp(0.85rem, 2vw, 1.2rem)',
@@ -225,7 +225,7 @@ export default function FooterBar({
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '0.65rem', flexShrink: 0 }}>
               <div style={{ minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '0.95rem', fontWeight: 800, color: '#ffffff' }}>
+                  <span style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-main, #ffffff)' }}>
                     {t.langModalTitle || 'Select Interface Language'}
                   </span>
                   <span
@@ -254,7 +254,7 @@ export default function FooterBar({
                 onClick={() => setLangModalOpen(false)}
                 style={{
                   background: 'rgba(255,255,255,0.06)',
-                  border: '1px solid rgba(255,255,255,0.14)',
+                  border: '1px solid var(--border-subtle, rgba(255,255,255,0.14))',
                   color: 'var(--text-muted)',
                   borderRadius: '9px',
                   width: '26px',
@@ -287,7 +287,7 @@ export default function FooterBar({
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.55rem', minWidth: 0 }}>
                 <FlagBadge lang={currentLang} width={22} height={15} />
-                <div style={{ fontSize: '0.76rem', fontWeight: 800, color: '#ffffff', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <div style={{ fontSize: '0.76rem', fontWeight: 800, color: 'var(--text-main, #ffffff)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {currentLang.nativeName}{' '}
                   <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: 500 }}>
                     ({currentLang.name} • {currentLang.region})
@@ -306,7 +306,7 @@ export default function FooterBar({
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.5rem',
-                  backgroundColor: 'rgba(6, 10, 18, 0.92)',
+                  backgroundColor: 'var(--bg-glass-strong, rgba(6, 10, 18, 0.92))',
                   border: '1.5px solid var(--ui-accent)',
                   borderRadius: '12px',
                   padding: '0.48rem 0.75rem',
@@ -351,7 +351,7 @@ export default function FooterBar({
                     background: 'transparent',
                     border: 'none',
                     outline: 'none',
-                    color: '#ffffff',
+                    color: 'var(--text-main, #ffffff)',
                     fontSize: '0.78rem',
                     fontFamily: 'var(--font-sans)',
                   }}
@@ -400,8 +400,8 @@ export default function FooterBar({
                     minHeight: '120px',
                     overflowY: 'auto',
                     borderRadius: '12px',
-                    backgroundColor: 'rgba(6, 10, 18, 0.94)',
-                    border: '1px solid rgba(255, 255, 255, 0.12)',
+                    backgroundColor: 'var(--bg-glass-strong, rgba(6, 10, 18, 0.94))',
+                    border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.12))',
                     padding: '0.32rem',
                     display: 'flex',
                     flexDirection: 'column',
@@ -440,7 +440,7 @@ export default function FooterBar({
                             border: isSelected
                               ? '1px solid var(--ui-accent)'
                               : isKbHighlighted
-                              ? '1px solid rgba(255, 255, 255, 0.16)'
+                              ? '1px solid var(--border-subtle, rgba(255, 255, 255, 0.16))'
                               : '1px solid transparent',
                             cursor: 'pointer',
                             textAlign: 'left',
@@ -451,7 +451,7 @@ export default function FooterBar({
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', minWidth: 0 }}>
                             <FlagBadge lang={lang} width={22} height={15} />
                             <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.45rem', flexWrap: 'wrap', minWidth: 0 }}>
-                              <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#ffffff' }}>
+                              <span style={{ fontSize: '0.78rem', fontWeight: 800, color: 'var(--text-main, #ffffff)' }}>
                                 {lang.nativeName}
                               </span>
                               <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>
@@ -514,7 +514,7 @@ export default function FooterBar({
           >
             {(isHovered) => {
               const isHighlighted = activeTab === 'observability' || isHovered;
-              const isLightHome = activeTab === 'presentation' && lightMode;
+              const isLightHome = Boolean(lightMode);
               return (
                 <button
                   onClick={onOpenObservability}
@@ -552,7 +552,7 @@ export default function FooterBar({
           >
             {(isHovered) => {
               const isHighlighted = activeTab === 'guide' || isHovered;
-              const isLightHome = activeTab === 'presentation' && lightMode;
+              const isLightHome = Boolean(lightMode);
               return (
                 <button
                   onClick={onToggleGuide}
@@ -594,7 +594,7 @@ export default function FooterBar({
           >
             {(isHovered) => {
               const isHighlighted = langModalOpen || isHovered;
-              const isLightHome = activeTab === 'presentation' && lightMode;
+              const isLightHome = Boolean(lightMode);
               return (
                 <button
                   onClick={() => setLangModalOpen((prev) => !prev)}
@@ -648,7 +648,7 @@ export default function FooterBar({
                   width: '285px',
                   padding: '11px 13px',
                   borderRadius: '11px',
-                  background: 'rgba(2, 6, 23, 0.96)',
+                  background: 'var(--bg-elevated, rgba(2, 6, 23, 0.96))',
                   border: '1px solid rgba(var(--ui-accent-rgb), 0.55)',
                   boxShadow: '0 14px 36px rgba(0, 0, 0, 0.88), 0 0 24px rgba(var(--ui-accent-rgb), 0.16)',
                   backdropFilter: 'blur(10px)',
@@ -663,7 +663,7 @@ export default function FooterBar({
                     marginBottom: '8px',
                   }}
                 >
-                  <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#ffffff' }}>
+                  <span style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-main, #ffffff)' }}>
                     {tx('5 Ambientes de Lectura (Palette)', '5 Visual Reading Themes (Palette)')}
                   </span>
                 </div>
@@ -689,13 +689,13 @@ export default function FooterBar({
                           borderRadius: '6px',
                           background: isSelected
                             ? 'rgba(var(--ui-accent-rgb), 0.22)'
-                            : 'rgba(15, 23, 42, 0.72)',
+                            : 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.72))',
                           border: isSelected
                             ? '1px solid var(--ui-accent)'
-                            : '1px solid rgba(148, 163, 184, 0.14)',
+                            : '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                           fontSize: '11px',
                           fontWeight: isSelected ? 700 : 500,
-                          color: isSelected ? '#ffffff' : '#94a3b8',
+                          color: isSelected ? 'var(--text-main, #ffffff)' : 'var(--text-muted, #94a3b8)',
                           cursor: 'pointer',
                           textAlign: 'left',
                           transition: 'all 0.14s ease',
@@ -722,8 +722,8 @@ export default function FooterBar({
                             gap: '5px',
                           }}
                         >
-                          <span style={{ color: '#10b981' }}>▲#10b981</span>
-                          <span style={{ color: '#f43f5e' }}>▼#f43f5e</span>
+                          <span style={{ color: 'var(--accent, #10b981)' }}>▲#10b981</span>
+                          <span style={{ color: 'var(--danger, #f43f5e)' }}>▼#f43f5e</span>
                         </span>
                       </button>
                     );
@@ -739,7 +739,7 @@ export default function FooterBar({
             >
               {(isHovered) => {
                 const isHighlighted = palettePopoverOpen || isHovered;
-                const isLightHome = activeTab === 'presentation' && lightMode;
+                const isLightHome = Boolean(lightMode);
                 return (
                   <button
                     ref={paletteBtnRef}
@@ -782,7 +782,7 @@ export default function FooterBar({
               placement="top-right"
             >
               {(isHovered) => {
-                const isLightHome = activeTab === 'presentation' && lightMode;
+                const isLightHome = Boolean(lightMode);
                 return (
                   <button
                     type="button"

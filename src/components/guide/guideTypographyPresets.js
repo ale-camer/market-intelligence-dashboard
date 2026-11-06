@@ -20,9 +20,9 @@ export const GUIDE_TYPO_PRESETS = [
         letterSpacing: '-0.006em',
         h1Size: '30px',
         h2Size: '21px',
-        bodyColor: '#d6e0ec',
-        headingColor: '#f8fafc',
-        boldColor: '#ffffff',
+        bodyColor: 'var(--text-body, #d6e0ec)',
+        headingColor: 'var(--text-main, #f8fafc)',
+        boldColor: 'var(--text-main, #ffffff)',
         fontSmoothing: 'antialiased'
     },
     {
@@ -38,9 +38,9 @@ export const GUIDE_TYPO_PRESETS = [
         letterSpacing: '0.004em',
         h1Size: '31px',
         h2Size: '22px',
-        bodyColor: '#d8e2ee',
-        headingColor: '#f8fafc',
-        boldColor: '#ffffff',
+        bodyColor: 'var(--text-body, #d8e2ee)',
+        headingColor: 'var(--text-main, #f8fafc)',
+        boldColor: 'var(--text-main, #ffffff)',
         fontSmoothing: 'antialiased'
     },
     {
@@ -56,9 +56,9 @@ export const GUIDE_TYPO_PRESETS = [
         letterSpacing: '0.01em',
         h1Size: '29px',
         h2Size: '21px',
-        bodyColor: '#dce5f0',
-        headingColor: '#ffffff',
-        boldColor: '#ffffff',
+        bodyColor: 'var(--text-body, #dce5f0)',
+        headingColor: 'var(--text-main, #ffffff)',
+        boldColor: 'var(--text-main, #ffffff)',
         fontSmoothing: 'antialiased'
     },
     {
@@ -74,9 +74,9 @@ export const GUIDE_TYPO_PRESETS = [
         letterSpacing: '0.005em',
         h1Size: '29px',
         h2Size: '21px',
-        bodyColor: '#d5dfeb',
-        headingColor: '#f8fafc',
-        boldColor: '#ffffff',
+        bodyColor: 'var(--text-body, #d5dfeb)',
+        headingColor: 'var(--text-main, #f8fafc)',
+        boldColor: 'var(--text-main, #ffffff)',
         fontSmoothing: 'antialiased'
     },
     {
@@ -92,9 +92,9 @@ export const GUIDE_TYPO_PRESETS = [
         letterSpacing: '0.005em',
         h1Size: '30px',
         h2Size: '21px',
-        bodyColor: '#dedcd6',
-        headingColor: '#f8fafc',
-        boldColor: '#ffffff',
+        bodyColor: 'var(--text-body, #dedcd6)',
+        headingColor: 'var(--text-main, #f8fafc)',
+        boldColor: 'var(--text-main, #ffffff)',
         fontSmoothing: 'antialiased'
     },
     {
@@ -110,9 +110,9 @@ export const GUIDE_TYPO_PRESETS = [
         letterSpacing: '0.004em',
         h1Size: '30px',
         h2Size: '21.5px',
-        bodyColor: '#e4dfd7',
-        headingColor: '#f7f4ef',
-        boldColor: '#ffffff',
+        bodyColor: 'var(--text-body, #e4dfd7)',
+        headingColor: 'var(--text-main, #f7f4ef)',
+        boldColor: 'var(--text-main, #ffffff)',
         fontSmoothing: 'antialiased'
     },
     {
@@ -128,9 +128,9 @@ export const GUIDE_TYPO_PRESETS = [
         letterSpacing: '0.004em',
         h1Size: '29px',
         h2Size: '21px',
-        bodyColor: '#d8e1ed',
-        headingColor: '#f8fafc',
-        boldColor: '#ffffff',
+        bodyColor: 'var(--text-body, #d8e1ed)',
+        headingColor: 'var(--text-main, #f8fafc)',
+        boldColor: 'var(--text-main, #ffffff)',
         fontSmoothing: 'auto'
     },
     {
@@ -146,9 +146,9 @@ export const GUIDE_TYPO_PRESETS = [
         letterSpacing: '0.002em',
         h1Size: '32px',
         h2Size: '23px',
-        bodyColor: '#dbe4f0',
-        headingColor: '#ffffff',
-        boldColor: '#ffffff',
+        bodyColor: 'var(--text-body, #dbe4f0)',
+        headingColor: 'var(--text-main, #ffffff)',
+        boldColor: 'var(--text-main, #ffffff)',
         fontSmoothing: 'antialiased'
     }
 ];

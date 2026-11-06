@@ -265,8 +265,8 @@ function RealV010HeaderChrome({ activeTabId, activeSceneId, langCode = 'EN' }) {
                         style={{ filter: 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.75))' }}
                     >
                         <polygon points="6.5,4 9.8,4 18.8,20 15.5,20" fill="var(--ui-accent, #10b981)" />
-                        <polygon points="11.6,11.2 13.4,13.8 8.4,20 5.2,20" fill="#34d399" />
-                        <polygon points="5.2,4 9.8,4 8.2,6.2 5.2,6.2" fill="#a7f3d0" />
+                        <polygon points="11.6,11.2 13.4,13.8 8.4,20 5.2,20" fill="var(--pos-text, #34d399)" />
+                        <polygon points="5.2,4 9.8,4 8.2,6.2 5.2,6.2" fill="var(--pos-text-soft, #a7f3d0)" />
                     </svg>
                 </div>
             </div>
@@ -413,11 +413,11 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
     const sampleLang = LANGUAGES.find(l => l.code === langCode) || LANGUAGES[0];
 
     const paletteAmbientBgs = [
-        'rgba(2, 6, 23, 0.18)',
+        'var(--bg-elevated, rgba(2, 6, 23, 0.18))',
         'rgba(0, 0, 0, 0.52)',
-        'rgba(7, 24, 54, 0.42)',
-        'rgba(28, 25, 23, 0.42)',
-        'rgba(15, 23, 62, 0.45)'
+        'var(--bg-elevated-soft, rgba(7, 24, 54, 0.42))',
+        'var(--bg-elevated-soft, rgba(28, 25, 23, 0.42))',
+        'var(--bg-elevated-soft, rgba(15, 23, 62, 0.45))'
     ];
     const activeThemeIdx =
         activeSceneId === 'home-palettes'
@@ -467,7 +467,7 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                     style={{
                         fontSize: '1.55rem',
                         fontWeight: 600,
-                        color: 'rgba(255, 255, 255, 0.94)',
+                        color: 'var(--text-muted, rgba(255, 255, 255, 0.94))',
                         letterSpacing: '-0.01em',
                         margin: 0
                     }}
@@ -477,7 +477,7 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                 <p
                     style={{
                         fontSize: '0.9rem',
-                        color: 'rgba(255, 255, 255, 0.68)',
+                        color: 'var(--text-muted, rgba(255, 255, 255, 0.68))',
                         lineHeight: 1.6,
                         fontWeight: 400,
                         margin: 0
@@ -493,7 +493,7 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                     style={{
                         position: 'absolute',
                         inset: 0,
-                        backgroundColor: 'rgba(4, 7, 14, 0.68)',
+                        backgroundColor: 'var(--bg-elevated-soft, rgba(4, 7, 14, 0.68))',
                         backdropFilter: 'blur(6px)',
                         display: 'flex',
                         alignItems: 'center',
@@ -506,7 +506,7 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                         style={{
                             width: '440px',
                             borderRadius: '16px',
-                            backgroundColor: 'rgba(10, 15, 26, 0.98)',
+                            backgroundColor: 'var(--bg-elevated, rgba(10, 15, 26, 0.98))',
                             border: '1px solid rgba(16, 185, 129, 0.55)',
                             boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85), 0 0 28px rgba(16, 185, 129, 0.22)',
                             padding: '16px 18px',
@@ -517,7 +517,7 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                     >
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                <span style={{ fontSize: '14px', fontWeight: 800, color: '#ffffff' }}>
+                                <span style={{ fontSize: '14px', fontWeight: 800, color: 'var(--text-main, #ffffff)' }}>
                                     {t.langModalTitle}
                                 </span>
                                 <span
@@ -529,13 +529,13 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                                         borderRadius: '999px',
                                         backgroundColor: 'rgba(16, 185, 129, 0.16)',
                                         border: '1px solid rgba(16, 185, 129, 0.38)',
-                                        color: '#10b981'
+                                        color: 'var(--accent, #10b981)'
                                     }}
                                 >
                                     56 LANGUAGES
                                 </span>
                             </div>
-                            <X size={14} color="#94a3b8" />
+                            <X size={14} color="var(--text-muted, #94a3b8)" />
                         </div>
 
                         <div
@@ -543,15 +543,15 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '8px',
-                                backgroundColor: 'rgba(6, 10, 18, 0.92)',
+                                backgroundColor: 'var(--bg-glass-strong, rgba(6, 10, 18, 0.92))',
                                 border: '1.5px solid #10b981',
                                 borderRadius: '10px',
                                 padding: '7px 11px',
                                 fontSize: '11.5px',
-                                color: '#94a3b8'
+                                color: 'var(--text-muted, #94a3b8)'
                             }}
                         >
-                            <Search size={13} color="#10b981" />
+                            <Search size={13} color="var(--accent, #10b981)" />
                             <span>{t.langSearchPlaceholder}</span>
                         </div>
 
@@ -573,10 +573,10 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                                     >
                                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                                             <FlagBadge lang={lang} width={20} height={14} />
-                                            <span style={{ fontSize: '12px', fontWeight: 800, color: '#ffffff' }}>
+                                            <span style={{ fontSize: '12px', fontWeight: 800, color: 'var(--text-main, #ffffff)' }}>
                                                 {lang.nativeName}
                                             </span>
-                                            <span style={{ fontSize: '10.5px', color: '#94a3b8' }}>
+                                            <span style={{ fontSize: '10.5px', color: 'var(--text-muted, #94a3b8)' }}>
                                                 {lang.name} • {lang.region}
                                             </span>
                                         </div>
@@ -586,12 +586,12 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                                                 style={{
                                                     fontSize: '10px',
                                                     fontWeight: 800,
-                                                    color: isSel ? '#10b981' : '#64748b'
+                                                    color: isSel ? 'var(--accent, #10b981)' : 'var(--text-dim, #64748b)'
                                                 }}
                                             >
                                                 {lang.code}
                                             </span>
-                                            {isSel && <Check size={12} color="#10b981" />}
+                                            {isSel && <Check size={12} color="var(--accent, #10b981)" />}
                                         </div>
                                     </div>
                                 );
@@ -612,12 +612,12 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                         width: '285px',
                         padding: '11px 13px',
                         borderRadius: '11px',
-                        background: 'rgba(2, 6, 23, 0.96)',
+                        background: 'var(--bg-elevated, rgba(2, 6, 23, 0.96))',
                         border: '1px solid rgba(16, 185, 129, 0.55)',
                         boxShadow: '0 14px 36px rgba(0, 0, 0, 0.88)'
                     }}
                 >
-                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#ffffff', marginBottom: '8px' }}>
+                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-main, #ffffff)', marginBottom: '8px' }}>
                         Palette (5 Themes)
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
@@ -632,11 +632,11 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                                         justifyContent: 'space-between',
                                         padding: '5px 9px',
                                         borderRadius: '6px',
-                                        background: isSel ? 'rgba(16, 185, 129, 0.22)' : 'rgba(15, 23, 42, 0.72)',
-                                        border: isSel ? '1px solid #10b981' : '1px solid rgba(148, 163, 184, 0.14)',
+                                        background: isSel ? 'rgba(16, 185, 129, 0.22)' : 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.72))',
+                                        border: isSel ? '1px solid #10b981' : '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                                         fontSize: '11px',
                                         fontWeight: isSel ? 700 : 500,
-                                        color: isSel ? '#ffffff' : '#94a3b8'
+                                        color: isSel ? 'var(--text-main, #ffffff)' : 'var(--text-muted, #94a3b8)'
                                     }}
                                 >
                                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '7px' }}>
@@ -660,8 +660,8 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                                             gap: '5px'
                                         }}
                                     >
-                                        <span style={{ color: '#10b981' }}>▲#10b981</span>
-                                        <span style={{ color: '#f43f5e' }}>▼#f43f5e</span>
+                                        <span style={{ color: 'var(--accent, #10b981)' }}>▲#10b981</span>
+                                        <span style={{ color: 'var(--danger, #f43f5e)' }}>▼#f43f5e</span>
                                     </span>
                                 </div>
                             );
@@ -720,7 +720,7 @@ function ScaledLiveAppStage({ pageId, activeScene, langCode = 'EN', portTabs }) 
                 position: 'absolute',
                 inset: 0,
                 overflow: 'hidden',
-                backgroundColor: '#020617',
+                backgroundColor: 'var(--bg-elevated, #020617)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -733,8 +733,8 @@ function ScaledLiveAppStage({ pageId, activeScene, langCode = 'EN', portTabs }) 
                     height: '810px',
                     position: 'relative',
                     overflow: 'hidden',
-                    backgroundColor: '#020617',
-                    '--ui-accent': '#10b981',
+                    backgroundColor: 'var(--bg-elevated, #020617)',
+                    '--ui-accent': 'var(--accent, #10b981)',
                     '--ui-accent-rgb': '16, 185, 129',
                     transform: `scale(${scale})`,
                     transformOrigin: 'center center',
@@ -809,7 +809,7 @@ function ScaledLiveAppStage({ pageId, activeScene, langCode = 'EN', portTabs }) 
                                                             style={{
                                                                 fontSize: '15px',
                                                                 fontWeight: isAct ? 800 : 600,
-                                                                color: isAct ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.62)',
+                                                                color: isAct ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.62))',
                                                                 textShadow: isAct ? '0 0 15px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.88)' : 'none'
                                                             }}
                                                         >
@@ -824,7 +824,7 @@ function ScaledLiveAppStage({ pageId, activeScene, langCode = 'EN', portTabs }) 
                                                     right: '4px',
                                                     fontSize: '13px',
                                                     fontWeight: 600,
-                                                    color: 'rgba(148, 163, 184, 0.72)'
+                                                    color: 'var(--text-muted, rgba(148, 163, 184, 0.72))'
                                                 }}
                                             >
                                                 {tabsLabels[3]}
@@ -924,8 +924,8 @@ export default function GuideInteractiveVideoStage({
                 width: '100%',
                 flex: isFullscreen ? 1 : 'initial',
                 minHeight: isFullscreen ? 0 : 'auto',
-                background: '#020617',
-                borderBottom: '1px solid rgba(148, 163, 184, 0.16)',
+                background: 'var(--bg-elevated, #020617)',
+                borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.16))',
                 display: 'flex',
                 flexDirection: 'column'
             }}
@@ -939,8 +939,8 @@ export default function GuideInteractiveVideoStage({
                     justifyContent: 'space-between',
                     gap: '8px',
                     padding: '9px 14px',
-                    background: 'rgba(2, 6, 23, 0.94)',
-                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)',
+                    background: 'var(--bg-elevated, rgba(2, 6, 23, 0.94))',
+                    borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                     flexWrap: 'wrap'
                 }}
             >
@@ -974,11 +974,11 @@ export default function GuideInteractiveVideoStage({
                                     borderRadius: '5px',
                                     border: isCurrent
                                         ? '1px solid var(--ui-accent, #10b981)'
-                                        : '1px solid rgba(148, 163, 184, 0.18)',
+                                        : '1px solid var(--border-slate, rgba(148, 163, 184, 0.18))',
                                     background: isCurrent
                                         ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.18)'
-                                        : 'rgba(15, 23, 42, 0.65)',
-                                    color: isCurrent ? '#ffffff' : '#94a3b8',
+                                        : 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.65))',
+                                    color: isCurrent ? 'var(--text-main, #ffffff)' : 'var(--text-muted, #94a3b8)',
                                     fontSize: '10.5px',
                                     fontWeight: isCurrent ? 700 : 500,
                                     fontFamily: 'var(--font-mono)',
@@ -1046,8 +1046,8 @@ export default function GuideInteractiveVideoStage({
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.9))' }}>
                         <path
                             d="M4 3L11.5 20L14.2 13.2L21 10.5L4 3Z"
-                            fill="#10b981"
-                            stroke="#ffffff"
+                            fill="var(--accent, #10b981)"
+                            stroke="var(--text-main, #ffffff)"
                             strokeWidth="1.8"
                             strokeLinejoin="round"
                         />
@@ -1072,20 +1072,20 @@ export default function GuideInteractiveVideoStage({
                             width: isFullscreen ? '72px' : '58px',
                             height: isFullscreen ? '72px' : '58px',
                             borderRadius: '999px',
-                            background: 'rgba(2, 6, 23, 0.82)',
+                            background: 'var(--bg-elevated, rgba(2, 6, 23, 0.82))',
                             border: '2px solid rgba(16, 185, 129, 0.88)',
                             boxShadow: '0 10px 32px rgba(0, 0, 0, 0.85), 0 0 24px rgba(16, 185, 129, 0.45)',
                             backdropFilter: 'blur(8px)',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            color: '#ffffff'
+                            color: 'var(--text-main, #ffffff)'
                         }}
                     >
                         {audioPlaying ? (
-                            <Pause size={isFullscreen ? 28 : 22} fill="#ffffff" />
+                            <Pause size={isFullscreen ? 28 : 22} fill="var(--text-main, #ffffff)" />
                         ) : (
-                            <Play size={isFullscreen ? 28 : 22} fill="#ffffff" style={{ marginLeft: '3px' }} />
+                            <Play size={isFullscreen ? 28 : 22} fill="var(--text-main, #ffffff)" style={{ marginLeft: '3px' }} />
                         )}
                     </div>
                 </div>
@@ -1102,10 +1102,10 @@ export default function GuideInteractiveVideoStage({
                         alignItems: 'center',
                         padding: isFullscreen ? '10px 14px' : '6px 10px',
                         borderRadius: '14px',
-                        background: 'rgba(2, 6, 23, 0.84)',
+                        background: 'var(--bg-elevated, rgba(2, 6, 23, 0.84))',
                         border: audioPlaying
                             ? '1.5px solid rgba(16, 185, 129, 0.68)'
-                            : '1px solid rgba(148, 163, 184, 0.28)',
+                            : '1px solid var(--border-slate, rgba(148, 163, 184, 0.28))',
                         boxShadow: '0 10px 30px rgba(0, 0, 0, 0.8)',
                         backdropFilter: 'blur(8px)',
                         transition: 'all 0.45s cubic-bezier(0.22, 1, 0.36, 1)'
@@ -1133,9 +1133,9 @@ export default function GuideInteractiveVideoStage({
                             maxWidth: '90%',
                             padding: isFullscreen ? '7px 20px' : '5px 15px',
                             borderRadius: '8px',
-                            background: 'rgba(2, 6, 23, 0.88)',
-                            border: '1px solid rgba(148, 163, 184, 0.22)',
-                            color: '#f8fafc',
+                            background: 'var(--bg-elevated, rgba(2, 6, 23, 0.88))',
+                            border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
+                            color: 'var(--text-main, #f8fafc)',
                             fontSize: isFullscreen ? '14.5px' : '12px',
                             fontWeight: 600,
                             textAlign: 'center',

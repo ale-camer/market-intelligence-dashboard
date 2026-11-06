@@ -26,8 +26,27 @@
   --ui-accent-rgb: 16, 185, 129;
   --ui-accent-soft: rgba(16, 185, 129, 0.15);
   --text-main: #f8fafc;
+  --text-primary: #f8fafc;
+  --text-secondary: #e2e8f0;
+  --text-body: #cbd5e1;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
+
+  /* Elevated surfaces, glass & semantic text tokens */
+  --bg-elevated: rgba(2, 6, 23, 0.96);
+  --bg-elevated-soft: rgba(15, 23, 42, 0.72);
+  --bg-glass-strong: rgba(8, 12, 22, 0.92);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-slate: rgba(148, 163, 184, 0.22);
+  --border-slate-soft: rgba(148, 163, 184, 0.14);
+  --pos-text: #6ee7b7;
+  --pos-text-soft: #a7f3d0;
+  --neg-text: #fda4af;
+  --neg-text-soft: #fecdd3;
+  --info-text: #38bdf8;
+  --warn-text: #fbbf24;
+  --purple-text: #a78bfa;
+  --tooltip-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 10px rgba(0, 0, 0, 0.85);
 
   /* Inamovibles para movimientos y magnitudes financieras */
   --accent: #10b981;
@@ -128,6 +147,82 @@
   --danger-light: rgba(244, 63, 94, 0.12);
 }
 
+/* ============================================================================
+   MODO CLARO ("DÍA PRIMAVERAL" / SPRING DAYLIGHT) — GLOBAL PARA TODA LA APP
+   ============================================================================ */
+[data-mode="light"] {
+  --bg-app: #e8f6ef;
+  --bg-panel: rgba(255, 255, 255, 0.68);
+  --bg-panel-glass: rgba(255, 255, 255, 0.65);
+  --bg-card-glass: rgba(255, 255, 255, 0.74);
+  --bg-subtle: rgba(15, 46, 34, 0.07);
+  --border-light: rgba(15, 46, 34, 0.16);
+  --border-subtle: rgba(15, 46, 34, 0.11);
+  --border-slate: rgba(15, 46, 34, 0.22);
+  --border-slate-soft: rgba(15, 46, 34, 0.14);
+
+  --text-main: #0a1f17;
+  --text-primary: #0a1f17;
+  --text-secondary: #132e23;
+  --text-body: #1d3f31;
+  --text-muted: #395c4d;
+  --text-dim: #4f7364;
+
+  --bg-elevated: rgba(247, 253, 250, 0.97);
+  --bg-elevated-soft: rgba(255, 255, 255, 0.78);
+  --bg-glass-strong: rgba(243, 251, 247, 0.94);
+
+  --pos-text: #047857;
+  --pos-text-soft: #065f46;
+  --neg-text: #be123c;
+  --neg-text-soft: #9f1239;
+  --info-text: #0284c7;
+  --warn-text: #b45309;
+  --purple-text: #6d28d9;
+  --tooltip-shadow: 0 1px 6px rgba(255, 255, 255, 0.95), 0 0 2px rgba(255, 255, 255, 0.98);
+
+  --accent: #059669;
+  --accent-light: rgba(5, 150, 105, 0.14);
+  --danger: #e11d48;
+  --danger-light: rgba(225, 29, 72, 0.13);
+}
+
+[data-mode="light"],
+[data-mode="light"][data-theme="obsidian-night"] {
+  --ui-accent: #059669;
+  --ui-accent-rgb: 5, 150, 105;
+  --ui-accent-soft: rgba(5, 150, 105, 0.14);
+  --border-accent: rgba(5, 150, 105, 0.42);
+}
+
+[data-mode="light"][data-theme="oled-black"] {
+  --ui-accent: #0f172a;
+  --ui-accent-rgb: 15, 23, 42;
+  --ui-accent-soft: rgba(15, 23, 42, 0.11);
+  --border-accent: rgba(15, 23, 42, 0.36);
+}
+
+[data-mode="light"][data-theme="abyssal-navy"] {
+  --ui-accent: #0284c7;
+  --ui-accent-rgb: 2, 132, 199;
+  --ui-accent-soft: rgba(2, 132, 199, 0.14);
+  --border-accent: rgba(2, 132, 199, 0.42);
+}
+
+[data-mode="light"][data-theme="warm-titanium"] {
+  --ui-accent: #d97706;
+  --ui-accent-rgb: 217, 119, 6;
+  --ui-accent-soft: rgba(217, 119, 6, 0.14);
+  --border-accent: rgba(217, 119, 6, 0.42);
+}
+
+[data-mode="light"][data-theme="cobalt-quant"] {
+  --ui-accent: #4f46e5;
+  --ui-accent-rgb: 79, 70, 229;
+  --ui-accent-soft: rgba(79, 70, 229, 0.14);
+  --border-accent: rgba(79, 70, 229, 0.42);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -161,7 +256,7 @@ body {
 }
 
 .terminal-card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: var(--border-accent);
 }
 
 /* Micro scrollbars */

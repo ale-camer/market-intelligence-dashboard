@@ -106,7 +106,7 @@ export default function AgentCommitteeView({
             style={{
                 minHeight: '100vh',
                 background: 'transparent',
-                color: '#f8fafc',
+                color: 'var(--text-main, #f8fafc)',
                 padding: '12px clamp(4px, 1.2vw, 18px) 64px',
                 display: 'flex',
                 flexDirection: 'column',
@@ -148,7 +148,7 @@ export default function AgentCommitteeView({
                                     padding: '0.18rem 0.25rem',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.62)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.62))',
                                     textShadow: active
                                         ? '0 0 15px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.88)'
                                         : 'none',

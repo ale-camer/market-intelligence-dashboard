@@ -44,37 +44,37 @@ function Row1SummaryPills({ liveMetrics, isES = false }) {
             lbl: tx('PROYECCIÓN MEDIANA (12M)', 'MEDIAN PROJECTION (12M)'),
             val: `${medProj >= 0 ? '+' : ''}${medProj}%`,
             sub: `P95: +${p95Proj}% | P05: ${p05Proj}%`,
-            col: '#10b981'
+            col: 'var(--accent, #10b981)'
         },
         {
             lbl: 'SHARPE / SORTINO',
             val: `${m.sharpeRatio.toFixed(2)} / ${m.sortinoRatio.toFixed(2)}`,
             sub: txTpl("Volatilidad Anual σ: {0}%", [m.portfolioVolPct], "Annual Volatility σ: {0}%", [m.portfolioVolPct]),
-            col: '#10b981'
+            col: 'var(--accent, #10b981)'
         },
         {
             lbl: 'VaR 95% / CVaR 99% (1D)',
             val: `${m.var95Pct}% / ${m.cvar99Pct}%`,
             sub: tx('Pérdida esperada en cola diaria', 'Expected daily tail loss'),
-            col: '#f43f5e'
+            col: 'var(--danger, #f43f5e)'
         },
         {
             lbl: 'MAX DRAWDOWN (12M)',
             val: `${m.maxDrawdownPct.toFixed(2)}%`,
             sub: tx('Recuperación media: 14 días', 'Avg recovery: 14 days'),
-            col: '#f43f5e'
+            col: 'var(--danger, #f43f5e)'
         },
         {
             lbl: 'STRESS CRASH 2008',
             val: `${m.stress2008Pct > 0 ? '+' : ''}${m.stress2008Pct}%`,
             sub: tx('Crisis severa (vs -42.0% SPX)', 'Severe crisis (vs -42.0% SPX)'),
-            col: '#f43f5e'
+            col: 'var(--danger, #f43f5e)'
         },
         {
             lbl: tx('RÉGIMEN MARKOV ACTUAL', 'CURRENT MARKOV REGIME'),
             val: 'Bull Quiet (62%)',
             sub: tx('Clima actual • Est. +2.4%/mes', 'Current climate • Est. +2.4%/mo'),
-            col: '#10b981'
+            col: 'var(--accent, #10b981)'
         }
     ];
     return (
@@ -84,7 +84,7 @@ function Row1SummaryPills({ liveMetrics, isES = false }) {
                     key={p.lbl}
                     style={{
                         background: 'transparent',
-                        border: '1px solid rgba(148, 163, 184, 0.22)',
+                        border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                         borderLeft: `3px solid ${p.col}`,
                         borderRadius: '10px',
                         padding: '10px 13px',
@@ -96,13 +96,13 @@ function Row1SummaryPills({ liveMetrics, isES = false }) {
                         justifyContent: 'space-between'
                     }}
                 >
-                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-muted, #94a3b8)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {p.lbl}
                     </div>
                     <div style={{ fontSize: '18.5px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '2px', whiteSpace: 'nowrap' }}>
                         {p.val}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {p.sub}
                     </div>
                 </div>
@@ -207,7 +207,7 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
         <PortfolioCardShell
             badge="CUADRANTE 1 • IZQ ARRIBA"
             title={tx('Riesgo vs Retorno', 'Risk vs Return')}
-            color="#10b981"
+            color="var(--accent, #10b981)"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {dynamicNodes.slice(0, 3).map(p => {
@@ -229,7 +229,7 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: active ? 800 : 600,
@@ -256,7 +256,7 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
             subBar={
                 <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-dim, #64748b)' }}>
                             {tx('CAPAS:', 'LAYERS:')}
                         </span>
                         {[
@@ -272,7 +272,7 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                                     alignItems: 'center',
                                     background: 'transparent',
                                     border: 'none',
-                                    color: t.val ? 'var(--ui-accent, #10b981)' : '#64748b',
+                                    color: t.val ? 'var(--ui-accent, #10b981)' : 'var(--text-dim, #64748b)',
                                     textShadow: t.val ? '0 0 10px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.7)' : 'none',
                                     fontSize: '11.5px',
                                     fontWeight: t.val ? 800 : 600,
@@ -284,8 +284,8 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                             </button>
                         ))}
                     </div>
-                    <div style={{ fontSize: '11.5px', fontFamily: 'var(--font-mono)', color: '#e2e8f0' }}>
-                        <strong style={{ color: '#6ee7b7' }}>{displayPoint.name}:</strong> σ {displayPoint.vol}% | E[R] +{displayPoint.ret}% | Sharpe {displayPoint.sharpe}
+                    <div style={{ fontSize: '11.5px', fontFamily: 'var(--font-mono)', color: 'var(--text-secondary, #e2e8f0)' }}>
+                        <strong style={{ color: 'var(--pos-text, #6ee7b7)' }}>{displayPoint.name}:</strong> σ {displayPoint.vol}% | E[R] +{displayPoint.ret}% | Sharpe {displayPoint.sharpe}
                     </div>
                 </>
             }
@@ -294,13 +294,13 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                 {[10, 20, 30, 40].map(v => (
                     <g key={v}>
                         <line x1={toX(v)} y1="12" x2={toX(v)} y2="146" stroke="rgba(148,163,184,0.08)" strokeDasharray="2 2" />
-                        <text x={toX(v)} y="157" fill="#64748b" fontSize="8" textAnchor="middle">σ {v}%</text>
+                        <text x={toX(v)} y="157" fill="var(--text-dim, #64748b)" fontSize="8" textAnchor="middle">σ {v}%</text>
                     </g>
                 ))}
                 {[10, 25, 40].map(r => (
                     <g key={r}>
                         <line x1="42" y1={toY(r)} x2="415" y2={toY(r)} stroke="rgba(148,163,184,0.08)" strokeDasharray="2 2" />
-                        <text x="38" y={toY(r) + 3} fill="#64748b" fontSize="8" textAnchor="end">+{r}%</text>
+                        <text x="38" y={toY(r) + 3} fill="var(--text-dim, #64748b)" fontSize="8" textAnchor="end">+{r}%</text>
                     </g>
                 ))}
                 <line x1="42" y1="146" x2="415" y2="146" stroke="rgba(148,163,184,0.28)" />
@@ -315,7 +315,7 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                     <line x1="42" y1={toY(4.5)} x2={toX(30)} y2={toY(49)} stroke="rgba(16,185,129,0.55)" strokeWidth="1.3" strokeDasharray="4 3" />
                 )}
 
-                <path d={frontierPath} fill="none" stroke="#10b981" strokeWidth="2.3" />
+                <path d={frontierPath} fill="none" stroke="var(--accent, #10b981)" strokeWidth="2.3" />
 
                 {showAssets &&
                     activeProfiles.map(a => {
@@ -328,8 +328,8 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                                 onMouseEnter={() => setSelectedPoint({ name: `${tx('Activo', 'Asset')} ${a.sym}`, vol: a.vol, ret: a.ret, sharpe: a.sharpe })}
                                 onClick={() => setSelectedPoint({ name: `${tx('Activo', 'Asset')} ${a.sym}`, vol: a.vol, ret: a.ret, sharpe: a.sharpe })}
                             >
-                                <circle cx={cx} cy={cy} r="4.2" fill={a.sharpe >= 1.5 ? '#10b981' : '#f43f5e'} stroke="#090d16" strokeWidth="1.2" />
-                                <text x={cx + 6} y={cy + 3} fill="#cbd5e1" fontSize="8.5" fontWeight="800">{a.sym}</text>
+                                <circle cx={cx} cy={cy} r="4.2" fill={a.sharpe >= 1.5 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'} stroke="var(--bg-glass-strong, #090d16)" strokeWidth="1.2" />
+                                <text x={cx + 6} y={cy + 3} fill="var(--text-body, #cbd5e1)" fontSize="8.5" fontWeight="800">{a.sym}</text>
                             </g>
                         );
                     })}
@@ -347,8 +347,8 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                                 setSelectedPoint({ name: p.label, vol: p.vol, ret: p.ret, sharpe: p.sharpe });
                             }}
                         >
-                            <circle cx={cx} cy={cy} r={isMain ? 6.5 : 4.5} fill={p.isOptimal ? '#10b981' : '#f43f5e'} stroke="#f8fafc" strokeWidth={isMain ? 2 : 1} />
-                            {isMain && <text x={cx - 8} y={cy - 10} textAnchor="end" fill="#6ee7b7" fontSize="9.5" fontWeight="900">{p.label}</text>}
+                            <circle cx={cx} cy={cy} r={isMain ? 6.5 : 4.5} fill={p.isOptimal ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'} stroke="var(--text-main, #f8fafc)" strokeWidth={isMain ? 2 : 1} />
+                            {isMain && <text x={cx - 8} y={cy - 10} textAnchor="end" fill="var(--pos-text, #6ee7b7)" fontSize="9.5" fontWeight="900">{p.label}</text>}
                         </g>
                     );
                 })}
@@ -391,7 +391,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
         <PortfolioCardShell
             badge="CUADRANTE 2 • IZQ ABAJO"
             title={tx('Escenarios de Estrés', 'Stress Scenarios')}
-            color="#f43f5e"
+            color="var(--danger, #f43f5e)"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
@@ -408,7 +408,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: active ? 800 : 600,
@@ -424,7 +424,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
             subBar={
                 subView === 'TORNADO' ? (
                     <>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-muted, #94a3b8)' }}>
                             {tx('IMPACTO POR ACTIVO', 'IMPACT BY ASSET')} ({activeScenario.name}):
                         </span>
                         <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
@@ -447,7 +447,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
                     </>
                 ) : (
                     <>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-muted, #94a3b8)' }}>
                             {tx('FILTRAR ACTIVO:', 'FILTER ASSET:')}
                         </span>
                         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -459,7 +459,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
                                         padding: '1px 4px',
                                         border: 'none',
                                         background: 'transparent',
-                                        color: selectedAsset === sym ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                        color: selectedAsset === sym ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                         textShadow: selectedAsset === sym ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                         fontSize: '12px',
                                         fontWeight: selectedAsset === sym ? 800 : 600,
@@ -476,7 +476,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
         >
             {subView === 'TORNADO' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.45fr 1fr 112px', fontSize: '11.5px', fontWeight: 800, color: '#64748b', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.45fr 1fr 112px', fontSize: '11.5px', fontWeight: 800, color: 'var(--text-dim, #64748b)', padding: '0 6px' }}>
                         <span style={{ textAlign: 'left' }}>{tx('ESCENARIO HISTÓRICO / MACRO', 'HISTORICAL / MACRO SCENARIO')}</span>
                         <span style={{ textAlign: 'center' }}>{tx('MAGNITUD DE IMPACTO', 'IMPACT MAGNITUDE')}</span>
                         <span style={{ textAlign: 'right' }}>{tx('CARTERA (BENCH)', 'PORTFOLIO (BENCH)')}</span>
@@ -500,11 +500,11 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
                                     border: isSel ? '1px solid var(--ui-accent, #10b981)' : '1px solid transparent',
                                     borderBottom: isSel
                                         ? '1px solid var(--ui-accent, #10b981)'
-                                        : '1px solid rgba(148, 163, 184, 0.10)',
+                                        : '1px solid var(--border-slate, rgba(148, 163, 184, 0.10))',
                                     cursor: 'pointer'
                                 }}
                             >
-                                <span style={{ textAlign: 'left', color: '#f8fafc', fontWeight: 800 }}>{s.name}</span>
+                                <span style={{ textAlign: 'left', color: 'var(--text-main, #f8fafc)', fontWeight: 800 }}>{s.name}</span>
                                 <div style={{ height: '8px', background: 'transparent', borderRadius: '99px', overflow: 'hidden', display: 'flex' }}>
                                     <div
                                         style={{
@@ -535,7 +535,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
 
             {subView === 'VAR_ASSET' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 0.7fr 0.8fr 0.9fr 1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 0.7fr 0.8fr 0.9fr 1fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {varHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, varHeaders.length) }}>{h}</span>
                         ))}
@@ -552,13 +552,13 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
                                 alignItems: 'center'
                             }}
                         >
-                            <span style={{ textAlign: 'left', fontWeight: 900, color: '#f8fafc' }}>{a.sym}</span>
-                            <span style={{ textAlign: 'center', color: '#94a3b8' }}>{a.weight}%</span>
-                            <span style={{ textAlign: 'center', color: '#cbd5e1' }}>{a.vol}%</span>
+                            <span style={{ textAlign: 'left', fontWeight: 900, color: 'var(--text-main, #f8fafc)' }}>{a.sym}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-muted, #94a3b8)' }}>{a.weight}%</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-body, #cbd5e1)' }}>{a.vol}%</span>
                             <span style={{ textAlign: 'center', padding: '1px 5px', borderRadius: '4px', fontWeight: 900, ...getSemanticReturnStyle(a.var95 * 3, 15) }}>
                                 {a.var95}%
                             </span>
-                            <span style={{ textAlign: 'right', fontFamily: 'sans-serif', fontSize: '11.5px', color: a.beta <= 0.1 ? '#6ee7b7' : '#fda4af', fontWeight: 800 }}>
+                            <span style={{ textAlign: 'right', fontFamily: 'sans-serif', fontSize: '11.5px', color: a.beta <= 0.1 ? 'var(--pos-text, #6ee7b7)' : 'var(--neg-text, #fda4af)', fontWeight: 800 }}>
                                 {a.beta <= 0.1
                                     ? tx('Escudo Defensivo', 'Defensive Shield')
                                     : tx('Generador Riesgo', 'Risk Driver')}
@@ -570,7 +570,7 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
 
             {subView === 'CAPTURE' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1fr 1fr 0.9fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 1fr 1fr 0.9fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {capHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, capHeaders.length) }}>{h}</span>
                         ))}
@@ -589,9 +589,9 @@ function Quad2TornadoAndAssetTail({ liveMetrics, isES = false }) {
                                     alignItems: 'center'
                                 }}
                             >
-                                <span style={{ textAlign: 'left', fontWeight: 900, color: '#f8fafc' }}>{a.sym}</span>
-                                <span style={{ textAlign: 'center', color: '#6ee7b7', fontWeight: 800 }}>{a.upCap}%</span>
-                                <span style={{ textAlign: 'center', color: a.dnCap < 0 ? '#6ee7b7' : '#fda4af', fontWeight: 800 }}>{a.dnCap}%</span>
+                                <span style={{ textAlign: 'left', fontWeight: 900, color: 'var(--text-main, #f8fafc)' }}>{a.sym}</span>
+                                <span style={{ textAlign: 'center', color: 'var(--pos-text, #6ee7b7)', fontWeight: 800 }}>{a.upCap}%</span>
+                                <span style={{ textAlign: 'center', color: a.dnCap < 0 ? 'var(--pos-text, #6ee7b7)' : 'var(--neg-text, #fda4af)', fontWeight: 800 }}>{a.dnCap}%</span>
                                 <span style={{ textAlign: 'right', padding: '1px 5px', borderRadius: '4px', fontWeight: 900, justifySelf: 'end', ...getSemanticReturnStyle(netGood / 4, 15) }}>
                                     {netGood > 0 ? `+${netGood} pts` : `${netGood} pts`}
                                 </span>
@@ -622,7 +622,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
         <PortfolioCardShell
             badge="CUADRANTE 3 • DER ARRIBA"
             title={tx('Correlación y Sensibilidad', 'Correlation & Sensitivity')}
-            color="#10b981"
+            color="var(--accent, #10b981)"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
@@ -638,7 +638,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: active ? 800 : 600,
@@ -654,7 +654,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
             subBar={
                 <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-dim, #64748b)' }}>
                             {tx('RÉGIMEN:', 'REGIME:')}
                         </span>
                         <button
@@ -663,7 +663,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                                 padding: '1px 4px',
                                 border: 'none',
                                 background: 'transparent',
-                                color: corrRegime === 'NORMAL' ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                color: corrRegime === 'NORMAL' ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                 textShadow: corrRegime === 'NORMAL' ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                 fontSize: '12px',
                                 fontWeight: corrRegime === 'NORMAL' ? 800 : 600,
@@ -678,7 +678,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                                 padding: '1px 4px',
                                 border: 'none',
                                 background: 'transparent',
-                                color: corrRegime === 'STRESS' ? '#f43f5e' : 'rgba(148, 163, 184, 0.68)',
+                                color: corrRegime === 'STRESS' ? 'var(--danger, #f43f5e)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                 textShadow: corrRegime === 'STRESS' ? '0 0 12px rgba(244, 63, 94, 0.85)' : 'none',
                                 fontSize: '12px',
                                 fontWeight: corrRegime === 'STRESS' ? 800 : 600,
@@ -688,7 +688,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                             {tx('Cola de Crisis (Contagio)', 'Crisis Tail (Contagion)')}
                         </button>
                     </div>
-                    <span style={{ fontSize: '11.5px', color: '#94a3b8' }}>
+                    <span style={{ fontSize: '11.5px', color: 'var(--text-muted, #94a3b8)' }}>
                         {focusAssetIdx !== null
                             ? txTpl("Foco en {0}", [assets[focusAssetIdx]], "Focus on {0}", [assets[focusAssetIdx]])
                             : tx('Clic en activo para aislar fila', 'Click asset to isolate row')}
@@ -698,7 +698,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
         >
             {subMode === 'MATRIX' ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '3.5px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: `52px repeat(${assets.length}, 1fr)`, gap: '3.5px', fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: `52px repeat(${assets.length}, 1fr)`, gap: '3.5px', fontSize: '11.5px', fontWeight: 800, color: 'var(--text-dim, #64748b)' }}>
                         {matHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, matHeaders.length) }}>{h}</span>
                         ))}
@@ -712,7 +712,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                                     style={{
                                         background: 'transparent',
                                         border: 'none',
-                                        color: focusAssetIdx === rIdx ? '#6ee7b7' : '#cbd5e1',
+                                        color: focusAssetIdx === rIdx ? 'var(--pos-text, #6ee7b7)' : 'var(--text-body, #cbd5e1)',
                                         fontWeight: 900,
                                         textAlign: 'left',
                                         fontSize: '11.5px',
@@ -725,12 +725,12 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                                 {row.map((val, cIdx) => {
                                     const style =
                                         val === 1
-                                            ? { background: 'rgba(148,163,184,0.16)', border: '1px solid rgba(148,163,184,0.25)', color: '#94a3b8' }
+                                            ? { background: 'rgba(148,163,184,0.16)', border: '1px solid var(--border-slate, rgba(148,163,184,0.25))', color: 'var(--text-muted, #94a3b8)' }
                                             : val < 0
                                             ? getSemanticReturnStyle(Math.abs(val) * 28, 15)
                                             : val > 0.5
                                             ? getSemanticReturnStyle(-val * 16, 15)
-                                            : { background: 'rgba(16,185,129,0.10)', border: '1px solid rgba(16,185,129,0.22)', color: '#a7f3d0' };
+                                            : { background: 'rgba(16,185,129,0.10)', border: '1px solid rgba(16,185,129,0.22)', color: 'var(--pos-text-soft, #a7f3d0)' };
                                     return (
                                         <div
                                             key={cIdx}
@@ -753,7 +753,7 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                 </div>
             ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 0.8fr 0.9fr 1fr 1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '0.8fr 0.8fr 0.9fr 1fr 1fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {betaHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, betaHeaders.length) }}>{h}</span>
                         ))}
@@ -776,15 +776,15 @@ function Quad3CorrelationAndAssetBeta({ liveMetrics, isES = false }) {
                                     alignItems: 'center'
                                 }}
                             >
-                                <span style={{ textAlign: 'left', fontWeight: 900, color: '#f8fafc' }}>{a.sym}</span>
-                                <span style={{ textAlign: 'center', color: a.beta < 0 ? '#6ee7b7' : a.beta > 1.2 ? '#fda4af' : '#cbd5e1' }}>
+                                <span style={{ textAlign: 'left', fontWeight: 900, color: 'var(--text-main, #f8fafc)' }}>{a.sym}</span>
+                                <span style={{ textAlign: 'center', color: a.beta < 0 ? 'var(--pos-text, #6ee7b7)' : a.beta > 1.2 ? 'var(--neg-text, #fda4af)' : 'var(--text-body, #cbd5e1)' }}>
                                     {a.beta.toFixed(2)}
                                 </span>
                                 <span style={{ textAlign: 'center', padding: '1px 5px', borderRadius: '4px', fontWeight: 900, ...getSemanticReturnStyle(-parseFloat(avgCorr) * 20, 15) }}>
                                     r = {avgCorr}
                                 </span>
-                                <span style={{ textAlign: 'center', color: '#6ee7b7', fontWeight: 800 }}>{a.sharpe.toFixed(2)}</span>
-                                <span style={{ textAlign: 'right', fontFamily: 'sans-serif', fontSize: '11.5px', color: '#cbd5e1' }}>{a.bestRegime}</span>
+                                <span style={{ textAlign: 'center', color: 'var(--pos-text, #6ee7b7)', fontWeight: 800 }}>{a.sharpe.toFixed(2)}</span>
+                                <span style={{ textAlign: 'right', fontFamily: 'sans-serif', fontSize: '11.5px', color: 'var(--text-body, #cbd5e1)' }}>{a.bestRegime}</span>
                             </div>
                         );
                     })}
@@ -850,7 +850,7 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
                     ? tx('Choque de Mercado', 'Market Shock')
                     : tx('Regímenes de Mercado', 'Market Regimes')
             }
-            color="#f43f5e"
+            color="var(--danger, #f43f5e)"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
@@ -866,7 +866,7 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: active ? 800 : 600,
@@ -882,7 +882,7 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
             subBar={
                 tab === 'SHOCK2D' ? (
                     <>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-muted, #94a3b8)' }}>
                             {tx('VER CHOQUE SOBRE:', 'SHOCK TARGET:')}
                         </span>
                         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
@@ -894,7 +894,7 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
                                         padding: '1px 4px',
                                         border: 'none',
                                         background: 'transparent',
-                                        color: targetSym === s ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                        color: targetSym === s ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                         textShadow: targetSym === s ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                         fontSize: '12px',
                                         fontWeight: targetSym === s ? 800 : 600,
@@ -907,7 +907,7 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
                         </div>
                     </>
                 ) : (
-                    <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
+                    <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-muted, #94a3b8)' }}>
                         {tx('PROBABILIDAD DE TRANSICIÓN A 30 DÍAS + ACTIVO LÍDER POR RÉGIMEN', '30-DAY TRANSITION PROBABILITY + TOP ASSET PER REGIME')}
                     </span>
                 )
@@ -915,14 +915,14 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
         >
             {tab === 'SHOCK2D' ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.15fr repeat(3, 1fr)', gap: '4px', fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.15fr repeat(3, 1fr)', gap: '4px', fontSize: '11.5px', fontWeight: 800, color: 'var(--text-dim, #64748b)' }}>
                         {shockHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, shockHeaders.length) }}>{h}</span>
                         ))}
                     </div>
                     {shockRows.map(r => (
                         <div key={r.rate} style={{ display: 'grid', gridTemplateColumns: '1.15fr repeat(3, 1fr)', gap: '4px', alignItems: 'center' }}>
-                            <span style={{ color: '#e2e8f0', fontWeight: 800, textAlign: 'left' }}>{r.rate}</span>
+                            <span style={{ color: 'var(--text-secondary, #e2e8f0)', fontWeight: 800, textAlign: 'left' }}>{r.rate}</span>
                             {r.base.map((c, idx) => {
                                 const val = Number((c * (idx === 1 ? mult.rateMult : mult.eqMult)).toFixed(1));
                                 return (
@@ -945,7 +945,7 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
                 </div>
             ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.35fr repeat(4, 0.5fr) 1.05fr 0.75fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.35fr repeat(4, 0.5fr) 1.05fr 0.75fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {markovHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, markovHeaders.length) }}>{h}</span>
                         ))}
@@ -962,14 +962,14 @@ function Quad4ShockAndMarkovMatrices({ liveMetrics, isES = false }) {
                                 alignItems: 'center'
                             }}
                         >
-                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: r.exp > 0 ? '#6ee7b7' : '#fda4af', fontSize: '11.5px' }}>
+                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: r.exp > 0 ? 'var(--pos-text, #6ee7b7)' : 'var(--neg-text, #fda4af)', fontSize: '11.5px' }}>
                                 {r.name}
                             </span>
-                            <span style={{ textAlign: 'center', color: '#a7f3d0' }}>{r.bq}</span>
-                            <span style={{ textAlign: 'center', color: '#cbd5e1' }}>{r.bv}</span>
-                            <span style={{ textAlign: 'center', color: '#fecdd3' }}>{r.inf}</span>
-                            <span style={{ textAlign: 'center', color: '#fda4af', fontWeight: 800 }}>{r.cr}</span>
-                            <span style={{ textAlign: 'center', color: '#6ee7b7', fontSize: '11.5px' }}>{r.top}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--pos-text-soft, #a7f3d0)' }}>{r.bq}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-body, #cbd5e1)' }}>{r.bv}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--neg-text-soft, #fecdd3)' }}>{r.inf}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--neg-text, #fda4af)', fontWeight: 800 }}>{r.cr}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--pos-text, #6ee7b7)', fontSize: '11.5px' }}>{r.top}</span>
                             <span style={{ textAlign: 'right', padding: '1.5px 5px', borderRadius: '4px', fontWeight: 900, justifySelf: 'end', ...getSemanticReturnStyle(r.exp, 4.5) }}>
                                 {r.exp > 0 ? `+${r.exp}%` : `${r.exp}%`}
                             </span>
@@ -1015,7 +1015,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                     ? tx('Caída Histórica (Drawdown)', 'Historical Drawdown')
                     : tx('Sharpe y Beta Rodante', 'Rolling Sharpe & Beta')
             }
-            color={seriesMode === 'DD' ? '#f43f5e' : '#10b981'}
+            color={seriesMode === 'DD' ? 'var(--danger, #f43f5e)' : 'var(--accent, #10b981)'}
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
                     {[
@@ -1032,7 +1032,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: active ? 800 : 600,
@@ -1049,14 +1049,14 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                 seriesMode === 'MC' ? (
                     <>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                            <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                            <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-dim, #64748b)' }}>
                                 {tx('BANDAS VISIBLES:', 'VISIBLE BANDS:')}
                             </span>
                             {[
-                                { lbl: tx('P95 Optimista', 'P95 Bullish'), val: showP95, set: setShowP95, col: '#10b981' },
-                                { lbl: tx('P50 Mediana', 'P50 Median'), val: showP50, set: setShowP50, col: '#6ee7b7' },
-                                { lbl: tx('P05 Cola Adversa', 'P05 Tail Risk'), val: showP05, set: setShowP05, col: '#f43f5e' },
-                                { lbl: 'Benchmark S&P 500', val: showBench, set: setShowBench, col: '#94a3b8' }
+                                { lbl: tx('P95 Optimista', 'P95 Bullish'), val: showP95, set: setShowP95, col: 'var(--accent, #10b981)' },
+                                { lbl: tx('P50 Mediana', 'P50 Median'), val: showP50, set: setShowP50, col: 'var(--pos-text, #6ee7b7)' },
+                                { lbl: tx('P05 Cola Adversa', 'P05 Tail Risk'), val: showP05, set: setShowP05, col: 'var(--danger, #f43f5e)' },
+                                { lbl: 'Benchmark S&P 500', val: showBench, set: setShowBench, col: 'var(--text-muted, #94a3b8)' }
                             ].map(b => (
                                 <button
                                     key={b.lbl}
@@ -1066,7 +1066,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                                         alignItems: 'center',
                                         background: 'transparent',
                                         border: 'none',
-                                        color: b.val ? b.col : '#64748b',
+                                        color: b.val ? b.col : 'var(--text-dim, #64748b)',
                                         fontSize: '11.5px',
                                         fontWeight: b.val ? 800 : 600,
                                         cursor: 'pointer',
@@ -1078,7 +1078,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                             ))}
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                            <span style={{ fontSize: '11.5px', color: '#64748b', fontWeight: 800 }}>
+                            <span style={{ fontSize: '11.5px', color: 'var(--text-dim, #64748b)', fontWeight: 800 }}>
                                 {tx('HORIZONTE:', 'HORIZON:')}
                             </span>
                             {['6M', '12M', '24M'].map(h => (
@@ -1089,7 +1089,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                                         padding: '1px 4px',
                                         border: 'none',
                                         background: 'transparent',
-                                        color: horizon === h ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                        color: horizon === h ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                         textShadow: horizon === h ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                         fontSize: '12px',
                                         fontWeight: horizon === h ? 800 : 600,
@@ -1104,7 +1104,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                     </>
                 ) : (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-dim, #64748b)' }}>
                             {tx('COMPARAR CONTRA ACTIVO INDIVIDUAL:', 'COMPARE AGAINST SINGLE ASSET:')}
                         </span>
                         {activeProfiles.map(a => a.sym).slice(0, 6).map(s => (
@@ -1115,7 +1115,7 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                                     padding: '1px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: compareAsset === s ? '#f43f5e' : 'rgba(148, 163, 184, 0.68)',
+                                    color: compareAsset === s ? 'var(--danger, #f43f5e)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: compareAsset === s ? '0 0 12px rgba(244, 63, 94, 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: compareAsset === s ? 800 : 600,
@@ -1135,53 +1135,53 @@ function Row3FullWidthProjectionInteractive({ liveMetrics, isES = false }) {
                         <AreaChart data={mcData} margin={{ top: 6, right: 14, left: -16, bottom: 0 }}>
                             <defs>
                                 <linearGradient id="prodV2McGreen" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.45} />
-                                    <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
+                                    <stop offset="5%" stopColor="var(--accent, #10b981)" stopOpacity={0.45} />
+                                    <stop offset="95%" stopColor="var(--accent, #10b981)" stopOpacity={0.0} />
                                 </linearGradient>
                                 <linearGradient id="prodV2McRed" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.35} />
-                                    <stop offset="95%" stopColor="#f43f5e" stopOpacity={0.0} />
+                                    <stop offset="5%" stopColor="var(--danger, #f43f5e)" stopOpacity={0.35} />
+                                    <stop offset="95%" stopColor="var(--danger, #f43f5e)" stopOpacity={0.0} />
                                 </linearGradient>
                             </defs>
                             <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.08)" />
-                            <XAxis dataKey="m" tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
-                            <YAxis domain={['auto', 'auto']} tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
-                            <RechartsTooltip contentStyle={{ background: '#090d16', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }} />
-                            {showP95 && <Area type="monotone" dataKey="p95" name={tx('P95 Banda Optimista', 'P95 Bullish Band')} stroke="#10b981" strokeWidth={2.2} fill="url(#prodV2McGreen)" />}
-                            {showP50 && <Area type="monotone" dataKey="p50" name={tx('P50 Mediana', 'P50 Median')} stroke="#6ee7b7" strokeWidth={2} strokeDasharray="5 3" fill="none" />}
-                            {showBench && <Area type="monotone" dataKey="bench" name={tx('S&P 500 Esperado', 'Expected S&P 500')} stroke="#94a3b8" strokeWidth={1.4} strokeDasharray="3 3" fill="none" />}
-                            {showP05 && <Area type="monotone" dataKey="p05" name={tx('P05 Cola Adversa', 'P05 Adverse Tail')} stroke="#f43f5e" strokeWidth={2} fill="url(#prodV2McRed)" />}
+                            <XAxis dataKey="m" tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9.5 }} axisLine={false} tickLine={false} />
+                            <YAxis domain={['auto', 'auto']} tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9.5 }} axisLine={false} tickLine={false} />
+                            <RechartsTooltip contentStyle={{ background: 'var(--bg-glass-strong, #090d16)', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }} />
+                            {showP95 && <Area type="monotone" dataKey="p95" name={tx('P95 Banda Optimista', 'P95 Bullish Band')} stroke="var(--accent, #10b981)" strokeWidth={2.2} fill="url(#prodV2McGreen)" />}
+                            {showP50 && <Area type="monotone" dataKey="p50" name={tx('P50 Mediana', 'P50 Median')} stroke="var(--pos-text, #6ee7b7)" strokeWidth={2} strokeDasharray="5 3" fill="none" />}
+                            {showBench && <Area type="monotone" dataKey="bench" name={tx('S&P 500 Esperado', 'Expected S&P 500')} stroke="var(--text-muted, #94a3b8)" strokeWidth={1.4} strokeDasharray="3 3" fill="none" />}
+                            {showP05 && <Area type="monotone" dataKey="p05" name={tx('P05 Cola Adversa', 'P05 Adverse Tail')} stroke="var(--danger, #f43f5e)" strokeWidth={2} fill="url(#prodV2McRed)" />}
                         </AreaChart>
                     ) : seriesMode === 'DD' ? (
                         <AreaChart data={RISK_TIME_SERIES} margin={{ top: 6, right: 14, left: -16, bottom: 0 }}>
                             <defs>
                                 <linearGradient id="prodV2DdRed" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.45} />
-                                    <stop offset="95%" stopColor="#f43f5e" stopOpacity={0.0} />
+                                    <stop offset="5%" stopColor="var(--danger, #f43f5e)" stopOpacity={0.45} />
+                                    <stop offset="95%" stopColor="var(--danger, #f43f5e)" stopOpacity={0.0} />
                                 </linearGradient>
                             </defs>
                             <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.08)" />
-                            <XAxis dataKey="date" tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
-                            <YAxis domain={[-12.5, 0.5]} tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
+                            <XAxis dataKey="date" tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9.5 }} axisLine={false} tickLine={false} />
+                            <YAxis domain={[-12.5, 0.5]} tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9.5 }} axisLine={false} tickLine={false} />
                             <ReferenceLine y={0} stroke="rgba(148,163,184,0.35)" />
-                            <RechartsTooltip contentStyle={{ background: '#090d16', border: '1px solid rgba(244,63,94,0.4)', borderRadius: '6px', fontSize: '13px' }} />
-                            <Area type="monotone" dataKey="ddAsset" name={`Drawdown ${compareAsset} (%)`} stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="4 3" fill="none" />
-                            <Area type="monotone" dataKey="ddPort" name={tx('★ Drawdown Tu Cartera (%)', '★ Portfolio Drawdown (%)')} stroke="#f43f5e" strokeWidth={2.2} fill="url(#prodV2DdRed)" />
+                            <RechartsTooltip contentStyle={{ background: 'var(--bg-glass-strong, #090d16)', border: '1px solid rgba(244,63,94,0.4)', borderRadius: '6px', fontSize: '13px' }} />
+                            <Area type="monotone" dataKey="ddAsset" name={`Drawdown ${compareAsset} (%)`} stroke="var(--text-muted, #94a3b8)" strokeWidth={1.5} strokeDasharray="4 3" fill="none" />
+                            <Area type="monotone" dataKey="ddPort" name={tx('★ Drawdown Tu Cartera (%)', '★ Portfolio Drawdown (%)')} stroke="var(--danger, #f43f5e)" strokeWidth={2.2} fill="url(#prodV2DdRed)" />
                         </AreaChart>
                     ) : (
                         <AreaChart data={RISK_TIME_SERIES} margin={{ top: 6, right: 14, left: -16, bottom: 0 }}>
                             <defs>
                                 <linearGradient id="prodV2ShGreen" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.45} />
-                                    <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
+                                    <stop offset="5%" stopColor="var(--accent, #10b981)" stopOpacity={0.45} />
+                                    <stop offset="95%" stopColor="var(--accent, #10b981)" stopOpacity={0.0} />
                                 </linearGradient>
                             </defs>
                             <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.08)" />
-                            <XAxis dataKey="date" tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
-                            <YAxis domain={[0.5, 2.4]} tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
-                            <RechartsTooltip contentStyle={{ background: '#090d16', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }} />
-                            <Area type="monotone" dataKey="sharpe60" name="Rolling Sharpe 60D" stroke="#10b981" strokeWidth={2.2} fill="url(#prodV2ShGreen)" />
-                            <Area type="monotone" dataKey="beta60" name="Rolling Beta 60D" stroke="#f43f5e" strokeWidth={1.6} strokeDasharray="4 3" fill="none" />
+                            <XAxis dataKey="date" tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9.5 }} axisLine={false} tickLine={false} />
+                            <YAxis domain={[0.5, 2.4]} tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9.5 }} axisLine={false} tickLine={false} />
+                            <RechartsTooltip contentStyle={{ background: 'var(--bg-glass-strong, #090d16)', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }} />
+                            <Area type="monotone" dataKey="sharpe60" name="Rolling Sharpe 60D" stroke="var(--accent, #10b981)" strokeWidth={2.2} fill="url(#prodV2ShGreen)" />
+                            <Area type="monotone" dataKey="beta60" name="Rolling Beta 60D" stroke="var(--danger, #f43f5e)" strokeWidth={1.6} strokeDasharray="4 3" fill="none" />
                         </AreaChart>
                     )}
                 </ResponsiveContainer>

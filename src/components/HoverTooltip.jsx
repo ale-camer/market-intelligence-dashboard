@@ -99,9 +99,9 @@ export default function HoverTooltip({
           overflow: 'hidden',
           textOverflow: 'ellipsis',
           fontSize: '11px',
-          fontWeight: 500,
-          color: 'rgba(248, 250, 252, 0.88)',
-          textShadow: '0 1px 4px rgba(0, 0, 0, 0.95), 0 0 10px rgba(0, 0, 0, 0.85)',
+          fontWeight: 600,
+          color: 'var(--text-main, rgba(248, 250, 252, 0.92))',
+          textShadow: 'var(--tooltip-shadow, 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 10px rgba(0, 0, 0, 0.85))',
           letterSpacing: '0.02em',
         }}
       >

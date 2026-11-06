@@ -254,6 +254,10 @@ export default function App() {
     document.documentElement.setAttribute('data-theme', currentTheme.id);
   }, [currentTheme]);
 
+  useEffect(() => {
+    document.documentElement.setAttribute('data-mode', lightMode ? 'light' : 'dark');
+  }, [lightMode]);
+
   // Top Header Navigation: Markets (Level 1 Screener + Level 2 Analytics | Research) & Portfolio
   const navItems = [
     { id: 'workstation', label: t.navWorkstation, icon: Terminal },
@@ -265,7 +269,7 @@ export default function App() {
 
   return (
     <div style={{ height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-      <StarfieldBackground active={showAmbientStarfield} />
+      <StarfieldBackground active={showAmbientStarfield} lightMode={lightMode} />
       <HeaderBar
         activeTab={activeTab}
         navItems={navItems}
@@ -303,7 +307,7 @@ export default function App() {
             padding: isHome ? '0' : '0 1.75rem',
             overflowY: isHome ? 'hidden' : 'auto',
             overflowX: 'hidden',
-            backgroundColor: isHome ? '#000000' : 'transparent',
+            backgroundColor: isHome ? (lightMode ? '#c8eef2' : '#000000') : 'transparent',
           }}
         >
           <HomeStage

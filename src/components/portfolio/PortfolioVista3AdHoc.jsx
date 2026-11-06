@@ -44,13 +44,13 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
             lbl: tx('IMPACTO EN RETORNO TOTAL (CAGR)', 'TOTAL RETURN IMPACT (CAGR)'),
             val: `+${m.cagrPct.toFixed(1)}% → +${(m.cagrPct + deltaRet).toFixed(1)}%`,
             sub: txTpl("Delta Estrategia Ad-Hoc: +{0}% anual", [deltaRet], "Ad-Hoc Strategy Delta: +{0}%/yr", [deltaRet]),
-            col: '#10b981'
+            col: 'var(--accent, #10b981)'
         },
         {
             lbl: tx('IMPACTO EN SHARPE DE CARTERA', 'PORTFOLIO SHARPE IMPACT'),
             val: `${m.sharpeRatio.toFixed(2)} → ${(m.sharpeRatio + deltaSharpe).toFixed(2)}`,
             sub: txTpl("Eficiencia marginal: +{0} pts", [deltaSharpe], "Marginal efficiency: +{0} pts", [deltaSharpe]),
-            col: '#10b981'
+            col: 'var(--accent, #10b981)'
         },
         {
             lbl: tx('IMPACTO EN VaR 95% DIARIO', 'DAILY 95% VaR IMPACT'),
@@ -59,7 +59,7 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
                 deltaVaR >= 0
                     ? txTpl("Mejora cola diaria: +{0}%", [deltaVaR], "Daily tail improvement: +{0}%", [deltaVaR])
                     : txTpl("Mayor riesgo cola: {0}%", [deltaVaR], "Increased tail risk: {0}%", [deltaVaR]),
-            col: deltaVaR >= 0 ? '#10b981' : '#f43f5e'
+            col: deltaVaR >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'
         },
         {
             lbl: tx('IMPACTO EN MAX DRAWDOWN', 'MAX DRAWDOWN IMPACT'),
@@ -68,7 +68,7 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
                 deltaDD >= 0
                     ? txTpl("Escudo activo: +{0}% menos caída", [deltaDD], "Active shield: +{0}% less drawdown", [deltaDD])
                     : txTpl("Ampliación DD: {0}%", [deltaDD], "Drawdown expansion: {0}%", [deltaDD]),
-            col: deltaDD >= 0 ? '#10b981' : '#f43f5e'
+            col: deltaDD >= 0 ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'
         },
         {
             lbl: tx('CAPITAL TÁCTICO (NAV)', 'TACTICAL CAPITAL (NAV)'),
@@ -76,7 +76,7 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
             sub: isCapped
                 ? tx('⚠ Tope Guardrail 20% NAV', '⚠ 20% NAV Guardrail Cap')
                 : txTpl("{0}% Cartera Core Intacta", [Math.max(0, 100 - effAlloc).toFixed(0)], "{0}% Core Portfolio Intact", [Math.max(0, 100 - effAlloc).toFixed(0)]),
-            col: isCapped ? '#f43f5e' : '#10b981'
+            col: isCapped ? 'var(--danger, #f43f5e)' : 'var(--accent, #10b981)'
         },
         {
             lbl: tx('VEREDICTO COMITÉ 3 PILARES', '3-PILLAR COMMITTEE VERDICT'),
@@ -85,7 +85,7 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
                     ? tx('APROBADO (3/3)', 'APPROVED (3/3)')
                     : tx('RECORTE GUARDRAIL', 'GUARDRAIL TRIM'),
             sub: `P-06 = ${c.p06} (< 0.65) • Cap ≤ 20%`,
-            col: c.p06 < 0.65 && !isCapped ? '#10b981' : '#f43f5e'
+            col: c.p06 < 0.65 && !isCapped ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'
         }
     ];
 
@@ -96,7 +96,7 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
                     key={p.lbl}
                     style={{
                         background: 'transparent',
-                        border: '1px solid rgba(148, 163, 184, 0.22)',
+                        border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                         borderLeft: `3px solid ${p.col}`,
                         borderRadius: '10px',
                         padding: '10px 13px',
@@ -108,13 +108,13 @@ function Row1TotalPortfolioImpactHeader({ activeSym, allocPct, hedgeActive, live
                         justifyContent: 'space-between'
                     }}
                 >
-                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-muted, #94a3b8)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {p.lbl}
                     </div>
                     <div style={{ fontSize: '18.5px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '2px', whiteSpace: 'nowrap' }}>
                         {p.val}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                         {p.sub}
                     </div>
                 </div>
@@ -183,7 +183,7 @@ function Quad1WhatIfAndKelly({
         <PortfolioCardShell
             badge="CUADRANTE 1 • SIMULADOR"
             title={tx('Simulador de Posición', 'Position Simulator')}
-            color="#10b981"
+            color="var(--accent, #10b981)"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
@@ -199,7 +199,7 @@ function Quad1WhatIfAndKelly({
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: active ? 800 : 600,
@@ -215,7 +215,7 @@ function Quad1WhatIfAndKelly({
             subBar={
                 <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-dim, #64748b)' }}>
                             {tx('ACTIVO:', 'ASSET:')}
                         </span>
                         {symList.map(sym => (
@@ -226,7 +226,7 @@ function Quad1WhatIfAndKelly({
                                     padding: '1px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: activeSym === sym ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: activeSym === sym ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: activeSym === sym ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: activeSym === sym ? 800 : 600,
@@ -238,7 +238,7 @@ function Quad1WhatIfAndKelly({
                         ))}
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: '11.5px', color: '#64748b', fontWeight: 800 }}>% NAV:</span>
+                        <span style={{ fontSize: '11.5px', color: 'var(--text-dim, #64748b)', fontWeight: 800 }}>% NAV:</span>
                         {[5, 10, 14.2, 20, 25].map(w => (
                             <button
                                 key={w}
@@ -247,7 +247,7 @@ function Quad1WhatIfAndKelly({
                                     padding: '1px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: allocPct === w ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: allocPct === w ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: allocPct === w ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontFamily: 'var(--font-mono)',
@@ -281,7 +281,7 @@ function Quad1WhatIfAndKelly({
         >
             {subTab === 'WHATIF' ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr 1fr 1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr 1fr 1fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {headers.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, headers.length) }}>{h}</span>
                         ))}
@@ -298,9 +298,9 @@ function Quad1WhatIfAndKelly({
                                 alignItems: 'center'
                             }}
                         >
-                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: '#e2e8f0' }}>{r[0]}</span>
-                            <span style={{ textAlign: 'center', color: '#94a3b8' }}>{r[1]}</span>
-                            <span style={{ textAlign: 'center', color: '#f8fafc', fontWeight: 800 }}>{r[2]}</span>
+                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: 'var(--text-secondary, #e2e8f0)' }}>{r[0]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-muted, #94a3b8)' }}>{r[1]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-main, #f8fafc)', fontWeight: 800 }}>{r[2]}</span>
                             <span style={{ textAlign: 'right', padding: '1.5px 6px', borderRadius: '4px', fontWeight: 900, justifySelf: 'end', ...getSemanticReturnStyle(r[4], 10) }}>
                                 {r[3]}
                             </span>
@@ -309,10 +309,10 @@ function Quad1WhatIfAndKelly({
                 </div>
             ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ fontSize: '11.5px', color: '#94a3b8', padding: '0 4px', fontFamily: 'sans-serif' }}>
+                    <div style={{ fontSize: '11.5px', color: 'var(--text-muted, #94a3b8)', padding: '0 4px', fontFamily: 'sans-serif' }}>
                         {txTpl("Parámetros de {0}:", [c.sym], "{0} parameters:", [c.sym])} <strong>Win Rate {c.winRate}%</strong> • <strong>Payoff Ratio {c.payoff}x</strong> ({tx('Clic para aplicar peso', 'Click to apply weight')}):
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.1fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {kellyHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, kellyHeaders.length) }}>{h}</span>
                         ))}
@@ -331,9 +331,9 @@ function Quad1WhatIfAndKelly({
                                 cursor: 'pointer'
                             }}
                         >
-                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: '#f8fafc' }}>{kr[0]}</span>
-                            <span style={{ textAlign: 'center', color: '#94a3b8' }}>{kr[1]}</span>
-                            <span style={{ textAlign: 'center', color: '#6ee7b7', fontWeight: 900 }}>{kr[2]}</span>
+                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: 'var(--text-main, #f8fafc)' }}>{kr[0]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-muted, #94a3b8)' }}>{kr[1]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--pos-text, #6ee7b7)', fontWeight: 900 }}>{kr[2]}</span>
                             <span style={{ textAlign: 'right', padding: '1.5px 6px', borderRadius: '4px', fontWeight: 800, justifySelf: 'end', ...getSemanticReturnStyle(kr[4], 10) }}>
                                 {kr[3]}
                             </span>
@@ -368,7 +368,7 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) 
         <PortfolioCardShell
             badge="CUADRANTE 2 • COBERTURA & MARGEN"
             title={tx('Cobertura y Margen', 'Hedging & Margin')}
-            color="#f43f5e"
+            color="var(--danger, #f43f5e)"
             rightSlot={
                 <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
                     {[
@@ -384,7 +384,7 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) 
                                     padding: '2px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: active ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: active ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontWeight: active ? 800 : 600,
@@ -406,7 +406,7 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) 
                             alignItems: 'center',
                             background: 'transparent',
                             border: 'none',
-                            color: hedgeActive ? 'var(--ui-accent, #10b981)' : '#94a3b8',
+                            color: hedgeActive ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, #94a3b8)',
                             textShadow: hedgeActive ? '0 0 10px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.7)' : 'none',
                             fontSize: '11.5px',
                             fontWeight: hedgeActive ? 900 : 700,
@@ -420,7 +420,7 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) 
                     </button>
                 ) : (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-dim, #64748b)' }}>
                             {tx('SIMULAR APALANCAMIENTO:', 'SIMULATE LEVERAGE:')}
                         </span>
                         {[1.0, 1.25, 1.5, 1.85].map(lv => (
@@ -431,7 +431,7 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) 
                                     padding: '1px 4px',
                                     border: 'none',
                                     background: 'transparent',
-                                    color: leverage === lv ? 'var(--ui-accent, #10b981)' : 'rgba(148, 163, 184, 0.68)',
+                                    color: leverage === lv ? 'var(--ui-accent, #10b981)' : 'var(--text-muted, rgba(148, 163, 184, 0.68))',
                                     textShadow: leverage === lv ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                     fontSize: '12px',
                                     fontFamily: 'var(--font-mono)',
@@ -448,7 +448,7 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) 
         >
             {tab === 'HEDGE' ? (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr 1fr 1.1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 1fr 1fr 1.1fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {hedgeHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, hedgeHeaders.length) }}>{h}</span>
                         ))}
@@ -465,9 +465,9 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) 
                                 alignItems: 'center'
                             }}
                         >
-                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: '#e2e8f0' }}>{r[0]}</span>
-                            <span style={{ textAlign: 'center', color: '#fda4af' }}>{r[1]}</span>
-                            <span style={{ textAlign: 'center', color: '#6ee7b7', fontWeight: 900 }}>{r[2]}</span>
+                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: 'var(--text-secondary, #e2e8f0)' }}>{r[0]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--neg-text, #fda4af)' }}>{r[1]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--pos-text, #6ee7b7)', fontWeight: 900 }}>{r[2]}</span>
                             <span style={{ textAlign: 'right', padding: '1.5px 6px', borderRadius: '4px', fontWeight: 900, justifySelf: 'end', ...getSemanticReturnStyle(r[4], 15) }}>
                                 {r[3]}
                             </span>
@@ -476,7 +476,7 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) 
                 </div>
             ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 0.9fr 0.9fr 1.1fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 0.9fr 0.9fr 1.1fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                         {marginHeaders.map((h, i) => (
                             <span key={h} style={{ textAlign: colAlign(i, marginHeaders.length) }}>{h}</span>
                         ))}
@@ -493,9 +493,9 @@ function Quad2TailHedgeAndMargin({ hedgeActive, setHedgeActive, isES = false }) 
                                 alignItems: 'center'
                             }}
                         >
-                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: '#e2e8f0' }}>{r[0]}</span>
-                            <span style={{ textAlign: 'center', color: '#f8fafc', fontWeight: 800 }}>{r[1]}</span>
-                            <span style={{ textAlign: 'center', color: '#94a3b8' }}>{r[2]}</span>
+                            <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: 'var(--text-secondary, #e2e8f0)' }}>{r[0]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-main, #f8fafc)', fontWeight: 800 }}>{r[1]}</span>
+                            <span style={{ textAlign: 'center', color: 'var(--text-muted, #94a3b8)' }}>{r[2]}</span>
                             <span style={{ textAlign: 'right', padding: '1.5px 6px', borderRadius: '4px', fontWeight: 900, justifySelf: 'end', ...getSemanticReturnStyle(r[4], 10) }}>
                                 {r[3]}
                             </span>
@@ -544,15 +544,15 @@ function Quad3AutonomousCommittee({ activeSym, allocPct, candidateInfo, isES = f
             badge="CUADRANTE 3 • COMITÉ"
             title={tx('Comité de Riesgo', 'Risk Committee')}
             subtitle={txTpl("Evaluación sobre {0}", [c.sym], "Evaluation on {0}", [c.sym])}
-            color="#10b981"
+            color="var(--accent, #10b981)"
             subBar={
-                <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#6ee7b7' }}>
+                <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--pos-text, #6ee7b7)' }}>
                     {tx('REGLA DURA INSTITUCIONAL: Tope máximo 20% NAV por activo • Circuit-Breaker al 5% NAV si P-06 ≥ 0.65', 'INSTITUTIONAL HARD RULE: Max 20% NAV cap per asset • 5% NAV Circuit-Breaker if P-06 ≥ 0.65')}
                 </span>
             }
         >
             <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', fontSize: '11.5px', fontFamily: 'var(--font-mono)' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1.25fr 1.45fr 1fr 0.95fr', color: '#64748b', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1.25fr 1.45fr 1fr 0.95fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11.5px', padding: '0 6px' }}>
                     {headers.map((h, i) => (
                         <span key={h} style={{ textAlign: colAlign(i, headers.length) }}>{h}</span>
                     ))}
@@ -569,9 +569,9 @@ function Quad3AutonomousCommittee({ activeSym, allocPct, candidateInfo, isES = f
                             alignItems: 'center'
                         }}
                     >
-                        <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: '#f8fafc' }}>{p[0]}</span>
-                        <span style={{ textAlign: 'center', fontFamily: 'sans-serif', color: '#cbd5e1', fontSize: '11.5px' }}>{p[1]}</span>
-                        <span style={{ textAlign: 'center', color: '#94a3b8', fontSize: '11.5px' }}>{p[2]}</span>
+                        <span style={{ textAlign: 'left', fontFamily: 'sans-serif', fontWeight: 800, color: 'var(--text-main, #f8fafc)' }}>{p[0]}</span>
+                        <span style={{ textAlign: 'center', fontFamily: 'sans-serif', color: 'var(--text-body, #cbd5e1)', fontSize: '11.5px' }}>{p[1]}</span>
+                        <span style={{ textAlign: 'center', color: 'var(--text-muted, #94a3b8)', fontSize: '11.5px' }}>{p[2]}</span>
                         <span style={{ textAlign: 'right', padding: '1.5px 6px', borderRadius: '4px', fontWeight: 900, justifySelf: 'end', ...getSemanticReturnStyle(p[4], 12) }}>
                             {p[3]}
                         </span>
@@ -586,7 +586,7 @@ function Quad3AutonomousCommittee({ activeSym, allocPct, candidateInfo, isES = f
                         border: `1px solid ${isCapped ? 'rgba(244,63,94,0.35)' : 'rgba(16,185,129,0.3)'}`,
                         fontSize: '11.5px',
                         fontFamily: 'sans-serif',
-                        color: isCapped ? '#fda4af' : '#a7f3d0'
+                        color: isCapped ? 'var(--neg-text, #fda4af)' : 'var(--pos-text-soft, #a7f3d0)'
                     }}
                 >
                     <strong>{tx('Síntesis de Consenso:', 'Consensus Synthesis:')}</strong> {c.guardrailNote}
@@ -604,16 +604,16 @@ function Quad4ExecutionLedger({ ledger, isES = false }) {
         <PortfolioCardShell
             badge="CUADRANTE 4 • HISTORIAL"
             title={tx('Historial de Simulaciones', 'Simulation History')}
-            color="#10b981"
+            color="var(--accent, #10b981)"
             subBar={
-                <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#94a3b8' }}>
+                <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-muted, #94a3b8)' }}>
                     {txTpl("REGISTRO DE REBALANCEOS TÁCTICOS Y RECORTE DE GUARDRAILS ({0} ÓRDENES)", [ledger.length], "TACTICAL REBALANCING & GUARDRAIL AUDIT LOG ({0} ORDERS)", [ledger.length])}
                 </span>
             }
         >
             <div className="resp-portfolio-table-scroll">
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '11.5px', fontFamily: 'var(--font-mono)', minWidth: '470px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '0.9fr 0.75fr 1.15fr 0.7fr 0.7fr 0.75fr 0.85fr', color: '#64748b', fontWeight: 800, fontSize: '11px', padding: '0 6px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '0.9fr 0.75fr 1.15fr 0.7fr 0.7fr 0.75fr 0.85fr', color: 'var(--text-dim, #64748b)', fontWeight: 800, fontSize: '11px', padding: '0 6px' }}>
                     {headers.map((h, i) => (
                         <span key={h} style={{ textAlign: colAlign(i, headers.length) }}>{h}</span>
                     ))}
@@ -630,12 +630,12 @@ function Quad4ExecutionLedger({ ledger, isES = false }) {
                             alignItems: 'center'
                         }}
                     >
-                        <span style={{ textAlign: 'left', color: '#94a3b8' }}>{row.time}</span>
-                        <span style={{ textAlign: 'center', fontWeight: 900, color: '#f8fafc' }}>{row.sym}</span>
-                        <span style={{ textAlign: 'center', fontFamily: 'sans-serif', fontWeight: 700, color: '#cbd5e1' }}>{row.side}</span>
-                        <span style={{ textAlign: 'center', color: '#6ee7b7', fontWeight: 800 }}>{row.navPct}</span>
-                        <span style={{ textAlign: 'center', color: '#6ee7b7', fontWeight: 800 }}>{row.impactSharpe}</span>
-                        <span style={{ textAlign: 'center', color: row.impactVaR.startsWith('-') ? '#fda4af' : '#6ee7b7', fontWeight: 800 }}>
+                        <span style={{ textAlign: 'left', color: 'var(--text-muted, #94a3b8)' }}>{row.time}</span>
+                        <span style={{ textAlign: 'center', fontWeight: 900, color: 'var(--text-main, #f8fafc)' }}>{row.sym}</span>
+                        <span style={{ textAlign: 'center', fontFamily: 'sans-serif', fontWeight: 700, color: 'var(--text-body, #cbd5e1)' }}>{row.side}</span>
+                        <span style={{ textAlign: 'center', color: 'var(--pos-text, #6ee7b7)', fontWeight: 800 }}>{row.navPct}</span>
+                        <span style={{ textAlign: 'center', color: 'var(--pos-text, #6ee7b7)', fontWeight: 800 }}>{row.impactSharpe}</span>
+                        <span style={{ textAlign: 'center', color: row.impactVaR.startsWith('-') ? 'var(--neg-text, #fda4af)' : 'var(--pos-text, #6ee7b7)', fontWeight: 800 }}>
                             {row.impactVaR}
                         </span>
                         <span
@@ -677,11 +677,11 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct, isES = false }) {
             badge="FILA 3 • ANCHO COMPLETO (100%)"
             title={tx('Validación Histórica', 'Walk-Forward Validation')}
             subtitle={txTpl("Cartera Base vs Cartera + {0}", [activeSym], "Base Portfolio vs Portfolio + {0}", [activeSym])}
-            color="#10b981"
+            color="var(--accent, #10b981)"
             subBar={
                 <>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: '#64748b' }}>
+                        <span style={{ fontSize: '11.5px', fontWeight: 800, color: 'var(--text-dim, #64748b)' }}>
                             {tx('CURVAS VISIBLES:', 'VISIBLE CURVES:')}
                         </span>
                         {[
@@ -689,19 +689,19 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct, isES = false }) {
                                 lbl: txTpl("Cartera Total + {0} (+49.4%)", [activeSym], "Total Portfolio + {0} (+49.4%)", [activeSym]),
                                 val: showAdHoc,
                                 set: setShowAdHoc,
-                                col: '#10b981'
+                                col: 'var(--accent, #10b981)'
                             },
                             {
                                 lbl: tx('Cartera Base (+34.6%)', 'Base Portfolio (+34.6%)'),
                                 val: showBase,
                                 set: setShowBase,
-                                col: '#6ee7b7'
+                                col: 'var(--pos-text, #6ee7b7)'
                             },
                             {
                                 lbl: tx('Piso Mínimo Out-of-Sample', 'Out-of-Sample Floor'),
                                 val: showFloor,
                                 set: setShowFloor,
-                                col: '#f43f5e'
+                                col: 'var(--danger, #f43f5e)'
                             }
                         ].map(b => (
                             <button
@@ -712,7 +712,7 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct, isES = false }) {
                                     alignItems: 'center',
                                     background: 'transparent',
                                     border: 'none',
-                                    color: b.val ? b.col : '#64748b',
+                                    color: b.val ? b.col : 'var(--text-dim, #64748b)',
                                     fontSize: '11.5px',
                                     fontWeight: b.val ? 800 : 600,
                                     cursor: 'pointer',
@@ -723,7 +723,7 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct, isES = false }) {
                             </button>
                         ))}
                     </div>
-                    <span style={{ fontSize: '11.5px', fontFamily: 'var(--font-mono)', color: '#6ee7b7' }}>
+                    <span style={{ fontSize: '11.5px', fontFamily: 'var(--font-mono)', color: 'var(--pos-text, #6ee7b7)' }}>
                         {tx('Eficiencia Walk-Forward (OOS / IS):', 'Walk-Forward Efficiency (OOS / IS):')}{' '}
                         <strong>{tx('94.2% (Sin Overfitting)', '94.2% (No Overfitting)')}</strong>
                     </span>
@@ -735,25 +735,25 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct, isES = false }) {
                     <AreaChart data={series} margin={{ top: 6, right: 14, left: -16, bottom: 0 }}>
                         <defs>
                             <linearGradient id="prodV3AdHocGreen" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#10b981" stopOpacity={0.45} />
-                                <stop offset="95%" stopColor="#10b981" stopOpacity={0.0} />
+                                <stop offset="5%" stopColor="var(--accent, #10b981)" stopOpacity={0.45} />
+                                <stop offset="95%" stopColor="var(--accent, #10b981)" stopOpacity={0.0} />
                             </linearGradient>
                             <linearGradient id="prodV3FloorRed" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.25} />
-                                <stop offset="95%" stopColor="#f43f5e" stopOpacity={0.0} />
+                                <stop offset="5%" stopColor="var(--danger, #f43f5e)" stopOpacity={0.25} />
+                                <stop offset="95%" stopColor="var(--danger, #f43f5e)" stopOpacity={0.0} />
                             </linearGradient>
                         </defs>
                         <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.08)" />
-                        <XAxis dataKey="p" tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
-                        <YAxis domain={[98, 155]} tick={{ fill: '#64748b', fontSize: 9.5 }} axisLine={false} tickLine={false} />
+                        <XAxis dataKey="p" tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9.5 }} axisLine={false} tickLine={false} />
+                        <YAxis domain={[98, 155]} tick={{ fill: 'var(--text-dim, #64748b)', fontSize: 9.5 }} axisLine={false} tickLine={false} />
                         <ReferenceLine x="W6 (IS)" stroke="rgba(16,185,129,0.45)" strokeDasharray="3 3" />
-                        <RechartsTooltip contentStyle={{ background: '#090d16', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }} />
+                        <RechartsTooltip contentStyle={{ background: 'var(--bg-glass-strong, #090d16)', border: '1px solid rgba(16,185,129,0.4)', borderRadius: '6px', fontSize: '13px' }} />
                         {showAdHoc && (
                             <Area
                                 type="monotone"
                                 dataKey="adhoc"
                                 name={tx('★ Cartera + Estrategia Ad-Hoc', '★ Portfolio + Ad-Hoc Strategy')}
-                                stroke="#10b981"
+                                stroke="var(--accent, #10b981)"
                                 strokeWidth={2.3}
                                 fill="url(#prodV3AdHocGreen)"
                             />
@@ -763,7 +763,7 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct, isES = false }) {
                                 type="monotone"
                                 dataKey="base"
                                 name={tx('Cartera Base', 'Base Portfolio')}
-                                stroke="#6ee7b7"
+                                stroke="var(--pos-text, #6ee7b7)"
                                 strokeWidth={1.8}
                                 strokeDasharray="5 3"
                                 fill="none"
@@ -774,7 +774,7 @@ function Row3WalkForwardFullWidth({ activeSym, allocPct, isES = false }) {
                                 type="monotone"
                                 dataKey="oosFloor"
                                 name={tx('Piso Mínimo OOS', 'Min OOS Floor')}
-                                stroke="#f43f5e"
+                                stroke="var(--danger, #f43f5e)"
                                 strokeWidth={1.6}
                                 fill="url(#prodV3FloorRed)"
                             />

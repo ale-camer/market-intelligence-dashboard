@@ -9,20 +9,20 @@ export function getSemanticReturnStyle(numericVal, maxScale = 15) {
         return {
             background: `rgba(16, 185, 129, ${(ratio * 0.42).toFixed(2)})`,
             border: `1px solid rgba(16, 185, 129, ${(0.22 + ratio * 0.45).toFixed(2)})`,
-            color: ratio > 0.5 ? '#6ee7b7' : '#a7f3d0'
+            color: ratio > 0.5 ? 'var(--pos-text, #6ee7b7)' : 'var(--pos-text-soft, #a7f3d0)'
         };
     }
     if (numericVal < 0) {
         return {
             background: `rgba(244, 63, 94, ${(ratio * 0.44).toFixed(2)})`,
             border: `1px solid rgba(244, 63, 94, ${(0.22 + ratio * 0.45).toFixed(2)})`,
-            color: ratio > 0.5 ? '#fda4af' : '#fecdd3'
+            color: ratio > 0.5 ? 'var(--neg-text, #fda4af)' : 'var(--neg-text-soft, #fecdd3)'
         };
     }
     return {
         background: 'rgba(148, 163, 184, 0.10)',
-        border: '1px solid rgba(148, 163, 184, 0.22)',
-        color: '#cbd5e1'
+        border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
+        color: 'var(--text-body, #cbd5e1)'
     };
 }
 
@@ -57,12 +57,12 @@ function formatCleanBlockTitle(rawTitle) {
         .join(' ');
 }
 
-export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', rightSlot, subBar, children, fixedHeight = null, style = {} }) {
+export function PortfolioCardShell({ badge, title, subtitle, color = 'var(--accent, #10b981)', rightSlot, subBar, children, fixedHeight = null, style = {} }) {
     return (
         <div
             style={{
                 background: 'transparent',
-                border: '1px solid rgba(148, 163, 184, 0.22)',
+                border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                 borderRadius: '10px',
                 padding: '14px 16px',
                 display: 'flex',
@@ -85,15 +85,15 @@ export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', 
                     flexWrap: 'wrap',
                     flexShrink: 0,
                     paddingBottom: '8px',
-                    borderBottom: '1px solid rgba(148, 163, 184, 0.14)'
+                    borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))'
                 }}
             >
                 <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: '15.5px', fontWeight: 700, color: '#ffffff' }}>
+                    <span style={{ fontSize: '15.5px', fontWeight: 700, color: 'var(--text-main, #ffffff)' }}>
                         {formatCleanBlockTitle(title)}
                     </span>
                     {subtitle && (
-                        <span style={{ fontSize: '11.5px', color: '#94a3b8', fontFamily: 'var(--font-mono)' }}>
+                        <span style={{ fontSize: '11.5px', color: 'var(--text-muted, #94a3b8)', fontFamily: 'var(--font-mono)' }}>
                             {subtitle}
                         </span>
                     )}
@@ -116,7 +116,7 @@ export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', 
                         padding: '4px 8px',
                         borderRadius: '6px',
                         background: 'transparent',
-                        border: '1px solid rgba(148, 163, 184, 0.14)',
+                        border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                         flexShrink: 0,
                         flexWrap: 'wrap'
                     }}
@@ -160,10 +160,10 @@ export const BASE_BACKTEST = [
 ];
 
 export const BENCH_META = {
-    spx: { label: 'S&P 500 (SPY)', ret: '+16.5%', sharpe: '1.28', col: '#10b981' },
-    s6040: { label: 'Clásica 60/40', ret: '+11.6%', sharpe: '1.08', col: '#94a3b8' },
-    allw: { label: 'All-Weather', ret: '+9.8%', sharpe: '1.34', col: '#6ee7b7' },
-    eqw: { label: 'Equal-Weight (1/N)', ret: '+19.2%', sharpe: '1.62', col: '#a7f3d0' }
+    spx: { label: 'S&P 500 (SPY)', ret: '+16.5%', sharpe: '1.28', col: 'var(--accent, #10b981)' },
+    s6040: { label: 'Clásica 60/40', ret: '+11.6%', sharpe: '1.08', col: 'var(--text-muted, #94a3b8)' },
+    allw: { label: 'All-Weather', ret: '+9.8%', sharpe: '1.34', col: 'var(--pos-text, #6ee7b7)' },
+    eqw: { label: 'Equal-Weight (1/N)', ret: '+19.2%', sharpe: '1.62', col: 'var(--pos-text-soft, #a7f3d0)' }
 };
 
 export const MONTHLY_HEATMAP = [

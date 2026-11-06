@@ -307,13 +307,13 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
           padding: '0.28rem 0.55rem',
           marginBottom: '0.25rem',
           borderRadius: '8px',
-          background: 'rgba(15, 23, 42, 0.65)',
-          border: '1px solid rgba(255, 255, 255, 0.07)',
+          background: 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.65))',
+          border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.07))',
           fontSize: '0.67rem',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexWrap: 'wrap' }}>
-          <span style={{ color: '#38bdf8', fontWeight: 700, letterSpacing: '0.03em' }}>
+          <span style={{ color: 'var(--info-text, #38bdf8)', fontWeight: 700, letterSpacing: '0.03em' }}>
             {tx('CÁMARA 3D (ARRASTRAR PARA ROTAR):', '3D CAMERA (DRAG TO ROTATE):')}
           </span>
           {[
@@ -333,8 +333,8 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
                 }}
                 style={{
                   background: isPresetActive ? 'rgba(56, 189, 248, 0.2)' : 'rgba(255, 255, 255, 0.04)',
-                  color: isPresetActive ? '#38bdf8' : 'var(--text-secondary)',
-                  border: isPresetActive ? '1px solid rgba(56, 189, 248, 0.45)' : '1px solid rgba(255, 255, 255, 0.08)',
+                  color: isPresetActive ? 'var(--info-text, #38bdf8)' : 'var(--text-secondary)',
+                  border: isPresetActive ? '1px solid rgba(56, 189, 248, 0.45)' : '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))',
                   borderRadius: '5px',
                   padding: '0.15rem 0.45rem',
                   fontSize: '0.65rem',
@@ -354,12 +354,12 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
           <span style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '0.64rem' }}>
             Yaw {Math.round(yaw)}° • Pitch {Math.round(pitch)}°
           </span>
-          <div style={{ display: 'inline-flex', borderRadius: '5px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
+          <div style={{ display: 'inline-flex', borderRadius: '5px', overflow: 'hidden', border: '1px solid var(--border-subtle, rgba(255,255,255,0.1))' }}>
             <button
               type="button"
               onClick={() => setZoom((z) => Math.max(0.75, Number((z - 0.1).toFixed(2))))}
               style={{
-                background: 'rgba(15,23,42,0.8)',
+                background: 'var(--bg-elevated-soft, rgba(15,23,42,0.8))',
                 color: 'var(--text-secondary)',
                 border: 'none',
                 padding: '0.12rem 0.42rem',
@@ -374,10 +374,10 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
               type="button"
               onClick={() => setZoom(1.0)}
               style={{
-                background: 'rgba(15,23,42,0.8)',
+                background: 'var(--bg-elevated-soft, rgba(15,23,42,0.8))',
                 color: 'var(--text-primary)',
-                borderLeft: '1px solid rgba(255,255,255,0.08)',
-                borderRight: '1px solid rgba(255,255,255,0.08)',
+                borderLeft: '1px solid var(--border-subtle, rgba(255,255,255,0.08))',
+                borderRight: '1px solid var(--border-subtle, rgba(255,255,255,0.08))',
                 borderTop: 'none',
                 borderBottom: 'none',
                 padding: '0.12rem 0.42rem',
@@ -392,7 +392,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
               type="button"
               onClick={() => setZoom((z) => Math.min(1.35, Number((z + 0.1).toFixed(2))))}
               style={{
-                background: 'rgba(15,23,42,0.8)',
+                background: 'var(--bg-elevated-soft, rgba(15,23,42,0.8))',
                 color: 'var(--text-secondary)',
                 border: 'none',
                 padding: '0.12rem 0.42rem',
@@ -419,8 +419,8 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
           position: 'relative',
           cursor: isDragging ? 'grabbing' : 'grab',
           borderRadius: '10px',
-          background: 'radial-gradient(circle at 50% 55%, rgba(30, 41, 59, 0.55) 0%, rgba(10, 15, 28, 0.85) 100%)',
-          border: '1px solid rgba(255, 255, 255, 0.06)',
+          background: 'var(--bg-card-glass)',
+          border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.06))',
           overflow: 'hidden',
         }}
       >
@@ -481,7 +481,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
                     x={zt.sx - 5}
                     y={zt.sy + 3}
                     textAnchor="end"
-                    fill="rgba(226, 232, 240, 0.8)"
+                    fill="var(--text-secondary, rgba(226, 232, 240, 0.8))"
                     fontSize="9.5"
                     fontFamily="var(--font-mono)"
                   >
@@ -511,7 +511,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
             <path
               d={constantYPath}
               fill="none"
-              stroke="#38bdf8"
+              stroke="var(--info-text, #38bdf8)"
               strokeWidth="2.6"
               strokeLinecap="round"
               style={{ pointerEvents: 'none' }}
@@ -521,7 +521,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
             <path
               d={constantXPath}
               fill="none"
-              stroke="#fbbf24"
+              stroke="var(--warn-text, #fbbf24)"
               strokeWidth="2.4"
               strokeDasharray="4 2"
               strokeLinecap="round"
@@ -543,7 +543,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
                           y1={pt.sy}
                           x2={pt.floorSx}
                           y2={pt.floorSy}
-                          stroke="#ffffff"
+                          stroke="var(--text-main, #ffffff)"
                           strokeWidth="1.4"
                           strokeDasharray="2 2"
                         />
@@ -552,7 +552,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
                           cy={pt.sy}
                           r={6.5}
                           fill="rgba(56, 189, 248, 0.3)"
-                          stroke="#ffffff"
+                          stroke="var(--text-main, #ffffff)"
                           strokeWidth="1.8"
                         />
                       </>
@@ -561,8 +561,8 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
                       cx={pt.sx}
                       cy={pt.sy}
                       r={isSelected ? 3.8 : 2.5}
-                      fill={isSelected ? '#ffffff' : 'rgba(255, 255, 255, 0.72)'}
-                      stroke="rgba(15, 23, 42, 0.9)"
+                      fill={isSelected ? 'var(--text-main, #ffffff)' : 'var(--text-muted, rgba(255, 255, 255, 0.72))'}
+                      stroke="var(--bg-elevated-soft, rgba(15, 23, 42, 0.9))"
                       strokeWidth="0.9"
                       style={{ cursor: 'pointer' }}
                       onMouseEnter={() => setHoveredNode({ j, i })}
@@ -581,7 +581,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
                 x={xt.sx}
                 y={xt.sy + 8}
                 textAnchor="middle"
-                fill={xt.i === activeI ? '#38bdf8' : 'rgba(203, 213, 225, 0.85)'}
+                fill={xt.i === activeI ? 'var(--info-text, #38bdf8)' : 'var(--text-body, rgba(203, 213, 225, 0.85))'}
                 fontWeight={xt.i === activeI ? '700' : '500'}
                 fontSize="9.5"
                 fontFamily="var(--font-mono)"
@@ -599,7 +599,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
                 x={yt.sx + 6}
                 y={yt.sy + 3}
                 textAnchor="start"
-                fill={yt.j === activeJ ? '#fbbf24' : 'rgba(203, 213, 225, 0.85)'}
+                fill={yt.j === activeJ ? 'var(--warn-text, #fbbf24)' : 'var(--text-body, rgba(203, 213, 225, 0.85))'}
                 fontWeight={yt.j === activeJ ? '700' : '500'}
                 fontSize="9.5"
                 fontFamily="var(--font-mono)"
@@ -625,13 +625,13 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
           <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-primary)' }}>{title}</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.64rem', color: 'var(--text-muted)' }}>
             <span>
-              <strong style={{ color: '#38bdf8' }}>X:</strong> {xAxisTitle}
+              <strong style={{ color: 'var(--info-text, #38bdf8)' }}>X:</strong> {xAxisTitle}
             </span>
             <span>
-              <strong style={{ color: '#fbbf24' }}>Y:</strong> {yAxisTitle}
+              <strong style={{ color: 'var(--warn-text, #fbbf24)' }}>Y:</strong> {yAxisTitle}
             </span>
             <span>
-              <strong style={{ color: '#f43f5e' }}>Z:</strong> {zAxisTitle}
+              <strong style={{ color: 'var(--danger, #f43f5e)' }}>Z:</strong> {zAxisTitle}
             </span>
           </div>
         </div>
@@ -643,7 +643,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
               position: 'absolute',
               top: '0.55rem',
               right: '0.65rem',
-              background: 'rgba(10, 15, 28, 0.88)',
+              background: 'var(--bg-glass-strong, rgba(10, 15, 28, 0.88))',
               border: '1px solid rgba(56, 189, 248, 0.35)',
               borderRadius: '9px',
               padding: '0.45rem 0.65rem',
@@ -659,7 +659,7 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 gap: '0.5rem',
-                borderBottom: '1px solid rgba(255,255,255,0.08)',
+                borderBottom: '1px solid var(--border-subtle, rgba(255,255,255,0.08))',
                 paddingBottom: '0.22rem',
                 marginBottom: '0.28rem',
               }}
@@ -667,16 +667,16 @@ export default function Surface3DViewer({ surfaceData, isES = false, extraToolba
               <span style={{ color: 'var(--text-muted)', fontWeight: 600 }}>
                 {tx('NODO 3D ACTIVO', 'ACTIVE 3D NODE')}
               </span>
-              <span style={{ color: '#10b981', fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.76rem' }}>
+              <span style={{ color: 'var(--accent, #10b981)', fontFamily: 'var(--font-mono)', fontWeight: 800, fontSize: '0.76rem' }}>
                 {activeVertex.meta?.zFormatted || `${activeVertex.zVal}${zUnit}`}
               </span>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', columnGap: '0.55rem', rowGap: '0.16rem' }}>
-              <span style={{ color: '#38bdf8' }}>X ({xLabels[activeI]?.split(' ')[0]}):</span>
+              <span style={{ color: 'var(--info-text, #38bdf8)' }}>X ({xLabels[activeI]?.split(' ')[0]}):</span>
               <strong style={{ color: 'var(--text-primary)', textAlign: 'right', fontFamily: 'var(--font-mono)' }}>
                 {activeVertex.meta?.xLabel || xLabels[activeI]}
               </strong>
-              <span style={{ color: '#fbbf24' }}>Y (Plazo):</span>
+              <span style={{ color: 'var(--warn-text, #fbbf24)' }}>Y (Plazo):</span>
               <strong style={{ color: 'var(--text-primary)', textAlign: 'right', fontFamily: 'var(--font-mono)' }}>
                 {activeVertex.meta?.yLabel || yLabels[activeJ]}
               </strong>

@@ -88,7 +88,7 @@ export default function FilingsSentimentView({
     const isPos = avg >= 0;
     const sign = isPos ? '+' : '';
     const label = isPos ? 'POSITIVE (BULLISH)' : 'NEGATIVE (BEARISH)';
-    const color = isPos ? '#10b981' : '#f43f5e';
+    const color = isPos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)';
     return {
       avgNum: avg,
       formatted: `${sign}${avg.toFixed(2)}`,
@@ -160,9 +160,9 @@ export default function FilingsSentimentView({
           gap: '0.6rem',
           padding: '0.35rem 0.65rem',
           borderRadius: '999px',
-          backgroundColor: 'rgba(13, 19, 33, 0.68)',
+          backgroundColor: 'var(--bg-elevated-soft, rgba(13, 19, 33, 0.68))',
           backdropFilter: 'blur(14px)',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
+          border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.1))',
         }}
       >
         <div
@@ -173,7 +173,7 @@ export default function FilingsSentimentView({
             gap: '0.4rem',
             fontSize: '0.65rem',
             fontWeight: 800,
-            color: '#10b981',
+            color: 'var(--accent, #10b981)',
             paddingLeft: '0.35rem',
           }}
         >
@@ -195,7 +195,7 @@ export default function FilingsSentimentView({
                   borderRadius: '999px',
                   border: active ? '1px solid #10b981' : '1px solid transparent',
                   backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'transparent',
-                  color: active ? '#ffffff' : 'var(--text-dim)',
+                  color: active ? 'var(--text-main, #ffffff)' : 'var(--text-dim)',
                   cursor: 'pointer',
                   transition: 'all 0.15s ease',
                 }}
@@ -227,16 +227,16 @@ export default function FilingsSentimentView({
             display: 'flex',
             alignItems: 'center',
             gap: '0.5rem',
-            backgroundColor: 'rgba(13, 19, 33, 0.65)',
+            backgroundColor: 'var(--bg-elevated-soft, rgba(13, 19, 33, 0.65))',
             backdropFilter: 'blur(12px)',
             padding: '0.32rem 0.45rem 0.32rem 0.85rem',
             borderRadius: '999px',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
+            border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.12))',
             flex: '1 1 340px',
             maxWidth: '520px',
           }}
         >
-          <Search size={14} style={{ color: '#10b981', flexShrink: 0 }} />
+          <Search size={14} style={{ color: 'var(--accent, #10b981)', flexShrink: 0 }} />
           <input
             type="text"
             placeholder={
@@ -248,7 +248,7 @@ export default function FilingsSentimentView({
               flex: 1,
               background: 'transparent',
               border: 'none',
-              color: '#ffffff',
+              color: 'var(--text-main, #ffffff)',
               fontSize: '0.74rem',
               outline: 'none',
               fontFamily: 'var(--font-sans)',
@@ -271,7 +271,7 @@ export default function FilingsSentimentView({
             disabled={isRetrieving}
             className="mono-metric"
             style={{
-              backgroundColor: '#10b981',
+              backgroundColor: 'var(--accent, #10b981)',
               color: '#000',
               border: 'none',
               padding: '0.26rem 0.8rem',
@@ -289,10 +289,10 @@ export default function FilingsSentimentView({
         <div
           style={{
             display: 'inline-flex',
-            backgroundColor: 'rgba(13, 19, 33, 0.58)',
+            backgroundColor: 'var(--bg-elevated-soft, rgba(13, 19, 33, 0.58))',
             padding: '0.2rem',
             borderRadius: '999px',
-            border: '1px solid rgba(255, 255, 255, 0.08)',
+            border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))',
             gap: '0.2rem',
             flexWrap: 'wrap',
           }}
@@ -311,7 +311,7 @@ export default function FilingsSentimentView({
                   borderRadius: '999px',
                   border: active ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid transparent',
                   backgroundColor: active ? 'rgba(16, 185, 129, 0.18)' : 'transparent',
-                  color: active ? '#ffffff' : 'var(--text-dim)',
+                  color: active ? 'var(--text-main, #ffffff)' : 'var(--text-dim)',
                   cursor: 'pointer',
                 }}
               >
@@ -336,9 +336,9 @@ export default function FilingsSentimentView({
                   fontSize: '0.65rem',
                   padding: '0.22rem 0.65rem',
                   borderRadius: '999px',
-                  border: active ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.09)',
-                  backgroundColor: active ? 'rgba(16, 185, 129, 0.14)' : 'rgba(13, 19, 33, 0.45)',
-                  color: active ? '#10b981' : 'var(--text-muted)',
+                  border: active ? '1px solid #10b981' : '1px solid var(--border-subtle, rgba(255,255,255,0.09))',
+                  backgroundColor: active ? 'rgba(16, 185, 129, 0.14)' : 'var(--bg-elevated-soft, rgba(13, 19, 33, 0.45))',
+                  color: active ? 'var(--accent, #10b981)' : 'var(--text-muted)',
                   cursor: 'pointer',
                 }}
               >
@@ -376,8 +376,8 @@ export default function FilingsSentimentView({
             gap: '1.8rem',
             alignItems: 'center',
             padding: '0.75rem 0.2rem',
-            borderTop: '1px solid rgba(255, 255, 255, 0.08)',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.08)',
+            borderTop: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))',
+            borderBottom: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.08))',
             flexShrink: 0,
           }}
         >
@@ -394,8 +394,8 @@ export default function FilingsSentimentView({
               </span>
             </div>
             <div className="mono-metric" style={{ fontSize: '0.62rem', color: 'var(--text-dim)', marginTop: '0.1rem' }}>
-              <span style={{ color: '#10b981' }}>{aggregatePolarity.posCount} POSITIVE</span> •{' '}
-              <span style={{ color: '#f43f5e' }}>{aggregatePolarity.negCount} NEGATIVE</span> • {displayedChunks.length} SEC 10-K CHUNKS
+              <span style={{ color: 'var(--accent, #10b981)' }}>{aggregatePolarity.posCount} POSITIVE</span> •{' '}
+              <span style={{ color: 'var(--danger, #f43f5e)' }}>{aggregatePolarity.negCount} NEGATIVE</span> • {displayedChunks.length} SEC 10-K CHUNKS
             </div>
           </div>
 
@@ -409,12 +409,12 @@ export default function FilingsSentimentView({
               borderLeft: '2px solid #10b981',
             }}
           >
-            <Sparkles size={18} style={{ color: '#10b981', flexShrink: 0, marginTop: '0.15rem' }} />
+            <Sparkles size={18} style={{ color: 'var(--accent, #10b981)', flexShrink: 0, marginTop: '0.15rem' }} />
             <div>
-              <div className="mono-metric" style={{ fontSize: '0.62rem', color: '#10b981', fontWeight: 800 }}>
+              <div className="mono-metric" style={{ fontSize: '0.62rem', color: 'var(--accent, #10b981)', fontWeight: 800 }}>
                 {ragResult?.mode || 'P-07 • NEON PGVECTOR CITED SYNTHESIS'}
               </div>
-              <p style={{ fontSize: '0.82rem', color: '#ffffff', lineHeight: 1.55, margin: '0.2rem 0 0 0' }}>
+              <p style={{ fontSize: '0.82rem', color: 'var(--text-main, #ffffff)', lineHeight: 1.55, margin: '0.2rem 0 0 0' }}>
                 {ragResult?.answer}
               </p>
             </div>
@@ -440,26 +440,26 @@ export default function FilingsSentimentView({
                 fontWeight: 800,
                 color: 'var(--text-dim)',
                 paddingBottom: '0.5rem',
-                borderBottom: '1px solid rgba(255,255,255,0.08)',
+                borderBottom: '1px solid var(--border-subtle, rgba(255,255,255,0.08))',
                 display: 'flex',
                 justifyContent: 'space-between',
               }}
             >
               <span>P-07 • SEC FORM 10-K VECTOR CITATIONS (ITEM 7 MD&A / ITEM 1A RISK)</span>
-              <span style={{ color: '#10b981' }}>COSINE SIMILARITY</span>
+              <span style={{ color: 'var(--accent, #10b981)' }}>COSINE SIMILARITY</span>
             </div>
 
             <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
               {displayedChunks.map((chunk) => {
                 const isRisk = chunk.section.includes('ITEM 1A');
-                const accentColor = isRisk ? '#f43f5e' : '#10b981';
+                const accentColor = isRisk ? 'var(--danger, #f43f5e)' : 'var(--accent, #10b981)';
                 return (
                   <div
                     key={chunk.id}
                     onClick={() => handleSelectTicker(chunk.sym)}
                     style={{
                       padding: '0.9rem 0.25rem',
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
+                      borderBottom: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.07))',
                       cursor: 'pointer',
                     }}
                   >
@@ -482,7 +482,7 @@ export default function FilingsSentimentView({
                           {chunk.section}
                         </span>
                       </div>
-                      <span className="mono-metric" style={{ fontSize: '0.7rem', fontWeight: 800, color: '#10b981' }}>
+                      <span className="mono-metric" style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--accent, #10b981)' }}>
                         sim {chunk.cosineSim}
                       </span>
                     </div>
@@ -504,7 +504,7 @@ export default function FilingsSentimentView({
                 fontWeight: 800,
                 color: 'var(--text-dim)',
                 paddingBottom: '0.5rem',
-                borderBottom: '1px solid rgba(255,255,255,0.08)',
+                borderBottom: '1px solid var(--border-subtle, rgba(255,255,255,0.08))',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -521,7 +521,7 @@ export default function FilingsSentimentView({
                       fontSize: '0.58rem',
                       padding: '0.1rem 0.45rem',
                       borderRadius: '999px',
-                      border: sentimentFilter === f ? '1px solid #10b981' : '1px solid rgba(255,255,255,0.1)',
+                      border: sentimentFilter === f ? '1px solid #10b981' : '1px solid var(--border-subtle, rgba(255,255,255,0.1))',
                       background: sentimentFilter === f ? 'rgba(16,185,129,0.16)' : 'transparent',
                       color: sentimentFilter === f ? '#fff' : 'var(--text-dim)',
                       cursor: 'pointer',
@@ -536,14 +536,14 @@ export default function FilingsSentimentView({
             <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
               {filteredHeadlines.map((news) => {
                 const isPos = news.scoreNum >= 0;
-                const toneColor = isPos ? '#10b981' : '#f43f5e';
+                const toneColor = isPos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)';
                 return (
                   <div
                     key={news.id}
                     onClick={() => handleSelectTicker(news.sym)}
                     style={{
                       padding: '0.85rem 0.25rem',
-                      borderBottom: '1px solid rgba(255, 255, 255, 0.07)',
+                      borderBottom: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.07))',
                       cursor: 'pointer',
                     }}
                   >
@@ -577,9 +577,9 @@ export default function FilingsSentimentView({
 
                     {/* Strict Green vs Red FinBERT Softmax Bar */}
                     <div style={{ display: 'flex', height: '4px', borderRadius: '999px', overflow: 'hidden', backgroundColor: 'rgba(255,255,255,0.06)' }}>
-                      <div style={{ width: `${news.probs.pos * 100}%`, backgroundColor: '#10b981' }} />
+                      <div style={{ width: `${news.probs.pos * 100}%`, backgroundColor: 'var(--accent, #10b981)' }} />
                       <div style={{ width: `${news.probs.neu * 100}%`, backgroundColor: 'rgba(255,255,255,0.22)' }} />
-                      <div style={{ width: `${news.probs.neg * 100}%`, backgroundColor: '#f43f5e' }} />
+                      <div style={{ width: `${news.probs.neg * 100}%`, backgroundColor: 'var(--danger, #f43f5e)' }} />
                     </div>
                   </div>
                 );
@@ -622,8 +622,8 @@ export default function FilingsSentimentView({
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.45rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Sparkles size={16} style={{ color: '#10b981' }} />
-              <span className="mono-metric" style={{ fontSize: '0.68rem', fontWeight: 800, color: '#10b981' }}>
+              <Sparkles size={16} style={{ color: 'var(--accent, #10b981)' }} />
+              <span className="mono-metric" style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--accent, #10b981)' }}>
                 AI RESEARCH SYNTHESIS • {ragResult?.mode || 'P-07 PGVECTOR + P-04 FINBERT'}
               </span>
             </div>
@@ -642,7 +642,7 @@ export default function FilingsSentimentView({
             </span>
           </div>
 
-          <p className="serif-heading" style={{ fontSize: '1.05rem', color: '#ffffff', lineHeight: 1.55, margin: 0 }}>
+          <p className="serif-heading" style={{ fontSize: '1.05rem', color: 'var(--text-main, #ffffff)', lineHeight: 1.55, margin: 0 }}>
             {ragResult?.answer}
           </p>
         </div>
@@ -655,14 +655,14 @@ export default function FilingsSentimentView({
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '0.75rem' }}>
             {displayedChunks.slice(0, 3).map((chunk, i) => {
               const isRisk = chunk.section.includes('ITEM 1A');
-              const cColor = isRisk ? '#f43f5e' : '#10b981';
+              const cColor = isRisk ? 'var(--danger, #f43f5e)' : 'var(--accent, #10b981)';
               return (
                 <div
                   key={chunk.id}
                   onClick={() => handleSelectTicker(chunk.sym)}
                   style={{
                     borderRadius: '22px',
-                    backgroundColor: 'rgba(13, 19, 33, 0.62)',
+                    backgroundColor: 'var(--bg-elevated-soft, rgba(13, 19, 33, 0.62))',
                     backdropFilter: 'blur(12px)',
                     border: `1px solid ${cColor}55`,
                     padding: '0.9rem 1.05rem',
@@ -703,7 +703,7 @@ export default function FilingsSentimentView({
                   onClick={() => handleSelectTicker(news.sym)}
                   style={{
                     borderRadius: '20px',
-                    backgroundColor: 'rgba(13, 19, 33, 0.55)',
+                    backgroundColor: 'var(--bg-elevated-soft, rgba(13, 19, 33, 0.55))',
                     border: `1px solid ${isPos ? 'rgba(16,185,129,0.3)' : 'rgba(244,63,94,0.3)'}`,
                     padding: '0.8rem 1rem',
                     cursor: 'pointer',
@@ -714,7 +714,7 @@ export default function FilingsSentimentView({
                 >
                   <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', marginBottom: '0.3rem' }}>
                     <span className="mono-metric" style={{ fontWeight: 800, color: '#fff' }}>{news.sym} • {news.source}</span>
-                    <span className="mono-metric" style={{ fontWeight: 800, color: isPos ? '#10b981' : '#f43f5e' }}>
+                    <span className="mono-metric" style={{ fontWeight: 800, color: isPos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)' }}>
                       {news.score}
                     </span>
                   </div>
@@ -757,9 +757,9 @@ export default function FilingsSentimentView({
             style={{
               position: 'relative',
               borderRadius: '28px',
-              backgroundColor: 'rgba(10, 15, 28, 0.52)',
+              backgroundColor: 'var(--bg-glass-strong, rgba(10, 15, 28, 0.52))',
               backdropFilter: 'blur(14px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.1))',
               overflow: 'hidden',
               padding: '1.2rem',
             }}
@@ -795,9 +795,9 @@ export default function FilingsSentimentView({
                 transform: 'translate(-50%, -50%)',
                 padding: '0.45rem 0.9rem',
                 borderRadius: '999px',
-                backgroundColor: 'rgba(10, 15, 28, 0.95)',
+                backgroundColor: 'var(--bg-glass-strong, rgba(10, 15, 28, 0.95))',
                 border: '1px solid #10b981',
-                color: '#10b981',
+                color: 'var(--accent, #10b981)',
                 fontSize: '0.64rem',
                 fontWeight: 800,
               }}
@@ -811,7 +811,7 @@ export default function FilingsSentimentView({
               const xPct = Math.min(88, Math.max(12, 50 + Math.cos(angle) * radiusPct));
               const yPct = Math.min(86, Math.max(18, 54 + Math.sin(angle) * radiusPct));
               const isRisk = chunk.section.includes('ITEM 1A');
-              const nodeColor = isRisk ? '#f43f5e' : '#10b981';
+              const nodeColor = isRisk ? 'var(--danger, #f43f5e)' : 'var(--accent, #10b981)';
               const selected = activeChunk.id === chunk.id;
 
               return (
@@ -857,9 +857,9 @@ export default function FilingsSentimentView({
           <div
             style={{
               borderRadius: '28px',
-              backgroundColor: 'rgba(13, 19, 33, 0.64)',
+              backgroundColor: 'var(--bg-elevated-soft, rgba(13, 19, 33, 0.64))',
               backdropFilter: 'blur(16px)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
+              border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.1))',
               padding: '1.3rem',
               display: 'flex',
               flexDirection: 'column',
@@ -868,26 +868,26 @@ export default function FilingsSentimentView({
             }}
           >
             <div>
-              <div className="mono-metric" style={{ fontSize: '0.64rem', color: '#10b981', fontWeight: 800 }}>
+              <div className="mono-metric" style={{ fontSize: '0.64rem', color: 'var(--accent, #10b981)', fontWeight: 800 }}>
                 SELECTED PGVECTOR DOCUMENT CHUNK (P-07)
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginTop: '0.35rem' }}>
                 <span className="mono-metric" style={{ fontSize: '1.55rem', fontWeight: 800, color: '#fff' }}>
                   {activeChunk.sym} • {activeChunk.filing}
                 </span>
-                <span className="mono-metric" style={{ fontSize: '0.95rem', fontWeight: 800, color: '#10b981' }}>
+                <span className="mono-metric" style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--accent, #10b981)' }}>
                   sim {activeChunk.cosineSim}
                 </span>
               </div>
               <div className="mono-metric" style={{ fontSize: '0.68rem', color: 'var(--text-dim)', marginTop: '0.15rem' }}>
                 {activeChunk.section}
               </div>
-              <p style={{ fontSize: '0.84rem', color: '#ffffff', lineHeight: 1.6, marginTop: '0.75rem' }}>
+              <p style={{ fontSize: '0.84rem', color: 'var(--text-main, #ffffff)', lineHeight: 1.6, marginTop: '0.75rem' }}>
                 “{activeChunk.text[langCode] || activeChunk.text.EN}”
               </p>
             </div>
 
-            <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '0.85rem' }}>
+            <div style={{ borderTop: '1px solid var(--border-subtle, rgba(255,255,255,0.08))', paddingTop: '0.85rem' }}>
               <div className="mono-metric" style={{ fontSize: '0.64rem', color: 'var(--text-dim)', marginBottom: '0.5rem', fontWeight: 700 }}>
                 CROSS-REFERENCED FINBERT HEADLINES FOR {activeChunk.sym} (P-04 & P-08):
               </div>
@@ -905,7 +905,7 @@ export default function FilingsSentimentView({
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', marginBottom: '0.25rem' }}>
                       <span className="mono-metric" style={{ color: 'var(--text-dim)' }}>{n.source} • {n.time}</span>
-                      <span className="mono-metric" style={{ fontWeight: 800, color: pos ? '#10b981' : '#f43f5e' }}>
+                      <span className="mono-metric" style={{ fontWeight: 800, color: pos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)' }}>
                         FinBERT: {n.score} ({n.label})
                       </span>
                     </div>
@@ -926,9 +926,9 @@ export default function FilingsSentimentView({
   if (designVariant === 'bento') {
     const capsule = {
       borderRadius: '26px',
-      backgroundColor: 'rgba(13, 19, 33, 0.56)',
+      backgroundColor: 'var(--bg-elevated-soft, rgba(13, 19, 33, 0.56))',
       backdropFilter: 'blur(16px)',
-      border: '1px solid rgba(255, 255, 255, 0.09)',
+      border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.09))',
       padding: '1.1rem 1.25rem',
     };
 
@@ -948,7 +948,7 @@ export default function FilingsSentimentView({
         <div style={{ flex: 1, minHeight: 0, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gridTemplateRows: 'auto 1fr', gap: '0.8rem' }}>
           {/* Bento Tile 1 (Span 2): RAG Synthesis Banner */}
           <div style={{ ...capsule, gridColumn: 'span 2', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div className="mono-metric" style={{ fontSize: '0.63rem', color: '#10b981', fontWeight: 800 }}>
+            <div className="mono-metric" style={{ fontSize: '0.63rem', color: 'var(--accent, #10b981)', fontWeight: 800 }}>
               P-07 • NEON PGVECTOR SEMANTIC RAG SYNTHESIS
             </div>
             <p style={{ fontSize: '0.82rem', color: '#fff', lineHeight: 1.5, marginTop: '0.35rem', marginBottom: 0 }}>
@@ -968,8 +968,8 @@ export default function FilingsSentimentView({
               </div>
             </div>
             <div className="mono-metric" style={{ textAlign: 'right', fontSize: '0.68rem' }}>
-              <div style={{ color: '#10b981', fontWeight: 700 }}>+{aggregatePolarity.posCount} Bullish</div>
-              <div style={{ color: '#f43f5e', fontWeight: 700, marginTop: '0.2rem' }}>-{aggregatePolarity.negCount} Bearish</div>
+              <div style={{ color: 'var(--accent, #10b981)', fontWeight: 700 }}>+{aggregatePolarity.posCount} Bullish</div>
+              <div style={{ color: 'var(--danger, #f43f5e)', fontWeight: 700, marginTop: '0.2rem' }}>-{aggregatePolarity.negCount} Bearish</div>
             </div>
           </div>
 
@@ -981,7 +981,7 @@ export default function FilingsSentimentView({
             <div style={{ flex: 1, overflowY: 'auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.65rem' }}>
               {displayedChunks.map((chunk) => {
                 const isRisk = chunk.section.includes('ITEM 1A');
-                const col = isRisk ? '#f43f5e' : '#10b981';
+                const col = isRisk ? 'var(--danger, #f43f5e)' : 'var(--accent, #10b981)';
                 return (
                   <div
                     key={chunk.id}
@@ -996,7 +996,7 @@ export default function FilingsSentimentView({
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', marginBottom: '0.3rem' }}>
                       <span className="mono-metric" style={{ fontWeight: 800, color: col }}>{chunk.sym} • {chunk.section}</span>
-                      <span className="mono-metric" style={{ color: '#10b981', fontWeight: 700 }}>{chunk.cosineSim}</span>
+                      <span className="mono-metric" style={{ color: 'var(--accent, #10b981)', fontWeight: 700 }}>{chunk.cosineSim}</span>
                     </div>
                     <p style={{ fontSize: '0.73rem', color: 'var(--text-muted)', margin: 0, lineHeight: 1.45 }}>
                       {chunk.text[langCode] || chunk.text.EN}
@@ -1023,13 +1023,13 @@ export default function FilingsSentimentView({
                       padding: '0.7rem 0.85rem',
                       borderRadius: '16px',
                       backgroundColor: 'rgba(255,255,255,0.03)',
-                      borderLeft: `3px solid ${pos ? '#10b981' : '#f43f5e'}`,
+                      borderLeft: `3px solid ${pos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)'}`,
                       cursor: 'pointer',
                     }}
                   >
                     <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.66rem', marginBottom: '0.2rem' }}>
                       <span className="mono-metric" style={{ fontWeight: 800, color: '#fff' }}>{n.sym}</span>
-                      <span className="mono-metric" style={{ fontWeight: 800, color: pos ? '#10b981' : '#f43f5e' }}>{n.score}</span>
+                      <span className="mono-metric" style={{ fontWeight: 800, color: pos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)' }}>{n.score}</span>
                     </div>
                     <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>
                       {n.title[langCode] || n.title.EN}
@@ -1062,14 +1062,14 @@ export default function FilingsSentimentView({
 
       <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '0.55rem' }}>
         {unifiedFeed.map((item) => {
-          const toneColor = item.isPositive ? '#10b981' : '#f43f5e';
+          const toneColor = item.isPositive ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)';
           return (
             <div
               key={item.uid}
               onClick={() => handleSelectTicker(item.sym)}
               style={{
                 borderRadius: '20px',
-                backgroundColor: 'rgba(13, 19, 33, 0.58)',
+                backgroundColor: 'var(--bg-elevated-soft, rgba(13, 19, 33, 0.58))',
                 backdropFilter: 'blur(12px)',
                 border: `1px solid ${toneColor}44`,
                 padding: '0.85rem 1.15rem',
@@ -1104,7 +1104,7 @@ export default function FilingsSentimentView({
               </div>
 
               <div>
-                <div style={{ fontSize: '0.78rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.2rem' }}>
+                <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--text-main, #ffffff)', marginBottom: '0.2rem' }}>
                   {item.title}
                 </div>
                 <div style={{ fontSize: '0.73rem', color: 'var(--text-muted)', lineHeight: 1.45 }}>

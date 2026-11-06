@@ -28,7 +28,7 @@ function MathFormulaBox({ math, formula, typo, formulaTitle = 'Mathematical Form
                 flexShrink: 0,
                 padding: '14px 18px',
                 borderRadius: '8px',
-                background: 'rgba(2, 6, 23, 0.90)',
+                background: 'var(--bg-elevated, rgba(2, 6, 23, 0.90))',
                 border: '1px solid rgba(16, 185, 129, 0.28)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -60,12 +60,12 @@ function MathFormulaBox({ math, formula, typo, formulaTitle = 'Mathematical Form
                             padding: '6px 4px',
                             fontFamily: 'var(--font-mono)',
                             fontSize: '13.5px',
-                            color: '#f8fafc',
+                            color: 'var(--text-main, #f8fafc)',
                             overflowX: 'auto'
                         }}
                     >
                         {math.lhs && (
-                            <span style={{ fontWeight: 700, color: '#10b981', whiteSpace: 'nowrap' }}>
+                            <span style={{ fontWeight: 700, color: 'var(--accent, #10b981)', whiteSpace: 'nowrap' }}>
                                 {math.lhs.includes('=') ? math.lhs : `${math.lhs} =`}
                             </span>
                         )}
@@ -83,7 +83,7 @@ function MathFormulaBox({ math, formula, typo, formulaTitle = 'Mathematical Form
                                 <span
                                     style={{
                                         padding: '0 8px 5px',
-                                        color: '#ffffff',
+                                        color: 'var(--text-main, #ffffff)',
                                         fontWeight: 600,
                                         textAlign: 'center',
                                         whiteSpace: 'nowrap'
@@ -101,7 +101,7 @@ function MathFormulaBox({ math, formula, typo, formulaTitle = 'Mathematical Form
                                 <span
                                     style={{
                                         padding: '5px 8px 0',
-                                        color: '#cbd5e1',
+                                        color: 'var(--text-body, #cbd5e1)',
                                         fontWeight: 500,
                                         textAlign: 'center',
                                         whiteSpace: 'nowrap'
@@ -112,14 +112,14 @@ function MathFormulaBox({ math, formula, typo, formulaTitle = 'Mathematical Form
                             </div>
                         ) : (
                             math.inline && (
-                                <span style={{ color: '#ffffff', fontWeight: 600 }}>
+                                <span style={{ color: 'var(--text-main, #ffffff)', fontWeight: 600 }}>
                                     {math.inline}
                                 </span>
                             )
                         )}
 
                         {math.rhs && (
-                            <span style={{ fontWeight: 700, color: '#f8fafc', whiteSpace: 'nowrap' }}>
+                            <span style={{ fontWeight: 700, color: 'var(--text-main, #f8fafc)', whiteSpace: 'nowrap' }}>
                                 {math.rhs}
                             </span>
                         )}
@@ -129,13 +129,13 @@ function MathFormulaBox({ math, formula, typo, formulaTitle = 'Mathematical Form
                     {math.vars?.length > 0 && (
                         <div
                             style={{
-                                borderTop: '1px solid rgba(148, 163, 184, 0.14)',
+                                borderTop: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))',
                                 paddingTop: '10px',
                                 display: 'flex',
                                 flexDirection: 'column',
                                 gap: '5px',
                                 fontSize: '12.5px',
-                                color: '#cbd5e1',
+                                color: 'var(--text-body, #cbd5e1)',
                                 fontFamily: typo.fontFamily,
                                 lineHeight: 1.5
                             }}
@@ -147,7 +147,7 @@ function MathFormulaBox({ math, formula, typo, formulaTitle = 'Mathematical Form
                                     const varDesc = vLine.slice(colonIdx + 1);
                                     return (
                                         <div key={idx}>
-                                            <strong style={{ color: '#e2e8f0', fontWeight: 600 }}>
+                                            <strong style={{ color: 'var(--text-secondary, #e2e8f0)', fontWeight: 600 }}>
                                                 • {varName}:
                                             </strong>
                                             <span>{varDesc}</span>
@@ -164,7 +164,7 @@ function MathFormulaBox({ math, formula, typo, formulaTitle = 'Mathematical Form
                     style={{
                         fontFamily: 'var(--font-mono)',
                         fontSize: '13.5px',
-                        color: '#f8fafc',
+                        color: 'var(--text-main, #f8fafc)',
                         lineHeight: 1.6,
                         whiteSpace: 'pre-wrap'
                     }}
@@ -272,12 +272,12 @@ function AnimatedOrb4DCharacter({
             <defs>
                 <radialGradient id="orbCore4DAnim" cx="36%" cy="32%" r="68%">
                     <stop offset="0%" stopColor={isSpeaking ? 'rgba(16, 185, 129, 0.58)' : 'rgba(16, 185, 129, 0.42)'} />
-                    <stop offset="60%" stopColor="rgba(5, 14, 26, 0.96)" />
-                    <stop offset="100%" stopColor="#020617" />
+                    <stop offset="60%" stopColor="var(--bg-elevated, rgba(5, 14, 26, 0.96))" />
+                    <stop offset="100%" stopColor="var(--bg-elevated, #020617)" />
                 </radialGradient>
                 <linearGradient id="iconGoldGreenAnim" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stopColor="#a7f3d0" />
-                    <stop offset="50%" stopColor="#10b981" />
+                    <stop offset="0%" stopColor="var(--pos-text-soft, #a7f3d0)" />
+                    <stop offset="50%" stopColor="var(--accent, #10b981)" />
                     <stop offset="100%" stopColor="#059669" />
                 </linearGradient>
             </defs>
@@ -294,8 +294,8 @@ function AnimatedOrb4DCharacter({
                 />
 
                 {/* Satélites cuando pasan por detrás de la esfera */}
-                {!sat1.inFront && <circle cx={sat1.x} cy={sat1.y} r="4.2" fill="#a7f3d0" opacity="0.55" />}
-                {!sat2.inFront && <circle cx={sat2.x} cy={sat2.y} r="3.5" fill="#10b981" opacity="0.55" />}
+                {!sat1.inFront && <circle cx={sat1.x} cy={sat1.y} r="4.2" fill="var(--pos-text-soft, #a7f3d0)" opacity="0.55" />}
+                {!sat2.inFront && <circle cx={sat2.x} cy={sat2.y} r="3.5" fill="var(--accent, #10b981)" opacity="0.55" />}
 
                 {/* Anillo orbital inclinado */}
                 <ellipse
@@ -304,7 +304,7 @@ function AnimatedOrb4DCharacter({
                     rx="74"
                     ry="21"
                     transform="rotate(-12 80 82)"
-                    stroke="#10b981"
+                    stroke="var(--accent, #10b981)"
                     strokeWidth="2.2"
                     opacity="0.85"
                 />
@@ -315,7 +315,7 @@ function AnimatedOrb4DCharacter({
                     cy="80"
                     r="55"
                     fill="url(#orbCore4DAnim)"
-                    stroke="#6ee7b7"
+                    stroke="var(--pos-text, #6ee7b7)"
                     strokeWidth={2.4 + energy * 0.8}
                 />
 
@@ -325,19 +325,19 @@ function AnimatedOrb4DCharacter({
                         points="56,34 76,34 116,108 98,108"
                         fill="url(#iconGoldGreenAnim)"
                         opacity={0.55 + energy * 0.22}
-                        stroke="#a7f3d0"
+                        stroke="var(--pos-text-soft, #a7f3d0)"
                         strokeWidth="1.6"
                     />
                     <polygon
                         points="80,72 91,87 68,108 50,108"
                         fill="url(#iconGoldGreenAnim)"
                         opacity={0.48 + energy * 0.22}
-                        stroke="#6ee7b7"
+                        stroke="var(--pos-text, #6ee7b7)"
                         strokeWidth="1.4"
                     />
                     <polygon
                         points={`48,${(34 - energy * 1.8).toFixed(1)} 76,${(34 - energy * 1.8).toFixed(1)} 66,${(46 - energy * 1.8).toFixed(1)} 48,${(46 - energy * 1.8).toFixed(1)}`}
-                        fill="#a7f3d0"
+                        fill="var(--pos-text-soft, #a7f3d0)"
                         opacity="0.92"
                     />
                 </g>
@@ -350,15 +350,15 @@ function AnimatedOrb4DCharacter({
                         transition: 'transform 0.06s ease'
                     }}
                 >
-                    <rect x="52" y="56" width="16" height="22" rx="8" fill="#020617" stroke="#6ee7b7" strokeWidth="1.8" />
-                    <rect x="92" y="56" width="16" height="22" rx="8" fill="#020617" stroke="#6ee7b7" strokeWidth="1.8" />
+                    <rect x="52" y="56" width="16" height="22" rx="8" fill="var(--bg-elevated, #020617)" stroke="var(--pos-text, #6ee7b7)" strokeWidth="1.8" />
+                    <rect x="92" y="56" width="16" height="22" rx="8" fill="var(--bg-elevated, #020617)" stroke="var(--pos-text, #6ee7b7)" strokeWidth="1.8" />
                     <rect
                         x={55 + gazeX * 0.7}
                         y={59 + gazeY * 0.7}
                         width="10"
                         height="15"
                         rx="5"
-                        fill="#10b981"
+                        fill="var(--accent, #10b981)"
                     />
                     <rect
                         x={95 + gazeX * 0.7}
@@ -366,10 +366,10 @@ function AnimatedOrb4DCharacter({
                         width="10"
                         height="15"
                         rx="5"
-                        fill="#10b981"
+                        fill="var(--accent, #10b981)"
                     />
-                    <circle cx={62 + gazeX} cy={64 + gazeY} r="2.8" fill="#ffffff" />
-                    <circle cx={102 + gazeX} cy={64 + gazeY} r="2.8" fill="#ffffff" />
+                    <circle cx={62 + gazeX} cy={64 + gazeY} r="2.8" fill="var(--text-main, #ffffff)" />
+                    <circle cx={102 + gazeX} cy={64 + gazeY} r="2.8" fill="var(--text-main, #ffffff)" />
                 </g>
 
                 {/* BOCA SINCRONIZADA CON LA VOZ (LIP-SYNC) */}
@@ -378,15 +378,15 @@ function AnimatedOrb4DCharacter({
                         {/* Labio superior e inferior abriéndose al ritmo de las sílabas */}
                         <path
                             d={`M 64 95 Q 80 ${(93 - mouthOpen * 0.35).toFixed(1)} 96 95 Q 80 ${(99 + mouthOpen * 1.25).toFixed(1)} 64 95 Z`}
-                            fill="rgba(2, 6, 23, 0.9)"
-                            stroke="#ffffff"
+                            fill="var(--bg-elevated, rgba(2, 6, 23, 0.9))"
+                            stroke="var(--text-main, #ffffff)"
                             strokeWidth="2.6"
                             strokeLinejoin="round"
                         />
                         {/* Onda luminosa interna dentro de la boca mientras articula */}
                         <path
                             d={`M 69 96 L 74 ${(96 - mouthOpen * 0.35).toFixed(1)} L 80 ${(96 + mouthOpen * 0.45).toFixed(1)} L 86 ${(96 - mouthOpen * 0.35).toFixed(1)} L 91 96`}
-                            stroke="#6ee7b7"
+                            stroke="var(--pos-text, #6ee7b7)"
                             strokeWidth="1.8"
                             strokeLinecap="round"
                         />
@@ -394,7 +394,7 @@ function AnimatedOrb4DCharacter({
                 ) : (
                     <path
                         d="M64 95 Q80 107 96 95"
-                        stroke="#ffffff"
+                        stroke="var(--text-main, #ffffff)"
                         strokeWidth="3"
                         strokeLinecap="round"
                         fill="none"
@@ -402,8 +402,8 @@ function AnimatedOrb4DCharacter({
                 )}
 
                 {/* Satélites cuando pasan por delante de la esfera */}
-                {sat1.inFront && <circle cx={sat1.x} cy={sat1.y} r="5.2" fill="#a7f3d0" stroke="#020617" strokeWidth="1" />}
-                {sat2.inFront && <circle cx={sat2.x} cy={sat2.y} r="4.2" fill="#10b981" stroke="#ffffff" strokeWidth="1" />}
+                {sat1.inFront && <circle cx={sat1.x} cy={sat1.y} r="5.2" fill="var(--pos-text-soft, #a7f3d0)" stroke="var(--bg-elevated, #020617)" strokeWidth="1" />}
+                {sat2.inFront && <circle cx={sat2.x} cy={sat2.y} r="4.2" fill="var(--accent, #10b981)" stroke="var(--text-main, #ffffff)" strokeWidth="1" />}
             </g>
         </svg>
     );
@@ -615,7 +615,7 @@ function GuideMediaPlaceholder({ page, typo, isES = false, langCode = 'EN' }) {
                           position: 'fixed',
                           inset: 0,
                           zIndex: 9999,
-                          background: '#020617',
+                          background: 'var(--bg-elevated, #020617)',
                           display: 'flex',
                           flexDirection: 'column',
                           justifyContent: 'space-between',
@@ -624,7 +624,7 @@ function GuideMediaPlaceholder({ page, typo, isES = false, langCode = 'EN' }) {
                     : {
                           margin: '0 0 40px',
                           borderRadius: '10px',
-                          border: '1px solid rgba(148, 163, 184, 0.22)',
+                          border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                           background: 'transparent',
                           overflow: 'hidden'
                       }
@@ -674,7 +674,7 @@ function GuideMediaPlaceholder({ page, typo, isES = false, langCode = 'EN' }) {
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     gap: '14px',
-                    background: 'rgba(2, 6, 23, 0.88)'
+                    background: 'var(--bg-elevated, rgba(2, 6, 23, 0.88))'
                 }}
             >
                 {/* BARRA DE PROGRESO CENTRADA VERTICALMENTE */}
@@ -731,7 +731,7 @@ function GuideMediaPlaceholder({ page, typo, isES = false, langCode = 'EN' }) {
                 <span
                     style={{
                         fontSize: '11.5px',
-                        color: '#cbd5e1',
+                        color: 'var(--text-body, #cbd5e1)',
                         fontFamily: 'var(--font-mono)',
                         fontWeight: 600,
                         whiteSpace: 'nowrap',
@@ -756,14 +756,14 @@ function GuideMediaPlaceholder({ page, typo, isES = false, langCode = 'EN' }) {
                         borderRadius: '5px',
                         border: subtitlesEnabled
                             ? '1px solid var(--ui-accent, #10b981)'
-                            : '1px solid rgba(148, 163, 184, 0.25)',
+                            : '1px solid var(--border-slate, rgba(148, 163, 184, 0.25))',
                         borderBottom: subtitlesEnabled
                             ? '2.5px solid var(--ui-accent, #10b981)'
-                            : '1px solid rgba(148, 163, 184, 0.25)',
+                            : '1px solid var(--border-slate, rgba(148, 163, 184, 0.25))',
                         background: subtitlesEnabled
                             ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.18)'
-                            : 'rgba(15, 23, 42, 0.65)',
-                        color: subtitlesEnabled ? '#ffffff' : '#94a3b8',
+                            : 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.65))',
+                        color: subtitlesEnabled ? 'var(--text-main, #ffffff)' : 'var(--text-muted, #94a3b8)',
                         fontSize: '11px',
                         fontWeight: 800,
                         fontFamily: 'var(--font-mono)',
@@ -797,11 +797,11 @@ function GuideMediaPlaceholder({ page, typo, isES = false, langCode = 'EN' }) {
                         borderRadius: '5px',
                         border: isFullscreen
                             ? '1px solid var(--ui-accent, #10b981)'
-                            : '1px solid rgba(148, 163, 184, 0.25)',
+                            : '1px solid var(--border-slate, rgba(148, 163, 184, 0.25))',
                         background: isFullscreen
                             ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.18)'
-                            : 'rgba(15, 23, 42, 0.65)',
-                        color: '#ffffff',
+                            : 'var(--bg-elevated-soft, rgba(15, 23, 42, 0.65))',
+                        color: 'var(--text-main, #ffffff)',
                         display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -1051,7 +1051,7 @@ export default function UserGuideView({
                         background: isPageActive
                             ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)'
                             : 'transparent',
-                        color: isPageActive ? '#ffffff' : '#cbd5e1',
+                        color: isPageActive ? 'var(--text-main, #ffffff)' : 'var(--text-body, #cbd5e1)',
                         fontSize: '13px',
                         fontWeight: isPageActive ? 600 : 400,
                         fontFamily: typo.headingFontFamily,
@@ -1070,7 +1070,7 @@ export default function UserGuideView({
                             display: 'flex',
                             flexDirection: 'column',
                             marginLeft: `${16 + depth * 14}px`,
-                            borderLeft: '1px solid rgba(148, 163, 184, 0.16)',
+                            borderLeft: '1px solid var(--border-slate, rgba(148, 163, 184, 0.16))',
                             marginTop: '2px',
                             marginBottom: '4px'
                         }}
@@ -1091,7 +1091,7 @@ export default function UserGuideView({
                                         background: isSecActive
                                             ? 'rgba(var(--ui-accent-rgb, 16,185,129), 0.12)'
                                             : 'transparent',
-                                        color: isSecActive ? '#ffffff' : '#94a3b8',
+                                        color: isSecActive ? 'var(--text-main, #ffffff)' : 'var(--text-muted, #94a3b8)',
                                         fontSize: '12px',
                                         fontWeight: isSecActive ? 600 : 400,
                                         fontFamily: typo.headingFontFamily,
@@ -1146,7 +1146,7 @@ export default function UserGuideView({
                         display: 'flex',
                         flexDirection: 'column',
                         paddingRight: '10px',
-                        borderRight: '1px solid rgba(148, 163, 184, 0.12)',
+                        borderRight: '1px solid var(--border-slate, rgba(148, 163, 184, 0.12))',
                         minHeight: 0
                     }}
                 >
@@ -1157,7 +1157,7 @@ export default function UserGuideView({
                             alignItems: 'center',
                             justifyContent: 'space-between',
                             padding: '0 4px 10px',
-                            borderBottom: '1px solid rgba(148, 163, 184, 0.12)',
+                            borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.12))',
                             marginBottom: '8px'
                         }}
                     >
@@ -1171,9 +1171,9 @@ export default function UserGuideView({
                                 justifyContent: 'center',
                                 padding: '6px 10px',
                                 borderRadius: '6px',
-                                border: '1px solid rgba(148, 163, 184, 0.2)',
+                                border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.2))',
                                 background: 'transparent',
-                                color: '#e2e8f0',
+                                color: 'var(--text-secondary, #e2e8f0)',
                                 fontSize: '11.5px',
                                 fontWeight: 600,
                                 fontFamily: typo.headingFontFamily,
@@ -1220,7 +1220,7 @@ export default function UserGuideView({
                                             padding: '8px 10px',
                                             border: 'none',
                                             background: 'transparent',
-                                            color: '#f8fafc',
+                                            color: 'var(--text-main, #f8fafc)',
                                             fontSize: '13.5px',
                                             fontWeight: 600,
                                             fontFamily: typo.headingFontFamily,
@@ -1272,7 +1272,7 @@ export default function UserGuideView({
                                 alignItems: 'center',
                                 gap: '6px',
                                 fontSize: '12.5px',
-                                color: '#94a3b8',
+                                color: 'var(--text-muted, #94a3b8)',
                                 fontFamily: typo.headingFontFamily,
                                 marginBottom: '10px'
                             }}
@@ -1282,14 +1282,14 @@ export default function UserGuideView({
                             </span>
                             {activePage.groupLabel && (
                                 <>
-                                    <span style={{ color: '#475569' }}>/</span>
+                                    <span style={{ color: 'var(--text-dim, #475569)' }}>/</span>
                                     <span style={{ color: 'var(--ui-accent, #10b981)', fontWeight: 500 }}>
                                         {activePage.groupLabel}
                                     </span>
                                 </>
                             )}
-                            <span style={{ color: '#475569' }}>/</span>
-                            <span style={{ color: '#cbd5e1' }}>{activePage.label}</span>
+                            <span style={{ color: 'var(--text-dim, #475569)' }}>/</span>
+                            <span style={{ color: 'var(--text-body, #cbd5e1)' }}>{activePage.label}</span>
                         </div>
 
                         {/* TÍTULO H1 PRINCIPAL */}
@@ -1297,7 +1297,7 @@ export default function UserGuideView({
                             style={{
                                 margin: '0 0 18px',
                                 paddingBottom: '16px',
-                                borderBottom: '1px solid rgba(148, 163, 184, 0.15)',
+                                borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.15))',
                                 fontSize: typo.h1Size,
                                 fontWeight: 700,
                                 fontFamily: typo.headingFontFamily,
@@ -1663,7 +1663,7 @@ export default function UserGuideView({
                                                 gap: '5px',
                                                 padding: '4px 10px',
                                                 borderRadius: '6px',
-                                                border: '1px solid rgba(148, 163, 184, 0.22)',
+                                                border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.22))',
                                                 background: 'rgba(255, 255, 255, 0.04)',
                                                 color: 'var(--ui-accent, #10b981)',
                                                 fontSize: '12px',
@@ -1726,7 +1726,7 @@ export default function UserGuideView({
                             style={{
                                 marginTop: '48px',
                                 paddingTop: '24px',
-                                borderTop: '1px solid rgba(148, 163, 184, 0.15)',
+                                borderTop: '1px solid var(--border-slate, rgba(148, 163, 184, 0.15))',
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
@@ -1742,9 +1742,9 @@ export default function UserGuideView({
                                     gap: '8px',
                                     padding: '9px 16px',
                                     borderRadius: '6px',
-                                    border: '1px solid rgba(148, 163, 184, 0.25)',
+                                    border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.25))',
                                     background: 'rgba(255, 255, 255, 0.04)',
-                                    color: '#e2e8f0',
+                                    color: 'var(--text-secondary, #e2e8f0)',
                                     fontSize: '13.5px',
                                     fontWeight: 600,
                                     fontFamily: typo.headingFontFamily,
@@ -1765,7 +1765,7 @@ export default function UserGuideView({
                                     borderRadius: '6px',
                                     border: '1px solid rgba(var(--ui-accent-rgb), 0.45)',
                                     background: 'rgba(var(--ui-accent-rgb), 0.16)',
-                                    color: '#ffffff',
+                                    color: 'var(--text-main, #ffffff)',
                                     fontSize: '13.5px',
                                     fontWeight: 600,
                                     fontFamily: typo.headingFontFamily,
@@ -1799,7 +1799,7 @@ export default function UserGuideView({
                                 style={{
                                     position: 'fixed',
                                     inset: 0,
-                                    backgroundColor: 'rgba(4, 7, 14, 0.80)',
+                                    backgroundColor: 'var(--bg-elevated-soft, rgba(4, 7, 14, 0.80))',
                                     backdropFilter: 'blur(9px)',
                                     zIndex: 9999,
                                     pointerEvents: 'auto',
@@ -1816,8 +1816,8 @@ export default function UserGuideView({
                                         width: 'min(760px, 95vw)',
                                         maxHeight: '88vh',
                                         overflow: 'hidden',
-                                        background: 'rgba(13, 19, 32, 0.98)',
-                                        border: '1px solid rgba(148, 163, 184, 0.24)',
+                                        background: 'var(--bg-elevated, rgba(13, 19, 32, 0.98))',
+                                        border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.24))',
                                         boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85)',
                                         borderRadius: '12px',
                                         padding: '22px 26px',
@@ -1852,7 +1852,7 @@ export default function UserGuideView({
                                                 style={{
                                                     fontSize: '21px',
                                                     fontWeight: 700,
-                                                    color: '#ffffff',
+                                                    color: 'var(--text-main, #ffffff)',
                                                     fontFamily: typo.headingFontFamily,
                                                     marginTop: '2px'
                                                 }}
@@ -1865,8 +1865,8 @@ export default function UserGuideView({
                                             onClick={() => setModalSection(null)}
                                             style={{
                                                 background: 'rgba(255, 255, 255, 0.06)',
-                                                border: '1px solid rgba(255, 255, 255, 0.14)',
-                                                color: '#94a3b8',
+                                                border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.14))',
+                                                color: 'var(--text-muted, #94a3b8)',
                                                 borderRadius: '8px',
                                                 width: '28px',
                                                 height: '28px',
@@ -1907,7 +1907,7 @@ export default function UserGuideView({
                                                                 border: 'none',
                                                                 color: isTabActive
                                                                     ? 'var(--ui-accent, #10b981)'
-                                                                    : 'rgba(148, 163, 184, 0.62)',
+                                                                    : 'var(--text-muted, rgba(148, 163, 184, 0.62))',
                                                                 textShadow: isTabActive
                                                                     ? '0 0 15px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.88)'
                                                                     : 'none',
@@ -2014,7 +2014,7 @@ export default function UserGuideView({
                                                             lineHeight: typo.lineHeight
                                                         }}
                                                     >
-                                                        <strong style={{ color: '#ffffff' }}>
+                                                        <strong style={{ color: 'var(--text-main, #ffffff)' }}>
                                                             {guideUI?.practicalExample || 'Practical example: '}
                                                         </strong>
                                                         {activeTab.example}
@@ -2027,8 +2027,8 @@ export default function UserGuideView({
                                             style={{
                                                 padding: '14px 16px',
                                                 borderRadius: '8px',
-                                                background: 'rgba(2, 6, 23, 0.75)',
-                                                border: '1px solid rgba(148, 163, 184, 0.16)',
+                                                background: 'var(--bg-elevated, rgba(2, 6, 23, 0.75))',
+                                                border: '1px solid var(--border-slate, rgba(148, 163, 184, 0.16))',
                                                 fontSize: '14px',
                                                 color: typo.bodyColor,
                                                 lineHeight: 1.68
