@@ -1432,7 +1432,8 @@ export default function HeaderBar({
 
     return (
       <HoverTooltip
-        title="Home"
+        title={t.navWorkstation === 'Mercados' ? 'Pantalla inicial' : 'Main stage'}
+        variantStyle="pure-text"
         placement="bottom-left"
       >
         {(isHovered) => {
@@ -1511,18 +1512,23 @@ export default function HeaderBar({
   const shellStyle = renderNavShellStyle(variant.navShell);
 
   const renderTabWithTooltip = (item, idx, placement = 'bottom') => {
+    const isES = t.navWorkstation === 'Mercados';
     const tooltipTitle =
       item.id === 'workstation'
-        ? t.navMarketsTooltip ||
-          (t.navWorkstation === 'Mercados' ? 'Screener, gráficos y señales' : 'Screener, charts & signals')
+        ? isES
+          ? 'Activos y análisis'
+          : 'Assets & analytics'
         : item.id === 'consensus'
-        ? t.navPortfolioTooltip ||
-          (t.navConsensus === 'Portafolio' ? 'Simulador de cartera y riesgo' : 'Portfolio & risk simulator')
+        ? isES
+          ? 'Riesgo y simulaciones'
+          : 'Risk & simulations'
         : item.label;
+    const tooltipStyleVariant = item.id === 'workstation' ? 'ghost-pill' : 'underline-whisper';
     return (
       <HoverTooltip
         key={item.id}
         title={tooltipTitle}
+        variantStyle={tooltipStyleVariant}
         placement={placement}
       >
         {(isHovered) =>

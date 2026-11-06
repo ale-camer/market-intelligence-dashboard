@@ -506,7 +506,11 @@ export default function FooterBar({
         {/* BOTTOM-LEFT: HOMOGENEOUS V010 SINGLE-WORD ITEMS (SYSTEM • GUIDE • DEV) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', pointerEvents: 'auto' }}>
           {/* 1. SYSTEM (ONE WORD, HOMOGENEOUS WITH GUIDE & DEV) */}
-          <HoverTooltip title={tx('Arquitectura, pipelines y FinOps', 'Architecture, pipelines & FinOps')} placement="top-left">
+          <HoverTooltip
+            title={tx('Pipelines, telemetría y FinOps', 'Pipelines, telemetry & FinOps')}
+            variantStyle="mono-terminal"
+            placement="top-left"
+          >
             {(isHovered) => {
               const isHighlighted = activeTab === 'observability' || isHovered;
               return (
@@ -536,7 +540,11 @@ export default function FooterBar({
           </HoverTooltip>
 
           {/* 2. GUIDE (ONE WORD, HOMOGENEOUS WITH SYSTEM) */}
-          <HoverTooltip title={tx('Recorrido rápido y glosario', 'Quick tour & glossary')} placement="top-left">
+          <HoverTooltip
+            title={tx('Cómo usar la plataforma', 'How to use the platform')}
+            variantStyle="matte-slate"
+            placement="top-left"
+          >
             {(isHovered) => {
               const isHighlighted = activeTab === 'guide' || isHovered;
               return (
@@ -569,7 +577,12 @@ export default function FooterBar({
         {/* BOTTOM-RIGHT: HOMOGENEOUS V010 LANGUAGE & PALETTE CONTROLS */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', pointerEvents: 'auto' }}>
           {/* LANGUAGE SELECTOR BUTTON WITH FLAG ON THE LEFT */}
-          <HoverTooltip disabled={langModalOpen} title={tx('Cambiar idioma (56)', 'Change language (56)')} placement="top-right">
+          <HoverTooltip
+            disabled={langModalOpen}
+            title={tx('Idioma (56)', 'Language (56)')}
+            variantStyle="accent-text-glow"
+            placement="top-right"
+          >
             {(isHovered) => {
               const isHighlighted = langModalOpen || isHovered;
               return (
@@ -707,7 +720,8 @@ export default function FooterBar({
 
             <HoverTooltip
               disabled={palettePopoverOpen}
-              title={tx('Elegir Paleta', 'Choose Palette')}
+              title={tx('Tema de color', 'Color theme')}
+              variantStyle="pure-text"
               placement="top-right"
             >
               {(isHovered) => {
