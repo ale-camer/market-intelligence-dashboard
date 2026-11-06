@@ -456,105 +456,178 @@ export const LIGHT_BG_FRAGMENT_SHADER = `
     return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
   }
 
+  float phaseWeight(float phase, float target) {
+    float d = abs(mod(phase - target + 2.0, 4.0) - 2.0);
+    return smootherstep(0.95, 0.05, d);
+  }
+
   void main() {
     vec2 uv = vUv;
     float aspect = uResolution.x / max(uResolution.y, 1.0);
     vec2 p = vec2((uv.x - 0.5) * aspect, uv.y - 0.5);
 
+    float phase  = mod(uPair, 4.0);
+    float wFib   = phaseWeight(phase, 0.0);
+    float wRidge = phaseWeight(phase, 1.0);
+    float wLotus = phaseWeight(phase, 2.0);
+    float wHelix = phaseWeight(phase, 3.0);
+    float wSum   = max(wFib + wRidge + wLotus + wHelix, 0.001);
+    wFib /= wSum; wRidge /= wSum; wLotus /= wSum; wHelix /= wSum;
+
     float m = smootherstep(0.0, 1.0, clamp(uMorph, 0.0, 1.0));
     float yCenter = -0.19;
     vec2 q = vec2(p.x, p.y - yCenter);
 
-    // 1. Vibrant Spring Day Landscape Gradient (Clear Celeste Sky -> Fresh Emerald/Mint Meadow)
-    vec3 skyZenith   = vec3(0.66, 0.87, 0.98); // Luminous spring celeste sky (#A8DDFB)
-    vec3 skyHorizon  = vec3(0.84, 0.95, 0.99); // Airy cyan-blue horizon breeze (#D6F2FC)
-    vec3 meadowUpper = vec3(0.80, 0.95, 0.86); // Sunlit spring meadow mint (#CCF2DC)
-    vec3 meadowDeep  = vec3(0.68, 0.91, 0.78); // Fresh chlorophyll valley green (#ADE8C7)
+    // Base Spring Daylight Canvas (Celeste Sky Zenith -> Fresh Mint-Emerald Meadow)
+    vec3 skyZenith   = vec3(0.76, 0.91, 0.99); // Crisp spring celeste (#C2E8FC)
+    vec3 skyHorizon  = vec3(0.89, 0.97, 0.99); // Airy cyan horizon (#E3F7FC)
+    vec3 meadowUpper = vec3(0.84, 0.96, 0.89); // Sunlit spring mint (#D6F5E3)
+    vec3 meadowDeep  = vec3(0.72, 0.92, 0.81); // Fresh chlorophyll valley (#B8EBD0)
 
-    vec3 skyGrad    = mix(skyHorizon, skyZenith, smoothstep(0.40, 1.0, uv.y));
+    vec3 skyGrad    = mix(skyHorizon, skyZenith, smoothstep(0.42, 1.0, uv.y));
     vec3 meadowGrad = mix(meadowDeep, meadowUpper, smoothstep(0.0, 0.44, uv.y));
-    vec3 col = mix(meadowGrad, skyGrad, smoothstep(0.32, 0.54, uv.y));
+    vec3 baseCanvas = mix(meadowGrad, skyGrad, smoothstep(0.30, 0.54, uv.y));
 
-    // Gentle rolling green hills silhouette along the horizon
-    float hill1 = 0.38 + 0.035 * sin(p.x * 3.2 + 0.4) + 0.018 * cos(p.x * 7.5);
-    float hill2 = 0.34 + 0.028 * cos(p.x * 4.1 - 0.8) + 0.014 * sin(p.x * 9.0);
+    // Subtle rolling spring hills along the lower stage horizon
+    float hill1 = 0.36 + 0.032 * sin(p.x * 3.2 + 0.4) + 0.016 * cos(p.x * 7.5);
+    float hill2 = 0.32 + 0.025 * cos(p.x * 4.1 - 0.8) + 0.012 * sin(p.x * 9.0);
     float hillMask1 = smoothstep(hill1 + 0.04, hill1 - 0.04, uv.y);
     float hillMask2 = smoothstep(hill2 + 0.03, hill2 - 0.03, uv.y);
-    col = mix(col, vec3(0.62, 0.88, 0.74), hillMask1 * 0.38);
-    col = mix(col, vec3(0.54, 0.84, 0.68), hillMask2 * 0.35);
+    vec3 stageCol = baseCanvas;
+    stageCol = mix(stageCol, vec3(0.64, 0.89, 0.76), hillMask1 * 0.34);
+    stageCol = mix(stageCol, vec3(0.56, 0.85, 0.70), hillMask2 * 0.30);
 
-    // 2. Diagonal Morning Sunbeams (Serene, slow crepuscular rays across the celeste sky)
-    float rayCoord = (uv.x - 0.35) * 3.6 + (1.0 - uv.y) * 1.55;
-    float rayWave = 0.5 + 0.5 * sin(rayCoord * 4.0 - uTime * 0.08)
-                  + 0.35 * sin(rayCoord * 7.2 + uTime * 0.05);
-    float sunShafts = pow(clamp(rayWave * 0.55, 0.0, 1.0), 2.4) * smoothstep(0.08, 0.95, uv.y);
-    col = mix(col, vec3(0.96, 0.99, 0.95), sunShafts * 0.30);
+    // 1. Subtle Deep-Field Spring Pollen & Dew Stars in the lower stage (exact counterpart to JWST background stars)
+    float stageMask = smoothstep(0.22, -0.05, p.y) * smoothstep(-0.52, -0.35, p.y);
+    for (int layer = 0; layer < 2; layer++) {
+      float fl = float(layer);
+      float scale = layer == 0 ? 34.0 : 24.0;
+      vec2 drift = layer == 0 ? vec2(uTime * 0.015, 0.004 * uTime) : vec2(-uTime * 0.012, 0.006 * uTime);
+      vec2 starGrid = p * scale + drift + vec2(fl * 17.3, fl * 9.1);
+      vec2 sgId = floor(starGrid);
+      vec2 sgUv = fract(starGrid) - 0.5;
+      float sSeed = hash21(sgId);
+      if (sSeed > 0.86) {
+        float twinkle = 0.55 + 0.45 * sin(uTime * 2.1 + sSeed * 40.0);
+        vec2 starCenter = (vec2(hash21(sgId + 1.3), hash21(sgId + 7.1)) - 0.5) * 0.55;
+        float dStar = length(sgUv - starCenter);
+        float starSpark = smoothstep(0.12, 0.0, dStar) * twinkle;
+        vec3 starHue = fract(sSeed * 13.7) > 0.55
+          ? vec3(0.04, 0.58, 0.36)
+          : (fract(sSeed * 7.9) > 0.35 ? vec3(0.06, 0.52, 0.84) : vec3(0.88, 0.52, 0.04));
+        stageCol = mix(stageCol, starHue, starSpark * stageMask * 0.62);
+      }
+    }
 
-    // 3. Domain-Warped Volumetric Botanical Watercolor & Pollen Clouds
-    vec2 flowUv = q * 3.5 + vec2(uTime * 0.012, -uTime * 0.007);
+    // 2. Domain-Warped Botanical Mist & Chlorophyll Billow Texture (exact counterpart to JWST NIRCam/MIRI fbm)
+    vec2 flowUv = q * 3.8 + vec2(uTime * 0.025, -uTime * 0.018);
     vec2 warp1 = vec2(fbm(flowUv + vec2(1.7, 9.2)), fbm(flowUv + vec2(8.3, 2.8)));
     vec2 warp2 = vec2(fbm(flowUv * 1.8 + warp1 * 1.6 + vec2(4.1, 1.3)), fbm(flowUv * 1.8 + warp1 * 1.6));
     float dustBillow = fbm(flowUv * 1.4 + warp2 * 1.4);
     float dustRidge  = clamp(1.0 - abs(dustBillow * 2.0 - 1.0), 0.0, 1.0);
-    dustRidge = pow(dustRidge, 1.75);
+    dustRidge = pow(dustRidge, 1.8);
 
-    float r = length(vec2(q.x * 0.82, q.y * 1.08));
-    float shapeCloud = exp(-r * 3.8) * (0.48 + 0.72 * dustBillow);
-    vec3 cloudPigment = mix(vec3(0.06, 0.62, 0.42), vec3(0.08, 0.56, 0.82), dustRidge) * shapeCloud
-                      + vec3(0.88, 0.58, 0.06) * pow(shapeCloud * dustRidge, 1.4) * 0.55;
-    col = mix(col, clamp(cloudPigment, 0.0, 1.0), clamp(shapeCloud * 0.34, 0.0, 1.0));
+    // 3. Volumetric Backlit Silhouettes for Each of the 4 Chosen Pairs (NATURE 0% <-> QUANT 100%)
+    // PAIR I (01): FIBONACCI SUNFLOWER (0%) <-> GOLDEN SPIRAL & FIBONACCI ARCS (100%)
+    float rFib = length(vec2(q.x * 0.86, q.y * 1.08));
+    float angFib = atan(q.y, q.x);
+    float petalHalo = exp(-pow((rFib - 0.22 - 0.03 * cos(angFib * 10.0)) * 12.0, 2.0));
+    float coreHalo = exp(-rFib * 6.2);
+    float volN0 = clamp(coreHalo * 0.85 + petalHalo * 0.75, 0.0, 1.0);
 
-    // 4. Multi-Layer Drifting & Twinkling Spring Pollen, Dew & Leaf Spores
-    float stageMask = smoothstep(0.38, -0.05, p.y) * smoothstep(-0.54, -0.34, p.y);
-    for (int layer = 0; layer < 2; layer++) {
-      float fl = float(layer);
-      float scale = layer == 0 ? 26.0 : 40.0;
-      vec2 windVel = layer == 0 ? vec2(-0.016, 0.006) : vec2(-0.010, -0.005);
-      vec2 grid = p * scale + uTime * windVel * scale * 0.12 + vec2(fl * 19.3, fl * 7.7);
-      vec2 gId = floor(grid);
-      vec2 gUv = fract(grid) - 0.5;
-      float seed = hash21(gId);
+    float spiralArm = exp(-pow(fract((log(max(rFib, 0.01)) / 0.24 - angFib + uTime * 0.08) / 6.28318) - 0.5, 2.0) * 18.0)
+                    * smoothstep(0.38, 0.04, rFib);
+    float fibRings = (exp(-pow((rFib - 0.13) * 26.0, 2.0)) + exp(-pow((rFib - 0.21) * 22.0, 2.0)) * 0.9 + exp(-pow((rFib - 0.34) * 18.0, 2.0)) * 0.7);
+    float volQ0 = clamp(spiralArm * 0.85 + fibRings * 0.80, 0.0, 1.0);
 
-      if (seed > 0.74) {
-        float twinkle = pow(0.5 + 0.5 * sin(uTime * (0.75 + fract(seed * 11.0) * 0.95) + seed * 62.8), 1.7);
-        vec2 offset = vec2(
-          sin(uTime * 0.38 + seed * 29.0) * 0.26,
-          cos(uTime * 0.45 + seed * 43.0) * 0.26
-        );
-        float dist = length(gUv - offset);
-        float spark = smoothstep(0.22, 0.0, dist) * twinkle * stageMask;
-        float glint = smoothstep(0.075, 0.0, dist) * twinkle * stageMask;
+    float density0 = mix(volN0, volQ0, m) * (0.45 + 0.75 * dustBillow);
+    float rim0 = pow(clamp(density0 * (1.25 - density0) * 3.2, 0.0, 1.0), 1.4) * (0.6 + 0.7 * dustRidge);
+    vec3 pigment0 = mix(vec3(0.05, 0.58, 0.36), vec3(0.08, 0.54, 0.82), m) * density0
+                  + vec3(0.88, 0.56, 0.04) * rim0 * 0.95;
 
-        vec3 moteCol = fract(seed * 7.3) > 0.62
-          ? vec3(0.06, 0.62, 0.38)
-          : (fract(seed * 13.1) > 0.30
-            ? vec3(0.08, 0.56, 0.84)
-            : vec3(0.88, 0.30, 0.52));
+    // PAIR II (07): CORDILLERA & RÍOS (0%) <-> ISO-SHARPE TOPOGRAPHY (100%)
+    float peakL = 0.20 * exp(-pow((q.x + 0.18) * 4.2, 2.0));
+    float peakR = 0.24 * exp(-pow((q.x - 0.16) * 3.8, 2.0));
+    float riverCleft = -0.05 * exp(-pow(q.x * 9.0, 2.0));
+    float ridgeY = -0.10 + peakL + peakR + riverCleft + 0.03 * dustBillow;
+    float volN1 = smoothstep(ridgeY + 0.06, ridgeY - 0.14, q.y) * smoothstep(-0.28, -0.14, q.y) * smoothstep(0.62, 0.36, abs(q.x));
 
-        col = mix(col, moteCol, spark * 0.55);
-        col += vec3(0.16, 0.24, 0.18) * glint;
-      }
-    }
+    vec2 isoP = vec2(q.x * 0.82, (q.y - 0.02) * 1.45);
+    float rIso = length(isoP) * (1.0 + 0.10 * cos(atan(isoP.y, isoP.x) * 3.0));
+    float isoContours = (exp(-pow((rIso - 0.10) * 24.0, 2.0)) + exp(-pow((rIso - 0.20) * 18.0, 2.0)) * 0.85 + exp(-pow((rIso - 0.30) * 14.0, 2.0)) * 0.7);
+    float volQ1 = clamp(isoContours + exp(-rIso * 5.5) * 0.55, 0.0, 1.0);
 
-    // 5. Travelling Spring Sun Singularity
-    vec2 sunPos = vec2(0.04 * sin(uTime * 0.25), yCenter + 0.02 * cos(uTime * 0.2));
+    float density1 = mix(volN1, volQ1, m) * (0.50 + 0.65 * dustBillow);
+    vec3 pigment1 = mix(vec3(0.04, 0.56, 0.34), vec3(0.06, 0.54, 0.84), dustRidge) * density1
+                  + vec3(0.86, 0.52, 0.04) * (volQ1 * m) * (0.55 + 0.45 * dustRidge);
+
+    // PAIR III (09): FLOR DE LOTO & ESTANQUE (0%) <-> WAVE INTERFERENCE (100%)
+    float rLot = length(vec2(q.x * 0.82, q.y * 1.12));
+    float lotusMandala = exp(-rLot * 5.8) * (0.65 + 0.35 * cos(atan(q.y, q.x) * 8.0));
+    float pondRipples = exp(-pow((rLot - 0.22) * 22.0, 2.0)) + exp(-pow((rLot - 0.32) * 18.0, 2.0)) * 0.75;
+    float volN2 = clamp(lotusMandala + pondRipples * 0.75, 0.0, 1.0);
+
+    float dSrc1 = length(vec2(q.x + 0.16, q.y * 1.25));
+    float dSrc2 = length(vec2(q.x - 0.16, q.y * 1.25));
+    float interference = 0.5 + 0.25 * (cos(dSrc1 * 28.0 - uTime * 0.9) + cos(dSrc2 * 28.0 - uTime * 0.9));
+    float volQ2 = interference * exp(-rLot * 3.8);
+
+    float density2 = mix(volN2, volQ2, m) * (0.48 + 0.68 * dustBillow);
+    vec3 pigment2 = mix(vec3(0.84, 0.24, 0.48), vec3(0.06, 0.56, 0.82), mix(smoothstep(0.06, 0.24, rLot), dustRidge, m)) * density2
+                  + vec3(0.05, 0.62, 0.40) * pow(density2 * dustRidge, 1.3);
+
+    // PAIR IV (12): ADN BOTÁNICO (0%) <-> COINTEGRATION PAIRS (100%)
+    float yHel1 = 0.12 * sin(q.x * 7.5 - uTime * 0.45);
+    float yHel2 = -0.12 * sin(q.x * 7.5 - uTime * 0.45);
+    float strandEnv = (exp(-pow((q.y - yHel1) * 18.0, 2.0)) + exp(-pow((q.y - yHel2) * 18.0, 2.0))) * smoothstep(0.56, 0.36, abs(q.x));
+    float bridgeEnv = exp(-pow(q.y * 9.5, 2.0)) * (0.5 + 0.5 * cos(q.x * 30.0)) * smoothstep(0.52, 0.32, abs(q.x));
+    float volN3 = clamp(strandEnv * 0.9 + bridgeEnv * 0.55, 0.0, 1.0);
+
+    float trendC = 0.06 * sin(q.x * 3.5 + uTime * 0.25);
+    float cointBand = exp(-pow((q.y - trendC) * 10.5, 2.0)) * smoothstep(0.56, 0.36, abs(q.x));
+    float eqAxis = exp(-pow((q.y - trendC) * 32.0, 2.0)) * smoothstep(0.54, 0.34, abs(q.x));
+    float volQ3 = clamp(cointBand * 0.75 + eqAxis * 0.95, 0.0, 1.0);
+
+    float density3 = mix(volN3, volQ3, m) * (0.48 + 0.68 * dustBillow);
+    vec3 pigment3 = mix(vec3(0.05, 0.58, 0.36), vec3(0.08, 0.52, 0.84), dustRidge) * density3
+                  + vec3(0.88, 0.54, 0.04) * (mix(bridgeEnv, eqAxis, m)) * 0.65;
+
+    vec3 activePigment = pigment0 * wFib + pigment1 * wRidge + pigment2 * wLotus + pigment3 * wHelix;
+    float activeDensity = clamp(
+      density0 * wFib + density1 * wRidge + density2 * wLotus + density3 * wHelix,
+      0.0,
+      1.0
+    );
+    stageCol = mix(stageCol, clamp(activePigment + stageCol * 0.32, 0.0, 1.0), clamp(activeDensity * 0.42, 0.0, 0.48));
+
+    // 4. Dynamic 6-Spike Focal Singularity (Travels to the exact key point of each pair, matching Dark Mode!)
+    vec2 focal0 = mix(vec2(0.0, yCenter), vec2(0.0, yCenter), m);
+    vec2 focal1 = mix(vec2(0.0, yCenter - 0.04), vec2(0.0, yCenter + 0.08), m);
+    vec2 focal2 = mix(vec2(0.0, yCenter), vec2(0.0, yCenter), m);
+    vec2 focal3 = mix(vec2(0.0, yCenter), vec2(0.0, yCenter), m);
+
+    vec2 sunPos = focal0 * wFib + focal1 * wRidge + focal2 * wLotus + focal3 * wHelix;
     vec2 dSun = p - sunPos;
     float rSun = length(dSun);
-    float pulse = 1.0 + 0.04 * sin(uTime * 0.85);
+    float pulse = 1.0 + 0.05 * sin(uTime * 1.8);
 
-    float sunCore  = exp(-rSun * 22.0 / pulse);
-    float sunBloom = exp(-rSun * 7.0 / pulse);
-    float irisRing = exp(-pow((rSun - 0.075 * pulse) * 28.0, 2.0));
-    float angle = atan(dSun.y, dSun.x) + uTime * 0.05;
-    float sunRays = pow(max(0.0, cos(angle * 4.0)), 14.0) * exp(-rSun * 6.5);
+    float sunCore   = exp(-rSun * 34.0 / pulse);
+    float sunInner  = exp(-rSun * 10.5 / pulse);
+    float sunCorona = exp(-rSun * 4.2);
 
-    col = mix(col, vec3(0.12, 0.68, 0.52), sunBloom * 0.22 + irisRing * 0.28);
-    col += vec3(0.24, 0.22, 0.08) * (sunCore * 0.55 + sunRays * 0.32);
+    float angle = atan(dSun.y, dSun.x);
+    float rays6 = pow(max(0.0, cos(angle * 3.0)), 18.0) * exp(-rSun * 7.5);
+    float horizStreak = exp(-abs(dSun.y) * 48.0) * exp(-abs(dSun.x) * 4.2);
 
-    float grain = (hash21(uv * uResolution.xy) - 0.5) * 0.008;
-    col = clamp(col + grain, 0.0, 1.0);
+    stageCol = mix(stageCol, vec3(0.06, 0.62, 0.44), sunCorona * 0.16);
+    stageCol = mix(stageCol, vec3(0.92, 0.62, 0.06), (sunInner * 0.38 + rays6 * 0.35 + horizStreak * 0.28));
+    stageCol = mix(stageCol, vec3(1.0, 0.98, 0.90), clamp(sunCore * 0.85, 0.0, 1.0));
 
-    gl_FragColor = vec4(col, 1.0);
+    // 5. Upper Viewport Pure Daylight Guarantee (exact mirror of Dark Mode's topBlackout)
+    float topStageMask = smoothstep(0.68, 0.45, uv.y);
+    vec3 col = mix(baseCanvas, stageCol, topStageMask);
+
+    gl_FragColor = vec4(clamp(col, 0.0, 1.0), 1.0);
   }
 `;
 
@@ -563,445 +636,21 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
   uniform float uTime;
   uniform vec2 uResolution;
   uniform float uDpr;
-  uniform float uSceneA;
-  uniform float uSceneB;
-  uniform float uSceneMix;
+  uniform float uPair;
   uniform float uMorph;
 
   varying vec3 vColor;
   varying float vAlpha;
   varying float vStarType;
-  varying float vAngle;
 
   float smootherstep(float a, float b, float x) {
     float t = clamp((x - a) / (b - a), 0.0, 1.0);
     return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
   }
 
-  void computeProposal(
-    int sc,
-    float u,
-    float v,
-    float rnd,
-    float aspect,
-    float yCenter,
-    out vec2 posN,
-    out vec3 colN,
-    out vec2 posQ,
-    out vec3 colQ
-  ) {
-    posN = vec2(0.0);
-    colN = vec3(0.1, 0.5, 0.3);
-    posQ = vec2(0.0);
-    colQ = vec3(0.1, 0.5, 0.7);
-
-    // =========================================================================
-    // 01. GIRASOL FIBONACCI <-> ESPIRAL ÁUREA & ARCOS DE FIBONACCI
-    // =========================================================================
-    if (sc == 0) {
-      float idx0 = floor(((u * 0.5 + 0.5) * 0.7 + v * 0.3) * 3200.0);
-      float theta0 = idx0 * 2.39996323 + uTime * 0.04;
-      float rNorm0 = sqrt(idx0 / 3200.0);
-      if (v < 0.74) {
-        float r = rNorm0 * 0.24;
-        posN = vec2(cos(theta0) * r * 1.15 * aspect * 0.52, yCenter + sin(theta0) * r * 0.92);
-        colN = mix(vec3(0.06, 0.48, 0.30), vec3(0.88, 0.54, 0.04), smoothstep(0.15, 0.95, rNorm0));
-      } else {
-        float ang = u * 3.14159 + uTime * 0.025;
-        float petalWave = abs(cos(ang * 10.5));
-        float rPetal = 0.23 + (0.04 + 0.11 * petalWave) * ((v - 0.74) / 0.26);
-        posN = vec2(cos(ang) * rPetal * 1.15 * aspect * 0.52, yCenter + sin(ang) * rPetal * 0.92);
-        colN = mix(vec3(0.92, 0.58, 0.04), vec3(0.06, 0.60, 0.36), smoothstep(0.28, 0.36, rPetal));
-      }
-
-      if (v < 0.68) {
-        float tSp = (u * 0.5 + 0.5) * 4.2 * 3.14159;
-        float rSp = 0.012 * exp(0.24 * tSp);
-        float spread = (fract(v * 19.0) - 0.5) * 0.018;
-        float angSp = tSp - uTime * 0.08;
-        posQ = vec2((cos(angSp) * (rSp + spread)) * 1.15 * aspect * 0.52, yCenter + sin(angSp) * (rSp + spread) * 0.92);
-        colQ = mix(vec3(0.06, 0.58, 0.38), vec3(0.08, 0.52, 0.82), clamp(rSp / 0.32, 0.0, 1.0));
-      } else {
-        float ringPick = floor((v - 0.68) / 0.32 * 4.0);
-        float fibRad = (ringPick == 0.0 ? 0.08 : ringPick == 1.0 ? 0.13 : ringPick == 2.0 ? 0.21 : 0.34);
-        float ang = u * 3.14159;
-        posQ = vec2(cos(ang) * fibRad * 1.15 * aspect * 0.52, yCenter + sin(ang) * fibRad * 0.92);
-        colQ = ringPick == 2.0 ? vec3(0.86, 0.50, 0.04) : vec3(0.08, 0.56, 0.68);
-      }
-    }
-
-    // =========================================================================
-    // 02. FLOR SAKURA <-> ONDAS ARMÓNICAS DE FOURIER
-    // =========================================================================
-    else if (sc == 1) {
-      float ang1 = u * 3.14159 + uTime * 0.03;
-      float cos5 = cos(5.0 * ang1);
-      float notch = 0.045 * pow(max(0.0, cos5), 8.0);
-      float maxR1 = 0.07 + 0.24 * pow(0.5 + 0.5 * cos5, 0.65) - notch;
-      if (v < 0.18) {
-        float rStam = (v / 0.18) * 0.095;
-        posN = vec2(cos(ang1) * rStam * 1.15 * aspect * 0.52, yCenter + sin(ang1) * rStam);
-        colN = mix(vec3(0.06, 0.56, 0.36), vec3(0.88, 0.56, 0.06), smoothstep(0.05, 0.09, rStam));
-      } else {
-        float rFill = pow((v - 0.18) / 0.82, 0.75) * maxR1;
-        posN = vec2(cos(ang1) * rFill * 1.18 * aspect * 0.52, yCenter + sin(ang1) * rFill * 0.96);
-        colN = mix(vec3(0.84, 0.18, 0.44), vec3(0.12, 0.56, 0.78), smoothstep(0.12, 0.30, rFill));
-      }
-
-      float modeIdx = floor(v * 6.0);
-      float freq = 1.0 + modeIdx * 1.5;
-      float amp = 0.15 / (1.0 + modeIdx * 0.45);
-      float xWave = u * 0.56;
-      float phaseShift = uTime * (0.32 + modeIdx * 0.08) + modeIdx * 1.047;
-      float yWave = yCenter + (modeIdx - 2.5) * 0.032
-                  + amp * sin(xWave * freq * 5.5 - phaseShift)
-                  + 0.025 * cos(xWave * 3.0 + uTime * 0.35);
-      posQ = vec2(xWave * aspect * 0.52, yWave + (fract(v * 6.0) - 0.5) * 0.012);
-      colQ = mix(
-        vec3(0.06, 0.58, 0.40),
-        mix(vec3(0.08, 0.52, 0.84), vec3(0.84, 0.20, 0.46), modeIdx / 5.0),
-        0.5 + 0.5 * sin(xWave * 4.0 + modeIdx)
-      );
-    }
-
-    // =========================================================================
-    // 03. MARIPOSA MONARCA <-> ATRACTOR CAÓTICO DE LORENZ
-    // =========================================================================
-    else if (sc == 2) {
-      float theta2 = u * 3.14159;
-      float rButt = exp(sin(theta2)) - 2.0 * cos(4.0 * theta2) + pow(sin((2.0 * theta2 - 3.14159) / 24.0), 5.0);
-      float wingFlap = 0.88 + 0.12 * sin(uTime * 1.15);
-      float scaleR = 0.068 * sqrt(0.15 + 0.85 * v) * rButt;
-      posN = vec2(cos(theta2) * scaleR * wingFlap * 1.25 * aspect * 0.52, (yCenter - 0.03) + sin(theta2) * scaleR * 0.92);
-      colN = mix(vec3(0.08, 0.54, 0.84), vec3(0.06, 0.62, 0.38), smoothstep(0.35, 0.85, v));
-      if (v < 0.38) colN = vec3(0.90, 0.42, 0.06);
-
-      float lobe2 = u >= 0.0 ? 1.0 : -1.0;
-      float tLoop = v * 6.28318 * 3.0 + uTime * 0.32;
-      float rLoop = 0.04 + 0.16 * fract(abs(u) * 7.0 + v * 0.5);
-      float lx = lobe2 * (0.19 + cos(tLoop) * rLoop);
-      float ly = yCenter + sin(tLoop) * rLoop * 0.82 + lobe2 * cos(tLoop) * 0.04;
-      posQ = vec2(lx * 1.25 * aspect * 0.52, ly);
-      colQ = lobe2 > 0.0
-        ? mix(vec3(0.06, 0.60, 0.38), vec3(0.08, 0.54, 0.84), rLoop / 0.20)
-        : mix(vec3(0.08, 0.54, 0.84), vec3(0.86, 0.38, 0.12), rLoop / 0.20);
-    }
-
-    // =========================================================================
-    // 04. HELECHO FRACTAL <-> ÁRBOL ISOLATION FOREST (P-06)
-    // =========================================================================
-    else if (sc == 3) {
-      float frondIdx = floor((u * 0.5 + 0.5) * 7.0) - 3.0;
-      float stemT = v;
-      float sway = 0.016 * sin(uTime * 0.55 + frondIdx + stemT * 4.0);
-      float angle = frondIdx * 0.36;
-      float frondLen = 0.34 - abs(frondIdx) * 0.032;
-      float spineX = sin(angle) * stemT * frondLen + sway;
-      float spineY = -0.39 + cos(angle) * stemT * frondLen;
-      float leafletSide = mod(floor(rnd * 20.0), 2.0) * 2.0 - 1.0;
-      float leafletSpan = (1.0 - stemT * 0.72) * 0.095 * fract(u * 13.0);
-      vec2 normalDir = vec2(cos(angle), -sin(angle));
-      posN = vec2(
-        (spineX + normalDir.x * leafletSide * leafletSpan) * aspect * 0.52,
-        spineY + normalDir.y * leafletSide * leafletSpan * 0.65
-      );
-      colN = mix(vec3(0.04, 0.52, 0.30), vec3(0.18, 0.72, 0.36), stemT);
-
-      float level = floor(v * 5.0);
-      float nodesInLevel = exp2(level);
-      float nodeIdx = floor((u * 0.5 + 0.5) * nodesInLevel);
-      float xNode = ((nodeIdx + 0.5) / nodesInLevel) * 2.0 - 1.0;
-      float parentIdx = floor(nodeIdx * 0.5);
-      float xParent = ((parentIdx + 0.5) / max(1.0, nodesInLevel * 0.5)) * 2.0 - 1.0;
-      float branchFrac = fract(v * 5.0);
-      float treeX = mix(xParent, xNode, branchFrac) * 0.52;
-      float treeY = 0.02 - (level + branchFrac) * 0.075;
-      posQ = vec2(treeX * aspect * 0.52, treeY);
-      bool isAnomalyNode = (level >= 2.0 && nodeIdx == nodesInLevel - 1.0);
-      colQ = isAnomalyNode
-        ? vec3(0.88, 0.28, 0.16)
-        : mix(vec3(0.05, 0.56, 0.34), vec3(0.08, 0.56, 0.80), level / 4.0);
-    }
-
-    // =========================================================================
-    // 05. DIENTE DE LEÓN ESFÉRICO <-> CONO DE CRECIMIENTO DE KELLY
-    // =========================================================================
-    else if (sc == 4) {
-      if (v < 0.58) {
-        float spokeIdx = floor((u * 0.5 + 0.5) * 32.0);
-        float ang = spokeIdx * (6.28318 / 32.0) + uTime * 0.025;
-        float rSpoke = (v / 0.58) * 0.22;
-        float tipFan = smoothstep(0.75, 1.0, v / 0.58) * (fract(u * 32.0) - 0.5) * 0.045;
-        posN = vec2((-0.14 + cos(ang + tipFan) * rSpoke * 1.15) * aspect * 0.52, yCenter + sin(ang + tipFan) * rSpoke * 0.92);
-        colN = mix(vec3(0.05, 0.56, 0.34), vec3(0.08, 0.56, 0.82), v / 0.58);
-      } else {
-        float tWind = (v - 0.58) / 0.42;
-        float seedId = floor((u * 0.5 + 0.5) * 18.0) / 18.0 * 2.0 - 1.0;
-        float xSeed = 0.04 + tWind * 0.50;
-        float ySeed = yCenter + seedId * 0.18 * sqrt(tWind + 0.06)
-                    + 0.028 * sin(tWind * 8.0 - uTime * 0.45 + seedId * 9.0);
-        posN = vec2(xSeed * aspect * 0.52, ySeed);
-        colN = mix(vec3(0.08, 0.56, 0.82), vec3(0.88, 0.54, 0.04), tWind);
-      }
-
-      float curveIdx = floor(v * 8.0) / 8.0;
-      float fLev = (u * 0.5 + 0.5);
-      float fOpt = 0.46;
-      float kellyG = 0.26 * (1.0 - pow((fLev - fOpt) / fOpt, 2.0)) * (0.40 + 0.60 * curveIdx);
-      posQ = vec2((-0.50 + fLev * 1.0) * aspect * 0.52, -0.29 + kellyG);
-      colQ = fLev <= fOpt
-        ? mix(vec3(0.08, 0.54, 0.82), vec3(0.05, 0.62, 0.36), fLev / fOpt)
-        : mix(vec3(0.88, 0.54, 0.04), vec3(0.84, 0.20, 0.36), (fLev - fOpt) / (1.0 - fOpt));
-    }
-
-    // =========================================================================
-    // 06. BANDADA DE GOLONDRINAS <-> 3 REGÍMENES DE MARKOV
-    // =========================================================================
-    else if (sc == 5) {
-      float s = u;
-      float streamId = floor(v * 3.0) - 1.0;
-      float ribbonX = s * 0.54 + 0.07 * sin(s * 4.2 - uTime * 0.45 + streamId);
-      float ribbonY = yCenter + streamId * 0.065 + 0.12 * sin(s * 3.4 + uTime * 0.35) * cos(s * 2.1 - uTime * 0.2);
-      float spread = (fract(v * 3.0) - 0.5) * (0.045 + 0.055 * sin(s * 5.0 + uTime * 0.4));
-      posN = vec2((ribbonX + spread * 0.4) * aspect * 0.52, ribbonY + spread);
-      colN = mix(vec3(0.06, 0.54, 0.82), vec3(0.06, 0.62, 0.38), 0.5 + 0.5 * sin(s * 3.0 + streamId));
-
-      float stateId = floor((u * 0.5 + 0.5) * 3.0);
-      vec2 center0 = vec2(-0.30, yCenter - 0.06);
-      vec2 center1 = vec2(0.0,   yCenter + 0.11);
-      vec2 center2 = vec2(0.30,  yCenter - 0.06);
-      vec2 hub = stateId == 0.0 ? center0 : (stateId == 1.0 ? center1 : center2);
-      vec2 nextHub = stateId == 0.0 ? center1 : (stateId == 1.0 ? center2 : center0);
-
-      if (v < 0.62) {
-        float ang = fract(u * 17.0) * 6.28318 + uTime * 0.45;
-        float rOrb = sqrt(v / 0.62) * 0.105;
-        posQ = vec2((hub.x + cos(ang) * rOrb * 1.15) * aspect * 0.52, hub.y + sin(ang) * rOrb);
-      } else {
-        float tStream = (v - 0.62) / 0.38;
-        vec2 mid = (hub + nextHub) * 0.5 + vec2(0.0, stateId == 2.0 ? -0.07 : 0.05);
-        vec2 arcPt = mix(mix(hub, mid, tStream), mix(mid, nextHub, tStream), tStream);
-        posQ = vec2(arcPt.x * aspect * 0.52, arcPt.y);
-      }
-      colQ = stateId == 0.0
-        ? vec3(0.06, 0.60, 0.36)
-        : (stateId == 1.0 ? vec3(0.08, 0.54, 0.82) : vec3(0.86, 0.48, 0.06));
-    }
-
-    // =========================================================================
-    // 07. CORDILLERA & RÍOS <-> TOPOGRAFÍA ISO-SHARPE & ALFA
-    // =========================================================================
-    else if (sc == 6) {
-      float ridgeLayer = floor(v * 14.0) / 14.0;
-      float xMtn = u * 0.58;
-      float peak1 = 0.22 * exp(-pow((xMtn + 0.18) * 4.2, 2.0));
-      float peak2 = 0.26 * exp(-pow((xMtn - 0.16) * 3.8, 2.0));
-      float valleyRiver = -0.05 * exp(-pow(xMtn * 9.0, 2.0));
-      float elev = peak1 + peak2 + valleyRiver + 0.025 * sin(xMtn * 18.0 + ridgeLayer * 9.0);
-      float yMtn = -0.34 + (ridgeLayer - 0.5) * 0.16 + elev * (1.1 - ridgeLayer * 0.45);
-      posN = vec2((xMtn + (ridgeLayer - 0.5) * 0.14) * aspect * 0.52, yMtn);
-      if (abs(xMtn) < 0.095 && elev < 0.13) {
-        colN = vec3(0.06, 0.56, 0.84);
-      } else {
-        colN = mix(vec3(0.05, 0.58, 0.34), vec3(0.12, 0.64, 0.68), smoothstep(0.04, 0.22, elev));
-      }
-
-      float ringIdx = floor(v * 10.0) / 10.0;
-      float ang = u * 3.14159 + uTime * 0.04;
-      float rx = (0.05 + ringIdx * 0.45) * (1.0 + 0.12 * cos(ang * 3.0));
-      float ry = (0.035 + ringIdx * 0.20) * (1.0 + 0.12 * sin(ang * 2.0));
-      float elevZ = (1.0 - ringIdx) * 0.14;
-      posQ = vec2(cos(ang) * rx * aspect * 0.52, (yCenter - 0.06) + sin(ang) * ry + elevZ);
-      colQ = mix(vec3(0.88, 0.54, 0.04), vec3(0.06, 0.58, 0.42), ringIdx);
-    }
-
-    // =========================================================================
-    // 08. PANAL & LAVANDA <-> RED DE CORRELACIÓN (ENB)
-    // =========================================================================
-    else if (sc == 7) {
-      float cellId = floor((u * 0.5 + 0.5) * 19.0);
-      float row = floor(cellId / 5.0) - 1.5;
-      float colIdx = mod(cellId, 5.0) - 2.0 + mod(abs(row), 2.0) * 0.5;
-      vec2 hexCenter = vec2(colIdx * 0.19, yCenter + row * 0.11);
-      float side = floor(v * 6.0);
-      float edgeT = fract(v * 6.0);
-      float a1 = side * 1.04719755;
-      float a2 = (side + 1.0) * 1.04719755;
-      vec2 hexPt = hexCenter + mix(vec2(cos(a1), sin(a1)), vec2(cos(a2), sin(a2)), edgeT) * 0.082;
-      posN = vec2(hexPt.x * aspect * 0.52, hexPt.y);
-      colN = mix(vec3(0.86, 0.54, 0.04), vec3(0.06, 0.58, 0.38), fract(cellId * 0.37));
-
-      float nClusters = 7.0;
-      float cIdx = floor((u * 0.5 + 0.5) * nClusters);
-      float cAng = cIdx * (6.28318 / nClusters) + uTime * 0.04;
-      vec2 hubPos = vec2(cos(cAng) * 0.34, yCenter + sin(cAng) * 0.18);
-      if (v < 0.55) {
-        float subAng = rnd * 6.28318;
-        float subR = sqrt(v / 0.55) * 0.065;
-        posQ = vec2((hubPos.x + cos(subAng) * subR) * aspect * 0.52, hubPos.y + sin(subAng) * subR);
-        colQ = mix(vec3(0.06, 0.58, 0.38), vec3(0.08, 0.54, 0.84), cIdx / nClusters);
-      } else {
-        float nextAng = mod(cIdx + 2.0, nClusters) * (6.28318 / nClusters) + uTime * 0.04;
-        vec2 nextHub = vec2(cos(nextAng) * 0.34, yCenter + sin(nextAng) * 0.18);
-        vec2 edgePt = mix(hubPos, nextHub, (v - 0.55) / 0.45);
-        posQ = vec2(edgePt.x * aspect * 0.52, edgePt.y);
-        colQ = vec3(0.86, 0.52, 0.06);
-      }
-    }
-
-    // =========================================================================
-    // 09. FLOR DE LOTO & ESTANQUE <-> INTERFERENCIA DE ONDAS
-    // =========================================================================
-    else if (sc == 8) {
-      float ang = u * 3.14159 + uTime * 0.03;
-      if (v < 0.58) {
-        float tier = floor((v / 0.58) * 3.0);
-        float petals = tier == 0.0 ? 8.0 : (tier == 1.0 ? 12.0 : 16.0);
-        float lotusWave = pow(abs(cos(ang * petals * 0.5 + tier * 0.4)), 0.7);
-        float rBase = 0.04 + tier * 0.055;
-        float rLotus = rBase + (0.045 + 0.045 * lotusWave) * fract((v / 0.58) * 3.0);
-        posN = vec2(cos(ang) * rLotus * 1.15 * aspect * 0.52, yCenter + sin(ang) * rLotus * 0.90);
-        colN = tier == 0.0
-          ? vec3(0.88, 0.56, 0.04)
-          : mix(vec3(0.86, 0.24, 0.48), vec3(0.06, 0.60, 0.40), tier / 2.0);
-      } else {
-        float rippleIdx = floor(((v - 0.58) / 0.42) * 5.0);
-        float rRipple = 0.21 + rippleIdx * 0.045 + mod(uTime * 0.025, 0.045);
-        posN = vec2(cos(ang) * rRipple * 1.35 * aspect * 0.52, yCenter + sin(ang) * rRipple * 0.72);
-        colN = mix(vec3(0.06, 0.56, 0.82), vec3(0.08, 0.62, 0.44), rippleIdx / 4.0);
-      }
-
-      float gridX = u * 0.48;
-      float gridY = (v - 0.5) * 0.36;
-      float d1 = length(vec2(gridX + 0.16, gridY));
-      float d2 = length(vec2(gridX - 0.16, gridY));
-      float waveZ = 0.055 * (cos(d1 * 28.0 - uTime * 0.7) + cos(d2 * 28.0 - uTime * 0.7)) * exp(-length(vec2(gridX, gridY)) * 2.2);
-      posQ = vec2((gridX + gridY * 0.25) * aspect * 0.52, yCenter + gridY * 0.75 + waveZ);
-      colQ = mix(vec3(0.06, 0.54, 0.84), vec3(0.06, 0.62, 0.36), 0.5 + 0.5 * (waveZ / 0.08));
-    }
-
-    // =========================================================================
-    // 10. CARACOLA NAUTILUS <-> CANAL DE REGRESIÓN OLS
-    // =========================================================================
-    else if (sc == 9) {
-      float tShell = (u * 0.5 + 0.5) * 3.6 * 3.14159;
-      float rOuter = 0.016 * exp(0.26 * tShell);
-      float rInner = 0.016 * exp(0.26 * max(0.0, tShell - 6.28318));
-      float angShell = tShell - uTime * 0.04;
-      if (v < 0.65) {
-        float rFill = mix(rInner, rOuter, v / 0.65);
-        posN = vec2(cos(angShell) * rFill * 1.15 * aspect * 0.52, yCenter + sin(angShell) * rFill * 0.92);
-        colN = mix(vec3(0.06, 0.54, 0.82), vec3(0.06, 0.62, 0.42), clamp(rOuter / 0.32, 0.0, 1.0));
-      } else {
-        float chamberIdx = floor((u * 0.5 + 0.5) * 24.0);
-        float cTheta = chamberIdx * (3.6 * 3.14159 / 24.0) - uTime * 0.04;
-        float rOutC = 0.016 * exp(0.26 * (chamberIdx * (3.6 * 3.14159 / 24.0)));
-        float rInC  = rOutC * 0.54;
-        float sFrac = (v - 0.65) / 0.35;
-        float septaAng = cTheta - 0.38 * sin(sFrac * 3.14159);
-        float rSepta = mix(rInC, rOutC, sFrac);
-        posN = vec2(cos(septaAng) * rSepta * 1.15 * aspect * 0.52, yCenter + sin(septaAng) * rSepta * 0.92);
-        colN = vec3(0.88, 0.54, 0.04);
-      }
-
-      float xCh = u * 0.54;
-      float trendY = yCenter + xCh * 0.24;
-      float elliottWave = 0.065 * sin(xCh * 9.0 - uTime * 0.45) + 0.032 * sin(xCh * 18.0 + uTime * 0.3);
-      if (v < 0.52) {
-        posQ = vec2(xCh * aspect * 0.52, trendY + elliottWave + (v - 0.26) * 0.025);
-        colQ = elliottWave >= 0.0 ? vec3(0.05, 0.60, 0.36) : vec3(0.08, 0.54, 0.82);
-      } else {
-        float railPick = floor((v - 0.52) / 0.48 * 3.0) - 1.0;
-        posQ = vec2(xCh * aspect * 0.52, trendY + railPick * 0.105);
-        colQ = railPick == 0.0 ? vec3(0.88, 0.54, 0.04) : vec3(0.08, 0.56, 0.74);
-      }
-    }
-
-    // =========================================================================
-    // 11. ÁRBOL COPA & RAÍCES <-> GRAFO PIPELINE DAG (P-01..P-13)
-    // =========================================================================
-    else if (sc == 10) {
-      if (v < 0.22) {
-        float tTrunk = v / 0.22;
-        float rootSpread = (1.0 - tTrunk) * (1.0 - tTrunk) * 0.26 * u;
-        float trunkW = (0.022 + (1.0 - tTrunk) * 0.025) * u;
-        posN = vec2((rootSpread + trunkW) * aspect * 0.52, -0.39 + tTrunk * 0.16);
-        colN = mix(vec3(0.38, 0.26, 0.12), vec3(0.06, 0.52, 0.30), tTrunk);
-      } else {
-        float vCanopy = (v - 0.22) / 0.78;
-        float branchId = floor((u * 0.5 + 0.5) * 15.0);
-        float branchAng = -1.25 + (branchId / 14.0) * 2.50;
-        float rBranch = pow(vCanopy, 0.75) * 0.27;
-        float leafCluster = 0.032 * sin(vCanopy * 18.0 + branchId * 3.0);
-        float xCan = sin(branchAng) * rBranch * 1.35 + cos(branchAng) * leafCluster;
-        float yCan = -0.23 + cos(branchAng) * rBranch * 0.92 + sin(branchAng) * leafCluster;
-        posN = vec2(xCan * aspect * 0.52, yCan);
-        colN = vCanopy > 0.78
-          ? mix(vec3(0.08, 0.58, 0.84), vec3(0.88, 0.30, 0.52), fract(branchId * 0.37))
-          : mix(vec3(0.04, 0.52, 0.30), vec3(0.16, 0.72, 0.38), vCanopy);
-      }
-
-      float stage = floor((u * 0.5 + 0.5) * 4.0);
-      float nodesInCol = stage == 0.0 ? 3.0 : (stage == 1.0 ? 4.0 : (stage == 2.0 ? 4.0 : 2.0));
-      float nIdx = floor(v * nodesInCol);
-      float subV = fract(v * nodesInCol);
-      float xCol = -0.42 + stage * 0.28;
-      float yNode = yCenter + ((nIdx + 0.5) / nodesInCol - 0.5) * 0.32;
-      if (subV < 0.55) {
-        float a = rnd * 6.28318;
-        float rN = sqrt(subV / 0.55) * 0.036;
-        posQ = vec2((xCol + cos(a) * rN) * aspect * 0.52, yNode + sin(a) * rN);
-        colQ = stage < 2.0 ? vec3(0.06, 0.58, 0.38) : vec3(0.08, 0.54, 0.84);
-      } else {
-        float nextStage = min(3.0, stage + 1.0);
-        float nextNodes = nextStage == 1.0 ? 4.0 : (nextStage == 2.0 ? 4.0 : 2.0);
-        float nextIdx = mod(nIdx + floor(rnd * 2.0), nextNodes);
-        float xNext = -0.42 + nextStage * 0.28;
-        float yNext = yCenter + ((nextIdx + 0.5) / nextNodes - 0.5) * 0.32;
-        float tE = (subV - 0.55) / 0.45;
-        posQ = vec2(mix(xCol, xNext, tE) * aspect * 0.52, mix(yNode, yNext, tE));
-        colQ = vec3(0.86, 0.54, 0.06);
-      }
-    }
-
-    // =========================================================================
-    // 12. ADN BOTÁNICO (DOBLE HÉLICE) <-> COINTEGRACIÓN (PAIRS TRADING)
-    // =========================================================================
-    else {
-      float xHelix = u * 0.54;
-      float phaseH = xHelix * 8.5 - uTime * 0.45;
-      float yStrand1 = yCenter + 0.14 * sin(phaseH);
-      float yStrand2 = yCenter - 0.14 * sin(phaseH);
-      if (v < 0.36) {
-        posN = vec2(xHelix * aspect * 0.52, yStrand1 + (v - 0.18) * 0.04);
-        colN = vec3(0.05, 0.60, 0.36);
-      } else if (v < 0.72) {
-        posN = vec2(xHelix * aspect * 0.52, yStrand2 + (v - 0.54) * 0.04);
-        colN = vec3(0.08, 0.54, 0.84);
-      } else {
-        float rungX = (floor((u * 0.5 + 0.5) * 18.0) / 17.0 * 2.0 - 1.0) * 0.52;
-        float rPhase = rungX * 8.5 - uTime * 0.45;
-        float yA = yCenter + 0.14 * sin(rPhase);
-        float yB = yCenter - 0.14 * sin(rPhase);
-        float tRung = (v - 0.72) / 0.28;
-        posN = vec2(rungX * aspect * 0.52, mix(yA, yB, tRung));
-        colN = mix(vec3(0.88, 0.54, 0.04), vec3(0.86, 0.26, 0.50), tRung);
-      }
-
-      float xTime = u * 0.54;
-      float commonTrend = 0.08 * sin(xTime * 3.5 + uTime * 0.25);
-      float spreadZ = 0.095 * cos(xTime * 10.0 - uTime * 0.45);
-      if (v < 0.40) {
-        posQ = vec2(xTime * aspect * 0.52, yCenter + commonTrend + spreadZ * 0.5);
-        colQ = vec3(0.05, 0.60, 0.36);
-      } else if (v < 0.80) {
-        posQ = vec2(xTime * aspect * 0.52, yCenter + commonTrend - spreadZ * 0.5);
-        colQ = vec3(0.08, 0.54, 0.84);
-      } else {
-        posQ = vec2(xTime * aspect * 0.52, yCenter + commonTrend);
-        colQ = vec3(0.88, 0.54, 0.04);
-      }
-    }
+  float phaseWeight(float phase, float target) {
+    float d = abs(mod(phase - target + 2.0, 4.0) - 2.0);
+    return smootherstep(0.95, 0.05, d);
   }
 
   void main() {
@@ -1010,68 +659,176 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     float v = aSeed.y;
     float rnd = aSeed.z;
 
+    float phase = mod(uPair, 4.0);
+    float w0 = phaseWeight(phase, 0.0);
+    float w1 = phaseWeight(phase, 1.0);
+    float w2 = phaseWeight(phase, 2.0);
+    float w3 = phaseWeight(phase, 3.0);
+    float wSum = max(w0 + w1 + w2 + w3, 0.001);
+    w0 /= wSum; w1 /= wSum; w2 /= wSum; w3 /= wSum;
+
     float m = smootherstep(0.0, 1.0, clamp(uMorph, 0.0, 1.0));
     float yCenter = -0.19;
 
-    // 14% free-floating Spring Leaves, Dew Drops & Petals
-    if (rnd > 0.86) {
-      float driftX = mod(u * 0.90 + uTime * (0.008 + 0.012 * fract(rnd * 19.0)) + 1.0, 2.0) - 1.0;
-      float driftY = yCenter + (v - 0.45) * 0.62 + 0.025 * sin(uTime * 0.55 + u * 7.0 + rnd * 30.0);
-      vec2 ambPos = vec2(driftX * aspect * 0.52, driftY);
-      vec2 ndcAmb = vec2(ambPos.x / (aspect * 0.5), ambPos.y * 2.0);
-      gl_Position = vec4(ndcAmb, 0.0, 1.0);
-
-      float pulse = pow(0.5 + 0.5 * sin(uTime * (0.85 + fract(rnd * 31.0) * 1.1) + rnd * 90.0), 1.6);
-      vAlpha = pulse * 0.84;
-      vAngle = uTime * (0.28 + 0.25 * fract(rnd * 13.0)) + rnd * 6.283;
-
-      float huePick = fract(rnd * 43.0);
-      if (huePick < 0.36) vColor = vec3(0.05, 0.58, 0.34);
-      else if (huePick < 0.68) vColor = vec3(0.06, 0.52, 0.82);
-      else if (huePick < 0.86) vColor = vec3(0.86, 0.26, 0.50);
-      else vColor = vec3(0.86, 0.54, 0.04);
-
-      gl_PointSize = (4.6 + fract(rnd * 23.0) * 5.2) * uDpr;
-      vStarType = 0.82 + 0.16 * fract(rnd * 17.0);
-      return;
-    }
-
-    int scA = int(floor(mod(uSceneA, 12.0)));
-    int scB = int(floor(mod(uSceneB, 12.0)));
-    float mixAB = smootherstep(0.0, 1.0, clamp(uSceneMix, 0.0, 1.0));
-
-    vec2 posNA; vec3 colNA; vec2 posQA; vec3 colQA;
-    computeProposal(scA, u, v, rnd, aspect, yCenter, posNA, colNA, posQA, colQA);
-
-    vec2 posNB; vec3 colNB; vec2 posQB; vec3 colQB;
-    if (scA == scB || mixAB < 0.001) {
-      posNB = posNA; colNB = colNA; posQB = posQA; colQB = colQA;
+    // =========================================================================
+    // PAIR 1 (Elegida #1): GIRASOL FIBONACCI (0%) <-> ESPIRAL ÁUREA & ARCOS (100%)
+    // =========================================================================
+    vec2 posN0;
+    vec3 colN0;
+    float idx0 = floor(((u * 0.5 + 0.5) * 0.7 + v * 0.3) * 3200.0);
+    float theta0 = idx0 * 2.39996323 + uTime * 0.05;
+    float rNorm0 = sqrt(idx0 / 3200.0);
+    if (v < 0.74) {
+      float r = rNorm0 * 0.24;
+      posN0 = vec2(cos(theta0) * r * 1.15 * aspect * 0.52, yCenter + sin(theta0) * r * 0.92);
+      colN0 = mix(vec3(0.04, 0.48, 0.28), vec3(0.86, 0.52, 0.02), smoothstep(0.15, 0.95, rNorm0));
     } else {
-      computeProposal(scB, u, v, rnd, aspect, yCenter, posNB, colNB, posQB, colQB);
+      float ang = u * 3.14159 + uTime * 0.03;
+      float petalWave = abs(cos(ang * 10.5));
+      float rPetal = 0.23 + (0.04 + 0.11 * petalWave) * ((v - 0.74) / 0.26);
+      posN0 = vec2(cos(ang) * rPetal * 1.15 * aspect * 0.52, yCenter + sin(ang) * rPetal * 0.92);
+      colN0 = mix(vec3(0.90, 0.56, 0.02), vec3(0.05, 0.58, 0.34), smoothstep(0.28, 0.36, rPetal));
     }
 
-    vec2 pA = mix(posNA, posQA, m);
-    vec2 pB = mix(posNB, posQB, m);
-    vec3 cA = mix(colNA, colQA, m);
-    vec3 cB = mix(colNB, colQB, m);
+    vec2 posQ0;
+    vec3 colQ0;
+    if (v < 0.68) {
+      float tSp = (u * 0.5 + 0.5) * 4.2 * 3.14159;
+      float rSp = 0.012 * exp(0.24 * tSp);
+      float spread = (fract(v * 19.0) - 0.5) * 0.018;
+      float angSp = tSp - uTime * 0.09;
+      posQ0 = vec2((cos(angSp) * (rSp + spread)) * 1.15 * aspect * 0.52, yCenter + sin(angSp) * (rSp + spread) * 0.92);
+      colQ0 = mix(vec3(0.05, 0.56, 0.36), vec3(0.06, 0.50, 0.82), clamp(rSp / 0.32, 0.0, 1.0));
+    } else {
+      float ringPick = floor((v - 0.68) / 0.32 * 4.0);
+      float fibRad = (ringPick == 0.0 ? 0.08 : ringPick == 1.0 ? 0.13 : ringPick == 2.0 ? 0.21 : 0.34);
+      float ang = u * 3.14159;
+      posQ0 = vec2(cos(ang) * fibRad * 1.15 * aspect * 0.52, yCenter + sin(ang) * fibRad * 0.92);
+      colQ0 = ringPick == 2.0 ? vec3(0.86, 0.48, 0.02) : vec3(0.06, 0.54, 0.70);
+    }
 
-    vec2 worldPos = mix(pA, pB, mixAB);
-    vColor = mix(cA, cB, mixAB);
+    // =========================================================================
+    // PAIR 2 (Elegida #7): CORDILLERA & RÍOS (0%) <-> TOPOGRAFÍA ISO-SHARPE (100%)
+    // =========================================================================
+    float ridgeLayer = floor(v * 14.0) / 14.0;
+    float xMtn = u * 0.58;
+    float peak1 = 0.22 * exp(-pow((xMtn + 0.18) * 4.2, 2.0));
+    float peak2 = 0.26 * exp(-pow((xMtn - 0.16) * 3.8, 2.0));
+    float valleyRiver = -0.05 * exp(-pow(xMtn * 9.0, 2.0));
+    float elev = peak1 + peak2 + valleyRiver + 0.025 * sin(xMtn * 18.0 + ridgeLayer * 9.0);
+    float yMtn = -0.34 + (ridgeLayer - 0.5) * 0.16 + elev * (1.1 - ridgeLayer * 0.45);
+    vec2 posN1 = vec2((xMtn + (ridgeLayer - 0.5) * 0.14) * aspect * 0.52, yMtn);
+    vec3 colN1 = (abs(xMtn) < 0.095 && elev < 0.13)
+      ? vec3(0.05, 0.54, 0.84)
+      : mix(vec3(0.04, 0.56, 0.32), vec3(0.10, 0.62, 0.68), smoothstep(0.04, 0.22, elev));
+
+    float ringIdx = floor(v * 10.0) / 10.0;
+    float ang1 = u * 3.14159 + uTime * 0.05;
+    float rx1 = (0.05 + ringIdx * 0.45) * (1.0 + 0.12 * cos(ang1 * 3.0));
+    float ry1 = (0.035 + ringIdx * 0.20) * (1.0 + 0.12 * sin(ang1 * 2.0));
+    float elevZ = (1.0 - ringIdx) * 0.14;
+    vec2 posQ1 = vec2(cos(ang1) * rx1 * aspect * 0.52, (yCenter - 0.06) + sin(ang1) * ry1 + elevZ);
+    vec3 colQ1 = mix(vec3(0.86, 0.52, 0.02), vec3(0.05, 0.56, 0.40), ringIdx);
+
+    // =========================================================================
+    // PAIR 3 (Elegida #9): FLOR DE LOTO & ESTANQUE (0%) <-> INTERFERENCIA DE ONDAS (100%)
+    // =========================================================================
+    vec2 posN2;
+    vec3 colN2;
+    float ang2 = u * 3.14159 + uTime * 0.035;
+    if (v < 0.58) {
+      float tier = floor((v / 0.58) * 3.0);
+      float petals = tier == 0.0 ? 8.0 : (tier == 1.0 ? 12.0 : 16.0);
+      float lotusWave = pow(abs(cos(ang2 * petals * 0.5 + tier * 0.4)), 0.7);
+      float rBase = 0.04 + tier * 0.055;
+      float rLotus = rBase + (0.045 + 0.045 * lotusWave) * fract((v / 0.58) * 3.0);
+      posN2 = vec2(cos(ang2) * rLotus * 1.15 * aspect * 0.52, yCenter + sin(ang2) * rLotus * 0.90);
+      colN2 = tier == 0.0
+        ? vec3(0.86, 0.54, 0.02)
+        : mix(vec3(0.84, 0.22, 0.46), vec3(0.05, 0.58, 0.38), tier / 2.0);
+    } else {
+      float rippleIdx = floor(((v - 0.58) / 0.42) * 5.0);
+      float rRipple = 0.21 + rippleIdx * 0.045 + mod(uTime * 0.028, 0.045);
+      posN2 = vec2(cos(ang2) * rRipple * 1.35 * aspect * 0.52, yCenter + sin(ang2) * rRipple * 0.72);
+      colN2 = mix(vec3(0.05, 0.54, 0.82), vec3(0.06, 0.60, 0.42), rippleIdx / 4.0);
+    }
+
+    float gridX = u * 0.48;
+    float gridY = (v - 0.5) * 0.36;
+    float d1 = length(vec2(gridX + 0.16, gridY));
+    float d2 = length(vec2(gridX - 0.16, gridY));
+    float waveZ = 0.055 * (cos(d1 * 28.0 - uTime * 0.75) + cos(d2 * 28.0 - uTime * 0.75)) * exp(-length(vec2(gridX, gridY)) * 2.2);
+    vec2 posQ2 = vec2((gridX + gridY * 0.25) * aspect * 0.52, yCenter + gridY * 0.75 + waveZ);
+    vec3 colQ2 = mix(vec3(0.05, 0.52, 0.84), vec3(0.05, 0.60, 0.34), 0.5 + 0.5 * (waveZ / 0.08));
+
+    // =========================================================================
+    // PAIR 4 (Elegida #12): ADN BOTÁNICO (0%) <-> COINTEGRACIÓN PAIRS (100%)
+    // =========================================================================
+    vec2 posN3;
+    vec3 colN3;
+    float xHelix = u * 0.54;
+    float phaseH = xHelix * 8.5 - uTime * 0.48;
+    float yStrand1 = yCenter + 0.14 * sin(phaseH);
+    float yStrand2 = yCenter - 0.14 * sin(phaseH);
+    if (v < 0.36) {
+      posN3 = vec2(xHelix * aspect * 0.52, yStrand1 + (v - 0.18) * 0.04);
+      colN3 = vec3(0.04, 0.58, 0.34);
+    } else if (v < 0.72) {
+      posN3 = vec2(xHelix * aspect * 0.52, yStrand2 + (v - 0.54) * 0.04);
+      colN3 = vec3(0.06, 0.52, 0.84);
+    } else {
+      float rungX = (floor((u * 0.5 + 0.5) * 18.0) / 17.0 * 2.0 - 1.0) * 0.52;
+      float rPhase = rungX * 8.5 - uTime * 0.48;
+      float yA = yCenter + 0.14 * sin(rPhase);
+      float yB = yCenter - 0.14 * sin(rPhase);
+      float tRung = (v - 0.72) / 0.28;
+      posN3 = vec2(rungX * aspect * 0.52, mix(yA, yB, tRung));
+      colN3 = mix(vec3(0.86, 0.52, 0.02), vec3(0.84, 0.24, 0.48), tRung);
+    }
+
+    vec2 posQ3;
+    vec3 colQ3;
+    float xTime = u * 0.54;
+    float commonTrend = 0.08 * sin(xTime * 3.5 + uTime * 0.28);
+    float spreadZ = 0.095 * cos(xTime * 10.0 - uTime * 0.48);
+    if (v < 0.40) {
+      posQ3 = vec2(xTime * aspect * 0.52, yCenter + commonTrend + spreadZ * 0.5);
+      colQ3 = vec3(0.04, 0.58, 0.34);
+    } else if (v < 0.80) {
+      posQ3 = vec2(xTime * aspect * 0.52, yCenter + commonTrend - spreadZ * 0.5);
+      colQ3 = vec3(0.06, 0.52, 0.84);
+    } else {
+      posQ3 = vec2(xTime * aspect * 0.52, yCenter + commonTrend);
+      colQ3 = vec3(0.86, 0.52, 0.02);
+    }
+
+    vec2 p0 = mix(posN0, posQ0, m);
+    vec2 p1 = mix(posN1, posQ1, m);
+    vec2 p2 = mix(posN2, posQ2, m);
+    vec2 p3 = mix(posN3, posQ3, m);
+
+    vec3 c0 = mix(colN0, colQ0, m);
+    vec3 c1 = mix(colN1, colQ1, m);
+    vec3 c2 = mix(colN2, colQ2, m);
+    vec3 c3 = mix(colN3, colQ3, m);
+
+    vec2 worldPos = p0 * w0 + p1 * w1 + p2 * w2 + p3 * w3;
+    vColor = c0 * w0 + c1 * w1 + c2 * w2 + c3 * w3;
 
     vec2 ndc = vec2(worldPos.x / (aspect * 0.5), worldPos.y * 2.0);
     gl_Position = vec4(ndc, 0.0, 1.0);
 
-    float breeze = 0.62 + 0.38 * sin(uTime * (0.95 + fract(rnd * 19.0) * 0.75) + rnd * 50.0);
-    vAngle = uTime * 0.25 + rnd * 6.28318;
-    if (rnd < 0.40) {
-      vAlpha = 0.095 * (0.75 + 0.25 * sin(uTime * 0.65 + rnd * 20.0));
-      gl_PointSize = (14.0 + rnd * 15.0) * uDpr;
-    } else if (rnd < 0.74) {
-      vAlpha = breeze * 0.78;
-      gl_PointSize = (3.4 + fract(rnd * 17.0) * 2.8) * uDpr;
+    // Exact same 3-tier particle hierarchy and twinkle cadence as Dark Mode
+    float twinkle = 0.72 + 0.28 * sin(uTime * 2.6 + rnd * 50.0);
+    if (rnd < 0.55) {
+      vAlpha = 0.065;
+      gl_PointSize = (15.0 + rnd * 16.0) * uDpr;
+    } else if (rnd < 0.95) {
+      vAlpha = twinkle * 0.58;
+      gl_PointSize = (2.4 + fract(rnd * 17.0) * 2.2) * uDpr;
     } else {
-      vAlpha = breeze * 0.94;
-      gl_PointSize = (7.2 + fract(rnd * 11.0) * 3.0) * uDpr;
+      vAlpha = twinkle * 0.95;
+      gl_PointSize = 8.5 * uDpr;
     }
     vStarType = rnd;
   }
@@ -1082,49 +839,29 @@ export const LIGHT_PARTICLE_FRAGMENT_SHADER = `
   varying vec3 vColor;
   varying float vAlpha;
   varying float vStarType;
-  varying float vAngle;
 
   void main() {
     vec2 p = gl_PointCoord * 2.0 - 1.0;
     float r = length(p);
     if (r > 1.0) discard;
 
-    // 1. Volumetric watercolor & pollen dust puff
-    if (vStarType < 0.40) {
+    if (vStarType < 0.55) {
+      // Soft volumetric botanical watercolor puff (exact counterpart to Dark Mode nebula puff)
       float puff = smoothstep(1.0, 0.0, r);
       puff = puff * puff * (3.0 - 2.0 * puff);
       gl_FragColor = vec4(vColor, puff * vAlpha);
       return;
     }
 
-    // Rotate coordinates for organic botanical glyphs
-    float c = cos(vAngle);
-    float s = sin(vAngle);
-    vec2 rp = vec2(c * p.x - s * p.y, s * p.x + c * p.y);
-
-    // 2. Botanical Leaf / Seed Silhouette (replacing round dots!)
-    if (vStarType < 0.74) {
-      float leafDist = length(vec2(rp.x * 1.65, rp.y * 0.85));
-      float mask = smoothstep(0.95, 0.25, leafDist);
-      gl_FragColor = vec4(vColor, mask * vAlpha);
-      return;
+    float core = exp(-r * r * 6.0);
+    float spikes = 0.0;
+    if (vStarType >= 0.95) {
+      float a = atan(p.y, p.x);
+      spikes = pow(max(0.0, cos(a * 3.0)), 18.0) * exp(-r * 2.6) * 0.75;
     }
 
-    // 3. 5-Petal Sakura Blossom Glyph
-    if (vStarType < 0.88) {
-      float a = atan(rp.y, rp.x);
-      float blossom = 0.52 + 0.44 * cos(a * 5.0);
-      float mask = smoothstep(blossom, blossom * 0.18, r);
-      gl_FragColor = vec4(vColor, mask * vAlpha);
-      return;
-    }
-
-    // 4. 4-Point Sunlit Dew Sparkle / Diamond Pollen Glint
-    float diamond = abs(rp.x) + abs(rp.y);
-    float rays4 = exp(-abs(rp.x) * 6.5) * exp(-abs(rp.y) * 1.4)
-                + exp(-abs(rp.y) * 6.5) * exp(-abs(rp.x) * 1.4);
-    float spark = clamp(smoothstep(0.75, 0.1, diamond) * 0.7 + rays4 * 0.65, 0.0, 1.0);
-    gl_FragColor = vec4(vColor, spark * vAlpha);
+    float intensity = clamp(core + spikes, 0.0, 1.0);
+    gl_FragColor = vec4(vColor, intensity * vAlpha);
   }
 `;
 

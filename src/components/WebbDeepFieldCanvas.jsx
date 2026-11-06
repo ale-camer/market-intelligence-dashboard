@@ -36,143 +36,135 @@ function createProgram(gl, vsSource, fsSource) {
   return program;
 }
 
-const SharedDarkPieces = [
-  {
-    id: 0,
-    short: '01. Pilares de la Creación ⟷ Superficie de Volatilidad',
-    title: '01. Pilares de la Creación ⟷ Superficie de Volatilidad',
-    medium: 'Modo Oscuro • Pilares infrarrojos del JWST (NGC 3324) y Variedad σ(K,T) de Black-Scholes',
-  },
-  {
-    id: 1,
-    short: '02. Anillo de Einstein ⟷ Frontera de Markowitz',
-    title: '02. Anillo de Einstein ⟷ Frontera de Markowitz',
-    medium: 'Modo Oscuro • Lente gravitacional relativista (SMACS 0723) y Tangencia óptima riesgo-retorno',
-  },
-  {
-    id: 2,
-    short: '03. Nebulosa Reloj de Arena ⟷ Profundidad Order Book',
-    title: '03. Nebulosa Reloj de Arena ⟷ Profundidad Order Book',
-    medium: 'Modo Oscuro • Onda de choque protoestelar (L1527) y Microestructura de liquidez V(p,t)',
-  },
-  {
-    id: 3,
-    short: '04. Nebulosa Anillo del Sur ⟷ Difusión de Itô',
-    title: '04. Nebulosa Anillo del Sur ⟷ Difusión de Itô',
-    medium: 'Modo Oscuro • Eyección estelar concéntrica (NGC 3132) y Dispersión de Fokker-Planck',
-  },
-];
-
 export const DARK_ARTWORKS = {
-  EN: SharedDarkPieces,
-  ES: SharedDarkPieces,
+  EN: [
+    {
+      id: 0,
+      short: '01. Pillars of Creation ⟷ Volatility Surface',
+      title: '01. Pillars of Creation (NGC 3324)  ⟷  Implied Volatility Surface σ(K,T)',
+      medium: 'JWST Near-Infrared Dust Pillars • Black-Scholes-Merton Manifold',
+    },
+    {
+      id: 1,
+      short: '02. Einstein Ring ⟷ Markowitz Frontier',
+      title: '02. Einstein Gravitational Ring (SMACS 0723)  ⟷  Markowitz Efficient Frontier',
+      medium: 'Relativistic Spacetime Lensing • Optimal Risk-Return Tangency',
+    },
+    {
+      id: 2,
+      short: '03. Hourglass Nebula ⟷ Order Book Depth',
+      title: '03. Bipolar Hourglass Nebula (L1527)  ⟷  Limit Order Book Depth V(p,t)',
+      medium: 'Protostellar Accretion Shockwave • High-Frequency Liquidity Microstructure',
+    },
+    {
+      id: 3,
+      short: '04. Southern Ring ⟷ Itô Diffusion',
+      title: '04. Southern Ring Nebula (NGC 3132)  ⟷  Itô-Fokker-Planck Probability Density',
+      medium: 'Concentric Stellar Ejecta Shells • Stochastic Dispersion Trajectories',
+    },
+  ],
+  ES: [
+    {
+      id: 0,
+      short: '01. Pilares de la Creación ⟷ Superficie de Volatilidad',
+      title: '01. Pilares de la Creación (NGC 3324)  ⟷  Superficie de Volatilidad Implícita σ(K,T)',
+      medium: 'Pilares infrarrojos del JWST • Variedad de Black-Scholes-Merton',
+    },
+    {
+      id: 1,
+      short: '02. Anillo de Einstein ⟷ Frontera de Markowitz',
+      title: '02. Anillo Gravitacional de Einstein (SMACS 0723)  ⟷  Frontera Eficiente de Markowitz',
+      medium: 'Lente gravitacional relativista • Tangencia óptima riesgo-retorno',
+    },
+    {
+      id: 2,
+      short: '03. Nebulosa Reloj de Arena ⟷ Profundidad Order Book',
+      title: '03. Nebulosa Reloj de Arena Bipolar (L1527)  ⟷  Profundidad de Order Book V(p,t)',
+      medium: 'Onda de choque protoestelar • Microestructura de liquidez de alta frecuencia',
+    },
+    {
+      id: 3,
+      short: '04. Nebulosa Anillo del Sur ⟷ Difusión de Itô',
+      title: '04. Nebulosa del Anillo del Sur (NGC 3132)  ⟷  Densidad de Difusión de Itô-Fokker-Planck',
+      medium: 'Capas concéntricas de eyección estelar • Trayectorias de dispersión estocástica',
+    },
+  ],
 };
 
-const SharedLightPieces = [
-  {
-    id: 0,
-    short: '01. Girasol Fibonacci ⟷ Espiral Áurea',
-    title: '01. Girasol Fibonacci ⟷ Espiral Áurea',
-    medium: '1ra Tanda • Filotaxis de semillas (137.5°) y anillos de proporción áurea (23.6% • 38.2% • 61.8%)',
-  },
-  {
-    id: 1,
-    short: '02. Flor Sakura ⟷ Ondas de Fourier',
-    title: '02. Flor Sakura ⟷ Ondas de Fourier',
-    medium: '1ra Tanda • Rosa polar de 5 pétalos y descomposición espectral de ciclos de Fourier',
-  },
-  {
-    id: 2,
-    short: '03. Mariposa Monarca ⟷ Atractor de Lorenz',
-    title: '03. Mariposa Monarca ⟷ Atractor de Lorenz',
-    medium: '1ra Tanda • Simetría lepidóptera en vuelo y Efecto Mariposa de caos no lineal',
-  },
-  {
-    id: 3,
-    short: '04. Helecho Fractal ⟷ Árbol Isolation Forest',
-    title: '04. Helecho Fractal ⟷ Árbol Isolation Forest',
-    medium: '1ra Tanda • Frondas de helecho de Barnsley y árbol binario de anomalías (P-06)',
-  },
-  {
-    id: 4,
-    short: '05. Diente de León ⟷ Cono de Kelly',
-    title: '05. Diente de León ⟷ Cono de Kelly',
-    medium: '1ra/2da Tanda • Esfera radial de 32 rayos al viento y curvas de crecimiento óptimo de Kelly',
-  },
-  {
-    id: 5,
-    short: '06. Bandada en Vuelo ⟷ 3 Regímenes de Markov',
-    title: '06. Bandada en Vuelo ⟷ 3 Regímenes de Markov',
-    medium: '2da Tanda • Murmuración de golondrinas y transición orbital (Calma • Transición • Estrés)',
-  },
-  {
-    id: 6,
-    short: '07. Cordillera & Ríos ⟷ Topografía Iso-Sharpe',
-    title: '07. Cordillera & Ríos ⟷ Topografía Iso-Sharpe',
-    medium: '2da Tanda • Valle verde con río de deshielo y curvas de nivel de eficiencia riesgo-retorno',
-  },
-  {
-    id: 7,
-    short: '08. Panal & Lavanda ⟷ Red de Correlación',
-    title: '08. Panal & Lavanda ⟷ Red de Correlación',
-    medium: '2da Tanda • Celdas hexagonales de colmena y constelación de 7 clusters de activos (ENB)',
-  },
-  {
-    id: 8,
-    short: '09. Flor de Loto ⟷ Interferencia de Ondas',
-    title: '09. Flor de Loto ⟷ Interferencia de Ondas',
-    medium: '2da Tanda • Mandala de loto en estanque y propagación armónica de volatilidad',
-  },
-  {
-    id: 9,
-    short: '10. Caracola Nautilus ⟷ Canal de Regresión OLS',
-    title: '10. Caracola Nautilus ⟷ Canal de Regresión OLS',
-    medium: '2da Tanda • Cámaras septales marinas y canal de tendencia lineal con bandas ±2σ',
-  },
-  {
-    id: 10,
-    short: '11. Árbol Copa & Raíces ⟷ Grafo Pipeline DAG',
-    title: '11. Árbol Copa & Raíces ⟷ Grafo Pipeline DAG',
-    medium: '2da Tanda • Árbol frondoso con raíces y topología de 4 etapas (módulos P-01..P-13)',
-  },
-  {
-    id: 11,
-    short: '12. ADN Botánico ⟷ Cointegración (Pairs)',
-    title: '12. ADN Botánico ⟷ Cointegración (Pairs)',
-    medium: '2da Tanda • Doble hélice viva entrelazada y reversión a la media estadística (±2σ)',
-  },
-];
-
 export const LIGHT_ARTWORKS = {
-  EN: SharedLightPieces,
-  ES: SharedLightPieces,
+  EN: [
+    {
+      id: 0,
+      short: '01. Girasol Fibonacci ⟷ Espiral Áurea',
+      title: '01. Fibonacci Sunflower (137.5°)  ⟷  Golden Spiral & Fibonacci Arcs',
+      medium: 'Botanical Golden Phyllotaxis • Golden Ratio Retracement Manifold (23.6% • 38.2% • 61.8%)',
+    },
+    {
+      id: 1,
+      short: '02. Cordillera & Ríos ⟷ Topografía Iso-Sharpe',
+      title: '02. Emerald Mountain Ridge & Rivers  ⟷  Iso-Sharpe & Alpha Topography',
+      medium: 'Spring Meltwater Watershed • Risk-Return Efficiency Contour Manifold',
+    },
+    {
+      id: 2,
+      short: '03. Flor de Loto ⟷ Interferencia de Ondas',
+      title: '03. Sacred Water Lotus & Pond Ripples  ⟷  Harmonic Wave Interference',
+      medium: 'Botanical Water Mandala • Liquidity Cycle Wave Propagation',
+    },
+    {
+      id: 3,
+      short: '04. ADN Botánico ⟷ Cointegración (Pairs)',
+      title: '04. Botanical Double Helix (DNA)  ⟷  Statistical Cointegration (Pairs)',
+      medium: 'Intertwined Chlorophyll Strands • Mean-Reverting Stationary Spread (±2σ)',
+    },
+  ],
+  ES: [
+    {
+      id: 0,
+      short: '01. Girasol Fibonacci ⟷ Espiral Áurea',
+      title: '01. Girasol de Fibonacci (137.5°)  ⟷  Espiral Áurea & Arcos de Fibonacci',
+      medium: 'Filotaxis botánica de semillas • Niveles de proporción áurea φ (23.6% • 38.2% • 61.8%)',
+    },
+    {
+      id: 1,
+      short: '02. Cordillera & Ríos ⟷ Topografía Iso-Sharpe',
+      title: '02. Cordillera Esmeralda & Ríos  ⟷  Topografía Iso-Sharpe & Alfa',
+      medium: 'Cuenca hidrográfica de deshielo • Curvas de nivel de eficiencia riesgo-retorno',
+    },
+    {
+      id: 2,
+      short: '03. Flor de Loto ⟷ Interferencia de Ondas',
+      title: '03. Flor de Loto & Estanque  ⟷  Interferencia Armónica de Ondas',
+      medium: 'Mandala acuático y ondas de estanque • Propagación armónica de volatilidad',
+    },
+    {
+      id: 3,
+      short: '04. ADN Botánico ⟷ Cointegración (Pairs)',
+      title: '04. ADN Botánico (Doble Hélice)  ⟷  Cointegración Estadística (Pairs)',
+      medium: 'Hebras de clorofila entrelazadas • Reversión a la media y spread estacionario (±2σ)',
+    },
+  ],
 };
 
 export default function WebbDeepFieldCanvas({
   isPaused = false,
   lang = 'EN',
   lightMode = false,
-  selectedLightScene = null, // null = auto cycle, 0..11 = fixed scene
-  selectedDarkScene = null, // null = auto cycle, 0..3 = fixed scene
-  morphOverride = null, // null = auto sine wave, 0 = 100% Nature, 1 = 100% Quant
+  selectedScene = null, // null = continuous 4-pair cycle identical to Dark Mode, 0..3 = fixed pair
+  morphOverride = null, // null = continuous sine wave, 0 = 100% Nature/Cosmos, 1 = 100% Quant
   onActiveSceneChange = null,
 }) {
   const canvasRef = useRef(null);
-  const [activeLightIdx, setActiveLightIdx] = useState(
-    selectedLightScene !== null ? Number(selectedLightScene) % 12 : 0
-  );
-  const [activeDarkIdx, setActiveDarkIdx] = useState(
-    selectedDarkScene !== null ? Number(selectedDarkScene) % 4 : 0
+  const [activePairIdx, setActivePairIdx] = useState(
+    selectedScene !== null ? Number(selectedScene) % 4 : 0
   );
 
   const isPausedRef = useRef(isPaused);
   const lightModeRef = useRef(lightMode);
-  const selectedLightSceneRef = useRef(selectedLightScene);
-  const selectedDarkSceneRef = useRef(selectedDarkScene);
+  const selectedSceneRef = useRef(selectedScene);
   const morphOverrideRef = useRef(morphOverride);
   const onActiveSceneChangeRef = useRef(onActiveSceneChange);
-  const lastReportedLightRef = useRef(activeLightIdx);
-  const lastReportedDarkRef = useRef(activeDarkIdx);
+  const lastReportedIdxRef = useRef(activePairIdx);
 
   useEffect(() => {
     isPausedRef.current = isPaused;
@@ -183,22 +175,13 @@ export default function WebbDeepFieldCanvas({
   }, [lightMode]);
 
   useEffect(() => {
-    selectedLightSceneRef.current = selectedLightScene;
-    if (selectedLightScene !== null) {
-      const idx = Number(selectedLightScene) % 12;
-      lastReportedLightRef.current = idx;
-      setActiveLightIdx(idx);
+    selectedSceneRef.current = selectedScene;
+    if (selectedScene !== null) {
+      const idx = Number(selectedScene) % 4;
+      lastReportedIdxRef.current = idx;
+      setActivePairIdx(idx);
     }
-  }, [selectedLightScene]);
-
-  useEffect(() => {
-    selectedDarkSceneRef.current = selectedDarkScene;
-    if (selectedDarkScene !== null) {
-      const idx = Number(selectedDarkScene) % 4;
-      lastReportedDarkRef.current = idx;
-      setActiveDarkIdx(idx);
-    }
-  }, [selectedDarkScene]);
+  }, [selectedScene]);
 
   useEffect(() => {
     morphOverrideRef.current = morphOverride;
@@ -266,9 +249,7 @@ export default function WebbDeepFieldCanvas({
     const lPtTimeLoc = gl.getUniformLocation(lightPtProgram, 'uTime');
     const lPtResLoc = gl.getUniformLocation(lightPtProgram, 'uResolution');
     const lPtDprLoc = gl.getUniformLocation(lightPtProgram, 'uDpr');
-    const lPtSceneALoc = gl.getUniformLocation(lightPtProgram, 'uSceneA');
-    const lPtSceneBLoc = gl.getUniformLocation(lightPtProgram, 'uSceneB');
-    const lPtSceneMixLoc = gl.getUniformLocation(lightPtProgram, 'uSceneMix');
+    const lPtPairLoc = gl.getUniformLocation(lightPtProgram, 'uPair');
     const lPtMorphLoc = gl.getUniformLocation(lightPtProgram, 'uMorph');
 
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -292,10 +273,7 @@ export default function WebbDeepFieldCanvas({
     let animId;
     let lastTime = performance.now();
     let elapsed = 0;
-    let sceneA = selectedLightSceneRef.current !== null ? Number(selectedLightSceneRef.current) % 12 : 0;
-    let sceneB = sceneA;
-    let sceneMix = 0;
-    let lastTargetScene = selectedLightSceneRef.current;
+    let currentPairFloat = selectedSceneRef.current !== null ? Number(selectedSceneRef.current) % 4 : 0;
 
     const render = (now) => {
       const dt = Math.min(0.1, Math.max(0, (now - lastTime) * 0.001));
@@ -305,44 +283,34 @@ export default function WebbDeepFieldCanvas({
         resize();
         elapsed += dt;
 
-        const isLight = lightModeRef.current;
+        // Exact same morph and pair cadence across both Dark Mode and Light Mode
         const activeMorph =
           morphOverrideRef.current !== null
             ? morphOverrideRef.current
-            : 0.5 - 0.5 * Math.cos(elapsed * (isLight ? 0.36 : 0.65));
+            : 0.5 - 0.5 * Math.cos(elapsed * 0.65);
 
-        if (isLight) {
-          let activePairIdx = 0;
-          if (selectedLightSceneRef.current !== null) {
-            const target = Number(selectedLightSceneRef.current) % 12;
-            if (lastTargetScene !== target) {
-              // Smooth direct particle transition from current visible scene to the clicked scene
-              sceneA = sceneMix > 0.5 ? sceneB : sceneA;
-              sceneB = target;
-              sceneMix = 0.0;
-              lastTargetScene = target;
-            }
-            sceneMix = Math.min(1.0, sceneMix + dt * 0.85);
-            activePairIdx = sceneB;
-          } else {
-            lastTargetScene = null;
-            const autoPhase = (elapsed * 0.075) % 12.0;
-            sceneA = Math.floor(autoPhase) % 12;
-            sceneB = (sceneA + 1) % 12;
-            // Hold each scene clearly for 68% of the slot, then smoothly glide to the next over 32%
-            const slotFrac = autoPhase - Math.floor(autoPhase);
-            sceneMix = Math.max(0.0, Math.min(1.0, (slotFrac - 0.68) / 0.32));
-            activePairIdx = sceneMix > 0.5 ? sceneB : sceneA;
+        let activePair = 0;
+        if (selectedSceneRef.current !== null) {
+          const target = Number(selectedSceneRef.current) % 4;
+          // Shortest circular distance on mod 4 ring for smooth glide when user clicks a button
+          let diff = ((target - currentPairFloat + 2.0) % 4.0 + 4.0) % 4.0 - 2.0;
+          currentPairFloat = (currentPairFloat + diff * Math.min(1.0, dt * 3.2) + 4.0) % 4.0;
+          activePair = currentPairFloat;
+        } else {
+          activePair = (elapsed * 0.12) % 4.0;
+          currentPairFloat = activePair;
+        }
+
+        const pairIdx = Math.floor((activePair + 0.5) % 4.0) % 4;
+        if (lastReportedIdxRef.current !== pairIdx) {
+          lastReportedIdxRef.current = pairIdx;
+          setActivePairIdx(pairIdx);
+          if (onActiveSceneChangeRef.current) {
+            onActiveSceneChangeRef.current(pairIdx);
           }
+        }
 
-          if (lastReportedLightRef.current !== activePairIdx) {
-            lastReportedLightRef.current = activePairIdx;
-            setActiveLightIdx(activePairIdx);
-            if (onActiveSceneChangeRef.current) {
-              onActiveSceneChangeRef.current(activePairIdx, true);
-            }
-          }
-
+        if (lightModeRef.current) {
           gl.disable(gl.BLEND);
           gl.useProgram(lightBgProgram);
           gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
@@ -350,7 +318,7 @@ export default function WebbDeepFieldCanvas({
           gl.vertexAttribPointer(lBgPosLoc, 2, gl.FLOAT, false, 0, 0);
           gl.uniform2f(lBgResLoc, canvas.width, canvas.height);
           gl.uniform1f(lBgTimeLoc, elapsed);
-          gl.uniform1f(lBgPairLoc, activePairIdx);
+          gl.uniform1f(lBgPairLoc, activePair);
           gl.uniform1f(lBgMorphLoc, activeMorph);
           gl.drawArrays(gl.TRIANGLES, 0, 6);
 
@@ -363,30 +331,10 @@ export default function WebbDeepFieldCanvas({
           gl.uniform1f(lPtTimeLoc, elapsed);
           gl.uniform2f(lPtResLoc, canvas.width, canvas.height);
           gl.uniform1f(lPtDprLoc, dpr);
-          gl.uniform1f(lPtSceneALoc, sceneA);
-          gl.uniform1f(lPtSceneBLoc, sceneB);
-          gl.uniform1f(lPtSceneMixLoc, sceneMix);
+          gl.uniform1f(lPtPairLoc, activePair);
           gl.uniform1f(lPtMorphLoc, activeMorph);
           gl.drawArrays(gl.POINTS, 0, PARTICLE_COUNT);
         } else {
-          let activePair = 0;
-          let pairIdx = 0;
-          if (selectedDarkSceneRef.current !== null) {
-            pairIdx = Number(selectedDarkSceneRef.current) % 4;
-            activePair = pairIdx;
-          } else {
-            activePair = (elapsed * 0.12) % 4.0;
-            pairIdx = Math.floor(activePair) % 4;
-          }
-
-          if (lastReportedDarkRef.current !== pairIdx) {
-            lastReportedDarkRef.current = pairIdx;
-            setActiveDarkIdx(pairIdx);
-            if (onActiveSceneChangeRef.current) {
-              onActiveSceneChangeRef.current(pairIdx, false);
-            }
-          }
-
           gl.disable(gl.BLEND);
           gl.useProgram(bgProgram);
           gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
@@ -434,14 +382,8 @@ export default function WebbDeepFieldCanvas({
   const currentList = lightMode
     ? LIGHT_ARTWORKS[lang] || LIGHT_ARTWORKS.EN
     : DARK_ARTWORKS[lang] || DARK_ARTWORKS.EN;
-  const activeIdx = lightMode
-    ? selectedLightScene !== null
-      ? Number(selectedLightScene) % 12
-      : activeLightIdx
-    : selectedDarkScene !== null
-    ? Number(selectedDarkScene) % 4
-    : activeDarkIdx;
-  const currentPiece = currentList[activeIdx] || currentList[0];
+  const displayIdx = selectedScene !== null ? Number(selectedScene) % 4 : activePairIdx;
+  const currentPiece = currentList[displayIdx] || currentList[0];
 
   return (
     <div
@@ -450,14 +392,14 @@ export default function WebbDeepFieldCanvas({
         inset: 0,
         width: '100%',
         height: '100%',
-        backgroundColor: lightMode ? '#F6F4EC' : '#000000',
+        backgroundColor: lightMode ? '#DAF3EE' : '#000000',
         overflow: 'hidden',
         transition: 'background-color 0.35s ease',
       }}
     >
       <canvas ref={canvasRef} style={{ width: '100%', height: '100%', display: 'block' }} />
 
-      {/* GALLERY ARTWORK PLACARD (BOTTOM-CENTER) */}
+      {/* GALLERY ARTWORK PLACARD (BOTTOM-CENTER, IDENTICAL TO DARK MODE) */}
       <div
         style={{
           position: 'absolute',
@@ -472,16 +414,16 @@ export default function WebbDeepFieldCanvas({
           textAlign: 'center',
           gap: '0.15rem',
           width: '90%',
-          maxWidth: '680px',
+          maxWidth: '620px',
         }}
       >
         <div
           className="serif-heading"
           style={{
-            fontSize: '0.88rem',
+            fontSize: '0.84rem',
             fontStyle: 'italic',
-            color: lightMode ? 'rgba(20, 32, 26, 0.90)' : 'rgba(255, 255, 255, 0.84)',
-            fontWeight: 600,
+            color: lightMode ? 'rgba(16, 36, 28, 0.86)' : 'rgba(255, 255, 255, 0.78)',
+            fontWeight: 400,
             letterSpacing: '0.01em',
           }}
         >
@@ -490,7 +432,7 @@ export default function WebbDeepFieldCanvas({
         <div
           style={{
             fontSize: '0.68rem',
-            color: lightMode ? 'rgba(40, 58, 48, 0.62)' : 'rgba(255, 255, 255, 0.45)',
+            color: lightMode ? 'rgba(32, 58, 46, 0.56)' : 'rgba(255, 255, 255, 0.38)',
             letterSpacing: '0.03em',
           }}
         >

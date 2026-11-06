@@ -3,30 +3,17 @@ import WebbDeepFieldCanvas, { LIGHT_ARTWORKS, DARK_ARTWORKS } from './WebbDeepFi
 
 export default function HomeStage({ isHome, langCode, t }) {
   const [lightMode, setLightMode] = useState(true);
-  const [selectedLightScene, setSelectedLightScene] = useState(0); // 0..11 or null for auto-rotate
-  const [selectedDarkScene, setSelectedDarkScene] = useState(null); // 0..3 or null for auto-rotate
-  const [liveLightIdx, setLiveLightIdx] = useState(0);
-  const [liveDarkIdx, setLiveDarkIdx] = useState(0);
-  const [morphMode, setMorphMode] = useState('auto'); // 'nature' (0) | 'auto' (null) | 'quant' (1)
+  const [selectedScene, setSelectedScene] = useState(null); // null = continuous auto-rotation identical to Dark Mode
+  const [liveIdx, setLiveIdx] = useState(0);
 
-  const morphOverride =
-    morphMode === 'nature' ? 0.0 : morphMode === 'quant' ? 1.0 : null;
-
-  const lightScenes = LIGHT_ARTWORKS.ES;
-  const darkScenes = DARK_ARTWORKS.ES;
-
-  const handleActiveSceneChange = useCallback((idx, isLight) => {
-    if (isLight) {
-      setLiveLightIdx(idx);
-    } else {
-      setLiveDarkIdx(idx);
-    }
+  const handleActiveSceneChange = useCallback((idx) => {
+    setLiveIdx(idx);
   }, []);
 
-  const currentScenes = lightMode ? lightScenes : darkScenes;
-  const selectedScene = lightMode ? selectedLightScene : selectedDarkScene;
-  const activePlayingIdx =
-    selectedScene !== null ? selectedScene : lightMode ? liveLightIdx : liveDarkIdx;
+  const currentScenes = lightMode
+    ? LIGHT_ARTWORKS[langCode] || LIGHT_ARTWORKS.ES
+    : DARK_ARTWORKS[langCode] || DARK_ARTWORKS.ES;
+  const activePlayingIdx = selectedScene !== null ? selectedScene : liveIdx;
 
   return (
     <div
@@ -37,7 +24,7 @@ export default function HomeStage({ isHome, langCode, t }) {
         width: '100%',
         height: '100%',
         minHeight: 0,
-        backgroundColor: lightMode ? '#F6F4EC' : '#000000',
+        backgroundColor: lightMode ? '#DAF3EE' : '#000000',
         overflow: 'hidden',
         transition: 'background-color 0.35s ease',
       }}
@@ -46,35 +33,33 @@ export default function HomeStage({ isHome, langCode, t }) {
         isPaused={!isHome}
         lang={langCode}
         lightMode={lightMode}
-        selectedLightScene={selectedLightScene}
-        selectedDarkScene={selectedDarkScene}
-        morphOverride={morphOverride}
+        selectedScene={selectedScene}
         onActiveSceneChange={handleActiveSceneChange}
       />
 
-      {/* INTRODUCTORY TEXT POSITIONED OVER THE STAGE */}
+      {/* INTRODUCTORY TEXT POSITIONED OVER THE STAGE (EXACT SAME POSITION AS DARK MODE: top 18.5%) */}
       <div
         style={{
           position: 'absolute',
-          top: '10.5%',
+          top: '18.5%',
           left: '50%',
           transform: 'translateX(-50%)',
           zIndex: 15,
           textAlign: 'center',
           width: '90%',
-          maxWidth: '720px',
+          maxWidth: '700px',
           pointerEvents: 'none',
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.4rem',
+          gap: '0.55rem',
         }}
       >
         <h1
           className="serif-heading"
           style={{
-            fontSize: '1.52rem',
+            fontSize: '1.55rem',
             fontWeight: 600,
-            color: lightMode ? 'rgba(18, 28, 22, 0.94)' : 'rgba(255, 255, 255, 0.94)',
+            color: lightMode ? 'rgba(14, 28, 22, 0.94)' : 'rgba(255, 255, 255, 0.94)',
             letterSpacing: '-0.01em',
             margin: 0,
             transition: 'color 0.3s ease',
@@ -84,9 +69,9 @@ export default function HomeStage({ isHome, langCode, t }) {
         </h1>
         <p
           style={{
-            fontSize: '0.88rem',
-            color: lightMode ? 'rgba(34, 52, 42, 0.72)' : 'rgba(255, 255, 255, 0.68)',
-            lineHeight: 1.5,
+            fontSize: '0.9rem',
+            color: lightMode ? 'rgba(28, 52, 40, 0.74)' : 'rgba(255, 255, 255, 0.68)',
+            lineHeight: 1.6,
             fontWeight: 400,
             margin: 0,
             transition: 'color 0.3s ease',
@@ -96,219 +81,131 @@ export default function HomeStage({ isHome, langCode, t }) {
         </p>
       </div>
 
-      {/* INTERACTIVE CATALOG SELECTOR FOR SPRING/NATURE LIGHT MODE (01..12) VS COSMOS DARK MODE (01..04) */}
+      {/* DISCREET CORNER DOCK (BOTTOM-RIGHT, LEAVING STAGE 100% CLEAN LIKE DARK MODE) */}
       <div
         style={{
           position: 'absolute',
-          top: '21.5%',
-          left: '50%',
-          transform: 'translateX(-50%)',
+          bottom: '0.65rem',
+          right: '1.25rem',
           zIndex: 25,
           display: 'flex',
-          flexDirection: 'column',
           alignItems: 'center',
-          gap: '0.42rem',
-          width: '95%',
-          maxWidth: '980px',
-          pointerEvents: 'auto',
+          gap: '0.28rem',
+          padding: '0.22rem 0.42rem',
+          borderRadius: '999px',
+          background: lightMode ? 'rgba(255, 255, 255, 0.72)' : 'rgba(12, 18, 30, 0.72)',
+          border: lightMode
+            ? '1px solid rgba(16, 85, 55, 0.16)'
+            : '1px solid rgba(255, 255, 255, 0.14)',
+          backdropFilter: 'blur(8px)',
         }}
       >
-        {/* Row 1: Mode Toggle + Morph State Toggle */}
-        <div
+        <button
+          type="button"
+          onClick={() => setLightMode(true)}
           style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.4rem',
-            padding: '0.26rem 0.5rem',
+            padding: '0.18rem 0.52rem',
             borderRadius: '999px',
-            background: lightMode
-              ? 'rgba(255, 255, 255, 0.84)'
-              : 'rgba(12, 18, 30, 0.84)',
-            border: lightMode
-              ? '1px solid rgba(16, 85, 55, 0.18)'
-              : '1px solid rgba(255, 255, 255, 0.16)',
-            boxShadow: lightMode
-              ? '0 4px 18px rgba(20, 40, 30, 0.08)'
-              : '0 4px 18px rgba(0, 0, 0, 0.45)',
-            backdropFilter: 'blur(10px)',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '0.68rem',
+            fontWeight: 700,
+            background: lightMode ? '#0d6e4f' : 'transparent',
+            color: lightMode ? '#ffffff' : 'rgba(226, 232, 240, 0.72)',
           }}
         >
-          <button
-            type="button"
-            onClick={() => setLightMode(true)}
-            style={{
-              padding: '0.24rem 0.68rem',
-              borderRadius: '999px',
-              border: 'none',
-              cursor: 'pointer',
-              fontSize: '0.73rem',
-              fontWeight: 700,
-              background: lightMode ? '#0d6e4f' : 'transparent',
-              color: lightMode ? '#ffffff' : 'rgba(226, 232, 240, 0.78)',
-              transition: 'all 0.15s ease',
-            }}
-          >
-            ☀ Claro: 12 Propuestas (01–12)
-          </button>
-          <button
-            type="button"
-            onClick={() => setLightMode(false)}
-            style={{
-              padding: '0.24rem 0.68rem',
-              borderRadius: '999px',
-              border: 'none',
-              cursor: 'pointer',
-              fontSize: '0.73rem',
-              fontWeight: 700,
-              background: !lightMode ? 'var(--ui-accent)' : 'transparent',
-              color: !lightMode ? '#04120c' : 'rgba(30, 45, 38, 0.72)',
-              transition: 'all 0.15s ease',
-            }}
-          >
-            ☾ Oscuro: 4 Cosmos JWST (01–04)
-          </button>
-
-          <span
-            style={{
-              width: '1px',
-              height: '14px',
-              background: lightMode ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.14)',
-              margin: '0 0.15rem',
-            }}
-          />
-
-          {[
-            { id: 'nature', label: lightMode ? '🌿 100% Naturaleza' : '✦ 100% Cosmos' },
-            { id: 'auto', label: '⟷ Morph En Vivo' },
-            { id: 'quant', label: '📐 100% Quant' },
-          ].map((mBtn) => {
-            const active = morphMode === mBtn.id;
-            return (
-              <button
-                key={mBtn.id}
-                type="button"
-                onClick={() => setMorphMode(mBtn.id)}
-                style={{
-                  padding: '0.22rem 0.58rem',
-                  borderRadius: '999px',
-                  border: active
-                    ? lightMode
-                      ? '1px solid #d97706'
-                      : '1px solid var(--ui-accent)'
-                    : '1px solid transparent',
-                  cursor: 'pointer',
-                  fontSize: '0.7rem',
-                  fontWeight: active ? 700 : 500,
-                  background: active
-                    ? lightMode
-                      ? 'rgba(217, 119, 6, 0.14)'
-                      : 'rgba(var(--ui-accent-rgb), 0.18)'
-                    : 'transparent',
-                  color: active
-                    ? lightMode
-                      ? '#92400e'
-                      : 'var(--ui-accent)'
-                    : lightMode
-                    ? 'rgba(30, 45, 38, 0.68)'
-                    : 'rgba(226, 232, 240, 0.68)',
-                }}
-              >
-                {mBtn.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Row 2: Ordinal Numbered Scene Selector (01..12 in Light Mode, 01..04 in Dark Mode) */}
-        <div
+          ☀ Claro
+        </button>
+        <button
+          type="button"
+          onClick={() => setLightMode(false)}
           style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '0.3rem',
-            padding: '0.32rem 0.55rem',
-            borderRadius: '14px',
-            background: lightMode
-              ? 'rgba(255, 255, 255, 0.80)'
-              : 'rgba(12, 18, 30, 0.80)',
-            border: lightMode
-              ? '1px solid rgba(16, 85, 55, 0.15)'
-              : '1px solid rgba(255, 255, 255, 0.14)',
-            boxShadow: lightMode
-              ? '0 4px 16px rgba(20, 40, 30, 0.06)'
-              : '0 4px 16px rgba(0, 0, 0, 0.45)',
-            backdropFilter: 'blur(8px)',
+            padding: '0.18rem 0.52rem',
+            borderRadius: '999px',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '0.68rem',
+            fontWeight: 700,
+            background: !lightMode ? 'var(--ui-accent)' : 'transparent',
+            color: !lightMode ? '#04120c' : 'rgba(24, 42, 34, 0.68)',
           }}
         >
-          {currentScenes.map((sc) => {
-            const isActive = activePlayingIdx === sc.id;
-            return (
-              <button
-                key={sc.id}
-                type="button"
-                onClick={() =>
-                  lightMode ? setSelectedLightScene(sc.id) : setSelectedDarkScene(sc.id)
-                }
-                style={{
-                  padding: '0.21rem 0.52rem',
-                  borderRadius: '999px',
-                  border: isActive
-                    ? lightMode
-                      ? '1px solid #0d6e4f'
-                      : '1px solid var(--ui-accent)'
-                    : lightMode
-                    ? '1px solid rgba(15, 40, 30, 0.12)'
-                    : '1px solid rgba(255, 255, 255, 0.14)',
-                  cursor: 'pointer',
-                  fontSize: '0.68rem',
-                  fontWeight: isActive ? 700 : 500,
-                  background: isActive
-                    ? lightMode
-                      ? '#0d6e4f'
-                      : 'var(--ui-accent)'
-                    : lightMode
-                    ? 'rgba(246, 244, 236, 0.78)'
-                    : 'rgba(255, 255, 255, 0.05)',
-                  color: isActive
-                    ? lightMode
-                      ? '#ffffff'
-                      : '#04120c'
-                    : lightMode
-                    ? 'rgba(24, 42, 34, 0.85)'
-                    : 'rgba(226, 232, 240, 0.82)',
-                  transition: 'all 0.14s ease',
-                }}
-              >
-                {sc.short}
-              </button>
-            );
-          })}
-          <button
-            type="button"
-            onClick={() =>
-              lightMode ? setSelectedLightScene(null) : setSelectedDarkScene(null)
-            }
-            style={{
-              padding: '0.21rem 0.56rem',
-              borderRadius: '999px',
-              border:
-                selectedScene === null
-                  ? '1px solid #d9386a'
-                  : '1px solid rgba(217, 56, 106, 0.30)',
-              cursor: 'pointer',
-              fontSize: '0.68rem',
-              fontWeight: 700,
-              background:
-                selectedScene === null ? '#d9386a' : 'rgba(217, 56, 106, 0.10)',
-              color: selectedScene === null ? '#ffffff' : '#e11d48',
-            }}
-          >
-            {lightMode ? '↻ Rotar las 12' : '↻ Rotar las 4'}
-          </button>
-        </div>
+          ☾ Oscuro
+        </button>
+
+        <span
+          style={{
+            width: '1px',
+            height: '12px',
+            background: lightMode ? 'rgba(0,0,0,0.12)' : 'rgba(255,255,255,0.14)',
+            margin: '0 0.1rem',
+          }}
+        />
+
+        {currentScenes.map((sc) => {
+          const isActive = activePlayingIdx === sc.id;
+          const numLabel = `0${sc.id + 1}`;
+          return (
+            <button
+              key={sc.id}
+              type="button"
+              title={sc.title}
+              onClick={() => setSelectedScene(sc.id)}
+              style={{
+                padding: '0.16rem 0.38rem',
+                borderRadius: '999px',
+                border: isActive
+                  ? lightMode
+                    ? '1px solid #0d6e4f'
+                    : '1px solid var(--ui-accent)'
+                  : '1px solid transparent',
+                cursor: 'pointer',
+                fontSize: '0.66rem',
+                fontWeight: isActive ? 700 : 500,
+                background: isActive
+                  ? lightMode
+                    ? 'rgba(13, 110, 79, 0.14)'
+                    : 'rgba(var(--ui-accent-rgb), 0.18)'
+                  : 'transparent',
+                color: isActive
+                  ? lightMode
+                    ? '#0d6e4f'
+                    : 'var(--ui-accent)'
+                  : lightMode
+                  ? 'rgba(24, 42, 34, 0.68)'
+                  : 'rgba(226, 232, 240, 0.68)',
+              }}
+            >
+              {numLabel}
+            </button>
+          );
+        })}
+        <button
+          type="button"
+          title="Rotación automática continua (01–04)"
+          onClick={() => setSelectedScene(null)}
+          style={{
+            padding: '0.16rem 0.42rem',
+            borderRadius: '999px',
+            border:
+              selectedScene === null
+                ? '1px solid #d9386a'
+                : '1px solid transparent',
+            cursor: 'pointer',
+            fontSize: '0.66rem',
+            fontWeight: 700,
+            background:
+              selectedScene === null ? 'rgba(217, 56, 106, 0.14)' : 'transparent',
+            color:
+              selectedScene === null
+                ? '#be185d'
+                : lightMode
+                ? 'rgba(24, 42, 34, 0.62)'
+                : 'rgba(226, 232, 240, 0.62)',
+          }}
+        >
+          ↻ Auto
+        </button>
       </div>
     </div>
   );
