@@ -127,10 +127,24 @@ export default function App() {
     }
   }, [watchlistSyms]);
 
-  const toggleWatchlist = (sym) => {
-    if (!sym) return;
+  const toggleWatchlist = (symOrList, bulkAction = null) => {
+    if (!symOrList) return;
+    if (Array.isArray(symOrList)) {
+      const targetSyms = symOrList.filter(Boolean);
+      if (targetSyms.length === 0) return;
+      setWatchlistSyms((prev) => {
+        if (bulkAction === 'remove') {
+          const removeSet = new Set(targetSyms);
+          return prev.filter((s) => !removeSet.has(s));
+        }
+        const existingSet = new Set(prev);
+        const toAdd = targetSyms.filter((s) => !existingSet.has(s));
+        return [...toAdd, ...prev];
+      });
+      return;
+    }
     setWatchlistSyms((prev) =>
-      prev.includes(sym) ? prev.filter((s) => s !== sym) : [sym, ...prev]
+      prev.includes(symOrList) ? prev.filter((s) => s !== symOrList) : [symOrList, ...prev]
     );
   };
   const [devIconId, setDevIconId] = useState('lambda08-h-chiseled-nib');

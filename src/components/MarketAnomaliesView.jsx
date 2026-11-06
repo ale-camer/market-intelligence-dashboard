@@ -511,14 +511,262 @@ export default function MarketAnomaliesView({
     });
   }, [langCode]);
 
-  // 1. Filter by Asset Category or User Watchlist
-  const categoryFilteredCatalog = useMemo(() => {
-    if (categoryFilter === 'ALL') return enrichedCatalog;
-    if (categoryFilter === 'WATCHLIST') {
-      return enrichedCatalog.filter((a) => watchlistSyms.includes(a.sym));
+  // 1. Filter by Asset Category or User Watchlist + Second-Row Trait Filter (Phase 4)
+  const [traitFilter, setTraitFilter] = useState('ALL');
+
+  const GENERAL_TRAIT_FILTERS = useMemo(
+    () => [
+      { id: 'ALL', label: tx('Todos', 'All'), match: () => true },
+      { id: 'UP_TODAY', label: tx('Suben Hoy (>0%)', 'Up Today (>0%)'), match: (a) => a.chgNum > 0 },
+      { id: 'DOWN_TODAY', label: tx('Bajan Hoy (<0%)', 'Down Today (<0%)'), match: (a) => a.chgNum < 0 },
+      {
+        id: 'RSI_BULL',
+        label: tx('Impulso Comprador (RSI > 60)', 'Bull Momentum (RSI > 60)'),
+        match: (a) => (a.indicators?.rsi14 ?? 50) >= 58,
+      },
+      {
+        id: 'RSI_OVERSOLD',
+        label: tx('Sobreventa (RSI < 40)', 'Oversold (RSI < 40)'),
+        match: (a) => (a.indicators?.rsi14 ?? 50) <= 49,
+      },
+      {
+        id: 'VOL_UNUSUAL',
+        label: tx('Volumen Inusual (Z > 1.5σ)', 'Unusual Volume (Z > 1.5σ)'),
+        match: (a) => a.volumeZNum >= 1.2,
+      },
+      {
+        id: 'NORMAL_P06',
+        label: tx('Movimiento Normal (P-06)', 'Normal Move (P-06)'),
+        match: (a) => a.regime === 'NORMAL',
+      },
+      {
+        id: 'ATYPICAL_P06',
+        label: tx('Atípico / Anomalía (P-06)', 'Atypical / Anomaly (P-06)'),
+        match: (a) => a.regime !== 'NORMAL' || a.anomalyScore >= 0.35,
+      },
+    ],
+    [isES]
+  );
+
+  const CATEGORY_SPECIFIC_TRAITS = useMemo(
+    () => ({
+      EQUITY: [
+        {
+          id: 'EQ_TECH',
+          label: tx('Mega-Cap & Tech', 'Mega-Cap & Tech'),
+          match: (a) =>
+            [
+              'NVDA', 'AAPL', 'MSFT', 'AMZN', 'GOOGL', 'TSLA', 'META',
+              'AMD', 'AVGO', 'PLTR', 'NFLX', 'MU', 'ORCL', 'CRM', 'QCOM',
+              'INTC', 'AMAT', 'PANW',
+            ].includes(a.sym),
+        },
+        {
+          id: 'EQ_FIN_IND',
+          label: tx('Finanzas & Industria', 'Finance & Industrials'),
+          match: (a) => ['BRK.B', 'JPM', 'V', 'MA', 'GS', 'BAC', 'XOM', 'CVX'].includes(a.sym),
+        },
+        {
+          id: 'EQ_CONS_HEALTH',
+          label: tx('Consumo & Salud', 'Consumer & Healthcare'),
+          match: (a) => ['LLY', 'COST', 'UNH', 'WMT', 'HD', 'PG', 'ISRG'].includes(a.sym),
+        },
+        {
+          id: 'EQ_GLOBAL',
+          label: tx('ADRs & Global', 'ADRs & Global'),
+          match: (a) => ['NVDA', 'AVGO', 'AMD', 'MU', 'QCOM', 'INTC', 'AMAT', 'ORCL', 'PANW'].includes(a.sym),
+        },
+      ],
+      FX: [
+        {
+          id: 'FX_G10',
+          label: tx('G10 Majors', 'G10 Majors'),
+          match: (a) =>
+            ['DXY', 'EUR/USD', 'USD/JPY', 'GBP/USD', 'USD/CHF', 'AUD/USD', 'USD/CAD', 'NZD/USD', 'USD/SEK', 'USD/NOK'].includes(a.sym),
+        },
+        {
+          id: 'FX_EM_LATAM',
+          label: tx('Emergentes & LatAm', 'Emerging & LatAm'),
+          match: (a) =>
+            ['USD/MXN', 'USD/BRL', 'USD/ARS', 'USD/CLP', 'USD/COP', 'USD/ZAR', 'USD/TRY', 'USD/PLN'].includes(a.sym),
+        },
+        {
+          id: 'FX_ASIA',
+          label: tx('Divisas Asiáticas', 'Asian Currencies'),
+          match: (a) => ['USD/CNH', 'USD/JPY', 'USD/INR', 'USD/SGD', 'USD/KRW'].includes(a.sym),
+        },
+      ],
+      RATES: [
+        {
+          id: 'RATES_SHORT',
+          label: tx('Corto Plazo (≤2Y)', 'Short Term (≤2Y)'),
+          match: (a) => ['US2Y'].includes(a.sym),
+        },
+        {
+          id: 'RATES_MID',
+          label: tx('Tramo Medio (5Y–10Y)', 'Mid Curve (5Y–10Y)'),
+          match: (a) => !['US2Y', 'US30Y'].includes(a.sym),
+        },
+        {
+          id: 'RATES_LONG',
+          label: tx('Largo Plazo (20Y–30Y)', 'Long End (20Y–30Y)'),
+          match: (a) => ['US30Y'].includes(a.sym),
+        },
+      ],
+      FIXED_INCOME: [
+        {
+          id: 'FI_SHORT',
+          label: tx('Corto Plazo (≤2Y)', 'Short Term (≤2Y)'),
+          match: (a) => ['UST-2Y', 'UST-3Y'].includes(a.sym),
+        },
+        {
+          id: 'FI_MID',
+          label: tx('Tramo Medio (5Y–10Y)', 'Mid Curve (5Y–10Y)'),
+          match: (a) => ['UST-5Y', 'UST-7Y', 'UST-10Y', 'UST-5Y-TIPS', 'UST-10Y-TIPS'].includes(a.sym),
+        },
+        {
+          id: 'FI_LONG',
+          label: tx('Largo Plazo (20Y–30Y)', 'Long End (20Y–30Y)'),
+          match: (a) => ['UST-20Y', 'UST-30Y'].includes(a.sym),
+        },
+      ],
+      CRYPTO: [
+        {
+          id: 'CRYPTO_MAJORS',
+          label: tx('Layer 1 Majors (BTC/ETH/SOL)', 'Layer 1 Majors (BTC/ETH/SOL)'),
+          match: (a) => ['BTC', 'ETH', 'SOL', 'BNB', 'XRP', 'ADA'].includes(a.sym),
+        },
+        {
+          id: 'CRYPTO_DEFI',
+          label: tx('DeFi & Infraestructura', 'DeFi & Infrastructure'),
+          match: (a) => ['LINK', 'UNI', 'AAVE', 'DOT', 'NEAR', 'AVAX', 'SUI', 'TRX'].includes(a.sym),
+        },
+        {
+          id: 'CRYPTO_HIGH_VOL',
+          label: tx('Alta Volatilidad', 'High Volatility'),
+          match: (a) => ['SOL', 'DOGE', 'SUI', 'AVAX', 'AAVE', 'NEAR'].includes(a.sym),
+        },
+      ],
+      COMMODITY: [
+        {
+          id: 'COMM_PRECIOUS',
+          label: tx('Metales Preciosos', 'Precious Metals'),
+          match: (a) => ['GC', 'SI', 'PL', 'PA'].includes(a.sym),
+        },
+        {
+          id: 'COMM_ENERGY',
+          label: tx('Energía (Petróleo/Gas)', 'Energy (Crude/NatGas)'),
+          match: (a) => ['CL', 'BZ', 'NG', 'TTF', 'RB', 'HO', 'UX'].includes(a.sym),
+        },
+        {
+          id: 'COMM_IND_AGRO',
+          label: tx('Industriales & Agro', 'Industrials & Agriculture'),
+          match: (a) =>
+            ['HG', 'ALI', 'NICKEL', 'ZINC', 'LITH', 'TIO', 'ZS', 'ZC', 'ZW', 'ZM', 'ZL', 'KC', 'CC', 'SB', 'CT'].includes(a.sym),
+        },
+      ],
+      INDEX: [
+        {
+          id: 'IDX_BROAD',
+          label: tx('Índices Amplios (SPX/NDX)', 'Broad Indices (SPX/NDX)'),
+          match: (a) => ['SPX', 'NDX', 'DJI', 'RUT', 'SX5E', 'DAX', 'UKX', 'NKY', 'TPX'].includes(a.sym),
+        },
+        {
+          id: 'IDX_SECTOR',
+          label: tx('Sectoriales & Temáticos', 'Sector & Thematic'),
+          match: (a) => ['SOX', 'NYFANG', 'TWII', 'KOSPI'].includes(a.sym),
+        },
+        {
+          id: 'IDX_EM',
+          label: tx('Emergentes & Regionales', 'Emerging & Regional'),
+          match: (a) => ['HSI', 'SHCOMP', 'CSI300', 'AS51', 'NIFTY', 'IBOV', 'MEXBOL', 'MERVAL', 'CAC', 'SMI', 'IBEX', 'FTSEMIB'].includes(a.sym),
+        },
+      ],
+      ETF: [
+        {
+          id: 'ETF_BROAD',
+          label: tx('Índices Amplios (SPX/NDX)', 'Broad Indices (SPX/NDX)'),
+          match: (a) => ['SPY', 'QQQ', 'IWM', 'VOO', 'IVV', 'VTI', 'DIA', 'RSP', 'EEM', 'FXI', 'EWJ', 'EWZ'].includes(a.sym),
+        },
+        {
+          id: 'ETF_SECTOR',
+          label: tx('Sectoriales & Temáticos', 'Sector & Thematic'),
+          match: (a) =>
+            ['SMH', 'SOXX', 'XLK', 'XLF', 'XLE', 'XLV', 'XLI', 'XLY', 'XLP', 'XLU', 'XLC', 'XLB', 'XLRE', 'ARKK'].includes(a.sym),
+        },
+        {
+          id: 'ETF_FI_VOL',
+          label: tx('Renta Fija & Volatilidad', 'Fixed Income & Volatility'),
+          match: (a) => ['TLT', 'HYG', 'LQD', 'IEF', 'SHY', 'GLD', 'SLV', 'USO'].includes(a.sym),
+        },
+      ],
+      DERIVATIVES_VOL: [
+        {
+          id: 'DERIV_BROAD',
+          label: tx('Índices Amplios (SPX/NDX)', 'Broad Indices (SPX/NDX)'),
+          match: (a) => ['VIX', 'VXN', 'ES', 'NQ', 'SPY-OPT', 'QQQ-OPT'].includes(a.sym),
+        },
+        {
+          id: 'DERIV_SECTOR',
+          label: tx('Sectoriales & Temáticos', 'Sector & Thematic'),
+          match: (a) => ['NVDA-OPT', 'TSLA-OPT', 'AAPL-OPT', 'AMD-OPT', 'GVZ', 'OVX'].includes(a.sym),
+        },
+        {
+          id: 'DERIV_FI_VOL',
+          label: tx('Renta Fija & Volatilidad', 'Fixed Income & Volatility'),
+          match: (a) => ['MOVE', 'V2X', 'ZN', 'ZB', 'SR3'].includes(a.sym),
+        },
+      ],
+      CASH: [
+        {
+          id: 'CASH_OVERNIGHT',
+          label: tx('Overnight (SOFR/EFFR)', 'Overnight (SOFR/EFFR)'),
+          match: (a) => ['SOFR', 'EFFR', 'ESTR', 'SONIA', 'TONAR', 'FED-RRP'].includes(a.sym),
+        },
+        {
+          id: 'CASH_TBILLS',
+          label: tx('Corto Plazo (T-Bills)', 'Short-Term (T-Bills)'),
+          match: (a) => ['UST-1M-BILL', 'UST-3M-BILL', 'UST-6M-BILL', 'SGOV', 'BIL'].includes(a.sym),
+        },
+        {
+          id: 'CASH_PEGS',
+          label: tx('Liquidez Digital (USD)', 'Digital Liquidity (USD)'),
+          match: (a) => ['USDT', 'USDC'].includes(a.sym),
+        },
+      ],
+    }),
+    [isES]
+  );
+
+  const activeCategoryTraits = useMemo(
+    () => CATEGORY_SPECIFIC_TRAITS[categoryFilter] || [],
+    [CATEGORY_SPECIFIC_TRAITS, categoryFilter]
+  );
+
+  const availableTraitFilters = useMemo(
+    () => [...GENERAL_TRAIT_FILTERS, ...activeCategoryTraits],
+    [GENERAL_TRAIT_FILTERS, activeCategoryTraits]
+  );
+
+  useEffect(() => {
+    if (!availableTraitFilters.some((tf) => tf.id === traitFilter)) {
+      setTraitFilter('ALL');
     }
-    return enrichedCatalog.filter((a) => a.cat === categoryFilter);
-  }, [enrichedCatalog, categoryFilter, watchlistSyms]);
+  }, [categoryFilter, availableTraitFilters, traitFilter]);
+
+  const categoryFilteredCatalog = useMemo(() => {
+    let base = enrichedCatalog;
+    if (categoryFilter === 'WATCHLIST') {
+      base = enrichedCatalog.filter((a) => watchlistSyms.includes(a.sym));
+    } else if (categoryFilter !== 'ALL') {
+      base = enrichedCatalog.filter((a) => a.cat === categoryFilter);
+    }
+    const activeTraitObj = availableTraitFilters.find((tf) => tf.id === traitFilter);
+    if (activeTraitObj && activeTraitObj.id !== 'ALL') {
+      return base.filter(activeTraitObj.match);
+    }
+    return base;
+  }, [enrichedCatalog, categoryFilter, watchlistSyms, availableTraitFilters, traitFilter]);
 
   // 2. Aggregated Level 1 Pulse Metrics (dynamic per active asset class)
   const pulseMetrics = useMemo(() => {
@@ -2002,6 +2250,153 @@ export default function MarketAnomaliesView({
             })}
           </div>
         </div>
+
+        {/* 1.0b SECOND-ROW TRAIT FILTER MENU + 1-CLICK BULK WATCHLIST ACTION (PHASE 4: PASOS 4.1 & 4.2) */}
+        {(() => {
+          const allFilteredStarred =
+            screenerRows.length > 0 && screenerRows.every((r) => watchlistSyms.includes(r.sym));
+          return (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '0.6rem',
+                flexWrap: 'wrap',
+                padding: '0.28rem 0.55rem',
+                borderRadius: '8px',
+                background: 'rgba(15, 23, 42, 0.42)',
+                border: '1px solid rgba(148, 163, 184, 0.14)',
+              }}
+            >
+              {/* LEFT/CENTER: GENERAL TRAITS + DYNAMIC ASSET-CLASS SPECIFIC TRAITS */}
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '0.32rem',
+                }}
+              >
+                {GENERAL_TRAIT_FILTERS.map((tf) => {
+                  const active = traitFilter === tf.id;
+                  return (
+                    <button
+                      key={tf.id}
+                      type="button"
+                      onClick={() => setTraitFilter(tf.id)}
+                      style={{
+                        fontSize: '0.69rem',
+                        fontWeight: active ? 800 : 600,
+                        padding: '0.18rem 0.48rem',
+                        borderRadius: '999px',
+                        border: active
+                          ? '1px solid rgba(var(--ui-accent-rgb), 0.55)'
+                          : '1px solid transparent',
+                        background: active ? 'rgba(var(--ui-accent-rgb), 0.15)' : 'transparent',
+                        color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.78)',
+                        textShadow: active ? '0 0 10px rgba(var(--ui-accent-rgb), 0.65)' : 'none',
+                        cursor: 'pointer',
+                        transition: 'all 0.15s ease',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {tf.label}
+                    </button>
+                  );
+                })}
+
+                {activeCategoryTraits.length > 0 && (
+                  <>
+                    <span
+                      style={{
+                        color: 'rgba(148, 163, 184, 0.32)',
+                        fontSize: '0.72rem',
+                        margin: '0 0.15rem',
+                        userSelect: 'none',
+                      }}
+                    >
+                      |
+                    </span>
+                    {activeCategoryTraits.map((tf) => {
+                      const active = traitFilter === tf.id;
+                      return (
+                        <button
+                          key={tf.id}
+                          type="button"
+                          onClick={() => setTraitFilter(tf.id)}
+                          style={{
+                            fontSize: '0.69rem',
+                            fontWeight: active ? 800 : 700,
+                            padding: '0.18rem 0.52rem',
+                            borderRadius: '999px',
+                            border: active
+                              ? '1px solid rgba(56, 189, 248, 0.65)'
+                              : '1px solid rgba(56, 189, 248, 0.22)',
+                            background: active
+                              ? 'rgba(56, 189, 248, 0.18)'
+                              : 'rgba(56, 189, 248, 0.05)',
+                            color: active ? '#38bdf8' : '#BAE6FD',
+                            textShadow: active ? '0 0 10px rgba(56, 189, 248, 0.55)' : 'none',
+                            cursor: 'pointer',
+                            transition: 'all 0.15s ease',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          {tf.label}
+                        </button>
+                      );
+                    })}
+                  </>
+                )}
+              </div>
+
+              {/* RIGHT: 1-CLICK BULK WATCHLIST BUTTON (PASO 4.2) */}
+              <button
+                type="button"
+                disabled={screenerRows.length === 0}
+                onClick={() => {
+                  if (!onToggleWatchlist || screenerRows.length === 0) return;
+                  const syms = screenerRows.map((r) => r.sym);
+                  onToggleWatchlist(syms, allFilteredStarred ? 'remove' : 'add');
+                }}
+                style={{
+                  marginLeft: 'auto',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  fontSize: '0.69rem',
+                  fontWeight: 800,
+                  fontFamily: 'var(--font-mono)',
+                  padding: '0.22rem 0.65rem',
+                  borderRadius: '999px',
+                  border: allFilteredStarred
+                    ? '1px solid rgba(244, 63, 94, 0.45)'
+                    : '1px solid rgba(251, 191, 36, 0.55)',
+                  background: allFilteredStarred
+                    ? 'rgba(244, 63, 94, 0.12)'
+                    : 'rgba(251, 191, 36, 0.12)',
+                  color: allFilteredStarred ? '#fda4af' : '#fbbf24',
+                  cursor: screenerRows.length === 0 ? 'not-allowed' : 'pointer',
+                  opacity: screenerRows.length === 0 ? 0.45 : 1,
+                  transition: 'all 0.15s ease',
+                  whiteSpace: 'nowrap',
+                  flexShrink: 0,
+                }}
+              >
+                {allFilteredStarred
+                  ? tx(
+                      `☆ Quitar estrella a los ${screenerRows.length} filtrados`,
+                      `☆ Unstar ${screenerRows.length} filtered`
+                    )
+                  : tx(
+                      `★ Sumar los ${screenerRows.length} filtrados a Watchlist`,
+                      `★ Add ${screenerRows.length} filtered to Watchlist`
+                    )}
+              </button>
+            </div>
+          );
+        })()}
 
         {/* SUB-BAR CENTERED RIGHT UNDER ASSET CLASS ITEMS IN V010 GHOST STYLE */}
         {marketsToolsMode === 'v5-under-cats' && (
