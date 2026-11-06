@@ -32,74 +32,75 @@ import {
    FILA 1: CABECERA DE 6 PÍLDORAS DE RESUMEN REACTIVAS
    ─────────────────────────────────────────────────────────────────────────── */
 function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
-    const activeList = holdings.filter(h => h.enabled !== false);
-    const varDollar = Math.round(Math.abs(Number(liveMetrics.var95Pct || 0)) * 1000).toLocaleString();
-    const cvarDollar = Math.round(Math.abs(Number(liveMetrics.cvar99Pct || 0)) * 1000).toLocaleString();
-    const sharpeNum = Number(liveMetrics.sharpeRatio || 0);
-    const enbNum = Number(liveMetrics.enb || 0);
+    const activeList = holdings.filter(h => h.enabled !== false && Number(h.weight) > 0);
+    const isEmpty = activeList.length === 0;
+    const varDollar = isEmpty ? '0' : Math.round(Math.abs(Number(liveMetrics.var95Pct || 0)) * 1000).toLocaleString();
+    const cvarDollar = isEmpty ? '0' : Math.round(Math.abs(Number(liveMetrics.cvar99Pct || 0)) * 1000).toLocaleString();
+    const sharpeNum = isEmpty ? 0 : Number(liveMetrics.sharpeRatio || 0);
+    const enbNum = isEmpty ? 0 : Number(liveMetrics.enb || 0);
 
     const pills = [
         {
             lbl: tx('RETORNO ANUAL (CAGR)', 'ANNUAL RETURN (CAGR)'),
-            val: `${liveMetrics.cagrPct >= 0 ? '+' : ''}${liveMetrics.cagrPct}%`,
+            val: isEmpty ? '0.0%' : `${liveMetrics.cagrPct >= 0 ? '+' : ''}${liveMetrics.cagrPct}%`,
             sub: tx('vs +16.5% SPX • Ganancia est.', 'vs +16.5% SPX • Est. gain'),
-            col: liveMetrics.cagrPct >= 0 ? '#10b981' : '#f43f5e'
+            col: isEmpty ? '#64748b' : liveMetrics.cagrPct >= 0 ? '#10b981' : '#f43f5e'
         },
         {
             lbl: 'SHARPE / SORTINO',
-            val: `${liveMetrics.sharpeRatio} / ${liveMetrics.sortinoRatio}`,
+            val: isEmpty ? '0.00 / 0.00' : `${liveMetrics.sharpeRatio} / ${liveMetrics.sortinoRatio}`,
             sub: txTpl(
                 'Vol. σ: {0}% • {1}',
                 [
-                    liveMetrics.portfolioVolPct,
-                    sharpeNum >= 1.5 ? 'Excelente (>1.5)' : sharpeNum >= 1.0 ? 'Sólido (>1.0)' : 'Moderado (<1.0)'
+                    isEmpty ? '0.0' : liveMetrics.portfolioVolPct,
+                    isEmpty ? 'Sin activos' : sharpeNum >= 1.5 ? 'Excelente (>1.5)' : sharpeNum >= 1.0 ? 'Sólido (>1.0)' : 'Moderado (<1.0)'
                 ],
                 'Vol. σ: {0}% • {1}',
                 [
-                    liveMetrics.portfolioVolPct,
-                    sharpeNum >= 1.5 ? 'Strong (>1.5)' : sharpeNum >= 1.0 ? 'Solid (>1.0)' : 'Moderate (<1.0)'
+                    isEmpty ? '0.0' : liveMetrics.portfolioVolPct,
+                    isEmpty ? 'No holdings' : sharpeNum >= 1.5 ? 'Strong (>1.5)' : sharpeNum >= 1.0 ? 'Solid (>1.0)' : 'Moderate (<1.0)'
                 ]
             ),
-            col: '#10b981'
+            col: isEmpty ? '#64748b' : '#10b981'
         },
         {
             lbl: 'VaR 95% / CVaR 99% (1D)',
-            val: `${liveMetrics.var95Pct}% / ${liveMetrics.cvar99Pct}%`,
+            val: isEmpty ? '0.0% / 0.0%' : `${liveMetrics.var95Pct}% / ${liveMetrics.cvar99Pct}%`,
             sub: txTpl(
                 'Día: -${0} • Extremo: -${1}',
                 [varDollar, cvarDollar],
                 'Day: -${0} • Tail: -${1}',
                 [varDollar, cvarDollar]
             ),
-            col: '#f43f5e'
+            col: isEmpty ? '#64748b' : '#f43f5e'
         },
         {
             lbl: 'MAX DRAWDOWN (12M)',
-            val: `${liveMetrics.maxDrawdownPct}%`,
+            val: isEmpty ? '0.0%' : `${liveMetrics.maxDrawdownPct}%`,
             sub: tx('Caída máx. • Recup.: ~14 días', 'Max drop • Recovery: ~14d'),
-            col: '#f43f5e'
+            col: isEmpty ? '#64748b' : '#f43f5e'
         },
         {
             lbl: 'ALPHA BRINSON (12M)',
-            val: `${liveMetrics.brinsonAlphaPct >= 0 ? '+' : ''}${liveMetrics.brinsonAlphaPct}%`,
+            val: isEmpty ? '0.0%' : `${liveMetrics.brinsonAlphaPct >= 0 ? '+' : ''}${liveMetrics.brinsonAlphaPct}%`,
             sub: txTpl(
                 'Ventaja vs SPX • Beta: {0}',
-                [liveMetrics.portfolioBeta],
+                [isEmpty ? '0.00' : liveMetrics.portfolioBeta],
                 'Edge vs SPX • Beta: {0}',
-                [liveMetrics.portfolioBeta]
+                [isEmpty ? '0.00' : liveMetrics.portfolioBeta]
             ),
-            col: liveMetrics.brinsonAlphaPct >= 0 ? '#10b981' : '#f43f5e'
+            col: isEmpty ? '#64748b' : liveMetrics.brinsonAlphaPct >= 0 ? '#10b981' : '#f43f5e'
         },
         {
             lbl: tx('ACTIVOS SELECCIONADOS', 'SELECTED ASSETS'),
             val: `${activeList.length} / ${holdings.length}`,
             sub: txTpl(
                 'ENB: {0} • {1}',
-                [liveMetrics.enb, enbNum >= 3.5 ? 'Diversificada' : 'Concentrada'],
+                [isEmpty ? '0.0' : liveMetrics.enb, isEmpty ? 'Vacía' : enbNum >= 3.5 ? 'Diversificada' : 'Concentrada'],
                 'ENB: {0} • {1}',
-                [liveMetrics.enb, enbNum >= 3.5 ? 'Diversified' : 'Concentrated']
+                [isEmpty ? '0.0' : liveMetrics.enb, isEmpty ? 'Empty' : enbNum >= 3.5 ? 'Diversified' : 'Concentrated']
             ),
-            col: '#10b981'
+            col: isEmpty ? '#64748b' : '#10b981'
         }
     ];
 
@@ -174,7 +175,6 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
     };
 
     const removeAsset = (sym) => {
-        if (holdings.length <= 1) return;
         setHoldings(prev => prev.filter(h => h.sym !== sym));
         if (onToggleWatchlist && watchlistSyms.includes(sym)) {
             onToggleWatchlist(sym);
@@ -207,24 +207,27 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
     };
 
     const applyPreset = (presetId) => {
+        let nextPreset = INITIAL_HOLDINGS;
         if (presetId === 'CONSERVATIVE') {
-            setHoldings([
+            nextPreset = [
                 { sym: 'TLT', name: 'iShares 20+ Yr Treasury', cat: 'Fixed Income', weight: 30, enabled: true },
                 { sym: 'GLD', name: 'SPDR Gold Trust', cat: 'Commodities', weight: 25, enabled: true },
                 { sym: 'SPY', name: 'SPDR S&P 500 ETF', cat: 'Equities', weight: 25, enabled: true },
                 { sym: 'MSFT', name: 'Microsoft Corp.', cat: 'Equities', weight: 12, enabled: true },
                 { sym: 'AAPL', name: 'Apple Inc.', cat: 'Equities', weight: 8, enabled: true }
-            ]);
+            ];
         } else if (presetId === 'QUANT') {
-            setHoldings([
+            nextPreset = [
                 { sym: 'NVDA', name: 'NVIDIA Corp.', cat: 'Equities', weight: 28, enabled: true },
                 { sym: 'BTC', name: 'Bitcoin', cat: 'Crypto', weight: 22, enabled: true },
                 { sym: 'QQQ', name: 'Invesco QQQ Trust', cat: 'Equities', weight: 20, enabled: true },
                 { sym: 'MSFT', name: 'Microsoft Corp.', cat: 'Equities', weight: 15, enabled: true },
                 { sym: 'SOL', name: 'Solana', cat: 'Crypto', weight: 15, enabled: true }
-            ]);
-        } else {
-            setHoldings(INITIAL_HOLDINGS);
+            ];
+        }
+        setHoldings(nextPreset);
+        if (onToggleWatchlist) {
+            onToggleWatchlist(nextPreset.map(h => h.sym), 'set');
         }
     };
 
@@ -542,6 +545,22 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                     </div>
 
                     <div style={{ maxHeight: '350px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '4.5px', paddingRight: '2px' }}>
+                        {holdings.length === 0 ? (
+                            <div
+                                style={{
+                                    padding: '28px 14px',
+                                    textAlign: 'center',
+                                    fontSize: '12.5px',
+                                    color: '#94a3b8',
+                                    borderBottom: '1px solid rgba(148, 163, 184, 0.10)'
+                                }}
+                            >
+                                {tx(
+                                    'No hay activos en tu cartera (Watchlist en 0). Sumá activos desde el buscador de arriba, elegí un Preset (Conservadora / Balanceada / Quant) o marcalos con ★ en Markets.',
+                                    'No assets in your portfolio (Watchlist is 0). Add assets using the search bar above, choose a Preset (Conservative / Balanced / Quant), or star (★) them in Markets.'
+                                )}
+                            </div>
+                        ) : null}
                         {holdings.map(h => {
                             const isOn = h.enabled !== false;
                             const inWatch = watchlistSyms.includes(h.sym);

@@ -40,9 +40,9 @@ export default function AgentCommitteeView({
     const [holdings, setHoldings] = useState(() => {
         try {
             const raw = localStorage.getItem(PORTFOLIO_STORAGE_KEY);
-            if (raw) {
+            if (raw !== null) {
                 const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed) && parsed.length > 0) {
+                if (Array.isArray(parsed)) {
                     return parsed.map(h => ({
                         ...h,
                         sym: h.sym === 'BTC-USD' ? 'BTC' : h.sym === 'SOL-USD' ? 'SOL' : h.sym
@@ -57,7 +57,11 @@ export default function AgentCommitteeView({
 
     // Synchronize starred Watchlist symbols (`watchlistSyms`) directly into Portfolio Holdings (`holdings`)
     useEffect(() => {
-        if (!Array.isArray(watchlistSyms) || watchlistSyms.length === 0) return;
+        if (!Array.isArray(watchlistSyms)) return;
+        if (watchlistSyms.length === 0) {
+            setHoldings([]);
+            return;
+        }
         setHoldings(prev => {
             const prevMap = new Map(
                 prev.map(h => {

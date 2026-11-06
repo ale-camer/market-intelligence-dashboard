@@ -109,9 +109,9 @@ export default function App() {
   const [watchlistSyms, setWatchlistSyms] = useState(() => {
     try {
       const saved = window.localStorage.getItem('mid_watchlist_v1');
-      if (saved) {
+      if (saved !== null) {
         const parsed = JSON.parse(saved);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+        if (Array.isArray(parsed)) return parsed;
       }
     } catch {
       // ignore storage errors
@@ -131,6 +131,10 @@ export default function App() {
     if (!symOrList) return;
     if (Array.isArray(symOrList)) {
       const targetSyms = symOrList.filter(Boolean);
+      if (bulkAction === 'set') {
+        setWatchlistSyms(targetSyms);
+        return;
+      }
       if (targetSyms.length === 0) return;
       setWatchlistSyms((prev) => {
         if (bulkAction === 'remove') {
