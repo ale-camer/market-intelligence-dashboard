@@ -52,8 +52,13 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
 - [ ] **Paso 1.3 — Vista `Home` ([`src/components/HomeStage.jsx`](../src/components/HomeStage.jsx)) y Navegación (`HeaderBar`/`FooterBar`):**
   - **Objetivo:** Aplicar el nuevo subtítulo acordado y validar la estética ultra-simple de los tooltips de navegación.
 
-- [ ] **Paso 1.4 — Vista `Guide` ([`src/components/UserGuideView.jsx`](../src/components/UserGuideView.jsx)):**
-  - **Objetivo:** Incorporar el bloque **"¿Qué buscás?"** con links directos por perfil en la portada de `Guide`, manteniendo toda la matemática pesada de **Quant** y el detalle de **IT** dentro de los botones `Deep Dive`.
+- [x] **Paso 1.4 — Vista `Guide` ([`src/components/UserGuideView.jsx`](../src/components/UserGuideView.jsx)):**
+  - **Objetivo:** Incorporar el bloque **"¿Qué buscás hoy? Elegí tu punto de partida:"** justo debajo de los 2 párrafos introductorios de `Guide > Home`, con tono en primera persona y doble link directo (al capítulo de la Guía y a la pantalla en vivo de la app):
+    1. **Curioso / Aprendiz:** *"Quiero entender desde cero cómo se mueven los mercados y qué significa cada indicador sin chocar con jerga compleja."* → `[Ver capítulo Mercados en esta Guía →]` · `[Explorar el Radar Visual en vivo (Markets) →]`
+    2. **Inversor Individual / Principiante:** *"Quiero analizar activos concretos, conocer qué factores empujan su precio y armar o probar mi propia cartera midiendo el riesgo en simple."* → `[Ir al Constructor de Cartera (Portfolio) →]` · `[Investigar Factores y Noticias (Research) →]`
+    3. **Profesional Quant:** *"Busco instrumental cuantitativo directo: detección de anomalías, superficies de volatilidad y curvas, atribución de Brinson, estrés histórico y Criterio de Kelly."* → `[Abrir Estación Analytics →]` · `[Auditar Riesgo, Correlaciones y Stress (Portfolio > Risk) →]`
+    4. **Profesional IT:** *"Quiero evaluar la arquitectura real detrás de la app: los 11 pipelines serverless (P-01 a P-13), contratos de datos, latencias HTTP en vivo y cómo opera todo por ~$0.95/mes."* → `[Abrir Telemetría e Infraestructura (System > Performance) →]` · `[Ver Arquitectura de Costos (FinOps) →]`
+    5. **Evaluador de RRHH:** *"Tengo pocos minutos para evaluar el proyecto: quiero ver qué problema resuelve y qué nivel de producto, datos en tiempo real, IA, idiomas (56) e ingeniería cloud demuestra."* → `[Reproducir el Video Resumen aquí abajo ↓]` · `[Ver Tablero de Cartera (Portfolio) →]` · `[Ver Ingeniería y Costos (System) →]`
 
 - [ ] **Paso 1.5 — Vista `System` ([`src/components/ObservabilityView.jsx`](../src/components/ObservabilityView.jsx)):**
   - **Objetivo:** Adaptar `Performance` y `FinOps` específicamente para el **Profesional IT** (y como evidencia de ingeniería para el **Evaluador de RRHH**).
@@ -159,5 +164,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Paso 1.1** | `[x] Definido` | Se acordó: (1) Subtítulo conceptual en `Home` sin número de activos, (2) Tooltips ultra-sencillos sin contaminación visual, y (3) Bloque *"¿Qué buscás?"* en `Guide` con links directos para cada uno de los 5 perfiles. |
 | 2026-11-06 | **Paso 1.2** | `[x] Definido` | Se definió cómo aplicar los 4 patrones reutilizando los renglones y barras que ya existen en la UI sin agregar cajas ni ruido visual + **Regla estricta de aplicar 1 solo paso a la vez bajo supervisión**. |
 | 2026-11-06 | **Fase 4 (Watchlist Bulk)** | `[x] Incorporado al Plan` | Se anotó para el tramo final el segundo menú de filtros por características (generales y propias de cada clase de activo) con botón de 1 clic para agregar/quitar la estrella (`★`) a múltiples activos a la vez. |
-| — | **Definiciones / Ejecución Fase 1** | `[~] Próximo paso` | Definir en detalle los textos por vista (`Guide`, `System`, `Markets`, `Portfolio`) o comenzar a aplicar el primer micro-paso individual bajo supervisión. |
+| 2026-11-06 | **Paso 1.4 (Guide)** | `[x] Definido` | Se definieron los 5 textos en primera persona y los links directos (a la Guía y a la app en vivo) del bloque *"¿Qué buscás hoy?"* en `Guide > Home`. |
+| — | **Paso 1.5 (System)** | `[~] En definición` | Definir los ajustes de mensajes y metadatos técnicos en `System` (`Performance` y `FinOps`) para el **Profesional IT** y el **Evaluador de RRHH**. |
 
