@@ -80,14 +80,14 @@ export const LIGHT_ARTWORKS = {
     {
       id: 0,
       short: '01. Girasol Fibonacci',
-      title: 'Fibonacci Sunflower Phyllotaxis (φ = 1.618)  ⟷  Implied Volatility Surface σ(K,T)',
-      medium: 'Golden-Angle Seed Spiral (137.5°) • Black-Scholes-Merton Surface',
+      title: 'Fibonacci Sunflower Phyllotaxis (φ = 1.618)  ⟷  Golden Logarithmic Spiral & Fibonacci Arcs',
+      medium: 'Golden-Angle Seed Spiral (137.5°) • Harmonic Retracement & Extension Manifold',
     },
     {
       id: 1,
       short: '02. Flor Sakura',
-      title: 'Sakura Cherry Blossom (Polar Rose r = cos 5θ)  ⟷  Markowitz Efficient Frontier',
-      medium: 'Spring Botanical Harmonic Symmetry • Optimal Risk-Return Tangency',
+      title: 'Sakura Cherry Blossom (Polar Rose r = cos 5θ)  ⟷  Fourier Harmonic Wave Spectrum',
+      medium: 'Spring Botanical Symmetry • Multi-Frequency Cyclical Spectral Decomposition',
     },
     {
       id: 2,
@@ -98,8 +98,8 @@ export const LIGHT_ARTWORKS = {
     {
       id: 3,
       short: '04. Diente de León',
-      title: 'Dandelion Pappus Seeds in Spring Breeze  ⟷  Itô-Brownian Stochastic Diffusion',
-      medium: 'Wind-Borne Botanical Dispersion • Monte Carlo Probability Density f(x,T)',
+      title: 'Dandelion Pappus Seeds in Breeze  ⟷  Kelly Criterion Optimal Growth Curves g(f*)',
+      medium: 'Wind-Borne Botanical Dispersion • Geometric Compounding & Leverage Frontier',
     },
     {
       id: 4,
@@ -110,14 +110,14 @@ export const LIGHT_ARTWORKS = {
     {
       id: 5,
       short: '06. Bandada en Vuelo',
-      title: 'Spring Starling Murmuration  ⟷  Limit Order Book Liquidity Flow V(p,t)',
-      medium: 'Collective Swarm Fluidity • High-Frequency Bid/Ask Microstructure',
+      title: 'Spring Starling Murmuration  ⟷  3-State Markov Regime Switching Orbitals',
+      medium: 'Collective Swarm Fluidity • Probabilistic Transition Matrix P(S_t | S_t-1)',
     },
     {
       id: 6,
       short: '07. Cordillera & Ríos',
-      title: 'Alpine Spring Ridges & Meltwater Rivers  ⟷  Topographic Iso-Sharpe Manifold',
-      medium: 'Terrestrial Elevation Contours • Multi-Factor Alpha Attribution',
+      title: 'Alpine Spring Ridges & Meltwater Rivers  ⟷  Topographic Iso-Sharpe & Alpha Manifold',
+      medium: 'Terrestrial Elevation Contours • Brinson-Fachler Multi-Factor Attribution',
     },
     {
       id: 7,
@@ -130,14 +130,14 @@ export const LIGHT_ARTWORKS = {
     {
       id: 0,
       short: '01. Girasol Fibonacci',
-      title: 'Girasol de Fibonacci (Filotaxis Áurea φ = 1.618)  ⟷  Superficie de Volatilidad σ(K,T)',
-      medium: 'Espiral botánica de ángulo áureo (137.5°) • Variedad de Black-Scholes-Merton',
+      title: 'Girasol de Fibonacci (Filotaxis Áurea φ = 1.618)  ⟷  Espiral Logarítmica & Arcos de Fibonacci',
+      medium: 'Espiral botánica de ángulo áureo (137.5°) • Proporción áurea y anillos armónicos (23.6% • 38.2% • 61.8%)',
     },
     {
       id: 1,
       short: '02. Flor Sakura',
-      title: 'Flor de Cerezo Sakura (Rosa Polar r = cos 5θ)  ⟷  Frontera Eficiente de Markowitz',
-      medium: 'Simetría armónica de primavera • Tangencia óptima riesgo-retorno',
+      title: 'Flor de Cerezo Sakura (Rosa Polar r = cos 5θ)  ⟷  Espectro de Ondas Armónicas de Fourier',
+      medium: 'Simetría floral de primavera • Descomposición espectral de ciclos y frecuencias',
     },
     {
       id: 2,
@@ -148,25 +148,25 @@ export const LIGHT_ARTWORKS = {
     {
       id: 3,
       short: '04. Diente de León',
-      title: 'Semillas de Diente de León en la Brisa  ⟷  Difusión Browniana de Itô & Monte Carlo',
-      medium: 'Dispersión botánica al viento • Densidad de probabilidad estocástica f(x,T)',
+      title: 'Semillas de Diente de León en la Brisa  ⟷  Curvas de Crecimiento Óptimo de Kelly g(f*)',
+      medium: 'Dispersión botánica al viento • Capitalización geométrica y cresta de Kelly',
     },
     {
       id: 4,
       short: '05. Mariposa Monarca',
       title: 'Mariposa Monarca (Curva de Temple Fay)  ⟷  Atractor Caótico de Lorenz',
-      medium: 'Simetría lepidóptera primaveral • Efecto Mariposa y dinámica de regímenes',
+      medium: 'Simetría lepidóptera primaveral • Efecto Mariposa y dinámica no lineal',
     },
     {
       id: 5,
       short: '06. Bandada en Vuelo',
-      title: 'Bandada de Primavera (Murmuración)  ⟷  Flujo de Liquidez & Order Book V(p,t)',
-      medium: 'Sincronía colectiva en vuelo • Microestructura de liquidez Bid/Ask',
+      title: 'Bandada de Primavera (Murmuración)  ⟷  Órbitas de 3 Regímenes de Markov',
+      medium: 'Sincronía colectiva en vuelo • Transición de estados (Calma • Transición • Estrés)',
     },
     {
       id: 6,
       short: '07. Cordillera & Ríos',
-      title: 'Cordillera en Deshielo & Ríos Glaciares  ⟷  Topografía Iso-Sharpe & Alfa',
+      title: 'Cordillera en Deshielo & Ríos Glaciares  ⟷  Topografía Iso-Sharpe & Alfa de Brinson',
       medium: 'Curvas de nivel terrestres • Superficie de optimización riesgo-retorno',
     },
     {
