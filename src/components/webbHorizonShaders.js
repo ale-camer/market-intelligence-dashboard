@@ -414,3 +414,465 @@ export const PARTICLE_FRAGMENT_SHADER = `
   }
 `;
 
+export const LIGHT_BG_FRAGMENT_SHADER = `
+  precision highp float;
+  varying vec2 vUv;
+  uniform vec2 uResolution;
+  uniform float uTime;
+  uniform float uPair;
+  uniform float uMorph;
+
+  float hash21(vec2 p) {
+    p = fract(p * vec2(234.34, 435.345));
+    p += dot(p, p + 34.23);
+    return fract(p.x * p.y);
+  }
+
+  float noise2(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    float a = hash21(i);
+    float b = hash21(i + vec2(1.0, 0.0));
+    float c = hash21(i + vec2(0.0, 1.0));
+    float d = hash21(i + vec2(1.0, 1.0));
+    return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+  }
+
+  float fbm(vec2 p) {
+    float v = 0.0;
+    float a = 0.5;
+    mat2 rot = mat2(0.80, 0.60, -0.60, 0.80);
+    for (int i = 0; i < 4; i++) {
+      v += a * noise2(p);
+      p = rot * p * 2.02 + vec2(13.4, 27.1);
+      a *= 0.5;
+    }
+    return v;
+  }
+
+  void main() {
+    vec2 uv = vUv;
+    float aspect = uResolution.x / max(uResolution.y, 1.0);
+    vec2 p = vec2((uv.x - 0.5) * aspect, uv.y - 0.5);
+
+    // Warm spring daylight base (soft ivory / alabaster paper)
+    vec3 skyTop = vec3(0.965, 0.958, 0.930);
+    vec3 meadowHorizon = vec3(0.945, 0.935, 0.895);
+    vec3 col = mix(meadowHorizon, skyTop, smoothstep(0.0, 1.0, uv.y));
+
+    // Subtle organic watercolor washes shifting by scene (0..7)
+    float scene = floor(mod(uPair, 8.0));
+    vec2 wUv = p * 2.4 + vec2(uTime * 0.018, -uTime * 0.012);
+    float wash = fbm(wUv);
+    float wash2 = fbm(wUv * 1.6 + vec2(4.2, 7.1));
+
+    vec3 tintA = vec3(0.95, 0.86, 0.62); // Golden pollen
+    vec3 tintB = vec3(0.76, 0.90, 0.80); // Botanical sage
+    if (scene == 1.0) {
+      tintA = vec3(0.97, 0.80, 0.85); // Sakura blossom pink
+      tintB = vec3(0.84, 0.92, 0.82); // Spring bud green
+    } else if (scene == 2.0) {
+      tintA = vec3(0.74, 0.91, 0.80); // Emerald canopy
+      tintB = vec3(0.82, 0.92, 0.90); // Dew turquoise
+    } else if (scene == 3.0) {
+      tintA = vec3(0.84, 0.88, 0.97); // Spring breeze sky
+      tintB = vec3(0.96, 0.89, 0.72); // Warm dandelion sun
+    } else if (scene == 4.0) {
+      tintA = vec3(0.98, 0.84, 0.70); // Monarch amber
+      tintB = vec3(0.80, 0.88, 0.97); // Iridescent morpho blue
+    } else if (scene == 5.0) {
+      tintA = vec3(0.80, 0.90, 0.96); // Swallow sky
+      tintB = vec3(0.94, 0.84, 0.76); // Terracotta wing
+    } else if (scene == 6.0) {
+      tintA = vec3(0.76, 0.90, 0.86); // Alpine glacier & valley
+      tintB = vec3(0.93, 0.86, 0.74); // Earth ochre ridge
+    } else if (scene == 7.0) {
+      tintA = vec3(0.97, 0.88, 0.66); // Honeycomb gold
+      tintB = vec3(0.88, 0.82, 0.95); // Lavender nectar
+    }
+
+    float stageZone = smoothstep(0.32, -0.08, p.y) * smoothstep(-0.52, -0.32, p.y);
+    col = mix(col, tintA, wash * 0.24 * stageZone);
+    col = mix(col, tintB, wash2 * 0.20 * stageZone);
+
+    // Soft morning sunbeam glow near the focal center
+    vec2 sunPos = vec2(0.0, -0.17);
+    float dSun = length(p - sunPos);
+    col += vec3(0.04, 0.03, 0.01) * exp(-dSun * 4.5);
+
+    // Subtle fine paper grain
+    float grain = (hash21(uv * uResolution.xy) - 0.5) * 0.012;
+    col = clamp(col + grain, 0.0, 1.0);
+
+    gl_FragColor = vec4(col, 1.0);
+  }
+`;
+
+export const LIGHT_PARTICLE_VERTEX_SHADER = `
+  attribute vec3 aSeed;
+  uniform float uTime;
+  uniform vec2 uResolution;
+  uniform float uDpr;
+  uniform float uPair;
+  uniform float uMorph;
+
+  varying vec3 vColor;
+  varying float vAlpha;
+  varying float vStarType;
+  varying float vAngle;
+
+  float smootherstep(float a, float b, float x) {
+    float t = clamp((x - a) / (b - a), 0.0, 1.0);
+    return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
+  }
+
+  void main() {
+    float aspect = uResolution.x / max(uResolution.y, 1.0);
+    float u = aSeed.x; // [-1, 1]
+    float v = aSeed.y; // [0, 1]
+    float rnd = aSeed.z; // [0, 1]
+
+    float m = smootherstep(0.0, 1.0, clamp(uMorph, 0.0, 1.0));
+    float yCenter = -0.17;
+    int scene = int(floor(mod(uPair, 8.0)));
+
+    vec2 posNat = vec2(0.0);
+    vec3 colNat = vec3(0.2);
+    vec2 posQuant = vec2(0.0);
+    vec3 colQuant = vec3(0.2);
+
+    // =========================================================================
+    // SCENE 0: FIBONACCI SUNFLOWER (PHYLLOTAXIS) <-> 3D VOLATILITY SURFACE
+    // =========================================================================
+    if (scene == 0) {
+      float idx = floor(((u * 0.5 + 0.5) * 0.7 + v * 0.3) * 3200.0);
+      float goldenAngle = 2.39996323; // 137.508 deg in radians
+      float theta = idx * goldenAngle + uTime * 0.12;
+      float rNorm = sqrt(idx / 3200.0);
+      if (v < 0.74) {
+        // Fibonacci seed spiral head
+        float r = rNorm * 0.24;
+        posNat = vec2(cos(theta) * r * 1.15 * aspect * 0.52, yCenter + sin(theta) * r * 0.92);
+        colNat = mix(vec3(0.42, 0.18, 0.05), vec3(0.86, 0.52, 0.06), smoothstep(0.15, 0.95, rNorm));
+      } else {
+        // Golden sunflower petals ring
+        float petalCount = 21.0;
+        float ang = u * 3.14159 + uTime * 0.06;
+        float petalWave = abs(cos(ang * petalCount * 0.5));
+        float rPetal = 0.23 + (0.04 + 0.11 * petalWave) * ((v - 0.74) / 0.26);
+        posNat = vec2(cos(ang) * rPetal * 1.15 * aspect * 0.52, yCenter + sin(ang) * rPetal * 0.92);
+        colNat = mix(vec3(0.92, 0.56, 0.04), vec3(0.18, 0.58, 0.34), smoothstep(0.30, 0.36, rPetal));
+      }
+
+      float ribbonT = floor(v * 18.0) / 18.0 + (fract(v * 18.0) - 0.5) * 0.018;
+      float strikeK = u;
+      float smileZ = (0.19 * strikeK * strikeK - 0.045 * strikeK) * (1.15 - 0.55 * ribbonT)
+                   + 0.012 * sin(strikeK * 4.0 - uTime * 1.1);
+      posQuant = vec2(
+        (strikeK * 0.56 + (ribbonT - 0.5) * 0.22) * aspect * 0.52,
+        yCenter - 0.11 + (ribbonT - 0.5) * 0.20 + smileZ
+      );
+      colQuant = mix(vec3(0.82, 0.42, 0.04), vec3(0.12, 0.56, 0.36), clamp(smileZ * 4.5 + 0.35, 0.0, 1.0));
+    }
+
+    // =========================================================================
+    // SCENE 1: SAKURA CHERRY BLOSSOM (POLAR ROSE) <-> MARKOWITZ FRONTIER
+    // =========================================================================
+    else if (scene == 1) {
+      float ang = u * 3.14159 + uTime * 0.08;
+      // 5-petal Sakura blossom with heart-shaped notch at tip
+      float cos5 = cos(5.0 * ang);
+      float notch = 0.045 * pow(max(0.0, cos(5.0 * ang)), 8.0);
+      float maxR = 0.07 + 0.24 * pow(0.5 + 0.5 * cos5, 0.65) - notch;
+      if (rnd < 0.14) {
+        // Drifting petals on the spring breeze
+        float driftX = mod(u * 0.65 + uTime * 0.09 + rnd, 1.4) - 0.7;
+        float driftY = yCenter + (v - 0.5) * 0.44 + 0.04 * sin(uTime * 1.5 + u * 6.0);
+        posNat = vec2(driftX * aspect * 0.52, driftY);
+        colNat = vec3(0.92, 0.34, 0.54);
+      } else if (v < 0.16) {
+        // Crimson & gold stamens
+        float rStam = (v / 0.16) * 0.095;
+        posNat = vec2(cos(ang) * rStam * 1.15 * aspect * 0.52, yCenter + sin(ang) * rStam);
+        colNat = mix(vec3(0.76, 0.12, 0.28), vec3(0.88, 0.58, 0.06), smoothstep(0.05, 0.09, rStam));
+      } else {
+        float rFill = pow((v - 0.16) / 0.84, 0.75) * maxR;
+        posNat = vec2(cos(ang) * rFill * 1.18 * aspect * 0.52, yCenter + sin(ang) * rFill * 0.96);
+        colNat = mix(vec3(0.84, 0.18, 0.42), vec3(0.96, 0.52, 0.66), smoothstep(0.06, 0.28, rFill));
+      }
+
+      if (rnd < 0.26) {
+        float tCal = (u * 0.5 + 0.5);
+        float calX = -0.52 + tCal * 1.04;
+        float calY = -0.34 + tCal * 0.38;
+        posQuant = vec2(calX * aspect * 0.52, calY + (v - 0.5) * 0.008);
+        colQuant = mix(vec3(0.14, 0.58, 0.34), vec3(0.86, 0.48, 0.06), exp(-pow((tCal - 0.52) * 12.0, 2.0)));
+      } else {
+        float retMu = u * 0.19;
+        float minSigma = sqrt(0.012 + 3.2 * retMu * retMu);
+        float sigX = -0.46 + minSigma + pow(v, 1.8) * 0.38;
+        posQuant = vec2(sigX * aspect * 0.52, yCenter + retMu);
+        colQuant = mix(vec3(0.82, 0.20, 0.44), vec3(0.52, 0.22, 0.68), smoothstep(0.18, 0.0, v));
+      }
+    }
+
+    // =========================================================================
+    // SCENE 2: FRACTAL FERN & BOTANICAL CANOPY <-> ISOLATION FOREST (P-06)
+    // =========================================================================
+    else if (scene == 2) {
+      // Multi-frond botanical fern & canopy
+      float frondIdx = floor((u * 0.5 + 0.5) * 7.0) - 3.0; // -3..+3
+      float stemT = v; // 0..1 along frond
+      float sway = 0.018 * sin(uTime * 1.4 + frondIdx + stemT * 4.0);
+      float angle = frondIdx * 0.36;
+      float frondLen = 0.34 - abs(frondIdx) * 0.032;
+      float spineX = sin(angle) * stemT * frondLen + sway;
+      float spineY = -0.38 + cos(angle) * stemT * frondLen;
+      float leafletSide = mod(floor(rnd * 20.0), 2.0) * 2.0 - 1.0;
+      float leafletSpan = (1.0 - stemT * 0.72) * 0.095 * fract(u * 13.0);
+      vec2 normalDir = vec2(cos(angle), -sin(angle));
+      posNat = vec2(
+        (spineX + normalDir.x * leafletSide * leafletSpan) * aspect * 0.52,
+        spineY + normalDir.y * leafletSide * leafletSpan * 0.65
+      );
+      colNat = mix(vec3(0.05, 0.46, 0.28), vec3(0.32, 0.72, 0.22), stemT);
+      if (rnd > 0.90) {
+        colNat = vec3(0.88, 0.32, 0.48); // Spring wildflower buds
+      }
+
+      // Isolation Forest (P-06) binary decision tree levels
+      float level = floor(v * 5.0); // 0..4
+      float nodesInLevel = exp2(level);
+      float nodeIdx = floor((u * 0.5 + 0.5) * nodesInLevel);
+      float xNode = ((nodeIdx + 0.5) / nodesInLevel) * 2.0 - 1.0;
+      float parentIdx = floor(nodeIdx * 0.5);
+      float xParent = ((parentIdx + 0.5) / max(1.0, nodesInLevel * 0.5)) * 2.0 - 1.0;
+      float branchFrac = fract(v * 5.0);
+      float treeX = mix(xParent, xNode, branchFrac) * 0.52;
+      float treeY = 0.02 - (level + branchFrac) * 0.075;
+      posQuant = vec2(treeX * aspect * 0.52, treeY);
+      bool isAnomalyNode = (level >= 2.0 && nodeIdx == nodesInLevel - 1.0);
+      colQuant = isAnomalyNode
+        ? vec3(0.88, 0.28, 0.16) // Isolated outlier node (P-06)
+        : mix(vec3(0.06, 0.50, 0.32), vec3(0.14, 0.62, 0.58), level / 4.0);
+    }
+
+    // =========================================================================
+    // SCENE 3: DANDELION SEEDS IN BREEZE <-> ITO BROWNIAN DIFFUSION
+    // =========================================================================
+    else if (scene == 3) {
+      if (v < 0.42) {
+        // Spherical dandelion puff head on the left
+        float ang = u * 3.14159;
+        float rPuff = sqrt(v / 0.42) * 0.16 * (0.88 + 0.12 * cos(ang * 14.0));
+        posNat = vec2((-0.34 + cos(ang) * rPuff * 1.15) * aspect * 0.52, yCenter + sin(ang) * rPuff);
+        colNat = mix(vec3(0.38, 0.46, 0.24), vec3(0.82, 0.58, 0.10), smoothstep(0.04, 0.16, rPuff));
+      } else {
+        // Floating pappus seeds carried rightward by spring wind
+        float tWind = (v - 0.42) / 0.58;
+        float seedId = floor((u * 0.5 + 0.5) * 26.0) / 26.0 * 2.0 - 1.0;
+        float xSeed = -0.22 + tWind * 0.78;
+        float ySeed = yCenter + seedId * 0.22 * sqrt(tWind + 0.05)
+                    + 0.035 * sin(tWind * 10.0 - uTime * 1.6 + seedId * 12.0);
+        posNat = vec2(xSeed * aspect * 0.52, ySeed);
+        colNat = mix(vec3(0.84, 0.56, 0.08), vec3(0.18, 0.54, 0.78), tWind);
+      }
+
+      if (rnd > 0.72) {
+        float xVal = u * 0.22;
+        float pdfHeight = 0.22 * exp(-pow(xVal * 7.5, 2.0)) + 0.04 / (1.0 + pow(xVal * 12.0, 2.0));
+        posQuant = vec2((0.36 + pdfHeight * (0.3 + 0.7 * v)) * aspect * 0.52, yCenter + xVal);
+        colQuant = mix(vec3(0.84, 0.48, 0.06), vec3(0.76, 0.22, 0.44), exp(-pow(xVal * 6.0, 2.0)));
+      } else {
+        float pathId = floor((u * 0.5 + 0.5) * 32.0) / 32.0 * 2.0 - 1.0;
+        float tStep = v;
+        float wienerWiggle = 0.042 * sin(tStep * 18.0 + pathId * 37.0 - uTime * 1.4)
+                           + 0.022 * cos(tStep * 31.0 - pathId * 19.0);
+        float yPath = yCenter + (pathId * 0.21 * sqrt(tStep + 0.01) + wienerWiggle * sqrt(tStep));
+        float xPath = -0.54 + tStep * 0.88;
+        posQuant = vec2(xPath * aspect * 0.52, yPath);
+        colQuant = mix(vec3(0.16, 0.50, 0.78), vec3(0.48, 0.24, 0.76), smoothstep(0.7, 0.98, abs(pathId)));
+      }
+    }
+
+    // =========================================================================
+    // SCENE 4: MONARCH BUTTERFLY (TEMPLE FAY) <-> LORENZ CHAOS ATTRACTOR
+    // =========================================================================
+    else if (scene == 4) {
+      float theta = u * 3.14159;
+      // Temple Fay transcendental butterfly curve
+      float rButt = exp(sin(theta)) - 2.0 * cos(4.0 * theta) + pow(sin((2.0 * theta - 3.14159) / 24.0), 5.0);
+      float wingFlap = 0.86 + 0.14 * sin(uTime * 3.2);
+      float scaleR = 0.068 * sqrt(0.15 + 0.85 * v) * rButt;
+      posNat = vec2(cos(theta) * scaleR * wingFlap * 1.25 * aspect * 0.52, (yCenter - 0.03) + sin(theta) * scaleR * 0.92);
+      colNat = mix(vec3(0.90, 0.36, 0.04), vec3(0.12, 0.46, 0.82), smoothstep(0.65, 0.98, v));
+      if (v > 0.92) colNat = vec3(0.18, 0.12, 0.08); // Dark wing veins/rim
+
+      // Lorenz Strange Attractor two-wing figure-8 phase portrait
+      float lobe = u >= 0.0 ? 1.0 : -1.0;
+      float tLoop = v * 6.28318 * 3.0 + uTime * 0.9;
+      float rLoop = 0.04 + 0.16 * fract(abs(u) * 7.0 + v * 0.5);
+      float lx = lobe * (0.19 + cos(tLoop) * rLoop);
+      float ly = yCenter + sin(tLoop) * rLoop * 0.82 + lobe * cos(tLoop) * 0.04;
+      posQuant = vec2(lx * 1.25 * aspect * 0.52, ly);
+      colQuant = lobe > 0.0
+        ? mix(vec3(0.88, 0.38, 0.06), vec3(0.76, 0.18, 0.42), rLoop / 0.20)
+        : mix(vec3(0.12, 0.48, 0.80), vec3(0.08, 0.62, 0.48), rLoop / 0.20);
+    }
+
+    // =========================================================================
+    // SCENE 5: SPRING FLOCK MURMURATION <-> ORDER BOOK LIQUIDITY DEPTH
+    // =========================================================================
+    else if (scene == 5) {
+      // Swirling murmuration ribbon in spring sky
+      float s = u; // [-1, 1] along flock ribbon
+      float ribbonX = s * 0.54 + 0.08 * sin(s * 4.5 - uTime * 1.2);
+      float ribbonY = yCenter + 0.14 * sin(s * 3.2 + uTime * 0.9) * cos(s * 2.1 - uTime * 0.5);
+      float spread = (v - 0.5) * (0.06 + 0.09 * sin(s * 5.0 + uTime));
+      posNat = vec2((ribbonX + spread * 0.5) * aspect * 0.52, ribbonY + spread);
+      colNat = mix(vec3(0.14, 0.48, 0.74), vec3(0.82, 0.36, 0.16), 0.5 + 0.5 * sin(s * 3.0 + uTime));
+
+      float bookSide = u >= 0.0 ? 1.0 : -1.0;
+      float priceDist = abs(u);
+      float stepPrice = floor(priceDist * 14.0) / 14.0;
+      float depthWallH = 0.24 / (1.0 + exp(-(stepPrice - 0.28) * 9.0));
+      float layerZ = floor(v * 8.0) / 8.0;
+      float fillWall = fract(v * 8.0);
+      float yBook = -0.35 + depthWallH * (0.25 + 0.75 * smoothstep(0.0, 0.3, fillWall)) + layerZ * 0.09;
+      float xBook = bookSide * (0.035 + priceDist * 0.52) + (layerZ - 0.5) * 0.08;
+      posQuant = vec2(xBook * aspect * 0.52, yBook);
+      colQuant = bookSide < 0.0
+        ? mix(vec3(0.06, 0.54, 0.34), vec3(0.16, 0.72, 0.48), smoothstep(0.2, 0.9, fillWall))
+        : mix(vec3(0.76, 0.16, 0.32), vec3(0.90, 0.34, 0.48), smoothstep(0.2, 0.9, fillWall));
+    }
+
+    // =========================================================================
+    // SCENE 6: ALPINE RIDGES & MELTWATER RIVERS <-> TOPOGRAPHIC ALPHA MANIFOLD
+    // =========================================================================
+    else if (scene == 6) {
+      float ridgeLayer = floor(v * 14.0) / 14.0;
+      float xMtn = u * 0.58;
+      float peak1 = 0.22 * exp(-pow((xMtn + 0.18) * 4.2, 2.0));
+      float peak2 = 0.26 * exp(-pow((xMtn - 0.16) * 3.8, 2.0));
+      float valleyRiver = -0.05 * exp(-pow(xMtn * 9.0, 2.0));
+      float elev = peak1 + peak2 + valleyRiver + 0.025 * sin(xMtn * 18.0 + ridgeLayer * 9.0);
+      float yMtn = -0.34 + (ridgeLayer - 0.5) * 0.16 + elev * (1.1 - ridgeLayer * 0.45);
+      posNat = vec2((xMtn + (ridgeLayer - 0.5) * 0.14) * aspect * 0.52, yMtn);
+      if (abs(xMtn) < 0.09 && elev < 0.12) {
+        colNat = vec3(0.08, 0.56, 0.78); // Glacial meltwater river
+      } else if (elev > 0.19) {
+        colNat = vec3(0.42, 0.34, 0.26); // High alpine rock & snow rim
+      } else {
+        colNat = mix(vec3(0.10, 0.52, 0.28), vec3(0.68, 0.48, 0.16), smoothstep(0.05, 0.18, elev));
+      }
+
+      // Topographic iso-Sharpe contour rings
+      float ringIdx = floor(v * 9.0) / 9.0;
+      float ang = u * 3.14159 + uTime * 0.08;
+      float rx = (0.06 + ringIdx * 0.44) * (1.0 + 0.12 * cos(ang * 3.0));
+      float ry = (0.04 + ringIdx * 0.20) * (1.0 + 0.12 * sin(ang * 2.0));
+      float elevZ = (1.0 - ringIdx) * 0.12;
+      posQuant = vec2(cos(ang) * rx * aspect * 0.52, (yCenter - 0.06) + sin(ang) * ry + elevZ);
+      colQuant = mix(vec3(0.84, 0.38, 0.08), vec3(0.08, 0.56, 0.42), ringIdx);
+    }
+
+    // =========================================================================
+    // SCENE 7: HONEYCOMB HIVE & POLLEN <-> CORRELATION NETWORK GRAPH
+    // =========================================================================
+    else {
+      // Hexagonal honeycomb lattice
+      float cellId = floor((u * 0.5 + 0.5) * 19.0); // 19 hex cells
+      float row = floor(cellId / 5.0) - 1.5;
+      float colIdx = mod(cellId, 5.0) - 2.0 + mod(abs(row), 2.0) * 0.5;
+      vec2 hexCenter = vec2(colIdx * 0.19, yCenter + row * 0.11);
+      float side = floor(v * 6.0);
+      float edgeT = fract(v * 6.0);
+      float a1 = side * 1.04719755;
+      float a2 = (side + 1.0) * 1.04719755;
+      float rHex = 0.082;
+      vec2 hexPt = hexCenter + mix(vec2(cos(a1), sin(a1)), vec2(cos(a2), sin(a2)), edgeT) * rHex;
+      posNat = vec2(hexPt.x * aspect * 0.52, hexPt.y);
+      colNat = mix(vec3(0.84, 0.52, 0.04), vec3(0.68, 0.34, 0.06), fract(cellId * 0.37));
+
+      // Multi-Asset Correlation Cluster Network (Nodes + Spanning Edges)
+      float nClusters = 7.0;
+      float cIdx = floor((u * 0.5 + 0.5) * nClusters);
+      float cAng = cIdx * (6.28318 / nClusters) + uTime * 0.10;
+      vec2 hubPos = vec2(cos(cAng) * 0.34, yCenter + sin(cAng) * 0.18);
+      if (v < 0.55) {
+        // Dense asset cluster node
+        float subAng = rnd * 6.28318;
+        float subR = sqrt(v / 0.55) * 0.065;
+        posQuant = vec2((hubPos.x + cos(subAng) * subR) * aspect * 0.52, hubPos.y + sin(subAng) * subR);
+        colQuant = mix(vec3(0.52, 0.22, 0.76), vec3(0.08, 0.56, 0.44), cIdx / nClusters);
+      } else {
+        // Correlation bridge to neighbor hub
+        float nextAng = mod(cIdx + 2.0, nClusters) * (6.28318 / nClusters) + uTime * 0.10;
+        vec2 nextHub = vec2(cos(nextAng) * 0.34, yCenter + sin(nextAng) * 0.18);
+        float tEdge = (v - 0.55) / 0.45;
+        vec2 edgePt = mix(hubPos, nextHub, tEdge);
+        posQuant = vec2(edgePt.x * aspect * 0.52, edgePt.y);
+        colQuant = vec3(0.82, 0.48, 0.08);
+      }
+    }
+
+    vec2 worldPos = mix(posNat, posQuant, m);
+    vColor = mix(colNat, colQuant, m);
+
+    vec2 ndc = vec2(worldPos.x / (aspect * 0.5), worldPos.y * 2.0);
+    gl_Position = vec4(ndc, 0.0, 1.0);
+
+    float breeze = 0.80 + 0.20 * sin(uTime * 2.2 + rnd * 40.0);
+    vAngle = uTime * 0.6 + rnd * 6.28318;
+    if (rnd < 0.45) {
+      // Soft watercolor botanical wash puff
+      vAlpha = 0.085;
+      gl_PointSize = (13.0 + rnd * 14.0) * uDpr;
+    } else if (rnd < 0.92) {
+      // Crisp pollen / seed / pigment grain
+      vAlpha = breeze * 0.72;
+      gl_PointSize = (2.8 + fract(rnd * 17.0) * 2.4) * uDpr;
+    } else {
+      // Delicate 5-petal blossom / botanical spark
+      vAlpha = breeze * 0.92;
+      gl_PointSize = 8.2 * uDpr;
+    }
+    vStarType = rnd;
+  }
+`;
+
+export const LIGHT_PARTICLE_FRAGMENT_SHADER = `
+  precision mediump float;
+  varying vec3 vColor;
+  varying float vAlpha;
+  varying float vStarType;
+  varying float vAngle;
+
+  void main() {
+    vec2 p = gl_PointCoord * 2.0 - 1.0;
+    float r = length(p);
+    if (r > 1.0) discard;
+
+    if (vStarType < 0.45) {
+      float puff = smoothstep(1.0, 0.0, r);
+      puff = puff * puff * (3.0 - 2.0 * puff);
+      gl_FragColor = vec4(vColor, puff * vAlpha);
+      return;
+    }
+
+    if (vStarType >= 0.92) {
+      // Miniature 5-petal blossom shape
+      float a = atan(p.y, p.x) + vAngle;
+      float blossom = 0.55 + 0.45 * cos(a * 5.0);
+      float mask = smoothstep(blossom, blossom * 0.2, r);
+      gl_FragColor = vec4(vColor, mask * vAlpha);
+      return;
+    }
+
+    float core = exp(-r * r * 4.5);
+    gl_FragColor = vec4(vColor, core * vAlpha);
+  }
+`;
+
+

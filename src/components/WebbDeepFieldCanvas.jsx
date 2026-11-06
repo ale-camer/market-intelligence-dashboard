@@ -4,6 +4,9 @@ import {
   BG_FRAGMENT_SHADER,
   PARTICLE_VERTEX_SHADER,
   PARTICLE_FRAGMENT_SHADER,
+  LIGHT_BG_FRAGMENT_SHADER,
+  LIGHT_PARTICLE_VERTEX_SHADER,
+  LIGHT_PARTICLE_FRAGMENT_SHADER,
 } from './webbHorizonShaders';
 
 function createShader(gl, type, source) {
@@ -72,12 +75,124 @@ const ARTWORKS = {
   ],
 };
 
-export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
+export const LIGHT_ARTWORKS = {
+  EN: [
+    {
+      id: 0,
+      short: '01. Girasol Fibonacci',
+      title: 'Fibonacci Sunflower Phyllotaxis (φ = 1.618)  ⟷  Implied Volatility Surface σ(K,T)',
+      medium: 'Golden-Angle Seed Spiral (137.5°) • Black-Scholes-Merton Surface',
+    },
+    {
+      id: 1,
+      short: '02. Flor Sakura',
+      title: 'Sakura Cherry Blossom (Polar Rose r = cos 5θ)  ⟷  Markowitz Efficient Frontier',
+      medium: 'Spring Botanical Harmonic Symmetry • Optimal Risk-Return Tangency',
+    },
+    {
+      id: 2,
+      short: '03. Helecho Fractal',
+      title: 'Barnsley Botanical Canopy & Fern  ⟷  Isolation Forest (P-06) Decision Tree',
+      medium: 'Self-Similar Fractal Fronds • Recursive Anomaly Partitioning',
+    },
+    {
+      id: 3,
+      short: '04. Diente de León',
+      title: 'Dandelion Pappus Seeds in Spring Breeze  ⟷  Itô-Brownian Stochastic Diffusion',
+      medium: 'Wind-Borne Botanical Dispersion • Monte Carlo Probability Density f(x,T)',
+    },
+    {
+      id: 4,
+      short: '05. Mariposa Monarca',
+      title: 'Monarch Butterfly (Temple Fay Curve)  ⟷  Lorenz Strange Attractor',
+      medium: 'Lepidoptera Bilateral Symmetry • Nonlinear Chaos & Regime Dynamics',
+    },
+    {
+      id: 5,
+      short: '06. Bandada en Vuelo',
+      title: 'Spring Starling Murmuration  ⟷  Limit Order Book Liquidity Flow V(p,t)',
+      medium: 'Collective Swarm Fluidity • High-Frequency Bid/Ask Microstructure',
+    },
+    {
+      id: 6,
+      short: '07. Cordillera & Ríos',
+      title: 'Alpine Spring Ridges & Meltwater Rivers  ⟷  Topographic Iso-Sharpe Manifold',
+      medium: 'Terrestrial Elevation Contours • Multi-Factor Alpha Attribution',
+    },
+    {
+      id: 7,
+      short: '08. Panal & Polen',
+      title: 'Hexagonal Honeycomb & Lavender Pollen  ⟷  Multi-Asset Correlation Network',
+      medium: 'Optimal Voronoi Tessellation • Effective Number of Bets (ENB) Clustering',
+    },
+  ],
+  ES: [
+    {
+      id: 0,
+      short: '01. Girasol Fibonacci',
+      title: 'Girasol de Fibonacci (Filotaxis Áurea φ = 1.618)  ⟷  Superficie de Volatilidad σ(K,T)',
+      medium: 'Espiral botánica de ángulo áureo (137.5°) • Variedad de Black-Scholes-Merton',
+    },
+    {
+      id: 1,
+      short: '02. Flor Sakura',
+      title: 'Flor de Cerezo Sakura (Rosa Polar r = cos 5θ)  ⟷  Frontera Eficiente de Markowitz',
+      medium: 'Simetría armónica de primavera • Tangencia óptima riesgo-retorno',
+    },
+    {
+      id: 2,
+      short: '03. Helecho Fractal',
+      title: 'Helecho & Dosel Botánico de Barnsley  ⟷  Árbol Isolation Forest (P-06)',
+      medium: 'Frondas fractales autosimilares • Partición recursiva de anomalías',
+    },
+    {
+      id: 3,
+      short: '04. Diente de León',
+      title: 'Semillas de Diente de León en la Brisa  ⟷  Difusión Browniana de Itô & Monte Carlo',
+      medium: 'Dispersión botánica al viento • Densidad de probabilidad estocástica f(x,T)',
+    },
+    {
+      id: 4,
+      short: '05. Mariposa Monarca',
+      title: 'Mariposa Monarca (Curva de Temple Fay)  ⟷  Atractor Caótico de Lorenz',
+      medium: 'Simetría lepidóptera primaveral • Efecto Mariposa y dinámica de regímenes',
+    },
+    {
+      id: 5,
+      short: '06. Bandada en Vuelo',
+      title: 'Bandada de Primavera (Murmuración)  ⟷  Flujo de Liquidez & Order Book V(p,t)',
+      medium: 'Sincronía colectiva en vuelo • Microestructura de liquidez Bid/Ask',
+    },
+    {
+      id: 6,
+      short: '07. Cordillera & Ríos',
+      title: 'Cordillera en Deshielo & Ríos Glaciares  ⟷  Topografía Iso-Sharpe & Alfa',
+      medium: 'Curvas de nivel terrestres • Superficie de optimización riesgo-retorno',
+    },
+    {
+      id: 7,
+      short: '08. Panal & Polen',
+      title: 'Panal Hexagonal & Polen de Lavanda  ⟷  Red de Correlación Multi-Activo',
+      medium: 'Teselación orgánica de Voronoi • Clusters de diversificación real (ENB)',
+    },
+  ],
+};
+
+export default function WebbDeepFieldCanvas({
+  isPaused = false,
+  lang = 'EN',
+  lightMode = false,
+  selectedLightScene = null, // null = auto cycle, 0..7 = fixed scene
+  morphOverride = null, // null = auto sine wave, 0 = 100% Nature, 1 = 100% Quant
+}) {
   const canvasRef = useRef(null);
   const artworkTitleRef = useRef(null);
   const artworkMediumRef = useRef(null);
   const langRef = useRef(lang);
   const isPausedRef = useRef(isPaused);
+  const lightModeRef = useRef(lightMode);
+  const selectedSceneRef = useRef(selectedLightScene);
+  const morphOverrideRef = useRef(morphOverride);
 
   useEffect(() => {
     langRef.current = lang;
@@ -86,6 +201,18 @@ export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
   useEffect(() => {
     isPausedRef.current = isPaused;
   }, [isPaused]);
+
+  useEffect(() => {
+    lightModeRef.current = lightMode;
+  }, [lightMode]);
+
+  useEffect(() => {
+    selectedSceneRef.current = selectedLightScene;
+  }, [selectedLightScene]);
+
+  useEffect(() => {
+    morphOverrideRef.current = morphOverride;
+  }, [morphOverride]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -100,7 +227,9 @@ export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
 
     const bgProgram = createProgram(gl, BG_VERTEX_SHADER, BG_FRAGMENT_SHADER);
     const ptProgram = createProgram(gl, PARTICLE_VERTEX_SHADER, PARTICLE_FRAGMENT_SHADER);
-    if (!bgProgram || !ptProgram) return;
+    const lightBgProgram = createProgram(gl, BG_VERTEX_SHADER, LIGHT_BG_FRAGMENT_SHADER);
+    const lightPtProgram = createProgram(gl, LIGHT_PARTICLE_VERTEX_SHADER, LIGHT_PARTICLE_FRAGMENT_SHADER);
+    if (!bgProgram || !ptProgram || !lightBgProgram || !lightPtProgram) return;
 
     const quadVerts = new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]);
     const quadBuf = gl.createBuffer();
@@ -133,6 +262,19 @@ export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
     const ptPairLoc = gl.getUniformLocation(ptProgram, 'uPair');
     const ptMorphLoc = gl.getUniformLocation(ptProgram, 'uMorph');
 
+    const lBgPosLoc = gl.getAttribLocation(lightBgProgram, 'aPos');
+    const lBgResLoc = gl.getUniformLocation(lightBgProgram, 'uResolution');
+    const lBgTimeLoc = gl.getUniformLocation(lightBgProgram, 'uTime');
+    const lBgPairLoc = gl.getUniformLocation(lightBgProgram, 'uPair');
+    const lBgMorphLoc = gl.getUniformLocation(lightBgProgram, 'uMorph');
+
+    const lPtSeedLoc = gl.getAttribLocation(lightPtProgram, 'aSeed');
+    const lPtTimeLoc = gl.getUniformLocation(lightPtProgram, 'uTime');
+    const lPtResLoc = gl.getUniformLocation(lightPtProgram, 'uResolution');
+    const lPtDprLoc = gl.getUniformLocation(lightPtProgram, 'uDpr');
+    const lPtPairLoc = gl.getUniformLocation(lightPtProgram, 'uPair');
+    const lPtMorphLoc = gl.getUniformLocation(lightPtProgram, 'uMorph');
+
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
     const resize = () => {
       if (!canvas.parentElement) return;
@@ -163,44 +305,87 @@ export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
         resize();
         elapsed += dt;
 
-        const activePair = (elapsed * 0.12) % 4.0;
-        const activeMorph = 0.5 - 0.5 * Math.cos(elapsed * 0.65);
+        const isLight = lightModeRef.current;
+        const activeMorph =
+          morphOverrideRef.current !== null
+            ? morphOverrideRef.current
+            : 0.5 - 0.5 * Math.cos(elapsed * 0.65);
 
-        // Update artwork placard in bottom-center
-        const pairIdx = Math.floor(activePair) % 4;
-        const list = ARTWORKS[langRef.current] || ARTWORKS.EN;
-        const piece = list[pairIdx];
-        if (artworkTitleRef.current && artworkTitleRef.current.textContent !== piece.title) {
-          artworkTitleRef.current.textContent = piece.title;
+        if (isLight) {
+          const activePair =
+            selectedSceneRef.current !== null
+              ? Number(selectedSceneRef.current)
+              : (elapsed * 0.14) % 8.0;
+          const pairIdx = Math.floor(activePair) % 8;
+          const list = LIGHT_ARTWORKS[langRef.current] || LIGHT_ARTWORKS.EN;
+          const piece = list[pairIdx] || list[0];
+          if (artworkTitleRef.current && artworkTitleRef.current.textContent !== piece.title) {
+            artworkTitleRef.current.textContent = piece.title;
+          }
+          if (artworkMediumRef.current && artworkMediumRef.current.textContent !== piece.medium) {
+            artworkMediumRef.current.textContent = piece.medium;
+          }
+
+          gl.disable(gl.BLEND);
+          gl.useProgram(lightBgProgram);
+          gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+          gl.enableVertexAttribArray(lBgPosLoc);
+          gl.vertexAttribPointer(lBgPosLoc, 2, gl.FLOAT, false, 0, 0);
+          gl.uniform2f(lBgResLoc, canvas.width, canvas.height);
+          gl.uniform1f(lBgTimeLoc, elapsed);
+          gl.uniform1f(lBgPairLoc, activePair);
+          gl.uniform1f(lBgMorphLoc, activeMorph);
+          gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+          gl.enable(gl.BLEND);
+          gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+          gl.useProgram(lightPtProgram);
+          gl.bindBuffer(gl.ARRAY_BUFFER, particleBuf);
+          gl.enableVertexAttribArray(lPtSeedLoc);
+          gl.vertexAttribPointer(lPtSeedLoc, 3, gl.FLOAT, false, 0, 0);
+          gl.uniform1f(lPtTimeLoc, elapsed);
+          gl.uniform2f(lPtResLoc, canvas.width, canvas.height);
+          gl.uniform1f(lPtDprLoc, dpr);
+          gl.uniform1f(lPtPairLoc, activePair);
+          gl.uniform1f(lPtMorphLoc, activeMorph);
+          gl.drawArrays(gl.POINTS, 0, PARTICLE_COUNT);
+        } else {
+          const activePair = (elapsed * 0.12) % 4.0;
+          const pairIdx = Math.floor(activePair) % 4;
+          const list = ARTWORKS[langRef.current] || ARTWORKS.EN;
+          const piece = list[pairIdx];
+          if (artworkTitleRef.current && artworkTitleRef.current.textContent !== piece.title) {
+            artworkTitleRef.current.textContent = piece.title;
+          }
+          if (artworkMediumRef.current && artworkMediumRef.current.textContent !== piece.medium) {
+            artworkMediumRef.current.textContent = piece.medium;
+          }
+
+          gl.disable(gl.BLEND);
+          gl.useProgram(bgProgram);
+          gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+          gl.enableVertexAttribArray(bgPosLoc);
+          gl.vertexAttribPointer(bgPosLoc, 2, gl.FLOAT, false, 0, 0);
+          gl.uniform2f(bgResLoc, canvas.width, canvas.height);
+          gl.uniform1f(bgTimeLoc, elapsed);
+          gl.uniform1f(bgPairLoc, activePair);
+          gl.uniform1f(bgMorphLoc, activeMorph);
+          gl.uniform1f(bgHorizLoc, 1.0);
+          gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+          gl.enable(gl.BLEND);
+          gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+          gl.useProgram(ptProgram);
+          gl.bindBuffer(gl.ARRAY_BUFFER, particleBuf);
+          gl.enableVertexAttribArray(ptSeedLoc);
+          gl.vertexAttribPointer(ptSeedLoc, 3, gl.FLOAT, false, 0, 0);
+          gl.uniform1f(ptTimeLoc, elapsed);
+          gl.uniform2f(ptResLoc, canvas.width, canvas.height);
+          gl.uniform1f(ptDprLoc, dpr);
+          gl.uniform1f(ptPairLoc, activePair);
+          gl.uniform1f(ptMorphLoc, activeMorph);
+          gl.drawArrays(gl.POINTS, 0, PARTICLE_COUNT);
         }
-        if (artworkMediumRef.current && artworkMediumRef.current.textContent !== piece.medium) {
-          artworkMediumRef.current.textContent = piece.medium;
-        }
-
-        gl.disable(gl.BLEND);
-        gl.useProgram(bgProgram);
-        gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
-        gl.enableVertexAttribArray(bgPosLoc);
-        gl.vertexAttribPointer(bgPosLoc, 2, gl.FLOAT, false, 0, 0);
-        gl.uniform2f(bgResLoc, canvas.width, canvas.height);
-        gl.uniform1f(bgTimeLoc, elapsed);
-        gl.uniform1f(bgPairLoc, activePair);
-        gl.uniform1f(bgMorphLoc, activeMorph);
-        gl.uniform1f(bgHorizLoc, 1.0);
-        gl.drawArrays(gl.TRIANGLES, 0, 6);
-
-        gl.enable(gl.BLEND);
-        gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
-        gl.useProgram(ptProgram);
-        gl.bindBuffer(gl.ARRAY_BUFFER, particleBuf);
-        gl.enableVertexAttribArray(ptSeedLoc);
-        gl.vertexAttribPointer(ptSeedLoc, 3, gl.FLOAT, false, 0, 0);
-        gl.uniform1f(ptTimeLoc, elapsed);
-        gl.uniform2f(ptResLoc, canvas.width, canvas.height);
-        gl.uniform1f(ptDprLoc, dpr);
-        gl.uniform1f(ptPairLoc, activePair);
-        gl.uniform1f(ptMorphLoc, activeMorph);
-        gl.drawArrays(gl.POINTS, 0, PARTICLE_COUNT);
       }
 
       animId = requestAnimationFrame(render);
@@ -215,13 +400,27 @@ export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
       gl.deleteBuffer(particleBuf);
       gl.deleteProgram(bgProgram);
       gl.deleteProgram(ptProgram);
+      gl.deleteProgram(lightBgProgram);
+      gl.deleteProgram(lightPtProgram);
     };
   }, []);
 
-  const initialList = ARTWORKS[lang] || ARTWORKS.EN;
+  const initialList = lightMode
+    ? LIGHT_ARTWORKS[lang] || LIGHT_ARTWORKS.EN
+    : ARTWORKS[lang] || ARTWORKS.EN;
 
   return (
-    <div style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', backgroundColor: '#000000', overflow: 'hidden' }}>
+    <div
+      style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        backgroundColor: lightMode ? '#F6F4EC' : '#000000',
+        overflow: 'hidden',
+        transition: 'background-color 0.35s ease',
+      }}
+    >
       <canvas ref={canvasRef} style={{ width: '100%', height: '100%', display: 'block' }} />
 
       {/* GALLERY ARTWORK PLACARD (BOTTOM-CENTER) */}
@@ -239,7 +438,7 @@ export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
           textAlign: 'center',
           gap: '0.15rem',
           width: '90%',
-          maxWidth: '580px',
+          maxWidth: '640px',
         }}
       >
         <div
@@ -248,8 +447,8 @@ export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
           style={{
             fontSize: '0.84rem',
             fontStyle: 'italic',
-            color: 'rgba(255, 255, 255, 0.78)',
-            fontWeight: 400,
+            color: lightMode ? 'rgba(20, 32, 26, 0.86)' : 'rgba(255, 255, 255, 0.78)',
+            fontWeight: 500,
             letterSpacing: '0.01em',
           }}
         >
@@ -259,7 +458,7 @@ export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
           ref={artworkMediumRef}
           style={{
             fontSize: '0.68rem',
-            color: 'rgba(255, 255, 255, 0.38)',
+            color: lightMode ? 'rgba(40, 58, 48, 0.56)' : 'rgba(255, 255, 255, 0.38)',
             letterSpacing: '0.03em',
           }}
         >
@@ -269,5 +468,6 @@ export default function WebbDeepFieldCanvas({ isPaused = false, lang = 'EN' }) {
     </div>
   );
 }
+
 
 
