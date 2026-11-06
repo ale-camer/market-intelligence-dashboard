@@ -60,9 +60,15 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
     4. **Profesional IT:** *"Quiero evaluar la arquitectura real detrás de la app: los 11 pipelines serverless (P-01 a P-13), contratos de datos, latencias HTTP en vivo y cómo opera todo por ~$0.95/mes."* → `[Abrir Telemetría e Infraestructura (System > Performance) →]` · `[Ver Arquitectura de Costos (FinOps) →]`
     5. **Evaluador de RRHH:** *"Tengo pocos minutos para evaluar el proyecto: quiero ver qué problema resuelve y qué nivel de producto, datos en tiempo real, IA, idiomas (56) e ingeniería cloud demuestra."* → `[Reproducir el Video Resumen aquí abajo ↓]` · `[Ver Tablero de Cartera (Portfolio) →]` · `[Ver Ingeniería y Costos (System) →]`
 
-- [ ] **Paso 1.5 — Vista `System` ([`src/components/ObservabilityView.jsx`](../src/components/ObservabilityView.jsx)):**
-  - **Objetivo:** Adaptar `Performance` y `FinOps` específicamente para el **Profesional IT** (y como evidencia de ingeniería para el **Evaluador de RRHH**).
-  - **Qué decidiremos aquí:** Qué metadatos de ingeniería (topología del pipeline, SLOs, contratos de datos, explicación del patrón *Scale-to-Zero & Free-Tier Arbitrage*) muestran mejor la solidez técnica sin ensuciar la vista.
+- [x] **Paso 1.5 — Vista `System` ([`src/components/ObservabilityView.jsx`](../src/components/ObservabilityView.jsx)):**
+  - **Objetivo:** Adaptar `Performance` y `FinOps` específicamente para el **Profesional IT** y como evidencia de ingeniería para el **Evaluador de RRHH**, sin agregar cajas nuevas:
+    1. **En `Performance` (Bloque de especificación `// ...` del módulo seleccionado):**
+       - Sumar `// Pipeline Topology (DAG):` indicando de qué módulos recibe datos y qué pantalla de la app alimenta (conectando backend con UI).
+       - Sumar `// Scaling & Resilience:` explicando el perfil *Scale-to-Zero (`min=0`)* y el snapshot en caché ante arranque en frío.
+    2. **En `Performance` (Cabecera de `Live Telemetry & Logs`):**
+       - Sumar el indicador global `11/11 Pipelines PASS • 0 Schema Drift`.
+    3. **En `FinOps` (Bajada del encabezado de cuotas):**
+       - Sumar 1 oración concisa explicando el diseño *Scale-to-Zero & Free-Tier Arbitrage* (por qué el cómputo en reposo cuesta `$0.00` y el gasto total queda acotado a `~$0.95/mes`).
 
 - [ ] **Paso 1.6 — Vista `Markets` ([`src/components/MarketAnomaliesView.jsx`](../src/components/MarketAnomaliesView.jsx)):**
   - **Objetivo:** Lograr que `Screener` (`Table`, `Orbital`, `Heatmap`, `Main Tools`) y el Nivel 2 (`Analytics` y `Research`) sirvan tanto al **Profesional Quant** (datos duros) como al **Inversor Principiante / Curioso** (interpretación clara de qué significa el régimen o los factores).
@@ -165,5 +171,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Paso 1.2** | `[x] Definido` | Se definió cómo aplicar los 4 patrones reutilizando los renglones y barras que ya existen en la UI sin agregar cajas ni ruido visual + **Regla estricta de aplicar 1 solo paso a la vez bajo supervisión**. |
 | 2026-11-06 | **Fase 4 (Watchlist Bulk)** | `[x] Incorporado al Plan` | Se anotó para el tramo final el segundo menú de filtros por características (generales y propias de cada clase de activo) con botón de 1 clic para agregar/quitar la estrella (`★`) a múltiples activos a la vez. |
 | 2026-11-06 | **Paso 1.4 (Guide)** | `[x] Definido` | Se definieron los 5 textos en primera persona y los links directos (a la Guía y a la app en vivo) del bloque *"¿Qué buscás hoy?"* en `Guide > Home`. |
-| — | **Paso 1.5 (System)** | `[~] En definición` | Definir los ajustes de mensajes y metadatos técnicos en `System` (`Performance` y `FinOps`) para el **Profesional IT** y el **Evaluador de RRHH**. |
+| 2026-11-06 | **Paso 1.5 (System)** | `[x] Definido` | Se definieron los 3 ajustes en `System` (Topología DAG + Scaling en el bloque de contrato, `11/11 Pipelines PASS • 0 Schema Drift` en logs y explicación de 1 línea de *Scale-to-Zero* en `FinOps`). |
+| — | **Paso 1.6 (Markets)** | `[~] En definición` | Definir las lecturas claras en las tarjetas KPI del Screener y en la línea inferior de diagnóstico de `Analytics`. |
 
