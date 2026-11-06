@@ -279,105 +279,192 @@ export const GHOST_EXPORT_BTN_STYLE = {
 };
 
 /**
- * Universal File-Type Icon Button (`ExportFormatButton`)
- * Renders ONLY a crisp file-sheet SVG icon with a folded corner, a subtle download arrow at the top,
- * and the format label (`CSV`, `PNG`, `MD`, `JSON`) stamped inside the icon badge itself.
+ * Color-coded, format-specific icon badge button (`ExportFormatButton`).
+ * Each file format has its own signature color palette and recognizable visual motif:
+ *  - CSV  -> Excel Green (#15803d) & White (#ffffff) + spreadsheet grid icon
+ *  - MD   -> Pitch Black (#090d16) & Pure White (#ffffff) + official Markdown M↓ symbol
+ *  - JSON -> JavaScript Yellow (#facc15) & Black (#090d16) + curly braces { } icon
+ *  - PNG  -> Vibrant Orange (#ea580c) & White (#ffffff) + mountain/sun image frame icon
  */
+const FORMAT_THEMES = {
+  CSV: {
+    bg: 'linear-gradient(180deg, #16a34a 0%, #15803d 100%)',
+    bgHover: 'linear-gradient(180deg, #22c55e 0%, #16a34a 100%)',
+    border: '#4ade80',
+    fg: '#ffffff',
+    glow: 'rgba(34, 197, 94, 0.55)',
+    label: 'CSV',
+  },
+  MD: {
+    bg: '#090d16',
+    bgHover: '#111827',
+    border: 'rgba(255, 255, 255, 0.85)',
+    fg: '#ffffff',
+    glow: 'rgba(255, 255, 255, 0.45)',
+    label: 'MD',
+  },
+  JSON: {
+    bg: 'linear-gradient(180deg, #fde047 0%, #facc15 100%)',
+    bgHover: 'linear-gradient(180deg, #fef08a 0%, #fde047 100%)',
+    border: '#fef08a',
+    fg: '#090d16',
+    glow: 'rgba(250, 204, 21, 0.55)',
+    label: 'JSON',
+  },
+  PNG: {
+    bg: 'linear-gradient(180deg, #f97316 0%, #ea580c 100%)',
+    bgHover: 'linear-gradient(180deg, #fb923c 0%, #f97316 100%)',
+    border: '#fdba74',
+    fg: '#ffffff',
+    glow: 'rgba(249, 115, 22, 0.55)',
+    label: 'PNG',
+  },
+};
+
+function renderFormatGlyph(fmt, fg) {
+  if (fmt === 'CSV') {
+    // Excel-style spreadsheet grid icon in crisp white
+    return React.createElement(
+      'svg',
+      { width: 13, height: 13, viewBox: '0 0 14 14', fill: 'none', style: { display: 'block', flexShrink: 0 } },
+      React.createElement('rect', {
+        x: '1.2',
+        y: '1.5',
+        width: '11.6',
+        height: '11',
+        rx: '1.6',
+        stroke: fg,
+        strokeWidth: '1.35',
+      }),
+      React.createElement('path', {
+        d: 'M1.2 5.2H12.8M1.2 8.8H12.8M5.4 1.5V12.5',
+        stroke: fg,
+        strokeWidth: '1.25',
+      })
+    );
+  }
+
+  if (fmt === 'MD') {
+    // Official Markdown down-arrow / M↓ motif in crisp white on black
+    return React.createElement(
+      'svg',
+      { width: 13, height: 13, viewBox: '0 0 14 14', fill: 'none', style: { display: 'block', flexShrink: 0 } },
+      React.createElement('path', {
+        d: 'M1.5 10.5V3.5L4.1 6.7L6.7 3.5V10.5',
+        stroke: fg,
+        strokeWidth: '1.55',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      }),
+      React.createElement('path', {
+        d: 'M10.5 3.5V10.2M10.5 10.2L8.5 8.1M10.5 10.2L12.5 8.1',
+        stroke: fg,
+        strokeWidth: '1.55',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      })
+    );
+  }
+
+  if (fmt === 'JSON') {
+    // Bold curly braces { } in dark ink on JavaScript yellow
+    return React.createElement(
+      'svg',
+      { width: 13, height: 13, viewBox: '0 0 14 14', fill: 'none', style: { display: 'block', flexShrink: 0 } },
+      React.createElement('path', {
+        d: 'M5.1 2.2C3.8 2.2 3.4 2.8 3.4 4.0V5.4C3.4 6.3 2.7 7.0 1.8 7.0C2.7 7.0 3.4 7.7 3.4 8.6V10.0C3.4 11.2 3.8 11.8 5.1 11.8',
+        stroke: fg,
+        strokeWidth: '1.65',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      }),
+      React.createElement('path', {
+        d: 'M8.9 2.2C10.2 2.2 10.6 2.8 10.6 4.0V5.4C10.6 6.3 11.3 7.0 12.2 7.0C11.3 7.0 10.6 7.7 10.6 8.6V10.0C10.6 11.2 10.2 11.8 8.9 11.8',
+        stroke: fg,
+        strokeWidth: '1.65',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      })
+    );
+  }
+
+  // PNG -> Image frame with sun + mountain peak
+  return React.createElement(
+    'svg',
+    { width: 13, height: 13, viewBox: '0 0 14 14', fill: 'none', style: { display: 'block', flexShrink: 0 } },
+    React.createElement('rect', {
+      x: '1.2',
+      y: '1.8',
+      width: '11.6',
+      height: '10.4',
+      rx: '1.8',
+      stroke: fg,
+      strokeWidth: '1.35',
+    }),
+    React.createElement('circle', {
+      cx: '4.4',
+      cy: '4.9',
+      r: '1.15',
+      fill: fg,
+    }),
+    React.createElement('path', {
+      d: 'M2.2 10.8L5.6 7.1L8.1 9.5L9.9 7.8L12.0 10.8',
+      stroke: fg,
+      strokeWidth: '1.35',
+      strokeLinecap: 'round',
+      strokeLinejoin: 'round',
+    })
+  );
+}
+
 export function ExportFormatButton({ format = 'CSV', onClick, title, style = {} }) {
   const fmt = String(format || 'CSV').toUpperCase();
-  const isFourChars = fmt.length >= 4;
+  const theme = FORMAT_THEMES[fmt] || FORMAT_THEMES.CSV;
 
   return React.createElement(
     'button',
     {
       type: 'button',
       onClick,
-      title: title || `Download ${fmt}`,
-      'aria-label': title || `Download ${fmt}`,
+      title: title || `Download .${fmt.toLowerCase()}`,
+      'aria-label': title || `Download .${fmt.toLowerCase()}`,
       style: {
-        background: 'transparent',
-        border: 'none',
-        padding: '2px',
+        background: theme.bg,
+        border: `1px solid ${theme.border}`,
+        borderRadius: '5px',
+        height: '23px',
+        padding: '0 7px',
         margin: 0,
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#94a3b8',
+        gap: '4.5px',
+        color: theme.fg,
+        fontSize: '10.5px',
+        fontWeight: 800,
+        fontFamily: 'var(--font-mono, "JetBrains Mono", monospace)',
+        letterSpacing: '0.03em',
+        lineHeight: 1,
         cursor: 'pointer',
-        transition: 'color 0.16s ease, filter 0.16s ease, transform 0.16s ease',
+        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.35)',
+        transition: 'transform 0.14s ease, filter 0.14s ease, box-shadow 0.14s ease, background 0.14s ease',
         flexShrink: 0,
+        whiteSpace: 'nowrap',
         ...style,
       },
       onMouseEnter: (e) => {
-        e.currentTarget.style.color = 'var(--ui-accent, #10b981)';
-        e.currentTarget.style.filter = 'drop-shadow(0 0 7px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.72))';
+        e.currentTarget.style.background = theme.bgHover;
+        e.currentTarget.style.transform = 'translateY(-1px)';
+        e.currentTarget.style.boxShadow = `0 0 10px ${theme.glow}`;
       },
       onMouseLeave: (e) => {
-        e.currentTarget.style.color = '#94a3b8';
-        e.currentTarget.style.filter = 'none';
+        e.currentTarget.style.background = theme.bg;
+        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.35)';
       },
     },
-    React.createElement(
-      'svg',
-      {
-        width: 25,
-        height: 22,
-        viewBox: '0 0 26 23',
-        fill: 'none',
-        xmlns: 'http://www.w3.org/2000/svg',
-        style: { display: 'block', overflow: 'visible' },
-      },
-      // File sheet outline with folded top-right corner
-      React.createElement('path', {
-        d: 'M5.5 1.5H16.2L21.5 6.8V19.8C21.5 20.7389 20.7389 21.5 19.8 21.5H5.5C4.56112 21.5 3.8 20.7389 3.8 19.8V3.2C3.8 2.26112 4.56112 1.5 5.5 1.5Z',
-        stroke: 'currentColor',
-        strokeWidth: '1.35',
-        strokeLinejoin: 'round',
-        fill: 'rgba(8, 12, 22, 0.55)',
-      }),
-      // Folded corner crease
-      React.createElement('path', {
-        d: 'M15.8 1.5V6.8H21.2',
-        stroke: 'currentColor',
-        strokeWidth: '1.25',
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-      }),
-      // Subtle download arrow in the upper half of the document
-      React.createElement('path', {
-        d: 'M10.8 4.4V8.9M10.8 8.9L8.9 7.1M10.8 8.9L12.7 7.1',
-        stroke: 'currentColor',
-        strokeWidth: '1.25',
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-      }),
-      // Embedded format badge across the lower half of the file icon
-      React.createElement('rect', {
-        x: '1.5',
-        y: '11.4',
-        width: '23',
-        height: '8.8',
-        rx: '2.2',
-        fill: '#070b14',
-        stroke: 'currentColor',
-        strokeWidth: '1.2',
-      }),
-      // Format text inside the icon badge (CSV / PNG / MD / JSON)
-      React.createElement(
-        'text',
-        {
-          x: '13',
-          y: '17.6',
-          textAnchor: 'middle',
-          fill: 'currentColor',
-          fontSize: isFourChars ? '6.2' : '6.8',
-          fontWeight: '800',
-          fontFamily: 'var(--font-mono, "JetBrains Mono", monospace)',
-          letterSpacing: isFourChars ? '0.01em' : '0.04em',
-        },
-        fmt
-      )
-    )
+    renderFormatGlyph(fmt, theme.fg),
+    React.createElement('span', null, theme.label)
   );
 }
 
