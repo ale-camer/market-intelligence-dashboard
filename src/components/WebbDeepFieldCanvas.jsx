@@ -75,131 +75,72 @@ const ARTWORKS = {
   ],
 };
 
+const SharedLightPieces = [
+  {
+    id: 0,
+    short: '01. Girasol Fibonacci ⟷ Espiral Áurea',
+    title: '01. Girasol Fibonacci ⟷ Espiral Áurea',
+    medium: 'Filotaxis de semillas (137.5°) • Proporción áurea y anillos de Fibonacci (23.6% • 38.2% • 61.8%)',
+  },
+  {
+    id: 1,
+    short: '02. Flor de Loto ⟷ Interferencia de Ondas',
+    title: '02. Flor de Loto ⟷ Interferencia de Ondas',
+    medium: 'Mandala de loto y anillos de estanque • Propagación armónica y contagio de volatilidad',
+  },
+  {
+    id: 2,
+    short: '03. Caracola Nautilus ⟷ Canal de Regresión OLS',
+    title: '03. Caracola Nautilus ⟷ Canal de Regresión OLS',
+    medium: 'Cámaras septales en espiral • Ciclos de Elliott y bandas de desviación estándar (±2σ)',
+  },
+  {
+    id: 3,
+    short: '04. Bandada en Vuelo ⟷ 3 Regímenes de Markov',
+    title: '04. Bandada en Vuelo ⟷ 3 Regímenes de Markov',
+    medium: 'Murmuración de golondrinas • Matriz de transición (Calma • Transición • Estrés)',
+  },
+  {
+    id: 4,
+    short: '05. Cordillera & Ríos ⟷ Topografía Iso-Sharpe',
+    title: '05. Cordillera & Ríos ⟷ Topografía Iso-Sharpe',
+    medium: 'Valle primaveral y deshielo glaciar • Curvas de nivel de eficiencia riesgo-retorno',
+  },
+  {
+    id: 5,
+    short: '06. Panal & Lavanda ⟷ Red de Correlación (ENB)',
+    title: '06. Panal & Lavanda ⟷ Red de Correlación (ENB)',
+    medium: 'Teselación hexagonal de Voronoi • Constelación de 7 clusters de diversificación real',
+  },
+  {
+    id: 6,
+    short: '07. Árbol Copa & Raíces ⟷ Grafo Pipeline DAG',
+    title: '07. Árbol Copa & Raíces ⟷ Grafo Pipeline DAG',
+    medium: 'Árbol frondoso en flor y raíces • Topología de 4 etapas y contratos de datos (P-01..P-13)',
+  },
+  {
+    id: 7,
+    short: '08. Rosa de los Vientos ⟷ Radar Multi-Factor',
+    title: '08. Rosa de los Vientos ⟷ Radar Multi-Factor',
+    medium: 'Estrella náutica de 8 puntas • Polígono polar de 6 factores (Momentum • Value • Quality • Low-Vol)',
+  },
+  {
+    id: 8,
+    short: '09. ADN Botánico ⟷ Cointegración (Pairs Trading)',
+    title: '09. ADN Botánico ⟷ Cointegración (Pairs Trading)',
+    medium: 'Doble hélice viva entrelazada • Equilibrio estadístico y reversión a la media (±2σ)',
+  },
+  {
+    id: 9,
+    short: '10. Diente de León ⟷ Cono de Kelly',
+    title: '10. Diente de León ⟷ Cono de Kelly',
+    medium: 'Esfera radial de 32 rayos y semillas al viento • Cresta óptima de crecimiento compuesto g(f*)',
+  },
+];
+
 export const LIGHT_ARTWORKS = {
-  EN: [
-    {
-      id: 0,
-      short: '01. Girasol Fibonacci ★',
-      title: 'Fibonacci Sunflower Phyllotaxis (φ = 1.618)  ⟷  Golden Logarithmic Spiral & Fibonacci Arcs',
-      medium: 'Golden-Angle Seed Spiral (137.5°) • Harmonic Retracement & Extension Manifold',
-    },
-    {
-      id: 1,
-      short: '02. Flor de Loto & Estanque',
-      title: 'Sacred Lotus Mandala & Pond Ripples  ⟷  Two-Source Wave Interference & Contagion Field',
-      medium: 'Concentric Water Harmonics • Volatility Propagation & Resonance Surface',
-    },
-    {
-      id: 2,
-      short: '03. Caracola Nautilus & Olas',
-      title: 'Chambered Nautilus Shell & Ocean Waves  ⟷  Elliott Wave Cycles & OLS Regression Channel',
-      medium: 'Logarithmic Septa Chambers • Linear Trend & ±2σ Confidence Rails',
-    },
-    {
-      id: 3,
-      short: '04. Bandada de Golondrinas',
-      title: 'Spring Swallow Murmuration  ⟷  3-State Markov Regime Switching Orbitals',
-      medium: 'Synchronized Aerial Streams • Probabilistic Transition Matrix (Calm • Transition • Stress)',
-    },
-    {
-      id: 4,
-      short: '05. Cordillera & Ríos',
-      title: 'Alpine Spring Ridges & Meltwater Rivers  ⟷  Topographic Iso-Sharpe & Alpha Manifold',
-      medium: 'Terrestrial Elevation Contours • Multi-Factor Brinson Attribution Contours',
-    },
-    {
-      id: 5,
-      short: '06. Panal & Lavanda',
-      title: 'Hexagonal Honeycomb & Lavender Pollen  ⟷  Multi-Asset Correlation Network (ENB)',
-      medium: 'Optimal Voronoi Tessellation • 7-Cluster Diversification Graph',
-    },
-    {
-      id: 6,
-      short: '07. Árbol Copa & Raíces',
-      title: 'Spring Tree of Life (Canopy & Roots)  ⟷  Directed Acyclic Pipeline Graph (DAG P-01..P-13)',
-      medium: 'Botanical Branching Architecture • 4-Stage Institutional Data-Contract Topology',
-    },
-    {
-      id: 7,
-      short: '08. Rosa de los Vientos',
-      title: '8-Point Wind Rose & Spring Breeze  ⟷  6-Axis Multi-Factor Quant Radar',
-      medium: 'Directional Wind Harmonics • Momentum • Value • Quality • Low-Vol • Liquidity • Carry',
-    },
-    {
-      id: 8,
-      short: '09. ADN Botánico (Doble Hélice)',
-      title: 'Living Botanical Double Helix  ⟷  Cointegration & Mean-Reverting Pairs Spread',
-      medium: 'Interwoven Vine Strands • Statistical Equilibrium & ±2σ Z-Score Convergence',
-    },
-    {
-      id: 9,
-      short: '10. Diente de León Esférico',
-      title: 'Geodesic Dandelion Pappus Sphere  ⟷  Kelly Criterion Compounding Growth Fan g(f*)',
-      medium: '32-Spoke Radial Seed Crown • Optimal Leverage Peak & Geometric Growth Frontier',
-    },
-  ],
-  ES: [
-    {
-      id: 0,
-      short: '01. Girasol Fibonacci ★',
-      title: 'Girasol de Fibonacci (Filotaxis Áurea φ = 1.618)  ⟷  Espiral Logarítmica & Arcos de Fibonacci',
-      medium: 'Espiral botánica de ángulo áureo (137.5°) • Proporción áurea y anillos armónicos (23.6% • 38.2% • 61.8%)',
-    },
-    {
-      id: 1,
-      short: '02. Flor de Loto & Estanque',
-      title: 'Flor de Loto & Ondas en Estanque  ⟷  Interferencia de Ondas & Contagio de Volatilidad',
-      medium: 'Mandala acuático y anillos concéntricos • Propagación armónica y resonancia de mercado',
-    },
-    {
-      id: 2,
-      short: '03. Caracola Nautilus & Olas',
-      title: 'Caracola Marina Nautilus & Olas  ⟷  Ciclos de Elliott & Canal de Regresión OLS (±2σ)',
-      medium: 'Cámaras septales en espiral áurea • Tendencia lineal y bandas de desviación estándar',
-    },
-    {
-      id: 3,
-      short: '04. Bandada de Golondrinas',
-      title: 'Bandada de Golondrinas (Murmuración)  ⟷  Órbitas de 3 Regímenes de Markov',
-      medium: 'Vuelo colectivo en el cielo celeste • Matriz de transición (Calma • Transición • Estrés)',
-    },
-    {
-      id: 4,
-      short: '05. Cordillera & Ríos',
-      title: 'Cordillera en Deshielo & Ríos Glaciares  ⟷  Topografía Iso-Sharpe & Alfa de Brinson',
-      medium: 'Valle verde y río celeste • Curvas de nivel de máxima eficiencia riesgo-retorno',
-    },
-    {
-      id: 5,
-      short: '06. Panal & Lavanda',
-      title: 'Panal Hexagonal & Polen de Lavanda  ⟷  Red de Clusters de Correlación (ENB)',
-      medium: 'Teselación orgánica de Voronoi • Constelación de 7 clusters de diversificación real',
-    },
-    {
-      id: 6,
-      short: '07. Árbol Copa & Raíces',
-      title: 'Árbol de Primavera (Copa Frondosa & Raíces)  ⟷  Grafo Acíclico Dirigido (DAG P-01..P-13)',
-      medium: 'Arquitectura arbórea viva • Topología de 4 etapas y contratos de datos cuantitativos',
-    },
-    {
-      id: 7,
-      short: '08. Rosa de los Vientos',
-      title: 'Rosa de los Vientos de 8 Puntas  ⟷  Radar Polar Multi-Factor de 6 Ejes',
-      medium: 'Rosa náutica primaveral • Polígono de factores (Momentum • Value • Quality • Low-Vol • Liquidez)',
-    },
-    {
-      id: 8,
-      short: '09. ADN Botánico (Doble Hélice)',
-      title: 'Doble Hélice Botánica Entrelazada  ⟷  Cointegración & Arbitraje Estadístico (Pairs Trading)',
-      medium: 'Hebras vivas de esmeralda y agua • Equilibrio estadístico y reversión a la media',
-    },
-    {
-      id: 9,
-      short: '10. Diente de León Esférico',
-      title: 'Esfera Radial de Diente de León (Pappus)  ⟷  Abanico de Crecimiento Compuesto de Kelly g(f*)',
-      medium: 'Corona geodésica de 32 rayos y brisa • Cresta óptima Half/Full-Kelly y capitalización',
-    },
-  ],
+  EN: SharedLightPieces,
+  ES: SharedLightPieces,
 };
 
 export default function WebbDeepFieldCanvas({
