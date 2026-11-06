@@ -77,7 +77,10 @@ export default function ObservabilityView({ langCode = 'EN' }) {
     const { localeTick } = useViewLocale(langCode);
     const isES = `${langCode}_${localeTick}`;
     const langKey = langCode || 'EN';
-    const [activeTab, setActiveTab] = useState('performance'); // 'performance' | 'finops'
+    const [activeTab, setActiveTab] = useState(() => {
+        const sub = new URLSearchParams(window.location.search).get('sub');
+        return sub === 'finops' ? 'finops' : 'performance';
+    }); // 'performance' | 'finops'
     const [selectedNodeId, setSelectedNodeId] = useState('P-06');
     const [logScope, setLogScope] = useState('selected'); // 'selected' | 'all'
     const [liveProbes, setLiveProbes] = useState({});

@@ -18,7 +18,12 @@ export default function AgentCommitteeView({
 }) {
     const { localeTick } = useViewLocale(langCode);
     const isES = `${langCode}_${localeTick}`;
-    const [activeView, setActiveView] = useState('V1');
+    const [activeView, setActiveView] = useState(() => {
+        const sub = (new URLSearchParams(window.location.search).get('sub') || '').toLowerCase();
+        if (sub === 'risk' || sub === 'v2') return 'V2';
+        if (sub === 'simulator' || sub === 'v3') return 'V3';
+        return 'V1';
+    });
     const [copilotOpen, setCopilotOpen] = useState(false);
     const [copilotMsg, setCopilotMsg] = useState('');
     const [copilotThread, setCopilotThread] = useState([]);

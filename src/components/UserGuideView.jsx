@@ -817,7 +817,12 @@ function GuideMediaPlaceholder({ page, typo, isES = false, langCode = 'EN' }) {
     );
 }
 
-export default function UserGuideView({ langCode = 'EN', typoPresetOverride = null, compactHeight = false }) {
+export default function UserGuideView({
+    langCode = 'EN',
+    typoPresetOverride = null,
+    compactHeight = false,
+    onLaunchTarget
+}) {
     const isES = langCode === 'ES';
     const {
         ui: guideUI,
@@ -868,6 +873,7 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
 
     const contentScrollRef = useRef(null);
     const leftMenuScrollRef = useRef(null);
+    const mediaPlaceholderRef = useRef(null);
     const sectionRefs = useRef({});
     const programmaticScrollLockRef = useRef(false);
 
@@ -1318,6 +1324,235 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                             </p>
                         ))}
 
+                        {/* BLOQUE PASO 1.4 (SÓLO EN GUIDE > HOME): "¿QUÉ BUSCÁS HOY? ELEGÍ TU PUNTO DE PARTIDA" */}
+                        {activePage.id === 'home' && (
+                            <div
+                                style={{
+                                    margin: '18px 0 26px',
+                                    padding: '14px 18px',
+                                    borderRadius: '8px',
+                                    background: 'rgba(255, 255, 255, 0.02)',
+                                    borderLeft: '2px solid var(--ui-accent, #10b981)',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    gap: '10px'
+                                }}
+                            >
+                                <p
+                                    style={{
+                                        margin: 0,
+                                        fontSize: typo.bulletSize,
+                                        color: typo.headingColor,
+                                        fontWeight: 600
+                                    }}
+                                >
+                                    {isES
+                                        ? '¿Qué buscás hoy? Elegí tu punto de partida:'
+                                        : 'What are you looking for today? Choose your starting point:'}
+                                </p>
+
+                                <ul
+                                    style={{
+                                        margin: 0,
+                                        paddingLeft: '20px',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '11px',
+                                        fontSize: typo.bulletSize,
+                                        color: typo.bodyColor,
+                                        lineHeight: typo.lineHeight
+                                    }}
+                                >
+                                    {[
+                                        {
+                                            label: isES ? 'Curioso / Aprendiz' : 'Curious / Learner',
+                                            quote: isES
+                                                ? '“Quiero entender desde cero cómo se mueven los mercados y qué significa cada indicador sin chocar con jerga compleja.”'
+                                                : '“I want to understand from scratch how markets move and what each indicator means without hitting complex jargon.”',
+                                            actions: [
+                                                {
+                                                    text: isES
+                                                        ? 'Ver capítulo Mercados en esta Guía →'
+                                                        : 'Read Markets chapter in this Guide →',
+                                                    onClick: () => {
+                                                        const mktPage = ALL_GUIDE_PAGES.find(p => p.id === 'mkt-screener');
+                                                        if (mktPage) handleSelectPage(mktPage);
+                                                    }
+                                                },
+                                                {
+                                                    text: isES
+                                                        ? 'Explorar el Radar Visual en vivo (Markets) →'
+                                                        : 'Explore Live Visual Radar (Markets) →',
+                                                    onClick: () =>
+                                                        onLaunchTarget &&
+                                                        onLaunchTarget({ view: 'markets', screener: 'orbital' })
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            label: isES
+                                                ? 'Inversor Individual / Principiante'
+                                                : 'Individual / Beginner Investor',
+                                            quote: isES
+                                                ? '“Quiero analizar activos concretos, conocer qué factores empujan su precio y armar o probar mi propia cartera midiendo el riesgo en simple.”'
+                                                : '“I want to analyze specific assets, see what drives their price, and build or test my own portfolio measuring risk simply.”',
+                                            actions: [
+                                                {
+                                                    text: isES
+                                                        ? 'Ir al Constructor de Cartera (Portfolio) →'
+                                                        : 'Go to Portfolio Builder (Portfolio) →',
+                                                    onClick: () =>
+                                                        onLaunchTarget && onLaunchTarget({ view: 'portfolio' })
+                                                },
+                                                {
+                                                    text: isES
+                                                        ? 'Investigar Factores y Noticias (Research) →'
+                                                        : 'Explore Factors & News (Research) →',
+                                                    onClick: () =>
+                                                        onLaunchTarget &&
+                                                        onLaunchTarget({
+                                                            view: 'markets',
+                                                            mode: 'detail',
+                                                            section: 'research',
+                                                            asset: 'NVDA'
+                                                        })
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            label: isES ? 'Profesional Quant' : 'Quant Professional',
+                                            quote: isES
+                                                ? '“Busco instrumental cuantitativo directo: detección de anomalías, superficies de volatilidad y curvas, atribución de Brinson, estrés histórico y Criterio de Kelly.”'
+                                                : '“I am looking for direct quantitative tools: anomaly detection, volatility surfaces & yield curves, Brinson attribution, historical stress, and Kelly Criterion.”',
+                                            actions: [
+                                                {
+                                                    text: isES
+                                                        ? 'Abrir Estación Analytics →'
+                                                        : 'Open Analytics Workstation →',
+                                                    onClick: () =>
+                                                        onLaunchTarget &&
+                                                        onLaunchTarget({
+                                                            view: 'markets',
+                                                            mode: 'detail',
+                                                            section: 'analytics',
+                                                            asset: 'NVDA'
+                                                        })
+                                                },
+                                                {
+                                                    text: isES
+                                                        ? 'Auditar Riesgo, Correlaciones y Stress (Portfolio > Risk) →'
+                                                        : 'Audit Risk, Correlations & Stress (Portfolio > Risk) →',
+                                                    onClick: () =>
+                                                        onLaunchTarget &&
+                                                        onLaunchTarget({ view: 'portfolio', sub: 'risk' })
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            label: isES ? 'Profesional IT' : 'IT Professional',
+                                            quote: isES
+                                                ? '“Quiero evaluar la arquitectura real detrás de la app: los 11 pipelines serverless (P-01 a P-13), contratos de datos, latencias HTTP en vivo y cómo opera todo por ~$0.95/mes.”'
+                                                : '“I want to evaluate the real architecture behind the app: the 11 serverless pipelines (P-01 to P-13), data contracts, live HTTP latencies, and how it runs on ~$0.95/mo.”',
+                                            actions: [
+                                                {
+                                                    text: isES
+                                                        ? 'Abrir Telemetría e Infraestructura (System > Performance) →'
+                                                        : 'Open Telemetry & Infrastructure (System > Performance) →',
+                                                    onClick: () =>
+                                                        onLaunchTarget &&
+                                                        onLaunchTarget({ view: 'observability', sub: 'performance' })
+                                                },
+                                                {
+                                                    text: isES
+                                                        ? 'Ver Arquitectura de Costos (FinOps) →'
+                                                        : 'View Cost Architecture (FinOps) →',
+                                                    onClick: () =>
+                                                        onLaunchTarget &&
+                                                        onLaunchTarget({ view: 'observability', sub: 'finops' })
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            label: isES ? 'Evaluador de RRHH' : 'HR Evaluator',
+                                            quote: isES
+                                                ? '“Tengo pocos minutos para evaluar el proyecto: quiero ver qué problema resuelve y qué nivel de producto, datos en tiempo real, IA, idiomas (56) e ingeniería cloud demuestra.”'
+                                                : '“I have a few minutes to evaluate the project: I want to see what problem it solves and the level of product, live data, AI, languages (56), and cloud engineering it demonstrates.”',
+                                            actions: [
+                                                {
+                                                    text: isES
+                                                        ? 'Reproducir el Video Resumen aquí abajo ↓'
+                                                        : 'Play Summary Video below ↓',
+                                                    onClick: () => {
+                                                        if (mediaPlaceholderRef.current) {
+                                                            mediaPlaceholderRef.current.scrollIntoView({
+                                                                behavior: 'smooth',
+                                                                block: 'center'
+                                                            });
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    text: isES
+                                                        ? 'Ver Tablero de Cartera (Portfolio) →'
+                                                        : 'View Portfolio Dashboard (Portfolio) →',
+                                                    onClick: () =>
+                                                        onLaunchTarget && onLaunchTarget({ view: 'portfolio' })
+                                                },
+                                                {
+                                                    text: isES
+                                                        ? 'Ver Ingeniería y Costos (System) →'
+                                                        : 'View Engineering & Costs (System) →',
+                                                    onClick: () =>
+                                                        onLaunchTarget && onLaunchTarget({ view: 'observability' })
+                                                }
+                                            ]
+                                        }
+                                    ].map((item, idx) => (
+                                        <li key={idx}>
+                                            <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
+                                                {item.label}:
+                                            </strong>{' '}
+                                            <span>{item.quote}</span>{' '}
+                                            <span
+                                                style={{
+                                                    display: 'inline-flex',
+                                                    flexWrap: 'wrap',
+                                                    alignItems: 'center',
+                                                    gap: '8px',
+                                                    marginLeft: '4px'
+                                                }}
+                                            >
+                                                {item.actions.map((act, aIdx) => (
+                                                    <React.Fragment key={aIdx}>
+                                                        {aIdx > 0 && (
+                                                            <span style={{ color: '#475569' }}>·</span>
+                                                        )}
+                                                        <button
+                                                            type="button"
+                                                            onClick={act.onClick}
+                                                            style={{
+                                                                background: 'transparent',
+                                                                border: 'none',
+                                                                padding: 0,
+                                                                color: 'var(--ui-accent, #10b981)',
+                                                                fontWeight: 600,
+                                                                fontSize: '12.5px',
+                                                                fontFamily: typo.fontFamily,
+                                                                cursor: 'pointer',
+                                                                textDecoration: 'none'
+                                                            }}
+                                                        >
+                                                            [{act.text}]
+                                                        </button>
+                                                    </React.Fragment>
+                                                ))}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
                         {/* SÍNTESIS EN VIÑETAS */}
                         <p
                             style={{
@@ -1365,7 +1600,9 @@ export default function UserGuideView({ langCode = 'EN', typoPresetOverride = nu
                         </ul>
 
                         {/* PLACEHOLDER DE VIDEO Y AUDIO (ESTILO DOCKER DOCS) */}
-                        <GuideMediaPlaceholder page={activePage} typo={typo} isES={isES} langCode={langCode} />
+                        <div ref={mediaPlaceholderRef}>
+                            <GuideMediaPlaceholder page={activePage} typo={typo} isES={isES} langCode={langCode} />
+                        </div>
 
                         {/* SECCIONES DE LECTURA CONTINUA */}
                         {activePage.sections.map(sec => (
