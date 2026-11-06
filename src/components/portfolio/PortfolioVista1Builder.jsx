@@ -4,7 +4,7 @@ import {
     exportToCsv,
     exportSnapshotToPng,
     getExportDateStamp,
-    GHOST_EXPORT_BTN_STYLE
+    ExportFormatButton
 } from '../../utils/exportService';
 import {
     ResponsiveContainer,
@@ -365,22 +365,16 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                         100%
                     </button>
                     <span style={{ color: 'rgba(148, 163, 184, 0.25)', userSelect: 'none' }}>|</span>
-                    <button
-                        type="button"
+                    <ExportFormatButton
+                        format="CSV"
                         onClick={handleExportBuilderCsv}
                         title={tx('Exportar tabla de cartera (CSV)', 'Export portfolio holdings table (CSV)')}
-                        style={GHOST_EXPORT_BTN_STYLE}
-                    >
-                        ↓ CSV
-                    </button>
-                    <button
-                        type="button"
+                    />
+                    <ExportFormatButton
+                        format="PNG"
                         onClick={handleExportBuilderPng}
                         title={tx('Descargar imagen resumen de cartera (PNG)', 'Download portfolio summary snapshot (PNG)')}
-                        style={GHOST_EXPORT_BTN_STYLE}
-                    >
-                        ↓ PNG
-                    </button>
+                    />
                 </div>
             }
             subBar={

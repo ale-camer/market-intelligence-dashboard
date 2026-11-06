@@ -1,9 +1,12 @@
+import React from 'react';
+
 /**
  * Client-Side Institutional Export Service (`src/utils/exportService.js`)
  *
  * Implements Phase 3 (Steps 3.1 to 3.4):
  * - Zero-dependency instant downloads for `CSV`, `JSON`, `Markdown (.md)`, and high-DPI Canvas `PNG` snapshots.
- * - Minimalist V010 Ghost button styling (`9px` monospace `↓ CSV`, `↓ PNG`, `↓ MD`, `↓ JSON`).
+ * - Universal File-Badge SVG Icon button (`ExportFormatButton`) where the format (`CSV`, `PNG`, `MD`, `JSON`)
+ *   is embedded directly inside the file icon silhouette.
  */
 
 export function getExportDateStamp() {
@@ -274,4 +277,108 @@ export const GHOST_EXPORT_BTN_STYLE = {
   transition: 'all 0.15s ease',
   whiteSpace: 'nowrap',
 };
+
+/**
+ * Universal File-Type Icon Button (`ExportFormatButton`)
+ * Renders ONLY a crisp file-sheet SVG icon with a folded corner, a subtle download arrow at the top,
+ * and the format label (`CSV`, `PNG`, `MD`, `JSON`) stamped inside the icon badge itself.
+ */
+export function ExportFormatButton({ format = 'CSV', onClick, title, style = {} }) {
+  const fmt = String(format || 'CSV').toUpperCase();
+  const isFourChars = fmt.length >= 4;
+
+  return React.createElement(
+    'button',
+    {
+      type: 'button',
+      onClick,
+      title: title || `Download ${fmt}`,
+      'aria-label': title || `Download ${fmt}`,
+      style: {
+        background: 'transparent',
+        border: 'none',
+        padding: '2px',
+        margin: 0,
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#94a3b8',
+        cursor: 'pointer',
+        transition: 'color 0.16s ease, filter 0.16s ease, transform 0.16s ease',
+        flexShrink: 0,
+        ...style,
+      },
+      onMouseEnter: (e) => {
+        e.currentTarget.style.color = 'var(--ui-accent, #10b981)';
+        e.currentTarget.style.filter = 'drop-shadow(0 0 7px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.72))';
+      },
+      onMouseLeave: (e) => {
+        e.currentTarget.style.color = '#94a3b8';
+        e.currentTarget.style.filter = 'none';
+      },
+    },
+    React.createElement(
+      'svg',
+      {
+        width: 25,
+        height: 22,
+        viewBox: '0 0 26 23',
+        fill: 'none',
+        xmlns: 'http://www.w3.org/2000/svg',
+        style: { display: 'block', overflow: 'visible' },
+      },
+      // File sheet outline with folded top-right corner
+      React.createElement('path', {
+        d: 'M5.5 1.5H16.2L21.5 6.8V19.8C21.5 20.7389 20.7389 21.5 19.8 21.5H5.5C4.56112 21.5 3.8 20.7389 3.8 19.8V3.2C3.8 2.26112 4.56112 1.5 5.5 1.5Z',
+        stroke: 'currentColor',
+        strokeWidth: '1.35',
+        strokeLinejoin: 'round',
+        fill: 'rgba(8, 12, 22, 0.55)',
+      }),
+      // Folded corner crease
+      React.createElement('path', {
+        d: 'M15.8 1.5V6.8H21.2',
+        stroke: 'currentColor',
+        strokeWidth: '1.25',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      }),
+      // Subtle download arrow in the upper half of the document
+      React.createElement('path', {
+        d: 'M10.8 4.4V8.9M10.8 8.9L8.9 7.1M10.8 8.9L12.7 7.1',
+        stroke: 'currentColor',
+        strokeWidth: '1.25',
+        strokeLinecap: 'round',
+        strokeLinejoin: 'round',
+      }),
+      // Embedded format badge across the lower half of the file icon
+      React.createElement('rect', {
+        x: '1.5',
+        y: '11.4',
+        width: '23',
+        height: '8.8',
+        rx: '2.2',
+        fill: '#070b14',
+        stroke: 'currentColor',
+        strokeWidth: '1.2',
+      }),
+      // Format text inside the icon badge (CSV / PNG / MD / JSON)
+      React.createElement(
+        'text',
+        {
+          x: '13',
+          y: '17.6',
+          textAnchor: 'middle',
+          fill: 'currentColor',
+          fontSize: isFourChars ? '6.2' : '6.8',
+          fontWeight: '800',
+          fontFamily: 'var(--font-mono, "JetBrains Mono", monospace)',
+          letterSpacing: isFourChars ? '0.01em' : '0.04em',
+        },
+        fmt
+      )
+    )
+  );
+}
+
 

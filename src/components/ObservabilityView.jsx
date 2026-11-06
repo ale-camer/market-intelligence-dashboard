@@ -5,7 +5,7 @@ import {
     exportToMarkdown,
     exportToJson,
     getExportDateStamp,
-    GHOST_EXPORT_BTN_STYLE
+    ExportFormatButton
 } from '../utils/exportService';
 import {
     evaluateEcosystemContracts,
@@ -397,22 +397,16 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                         gap: '6px'
                     }}
                 >
-                    <button
-                        type="button"
+                    <ExportFormatButton
+                        format="MD"
                         onClick={handleExportSystemMd}
                         title={tx('Exportar ficha técnica de arquitectura y FinOps (Markdown)', 'Export architecture & FinOps technical brief (Markdown)')}
-                        style={GHOST_EXPORT_BTN_STYLE}
-                    >
-                        ↓ MD
-                    </button>
-                    <button
-                        type="button"
+                    />
+                    <ExportFormatButton
+                        format="JSON"
                         onClick={handleExportSystemJson}
                         title={tx('Exportar contratos P-01..P-13 y telemetría (JSON)', 'Export P-01..P-13 contracts & telemetry (JSON)')}
-                        style={GHOST_EXPORT_BTN_STYLE}
-                    >
-                        ↓ JSON
-                    </button>
+                    />
                     <button
                         type="button"
                         onClick={runLiveCheck}

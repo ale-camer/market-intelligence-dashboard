@@ -4,7 +4,7 @@ import {
     exportToCsv,
     exportToJson,
     getExportDateStamp,
-    GHOST_EXPORT_BTN_STYLE
+    ExportFormatButton
 } from '../../utils/exportService';
 import {
     ResponsiveContainer,
@@ -241,22 +241,16 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                         );
                     })}
                     <span style={{ color: 'rgba(148, 163, 184, 0.25)', userSelect: 'none' }}>|</span>
-                    <button
-                        type="button"
+                    <ExportFormatButton
+                        format="CSV"
                         onClick={handleExportRiskCsv}
                         title={tx('Exportar reporte cuantitativo de riesgo (CSV)', 'Export quantitative risk report (CSV)')}
-                        style={GHOST_EXPORT_BTN_STYLE}
-                    >
-                        ↓ CSV
-                    </button>
-                    <button
-                        type="button"
+                    />
+                    <ExportFormatButton
+                        format="JSON"
                         onClick={handleExportRiskJson}
                         title={tx('Exportar matrices de correlación y riesgo (JSON)', 'Export correlation & risk matrices (JSON)')}
-                        style={GHOST_EXPORT_BTN_STYLE}
-                    >
-                        ↓ JSON
-                    </button>
+                    />
                 </div>
             }
             subBar={

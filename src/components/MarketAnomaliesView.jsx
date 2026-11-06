@@ -5,7 +5,7 @@ import {
   exportToCsv,
   exportSnapshotToPng,
   getExportDateStamp,
-  GHOST_EXPORT_BTN_STYLE,
+  ExportFormatButton,
 } from '../utils/exportService';
 import {
   Search,
@@ -2435,12 +2435,11 @@ export default function MarketAnomaliesView({
               </div>
             )}
 
-            <button
-              type="button"
+            <ExportFormatButton
+              format="CSV"
               onClick={handleExportScreenerCsv}
               title={tx('Exportar tabla filtrada a CSV', 'Export filtered table to CSV')}
               style={{
-                ...GHOST_EXPORT_BTN_STYLE,
                 marginLeft:
                   marketsToolsMode === 'v2-right-bar' ||
                   (marketsToolsMode === 'v2-contextual' && contextualTools.length > 0) ||
@@ -2448,9 +2447,7 @@ export default function MarketAnomaliesView({
                     ? '4px'
                     : 'auto',
               }}
-            >
-              ↓ CSV
-            </button>
+            />
           </div>
 
           {/* Row 2: Indicator Driver Selector + Integrated Asset Search Combobox (Appears BELOW when Orbital or Heatmap is selected) */}
@@ -4624,22 +4621,16 @@ export default function MarketAnomaliesView({
               <span style={{ color: 'rgba(255, 255, 255, 0.14)', userSelect: 'none' }}>|</span>
 
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                <button
-                  type="button"
+                <ExportFormatButton
+                  format="PNG"
                   onClick={handleExportAnalyticsPng}
                   title={tx('Descargar captura del gráfico y métricas (PNG)', 'Download chart & metrics snapshot (PNG)')}
-                  style={GHOST_EXPORT_BTN_STYLE}
-                >
-                  ↓ PNG
-                </button>
-                <button
-                  type="button"
+                />
+                <ExportFormatButton
+                  format="CSV"
                   onClick={handleExportAnalyticsCsv}
                   title={tx('Descargar serie histórica de precios y bandas (CSV)', 'Download historical price & band series (CSV)')}
-                  style={GHOST_EXPORT_BTN_STYLE}
-                >
-                  ↓ CSV
-                </button>
+                />
               </div>
             </>
           ) : null}

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, RotateCcw, Copy, Check } from 'lucide-react';
 import { tx, useViewLocale } from '../data/i18n/viewLocaleService';
-import { exportToMarkdown, getExportDateStamp, GHOST_EXPORT_BTN_STYLE } from '../utils/exportService';
+import { exportToMarkdown, getExportDateStamp, ExportFormatButton } from '../utils/exportService';
 import {
   getContextualQuickPrompts,
   getLiveContextPillLabel,
@@ -328,22 +328,11 @@ export default function GlobalAgentDrawer({
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
           {thread.length > 0 && (
             <>
-              <button
-                type="button"
+              <ExportFormatButton
+                format="MD"
                 onClick={handleExportChatMd}
                 title={tx('Descargar conversación en Markdown (.md)', 'Download conversation as Markdown (.md)')}
-                style={GHOST_EXPORT_BTN_STYLE}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = 'var(--ui-accent, #10b981)';
-                  e.currentTarget.style.color = 'var(--ui-accent, #10b981)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.22)';
-                  e.currentTarget.style.color = '#94a3b8';
-                }}
-              >
-                ↓ MD
-              </button>
+              />
               <button
                 type="button"
                 onClick={handleResetChat}
