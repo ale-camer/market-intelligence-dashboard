@@ -4750,7 +4750,7 @@ export default function MarketAnomaliesView({
               {
                 label: 'P-06 ANOMALY',
                 val: `${displayedScore}`,
-                sub: anomalyProfile.regime,
+                sub: isDislocated ? 'DISLOCATION' : isElevated ? 'ELEVATED' : 'NORMAL',
                 color: scoreColor,
                 subColor: scoreColor,
                 isClassSpecific: false,
@@ -4844,7 +4844,7 @@ export default function MarketAnomaliesView({
               <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8' }}>
                 {tx('NOTA PONDERADA TOTAL', 'WEIGHTED COMPOSITE')}
               </span>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.45rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem' }}>
                 <span
                   style={{
                     fontSize: '16px',
@@ -4854,12 +4854,7 @@ export default function MarketAnomaliesView({
                 >
                   {researchBrief.compositeFormatted}
                 </span>
-                <span style={{ fontSize: '11.5px', color: '#94a3b8', fontWeight: 600 }}>
-                  {researchBrief.compositeScore >= 0
-                    ? tx('Fundamentos y noticias a favor', 'Filings & news supportive')
-                    : tx('Predominan factores de riesgo', 'Risk factors predominate')}
-                </span>
-                <span style={{ fontSize: '11px', color: '#64748b' }}>
+                <span style={{ fontSize: '11.5px', color: '#64748b' }}>
                   ({tx('Fund.', 'Filings')} {researchBrief.filingNetFormatted} • {tx('Not.', 'News')} {assetFinbertPolarity.formattedInt})
                 </span>
               </div>
