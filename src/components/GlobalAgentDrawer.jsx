@@ -39,6 +39,7 @@ export default function GlobalAgentDrawer({
   const [copiedIdx, setCopiedIdx] = useState(null);
   const [scrollAreaHeight, setScrollAreaHeight] = useState(520);
 
+  const drawerRef = useRef(null);
   const scrollRef = useRef(null);
   const latestUserTurnRef = useRef(null);
   const textareaRef = useRef(null);
@@ -55,7 +56,7 @@ export default function GlobalAgentDrawer({
     selectedAsset,
   });
 
-  // Close drawer on Escape key
+  // Close drawer on Escape key or when clicking anywhere outside the drawer
   useEffect(() => {
     if (!isOpen) return undefined;
     const handleKeyDown = (e) => {
@@ -63,8 +64,18 @@ export default function GlobalAgentDrawer({
         onClose();
       }
     };
+    const handlePointerDownOutside = (e) => {
+      if (!drawerRef.current) return;
+      if (drawerRef.current.contains(e.target)) return;
+      if (e.target.closest && e.target.closest('[data-agent-toggle="true"]')) return;
+      onClose();
+    };
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    document.addEventListener('mousedown', handlePointerDownOutside);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('mousedown', handlePointerDownOutside);
+    };
   }, [isOpen, onClose]);
 
   // Track exact pixel height of scrollRef so the latest turn always occupies 100% of the visible window
@@ -250,6 +261,7 @@ export default function GlobalAgentDrawer({
 
   return (
     <aside
+      ref={drawerRef}
       aria-label={tx('Guía de la Plataforma', 'Platform Guide')}
       style={{
         position: 'fixed',

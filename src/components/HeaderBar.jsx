@@ -1752,6 +1752,7 @@ export default function HeaderBar({
               return (
                 <button
                   type="button"
+                  data-agent-toggle="true"
                   onClick={onToggleAgent}
                   aria-label={isES ? 'Agente Guía' : 'Guide Agent'}
                   style={{
