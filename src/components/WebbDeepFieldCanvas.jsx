@@ -262,18 +262,18 @@ export default function WebbDeepFieldCanvas({
         const activeMorph =
           morphOverrideRef.current !== null
             ? morphOverrideRef.current
-            : 0.5 - 0.5 * Math.cos(elapsed * 0.65);
+            : 0.5 - 0.5 * Math.cos(elapsed * (isLight ? 0.36 : 0.65));
 
         if (isLight) {
           if (selectedSceneRef.current !== null) {
             const target = Number(selectedSceneRef.current) % 4.0;
             let diff = ((target - smoothLightPair + 2.0) % 4.0 + 4.0) % 4.0 - 2.0;
-            smoothLightPair = (smoothLightPair + diff * Math.min(1.0, dt * 3.2) + 4.0) % 4.0;
+            smoothLightPair = (smoothLightPair + diff * Math.min(1.0, dt * 1.35) + 4.0) % 4.0;
           } else {
-            smoothLightPair = (elapsed * 0.12) % 4.0;
+            smoothLightPair = (elapsed * 0.065) % 4.0;
           }
           const activePair = smoothLightPair;
-          const pairIdx = Math.round(activePair) % 4;
+          const pairIdx = Math.floor(activePair) % 4;
           const list = LIGHT_ARTWORKS[langRef.current] || LIGHT_ARTWORKS.EN;
           const piece = list[pairIdx] || list[0];
           if (artworkTitleRef.current && artworkTitleRef.current.textContent !== piece.title) {

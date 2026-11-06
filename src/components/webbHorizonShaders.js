@@ -479,23 +479,34 @@ export const LIGHT_BG_FRAGMENT_SHADER = `
     float yCenter = -0.19;
     vec2 q = vec2(p.x, p.y - yCenter);
 
-    // 1. Authentic Spring Day Sky Gradient:
-    // Clear morning azure zenith -> warm sunlit blossom ivory -> soft meadow mist at base
-    vec3 skyZenith  = vec3(0.835, 0.922, 0.980); // Crisp spring sky blue
-    vec3 skyMid     = vec3(0.968, 0.962, 0.925); // Warm sunlit cream
-    vec3 meadowMist = vec3(0.885, 0.945, 0.895); // Fresh botanical meadow horizon
-    vec3 col = mix(meadowMist, skyMid, smoothstep(0.0, 0.48, uv.y));
-    col = mix(col, skyZenith, smoothstep(0.42, 1.0, uv.y));
+    // 1. Vibrant Spring Day Landscape Gradient (Clear Celeste Sky -> Fresh Emerald/Mint Meadow)
+    vec3 skyZenith   = vec3(0.66, 0.87, 0.98); // Luminous spring celeste sky (#A8DDFB)
+    vec3 skyHorizon  = vec3(0.84, 0.95, 0.99); // Airy cyan-blue horizon breeze (#D6F2FC)
+    vec3 meadowUpper = vec3(0.80, 0.95, 0.86); // Sunlit spring meadow mint (#CCF2DC)
+    vec3 meadowDeep  = vec3(0.68, 0.91, 0.78); // Fresh chlorophyll valley green (#ADE8C7)
 
-    // 2. Diagonal Morning Sunbeams (Crepuscular Rays streaming through spring air)
-    float rayCoord = (uv.x - 0.35) * 3.8 + (1.0 - uv.y) * 1.65;
-    float rayWave = 0.5 + 0.5 * sin(rayCoord * 4.2 - uTime * 0.22)
-                  + 0.35 * sin(rayCoord * 7.5 + uTime * 0.15);
-    float sunShafts = pow(clamp(rayWave * 0.55, 0.0, 1.0), 2.4) * smoothstep(0.05, 0.95, uv.y);
-    col = mix(col, vec3(1.0, 0.985, 0.91), sunShafts * 0.28);
+    // Smooth horizon around uv.y = 0.42: celeste sky above, fresh green meadow below
+    vec3 skyGrad    = mix(skyHorizon, skyZenith, smoothstep(0.40, 1.0, uv.y));
+    vec3 meadowGrad = mix(meadowDeep, meadowUpper, smoothstep(0.0, 0.44, uv.y));
+    vec3 col = mix(meadowGrad, skyGrad, smoothstep(0.32, 0.54, uv.y));
 
-    // 3. Domain-Warped Volumetric Botanical Watercolor & Pollen Clouds (Spring equivalent of Cosmic Dust)
-    vec2 flowUv = q * 3.6 + vec2(uTime * 0.032, -uTime * 0.018);
+    // Gentle rolling green hills silhouette along the horizon
+    float hill1 = 0.38 + 0.035 * sin(p.x * 3.2 + 0.4) + 0.018 * cos(p.x * 7.5);
+    float hill2 = 0.34 + 0.028 * cos(p.x * 4.1 - 0.8) + 0.014 * sin(p.x * 9.0);
+    float hillMask1 = smoothstep(hill1 + 0.04, hill1 - 0.04, uv.y);
+    float hillMask2 = smoothstep(hill2 + 0.03, hill2 - 0.03, uv.y);
+    col = mix(col, vec3(0.62, 0.88, 0.74), hillMask1 * 0.38);
+    col = mix(col, vec3(0.54, 0.84, 0.68), hillMask2 * 0.35);
+
+    // 2. Diagonal Morning Sunbeams (Serene, slow crepuscular rays across the celeste sky)
+    float rayCoord = (uv.x - 0.35) * 3.6 + (1.0 - uv.y) * 1.55;
+    float rayWave = 0.5 + 0.5 * sin(rayCoord * 4.0 - uTime * 0.08)
+                  + 0.35 * sin(rayCoord * 7.2 + uTime * 0.05);
+    float sunShafts = pow(clamp(rayWave * 0.55, 0.0, 1.0), 2.4) * smoothstep(0.08, 0.95, uv.y);
+    col = mix(col, vec3(0.96, 0.99, 0.95), sunShafts * 0.30);
+
+    // 3. Domain-Warped Volumetric Botanical Watercolor & Pollen Clouds (Slow, gentle breeze)
+    vec2 flowUv = q * 3.5 + vec2(uTime * 0.012, -uTime * 0.007);
     vec2 warp1 = vec2(fbm(flowUv + vec2(1.7, 9.2)), fbm(flowUv + vec2(8.3, 2.8)));
     vec2 warp2 = vec2(fbm(flowUv * 1.8 + warp1 * 1.6 + vec2(4.1, 1.3)), fbm(flowUv * 1.8 + warp1 * 1.6));
     float dustBillow = fbm(flowUv * 1.4 + warp2 * 1.4);
@@ -505,23 +516,23 @@ export const LIGHT_BG_FRAGMENT_SHADER = `
     // PAIR I (w0): FIBONACCI SUNFLOWER (0%) <-> GOLDEN LOGARITHMIC SPIRAL & ARCS (100%)
     float r0 = length(vec2(q.x * 0.86, q.y * 1.08));
     float ang0 = atan(q.y, q.x);
-    float spiral0 = 0.5 + 0.5 * sin(ang0 * 8.0 - r0 * 26.0 + uTime * 0.8);
+    float spiral0 = 0.5 + 0.5 * sin(ang0 * 8.0 - r0 * 26.0 + uTime * 0.25);
     float volN0 = exp(-r0 * 4.4) * (0.65 + 0.35 * spiral0);
     float volQ0 = exp(-abs(r0 - 0.17 * exp(ang0 * 0.22)) * 11.0) + exp(-r0 * 4.8) * 0.55;
     float dens0 = mix(volN0, volQ0, m) * (0.45 + 0.75 * dustBillow);
-    vec3 col0 = mix(vec3(0.95, 0.65, 0.06), vec3(0.18, 0.64, 0.36), dustRidge) * dens0
-              + vec3(0.82, 0.36, 0.04) * pow(dens0 * dustRidge, 1.3);
+    vec3 col0 = mix(vec3(0.06, 0.64, 0.42), vec3(0.92, 0.62, 0.06), dustRidge) * dens0
+              + vec3(0.04, 0.52, 0.68) * pow(dens0 * dustRidge, 1.3);
 
     // PAIR II (w1): SAKURA CHERRY BLOSSOM (0%) <-> FOURIER HARMONIC WAVE SPECTRUM (100%)
     float r1 = length(vec2(q.x * 0.88, q.y * 1.05));
-    float ang1 = atan(q.y, q.x) + uTime * 0.08;
+    float ang1 = atan(q.y, q.x) + uTime * 0.03;
     float rose5 = 0.19 + 0.11 * cos(ang1 * 5.0);
     float volN1 = smoothstep(rose5 + 0.09, rose5 - 0.07, r1);
-    float waveY1 = 0.07 * sin(q.x * 8.5 - uTime * 1.3) + 0.04 * cos(q.x * 14.0 + uTime);
+    float waveY1 = 0.07 * sin(q.x * 8.5 - uTime * 0.45) + 0.04 * cos(q.x * 14.0 + uTime * 0.35);
     float volQ1 = exp(-abs(q.y - waveY1) * 10.5) * smoothstep(0.62, 0.32, abs(q.x));
     float dens1 = mix(volN1, volQ1, m) * (0.50 + 0.70 * dustBillow);
-    vec3 col1 = mix(vec3(0.94, 0.38, 0.58), vec3(0.56, 0.26, 0.78), dustRidge) * dens1
-              + vec3(0.84, 0.14, 0.38) * pow(dens1 * dustRidge, 1.35);
+    vec3 col1 = mix(vec3(0.92, 0.34, 0.56), vec3(0.08, 0.62, 0.58), dustRidge) * dens1
+              + vec3(0.78, 0.14, 0.42) * pow(dens1 * dustRidge, 1.35);
 
     // PAIR III (w2): MONARCH BUTTERFLY (0%) <-> LORENZ STRANGE ATTRACTOR (100%)
     float rL2 = length(q - vec2(-0.17, 0.0));
@@ -531,53 +542,53 @@ export const LIGHT_BG_FRAGMENT_SHADER = `
     float ringR = exp(-abs(rR2 - 0.11) * 20.0);
     float volQ2 = clamp(ringL + ringR + (volN2 * 0.45), 0.0, 1.0);
     float dens2 = mix(volN2, volQ2, m) * (0.48 + 0.72 * dustBillow);
-    vec3 col2 = mix(vec3(0.94, 0.44, 0.08), vec3(0.14, 0.54, 0.86), smoothstep(-0.25, 0.25, q.x)) * dens2
-              + vec3(0.86, 0.26, 0.06) * pow(dens2 * dustRidge, 1.35);
+    vec3 col2 = mix(vec3(0.06, 0.58, 0.84), vec3(0.10, 0.68, 0.44), smoothstep(-0.25, 0.25, q.x)) * dens2
+              + vec3(0.90, 0.42, 0.08) * pow(dens2 * dustRidge, 1.35);
 
     // PAIR IV (w3): BOTANICAL FERN & DANDELION BREEZE (0%) <-> ISOLATION FOREST & KELLY (100%)
     float canopy3 = exp(-pow(q.x * 2.1, 2.0)) * smoothstep(0.25, -0.22, q.y) * smoothstep(-0.28, -0.12, q.y);
-    float breeze3 = exp(-abs(q.y - 0.05 * sin(q.x * 6.0 - uTime)) * 8.0) * smoothstep(-0.42, 0.48, q.x);
+    float breeze3 = exp(-abs(q.y - 0.05 * sin(q.x * 6.0 - uTime * 0.4)) * 8.0) * smoothstep(-0.42, 0.48, q.x);
     float volN3 = clamp(canopy3 * 0.85 + breeze3 * 0.55, 0.0, 1.0);
     float kellyArc = exp(-abs(q.y - (-0.12 + 0.22 * (1.0 - pow(q.x * 2.1, 2.0)))) * 12.0) * smoothstep(0.55, 0.30, abs(q.x));
     float volQ3 = clamp(canopy3 * 0.65 + kellyArc * 0.9, 0.0, 1.0);
     float dens3 = mix(volN3, volQ3, m) * (0.48 + 0.72 * dustBillow);
-    vec3 col3 = mix(vec3(0.08, 0.62, 0.36), vec3(0.14, 0.58, 0.78), dustRidge) * dens3
-              + vec3(0.88, 0.56, 0.08) * pow(dens3 * dustRidge, 1.4);
+    vec3 col3 = mix(vec3(0.04, 0.62, 0.36), vec3(0.08, 0.56, 0.82), dustRidge) * dens3
+              + vec3(0.22, 0.76, 0.32) * pow(dens3 * dustRidge, 1.4);
 
     // Blend the 4 volumetric botanical watercolor clouds seamlessly
     vec3 cloudPigment = col0 * w0 + col1 * w1 + col2 * w2 + col3 * w3;
     float totalDens = clamp(length(cloudPigment), 0.0, 1.0);
-    col = mix(col, clamp(cloudPigment / max(totalDens, 0.001), 0.0, 1.0), totalDens * 0.36);
+    col = mix(col, clamp(cloudPigment / max(totalDens, 0.001), 0.0, 1.0), totalDens * 0.34);
 
-    // 4. Multi-Layer Drifting & Twinkling Spring Pollen, Sakura Petals & Dew Glints
+    // 4. Multi-Layer Drifting & Twinkling Spring Pollen, Dew & Leaf Spores (Serene speed!)
     float stageMask = smoothstep(0.38, -0.05, p.y) * smoothstep(-0.54, -0.34, p.y);
     for (int layer = 0; layer < 2; layer++) {
       float fl = float(layer);
       float scale = layer == 0 ? 26.0 : 40.0;
-      vec2 windVel = layer == 0 ? vec2(-0.048, 0.016) : vec2(-0.030, -0.012);
+      vec2 windVel = layer == 0 ? vec2(-0.016, 0.006) : vec2(-0.010, -0.005);
       vec2 grid = p * scale + uTime * windVel * scale * 0.12 + vec2(fl * 19.3, fl * 7.7);
       vec2 gId = floor(grid);
       vec2 gUv = fract(grid) - 0.5;
       float seed = hash21(gId);
 
       if (seed > 0.74) {
-        float twinkle = pow(0.5 + 0.5 * sin(uTime * (1.7 + fract(seed * 11.0) * 2.3) + seed * 62.8), 1.7);
+        float twinkle = pow(0.5 + 0.5 * sin(uTime * (0.75 + fract(seed * 11.0) * 0.95) + seed * 62.8), 1.7);
         vec2 offset = vec2(
-          sin(uTime * 0.95 + seed * 29.0) * 0.28,
-          cos(uTime * 1.15 + seed * 43.0) * 0.28
+          sin(uTime * 0.38 + seed * 29.0) * 0.26,
+          cos(uTime * 0.45 + seed * 43.0) * 0.26
         );
         float dist = length(gUv - offset);
         float spark = smoothstep(0.22, 0.0, dist) * twinkle * stageMask;
         float glint = smoothstep(0.075, 0.0, dist) * twinkle * stageMask;
 
-        vec3 moteCol = fract(seed * 7.3) > 0.66
-          ? vec3(0.88, 0.28, 0.50) // Sakura pink petal
-          : (fract(seed * 13.1) > 0.33
-            ? vec3(0.90, 0.56, 0.04) // Golden pollen
-            : vec3(0.10, 0.58, 0.36)); // Emerald leaf spore
+        vec3 moteCol = fract(seed * 7.3) > 0.62
+          ? vec3(0.06, 0.62, 0.38) // Fresh emerald spore
+          : (fract(seed * 13.1) > 0.30
+            ? vec3(0.08, 0.56, 0.84) // Celeste dew glint
+            : vec3(0.88, 0.30, 0.52)); // Blossom petal
 
-        col = mix(col, moteCol, spark * 0.58);
-        col += vec3(0.22, 0.18, 0.06) * glint;
+        col = mix(col, moteCol, spark * 0.55);
+        col += vec3(0.16, 0.24, 0.18) * glint;
       }
     }
 
@@ -590,19 +601,19 @@ export const LIGHT_BG_FRAGMENT_SHADER = `
     vec2 sunPos = focal0 * w0 + focal1 * w1 + focal2 * w2 + focal3 * w3;
     vec2 dSun = p - sunPos;
     float rSun = length(dSun);
-    float pulse = 1.0 + 0.05 * sin(uTime * 1.8);
+    float pulse = 1.0 + 0.04 * sin(uTime * 0.85);
 
     float sunCore  = exp(-rSun * 22.0 / pulse);
     float sunBloom = exp(-rSun * 7.0 / pulse);
     float irisRing = exp(-pow((rSun - 0.075 * pulse) * 28.0, 2.0));
-    float angle = atan(dSun.y, dSun.x) + uTime * 0.12;
+    float angle = atan(dSun.y, dSun.x) + uTime * 0.05;
     float sunRays = pow(max(0.0, cos(angle * 4.0)), 14.0) * exp(-rSun * 6.5);
 
-    col = mix(col, vec3(0.96, 0.64, 0.08), sunBloom * 0.26 + irisRing * 0.32);
-    col += vec3(0.26, 0.20, 0.06) * (sunCore * 0.65 + sunRays * 0.38);
+    col = mix(col, vec3(0.12, 0.68, 0.52), sunBloom * 0.22 + irisRing * 0.28);
+    col += vec3(0.24, 0.22, 0.08) * (sunCore * 0.55 + sunRays * 0.32);
 
     // Fine botanical paper texture
-    float grain = (hash21(uv * uResolution.xy) - 0.5) * 0.009;
+    float grain = (hash21(uv * uResolution.xy) - 0.5) * 0.008;
     col = clamp(col + grain, 0.0, 1.0);
 
     gl_FragColor = vec4(col, 1.0);
@@ -650,26 +661,26 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     float m = smootherstep(0.0, 1.0, clamp(uMorph, 0.0, 1.0));
     float yCenter = -0.19;
 
-    // 14% of particles are free-floating Spring Pollen, Sakura Petals & Sunlit Dew Spores
-    // drifting across the whole stage and pulsing on/off like daytime stars!
+    // 14% of particles are free-floating Spring Leaves, Dew Drops & Petals
+    // drifting gently at the same calm pace as Dark Mode's starfield!
     if (rnd > 0.86) {
-      float driftX = mod(u * 0.90 + uTime * (0.024 + 0.032 * fract(rnd * 19.0)) + 1.0, 2.0) - 1.0;
-      float driftY = yCenter + (v - 0.45) * 0.62 + 0.035 * sin(uTime * 1.4 + u * 7.0 + rnd * 30.0);
+      float driftX = mod(u * 0.90 + uTime * (0.008 + 0.012 * fract(rnd * 19.0)) + 1.0, 2.0) - 1.0;
+      float driftY = yCenter + (v - 0.45) * 0.62 + 0.025 * sin(uTime * 0.55 + u * 7.0 + rnd * 30.0);
       vec2 ambPos = vec2(driftX * aspect * 0.52, driftY);
       vec2 ndcAmb = vec2(ambPos.x / (aspect * 0.5), ambPos.y * 2.0);
       gl_Position = vec4(ndcAmb, 0.0, 1.0);
 
-      float pulse = pow(0.5 + 0.5 * sin(uTime * (1.8 + fract(rnd * 31.0) * 2.4) + rnd * 90.0), 1.6);
+      float pulse = pow(0.5 + 0.5 * sin(uTime * (0.85 + fract(rnd * 31.0) * 1.1) + rnd * 90.0), 1.6);
       vAlpha = pulse * 0.84;
-      vAngle = uTime * (0.8 + fract(rnd * 13.0)) + rnd * 6.283;
+      vAngle = uTime * (0.28 + 0.25 * fract(rnd * 13.0)) + rnd * 6.283;
 
       float huePick = fract(rnd * 43.0);
-      if (huePick < 0.30) vColor = vec3(0.88, 0.28, 0.52);      // Sakura rose petal
-      else if (huePick < 0.60) vColor = vec3(0.90, 0.54, 0.04); // Golden sun pollen
-      else if (huePick < 0.82) vColor = vec3(0.08, 0.58, 0.34); // Fresh emerald leaf
-      else vColor = vec3(0.14, 0.52, 0.80);                     // Morning dew drop
+      if (huePick < 0.36) vColor = vec3(0.05, 0.58, 0.34);      // Fresh emerald leaf
+      else if (huePick < 0.68) vColor = vec3(0.06, 0.52, 0.82); // Celeste sky dew drop
+      else if (huePick < 0.86) vColor = vec3(0.86, 0.26, 0.50); // Sakura rose petal
+      else vColor = vec3(0.86, 0.54, 0.04);                     // Sunlit pollen
 
-      gl_PointSize = (4.6 + fract(rnd * 23.0) * 5.4) * uDpr;
+      gl_PointSize = (4.6 + fract(rnd * 23.0) * 5.2) * uDpr;
       vStarType = 0.82 + 0.16 * fract(rnd * 17.0);
       return;
     }
@@ -680,18 +691,18 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     vec2 posN0;
     vec3 colN0;
     float idx0 = floor(((u * 0.5 + 0.5) * 0.7 + v * 0.3) * 3200.0);
-    float theta0 = idx0 * 2.39996323 + uTime * 0.12;
+    float theta0 = idx0 * 2.39996323 + uTime * 0.04;
     float rNorm0 = sqrt(idx0 / 3200.0);
     if (v < 0.74) {
       float r = rNorm0 * 0.24;
       posN0 = vec2(cos(theta0) * r * 1.15 * aspect * 0.52, yCenter + sin(theta0) * r * 0.92);
-      colN0 = mix(vec3(0.45, 0.18, 0.04), vec3(0.90, 0.54, 0.04), smoothstep(0.15, 0.95, rNorm0));
+      colN0 = mix(vec3(0.06, 0.48, 0.30), vec3(0.88, 0.54, 0.04), smoothstep(0.15, 0.95, rNorm0));
     } else {
-      float ang = u * 3.14159 + uTime * 0.06;
+      float ang = u * 3.14159 + uTime * 0.025;
       float petalWave = abs(cos(ang * 10.5));
       float rPetal = 0.23 + (0.04 + 0.11 * petalWave) * ((v - 0.74) / 0.26);
       posN0 = vec2(cos(ang) * rPetal * 1.15 * aspect * 0.52, yCenter + sin(ang) * rPetal * 0.92);
-      colN0 = mix(vec3(0.94, 0.58, 0.04), vec3(0.10, 0.58, 0.34), smoothstep(0.30, 0.36, rPetal));
+      colN0 = mix(vec3(0.92, 0.58, 0.04), vec3(0.06, 0.60, 0.36), smoothstep(0.28, 0.36, rPetal));
     }
 
     vec2 posQ0;
@@ -700,15 +711,15 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
       float tSp = (u * 0.5 + 0.5) * 4.2 * 3.14159;
       float rSp = 0.012 * exp(0.24 * tSp);
       float spread = (fract(v * 19.0) - 0.5) * 0.018;
-      float angSp = tSp - uTime * 0.25;
+      float angSp = tSp - uTime * 0.08;
       posQ0 = vec2((cos(angSp) * (rSp + spread)) * 1.15 * aspect * 0.52, yCenter + sin(angSp) * (rSp + spread) * 0.92);
-      colQ0 = mix(vec3(0.86, 0.42, 0.04), vec3(0.08, 0.58, 0.36), clamp(rSp / 0.32, 0.0, 1.0));
+      colQ0 = mix(vec3(0.06, 0.58, 0.38), vec3(0.08, 0.52, 0.82), clamp(rSp / 0.32, 0.0, 1.0));
     } else {
       float ringPick = floor((v - 0.68) / 0.32 * 4.0);
       float fibRad = (ringPick == 0.0 ? 0.08 : ringPick == 1.0 ? 0.13 : ringPick == 2.0 ? 0.21 : 0.34);
       float ang = u * 3.14159;
       posQ0 = vec2(cos(ang) * fibRad * 1.15 * aspect * 0.52, yCenter + sin(ang) * fibRad * 0.92);
-      colQ0 = ringPick == 2.0 ? vec3(0.84, 0.18, 0.38) : vec3(0.72, 0.44, 0.06);
+      colQ0 = ringPick == 2.0 ? vec3(0.86, 0.50, 0.04) : vec3(0.08, 0.56, 0.68);
     }
 
     // =========================================================================
@@ -716,32 +727,32 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     // =========================================================================
     vec2 posN1;
     vec3 colN1;
-    float ang1 = u * 3.14159 + uTime * 0.08;
+    float ang1 = u * 3.14159 + uTime * 0.03;
     float cos5 = cos(5.0 * ang1);
     float notch = 0.045 * pow(max(0.0, cos5), 8.0);
     float maxR1 = 0.07 + 0.24 * pow(0.5 + 0.5 * cos5, 0.65) - notch;
     if (v < 0.18) {
       float rStam = (v / 0.18) * 0.095;
       posN1 = vec2(cos(ang1) * rStam * 1.15 * aspect * 0.52, yCenter + sin(ang1) * rStam);
-      colN1 = mix(vec3(0.78, 0.12, 0.28), vec3(0.90, 0.58, 0.06), smoothstep(0.05, 0.09, rStam));
+      colN1 = mix(vec3(0.06, 0.56, 0.36), vec3(0.88, 0.56, 0.06), smoothstep(0.05, 0.09, rStam));
     } else {
       float rFill = pow((v - 0.18) / 0.82, 0.75) * maxR1;
       posN1 = vec2(cos(ang1) * rFill * 1.18 * aspect * 0.52, yCenter + sin(ang1) * rFill * 0.96);
-      colN1 = mix(vec3(0.84, 0.16, 0.42), vec3(0.95, 0.46, 0.64), smoothstep(0.06, 0.28, rFill));
+      colN1 = mix(vec3(0.84, 0.18, 0.44), vec3(0.12, 0.56, 0.78), smoothstep(0.12, 0.30, rFill));
     }
 
     float modeIdx = floor(v * 6.0);
     float freq = 1.0 + modeIdx * 1.5;
     float amp = 0.15 / (1.0 + modeIdx * 0.45);
     float xWave = u * 0.56;
-    float phaseShift = uTime * (0.9 + modeIdx * 0.25) + modeIdx * 1.047;
+    float phaseShift = uTime * (0.32 + modeIdx * 0.08) + modeIdx * 1.047;
     float yWave = yCenter + (modeIdx - 2.5) * 0.032
                 + amp * sin(xWave * freq * 5.5 - phaseShift)
-                + 0.025 * cos(xWave * 3.0 + uTime);
+                + 0.025 * cos(xWave * 3.0 + uTime * 0.35);
     vec2 posQ1 = vec2(xWave * aspect * 0.52, yWave + (fract(v * 6.0) - 0.5) * 0.012);
     vec3 colQ1 = mix(
-      vec3(0.86, 0.18, 0.44),
-      mix(vec3(0.52, 0.22, 0.78), vec3(0.08, 0.58, 0.44), modeIdx / 5.0),
+      vec3(0.06, 0.58, 0.40),
+      mix(vec3(0.08, 0.52, 0.84), vec3(0.84, 0.20, 0.46), modeIdx / 5.0),
       0.5 + 0.5 * sin(xWave * 4.0 + modeIdx)
     );
 
@@ -750,21 +761,21 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     // =========================================================================
     float theta2 = u * 3.14159;
     float rButt = exp(sin(theta2)) - 2.0 * cos(4.0 * theta2) + pow(sin((2.0 * theta2 - 3.14159) / 24.0), 5.0);
-    float wingFlap = 0.86 + 0.14 * sin(uTime * 3.2);
+    float wingFlap = 0.88 + 0.12 * sin(uTime * 1.15);
     float scaleR = 0.068 * sqrt(0.15 + 0.85 * v) * rButt;
     vec2 posN2 = vec2(cos(theta2) * scaleR * wingFlap * 1.25 * aspect * 0.52, (yCenter - 0.03) + sin(theta2) * scaleR * 0.92);
-    vec3 colN2 = mix(vec3(0.92, 0.36, 0.04), vec3(0.12, 0.48, 0.84), smoothstep(0.65, 0.98, v));
-    if (v > 0.92) colN2 = vec3(0.20, 0.12, 0.08);
+    vec3 colN2 = mix(vec3(0.08, 0.54, 0.84), vec3(0.06, 0.62, 0.38), smoothstep(0.35, 0.85, v));
+    if (v < 0.38) colN2 = vec3(0.90, 0.42, 0.06);
 
     float lobe2 = u >= 0.0 ? 1.0 : -1.0;
-    float tLoop = v * 6.28318 * 3.0 + uTime * 0.9;
+    float tLoop = v * 6.28318 * 3.0 + uTime * 0.32;
     float rLoop = 0.04 + 0.16 * fract(abs(u) * 7.0 + v * 0.5);
     float lx = lobe2 * (0.19 + cos(tLoop) * rLoop);
     float ly = yCenter + sin(tLoop) * rLoop * 0.82 + lobe2 * cos(tLoop) * 0.04;
     vec2 posQ2 = vec2(lx * 1.25 * aspect * 0.52, ly);
     vec3 colQ2 = lobe2 > 0.0
-      ? mix(vec3(0.90, 0.38, 0.06), vec3(0.78, 0.18, 0.42), rLoop / 0.20)
-      : mix(vec3(0.12, 0.50, 0.82), vec3(0.08, 0.62, 0.48), rLoop / 0.20);
+      ? mix(vec3(0.06, 0.60, 0.38), vec3(0.08, 0.54, 0.84), rLoop / 0.20)
+      : mix(vec3(0.08, 0.54, 0.84), vec3(0.86, 0.38, 0.12), rLoop / 0.20);
 
     // =========================================================================
     // PAIR 4 (w3): BOTANICAL FERN & DANDELION BREEZE (0%) <-> ISOLATION FOREST & KELLY (100%)
@@ -774,7 +785,7 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     if (v < 0.62) {
       float stemT = v / 0.62;
       float frondIdx = floor((u * 0.5 + 0.5) * 7.0) - 3.0;
-      float sway = 0.018 * sin(uTime * 1.4 + frondIdx + stemT * 4.0);
+      float sway = 0.016 * sin(uTime * 0.55 + frondIdx + stemT * 4.0);
       float angle = frondIdx * 0.36;
       float frondLen = 0.34 - abs(frondIdx) * 0.032;
       float spineX = sin(angle) * stemT * frondLen + sway;
@@ -786,16 +797,15 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
         (spineX + normalDir.x * leafletSide * leafletSpan) * aspect * 0.52,
         spineY + normalDir.y * leafletSide * leafletSpan * 0.65
       );
-      colN3 = mix(vec3(0.05, 0.50, 0.28), vec3(0.32, 0.74, 0.20), stemT);
+      colN3 = mix(vec3(0.04, 0.52, 0.30), vec3(0.18, 0.72, 0.36), stemT);
     } else {
-      // Dandelion pappus seeds carried by the spring breeze above the fern canopy
       float tWind = (v - 0.62) / 0.38;
       float seedId = floor((u * 0.5 + 0.5) * 22.0) / 22.0 * 2.0 - 1.0;
       float xSeed = -0.36 + tWind * 0.76;
       float ySeed = yCenter + 0.04 + seedId * 0.16 * sqrt(tWind + 0.08)
-                  + 0.03 * sin(tWind * 9.0 - uTime * 1.5 + seedId * 11.0);
+                  + 0.03 * sin(tWind * 9.0 - uTime * 0.55 + seedId * 11.0);
       posN3 = vec2(xSeed * aspect * 0.52, ySeed);
-      colN3 = mix(vec3(0.88, 0.56, 0.06), vec3(0.86, 0.28, 0.50), tWind);
+      colN3 = mix(vec3(0.08, 0.56, 0.82), vec3(0.06, 0.62, 0.40), tWind);
     }
 
     vec2 posQ3;
@@ -814,15 +824,14 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
       posQ3 = vec2(treeX * aspect * 0.52, treeY);
       bool isAnomalyNode = (level >= 2.0 && nodeIdx == nodesInLevel - 1.0);
       colQ3 = isAnomalyNode
-        ? vec3(0.88, 0.24, 0.14)
-        : mix(vec3(0.06, 0.54, 0.32), vec3(0.14, 0.60, 0.64), level / 4.0);
+        ? vec3(0.88, 0.28, 0.16)
+        : mix(vec3(0.05, 0.56, 0.34), vec3(0.08, 0.56, 0.80), level / 4.0);
     } else {
-      // Kelly Optimal Growth Envelope Arc crowning the tree
       float fLev = (u * 0.5 + 0.5);
       float fOpt = 0.48;
       float kellyG = 0.24 * (1.0 - pow((fLev - fOpt) / fOpt, 2.0));
       posQ3 = vec2((-0.48 + fLev * 0.96) * aspect * 0.52, -0.32 + kellyG);
-      colQ3 = mix(vec3(0.88, 0.54, 0.04), vec3(0.84, 0.18, 0.34), smoothstep(0.45, 0.95, fLev));
+      colQ3 = mix(vec3(0.08, 0.54, 0.82), vec3(0.06, 0.62, 0.36), smoothstep(0.15, 0.85, fLev));
     }
 
     vec2 p0 = mix(posN0, posQ0, m);
@@ -841,10 +850,10 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     vec2 ndc = vec2(worldPos.x / (aspect * 0.5), worldPos.y * 2.0);
     gl_Position = vec4(ndc, 0.0, 1.0);
 
-    float breeze = 0.60 + 0.40 * sin(uTime * (2.4 + fract(rnd * 19.0) * 1.8) + rnd * 50.0);
-    vAngle = uTime * 0.7 + rnd * 6.28318;
+    float breeze = 0.62 + 0.38 * sin(uTime * (0.95 + fract(rnd * 19.0) * 0.75) + rnd * 50.0);
+    vAngle = uTime * 0.25 + rnd * 6.28318;
     if (rnd < 0.40) {
-      vAlpha = 0.095 * (0.75 + 0.25 * sin(uTime * 1.5 + rnd * 20.0));
+      vAlpha = 0.095 * (0.75 + 0.25 * sin(uTime * 0.65 + rnd * 20.0));
       gl_PointSize = (14.0 + rnd * 15.0) * uDpr;
     } else if (rnd < 0.74) {
       vAlpha = breeze * 0.78;
