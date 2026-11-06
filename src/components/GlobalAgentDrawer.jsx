@@ -86,22 +86,25 @@ export default function GlobalAgentDrawer({
 
   // Anchor the latest turn at the very top of the scroll container so only the latest turn is visible (scroll UP for older turns)
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) return undefined;
     if (thread.length === 0) {
       if (scrollRef.current) {
         scrollRef.current.scrollTop = 0;
       }
-      return;
+      return undefined;
     }
-    const rafId = window.requestAnimationFrame(() => {
+    const snapToLatestTop = () => {
       if (latestUserTurnRef.current && scrollRef.current) {
-        scrollRef.current.scrollTo({
-          top: latestUserTurnRef.current.offsetTop,
-          behavior: 'smooth',
-        });
+        scrollRef.current.scrollTop = latestUserTurnRef.current.offsetTop;
       }
-    });
-    return () => window.cancelAnimationFrame(rafId);
+    };
+    snapToLatestTop();
+    const rafId = window.requestAnimationFrame(snapToLatestTop);
+    const timerId = window.setTimeout(snapToLatestTop, 45);
+    return () => {
+      window.cancelAnimationFrame(rafId);
+      window.clearTimeout(timerId);
+    };
   }, [thread, isThinking, isOpen, scrollAreaHeight]);
 
   // Auto-resize multiline textarea height (1 to 5 lines)
@@ -358,9 +361,7 @@ export default function GlobalAgentDrawer({
           minHeight: 0,
           overflowY: 'auto',
           overflowX: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '9px',
+          display: 'block',
           paddingRight: '3px',
           position: 'relative',
         }}
@@ -444,8 +445,8 @@ export default function GlobalAgentDrawer({
                 flexDirection: 'column',
                 justifyContent: 'flex-start',
                 gap: '8px',
-                flexShrink: 0,
-                minHeight: isLatestTurn ? `${Math.max(scrollAreaHeight - 2, 340)}px` : 'auto',
+                minHeight: isLatestTurn ? 'calc(100vh - 208px)' : 'auto',
+                marginBottom: !isLatestTurn ? '10px' : '0px',
                 paddingBottom: !isLatestTurn ? '10px' : '4px',
                 borderBottom: !isLatestTurn ? '1px dashed rgba(148, 163, 184, 0.14)' : 'none',
               }}

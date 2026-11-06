@@ -474,23 +474,60 @@ function isOutOfScopeQuery(qClean) {
 }
 
 /**
- * Determines whether a user message is actually about the app, navigation, markets, portfolio, metrics, or system
- * (as opposed to casual greetings, keyboard mashing like "ssssss", or playful off-topic banter like "river o boca?").
+ * Detects whether a user message is genuine keyboard mashing / random characters (e.g. "ssssss", "çççç", "lkjskjldhf...").
  */
-function isAppRelatedUserMessage(txt = '') {
+function isKeyboardMash(txt = '') {
   const s = String(txt || '').trim().toLowerCase();
-  if (!s || s.length < 3) return false;
-  if (/^([^\s])\1{2,}$/.test(s) || (/\S{18,}/.test(s) && !s.includes(' '))) return false;
+  if (!s) return false;
+  return /^([^\s])\1{2,}$/.test(s) || (/\S{18,}/.test(s) && !s.includes(' '));
+}
+
+/**
+ * Maps a user message to a clean, human-readable app topic category ONLY if the message is genuinely
+ * about the platform, its views, markets, portfolio, quantitative metrics, or system architecture.
+ * Returns `null` for greetings, jokes, politics, sports, songs, or any off-topic banter.
+ */
+function detectAppTopicLabel(txt = '', msgLang = 'ES') {
+  const s = String(txt || '').trim().toLowerCase();
+  if (!s || s.length < 3 || isKeyboardMash(s)) return null;
+
   if (
-    /^(hola|buenas|hey|hi|hello|que haces|qué hacés|que tal|qué tal|todo bien|como va|cómo va|como andas|cómo andás|gracias|thanks)[?!.\s]*$/i.test(
+    /\b(portfolio|portafolio|cartera|builder|risk|riesgo|simulator|simulador|var|cvar|sharpe|sortino|kelly|brinson|markov|enb|meucci|drawdown|volatilidad|volatility|stress)\b/i.test(
       s
     )
   ) {
-    return false;
+    return msgLang === 'ES'
+      ? 'la sección Portfolio y el análisis de riesgo'
+      : 'the Portfolio section and risk analysis';
   }
-  return /\b(app|aplicaci[oó]n|plataforma|platform|empiezo|empezar|start|explorar|explore|recorrer|secci[oó]n|secciones|section|sections|home|portada|market|markets|mercado|mercados|screener|analytics|research|portfolio|portafolio|cartera|builder|risk|riesgo|simulator|simulador|system|sistema|guide|gu[ií]a|manual|finops|pipeline|pipelines|arquitectura|architecture|activo|activos|asset|assets|ticker|watchlist|favoritos|btc|eth|sol|nvda|aapl|msft|amzn|googl|spy|qqq|tlt|gld|sharpe|sortino|var|cvar|kelly|brinson|markov|enb|meucci|rsi|macd|volatilidad|volatility|drawdown|alpha|beta|anomal[ií]a|anomaly|p-0|p-1|pantalla|screen|viendo|seeing|funciona|work|hacer|help|ayuda|ayudar|entender|understand|mostrar|ver|explica|explain|inversion|inversi[oó]n|invertir|invest)\b/i.test(
-    s
-  );
+
+  if (
+    /\b(market|markets|mercado|mercados|screener|analytics|research|watchlist|favoritos|ticker|activo|activos|asset|assets|btc|bitcoin|eth|sol|nvda|aapl|msft|amzn|googl|spy|qqq|tlt|gld|rsi|macd|anomal[ií]a|anomaly)\b/i.test(
+      s
+    )
+  ) {
+    return msgLang === 'ES'
+      ? 'la sección Markets y el análisis de activos'
+      : 'the Markets section and asset analysis';
+  }
+
+  if (/\b(system|sistema|finops|pipeline|pipelines|arquitectura|architecture|p-0|p-1|cloud run|bigquery)\b/i.test(s)) {
+    return msgLang === 'ES'
+      ? 'la sección System y la arquitectura técnica'
+      : 'the System section and technical architecture';
+  }
+
+  if (
+    /\b(app|aplicaci[oó]n|plataforma|platform|secci[oó]n|secciones|section|sections|home|portada|guide|gu[ií]a|manual|empiezo|empezar|explorar|recorrer|funcionalidades|en que me podes ayudar|en qué me podés ayudar|what can you help|where do i start|on this screen|en esta pantalla)\b/i.test(
+      s
+    )
+  ) {
+    return msgLang === 'ES'
+      ? 'el recorrido general de la aplicación'
+      : 'the general overview of the app';
+  }
+
+  return null;
 }
 
 /**
@@ -498,16 +535,24 @@ function isAppRelatedUserMessage(txt = '') {
  */
 async function callGeminiFlashLite({ apiKey, userText, history, snap, msgLang }) {
   const sanitizedInput = String(userText || '').slice(0, AGENT_GUARDRAIL_LIMITS.maxInputChars);
-  const currentIsAppRelated = isAppRelatedUserMessage(sanitizedInput);
-  const lastAppTopicEntry = [...history]
-    .reverse()
-    .find(
-      (m) =>
-        m.role === 'user' &&
-        String(m.txt || '').trim().toLowerCase() !== sanitizedInput.trim().toLowerCase() &&
-        isAppRelatedUserMessage(m.txt)
-    );
-  const lastAppTopicUserMsg = lastAppTopicEntry ? String(lastAppTopicEntry.txt).trim() : null;
+  const currentTopicLabel = detectAppTopicLabel(sanitizedInput, msgLang);
+  const currentIsAppRelated = Boolean(currentTopicLabel);
+  const currentIsMash = isKeyboardMash(sanitizedInput);
+
+  let lastAppTopicLabel = null;
+  for (let i = history.length - 1; i >= 0; i -= 1) {
+    const m = history[i];
+    if (
+      m.role === 'user' &&
+      String(m.txt || '').trim().toLowerCase() !== sanitizedInput.trim().toLowerCase()
+    ) {
+      const detected = detectAppTopicLabel(m.txt, msgLang);
+      if (detected) {
+        lastAppTopicLabel = detected;
+        break;
+      }
+    }
+  }
 
   const viewNames = {
     presentation: 'Home (Portada)',
@@ -521,16 +566,16 @@ async function callGeminiFlashLite({ apiKey, userText, history, snap, msgLang })
   };
 
   const continuityBlock = !currentIsAppRelated
-    ? lastAppTopicUserMsg
+    ? lastAppTopicLabel
       ? `CONVERSATION CONTINUITY (CRITICAL):
-- The user's latest message ("${sanitizedInput}") is casual, playful/off-topic banter, or keyboard mashing.
-- Earlier in this conversation, the last app-related topic the user was exploring was: "${lastAppTopicUserMsg}".
-- Reply in 1 short, natural sentence to their remark and THEN ask if they want to continue with that last app topic ("${lastAppTopicUserMsg}") or if they would like to see/understand another part of the app.
-- STRICT FORBIDDEN RULE: NEVER jump to or mention a specific ticker (like BTC or SPY), "un activo", "un asset", "tu watchlist", or "una métrica" unless that was the exact topic they were already discussing!`
+- The user's latest message is ${currentIsMash ? 'accidental keyboard mashing' : 'a casual greeting or an off-topic question outside the platform scope'}.
+- Earlier in this chat, the user was exploring ${lastAppTopicLabel}.
+- Reply in 1 short, natural sentence (never claim they had a typo unless it is actual keyboard mashing, and never quote raw user messages) and THEN ask naturally if they want to continue with ${lastAppTopicLabel} or see/understand another part of the app.
+- STRICT FORBIDDEN RULE: NEVER mention specific tickers (like BTC or SPY), "un activo", "un asset", "watchlist", or narrow metrics!`
       : `CONVERSATION CONTINUITY (CRITICAL):
-- The user's latest message ("${sanitizedInput}") is casual, playful/off-topic banter, or keyboard mashing, and NO app-related topic has been discussed yet in this chat.
-- Reply in 1 short, natural sentence (10 to 22 words max) and THEN start the conversation from scratch with a broad, open question asking what they would like to see or understand about the app (e.g., "¿Qué te gustaría ver o entender de la app?" / "What would you like to see or understand about the app?").
-- STRICT FORBIDDEN RULE: NEVER mention or suggest any specific ticker (like BTC or SPY), "un activo", "un asset", "tu watchlist", "tu portfolio", or "una métrica"! Keep the invitation 100% open about the app as a whole.`
+- The user's latest message is ${currentIsMash ? 'accidental keyboard mashing' : 'a casual greeting or an off-topic question outside the platform scope'}, and NO app topic has been discussed yet in this chat.
+- Reply in 1 short, natural sentence (10 to 20 words max; never claim they made a typo unless it is actual keyboard mashing) and THEN start from scratch by asking an open question about what they would like to see or understand about the app (e.g., "¿Qué te gustaría ver o entender de la app?" / "What would you like to see or understand about the app?").
+- STRICT FORBIDDEN RULE: NEVER mention or suggest any specific ticker (like BTC or SPY), "un activo", "un asset", "tu watchlist", "tu portfolio", or "una métrica"!`
     : `CONVERSATION CONTINUITY:
 - Answer the user's question about the app clearly and concisely (2–3 short bullets max if explaining sections/metrics, under 80 words total).`;
 
@@ -546,15 +591,14 @@ LIVE SCREEN CONTEXT (use ONLY when relevant to what the user asks):
   const systemInstruction = `You are the interactive guide inside a market intelligence and portfolio platform.
 CONVERSATIONAL STYLE & SPONTANEITY (CRITICAL):
 1. Reply ALWAYS in the exact same language and register as the user's latest message (detected language: ${msgLang}).
-2. Be spontaneous, human, and proportional to what the user said. NEVER use robotic corporate intros.
+2. Be spontaneous, human, and proportional to what the user said. NEVER use robotic corporate intros and NEVER repeat or quote the user's message back to them in quotation marks.
 3. Use **bold** sparingly for section names or key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
 4. SCOPE: The platform has 5 main views (**Home**, **Markets** > **Screener** / **Analytics** / **Research**, **Portfolio** > **Builder** / **Risk** / **Simulator**, **System** \`P-01\`..\`P-13\`, and **Guide**). Never give personalized investment advice.
 
 ${continuityBlock}${liveContextSection}`;
 
-  // When no app topic has been discussed yet and the user is just bantering, only send the latest user message
-  // so old AI turns don't bias the model toward repeating narrow phrases.
-  const filteredHistory = !currentIsAppRelated && !lastAppTopicUserMsg ? [] : history.slice(-6);
+  // When the user sends an off-topic/casual message, only send the latest user message so old turns don't pollute the response
+  const filteredHistory = !currentIsAppRelated ? [] : history.slice(-6);
   const recentTurns = filteredHistory.map((m) => ({
     role: m.role === 'ai' ? 'model' : 'user',
     parts: [{ text: String(m.txt || '').slice(0, AGENT_GUARDRAIL_LIMITS.maxInputChars) }],
