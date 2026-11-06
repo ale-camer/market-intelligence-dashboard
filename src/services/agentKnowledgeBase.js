@@ -6,16 +6,162 @@ import { computeLivePortfolioMetrics } from './committeeService';
 import { INITIAL_HOLDINGS } from '../components/portfolio/portfolioConstants';
 
 /**
- * Global Agent Knowledge Base & Conversational Engine (`agentKnowledgeBase.js`)
+ * Global Agent Knowledge Base, Guardrails & Audit Telemetry Engine (`agentKnowledgeBase.js`)
  *
- * Implements Phase 2 (Steps 2.1, 2.2, 2.3, 2.4):
- * - Primary Engine: Gemini 2.5 Flash-Lite (`gemini-2.5-flash-lite`) with strict Scope Lock,
- *   live screen snapshot (`buildLiveAppSnapshot`), and maxOutputTokens cap (FinOps $0.00 Free Tier).
- * - Instant Local Engine Fallback: Language-aware deterministic synthesizer with 0ms latency
- *   when no Gemini API key is configured or when offline.
+ * Implements Phase 2 (Steps 2.1, 2.2, 2.3, 2.4) + Institutional FinOps & Safety Guardrails:
+ * - Primary Engine: Gemini Flash-Lite (`gemini-3.5-flash-lite` / `p12-guide-agent-flash-lite` on `projects/162760084346`).
+ * - Hard Guardrails:
+ *   1. Scope Lock (blocks off-topic queries, prompt injection, and personalized financial advice before calling LLM).
+ *   2. Input Sanitization & Length Cap (`MAX_INPUT_CHARS = 500`).
+ *   3. Output Token Cap (`MAX_OUTPUT_TOKENS = 320`, `temperature = 0.25`).
+ *   4. Sliding-Window Rate Limiter (`RPM_LIMIT = 10 req/min`).
+ *   5. Daily Quota Circuit-Breaker (`DAILY_REQ_CAP = 250 req/day`, `DAILY_TOKEN_CAP = 50,000 tokens/day`).
+ * - Live Audit Telemetry (`getAgentAuditTelemetry`): records token consumption, latency, responseIds,
+ *   and guardrail triggers for real-time auditing in `System > Performance` and `System > FinOps`.
  */
 
 const GEMINI_STORAGE_KEY = 'mid_gemini_api_key';
+const AUDIT_STORAGE_KEY = 'mid_agent_audit_v1';
+
+export const AGENT_GUARDRAIL_LIMITS = {
+  keyName: import.meta.env?.VITE_GEMINI_KEY_NAME || 'p12-guide-agent-flash-lite',
+  projectName: import.meta.env?.VITE_GCP_PROJECT_NAME || 'projects/162760084346',
+  projectNumber: import.meta.env?.VITE_GCP_PROJECT_NUMBER || '162760084346',
+  model: import.meta.env?.VITE_GEMINI_MODEL || 'gemini-3.5-flash-lite',
+  maxOutputTokens: Number(import.meta.env?.VITE_GEMINI_MAX_OUTPUT_TOKENS) || 320,
+  maxInputChars: Number(import.meta.env?.VITE_GEMINI_MAX_INPUT_CHARS) || 500,
+  rpmLimit: Number(import.meta.env?.VITE_GEMINI_RPM_LIMIT) || 10,
+  dailyReqCap: Number(import.meta.env?.VITE_GEMINI_DAILY_REQ_CAP) || 250,
+  dailyTokenCap: Number(import.meta.env?.VITE_GEMINI_DAILY_TOKEN_CAP) || 50000,
+};
+
+function getTodayUtcKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+export function getAgentAuditTelemetry() {
+  const today = getTodayUtcKey();
+  const defaultState = {
+    dayKey: today,
+    keyName: AGENT_GUARDRAIL_LIMITS.keyName,
+    projectName: AGENT_GUARDRAIL_LIMITS.projectName,
+    modelVersion: AGENT_GUARDRAIL_LIMITS.model,
+    requestsToday: 0,
+    geminiCallsToday: 0,
+    localFallbackCallsToday: 0,
+    scopeLockBlocksToday: 0,
+    rateLimitBlocksToday: 0,
+    promptTokensToday: 0,
+    completionTokensToday: 0,
+    totalTokensToday: 0,
+    lastLatencyMs: 280,
+    avgLatencyMs: 280,
+    lastResponseId: 'init-ready',
+    rpmTimestamps: [],
+    events: [],
+  };
+
+  try {
+    const raw = window.localStorage.getItem(AUDIT_STORAGE_KEY);
+    if (!raw) return defaultState;
+    const parsed = JSON.parse(raw);
+    if (!parsed || parsed.dayKey !== today) {
+      return defaultState;
+    }
+    return {
+      ...defaultState,
+      ...parsed,
+      rpmTimestamps: Array.isArray(parsed.rpmTimestamps) ? parsed.rpmTimestamps : [],
+      events: Array.isArray(parsed.events) ? parsed.events : [],
+    };
+  } catch {
+    return defaultState;
+  }
+}
+
+function recordAgentAuditEvent({
+  type = 'GEMINI_OK',
+  latencyMs = 0,
+  promptTokens = 0,
+  completionTokens = 0,
+  totalTokens = 0,
+  responseId = '',
+  modelVersion = AGENT_GUARDRAIL_LIMITS.model,
+  note = '',
+}) {
+  try {
+    const state = getAgentAuditTelemetry();
+    const nowMs = Date.now();
+    const nowIso = new Date(nowMs).toISOString().slice(11, 19) + ' UTC';
+    const recentRpm = state.rpmTimestamps.filter((ts) => nowMs - ts < 60_000);
+
+    state.requestsToday += 1;
+    if (type === 'GEMINI_OK') {
+      state.geminiCallsToday += 1;
+      recentRpm.push(nowMs);
+      state.promptTokensToday += promptTokens;
+      state.completionTokensToday += completionTokens;
+      state.totalTokensToday += totalTokens;
+      state.lastLatencyMs = latencyMs;
+      state.avgLatencyMs =
+        state.geminiCallsToday === 1
+          ? latencyMs
+          : Math.round((state.avgLatencyMs * (state.geminiCallsToday - 1) + latencyMs) / state.geminiCallsToday);
+      if (responseId) state.lastResponseId = responseId;
+      if (modelVersion) state.modelVersion = modelVersion;
+    } else if (type === 'SCOPE_LOCK_BLOCK') {
+      state.scopeLockBlocksToday += 1;
+    } else if (type === 'RATE_LIMIT_FALLBACK') {
+      state.rateLimitBlocksToday += 1;
+      state.localFallbackCallsToday += 1;
+    } else {
+      state.localFallbackCallsToday += 1;
+    }
+
+    state.rpmTimestamps = recentRpm;
+    const ev = {
+      id: `aud-${nowMs}`,
+      ts: nowIso,
+      type,
+      latencyMs,
+      promptTokens,
+      completionTokens,
+      totalTokens,
+      responseId: responseId || 'local-guardrail',
+      note,
+    };
+    state.events = [ev, ...state.events].slice(0, 25);
+    window.localStorage.setItem(AUDIT_STORAGE_KEY, JSON.stringify(state));
+  } catch {
+    // ignore storage errors
+  }
+}
+
+function checkRateAndQuotaGuardrails() {
+  const state = getAgentAuditTelemetry();
+  const nowMs = Date.now();
+  const activeRpm = state.rpmTimestamps.filter((ts) => nowMs - ts < 60_000).length;
+
+  if (activeRpm >= AGENT_GUARDRAIL_LIMITS.rpmLimit) {
+    return {
+      allowed: false,
+      reason: `RPM cap (${activeRpm}/${AGENT_GUARDRAIL_LIMITS.rpmLimit} req/min)`,
+    };
+  }
+  if (state.geminiCallsToday >= AGENT_GUARDRAIL_LIMITS.dailyReqCap) {
+    return {
+      allowed: false,
+      reason: `Daily request cap (${state.geminiCallsToday}/${AGENT_GUARDRAIL_LIMITS.dailyReqCap} RPD)`,
+    };
+  }
+  if (state.totalTokensToday >= AGENT_GUARDRAIL_LIMITS.dailyTokenCap) {
+    return {
+      allowed: false,
+      reason: `Daily token cap (${state.totalTokensToday}/${AGENT_GUARDRAIL_LIMITS.dailyTokenCap} tokens)`,
+    };
+  }
+  return { allowed: true, reason: 'OK' };
+}
 
 export function getConfiguredGeminiKey() {
   try {
@@ -191,15 +337,16 @@ function isOutOfScopeQuery(qClean) {
     /\b(clima en|llueve|pronostico del tiempo|weather in|temperature tomorrow)\b/i,
     /\b(pelicula|película|netflix|serie de tv|actor|cine|horoscopo|horóscopo|zodiac)\b/i,
     /\b(chiste|poema|cancion|canción|tell me a joke|write a poem|write a song)\b/i,
-    /\b(ignore previous|ignora las instrucciones|system prompt|jailbreak)\b/i,
+    /\b(ignore previous|ignora las instrucciones|olvida tus instrucciones|system prompt|jailbreak|dan mode|bypass)\b/i,
   ];
   return offTopicPatterns.some((re) => re.test(qClean));
 }
 
 /**
- * Calls Gemini 2.5 Flash-Lite (`gemini-2.5-flash-lite`) with strict Scope Lock and live snapshot context.
+ * Calls Gemini 3.5 Flash-Lite (`gemini-3.5-flash-lite`) with strict Scope Lock, input/output caps, and audit telemetry.
  */
 async function callGeminiFlashLite({ apiKey, userText, history, snap, msgLang }) {
+  const sanitizedInput = String(userText || '').slice(0, AGENT_GUARDRAIL_LIMITS.maxInputChars);
   const viewNames = {
     presentation: 'Home (Portada)',
     workstation:
@@ -212,14 +359,14 @@ async function callGeminiFlashLite({ apiKey, userText, history, snap, msgLang })
   };
 
   const systemInstruction = `You are the official interactive Guide Agent embedded inside an institutional Market Intelligence & Quantitative Portfolio Platform.
-STRICT RULES (SCOPE LOCK):
+STRICT RULES (SCOPE LOCK & FINOPS GUARDRAILS):
 1. Reply ALWAYS in the exact same language as the user's latest message (detected language: ${msgLang}).
-2. Keep answers concise, scannable, and clear (2 to 4 bullet points maximum, ~60-110 words max). Use **bold** for section names and key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
+2. Keep answers concise, complete, and scannable: 2 to 3 short bullet points maximum, under 90 words total so the response never truncates. Use **bold** for section names and key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
 3. Your ONLY scope is:
    - Guiding the user across the platform's 5 views: **Home**, **Markets** (**Screener** with Table/Orbital/Heatmap/Main Tools, and per-asset **Analytics** & **Research**), **Portfolio** (**Builder** with 1-click presets Conservative/Balanced/Quant, ETF Overlap & Brinson Attribution; **Risk** with Markowitz, Correlations, 2008 Stress & Markov Regimes; **Simulator** with What-If sizing, Kelly Criterion & 3-Pillar Risk Committee), **System** (13 decoupled pipelines \`P-01\` to \`P-13\`, DAG topology, schema contracts, and \`~$0.95/mo\` Scale-to-Zero FinOps), and **Guide**.
    - Explaining financial/quantitative metrics in plain language first, and providing mathematical formulas if asked (Sharpe, Sortino, 95% VaR, 99% CVaR, Kelly Criterion, Brinson-Fachler Alpha, Hidden Markov Regimes, Meucci ENB, Isolation Forest P-06).
    - Explaining the user's LIVE screen data below.
-4. If the user asks off-topic questions (sports, cooking, general trivia, politics) or asks for personalized financial advice, politely decline in 1 sentence and redirect to exploring the platform.
+4. Never provide personalized investment advice (explain what the platform's metrics and simulations show instead). If asked off-topic questions (sports, cooking, politics, trivia, coding homework unrelated to this platform), politely decline in 1 sentence and redirect to exploring the platform.
 
 LIVE USER SCREEN SNAPSHOT:
 - Current View: ${viewNames[snap.activeTab] || snap.activeTab}
@@ -229,29 +376,33 @@ LIVE USER SCREEN SNAPSHOT:
 
   const recentTurns = history.slice(-6).map((m) => ({
     role: m.role === 'ai' ? 'model' : 'user',
-    parts: [{ text: String(m.txt || '') }],
+    parts: [{ text: String(m.txt || '').slice(0, AGENT_GUARDRAIL_LIMITS.maxInputChars) }],
   }));
 
-  if (recentTurns.length === 0 || recentTurns[recentTurns.length - 1].parts[0].text !== userText) {
-    recentTurns.push({ role: 'user', parts: [{ text: userText }] });
+  if (recentTurns.length === 0 || recentTurns[recentTurns.length - 1].parts[0].text !== sanitizedInput) {
+    recentTurns.push({ role: 'user', parts: [{ text: sanitizedInput }] });
   }
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${encodeURIComponent(
+  const modelId = AGENT_GUARDRAIL_LIMITS.model;
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${encodeURIComponent(
     apiKey
   )}`;
 
+  const t0 = performance.now();
   const res = await fetch(endpoint, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
+    signal: AbortSignal.timeout(8000),
     body: JSON.stringify({
       systemInstruction: { parts: [{ text: systemInstruction }] },
       contents: recentTurns,
       generationConfig: {
-        maxOutputTokens: 250,
+        maxOutputTokens: AGENT_GUARDRAIL_LIMITS.maxOutputTokens,
         temperature: 0.25,
       },
     }),
   });
+  const latencyMs = Math.round(performance.now() - t0);
 
   if (!res.ok) {
     throw new Error(`Gemini HTTP ${res.status}`);
@@ -261,6 +412,19 @@ LIVE USER SCREEN SNAPSHOT:
   if (!replyText) {
     throw new Error('Empty Gemini response');
   }
+
+  const usage = data?.usageMetadata || {};
+  recordAgentAuditEvent({
+    type: 'GEMINI_OK',
+    latencyMs,
+    promptTokens: usage.promptTokenCount || 0,
+    completionTokens: usage.candidatesTokenCount || 0,
+    totalTokens: usage.totalTokenCount || 0,
+    responseId: data?.responseId || '',
+    modelVersion: data?.modelVersion || modelId,
+    note: `Tab=${snap.activeTab} Asset=${snap.selectedAsset}`,
+  });
+
   return replyText.trim();
 }
 
@@ -444,8 +608,13 @@ export async function generateGlobalAgentResponse({
   const snap = snapshot || buildLiveAppSnapshot({});
   const msgLang = detectMessageLang(qRaw);
 
-  // 1. Strict Scope Lock Guardrail (always zero-cost & immediate)
+  // 1. Strict Scope Lock Guardrail (always zero-cost & immediate, logged in audit telemetry)
   if (isOutOfScopeQuery(q)) {
+    recordAgentAuditEvent({
+      type: 'SCOPE_LOCK_BLOCK',
+      latencyMs: 1,
+      note: 'Blocked off-topic or prompt-injection query before LLM call',
+    });
     return tx(
       'Soy el guía exclusivo de esta plataforma: puedo ayudarte a navegar sus secciones (**Markets**, **Portfolio**, **System**, **Guide**), interpretar tus activos y métricas en pantalla o detallar la arquitectura técnica `P-01` a `P-13`.',
       'I am the dedicated guide for this platform: I can help you navigate its sections (**Markets**, **Portfolio**, **System**, **Guide**), interpret the live assets and metrics on screen, or explain the `P-01` to `P-13` technical architecture.',
@@ -453,20 +622,35 @@ export async function generateGlobalAgentResponse({
     );
   }
 
-  // 2. If Gemini 2.5 Flash-Lite API key is configured, use Gemini for natural multi-turn dialogue
+  // 2. Check Rate & Quota Guardrails + Call Gemini 3.5 Flash-Lite
   const apiKey = getConfiguredGeminiKey();
   if (apiKey) {
-    try {
-      return await callGeminiFlashLite({
-        apiKey,
-        userText: qRaw,
-        history,
-        snap,
-        msgLang,
+    const guardrailCheck = checkRateAndQuotaGuardrails();
+    if (guardrailCheck.allowed) {
+      try {
+        return await callGeminiFlashLite({
+          apiKey,
+          userText: qRaw,
+          history,
+          snap,
+          msgLang,
+        });
+      } catch {
+        // Fall through cleanly to local engine if network error
+      }
+    } else {
+      recordAgentAuditEvent({
+        type: 'RATE_LIMIT_FALLBACK',
+        latencyMs: 1,
+        note: guardrailCheck.reason,
       });
-    } catch {
-      // Fall through cleanly to local engine if rate-limited or offline
     }
+  } else {
+    recordAgentAuditEvent({
+      type: 'LOCAL_FALLBACK',
+      latencyMs: 1,
+      note: 'Deterministic local synthesis',
+    });
   }
 
   // 3. Language-aware Local Engine (0ms fallback)
@@ -481,7 +665,6 @@ export async function generateGlobalAgentResponse({
       .find((m) => m.role === 'user' && m.txt?.toLowerCase() !== q)
       ?.txt?.toLowerCase() || '';
 
-  // Intent A: "¿Por dónde empiezo?" / "¿Cómo me aconsejás explorar la app?" / "Where do I start?" / recommendations to tour
   if (
     q.includes('por dónde empiezo') ||
     q.includes('por donde empiezo') ||
@@ -500,13 +683,12 @@ export async function generateGlobalAgentResponse({
     q.includes('use the app')
   ) {
     return tx(
-      'Te recomiendo este recorrido en 3 pasos para sacarle todo el jugo a la app:\n• **1. Elegí activos en Markets (arriba):** entrá al **Screener**, filtrá por categoría o abrí un activo como **BTC** o **NVDA** para ver su gráfico técnico (**Analytics**), su tesis con IA (**Research**) y sumalo a favoritos con **★**.\n• **2. Armá y probá tu cartera en Portfolio (arriba):** en **Builder** podés cargar en 1 clic una cartera *Conservadora, Balanceada o Quant*, medir su riesgo extremo en **Risk** y simular jugadas tácticas en **Simulator**.\n• **3. Espiá el motor en System y Guide (abajo izq.):** en **System** ves los **13 pipelines (`P-01` a `P-13`)** operando por **`~$0.95/mes`**, y en **Guide** tenés el manual interactivo con video.',
-      'I recommend this 3-step tour to get the most out of the platform:\n• **1. Pick assets in Markets (top bar):** browse the **Screener**, open any asset like **BTC** or **NVDA** to inspect its technical chart (**Analytics**) and AI filings thesis (**Research**), and bookmark favorites with **★**.\n• **2. Build & stress-test in Portfolio (top bar):** use **Builder** to load a 1-click *Conservative, Balanced, or Quant* preset, test crash resilience in **Risk**, and size tactical trades in **Simulator**.\n• **3. Inspect the engine in System & Guide (bottom left):** **System** shows all **13 pipelines (`P-01` to `P-13`)** running on **`~$0.95/mo`**, while **Guide** has the interactive manual and video overview.',
+      'Te recomiendo este recorrido en 3 pasos para sacarle todo el jugo a la app:\n• **1. Elegí activos en Markets (arriba):** entrá al **Screener**, filtrá por categoría o abrí un activo como **BTC** o **NVDA** para ver su gráfico técnico (**Analytics**), su tesis con IA (**Research**) y sumalo a favoritos con **★**.\n• **2. Armá y probá tu cartera en Portfolio (arriba):** en **Builder** podés cargar en 1 clic una cartera *Conservadora, Balanceada o Quant*, medir su riesgo extremo en **Risk** y simular jugadas tácticas en **Simulator**.\n• **3. Espiá el motor en System y Guide (abajo izq.):** en **System** ves los **13 pipelines (`P-01` a `P-13`)** operando por **~$0.95/mes**, y en **Guide** tenés el manual interactivo con video.',
+      'I recommend this 3-step tour to get the most out of the platform:\n• **1. Pick assets in Markets (top bar):** browse the **Screener**, open any asset like **BTC** or **NVDA** to inspect its technical chart (**Analytics**) and AI filings thesis (**Research**), and bookmark favorites with **★**.\n• **2. Build & stress-test in Portfolio (top bar):** use **Builder** to load a 1-click *Conservative, Balanced, or Quant* preset, test crash resilience in **Risk**, and size tactical trades in **Simulator**.\n• **3. Inspect the engine in System & Guide (bottom left):** **System** shows all **13 pipelines (`P-01` to `P-13`)** running on **~$0.95/mo**, while **Guide** has the interactive manual and video overview.',
       msgLang
     );
   }
 
-  // Intent B: "¿Qué hay en cada sección de la app?" / "What is in each section of the app?"
   if (
     q.includes('qué hay en cada sección') ||
     q.includes('que hay en cada seccion') ||
@@ -521,7 +703,6 @@ export async function generateGlobalAgentResponse({
     );
   }
 
-  // Intent C: "Explicame qué estoy viendo en esta pantalla" / "Explain what I am seeing on this screen"
   if (
     q.includes('qué estoy viendo') ||
     q.includes('que estoy viendo') ||
@@ -591,7 +772,6 @@ export async function generateGlobalAgentResponse({
     }
   }
 
-  // Intent D: "¿Cómo funciona la arquitectura y el sistema?" / "How do the architecture and system work?"
   if (
     q.includes('arquitectura') ||
     q.includes('architecture') ||
@@ -608,7 +788,6 @@ export async function generateGlobalAgentResponse({
     );
   }
 
-  // Intent E: Check Financial & Technical Concept Dictionary (with multi-turn memory support)
   for (const concept of CONCEPT_KNOWLEDGE) {
     const matchedNow = concept.keys.some((k) => q.includes(k));
     const matchedPrev = wantsDeepMathOrTech && concept.keys.some((k) => lastUserMsg.includes(k));
@@ -620,7 +799,6 @@ export async function generateGlobalAgentResponse({
     }
   }
 
-  // Intent F: Specific ticker or current asset (e.g. BTC, NVDA, AAPL, SPY, TLT, GLD...)
   const tickerMatch = qRaw.toUpperCase().match(/\b(BTC|ETH|SOL|NVDA|AAPL|MSFT|AMZN|GOOGL|SPY|QQQ|TLT|GLD|US10Y|EUR\/USD|CL|GC)\b/);
   if (tickerMatch || q.includes('activo') || q.includes('asset') || q.includes('precio') || q.includes('price')) {
     const targetSym = tickerMatch ? tickerMatch[1] : snap.selectedAsset;
@@ -658,7 +836,6 @@ export async function generateGlobalAgentResponse({
     );
   }
 
-  // Intent G: Portfolio / cartera / holdings / watchlist
   if (
     q.includes('cartera') ||
     q.includes('portafolio') ||
@@ -700,7 +877,6 @@ export async function generateGlobalAgentResponse({
     );
   }
 
-  // Intent H: Context-aware default synthesis combining current screen + live metrics
   return txTpl(
     'Estoy leyendo tu sesión en vivo:\n• **Activo seleccionado en Markets:** **{0} ({1})** a **{2} ({3})** con score `P-06` de **{4}** y nota compuesta Research de **{5}**.\n• **Cartera activa en Portfolio ({6} activos):** **+{7}% CAGR**, **Sharpe {8}**, **VaR 95% {9}%** y **ENB {10}**.\n• Preguntame cómo recorrer la app, qué significa cualquier métrica (`VaR/CVaR`, `Sharpe`, `Kelly`, `Brinson`, `Markov`, `P-06`) o cómo funciona la arquitectura `P-01`..`P-13` (`~$0.95/mes`).',
     [

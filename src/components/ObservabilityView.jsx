@@ -5,6 +5,10 @@ import {
     evaluateEcosystemContracts,
     probeLiveCloudEndpoints
 } from '../services/observabilityService';
+import {
+    getAgentAuditTelemetry,
+    AGENT_GUARDRAIL_LIMITS
+} from '../services/agentKnowledgeBase';
 
 /* Generador determinístico de los últimos 5 días de corrida por módulo */
 function buildLast5DaysRuns(seedStr, baseLatency, isES = false) {
@@ -27,6 +31,11 @@ function buildLast5DaysRuns(seedStr, baseLatency, isES = false) {
 
 /* Medidores compactos de cuotas sin datos sensibles de proveedor/proyecto */
 function getCompactQuotaMeters(isES = false) {
+    const agentAudit = getAgentAuditTelemetry();
+    const reqCap = AGENT_GUARDRAIL_LIMITS.dailyReqCap || 250;
+    const tokCap = AGENT_GUARDRAIL_LIMITS.dailyTokenCap || 50000;
+    const reqPct = Math.min(100, Math.max(0.8, Number(((agentAudit.geminiCallsToday / reqCap) * 100).toFixed(1))));
+
     return [
         {
             service: 'Serverless Compute (8 Services + 5 Jobs)',
@@ -64,10 +73,10 @@ function getCompactQuotaMeters(isES = false) {
             cost: '~$0.95 / m'
         },
         {
-            service: 'Client Edge Storage (localStorage)',
-            modules: 'P-13',
-            usedLabel: '42 KB / 5 MB',
-            pct: 0.8,
+            service: 'Gemini Flash-Lite Guide & LLM Guardrails',
+            modules: 'P-13 (p12-guide-agent)',
+            usedLabel: `${agentAudit.geminiCallsToday}/${reqCap} RPD • ${agentAudit.totalTokensToday}/${Math.round(tokCap / 1000)}k tok`,
+            pct: reqPct,
             cost: '$0.00'
         }
     ];
@@ -219,6 +228,23 @@ export default function ObservabilityView({ langCode = 'EN' }) {
     const logEntries = useMemo(() => {
         const sourceList = logScope === 'selected' ? [selectedItem] : allModules;
         const rows = [];
+        const agentAudit = getAgentAuditTelemetry();
+
+        if (logScope === 'all' || selectedItem?.id === 'P-13') {
+            agentAudit.events.forEach((ev) => {
+                rows.push({
+                    id: ev.id,
+                    ts: ev.ts,
+                    level: ev.type === 'GEMINI_OK' ? 'INFO' : 'WARN',
+                    modId: 'P-13',
+                    msg:
+                        ev.type === 'GEMINI_OK'
+                            ? `Gemini (${agentAudit.modelVersion} • ${agentAudit.keyName}) HTTP 200 (${ev.latencyMs}ms) — prompt=${ev.promptTokens} completion=${ev.completionTokens} total=${ev.totalTokens} tok [id=${ev.responseId}] (${ev.note})`
+                            : `Guardrail Trigger (${ev.type}): ${ev.note} ($0.00 local fallback)`
+                });
+            });
+        }
+
         sourceList.forEach(item => {
             item.runs5d.slice().reverse().forEach((r, idx) => {
                 rows.push({
@@ -238,7 +264,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
             });
         });
         return rows;
-    }, [logScope, selectedItem, allModules, lastProbeTime, langKey, isES]);
+    }, [logScope, selectedItem, allModules, lastProbeTime, langKey, isES, refreshTick]);
 
     return (
         <div
@@ -630,6 +656,14 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                                 <div>
                                     <span style={{ color: '#64748b' }}>// Contract Assertion:</span>{' '}
                                     <span style={{ color: '#ffffff' }}>{selectedItem.expectedData?.[langKey] || selectedItem.expectedData?.EN}</span>
+                                </div>
+                                <div>
+                                    <span style={{ color: '#64748b' }}>// Guardrails & Hard Limits:</span>{' '}
+                                    <span style={{ color: '#10b981' }}>{selectedItem.guardrailSpec?.[langKey] || selectedItem.guardrailSpec?.EN}</span>
+                                </div>
+                                <div>
+                                    <span style={{ color: '#64748b' }}>// Audit Telemetry Collected:</span>{' '}
+                                    <span style={{ color: '#f8fafc' }}>{selectedItem.auditTelemetrySpec?.[langKey] || selectedItem.auditTelemetrySpec?.EN}</span>
                                 </div>
                                 <div>
                                     <span style={{ color: '#64748b' }}>// Pipeline Topology (DAG):</span>{' '}

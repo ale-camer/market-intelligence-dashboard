@@ -1,13 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { X, Send, KeyRound, Check } from 'lucide-react';
+import { X, Send } from 'lucide-react';
 import { tx, useViewLocale } from '../data/i18n/viewLocaleService';
 import {
   AGENT_QUICK_PROMPTS,
   getAgentGreeting,
   buildLiveAppSnapshot,
   generateGlobalAgentResponse,
-  getConfiguredGeminiKey,
-  setConfiguredGeminiKey,
 } from '../services/agentKnowledgeBase';
 
 /**
@@ -16,8 +14,8 @@ import {
  * Implements Phase 2 (Steps 2.1 to 2.4):
  * - Full-height vertical side drawer spanning between HeaderBar and FooterBar.
  * - Minimal 1-line greeting + 4 unified quick prompts centered 100% on the product.
- * - Powered by Gemini 2.5 Flash-Lite (`gemini-2.5-flash-lite`) when key is present,
- *   with instant language-aware local synthesis fallback.
+ * - Powered by Gemini Flash-Lite (`gemini-3.5-flash-lite` via `p12-guide-agent-flash-lite`)
+ *   with strict Scope-Lock, RPM/RPD/Token guardrails, and live audit telemetry.
  * - Preserves conversation history across tabs (`Home`, `Markets`, `Portfolio`, `System`, `Guide`).
  */
 export default function GlobalAgentDrawer({
@@ -33,9 +31,6 @@ export default function GlobalAgentDrawer({
   const [inputMsg, setInputMsg] = useState('');
   const [thread, setThread] = useState([]);
   const [isThinking, setIsThinking] = useState(false);
-  const [showKeyInput, setShowKeyInput] = useState(false);
-  const [apiKeyDraft, setApiKeyDraft] = useState(() => getConfiguredGeminiKey());
-  const [hasGeminiKey, setHasGeminiKey] = useState(() => Boolean(getConfiguredGeminiKey()));
   const scrollRef = useRef(null);
 
   const greetingText = getAgentGreeting();
@@ -47,13 +42,6 @@ export default function GlobalAgentDrawer({
   }, [thread, isOpen, isThinking]);
 
   if (!isOpen) return null;
-
-  const handleSaveKey = (e) => {
-    e.preventDefault();
-    setConfiguredGeminiKey(apiKeyDraft);
-    setHasGeminiKey(Boolean(getConfiguredGeminiKey()));
-    setShowKeyInput(false);
-  };
 
   const handleSend = async (rawText) => {
     const clean = String(rawText || '').trim();
@@ -175,33 +163,6 @@ export default function GlobalAgentDrawer({
           <span style={{ fontSize: '14px', fontWeight: 700, color: '#ffffff' }}>
             {tx('Agente Guía', 'Guide Agent')}
           </span>
-          <button
-            type="button"
-            onClick={() => setShowKeyInput((prev) => !prev)}
-            title={
-              hasGeminiKey
-                ? tx('Gemini 2.5 Flash-Lite conectado', 'Gemini 2.5 Flash-Lite connected')
-                : tx('Conectar API Key de Gemini Flash-Lite', 'Connect Gemini Flash-Lite API Key')
-            }
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-              padding: '2px 6px',
-              borderRadius: '999px',
-              border: `1px solid ${
-                hasGeminiKey ? 'rgba(16, 185, 129, 0.45)' : 'rgba(148, 163, 184, 0.25)'
-              }`,
-              background: hasGeminiKey ? 'rgba(16, 185, 129, 0.12)' : 'rgba(15, 23, 42, 0.6)',
-              color: hasGeminiKey ? '#10b981' : '#94a3b8',
-              fontSize: '10px',
-              fontWeight: 600,
-              cursor: 'pointer',
-            }}
-          >
-            <KeyRound size={10} />
-            <span>{hasGeminiKey ? 'Flash-Lite ON' : 'Gemini Key'}</span>
-          </button>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -239,59 +200,6 @@ export default function GlobalAgentDrawer({
           </button>
         </div>
       </div>
-
-      {/* Optional 1-line Gemini API Key input bar */}
-      {showKeyInput && (
-        <form
-          onSubmit={handleSaveKey}
-          style={{
-            display: 'flex',
-            gap: '6px',
-            padding: '6px 8px',
-            borderRadius: '8px',
-            background: 'rgba(15, 23, 42, 0.75)',
-            border: '1px solid rgba(148, 163, 184, 0.22)',
-            flexShrink: 0,
-          }}
-        >
-          <input
-            type="password"
-            value={apiKeyDraft}
-            onChange={(e) => setApiKeyDraft(e.target.value)}
-            placeholder={tx(
-              'Pegá tu GEMINI_API_KEY (AI Studio Free Tier)...',
-              'Paste your GEMINI_API_KEY (AI Studio Free Tier)...'
-            )}
-            style={{
-              flex: 1,
-              background: 'transparent',
-              border: 'none',
-              color: '#f8fafc',
-              fontSize: '11.5px',
-              outline: 'none',
-            }}
-          />
-          <button
-            type="submit"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '3px',
-              padding: '3px 8px',
-              borderRadius: '5px',
-              border: '1px solid var(--ui-accent, #10b981)',
-              background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.16)',
-              color: 'var(--ui-accent, #10b981)',
-              fontSize: '11px',
-              fontWeight: 700,
-              cursor: 'pointer',
-            }}
-          >
-            <Check size={11} />
-            <span>{tx('Guardar', 'Save')}</span>
-          </button>
-        </form>
-      )}
 
       {/* 4 Quick Product-Focused Prompts */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', flexShrink: 0 }}>
@@ -417,6 +325,7 @@ export default function GlobalAgentDrawer({
           type="text"
           value={inputMsg}
           onChange={(e) => setInputMsg(e.target.value)}
+          maxLength={500}
           placeholder={tx(
             'Preguntá sobre esta vista, activos o métricas...',
             'Ask about this view, assets, or metrics...'
