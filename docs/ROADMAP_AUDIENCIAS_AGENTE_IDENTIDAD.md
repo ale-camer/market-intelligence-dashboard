@@ -113,8 +113,26 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
 
 ### Micro-Pasos de la Fase 2
 
-- [ ] **Paso 2.1 — Diseño del Flujo de Bienvenida y "¿Por dónde empiezo?":**
-  - **Objetivo:** Definir cómo saluda el agente y cómo orienta a cada uno de los **5 perfiles** cuando le preguntan qué hacer, por dónde empezar o qué secciones recorrer según lo que buscan.
+- [x] **Paso 2.1 — Diseño del Flujo de Bienvenida, "¿Por dónde empiezo?" y Guardrails *(Definido)*:**
+  - **Objetivo:** Definir la ubicación del agente, su saludo inicial mínimo con opciones predefinidas orientadas 100% al producto (sin autopromoción personal) y los *guardrails* estrictos de alcance.
+  - **Decisiones aprobadas:**
+    1. **Ubicación (Esquina Superior Derecha):** Botón fijo en la esquina superior derecha del header global ([`src/App.jsx`](../src/App.jsx)), que hoy está libre e invita a interactuar de forma inmediata desde cualquier vista.
+    2. **Saludo Inicial Mínimo + 4 Opciones Predefinidas Unificadas:**
+       - *Saludo:* `"Hola, soy el guía de la plataforma. ¿Qué te gustaría explorar o consultar?"`
+       - *Opciones iniciales (envían la pregunta al hacer clic):*
+         1. `¿Por dónde empiezo?`
+         2. `¿Qué hay en cada sección de la app?`
+         3. `Explicame qué estoy viendo en esta pantalla`
+         4. `¿Cómo funciona la arquitectura y el sistema?`
+    3. **Respuestas Cortas, al Grano y Centradas en el Producto (3–4 líneas máx.):**
+       - `¿Por dónde empiezo?` → Indica en 4 viñetas breves adónde ir según el objetivo (`Markets` para explorar activos y marcar `★`, `Portfolio` para armar/probar una cartera, `System` para ver ingeniería/pipelines y costos cloud, `Guide` para el paso a paso) y pregunta en cuál profundizar.
+       - `¿Qué hay en cada sección de la app?` → Resume en 4 líneas qué herramientas contiene cada pestaña del menú superior (`Markets`, `Portfolio`, `System`, `Guide`).
+       - `Explicame qué estoy viendo en esta pantalla` → Explica en 2–3 oraciones qué muestra la pantalla activa en ese momento y cómo usarla.
+       - `¿Cómo funciona la arquitectura y el sistema?` → Resume el pipeline automatizado de 13 módulos (`P-01` a `P-13`) sobre GCP, GitHub Actions y Supabase con operación *Scale-to-Zero* (`~$0.95/mes`), indicando la pestaña `System` para ver métricas en vivo.
+    4. **Guardrails Estrictos de Alcance (*Scope Lock*):**
+       - *Exclusividad de Dominio:* Sólo responde sobre la app, sus activos/métricas financieras y su arquitectura (`P-01`..`P-13` / `FinOps`). Rechaza cortésmente en 1 línea cualquier consulta fuera de ese alcance.
+       - *Complejidad Progresiva a Demanda:* Responde corto y simple por defecto; sólo profundiza en matemática Quant o ingeniería IT si el usuario lo pide.
+       - *Foco en el Producto (0% autobombo) y Sin Asesoramiento Financiero:* El valor profesional se demuestra por la solidez del producto; explica indicadores y simulaciones sin dar recomendaciones personalizadas de compra/venta.
 
 - [ ] **Paso 2.2 — Mapa de Conocimiento de la App (`Knowledge Base` Funcional, Financiera y Técnica):**
   - **Objetivo:** Documentar y estructurar todo el conocimiento interno del agente sobre:
@@ -199,5 +217,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Paso 1.5 (System)** | `[x] Definido` | Se definieron los 3 ajustes en `System` (Topología DAG + Scaling en el bloque de contrato, `11/11 Pipelines PASS • 0 Schema Drift` en logs y explicación de 1 línea de *Scale-to-Zero* en `FinOps`). |
 | 2026-11-06 | **Paso 1.6 (Markets)** | `[x] Definido` | Se definieron los textos del 3er renglón de las 4 tarjetas KPI del Screener, la línea inferior bilingüe (humano + Quant) en `Analytics` y el subtítulo de `Research`. |
 | 2026-11-06 | **Paso 1.7 (Portfolio)** | `[x] Definido` | Se definieron los textos del 3er renglón de las 6 tarjetas KPI de `Builder`, los 3 Presets de cartera (*Conservadora, Balanceada, Quant*), las traducciones en `Risk` (*Stress 2008* y *Régimen Markov*) y las etiquetas guía del Criterio de Kelly en `Simulator`. **Fase 1 100% definida.** |
-| — | **Paso 2.1 (Agente)** | `[~] En definición` | Definir el saludo inicial, el flujo de orientación *"¿Por dónde empiezo?"* para los 5 perfiles y los chips de consulta rápida contextuales por vista. |
+| 2026-11-06 | **Paso 2.1 (Agente)** | `[x] Definido` | Se definió ubicar el botón en la esquina superior derecha, con saludo mínimo de 1 línea, 4 opciones predefinidas con respuestas cortas centradas 100% en el producto (dónde ver cada cosa) y *guardrails* estrictos de alcance (*Scope Lock*). |
+| — | **Paso 2.2 (Agente)** | `[~] En definición` | Definir el Mapa de Conocimiento estructurado del Agente (Mapa Funcional de Vistas, Diccionario Financiero en 2 niveles y Ficha Técnica de Arquitectura/FinOps). |
 
