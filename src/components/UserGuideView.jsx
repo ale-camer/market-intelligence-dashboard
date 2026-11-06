@@ -1495,126 +1495,73 @@ export default function UserGuideView({
                             };
 
                             return (
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', margin: '18px 0 30px' }}>
-                                    {/* OPCIÓN A: CON PILLS ESFÉRICAS SIN FLECHAS AL FINAL DE CADA PUNTO */}
-                                    <div
+                                <div
+                                    style={{
+                                        margin: '18px 0 26px',
+                                        padding: '14px 18px',
+                                        borderRadius: '8px',
+                                        background: 'rgba(255, 255, 255, 0.02)',
+                                        borderLeft: '2px solid var(--ui-accent, #10b981)',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        gap: '10px'
+                                    }}
+                                >
+                                    <p
                                         style={{
-                                            padding: '14px 18px',
-                                            borderRadius: '8px',
-                                            background: 'rgba(255, 255, 255, 0.02)',
-                                            borderLeft: '2px solid var(--ui-accent, #10b981)',
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            gap: '10px'
+                                            margin: 0,
+                                            fontSize: typo.bulletSize,
+                                            color: typo.headingColor,
+                                            fontWeight: 600
                                         }}
                                     >
-                                        <p
-                                            style={{
-                                                margin: 0,
-                                                fontSize: typo.bulletSize,
-                                                color: typo.headingColor,
-                                                fontWeight: 600
-                                            }}
-                                        >
-                                            {isES
-                                                ? 'Opción A (Con cápsulas sin flechas) — ¿Por dónde querés empezar?'
-                                                : 'Option A (With arrowless pills) — Where would you like to start?'}
-                                        </p>
+                                        {isES
+                                            ? '¿Por dónde querés empezar?'
+                                            : 'Where would you like to start?'}
+                                    </p>
 
-                                        <ul
-                                            style={{
-                                                margin: 0,
-                                                paddingLeft: '20px',
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                gap: '11px',
-                                                fontSize: typo.bulletSize,
-                                                color: typo.bodyColor,
-                                                lineHeight: typo.lineHeight
-                                            }}
-                                        >
-                                            {startingItems.map((item, idx) => (
-                                                <li key={`optA-${idx}`}>
-                                                    <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
-                                                        {item.label}:
-                                                    </strong>{' '}
-                                                    <span>{item.quote}</span>{' '}
-                                                    <span
-                                                        style={{
-                                                            display: 'inline-flex',
-                                                            flexWrap: 'wrap',
-                                                            alignItems: 'center',
-                                                            gap: '6px',
-                                                            marginLeft: '6px',
-                                                            verticalAlign: 'middle'
-                                                        }}
-                                                    >
-                                                        {item.actions.map((act, aIdx) => (
-                                                            <button
-                                                                key={aIdx}
-                                                                type="button"
-                                                                onClick={act.onClick}
-                                                                style={softPillStyle}
-                                                            >
-                                                                {act.text}
-                                                            </button>
-                                                        ))}
-                                                    </span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    {/* OPCIÓN B: 100% HOMOGÉNEA CON EL RESTO DE GUIDE (EL TÍTULO EN VERDE ES EL LINK, CERO BOTONES EXTRA) */}
-                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                                        <p
-                                            style={{
-                                                margin: 0,
-                                                fontSize: typo.bulletSize,
-                                                color: typo.headingColor,
-                                                fontWeight: 600
-                                            }}
-                                        >
-                                            {isES
-                                                ? 'Opción B (Idéntica al resto de Guide: el título en verde es el link, sin botones extra) — ¿Por dónde querés empezar?'
-                                                : 'Option B (Identical to the rest of Guide: green title is the link, no extra buttons) — Where would you like to start?'}
-                                        </p>
-
-                                        <ul
-                                            style={{
-                                                margin: 0,
-                                                paddingLeft: '22px',
-                                                display: 'flex',
-                                                flexDirection: 'column',
-                                                gap: '9px',
-                                                fontSize: typo.bulletSize,
-                                                color: typo.bodyColor,
-                                                lineHeight: typo.lineHeight
-                                            }}
-                                        >
-                                            {startingItems.map((item, idx) => (
-                                                <li key={`optB-${idx}`}>
-                                                    <button
-                                                        type="button"
-                                                        onClick={item.primaryClick}
-                                                        style={{
-                                                            background: 'transparent',
-                                                            border: 'none',
-                                                            padding: 0,
-                                                            color: 'var(--ui-accent, #10b981)',
-                                                            fontWeight: 600,
-                                                            fontSize: typo.bulletSize,
-                                                            fontFamily: typo.fontFamily,
-                                                            cursor: 'pointer'
-                                                        }}
-                                                    >
-                                                        {item.label}:
-                                                    </button>
-                                                    <span> {item.quote}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+                                    <ul
+                                        style={{
+                                            margin: 0,
+                                            paddingLeft: '20px',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            gap: '11px',
+                                            fontSize: typo.bulletSize,
+                                            color: typo.bodyColor,
+                                            lineHeight: typo.lineHeight
+                                        }}
+                                    >
+                                        {startingItems.map((item, idx) => (
+                                            <li key={`optA-${idx}`}>
+                                                <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
+                                                    {item.label}:
+                                                </strong>{' '}
+                                                <span>{item.quote}</span>{' '}
+                                                <span
+                                                    style={{
+                                                        display: 'inline-flex',
+                                                        flexWrap: 'wrap',
+                                                        alignItems: 'center',
+                                                        gap: '6px',
+                                                        marginLeft: '6px',
+                                                        verticalAlign: 'middle'
+                                                    }}
+                                                >
+                                                    {item.actions.map((act, aIdx) => (
+                                                        <button
+                                                            key={aIdx}
+                                                            type="button"
+                                                            onClick={act.onClick}
+                                                            style={softPillStyle}
+                                                        >
+                                                            {act.text}
+                                                        </button>
+                                                    ))}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
                             );
                         })()}
