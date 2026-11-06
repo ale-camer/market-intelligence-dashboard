@@ -241,7 +241,7 @@ export function exportSnapshotToPng({
   ctx.fillStyle = '#64748b';
   ctx.font = '500 10.5px "JetBrains Mono", monospace';
   ctx.fillText(
-    footerNote || `Institutional Quantitative Platform • Snapshot ${getExportDateStamp()}`,
+    footerNote || `Quant • Institutional Market Intelligence • Snapshot ${getExportDateStamp()}`,
     32,
     height - 24
   );
