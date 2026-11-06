@@ -65,22 +65,11 @@ export default function GlobalAgentDrawer({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Anchor the latest user turn at the TOP of the scroll container (eye level)
+  // Keep scroll at the very top so the newest turn (rendered first) is always at eye level
   useEffect(() => {
     if (!isOpen) return;
-    if (thread.length === 0) {
-      if (scrollRef.current) {
-        scrollRef.current.scrollTop = 0;
-      }
-      return;
-    }
-    if (latestUserTurnRef.current && scrollRef.current) {
-      const container = scrollRef.current;
-      const target = latestUserTurnRef.current;
-      container.scrollTo({
-        top: Math.max(0, target.offsetTop - 2),
-        behavior: 'smooth',
-      });
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [thread, isThinking, isOpen]);
 
@@ -196,14 +185,23 @@ export default function GlobalAgentDrawer({
     });
   };
 
-  // Find index of the last user message so we can anchor it at the top of the viewport
-  let lastUserIdx = -1;
-  for (let i = thread.length - 1; i >= 0; i -= 1) {
-    if (thread[i].role === 'user') {
-      lastUserIdx = i;
-      break;
+  // Group thread into turns [ { userMsg, aiMsg, aiIdx } ] and reverse so the latest turn is always at the top
+  const turns = [];
+  for (let i = 0; i < thread.length; i += 1) {
+    const m = thread[i];
+    if (m.role === 'user') {
+      const next = thread[i + 1];
+      if (next && next.role === 'ai') {
+        turns.push({ userMsg: m.txt, aiMsg: next.txt, aiIdx: i + 1 });
+        i += 1;
+      } else {
+        turns.push({ userMsg: m.txt, aiMsg: null, aiIdx: -1 });
+      }
+    } else {
+      turns.push({ userMsg: null, aiMsg: m.txt, aiIdx: i });
     }
   }
+  const turnsNewestFirst = turns.slice().reverse();
 
   return (
     <aside
@@ -403,86 +401,120 @@ export default function GlobalAgentDrawer({
           </>
         )}
 
-        {thread.map((m, idx) => {
-          const isLatestUser = idx === lastUserIdx;
-          const isAi = m.role === 'ai';
-          const hasLongUnbrokenToken = !isAi && /\S{32,}/.test(String(m.txt || ''));
+        {turnsNewestFirst.map((turn, tIdx) => {
+          const isNewestTurn = tIdx === 0;
+          const userStr = String(turn.userMsg || '');
+          const hasLongUnbrokenToken = /\S{30,}/.test(userStr) && !userStr.includes(' ');
           return (
             <div
-              key={idx}
-              ref={isLatestUser ? latestUserTurnRef : null}
+              key={tIdx}
               style={{
-                position: 'relative',
-                padding: isAi ? '10px 30px 10px 12px' : '8px 11px',
-                borderRadius: '8px',
-                background: isAi
-                  ? 'rgba(15, 23, 42, 0.52)'
-                  : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
-                border: `1px solid ${
-                  isAi
-                    ? 'rgba(148, 163, 184, 0.18)'
-                    : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.55)'
-                }`,
-                fontSize: '12.5px',
-                color: '#e2e8f0',
-                lineHeight: 1.54,
-                alignSelf: m.role === 'user' ? 'flex-end' : 'stretch',
-                maxWidth: m.role === 'user' ? '92%' : '100%',
-                minWidth: 0,
-                overflow: 'hidden',
-                textOverflow: hasLongUnbrokenToken ? 'ellipsis' : 'clip',
-                whiteSpace: hasLongUnbrokenToken ? 'nowrap' : 'normal',
-                overflowWrap: 'anywhere',
-                wordBreak: 'break-word',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+                flexShrink: 0,
+                paddingBottom: tIdx < turnsNewestFirst.length - 1 ? '10px' : '2px',
+                borderBottom:
+                  tIdx < turnsNewestFirst.length - 1
+                    ? '1px dashed rgba(148, 163, 184, 0.14)'
+                    : 'none',
+                opacity: isNewestTurn ? 1 : 0.78,
               }}
             >
-              {isAi && (
-                <button
-                  type="button"
-                  onClick={() => handleCopyMessage(m.txt, idx)}
-                  title={tx('Copiar respuesta', 'Copy response')}
-                  aria-label={tx('Copiar respuesta', 'Copy response')}
+              {turn.userMsg && (
+                <div
                   style={{
-                    position: 'absolute',
-                    top: '7px',
-                    right: '7px',
-                    background: 'transparent',
-                    border: 'none',
-                    color: copiedIdx === idx ? 'var(--ui-accent, #10b981)' : '#64748b',
-                    cursor: 'pointer',
-                    padding: '3px',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderRadius: '4px',
+                    flexShrink: 0,
+                    padding: '8px 11px',
+                    borderRadius: '8px',
+                    background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)',
+                    border: '1px solid rgba(var(--ui-accent-rgb, 16, 185, 129), 0.55)',
+                    fontSize: '12.5px',
+                    color: '#e2e8f0',
+                    lineHeight: 1.5,
+                    alignSelf: 'flex-end',
+                    maxWidth: '92%',
+                    minWidth: 0,
                   }}
                 >
-                  {copiedIdx === idx ? <Check size={12} /> : <Copy size={12} />}
-                </button>
+                  <div
+                    style={{
+                      overflow: hasLongUnbrokenToken ? 'hidden' : 'visible',
+                      textOverflow: hasLongUnbrokenToken ? 'ellipsis' : 'clip',
+                      whiteSpace: hasLongUnbrokenToken ? 'nowrap' : 'normal',
+                      overflowWrap: 'anywhere',
+                      wordBreak: 'break-word',
+                    }}
+                  >
+                    {renderFormattedMessage(turn.userMsg)}
+                  </div>
+                </div>
               )}
-              {renderFormattedMessage(m.txt)}
+
+              {turn.aiMsg && (
+                <div
+                  style={{
+                    position: 'relative',
+                    flexShrink: 0,
+                    padding: '10px 30px 10px 12px',
+                    borderRadius: '8px',
+                    background: 'rgba(15, 23, 42, 0.52)',
+                    border: '1px solid rgba(148, 163, 184, 0.18)',
+                    fontSize: '12.5px',
+                    color: '#e2e8f0',
+                    lineHeight: 1.54,
+                    alignSelf: 'stretch',
+                    maxWidth: '100%',
+                    minWidth: 0,
+                    overflowWrap: 'anywhere',
+                    wordBreak: 'break-word',
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => handleCopyMessage(turn.aiMsg, turn.aiIdx)}
+                    title={tx('Copiar respuesta', 'Copy response')}
+                    aria-label={tx('Copiar respuesta', 'Copy response')}
+                    style={{
+                      position: 'absolute',
+                      top: '7px',
+                      right: '7px',
+                      background: 'transparent',
+                      border: 'none',
+                      color: copiedIdx === turn.aiIdx ? 'var(--ui-accent, #10b981)' : '#64748b',
+                      cursor: 'pointer',
+                      padding: '3px',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: '4px',
+                    }}
+                  >
+                    {copiedIdx === turn.aiIdx ? <Check size={12} /> : <Copy size={12} />}
+                  </button>
+                  {renderFormattedMessage(turn.aiMsg)}
+                </div>
+              )}
+
+              {isNewestTurn && !turn.aiMsg && isThinking && (
+                <div
+                  style={{
+                    flexShrink: 0,
+                    padding: '9px 12px',
+                    borderRadius: '8px',
+                    background: 'rgba(15, 23, 42, 0.35)',
+                    border: '1px solid rgba(148, 163, 184, 0.14)',
+                    fontSize: '11.8px',
+                    color: '#94a3b8',
+                    fontStyle: 'italic',
+                  }}
+                >
+                  {tx('Pensando...', 'Thinking...')}
+                </div>
+              )}
             </div>
           );
         })}
-
-        {isThinking && (
-          <div
-            style={{
-              padding: '9px 12px',
-              borderRadius: '8px',
-              background: 'rgba(15, 23, 42, 0.35)',
-              border: '1px solid rgba(148, 163, 184, 0.14)',
-              fontSize: '11.8px',
-              color: '#94a3b8',
-              fontStyle: 'italic',
-            }}
-          >
-            {tx('Pensando...', 'Thinking...')}
-          </div>
-        )}
-
-        {/* Bottom runway spacer so the latest turn can scroll to the very TOP of the panel at eye level */}
-        {thread.length > 0 && <div style={{ minHeight: '75%', flexShrink: 0 }} />}
       </div>
 
       {/* Multiline Auto-Expanding Input Box */}
