@@ -507,7 +507,7 @@ export default function FooterBar({
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem', pointerEvents: 'auto' }}>
           {/* 1. SYSTEM (ONE WORD, HOMOGENEOUS WITH GUIDE & DEV) */}
           <HoverTooltip
-            title={tx('Pipelines, telemetría y FinOps', 'Pipelines, telemetry & FinOps')}
+            title={tx('Monitorear pipelines y FinOps', 'Monitor pipelines & FinOps')}
             placement="top-left"
           >
             {(isHovered) => {
@@ -577,7 +577,7 @@ export default function FooterBar({
           {/* LANGUAGE SELECTOR BUTTON WITH FLAG ON THE LEFT */}
           <HoverTooltip
             disabled={langModalOpen}
-            title={tx('Idioma (56)', 'Language (56)')}
+            title={tx('Elegir idioma', 'Choose language')}
             placement="top-right"
           >
             {(isHovered) => {
@@ -717,7 +717,7 @@ export default function FooterBar({
 
             <HoverTooltip
               disabled={palettePopoverOpen}
-              title={tx('Tema de color', 'Color theme')}
+              title={tx('Elegir paleta', 'Choose palette')}
               placement="top-right"
             >
               {(isHovered) => {
