@@ -138,7 +138,7 @@ export function PortfolioCardShell({ badge, title, subtitle, color = '#10b981', 
 export const INITIAL_HOLDINGS = [
     { sym: 'NVDA', name: 'NVIDIA Corp.', cat: 'Equities', weight: 22, enabled: true },
     { sym: 'SPY', name: 'SPDR S&P 500 ETF', cat: 'Equities', weight: 24, enabled: true },
-    { sym: 'BTC-USD', name: 'Bitcoin Spot', cat: 'Crypto', weight: 14, enabled: true },
+    { sym: 'BTC', name: 'Bitcoin', cat: 'Crypto', weight: 14, enabled: true },
     { sym: 'GLD', name: 'SPDR Gold Trust', cat: 'Commodities', weight: 18, enabled: true },
     { sym: 'TLT', name: 'iShares 20+ Yr Treasury', cat: 'Fixed Income', weight: 12, enabled: true },
     { sym: 'MSFT', name: 'Microsoft Corp.', cat: 'Equities', weight: 10, enabled: true }

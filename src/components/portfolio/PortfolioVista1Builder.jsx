@@ -176,6 +176,9 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
     const removeAsset = (sym) => {
         if (holdings.length <= 1) return;
         setHoldings(prev => prev.filter(h => h.sym !== sym));
+        if (onToggleWatchlist && watchlistSyms.includes(sym)) {
+            onToggleWatchlist(sym);
+        }
     };
 
     const addAsset = (item) => {
@@ -183,6 +186,9 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
             ...prev,
             { sym: item.sym, name: item.name || item.sym, cat: item.cat || 'Equities', weight: 8, enabled: true }
         ]);
+        if (onToggleWatchlist && !watchlistSyms.includes(item.sym)) {
+            onToggleWatchlist(item.sym);
+        }
         setQuery('');
         setOpenDrop(false);
     };
@@ -212,10 +218,10 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
         } else if (presetId === 'QUANT') {
             setHoldings([
                 { sym: 'NVDA', name: 'NVIDIA Corp.', cat: 'Equities', weight: 28, enabled: true },
-                { sym: 'BTC-USD', name: 'Bitcoin Spot', cat: 'Crypto', weight: 22, enabled: true },
+                { sym: 'BTC', name: 'Bitcoin', cat: 'Crypto', weight: 22, enabled: true },
                 { sym: 'QQQ', name: 'Invesco QQQ Trust', cat: 'Equities', weight: 20, enabled: true },
                 { sym: 'MSFT', name: 'Microsoft Corp.', cat: 'Equities', weight: 15, enabled: true },
-                { sym: 'SOL-USD', name: 'Solana Spot', cat: 'Crypto', weight: 15, enabled: true }
+                { sym: 'SOL', name: 'Solana', cat: 'Crypto', weight: 15, enabled: true }
             ]);
         } else {
             setHoldings(INITIAL_HOLDINGS);
@@ -484,6 +490,7 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                         style={{
                             display: 'grid',
                             gridTemplateColumns: '32px 1.3fr 0.85fr 118px 86px 46px',
+                            alignItems: 'center',
                             padding: '2px 6px',
                             fontSize: '11.5px',
                             fontWeight: 800,
@@ -491,152 +498,190 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                             borderBottom: '1px solid rgba(148,163,184,0.12)'
                         }}
                     >
-                    {tableHeaders.map((h, i) => (
-                        <span key={h} style={{ textAlign: colAlign(i, tableHeaders.length) }}>
-                            {h}
-                        </span>
-                    ))}
-                </div>
-
-                {holdings.map(h => {
-                    const isOn = h.enabled !== false;
-                    const inWatch = watchlistSyms.includes(h.sym);
-                    return (
-                        <div
-                            key={h.sym}
-                            style={{
-                                display: 'grid',
-                                gridTemplateColumns: '32px 1.3fr 0.85fr 118px 86px 46px',
-                                alignItems: 'center',
-                                padding: '6px 6px',
-                                background: 'transparent',
-                                borderBottom: '1px solid rgba(148, 163, 184, 0.10)',
-                                opacity: isOn ? 1 : 0.48
-                            }}
-                        >
-                            {/* 1ª Columna: Izquierda */}
-                            <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-                                <button
-                                    onClick={() => toggleEnable(h.sym)}
-                                    style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: 0, display: 'flex' }}
-                                >
-                                    {isOn ? <CheckSquare size={13} color="#10b981" /> : <Square size={13} color="#64748b" />}
-                                </button>
-                            </div>
-
-                            {/* Intermedia 1: Centrada */}
-                            <div style={{ textAlign: 'center' }}>
-                                {(() => {
-                                    const liveAsset = getAssetBySymbol(h.sym);
-                                    return (
-                                        <>
-                                            <div
-                                                onClick={() => onOpenAssetInMarkets && onOpenAssetInMarkets(h.sym)}
-                                                title={tx('Abrir activo en Markets', 'Open asset in Markets')}
-                                                style={{
-                                                    fontSize: '13px',
-                                                    fontWeight: 900,
-                                                    fontFamily: 'var(--font-mono)',
-                                                    color: '#f8fafc',
-                                                    cursor: onOpenAssetInMarkets ? 'pointer' : 'default'
-                                                }}
-                                            >
-                                                {h.sym}{' '}
-                                                {liveAsset?.priceFormatted ? (
-                                                    <span style={{ fontSize: '11px', fontWeight: 700, color: (liveAsset.chg ?? 0) >= 0 ? '#6ee7b7' : '#fda4af' }}>
-                                                        {liveAsset.priceFormatted}
-                                                    </span>
-                                                ) : null}
-                                            </div>
-                                            <div style={{ fontSize: '11.5px', color: '#64748b' }}>{liveAsset?.name || h.name}</div>
-                                        </>
-                                    );
-                                })()}
-                            </div>
-
-                            {/* Intermedia 2: Centrada */}
-                            <span style={{ fontSize: '11.5px', color: '#94a3b8', textAlign: 'center' }}>{h.cat}</span>
-
-                            {/* Intermedia 3: Centrada */}
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
-                                <button
-                                    onClick={() => stepWeight(h.sym, -1)}
-                                    style={{
-                                        width: '20px',
-                                        height: '20px',
-                                        borderRadius: '4px',
-                                        border: '1px solid rgba(148,163,184,0.22)',
-                                        background: 'transparent',
-                                        color: '#cbd5e1',
-                                        fontSize: '11px',
-                                        fontWeight: 900,
-                                        cursor: 'pointer'
-                                    }}
-                                >
-                                    -
-                                </button>
-                                <input
-                                    type="number"
-                                    value={h.weight}
-                                    onChange={e => updateWeight(h.sym, e.target.value)}
-                                    style={{
-                                        width: '44px',
-                                        textAlign: 'center',
-                                        background: 'transparent',
-                                        border: '1px solid rgba(16,185,129,0.38)',
-                                        borderRadius: '4px',
-                                        color: '#10b981',
-                                        fontSize: '13px',
-                                        fontWeight: 900,
-                                        fontFamily: 'var(--font-mono)',
-                                        padding: '2px'
-                                    }}
-                                />
-                                <button
-                                    onClick={() => stepWeight(h.sym, 1)}
-                                    style={{
-                                        width: '20px',
-                                        height: '20px',
-                                        borderRadius: '4px',
-                                        border: '1px solid rgba(148,163,184,0.22)',
-                                        background: 'transparent',
-                                        color: '#cbd5e1',
-                                        fontSize: '11px',
-                                        fontWeight: 900,
-                                        cursor: 'pointer'
-                                    }}
-                                >
-                                    +
-                                </button>
-                            </div>
-
-                            {/* Intermedia 4: Centrada */}
-                            <span style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', color: '#cbd5e1', textAlign: 'center' }}>
-                                ${isOn ? ((h.weight || 0) * 1000).toLocaleString() : '0'}
-                            </span>
-
-                            {/* Última Columna: Derecha */}
-                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '5px' }}>
-                                {onToggleWatchlist && (
+                        {tableHeaders.map((h, i) => {
+                            if (i === 0) {
+                                const allEnabled = holdings.length > 0 && holdings.every(it => it.enabled !== false);
+                                return (
                                     <button
-                                        onClick={() => onToggleWatchlist(h.sym)}
-                                        style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: 0 }}
-                                        title={tx('Seguir en Watchlist ★', 'Track in Watchlist ★')}
+                                        key={h}
+                                        type="button"
+                                        onClick={() =>
+                                            setHoldings(prev =>
+                                                prev.map(it => ({ ...it, enabled: !allEnabled }))
+                                            )
+                                        }
+                                        title={
+                                            allEnabled
+                                                ? tx('Desmarcar todos los activos (OFF)', 'Uncheck all holdings (OFF)')
+                                                : tx('Marcar todos los activos (ON)', 'Check all holdings (ON)')
+                                        }
+                                        style={{
+                                            display: 'inline-flex',
+                                            alignItems: 'center',
+                                            gap: '4px',
+                                            background: 'transparent',
+                                            border: 'none',
+                                            padding: 0,
+                                            color: allEnabled ? '#10b981' : '#64748b',
+                                            fontSize: '11.5px',
+                                            fontWeight: 800,
+                                            cursor: 'pointer',
+                                            textAlign: 'left'
+                                        }}
                                     >
-                                        <Star size={11} color={inWatch ? '#10b981' : '#64748b'} fill={inWatch ? '#10b981' : 'none'} />
+                                        {allEnabled ? <CheckSquare size={12} color="#10b981" /> : <Square size={12} color="#64748b" />}
                                     </button>
-                                )}
-                                <button
-                                    onClick={() => removeAsset(h.sym)}
-                                    style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', padding: 0 }}
-                                    title={tx('Quitar activo', 'Remove asset')}
+                                );
+                            }
+                            return (
+                                <span key={h} style={{ textAlign: colAlign(i, tableHeaders.length) }}>
+                                    {h}
+                                </span>
+                            );
+                        })}
+                    </div>
+
+                    <div style={{ maxHeight: '350px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '4.5px', paddingRight: '2px' }}>
+                        {holdings.map(h => {
+                            const isOn = h.enabled !== false;
+                            const inWatch = watchlistSyms.includes(h.sym);
+                            return (
+                                <div
+                                    key={h.sym}
+                                    style={{
+                                        display: 'grid',
+                                        gridTemplateColumns: '32px 1.3fr 0.85fr 118px 86px 46px',
+                                        alignItems: 'center',
+                                        padding: '6px 6px',
+                                        background: 'transparent',
+                                        borderBottom: '1px solid rgba(148, 163, 184, 0.10)',
+                                        opacity: isOn ? 1 : 0.48
+                                    }}
                                 >
-                                    <Trash2 size={11} />
-                                </button>
-                            </div>
-                        </div>
-                    );
-                })}
+                                    {/* 1ª Columna: Izquierda */}
+                                    <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                                        <button
+                                            onClick={() => toggleEnable(h.sym)}
+                                            style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: 0, display: 'flex' }}
+                                        >
+                                            {isOn ? <CheckSquare size={13} color="#10b981" /> : <Square size={13} color="#64748b" />}
+                                        </button>
+                                    </div>
+
+                                    {/* Intermedia 1: Centrada */}
+                                    <div style={{ textAlign: 'center' }}>
+                                        {(() => {
+                                            const liveAsset = getAssetBySymbol(h.sym);
+                                            return (
+                                                <>
+                                                    <div
+                                                        onClick={() => onOpenAssetInMarkets && onOpenAssetInMarkets(h.sym)}
+                                                        title={tx('Abrir activo en Markets', 'Open asset in Markets')}
+                                                        style={{
+                                                            fontSize: '13px',
+                                                            fontWeight: 900,
+                                                            fontFamily: 'var(--font-mono)',
+                                                            color: '#f8fafc',
+                                                            cursor: onOpenAssetInMarkets ? 'pointer' : 'default'
+                                                        }}
+                                                    >
+                                                        {h.sym}{' '}
+                                                        {liveAsset?.priceFormatted ? (
+                                                            <span style={{ fontSize: '11px', fontWeight: 700, color: (liveAsset.chg ?? 0) >= 0 ? '#6ee7b7' : '#fda4af' }}>
+                                                                {liveAsset.priceFormatted}
+                                                            </span>
+                                                        ) : null}
+                                                    </div>
+                                                    <div style={{ fontSize: '11.5px', color: '#64748b' }}>{liveAsset?.name || h.name}</div>
+                                                </>
+                                            );
+                                        })()}
+                                    </div>
+
+                                    {/* Intermedia 2: Centrada */}
+                                    <span style={{ fontSize: '11.5px', color: '#94a3b8', textAlign: 'center' }}>{h.cat}</span>
+
+                                    {/* Intermedia 3: Centrada */}
+                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3px' }}>
+                                        <button
+                                            onClick={() => stepWeight(h.sym, -1)}
+                                            style={{
+                                                width: '20px',
+                                                height: '20px',
+                                                borderRadius: '4px',
+                                                border: '1px solid rgba(148,163,184,0.22)',
+                                                background: 'transparent',
+                                                color: '#cbd5e1',
+                                                fontSize: '11px',
+                                                fontWeight: 900,
+                                                cursor: 'pointer'
+                                            }}
+                                        >
+                                            -
+                                        </button>
+                                        <input
+                                            type="number"
+                                            value={h.weight}
+                                            onChange={e => updateWeight(h.sym, e.target.value)}
+                                            style={{
+                                                width: '44px',
+                                                textAlign: 'center',
+                                                background: 'transparent',
+                                                border: '1px solid rgba(16,185,129,0.38)',
+                                                borderRadius: '4px',
+                                                color: '#10b981',
+                                                fontSize: '13px',
+                                                fontWeight: 900,
+                                                fontFamily: 'var(--font-mono)',
+                                                padding: '2px'
+                                            }}
+                                        />
+                                        <button
+                                            onClick={() => stepWeight(h.sym, 1)}
+                                            style={{
+                                                width: '20px',
+                                                height: '20px',
+                                                borderRadius: '4px',
+                                                border: '1px solid rgba(148,163,184,0.22)',
+                                                background: 'transparent',
+                                                color: '#cbd5e1',
+                                                fontSize: '11px',
+                                                fontWeight: 900,
+                                                cursor: 'pointer'
+                                            }}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+
+                                    {/* Intermedia 4: Centrada */}
+                                    <span style={{ fontSize: '13px', fontFamily: 'var(--font-mono)', color: '#cbd5e1', textAlign: 'center' }}>
+                                        ${isOn ? ((h.weight || 0) * 1000).toLocaleString() : '0'}
+                                    </span>
+
+                                    {/* Última Columna: Derecha */}
+                                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '5px' }}>
+                                        {onToggleWatchlist && (
+                                            <button
+                                                onClick={() => onToggleWatchlist(h.sym)}
+                                                style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: 0 }}
+                                                title={tx('Seguir en Watchlist ★', 'Track in Watchlist ★')}
+                                            >
+                                                <Star size={11} color={inWatch ? '#10b981' : '#64748b'} fill={inWatch ? '#10b981' : 'none'} />
+                                            </button>
+                                        )}
+                                        <button
+                                            onClick={() => removeAsset(h.sym)}
+                                            style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', padding: 0 }}
+                                            title={tx('Quitar activo', 'Remove asset')}
+                                        >
+                                            <Trash2 size={11} />
+                                        </button>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </PortfolioCardShell>

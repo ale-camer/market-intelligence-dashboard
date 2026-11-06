@@ -1,7 +1,7 @@
 import { useViewLocale } from '../data/i18n/viewLocaleService';
 import React, { useState, useEffect } from 'react';
 import { INITIAL_HOLDINGS } from './portfolio/portfolioConstants';
-import { syncLiveMarketSnapshot } from '../services/marketService';
+import { syncLiveMarketSnapshot, getAssetBySymbol } from '../services/marketService';
 import PortfolioVista1Builder from './portfolio/PortfolioVista1Builder';
 import PortfolioVista2Risk from './portfolio/PortfolioVista2Risk';
 import PortfolioVista3AdHoc from './portfolio/PortfolioVista3AdHoc';
@@ -42,13 +42,47 @@ export default function AgentCommitteeView({
             const raw = localStorage.getItem(PORTFOLIO_STORAGE_KEY);
             if (raw) {
                 const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+                if (Array.isArray(parsed) && parsed.length > 0) {
+                    return parsed.map(h => ({
+                        ...h,
+                        sym: h.sym === 'BTC-USD' ? 'BTC' : h.sym === 'SOL-USD' ? 'SOL' : h.sym
+                    }));
+                }
             }
         } catch {
             // fallback
         }
         return INITIAL_HOLDINGS;
     });
+
+    // Synchronize starred Watchlist symbols (`watchlistSyms`) directly into Portfolio Holdings (`holdings`)
+    useEffect(() => {
+        if (!Array.isArray(watchlistSyms) || watchlistSyms.length === 0) return;
+        setHoldings(prev => {
+            const prevMap = new Map(
+                prev.map(h => {
+                    const normSym = h.sym === 'BTC-USD' ? 'BTC' : h.sym === 'SOL-USD' ? 'SOL' : h.sym;
+                    return [normSym, { ...h, sym: normSym }];
+                })
+            );
+            const defaultWeight = Number((100 / Math.max(1, watchlistSyms.length)).toFixed(1));
+            const next = watchlistSyms.map(sym => {
+                const normSym = sym === 'BTC-USD' ? 'BTC' : sym === 'SOL-USD' ? 'SOL' : sym;
+                if (prevMap.has(normSym)) {
+                    return prevMap.get(normSym);
+                }
+                const meta = getAssetBySymbol(normSym);
+                return {
+                    sym: normSym,
+                    name: meta?.name || normSym,
+                    cat: meta?.cat || 'Equities',
+                    weight: defaultWeight,
+                    enabled: true
+                };
+            });
+            return next;
+        });
+    }, [watchlistSyms]);
 
     useEffect(() => {
         syncLiveMarketSnapshot();
