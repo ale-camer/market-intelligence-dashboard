@@ -1,6 +1,12 @@
 import { tx, txList, txTpl, useViewLocale } from '../../data/i18n/viewLocaleService';
 import React, { useState, useMemo } from 'react';
 import {
+    exportToCsv,
+    exportToJson,
+    getExportDateStamp,
+    GHOST_EXPORT_BTN_STYLE
+} from '../../utils/exportService';
+import {
     ResponsiveContainer,
     AreaChart,
     Area,
@@ -151,6 +157,52 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
         return pts.join(' ');
     }, []);
 
+    const handleExportRiskCsv = () => {
+        const rows = [
+            { metric: 'Expected CAGR (%)', value: m.cagrPct, benchmark: '10.4', note: 'Annualized Portfolio Return' },
+            { metric: 'Annual Volatility (%)', value: m.portfolioVolPct, benchmark: '15.2', note: ' Covariance-Adjusted Vol' },
+            { metric: 'Sharpe Ratio', value: m.sharpeRatio, benchmark: '0.88', note: 'Risk-Free Rate 4.25%' },
+            { metric: 'Sortino Ratio', value: m.sortinoRatio, benchmark: '1.15', note: 'Downside Semideviation' },
+            { metric: '1D 95% VaR (%)', value: m.var95Pct, benchmark: '-2.10', note: 'Parametric + Historical 95th Percentile' },
+            { metric: '1D 99% CVaR / Expected Shortfall (%)', value: m.cvar99Pct, benchmark: '-3.45', note: 'Conditional Tail Loss (>99%)' },
+            { metric: 'Max Drawdown (%)', value: m.maxDrawdownPct, benchmark: '-24.5', note: 'Historical Peak-to-Trough' },
+            { metric: '2008 Lehman Crash Stress (%)', value: m.stress2008Pct, benchmark: '-42.0', note: 'Severe Systemic Crisis Scenario' },
+            { metric: 'Brinson Active Alpha (%)', value: m.brinsonAlphaPct, benchmark: '0.00', note: 'Selection + Allocation Attribution' },
+            { metric: 'Meucci Effective Number of Bets (ENB)', value: m.enb, benchmark: '1.00', note: 'Orthogonal Risk Diversification' },
+        ];
+        exportToCsv(
+            `portfolio-risk-report-${getExportDateStamp()}.csv`,
+            [
+                { key: 'metric', label: 'Risk / Attribution Metric' },
+                { key: 'value', label: 'Portfolio Value' },
+                { key: 'benchmark', label: 'S&P 500 Benchmark' },
+                { key: 'note', label: 'Methodology / Scope' },
+            ],
+            rows
+        );
+    };
+
+    const handleExportRiskJson = () => {
+        exportToJson(`portfolio-risk-report-${getExportDateStamp()}.json`, {
+            generatedAt: new Date().toISOString(),
+            summaryMetrics: {
+                cagrPct: m.cagrPct,
+                volatilityPct: m.portfolioVolPct,
+                sharpeRatio: m.sharpeRatio,
+                sortinoRatio: m.sortinoRatio,
+                var95Pct: m.var95Pct,
+                cvar99Pct: m.cvar99Pct,
+                maxDrawdownPct: m.maxDrawdownPct,
+                stress2008Pct: m.stress2008Pct,
+                brinsonAlphaPct: m.brinsonAlphaPct,
+                meucciEnb: m.enb,
+            },
+            efficientFrontierNodes: dynamicNodes,
+            correlationNormal: CORR_NORMAL,
+            correlationStress: CORR_STRESS,
+        });
+    };
+
     return (
         <PortfolioCardShell
             badge="CUADRANTE 1 • IZQ ARRIBA"
@@ -188,6 +240,23 @@ function Quad1DynamicMarkowitz({ liveMetrics, isES = false }) {
                             </button>
                         );
                     })}
+                    <span style={{ color: 'rgba(148, 163, 184, 0.25)', userSelect: 'none' }}>|</span>
+                    <button
+                        type="button"
+                        onClick={handleExportRiskCsv}
+                        title={tx('Exportar reporte cuantitativo de riesgo (CSV)', 'Export quantitative risk report (CSV)')}
+                        style={GHOST_EXPORT_BTN_STYLE}
+                    >
+                        ↓ CSV
+                    </button>
+                    <button
+                        type="button"
+                        onClick={handleExportRiskJson}
+                        title={tx('Exportar matrices de correlación y riesgo (JSON)', 'Export correlation & risk matrices (JSON)')}
+                        style={GHOST_EXPORT_BTN_STYLE}
+                    >
+                        ↓ JSON
+                    </button>
                 </div>
             }
             subBar={

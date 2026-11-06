@@ -2,6 +2,12 @@ import { tx, txList, txTpl, useViewLocale } from '../data/i18n/viewLocaleService
 import React, { useState, useMemo, useEffect } from 'react';
 import HoverTooltip from './HoverTooltip';
 import {
+  exportToCsv,
+  exportSnapshotToPng,
+  getExportDateStamp,
+  GHOST_EXPORT_BTN_STYLE,
+} from '../utils/exportService';
+import {
   Search,
   X,
   AlertTriangle,
@@ -1066,6 +1072,60 @@ export default function MarketAnomaliesView({
     { id: '1Y', label: '1Y' },
     { id: 'ALL', label: 'ALL' },
   ];
+
+  const handleExportScreenerCsv = () => {
+    exportToCsv(
+      `markets-screener-${categoryFilter.toLowerCase()}-${getExportDateStamp()}.csv`,
+      [
+        { key: 'sym', label: 'Ticker' },
+        { key: 'name', label: 'Asset Name' },
+        { key: 'cat', label: 'Category' },
+        { key: 'priceFormatted', label: 'Price' },
+        { key: 'chg', label: '24h Change (%)' },
+        { key: 'vol24h', label: 'Volume (24h)' },
+        { key: 'zScore', label: 'Vol Z-Score (20d)', accessor: (r) => `${r.zScore >= 0 ? '+' : ''}${Number(r.zScore || 0).toFixed(2)}σ` },
+        { key: 'rsi', label: 'RSI (14)' },
+        { key: 'anomalyScore', label: 'P-06 Anomaly Score', accessor: (r) => Number(r.anomalyScore || 0).toFixed(2) },
+        { key: 'regime', label: 'Regime' },
+      ],
+      screenerRows
+    );
+  };
+
+  const handleExportAnalyticsCsv = () => {
+    exportToCsv(
+      `analytics-${selectedAsset}-${timeframe}-${getExportDateStamp()}.csv`,
+      [
+        { key: 'time', label: 'Timestamp / Period' },
+        { key: 'price', label: `${selectedAsset} Close Price` },
+        { key: 'pctReturn', label: 'Cumulative Return (%)' },
+        { key: 'upperBand', label: 'Bollinger Upper (2σ)' },
+        { key: 'lowerBand', label: 'Bollinger Lower (2σ)' },
+        { key: 'olsTrend', label: 'OLS Regression Trend' },
+        { key: 'vol', label: 'Volume Index' },
+        { key: 'zBar', label: 'Volume Z-Score (σ)' },
+      ],
+      chartData
+    );
+  };
+
+  const handleExportAnalyticsPng = () => {
+    exportSnapshotToPng({
+      filename: `analytics-${selectedAsset}-${timeframe}-${getExportDateStamp()}.png`,
+      title: `${currentAsset.sym} — ${currentAsset.name} (${timeframe})`,
+      subtitle: `${currentAsset.cat} • Price ${currentAsset.priceFormatted} (${currentAsset.chg}) • P-06 Score ${Number(displayedScore || 0).toFixed(2)} (${anomalyProfile.regime})`,
+      metrics: [
+        { label: 'PRICE (SPOT)', value: currentAsset.priceFormatted, sub: `24h: ${currentAsset.chg}`, color: currentAsset.chgNum >= 0 ? '#10b981' : '#f43f5e' },
+        { label: 'P-06 ANOMALY', value: Number(displayedScore || 0).toFixed(2), sub: anomalyProfile.regime, color: scoreColor },
+        { label: 'VOLUME (24H)', value: currentAsset.vol24h || '—', sub: `Z-Score ${anomalyProfile.volumeZScore || '+0.4σ'}`, color: '#38bdf8' },
+        { label: 'RSI (14)', value: String(currentAsset.indicators?.rsi14 ?? 54), sub: currentAsset.indicators?.macdSignal || 'NEUTRAL', color: '#a855f7' },
+        { label: 'RESEARCH SCORE', value: dynamicResearch.compositeFormatted, sub: `Bull ${dynamicResearch.avgBull} / Bear ${dynamicResearch.avgBear}`, color: '#10b981' },
+      ],
+      seriesPoints: chartData.map((d) => d.price),
+      footerNote: `Markets > Analytics (${selectedAsset} • ${timeframe}) • ${getExportDateStamp()}`,
+      accentColor: currentAsset.chgNum >= 0 ? '#10b981' : '#f43f5e',
+    });
+  };
 
   // Merge primary series with comparison asset series if `compareSymbol` is active
   // (Placed before the Level 1 early return so React Hook order is identical across renders)
@@ -3548,7 +3608,20 @@ export default function MarketAnomaliesView({
                     onClick={() => handleSort('anomaly')}
                     style={{ padding: '6px 10px 10px', cursor: 'pointer' }}
                   >
-                    Anomaly Score (P-06)
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                      <span>Anomaly Score (P-06)</span>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleExportScreenerCsv();
+                        }}
+                        title={tx('Exportar tabla filtrada a CSV', 'Export filtered table to CSV')}
+                        style={GHOST_EXPORT_BTN_STYLE}
+                      >
+                        ↓ CSV
+                      </button>
+                    </div>
                   </th>
                 </tr>
               </thead>
@@ -4541,6 +4614,27 @@ export default function MarketAnomaliesView({
                     </button>
                   );
                 })}
+              </div>
+
+              <span style={{ color: 'rgba(255, 255, 255, 0.14)', userSelect: 'none' }}>|</span>
+
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+                <button
+                  type="button"
+                  onClick={handleExportAnalyticsPng}
+                  title={tx('Descargar captura del gráfico y métricas (PNG)', 'Download chart & metrics snapshot (PNG)')}
+                  style={GHOST_EXPORT_BTN_STYLE}
+                >
+                  ↓ PNG
+                </button>
+                <button
+                  type="button"
+                  onClick={handleExportAnalyticsCsv}
+                  title={tx('Descargar serie histórica de precios y bandas (CSV)', 'Download historical price & band series (CSV)')}
+                  style={GHOST_EXPORT_BTN_STYLE}
+                >
+                  ↓ CSV
+                </button>
               </div>
             </>
           ) : null}

@@ -2,6 +2,12 @@ import { tx, txList, txTpl, useViewLocale } from '../data/i18n/viewLocaleService
 import React, { useState, useEffect, useMemo } from 'react';
 import { RefreshCw } from 'lucide-react';
 import {
+    exportToMarkdown,
+    exportToJson,
+    getExportDateStamp,
+    GHOST_EXPORT_BTN_STYLE
+} from '../utils/exportService';
+import {
     evaluateEcosystemContracts,
     probeLiveCloudEndpoints
 } from '../services/observabilityService';
@@ -266,6 +272,51 @@ export default function ObservabilityView({ langCode = 'EN' }) {
         return rows;
     }, [logScope, selectedItem, allModules, lastProbeTime, langKey, isES, refreshTick]);
 
+    const handleExportSystemMd = () => {
+        const mdLines = [
+            `# System Architecture & FinOps Audit (${getExportDateStamp()})`,
+            '',
+            `## 1. Executive Cloud FinOps Summary`,
+            `- **Architecture Profile:** Scale-to-Zero (\`min-instances=0, max-instances=2\`) + Free-Tier Arbitrage`,
+            `- **Estimated Monthly Cloud Run / Infra Spend:** \`~$0.95 USD/month\``,
+            `- **Guide Agent Model:** \`${AGENT_GUARDRAIL_LIMITS.model}\` (\`${AGENT_GUARDRAIL_LIMITS.keyName}\` on \`${AGENT_GUARDRAIL_LIMITS.gcpProjectName}\`)`,
+            `- **Agent Daily Quota Used:** \`${agentAudit.dailyRequestsUsed}/${agentAudit.dailyRequestCap} RPD\` • \`${agentAudit.dailyTokensUsed}/${agentAudit.dailyTokenCap} tokens\` • \`${agentAudit.scopeLockBlocks} Scope-Lock blocks\``,
+            '',
+            `## 2. Pipeline Contract & Telemetry Matrix (P-01 to P-13)`,
+            `| ID | Module | Repo | HTTP | p50 | p95 | Guardrail Spec |`,
+            `| :--- | :--- | :--- | :---: | :---: | :---: | :--- |`,
+            ...allModules.map(
+                m =>
+                    `| \`${m.id}\` | ${m.name?.[langKey] || m.name?.EN || m.id} | \`${m.repo}\` | \`${m.httpStatus}\` | \`${m.p50Ms}ms\` | \`${m.p95Ms}ms\` | ${m.guardrailSpec?.[langKey] || m.guardrailSpec?.EN || 'PASS'} |`
+            ),
+            '',
+        ];
+        exportToMarkdown(`system-architecture-audit-${getExportDateStamp()}.md`, mdLines.join('\n'));
+    };
+
+    const handleExportSystemJson = () => {
+        exportToJson(`system-architecture-audit-${getExportDateStamp()}.json`, {
+            generatedAt: new Date().toISOString(),
+            finopsProfile: {
+                monthlyEstimatedUsd: 0.95,
+                computeMode: 'Scale-to-Zero (min-instances=0, max-instances=2)',
+                agentGuardrails: AGENT_GUARDRAIL_LIMITS,
+                agentLiveTelemetry: agentAudit,
+            },
+            modules: allModules.map(m => ({
+                id: m.id,
+                name: m.name?.[langKey] || m.name?.EN,
+                repo: m.repo,
+                httpStatus: m.httpStatus,
+                p50Ms: m.p50Ms,
+                p95Ms: m.p95Ms,
+                expectedData: m.expectedData?.[langKey] || m.expectedData?.EN,
+                guardrailSpec: m.guardrailSpec?.[langKey] || m.guardrailSpec?.EN,
+                auditTelemetrySpec: m.auditTelemetrySpec?.[langKey] || m.auditTelemetrySpec?.EN,
+            })),
+        });
+    };
+
     return (
         <div
             className="resp-system-container"
@@ -335,37 +386,61 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                     })}
                 </div>
 
-                <button
-                    type="button"
-                    onClick={runLiveCheck}
-                    disabled={isProbing}
-                    title={tx('Actualizar Healthchecks HTTP', 'Refresh HTTP Healthchecks')}
-                    aria-label={tx('Actualizar Healthchecks HTTP', 'Refresh HTTP Healthchecks')}
+                <div
                     style={{
                         position: 'absolute',
                         right: '4px',
-                        width: '30px',
-                        height: '30px',
                         display: 'inline-flex',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        borderRadius: '6px',
-                        border: 'none',
-                        background: 'transparent',
-                        color: 'var(--ui-accent, #10b981)',
-                        filter: 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.72))',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease'
+                        gap: '6px'
                     }}
                 >
-                    <RefreshCw
-                        size={15}
+                    <button
+                        type="button"
+                        onClick={handleExportSystemMd}
+                        title={tx('Exportar ficha técnica de arquitectura y FinOps (Markdown)', 'Export architecture & FinOps technical brief (Markdown)')}
+                        style={GHOST_EXPORT_BTN_STYLE}
+                    >
+                        ↓ MD
+                    </button>
+                    <button
+                        type="button"
+                        onClick={handleExportSystemJson}
+                        title={tx('Exportar contratos P-01..P-13 y telemetría (JSON)', 'Export P-01..P-13 contracts & telemetry (JSON)')}
+                        style={GHOST_EXPORT_BTN_STYLE}
+                    >
+                        ↓ JSON
+                    </button>
+                    <button
+                        type="button"
+                        onClick={runLiveCheck}
+                        disabled={isProbing}
+                        title={tx('Actualizar Healthchecks HTTP', 'Refresh HTTP Healthchecks')}
+                        aria-label={tx('Actualizar Healthchecks HTTP', 'Refresh HTTP Healthchecks')}
                         style={{
-                            transform: isProbing ? 'rotate(360deg)' : 'rotate(0deg)',
-                            transition: isProbing ? 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+                            width: '30px',
+                            height: '30px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            borderRadius: '6px',
+                            border: 'none',
+                            background: 'transparent',
+                            color: 'var(--ui-accent, #10b981)',
+                            filter: 'drop-shadow(0 0 8px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.72))',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease'
                         }}
-                    />
-                </button>
+                    >
+                        <RefreshCw
+                            size={15}
+                            style={{
+                                transform: isProbing ? 'rotate(360deg)' : 'rotate(0deg)',
+                                transition: isProbing ? 'transform 0.45s cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+                            }}
+                        />
+                    </button>
+                </div>
             </div>
 
             {/* ══════════════════════════════════════════════════════════════════

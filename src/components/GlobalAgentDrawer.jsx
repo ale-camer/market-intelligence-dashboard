@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, RotateCcw, Copy, Check } from 'lucide-react';
 import { tx, useViewLocale } from '../data/i18n/viewLocaleService';
+import { exportToMarkdown, getExportDateStamp, GHOST_EXPORT_BTN_STYLE } from '../utils/exportService';
 import {
   getContextualQuickPrompts,
   getLiveContextPillLabel,
@@ -127,6 +128,17 @@ export default function GlobalAgentDrawer({
     if (textareaRef.current) {
       textareaRef.current.style.height = '36px';
     }
+  };
+
+  const handleExportChatMd = () => {
+    if (thread.length === 0) return;
+    const lines = [
+      `# Guide Agent Conversation (${getExportDateStamp()})`,
+      `**Context:** ${contextPillText}`,
+      '',
+      ...thread.map((m) => (m.role === 'user' ? `### User\n${m.txt}\n` : `### Guide Agent\n${m.txt}\n`)),
+    ];
+    exportToMarkdown(`agent-conversation-${getExportDateStamp()}.md`, lines.join('\n'));
   };
 
   const handleCopyMessage = (text, idx) => {
@@ -303,36 +315,54 @@ export default function GlobalAgentDrawer({
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
           {thread.length > 0 && (
-            <button
-              type="button"
-              onClick={handleResetChat}
-              title={tx('Empezar un chat nuevo de cero', 'Start a fresh chat from scratch')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '5px',
-                background: 'rgba(15, 23, 42, 0.7)',
-                border: '1px solid rgba(148, 163, 184, 0.24)',
-                borderRadius: '6px',
-                color: '#cbd5e1',
-                fontSize: '11px',
-                fontWeight: 600,
-                cursor: 'pointer',
-                padding: '4px 8px',
-                transition: 'all 0.15s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--ui-accent, #10b981)';
-                e.currentTarget.style.color = 'var(--ui-accent, #10b981)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.24)';
-                e.currentTarget.style.color = '#cbd5e1';
-              }}
-            >
-              <RotateCcw size={11} />
-              <span>{tx('Nuevo chat', 'New chat')}</span>
-            </button>
+            <>
+              <button
+                type="button"
+                onClick={handleExportChatMd}
+                title={tx('Descargar conversación en Markdown (.md)', 'Download conversation as Markdown (.md)')}
+                style={GHOST_EXPORT_BTN_STYLE}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--ui-accent, #10b981)';
+                  e.currentTarget.style.color = 'var(--ui-accent, #10b981)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.22)';
+                  e.currentTarget.style.color = '#94a3b8';
+                }}
+              >
+                ↓ MD
+              </button>
+              <button
+                type="button"
+                onClick={handleResetChat}
+                title={tx('Empezar un chat nuevo de cero', 'Start a fresh chat from scratch')}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  background: 'rgba(15, 23, 42, 0.7)',
+                  border: '1px solid rgba(148, 163, 184, 0.24)',
+                  borderRadius: '6px',
+                  color: '#cbd5e1',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  padding: '4px 8px',
+                  transition: 'all 0.15s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = 'var(--ui-accent, #10b981)';
+                  e.currentTarget.style.color = 'var(--ui-accent, #10b981)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.24)';
+                  e.currentTarget.style.color = '#cbd5e1';
+                }}
+              >
+                <RotateCcw size={11} />
+                <span>{tx('Nuevo chat', 'New chat')}</span>
+              </button>
+            </>
           )}
           <button
             type="button"

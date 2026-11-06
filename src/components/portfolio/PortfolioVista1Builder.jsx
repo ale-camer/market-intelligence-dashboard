@@ -1,6 +1,12 @@
 import { tx, txList, txTpl, useViewLocale } from '../../data/i18n/viewLocaleService';
 import React, { useState, useMemo } from 'react';
 import {
+    exportToCsv,
+    exportSnapshotToPng,
+    getExportDateStamp,
+    GHOST_EXPORT_BTN_STYLE
+} from '../../utils/exportService';
+import {
     ResponsiveContainer,
     AreaChart,
     Area,
@@ -218,6 +224,64 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
 
     const tableHeaders = txList(['ON', 'ACTIVO', 'CLASE', 'PESO (%)', 'CAPITAL ($)', 'ACCIÓN'], ['ON', 'ASSET', 'CLASS', 'WEIGHT (%)', 'CAPITAL ($)', 'ACTION']);
 
+    const handleExportBuilderCsv = () => {
+        const live = computeLivePortfolioMetrics(holdings);
+        const rows = holdings.map(h => {
+            const w = h.enabled === false ? 0 : Number(h.weight || 0);
+            return {
+                status: h.enabled === false ? 'PAUSED' : 'ACTIVE',
+                sym: h.sym,
+                name: h.name || h.sym,
+                cat: h.cat || 'Asset',
+                weightPct: w.toFixed(1),
+                capitalUsd: Math.round(w * 1000),
+                portfolioCagrPct: live.cagrPct,
+                portfolioSharpe: live.sharpeRatio,
+                portfolioVar95Pct: live.var95Pct,
+            };
+        });
+        exportToCsv(
+            `portfolio-holdings-${getExportDateStamp()}.csv`,
+            [
+                { key: 'status', label: 'Status' },
+                { key: 'sym', label: 'Ticker' },
+                { key: 'name', label: 'Asset Name' },
+                { key: 'cat', label: 'Asset Class' },
+                { key: 'weightPct', label: 'Weight (%)' },
+                { key: 'capitalUsd', label: 'Capital ($100k Base)' },
+                { key: 'portfolioCagrPct', label: 'Portfolio CAGR (%)' },
+                { key: 'portfolioSharpe', label: 'Portfolio Sharpe' },
+                { key: 'portfolioVar95Pct', label: 'Portfolio 95% VaR (%)' },
+            ],
+            rows
+        );
+    };
+
+    const handleExportBuilderPng = () => {
+        const live = computeLivePortfolioMetrics(holdings);
+        exportSnapshotToPng({
+            filename: `portfolio-holdings-${getExportDateStamp()}.png`,
+            title: tx('Resumen de Cartera Activa (Portfolio Builder)', 'Active Portfolio Summary (Portfolio Builder)'),
+            subtitle: `${activeHoldings.length} ${tx('activos activos', 'active holdings')} • ${tx('Suma', 'Total')}: ${totalWeight.toFixed(1)}% • ${getExportDateStamp()}`,
+            metrics: [
+                { label: 'CAGR (ANUAL)', value: `+${live.cagrPct}%`, sub: `Vol ${live.portfolioVolPct}%`, color: '#10b981' },
+                { label: 'SHARPE / SORTINO', value: `${live.sharpeRatio} / ${live.sortinoRatio}`, sub: `Beta ${live.portfolioBeta}`, color: '#38bdf8' },
+                { label: 'VAR 95% / CVAR 99%', value: `${live.var95Pct}% / ${live.cvar99Pct}%`, sub: '1D Tail Risk', color: '#f59e0b' },
+                { label: 'MAX DRAWDOWN', value: `${live.maxDrawdownPct}%`, sub: 'Historical Peak-to-Trough', color: '#f43f5e' },
+                { label: 'ALPHA BRINSON', value: `+${live.brinsonAlphaPct}%`, sub: 'vs S&P 500', color: '#a855f7' },
+                { label: 'MEUCCI ENB', value: `${live.enb}`, sub: `${activeHoldings.length} holdings`, color: '#10b981' },
+            ],
+            tableHeaders: ['TICKER', 'ASSET NAME', 'CLASS', 'WEIGHT (%)', 'CAPITAL ($)'],
+            tableRows: activeHoldings.map(h => [
+                h.sym,
+                h.name || h.sym,
+                h.cat || 'Asset',
+                `${Number(h.weight || 0).toFixed(1)}%`,
+                `$${Math.round(Number(h.weight || 0) * 1000).toLocaleString()}`,
+            ]),
+        });
+    };
+
     return (
         <PortfolioCardShell
             badge="FILA 2 • IZQUIERDA"
@@ -299,6 +363,23 @@ function Row2LeftWeightTable({ holdings, setHoldings, watchlistSyms = [], onTogg
                         }}
                     >
                         100%
+                    </button>
+                    <span style={{ color: 'rgba(148, 163, 184, 0.25)', userSelect: 'none' }}>|</span>
+                    <button
+                        type="button"
+                        onClick={handleExportBuilderCsv}
+                        title={tx('Exportar tabla de cartera (CSV)', 'Export portfolio holdings table (CSV)')}
+                        style={GHOST_EXPORT_BTN_STYLE}
+                    >
+                        ↓ CSV
+                    </button>
+                    <button
+                        type="button"
+                        onClick={handleExportBuilderPng}
+                        title={tx('Descargar imagen resumen de cartera (PNG)', 'Download portfolio summary snapshot (PNG)')}
+                        style={GHOST_EXPORT_BTN_STYLE}
+                    >
+                        ↓ PNG
                     </button>
                 </div>
             }
