@@ -1917,6 +1917,7 @@ export default function MarketAnomaliesView({
                   hint={tx('Click para filtrar clase de activo', 'Click to filter asset class')}
                   badge={tab.id}
                   placement="bottom"
+                  disabled={true}
                 >
                   <button
                     onClick={() => setCategoryFilter(tab.id)}
@@ -1967,7 +1968,7 @@ export default function MarketAnomaliesView({
                 Main Tools:
               </span>
               {MAIN_TOOLS_ITEMS.map((qBtn) => (
-                <HoverTooltip key={qBtn.id} title={qBtn.label} description={qBtn.desc} badge={qBtn.badge} placement="bottom">
+                <HoverTooltip key={qBtn.id} title={qBtn.label} description={qBtn.desc} badge={qBtn.badge} placement="bottom" disabled={true}>
                   <button
                     type="button"
                     onClick={qBtn.action}
@@ -2024,8 +2025,11 @@ export default function MarketAnomaliesView({
                 {pulseMetrics.volChgFormatted}
               </span>
             </div>
-            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
-              {pulseMetrics.totalCount} {tx('activos monitoreados', 'tracked assets')}
+            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {pulseMetrics.totalCount} {tx('activos', 'assets')} •{' '}
+              {parseFloat(pulseMetrics.volChgFormatted) >= 0
+                ? tx('Mayor entrada de dinero hoy', 'Higher money inflow today')
+                : tx('Menor actividad que ayer', 'Lower activity than yesterday')}
             </div>
           </div>
 
@@ -2055,10 +2059,12 @@ export default function MarketAnomaliesView({
             >
               {pulseMetrics.avgRsi}
             </div>
-            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
-              {pulseMetrics.avgRsiNum >= 50
-                ? tx('Impulso comprador (>50)', 'Bullish momentum (>50)')
-                : tx('Presión vendedora (<50)', 'Bearish pressure (<50)')}
+            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {pulseMetrics.avgRsiNum > 60
+                ? tx('Predominio comprador fuerte (>60)', 'Strong buyer dominance (>60)')
+                : pulseMetrics.avgRsiNum >= 45
+                  ? tx('Mercado equilibrado • Empuje moderado', 'Balanced market • Moderate push')
+                  : tx('Predominio vendedor (<45)', 'Seller dominance (<45)')}
             </div>
           </div>
 
@@ -2085,10 +2091,15 @@ export default function MarketAnomaliesView({
                 ({pulseMetrics.normalCount}/{pulseMetrics.totalCount})
               </span>
             </div>
-            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
+            <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
               {pulseMetrics.topAnomaly
-                ? txTpl("Mayor anomalía: {0} ({1})", [pulseMetrics.topAnomaly.sym, pulseMetrics.topAnomaly.anomalyScore.toFixed(2)], "Top anomaly: {0} ({1})", [pulseMetrics.topAnomaly.sym, pulseMetrics.topAnomaly.anomalyScore.toFixed(2)])
-                : tx('Sin anomalías críticas', 'No critical anomalies')}
+                ? txTpl(
+                    'Mayoría sin sobresaltos • Atípico hoy: {0} ({1})',
+                    [pulseMetrics.topAnomaly.sym, pulseMetrics.topAnomaly.anomalyScore.toFixed(2)],
+                    'Mostly calm • Outlier today: {0} ({1})',
+                    [pulseMetrics.topAnomaly.sym, pulseMetrics.topAnomaly.anomalyScore.toFixed(2)]
+                  )
+                : tx('Mercado sin sobresaltos estadísticos', 'Market within normal statistical bounds')}
             </div>
           </div>
 
@@ -2125,6 +2136,7 @@ export default function MarketAnomaliesView({
               )}
             </div>
             <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {tx('Volumen inusual:', 'Unusual volume:')}{' '}
               {pulseMetrics.topDislocations
                 .slice(1, 3)
                 .map((d) => `${d.sym} (${d.volumeZScore})`)
@@ -4435,7 +4447,7 @@ export default function MarketAnomaliesView({
           ].map((sec) => {
             const active = l2Section === sec.id;
             return (
-              <HoverTooltip key={sec.id} title={sec.label} badge="LEVEL 2 DESK" description={sec.desc} placement="bottom">
+              <HoverTooltip key={sec.id} title={sec.label} badge="LEVEL 2 DESK" description={sec.desc} placement="bottom" disabled={true}>
                 <button
                   onClick={() => setL2Section(sec.id)}
                   style={{
@@ -4749,7 +4761,7 @@ export default function MarketAnomaliesView({
             return (
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                 {heroPills.map((k) => (
-                  <HoverTooltip key={k.label} title={k.label} badge={k.val} description={k.desc} placement="bottom" width={235}>
+                  <HoverTooltip key={k.label} title={k.label} badge={k.val} description={k.desc} placement="bottom" width={235} disabled={true}>
                     <div
                       className="mono-metric"
                       style={{
@@ -4832,7 +4844,7 @@ export default function MarketAnomaliesView({
               <span style={{ fontSize: '11px', fontWeight: 700, color: '#94a3b8' }}>
                 {tx('NOTA PONDERADA TOTAL', 'WEIGHTED COMPOSITE')}
               </span>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.4rem' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.45rem', flexWrap: 'wrap' }}>
                 <span
                   style={{
                     fontSize: '16px',
@@ -4842,7 +4854,12 @@ export default function MarketAnomaliesView({
                 >
                   {researchBrief.compositeFormatted}
                 </span>
-                <span style={{ fontSize: '11.5px', color: '#64748b' }}>
+                <span style={{ fontSize: '11.5px', color: '#94a3b8', fontWeight: 600 }}>
+                  {researchBrief.compositeScore >= 0
+                    ? tx('Fundamentos y noticias a favor', 'Filings & news supportive')
+                    : tx('Predominan factores de riesgo', 'Risk factors predominate')}
+                </span>
+                <span style={{ fontSize: '11px', color: '#64748b' }}>
                   ({tx('Fund.', 'Filings')} {researchBrief.filingNetFormatted} • {tx('Not.', 'News')} {assetFinbertPolarity.formattedInt})
                 </span>
               </div>
@@ -7016,10 +7033,38 @@ export default function MarketAnomaliesView({
             }}
           >
             <div style={{ color: 'var(--text-muted)' }}>
-              <strong style={{ color: scoreColor, marginRight: '0.5rem' }}>
-                {anomalyProfile.alertTitle[langCode] || anomalyProfile.alertTitle.EN}:
+              <strong style={{ color: scoreColor, marginRight: '0.45rem' }}>
+                {isDislocated
+                  ? tx('MOVIMIENTO ATÍPICO', 'ATYPICAL MOVE')
+                  : isElevated
+                    ? tx('ACTIVIDAD ELEVADA', 'ELEVATED ACTIVITY')
+                    : tx('MOVIMIENTO NORMAL', 'NORMAL MOVEMENT')}
+                {' • '}
               </strong>
-              {anomalyProfile.alertDesc[langCode] || anomalyProfile.alertDesc.EN}
+              <span>
+                {isDislocated
+                  ? tx(
+                      'Salto inusual de volumen y volatilidad fuera del rango estadístico normal',
+                      'Unusual jump in volume and volatility outside the normal statistical range'
+                    )
+                  : isElevated
+                    ? tx(
+                        'Flujo institucional por encima del promedio sin romper la estructura de liquidez',
+                        'Institutional flow above average without breaking liquidity structure'
+                      )
+                    : tx(
+                        'Precio y volumen dentro de su rango habitual, sin presión inusual de compra o venta',
+                        'Price and volume within their normal range, with no unusual buying or selling pressure'
+                      )}
+              </span>
+              <span className="mono-metric" style={{ color: '#64748b', marginLeft: '0.45rem', fontSize: '0.68rem' }}>
+                (P-06: {displayedScore}
+                {isDislocated ? ' > 0.65' : ''} • Vol 20d: {currentAsset.volumeZScore || anomalyProfile.volumeZScore} •{' '}
+                {isDislocated || isElevated
+                  ? `${tx('Spread', 'Spread')}: ${anomalyProfile.spreadDislocation}`
+                  : `${tx('Volatilidad', 'Volatility')}: ${anomalyProfile.realizedVol}`}
+                )
+              </span>
             </div>
 
             <span className="mono-metric" style={{ fontSize: '0.64rem', color: 'var(--text-dim)' }}>

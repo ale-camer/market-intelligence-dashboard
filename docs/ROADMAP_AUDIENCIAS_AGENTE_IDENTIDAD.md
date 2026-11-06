@@ -58,7 +58,7 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
 - [x] **Paso 1.4 — Vista `Guide` ([`src/components/UserGuideView.jsx`](../src/components/UserGuideView.jsx)) *(Completado)*:**
   - **Objetivo:** Incorporar el bloque **"¿Por dónde querés empezar?"** justo debajo de los 2 párrafos introductorios de `Guide > Home`, con 5 puntos de partida funcionales e implícitos (sin rotular perfiles explícitamente) y cápsulas `soft-pill` sin flechas hacia la Guía y la app en vivo.
 
-- [x] **Paso 1.5 — Vista `System` ([`src/components/ObservabilityView.jsx`](../src/components/ObservabilityView.jsx)) *(Aplicado)*:**
+- [x] **Paso 1.5 — Vista `System` ([`src/components/ObservabilityView.jsx`](../src/components/ObservabilityView.jsx)) *(Completado)*:**
   - **Objetivo:** Adaptar `Performance` y `FinOps` específicamente para el **Profesional IT** y como evidencia de ingeniería para el **Evaluador de RRHH**, sin agregar cajas nuevas:
     1. **En `Performance` (Bloque de especificación `// ...` del módulo seleccionado):**
        - Sumar `// Pipeline Topology (DAG):` indicando de qué módulos recibe datos y qué pantalla de la app alimenta (conectando backend con UI).
@@ -68,7 +68,7 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
     3. **En `FinOps` (Bajada del encabezado de cuotas):**
        - Sumar 1 oración concisa explicando el diseño *Scale-to-Zero & Free-Tier Arbitrage* (por qué el cómputo en reposo cuesta `$0.00` y el gasto total queda acotado a `~$0.95/mes`).
 
-- [x] **Paso 1.6 — Vista `Markets` ([`src/components/MarketAnomaliesView.jsx`](../src/components/MarketAnomaliesView.jsx)):**
+- [x] **Paso 1.6 — Vista `Markets` ([`src/components/MarketAnomaliesView.jsx`](../src/components/MarketAnomaliesView.jsx)) *(Aplicado)*:**
   - **Objetivo:** Hacer convivir las métricas puras del **Profesional Quant** con lecturas interpretativas claras para el **Inversor Principiante** y el **Curioso/Aprendiz**, reutilizando los renglones existentes:
     1. **En `Markets > Screener` (3er renglón gris de las 4 tarjetas KPI):**
        - *Tarjeta 1 (`24H AGGREGATE VOLUME`):* `{N} activos • Mayor entrada de dinero hoy` (o `Menor actividad que ayer`).
@@ -247,5 +247,7 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Fase 4 (Watchlist Bulk)** | `[x] Definido` | Se definió el segundo menú de filtros en `Markets > Screener` (características generales + específicas por clase de activo) y el botón dinámico de 1 clic (`★ Sumar / ☆ Quitar los {N} filtrados`). **Fases 1 a 4 100% definidas.** |
 | 2026-11-06 | **Ejecución Paso 1.3** | `[x] Completado` | Aplicado y aprobado el subtítulo conceptual en `Home` ([`uiStrings56.js`](../src/data/i18n/uiStrings56.js)) y el estilo unificado de texto puro flotante (`pure-text`) con las leyendas definitivas en [`HoverTooltip.jsx`](../src/components/HoverTooltip.jsx), [`HeaderBar.jsx`](../src/components/HeaderBar.jsx) y [`FooterBar.jsx`](../src/components/FooterBar.jsx). |
 | 2026-11-06 | **Ejecución Paso 1.4** | `[x] Completado` | Aplicado y aprobado en [`UserGuideView.jsx`](../src/components/UserGuideView.jsx) (`Guide > Home`) el bloque *"¿Por dónde querés empezar?"* con los 5 objetivos funcionales implícitos y botones tipo cápsula (`soft-pill`) sin flechas. |
-| 2026-11-06 | **Ejecución Paso 1.5** | `[x] Aplicado` | Aplicados en [`ObservabilityView.jsx`](../src/components/ObservabilityView.jsx) (`System`) los 3 puntos: `// Pipeline Topology (DAG):` y `// Scaling & Resilience:` en el bloque de contrato, `11/11 Pipelines PASS • 0 Schema Drift` en la cabecera de logs, y la bajada de 1 línea de *Scale-to-Zero & Free-Tier Arbitrage* en `FinOps`. Pendiente de supervisión antes de pasar al Paso 1.6 (`Markets`). |
+| 2026-11-06 | **Ejecución Paso 1.5** | `[x] Completado` | Aplicados y aprobados en [`ObservabilityView.jsx`](../src/components/ObservabilityView.jsx) (`System`) los 3 puntos: `// Pipeline Topology (DAG):` y `// Scaling & Resilience:` en el bloque de contrato, `11/11 Pipelines PASS • 0 Schema Drift` en la cabecera de logs, y la bajada de 1 línea de *Scale-to-Zero & Free-Tier Arbitrage* en `FinOps`. |
+| 2026-11-06 | **Jerarquía de Navegación** | `[x] Completado` | Eliminado de [`HeaderBar.jsx`](../src/components/HeaderBar.jsx) el botón redundante `← Back to Dashboard` en las vistas principales (`System` y `Guide`), homogeneizando la regla en toda la app: las vistas de nivel 1 se navegan desde las barras fijas superior/inferior y sólo los subniveles reales (como `Markets` Nivel 2 `Analytics`/`Research` → Nivel 1 `Screener`) muestran botón de retorno (`← Todos los Mercados`). |
+| 2026-11-06 | **Ejecución Paso 1.6** | `[x] Aplicado` | Aplicados en [`MarketAnomaliesView.jsx`](../src/components/MarketAnomaliesView.jsx) (`Markets`) los 3 puntos: (1) lecturas interpretativas en el 3er renglón de las 4 tarjetas KPI del `Screener`, (2) línea de diagnóstico al pie de `Analytics` con lectura clara primero y respaldo técnico `(P-06 • Vol 20d • Volatilidad/Spread)` entre paréntesis, y (3) síntesis de 4 palabras en `NOTA PONDERADA TOTAL` dentro de `Research`. Pendiente de supervisión antes de pasar al Paso 1.7 (`Portfolio`). |
 

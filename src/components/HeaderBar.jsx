@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Activity, ArrowLeft } from 'lucide-react';
+import { Activity } from 'lucide-react';
 import HoverTooltip from './HoverTooltip';
 import { DEV_ICON_CATALOG, DEV_BOX_STYLES } from './DevLabView';
 import { HEADER_VARIANTS } from '../data/headerVariantsCatalog';
@@ -1738,35 +1738,6 @@ export default function HeaderBar({
           )}
 
         {activeTab !== 'observability' && activeTab !== 'guide' && renderRightHudModule(variant.rightHud, utcTime)}
-
-        {(activeTab === 'observability' || activeTab === 'guide') && (
-          <HoverTooltip title={t.backBtn} description={t.navHomeDesc} placement="bottom-right">
-            {(isHovered) => (
-              <button
-                onClick={onGoBack}
-                style={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                  color: isHovered ? 'var(--ui-accent)' : 'rgba(255, 255, 255, 0.78)',
-                  padding: '0.35rem 0.5rem',
-                  fontSize: '0.78rem',
-                  fontWeight: isHovered ? 700 : 600,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  cursor: 'pointer',
-                  pointerEvents: 'auto',
-                  textShadow: isHovered
-                    ? '0 0 12px rgba(var(--ui-accent-rgb), 0.9), 0 0 22px rgba(var(--ui-accent-rgb), 0.5)'
-                    : '0 1px 4px rgba(0, 0, 0, 0.85)',
-                  transition: 'all 0.2s ease',
-                }}
-              >
-                <ArrowLeft size={14} strokeWidth={2.2} /> {t.backBtn}
-              </button>
-            )}
-          </HoverTooltip>
-        )}
       </div>
     </header>
   );
