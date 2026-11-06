@@ -24,27 +24,35 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
 
 ### Micro-Pasos de la Fase 1
 
-- [ ] **Paso 1.1 — Diagnóstico y Mapa de Contacto Inicial (Punto de Partida):**
+- [x] **Paso 1.1 — Diagnóstico y Mapa de Contacto Inicial (Punto de Partida):**
   - **Objetivo:** Analizar qué experimenta hoy cada uno de los 5 perfiles en los primeros 15 segundos al abrir la app (`Home` + barra de navegación + `Footer`) y definir qué piezas de orientación faltan o deben afinarse.
-  - **Entregable de análisis:** Propuesta concreta de micro-mensajes para la entrada de la app antes de tocar código.
+  - **Decisiones anotadas:**
+    1. **Subtítulo de `Home` ([`HomeStage.jsx`](../src/components/HomeStage.jsx)):** Usar la primera versión conceptual y limpia, **sin mencionar el número de activos** (ya que la cantidad está pensada para que cualquiera pueda experimentar sin quedarse corto):
+       > *"Analizá activos globales en tiempo real, simulá el riesgo de tu cartera y explorá una arquitectura cuantitativa y agéntica de punta a punta."*
+    2. **Tooltips en Navegación (`HeaderBar` / `FooterBar`):** Si se incorporan, deben tener una **estética de máxima sencillez** (texto ultra-corto y discreto, estilo `V010 Ghost`, sin cajas pesadas ni contaminación visual como los tooltips anteriores).
+    3. **Sección "¿Qué buscás?" en `Guide` (`Home`) con Links Directos:** En la primera página de `Guide`, sumar el bloque de orientación para los **5 perfiles** (*Curioso/Aprendiz, Inversor Individual/Principiante, Profesional Quant, Profesional IT, Evaluador de RRHH*) incluyendo **links interactivos directos** que lleven a cada usuario a la vista/herramienta correspondiente con un clic.
 
-- [ ] **Paso 1.2 — Vista `Home` ([`src/components/HomeStage.jsx`](../src/components/HomeStage.jsx)):**
-  - **Objetivo:** Ajustar el mensaje principal y la bajada de `Home` para que reciba con claridad al **Evaluador de RRHH**, al **Curioso/Aprendiz** y a los perfiles **Inversor / Quant / IT**.
-  - **Qué decidiremos aquí:** El texto exacto del título/subtítulo y si sumamos una pista sutil de orientación inicial.
+- [ ] **Paso 1.2 — Patrones Adicionales de Orientación Concisa (Estudio de Mejores Prácticas):**
+  - **Objetivo:** Definir qué técnicas adicionales del estándar de industria sumamos sin cruzar el límite del minimalismo:
+    - *Divulgación Progresiva (2 Capas):* Dato técnico puro + 1 línea de lectura humana debajo o al pie.
+    - *Presets / Carteras de Ejemplo por Perfil en `Portfolio`:* Permitir alternar entre ejemplos preconfigurados (ej. *Inicial/Conservadora*, *Balanceada*, *Quant*) para aprender o probar rápido.
+    - *Sugerencias Iniciales por Perfil en el Agente Global:* Preguntas de 1 clic al abrir el chat según la vista activa.
+    - *Deep-Links Directos:* Rutas clicables desde `Guide` hacia cada módulo clave.
 
-- [ ] **Paso 1.3 — Vista `Guide` ([`src/components/UserGuideView.jsx`](../src/components/UserGuideView.jsx)):**
-  - **Objetivo:** Revisar la estructura del `Guide` para que sea la puerta de entrada ideal del **Público General (Curioso/Aprendiz)**, del **Inversor Principiante** y del **Evaluador de RRHH**, manteniendo toda la matemática pesada de **Quant** y el detalle de **IT** dentro de los botones `Deep Dive`.
-  - **Qué decidiremos aquí:** Ajustes en la introducción o secciones de la guía para que oriente a cada perfil sobre cómo aprovechar la plataforma.
+- [ ] **Paso 1.3 — Vista `Home` ([`src/components/HomeStage.jsx`](../src/components/HomeStage.jsx)) y Navegación (`HeaderBar`/`FooterBar`):**
+  - **Objetivo:** Aplicar el nuevo subtítulo acordado y validar la estética ultra-simple de los tooltips de navegación.
 
-- [ ] **Paso 1.4 — Vista `System` ([`src/components/ObservabilityView.jsx`](../src/components/ObservabilityView.jsx)):**
+- [ ] **Paso 1.4 — Vista `Guide` ([`src/components/UserGuideView.jsx`](../src/components/UserGuideView.jsx)):**
+  - **Objetivo:** Incorporar el bloque **"¿Qué buscás?"** con links directos por perfil en la portada de `Guide`, manteniendo toda la matemática pesada de **Quant** y el detalle de **IT** dentro de los botones `Deep Dive`.
+
+- [ ] **Paso 1.5 — Vista `System` ([`src/components/ObservabilityView.jsx`](../src/components/ObservabilityView.jsx)):**
   - **Objetivo:** Adaptar `Performance` y `FinOps` específicamente para el **Profesional IT** (y como evidencia de ingeniería para el **Evaluador de RRHH**).
   - **Qué decidiremos aquí:** Qué metadatos de ingeniería (topología del pipeline, SLOs, contratos de datos, explicación del patrón *Scale-to-Zero & Free-Tier Arbitrage*) muestran mejor la solidez técnica sin ensuciar la vista.
 
-- [ ] **Paso 1.5 — Vista `Markets` ([`src/components/MarketAnomaliesView.jsx`](../src/components/MarketAnomaliesView.jsx)):**
+- [ ] **Paso 1.6 — Vista `Markets` ([`src/components/MarketAnomaliesView.jsx`](../src/components/MarketAnomaliesView.jsx)):**
   - **Objetivo:** Lograr que `Screener` (`Table`, `Orbital`, `Heatmap`, `Main Tools`) y el Nivel 2 (`Analytics` y `Research`) sirvan tanto al **Profesional Quant** (datos duros) como al **Inversor Principiante / Curioso** (interpretación clara de qué significa el régimen o los factores).
-  - **Qué decidiremos aquí:** Dónde ubicar las lecturas interpretativas (ej. línea de síntesis inferior o subtítulos de tarjetas) para que eduquen sin estorbar.
 
-- [ ] **Paso 1.6 — Vista `Portfolio` ([`src/components/AgentCommitteeView.jsx`](../src/components/AgentCommitteeView.jsx) y Vistas 1, 2, 3):**
+- [ ] **Paso 1.7 — Vista `Portfolio` ([`src/components/AgentCommitteeView.jsx`](../src/components/AgentCommitteeView.jsx) y Vistas 1, 2, 3):**
   - **Objetivo:** Afinar los mensajes de `Builder`, `Risk` y `Simulator` para que un **Inversor Principiante** entienda de un vistazo si su cartera está sana o concentrada, mientras el **Profesional Quant** conserva todo el instrumental de Brinson, VaR/CVaR, estrés histórico y Kelly.
 
 ---
@@ -120,5 +128,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | :---: | :--- | :---: | :--- |
 | 2026-11-05 | **Definición Base** | `[x] Completado` | Se fijaron los 5 perfiles (*Curioso/Aprendiz, Inversor Individual/Principiante, Profesional Quant, Profesional IT, Evaluador de RRHH*), el rol del Agente como guía conversacional puro en toda la app (sin botones que operen la UI), el nombre para el final y la metodología iterativa de menor a mayor. |
 | 2026-11-06 | **Fase 3 (Outputs)** | `[x] Incorporado al Plan` | Se sumó la Fase 3 dedicada al estudio e implementación iterativa de los outputs que cada perfil puede querer llevarse de la app (imágenes/gráficos, tablas CSV/JSON, fichas ejecutivas). |
-| — | **Paso 1.1** | `[~] Próximo paso` | Diagnóstico inicial de qué ve cada uno de los 5 perfiles al entrar a la app y propuesta del primer ajuste en `Home` / orientación general. |
+| 2026-11-06 | **Paso 1.1** | `[x] Definido` | Se acordó: (1) Subtítulo conceptual en `Home` sin número de activos, (2) Tooltips ultra-sencillos sin contaminación visual, y (3) Bloque *"¿Qué buscás?"* en `Guide` con links directos para cada uno de los 5 perfiles. |
+| — | **Paso 1.2** | `[~] En evaluación` | Evaluación de técnicas complementarias concisas (Divulgación progresiva en 2 capas, Presets de cartera por perfil, Prompts iniciales en el Agente). |
 
