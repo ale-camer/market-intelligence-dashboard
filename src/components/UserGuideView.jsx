@@ -1324,7 +1324,7 @@ export default function UserGuideView({
                             </p>
                         ))}
 
-                        {/* BLOQUE PASO 1.4 (SÓLO EN GUIDE > HOME): "¿QUÉ BUSCÁS HOY? ELEGÍ TU PUNTO DE PARTIDA" */}
+                        {/* BLOQUE PASO 1.4 (SÓLO EN GUIDE > HOME): PUNTO DE PARTIDA FUNCIONAL E IMPLÍCITO */}
                         {activePage.id === 'home' && (
                             <div
                                 style={{
@@ -1347,8 +1347,8 @@ export default function UserGuideView({
                                     }}
                                 >
                                     {isES
-                                        ? '¿Qué buscás hoy? Elegí tu punto de partida:'
-                                        : 'What are you looking for today? Choose your starting point:'}
+                                        ? '¿Por dónde querés empezar?'
+                                        : 'Where would you like to start?'}
                                 </p>
 
                                 <ul
@@ -1365,15 +1365,17 @@ export default function UserGuideView({
                                 >
                                     {[
                                         {
-                                            label: isES ? 'Curioso / Aprendiz' : 'Curious / Learner',
+                                            label: isES
+                                                ? 'Explorar el mercado de un vistazo'
+                                                : 'Explore the market at a glance',
                                             quote: isES
-                                                ? '“Quiero entender desde cero cómo se mueven los mercados y qué significa cada indicador sin chocar con jerga compleja.”'
-                                                : '“I want to understand from scratch how markets move and what each indicator means without hitting complex jargon.”',
+                                                ? 'Entendé qué activos se están moviendo hoy y qué significa cada indicador sin necesidad de conocimientos previos.'
+                                                : 'See which assets are moving today and what each indicator means without needing prior background.',
                                             actions: [
                                                 {
                                                     text: isES
-                                                        ? 'Ver capítulo Mercados en esta Guía →'
-                                                        : 'Read Markets chapter in this Guide →',
+                                                        ? 'Leer capítulo Markets →'
+                                                        : 'Read Markets chapter →',
                                                     onClick: () => {
                                                         const mktPage = ALL_GUIDE_PAGES.find(p => p.id === 'mkt-screener');
                                                         if (mktPage) handleSelectPage(mktPage);
@@ -1381,8 +1383,8 @@ export default function UserGuideView({
                                                 },
                                                 {
                                                     text: isES
-                                                        ? 'Explorar el Radar Visual en vivo (Markets) →'
-                                                        : 'Explore Live Visual Radar (Markets) →',
+                                                        ? 'Abrir Radar Visual (Orbital) →'
+                                                        : 'Open Visual Radar (Orbital) →',
                                                     onClick: () =>
                                                         onLaunchTarget &&
                                                         onLaunchTarget({ view: 'markets', screener: 'orbital' })
@@ -1391,23 +1393,23 @@ export default function UserGuideView({
                                         },
                                         {
                                             label: isES
-                                                ? 'Inversor Individual / Principiante'
-                                                : 'Individual / Beginner Investor',
+                                                ? 'Analizar un activo y armar una cartera'
+                                                : 'Analyze an asset & build a portfolio',
                                             quote: isES
-                                                ? '“Quiero analizar activos concretos, conocer qué factores empujan su precio y armar o probar mi propia cartera midiendo el riesgo en simple.”'
-                                                : '“I want to analyze specific assets, see what drives their price, and build or test my own portfolio measuring risk simply.”',
+                                                ? 'Investigá qué noticias o balances empujan un precio y probá tu propia combinación midiendo el riesgo en dólares reales.'
+                                                : 'Research which news or filings drive a price and test your own allocation measuring risk in real dollars.',
                                             actions: [
                                                 {
                                                     text: isES
-                                                        ? 'Ir al Constructor de Cartera (Portfolio) →'
-                                                        : 'Go to Portfolio Builder (Portfolio) →',
+                                                        ? 'Ir a Portfolio Builder →'
+                                                        : 'Go to Portfolio Builder →',
                                                     onClick: () =>
                                                         onLaunchTarget && onLaunchTarget({ view: 'portfolio' })
                                                 },
                                                 {
                                                     text: isES
-                                                        ? 'Investigar Factores y Noticias (Research) →'
-                                                        : 'Explore Factors & News (Research) →',
+                                                        ? 'Abrir Research →'
+                                                        : 'Open Research →',
                                                     onClick: () =>
                                                         onLaunchTarget &&
                                                         onLaunchTarget({
@@ -1420,15 +1422,17 @@ export default function UserGuideView({
                                             ]
                                         },
                                         {
-                                            label: isES ? 'Profesional Quant' : 'Quant Professional',
+                                            label: isES
+                                                ? 'Operar con modelos cuantitativos'
+                                                : 'Work with quantitative models',
                                             quote: isES
-                                                ? '“Busco instrumental cuantitativo directo: detección de anomalías, superficies de volatilidad y curvas, atribución de Brinson, estrés histórico y Criterio de Kelly.”'
-                                                : '“I am looking for direct quantitative tools: anomaly detection, volatility surfaces & yield curves, Brinson attribution, historical stress, and Kelly Criterion.”',
+                                                ? 'Accedé directo a detección de anomalías, superficies de volatilidad y curvas, atribución de Brinson, estrés histórico y Criterio de Kelly.'
+                                                : 'Access anomaly detection, volatility surfaces & yield curves, Brinson attribution, historical stress, and Kelly Criterion directly.',
                                             actions: [
                                                 {
                                                     text: isES
-                                                        ? 'Abrir Estación Analytics →'
-                                                        : 'Open Analytics Workstation →',
+                                                        ? 'Abrir Analytics →'
+                                                        : 'Open Analytics →',
                                                     onClick: () =>
                                                         onLaunchTarget &&
                                                         onLaunchTarget({
@@ -1440,8 +1444,8 @@ export default function UserGuideView({
                                                 },
                                                 {
                                                     text: isES
-                                                        ? 'Auditar Riesgo, Correlaciones y Stress (Portfolio > Risk) →'
-                                                        : 'Audit Risk, Correlations & Stress (Portfolio > Risk) →',
+                                                        ? 'Ir a Portfolio Risk →'
+                                                        : 'Go to Portfolio Risk →',
                                                     onClick: () =>
                                                         onLaunchTarget &&
                                                         onLaunchTarget({ view: 'portfolio', sub: 'risk' })
@@ -1449,23 +1453,25 @@ export default function UserGuideView({
                                             ]
                                         },
                                         {
-                                            label: isES ? 'Profesional IT' : 'IT Professional',
+                                            label: isES
+                                                ? 'Auditar la arquitectura y el costo cloud'
+                                                : 'Audit cloud architecture & FinOps',
                                             quote: isES
-                                                ? '“Quiero evaluar la arquitectura real detrás de la app: los 11 pipelines serverless (P-01 a P-13), contratos de datos, latencias HTTP en vivo y cómo opera todo por ~$0.95/mes.”'
-                                                : '“I want to evaluate the real architecture behind the app: the 11 serverless pipelines (P-01 to P-13), data contracts, live HTTP latencies, and how it runs on ~$0.95/mo.”',
+                                                ? 'Inspeccioná en vivo los 11 pipelines serverless (P-01 a P-13), contratos de datos, latencias HTTP y la operación Scale-to-Zero (~$0.95/mes).'
+                                                : 'Inspect the 11 live serverless pipelines (P-01 to P-13), data contracts, HTTP latencies, and Scale-to-Zero operation (~$0.95/mo).',
                                             actions: [
                                                 {
                                                     text: isES
-                                                        ? 'Abrir Telemetría e Infraestructura (System > Performance) →'
-                                                        : 'Open Telemetry & Infrastructure (System > Performance) →',
+                                                        ? 'Abrir System Performance →'
+                                                        : 'Open System Performance →',
                                                     onClick: () =>
                                                         onLaunchTarget &&
                                                         onLaunchTarget({ view: 'observability', sub: 'performance' })
                                                 },
                                                 {
                                                     text: isES
-                                                        ? 'Ver Arquitectura de Costos (FinOps) →'
-                                                        : 'View Cost Architecture (FinOps) →',
+                                                        ? 'Ver FinOps →'
+                                                        : 'View FinOps →',
                                                     onClick: () =>
                                                         onLaunchTarget &&
                                                         onLaunchTarget({ view: 'observability', sub: 'finops' })
@@ -1473,15 +1479,17 @@ export default function UserGuideView({
                                             ]
                                         },
                                         {
-                                            label: isES ? 'Evaluador de RRHH' : 'HR Evaluator',
+                                            label: isES
+                                                ? 'Recorrido ejecutivo en 2 minutos'
+                                                : '2-minute executive walkthrough',
                                             quote: isES
-                                                ? '“Tengo pocos minutos para evaluar el proyecto: quiero ver qué problema resuelve y qué nivel de producto, datos en tiempo real, IA, idiomas (56) e ingeniería cloud demuestra.”'
-                                                : '“I have a few minutes to evaluate the project: I want to see what problem it solves and the level of product, live data, AI, languages (56), and cloud engineering it demonstrates.”',
+                                                ? 'Conocé de punta a punta qué resuelve la plataforma combinando datos en tiempo real, riesgo cuantitativo, IA documental e infraestructura cloud.'
+                                                : 'Get an end-to-end overview of what the platform solves by combining real-time data, quantitative risk, document AI, and cloud infrastructure.',
                                             actions: [
                                                 {
                                                     text: isES
-                                                        ? 'Reproducir el Video Resumen aquí abajo ↓'
-                                                        : 'Play Summary Video below ↓',
+                                                        ? 'Ver Video Resumen abajo ↓'
+                                                        : 'Watch Summary Video below ↓',
                                                     onClick: () => {
                                                         if (mediaPlaceholderRef.current) {
                                                             mediaPlaceholderRef.current.scrollIntoView({
@@ -1493,15 +1501,15 @@ export default function UserGuideView({
                                                 },
                                                 {
                                                     text: isES
-                                                        ? 'Ver Tablero de Cartera (Portfolio) →'
-                                                        : 'View Portfolio Dashboard (Portfolio) →',
+                                                        ? 'Ir a Portfolio →'
+                                                        : 'Go to Portfolio →',
                                                     onClick: () =>
                                                         onLaunchTarget && onLaunchTarget({ view: 'portfolio' })
                                                 },
                                                 {
                                                     text: isES
-                                                        ? 'Ver Ingeniería y Costos (System) →'
-                                                        : 'View Engineering & Costs (System) →',
+                                                        ? 'Ir a System →'
+                                                        : 'Go to System →',
                                                     onClick: () =>
                                                         onLaunchTarget && onLaunchTarget({ view: 'observability' })
                                                 }
