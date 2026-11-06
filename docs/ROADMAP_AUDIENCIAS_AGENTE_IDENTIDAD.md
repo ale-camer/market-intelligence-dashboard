@@ -82,8 +82,24 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
     3. **En `Markets > Research` (Subtítulo de `Nota Compuesta`):**
        - Sumar conclusión de 4 palabras: *"Fundamentos y noticias a favor"* (positivo) o *"Predominan factores de riesgo"* (negativo).
 
-- [ ] **Paso 1.7 — Vista `Portfolio` ([`src/components/AgentCommitteeView.jsx`](../src/components/AgentCommitteeView.jsx) y Vistas 1, 2, 3):**
+- [x] **Paso 1.7 — Vista `Portfolio` ([`src/components/AgentCommitteeView.jsx`](../src/components/AgentCommitteeView.jsx) y Vistas 1, 2, 3) *(Definido)*:**
   - **Objetivo:** Afinar los mensajes de `Builder`, `Risk` y `Simulator` para que un **Inversor Principiante** entienda de un vistazo si su cartera está sana o concentrada, mientras el **Profesional Quant** conserva todo el instrumental de Brinson, VaR/CVaR, estrés histórico y Kelly.
+  - **Decisiones aprobadas:**
+    1. **En `Portfolio > Builder` (3er renglón gris de las 6 tarjetas KPI):**
+       - `RETORNO ANUAL (CAGR)`: `vs +16.5% S&P 500 • Ganancia anual estimada`
+       - `SHARPE / SORTINO`: `Volatilidad σ: 13.7% • Retorno/riesgo sólido (>1.0)` *(dinámico según nivel)*
+       - `VaR 95% / CVaR 99% (1D)`: `Riesgo diario normal: -$1,650 • Extremo: -$2,540` *(calculado en vivo sobre base \$100k)*
+       - `MAX DRAWDOWN (12M)`: `Caída máxima histórica • Recuperación: ~14 días`
+       - `ALPHA BRINSON (12M)`: `Ventaja sobre el mercado • Beta: 0.9 vs S&P 500`
+       - `ACTIVOS SELECCIONADOS`: `5.5 apuestas reales (ENB) • Bien diversificada` *(o `Concentrada` si `ENB < 3.5`)*
+    2. **En `Portfolio > Builder` (3 Presets de Cartera de 1 Clic en cabecera de `Portfolio Holdings`):**
+       - **`Conservadora`:** `TLT` 30%, `GLD` 25%, `SPY` 25%, `MSFT` 12%, `AAPL` 8%.
+       - **`Balanceada`:** `SPY` 24%, `NVDA` 22%, `GLD` 18%, `BTC-USD` 14%, `TLT` 12%, `MSFT` 10%.
+       - **`Quant / Agresiva`:** `NVDA` 28%, `BTC-USD` 22%, `QQQ` 20%, `MSFT` 15%, `SOL-USD` 15%.
+    3. **En `Portfolio > Risk` y `Simulator`:**
+       - En `Risk` (`STRESS CRASH 2008`): `Caída en crisis severa (vs -42.0% S&P 500)`.
+       - En `Risk` (`RÉGIMEN MARKOV`): `Clima actual (62% prob.) • Retorno est. +2.4%/mes`.
+       - En `Simulator` (Criterio de Kelly): acompañar las 3 variantes con su guía práctica (`Quarter-Kelly (0.25x — Conservador / Recomendado)`, `Half-Kelly (0.50x — Equilibrado)`, `Full-Kelly (1.00x — Límite agresivo)`).
 
 ---
 
@@ -182,5 +198,6 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 | 2026-11-06 | **Paso 1.4 (Guide)** | `[x] Definido` | Se definieron los 5 textos en primera persona y los links directos (a la Guía y a la app en vivo) del bloque *"¿Qué buscás hoy?"* en `Guide > Home`. |
 | 2026-11-06 | **Paso 1.5 (System)** | `[x] Definido` | Se definieron los 3 ajustes en `System` (Topología DAG + Scaling en el bloque de contrato, `11/11 Pipelines PASS • 0 Schema Drift` en logs y explicación de 1 línea de *Scale-to-Zero* en `FinOps`). |
 | 2026-11-06 | **Paso 1.6 (Markets)** | `[x] Definido` | Se definieron los textos del 3er renglón de las 4 tarjetas KPI del Screener, la línea inferior bilingüe (humano + Quant) en `Analytics` y el subtítulo de `Research`. |
-| — | **Paso 1.7 (Portfolio)** | `[~] En definición` | Definir los textos claros de las tarjetas KPI de `Portfolio` (`Builder`, `Risk`, `Simulator`) y la composición de los 3 Presets de cartera (*Conservadora, Balanceada, Quant*). |
+| 2026-11-06 | **Paso 1.7 (Portfolio)** | `[x] Definido` | Se definieron los textos del 3er renglón de las 6 tarjetas KPI de `Builder`, los 3 Presets de cartera (*Conservadora, Balanceada, Quant*), las traducciones en `Risk` (*Stress 2008* y *Régimen Markov*) y las etiquetas guía del Criterio de Kelly en `Simulator`. **Fase 1 100% definida.** |
+| — | **Paso 2.1 (Agente)** | `[~] En definición` | Definir el saludo inicial, el flujo de orientación *"¿Por dónde empiezo?"* para los 5 perfiles y los chips de consulta rápida contextuales por vista. |
 
