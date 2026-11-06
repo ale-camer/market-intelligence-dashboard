@@ -77,9 +77,8 @@ export default function GlobalAgentDrawer({
     if (latestUserTurnRef.current && scrollRef.current) {
       const container = scrollRef.current;
       const target = latestUserTurnRef.current;
-      const offsetTop = target.offsetTop - container.offsetTop;
       container.scrollTo({
-        top: Math.max(0, offsetTop - 4),
+        top: Math.max(0, target.offsetTop - 2),
         behavior: 'smooth',
       });
     }
@@ -88,7 +87,11 @@ export default function GlobalAgentDrawer({
   // Auto-resize multiline textarea height (1 to 5 lines)
   const syncTextareaHeight = (el) => {
     if (!el) return;
-    el.style.height = 'auto';
+    if (!el.value) {
+      el.style.height = '36px';
+      return;
+    }
+    el.style.height = '36px';
     el.style.height = `${Math.min(el.scrollHeight, 116)}px`;
   };
 
@@ -99,7 +102,7 @@ export default function GlobalAgentDrawer({
     setInputMsg('');
     setCopiedIdx(null);
     if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = '36px';
     }
   };
 
@@ -124,7 +127,7 @@ export default function GlobalAgentDrawer({
     setThread(nextHistory);
     setInputMsg('');
     if (textareaRef.current) {
-      textareaRef.current.style.height = 'auto';
+      textareaRef.current.style.height = '36px';
     }
     setIsThinking(true);
 
@@ -326,6 +329,7 @@ export default function GlobalAgentDrawer({
           flex: 1,
           minHeight: 0,
           overflowY: 'auto',
+          overflowX: 'hidden',
           display: 'flex',
           flexDirection: 'column',
           gap: '9px',
@@ -402,6 +406,7 @@ export default function GlobalAgentDrawer({
         {thread.map((m, idx) => {
           const isLatestUser = idx === lastUserIdx;
           const isAi = m.role === 'ai';
+          const hasLongUnbrokenToken = !isAi && /\S{32,}/.test(String(m.txt || ''));
           return (
             <div
               key={idx}
@@ -423,6 +428,12 @@ export default function GlobalAgentDrawer({
                 lineHeight: 1.54,
                 alignSelf: m.role === 'user' ? 'flex-end' : 'stretch',
                 maxWidth: m.role === 'user' ? '92%' : '100%',
+                minWidth: 0,
+                overflow: 'hidden',
+                textOverflow: hasLongUnbrokenToken ? 'ellipsis' : 'clip',
+                whiteSpace: hasLongUnbrokenToken ? 'nowrap' : 'normal',
+                overflowWrap: 'anywhere',
+                wordBreak: 'break-word',
               }}
             >
               {isAi && (
@@ -471,7 +482,7 @@ export default function GlobalAgentDrawer({
         )}
 
         {/* Bottom runway spacer so the latest turn can scroll to the very TOP of the panel at eye level */}
-        {thread.length > 0 && <div style={{ minHeight: '62%', flexShrink: 0 }} />}
+        {thread.length > 0 && <div style={{ minHeight: '75%', flexShrink: 0 }} />}
       </div>
 
       {/* Multiline Auto-Expanding Input Box */}
@@ -503,25 +514,25 @@ export default function GlobalAgentDrawer({
             }
           }}
           maxLength={500}
-          placeholder={tx(
-            'Escribí tu consulta (Enter envía, Shift+Enter renglón)...',
-            'Ask anything (Enter to send, Shift+Enter for newline)...'
-          )}
+          placeholder={tx('Escribí tu consulta...', 'Ask anything...')}
           style={{
             flex: 1,
             resize: 'none',
-            overflowY: 'auto',
+            overflowY: inputMsg.length > 70 ? 'auto' : 'hidden',
+            overflowX: 'hidden',
+            height: '36px',
             minHeight: '36px',
             maxHeight: '116px',
-            lineHeight: 1.42,
+            lineHeight: '20px',
             background: 'rgba(15, 23, 42, 0.68)',
             border: '1px solid rgba(148, 163, 184, 0.28)',
             borderRadius: '8px',
-            padding: '8px 11px',
+            padding: '7px 11px',
             color: '#f8fafc',
             fontSize: '12.3px',
             fontFamily: 'inherit',
             outline: 'none',
+             boxSizing: 'border-box',
           }}
         />
         <button
