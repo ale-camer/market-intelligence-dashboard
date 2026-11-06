@@ -362,14 +362,14 @@ function detectMessageLang(userText = '') {
   const s = String(userText || '').trim();
   if (
     /[áéíóúñ¿¡]/i.test(s) ||
-    /\b(como|cómo|que|qué|donde|dónde|cual|cuál|por donde|por dónde|explicame|explica|aconsejas|aconsejás|recomendas|recomendás|explorar|recorrer|empiezo|empezar|cartera|mercado|mercados|sistema|guia|guía|activo|activos|riesgo|secciones|pantalla|viendo|funciona|arquitectura|hacer|puedo)\b/i.test(
+    /\b(el|la|los|las|un|una|de|del|es|son|por|para|con|sin|quien|cual|como|cómo|que|qué|donde|dónde|cuando|cuanto|hola|buenas|gracias|pero|sino|porque|mejor|peor|mas|más|menos|todo|nada|algo|este|esta|esto|ese|esa|eso|sigue|siendo|van|echar|presidente|brasil|paraguay|argentina|dulce|batata|river|boca|indio|cerati|gordo|explicame|explica|aconsejas|aconsejás|recomendas|recomendás|explorar|recorrer|empiezo|empezar|cartera|mercado|mercados|sistema|guia|guía|activo|activos|riesgo|secciones|pantalla|viendo|funciona|arquitectura|hacer|puedo)\b/i.test(
       s
     )
   ) {
     return 'ES';
   }
   if (
-    /\b(where|what|how|explain|screen|start|explore|recommend|should|portfolio|markets|system|architecture|seeing|does|work)\b/i.test(
+    /\b(where|what|how|who|why|when|explain|screen|start|explore|recommend|should|portfolio|markets|system|architecture|seeing|does|work|the|is|are|can|you)\b/i.test(
       s
     )
   ) {
@@ -483,6 +483,17 @@ function isKeyboardMash(txt = '') {
 }
 
 /**
+ * Detects whether a user message is a simple greeting or courtesy ("hola", "buenas", "que haces", "todo bien", "gracias").
+ */
+function isGreetingOrCourtesy(txt = '') {
+  const s = String(txt || '').trim().toLowerCase();
+  if (!s || s.length > 42 || isKeyboardMash(s)) return false;
+  return /^(hola|buenas|buen dia|buen día|buenas tardes|buenas noches|hey|hi|hello|que haces|qué hacés|que tal|qué tal|todo bien|como va|cómo va|como andas|cómo andás|como estas|cómo estás|gracias|muchas gracias|thanks|thank you)\b/i.test(
+    s
+  );
+}
+
+/**
  * Maps a user message to a clean, human-readable app topic category ONLY if the message is genuinely
  * about the platform, its views, markets, portfolio, quantitative metrics, or system architecture.
  * Returns `null` for greetings, jokes, politics, sports, songs, or any off-topic banter.
@@ -491,8 +502,17 @@ function detectAppTopicLabel(txt = '', msgLang = 'ES') {
   const s = String(txt || '').trim().toLowerCase();
   if (!s || s.length < 3 || isKeyboardMash(s)) return null;
 
+  // Reject explicit off-topic subjects (politics, presidents, sports, music, celebrities, food) even if they contain generic words
   if (
-    /\b(portfolio|portafolio|cartera|builder|risk|riesgo|simulator|simulador|var|cvar|sharpe|sortino|kelly|brinson|markov|enb|meucci|drawdown|volatilidad|volatility|stress)\b/i.test(
+    /\b(presidente|president|gobierno|elecciones|politica|política|diputado|senador|congreso|futbol|fútbol|mundial|campeon|campeón|hinchada|river|boca|messi|cerati|indio|soda stereo|redonditos|beatles|rolling|bitel|rolin|dulce|batata|membrillo|pizza|asado|receta|cocinar|gordo dan|pelicula|película|netflix)\b/i.test(
+      s
+    )
+  ) {
+    return null;
+  }
+
+  if (
+    /\b(portfolio|portafolio|cartera|builder|risk|riesgo|simulator|simulador|var|cvar|sharpe|sortino|kelly|brinson|markov|enb|meucci|drawdown|volatilidad|volatility|stress|estrés|cagr|alpha|beta|horizonte|horizon|calculadora|calculator|peso|weight|allocation|asignaci[oó]n|optimiz)\b/i.test(
       s
     )
   ) {
@@ -502,7 +522,7 @@ function detectAppTopicLabel(txt = '', msgLang = 'ES') {
   }
 
   if (
-    /\b(market|markets|mercado|mercados|screener|analytics|research|watchlist|favoritos|ticker|activo|activos|asset|assets|btc|bitcoin|eth|sol|nvda|aapl|msft|amzn|googl|spy|qqq|tlt|gld|rsi|macd|anomal[ií]a|anomaly)\b/i.test(
+    /\b(market|markets|mercado|mercados|screener|analytics|research|watchlist|favoritos|ticker|activo|activos|asset|assets|btc|bitcoin|eth|sol|nvda|aapl|msft|amzn|googl|spy|qqq|tlt|gld|us10y|rsi|macd|vwap|bollinger|anomal[ií]a|anomaly|precio|price|volumen|volume|cripto|crypto|acci[oó]n|acciones|stock|stocks|bono|bonos|bond|commodity|commodities|oro|gold|petr[oó]leo|oil|forex|divisa|tasa|filing|10-k|sec|noticia|news|sentimiento|sentiment|filtro|filter|tabla|table)\b/i.test(
       s
     )
   ) {
@@ -511,14 +531,18 @@ function detectAppTopicLabel(txt = '', msgLang = 'ES') {
       : 'the Markets section and asset analysis';
   }
 
-  if (/\b(system|sistema|finops|pipeline|pipelines|arquitectura|architecture|p-0|p-1|cloud run|bigquery)\b/i.test(s)) {
+  if (
+    /\b(system|sistema|finops|pipeline|pipelines|arquitectura|architecture|p-0|p-1|cloud run|bigquery|supabase|pgvector|terraform|github actions|latencia|latency|sla|salud|health|costo|cost|presupuesto|budget|telemetr[ií]a|telemetry|auditor[ií]a|audit|guardrail)\b/i.test(
+      s
+    )
+  ) {
     return msgLang === 'ES'
       ? 'la sección System y la arquitectura técnica'
       : 'the System section and technical architecture';
   }
 
   if (
-    /\b(app|aplicaci[oó]n|plataforma|platform|secci[oó]n|secciones|section|sections|home|portada|guide|gu[ií]a|manual|empiezo|empezar|explorar|recorrer|funcionalidades|en que me podes ayudar|en qué me podés ayudar|what can you help|where do i start|on this screen|en esta pantalla)\b/i.test(
+    /\b(app|aplicaci[oó]n|plataforma|platform|secci[oó]n|secciones|section|sections|home|portada|guide|gu[ií]a|manual|tour|video|empiezo|empezar|explorar|recorrer|funcionalidades|en que me podes ayudar|en qué me podés ayudar|que podes hacer|qué podés hacer|what can you help|what can you do|where do i start|on this screen|en esta pantalla|grafico|gráfico|chart|metrica|métrica|metric|metrics|inversion|inversi[oó]n|invertir|invest|exportar|export|csv|png|json|markdown)\b/i.test(
       s
     )
   ) {
@@ -531,28 +555,51 @@ function detectAppTopicLabel(txt = '', msgLang = 'ES') {
 }
 
 /**
+ * Finds the most recent app-related topic label from the conversation history prior to `currentInput`.
+ */
+function findLastAppTopicLabel(history = [], currentInput = '', msgLang = 'ES') {
+  const cleanCurrent = String(currentInput || '').trim().toLowerCase();
+  for (let i = history.length - 1; i >= 0; i -= 1) {
+    const m = history[i];
+    if (m.role === 'user' && String(m.txt || '').trim().toLowerCase() !== cleanCurrent) {
+      const detected = detectAppTopicLabel(m.txt, msgLang);
+      if (detected) {
+        return detected;
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * Formats the strict out-of-context Scope-Lock refusal message, either starting from scratch
+ * or offering to resume the last app-related topic.
+ */
+function buildOutOfContextMessage(lastAppTopicLabel, msgLang = 'ES') {
+  if (lastAppTopicLabel) {
+    return txTpl(
+      'Eso está fuera del contexto de esta charla. Solo puedo hablar sobre la aplicación para guiarte por sus secciones (**Home**, **Markets**, **Portfolio**, **System** y **Guide**), explicar los activos y métricas de riesgo en pantalla o detallar su arquitectura técnica.\n¿Querés que sigamos con **{0}** o preferís ver otra parte de la app?',
+      [lastAppTopicLabel],
+      'That is outside the context of this chat. I can only talk about the application to guide you through its sections (**Home**, **Markets**, **Portfolio**, **System**, and **Guide**), explain the live assets and risk metrics on screen, or detail its technical architecture.\nWould you like to continue with **{0}** or explore another part of the app?',
+      [lastAppTopicLabel],
+      msgLang
+    );
+  }
+  return tx(
+    'Eso está fuera del contexto de esta charla. Solo puedo hablar sobre la aplicación para guiarte por sus secciones (**Home**, **Markets**, **Portfolio**, **System** y **Guide**), explicar los activos y métricas de riesgo en pantalla o detallar su arquitectura técnica.\n¿Qué te gustaría ver o entender de la app?',
+    'That is outside the context of this chat. I can only talk about the application to guide you through its sections (**Home**, **Markets**, **Portfolio**, **System**, and **Guide**), explain the live assets and risk metrics on screen, or detail its technical architecture.\nWhat would you like to see or understand about the app?',
+    msgLang
+  );
+}
+
+/**
  * Calls Gemini 3.5 Flash-Lite (`gemini-3.5-flash-lite`) with strict Scope Lock, input/output caps, and audit telemetry.
  */
 async function callGeminiFlashLite({ apiKey, userText, history, snap, msgLang }) {
   const sanitizedInput = String(userText || '').slice(0, AGENT_GUARDRAIL_LIMITS.maxInputChars);
   const currentTopicLabel = detectAppTopicLabel(sanitizedInput, msgLang);
   const currentIsAppRelated = Boolean(currentTopicLabel);
-  const currentIsMash = isKeyboardMash(sanitizedInput);
-
-  let lastAppTopicLabel = null;
-  for (let i = history.length - 1; i >= 0; i -= 1) {
-    const m = history[i];
-    if (
-      m.role === 'user' &&
-      String(m.txt || '').trim().toLowerCase() !== sanitizedInput.trim().toLowerCase()
-    ) {
-      const detected = detectAppTopicLabel(m.txt, msgLang);
-      if (detected) {
-        lastAppTopicLabel = detected;
-        break;
-      }
-    }
-  }
+  const lastAppTopicLabel = findLastAppTopicLabel(history, sanitizedInput, msgLang);
 
   const viewNames = {
     presentation: 'Home (Portada)',
@@ -565,20 +612,6 @@ async function callGeminiFlashLite({ apiKey, userText, history, snap, msgLang })
     guide: 'Guide (Interactive Manual)',
   };
 
-  const continuityBlock = !currentIsAppRelated
-    ? lastAppTopicLabel
-      ? `CONVERSATION CONTINUITY (CRITICAL):
-- The user's latest message is ${currentIsMash ? 'accidental keyboard mashing' : 'a casual greeting or an off-topic question outside the platform scope'}.
-- Earlier in this chat, the user was exploring ${lastAppTopicLabel}.
-- Reply in 1 short, natural sentence (never claim they had a typo unless it is actual keyboard mashing, and never quote raw user messages) and THEN ask naturally if they want to continue with ${lastAppTopicLabel} or see/understand another part of the app.
-- STRICT FORBIDDEN RULE: NEVER mention specific tickers (like BTC or SPY), "un activo", "un asset", "watchlist", or narrow metrics!`
-      : `CONVERSATION CONTINUITY (CRITICAL):
-- The user's latest message is ${currentIsMash ? 'accidental keyboard mashing' : 'a casual greeting or an off-topic question outside the platform scope'}, and NO app topic has been discussed yet in this chat.
-- Reply in 1 short, natural sentence (10 to 20 words max; never claim they made a typo unless it is actual keyboard mashing) and THEN start from scratch by asking an open question about what they would like to see or understand about the app (e.g., "¿Qué te gustaría ver o entender de la app?" / "What would you like to see or understand about the app?").
-- STRICT FORBIDDEN RULE: NEVER mention or suggest any specific ticker (like BTC or SPY), "un activo", "un asset", "tu watchlist", "tu portfolio", or "una métrica"!`
-    : `CONVERSATION CONTINUITY:
-- Answer the user's question about the app clearly and concisely (2–3 short bullets max if explaining sections/metrics, under 80 words total).`;
-
   const liveContextSection = currentIsAppRelated
     ? `
 LIVE SCREEN CONTEXT (use ONLY when relevant to what the user asks):
@@ -589,15 +622,13 @@ LIVE SCREEN CONTEXT (use ONLY when relevant to what the user asks):
     : '';
 
   const systemInstruction = `You are the interactive guide inside a market intelligence and portfolio platform.
-CONVERSATIONAL STYLE & SPONTANEITY (CRITICAL):
-1. Reply ALWAYS in the exact same language and register as the user's latest message (detected language: ${msgLang}).
-2. Be spontaneous, human, and proportional to what the user said. NEVER use robotic corporate intros and NEVER repeat or quote the user's message back to them in quotation marks.
-3. Use **bold** sparingly for section names or key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
-4. SCOPE: The platform has 5 main views (**Home**, **Markets** > **Screener** / **Analytics** / **Research**, **Portfolio** > **Builder** / **Risk** / **Simulator**, **System** \`P-01\`..\`P-13\`, and **Guide**). Never give personalized investment advice.
+CONVERSATIONAL STYLE & STRICT SCOPE LOCK (CRITICAL):
+1. Reply ALWAYS in the exact same language as the user's latest message (detected language: ${msgLang}).
+2. STRICT SCOPE LOCK: You are ONLY allowed to talk about this application — guiding the user across its 5 sections (**Home**, **Markets** > **Screener** / **Analytics** / **Research**, **Portfolio** > **Builder** / **Risk** / **Simulator**, **System** \`P-01\`..\`P-13\`, and **Guide**), explaining the financial assets and risk metrics on screen, or detailing its technical architecture.
+3. NEVER answer questions, facts, or opinions about anything outside the application (politics, presidents, history, music, sports, food, general trivia). If a query is unrelated to the app, DO NOT answer the question at all: state directly that it is outside the context of this chat and that you can only talk about the application for its specific purposes, then ask what they would like to see or understand about the app${lastAppTopicLabel ? ` (or whether to continue with ${lastAppTopicLabel})` : ''}.
+4. When answering an app-related question, be concise and clear (2–3 short bullets max, under 80 words total). Use **bold** sparingly for section names or key values, and \`code\` only for standalone tickers or pipeline IDs (never nest backticks inside bold).
+${liveContextSection}`;
 
-${continuityBlock}${liveContextSection}`;
-
-  // When the user sends an off-topic/casual message, only send the latest user message so old turns don't pollute the response
   const filteredHistory = !currentIsAppRelated ? [] : history.slice(-6);
   const recentTurns = filteredHistory.map((m) => ({
     role: m.role === 'ai' ? 'model' : 'user',
@@ -832,19 +863,40 @@ export async function generateGlobalAgentResponse({
   const q = qRaw.toLowerCase();
   const snap = snapshot || buildLiveAppSnapshot({});
   const msgLang = detectMessageLang(qRaw);
+  const lastAppTopicLabel = findLastAppTopicLabel(history, qRaw, msgLang);
 
-  // 1. Strict Scope Lock Guardrail (always zero-cost & immediate, logged in audit telemetry)
-  if (isOutOfScopeQuery(q)) {
+  // 1. Casual Greeting / Courtesy (spontaneous 1-line greeting + open app invite or last-topic continuity)
+  if (isGreetingOrCourtesy(qRaw)) {
+    recordAgentAuditEvent({
+      type: 'LOCAL_FALLBACK',
+      latencyMs: 1,
+      note: 'Instant greeting response',
+    });
+    if (lastAppTopicLabel) {
+      return txTpl(
+        '¡Hola! Todo bien por acá. ¿Querés que sigamos viendo **{0}** o te gustaría explorar otra parte de la app?',
+        [lastAppTopicLabel],
+        'Hi there! All good here. Would you like to continue with **{0}** or explore another part of the app?',
+        [lastAppTopicLabel],
+        msgLang
+      );
+    }
+    return tx(
+      '¡Hola! Todo bien por acá. ¿Qué te gustaría ver o entender de la app?',
+      'Hi there! All good here. What would you like to see or understand about the app?',
+      msgLang
+    );
+  }
+
+  // 2. Strict Scope Lock Guardrail: anything unrelated to the app (or prompt injection) is declined immediately
+  const currentTopicLabel = detectAppTopicLabel(qRaw, msgLang);
+  if (isOutOfScopeQuery(q) || !currentTopicLabel) {
     recordAgentAuditEvent({
       type: 'SCOPE_LOCK_BLOCK',
       latencyMs: 1,
-      note: 'Blocked off-topic or prompt-injection query before LLM call',
+      note: 'Blocked off-topic or out-of-context query before LLM call',
     });
-    return tx(
-      'Soy el guía exclusivo de esta plataforma: puedo ayudarte a navegar sus secciones (**Markets**, **Portfolio**, **System**, **Guide**), interpretar tus activos y métricas en pantalla o detallar la arquitectura técnica `P-01` a `P-13`.',
-      'I am the dedicated guide for this platform: I can help you navigate its sections (**Markets**, **Portfolio**, **System**, **Guide**), interpret the live assets and metrics on screen, or explain the `P-01` to `P-13` technical architecture.',
-      msgLang
-    );
+    return buildOutOfContextMessage(lastAppTopicLabel, msgLang);
   }
 
   // 2. Check Rate & Quota Guardrails + Call Gemini 3.5 Flash-Lite
