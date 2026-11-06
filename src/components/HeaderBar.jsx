@@ -1432,8 +1432,7 @@ export default function HeaderBar({
 
     return (
       <HoverTooltip
-        title={t.navWorkstation === 'Mercados' ? 'Pantalla inicial' : 'Main stage'}
-        variantStyle="pure-text"
+        title="Home"
         placement="bottom-left"
       >
         {(isHovered) => {
@@ -1523,12 +1522,10 @@ export default function HeaderBar({
           ? 'Riesgo y simulaciones'
           : 'Risk & simulations'
         : item.label;
-    const tooltipStyleVariant = item.id === 'workstation' ? 'ghost-pill' : 'underline-whisper';
     return (
       <HoverTooltip
         key={item.id}
         title={tooltipTitle}
-        variantStyle={tooltipStyleVariant}
         placement={placement}
       >
         {(isHovered) =>

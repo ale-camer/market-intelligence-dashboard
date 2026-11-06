@@ -508,7 +508,6 @@ export default function FooterBar({
           {/* 1. SYSTEM (ONE WORD, HOMOGENEOUS WITH GUIDE & DEV) */}
           <HoverTooltip
             title={tx('Pipelines, telemetría y FinOps', 'Pipelines, telemetry & FinOps')}
-            variantStyle="mono-terminal"
             placement="top-left"
           >
             {(isHovered) => {
@@ -542,7 +541,6 @@ export default function FooterBar({
           {/* 2. GUIDE (ONE WORD, HOMOGENEOUS WITH SYSTEM) */}
           <HoverTooltip
             title={tx('Cómo usar la plataforma', 'How to use the platform')}
-            variantStyle="matte-slate"
             placement="top-left"
           >
             {(isHovered) => {
@@ -580,7 +578,6 @@ export default function FooterBar({
           <HoverTooltip
             disabled={langModalOpen}
             title={tx('Idioma (56)', 'Language (56)')}
-            variantStyle="accent-text-glow"
             placement="top-right"
           >
             {(isHovered) => {
@@ -721,7 +718,6 @@ export default function FooterBar({
             <HoverTooltip
               disabled={palettePopoverOpen}
               title={tx('Tema de color', 'Color theme')}
-              variantStyle="pure-text"
               placement="top-right"
             >
               {(isHovered) => {
