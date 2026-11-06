@@ -1,6 +1,8 @@
 # Hoja de Ruta Iterativa: Audiencias, Agente Guía Global e Identidad de la App
 
-> **Metodología de Trabajo:** De menor a mayor, paso a paso y de forma 100% iterativa. Ninguna etapa se implementa de golpe: cada micro-paso se analiza, se decide el criterio/contenido exacto, se valida en la app y recién entonces se pasa al siguiente.
+> **Metodología y Regla Estricta de Supervisión:**
+> 1. **De menor a mayor y paso a paso:** Primero analizamos y definimos cada punto en este documento.
+> 2. **Ejecución de a 1 punto a la vez bajo supervisión:** Al momento de implementar, se aplica **únicamente un (1) micro-paso por vez**, se verifica en pantalla y **sólo se avanza al siguiente bajo indicación y aprobación explícita del usuario**.
 
 ---
 
@@ -32,12 +34,20 @@ El objetivo de esta fase es analizar vista por vista **qué mensaje mostramos, a
     2. **Tooltips en Navegación (`HeaderBar` / `FooterBar`):** Si se incorporan, deben tener una **estética de máxima sencillez** (texto ultra-corto y discreto, estilo `V010 Ghost`, sin cajas pesadas ni contaminación visual como los tooltips anteriores).
     3. **Sección "¿Qué buscás?" en `Guide` (`Home`) con Links Directos:** En la primera página de `Guide`, sumar el bloque de orientación para los **5 perfiles** (*Curioso/Aprendiz, Inversor Individual/Principiante, Profesional Quant, Profesional IT, Evaluador de RRHH*) incluyendo **links interactivos directos** que lleven a cada usuario a la vista/herramienta correspondiente con un clic.
 
-- [ ] **Paso 1.2 — Patrones Adicionales de Orientación Concisa (Estudio de Mejores Prácticas):**
-  - **Objetivo:** Definir qué técnicas adicionales del estándar de industria sumamos sin cruzar el límite del minimalismo:
-    - *Divulgación Progresiva (2 Capas):* Dato técnico puro + 1 línea de lectura humana debajo o al pie.
-    - *Presets / Carteras de Ejemplo por Perfil en `Portfolio`:* Permitir alternar entre ejemplos preconfigurados (ej. *Inicial/Conservadora*, *Balanceada*, *Quant*) para aprender o probar rápido.
-    - *Sugerencias Iniciales por Perfil en el Agente Global:* Preguntas de 1 clic al abrir el chat según la vista activa.
-    - *Deep-Links Directos:* Rutas clicables desde `Guide` hacia cada módulo clave.
+- [x] **Paso 1.2 — Patrones Adicionales de Orientación Concisa (Cómo se aplican en la UI actual):**
+  - **Regla de Oro:** No crear cajas nuevas ni agrandar tarjetas; reutilizar los **renglones secundarios que ya existen** en la interfaz actual.
+  - **1. Lectura en 2 Capas (En el 3er renglón de las tarjetas KPI que ya existen):**
+    - *Dónde:* En las 4 tarjetas superiores de `Markets > Screener` ([`MarketAnomaliesView.jsx`](../src/components/MarketAnomaliesView.jsx)) y en las 6 tarjetas superiores de `Portfolio > Builder / Risk / Simulator` ([`PortfolioVista1Builder.jsx`](../src/components/portfolio/PortfolioVista1Builder.jsx), [`PortfolioVista2Risk.jsx`](../src/components/portfolio/PortfolioVista2Risk.jsx), [`PortfolioVista3AdHoc.jsx`](../src/components/portfolio/PortfolioVista3AdHoc.jsx)).
+    - *Cómo:* Hoy cada tarjeta ya tiene 3 líneas (`Título técnico` arriba, `Número grande` al medio, `Subtítulo gris` abajo). Sólo cambiamos el texto de ese `Subtítulo gris` para que traduzca el dato en lenguaje llano y en dólares cuando aplique (ej. en `VaR 95%`: cambiar *"Pérdida diaria esperada cola"* por *"En un día normal no perderías más de $1,650"*).
+  - **2. Semáforos de 1 Palabra junto al Dato Crudo:**
+    - *Dónde:* En la misma línea del valor o del subtítulo en `Markets` (`RSI`, `P-06`, `Volumen`) y en `Portfolio` (`Sharpe`, `Beta`, `ENB`).
+    - *Cómo:* Acompañar el número con una palabra diagnóstica clara entre paréntesis o separada por un punto: ej. `ENB: 5.5` → *"5.5 apuestas independientes (Bien diversificada)"*; `Sharpe: 1.54` → *"Retorno/riesgo sólido (>1.0)"*.
+  - **3. Presets / Carteras de Ejemplo de 1 Clic:**
+    - *Dónde:* En la cabecera derecha de la tarjeta `Portfolio Holdings` ([`PortfolioVista1Builder.jsx`](../src/components/portfolio/PortfolioVista1Builder.jsx)), exactamente en la misma línea de texto fantasma (`V010 Ghost`) donde hoy están `Equal Weight • Normalize 100% • Reset Base`.
+    - *Cómo:* Sumar ahí mismo 3 botones de texto liviano (`Conservadora`, `Balanceada`, `Agresiva/Quant`) que cargan 3 combinaciones reales de activos para que cualquier perfil (Aprendiz, Inversor o RRHH) vea cambiar toda la cartera con un solo clic.
+  - **4. Preguntas Iniciales Sugeridas en el Agente Global:**
+    - *Dónde:* En la fila de *Quick Chips* arriba del historial del chat del Agente (donde hoy están los 3 botones `Check ETF overlap | Simulate Put hedge | Optimize Sharpe`).
+    - *Cómo:* Esos mismos chips cambian dinámicamente según la pantalla en la que estés parado (ej. en `Home` o `Guide`: *"¿Por dónde empiezo?"*, *"Resumen para RRHH / IT"*; en `Markets`: *"Explicame este gráfico en simple"*, *"¿Por qué se mueve este activo?"*; en `System`: *"Explicame la arquitectura y el costo de $0.95/m"*).
 
 - [ ] **Paso 1.3 — Vista `Home` ([`src/components/HomeStage.jsx`](../src/components/HomeStage.jsx)) y Navegación (`HeaderBar`/`FooterBar`):**
   - **Objetivo:** Aplicar el nuevo subtítulo acordado y validar la estética ultra-simple de los tooltips de navegación.
@@ -111,23 +121,43 @@ El objetivo de esta fase es estudiar **qué resultados concretos (outputs) podr�
 
 ---
 
-## 5. Fase 4 — Nombre e Identidad Final de la Aplicación (Al Final)
+## 5. Fase 4 — Selección Masiva de Watchlist (`★` en 1 Clic) y Segundo Menú de Filtros por Características
 
-> Tal como definimos, el nombre se decidirá al final del recorrido, cuando la personalidad de la plataforma (con sus mensajes por audiencia, su nuevo Agente Global y sus capacidades de output) haya decantado por completo.
+> Reservado para las etapas finales (previo al cierre de identidad), para potenciar la experiencia de descubrimiento y armado rápido de seguimiento en `Markets`.
 
-- [ ] **Paso 4.1 — Exploración y Elección del Nombre Definitivo:**
-  - Revisar la plataforma ya pulida con las Fases 1, 2 y 3 completas y elegir el nombre que mejor sintetice su esencia.
-- [ ] **Paso 4.2 — Integración del Nombre en la App y en los Outputs:**
+- [ ] **Paso 4.1 — Definición de Características del Segundo Menú de Filtros:**
+  - **Características Transversales / Generales (aplicables a todos los activos):** Ej. *Régimen Normal vs. Anomalía (`P-06`)*, *Momentum (`RSI` alcista / sobreventa)*, *Volumen elevado (`Z-Score`)*, *Variación 24h positiva/negativa*.
+  - **Características Específicas según la Clase de Activo seleccionada:**
+    - *Equities:* Mega-Cap / Tech / Semiconductores / Alto Dividendo / ADR.
+    - *FX Currencies:* G10 Majors / Emergentes (LatAm/Asia) / Carry Spread Positivo.
+    - *Rates & US Treasuries:* Tramo Corto (`≤2Y`) / Tramo Medio (`5Y-10Y`) / Tramo Largo (`20Y-30Y`).
+    - *Crypto:* Layer 1 / DeFi & Infraestructura / Alta Liquidez.
+    - *Commodities:* Metales Preciosos / Energía / Industriales & Agro.
+    - *ETFs & Indices / Derivatives:* Índices Amplios / Sectoriales / Volatilidad & Opciones.
+- [ ] **Paso 4.2 — Acción de 1 Solo Clic (`★ Marcar / Desmarcar todos los filtrados`):**
+  - Permitir que el usuario agregue (o quite) la estrella de favoritos (`Watchlist`) a **todos los activos resultantes del filtro activo con un único clic**, facilitando pasar ese grupo directo a `Watchlist` o a `Portfolio`.
+
+---
+
+## 6. Fase 5 — Nombre e Identidad Final de la Aplicación (Al Final)
+
+> Tal como definimos, el nombre se decidirá al final del recorrido, cuando la personalidad de la plataforma haya decantado por completo.
+
+- [ ] **Paso 5.1 — Exploración y Elección del Nombre Definitivo:**
+  - Revisar la plataforma ya pulida con las Fases 1 a 4 completas y elegir el nombre que mejor sintetice su esencia.
+- [ ] **Paso 5.2 — Integración del Nombre en la App y en los Outputs:**
   - Reemplazar `TBD` en [`index.html`](../index.html), cabeceras, guía de usuario, presentación del agente y pie/marca de agua de las imágenes y tablas exportadas.
 
 ---
 
-## 6. Registro de Iteraciones y Decisiones
+## 7. Registro de Iteraciones y Decisiones
 
 | Fecha | Paso | Estado | Resumen de Decisión / Avance |
 | :---: | :--- | :---: | :--- |
 | 2026-11-05 | **Definición Base** | `[x] Completado` | Se fijaron los 5 perfiles (*Curioso/Aprendiz, Inversor Individual/Principiante, Profesional Quant, Profesional IT, Evaluador de RRHH*), el rol del Agente como guía conversacional puro en toda la app (sin botones que operen la UI), el nombre para el final y la metodología iterativa de menor a mayor. |
 | 2026-11-06 | **Fase 3 (Outputs)** | `[x] Incorporado al Plan` | Se sumó la Fase 3 dedicada al estudio e implementación iterativa de los outputs que cada perfil puede querer llevarse de la app (imágenes/gráficos, tablas CSV/JSON, fichas ejecutivas). |
 | 2026-11-06 | **Paso 1.1** | `[x] Definido` | Se acordó: (1) Subtítulo conceptual en `Home` sin número de activos, (2) Tooltips ultra-sencillos sin contaminación visual, y (3) Bloque *"¿Qué buscás?"* en `Guide` con links directos para cada uno de los 5 perfiles. |
-| — | **Paso 1.2** | `[~] En evaluación` | Evaluación de técnicas complementarias concisas (Divulgación progresiva en 2 capas, Presets de cartera por perfil, Prompts iniciales en el Agente). |
+| 2026-11-06 | **Paso 1.2** | `[x] Definido` | Se definió cómo aplicar los 4 patrones reutilizando los renglones y barras que ya existen en la UI sin agregar cajas ni ruido visual + **Regla estricta de aplicar 1 solo paso a la vez bajo supervisión**. |
+| 2026-11-06 | **Fase 4 (Watchlist Bulk)** | `[x] Incorporado al Plan` | Se anotó para el tramo final el segundo menú de filtros por características (generales y propias de cada clase de activo) con botón de 1 clic para agregar/quitar la estrella (`★`) a múltiples activos a la vez. |
+| — | **Definiciones / Ejecución Fase 1** | `[~] Próximo paso` | Definir en detalle los textos por vista (`Guide`, `System`, `Markets`, `Portfolio`) o comenzar a aplicar el primer micro-paso individual bajo supervisión. |
 
