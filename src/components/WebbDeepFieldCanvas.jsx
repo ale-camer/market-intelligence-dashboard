@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   BG_VERTEX_SHADER,
   BG_FRAGMENT_SHADER,
@@ -36,43 +36,36 @@ function createProgram(gl, vsSource, fsSource) {
   return program;
 }
 
-const ARTWORKS = {
-  EN: [
-    {
-      title: 'Pillars of Creation (NGC 3324)  ⟷  Implied Volatility Surface σ(K,T)',
-      medium: 'JWST Near-Infrared Dust Pillars • Black-Scholes-Merton Manifold',
-    },
-    {
-      title: 'Einstein Gravitational Ring (SMACS 0723)  ⟷  Markowitz Efficient Frontier',
-      medium: 'Relativistic Spacetime Lensing • Optimal Risk-Return Tangency',
-    },
-    {
-      title: 'Bipolar Hourglass Nebula (L1527)  ⟷  Limit Order Book Depth V(p,t)',
-      medium: 'Protostellar Accretion Shockwave • High-Frequency Liquidity Microstructure',
-    },
-    {
-      title: 'Southern Ring Nebula (NGC 3132)  ⟷  Itô-Fokker-Planck Probability Density',
-      medium: 'Concentric Stellar Ejecta Shells • Stochastic Dispersion Trajectories',
-    },
-  ],
-  ES: [
-    {
-      title: 'Pilares de la Creación (NGC 3324)  ⟷  Superficie de Volatilidad Implícita σ(K,T)',
-      medium: 'Pilares infrarrojos del JWST • Variedad de Black-Scholes-Merton',
-    },
-    {
-      title: 'Anillo Gravitacional de Einstein (SMACS 0723)  ⟷  Frontera Eficiente de Markowitz',
-      medium: 'Lente gravitacional relativista • Tangencia óptima riesgo-retorno',
-    },
-    {
-      title: 'Nebulosa Reloj de Arena Bipolar (L1527)  ⟷  Profundidad de Order Book V(p,t)',
-      medium: 'Onda de choque protoestelar • Microestructura de liquidez de alta frecuencia',
-    },
-    {
-      title: 'Nebulosa del Anillo del Sur (NGC 3132)  ⟷  Densidad de Difusión de Itô-Fokker-Planck',
-      medium: 'Capas concéntricas de eyección estelar • Trayectorias de dispersión estocástica',
-    },
-  ],
+const SharedDarkPieces = [
+  {
+    id: 0,
+    short: '01. Pilares de la Creación ⟷ Superficie de Volatilidad',
+    title: '01. Pilares de la Creación ⟷ Superficie de Volatilidad',
+    medium: 'Modo Oscuro • Pilares infrarrojos del JWST (NGC 3324) y Variedad σ(K,T) de Black-Scholes',
+  },
+  {
+    id: 1,
+    short: '02. Anillo de Einstein ⟷ Frontera de Markowitz',
+    title: '02. Anillo de Einstein ⟷ Frontera de Markowitz',
+    medium: 'Modo Oscuro • Lente gravitacional relativista (SMACS 0723) y Tangencia óptima riesgo-retorno',
+  },
+  {
+    id: 2,
+    short: '03. Nebulosa Reloj de Arena ⟷ Profundidad Order Book',
+    title: '03. Nebulosa Reloj de Arena ⟷ Profundidad Order Book',
+    medium: 'Modo Oscuro • Onda de choque protoestelar (L1527) y Microestructura de liquidez V(p,t)',
+  },
+  {
+    id: 3,
+    short: '04. Nebulosa Anillo del Sur ⟷ Difusión de Itô',
+    title: '04. Nebulosa Anillo del Sur ⟷ Difusión de Itô',
+    medium: 'Modo Oscuro • Eyección estelar concéntrica (NGC 3132) y Dispersión de Fokker-Planck',
+  },
+];
+
+export const DARK_ARTWORKS = {
+  EN: SharedDarkPieces,
+  ES: SharedDarkPieces,
 };
 
 const SharedLightPieces = [
@@ -80,61 +73,73 @@ const SharedLightPieces = [
     id: 0,
     short: '01. Girasol Fibonacci ⟷ Espiral Áurea',
     title: '01. Girasol Fibonacci ⟷ Espiral Áurea',
-    medium: 'Filotaxis de semillas (137.5°) • Proporción áurea y anillos de Fibonacci (23.6% • 38.2% • 61.8%)',
+    medium: '1ra Tanda • Filotaxis de semillas (137.5°) y anillos de proporción áurea (23.6% • 38.2% • 61.8%)',
   },
   {
     id: 1,
-    short: '02. Flor de Loto ⟷ Interferencia de Ondas',
-    title: '02. Flor de Loto ⟷ Interferencia de Ondas',
-    medium: 'Mandala de loto y anillos de estanque • Propagación armónica y contagio de volatilidad',
+    short: '02. Flor Sakura ⟷ Ondas de Fourier',
+    title: '02. Flor Sakura ⟷ Ondas de Fourier',
+    medium: '1ra Tanda • Rosa polar de 5 pétalos y descomposición espectral de ciclos de Fourier',
   },
   {
     id: 2,
-    short: '03. Caracola Nautilus ⟷ Canal de Regresión OLS',
-    title: '03. Caracola Nautilus ⟷ Canal de Regresión OLS',
-    medium: 'Cámaras septales en espiral • Ciclos de Elliott y bandas de desviación estándar (±2σ)',
+    short: '03. Mariposa Monarca ⟷ Atractor de Lorenz',
+    title: '03. Mariposa Monarca ⟷ Atractor de Lorenz',
+    medium: '1ra Tanda • Simetría lepidóptera en vuelo y Efecto Mariposa de caos no lineal',
   },
   {
     id: 3,
-    short: '04. Bandada en Vuelo ⟷ 3 Regímenes de Markov',
-    title: '04. Bandada en Vuelo ⟷ 3 Regímenes de Markov',
-    medium: 'Murmuración de golondrinas • Matriz de transición (Calma • Transición • Estrés)',
+    short: '04. Helecho Fractal ⟷ Árbol Isolation Forest',
+    title: '04. Helecho Fractal ⟷ Árbol Isolation Forest',
+    medium: '1ra Tanda • Frondas de helecho de Barnsley y árbol binario de anomalías (P-06)',
   },
   {
     id: 4,
-    short: '05. Cordillera & Ríos ⟷ Topografía Iso-Sharpe',
-    title: '05. Cordillera & Ríos ⟷ Topografía Iso-Sharpe',
-    medium: 'Valle primaveral y deshielo glaciar • Curvas de nivel de eficiencia riesgo-retorno',
+    short: '05. Diente de León ⟷ Cono de Kelly',
+    title: '05. Diente de León ⟷ Cono de Kelly',
+    medium: '1ra/2da Tanda • Esfera radial de 32 rayos al viento y curvas de crecimiento óptimo de Kelly',
   },
   {
     id: 5,
-    short: '06. Panal & Lavanda ⟷ Red de Correlación (ENB)',
-    title: '06. Panal & Lavanda ⟷ Red de Correlación (ENB)',
-    medium: 'Teselación hexagonal de Voronoi • Constelación de 7 clusters de diversificación real',
+    short: '06. Bandada en Vuelo ⟷ 3 Regímenes de Markov',
+    title: '06. Bandada en Vuelo ⟷ 3 Regímenes de Markov',
+    medium: '2da Tanda • Murmuración de golondrinas y transición orbital (Calma • Transición • Estrés)',
   },
   {
     id: 6,
-    short: '07. Árbol Copa & Raíces ⟷ Grafo Pipeline DAG',
-    title: '07. Árbol Copa & Raíces ⟷ Grafo Pipeline DAG',
-    medium: 'Árbol frondoso en flor y raíces • Topología de 4 etapas y contratos de datos (P-01..P-13)',
+    short: '07. Cordillera & Ríos ⟷ Topografía Iso-Sharpe',
+    title: '07. Cordillera & Ríos ⟷ Topografía Iso-Sharpe',
+    medium: '2da Tanda • Valle verde con río de deshielo y curvas de nivel de eficiencia riesgo-retorno',
   },
   {
     id: 7,
-    short: '08. Rosa de los Vientos ⟷ Radar Multi-Factor',
-    title: '08. Rosa de los Vientos ⟷ Radar Multi-Factor',
-    medium: 'Estrella náutica de 8 puntas • Polígono polar de 6 factores (Momentum • Value • Quality • Low-Vol)',
+    short: '08. Panal & Lavanda ⟷ Red de Correlación',
+    title: '08. Panal & Lavanda ⟷ Red de Correlación',
+    medium: '2da Tanda • Celdas hexagonales de colmena y constelación de 7 clusters de activos (ENB)',
   },
   {
     id: 8,
-    short: '09. ADN Botánico ⟷ Cointegración (Pairs Trading)',
-    title: '09. ADN Botánico ⟷ Cointegración (Pairs Trading)',
-    medium: 'Doble hélice viva entrelazada • Equilibrio estadístico y reversión a la media (±2σ)',
+    short: '09. Flor de Loto ⟷ Interferencia de Ondas',
+    title: '09. Flor de Loto ⟷ Interferencia de Ondas',
+    medium: '2da Tanda • Mandala de loto en estanque y propagación armónica de volatilidad',
   },
   {
     id: 9,
-    short: '10. Diente de León ⟷ Cono de Kelly',
-    title: '10. Diente de León ⟷ Cono de Kelly',
-    medium: 'Esfera radial de 32 rayos y semillas al viento • Cresta óptima de crecimiento compuesto g(f*)',
+    short: '10. Caracola Nautilus ⟷ Canal de Regresión OLS',
+    title: '10. Caracola Nautilus ⟷ Canal de Regresión OLS',
+    medium: '2da Tanda • Cámaras septales marinas y canal de tendencia lineal con bandas ±2σ',
+  },
+  {
+    id: 10,
+    short: '11. Árbol Copa & Raíces ⟷ Grafo Pipeline DAG',
+    title: '11. Árbol Copa & Raíces ⟷ Grafo Pipeline DAG',
+    medium: '2da Tanda • Árbol frondoso con raíces y topología de 4 etapas (módulos P-01..P-13)',
+  },
+  {
+    id: 11,
+    short: '12. ADN Botánico ⟷ Cointegración (Pairs)',
+    title: '12. ADN Botánico ⟷ Cointegración (Pairs)',
+    medium: '2da Tanda • Doble hélice viva entrelazada y reversión a la media estadística (±2σ)',
   },
 ];
 
@@ -147,21 +152,27 @@ export default function WebbDeepFieldCanvas({
   isPaused = false,
   lang = 'EN',
   lightMode = false,
-  selectedLightScene = null, // null = auto cycle, 0..7 = fixed scene
+  selectedLightScene = null, // null = auto cycle, 0..11 = fixed scene
+  selectedDarkScene = null, // null = auto cycle, 0..3 = fixed scene
   morphOverride = null, // null = auto sine wave, 0 = 100% Nature, 1 = 100% Quant
+  onActiveSceneChange = null,
 }) {
   const canvasRef = useRef(null);
-  const artworkTitleRef = useRef(null);
-  const artworkMediumRef = useRef(null);
-  const langRef = useRef(lang);
+  const [activeLightIdx, setActiveLightIdx] = useState(
+    selectedLightScene !== null ? Number(selectedLightScene) % 12 : 0
+  );
+  const [activeDarkIdx, setActiveDarkIdx] = useState(
+    selectedDarkScene !== null ? Number(selectedDarkScene) % 4 : 0
+  );
+
   const isPausedRef = useRef(isPaused);
   const lightModeRef = useRef(lightMode);
-  const selectedSceneRef = useRef(selectedLightScene);
+  const selectedLightSceneRef = useRef(selectedLightScene);
+  const selectedDarkSceneRef = useRef(selectedDarkScene);
   const morphOverrideRef = useRef(morphOverride);
-
-  useEffect(() => {
-    langRef.current = lang;
-  }, [lang]);
+  const onActiveSceneChangeRef = useRef(onActiveSceneChange);
+  const lastReportedLightRef = useRef(activeLightIdx);
+  const lastReportedDarkRef = useRef(activeDarkIdx);
 
   useEffect(() => {
     isPausedRef.current = isPaused;
@@ -172,12 +183,30 @@ export default function WebbDeepFieldCanvas({
   }, [lightMode]);
 
   useEffect(() => {
-    selectedSceneRef.current = selectedLightScene;
+    selectedLightSceneRef.current = selectedLightScene;
+    if (selectedLightScene !== null) {
+      const idx = Number(selectedLightScene) % 12;
+      lastReportedLightRef.current = idx;
+      setActiveLightIdx(idx);
+    }
   }, [selectedLightScene]);
+
+  useEffect(() => {
+    selectedDarkSceneRef.current = selectedDarkScene;
+    if (selectedDarkScene !== null) {
+      const idx = Number(selectedDarkScene) % 4;
+      lastReportedDarkRef.current = idx;
+      setActiveDarkIdx(idx);
+    }
+  }, [selectedDarkScene]);
 
   useEffect(() => {
     morphOverrideRef.current = morphOverride;
   }, [morphOverride]);
+
+  useEffect(() => {
+    onActiveSceneChangeRef.current = onActiveSceneChange;
+  }, [onActiveSceneChange]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -263,10 +292,10 @@ export default function WebbDeepFieldCanvas({
     let animId;
     let lastTime = performance.now();
     let elapsed = 0;
-    let sceneA = 0;
-    let sceneB = 0;
+    let sceneA = selectedLightSceneRef.current !== null ? Number(selectedLightSceneRef.current) % 12 : 0;
+    let sceneB = sceneA;
     let sceneMix = 0;
-    let lastTargetScene = selectedSceneRef.current;
+    let lastTargetScene = selectedLightSceneRef.current;
 
     const render = (now) => {
       const dt = Math.min(0.1, Math.max(0, (now - lastTime) * 0.001));
@@ -284,10 +313,10 @@ export default function WebbDeepFieldCanvas({
 
         if (isLight) {
           let activePairIdx = 0;
-          if (selectedSceneRef.current !== null) {
-            const target = Number(selectedSceneRef.current) % 10;
+          if (selectedLightSceneRef.current !== null) {
+            const target = Number(selectedLightSceneRef.current) % 12;
             if (lastTargetScene !== target) {
-              // Start a smooth direct particle transition from current visible scene to the clicked scene
+              // Smooth direct particle transition from current visible scene to the clicked scene
               sceneA = sceneMix > 0.5 ? sceneB : sceneA;
               sceneB = target;
               sceneMix = 0.0;
@@ -297,22 +326,21 @@ export default function WebbDeepFieldCanvas({
             activePairIdx = sceneB;
           } else {
             lastTargetScene = null;
-            const autoPhase = (elapsed * 0.075) % 10.0;
-            sceneA = Math.floor(autoPhase) % 10;
-            sceneB = (sceneA + 1) % 10;
-            // Hold each scene clearly for 70% of the slot, then smoothly glide to the next over 30%
+            const autoPhase = (elapsed * 0.075) % 12.0;
+            sceneA = Math.floor(autoPhase) % 12;
+            sceneB = (sceneA + 1) % 12;
+            // Hold each scene clearly for 68% of the slot, then smoothly glide to the next over 32%
             const slotFrac = autoPhase - Math.floor(autoPhase);
             sceneMix = Math.max(0.0, Math.min(1.0, (slotFrac - 0.68) / 0.32));
             activePairIdx = sceneMix > 0.5 ? sceneB : sceneA;
           }
 
-          const list = LIGHT_ARTWORKS[langRef.current] || LIGHT_ARTWORKS.EN;
-          const piece = list[activePairIdx] || list[0];
-          if (artworkTitleRef.current && artworkTitleRef.current.textContent !== piece.title) {
-            artworkTitleRef.current.textContent = piece.title;
-          }
-          if (artworkMediumRef.current && artworkMediumRef.current.textContent !== piece.medium) {
-            artworkMediumRef.current.textContent = piece.medium;
+          if (lastReportedLightRef.current !== activePairIdx) {
+            lastReportedLightRef.current = activePairIdx;
+            setActiveLightIdx(activePairIdx);
+            if (onActiveSceneChangeRef.current) {
+              onActiveSceneChangeRef.current(activePairIdx, true);
+            }
           }
 
           gl.disable(gl.BLEND);
@@ -341,15 +369,22 @@ export default function WebbDeepFieldCanvas({
           gl.uniform1f(lPtMorphLoc, activeMorph);
           gl.drawArrays(gl.POINTS, 0, PARTICLE_COUNT);
         } else {
-          const activePair = (elapsed * 0.12) % 4.0;
-          const pairIdx = Math.floor(activePair) % 4;
-          const list = ARTWORKS[langRef.current] || ARTWORKS.EN;
-          const piece = list[pairIdx];
-          if (artworkTitleRef.current && artworkTitleRef.current.textContent !== piece.title) {
-            artworkTitleRef.current.textContent = piece.title;
+          let activePair = 0;
+          let pairIdx = 0;
+          if (selectedDarkSceneRef.current !== null) {
+            pairIdx = Number(selectedDarkSceneRef.current) % 4;
+            activePair = pairIdx;
+          } else {
+            activePair = (elapsed * 0.12) % 4.0;
+            pairIdx = Math.floor(activePair) % 4;
           }
-          if (artworkMediumRef.current && artworkMediumRef.current.textContent !== piece.medium) {
-            artworkMediumRef.current.textContent = piece.medium;
+
+          if (lastReportedDarkRef.current !== pairIdx) {
+            lastReportedDarkRef.current = pairIdx;
+            setActiveDarkIdx(pairIdx);
+            if (onActiveSceneChangeRef.current) {
+              onActiveSceneChangeRef.current(pairIdx, false);
+            }
           }
 
           gl.disable(gl.BLEND);
@@ -396,9 +431,17 @@ export default function WebbDeepFieldCanvas({
     };
   }, []);
 
-  const initialList = lightMode
+  const currentList = lightMode
     ? LIGHT_ARTWORKS[lang] || LIGHT_ARTWORKS.EN
-    : ARTWORKS[lang] || ARTWORKS.EN;
+    : DARK_ARTWORKS[lang] || DARK_ARTWORKS.EN;
+  const activeIdx = lightMode
+    ? selectedLightScene !== null
+      ? Number(selectedLightScene) % 12
+      : activeLightIdx
+    : selectedDarkScene !== null
+    ? Number(selectedDarkScene) % 4
+    : activeDarkIdx;
+  const currentPiece = currentList[activeIdx] || currentList[0];
 
   return (
     <div
@@ -429,31 +472,29 @@ export default function WebbDeepFieldCanvas({
           textAlign: 'center',
           gap: '0.15rem',
           width: '90%',
-          maxWidth: '640px',
+          maxWidth: '680px',
         }}
       >
         <div
-          ref={artworkTitleRef}
           className="serif-heading"
           style={{
-            fontSize: '0.84rem',
+            fontSize: '0.88rem',
             fontStyle: 'italic',
-            color: lightMode ? 'rgba(20, 32, 26, 0.86)' : 'rgba(255, 255, 255, 0.78)',
-            fontWeight: 500,
+            color: lightMode ? 'rgba(20, 32, 26, 0.90)' : 'rgba(255, 255, 255, 0.84)',
+            fontWeight: 600,
             letterSpacing: '0.01em',
           }}
         >
-          {initialList[0].title}
+          {currentPiece.title}
         </div>
         <div
-          ref={artworkMediumRef}
           style={{
             fontSize: '0.68rem',
-            color: lightMode ? 'rgba(40, 58, 48, 0.56)' : 'rgba(255, 255, 255, 0.38)',
+            color: lightMode ? 'rgba(40, 58, 48, 0.62)' : 'rgba(255, 255, 255, 0.45)',
             letterSpacing: '0.03em',
           }}
         >
-          {initialList[0].medium}
+          {currentPiece.medium}
         </div>
       </div>
     </div>

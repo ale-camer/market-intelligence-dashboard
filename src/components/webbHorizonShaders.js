@@ -596,7 +596,7 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     colQ = vec3(0.1, 0.5, 0.7);
 
     // =========================================================================
-    // 01. GIRASOL FIBONACCI (YA ELEGIDO) <-> ESPIRAL ÁUREA & ARCOS DE FIBONACCI
+    // 01. GIRASOL FIBONACCI <-> ESPIRAL ÁUREA & ARCOS DE FIBONACCI
     // =========================================================================
     if (sc == 0) {
       float idx0 = floor(((u * 0.5 + 0.5) * 0.7 + v * 0.3) * 3200.0);
@@ -631,95 +631,141 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     }
 
     // =========================================================================
-    // 02. FLOR DE LOTO & ONDAS DE ESTANQUE <-> INTERFERENCIA DE ONDAS DE VOLATILIDAD
+    // 02. FLOR SAKURA <-> ONDAS ARMÓNICAS DE FOURIER
     // =========================================================================
     else if (sc == 1) {
-      float ang = u * 3.14159 + uTime * 0.03;
-      if (v < 0.58) {
-        // Sacred 8/16-petal Lotus mandala in the center
-        float tier = floor((v / 0.58) * 3.0); // 3 concentric lotus petal crowns
-        float petals = tier == 0.0 ? 8.0 : (tier == 1.0 ? 12.0 : 16.0);
-        float lotusWave = pow(abs(cos(ang * petals * 0.5 + tier * 0.4)), 0.7);
-        float rBase = 0.04 + tier * 0.055;
-        float rLotus = rBase + (0.045 + 0.045 * lotusWave) * fract((v / 0.58) * 3.0);
-        posN = vec2(cos(ang) * rLotus * 1.15 * aspect * 0.52, yCenter + sin(ang) * rLotus * 0.90);
-        colN = tier == 0.0
-          ? vec3(0.88, 0.56, 0.04)
-          : mix(vec3(0.86, 0.24, 0.48), vec3(0.06, 0.60, 0.40), tier / 2.0);
+      float ang1 = u * 3.14159 + uTime * 0.03;
+      float cos5 = cos(5.0 * ang1);
+      float notch = 0.045 * pow(max(0.0, cos5), 8.0);
+      float maxR1 = 0.07 + 0.24 * pow(0.5 + 0.5 * cos5, 0.65) - notch;
+      if (v < 0.18) {
+        float rStam = (v / 0.18) * 0.095;
+        posN = vec2(cos(ang1) * rStam * 1.15 * aspect * 0.52, yCenter + sin(ang1) * rStam);
+        colN = mix(vec3(0.06, 0.56, 0.36), vec3(0.88, 0.56, 0.06), smoothstep(0.05, 0.09, rStam));
       } else {
-        // Concentric pond water ripples expanding outward
-        float rippleIdx = floor(((v - 0.58) / 0.42) * 5.0);
-        float rRipple = 0.21 + rippleIdx * 0.045 + mod(uTime * 0.025, 0.045);
-        posN = vec2(cos(ang) * rRipple * 1.35 * aspect * 0.52, yCenter + sin(ang) * rRipple * 0.72);
-        colN = mix(vec3(0.06, 0.56, 0.82), vec3(0.08, 0.62, 0.44), rippleIdx / 4.0);
+        float rFill = pow((v - 0.18) / 0.82, 0.75) * maxR1;
+        posN = vec2(cos(ang1) * rFill * 1.18 * aspect * 0.52, yCenter + sin(ang1) * rFill * 0.96);
+        colN = mix(vec3(0.84, 0.18, 0.44), vec3(0.12, 0.56, 0.78), smoothstep(0.12, 0.30, rFill));
       }
 
-      // Quant: Two-Source Wave Interference & Contagion Field
-      float gridX = u * 0.48;
-      float gridY = (v - 0.5) * 0.36;
-      float d1 = length(vec2(gridX + 0.16, gridY));
-      float d2 = length(vec2(gridX - 0.16, gridY));
-      float waveZ = 0.055 * (cos(d1 * 28.0 - uTime * 0.7) + cos(d2 * 28.0 - uTime * 0.7)) * exp(-length(vec2(gridX, gridY)) * 2.2);
-      posQ = vec2((gridX + gridY * 0.25) * aspect * 0.52, yCenter + gridY * 0.75 + waveZ);
-      colQ = mix(vec3(0.06, 0.54, 0.84), vec3(0.06, 0.62, 0.36), 0.5 + 0.5 * (waveZ / 0.08));
+      float modeIdx = floor(v * 6.0);
+      float freq = 1.0 + modeIdx * 1.5;
+      float amp = 0.15 / (1.0 + modeIdx * 0.45);
+      float xWave = u * 0.56;
+      float phaseShift = uTime * (0.32 + modeIdx * 0.08) + modeIdx * 1.047;
+      float yWave = yCenter + (modeIdx - 2.5) * 0.032
+                  + amp * sin(xWave * freq * 5.5 - phaseShift)
+                  + 0.025 * cos(xWave * 3.0 + uTime * 0.35);
+      posQ = vec2(xWave * aspect * 0.52, yWave + (fract(v * 6.0) - 0.5) * 0.012);
+      colQ = mix(
+        vec3(0.06, 0.58, 0.40),
+        mix(vec3(0.08, 0.52, 0.84), vec3(0.84, 0.20, 0.46), modeIdx / 5.0),
+        0.5 + 0.5 * sin(xWave * 4.0 + modeIdx)
+      );
     }
 
     // =========================================================================
-    // 03. CARACOLA NAUTILUS & OLAS <-> CICLOS DE ELLIOTT & CANAL DE REGRESIÓN OLS
+    // 03. MARIPOSA MONARCA <-> ATRACTOR CAÓTICO DE LORENZ
     // =========================================================================
     else if (sc == 2) {
-      // Chambered Nautilus logarithmic shell with curved septa chambers
-      float tShell = (u * 0.5 + 0.5) * 3.6 * 3.14159;
-      float rOuter = 0.016 * exp(0.26 * tShell);
-      float rInner = 0.016 * exp(0.26 * max(0.0, tShell - 6.28318));
-      float angShell = tShell - uTime * 0.04;
-      if (v < 0.65) {
-        // Spiral shell wall & nacre fill
-        float rFill = mix(rInner, rOuter, v / 0.65);
-        posN = vec2(cos(angShell) * rFill * 1.15 * aspect * 0.52, yCenter + sin(angShell) * rFill * 0.92);
-        colN = mix(vec3(0.06, 0.54, 0.82), vec3(0.06, 0.62, 0.42), clamp(rOuter / 0.32, 0.0, 1.0));
-      } else {
-        // 24 curved chamber septa ribs inside the Nautilus
-        float chamberIdx = floor((u * 0.5 + 0.5) * 24.0);
-        float cTheta = chamberIdx * (3.6 * 3.14159 / 24.0) - uTime * 0.04;
-        float rOutC = 0.016 * exp(0.26 * (chamberIdx * (3.6 * 3.14159 / 24.0)));
-        float rInC  = rOutC * 0.54;
-        float sFrac = (v - 0.65) / 0.35;
-        float septaAng = cTheta - 0.38 * sin(sFrac * 3.14159);
-        float rSepta = mix(rInC, rOutC, sFrac);
-        posN = vec2(cos(septaAng) * rSepta * 1.15 * aspect * 0.52, yCenter + sin(septaAng) * rSepta * 0.92);
-        colN = vec3(0.88, 0.54, 0.04);
-      }
+      float theta2 = u * 3.14159;
+      float rButt = exp(sin(theta2)) - 2.0 * cos(4.0 * theta2) + pow(sin((2.0 * theta2 - 3.14159) / 24.0), 5.0);
+      float wingFlap = 0.88 + 0.12 * sin(uTime * 1.15);
+      float scaleR = 0.068 * sqrt(0.15 + 0.85 * v) * rButt;
+      posN = vec2(cos(theta2) * scaleR * wingFlap * 1.25 * aspect * 0.52, (yCenter - 0.03) + sin(theta2) * scaleR * 0.92);
+      colN = mix(vec3(0.08, 0.54, 0.84), vec3(0.06, 0.62, 0.38), smoothstep(0.35, 0.85, v));
+      if (v < 0.38) colN = vec3(0.90, 0.42, 0.06);
 
-      // Quant: OLS Linear Regression Channel (+/- 2 sigma bands) + Harmonic Price Wave
-      float xCh = u * 0.54;
-      float trendY = yCenter + xCh * 0.24;
-      float elliottWave = 0.065 * sin(xCh * 9.0 - uTime * 0.45) + 0.032 * sin(xCh * 18.0 + uTime * 0.3);
-      if (v < 0.52) {
-        // Main harmonic price series oscillating inside channel
-        posQ = vec2(xCh * aspect * 0.52, trendY + elliottWave + (v - 0.26) * 0.025);
-        colQ = elliottWave >= 0.0 ? vec3(0.05, 0.60, 0.36) : vec3(0.08, 0.54, 0.82);
-      } else {
-        // OLS central regression line + upper (+2σ) and lower (-2σ) confidence rails
-        float railPick = floor((v - 0.52) / 0.48 * 3.0) - 1.0; // -1, 0, +1
-        posQ = vec2(xCh * aspect * 0.52, trendY + railPick * 0.105);
-        colQ = railPick == 0.0 ? vec3(0.88, 0.54, 0.04) : vec3(0.08, 0.56, 0.74);
-      }
+      float lobe2 = u >= 0.0 ? 1.0 : -1.0;
+      float tLoop = v * 6.28318 * 3.0 + uTime * 0.32;
+      float rLoop = 0.04 + 0.16 * fract(abs(u) * 7.0 + v * 0.5);
+      float lx = lobe2 * (0.19 + cos(tLoop) * rLoop);
+      float ly = yCenter + sin(tLoop) * rLoop * 0.82 + lobe2 * cos(tLoop) * 0.04;
+      posQ = vec2(lx * 1.25 * aspect * 0.52, ly);
+      colQ = lobe2 > 0.0
+        ? mix(vec3(0.06, 0.60, 0.38), vec3(0.08, 0.54, 0.84), rLoop / 0.20)
+        : mix(vec3(0.08, 0.54, 0.84), vec3(0.86, 0.38, 0.12), rLoop / 0.20);
     }
 
     // =========================================================================
-    // 04. BANDADA DE GOLONDRINAS (MURMURACIÓN) <-> ÓRBITAS DE 3 REGÍMENES DE MARKOV
+    // 04. HELECHO FRACTAL <-> ÁRBOL ISOLATION FOREST (P-06)
     // =========================================================================
     else if (sc == 3) {
+      float frondIdx = floor((u * 0.5 + 0.5) * 7.0) - 3.0;
+      float stemT = v;
+      float sway = 0.016 * sin(uTime * 0.55 + frondIdx + stemT * 4.0);
+      float angle = frondIdx * 0.36;
+      float frondLen = 0.34 - abs(frondIdx) * 0.032;
+      float spineX = sin(angle) * stemT * frondLen + sway;
+      float spineY = -0.39 + cos(angle) * stemT * frondLen;
+      float leafletSide = mod(floor(rnd * 20.0), 2.0) * 2.0 - 1.0;
+      float leafletSpan = (1.0 - stemT * 0.72) * 0.095 * fract(u * 13.0);
+      vec2 normalDir = vec2(cos(angle), -sin(angle));
+      posN = vec2(
+        (spineX + normalDir.x * leafletSide * leafletSpan) * aspect * 0.52,
+        spineY + normalDir.y * leafletSide * leafletSpan * 0.65
+      );
+      colN = mix(vec3(0.04, 0.52, 0.30), vec3(0.18, 0.72, 0.36), stemT);
+
+      float level = floor(v * 5.0);
+      float nodesInLevel = exp2(level);
+      float nodeIdx = floor((u * 0.5 + 0.5) * nodesInLevel);
+      float xNode = ((nodeIdx + 0.5) / nodesInLevel) * 2.0 - 1.0;
+      float parentIdx = floor(nodeIdx * 0.5);
+      float xParent = ((parentIdx + 0.5) / max(1.0, nodesInLevel * 0.5)) * 2.0 - 1.0;
+      float branchFrac = fract(v * 5.0);
+      float treeX = mix(xParent, xNode, branchFrac) * 0.52;
+      float treeY = 0.02 - (level + branchFrac) * 0.075;
+      posQ = vec2(treeX * aspect * 0.52, treeY);
+      bool isAnomalyNode = (level >= 2.0 && nodeIdx == nodesInLevel - 1.0);
+      colQ = isAnomalyNode
+        ? vec3(0.88, 0.28, 0.16)
+        : mix(vec3(0.05, 0.56, 0.34), vec3(0.08, 0.56, 0.80), level / 4.0);
+    }
+
+    // =========================================================================
+    // 05. DIENTE DE LEÓN ESFÉRICO <-> CONO DE CRECIMIENTO DE KELLY
+    // =========================================================================
+    else if (sc == 4) {
+      if (v < 0.58) {
+        float spokeIdx = floor((u * 0.5 + 0.5) * 32.0);
+        float ang = spokeIdx * (6.28318 / 32.0) + uTime * 0.025;
+        float rSpoke = (v / 0.58) * 0.22;
+        float tipFan = smoothstep(0.75, 1.0, v / 0.58) * (fract(u * 32.0) - 0.5) * 0.045;
+        posN = vec2((-0.14 + cos(ang + tipFan) * rSpoke * 1.15) * aspect * 0.52, yCenter + sin(ang + tipFan) * rSpoke * 0.92);
+        colN = mix(vec3(0.05, 0.56, 0.34), vec3(0.08, 0.56, 0.82), v / 0.58);
+      } else {
+        float tWind = (v - 0.58) / 0.42;
+        float seedId = floor((u * 0.5 + 0.5) * 18.0) / 18.0 * 2.0 - 1.0;
+        float xSeed = 0.04 + tWind * 0.50;
+        float ySeed = yCenter + seedId * 0.18 * sqrt(tWind + 0.06)
+                    + 0.028 * sin(tWind * 8.0 - uTime * 0.45 + seedId * 9.0);
+        posN = vec2(xSeed * aspect * 0.52, ySeed);
+        colN = mix(vec3(0.08, 0.56, 0.82), vec3(0.88, 0.54, 0.04), tWind);
+      }
+
+      float curveIdx = floor(v * 8.0) / 8.0;
+      float fLev = (u * 0.5 + 0.5);
+      float fOpt = 0.46;
+      float kellyG = 0.26 * (1.0 - pow((fLev - fOpt) / fOpt, 2.0)) * (0.40 + 0.60 * curveIdx);
+      posQ = vec2((-0.50 + fLev * 1.0) * aspect * 0.52, -0.29 + kellyG);
+      colQ = fLev <= fOpt
+        ? mix(vec3(0.08, 0.54, 0.82), vec3(0.05, 0.62, 0.36), fLev / fOpt)
+        : mix(vec3(0.88, 0.54, 0.04), vec3(0.84, 0.20, 0.36), (fLev - fOpt) / (1.0 - fOpt));
+    }
+
+    // =========================================================================
+    // 06. BANDADA DE GOLONDRINAS <-> 3 REGÍMENES DE MARKOV
+    // =========================================================================
+    else if (sc == 5) {
       float s = u;
-      float streamId = floor(v * 3.0) - 1.0; // 3 interwoven flock streams
+      float streamId = floor(v * 3.0) - 1.0;
       float ribbonX = s * 0.54 + 0.07 * sin(s * 4.2 - uTime * 0.45 + streamId);
       float ribbonY = yCenter + streamId * 0.065 + 0.12 * sin(s * 3.4 + uTime * 0.35) * cos(s * 2.1 - uTime * 0.2);
       float spread = (fract(v * 3.0) - 0.5) * (0.045 + 0.055 * sin(s * 5.0 + uTime * 0.4));
       posN = vec2((ribbonX + spread * 0.4) * aspect * 0.52, ribbonY + spread);
       colN = mix(vec3(0.06, 0.54, 0.82), vec3(0.06, 0.62, 0.38), 0.5 + 0.5 * sin(s * 3.0 + streamId));
 
-      // Quant: 3-State Markov Regime Switching Orbitals (Calm/Bull, Transition, Stress)
       float stateId = floor((u * 0.5 + 0.5) * 3.0);
       vec2 center0 = vec2(-0.30, yCenter - 0.06);
       vec2 center1 = vec2(0.0,   yCenter + 0.11);
@@ -743,9 +789,9 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     }
 
     // =========================================================================
-    // 05. CORDILLERA EN DESHIELO & RÍOS <-> TOPOGRAFÍA ISO-SHARPE & ALFA
+    // 07. CORDILLERA & RÍOS <-> TOPOGRAFÍA ISO-SHARPE & ALFA
     // =========================================================================
-    else if (sc == 4) {
+    else if (sc == 6) {
       float ridgeLayer = floor(v * 14.0) / 14.0;
       float xMtn = u * 0.58;
       float peak1 = 0.22 * exp(-pow((xMtn + 0.18) * 4.2, 2.0));
@@ -755,12 +801,11 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
       float yMtn = -0.34 + (ridgeLayer - 0.5) * 0.16 + elev * (1.1 - ridgeLayer * 0.45);
       posN = vec2((xMtn + (ridgeLayer - 0.5) * 0.14) * aspect * 0.52, yMtn);
       if (abs(xMtn) < 0.095 && elev < 0.13) {
-        colN = vec3(0.06, 0.56, 0.84); // Glacial celeste river
+        colN = vec3(0.06, 0.56, 0.84);
       } else {
         colN = mix(vec3(0.05, 0.58, 0.34), vec3(0.12, 0.64, 0.68), smoothstep(0.04, 0.22, elev));
       }
 
-      // Quant: Topographic Iso-Sharpe 3D Contour Rings
       float ringIdx = floor(v * 10.0) / 10.0;
       float ang = u * 3.14159 + uTime * 0.04;
       float rx = (0.05 + ringIdx * 0.45) * (1.0 + 0.12 * cos(ang * 3.0));
@@ -771,9 +816,9 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     }
 
     // =========================================================================
-    // 06. PANAL DE ABEJAS & LAVANDA <-> RED DE CLUSTERS DE CORRELACIÓN (ENB)
+    // 08. PANAL & LAVANDA <-> RED DE CORRELACIÓN (ENB)
     // =========================================================================
-    else if (sc == 5) {
+    else if (sc == 7) {
       float cellId = floor((u * 0.5 + 0.5) * 19.0);
       float row = floor(cellId / 5.0) - 1.5;
       float colIdx = mod(cellId, 5.0) - 2.0 + mod(abs(row), 2.0) * 0.5;
@@ -805,21 +850,87 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     }
 
     // =========================================================================
-    // 07. ÁRBOL DE PRIMAVERA (COPA & RAÍCES) <-> GRAFO ACÍCLICO DIRIGIDO (DAG P-01..P-13)
+    // 09. FLOR DE LOTO & ESTANQUE <-> INTERFERENCIA DE ONDAS
     // =========================================================================
-    else if (sc == 6) {
+    else if (sc == 8) {
+      float ang = u * 3.14159 + uTime * 0.03;
+      if (v < 0.58) {
+        float tier = floor((v / 0.58) * 3.0);
+        float petals = tier == 0.0 ? 8.0 : (tier == 1.0 ? 12.0 : 16.0);
+        float lotusWave = pow(abs(cos(ang * petals * 0.5 + tier * 0.4)), 0.7);
+        float rBase = 0.04 + tier * 0.055;
+        float rLotus = rBase + (0.045 + 0.045 * lotusWave) * fract((v / 0.58) * 3.0);
+        posN = vec2(cos(ang) * rLotus * 1.15 * aspect * 0.52, yCenter + sin(ang) * rLotus * 0.90);
+        colN = tier == 0.0
+          ? vec3(0.88, 0.56, 0.04)
+          : mix(vec3(0.86, 0.24, 0.48), vec3(0.06, 0.60, 0.40), tier / 2.0);
+      } else {
+        float rippleIdx = floor(((v - 0.58) / 0.42) * 5.0);
+        float rRipple = 0.21 + rippleIdx * 0.045 + mod(uTime * 0.025, 0.045);
+        posN = vec2(cos(ang) * rRipple * 1.35 * aspect * 0.52, yCenter + sin(ang) * rRipple * 0.72);
+        colN = mix(vec3(0.06, 0.56, 0.82), vec3(0.08, 0.62, 0.44), rippleIdx / 4.0);
+      }
+
+      float gridX = u * 0.48;
+      float gridY = (v - 0.5) * 0.36;
+      float d1 = length(vec2(gridX + 0.16, gridY));
+      float d2 = length(vec2(gridX - 0.16, gridY));
+      float waveZ = 0.055 * (cos(d1 * 28.0 - uTime * 0.7) + cos(d2 * 28.0 - uTime * 0.7)) * exp(-length(vec2(gridX, gridY)) * 2.2);
+      posQ = vec2((gridX + gridY * 0.25) * aspect * 0.52, yCenter + gridY * 0.75 + waveZ);
+      colQ = mix(vec3(0.06, 0.54, 0.84), vec3(0.06, 0.62, 0.36), 0.5 + 0.5 * (waveZ / 0.08));
+    }
+
+    // =========================================================================
+    // 10. CARACOLA NAUTILUS <-> CANAL DE REGRESIÓN OLS
+    // =========================================================================
+    else if (sc == 9) {
+      float tShell = (u * 0.5 + 0.5) * 3.6 * 3.14159;
+      float rOuter = 0.016 * exp(0.26 * tShell);
+      float rInner = 0.016 * exp(0.26 * max(0.0, tShell - 6.28318));
+      float angShell = tShell - uTime * 0.04;
+      if (v < 0.65) {
+        float rFill = mix(rInner, rOuter, v / 0.65);
+        posN = vec2(cos(angShell) * rFill * 1.15 * aspect * 0.52, yCenter + sin(angShell) * rFill * 0.92);
+        colN = mix(vec3(0.06, 0.54, 0.82), vec3(0.06, 0.62, 0.42), clamp(rOuter / 0.32, 0.0, 1.0));
+      } else {
+        float chamberIdx = floor((u * 0.5 + 0.5) * 24.0);
+        float cTheta = chamberIdx * (3.6 * 3.14159 / 24.0) - uTime * 0.04;
+        float rOutC = 0.016 * exp(0.26 * (chamberIdx * (3.6 * 3.14159 / 24.0)));
+        float rInC  = rOutC * 0.54;
+        float sFrac = (v - 0.65) / 0.35;
+        float septaAng = cTheta - 0.38 * sin(sFrac * 3.14159);
+        float rSepta = mix(rInC, rOutC, sFrac);
+        posN = vec2(cos(septaAng) * rSepta * 1.15 * aspect * 0.52, yCenter + sin(septaAng) * rSepta * 0.92);
+        colN = vec3(0.88, 0.54, 0.04);
+      }
+
+      float xCh = u * 0.54;
+      float trendY = yCenter + xCh * 0.24;
+      float elliottWave = 0.065 * sin(xCh * 9.0 - uTime * 0.45) + 0.032 * sin(xCh * 18.0 + uTime * 0.3);
+      if (v < 0.52) {
+        posQ = vec2(xCh * aspect * 0.52, trendY + elliottWave + (v - 0.26) * 0.025);
+        colQ = elliottWave >= 0.0 ? vec3(0.05, 0.60, 0.36) : vec3(0.08, 0.54, 0.82);
+      } else {
+        float railPick = floor((v - 0.52) / 0.48 * 3.0) - 1.0;
+        posQ = vec2(xCh * aspect * 0.52, trendY + railPick * 0.105);
+        colQ = railPick == 0.0 ? vec3(0.88, 0.54, 0.04) : vec3(0.08, 0.56, 0.74);
+      }
+    }
+
+    // =========================================================================
+    // 11. ÁRBOL COPA & RAÍCES <-> GRAFO PIPELINE DAG (P-01..P-13)
+    // =========================================================================
+    else if (sc == 10) {
       if (v < 0.22) {
-        // Trunk & deep roots
-        float tTrunk = v / 0.22; // 0 = roots, 1 = top of trunk
+        float tTrunk = v / 0.22;
         float rootSpread = (1.0 - tTrunk) * (1.0 - tTrunk) * 0.26 * u;
         float trunkW = (0.022 + (1.0 - tTrunk) * 0.025) * u;
         posN = vec2((rootSpread + trunkW) * aspect * 0.52, -0.39 + tTrunk * 0.16);
         colN = mix(vec3(0.38, 0.26, 0.12), vec3(0.06, 0.52, 0.30), tTrunk);
       } else {
-        // Lush spherical radial spring tree canopy of branches & blossoms
         float vCanopy = (v - 0.22) / 0.78;
         float branchId = floor((u * 0.5 + 0.5) * 15.0);
-        float branchAng = -1.25 + (branchId / 14.0) * 2.50; // Fan of 15 main boughs
+        float branchAng = -1.25 + (branchId / 14.0) * 2.50;
         float rBranch = pow(vCanopy, 0.75) * 0.27;
         float leafCluster = 0.032 * sin(vCanopy * 18.0 + branchId * 3.0);
         float xCan = sin(branchAng) * rBranch * 1.35 + cos(branchAng) * leafCluster;
@@ -830,21 +941,18 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
           : mix(vec3(0.04, 0.52, 0.30), vec3(0.16, 0.72, 0.38), vCanopy);
       }
 
-      // Quant: 4-Stage Directed Acyclic Graph (DAG P-01..P-13 Pipeline Architecture)
-      float stage = floor((u * 0.5 + 0.5) * 4.0); // Columns 0, 1, 2, 3
+      float stage = floor((u * 0.5 + 0.5) * 4.0);
       float nodesInCol = stage == 0.0 ? 3.0 : (stage == 1.0 ? 4.0 : (stage == 2.0 ? 4.0 : 2.0));
       float nIdx = floor(v * nodesInCol);
       float subV = fract(v * nodesInCol);
       float xCol = -0.42 + stage * 0.28;
       float yNode = yCenter + ((nIdx + 0.5) / nodesInCol - 0.5) * 0.32;
       if (subV < 0.55) {
-        // Crisp circular module node
         float a = rnd * 6.28318;
         float rN = sqrt(subV / 0.55) * 0.036;
         posQ = vec2((xCol + cos(a) * rN) * aspect * 0.52, yNode + sin(a) * rN);
         colQ = stage < 2.0 ? vec3(0.06, 0.58, 0.38) : vec3(0.08, 0.54, 0.84);
       } else {
-        // Directed data-contract edge to next stage
         float nextStage = min(3.0, stage + 1.0);
         float nextNodes = nextStage == 1.0 ? 4.0 : (nextStage == 2.0 ? 4.0 : 2.0);
         float nextIdx = mod(nIdx + floor(rnd * 2.0), nextNodes);
@@ -857,59 +965,20 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
     }
 
     // =========================================================================
-    // 08. ROSA DE LOS VIENTOS & BRISA <-> RADAR POLAR MULTI-FACTOR (6 EJES QUANT)
+    // 12. ADN BOTÁNICO (DOBLE HÉLICE) <-> COINTEGRACIÓN (PAIRS TRADING)
     // =========================================================================
-    else if (sc == 7) {
-      // 8-point Botanical Compass Rose & Swirling Wind Streams
-      float ang = u * 3.14159 + uTime * 0.03;
-      float star8 = pow(abs(cos(ang * 4.0)), 1.6);
-      float starDiag = 0.65 * pow(abs(sin(ang * 4.0)), 2.2);
-      float rCompass = (0.06 + 0.24 * max(star8, starDiag)) * sqrt(v);
-      posN = vec2(cos(ang) * rCompass * 1.15 * aspect * 0.52, yCenter + sin(ang) * rCompass * 0.92);
-      colN = star8 > starDiag
-        ? mix(vec3(0.05, 0.58, 0.36), vec3(0.08, 0.54, 0.84), sqrt(v))
-        : vec3(0.88, 0.54, 0.04);
-
-      // Quant: 6-Axis Multi-Factor Radar Polygon (Momentum, Value, Quality, Low-Vol, Liquidity, Carry)
-      float sector = floor((u * 0.5 + 0.5) * 6.0);
-      float secT = fract((u * 0.5 + 0.5) * 6.0);
-      float a1 = sector * 1.04719755;
-      float a2 = (sector + 1.0) * 1.04719755;
-      // Factor scores for each of the 6 vertices
-      float s1 = 0.26 * (0.65 + 0.35 * sin(sector * 2.1 + uTime * 0.3));
-      float s2 = 0.26 * (0.65 + 0.35 * sin(mod(sector + 1.0, 6.0) * 2.1 + uTime * 0.3));
-      if (v < 0.55) {
-        // Active Factor Polygon + Web rings
-        float ringScale = floor((v / 0.55) * 4.0 + 1.0) / 4.0;
-        vec2 vtx1 = vec2(cos(a1), sin(a1)) * (v < 0.25 ? s1 : 0.25 * ringScale);
-        vec2 vtx2 = vec2(cos(a2), sin(a2)) * (v < 0.25 ? s2 : 0.25 * ringScale);
-        vec2 pt = mix(vtx1, vtx2, secT);
-        posQ = vec2(pt.x * 1.15 * aspect * 0.52, yCenter + pt.y * 0.92);
-        colQ = v < 0.25 ? vec3(0.05, 0.60, 0.36) : vec3(0.08, 0.54, 0.80);
-      } else {
-        // 6 Radial Factor Spokes
-        float rSpoke = ((v - 0.55) / 0.45) * 0.27;
-        posQ = vec2(cos(a1) * rSpoke * 1.15 * aspect * 0.52, yCenter + sin(a1) * rSpoke * 0.92);
-        colQ = vec3(0.86, 0.52, 0.04);
-      }
-    }
-
-    // =========================================================================
-    // 09. ADN BOTÁNICO (DOBLE HÉLICE VIVA) <-> COINTEGRACIÓN & PAIRS TRADING
-    // =========================================================================
-    else if (sc == 8) {
+    else {
       float xHelix = u * 0.54;
       float phaseH = xHelix * 8.5 - uTime * 0.45;
       float yStrand1 = yCenter + 0.14 * sin(phaseH);
       float yStrand2 = yCenter - 0.14 * sin(phaseH);
       if (v < 0.36) {
         posN = vec2(xHelix * aspect * 0.52, yStrand1 + (v - 0.18) * 0.04);
-        colN = vec3(0.05, 0.60, 0.36); // Emerald vine strand
+        colN = vec3(0.05, 0.60, 0.36);
       } else if (v < 0.72) {
         posN = vec2(xHelix * aspect * 0.52, yStrand2 + (v - 0.54) * 0.04);
-        colN = vec3(0.08, 0.54, 0.84); // Celeste water strand
+        colN = vec3(0.08, 0.54, 0.84);
       } else {
-        // 18 base-pair botanical rungs connecting the double helix
         float rungX = (floor((u * 0.5 + 0.5) * 18.0) / 17.0 * 2.0 - 1.0) * 0.52;
         float rPhase = rungX * 8.5 - uTime * 0.45;
         float yA = yCenter + 0.14 * sin(rPhase);
@@ -919,7 +988,6 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
         colN = mix(vec3(0.88, 0.54, 0.04), vec3(0.86, 0.26, 0.50), tRung);
       }
 
-      // Quant: Cointegrated Asset Pair + Z-Score Mean-Reverting Spread
       float xTime = u * 0.54;
       float commonTrend = 0.08 * sin(xTime * 3.5 + uTime * 0.25);
       float spreadZ = 0.095 * cos(xTime * 10.0 - uTime * 0.45);
@@ -930,44 +998,9 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
         posQ = vec2(xTime * aspect * 0.52, yCenter + commonTrend - spreadZ * 0.5);
         colQ = vec3(0.08, 0.54, 0.84);
       } else {
-        // Equilibrium mean line
         posQ = vec2(xTime * aspect * 0.52, yCenter + commonTrend);
         colQ = vec3(0.88, 0.54, 0.04);
       }
-    }
-
-    // =========================================================================
-    // 10. DIENTE DE LEÓN ESFÉRICO (PAPPUS) <-> CONO DE CRECIMIENTO DE KELLY
-    // =========================================================================
-    else {
-      if (v < 0.58) {
-        // Crisp 32-spoke radial Dandelion geodesic sphere with pappus crowns
-        float spokeIdx = floor((u * 0.5 + 0.5) * 32.0);
-        float ang = spokeIdx * (6.28318 / 32.0) + uTime * 0.025;
-        float rSpoke = (v / 0.58) * 0.22;
-        float tipFan = smoothstep(0.75, 1.0, v / 0.58) * (fract(u * 32.0) - 0.5) * 0.045;
-        posN = vec2((-0.14 + cos(ang + tipFan) * rSpoke * 1.15) * aspect * 0.52, yCenter + sin(ang + tipFan) * rSpoke * 0.92);
-        colN = mix(vec3(0.05, 0.56, 0.34), vec3(0.08, 0.56, 0.82), v / 0.58);
-      } else {
-        // Detached parachute seeds drifting gently rightward in the spring breeze
-        float tWind = (v - 0.58) / 0.42;
-        float seedId = floor((u * 0.5 + 0.5) * 18.0) / 18.0 * 2.0 - 1.0;
-        float xSeed = 0.04 + tWind * 0.50;
-        float ySeed = yCenter + seedId * 0.18 * sqrt(tWind + 0.06)
-                    + 0.028 * sin(tWind * 8.0 - uTime * 0.45 + seedId * 9.0);
-        posN = vec2(xSeed * aspect * 0.52, ySeed);
-        colN = mix(vec3(0.08, 0.56, 0.82), vec3(0.88, 0.54, 0.04), tWind);
-      }
-
-      // Quant: Kelly Criterion Compounding Growth Fan g(f)
-      float curveIdx = floor(v * 8.0) / 8.0;
-      float fLev = (u * 0.5 + 0.5);
-      float fOpt = 0.46;
-      float kellyG = 0.26 * (1.0 - pow((fLev - fOpt) / fOpt, 2.0)) * (0.40 + 0.60 * curveIdx);
-      posQ = vec2((-0.50 + fLev * 1.0) * aspect * 0.52, -0.29 + kellyG);
-      colQ = fLev <= fOpt
-        ? mix(vec3(0.08, 0.54, 0.82), vec3(0.05, 0.62, 0.36), fLev / fOpt)
-        : mix(vec3(0.88, 0.54, 0.04), vec3(0.84, 0.20, 0.36), (fLev - fOpt) / (1.0 - fOpt));
     }
   }
 
@@ -1003,8 +1036,8 @@ export const LIGHT_PARTICLE_VERTEX_SHADER = `
       return;
     }
 
-    int scA = int(floor(mod(uSceneA, 10.0)));
-    int scB = int(floor(mod(uSceneB, 10.0)));
+    int scA = int(floor(mod(uSceneA, 12.0)));
+    int scB = int(floor(mod(uSceneB, 12.0)));
     float mixAB = smootherstep(0.0, 1.0, clamp(uSceneMix, 0.0, 1.0));
 
     vec2 posNA; vec3 colNA; vec2 posQA; vec3 colQA;
