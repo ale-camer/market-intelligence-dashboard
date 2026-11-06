@@ -1,5 +1,5 @@
 import { tx, txList, txTpl, useViewLocale } from '../data/i18n/viewLocaleService';
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import HoverTooltip from './HoverTooltip';
 import {
   exportToCsv,
@@ -511,8 +511,69 @@ export default function MarketAnomaliesView({
     });
   }, [langCode]);
 
-  // 1. Filter by Asset Category or User Watchlist + Second-Row Trait Filter (Phase 4)
+  // 1. Filter by Asset Category or User Watchlist + Second-Row Trait Filter + Multi-Select Equity Industries (Phase 4)
   const [traitFilter, setTraitFilter] = useState('ALL');
+  const [selectedIndustries, setSelectedIndustries] = useState([]);
+  const [industryMenuOpen, setIndustryMenuOpen] = useState(false);
+  const industryMenuRef = useRef(null);
+
+  useEffect(() => {
+    if (!industryMenuOpen) return undefined;
+    const handlePointerDownOutside = (e) => {
+      if (industryMenuRef.current && !industryMenuRef.current.contains(e.target)) {
+        setIndustryMenuOpen(false);
+      }
+    };
+    document.addEventListener('pointerdown', handlePointerDownOutside);
+    return () => document.removeEventListener('pointerdown', handlePointerDownOutside);
+  }, [industryMenuOpen]);
+
+  const EQUITY_INDUSTRIES = useMemo(
+    () => [
+      {
+        id: 'SEMI_AI',
+        label: tx('Semiconductores & Hardware IA', 'Semiconductors & AI Hardware'),
+        syms: ['NVDA', 'AMD', 'AVGO', 'MU', 'QCOM', 'INTC', 'AMAT', 'AAPL'],
+      },
+      {
+        id: 'SOFTWARE_CLOUD',
+        label: tx('Software, Cloud & Ciberseguridad', 'Software, Cloud & Cyber'),
+        syms: ['MSFT', 'PLTR', 'ORCL', 'CRM', 'PANW'],
+      },
+      {
+        id: 'INTERNET_MEDIA',
+        label: tx('Internet, Media & E-Commerce', 'Internet, Media & E-Commerce'),
+        syms: ['AMZN', 'GOOGL', 'META', 'NFLX'],
+      },
+      {
+        id: 'FINANCE_PAYMENTS',
+        label: tx('Banca, Pagos & Finanzas', 'Banking, Payments & Finance'),
+        syms: ['BRK.B', 'JPM', 'V', 'MA', 'GS', 'BAC'],
+      },
+      {
+        id: 'HEALTH_PHARMA',
+        label: tx('Salud, Pharma & MedTech', 'Healthcare, Pharma & MedTech'),
+        syms: ['LLY', 'UNH', 'ISRG'],
+      },
+      {
+        id: 'CONSUMER_RETAIL',
+        label: tx('Consumo, Automotriz & Retail', 'Consumer, Auto & Retail'),
+        syms: ['TSLA', 'COST', 'WMT', 'HD', 'PG'],
+      },
+      {
+        id: 'ENERGY_OIL',
+        label: tx('Energía, Petróleo & Gas', 'Energy, Oil & Gas'),
+        syms: ['XOM', 'CVX'],
+      },
+    ],
+    [isES]
+  );
+
+  const toggleIndustrySelection = (indId) => {
+    setSelectedIndustries((prev) =>
+      prev.includes(indId) ? prev.filter((id) => id !== indId) : [...prev, indId]
+    );
+  };
 
   const GENERAL_TRAIT_FILTERS = useMemo(
     () => [
@@ -752,6 +813,9 @@ export default function MarketAnomaliesView({
     if (!availableTraitFilters.some((tf) => tf.id === traitFilter)) {
       setTraitFilter('ALL');
     }
+    if (categoryFilter !== 'EQUITY') {
+      setIndustryMenuOpen(false);
+    }
   }, [categoryFilter, availableTraitFilters, traitFilter]);
 
   const categoryFilteredCatalog = useMemo(() => {
@@ -761,12 +825,29 @@ export default function MarketAnomaliesView({
     } else if (categoryFilter !== 'ALL') {
       base = enrichedCatalog.filter((a) => a.cat === categoryFilter);
     }
+    if (categoryFilter === 'EQUITY' && selectedIndustries.length > 0) {
+      const allowedSyms = new Set();
+      EQUITY_INDUSTRIES.forEach((ind) => {
+        if (selectedIndustries.includes(ind.id)) {
+          ind.syms.forEach((s) => allowedSyms.add(s));
+        }
+      });
+      base = base.filter((a) => allowedSyms.has(a.sym));
+    }
     const activeTraitObj = availableTraitFilters.find((tf) => tf.id === traitFilter);
     if (activeTraitObj && activeTraitObj.id !== 'ALL') {
       return base.filter(activeTraitObj.match);
     }
     return base;
-  }, [enrichedCatalog, categoryFilter, watchlistSyms, availableTraitFilters, traitFilter]);
+  }, [
+    enrichedCatalog,
+    categoryFilter,
+    watchlistSyms,
+    availableTraitFilters,
+    traitFilter,
+    selectedIndustries,
+    EQUITY_INDUSTRIES,
+  ]);
 
   // 2. Aggregated Level 1 Pulse Metrics (dynamic per active asset class)
   const pulseMetrics = useMemo(() => {
@@ -2251,152 +2332,247 @@ export default function MarketAnomaliesView({
           </div>
         </div>
 
-        {/* 1.0b SECOND-ROW TRAIT FILTER MENU + 1-CLICK BULK WATCHLIST ACTION (PHASE 4: PASOS 4.1 & 4.2) */}
-        {(() => {
-          const allFilteredStarred =
-            screenerRows.length > 0 && screenerRows.every((r) => watchlistSyms.includes(r.sym));
-          return (
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                gap: '0.6rem',
-                flexWrap: 'wrap',
-                padding: '0.28rem 0.55rem',
-                borderRadius: '8px',
-                background: 'rgba(15, 23, 42, 0.42)',
-                border: '1px solid rgba(148, 163, 184, 0.14)',
-              }}
-            >
-              {/* LEFT/CENTER: GENERAL TRAITS + DYNAMIC ASSET-CLASS SPECIFIC TRAITS */}
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  flexWrap: 'wrap',
-                  gap: '0.32rem',
-                }}
-              >
-                {GENERAL_TRAIT_FILTERS.map((tf) => {
-                  const active = traitFilter === tf.id;
-                  return (
-                    <button
-                      key={tf.id}
-                      type="button"
-                      onClick={() => setTraitFilter(tf.id)}
-                      style={{
-                        fontSize: '0.69rem',
-                        fontWeight: active ? 800 : 600,
-                        padding: '0.18rem 0.48rem',
-                        borderRadius: '999px',
-                        border: active
-                          ? '1px solid rgba(var(--ui-accent-rgb), 0.55)'
-                          : '1px solid transparent',
-                        background: active ? 'rgba(var(--ui-accent-rgb), 0.15)' : 'transparent',
-                        color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.78)',
-                        textShadow: active ? '0 0 10px rgba(var(--ui-accent-rgb), 0.65)' : 'none',
-                        cursor: 'pointer',
-                        transition: 'all 0.15s ease',
-                        whiteSpace: 'nowrap',
-                      }}
-                    >
-                      {tf.label}
-                    </button>
-                  );
-                })}
-
-                {activeCategoryTraits.length > 0 && (
-                  <>
-                    <span
-                      style={{
-                        color: 'rgba(148, 163, 184, 0.32)',
-                        fontSize: '0.72rem',
-                        margin: '0 0.15rem',
-                        userSelect: 'none',
-                      }}
-                    >
-                      |
-                    </span>
-                    {activeCategoryTraits.map((tf) => {
-                      const active = traitFilter === tf.id;
-                      return (
-                        <button
-                          key={tf.id}
-                          type="button"
-                          onClick={() => setTraitFilter(tf.id)}
-                          style={{
-                            fontSize: '0.69rem',
-                            fontWeight: active ? 800 : 700,
-                            padding: '0.18rem 0.52rem',
-                            borderRadius: '999px',
-                            border: active
-                              ? '1px solid rgba(56, 189, 248, 0.65)'
-                              : '1px solid rgba(56, 189, 248, 0.22)',
-                            background: active
-                              ? 'rgba(56, 189, 248, 0.18)'
-                              : 'rgba(56, 189, 248, 0.05)',
-                            color: active ? '#38bdf8' : '#BAE6FD',
-                            textShadow: active ? '0 0 10px rgba(56, 189, 248, 0.55)' : 'none',
-                            cursor: 'pointer',
-                            transition: 'all 0.15s ease',
-                            whiteSpace: 'nowrap',
-                          }}
-                        >
-                          {tf.label}
-                        </button>
-                      );
-                    })}
-                  </>
-                )}
-              </div>
-
-              {/* RIGHT: 1-CLICK BULK WATCHLIST BUTTON (PASO 4.2) */}
+        {/* 1.0b SECOND-ROW TRAIT FILTER MENU + MULTI-SELECT EQUITY INDUSTRIES (PHASE 4: PASO 4.1) */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '0.45rem',
+            flexWrap: 'wrap',
+            padding: '0.12rem 0.4rem',
+          }}
+        >
+          {GENERAL_TRAIT_FILTERS.map((tf) => {
+            const active = traitFilter === tf.id;
+            return (
               <button
+                key={tf.id}
                 type="button"
-                disabled={screenerRows.length === 0}
-                onClick={() => {
-                  if (!onToggleWatchlist || screenerRows.length === 0) return;
-                  const syms = screenerRows.map((r) => r.sym);
-                  onToggleWatchlist(syms, allFilteredStarred ? 'remove' : 'add');
-                }}
+                onClick={() => setTraitFilter(tf.id)}
                 style={{
-                  marginLeft: 'auto',
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '0.35rem',
-                  fontSize: '0.69rem',
-                  fontWeight: 800,
-                  fontFamily: 'var(--font-mono)',
-                  padding: '0.22rem 0.65rem',
+                  fontSize: '0.72rem',
+                  fontWeight: active ? 800 : 600,
+                  padding: '0.16rem 0.45rem',
                   borderRadius: '999px',
-                  border: allFilteredStarred
-                    ? '1px solid rgba(244, 63, 94, 0.45)'
-                    : '1px solid rgba(251, 191, 36, 0.55)',
-                  background: allFilteredStarred
-                    ? 'rgba(244, 63, 94, 0.12)'
-                    : 'rgba(251, 191, 36, 0.12)',
-                  color: allFilteredStarred ? '#fda4af' : '#fbbf24',
-                  cursor: screenerRows.length === 0 ? 'not-allowed' : 'pointer',
-                  opacity: screenerRows.length === 0 ? 0.45 : 1,
+                  border: active
+                    ? '1px solid rgba(var(--ui-accent-rgb), 0.55)'
+                    : '1px solid transparent',
+                  background: active ? 'rgba(var(--ui-accent-rgb), 0.14)' : 'transparent',
+                  color: active ? 'var(--ui-accent)' : 'rgba(148, 163, 184, 0.72)',
+                  textShadow: active ? '0 0 12px rgba(var(--ui-accent-rgb), 0.75)' : 'none',
+                  cursor: 'pointer',
                   transition: 'all 0.15s ease',
                   whiteSpace: 'nowrap',
-                  flexShrink: 0,
                 }}
               >
-                {allFilteredStarred
-                  ? tx(
-                      `☆ Quitar estrella a los ${screenerRows.length} filtrados`,
-                      `☆ Unstar ${screenerRows.length} filtered`
-                    )
-                  : tx(
-                      `★ Sumar los ${screenerRows.length} filtrados a Watchlist`,
-                      `★ Add ${screenerRows.length} filtered to Watchlist`
-                    )}
+                {tf.label}
               </button>
+            );
+          })}
+
+          {activeCategoryTraits.length > 0 && (
+            <>
+              <span
+                style={{
+                  color: 'rgba(148, 163, 184, 0.32)',
+                  fontSize: '0.72rem',
+                  margin: '0 0.15rem',
+                  userSelect: 'none',
+                }}
+              >
+                |
+              </span>
+              {activeCategoryTraits.map((tf) => {
+                const active = traitFilter === tf.id;
+                return (
+                  <button
+                    key={tf.id}
+                    type="button"
+                    onClick={() => setTraitFilter(tf.id)}
+                    style={{
+                      fontSize: '0.72rem',
+                      fontWeight: active ? 800 : 700,
+                      padding: '0.16rem 0.52rem',
+                      borderRadius: '999px',
+                      border: active
+                        ? '1px solid rgba(56, 189, 248, 0.65)'
+                        : '1px solid rgba(56, 189, 248, 0.22)',
+                      background: active
+                        ? 'rgba(56, 189, 248, 0.18)'
+                        : 'rgba(56, 189, 248, 0.05)',
+                      color: active ? '#38bdf8' : '#BAE6FD',
+                      textShadow: active ? '0 0 10px rgba(56, 189, 248, 0.55)' : 'none',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s ease',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {tf.label}
+                  </button>
+                );
+              })}
+            </>
+          )}
+
+          {/* MULTI-SELECT INDUSTRY DROPDOWN FOR EQUITIES */}
+          {categoryFilter === 'EQUITY' && (
+            <div ref={industryMenuRef} style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+              <button
+                type="button"
+                onClick={() => setIndustryMenuOpen((prev) => !prev)}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.32rem',
+                  fontSize: '0.72rem',
+                  fontWeight: 800,
+                  padding: '0.18rem 0.62rem',
+                  borderRadius: '999px',
+                  border:
+                    selectedIndustries.length > 0 || industryMenuOpen
+                      ? '1px solid rgba(var(--ui-accent-rgb), 0.7)'
+                      : '1px solid rgba(148, 163, 184, 0.35)',
+                  background:
+                    selectedIndustries.length > 0 || industryMenuOpen
+                      ? 'rgba(var(--ui-accent-rgb), 0.18)'
+                      : 'rgba(15, 23, 42, 0.55)',
+                  color: selectedIndustries.length > 0 ? 'var(--ui-accent)' : '#e2e8f0',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                <span>
+                  {selectedIndustries.length > 0
+                    ? `${tx('Industrias', 'Industries')} (${selectedIndustries.length})`
+                    : tx('Industrias', 'Industries')}
+                </span>
+                <span style={{ fontSize: '0.62rem', opacity: 0.85 }}>{industryMenuOpen ? '▴' : '▾'}</span>
+              </button>
+
+              {industryMenuOpen && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 'calc(100% + 6px)',
+                    right: 0,
+                    zIndex: 95,
+                    minWidth: '255px',
+                    padding: '0.45rem',
+                    borderRadius: '12px',
+                    backgroundColor: 'rgba(8, 12, 22, 0.96)',
+                    backdropFilter: 'blur(14px)',
+                    border: '1px solid rgba(var(--ui-accent-rgb), 0.42)',
+                    boxShadow: '0 16px 38px rgba(0, 0, 0, 0.75)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '0.22rem',
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '0.18rem 0.4rem 0.32rem',
+                      borderBottom: '1px solid rgba(148, 163, 184, 0.16)',
+                      marginBottom: '0.1rem',
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontSize: '0.64rem',
+                        fontWeight: 800,
+                        color: '#94a3b8',
+                        letterSpacing: '0.04em',
+                        textTransform: 'uppercase',
+                      }}
+                    >
+                      {tx('Filtrar por Industria (Multiselector)', 'Filter by Industry (Multi-select)')}
+                    </span>
+                    {selectedIndustries.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={() => setSelectedIndustries([])}
+                        style={{
+                          background: 'transparent',
+                          border: 'none',
+                          color: 'var(--ui-accent)',
+                          fontSize: '0.64rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          padding: 0,
+                        }}
+                      >
+                        {tx('Limpiar', 'Clear')}
+                      </button>
+                    )}
+                  </div>
+
+                  {EQUITY_INDUSTRIES.map((ind) => {
+                    const checked = selectedIndustries.includes(ind.id);
+                    return (
+                      <button
+                        key={ind.id}
+                        type="button"
+                        onClick={() => toggleIndustrySelection(ind.id)}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '0.5rem',
+                          padding: '0.36rem 0.5rem',
+                          borderRadius: '8px',
+                          border: checked
+                            ? '1px solid rgba(var(--ui-accent-rgb), 0.45)'
+                            : '1px solid transparent',
+                          backgroundColor: checked ? 'rgba(var(--ui-accent-rgb), 0.14)' : 'transparent',
+                          color: checked ? '#ffffff' : '#cbd5e1',
+                          fontSize: '0.7rem',
+                          fontWeight: checked ? 700 : 500,
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                          transition: 'all 0.12s ease',
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem' }}>
+                          <span
+                            style={{
+                              width: '13px',
+                              height: '13px',
+                              borderRadius: '3px',
+                              border: checked
+                                ? '1px solid var(--ui-accent)'
+                                : '1px solid rgba(148, 163, 184, 0.45)',
+                              backgroundColor: checked ? 'var(--ui-accent)' : 'transparent',
+                              color: '#070b14',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              fontSize: '9.5px',
+                              fontWeight: 900,
+                              flexShrink: 0,
+                            }}
+                          >
+                            {checked ? '✓' : ''}
+                          </span>
+                          <span>{ind.label}</span>
+                        </div>
+                        <span
+                          className="mono-metric"
+                          style={{ fontSize: '0.62rem', color: '#64748b', fontWeight: 700 }}
+                        >
+                          {ind.syms.length}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
-          );
-        })()}
+          )}
+        </div>
 
         {/* SUB-BAR CENTERED RIGHT UNDER ASSET CLASS ITEMS IN V010 GHOST STYLE */}
         {marketsToolsMode === 'v5-under-cats' && (
@@ -2903,8 +3079,49 @@ export default function MarketAnomaliesView({
                 })}
               </div>
 
-              {/* Searchable Asset Combobox for Orbital & Heatmap Modes */}
-              <div style={{ position: 'relative', minWidth: '250px' }}>
+              {/* Searchable Asset Combobox for Orbital & Heatmap Modes (with Master Watchlist Star to the left) */}
+              <div style={{ position: 'relative', minWidth: '270px', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                {(() => {
+                  const allFilteredStarred =
+                    screenerRows.length > 0 && screenerRows.every((r) => watchlistSyms.includes(r.sym));
+                  return (
+                    <button
+                      type="button"
+                      disabled={screenerRows.length === 0}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (!onToggleWatchlist || screenerRows.length === 0) return;
+                        const syms = screenerRows.map((r) => r.sym);
+                        onToggleWatchlist(syms, allFilteredStarred ? 'remove' : 'add');
+                      }}
+                      title={
+                        allFilteredStarred
+                          ? tx(
+                              `Quitar los ${screenerRows.length} activos filtrados de Watchlist`,
+                              `Remove ${screenerRows.length} filtered assets from Watchlist`
+                            )
+                          : tx(
+                              `Sumar los ${screenerRows.length} activos filtrados a Watchlist`,
+                              `Add ${screenerRows.length} filtered assets to Watchlist`
+                            )
+                      }
+                      style={{
+                        background: 'transparent',
+                        border: 'none',
+                        padding: 0,
+                        cursor: screenerRows.length === 0 ? 'not-allowed' : 'pointer',
+                        fontSize: '14px',
+                        lineHeight: 1,
+                        color: allFilteredStarred
+                          ? 'var(--ui-accent, #10b981)'
+                          : 'rgba(148, 163, 184, 0.55)',
+                        flexShrink: 0,
+                      }}
+                    >
+                      {allFilteredStarred ? '★' : '☆'}
+                    </button>
+                  );
+                })()}
                 <div
                   style={{
                     display: 'inline-flex',
@@ -3908,74 +4125,118 @@ export default function MarketAnomaliesView({
                     borderBottom: '1px solid rgba(148, 163, 184, 0.16)',
                   }}
                 >
-                  {/* INTEGRATED SEARCH INSIDE THE ASSET / TICKER COLUMN HEADER */}
-                  <th style={{ padding: '6px 8px 10px', textAlign: 'left', minWidth: '230px' }}>
-                    <div
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '0.4rem',
-                        backgroundColor: 'transparent',
-                        border: assetSearch
-                          ? '1px solid var(--ui-accent)'
-                          : '1px solid rgba(148, 163, 184, 0.24)',
-                        borderRadius: '7px',
-                        padding: '4px 10px',
-                        width: '215px',
-                      }}
-                    >
-                      <Search size={12} strokeWidth={2.3} style={{ color: 'var(--text-dim)', flexShrink: 0 }} />
-                      <input
-                        type="text"
-                        placeholder={tx('Buscar ticker o activo...', 'Search ticker or asset...')}
-                        value={assetSearch}
-                        onChange={(e) => {
-                          setAssetSearch(e.target.value);
-                          setL1SelectedIndex(0);
-                        }}
-                        onKeyDown={(e) => {
-                          if (!screenerRows.length) return;
-                          if (e.key === 'ArrowDown') {
-                            e.preventDefault();
-                            setL1SelectedIndex((prev) => (prev + 1) % screenerRows.length);
-                          } else if (e.key === 'ArrowUp') {
-                            e.preventDefault();
-                            setL1SelectedIndex((prev) => (prev - 1 + screenerRows.length) % screenerRows.length);
-                          } else if (e.key === 'Enter') {
-                            e.preventDefault();
-                            const target = screenerRows[l1SelectedIndex] || screenerRows[0];
-                            if (target) handleOpenAssetDetail(target.sym);
-                          } else if (e.key === 'Escape') {
-                            setAssetSearch('');
-                            setL1SelectedIndex(0);
-                          }
-                        }}
+                  {/* INTEGRATED MASTER WATCHLIST STAR + SEARCH INSIDE THE ASSET / TICKER COLUMN HEADER */}
+                  <th style={{ padding: '6px 8px 10px', textAlign: 'left', minWidth: '245px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      {(() => {
+                        const allFilteredStarred =
+                          screenerRows.length > 0 && screenerRows.every((r) => watchlistSyms.includes(r.sym));
+                        return (
+                          <button
+                            type="button"
+                            disabled={screenerRows.length === 0}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (!onToggleWatchlist || screenerRows.length === 0) return;
+                              const syms = screenerRows.map((r) => r.sym);
+                              onToggleWatchlist(syms, allFilteredStarred ? 'remove' : 'add');
+                            }}
+                            title={
+                              allFilteredStarred
+                                ? tx(
+                                    `Quitar los ${screenerRows.length} activos filtrados de Watchlist`,
+                                    `Remove ${screenerRows.length} filtered assets from Watchlist`
+                                  )
+                                : tx(
+                                    `Sumar los ${screenerRows.length} activos filtrados a Watchlist`,
+                                    `Add ${screenerRows.length} filtered assets to Watchlist`
+                                  )
+                            }
+                            style={{
+                              background: 'transparent',
+                              border: 'none',
+                              padding: 0,
+                              cursor: screenerRows.length === 0 ? 'not-allowed' : 'pointer',
+                              fontSize: '13.5px',
+                              lineHeight: 1,
+                              color: allFilteredStarred
+                                ? 'var(--ui-accent, #10b981)'
+                                : 'rgba(148, 163, 184, 0.55)',
+                              flexShrink: 0,
+                              transition: 'color 0.15s ease, transform 0.15s ease',
+                            }}
+                          >
+                            {allFilteredStarred ? '★' : '☆'}
+                          </button>
+                        );
+                      })()}
+                      <div
                         style={{
-                          background: 'transparent',
-                          border: 'none',
-                          color: 'var(--text-main)',
-                          fontSize: '12.5px',
-                          fontWeight: 600,
-                          outline: 'none',
-                          width: '100%',
-                          fontFamily: 'var(--font-sans)',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.4rem',
+                          backgroundColor: 'transparent',
+                          border: assetSearch
+                            ? '1px solid var(--ui-accent)'
+                            : '1px solid rgba(148, 163, 184, 0.24)',
+                          borderRadius: '7px',
+                          padding: '4px 10px',
+                          width: '215px',
                         }}
-                      />
-                      {assetSearch && (
-                        <button
-                          onClick={() => setAssetSearch('')}
+                      >
+                        <Search size={12} strokeWidth={2.3} style={{ color: 'var(--text-dim)', flexShrink: 0 }} />
+                        <input
+                          type="text"
+                          placeholder={tx('Buscar ticker o activo...', 'Search ticker or asset...')}
+                          value={assetSearch}
+                          onChange={(e) => {
+                            setAssetSearch(e.target.value);
+                            setL1SelectedIndex(0);
+                          }}
+                          onKeyDown={(e) => {
+                            if (!screenerRows.length) return;
+                            if (e.key === 'ArrowDown') {
+                              e.preventDefault();
+                              setL1SelectedIndex((prev) => (prev + 1) % screenerRows.length);
+                            } else if (e.key === 'ArrowUp') {
+                              e.preventDefault();
+                              setL1SelectedIndex((prev) => (prev - 1 + screenerRows.length) % screenerRows.length);
+                            } else if (e.key === 'Enter') {
+                              e.preventDefault();
+                              const target = screenerRows[l1SelectedIndex] || screenerRows[0];
+                              if (target) handleOpenAssetDetail(target.sym);
+                            } else if (e.key === 'Escape') {
+                              setAssetSearch('');
+                              setL1SelectedIndex(0);
+                            }
+                          }}
                           style={{
                             background: 'transparent',
                             border: 'none',
-                            color: 'var(--text-dim)',
-                            cursor: 'pointer',
-                            padding: 0,
-                            display: 'flex',
+                            color: 'var(--text-main)',
+                            fontSize: '12.5px',
+                            fontWeight: 600,
+                            outline: 'none',
+                            width: '100%',
+                            fontFamily: 'var(--font-sans)',
                           }}
-                        >
-                          <X size={12} />
-                        </button>
-                      )}
+                        />
+                        {assetSearch && (
+                          <button
+                            onClick={() => setAssetSearch('')}
+                            style={{
+                              background: 'transparent',
+                              border: 'none',
+                              color: 'var(--text-dim)',
+                              cursor: 'pointer',
+                              padding: 0,
+                              display: 'flex',
+                            }}
+                          >
+                            <X size={12} />
+                          </button>
+                        )}
+                      </div>
                     </div>
                   </th>
 
