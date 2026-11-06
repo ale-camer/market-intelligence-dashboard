@@ -1324,312 +1324,300 @@ export default function UserGuideView({
                             </p>
                         ))}
 
-                        {/* BLOQUE PASO 1.4 (SÓLO EN GUIDE > HOME): PUNTO DE PARTIDA FUNCIONAL E IMPLÍCITO */}
-                        {activePage.id === 'home' && (
-                            <div
-                                style={{
-                                    margin: '18px 0 26px',
-                                    padding: '14px 18px',
-                                    borderRadius: '8px',
-                                    background: 'rgba(255, 255, 255, 0.02)',
-                                    borderLeft: '2px solid var(--ui-accent, #10b981)',
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    gap: '10px'
-                                }}
-                            >
-                                <p
-                                    style={{
-                                        margin: 0,
-                                        fontSize: typo.bulletSize,
-                                        color: typo.headingColor,
-                                        fontWeight: 600
-                                    }}
-                                >
-                                    {isES
-                                        ? '¿Por dónde querés empezar?'
-                                        : 'Where would you like to start?'}
-                                </p>
-
-                                <ul
-                                    style={{
-                                        margin: 0,
-                                        paddingLeft: '20px',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        gap: '11px',
-                                        fontSize: typo.bulletSize,
-                                        color: typo.bodyColor,
-                                        lineHeight: typo.lineHeight
-                                    }}
-                                >
-                                    {[
+                        {/* BLOQUE PASO 1.4 (SÓLO EN GUIDE > HOME): COMPARACIÓN EN VIVO DE LAS 2 ALTERNATIVAS */}
+                        {activePage.id === 'home' && (() => {
+                            const startingItems = [
+                                {
+                                    label: isES
+                                        ? 'Explorar el mercado de un vistazo'
+                                        : 'Explore the market at a glance',
+                                    quote: isES
+                                        ? 'Entendé qué activos se están moviendo hoy y qué significa cada indicador sin necesidad de conocimientos previos.'
+                                        : 'See which assets are moving today and what each indicator means without needing prior background.',
+                                    primaryClick: () =>
+                                        onLaunchTarget &&
+                                        onLaunchTarget({ view: 'markets', screener: 'orbital' }),
+                                    actions: [
                                         {
-                                            styleVariant: 'soft-pill',
-                                            label: isES
-                                                ? 'Explorar el mercado de un vistazo'
-                                                : 'Explore the market at a glance',
-                                            quote: isES
-                                                ? 'Entendé qué activos se están moviendo hoy y qué significa cada indicador sin necesidad de conocimientos previos.'
-                                                : 'See which assets are moving today and what each indicator means without needing prior background.',
-                                            actions: [
-                                                {
-                                                    text: isES
-                                                        ? 'Leer capítulo Markets →'
-                                                        : 'Read Markets chapter →',
-                                                    onClick: () => {
-                                                        const mktPage = ALL_GUIDE_PAGES.find(p => p.id === 'mkt-screener');
-                                                        if (mktPage) handleSelectPage(mktPage);
-                                                    }
-                                                },
-                                                {
-                                                    text: isES
-                                                        ? 'Abrir Radar Orbital →'
-                                                        : 'Open Orbital Radar →',
-                                                    onClick: () =>
-                                                        onLaunchTarget &&
-                                                        onLaunchTarget({ view: 'markets', screener: 'orbital' })
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            styleVariant: 'ghost-clean',
-                                            label: isES
-                                                ? 'Analizar un activo y armar una cartera'
-                                                : 'Analyze an asset & build a portfolio',
-                                            quote: isES
-                                                ? 'Investigá qué noticias o balances empujan un precio y probá tu propia combinación midiendo el riesgo en dólares reales.'
-                                                : 'Research which news or filings drive a price and test your own allocation measuring risk in real dollars.',
-                                            actions: [
-                                                {
-                                                    text: isES
-                                                        ? 'Ir a Portfolio Builder →'
-                                                        : 'Go to Portfolio Builder →',
-                                                    onClick: () =>
-                                                        onLaunchTarget && onLaunchTarget({ view: 'portfolio' })
-                                                },
-                                                {
-                                                    text: isES
-                                                        ? 'Abrir Research →'
-                                                        : 'Open Research →',
-                                                    onClick: () =>
-                                                        onLaunchTarget &&
-                                                        onLaunchTarget({
-                                                            view: 'markets',
-                                                            mode: 'detail',
-                                                            section: 'research',
-                                                            asset: 'NVDA'
-                                                        })
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            styleVariant: 'mono-tag',
-                                            label: isES
-                                                ? 'Operar con modelos cuantitativos'
-                                                : 'Work with quantitative models',
-                                            quote: isES
-                                                ? 'Accedé directo a detección de anomalías, superficies de volatilidad y curvas, atribución de Brinson, estrés histórico y Criterio de Kelly.'
-                                                : 'Access anomaly detection, volatility surfaces & yield curves, Brinson attribution, historical stress, and Kelly Criterion directly.',
-                                            actions: [
-                                                {
-                                                    text: isES
-                                                        ? 'Abrir Analytics →'
-                                                        : 'Open Analytics →',
-                                                    onClick: () =>
-                                                        onLaunchTarget &&
-                                                        onLaunchTarget({
-                                                            view: 'markets',
-                                                            mode: 'detail',
-                                                            section: 'analytics',
-                                                            asset: 'NVDA'
-                                                        })
-                                                },
-                                                {
-                                                    text: isES
-                                                        ? 'Ir a Portfolio Risk →'
-                                                        : 'Go to Portfolio Risk →',
-                                                    onClick: () =>
-                                                        onLaunchTarget &&
-                                                        onLaunchTarget({ view: 'portfolio', sub: 'risk' })
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            styleVariant: 'slate-outline',
-                                            label: isES
-                                                ? 'Auditar la arquitectura y el costo cloud'
-                                                : 'Audit cloud architecture & FinOps',
-                                            quote: isES
-                                                ? 'Inspeccioná en vivo los 11 pipelines serverless (P-01 a P-13), contratos de datos, latencias HTTP y la operación Scale-to-Zero (~$0.95/mes).'
-                                                : 'Inspect the 11 live serverless pipelines (P-01 to P-13), data contracts, HTTP latencies, and Scale-to-Zero operation (~$0.95/mo).',
-                                            actions: [
-                                                {
-                                                    text: isES
-                                                        ? 'Abrir Performance →'
-                                                        : 'Open Performance →',
-                                                    onClick: () =>
-                                                        onLaunchTarget &&
-                                                        onLaunchTarget({ view: 'observability', sub: 'performance' })
-                                                },
-                                                {
-                                                    text: isES
-                                                        ? 'Ver FinOps →'
-                                                        : 'View FinOps →',
-                                                    onClick: () =>
-                                                        onLaunchTarget &&
-                                                        onLaunchTarget({ view: 'observability', sub: 'finops' })
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            styleVariant: 'editorial-underline',
-                                            label: isES
-                                                ? 'Recorrido ejecutivo en 2 minutos'
-                                                : '2-minute executive walkthrough',
-                                            quote: isES
-                                                ? 'Conocé de punta a punta qué resuelve la plataforma combinando datos en tiempo real, riesgo cuantitativo, IA documental e infraestructura cloud.'
-                                                : 'Get an end-to-end overview of what the platform solves by combining real-time data, quantitative risk, document AI, and cloud infrastructure.',
-                                            actions: [
-                                                {
-                                                    text: isES
-                                                        ? 'Ver Video Resumen ↓'
-                                                        : 'Watch Summary Video ↓',
-                                                    onClick: () => {
-                                                        if (mediaPlaceholderRef.current) {
-                                                            mediaPlaceholderRef.current.scrollIntoView({
-                                                                behavior: 'smooth',
-                                                                block: 'center'
-                                                            });
-                                                        }
-                                                    }
-                                                },
-                                                {
-                                                    text: isES
-                                                        ? 'Ir a Portfolio →'
-                                                        : 'Go to Portfolio →',
-                                                    onClick: () =>
-                                                        onLaunchTarget && onLaunchTarget({ view: 'portfolio' })
-                                                },
-                                                {
-                                                    text: isES
-                                                        ? 'Ir a System →'
-                                                        : 'Go to System →',
-                                                    onClick: () =>
-                                                        onLaunchTarget && onLaunchTarget({ view: 'observability' })
-                                                }
-                                            ]
-                                        }
-                                    ].map((item, idx) => {
-                                        const getBtnStyle = (variant) => {
-                                            switch (variant) {
-                                                case 'soft-pill':
-                                                    // 1. Cápsula redondeada esmeralda suave
-                                                    return {
-                                                        padding: '2px 10px',
-                                                        borderRadius: '999px',
-                                                        background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.13)',
-                                                        border: '1px solid rgba(var(--ui-accent-rgb, 16, 185, 129), 0.38)',
-                                                        color: 'var(--ui-accent, #10b981)',
-                                                        fontSize: '12px',
-                                                        fontWeight: 600,
-                                                        fontFamily: typo.fontFamily,
-                                                        cursor: 'pointer'
-                                                    };
-                                                case 'ghost-clean':
-                                                    // 2. Texto limpio flotante V010 sin caja ni corchetes
-                                                    return {
-                                                        padding: '1px 4px',
-                                                        background: 'transparent',
-                                                        border: 'none',
-                                                        color: 'var(--ui-accent, #10b981)',
-                                                        fontSize: '12.5px',
-                                                        fontWeight: 600,
-                                                        fontFamily: typo.fontFamily,
-                                                        textShadow: '0 0 10px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.35)',
-                                                        cursor: 'pointer'
-                                                    };
-                                                case 'mono-tag':
-                                                    // 3. Badge técnico monoespaciado
-                                                    return {
-                                                        padding: '2px 8px',
-                                                        borderRadius: '4px',
-                                                        background: 'rgba(15, 23, 42, 0.85)',
-                                                        border: '1px solid rgba(148, 163, 184, 0.28)',
-                                                        borderLeft: '2px solid var(--ui-accent, #10b981)',
-                                                        color: '#e2e8f0',
-                                                        fontSize: '11.5px',
-                                                        fontWeight: 600,
-                                                        fontFamily: 'var(--font-mono)',
-                                                        cursor: 'pointer'
-                                                    };
-                                                case 'slate-outline':
-                                                    // 4. Botón rectangular con borde fino gris/esmeralda sin relleno pesado
-                                                    return {
-                                                        padding: '2px 9px',
-                                                        borderRadius: '5px',
-                                                        background: 'rgba(255, 255, 255, 0.03)',
-                                                        border: '1px solid rgba(148, 163, 184, 0.32)',
-                                                        color: '#f8fafc',
-                                                        fontSize: '12px',
-                                                        fontWeight: 500,
-                                                        fontFamily: typo.fontFamily,
-                                                        cursor: 'pointer'
-                                                    };
-                                                case 'editorial-underline':
-                                                default:
-                                                    // 5. Enlace editorial limpio con línea inferior esmeralda
-                                                    return {
-                                                        padding: '0 2px 1px',
-                                                        background: 'transparent',
-                                                        border: 'none',
-                                                        borderBottom: '1px solid var(--ui-accent, #10b981)',
-                                                        color: '#ffffff',
-                                                        fontSize: '12.5px',
-                                                        fontWeight: 600,
-                                                        fontFamily: typo.fontFamily,
-                                                        cursor: 'pointer'
-                                                    };
+                                            text: isES ? 'Guía: Markets' : 'Guide: Markets',
+                                            onClick: () => {
+                                                const mktPage = ALL_GUIDE_PAGES.find(p => p.id === 'mkt-screener');
+                                                if (mktPage) handleSelectPage(mktPage);
                                             }
-                                        };
+                                        },
+                                        {
+                                            text: 'Orbital',
+                                            onClick: () =>
+                                                onLaunchTarget &&
+                                                onLaunchTarget({ view: 'markets', screener: 'orbital' })
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: isES
+                                        ? 'Analizar un activo y armar una cartera'
+                                        : 'Analyze an asset & build a portfolio',
+                                    quote: isES
+                                        ? 'Investigá qué noticias o balances empujan un precio y probá tu propia combinación midiendo el riesgo en dólares reales.'
+                                        : 'Research which news or filings drive a price and test your own allocation measuring risk in real dollars.',
+                                    primaryClick: () =>
+                                        onLaunchTarget && onLaunchTarget({ view: 'portfolio' }),
+                                    actions: [
+                                        {
+                                            text: 'Portfolio Builder',
+                                            onClick: () =>
+                                                onLaunchTarget && onLaunchTarget({ view: 'portfolio' })
+                                        },
+                                        {
+                                            text: 'Research',
+                                            onClick: () =>
+                                                onLaunchTarget &&
+                                                onLaunchTarget({
+                                                    view: 'markets',
+                                                    mode: 'detail',
+                                                    section: 'research',
+                                                    asset: 'NVDA'
+                                                })
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: isES
+                                        ? 'Operar con modelos cuantitativos'
+                                        : 'Work with quantitative models',
+                                    quote: isES
+                                        ? 'Accedé directo a detección de anomalías, superficies de volatilidad y curvas, atribución de Brinson, estrés histórico y Criterio de Kelly.'
+                                        : 'Access anomaly detection, volatility surfaces & yield curves, Brinson attribution, historical stress, and Kelly Criterion directly.',
+                                    primaryClick: () =>
+                                        onLaunchTarget &&
+                                        onLaunchTarget({
+                                            view: 'markets',
+                                            mode: 'detail',
+                                            section: 'analytics',
+                                            asset: 'NVDA'
+                                        }),
+                                    actions: [
+                                        {
+                                            text: 'Analytics',
+                                            onClick: () =>
+                                                onLaunchTarget &&
+                                                onLaunchTarget({
+                                                    view: 'markets',
+                                                    mode: 'detail',
+                                                    section: 'analytics',
+                                                    asset: 'NVDA'
+                                                })
+                                        },
+                                        {
+                                            text: 'Portfolio Risk',
+                                            onClick: () =>
+                                                onLaunchTarget &&
+                                                onLaunchTarget({ view: 'portfolio', sub: 'risk' })
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: isES
+                                        ? 'Auditar la arquitectura y el costo cloud'
+                                        : 'Audit cloud architecture & FinOps',
+                                    quote: isES
+                                        ? 'Inspeccioná en vivo los 11 pipelines serverless (P-01 a P-13), contratos de datos, latencias HTTP y la operación Scale-to-Zero (~$0.95/mes).'
+                                        : 'Inspect the 11 live serverless pipelines (P-01 to P-13), data contracts, HTTP latencies, and Scale-to-Zero operation (~$0.95/mo).',
+                                    primaryClick: () =>
+                                        onLaunchTarget &&
+                                        onLaunchTarget({ view: 'observability', sub: 'performance' }),
+                                    actions: [
+                                        {
+                                            text: 'Performance',
+                                            onClick: () =>
+                                                onLaunchTarget &&
+                                                onLaunchTarget({ view: 'observability', sub: 'performance' })
+                                        },
+                                        {
+                                            text: 'FinOps',
+                                            onClick: () =>
+                                                onLaunchTarget &&
+                                                onLaunchTarget({ view: 'observability', sub: 'finops' })
+                                        }
+                                    ]
+                                },
+                                {
+                                    label: isES
+                                        ? 'Recorrido ejecutivo en 2 minutos'
+                                        : '2-minute executive walkthrough',
+                                    quote: isES
+                                        ? 'Conocé de punta a punta qué resuelve la plataforma combinando datos en tiempo real, riesgo cuantitativo, IA documental e infraestructura cloud.'
+                                        : 'Get an end-to-end overview of what the platform solves by combining real-time data, quantitative risk, document AI, and cloud infrastructure.',
+                                    primaryClick: () => {
+                                        if (mediaPlaceholderRef.current) {
+                                            mediaPlaceholderRef.current.scrollIntoView({
+                                                behavior: 'smooth',
+                                                block: 'center'
+                                            });
+                                        }
+                                    },
+                                    actions: [
+                                        {
+                                            text: isES ? 'Video Resumen' : 'Summary Video',
+                                            onClick: () => {
+                                                if (mediaPlaceholderRef.current) {
+                                                    mediaPlaceholderRef.current.scrollIntoView({
+                                                        behavior: 'smooth',
+                                                        block: 'center'
+                                                    });
+                                                }
+                                            }
+                                        },
+                                        {
+                                            text: 'Portfolio',
+                                            onClick: () =>
+                                                onLaunchTarget && onLaunchTarget({ view: 'portfolio' })
+                                        },
+                                        {
+                                            text: 'System',
+                                            onClick: () =>
+                                                onLaunchTarget && onLaunchTarget({ view: 'observability' })
+                                        }
+                                    ]
+                                }
+                            ];
 
-                                        return (
-                                            <li key={idx}>
-                                                <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
-                                                    {item.label}:
-                                                </strong>{' '}
-                                                <span>{item.quote}</span>{' '}
-                                                <span
-                                                    style={{
-                                                        display: 'inline-flex',
-                                                        flexWrap: 'wrap',
-                                                        alignItems: 'center',
-                                                        gap: '8px',
-                                                        marginLeft: '6px',
-                                                        verticalAlign: 'middle'
-                                                    }}
-                                                >
-                                                    {item.actions.map((act, aIdx) => (
-                                                        <React.Fragment key={aIdx}>
-                                                            {aIdx > 0 && item.styleVariant === 'ghost-clean' && (
-                                                                <span style={{ color: '#475569' }}>·</span>
-                                                            )}
+                            const softPillStyle = {
+                                padding: '2px 10px',
+                                borderRadius: '999px',
+                                background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.13)',
+                                border: '1px solid rgba(var(--ui-accent-rgb, 16, 185, 129), 0.38)',
+                                color: 'var(--ui-accent, #10b981)',
+                                fontSize: '12px',
+                                fontWeight: 600,
+                                fontFamily: typo.fontFamily,
+                                cursor: 'pointer'
+                            };
+
+                            return (
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', margin: '18px 0 30px' }}>
+                                    {/* OPCIÓN A: CON PILLS ESFÉRICAS SIN FLECHAS AL FINAL DE CADA PUNTO */}
+                                    <div
+                                        style={{
+                                            padding: '14px 18px',
+                                            borderRadius: '8px',
+                                            background: 'rgba(255, 255, 255, 0.02)',
+                                            borderLeft: '2px solid var(--ui-accent, #10b981)',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                            gap: '10px'
+                                        }}
+                                    >
+                                        <p
+                                            style={{
+                                                margin: 0,
+                                                fontSize: typo.bulletSize,
+                                                color: typo.headingColor,
+                                                fontWeight: 600
+                                            }}
+                                        >
+                                            {isES
+                                                ? 'Opción A (Con cápsulas sin flechas) — ¿Por dónde querés empezar?'
+                                                : 'Option A (With arrowless pills) — Where would you like to start?'}
+                                        </p>
+
+                                        <ul
+                                            style={{
+                                                margin: 0,
+                                                paddingLeft: '20px',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                gap: '11px',
+                                                fontSize: typo.bulletSize,
+                                                color: typo.bodyColor,
+                                                lineHeight: typo.lineHeight
+                                            }}
+                                        >
+                                            {startingItems.map((item, idx) => (
+                                                <li key={`optA-${idx}`}>
+                                                    <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
+                                                        {item.label}:
+                                                    </strong>{' '}
+                                                    <span>{item.quote}</span>{' '}
+                                                    <span
+                                                        style={{
+                                                            display: 'inline-flex',
+                                                            flexWrap: 'wrap',
+                                                            alignItems: 'center',
+                                                            gap: '6px',
+                                                            marginLeft: '6px',
+                                                            verticalAlign: 'middle'
+                                                        }}
+                                                    >
+                                                        {item.actions.map((act, aIdx) => (
                                                             <button
+                                                                key={aIdx}
                                                                 type="button"
                                                                 onClick={act.onClick}
-                                                                style={getBtnStyle(item.styleVariant)}
+                                                                style={softPillStyle}
                                                             >
                                                                 {act.text}
                                                             </button>
-                                                        </React.Fragment>
-                                                    ))}
-                                                </span>
-                                            </li>
-                                        );
-                                    })}
-                                </ul>
-                            </div>
-                        )}
+                                                        ))}
+                                                    </span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* OPCIÓN B: 100% HOMOGÉNEA CON EL RESTO DE GUIDE (EL TÍTULO EN VERDE ES EL LINK, CERO BOTONES EXTRA) */}
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                                        <p
+                                            style={{
+                                                margin: 0,
+                                                fontSize: typo.bulletSize,
+                                                color: typo.headingColor,
+                                                fontWeight: 600
+                                            }}
+                                        >
+                                            {isES
+                                                ? 'Opción B (Idéntica al resto de Guide: el título en verde es el link, sin botones extra) — ¿Por dónde querés empezar?'
+                                                : 'Option B (Identical to the rest of Guide: green title is the link, no extra buttons) — Where would you like to start?'}
+                                        </p>
+
+                                        <ul
+                                            style={{
+                                                margin: 0,
+                                                paddingLeft: '22px',
+                                                display: 'flex',
+                                                flexDirection: 'column',
+                                                gap: '9px',
+                                                fontSize: typo.bulletSize,
+                                                color: typo.bodyColor,
+                                                lineHeight: typo.lineHeight
+                                            }}
+                                        >
+                                            {startingItems.map((item, idx) => (
+                                                <li key={`optB-${idx}`}>
+                                                    <button
+                                                        type="button"
+                                                        onClick={item.primaryClick}
+                                                        style={{
+                                                            background: 'transparent',
+                                                            border: 'none',
+                                                            padding: 0,
+                                                            color: 'var(--ui-accent, #10b981)',
+                                                            fontWeight: 600,
+                                                            fontSize: typo.bulletSize,
+                                                            fontFamily: typo.fontFamily,
+                                                            cursor: 'pointer'
+                                                        }}
+                                                    >
+                                                        {item.label}:
+                                                    </button>
+                                                    <span> {item.quote}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            );
+                        })()}
 
                         {/* SÍNTESIS EN VIÑETAS */}
                         <p
