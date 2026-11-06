@@ -36,19 +36,19 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
         {
             lbl: tx('RETORNO ANUAL (CAGR)', 'ANNUAL RETURN (CAGR)'),
             val: `${liveMetrics.cagrPct >= 0 ? '+' : ''}${liveMetrics.cagrPct}%`,
-            sub: tx('vs +16.5% S&P 500 • Ganancia anual est.', 'vs +16.5% S&P 500 • Est. annual gain'),
+            sub: tx('vs +16.5% SPX • Ganancia est.', 'vs +16.5% SPX • Est. gain'),
             col: liveMetrics.cagrPct >= 0 ? '#10b981' : '#f43f5e'
         },
         {
             lbl: 'SHARPE / SORTINO',
             val: `${liveMetrics.sharpeRatio} / ${liveMetrics.sortinoRatio}`,
             sub: txTpl(
-                'Volatilidad σ: {0}% • {1}',
+                'Vol. σ: {0}% • {1}',
                 [
                     liveMetrics.portfolioVolPct,
                     sharpeNum >= 1.5 ? 'Excelente (>1.5)' : sharpeNum >= 1.0 ? 'Sólido (>1.0)' : 'Moderado (<1.0)'
                 ],
-                'Volatility σ: {0}% • {1}',
+                'Vol. σ: {0}% • {1}',
                 [
                     liveMetrics.portfolioVolPct,
                     sharpeNum >= 1.5 ? 'Strong (>1.5)' : sharpeNum >= 1.0 ? 'Solid (>1.0)' : 'Moderate (<1.0)'
@@ -60,9 +60,9 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
             lbl: 'VaR 95% / CVaR 99% (1D)',
             val: `${liveMetrics.var95Pct}% / ${liveMetrics.cvar99Pct}%`,
             sub: txTpl(
-                'Riesgo diario: -${0} • Extremo: -${1}',
+                'Día: -${0} • Extremo: -${1}',
                 [varDollar, cvarDollar],
-                'Normal day risk: -${0} • Tail: -${1}',
+                'Day: -${0} • Tail: -${1}',
                 [varDollar, cvarDollar]
             ),
             col: '#f43f5e'
@@ -70,16 +70,16 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
         {
             lbl: 'MAX DRAWDOWN (12M)',
             val: `${liveMetrics.maxDrawdownPct}%`,
-            sub: tx('Caída máx. histórica • Recup.: ~14d', 'Max historical drop • Recovery: ~14d'),
+            sub: tx('Caída máx. • Recup.: ~14 días', 'Max drop • Recovery: ~14d'),
             col: '#f43f5e'
         },
         {
             lbl: 'ALPHA BRINSON (12M)',
             val: `${liveMetrics.brinsonAlphaPct >= 0 ? '+' : ''}${liveMetrics.brinsonAlphaPct}%`,
             sub: txTpl(
-                'Ventaja vs mercado • Beta: {0}',
+                'Ventaja vs SPX • Beta: {0}',
                 [liveMetrics.portfolioBeta],
-                'Edge vs market • Beta: {0}',
+                'Edge vs SPX • Beta: {0}',
                 [liveMetrics.portfolioBeta]
             ),
             col: liveMetrics.brinsonAlphaPct >= 0 ? '#10b981' : '#f43f5e'
@@ -88,10 +88,10 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
             lbl: tx('ACTIVOS SELECCIONADOS', 'SELECTED ASSETS'),
             val: `${activeList.length} / ${holdings.length}`,
             sub: txTpl(
-                '{0} apuestas reales (ENB) • {1}',
-                [liveMetrics.enb, enbNum >= 3.5 ? 'Bien diversificada' : 'Concentrada'],
-                '{0} effective bets (ENB) • {1}',
-                [liveMetrics.enb, enbNum >= 3.5 ? 'Well diversified' : 'Concentrated']
+                'ENB: {0} • {1}',
+                [liveMetrics.enb, enbNum >= 3.5 ? 'Diversificada' : 'Concentrada'],
+                'ENB: {0} • {1}',
+                [liveMetrics.enb, enbNum >= 3.5 ? 'Diversified' : 'Concentrated']
             ),
             col: '#10b981'
         }
@@ -108,15 +108,14 @@ function Row1SummaryPills({ holdings, liveMetrics, isES = false }) {
                         borderLeft: `3px solid ${p.col}`,
                         borderRadius: '10px',
                         padding: '10px 13px',
-                        minWidth: 0,
-                        overflow: 'hidden'
+                        minWidth: 0
                     }}
                 >
                     <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>{p.lbl}</div>
                     <div style={{ fontSize: '19px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '3px' }}>
                         {p.val}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
                         {p.sub}
                     </div>
                 </div>

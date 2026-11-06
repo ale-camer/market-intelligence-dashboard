@@ -61,13 +61,13 @@ function Row1SummaryPills({ liveMetrics, isES = false }) {
         {
             lbl: 'STRESS CRASH 2008',
             val: `${m.stress2008Pct > 0 ? '+' : ''}${m.stress2008Pct}%`,
-            sub: tx('Caída en crisis severa (vs -42.0% S&P 500)', 'Drop in severe crisis (vs -42.0% S&P 500)'),
+            sub: tx('Crisis severa (vs -42.0% SPX)', 'Severe crisis (vs -42.0% SPX)'),
             col: '#f43f5e'
         },
         {
             lbl: tx('RÉGIMEN MARKOV ACTUAL', 'CURRENT MARKOV REGIME'),
             val: 'Bull Quiet (62%)',
-            sub: tx('Clima actual (62% prob.) • Est. +2.4%/mes', 'Current climate (62% prob.) • Est. +2.4%/mo'),
+            sub: tx('Clima actual • Est. +2.4%/mes', 'Current climate • Est. +2.4%/mo'),
             col: '#10b981'
         }
     ];
@@ -82,15 +82,14 @@ function Row1SummaryPills({ liveMetrics, isES = false }) {
                         borderLeft: `3px solid ${p.col}`,
                         borderRadius: '10px',
                         padding: '10px 13px',
-                        minWidth: 0,
-                        overflow: 'hidden'
+                        minWidth: 0
                     }}
                 >
                     <div style={{ fontSize: '11.5px', fontWeight: 700, color: '#94a3b8' }}>{p.lbl}</div>
                     <div style={{ fontSize: '19px', fontWeight: 900, fontFamily: 'var(--font-mono)', color: p.col, marginTop: '3px' }}>
                         {p.val}
                     </div>
-                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <div style={{ fontSize: '11px', color: '#64748b', marginTop: '2px' }}>
                         {p.sub}
                     </div>
                 </div>
