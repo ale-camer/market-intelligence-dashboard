@@ -65,12 +65,24 @@ export default function GlobalAgentDrawer({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Keep scroll at the very top so the newest turn (rendered first) is always at eye level
+  // Anchor the latest turn at the very top of the scroll container so only the latest turn is visible (scroll UP for older turns)
   useEffect(() => {
     if (!isOpen) return;
-    if (scrollRef.current) {
-      scrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    if (thread.length === 0) {
+      if (scrollRef.current) {
+        scrollRef.current.scrollTop = 0;
+      }
+      return;
     }
+    const rafId = window.requestAnimationFrame(() => {
+      if (latestUserTurnRef.current && scrollRef.current) {
+        scrollRef.current.scrollTo({
+          top: latestUserTurnRef.current.offsetTop,
+          behavior: 'smooth',
+        });
+      }
+    });
+    return () => window.cancelAnimationFrame(rafId);
   }, [thread, isThinking, isOpen]);
 
   // Auto-resize multiline textarea height (1 to 5 lines)
@@ -185,7 +197,7 @@ export default function GlobalAgentDrawer({
     });
   };
 
-  // Group thread into turns [ { userMsg, aiMsg, aiIdx } ] and reverse so the latest turn is always at the top
+  // Group thread into chronological turns [ { userMsg, aiMsg, aiIdx } ] (top to bottom)
   const turns = [];
   for (let i = 0; i < thread.length; i += 1) {
     const m = thread[i];
@@ -201,7 +213,6 @@ export default function GlobalAgentDrawer({
       turns.push({ userMsg: null, aiMsg: m.txt, aiIdx: i });
     }
   }
-  const turnsNewestFirst = turns.slice().reverse();
 
   return (
     <aside
@@ -401,24 +412,23 @@ export default function GlobalAgentDrawer({
           </>
         )}
 
-        {turnsNewestFirst.map((turn, tIdx) => {
-          const isNewestTurn = tIdx === 0;
+        {turns.map((turn, tIdx) => {
+          const isLatestTurn = tIdx === turns.length - 1;
           const userStr = String(turn.userMsg || '');
           const hasLongUnbrokenToken = /\S{30,}/.test(userStr) && !userStr.includes(' ');
           return (
             <div
               key={tIdx}
+              ref={isLatestTurn ? latestUserTurnRef : null}
               style={{
                 display: 'flex',
                 flexDirection: 'column',
+                justifyContent: 'flex-start',
                 gap: '8px',
                 flexShrink: 0,
-                paddingBottom: tIdx < turnsNewestFirst.length - 1 ? '10px' : '2px',
-                borderBottom:
-                  tIdx < turnsNewestFirst.length - 1
-                    ? '1px dashed rgba(148, 163, 184, 0.14)'
-                    : 'none',
-                opacity: isNewestTurn ? 1 : 0.78,
+                minHeight: isLatestTurn ? '100%' : 'auto',
+                paddingBottom: !isLatestTurn ? '10px' : '4px',
+                borderBottom: !isLatestTurn ? '1px dashed rgba(148, 163, 184, 0.14)' : 'none',
               }}
             >
               {turn.userMsg && (
@@ -496,7 +506,7 @@ export default function GlobalAgentDrawer({
                 </div>
               )}
 
-              {isNewestTurn && !turn.aiMsg && isThinking && (
+              {isLatestTurn && !turn.aiMsg && isThinking && (
                 <div
                   style={{
                     flexShrink: 0,
