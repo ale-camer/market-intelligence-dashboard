@@ -1365,6 +1365,7 @@ export default function UserGuideView({
                                 >
                                     {[
                                         {
+                                            styleVariant: 'soft-pill',
                                             label: isES
                                                 ? 'Explorar el mercado de un vistazo'
                                                 : 'Explore the market at a glance',
@@ -1383,8 +1384,8 @@ export default function UserGuideView({
                                                 },
                                                 {
                                                     text: isES
-                                                        ? 'Abrir Radar Visual (Orbital) →'
-                                                        : 'Open Visual Radar (Orbital) →',
+                                                        ? 'Abrir Radar Orbital →'
+                                                        : 'Open Orbital Radar →',
                                                     onClick: () =>
                                                         onLaunchTarget &&
                                                         onLaunchTarget({ view: 'markets', screener: 'orbital' })
@@ -1392,6 +1393,7 @@ export default function UserGuideView({
                                             ]
                                         },
                                         {
+                                            styleVariant: 'ghost-clean',
                                             label: isES
                                                 ? 'Analizar un activo y armar una cartera'
                                                 : 'Analyze an asset & build a portfolio',
@@ -1422,6 +1424,7 @@ export default function UserGuideView({
                                             ]
                                         },
                                         {
+                                            styleVariant: 'mono-tag',
                                             label: isES
                                                 ? 'Operar con modelos cuantitativos'
                                                 : 'Work with quantitative models',
@@ -1453,6 +1456,7 @@ export default function UserGuideView({
                                             ]
                                         },
                                         {
+                                            styleVariant: 'slate-outline',
                                             label: isES
                                                 ? 'Auditar la arquitectura y el costo cloud'
                                                 : 'Audit cloud architecture & FinOps',
@@ -1462,8 +1466,8 @@ export default function UserGuideView({
                                             actions: [
                                                 {
                                                     text: isES
-                                                        ? 'Abrir System Performance →'
-                                                        : 'Open System Performance →',
+                                                        ? 'Abrir Performance →'
+                                                        : 'Open Performance →',
                                                     onClick: () =>
                                                         onLaunchTarget &&
                                                         onLaunchTarget({ view: 'observability', sub: 'performance' })
@@ -1479,6 +1483,7 @@ export default function UserGuideView({
                                             ]
                                         },
                                         {
+                                            styleVariant: 'editorial-underline',
                                             label: isES
                                                 ? 'Recorrido ejecutivo en 2 minutos'
                                                 : '2-minute executive walkthrough',
@@ -1488,8 +1493,8 @@ export default function UserGuideView({
                                             actions: [
                                                 {
                                                     text: isES
-                                                        ? 'Ver Video Resumen abajo ↓'
-                                                        : 'Watch Summary Video below ↓',
+                                                        ? 'Ver Video Resumen ↓'
+                                                        : 'Watch Summary Video ↓',
                                                     onClick: () => {
                                                         if (mediaPlaceholderRef.current) {
                                                             mediaPlaceholderRef.current.scrollIntoView({
@@ -1515,48 +1520,113 @@ export default function UserGuideView({
                                                 }
                                             ]
                                         }
-                                    ].map((item, idx) => (
-                                        <li key={idx}>
-                                            <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
-                                                {item.label}:
-                                            </strong>{' '}
-                                            <span>{item.quote}</span>{' '}
-                                            <span
-                                                style={{
-                                                    display: 'inline-flex',
-                                                    flexWrap: 'wrap',
-                                                    alignItems: 'center',
-                                                    gap: '8px',
-                                                    marginLeft: '4px'
-                                                }}
-                                            >
-                                                {item.actions.map((act, aIdx) => (
-                                                    <React.Fragment key={aIdx}>
-                                                        {aIdx > 0 && (
-                                                            <span style={{ color: '#475569' }}>·</span>
-                                                        )}
-                                                        <button
-                                                            type="button"
-                                                            onClick={act.onClick}
-                                                            style={{
-                                                                background: 'transparent',
-                                                                border: 'none',
-                                                                padding: 0,
-                                                                color: 'var(--ui-accent, #10b981)',
-                                                                fontWeight: 600,
-                                                                fontSize: '12.5px',
-                                                                fontFamily: typo.fontFamily,
-                                                                cursor: 'pointer',
-                                                                textDecoration: 'none'
-                                                            }}
-                                                        >
-                                                            [{act.text}]
-                                                        </button>
-                                                    </React.Fragment>
-                                                ))}
-                                            </span>
-                                        </li>
-                                    ))}
+                                    ].map((item, idx) => {
+                                        const getBtnStyle = (variant) => {
+                                            switch (variant) {
+                                                case 'soft-pill':
+                                                    // 1. Cápsula redondeada esmeralda suave
+                                                    return {
+                                                        padding: '2px 10px',
+                                                        borderRadius: '999px',
+                                                        background: 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.13)',
+                                                        border: '1px solid rgba(var(--ui-accent-rgb, 16, 185, 129), 0.38)',
+                                                        color: 'var(--ui-accent, #10b981)',
+                                                        fontSize: '12px',
+                                                        fontWeight: 600,
+                                                        fontFamily: typo.fontFamily,
+                                                        cursor: 'pointer'
+                                                    };
+                                                case 'ghost-clean':
+                                                    // 2. Texto limpio flotante V010 sin caja ni corchetes
+                                                    return {
+                                                        padding: '1px 4px',
+                                                        background: 'transparent',
+                                                        border: 'none',
+                                                        color: 'var(--ui-accent, #10b981)',
+                                                        fontSize: '12.5px',
+                                                        fontWeight: 600,
+                                                        fontFamily: typo.fontFamily,
+                                                        textShadow: '0 0 10px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.35)',
+                                                        cursor: 'pointer'
+                                                    };
+                                                case 'mono-tag':
+                                                    // 3. Badge técnico monoespaciado
+                                                    return {
+                                                        padding: '2px 8px',
+                                                        borderRadius: '4px',
+                                                        background: 'rgba(15, 23, 42, 0.85)',
+                                                        border: '1px solid rgba(148, 163, 184, 0.28)',
+                                                        borderLeft: '2px solid var(--ui-accent, #10b981)',
+                                                        color: '#e2e8f0',
+                                                        fontSize: '11.5px',
+                                                        fontWeight: 600,
+                                                        fontFamily: 'var(--font-mono)',
+                                                        cursor: 'pointer'
+                                                    };
+                                                case 'slate-outline':
+                                                    // 4. Botón rectangular con borde fino gris/esmeralda sin relleno pesado
+                                                    return {
+                                                        padding: '2px 9px',
+                                                        borderRadius: '5px',
+                                                        background: 'rgba(255, 255, 255, 0.03)',
+                                                        border: '1px solid rgba(148, 163, 184, 0.32)',
+                                                        color: '#f8fafc',
+                                                        fontSize: '12px',
+                                                        fontWeight: 500,
+                                                        fontFamily: typo.fontFamily,
+                                                        cursor: 'pointer'
+                                                    };
+                                                case 'editorial-underline':
+                                                default:
+                                                    // 5. Enlace editorial limpio con línea inferior esmeralda
+                                                    return {
+                                                        padding: '0 2px 1px',
+                                                        background: 'transparent',
+                                                        border: 'none',
+                                                        borderBottom: '1px solid var(--ui-accent, #10b981)',
+                                                        color: '#ffffff',
+                                                        fontSize: '12.5px',
+                                                        fontWeight: 600,
+                                                        fontFamily: typo.fontFamily,
+                                                        cursor: 'pointer'
+                                                    };
+                                            }
+                                        };
+
+                                        return (
+                                            <li key={idx}>
+                                                <strong style={{ color: typo.boldColor, fontWeight: 600 }}>
+                                                    {item.label}:
+                                                </strong>{' '}
+                                                <span>{item.quote}</span>{' '}
+                                                <span
+                                                    style={{
+                                                        display: 'inline-flex',
+                                                        flexWrap: 'wrap',
+                                                        alignItems: 'center',
+                                                        gap: '8px',
+                                                        marginLeft: '6px',
+                                                        verticalAlign: 'middle'
+                                                    }}
+                                                >
+                                                    {item.actions.map((act, aIdx) => (
+                                                        <React.Fragment key={aIdx}>
+                                                            {aIdx > 0 && item.styleVariant === 'ghost-clean' && (
+                                                                <span style={{ color: '#475569' }}>·</span>
+                                                            )}
+                                                            <button
+                                                                type="button"
+                                                                onClick={act.onClick}
+                                                                style={getBtnStyle(item.styleVariant)}
+                                                            >
+                                                                {act.text}
+                                                            </button>
+                                                        </React.Fragment>
+                                                    ))}
+                                                </span>
+                                            </li>
+                                        );
+                                    })}
                                 </ul>
                             </div>
                         )}
