@@ -494,6 +494,7 @@ export default function WebbDeepFieldCanvas({
 
       {/* GALLERY ARTWORK PLACARD (BOTTOM-CENTER, IDENTICAL TO DARK MODE) */}
       <div
+        className="resp-home-artwork-placard"
         style={{
           position: 'absolute',
           bottom: '0.65rem',
@@ -511,7 +512,7 @@ export default function WebbDeepFieldCanvas({
         }}
       >
         <div
-          className="serif-heading"
+          className="serif-heading resp-home-artwork-title"
           style={{
             fontSize: '0.88rem',
             fontStyle: 'italic',
@@ -526,6 +527,7 @@ export default function WebbDeepFieldCanvas({
           {currentPiece.title}
         </div>
         <div
+          className="resp-home-artwork-medium"
           style={{
             fontSize: '0.72rem',
             fontWeight: 500,
