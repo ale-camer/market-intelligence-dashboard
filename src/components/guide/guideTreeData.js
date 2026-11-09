@@ -94,8 +94,8 @@ export const GUIDE_TREE_PAGES = [
                     },
                     {
                         bold: 'Preferencias visuales',
-                        code: 'Idioma / Palette',
-                        text: 'Sobre el margen derecho tenés los controles para cambiar el idioma de toda la aplicación o ajustar la iluminación del fondo.'
+                        code: 'Idioma / Modo Claro-Oscuro / Palette',
+                        text: 'Sobre el margen derecho tenés los controles para cambiar el idioma de toda la aplicación, alternar entre modo claro y oscuro o ajustar la iluminación del fondo.'
                     }
                 ],
                 hasTechnicalModal: false
@@ -117,7 +117,7 @@ export const GUIDE_TREE_PAGES = [
                     },
                     {
                         bold: 'Memoria automática',
-                        code: 'mid_lang_v1',
+                        code: '',
                         text: 'Toda la pantalla se traduce en el acto sin recargar la página y tu elección queda guardada para las próximas veces que entres.'
                     }
                 ],
@@ -126,22 +126,27 @@ export const GUIDE_TREE_PAGES = [
             {
                 id: 'home-palettes',
                 label: 'Palette',
-                summary: 'Los temas visuales para adaptar el contraste de la pantalla sin alterar los colores financieros.',
+                summary: 'Los temas visuales y el modo claro/oscuro para adaptar el contraste de la pantalla sin alterar los colores financieros.',
                 paragraphs: [
                     'Pasar varias horas frente a los gráficos con un contraste que no se adapta a la luz de tu ambiente termina cansando la vista. Sin embargo, cambiar los colores de una plataforma financiera tiene un peligro clásico: perder la referencia de qué está subiendo y qué está bajando.',
-                    'Para resolverlo, el selector de temas separa el color del ambiente del color de los datos:'
+                    'Para resolverlo, los controles visuales del pie de página separan la iluminación del ambiente del color de los datos:'
                 ],
-                lead: 'Para resolverlo, el selector de temas separa el color del ambiente del color de los datos:',
+                lead: 'Para resolverlo, los controles visuales del pie de página separan la iluminación del ambiente del color de los datos:',
                 bullets: [
+                    {
+                        bold: 'Modo Claro y Oscuro',
+                        code: 'Sol / Luna',
+                        text: 'Con el botón junto al icono de paleta alternás en un click entre una interfaz clara de alto contraste para ambientes muy iluminados y el modo oscuro tradicional.'
+                    },
                     {
                         bold: 'Cinco ambientes de lectura',
                         code: 'Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant',
-                        text: 'Con cada click vas rotando entre fondos negros puros, azulados o cálidos hasta encontrar el que te resulte más cómodo a los ojos.'
+                        text: 'Con cada click en el icono de paleta vas rotando entre distintos matices de fondo hasta encontrar el que te resulte más cómodo a los ojos.'
                     },
                     {
                         bold: 'Semántica financiera intacta',
-                        code: 'Verde #10b981 / Rojo #f43f5e',
-                        text: 'Cambies el tema que cambies, la regla universal del mercado no se altera nunca: el verde siempre significa suba o ganancia, y el rojo siempre significa caída, pérdida o alerta de riesgo.'
+                        code: 'Verde / Rojo',
+                        text: 'Cambies el modo o el tema que cambies, la regla universal del mercado no se altera nunca: el verde siempre significa suba o ganancia, y el rojo siempre significa caída, pérdida o alerta de riesgo.'
                     }
                 ],
                 hasTechnicalModal: false
@@ -684,17 +689,17 @@ export const GUIDE_TREE_PAGES = [
                         bullets: [
                             {
                                 bold: 'Detector de posiciones repetidas',
-                                code: '1. Solapamiento X-Ray #12',
+                                code: '1. Solapamiento X-Ray',
                                 text: 'Suma lo que tenés invertido directamente en cada empresa más la porción oculta que tenés dentro de índices o ETFs (como SPY o QQQ), avisándote en rojo si superás límites prudentes.'
                             },
                             {
                                 bold: 'Mapa de exposición y origen del retorno',
-                                code: '2. Exposición NEW-07 / 3. Descomposición Alpha #2',
+                                code: '2. Exposición / 3. Descomposición Alpha',
                                 text: 'Te muestran qué porcentaje real tenés en cada tipo de activo y moneda, y qué parte de tu ganancia provino de elegir buenos sectores frente a elegir buenos activos.'
                             },
                             {
                                 bold: 'Renta anual proyectada y seguridad',
-                                code: '4. Cashflow NEW-08 / 5. Custodia #16',
+                                code: '4. Cashflow / 5. Custodia',
                                 text: 'Calculan cuántos dólares vas a cobrar en el año por dividendos, cupones e intereses, y auditan la solvencia de los custodios donde descansa tu capital.'
                             }
                         ],
@@ -849,7 +854,7 @@ export const GUIDE_TREE_PAGES = [
                             },
                             {
                                 bold: 'Probabilidades de transición de ciclo',
-                                code: '2. Regímenes Markov #11',
+                                code: '2. Regímenes Markov',
                                 text: 'Calcula qué probabilidad tiene el mercado de mantenerse en calma o pasar a una fase volátil, inflacionaria o de crisis.'
                             }
                         ],
@@ -868,12 +873,12 @@ export const GUIDE_TREE_PAGES = [
                         bullets: [
                             {
                                 bold: 'Diez mil escenarios futuros',
-                                code: '1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M',
+                                code: '1. Proyección Monte Carlo / 6M, 12M y 24M',
                                 text: 'Dibuja el cono de evolución probable de tu cartera distinguiendo el escenario optimista (P95 en verde), el camino central esperado (P50) y el escenario adverso (P05 en rojo).'
                             },
                             {
                                 bold: 'Profundidad de caídas y estabilidad en el tiempo',
-                                code: '2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05',
+                                code: '2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta',
                                 text: 'Te permiten alternar el gráfico para ver cuánto tiempo permaneció la cartera debajo de sus máximos históricos o qué tan estables fueron su eficiencia y su riesgo en ventanas móviles de 60 días.'
                             }
                         ],
@@ -928,12 +933,12 @@ export const GUIDE_TREE_PAGES = [
                         bullets: [
                             {
                                 bold: 'Carga de órdenes de prueba',
-                                code: '1. Simulador What-If #1 / + Simular Orden',
+                                code: '1. Simulador What-If / + Simular Orden',
                                 text: 'Elegís cualquier activo, indicás si querés comprar, vender o cubrir y cargás el monto en dólares. En la lista inferior podés prender o apagar cada orden simulada para comparar su efecto.'
                             },
                             {
                                 bold: 'Tamaño óptimo de posición',
-                                code: '2. Criterio de Kelly #14 / Half-Kelly 0.5×',
+                                code: '2. Criterio de Kelly / Half-Kelly 0.5×',
                                 text: 'A partir de tu probabilidad estimada de acierto y la relación entre ganancia y pérdida, te calcula qué porcentaje máximo del capital conviene asignar para crecer sin sobreexponerte.'
                             }
                         ],
@@ -952,12 +957,12 @@ export const GUIDE_TREE_PAGES = [
                         bullets: [
                             {
                                 bold: 'Comparador de escudos protectores',
-                                code: '1. Escudo Put OTM #6',
+                                code: '1. Escudo Put OTM',
                                 text: 'Te permite alternar entre operar sin cobertura o aplicar tres tipos de seguros con opciones (sobre SPY, QQQ o volatilidad VIX), contrastando el costo anual de la prima contra los dólares que te ahorrarías en un desplome del 20%.'
                             },
                             {
                                 bold: 'Control de apalancamiento y garantías',
-                                code: '2. Margen & Margin Call #13',
+                                code: '2. Margen & Margin Call',
                                 text: 'Monitorea qué porcentaje de margen de mantenimiento tenés utilizado y qué caída porcentual soportaría la cartera antes de entrar en zona de llamado de margen.'
                             }
                         ],
@@ -981,7 +986,7 @@ export const GUIDE_TREE_PAGES = [
                             },
                             {
                                 bold: 'Bitácora de órdenes y asistente de cartera',
-                                code: 'Libro de Ejecución / 💬 Copiloto de Cartera #8',
+                                code: 'Libro de Ejecución / 💬 Copiloto de Cartera',
                                 text: 'El panel inferior deja constancia de cada simulación con su impacto en riesgo, mientras que el botón de diálogo arriba a la derecha abre el chat para consultar dudas directas sobre tu portafolio.'
                             }
                         ],

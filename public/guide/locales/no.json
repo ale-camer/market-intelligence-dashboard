@@ -118,7 +118,7 @@
             },
             {
               "bold": "Automatisk minne",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Hele skjermen oversettes umiddelbart uten å laste inn siden på nytt, og valget ditt lagres til neste gang du går inn."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "For å løse dette skiller temavelgeren miljøfargen fra datafargen:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Fem lesemiljøer",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "For hvert klikk roterer du mellom ren svart, blåaktig eller varm bakgrunn til du finner den som er mest behagelig for øynene dine."
             },
             {
               "bold": "Intakt finansiell semantikk",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Uansett hvilket emne du endrer, endres aldri den universelle regelen for markedet: grønt betyr alltid stigning eller gevinst, og rød betyr alltid fall, tap eller risikovarsel."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Gjentatt posisjonsdetektor",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Legg sammen det du har investert direkte i hvert selskap pluss den skjulte delen du har innenfor indekser eller ETFer (som SPY eller QQQ), og advarer deg i rødt hvis du overskrider forsvarlige grenser."
                 },
                 {
                   "bold": "Eksponeringskart og opprinnelse til retur",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "De viser deg hvilken prosentandel du faktisk har i hver aktivatype og valuta, og hvor mye av overskuddet ditt som kom fra å velge gode sektorer kontra å velge gode eiendeler."
                 },
                 {
                   "bold": "Anslått årlig inntekt og sikkerhet",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "De beregner hvor mange dollar du skal samle inn i året for utbytte, kuponger og renter, og reviderer soliditeten til depotmottakerne der kapitalen din ligger."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Sannsynligheter for syklusovergang",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Beregn hvor sannsynlig det er at markedet forblir rolig eller går inn i en volatil, inflasjons- eller krisefase."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Ti tusen fremtidsscenarier",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Tegn kjeglen for sannsynlig utvikling av porteføljen din, og skille mellom det optimistiske scenarioet (P95 i grønt), den forventede sentrale banen (P50) og det ugunstige scenarioet (P05 i rødt)."
                 },
                 {
                   "bold": "Falldybde og stabilitet over tid",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "De lar deg veksle mellom diagrammet for å se hvor lenge porteføljen holdt seg under all-time highs eller hvor stabil effektiviteten og risikoen var over rullende 60-dagers vinduer."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Testbestillingslasting",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Du velger hvilken som helst eiendel, angir om du vil kjøpe, selge eller dekke og laste beløpet i dollar. I listen nedenfor kan du slå hver simulert ordre på eller av for å sammenligne effekten."
                 },
                 {
                   "bold": "Optimal posisjonsstørrelse",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Basert på din estimerte sannsynlighet for suksess og forholdet mellom overskudd og tap, beregner den hvilken maksimal prosentandel av kapitalen som bør allokeres for å vokse uten å overeksponere deg selv."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Komparator av beskyttelsesskjold",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Den lar deg veksle mellom å operere uten dekning eller å bruke tre typer forsikringer med opsjoner (på SPY, QQQ eller VIX volatilitet), og sammenligne den årlige kostnaden for premien mot dollaren du ville spart i en 20 % krasj."
                 },
                 {
                   "bold": "Utnytt kontroll og sikkerhet",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Overvåk hvilken prosentandel av vedlikeholdsmarginen du har brukt og hvilket prosentfall porteføljen vil tåle før du går inn i margin call-sonen."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Ordrelogg og porteføljeassistent",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Det nederste panelet registrerer hver simulering med dens innvirkning på risiko, mens dialogknappen øverst til høyre åpner chatten for å stille direkte spørsmål om porteføljen din."
                 }
               ],

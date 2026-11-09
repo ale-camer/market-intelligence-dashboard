@@ -118,7 +118,7 @@
             },
             {
               "bold": "Automaattinen muisti",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Koko näyttö käännetään välittömästi lataamatta sivua uudelleen ja valintasi tallennetaan seuraavaa kertaa varten."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Tämän ratkaisemiseksi teemavalitsin erottaa ympäristön värin tietojen väristä:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Viisi lukuympäristöä",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Kierrät jokaisella napsautuksella puhtaan mustan, sinertävän tai lämpimän taustan välillä, kunnes löydät silmillesi sopivimman."
             },
             {
               "bold": "Ehjä taloussemantiikka",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Riippumatta siitä, mitä aihetta vaihdat, markkinoiden yleinen sääntö ei muutu koskaan: vihreä tarkoittaa aina nousua tai voittoa ja punainen aina pudotusta, menetystä tai riskivaroitusta."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Toistuva asennon tunnistin",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Laske yhteen se, mitä olet sijoittanut suoraan kuhunkin yritykseen, sekä indekseissä tai ETF:issä (kuten SPY tai QQQ) oleva piilotettu osuus, mikä varoittaa punaisella, jos ylität varovaiset rajat."
                 },
                 {
                   "bold": "Altistuskartta ja palautuksen alkuperä",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Ne osoittavat, kuinka suuri prosenttiosuus sinulla on kussakin omaisuuslajissa ja valuutassa, ja kuinka suuri osa voitosta tuli hyvien sektoreiden valinnasta verrattuna hyvien omaisuuserien valitsemiseen."
                 },
                 {
                   "bold": "Ennustetut vuositulot ja turvallisuus",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "He laskevat, kuinka monta dollaria aiot kerätä vuoden aikana osinkoja, kuponkeja ja korkoja varten, ja tarkastavat niiden säilytysyhteisöjen vakavaraisuuden, joissa pääomasi on."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Jakson siirtymän todennäköisyydet",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Laske kuinka todennäköisesti markkinat pysyvät rauhallisena tai siirtyvät epävakaaseen, inflaatio- tai kriisivaiheeseen."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Kymmenentuhatta tulevaisuuden skenaariota",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Piirrä salkkusi todennäköisen kehityksen kartio ja erottele optimistinen skenaario (P95 vihreällä), odotettu keskuspolku (P50) ja haitallinen skenaario (P05 punaisella)."
                 },
                 {
                   "bold": "Putoamisen syvyys ja vakaus ajan myötä",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Niiden avulla voit vaihtaa kaaviota nähdäksesi kuinka kauan salkku pysyi kaikkien aikojen ennätysten alapuolella tai kuinka vakaana sen tehokkuus ja riski olivat 60 päivän ikkunat."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Testitilauksen lataus",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Valitset minkä tahansa omaisuuden, ilmoitat, haluatko ostaa, myydä vai kattaa ja ladata summan dollareina. Alla olevassa luettelossa voit ottaa jokaisen simuloidun tilauksen käyttöön tai poistaa sen käytöstä vertaillaksesi sen vaikutusta."
                 },
                 {
                   "bold": "Optimaalinen asennon koko",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Arvioidun onnistumistodennäköisyytesi ja voiton ja tappion välisen suhteen perusteella se laskee, kuinka suuri prosenttiosuus pääomasta tulisi varata kasvuun ylialtistamatta itseäsi."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Suojasuojien vertailu",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Sen avulla voit vuorotellen toimia ilman vakuutusta tai ottaa käyttöön kolmen tyyppisiä vakuutusvaihtoehtoja (SPY, QQQ tai VIX volatiliteetti), mikä vertaa vakuutusmaksun vuosikustannuksia dollareihin, joita säästäisit 20 prosentin romahduksessa."
                 },
                 {
                   "bold": "Vipuhallinta ja vakuudet",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Tarkkaile, minkä prosenttiosuuden ylläpitomarginaalista olet käyttänyt ja minkä prosentin pudotuksen salkku kestäisi ennen kuin astut marginaalivyöhykkeelle."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Tilausloki ja portfolio-avustaja",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Alapaneeli tallentaa jokaisen simulaation ja sen vaikutuksen riskeihin, kun taas oikeassa yläkulmassa oleva dialogipainike avaa chatin, jossa voit esittää suoria kysymyksiä portfoliostasi."
                 }
               ],

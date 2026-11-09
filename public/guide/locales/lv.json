@@ -118,7 +118,7 @@
             },
             {
               "bold": "Automātiskā atmiņa",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Viss ekrāns tiek tulkots uzreiz, nepārlādējot lapu, un jūsu izvēle tiek saglabāta nākamajai ievadīšanas reizei."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Lai to atrisinātu, motīva atlasītājs atdala vides krāsu no datu krāsas:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Piecas lasīšanas vides",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Ar katru klikšķi jūs grozāties starp tīri melnu, zilganu vai siltu fonu, līdz atrodat to, kas ir visērtākais jūsu acīm."
             },
             {
               "bold": "Neskarta finanšu semantika",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Neatkarīgi no tā, kādu tēmu jūs mainītu, universālais tirgus likums nekad netiek mainīts: zaļš vienmēr nozīmē pieaugumu vai pieaugumu, un sarkans vienmēr nozīmē kritumu, zaudējumu vai brīdinājumu par risku."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Atkārtotas pozīcijas detektors",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Saskaitiet to, ko esat ieguldījis tieši katrā uzņēmumā, kā arī slēpto daļu, kas jums ir indeksos vai ETF (piemēram, SPY vai QQQ), brīdinot sarkanā krāsā, ja pārsniedzat piesardzīgos ierobežojumus."
                 },
                 {
                   "bold": "Ekspozīcijas karte un atgriešanās izcelsme",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Tie parāda, cik procentus jums faktiski ir katram aktīva veidam un valūtai, un cik liela daļa jūsu peļņas tika iegūta, izvēloties labus sektorus, salīdzinot ar labu aktīvu izvēli."
                 },
                 {
                   "bold": "Plānotie gada ienākumi un drošība",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Viņi aprēķina, cik dolāru jūs gatavojaties gadā iekasēt dividendēm, kuponiem un procentiem, un pārbauda turētājbanku maksātspēju, kur atrodas jūsu kapitāls."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Cikla pārejas varbūtības",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Aprēķiniet, cik liela ir iespēja, ka tirgus saglabāsies mierīgs vai nonāks nestabilā, inflācijas vai krīzes fāzē."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Desmit tūkstoši nākotnes scenāriju",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Uzzīmējiet sava portfeļa iespējamās attīstības konusu, nošķirot optimistisko scenāriju (P95 zaļā krāsā), paredzamo centrālo ceļu (P50) un nelabvēlīgo scenāriju (P05 sarkanā krāsā)."
                 },
                 {
                   "bold": "Kritienu dziļums un stabilitāte laika gaitā",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Tie ļauj pārslēgt diagrammu, lai redzētu, cik ilgi portfelis saglabājās zem visu laiku augstākajām vērtībām vai cik stabils bija tā efektivitāte un risks, salīdzinot ar 60 dienu logiem."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Testa pasūtījuma ielāde",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Jūs izvēlaties jebkuru aktīvu, norādiet, vai vēlaties pirkt, pārdot vai segt, un ielādējat summu dolāros. Tālāk esošajā sarakstā varat ieslēgt vai izslēgt katru simulēto pasūtījumu, lai salīdzinātu tā efektu."
                 },
                 {
                   "bold": "Optimālais pozīcijas izmērs",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Pamatojoties uz jūsu aplēsto veiksmes iespējamību un peļņas un zaudējumu attiecību, tā aprēķina, kāds maksimālais kapitāla procents būtu jāpiešķir izaugsmei, nepārliekot sevi eksponējot."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Aizsargvairogu salīdzinājums",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Tas ļauj pārmaiņus darboties bez seguma vai izmantot trīs apdrošināšanas veidus ar opcijām (uz SPY, QQQ vai VIX nepastāvības), salīdzinot ikgadējās prēmijas izmaksas ar dolāriem, ko jūs ietaupītu 20% avārijas gadījumā."
                 },
                 {
                   "bold": "Sviras kontrole un nodrošinājums",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Uzraugiet, cik procentus no uzturēšanas rezerves esat izmantojis un kādu procentuālo kritumu portfelis izturētu pirms ieiešanas maržas pieprasījuma zonā."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Pasūtījumu žurnāla un portfeļa palīgs",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Apakšējā panelī tiek ierakstīta katra simulācija ar tās ietekmi uz risku, savukārt dialoga poga augšējā labajā stūrī atver tērzēšanu, lai uzdotu tiešus jautājumus par jūsu portfolio."
                 }
               ],

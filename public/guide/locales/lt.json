@@ -118,7 +118,7 @@
             },
             {
               "bold": "Automatinė atmintis",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Visas ekranas išverčiamas akimirksniu, neperkraunant puslapio, o jūsų pasirinkimas išsaugomas kitą kartą, kai įeisite."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Norėdami tai išspręsti, temos parinkiklis atskiria aplinkos spalvą nuo duomenų spalvos:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Penkios skaitymo aplinkos",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Su kiekvienu paspaudimu sukasi tarp grynai juodo, melsvo ar šilto fono, kol atrasi tą, kuris labiausiai patinka tavo akims."
             },
             {
               "bold": "Nepažeista finansinė semantika",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Kad ir kokią temą keistumėte, universali rinkos taisyklė niekada nesikeičia: žalia visada reiškia kilimą arba padidėjimą, o raudona visada reiškia kritimą, praradimą ar įspėjimą apie riziką."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Pakartotinės padėties detektorius",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Sudėkite tai, ką investavote tiesiogiai į kiekvieną įmonę, ir paslėptą dalį, kurią turite indeksuose arba ETF (pvz., SPY arba QQQ), įspėdami raudonai, jei viršysite protingas ribas."
                 },
                 {
                   "bold": "Ekspozicijos žemėlapis ir grįžimo kilmė",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Jie parodo, kiek procentų iš tikrųjų turite kiekvienoje turto rūšyje ir valiuta, ir kiek jūsų pelno gavote pasirinkus gerus sektorius, palyginti su gero turto pasirinkimu."
                 },
                 {
                   "bold": "Prognozuojamos metinės pajamos ir saugumas",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Jie apskaičiuoja, kiek dolerių per metus ketinate surinkti dividendams, kuponams ir palūkanoms, ir tikrina saugotojų, kuriuose yra jūsų kapitalas, mokumą."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Ciklo perėjimo tikimybės",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Apskaičiuokite, kokia yra tikimybė, kad rinka išliks rami arba pateks į nepastovią, infliacijos ar krizės fazę."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Dešimt tūkstančių ateities scenarijų",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Nubrėžkite galimos portfelio raidos kūgį, atskirdami optimistinį scenarijų (P95 žaliai), numatomą centrinį kelią (P50) ir nepalankų scenarijų (P05 raudonai)."
                 },
                 {
                   "bold": "Kritimų gylis ir stabilumas laikui bėgant",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Jie leidžia perjungti diagramą, kad pamatytumėte, kiek laiko portfelis išliko žemiau visų laikų aukštumų arba koks stabilus buvo jo efektyvumas ir rizika slenkant 60 dienų laikotarpiui."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Bandomasis užsakymo įkėlimas",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Jūs pasirenkate bet kurį turtą, nurodote, ar norite pirkti, parduoti ar padengti, ir įkeliate sumą doleriais. Toliau pateiktame sąraše galite įjungti arba išjungti kiekvieną imituojamą užsakymą, kad palygintumėte jo poveikį."
                 },
                 {
                   "bold": "Optimalus padėties dydis",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Remdamasis jūsų apskaičiuota sėkmės tikimybe ir pelno ir nuostolių santykiu, jis apskaičiuoja, kiek didžiausio kapitalo procento turėtų būti skirta augti, nepersistengiant."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Apsauginių skydų lygintuvas",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Tai leidžia pakaitomis dirbti be draudimo arba taikyti trijų rūšių draudimą su pasirinkimo galimybėmis (su SPY, QQQ arba VIX nepastovumu), palyginus metinę įmokos kainą su doleriais, kuriuos sutaupytumėte 20 % avarijos atveju."
                 },
                 {
                   "bold": "Sverto kontrolė ir užstatas",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Stebėkite, kiek procentų išlaikymo maržos naudojote ir kiek procentų portfelio kritimo išgyventų prieš patekdami į garantinės įmokos zoną."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Užsakymų žurnalo ir portfelio asistentas",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Apatiniame skydelyje įrašomas kiekvienas modeliavimas ir jo poveikis rizikai, o dialogo mygtukas viršuje dešinėje atidaro pokalbį, kuriame galite užduoti tiesioginius klausimus apie jūsų portfelį."
                 }
               ],

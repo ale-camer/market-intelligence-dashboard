@@ -118,7 +118,7 @@
             },
             {
               "bold": "自動メモリ",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "ページを再読み込みすることなく、画面全体が即座に翻訳され、選択内容は次回入力するときのために保存されます。"
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "これを解決するために、テーマ セレクターは環境の色をデータの色から分離します。",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "5つの読書環境",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "クリックするたびに、目に最も快適な背景が見つかるまで、純粋な黒、青みがかった、または暖かい背景の間で回転します。"
             },
             {
               "bold": "完全な財務セマンティクス",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "どのようなトピックを変更しても、市場の普遍的なルールは決して変わりません。緑は常に上昇または利益を意味し、赤は常に下落、損失、またはリスク警戒を意味します。"
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "繰り返し位置検出器",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "各企業に直接投資した金額と、インデックスまたは ETF (SPY や QQQ など) に含まれる隠れた部分を合計し、慎重な制限を超えた場合は赤色で警告します。"
                 },
                 {
                   "bold": "露出マップとリターンの原点",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "これらは、各資産タイプと通貨で実際に何パーセントを保有しているのか、また、良いセクターを選択したことと良い資産を選択したことから利益がどのくらい得られたのかを示します。"
                 },
                 {
                   "bold": "予想年収と保障",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "彼らは、配当、クーポン、利息として年間に何ドルを集めるつもりかを計算し、資本が保管されている保管機関の支払い能力を監査します。"
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "周期遷移確率",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "市場が平穏を保つか、または不安定なインフレ、または危機の段階に入る可能性がどのくらいかを計算します。"
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "1万の未来シナリオ",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "楽観的なシナリオ (緑色の P95)、予想される中心経路 (P50)、および逆境のシナリオ (赤色の P05) を区別して、ポートフォリオの予想される進化の円錐を描きます。"
                 },
                 {
                   "bold": "滝の深さと経時的な安定性",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "これにより、チャートを切り替えて、ポートフォリオが過去最高値を下回った期間、または 60 日間のローリングウィンドウにわたってその効率とリスクがどの程度安定していたかを確認できます。"
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "テスト注文の読み込み",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "任意の資産を選択し、購入するか、売却するか、カバーするかを指定し、金額をドルでロードします。以下のリストでは、各シミュレーション注文をオンまたはオフにして、その効果を比較できます。"
                 },
                 {
                   "bold": "最適なポジションサイズ",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "推定された成功確率と利益と損失の関係に基づいて、過度に露出せずに成長するために資本の最大何パーセントを割り当てる必要があるかを計算します。"
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "保護シールドの比較器",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "これにより、保険なしで運用するか、オプション付きの 3 種類の保険 (SPY、QQQ、または VIX のボラティリティに応じて) を適用するかを切り替えることができ、保険料の年間コストと 20% の暴落で節約できる金額を対比することができます。"
                 },
                 {
                   "bold": "コントロールと担保を活用する",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "維持証拠金の何パーセントを使用したか、そしてマージンコールゾーンに入る前にポートフォリオが何パーセントの下落に耐えるかを監視します。"
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "注文ログおよびポートフォリオアシスタント",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "下部パネルには各シミュレーションがリスクへの影響とともに記録され、右上のダイアログ ボタンを押すとチャットが開き、ポートフォリオについて直接質問できます。"
                 }
               ],

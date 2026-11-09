@@ -93,6 +93,12 @@ export default function AgentCommitteeView({
     }, []);
 
     useEffect(() => {
+        const appViewport = typeof document !== 'undefined' ? document.querySelector('.app-main-viewport') : null;
+        if (appViewport) appViewport.scrollTop = 0;
+        if (typeof window !== 'undefined') window.scrollTo(0, 0);
+    }, [activeView]);
+
+    useEffect(() => {
         try {
             localStorage.setItem(PORTFOLIO_STORAGE_KEY, JSON.stringify(holdings));
         } catch {

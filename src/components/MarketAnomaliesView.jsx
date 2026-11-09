@@ -2396,13 +2396,13 @@ export default function MarketAnomaliesView({
                       padding: '0.16rem 0.52rem',
                       borderRadius: '999px',
                       border: active
-                        ? '1px solid rgba(56, 189, 248, 0.65)'
-                        : '1px solid rgba(56, 189, 248, 0.22)',
+                        ? '1px solid var(--trait-pill-active-border, rgba(56, 189, 248, 0.65))'
+                        : '1px solid var(--trait-pill-border, rgba(56, 189, 248, 0.22))',
                       background: active
-                        ? 'rgba(56, 189, 248, 0.18)'
-                        : 'rgba(56, 189, 248, 0.05)',
-                      color: active ? 'var(--info-text, #38bdf8)' : '#BAE6FD',
-                      textShadow: active ? '0 0 10px rgba(56, 189, 248, 0.55)' : 'none',
+                        ? 'var(--trait-pill-active-bg, rgba(56, 189, 248, 0.18))'
+                        : 'var(--trait-pill-bg, rgba(56, 189, 248, 0.05))',
+                      color: active ? 'var(--info-text, #38bdf8)' : 'var(--trait-pill-text, #BAE6FD)',
+                      textShadow: 'none',
                       cursor: 'pointer',
                       transition: 'all 0.15s ease',
                       whiteSpace: 'nowrap',
@@ -4402,12 +4402,12 @@ export default function MarketAnomaliesView({
                           const spec = getAssetClassSpecificMetrics(row, isES);
                           return (
                             <>
-                              <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: '#fff', fontWeight: 700, fontSize: '13px' }}>
+                              <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: 'var(--text-main, #f8fafc)', fontWeight: 700, fontSize: '13px' }}>
                                 <div>{spec.col1Val}</div>
                                 <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', fontWeight: 500 }}>{spec.col1Sub}</div>
                               </td>
                               <td className="mono-metric" style={{ ...cellBase, padding: '10px 10px', color: 'var(--text-body, #cbd5e1)', fontWeight: 700, fontSize: '13px' }}>
-                                <div style={{ color: '#fff' }}>{spec.col2Val}</div>
+                                <div style={{ color: 'var(--text-main, #f8fafc)' }}>{spec.col2Val}</div>
                                 <div style={{ fontSize: '11px', color: 'var(--text-dim, #64748b)', fontWeight: 500 }}>{spec.col2Sub}</div>
                               </td>
                             </>
@@ -4603,7 +4603,7 @@ export default function MarketAnomaliesView({
                   border: '1px solid var(--border-subtle, rgba(255, 255, 255, 0.15))',
                   fontSize: '0.6rem',
                   fontWeight: 800,
-                  color: '#fff',
+                  color: 'var(--text-main, #f8fafc)',
                   textAlign: 'center',
                   pointerEvents: 'none',
                   zIndex: 1,
@@ -4978,6 +4978,7 @@ export default function MarketAnomaliesView({
       {/* 2.1 TOP HORIZON BAR: BACK BUTTON + INTEGRATED TICKER SEARCH + ANALYTICS | RESEARCH PILLS + TIMEFRAMES */}
       {/* 2.1 TOP HORIZON BAR — V010 NEON-HALO BOXLESS NAVIGATION */}
       <div
+        className="resp-l2-topbar"
         style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -4990,7 +4991,7 @@ export default function MarketAnomaliesView({
         }}
       >
         {/* Left: Boxless Neon Back Button + Sleek Ticker Search Switcher */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', flex: 1 }}>
+        <div className="resp-l2-topbar-left" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap', flex: 1 }}>
           <HoverTooltip
             title={tx('Volver al Screener Global', 'Back to Global Screener')}
             badge="LEVEL 1"
@@ -5014,6 +5015,7 @@ export default function MarketAnomaliesView({
                 fontWeight: 800,
                 textShadow: '0 0 12px rgba(var(--ui-accent-rgb), 0.75)',
                 cursor: 'pointer',
+                whiteSpace: 'nowrap',
               }}
             >
               <ArrowLeft size={13} strokeWidth={2.4} />
@@ -5021,11 +5023,12 @@ export default function MarketAnomaliesView({
             </button>
           </HoverTooltip>
 
-          <span style={{ color: 'rgba(255, 255, 255, 0.15)', userSelect: 'none' }}>•</span>
+          <span className="resp-hide-mobile" style={{ color: 'rgba(255, 255, 255, 0.15)', userSelect: 'none' }}>•</span>
 
           {/* Integrated Ticker Search Combobox with Full Keyboard Navigation */}
-          <div style={{ position: 'relative' }}>
+          <div className="resp-l2-search-wrap" style={{ position: 'relative' }}>
             <div
+              className="resp-l2-search-box"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -5147,11 +5150,11 @@ export default function MarketAnomaliesView({
                       }}
                     >
                       <div>
-                        <span className="mono-metric" style={{ fontWeight: 800, color: '#fff' }}>{item.sym}</span>
+                        <span className="mono-metric" style={{ fontWeight: 800, color: 'var(--text-main, #f8fafc)' }}>{item.sym}</span>
                         <span style={{ fontSize: '0.65rem', color: 'var(--text-dim)', marginLeft: '0.45rem' }}>{item.name}</span>
                       </div>
                       <div className="mono-metric" style={{ display: 'flex', gap: '0.5rem' }}>
-                        <span style={{ color: '#fff' }}>{item.priceFormatted}</span>
+                        <span style={{ color: 'var(--text-main, #f8fafc)' }}>{item.priceFormatted}</span>
                         <span style={{ color: pos ? 'var(--accent, #10b981)' : 'var(--danger, #f43f5e)', fontWeight: 700 }}>{item.chg}</span>
                       </div>
                     </div>
@@ -5163,7 +5166,7 @@ export default function MarketAnomaliesView({
         </div>
 
         {/* Center: LEVEL 2 PRIMARY MODE SWITCHER IN V010 BOXLESS NEON-HALO STYLE */}
-        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '1.45rem' }}>
+        <div className="resp-l2-topbar-center" style={{ display: 'inline-flex', alignItems: 'center', gap: '1.45rem' }}>
           {[
             {
               id: 'analytics',
@@ -5180,7 +5183,11 @@ export default function MarketAnomaliesView({
             return (
               <HoverTooltip key={sec.id} title={sec.label} badge="LEVEL 2 DESK" description={sec.desc} placement="bottom" disabled={true}>
                 <button
-                  onClick={() => setL2Section(sec.id)}
+                  onClick={() => {
+                    setL2Section(sec.id);
+                    const appViewport = typeof document !== 'undefined' ? document.querySelector('.app-main-viewport') : null;
+                    if (appViewport) appViewport.scrollTop = 0;
+                  }}
                   style={{
                     background: 'transparent',
                     border: 'none',
@@ -5201,7 +5208,7 @@ export default function MarketAnomaliesView({
         </div>
 
         {/* Right: V010 Ghost P-06 Trigger + Boxless Neon Timeframes (Analytics) OR Live Wire Trigger (Research) */}
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.68rem', flexWrap: 'wrap', flex: 1 }}>
+        <div className="resp-l2-topbar-right" style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.68rem', flexWrap: 'wrap', flex: 1 }}>
           {l2Section === 'analytics' ? (
             <>
               <HoverTooltip

@@ -118,7 +118,7 @@
             },
             {
               "bold": "Memori otomatis",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Seluruh layar diterjemahkan secara instan tanpa memuat ulang halaman dan pilihan Anda disimpan untuk kali berikutnya Anda masuk."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Untuk mengatasi hal ini, pemilih tema memisahkan warna lingkungan dari warna data:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Lima lingkungan membaca",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Dengan setiap klik, Anda memutar antara latar belakang hitam murni, kebiruan, atau hangat hingga Anda menemukan latar belakang yang paling nyaman untuk mata Anda."
             },
             {
               "bold": "Semantik keuangan yang utuh",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Apa pun topik yang Anda ubah, aturan universal pasar tidak pernah berubah: hijau selalu berarti naik atau untung, dan merah selalu berarti turun, rugi, atau peringatan risiko."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Detektor posisi berulang",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Jumlahkan apa yang telah Anda investasikan secara langsung di setiap perusahaan ditambah bagian tersembunyi yang Anda miliki dalam indeks atau ETF (seperti SPY atau QQQ), yang memperingatkan Anda dengan warna merah jika Anda melampaui batas kehati-hatian."
                 },
                 {
                   "bold": "Peta keterpaparan dan asal kepulangan",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Mereka menunjukkan kepada Anda berapa persentase sebenarnya yang Anda miliki di setiap jenis aset dan mata uang, dan berapa banyak keuntungan Anda yang berasal dari memilih sektor yang bagus dibandingkan memilih aset yang bagus."
                 },
                 {
                   "bold": "Proyeksi pendapatan dan keamanan tahunan",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Mereka menghitung berapa banyak dolar yang akan Anda kumpulkan pada tahun tersebut untuk dividen, kupon dan bunga, dan mengaudit solvabilitas kustodian di mana modal Anda berada."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Probabilitas transisi siklus",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Hitung seberapa besar kemungkinan pasar akan tetap tenang atau memasuki fase yang bergejolak, inflasi, atau krisis."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Sepuluh ribu skenario masa depan",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Gambarkan kerucut kemungkinan evolusi portofolio Anda, dengan membedakan skenario optimis (P95 berwarna hijau), jalur sentral yang diharapkan (P50) dan skenario buruk (P05 berwarna merah)."
                 },
                 {
                   "bold": "Kedalaman jatuh dan stabilitas dari waktu ke waktu",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Mereka memungkinkan Anda untuk mengubah grafik untuk melihat berapa lama portofolio bertahan di bawah titik tertinggi sepanjang masa atau seberapa stabil efisiensi dan risikonya selama jangka waktu 60 hari."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Uji pemuatan pesanan",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Anda memilih aset apa pun, menunjukkan apakah Anda ingin membeli, menjual atau menutup dan memasukkan jumlahnya dalam dolar. Dalam daftar di bawah ini Anda dapat mengaktifkan atau menonaktifkan setiap pesanan simulasi untuk membandingkan efeknya."
                 },
                 {
                   "bold": "Ukuran posisi optimal",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Berdasarkan perkiraan kemungkinan keberhasilan Anda dan hubungan antara untung dan rugi, ini menghitung persentase modal maksimum yang harus dialokasikan untuk tumbuh tanpa mengekspos diri Anda secara berlebihan."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Pembanding perisai pelindung",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Hal ini memungkinkan Anda untuk bergantian antara beroperasi tanpa perlindungan atau menerapkan tiga jenis asuransi dengan opsi (pada volatilitas SPY, QQQ atau VIX), membandingkan biaya premi tahunan dengan dolar yang akan Anda hemat jika terjadi kecelakaan sebesar 20%."
                 },
                 {
                   "bold": "Kontrol leverage dan jaminan",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Pantau berapa persentase margin pemeliharaan yang telah Anda gunakan dan berapa persentase penurunan yang akan dialami portofolio sebelum memasuki zona margin call."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Log pesanan dan asisten portofolio",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Panel bawah mencatat setiap simulasi beserta dampaknya terhadap risiko, sedangkan tombol dialog di kanan atas membuka obrolan untuk mengajukan pertanyaan langsung tentang portofolio Anda."
                 }
               ],

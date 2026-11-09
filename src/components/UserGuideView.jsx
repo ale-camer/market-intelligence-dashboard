@@ -897,15 +897,18 @@ export default function UserGuideView({
         if (programmaticScrollLockRef.current) return;
 
         const container = contentScrollRef.current;
+        const appViewport = typeof document !== 'undefined' ? document.querySelector('.app-main-viewport') : null;
         if (!container || !activePage?.sections?.length) return;
 
+        const effectiveScrollTop = Math.max(container.scrollTop || 0, appViewport ? appViewport.scrollTop : 0);
+
         /* Si el usuario está arriba del todo sin haber escroleado, marcamos la primera sección */
-        if (container.scrollTop <= 14) {
+        if (effectiveScrollTop <= 14) {
             setActiveSectionId(activePage.sections[0].id);
             return;
         }
 
-        const cRect = container.getBoundingClientRect();
+        const cRect = (appViewport && appViewport.scrollHeight > appViewport.clientHeight + 10 ? appViewport : container).getBoundingClientRect();
         const viewTop = cRect.top + 24;
         const viewBottom = cRect.bottom - 44;
 
@@ -929,12 +932,19 @@ export default function UserGuideView({
 
     useEffect(() => {
         const container = contentScrollRef.current;
+        const appViewport = typeof document !== 'undefined' ? document.querySelector('.app-main-viewport') : null;
         if (!container) return undefined;
 
         container.addEventListener('scroll', computeActiveSectionOnScroll, { passive: true });
+        if (appViewport) {
+            appViewport.addEventListener('scroll', computeActiveSectionOnScroll, { passive: true });
+        }
         window.addEventListener('resize', computeActiveSectionOnScroll);
         return () => {
             container.removeEventListener('scroll', computeActiveSectionOnScroll);
+            if (appViewport) {
+                appViewport.removeEventListener('scroll', computeActiveSectionOnScroll);
+            }
             window.removeEventListener('resize', computeActiveSectionOnScroll);
         };
     }, [computeActiveSectionOnScroll]);
@@ -992,9 +1002,28 @@ export default function UserGuideView({
             ...(page.id.startsWith('mkt-') ? { markets: true } : {}),
             ...(page.id.startsWith('port-') ? { portfolio: true } : {})
         }));
-        if (contentScrollRef.current) {
-            contentScrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+        const scrollArticleTitleToTop = () => {
+            const contentEl = contentScrollRef.current;
+            if (contentEl) {
+                contentEl.scrollTop = 0;
+            }
+            const appViewport =
+                typeof document !== 'undefined' ? document.querySelector('.app-main-viewport') : null;
+            if (appViewport && contentEl && typeof window !== 'undefined' && window.innerWidth <= 980) {
+                const vpRect = appViewport.getBoundingClientRect();
+                const contentRect = contentEl.getBoundingClientRect();
+                const targetTop = Math.max(0, appViewport.scrollTop + (contentRect.top - vpRect.top) - 6);
+                appViewport.scrollTop = targetTop;
+            } else if (appViewport) {
+                appViewport.scrollTop = 0;
+            }
+        };
+        if (typeof window !== 'undefined' && window.requestAnimationFrame) {
+            window.requestAnimationFrame(scrollArticleTitleToTop);
+        } else {
+            scrollArticleTitleToTop();
         }
+        setTimeout(scrollArticleTitleToTop, 40);
         setTimeout(() => {
             programmaticScrollLockRef.current = false;
         }, 420);
@@ -1049,11 +1078,11 @@ export default function UserGuideView({
                             ? '1px solid var(--ui-accent, #10b981)'
                             : '1px solid transparent',
                         background: isPageActive
-                            ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.14)'
+                            ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.16)'
                             : 'transparent',
-                        color: isPageActive ? 'var(--text-main, #ffffff)' : 'var(--text-body, #cbd5e1)',
+                        color: isPageActive ? 'var(--ui-accent, #10b981)' : 'var(--text-main, #f8fafc)',
                         fontSize: '13px',
-                        fontWeight: isPageActive ? 600 : 400,
+                        fontWeight: isPageActive ? 700 : 500,
                         fontFamily: typo.headingFontFamily,
                         borderRadius: '7px',
                         cursor: 'pointer',
@@ -1062,6 +1091,11 @@ export default function UserGuideView({
                     }}
                 >
                     <span>{page.label}</span>
+                    {page.sections?.length > 0 && (
+                        <span style={{ fontSize: '10px', color: isPageActive ? 'var(--ui-accent, #10b981)' : 'var(--text-dim, #64748b)', marginLeft: '6px' }}>
+                            {isOpen ? '▾' : '▸'}
+                        </span>
+                    )}
                 </button>
 
                 {isOpen && (
@@ -1191,7 +1225,7 @@ export default function UserGuideView({
                             minHeight: 0,
                             overflowY: 'auto',
                             paddingRight: '4px',
-                            paddingBottom: '20px',
+                            paddingBottom: '4px',
                             display: 'flex',
                             flexDirection: 'column',
                             gap: '2px'
@@ -1222,7 +1256,7 @@ export default function UserGuideView({
                                             background: 'transparent',
                                             color: 'var(--text-main, #f8fafc)',
                                             fontSize: '13.5px',
-                                            fontWeight: 600,
+                                            fontWeight: 700,
                                             fontFamily: typo.headingFontFamily,
                                             borderRadius: '6px',
                                             cursor: 'pointer',
@@ -1230,6 +1264,9 @@ export default function UserGuideView({
                                         }}
                                     >
                                         <span>{topNode.label}</span>
+                                        <span style={{ fontSize: '11px', color: 'var(--ui-accent, #10b981)', marginLeft: '6px' }}>
+                                            {isGroupOpen ? '▾' : '▸'}
+                                        </span>
                                     </button>
 
                                     {isGroupOpen && (

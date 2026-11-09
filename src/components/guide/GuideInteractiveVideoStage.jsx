@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Video, Palette, Play, Pause, Search, X, Check } from 'lucide-react';
+import { Video, Palette, Sun, Moon, Play, Pause, Search, X, Check } from 'lucide-react';
 import WebbDeepFieldCanvas from '../WebbDeepFieldCanvas';
 import StarfieldBackground from '../StarfieldBackground';
 import MarketAnomaliesView from '../MarketAnomaliesView';
@@ -322,7 +322,7 @@ function RealV010HeaderChrome({ activeTabId, activeSceneId, langCode = 'EN' }) {
     );
 }
 
-function RealV010FooterChrome({ activeSceneId, langCode = 'EN' }) {
+function RealV010FooterChrome({ activeSceneId, langCode = 'EN', lightMode = false }) {
     const t = I18N[langCode] || I18N.EN;
     const sampleLang = LANGUAGES.find(l => l.code === langCode) || LANGUAGES[0];
 
@@ -352,7 +352,7 @@ function RealV010FooterChrome({ activeSceneId, langCode = 'EN' }) {
                         color: activeSceneId === 'home-system' ? 'var(--ui-accent, #10b981)' : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.78)',
                         background: activeSceneId === 'home-system' ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.18)' : 'transparent',
                         border: activeSceneId === 'home-system' ? '1.5px solid var(--ui-accent, #10b981)' : '1px solid transparent',
-                        textShadow: '0 1px 4px rgba(0, 0, 0, 0.9)'
+                        textShadow: lightMode ? 'none' : '0 1px 4px rgba(0, 0, 0, 0.9)'
                     }}
                 >
                     {t.navTelemetry || 'System'}
@@ -365,15 +365,15 @@ function RealV010FooterChrome({ activeSceneId, langCode = 'EN' }) {
                         color: activeSceneId === 'home-guide' ? 'var(--ui-accent, #10b981)' : 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.78)',
                         background: activeSceneId === 'home-guide' ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.18)' : 'transparent',
                         border: activeSceneId === 'home-guide' ? '1.5px solid var(--ui-accent, #10b981)' : '1px solid transparent',
-                        textShadow: '0 1px 4px rgba(0, 0, 0, 0.9)'
+                        textShadow: lightMode ? 'none' : '0 1px 4px rgba(0, 0, 0, 0.9)'
                     }}
                 >
                     {t.navGuide || 'Guide'}
                 </span>
             </div>
 
-            {/* ESQUINA INFERIOR DERECHA: IDIOMA + PALETTE */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1.15rem' }}>
+            {/* ESQUINA INFERIOR DERECHA: IDIOMA + SUN/MOON + PALETTE */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
                 <span
                     style={{
                         display: 'inline-flex',
@@ -400,6 +400,22 @@ function RealV010FooterChrome({ activeSceneId, langCode = 'EN' }) {
                         border: activeSceneId === 'home-palettes' ? '1.5px solid var(--ui-accent, #10b981)' : '1px solid transparent'
                     }}
                 >
+                    {lightMode ? (
+                        <Moon size={16} color="var(--ui-accent, #10b981)" />
+                    ) : (
+                        <Sun size={16} color="var(--ui-accent, #10b981)" />
+                    )}
+                </span>
+                <span
+                    style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        padding: '3px 7px',
+                        borderRadius: '6px',
+                        background: activeSceneId === 'home-palettes' ? 'rgba(var(--ui-accent-rgb, 16, 185, 129), 0.18)' : 'transparent',
+                        border: activeSceneId === 'home-palettes' ? '1.5px solid var(--ui-accent, #10b981)' : '1px solid transparent'
+                    }}
+                >
                     <Palette size={16} color="var(--ui-accent, #10b981)" />
                 </span>
             </div>
@@ -411,13 +427,20 @@ function RealV010FooterChrome({ activeSceneId, langCode = 'EN' }) {
 function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
     const t = I18N[langCode] || I18N.EN;
     const sampleLang = LANGUAGES.find(l => l.code === langCode) || LANGUAGES[0];
+    const isDocLight =
+        typeof document !== 'undefined' &&
+        document.documentElement.getAttribute('data-mode') === 'light';
+    const isDemoLight =
+        activeSceneId === 'home-palettes'
+            ? Math.floor(animClock * 0.55) % 2 === 1
+            : isDocLight;
 
     const paletteAmbientBgs = [
-        'var(--bg-elevated, rgba(2, 6, 23, 0.18))',
-        'rgba(0, 0, 0, 0.52)',
-        'var(--bg-elevated-soft, rgba(7, 24, 54, 0.42))',
-        'var(--bg-elevated-soft, rgba(28, 25, 23, 0.42))',
-        'var(--bg-elevated-soft, rgba(15, 23, 62, 0.45))'
+        'transparent',
+        isDemoLight ? 'rgba(15, 23, 42, 0.06)' : 'rgba(0, 0, 0, 0.45)',
+        isDemoLight ? 'rgba(2, 132, 199, 0.08)' : 'rgba(7, 24, 54, 0.38)',
+        isDemoLight ? 'rgba(217, 119, 6, 0.08)' : 'rgba(28, 25, 23, 0.38)',
+        isDemoLight ? 'rgba(79, 70, 229, 0.08)' : 'rgba(15, 23, 62, 0.40)'
     ];
     const activeThemeIdx =
         activeSceneId === 'home-palettes'
@@ -425,10 +448,10 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
             : 0;
 
     return (
-        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', backgroundColor: '#000000' }}>
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', backgroundColor: isDemoLight ? '#DAF3EE' : '#000000' }}>
             {/* Fondo espacial real WebbDeepFieldCanvas */}
             <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
-                <WebbDeepFieldCanvas isPaused={false} lang={langCode} />
+                <WebbDeepFieldCanvas isPaused={false} lang={langCode} lightMode={isDemoLight} />
             </div>
 
             {/* Tinte de ambiente cuando se demuestra Palette */}
@@ -467,7 +490,7 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                     style={{
                         fontSize: '1.55rem',
                         fontWeight: 600,
-                        color: 'var(--text-muted, rgba(255, 255, 255, 0.94))',
+                        color: isDemoLight ? 'rgba(14, 28, 22, 0.94)' : 'rgba(255, 255, 255, 0.94)',
                         letterSpacing: '-0.01em',
                         margin: 0
                     }}
@@ -477,7 +500,7 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                 <p
                     style={{
                         fontSize: '0.9rem',
-                        color: 'var(--text-muted, rgba(255, 255, 255, 0.68))',
+                        color: isDemoLight ? 'rgba(28, 52, 40, 0.76)' : 'rgba(255, 255, 255, 0.68)',
                         lineHeight: 1.6,
                         fontWeight: 400,
                         margin: 0
@@ -617,8 +640,35 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                         boxShadow: '0 14px 36px rgba(0, 0, 0, 0.88)'
                     }}
                 >
-                    <div style={{ fontSize: '11.5px', fontWeight: 700, color: 'var(--text-main, #ffffff)', marginBottom: '8px' }}>
-                        Palette (5 Themes)
+                    <div
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            fontSize: '11.5px',
+                            fontWeight: 700,
+                            color: 'var(--text-main, #ffffff)',
+                            marginBottom: '8px'
+                        }}
+                    >
+                        <span>Palette (5 Themes)</span>
+                        <span
+                            style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                                padding: '2px 7px',
+                                borderRadius: '999px',
+                                fontSize: '10px',
+                                fontWeight: 700,
+                                background: 'rgba(16, 185, 129, 0.16)',
+                                border: '1px solid rgba(16, 185, 129, 0.45)',
+                                color: 'var(--accent, #10b981)'
+                            }}
+                        >
+                            {isDemoLight ? <Sun size={11} /> : <Moon size={11} />}
+                            <span>{isDemoLight ? 'Light' : 'Dark'}</span>
+                        </span>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
                         {PALETTES.map((pt, i) => {
@@ -660,8 +710,8 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
                                             gap: '5px'
                                         }}
                                     >
-                                        <span style={{ color: 'var(--accent, #10b981)' }}>▲#10b981</span>
-                                        <span style={{ color: 'var(--danger, #f43f5e)' }}>▼#f43f5e</span>
+                                        <span style={{ color: 'var(--accent, #10b981)', fontWeight: 700 }}>▲</span>
+                                        <span style={{ color: 'var(--danger, #f43f5e)', fontWeight: 700 }}>▼</span>
                                     </span>
                                 </div>
                             );
@@ -671,7 +721,7 @@ function RealHomeCanvasStage({ activeSceneId, langCode = 'EN', animClock }) {
             )}
 
             {/* FOOTER OFICIAL V010 */}
-            <RealV010FooterChrome activeSceneId={activeSceneId} langCode={langCode} />
+            <RealV010FooterChrome activeSceneId={activeSceneId} langCode={langCode} lightMode={isDemoLight} />
         </div>
     );
 }
@@ -1016,43 +1066,6 @@ export default function GuideInteractiveVideoStage({
                     langCode={resolvedLang}
                     portTabs={langData.ui?.portTabs}
                 />
-
-                {/* CURSOR DEMOSTRATIVO ANIMADO QUE RECORRE LA INTERFAZ AL RITMO DE LA LOCUCIÓN */}
-                <div
-                    style={{
-                        position: 'absolute',
-                        left: `${activeScene.cursorX}%`,
-                        top: `${activeScene.cursorY}%`,
-                        transform: 'translate(-4px, -4px)',
-                        transition: 'left 0.6s cubic-bezier(0.22, 1, 0.36, 1), top 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
-                        zIndex: 18,
-                        pointerEvents: 'none'
-                    }}
-                >
-                    <div
-                        style={{
-                            position: 'absolute',
-                            left: '-12px',
-                            top: '-12px',
-                            width: '28px',
-                            height: '28px',
-                            borderRadius: '999px',
-                            border: '2px solid rgba(16, 185, 129, 0.85)',
-                            background: 'rgba(16, 185, 129, 0.18)',
-                            transform: `scale(${1 + 0.22 * Math.sin(animClock * 5.5)})`,
-                            boxShadow: '0 0 14px rgba(16, 185, 129, 0.65)'
-                        }}
-                    />
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style={{ filter: 'drop-shadow(0 2px 6px rgba(0,0,0,0.9))' }}>
-                        <path
-                            d="M4 3L11.5 20L14.2 13.2L21 10.5L4 3Z"
-                            fill="var(--accent, #10b981)"
-                            stroke="var(--text-main, #ffffff)"
-                            strokeWidth="1.8"
-                            strokeLinejoin="round"
-                        />
-                    </svg>
-                </div>
 
                 {/* BOTÓN CENTRAL DE PLAY / PAUSE EN EL MEDIO DEL VIDEO (ESTILO YOUTUBE) */}
                 <div

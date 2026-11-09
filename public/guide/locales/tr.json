@@ -118,7 +118,7 @@
             },
             {
               "bold": "Otomatik hafıza",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Sayfayı yeniden yüklemeye gerek kalmadan ekranın tamamı anında çevrilir ve seçiminiz bir sonraki girişinizde kullanılmak üzere kaydedilir."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Bunu çözmek için tema seçici ortam rengini veri renginden ayırır:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Beş okuma ortamı",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Her tıklamada, gözleriniz için en rahat olanı bulana kadar saf siyah, mavimsi veya sıcak arka planlar arasında geçiş yaparsınız."
             },
             {
               "bold": "Kusursuz finansal anlambilim",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Hangi konuyu değiştirirseniz değiştirin, piyasanın evrensel kuralı asla değişmez: Yeşil her zaman yükseliş veya kazanç anlamına gelir, kırmızı ise her zaman düşüş, kayıp veya risk uyarısı anlamına gelir."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Tekrarlanan konum dedektörü",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Her bir şirkete doğrudan yatırdığınız tutarı ve endeksler veya ETF'ler (SPY veya QQQ gibi) içindeki gizli kısmınızı toplayın ve ihtiyatlı limitleri aşarsanız sizi kırmızı renkle uyarın."
                 },
                 {
                   "bold": "Maruz kalma haritası ve dönüşün kökeni",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Size her bir varlık türü ve para biriminde gerçekte yüzde kaça sahip olduğunuzu ve kârınızın ne kadarının iyi varlıkları seçmekten ziyade iyi sektörleri seçmekten geldiğini gösterirler."
                 },
                 {
                   "bold": "Tahmini yıllık gelir ve güvenlik",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Temettü, kupon ve faiz için yıl içinde kaç dolar toplayacağınızı hesaplıyor, sermayenizin bulunduğu saklama kuruluşlarının borç ödeme gücünü denetliyorlar."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Döngü geçiş olasılıkları",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Piyasanın sakin kalma veya değişken, enflasyonist veya kriz aşamasına girme ihtimalinin ne kadar olduğunu hesaplayın."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "On bin gelecek senaryosu",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "İyimser senaryoyu (P95 yeşil), beklenen merkezi yolu (P50) ve olumsuz senaryoyu (P05 kırmızı) birbirinden ayırarak portföyünüzün olası gelişiminin konisini çizin."
                 },
                 {
                   "bold": "Düşme derinliği ve zaman içindeki stabilite",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Portföyün tüm zamanların en yüksek seviyelerinin altında ne kadar süreyle kaldığını veya 60 günlük pencerelerde verimliliğinin ve riskinin ne kadar istikrarlı olduğunu görmek için grafiği değiştirmenize olanak tanır."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Test siparişi yükleme",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Herhangi bir varlığı seçersiniz, satın almak mı, satmak mı yoksa karşılamak mı istediğinizi belirtirsiniz ve tutarı dolar cinsinden yüklersiniz. Aşağıdaki listede, etkisini karşılaştırmak için her bir simüle edilmiş siparişi açabilir veya kapatabilirsiniz."
                 },
                 {
                   "bold": "Optimum konum boyutu",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Tahmini başarı olasılığınıza ve kâr ile zarar arasındaki ilişkiye dayanarak, kendinizi aşırı riske sokmadan büyümek için sermayenin maksimum yüzdesinin tahsis edilmesi gerektiğini hesaplar."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Koruyucu kalkanların karşılaştırıcısı",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Sigorta kapsamı olmadan çalışma veya seçeneklerle (SPY, QQQ veya VIX oynaklığında) üç tür sigorta uygulama arasında geçiş yapmanıza olanak tanır ve primin yıllık maliyetini %20'lik bir kazada tasarruf edeceğiniz dolar ile karşılaştırır."
                 },
                 {
                   "bold": "Kaldıraç kontrolü ve teminat",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Teminat tamamlama bölgesine girmeden önce, sürdürme marjının yüzde kaçını kullandığınızı ve portföyün yüzde ne kadar düşüşe dayanacağını izleyin."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Sipariş günlüğü ve portföy asistanı",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Alt panel, her simülasyonu risk üzerindeki etkisi ile birlikte kaydederken, sağ üstteki diyalog düğmesi, portföyünüz hakkında doğrudan sorular sorabileceğiniz sohbeti açar."
                 }
               ],

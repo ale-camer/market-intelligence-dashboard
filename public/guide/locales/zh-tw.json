@@ -118,7 +118,7 @@
             },
             {
               "bold": "自動記憶",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "整個畫面會立即翻譯，無需重新載入頁面，並且您的選擇將被儲存以供下次輸入時使用。"
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "為了解決這個問題，主題選擇器將環境顏色與資料顏色分開：",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "五種閱讀環境",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "每次單擊，您都會在純黑色、藍色或暖色背景之間旋轉，直到找到最適合您眼睛的背景。"
             },
             {
               "bold": "完整的金融語義",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "無論你改變什麼主題，市場的普遍規則永遠不會改變：綠色總是意味著上漲或上漲，紅色總是意味著下跌、損失或風險提示。"
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "重複位置偵測器",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "將您直接投資於每家公司的資金加上您在指數或 ETF（例如 SPY 或 QQQ）中的隱藏部分相加，如果超出審慎限制，則會以紅色警告您。"
                 },
                 {
                   "bold": "曝光圖及返回原點",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "它們向您顯示您在每種資產類型和貨幣中實際擁有的百分比，以及您的利潤有多少來自選擇好的行業與選擇好的資產。"
                 },
                 {
                   "bold": "預計年收入和保障",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "他們計算您一年中將收取多少美元的股息、票息和利息，並審查您資金所在託管人的償付能力。"
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "循環轉移機率",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "計算市場保持平靜或進入波動、通膨或危機階段的可能性有多大。"
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "萬種未來情景",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "畫出您的投資組合可能演變的錐體，區分樂觀情境（P95 為綠色）、預期中心路徑（P50）和不利情境（P05 為紅色）。"
                 },
                 {
                   "bold": "跌倒深度和隨時間變化的穩定性",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "它們允許您切換圖表以查看投資組合保持低於歷史高點的時間有多長，或者其效率和風險在 60 天滾動視窗中的穩定性如何。"
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "測試訂單加載",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "您選擇任何資產，表明您是否想要購買、出售或平倉，並以美元計入金額。在下面的清單中，您可以開啟或關閉每個模擬訂單以比較其效果。"
                 },
                 {
                   "bold": "最佳頭寸規模",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "根據您估計的成功機率以及損益之間的關係，它會計算出在不過度暴露自己的情況下應該分配多少資金來實現成長。"
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "防護罩比較器",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "它允許您在沒有承保範圍的情況下操作或選擇三種類型的保險（針對 SPY、QQQ 或 VIX 波動性）進行切換，將每年的保費成本與您在 20% 的崩盤中節省的美元進行對比。"
                 },
                 {
                   "bold": "槓桿控制和抵押品",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "監控您已使用的維持保證金百分比以及投資組合在進入追加保證金區域之前將承受的下降百分比。"
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "訂單日誌和投資組合助理",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "底部面板記錄每次模擬及其對風險的影響，而右上角的對話按鈕打開聊天窗口，直接詢問有關您的投資組合的問題。"
                 }
               ],

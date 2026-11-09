@@ -118,7 +118,7 @@
             },
             {
               "bold": "Awtomatikong memorya",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Ang buong screen ay agad na isinalin nang hindi nire-reload ang pahina at ang iyong pinili ay nai-save para sa mga susunod na pagkakataong pumasok ka."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Upang malutas ito, pinaghihiwalay ng tagapili ng tema ang kulay ng kapaligiran mula sa kulay ng data:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Limang kapaligiran sa pagbabasa",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Sa bawat pag-click, umiikot ka sa pagitan ng purong itim, mala-bughaw o mainit na background hanggang sa mahanap mo ang pinakakomportable para sa iyong mga mata."
             },
             {
               "bold": "Intact financial semantics",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Anuman ang paksang baguhin mo, ang pangkalahatang tuntunin ng merkado ay hindi kailanman binabago: ang berde ay palaging nangangahulugan ng pagtaas o pagtaas, at ang pula ay palaging nangangahulugan ng pagbagsak, pagkawala o alerto sa panganib."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Paulit-ulit na position detector",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Magdagdag ng kung ano ang direktang namuhunan mo sa bawat kumpanya at ang nakatagong bahagi na mayroon ka sa loob ng mga indeks o ETF (gaya ng SPY o QQQ), na nagbabala sa iyo kung lumampas ka sa maingat na limitasyon."
                 },
                 {
                   "bold": "Exposure map at pinagmulan ng pagbabalik",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Ipinapakita nila sa iyo kung anong porsyento ang aktwal mong mayroon sa bawat uri ng asset at currency, at kung gaano kalaki sa iyong kita ang nagmula sa pagpili ng magagandang sektor kumpara sa pagpili ng magagandang asset."
                 },
                 {
                   "bold": "Tinatayang taunang kita at seguridad",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Kinakalkula nila kung gaano karaming mga dolyar ang iyong kokolektahin sa taon para sa mga dibidendo, kupon at interes, at i-audit ang solvency ng mga tagapag-alaga kung saan nakasalalay ang iyong kapital."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Mga posibilidad ng paglipat ng ikot",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Kalkulahin kung gaano ang posibilidad na manatiling kalmado ang merkado o pumasok sa isang pabagu-bago ng isip, inflationary o yugto ng krisis."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Sampung libong mga senaryo sa hinaharap",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Iguhit ang kono ng posibleng ebolusyon ng iyong portfolio, na nakikilala ang optimistikong senaryo (P95 sa berde), ang inaasahang gitnang landas (P50) at ang masamang senaryo (P05 sa pula)."
                 },
                 {
                   "bold": "Lalim ng pagbagsak at katatagan sa paglipas ng panahon",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Nagbibigay-daan sa iyo ang mga ito na i-toggle ang chart upang makita kung gaano katagal nanatili ang portfolio sa ibaba nito sa lahat ng oras na pinakamataas o kung gaano katatag ang kahusayan at panganib nito sa paglipas ng 60-araw na mga window."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Pag-load ng order sa pagsubok",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Pumili ka ng anumang asset, ipahiwatig kung gusto mong bumili, magbenta o mag-cover at i-load ang halaga sa dolyar. Sa listahan sa ibaba maaari mong i-on o i-off ang bawat simulate na order upang ihambing ang epekto nito."
                 },
                 {
                   "bold": "Pinakamainam na laki ng posisyon",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Batay sa iyong tinantyang probabilidad ng tagumpay at ang kaugnayan sa pagitan ng kita at pagkalugi, kinakalkula nito kung anong maximum na porsyento ng kapital ang dapat ilaan upang lumago nang hindi labis na nalalantad ang iyong sarili."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Paghahambing ng mga proteksiyon na kalasag",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Binibigyang-daan ka nitong magpalit-palit sa pagitan ng pagpapatakbo nang walang saklaw o paglalapat ng tatlong uri ng insurance na may mga opsyon (sa SPY, QQQ o VIX volatility), na ihambing ang taunang halaga ng premium laban sa mga dolyar na matitipid mo sa isang 20% na pag-crash."
                 },
                 {
                   "bold": "Gamitin ang kontrol at collateral",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Subaybayan kung anong porsyento ng margin ng pagpapanatili ang iyong ginamit at kung anong porsyento ang pagbaba ng portfolio ay magtitiis bago pumasok sa margin call zone."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Log ng order at portfolio assistant",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Itinatala ng panel sa ibaba ang bawat simulation na may epekto nito sa panganib, habang binubuksan ng dialogue button sa kanang itaas ang chat para magtanong ng mga direktang tanong tungkol sa iyong portfolio."
                 }
               ],

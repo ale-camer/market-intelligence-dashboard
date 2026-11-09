@@ -118,7 +118,7 @@
             },
             {
               "bold": "Automatikus memória",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "A teljes képernyőt azonnal lefordítja az oldal újratöltése nélkül, és a választása mentésre kerül a következő alkalommal, amikor belép."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Ennek megoldására a témaválasztó elválasztja a környezet színét az adatszíntől:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Öt olvasási környezet",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Minden kattintással válthat a tiszta fekete, kékes vagy meleg háttér között, amíg meg nem találja a szemének legkényelmesebbet."
             },
             {
               "bold": "Érintett pénzügyi szemantika",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Nem számít, milyen témát váltasz, a piac univerzális szabálya soha nem változik: a zöld mindig emelkedést vagy nyereséget jelent, a piros pedig mindig zuhanást, veszteséget vagy kockázati figyelmeztetést."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Ismételt helyzetérzékelő",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Adja össze, hogy mit fektetett be közvetlenül az egyes vállalatokba, plusz az indexeken vagy ETF-eken belüli rejtett részt (például SPY vagy QQQ), pirossal figyelmeztetve, ha túllépi a körültekintő határokat."
                 },
                 {
                   "bold": "Expozíciós térkép és a visszatérés eredete",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Megmutatják, hogy ténylegesen hány százaléka van az egyes eszköztípusokban és pénznemekben, és mennyi nyeresége származott a jó szektorok és a jó eszközök kiválasztásából."
                 },
                 {
                   "bold": "Tervezett éves bevétel és biztonság",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Kiszámolják, hány dollárt fogsz beszedni az évben osztalékra, kuponra és kamatra, és ellenőrzik a letétkezelők fizetőképességét, ahol a tőkéje nyugszik."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Ciklusátmeneti valószínűségek",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Számítsa ki, mennyire valószínű, hogy a piac nyugodt marad, vagy ingadozó, inflációs vagy válságos szakaszba lép."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Tízezer jövőbeli forgatókönyv",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Rajzolja meg portfóliója valószínű alakulásának kúpját, megkülönböztetve az optimista forgatókönyvet (P95 zölddel), a várható központi utat (P50) és a kedvezőtlen forgatókönyvet (P05 pirossal)."
                 },
                 {
                   "bold": "Az esések mélysége és az időbeli stabilitás",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Lehetővé teszik a diagram átváltását, hogy megtekinthesse, mennyi ideig maradt a portfólió minden idők csúcsa alatt, vagy mennyire stabil a hatékonysága és a kockázata a 60 napos ablakok gördülésével."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Tesztrendelés betöltése",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Kiválaszt bármilyen eszközt, jelezheti, hogy vásárolni, eladni vagy fedezetet szeretne-e, és az összeget dollárban tölti be. Az alábbi listában be- vagy kikapcsolhatja az egyes szimulált rendeléseket a hatásuk összehasonlításához."
                 },
                 {
                   "bold": "Optimális pozícióméret",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "A siker becsült valószínűsége, valamint a nyereség és veszteség kapcsolata alapján kiszámítja, hogy a tőke legfeljebb hány százalékát kell a növekedésre fordítani anélkül, hogy túlzottan kiszolgáltatná magát."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Védőpajzsok összehasonlítója",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Lehetővé teszi, hogy felváltva működjön fedezet nélkül, vagy háromféle biztosítást alkalmazzon opciókkal (SPY, QQQ vagy VIX volatilitás esetén), szembeállítva a díj éves költségét a 20%-os összeomlás esetén megtakarított dollárral."
                 },
                 {
                   "bold": "Tőkeáttétel-szabályozás és biztosíték",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Figyelje meg, hogy a fenntartási letét hány százalékát használta fel, és mekkora százalékos esést szenvedne el a portfólió, mielőtt belépne a fedezetfelhívási zónába."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Rendelési napló és portfólió asszisztens",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Az alsó panel minden szimulációt rögzít a kockázatra gyakorolt hatásával, míg a jobb felső sarokban lévő párbeszédgomb megnyitja a csevegést, ahol közvetlen kérdéseket tehet fel portfóliójával kapcsolatban."
                 }
               ],

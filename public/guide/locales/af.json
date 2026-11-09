@@ -118,7 +118,7 @@
             },
             {
               "bold": "Outomatiese geheue",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Die hele skerm word onmiddellik vertaal sonder om die bladsy te herlaai en jou keuse word gestoor vir die volgende keer wat jy ingaan."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Om dit op te los, skei die temakieser die omgewingskleur van die datakleur:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Vyf leesomgewings",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Met elke klik draai jy tussen suiwer swart, blouerige of warm agtergronde totdat jy die een kry wat die gemaklikste vir jou oë is."
             },
             {
               "bold": "Ongeskonde finansiële semantiek",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Maak nie saak watter onderwerp jy verander nie, die universele reël van die mark word nooit verander nie: groen beteken altyd styging of wins, en rooi beteken altyd daling, verlies of risikowaarskuwing."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Herhaalde posisie detektor",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Tel by wat jy direk in elke maatskappy belê het plus die versteekte gedeelte wat jy binne indekse of ETF's (soos SPY of QQQ) het, en waarsku jou in rooi as jy verstandige perke oorskry."
                 },
                 {
                   "bold": "Blootstellingskaart en oorsprong van terugkeer",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Hulle wys jou watter persentasie jy werklik in elke batetipe en geldeenheid het, en hoeveel van jou wins uit die keuse van goeie sektore gekom het teenoor die keuse van goeie bates."
                 },
                 {
                   "bold": "Geprojekteerde jaarlikse inkomste en sekuriteit",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Hulle bereken hoeveel dollars jy in die jaar gaan insamel vir dividende, koepons en rente, en oudit die solvensie van die bewaarders waar jou kapitaal rus."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Siklus oorgang waarskynlikhede",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Bereken hoe waarskynlik die mark sal kalm bly of 'n wisselvallige, inflasionêre of krisisfase binnegaan."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Tienduisend toekomsscenario's",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Teken die keël van waarskynlike evolusie van jou portefeulje, en onderskei die optimistiese scenario (P95 in groen), die verwagte sentrale pad (P50) en die ongunstige scenario (P05 in rooi)."
                 },
                 {
                   "bold": "Diepte van val en stabiliteit oor tyd",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Hulle laat jou toe om die grafiek te wissel om te sien hoe lank die portefeulje onder sy hoogtepunte van alle tye gebly het of hoe stabiel sy doeltreffendheid en risiko was oor die rol van 60-dae vensters."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Toets bestelling laai",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Jy kies enige bate, dui aan of jy wil koop, verkoop of dek en laai die bedrag in dollars. In die lys hieronder kan jy elke gesimuleerde bestelling aan of af skakel om die effek daarvan te vergelyk."
                 },
                 {
                   "bold": "Optimale posisie grootte",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Gebaseer op jou beraamde waarskynlikheid van sukses en die verhouding tussen wins en verlies, bereken dit watter maksimum persentasie kapitaal toegeken moet word om te groei sonder om jouself te oorbloot."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Vergelyker van beskermende skilde",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Dit laat jou toe om af te wissel tussen werk sonder dekking of om drie tipes versekering met opsies toe te pas (op SPY, QQQ of VIX wisselvalligheid), om die jaarlikse koste van die premie te kontrasteer met die dollars wat jy sou spaar in 'n 20%-ongeluk."
                 },
                 {
                   "bold": "Hefboom beheer en kollateraal",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Monitor watter persentasie onderhoudsmarge jy gebruik het en watter persentasie daling die portefeulje sal verduur voordat jy die marge-oproepsone betree."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Bestellogboek en portefeulje-assistent",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Die onderste paneel teken elke simulasie aan met die impak daarvan op risiko, terwyl die dialoogknoppie regs bo die klets oopmaak om direkte vrae oor jou portefeulje te vra."
                 }
               ],

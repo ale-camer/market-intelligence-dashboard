@@ -118,7 +118,7 @@
             },
             {
               "bold": "Memoria automatikoa",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Pantaila osoa berehala itzultzen da orria berriro kargatu gabe eta zure aukera sartzen zaren hurrengo aldietarako gordetzen da."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Hau konpontzeko, gai-hautatzaileak ingurunearen kolorea datuen koloretik bereizten du:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Bost irakurketa ingurune",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Klik bakoitzean atzealde beltz, urdinxk edo epelen artean biratzen duzu zure begietarako erosoena dena aurkitu arte."
             },
             {
               "bold": "Finantza-semantika osorik",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Edozein gai aldatzen duzun edozein dela ere, merkatuaren arau unibertsala ez da inoiz aldatzen: berdeak beti gorakada edo irabazia esan nahi du, eta gorriak beti esan nahi du erorketa, galera edo arrisku alerta."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Errepikatuko posizio detektagailua",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Gehitu enpresa bakoitzean zuzenean inbertitu duzuna gehi indizeen edo ETFen barruan duzun ezkutuko zatia (adibidez, SPY edo QQQ), gorriz ohartaraziz muga zuhurra gainditzen baduzu."
                 },
                 {
                   "bold": "Esposizio-mapa eta itzuleraren jatorria",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Aktibo mota eta moneta bakoitzean benetan zer ehuneko duzun erakusten dizute, eta zure irabaziaren zenbat sektore onak hautatzetik aktibo onak hautatzetik atera zen."
                 },
                 {
                   "bold": "Aurreikusitako urteko diru-sarrerak eta segurtasuna",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Dibidenduengatik, kupoiengatik eta interesengatik urtean zenbat dolar bilduko dituzun kalkulatzen dute, eta zure kapitala dagoen zaindarien kaudimena ikuskatzen dute."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Zikloaren trantsizio probabilitateak",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Kalkulatu merkatuak lasai egoteko edo lurrunkor, inflazionista edo krisi-fase batean sartzeko."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Hamar mila etorkizuneko eszenatoki",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Marraztu zure zorroaren bilakaera probablearen konoa, eszenatoki baikorra (P95 berdez), espero den erdiko bidea (P50) eta agertoki kaltegarria (P05 gorriz) bereiziz."
                 },
                 {
                   "bold": "Erorketen sakonera eta egonkortasuna denboran zehar",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Grafikoa aldatzeko aukera ematen dizute, zorroa bere garai guztietako goien azpitik zenbat denbora egon den edo eraginkortasuna eta arriskua zenbateraino egon den 60 eguneko leihoetan zehar."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Proba eskaera kargatzea",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Edozein aktibo aukeratzen duzu, adierazi erosi, saldu edo estali nahi duzun eta zenbatekoa dolarretan kargatu. Beheko zerrendan simulatutako ordena bakoitza aktibatu edo desaktibatu dezakezu bere eragina alderatzeko."
                 },
                 {
                   "bold": "Posizio-tamaina optimoa",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Zure arrakasta izateko probabilitatearen eta irabazien eta galeren arteko erlazioaren arabera, zenbat kapitalaren gehienezko ehunekoa esleitu behar den kalkulatzen du zure burua gehiegi azaldu gabe hazteko."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Babes-ezkutuen konparatzailea",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Estaldurarik gabe jardutea edo aukerak dituzten hiru aseguru-mota aplikatzea (SPY, QQQ edo VIX hegazkortasunean) txandakatzeko aukera ematen du, primaren urteko kostua %20ko istripu batean aurreztuko zenukeen dolarrekin kontrastatuz."
                 },
                 {
                   "bold": "Apalankatu kontrola eta bermeak",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Kontrolatu zer ehuneko mantentze-marjina erabili duzun eta zer ehuneko jaitsiera jasango lukeen zorroak marjina-deien eremuan sartu aurretik."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Eskaeren erregistroa eta zorroaren laguntzailea",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Beheko panelak simulazio bakoitza arriskuan duen eraginarekin erregistratzen du, eta goiko eskuineko elkarrizketa-botoiak txata irekitzen du zure zorroari buruzko galdera zuzenak egiteko."
                 }
               ],

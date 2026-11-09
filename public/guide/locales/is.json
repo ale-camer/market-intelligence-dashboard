@@ -118,7 +118,7 @@
             },
             {
               "bold": "Sjálfvirkt minni",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Allur skjárinn er þýddur samstundis án þess að endurhlaða síðuna og val þitt er vistað fyrir næstu skipti sem þú ferð inn."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Til að leysa þetta, aðskilur þemavalið umhverfislitinn frá gagnalitnum:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Fimm lestrarumhverfi",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Með hverjum smelli snýst þú á milli hreins svarts, bláleits eða heits bakgrunns þar til þú finnur þann sem er þægilegastur fyrir augun."
             },
             {
               "bold": "Ósnortin fjármálamerkingarfræði",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Sama hvaða umræðuefni þú breytir, þá er alhliða reglum markaðarins aldrei breytt: grænt þýðir alltaf hækkun eða hagnað og rautt þýðir alltaf fall, tap eða áhættuviðvörun."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Endurtekinn stöðuskynjari",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Leggðu saman það sem þú hefur fjárfest beint í hverju fyrirtæki auk falinn hluta sem þú ert með í vísitölum eða ETFs (eins og SPY eða QQQ) og varar þig við með rauðu ef þú ferð yfir skynsamleg mörk."
                 },
                 {
                   "bold": "Lýðingarkort og uppruna skila",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Þeir sýna þér hvaða prósentu þú hefur í raun og veru í hverri eignategund og gjaldmiðli, og hversu mikið af hagnaði þínum kom frá því að velja góða geira á móti því að velja góðar eignir."
                 },
                 {
                   "bold": "Áætluð árstekjur og öryggi",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Þeir reikna út hversu marga dollara þú ætlar að safna á árinu fyrir arð, afsláttarmiða og vexti og endurskoða gjaldþol vörsluaðila þar sem fjármagn þitt hvílir."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Líkur á umskiptum hringrásar",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Reiknaðu hversu líklegt er að markaðurinn haldi ró sinni eða fari í sveiflukenndan, verðbólgu- eða kreppustig."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Tíu þúsund framtíðarsviðsmyndir",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Teiknaðu keiluna af líklegri þróun eignasafns þíns, gerðu greinarmun á bjartsýnu atburðarásinni (P95 í grænu), væntanlega miðlægu leiðina (P50) og óhagstæða atburðarásina (P05 í rauðu)."
                 },
                 {
                   "bold": "Falldýpt og stöðugleiki yfir tíma",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Þeir gera þér kleift að skipta um töfluna til að sjá hversu lengi eignasafnið var undir sögulegu hámarki eða hversu stöðug skilvirkni þess og áhætta var yfir rúllandi 60 daga gluggum."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Hleðsla prófpöntunar",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Þú velur hvaða eign sem er, gefur til kynna hvort þú vilt kaupa, selja eða dekka og hleður upphæðinni í dollurum. Á listanum hér að neðan geturðu kveikt eða slökkt á hverri hermapöntun til að bera saman áhrif hennar."
                 },
                 {
                   "bold": "Besta stöðustærð",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Byggt á áætluðum líkum þínum á árangri og sambandinu milli hagnaðar og taps, reiknar það út hvaða hámarkshlutfall fjármagns ætti að úthluta til að vaxa án þess að oflýsa sjálfum þér."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Samanburður á hlífðarhlífum",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Það gerir þér kleift að skipta á milli þess að starfa án trygginga eða nota þrjár gerðir af tryggingum með valkostum (á SPY, QQQ eða VIX flökt), þar sem árlegur kostnaður við iðgjaldið er andstæður þeim dollurum sem þú myndir spara í 20% hruni."
                 },
                 {
                   "bold": "Nýttu stjórn og tryggingar",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Fylgstu með hversu hátt hlutfall viðhaldsframlegðar þú hefur notað og hvaða prósentufall eignasafnið myndi þola áður en þú ferð inn á framlegðarsvæðið."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Pöntunarskrá og aðstoðarmaður í eignasafni",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Neðsta spjaldið skráir hverja uppgerð með áhrifum hennar á áhættu, en samræðuhnappurinn efst til hægri opnar spjallið til að spyrja beinna spurninga um eignasafnið þitt."
                 }
               ],

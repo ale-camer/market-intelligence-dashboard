@@ -118,7 +118,7 @@
             },
             {
               "bold": "Bộ nhớ tự động",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Toàn bộ màn hình được dịch ngay lập tức mà không cần tải lại trang và lựa chọn của bạn sẽ được lưu lại cho những lần bạn nhập tiếp theo."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Để giải quyết vấn đề này, bộ chọn chủ đề sẽ tách màu môi trường khỏi màu dữ liệu:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Năm môi trường đọc",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Với mỗi cú nhấp chuột, bạn sẽ xoay giữa các nền đen tuyền, xanh lam hoặc ấm áp cho đến khi tìm thấy nền thoải mái nhất cho mắt mình."
             },
             {
               "bold": "Ngữ nghĩa tài chính nguyên vẹn",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Cho dù bạn thay đổi chủ đề gì, quy luật chung của thị trường không bao giờ thay đổi: màu xanh lá cây luôn có nghĩa là tăng hoặc tăng và màu đỏ luôn có nghĩa là giảm, thua lỗ hoặc cảnh báo rủi ro."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Máy dò vị trí lặp đi lặp lại",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Cộng số tiền bạn đã đầu tư trực tiếp vào mỗi công ty cộng với phần ẩn bạn có trong các chỉ số hoặc quỹ ETF (chẳng hạn như SPY hoặc QQQ), cảnh báo bạn bằng màu đỏ nếu bạn vượt quá giới hạn thận trọng."
                 },
                 {
                   "bold": "Bản đồ tiếp xúc và nguồn gốc của sự trở lại",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Chúng cho bạn biết bạn thực sự có bao nhiêu phần trăm trong từng loại tài sản và loại tiền tệ, cũng như bao nhiêu lợi nhuận của bạn đến từ việc chọn ngành tốt so với chọn tài sản tốt."
                 },
                 {
                   "bold": "Thu nhập và an ninh hàng năm dự kiến",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Họ tính toán số đô la bạn sẽ thu được trong năm để trả cổ tức, phiếu giảm giá và tiền lãi, đồng thời kiểm tra khả năng thanh toán của những người giám sát nơi vốn của bạn nằm ở đó."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Xác suất chuyển tiếp chu kỳ",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Tính toán khả năng thị trường giữ bình tĩnh hoặc bước vào giai đoạn biến động, lạm phát hoặc khủng hoảng."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Mười nghìn viễn cảnh tương lai",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Vẽ hình nón về sự phát triển có thể xảy ra của danh mục đầu tư của bạn, phân biệt kịch bản lạc quan (P95 màu xanh lá cây), đường đi trung tâm dự kiến (P50) và kịch bản bất lợi (P05 màu đỏ)."
                 },
                 {
                   "bold": "Độ sâu rơi và độ ổn định theo thời gian",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Chúng cho phép bạn chuyển đổi biểu đồ để xem danh mục đầu tư đã duy trì dưới mức cao nhất mọi thời đại trong bao lâu hoặc mức độ ổn định của hiệu quả và rủi ro trong thời hạn 60 ngày."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Đang tải đơn hàng thử nghiệm",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Bạn chọn bất kỳ tài sản nào, cho biết bạn muốn mua, bán hay trang trải và nạp số tiền bằng đô la. Trong danh sách bên dưới, bạn có thể bật hoặc tắt từng lệnh mô phỏng để so sánh hiệu quả của nó."
                 },
                 {
                   "bold": "Kích thước vị trí tối ưu",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Dựa trên xác suất thành công ước tính của bạn và mối quan hệ giữa lãi và lỗ, nó tính toán tỷ lệ vốn tối đa nên được phân bổ để phát triển mà không khiến bản thân phải nỗ lực quá mức."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "So sánh các lá chắn bảo vệ",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Nó cho phép bạn thay đổi giữa hoạt động không có bảo hiểm hoặc áp dụng ba loại bảo hiểm với các tùy chọn (đối với biến động SPY, QQQ hoặc VIX), so sánh chi phí bảo hiểm hàng năm so với số đô la bạn sẽ tiết kiệm được trong một vụ tai nạn 20%."
                 },
                 {
                   "bold": "Kiểm soát đòn bẩy và tài sản thế chấp",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Theo dõi tỷ lệ phần trăm ký quỹ duy trì mà bạn đã sử dụng và tỷ lệ phần trăm giảm mà danh mục đầu tư sẽ phải chịu trước khi bước vào vùng gọi ký quỹ."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Trợ lý nhật ký đơn hàng và danh mục đầu tư",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Bảng dưới cùng ghi lại từng mô phỏng với tác động của nó đối với rủi ro, trong khi nút hội thoại ở trên cùng bên phải sẽ mở cuộc trò chuyện để đặt câu hỏi trực tiếp về danh mục đầu tư của bạn."
                 }
               ],

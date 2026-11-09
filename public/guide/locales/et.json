@@ -118,7 +118,7 @@
             },
             {
               "bold": "Automaatne mälu",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Kogu ekraan tõlgitakse koheselt ilma lehte uuesti laadimata ja teie valik salvestatakse järgmisteks sisenemiskordadeks."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Selle lahendamiseks eraldab teemavalija keskkonna värvi andmevärvist:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Viis lugemiskeskkonda",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Iga klõpsuga pöörlete puhta musta, sinaka või sooja tausta vahel, kuni leiate selle, mis on teie silmadele kõige mugavam."
             },
             {
               "bold": "Terve finantssemantika",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Ükskõik mis teemat ka ei muuda, turu universaalset reeglit ei muudeta kunagi: roheline tähendab alati tõusu või tõusu ja punane alati langust, kaotust või riskihoiatust."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Korduva asukoha detektor",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Lisage igasse ettevõttesse otse investeeritud summa ja peidetud osa, mis teil on indeksites või ETF-ides (nt SPY või QQQ), hoiatades teid punasega, kui ületate mõistlikke limiite."
                 },
                 {
                   "bold": "Kokkupuute kaart ja tagastamise päritolu",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Need näitavad teile, kui suur protsent teil tegelikult on igas varatüübis ja valuutas ning kui suur osa teie kasumist tuli heade sektorite valimisel võrreldes heade varade valimisega."
                 },
                 {
                   "bold": "Prognoositav aasta sissetulek ja tagatis",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Nad arvutavad, kui palju dollareid kavatsete aasta jooksul dividendide, kupongide ja intresside jaoks koguda, ning auditeerivad kontohaldurite maksevõimet, kus teie kapital asub."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Tsükli ülemineku tõenäosused",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Arvutage välja, kui tõenäoline on, et turg jääb rahulikuks või siseneb volatiilsesse, inflatsiooni- või kriisifaasi."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Kümme tuhat tulevikustsenaariumi",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Joonistage oma portfelli tõenäolise arengu koonus, eristades optimistlikku stsenaariumi (P95 rohelisega), eeldatavat keskmist rada (P50) ja ebasoodsat stsenaariumi (P05 punasega)."
                 },
                 {
                   "bold": "Kukkumiste sügavus ja stabiilsus aja jooksul",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Need võimaldavad teil diagrammi ümber lülitada, et näha, kui kaua püsis portfell alla kõigi aegade kõrgeimaid tasemeid või kui stabiilne oli selle tõhusus ja risk 60-päevase perioodi jooksul."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Testtellimuse laadimine",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Valite mis tahes vara, märkate, kas soovite osta, müüa või katta, ja laadite summa dollarites. Allolevas loendis saate iga simuleeritud tellimuse sisse või välja lülitada, et võrrelda selle mõju."
                 },
                 {
                   "bold": "Optimaalne positsiooni suurus",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Teie hinnangulise edu tõenäosuse ning kasumi ja kahjumi vahelise suhte põhjal arvutab see välja, milline maksimaalne protsent kapitalist tuleks eraldada, et kasvada ilma ennast üle eksponeerimata."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Kaitsekilpide võrdlus",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "See võimaldab teil vaheldumisi töötada ilma katteta või rakendada kolme tüüpi kindlustust koos optsioonidega (SPY, QQQ või VIX volatiilsuse korral), vastandades iga-aastast kindlustusmakse maksumust dollaritele, mida säästate 20% krahhi korral."
                 },
                 {
                   "bold": "Finantsvõimenduse kontroll ja tagatis",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Jälgige, mitu protsenti hooldusmarginaalist olete kasutanud ja millise protsendi languse portfell kannataks enne lisatagatise nõudmise tsooni sisenemist."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Tellimuste logi ja portfelli assistent",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Alumine paneel salvestab iga simulatsiooni koos selle mõjuga riskile, samas kui paremas ülanurgas olev dialooginupp avab vestluse, et esitada otseküsimusi teie portfelli kohta."
                 }
               ],

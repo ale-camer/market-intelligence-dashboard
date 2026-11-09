@@ -118,7 +118,7 @@
             },
             {
               "bold": "Cuimhne uathoibríoch",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Aistrítear an scáileán iomlán láithreach gan an leathanach a athlódáil agus sábhálfar do rogha don chéad uair eile a rachaidh tú isteach."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Chun é seo a réiteach, scarann an roghnóir téamaí dath an chomhshaoil ón dath sonraí:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Cúig thimpeallacht léitheoireachta",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Le gach cliceáil rothlaíonn tú idir chúlraí íona dubh, gormacha nó te go dtí go bhfaighidh tú an ceann is compordaí do do shúile."
             },
             {
               "bold": "Séimeantaic airgeadais slán",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Is cuma cén t-ábhar a athraíonn tú, ní athraítear riail uilíoch an mhargaidh riamh: ciallaíonn glas ardú nó gnóthachan i gcónaí, agus ciallaíonn dearg i gcónaí titim, caillteanas nó foláireamh riosca."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Brathadóir suímh arís agus arís eile",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Cuir le chéile an méid atá infheistithe agat go díreach i ngach cuideachta móide an chuid folaithe atá agat laistigh d’innéacsanna nó ETFanna (cosúil le SPY nó QQQ), ag tabhairt rabhadh duit i ndath dearg má sháraíonn tú teorainneacha stuama."
                 },
                 {
                   "bold": "Léarscáil nochta agus bunús an tuairisceáin",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Léiríonn siad duit cén céatadán atá agat i ndáiríre i ngach cineál sócmhainne agus airgeadra, agus cé mhéad de do bhrabús a tháinig ó roghnú earnálacha maithe i gcomparáid le sócmhainní maithe a roghnú."
                 },
                 {
                   "bold": "Ioncam agus slándáil bhliantúil réamh-mheasta",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Ríomhann siad cé mhéad dollar atá tú chun a bhailiú sa bhliain le haghaidh díbhinní, cúpóin agus ús, agus déanann siad iniúchadh ar shócmhainneacht na gcaomhnóirí ina bhfuil do chaipiteal suite."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Dóchúlachtaí trasdul rothair",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Ríomh cé chomh dóchúil is atá an margadh fanacht socair nó dul isteach i gcéim luaineach, boilscithe nó géarchéime."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Deich míle cás amach anseo",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Tarraing cón éabhlóid dhóchúil do phunann, ag déanamh idirdhealú idir an cás dóchasach (P95 i glas), an cosán lárnach ionchasach (P50) agus an cás díobhálach (P05 i dearg)."
                 },
                 {
                   "bold": "Doimhneacht titim agus cobhsaíocht le himeacht ama",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Ligeann siad duit an chairt a scoránaigh féachaint cé chomh fada agus a d'fhan an phunann faoi bhun a buaicphointí uile-ama nó cé chomh cobhsaí agus a bhí a éifeachtúlacht agus a riosca os cionn fuinneoga rollacha 60-lá."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Íoslódáil an t-ordú tástála",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Roghnaíonn tú aon sócmhainn, cuir in iúl más mian leat a cheannach, a dhíol nó a chlúdach agus an méid a luchtú i ndollair. Sa liosta thíos is féidir leat gach ord insamhlaithe a chasadh air nó as chun a éifeacht a chur i gcomparáid."
                 },
                 {
                   "bold": "Méid suímh is fearr",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Bunaithe ar do dhóchúlacht mheasta go n-éireoidh leat agus ar an ngaol idir brabús agus caillteanas, ríomhann sé cén céatadán uasta den chaipiteal ba cheart a leithdháileadh chun fás gan tú féin a nochtadh ró-mhór."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Comparadóir sciatha cosanta",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Ligeann sé duit malairt a dhéanamh idir oibriú gan clúdach nó trí chineál árachais a chur i bhfeidhm le roghanna (ar luaineacht SPY, QQQ nó VIX), i gcodarsnacht le costas bliantúil na préimhe i gcoinne na ndollair a shábhálfá i dtimpiste 20%."
                 },
                 {
                   "bold": "Rialú giarála agus comhthaobhachta",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Monatóireacht a dhéanamh ar an gcéatadán den chorrlach cothabhála a d’úsáid tú agus cén laghdú céatadánach a mhairfidh ar an bpunann sula dtéann tú isteach sa chrios glaonna corrlaigh."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Loga ordú agus cúntóir punainne",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Taifeadann an painéal íochtair gach insamhalta lena thionchar ar riosca, agus osclaíonn an cnaipe idirphlé ar bharr na láimhe deise an comhrá chun ceisteanna díreacha a chur faoi do phunann."
                 }
               ],

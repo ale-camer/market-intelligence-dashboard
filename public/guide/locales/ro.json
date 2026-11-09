@@ -118,7 +118,7 @@
             },
             {
               "bold": "Memorie automată",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Întregul ecran este tradus instantaneu fără a reîncărca pagina și alegerea dvs. este salvată pentru următoarea intrare."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Pentru a rezolva acest lucru, selectorul de teme separă culoarea mediului de culoarea datelor:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Cinci medii de lectură",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Cu fiecare clic rotiți între fundaluri negru pur, albăstrui sau cald, până când îl găsiți pe cel mai confortabil pentru ochi."
             },
             {
               "bold": "Semantică financiară intactă",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Indiferent de subiectul pe care îl schimbați, regula universală a pieței nu este niciodată modificată: verdele înseamnă întotdeauna creștere sau câștig, iar roșu înseamnă întotdeauna cădere, pierdere sau alertă de risc."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Detector de poziție repetat",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Adunați ceea ce ați investit direct în fiecare companie plus partea ascunsă pe care o aveți în indici sau ETF-uri (cum ar fi SPY sau QQQ), avertizându-vă cu roșu dacă depășiți limitele prudente."
                 },
                 {
                   "bold": "Harta expunerii și originea întoarcerii",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Ele vă arată ce procent aveți de fapt în fiecare tip de activ și monedă și cât de mult din profitul dvs. a provenit din alegerea sectoarelor bune față de alegerea activelor bune."
                 },
                 {
                   "bold": "Venitul anual proiectat și securitate",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Ei calculează câți dolari veți colecta în anul pentru dividende, cupoane și dobânzi și auditează solvabilitatea custodelor în care se află capitalul dumneavoastră."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Probabilități de tranziție de ciclu",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Calculați cât de probabil este piața să rămână calmă sau să intre într-o fază volatilă, inflaționistă sau de criză."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Zece mii de scenarii de viitor",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Desenați conul de evoluție probabilă a portofoliului dvs., distingând scenariul optimist (P95 în verde), calea centrală așteptată (P50) și scenariul advers (P05 în roșu)."
                 },
                 {
                   "bold": "Adâncimea căderilor și stabilitatea în timp",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Acestea vă permit să comutați graficul pentru a vedea cât timp a rămas portofoliul sub maximele sale istorice sau cât de stabile au fost eficiența și riscul său peste ferestrele de 60 de zile."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Încărcarea comenzii de testare",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Alegeți orice activ, indicați dacă doriți să cumpărați, să vindeți sau să acoperiți și încărcați suma în dolari. În lista de mai jos puteți activa sau dezactiva fiecare comandă simulată pentru a-și compara efectul."
                 },
                 {
                   "bold": "Dimensiunea optimă a poziției",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Pe baza probabilității dvs. estimate de succes și a relației dintre profit și pierdere, calculează ce procent maxim de capital ar trebui alocat pentru a crește fără a vă supraexpune."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Comparator de scuturi de protecție",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Vă permite să alternați între operarea fără acoperire sau aplicarea a trei tipuri de asigurări cu opțiuni (pe volatilitatea SPY, QQQ sau VIX), contrastând costul anual al primei cu dolarii pe care i-ați economisi într-un accident de 20%."
                 },
                 {
                   "bold": "Controlul efectului de pârghie și garanția",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Monitorizați ce procent din marja de întreținere ați folosit și ce procent de scădere ar suporta portofoliul înainte de a intra în zona de apel în marjă."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Jurnal de comenzi și asistent portofoliu",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Panoul de jos înregistrează fiecare simulare cu impactul ei asupra riscului, în timp ce butonul de dialog din dreapta sus deschide chatul pentru a pune întrebări directe despre portofoliul tău."
                 }
               ],

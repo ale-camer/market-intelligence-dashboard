@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { Terminal, Bot } from 'lucide-react';
 import { PALETTES, LANGUAGES, I18N } from './data/i18n';
 import { useViewLocale } from './data/i18n/viewLocaleService';
@@ -6,13 +6,15 @@ import HeaderBar from './components/HeaderBar';
 import FooterBar from './components/FooterBar';
 import HomeStage from './components/HomeStage';
 import StarfieldBackground from './components/StarfieldBackground';
-import MarketAnomaliesView from './components/MarketAnomaliesView';
-import AgentCommitteeView from './components/AgentCommitteeView';
-import ObservabilityView from './components/ObservabilityView';
-import DevLabView from './components/DevLabView';
-import UserGuideView from './components/UserGuideView';
-import GlobalAgentDrawer from './components/GlobalAgentDrawer';
-import { DEFAULT_WATCHLIST_SYMS } from './services/committeeService';
+
+const DEFAULT_WATCHLIST_SYMS = ['AMZN', 'GOOGL', 'SPY', 'QQQ', 'UST-10Y', 'GC', 'SOFR'];
+
+const MarketAnomaliesView = lazy(() => import('./components/MarketAnomaliesView'));
+const AgentCommitteeView = lazy(() => import('./components/AgentCommitteeView'));
+const ObservabilityView = lazy(() => import('./components/ObservabilityView'));
+const DevLabView = lazy(() => import('./components/DevLabView'));
+const UserGuideView = lazy(() => import('./components/UserGuideView'));
+const GlobalAgentDrawer = lazy(() => import('./components/GlobalAgentDrawer'));
 
 export default function App() {
   const [activeTab, setActiveTab] = useState(() => {
@@ -162,7 +164,10 @@ export default function App() {
 
   const [isSystemHealthy] = useState(true);
   const [agentOpen, setAgentOpen] = useState(false);
-  const [lightMode, setLightMode] = useState(false); // Default: Dark Mode (Oscuro)
+  const [lightMode, setLightMode] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('light') === '1' || params.get('themeMode') === 'light';
+  }); // Default: Dark Mode (Oscuro)
 
   const currentTheme = PALETTES[themeIdx];
   const currentLang = LANGUAGES[langIdx] || LANGUAGES[0];
@@ -258,6 +263,26 @@ export default function App() {
     document.documentElement.setAttribute('data-mode', lightMode ? 'light' : 'dark');
   }, [lightMode]);
 
+  const mainViewportRef = useRef(null);
+  useEffect(() => {
+    if (mainViewportRef.current) {
+      mainViewportRef.current.scrollTop = 0;
+    }
+    window.scrollTo(0, 0);
+  }, [activeTab, marketsViewMode, deepLinkNonce]);
+
+  // Idle background preload so Home loads fast on mobile and subsequent tabs open immediately
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      import('./components/MarketAnomaliesView');
+      import('./components/AgentCommitteeView');
+      import('./components/ObservabilityView');
+      import('./components/UserGuideView');
+      import('./components/GlobalAgentDrawer');
+    }, 150);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   // Top Header Navigation: Markets (Level 1 Screener + Level 2 Analytics | Research) & Portfolio
   const navItems = [
     { id: 'workstation', label: t.navWorkstation, icon: Terminal },
@@ -268,7 +293,7 @@ export default function App() {
   const showAmbientStarfield = !isHome;
 
   return (
-    <div style={{ height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+    <div className="app-root-shell" style={{ height: '100dvh', minHeight: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column', position: 'relative' }}>
       <StarfieldBackground active={showAmbientStarfield} lightMode={lightMode} />
       <HeaderBar
         activeTab={activeTab}
@@ -284,18 +309,23 @@ export default function App() {
         headerVariantId={headerVariantId}
       />
 
-      <GlobalAgentDrawer
-        isOpen={agentOpen}
-        onClose={() => setAgentOpen(false)}
-        activeTab={activeTab}
-        marketsViewMode={marketsViewMode}
-        selectedAsset={selectedAsset}
-        watchlistSyms={watchlistSyms}
-        langCode={currentLang.code}
-      />
+      {agentOpen && (
+        <Suspense fallback={null}>
+          <GlobalAgentDrawer
+            isOpen={agentOpen}
+            onClose={() => setAgentOpen(false)}
+            activeTab={activeTab}
+            marketsViewMode={marketsViewMode}
+            selectedAsset={selectedAsset}
+            watchlistSyms={watchlistSyms}
+            langCode={currentLang.code}
+          />
+        </Suspense>
+      )}
 
       <div style={{ flex: 1, display: 'flex', minHeight: 0, position: 'relative', zIndex: 5 }}>
         <main
+          ref={mainViewportRef}
           className={isHome ? undefined : 'app-main-viewport'}
           style={{
             flex: 1,
@@ -303,7 +333,7 @@ export default function App() {
             flexDirection: 'column',
             position: 'relative',
             minHeight: 0,
-            margin: isHome ? '0' : '3.8rem 0 3.2rem 0',
+            margin: isHome ? '0' : '3.85rem 0 3.45rem 0',
             padding: isHome ? '0' : '0 1.75rem',
             overflowY: isHome ? 'hidden' : 'auto',
             overflowX: 'hidden',
@@ -322,57 +352,59 @@ export default function App() {
             onNavigate={handleNavigate}
           />
 
-          {activeTab === 'workstation' && (
-            <MarketAnomaliesView
-              key={deepLinkNonce}
-              selectedAsset={selectedAsset}
-              onSelectAsset={setSelectedAsset}
-              initialViewMode={marketsViewMode}
-              onViewModeChange={setMarketsViewMode}
-              watchlistSyms={watchlistSyms}
-              onToggleWatchlist={toggleWatchlist}
-              marketsToolsMode={marketsToolsMode}
-              mainToolsStyleId={mainToolsStyleId}
-              onLaunchTarget={handleLaunchTarget}
-              langCode={currentLang.code}
-              t={t}
-            />
-          )}
+          <Suspense fallback={<div style={{ flex: 1, minHeight: '40vh' }} />}>
+            {activeTab === 'workstation' && (
+              <MarketAnomaliesView
+                key={deepLinkNonce}
+                selectedAsset={selectedAsset}
+                onSelectAsset={setSelectedAsset}
+                initialViewMode={marketsViewMode}
+                onViewModeChange={setMarketsViewMode}
+                watchlistSyms={watchlistSyms}
+                onToggleWatchlist={toggleWatchlist}
+                marketsToolsMode={marketsToolsMode}
+                mainToolsStyleId={mainToolsStyleId}
+                onLaunchTarget={handleLaunchTarget}
+                langCode={currentLang.code}
+                t={t}
+              />
+            )}
 
-          {activeTab === 'consensus' && (
-            <AgentCommitteeView
-              selectedAsset={selectedAsset}
-              onSelectAsset={setSelectedAsset}
-              onNavigate={handleNavigate}
-              onOpenAssetInMarkets={handleOpenAssetInMarkets}
-              watchlistSyms={watchlistSyms}
-              onToggleWatchlist={toggleWatchlist}
-              langCode={currentLang.code}
-              t={t}
-            />
-          )}
+            {activeTab === 'consensus' && (
+              <AgentCommitteeView
+                selectedAsset={selectedAsset}
+                onSelectAsset={setSelectedAsset}
+                onNavigate={handleNavigate}
+                onOpenAssetInMarkets={handleOpenAssetInMarkets}
+                watchlistSyms={watchlistSyms}
+                onToggleWatchlist={toggleWatchlist}
+                langCode={currentLang.code}
+                t={t}
+              />
+            )}
 
-          {activeTab === 'observability' && (
-            <ObservabilityView langCode={currentLang.code} t={t} onGoBack={goBack} />
-          )}
+            {activeTab === 'observability' && (
+              <ObservabilityView langCode={currentLang.code} t={t} onGoBack={goBack} />
+            )}
 
-          {activeTab === 'guide' && (
-            <UserGuideView
-              langCode={currentLang.code}
-              onGoBack={goBack}
-              onLaunchTarget={handleLaunchTarget}
-            />
-          )}
+            {activeTab === 'guide' && (
+              <UserGuideView
+                langCode={currentLang.code}
+                onGoBack={goBack}
+                onLaunchTarget={handleLaunchTarget}
+              />
+            )}
 
-          {activeTab === 'devlab' && (
-            <DevLabView
-              langCode={currentLang.code}
-              mainToolsStyleId={mainToolsStyleId}
-              onSelectMainToolsStyle={setMainToolsStyleId}
-              onLaunchTarget={handleLaunchTarget}
-              onNavigate={handleNavigate}
-            />
-          )}
+            {activeTab === 'devlab' && (
+              <DevLabView
+                langCode={currentLang.code}
+                mainToolsStyleId={mainToolsStyleId}
+                onSelectMainToolsStyle={setMainToolsStyleId}
+                onLaunchTarget={handleLaunchTarget}
+                onNavigate={handleNavigate}
+              />
+            )}
+          </Suspense>
         </main>
       </div>
 

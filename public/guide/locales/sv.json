@@ -118,7 +118,7 @@
             },
             {
               "bold": "Automatiskt minne",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Hela skärmen översätts direkt utan att sidan laddas om och ditt val sparas till nästa gång du går in."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "För att lösa detta separerar temaväljaren miljöfärgen från datafärgen:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Fem läsmiljöer",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Med varje klick roterar du mellan rent svarta, blåaktiga eller varma bakgrunder tills du hittar den som är mest bekväm för dina ögon."
             },
             {
               "bold": "Intakt finansiell semantik",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Oavsett vilket ämne du ändrar, ändras aldrig marknadens universella regel: grönt betyder alltid uppgång eller vinst, och rött betyder alltid fall, förlust eller riskvarning."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Upprepad positionsdetektor",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Lägg ihop vad du har investerat direkt i varje företag plus den dolda delen du har inom index eller ETF:er (som SPY eller QQQ), varna dig i rött om du överskrider försiktiga gränser."
                 },
                 {
                   "bold": "Exponeringskarta och ursprung för retur",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "De visar dig vilken procentandel du faktiskt har i varje tillgångstyp och valuta, och hur mycket av din vinst som kom från att välja bra sektorer kontra att välja bra tillgångar."
                 },
                 {
                   "bold": "Beräknad årsinkomst och trygghet",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "De beräknar hur många dollar du kommer att samla in under året för utdelningar, kuponger och räntor, och granskar solvensen för de förvaringsinstitut där ditt kapital vilar."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Cykelövergångssannolikheter",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Beräkna hur troligt det är att marknaden förblir lugn eller går in i en volatil, inflations- eller krisfas."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Tiotusen framtidsscenarier",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Rita konen för den troliga utvecklingen av din portfölj, särskilj det optimistiska scenariot (P95 i grönt), den förväntade centrala banan (P50) och det negativa scenariot (P05 i rött)."
                 },
                 {
                   "bold": "Falldjup och stabilitet över tid",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "De låter dig växla diagrammet för att se hur länge portföljen höll sig under sina rekordnivåer eller hur stabil dess effektivitet och risk var under rullande 60-dagarsfönster."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Testorderladdning",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Du väljer vilken tillgång som helst, anger om du vill köpa, sälja eller täcka och ladda beloppet i dollar. I listan nedan kan du aktivera eller inaktivera varje simulerad ordning för att jämföra dess effekt."
                 },
                 {
                   "bold": "Optimal positionsstorlek",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Baserat på din uppskattade sannolikhet för framgång och förhållandet mellan vinst och förlust, räknar den ut vilken maximal andel av kapitalet som bör allokeras för att växa utan att överexponera dig själv."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Komparator av skyddande sköldar",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Det låter dig växla mellan att arbeta utan täckning eller att tillämpa tre typer av försäkringar med alternativ (på SPY, QQQ eller VIX volatilitet), och jämföra den årliga kostnaden för premien mot de dollar du skulle spara i en 20% krasch."
                 },
                 {
                   "bold": "Utnyttja kontroll och säkerheter",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Övervaka vilken procentandel av underhållsmarginalen du har använt och vilken procentuell nedgång portföljen skulle utstå innan du går in i margin call-zonen."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Orderlogg och portföljassistent",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Den nedre panelen registrerar varje simulering med dess påverkan på risk, medan dialogknappen längst upp till höger öppnar chatten för att ställa direkta frågor om din portfölj."
                 }
               ],

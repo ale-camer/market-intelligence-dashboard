@@ -118,7 +118,7 @@
             },
             {
               "bold": "Automatischer Speicher",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Der gesamte Bildschirm wird sofort übersetzt, ohne dass die Seite neu geladen werden muss, und Ihre Auswahl wird für die nächste Eingabe gespeichert."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Um dieses Problem zu lösen, trennt die Themenauswahl die Umgebungsfarbe von der Datenfarbe:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Fünf Leseumgebungen",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Mit jedem Klick wechseln Sie zwischen rein schwarzem, bläulichem oder warmem Hintergrund, bis Sie den für Ihre Augen angenehmsten finden."
             },
             {
               "bold": "Intakte Finanzsemantik",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Egal welches Thema Sie wechseln, die universelle Regel des Marktes ändert sich nie: Grün bedeutet immer Anstieg oder Gewinn, und Rot bedeutet immer Rückgang, Verlust oder Risikowarnung."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Wiederholter Positionsdetektor",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Addieren Sie, was Sie direkt in jedes Unternehmen investiert haben, plus den versteckten Anteil, den Sie in Indizes oder ETFs (wie SPY oder QQQ) haben, und warnen Sie in Rot, wenn Sie vorsichtige Grenzen überschreiten."
                 },
                 {
                   "bold": "Expositionskarte und Ursprung der Rückkehr",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Sie zeigen Ihnen, wie viel Prozent Sie tatsächlich in jeder Vermögensart und Währung haben und wie viel von Ihrem Gewinn durch die Auswahl guter Sektoren im Vergleich zur Auswahl guter Vermögenswerte erzielt wurde."
                 },
                 {
                   "bold": "Voraussichtliches Jahreseinkommen und Sicherheit",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Sie berechnen, wie viele Dollar Sie im Jahr für Dividenden, Coupons und Zinsen einsammeln werden, und prüfen die Zahlungsfähigkeit der Depotbanken, bei denen Ihr Kapital ruht."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Zyklusübergangswahrscheinlichkeiten",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Berechnen Sie, wie wahrscheinlich es ist, dass der Markt ruhig bleibt oder in eine volatile, inflationäre oder Krisenphase eintritt."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Zehntausend Zukunftsszenarien",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Zeichnen Sie den Kegel der wahrscheinlichen Entwicklung Ihres Portfolios und unterscheiden Sie dabei das optimistische Szenario (P95 in Grün), den erwarteten zentralen Pfad (P50) und das ungünstige Szenario (P05 in Rot)."
                 },
                 {
                   "bold": "Sturztiefe und Stabilität im Laufe der Zeit",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Sie ermöglichen es Ihnen, das Diagramm umzuschalten, um zu sehen, wie lange das Portfolio unter seinen Allzeithochs blieb oder wie stabil seine Effizienz und sein Risiko über gleitende 60-Tage-Fenster hinweg waren."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Laden des Testauftrags",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Sie wählen einen beliebigen Vermögenswert aus, geben an, ob Sie kaufen, verkaufen oder decken möchten und laden den Betrag in Dollar auf. In der Liste unten können Sie jeden simulierten Befehl ein- oder ausschalten, um seine Wirkung zu vergleichen."
                 },
                 {
                   "bold": "Optimale Positionsgröße",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Basierend auf Ihrer geschätzten Erfolgswahrscheinlichkeit und dem Verhältnis zwischen Gewinn und Verlust wird berechnet, welcher maximale Prozentsatz des Kapitals eingesetzt werden sollte, um zu wachsen, ohne sich selbst zu überlasten."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Vergleicher von Schutzschilden",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Sie können zwischen dem Betrieb ohne Versicherungsschutz oder der Anwendung von drei Versicherungsarten mit Optionen (bei SPY-, QQQ- oder VIX-Volatilität) wechseln und dabei die jährlichen Prämienkosten den Dollars gegenüberstellen, die Sie bei einem 20-prozentigen Unfall sparen würden."
                 },
                 {
                   "bold": "Nutzen Sie Kontrolle und Sicherheiten",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Überwachen Sie, wie viel Prozent der Wartungsmarge Sie verwendet haben und wie viel Prozent der Verlust das Portfolio erleiden würde, bevor Sie in die Margin-Call-Zone gelangen."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Orderprotokoll und Portfolio-Assistent",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Im unteren Bereich wird jede Simulation mit ihren Auswirkungen auf das Risiko aufgezeichnet, während die Dialogschaltfläche oben rechts den Chat öffnet, um direkte Fragen zu Ihrem Portfolio zu stellen."
                 }
               ],

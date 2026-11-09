@@ -118,7 +118,7 @@
             },
             {
               "bold": "Memoria automática",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Toda a pantalla tradúcese ao instante sen volver cargar a páxina e a túa elección gardarase para as próximas veces que entres."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Para solucionar isto, o selector de temas separa a cor do ambiente da cor dos datos:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Cinco ambientes de lectura",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Con cada clic vas xirando entre fondos negros puros, azulados ou cálidos ata atopar o que resulte máis cómodo para os teus ollos."
             },
             {
               "bold": "Semántica financeira intacta",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Non importa o tema que cambies, a regra universal do mercado nunca se altera: o verde sempre significa subida ou ganancia, e o vermello sempre significa caída, perda ou alerta de risco."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Detector de posición repetida",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Sume o que investiu directamente en cada empresa máis a parte oculta que teña dentro de índices ou ETF (como SPY ou QQQ), avisando en vermello se supera os límites prudentes."
                 },
                 {
                   "bold": "Mapa de exposición e orixe do retorno",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Amósanche a porcentaxe que realmente tes en cada tipo de activo e moeda, e canto do teu beneficio proviña de escoller bos sectores fronte a elixir bos activos."
                 },
                 {
                   "bold": "Ingresos anuais previstos e seguridade",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Calculan cantos dólares vas cobrar no ano en concepto de dividendos, cupóns e intereses, e auditan a solvencia dos custodios onde descansa o teu capital."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Probabilidades de transición de ciclo",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Calcula a probabilidade de que o mercado permaneza en calma ou entre nunha fase volátil, inflacionaria ou de crise."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Dez mil escenarios futuros",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Debuxa o cono de evolución probable da túa carteira, distinguindo o escenario optimista (P95 en verde), o camiño central esperado (P50) e o escenario adverso (P05 en vermello)."
                 },
                 {
                   "bold": "Profundidade das caídas e estabilidade no tempo",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Permítenche alternar o gráfico para ver canto tempo permaneceu a carteira por debaixo dos seus máximos históricos ou o estable que foi a súa eficiencia e risco durante as fiestras de 60 días."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Carga da orde de proba",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Escolle calquera activo, indica se quere comprar, vender ou cubrir e carga a cantidade en dólares. Na seguinte lista podes activar ou desactivar cada orde simulada para comparar o seu efecto."
                 },
                 {
                   "bold": "Tamaño de posición óptimo",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "En función da súa probabilidade estimada de éxito e da relación entre beneficios e perdas, calcula que porcentaxe máxima de capital debe asignarse para crecer sen sobreexpoñerse."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Comparador de escudos protectores",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Permite alternar entre operar sen cobertura ou aplicar tres tipos de seguro con opcións (en SPY, QQQ ou VIX volatilidade), contrastando o custo anual da prima cos dólares que aforrarías nun accidente do 20%."
                 },
                 {
                   "bold": "Aproveitar o control e as garantías",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Controla que porcentaxe de marxe de mantemento utilizou e que porcentaxe de caída sufriría a carteira antes de entrar na zona de chamada de marxe."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Asistente de rexistro de pedidos e carteira",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "O panel inferior rexistra cada simulación co seu impacto no risco, mentres que o botón de diálogo da parte superior dereita abre o chat para facer preguntas directas sobre a túa carteira."
                 }
               ],

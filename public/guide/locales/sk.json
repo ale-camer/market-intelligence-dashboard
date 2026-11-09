@@ -118,7 +118,7 @@
             },
             {
               "bold": "Automatická pamäť",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Celá obrazovka sa preloží okamžite bez opätovného načítania stránky a váš výber sa uloží pre ďalší vstup."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Na vyriešenie tohto problému selektor motívu oddeľuje farbu prostredia od farby údajov:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Päť prostredí na čítanie",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "S každým kliknutím otáčate medzi čisto čiernym, modrastým alebo teplým pozadím, kým nenájdete to, ktoré je pre vaše oči najpohodlnejšie."
             },
             {
               "bold": "Neporušená finančná sémantika",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Bez ohľadu na to, akú tému zmeníte, univerzálne pravidlo trhu sa nikdy nemení: zelená vždy znamená vzostup alebo zisk a červená vždy znamená pokles, stratu alebo varovanie pred rizikom."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Detektor opakovanej polohy",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Spočítajte, čo ste investovali priamo do každej spoločnosti, plus skrytú časť, ktorú máte v rámci indexov alebo ETF (napríklad SPY alebo QQQ), pričom vás upozorní červenou farbou, ak prekročíte obozretné limity."
                 },
                 {
                   "bold": "Expozičná mapa a pôvod návratu",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Ukazujú vám, koľko percent v skutočnosti máte v každom type aktív a mene a koľko z vášho zisku pochádzalo z výberu dobrých sektorov v porovnaní s výberom dobrých aktív."
                 },
                 {
                   "bold": "Predpokladaný ročný príjem a bezpečnosť",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Vypočítajú, koľko dolárov sa chystáte vyzbierať za rok na dividendy, kupóny a úroky, a auditujú solventnosť správcov, kde spočíva váš kapitál."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Pravdepodobnosti prechodu cyklu",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Vypočítajte, aká je pravdepodobnosť, že trh zostane pokojný alebo vstúpi do volatilnej, inflačnej alebo krízovej fázy."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Desaťtisíc budúcich scenárov",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Nakreslite kužeľ pravdepodobného vývoja vášho portfólia, pričom rozlišujte optimistický scenár (P95 zelenou), očakávanú centrálnu cestu (P50) a nepriaznivý scenár (P05 červenou)."
                 },
                 {
                   "bold": "Hĺbka pádov a stabilita v priebehu času",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Umožňujú vám prepínať graf, aby ste videli, ako dlho portfólio zostalo pod svojimi historickými maximami alebo ako stabilné boli jeho efektívnosť a riziko počas 60-dňových okien."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Načítavanie testovacej objednávky",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Vyberiete si akékoľvek aktívum, uvediete, či chcete kúpiť, predať alebo pokryť a načítať sumu v dolároch. V zozname nižšie môžete zapnúť alebo vypnúť každú simulovanú objednávku a porovnať jej účinok."
                 },
                 {
                   "bold": "Optimálna veľkosť pozície",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Na základe vašej odhadovanej pravdepodobnosti úspechu a vzťahu medzi ziskom a stratou vypočíta, aké maximálne percento kapitálu by sa malo prideliť na rast bez toho, aby ste sa preexponovali."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Porovnávač ochranných štítov",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Umožňuje vám striedať medzi prevádzkou bez krytia alebo uplatňovaním troch typov poistenia s opciami (na volatilitu SPY, QQQ alebo VIX), pričom sa porovnávajú ročné náklady na poistné oproti dolárom, ktoré by ste ušetrili pri 20 % zrútení."
                 },
                 {
                   "bold": "Využite kontrolu a kolaterál",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Sledujte, aké percento udržiavacej marže ste použili a aký percentuálny pokles by portfólio vydržalo pred vstupom do zóny výzvy na dodatočné vyrovnanie."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Protokol objednávok a asistent portfólia",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Spodný panel zaznamenáva každú simuláciu s jej dopadom na riziko, zatiaľ čo dialógové tlačidlo v pravom hornom rohu otvára chat, kde môžete priamo klásť otázky o vašom portfóliu."
                 }
               ],

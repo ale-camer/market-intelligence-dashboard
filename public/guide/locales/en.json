@@ -118,7 +118,7 @@
             },
             {
               "bold": "Automatic memory",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "The entire screen is translated instantly without reloading the page and your choice is saved for the next times you enter."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "To solve this, the theme selector separates the environment color from the data color:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Five reading environments",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "With each click you rotate between pure black, bluish or warm backgrounds until you find the one that is most comfortable for your eyes."
             },
             {
               "bold": "Intact financial semantics",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Green / Red",
               "text": "No matter what topic you change, the universal rule of the market is never altered: green always means rise or gain, and red always means fall, loss or risk alert."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Repeated position detector",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Add up what you have invested directly in each company plus the hidden portion you have within indices or ETFs (such as SPY or QQQ), warning you in red if you exceed prudent limits."
                 },
                 {
                   "bold": "Exposure map and origin of return",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "They show you what percentage you actually have in each asset type and currency, and how much of your profit came from choosing good sectors versus choosing good assets."
                 },
                 {
                   "bold": "Projected annual income and security",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "They calculate how many dollars you are going to collect in the year for dividends, coupons and interest, and audit the solvency of the custodians where your capital rests."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Cycle transition probabilities",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Calculate how likely the market is to remain calm or enter a volatile, inflationary or crisis phase."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Ten thousand future scenarios",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Draw the cone of probable evolution of your portfolio, distinguishing the optimistic scenario (P95 in green), the expected central path (P50) and the adverse scenario (P05 in red)."
                 },
                 {
                   "bold": "Depth of falls and stability over time",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "They allow you to toggle the chart to see how long the portfolio stayed below its all-time highs or how stable its efficiency and risk were over rolling 60-day windows."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Test order loading",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "You choose any asset, indicate if you want to buy, sell or cover and load the amount in dollars. In the list below you can turn each simulated order on or off to compare its effect."
                 },
                 {
                   "bold": "Optimal position size",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Based on your estimated probability of success and the relationship between profit and loss, it calculates what maximum percentage of capital should be allocated to grow without overexposing yourself."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Comparator of protective shields",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "It allows you to alternate between operating without coverage or applying three types of insurance with options (on SPY, QQQ or VIX volatility), contrasting the annual cost of the premium against the dollars you would save in a 20% crash."
                 },
                 {
                   "bold": "Leverage control and collateral",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Monitor what percentage of maintenance margin you have used and what percentage drop the portfolio would endure before entering the margin call zone."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Order log and portfolio assistant",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "The bottom panel records each simulation with its impact on risk, while the dialogue button at the top right opens the chat to ask direct questions about your portfolio."
                 }
               ],

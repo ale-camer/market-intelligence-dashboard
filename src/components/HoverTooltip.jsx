@@ -20,6 +20,13 @@ export default function HoverTooltip({
   const wrapRef = useRef(null);
 
   const handleEnter = () => {
+    if (
+      typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(hover: none), (pointer: coarse)').matches
+    ) {
+      return;
+    }
     if (wrapRef.current) {
       setRect(wrapRef.current.getBoundingClientRect());
     }

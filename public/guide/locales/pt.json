@@ -118,7 +118,7 @@
             },
             {
               "bold": "Memória automática",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "A tela inteira é traduzida instantaneamente sem recarregar a página e sua escolha fica salva para as próximas vezes que você entrar."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Para resolver isso, o seletor de tema separa a cor do ambiente da cor dos dados:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Cinco ambientes de leitura",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "A cada clique você alterna entre fundos pretos puros, azulados ou quentes até encontrar aquele que é mais confortável para seus olhos."
             },
             {
               "bold": "Semântica financeira intacta",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Não importa o assunto que você mude, a regra universal do mercado nunca é alterada: verde sempre significa alta ou ganho, e vermelho sempre significa queda, perda ou alerta de risco."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Detector de posição repetida",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Some o que você investiu diretamente em cada empresa mais a parcela oculta que você possui em índices ou ETFs (como SPY ou QQQ), avisando em vermelho se você ultrapassar os limites prudentes."
                 },
                 {
                   "bold": "Mapa de exposição e origem do retorno",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Eles mostram qual porcentagem você realmente tem em cada tipo de ativo e moeda, e quanto do seu lucro veio da escolha de bons setores em vez da escolha de bons ativos."
                 },
                 {
                   "bold": "Renda anual projetada e segurança",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Eles calculam quantos dólares você vai arrecadar no ano em dividendos, cupons e juros, e auditam a solvência dos custodiantes onde seu capital repousa."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Probabilidades de transição de ciclo",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Calcule a probabilidade de o mercado permanecer calmo ou entrar numa fase volátil, inflacionária ou de crise."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Dez mil cenários futuros",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Desenhe o cone de evolução provável da sua carteira, distinguindo o cenário otimista (P95 em verde), a trajetória central esperada (P50) e o cenário adverso (P05 em vermelho)."
                 },
                 {
                   "bold": "Profundidade das quedas e estabilidade ao longo do tempo",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Eles permitem que você alterne o gráfico para ver quanto tempo o portfólio permaneceu abaixo de seus máximos históricos ou quão estáveis ​​sua eficiência e risco estavam em janelas contínuas de 60 dias."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Carregamento de pedido de teste",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Você escolhe qualquer ativo, indica se deseja comprar, vender ou cobrir e carrega o valor em dólares. Na lista abaixo você pode ativar ou desativar cada ordem simulada para comparar seu efeito."
                 },
                 {
                   "bold": "Tamanho ideal da posição",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Com base na sua probabilidade estimada de sucesso e na relação entre lucros e perdas, ele calcula qual percentual máximo de capital deve ser alocado para crescer sem se expor demais."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Comparador de escudos de proteção",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Ele permite que você alterne entre operar sem cobertura ou aplicar três tipos de seguro com opções (na volatilidade SPY, QQQ ou VIX), comparando o custo anual do prêmio com os dólares que você economizaria em uma queda de 20%."
                 },
                 {
                   "bold": "Aproveite o controle e as garantias",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Monitore qual porcentagem de margem de manutenção você usou e qual porcentagem de queda o portfólio suportaria antes de entrar na zona de chamada de margem."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Registro de pedidos e assistente de portfólio",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "O painel inferior registra cada simulação com seu impacto no risco, enquanto o botão de diálogo no canto superior direito abre o chat para fazer perguntas diretas sobre o seu portfólio."
                 }
               ],

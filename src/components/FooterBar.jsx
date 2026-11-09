@@ -493,8 +493,18 @@ export default function FooterBar({
           bottom: 0,
           left: 0,
           right: 0,
-          backgroundColor: 'transparent',
-          borderTop: 'none',
+          backgroundColor:
+            activeTab !== 'presentation'
+              ? lightMode
+                ? 'rgba(232, 246, 239, 0.88)'
+                : 'rgba(7, 9, 14, 0.86)'
+              : 'transparent',
+          backdropFilter: activeTab !== 'presentation' ? 'blur(12px)' : 'none',
+          WebkitBackdropFilter: activeTab !== 'presentation' ? 'blur(12px)' : 'none',
+          borderTop:
+            activeTab !== 'presentation'
+              ? '1px solid var(--border-subtle, rgba(148, 163, 184, 0.14))'
+              : 'none',
           padding: '0.68rem 1.5rem',
           display: 'flex',
           alignItems: 'center',

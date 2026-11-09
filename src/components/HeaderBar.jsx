@@ -1489,10 +1489,13 @@ export default function HeaderBar({
     borderRadius: variant.layout === 'ribbon-floating-inset' ? '14px' : 0,
     backgroundColor: isRibbon
       ? 'rgba(6, 10, 19, 0.84)'
-      : variant.layout === 'left-wing-ribbon'
-      ? 'transparent'
+      : activeTab !== 'presentation'
+      ? lightMode
+        ? 'rgba(232, 246, 239, 0.88)'
+        : 'rgba(7, 9, 14, 0.86)'
       : 'transparent',
-    backdropFilter: isRibbon ? 'blur(14px)' : 'none',
+    backdropFilter: isRibbon || activeTab !== 'presentation' ? 'blur(12px)' : 'none',
+    WebkitBackdropFilter: isRibbon || activeTab !== 'presentation' ? 'blur(12px)' : 'none',
     borderTop:
       variant.ribbonStyle === 'top-crown-emerald'
         ? '2.5px solid #10b981'
@@ -1506,6 +1509,8 @@ export default function HeaderBar({
         ? '1px solid rgba(255, 255, 255, 0.1)'
         : variant.ribbonStyle === 'center-glow-bottom'
         ? '1px solid rgba(16, 185, 129, 0.5)'
+        : activeTab !== 'presentation'
+        ? '1px solid var(--border-subtle, rgba(148, 163, 184, 0.14))'
         : 'none',
     padding: isTopNotch
       ? '0 1.5rem 0.45rem 1.5rem'

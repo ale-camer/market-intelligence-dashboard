@@ -118,7 +118,7 @@
             },
             {
               "bold": "Kumbukumbu ya moja kwa moja",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Skrini nzima inatafsiriwa papo hapo bila kupakia upya ukurasa na chaguo lako litahifadhiwa kwa mara nyingine utakapoingiza."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Ili kutatua hili, kiteuzi cha mandhari hutenganisha rangi ya mazingira kutoka kwa rangi ya data:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Mazingira matano ya kusoma",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Kwa kila kubofya unazunguka kati ya mandharinyuma nyeusi, samawati au joto hadi upate ile inayokufaa zaidi macho yako."
             },
             {
               "bold": "Semantiki za kifedha zisizobadilika",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Haijalishi ni mada gani unayobadilisha, sheria ya ulimwengu wote ya soko haibadilishwi: kijani kibichi kila wakati inamaanisha kupanda au faida, na nyekundu daima inamaanisha kuanguka, kupoteza au tahadhari ya hatari."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Kigunduzi cha nafasi inayorudiwa",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Ongeza kile ambacho umewekeza moja kwa moja katika kila kampuni pamoja na sehemu iliyofichwa uliyo nayo ndani ya fahirisi au ETFs (kama vile SPY au QQQ), ikikuonya kwa rangi nyekundu ikiwa utavuka mipaka ya busara."
                 },
                 {
                   "bold": "Ramani ya mwangaza na asili ya kurudi",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Zinakuonyesha ni asilimia ngapi unayo katika kila aina ya mali na sarafu, na ni kiasi gani cha faida ulichopata kutokana na kuchagua sekta nzuri dhidi ya kuchagua mali nzuri."
                 },
                 {
                   "bold": "Makadirio ya mapato ya kila mwaka na usalama",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Wanakokotoa ni dola ngapi utakazokusanya kwa mwaka kwa gawio, kuponi na riba, na kukagua uteuzi wa walinzi ambapo mtaji wako unategemea."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Uwezekano wa mpito wa mzunguko",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Kokotoa uwezekano wa soko kubaki shwari au kuingia katika awamu tete, mfumuko wa bei au mgogoro."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Matukio elfu kumi ya siku zijazo",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Chora koni ya uwezekano wa mabadiliko ya kwingineko yako, ukitofautisha hali ya matumaini (P95 kwa kijani), njia kuu inayotarajiwa (P50) na hali mbaya (P05 katika nyekundu)."
                 },
                 {
                   "bold": "Kina cha maporomoko na utulivu kwa muda",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Zinakuruhusu ugeuze chati ili kuona ni muda gani kwingineko ilikaa chini ya viwango vyake vya juu au jinsi ufanisi na hatari yake ilivyokuwa thabiti kwa kukunja madirisha ya siku 60."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Jaribio la upakiaji wa agizo",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Unachagua mali yoyote, onyesha ikiwa unataka kununua, kuuza au kufunika na kupakia kiasi hicho kwa dola. Katika orodha iliyo hapa chini unaweza kuwasha au kuzima kila agizo lililoiga ili kulinganisha athari yake."
                 },
                 {
                   "bold": "Ukubwa bora wa nafasi",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Kulingana na makadirio ya uwezekano wako wa kufaulu na uhusiano kati ya faida na hasara, huhesabu ni asilimia ngapi ya juu ya mtaji inapaswa kutengwa ili kukua bila kujionyesha kupita kiasi."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Mlinganisho wa ngao za kinga",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Inakuruhusu kubadilisha kati ya kufanya kazi bila bima au kutumia aina tatu za bima ukitumia chaguo (kwenye SPY, QQQ au VIX tete), ukitofautisha gharama ya kila mwaka ya malipo dhidi ya dola ambazo ungeokoa katika ajali ya 20%."
                 },
                 {
                   "bold": "Kuongeza udhibiti na dhamana",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Fuatilia ni asilimia ngapi ya ukingo wa matengenezo umetumia na ni asilimia ngapi kushuka kwa kwingineko kunaweza kustahimili kabla ya kuingia katika eneo la ukingo wa simu."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Agiza logi na msaidizi wa kwingineko",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Paneli ya chini hurekodi kila uigaji na athari zake kwa hatari, huku kitufe cha mazungumzo kilicho juu kulia hufungua gumzo ili kuuliza maswali ya moja kwa moja kuhusu kwingineko yako."
                 }
               ],

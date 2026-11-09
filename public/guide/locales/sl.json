@@ -118,7 +118,7 @@
             },
             {
               "bold": "Samodejni pomnilnik",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Celoten zaslon se prevede v trenutku brez ponovnega nalaganja strani in vaša izbira se shrani za naslednjič, ko vnesete."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Za rešitev tega izbirnik teme loči barvo okolja od barve podatkov:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Pet bralnih okolij",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Z vsakim klikom se vrtite med čisto črnimi, modrikastimi ali toplimi ozadji, dokler ne najdete tistega, ki je najbolj udobno za vaše oči."
             },
             {
               "bold": "Neokrnjena finančna semantika",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "Ne glede na to, katero temo spremenite, se univerzalno pravilo trga nikoli ne spremeni: zelena vedno pomeni rast ali dobiček, rdeča pa vedno pomeni padec, izgubo ali opozorilo na tveganje."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Detektor ponavljajočega se položaja",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Seštejte, kar ste vložili neposredno v posamezno podjetje, in skriti del, ki ga imate znotraj indeksov ali ETF-jev (kot je SPY ali QQQ), pri čemer vas opozori rdeče, če presežete preudarne meje."
                 },
                 {
                   "bold": "Karta izpostavljenosti in izvor povratka",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Pokažejo vam, kolikšen odstotek dejansko imate v vsaki vrsti sredstev in valuti ter koliko vašega dobička je prišlo z izbiro dobrih sektorjev v primerjavi z izbiro dobrih sredstev."
                 },
                 {
                   "bold": "Predvideni letni dohodek in varnost",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Izračunajo, koliko dolarjev boste zbrali na leto za dividende, kupone in obresti, ter revidirajo plačilno sposobnost skrbnikov, pri katerih počiva vaš kapital."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Verjetnosti prehoda cikla",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Izračunajte, kolikšna je verjetnost, da bo trg ostal miren ali vstopil v nestanovitno, inflacijsko ali krizno fazo."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Deset tisoč scenarijev prihodnosti",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Narišite stožec verjetnega razvoja vašega portfelja, pri čemer ločite optimistični scenarij (P95 v zeleni barvi), pričakovano osrednjo pot (P50) in neugoden scenarij (P05 v rdeči barvi)."
                 },
                 {
                   "bold": "Globina padcev in stabilnost skozi čas",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Omogočajo vam preklapljanje grafikona, da vidite, kako dolgo je portfelj ostal pod najvišjimi vrednostmi vseh časov ali kako stabilna sta bila njegova učinkovitost in tveganje v tekočih 60-dnevnih oknih."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Nalaganje preizkusnega naročila",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Izberete katero koli sredstvo, navedete, ali želite kupiti, prodati ali pokriti in naložite znesek v dolarjih. Na spodnjem seznamu lahko vklopite ali izklopite vsako simulirano naročilo in primerjate njegov učinek."
                 },
                 {
                   "bold": "Optimalna velikost položaja",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "Na podlagi vaše ocenjene verjetnosti uspeha in razmerja med dobičkom in izgubo izračuna, kolikšen najvišji odstotek kapitala je treba dodeliti za rast brez pretiranega izpostavljanja."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Primerjalnik zaščitnih ščitov",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Omogoča vam, da preklapljate med delovanjem brez kritja ali uporabo treh vrst zavarovanj z možnostmi (na nestanovitnost SPY, QQQ ali VIX), kar je v primerjavi z letnimi stroški premije glede na dolarje, ki bi jih prihranili ob 20-odstotnem padcu."
                 },
                 {
                   "bold": "Nadzor finančnega vzvoda in zavarovanje",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Spremljajte, kolikšen odstotek vzdrževalne marže ste uporabili in kolikšen odstotek padca bi portfelj prestal, preden vstopite v območje zahtevanega kritja."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Dnevnik naročil in asistent za portfelj",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "Spodnja plošča beleži vsako simulacijo z njenim vplivom na tveganje, medtem ko gumb za pogovor v zgornjem desnem kotu odpre klepet za postavljanje neposrednih vprašanj o vašem portfelju."
                 }
               ],

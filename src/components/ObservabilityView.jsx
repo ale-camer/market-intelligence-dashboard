@@ -339,6 +339,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                 Performance | FinOps
                ══════════════════════════════════════════════════════════════════ */}
             <div
+                className="resp-system-subnav"
                 style={{
                     position: 'relative',
                     display: 'flex',
@@ -349,6 +350,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                 }}
             >
                 <div
+                    className="resp-system-subnav-tabs"
                     style={{
                         display: 'inline-flex',
                         alignItems: 'center',
@@ -365,7 +367,11 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                             <button
                                 key={tab.id}
                                 type="button"
-                                onClick={() => setActiveTab(tab.id)}
+                                onClick={() => {
+                                    setActiveTab(tab.id);
+                                    const appViewport = typeof document !== 'undefined' ? document.querySelector('.app-main-viewport') : null;
+                                    if (appViewport) appViewport.scrollTop = 0;
+                                }}
                                 style={{
                                     padding: '0.18rem 0.25rem',
                                     background: 'transparent',
@@ -389,6 +395,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                 </div>
 
                 <div
+                    className="resp-system-export-group"
                     style={{
                         position: 'absolute',
                         right: '4px',
@@ -765,16 +772,19 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                             }}
                         >
                             <div
+                                className="resp-system-logs-header"
                                 style={{
                                     display: 'flex',
                                     justifyContent: 'space-between',
                                     alignItems: 'baseline',
+                                    flexWrap: 'wrap',
+                                    gap: '8px 12px',
                                     marginBottom: '10px',
                                     paddingBottom: '8px',
                                     borderBottom: '1px solid var(--border-slate, rgba(148, 163, 184, 0.14))'
                                 }}
                             >
-                                <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap' }}>
+                                <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px 12px', flexWrap: 'wrap' }}>
                                     <span
                                         style={{
                                             fontSize: '15.5px',
@@ -797,7 +807,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                                     </span>
                                 </div>
 
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
                                     <button
                                         type="button"
                                         onClick={() => setLogScope('selected')}
@@ -809,6 +819,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                                             textShadow: logScope === 'selected' ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                             fontSize: '12px',
                                             fontWeight: logScope === 'selected' ? 800 : 600,
+                                            whiteSpace: 'nowrap',
                                             cursor: 'pointer'
                                         }}
                                     >
@@ -825,6 +836,7 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                                             textShadow: logScope === 'all' ? '0 0 12px rgba(var(--ui-accent-rgb, 16, 185, 129), 0.85)' : 'none',
                                             fontSize: '12px',
                                             fontWeight: logScope === 'all' ? 800 : 600,
+                                            whiteSpace: 'nowrap',
                                             cursor: 'pointer'
                                         }}
                                     >
@@ -834,10 +846,12 @@ export default function ObservabilityView({ langCode = 'EN' }) {
                             </div>
 
                             <div
+                                className="resp-system-logs-scroll"
                                 style={{
                                     maxHeight: '132px',
                                     overflowY: 'auto',
-                                    paddingRight: '4px'
+                                    paddingRight: '4px',
+                                    overflowWrap: 'anywhere'
                                 }}
                             >
                                 {logEntries.map(log => (

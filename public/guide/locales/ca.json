@@ -118,7 +118,7 @@
             },
             {
               "bold": "Memòria automàtica",
-              "code": "mid_lang_v1",
+              "code": "",
               "text": "Tota la pantalla es tradueix a l'instant sense tornar a carregar la pàgina i la teva elecció es desa per a les properes vegades que entris."
             }
           ],
@@ -135,13 +135,18 @@
           "lead": "Per solucionar-ho, el selector de temes separa el color de l'entorn del color de les dades:",
           "bullets": [
             {
+              "bold": "Light & Dark Mode",
+              "code": "Sun / Moon",
+              "text": "With the toggle right next to the palette icon, you can switch in one click between a high-contrast light interface for bright environments and the classic dark mode."
+            },
+            {
               "bold": "Cinc entorns de lectura",
               "code": "Obsidian Night, OLED Pitch Black, Abyssal Navy, Warm Titanium y Cobalt Quant",
               "text": "Amb cada clic vas girant entre fons negre pur, blavós o càlid fins a trobar el més còmode per als teus ulls."
             },
             {
               "bold": "Semàntica financera intacta",
-              "code": "Verde #10b981 / Rojo #f43f5e",
+              "code": "Verde / Rojo",
               "text": "No importa de quin tema canvieu, la regla universal del mercat mai s'altera: el verd sempre significa pujada o guany, i vermell sempre significa caiguda, pèrdua o alerta de risc."
             }
           ],
@@ -685,17 +690,17 @@
               "bullets": [
                 {
                   "bold": "Detector de posició repetida",
-                  "code": "1. Solapamiento X-Ray #12",
+                  "code": "1. Solapamiento X-Ray",
                   "text": "Sumeu el que heu invertit directament a cada empresa més la part oculta que teniu dins d'índexs o ETF (com ara SPY o QQQ), advertint-vos en vermell si supereu els límits prudents."
                 },
                 {
                   "bold": "Mapa d'exposició i origen del retorn",
-                  "code": "2. Exposición NEW-07 / 3. Descomposición Alpha #2",
+                  "code": "2. Exposición / 3. Descomposición Alpha",
                   "text": "Us mostren quin percentatge teniu realment en cada tipus d'actiu i moneda, i quina part del vostre benefici prové de l'elecció de bons sectors en comparació amb l'elecció de bons actius."
                 },
                 {
                   "bold": "Ingressos anuals previstos i seguretat",
-                  "code": "4. Cashflow NEW-08 / 5. Custodia #16",
+                  "code": "4. Cashflow / 5. Custodia",
                   "text": "Calculen quants dòlars cobraràs durant l'any per dividends, cupons i interessos, i auditen la solvència dels custodis on descansa el teu capital."
                 }
               ],
@@ -850,7 +855,7 @@
                 },
                 {
                   "bold": "Probabilitats de transició de cicle",
-                  "code": "2. Regímenes Markov #11",
+                  "code": "2. Regímenes Markov",
                   "text": "Calcula la probabilitat que el mercat es mantingui en calma o entri en una fase volàtil, inflacionista o de crisi."
                 }
               ],
@@ -869,12 +874,12 @@
               "bullets": [
                 {
                   "bold": "Deu mil escenaris futurs",
-                  "code": "1. Proyección Monte Carlo NEW-01 / 6M, 12M y 24M",
+                  "code": "1. Proyección Monte Carlo / 6M, 12M y 24M",
                   "text": "Dibuixa el con d'evolució probable de la teva cartera, distingint l'escenari optimista (P95 en verd), el camí central esperat (P50) i l'escenari advers (P05 en vermell)."
                 },
                 {
                   "bold": "Profunditat de les caigudes i estabilitat en el temps",
-                  "code": "2. Drawdown Subacuático NEW-02 / 3. Rolling 60D Sharpe & Beta NEW-05",
+                  "code": "2. Drawdown Subacuático / 3. Rolling 60D Sharpe & Beta",
                   "text": "Us permeten canviar el gràfic per veure quant de temps es va mantenir la cartera per sota dels seus màxims històrics o com d'estables van ser la seva eficiència i risc durant les finestres de 60 dies."
                 }
               ],
@@ -929,12 +934,12 @@
               "bullets": [
                 {
                   "bold": "Càrrega de la comanda de prova",
-                  "code": "1. Simulador What-If #1 / + Simular Orden",
+                  "code": "1. Simulador What-If / + Simular Orden",
                   "text": "Trieu qualsevol actiu, indiqueu si voleu comprar, vendre o cobrir i carregar l'import en dòlars. A la llista següent, podeu activar o desactivar cada ordre simulada per comparar el seu efecte."
                 },
                 {
                   "bold": "Mida òptima de la posició",
-                  "code": "2. Criterio de Kelly #14 / Half-Kelly 0.5×",
+                  "code": "2. Criterio de Kelly / Half-Kelly 0.5×",
                   "text": "A partir de la vostra probabilitat estimada d'èxit i de la relació entre guanys i pèrdues, calcula quin percentatge màxim de capital s'ha d'assignar per créixer sense sobreexposar-vos."
                 }
               ],
@@ -953,12 +958,12 @@
               "bullets": [
                 {
                   "bold": "Comparador d'escuts protectors",
-                  "code": "1. Escudo Put OTM #6",
+                  "code": "1. Escudo Put OTM",
                   "text": "Permet alternar entre operar sense cobertura o aplicar tres tipus d'assegurances amb opcions (a la volatilitat SPY, QQQ o VIX), contrastant el cost anual de la prima amb els dòlars que estalviaria en un accident del 20%."
                 },
                 {
                   "bold": "Control de palanquejament i garantia",
-                  "code": "2. Margen & Margin Call #13",
+                  "code": "2. Margen & Margin Call",
                   "text": "Superviseu quin percentatge de marge de manteniment heu utilitzat i quin percentatge de caiguda suportaria la cartera abans d'entrar a la zona de trucada de marge."
                 }
               ],
@@ -982,7 +987,7 @@
                 },
                 {
                   "bold": "Assistent de registre de comandes i cartera",
-                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera #8",
+                  "code": "Libro de Ejecución / 💬 Copiloto de Cartera",
                   "text": "El panell inferior registra cada simulació amb el seu impacte en el risc, mentre que el botó de diàleg a la part superior dreta obre el xat per fer preguntes directes sobre la vostra cartera."
                 }
               ],
