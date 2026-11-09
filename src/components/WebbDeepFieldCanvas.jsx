@@ -179,27 +179,121 @@ export default function WebbDeepFieldCanvas({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    const getHardwareProfile = () => {
+      const vw = window.innerWidth || 1280;
+      const isTouch =
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(hover: none), (pointer: coarse)').matches;
+      const cores = navigator.hardwareConcurrency || 4;
+
+      // Tier 1: Smartphone (<= 680px)
+      if (vw <= 680 || (isTouch && vw <= 768)) {
+        return {
+          tier: 'mobile',
+          dpr: cores <= 4 ? 0.75 : 0.88,
+          particles: 7500,
+          antialias: false,
+          speedMult: 1.28,
+        };
+      }
+      // Tier 2: Tablet (681px - 1024px or touch screen)
+      if (vw <= 1024 || isTouch) {
+        return {
+          tier: 'tablet',
+          dpr: 1.1,
+          particles: 13500,
+          antialias: false,
+          speedMult: 1.12,
+        };
+      }
+      // Tier 3: Desktop (> 1024px)
+      return {
+        tier: 'desktop',
+        dpr: Math.min(window.devicePixelRatio || 1, 2),
+        particles: 24000,
+        antialias: true,
+        speedMult: 1.0,
+      };
+    };
+
+    const profile = getHardwareProfile();
+
     const gl = canvas.getContext('webgl', {
       alpha: false,
-      antialias: true,
+      antialias: profile.antialias,
       powerPreference: 'high-performance',
     });
     if (!gl) return;
 
-    const bgProgram = createProgram(gl, BG_VERTEX_SHADER, BG_FRAGMENT_SHADER);
-    const ptProgram = createProgram(gl, PARTICLE_VERTEX_SHADER, PARTICLE_FRAGMENT_SHADER);
-    const lightBgProgram = createProgram(gl, BG_VERTEX_SHADER, LIGHT_BG_FRAGMENT_SHADER);
-    const lightPtProgram = createProgram(gl, LIGHT_PARTICLE_VERTEX_SHADER, LIGHT_PARTICLE_FRAGMENT_SHADER);
-    if (!bgProgram || !ptProgram || !lightBgProgram || !lightPtProgram) return;
+    // Lazy shader compilation: only compile the active mode on first paint so the first frame appears immediately
+    let darkSuite = null;
+    let lightSuite = null;
+
+    const getDarkSuite = () => {
+      if (darkSuite) return darkSuite;
+      const bgProgram = createProgram(gl, BG_VERTEX_SHADER, BG_FRAGMENT_SHADER);
+      const ptProgram = createProgram(gl, PARTICLE_VERTEX_SHADER, PARTICLE_FRAGMENT_SHADER);
+      if (!bgProgram || !ptProgram) return null;
+      darkSuite = {
+        bgProgram,
+        ptProgram,
+        bgPosLoc: gl.getAttribLocation(bgProgram, 'aPos'),
+        bgResLoc: gl.getUniformLocation(bgProgram, 'uResolution'),
+        bgTimeLoc: gl.getUniformLocation(bgProgram, 'uTime'),
+        bgPairLoc: gl.getUniformLocation(bgProgram, 'uPair'),
+        bgMorphLoc: gl.getUniformLocation(bgProgram, 'uMorph'),
+        bgHorizLoc: gl.getUniformLocation(bgProgram, 'uShowHorizon'),
+        ptSeedLoc: gl.getAttribLocation(ptProgram, 'aSeed'),
+        ptTimeLoc: gl.getUniformLocation(ptProgram, 'uTime'),
+        ptResLoc: gl.getUniformLocation(ptProgram, 'uResolution'),
+        ptDprLoc: gl.getUniformLocation(ptProgram, 'uDpr'),
+        ptPairLoc: gl.getUniformLocation(ptProgram, 'uPair'),
+        ptMorphLoc: gl.getUniformLocation(ptProgram, 'uMorph'),
+      };
+      return darkSuite;
+    };
+
+    const getLightSuite = () => {
+      if (lightSuite) return lightSuite;
+      const lightBgProgram = createProgram(gl, BG_VERTEX_SHADER, LIGHT_BG_FRAGMENT_SHADER);
+      const lightPtProgram = createProgram(gl, LIGHT_PARTICLE_VERTEX_SHADER, LIGHT_PARTICLE_FRAGMENT_SHADER);
+      if (!lightBgProgram || !lightPtProgram) return null;
+      lightSuite = {
+        lightBgProgram,
+        lightPtProgram,
+        lBgPosLoc: gl.getAttribLocation(lightBgProgram, 'aPos'),
+        lBgResLoc: gl.getUniformLocation(lightBgProgram, 'uResolution'),
+        lBgTimeLoc: gl.getUniformLocation(lightBgProgram, 'uTime'),
+        lBgPairLoc: gl.getUniformLocation(lightBgProgram, 'uPair'),
+        lBgMorphLoc: gl.getUniformLocation(lightBgProgram, 'uMorph'),
+        lPtSeedLoc: gl.getAttribLocation(lightPtProgram, 'aSeed'),
+        lPtTimeLoc: gl.getUniformLocation(lightPtProgram, 'uTime'),
+        lPtResLoc: gl.getUniformLocation(lightPtProgram, 'uResolution'),
+        lPtDprLoc: gl.getUniformLocation(lightPtProgram, 'uDpr'),
+        lPtPairLoc: gl.getUniformLocation(lightPtProgram, 'uPair'),
+        lPtMorphLoc: gl.getUniformLocation(lightPtProgram, 'uMorph'),
+      };
+      return lightSuite;
+    };
+
+    if (lightModeRef.current) {
+      if (!getLightSuite()) return;
+    } else {
+      if (!getDarkSuite()) return;
+    }
 
     const quadVerts = new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]);
     const quadBuf = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
     gl.bufferData(gl.ARRAY_BUFFER, quadVerts, gl.STATIC_DRAW);
 
-    const PARTICLE_COUNT = 24000;
-    const particleSeeds = new Float32Array(PARTICLE_COUNT * 3);
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const MAX_PARTICLES = 24000;
+    let activeParticleCount = profile.particles;
+    let dpr = profile.dpr;
+    let speedMult = profile.speedMult;
+
+    const particleSeeds = new Float32Array(MAX_PARTICLES * 3);
+    for (let i = 0; i < MAX_PARTICLES; i++) {
       const rawU = Math.random() * 2 - 1;
       particleSeeds[i * 3 + 0] = rawU;
       particleSeeds[i * 3 + 1] = Math.random();
@@ -209,37 +303,12 @@ export default function WebbDeepFieldCanvas({
     gl.bindBuffer(gl.ARRAY_BUFFER, particleBuf);
     gl.bufferData(gl.ARRAY_BUFFER, particleSeeds, gl.STATIC_DRAW);
 
-    const bgPosLoc = gl.getAttribLocation(bgProgram, 'aPos');
-    const bgResLoc = gl.getUniformLocation(bgProgram, 'uResolution');
-    const bgTimeLoc = gl.getUniformLocation(bgProgram, 'uTime');
-    const bgPairLoc = gl.getUniformLocation(bgProgram, 'uPair');
-    const bgMorphLoc = gl.getUniformLocation(bgProgram, 'uMorph');
-    const bgHorizLoc = gl.getUniformLocation(bgProgram, 'uShowHorizon');
-
-    const ptSeedLoc = gl.getAttribLocation(ptProgram, 'aSeed');
-    const ptTimeLoc = gl.getUniformLocation(ptProgram, 'uTime');
-    const ptResLoc = gl.getUniformLocation(ptProgram, 'uResolution');
-    const ptDprLoc = gl.getUniformLocation(ptProgram, 'uDpr');
-    const ptPairLoc = gl.getUniformLocation(ptProgram, 'uPair');
-    const ptMorphLoc = gl.getUniformLocation(ptProgram, 'uMorph');
-
-    const lBgPosLoc = gl.getAttribLocation(lightBgProgram, 'aPos');
-    const lBgResLoc = gl.getUniformLocation(lightBgProgram, 'uResolution');
-    const lBgTimeLoc = gl.getUniformLocation(lightBgProgram, 'uTime');
-    const lBgPairLoc = gl.getUniformLocation(lightBgProgram, 'uPair');
-    const lBgMorphLoc = gl.getUniformLocation(lightBgProgram, 'uMorph');
-
-    const lPtSeedLoc = gl.getAttribLocation(lightPtProgram, 'aSeed');
-    const lPtTimeLoc = gl.getUniformLocation(lightPtProgram, 'uTime');
-    const lPtResLoc = gl.getUniformLocation(lightPtProgram, 'uResolution');
-    const lPtDprLoc = gl.getUniformLocation(lightPtProgram, 'uDpr');
-    const lPtPairLoc = gl.getUniformLocation(lightPtProgram, 'uPair');
-    const lPtMorphLoc = gl.getUniformLocation(lightPtProgram, 'uMorph');
-
-    let dpr = Math.min(window.devicePixelRatio || 1, 2);
     const resize = () => {
       if (!canvas.parentElement) return;
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const nextProfile = getHardwareProfile();
+      dpr = nextProfile.dpr;
+      activeParticleCount = nextProfile.particles;
+      speedMult = nextProfile.speedMult;
       const rect = canvas.parentElement.getBoundingClientRect();
       const rawW = rect.width > 10 ? rect.width : window.innerWidth;
       const rawH = rect.height > 10 ? rect.height : window.innerHeight;
@@ -248,24 +317,53 @@ export default function WebbDeepFieldCanvas({
       if (canvas.width !== width || canvas.height !== height) {
         canvas.width = width;
         canvas.height = height;
+        gl.viewport(0, 0, canvas.width, canvas.height);
       }
-      gl.viewport(0, 0, canvas.width, canvas.height);
     };
     resize();
     window.addEventListener('resize', resize);
+    let ro = null;
+    if (typeof ResizeObserver !== 'undefined' && canvas.parentElement) {
+      ro = new ResizeObserver(() => resize());
+      ro.observe(canvas.parentElement);
+    }
 
     let animId;
     let lastTime = performance.now();
     let elapsed = 0;
     let currentPairFloat = selectedSceneRef.current !== null ? Number(selectedSceneRef.current) % 4 : 0;
 
+    // Dynamic FPS auto-scaler for battery-saver / slower mobile GPUs
+    let sampleFrames = 0;
+    let sampleTimeAccum = 0;
+    let didAutoScaleDown = false;
+
     const render = (now) => {
-      const dt = Math.min(0.1, Math.max(0, (now - lastTime) * 0.001));
+      const rawDeltaMs = now - lastTime;
+      const dt = Math.min(0.1, Math.max(0, rawDeltaMs * 0.001));
       lastTime = now;
 
       if (!isPausedRef.current) {
-        resize();
-        elapsed += dt;
+        if (!didAutoScaleDown && rawDeltaMs > 0 && rawDeltaMs < 250) {
+          sampleFrames += 1;
+          sampleTimeAccum += rawDeltaMs;
+          if (sampleFrames === 28) {
+            const avgMs = sampleTimeAccum / sampleFrames;
+            if (avgMs > 26 && profile.tier !== 'desktop') {
+              didAutoScaleDown = true;
+              dpr = Math.max(0.65, dpr * 0.78);
+              activeParticleCount = Math.max(4500, Math.floor(activeParticleCount * 0.65));
+              const rect = canvas.parentElement?.getBoundingClientRect();
+              const rawW = rect && rect.width > 10 ? rect.width : window.innerWidth;
+              const rawH = rect && rect.height > 10 ? rect.height : window.innerHeight;
+              canvas.width = Math.max(1, Math.floor(rawW * dpr));
+              canvas.height = Math.max(1, Math.floor(rawH * dpr));
+              gl.viewport(0, 0, canvas.width, canvas.height);
+            }
+          }
+        }
+
+        elapsed += dt * speedMult;
 
         // Exact same morph and pair cadence across both Dark Mode and Light Mode
         const activeMorph =
@@ -295,54 +393,60 @@ export default function WebbDeepFieldCanvas({
         }
 
         if (lightModeRef.current) {
-          gl.disable(gl.BLEND);
-          gl.useProgram(lightBgProgram);
-          gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
-          gl.enableVertexAttribArray(lBgPosLoc);
-          gl.vertexAttribPointer(lBgPosLoc, 2, gl.FLOAT, false, 0, 0);
-          gl.uniform2f(lBgResLoc, canvas.width, canvas.height);
-          gl.uniform1f(lBgTimeLoc, elapsed);
-          gl.uniform1f(lBgPairLoc, activePair);
-          gl.uniform1f(lBgMorphLoc, activeMorph);
-          gl.drawArrays(gl.TRIANGLES, 0, 6);
+          const ls = getLightSuite();
+          if (ls) {
+            gl.disable(gl.BLEND);
+            gl.useProgram(ls.lightBgProgram);
+            gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+            gl.enableVertexAttribArray(ls.lBgPosLoc);
+            gl.vertexAttribPointer(ls.lBgPosLoc, 2, gl.FLOAT, false, 0, 0);
+            gl.uniform2f(ls.lBgResLoc, canvas.width, canvas.height);
+            gl.uniform1f(ls.lBgTimeLoc, elapsed);
+            gl.uniform1f(ls.lBgPairLoc, activePair);
+            gl.uniform1f(ls.lBgMorphLoc, activeMorph);
+            gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-          gl.enable(gl.BLEND);
-          gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-          gl.useProgram(lightPtProgram);
-          gl.bindBuffer(gl.ARRAY_BUFFER, particleBuf);
-          gl.enableVertexAttribArray(lPtSeedLoc);
-          gl.vertexAttribPointer(lPtSeedLoc, 3, gl.FLOAT, false, 0, 0);
-          gl.uniform1f(lPtTimeLoc, elapsed);
-          gl.uniform2f(lPtResLoc, canvas.width, canvas.height);
-          gl.uniform1f(lPtDprLoc, dpr);
-          gl.uniform1f(lPtPairLoc, activePair);
-          gl.uniform1f(lPtMorphLoc, activeMorph);
-          gl.drawArrays(gl.POINTS, 0, PARTICLE_COUNT);
+            gl.enable(gl.BLEND);
+            gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+            gl.useProgram(ls.lightPtProgram);
+            gl.bindBuffer(gl.ARRAY_BUFFER, particleBuf);
+            gl.enableVertexAttribArray(ls.lPtSeedLoc);
+            gl.vertexAttribPointer(ls.lPtSeedLoc, 3, gl.FLOAT, false, 0, 0);
+            gl.uniform1f(ls.lPtTimeLoc, elapsed);
+            gl.uniform2f(ls.lPtResLoc, canvas.width, canvas.height);
+            gl.uniform1f(ls.lPtDprLoc, dpr);
+            gl.uniform1f(ls.lPtPairLoc, activePair);
+            gl.uniform1f(ls.lPtMorphLoc, activeMorph);
+            gl.drawArrays(gl.POINTS, 0, activeParticleCount);
+          }
         } else {
-          gl.disable(gl.BLEND);
-          gl.useProgram(bgProgram);
-          gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
-          gl.enableVertexAttribArray(bgPosLoc);
-          gl.vertexAttribPointer(bgPosLoc, 2, gl.FLOAT, false, 0, 0);
-          gl.uniform2f(bgResLoc, canvas.width, canvas.height);
-          gl.uniform1f(bgTimeLoc, elapsed);
-          gl.uniform1f(bgPairLoc, activePair);
-          gl.uniform1f(bgMorphLoc, activeMorph);
-          gl.uniform1f(bgHorizLoc, 1.0);
-          gl.drawArrays(gl.TRIANGLES, 0, 6);
+          const ds = getDarkSuite();
+          if (ds) {
+            gl.disable(gl.BLEND);
+            gl.useProgram(ds.bgProgram);
+            gl.bindBuffer(gl.ARRAY_BUFFER, quadBuf);
+            gl.enableVertexAttribArray(ds.bgPosLoc);
+            gl.vertexAttribPointer(ds.bgPosLoc, 2, gl.FLOAT, false, 0, 0);
+            gl.uniform2f(ds.bgResLoc, canvas.width, canvas.height);
+            gl.uniform1f(ds.bgTimeLoc, elapsed);
+            gl.uniform1f(ds.bgPairLoc, activePair);
+            gl.uniform1f(ds.bgMorphLoc, activeMorph);
+            gl.uniform1f(ds.bgHorizLoc, 1.0);
+            gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-          gl.enable(gl.BLEND);
-          gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
-          gl.useProgram(ptProgram);
-          gl.bindBuffer(gl.ARRAY_BUFFER, particleBuf);
-          gl.enableVertexAttribArray(ptSeedLoc);
-          gl.vertexAttribPointer(ptSeedLoc, 3, gl.FLOAT, false, 0, 0);
-          gl.uniform1f(ptTimeLoc, elapsed);
-          gl.uniform2f(ptResLoc, canvas.width, canvas.height);
-          gl.uniform1f(ptDprLoc, dpr);
-          gl.uniform1f(ptPairLoc, activePair);
-          gl.uniform1f(ptMorphLoc, activeMorph);
-          gl.drawArrays(gl.POINTS, 0, PARTICLE_COUNT);
+            gl.enable(gl.BLEND);
+            gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+            gl.useProgram(ds.ptProgram);
+            gl.bindBuffer(gl.ARRAY_BUFFER, particleBuf);
+            gl.enableVertexAttribArray(ds.ptSeedLoc);
+            gl.vertexAttribPointer(ds.ptSeedLoc, 3, gl.FLOAT, false, 0, 0);
+            gl.uniform1f(ds.ptTimeLoc, elapsed);
+            gl.uniform2f(ds.ptResLoc, canvas.width, canvas.height);
+            gl.uniform1f(ds.ptDprLoc, dpr);
+            gl.uniform1f(ds.ptPairLoc, activePair);
+            gl.uniform1f(ds.ptMorphLoc, activeMorph);
+            gl.drawArrays(gl.POINTS, 0, activeParticleCount);
+          }
         }
       }
 
@@ -354,12 +458,17 @@ export default function WebbDeepFieldCanvas({
     return () => {
       cancelAnimationFrame(animId);
       window.removeEventListener('resize', resize);
+      if (ro) ro.disconnect();
       gl.deleteBuffer(quadBuf);
       gl.deleteBuffer(particleBuf);
-      gl.deleteProgram(bgProgram);
-      gl.deleteProgram(ptProgram);
-      gl.deleteProgram(lightBgProgram);
-      gl.deleteProgram(lightPtProgram);
+      if (darkSuite) {
+        gl.deleteProgram(darkSuite.bgProgram);
+        gl.deleteProgram(darkSuite.ptProgram);
+      }
+      if (lightSuite) {
+        gl.deleteProgram(lightSuite.lightBgProgram);
+        gl.deleteProgram(lightSuite.lightPtProgram);
+      }
     };
   }, []);
 

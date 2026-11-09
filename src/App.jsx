@@ -279,7 +279,7 @@ export default function App() {
       import('./components/ObservabilityView');
       import('./components/UserGuideView');
       import('./components/GlobalAgentDrawer');
-    }, 150);
+    }, 900);
     return () => window.clearTimeout(timer);
   }, []);
 
